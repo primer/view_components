@@ -15,8 +15,9 @@ module Primer
       # @param component [Class] The component class to link to.
       # @return [String] The link, either in HTML or markdown format.
       def link_to_component(component)
-        backend = Primer::YARD::LookbookPagesBackend.new(Primer::YARD::Registry.make)
-        page = backend.page_for(component)
+        backend = Primer::YARD::LookbookPagesBackend.new(Primer::YARD::Registry.make, nil)
+        component_ref = Primer::YARD::ComponentManifest.ref_for(component)
+        page = backend.page_for(component_ref)
 
         # If the page_path method is available, we're being rendered into HTML by Lookbook
         # and should emit an HTML <a> tag. No page_path means we're being rendered into

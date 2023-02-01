@@ -4,7 +4,7 @@ module Primer
   module Alpha
     CheckBoxGroup = Primer::FormComponents.from_input(Primer::Forms::Dsl::CheckBoxGroupInput)
 
-    # Check boxes are true/false inputs rendered as `<input type="checkbox">` in HTML.
+    # Check box groups consist of one or more related check boxes.
     #
     # @form_usage
     #   class ExampleForm < ApplicationForm

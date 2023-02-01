@@ -87,17 +87,17 @@ Place `ApplicationForm` in app/forms/application_form.rb
 Forms are just Ruby classes that inherit from `Primer::Forms::Base`. Define a form's inputs using the `form` class method, which accepts a block. The block is called with an instance of `Primer::Forms::Dsl::FormObject`, which responds to the following form input methods:
 
 * [`text_field`](<%= page_path(:text_field_input) %>): Text input field.
-* `text_area`: Text area field (multi-line).
+* [`text_area`](<%= page_path(:text_area_input) %>): Text area field (multi-line).
 * [`select_list`](<%= page_path(:select_list_input) %>): Drop-down select list.
-* `check_box`: Single check box.
-* `check_box_group`: Group of related check boxes.
+* [`check_box`](<%= page_path(:check_box_input) %>): Single check box.
+* [`check_box_group`](<%= page_path(:check_box_group_input) %>): Group of related check boxes.
 * [`radio_button_group`](<%= page_path(:radio_button_group_input) %>): Group of related radio buttons.
-* `hidden`: Hidden input.
+* [`hidden`](<%= page_path(:miscellaneous_inputs) %>): Hidden input.
 * [`multi`](<%= page_path(:multi_input) %>): Multi input (multiple fields that look like a single field).
-* `submit`: Submit button.
-* `button`: Regular, non-submit button.
-* `separator`: Horizontal separator.
-* `fields_for`: Used for composing forms together.
+* [`submit`](<%= page_path(:submit_button_input) %>): Submit button.
+* [`button`](<%= page_path(:form_button_input) %>): Regular, non-submit button.
+* [`separator`](<%= page_path(:miscellaneous_inputs) %>): Horizontal separator.
+* [`fields_for`](<%= page_path(:compound_forms) %>): Used for composing forms together.
 
 ## Rendering
 
@@ -119,3 +119,7 @@ You may have noticed the use of the `primer_form_with` helper above. This helper
 1. enables the special handling of `system_arguments` that allows for utility arguments like `ml: 2` and friends
 
 It is recommended to always use `primer_form_with` instead of `form_with`.
+
+## The `primer_form_for` helper
+
+Before the introduction of `#form_with` in Rails 5.1, forms were created using the `#form_for` helper. Although `#form_for` has since been soft-deprecated, Primer includes the analogous `#primer_form_for` for completeness. Prefer `#primer_form_with` for new forms.

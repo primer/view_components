@@ -25,17 +25,17 @@ module Primer
         Primer::Alpha::FormButton => [:submit_button_form]
       }.freeze
 
-      attr_reader :component, :backend, :docs
+      attr_reader :component_ref, :backend, :docs
 
-      def initialize(component, backend, docs)
-        @component = component
+      def initialize(component_ref, backend, docs)
+        @component_ref = component_ref
         @backend = backend
         @docs = docs
       end
 
       def page_id
         @page_id ||= docs.short_name.dasherize.underscore.tap do |page_id|
-          page_id << "_input" unless id.end_with?("_input")
+          page_id << "_input" unless page_id.end_with?("_input")
         end
       end
 
@@ -153,24 +153,29 @@ module Primer
             .map(&:name)
         end
       end
+
+      def component
+        component_ref.klass
+      end
     end
 
     # Backend that generates Lookbook pages.
     class LookbookPagesBackend < Backend
-      attr_reader :registry
+      attr_reader :registry, :manifest
 
-      def initialize(registry)
+      def initialize(registry, manifest)
         @registry = registry
+        @manifest = manifest
       end
 
       def generate
-        each_component do |component|
-          page_for(component).generate
+        each_component do |component_ref|
+          page_for(component_ref).generate
         end
       end
 
-      def page_for(component)
-        LookbookPage.new(component, self, registry.find(component))
+      def page_for(component_ref)
+        LookbookPage.new(component_ref, self, registry.find(component_ref.klass))
       end
 
       def view_context
@@ -182,11 +187,7 @@ module Primer
       private
 
       def each_component(&block)
-        manifest.form_components.each(&block)
-      end
-
-      def manifest
-        Primer::YARD::ComponentManifest
+        manifest.each(&block)
       end
     end
   end

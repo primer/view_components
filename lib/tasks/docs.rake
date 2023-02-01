@@ -27,6 +27,7 @@ namespace :docs do
     registry = Primer::YARD::Registry.make
 
     require "primer/yard/legacy_gatsby_backend"
+    require "primer/yard/component_manifest"
 
     puts "Converting YARD documentation to Markdown files."
 
@@ -34,7 +35,8 @@ namespace :docs do
     components_content_glob = File.join(*%w[docs content components ** *.md])
     FileUtils.rm_rf(components_content_glob)
 
-    backend = Primer::YARD::LegacyGatsbyBackend.new(registry)
+    manifest = Primer::YARD::ComponentManifest.where(published: true)
+    backend = Primer::YARD::LegacyGatsbyBackend.new(registry, manifest)
     args_for_components, errors = backend.generate
 
     unless errors.empty?
@@ -55,7 +57,8 @@ namespace :docs do
 
     puts "Markdown compiled."
 
-    components_needing_docs = Primer::YARD::ComponentManifest.components_without_docs
+    all_components = Primer::Component.descendants - [Primer::BaseComponent]
+    components_needing_docs = all_components - Primer::YARD::ComponentManifest::COMPONENTS.keys
 
     if components_needing_docs.any?
       puts
@@ -66,9 +69,11 @@ namespace :docs do
   task build_lookbook_pages: :build_yard_registry do
     require "primer/yard/registry"
     require "primer/yard/lookbook_pages_backend"
+    require "primer/yard/component_manifest"
 
     registry = Primer::YARD::Registry.make
-    backend = Primer::YARD::LookbookPagesBackend.new(registry)
+    manifest = Primer::YARD::ComponentManifest.where(form_component: true)
+    backend = Primer::YARD::LookbookPagesBackend.new(registry, manifest)
     backend.generate
   end
 

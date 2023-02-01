@@ -45,7 +45,7 @@ Render the form:
 |`name`|String||The name of the input, used to associate the toggle switch with its label.|
 |`label`|String||Label text displayed adjacent to the input.|
 |`src`|String||The URL to submit toggle POST requests to.|
-|`csrf`|String||A CSRF token to submit along with the toggle value.|
+|`csrf`|String||A CSRF token to submit along with the toggle value. If no value is provided, a CSRF token is automatically generated via Rails' [`form_authenticity_token` method](https://api.rubyonrails.org/v7.0/classes/ActionController/RequestForgeryProtection.html#method-i-form_authenticity_token)|
 |`hidden`|Boolean||When set to `true`, visually hides the form.|
 |`label_arguments`|Hash||Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag.|
 

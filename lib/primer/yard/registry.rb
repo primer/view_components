@@ -90,20 +90,6 @@ module Primer
       def a11y_reviewed?
         metadata[:a11y_reviewed]
       end
-
-      def requires_js?
-        manifest.components_requiring_js.include?(component)
-      end
-
-      def includes_examples?
-        manifest.components_with_examples.include?(component)
-      end
-
-      private
-
-      def manifest
-        Primer::YARD::ComponentManifest
-      end
     end
 
     # Wrapper around an instance of YARD::Registry that provides easy access to component

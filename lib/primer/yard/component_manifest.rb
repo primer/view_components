@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 # :nocov:
+
+require "primer/yard/component_ref"
+
 module Primer
   module YARD
     # The set of documented components (and associated metadata).
@@ -80,50 +83,60 @@ module Primer
 
         # Forms
         Primer::Alpha::TextField => { form_component: true },
-        Primer::Alpha::TextArea => { form_component: true },
-        Primer::Alpha::SelectList => { form_component: true },
-        Primer::Alpha::MultiInput => { form_component: true, js: true },
-        Primer::Alpha::RadioButton => { form_component: true },
-        Primer::Alpha::RadioButtonGroup => { form_component: true },
-        Primer::Alpha::CheckBox => { form_component: true },
-        Primer::Alpha::CheckBoxGroup => { form_component: true },
-        Primer::Alpha::SubmitButton => { form_component: true },
-        Primer::Alpha::FormButton => { form_component: true }
+        Primer::Alpha::TextArea => { form_component: true, published: false },
+        Primer::Alpha::SelectList => { form_component: true, published: false },
+        Primer::Alpha::MultiInput => { form_component: true, js: true, published: false },
+        Primer::Alpha::RadioButton => { form_component: true, published: false },
+        Primer::Alpha::RadioButtonGroup => { form_component: true, published: false },
+        Primer::Alpha::CheckBox => { form_component: true, published: false },
+        Primer::Alpha::CheckBoxGroup => { form_component: true, published: false },
+        Primer::Alpha::SubmitButton => { form_component: true, published: false },
+        Primer::Alpha::FormButton => { form_component: true, published: false }
       }.freeze
 
+      include Enumerable
+
+      def initialize(components)
+        @components = components
+      end
+
+      def each
+        return to_enum(__method__) unless block_given?
+
+        @components.each do |klass|
+          yield self.class.ref_for(klass)
+        end
+      end
+
+      def where(**attrs)
+        self.class.where(@components, **attrs)
+      end
+
       class << self
-        def each(&block)
-          COMPONENTS.keys.each(&block)
+        def where(components = COMPONENTS, **desired_attrs)
+          new(
+            components.each_with_object([]) do |(klass, component_attrs), memo|
+              matches = desired_attrs.all? do |name, desired_value|
+                component_attrs.fetch(name, ComponentRef::ATTR_DEFAULTS[name]) == desired_value
+              end
+
+              memo << klass if matches
+            end
+          )
         end
 
-        def components_with_docs
-          @components_with_docs ||= COMPONENTS.keys
+        def all
+          new(COMPONENTS.keys)
         end
 
-        def all_components
-          @all_components ||= Primer::Component.descendants - [Primer::BaseComponent]
+        def ref_for(klass)
+          ref_cache[klass] ||= ComponentRef.new(klass, COMPONENTS[klass])
         end
 
-        def components_without_docs
-          @components_without_docs ||= all_components - components_with_docs
-        end
+        private
 
-        def components_with_examples
-          @components_with_examples ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:examples, true)
-          end
-        end
-
-        def components_requiring_js
-          @components_requiring_js ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:js, false)
-          end
-        end
-
-        def form_components
-          @form_components ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:form_component, false)
-          end
+        def ref_cache
+          @ref_cache ||= {}
         end
       end
     end

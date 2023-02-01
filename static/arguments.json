@@ -300,178 +300,6 @@
     ]
   },
   {
-    "component": "CheckBox",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/check_box.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/check_box/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
-      },
-      {
-        "name": "value",
-        "type": "String",
-        "default": "N/A",
-        "description": "On form submission, this value will be sent to the server if the check box is checked. Defaults to \"1\"."
-      },
-      {
-        "name": "unchecked_value",
-        "type": "String",
-        "default": "N/A",
-        "description": "On form submission, this value will be sent to the server if the check box is _not_ checked. Defaults to \"0\"."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "Controls how check box values are submitted to the server. One of `:array` or `:boolean`.."
-      }
-    ]
-  },
-  {
-    "component": "CheckBoxGroup",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/check_box_group.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/check_box_group/default/",
-    "parameters": [
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the group."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      }
-    ]
-  },
-  {
     "component": "Dialog",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb",
@@ -550,62 +378,6 @@
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "FormButton",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/form_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/form_button/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ]
   },
@@ -760,134 +532,6 @@
     ]
   },
   {
-    "component": "MultiInput",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/multi_input.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/multi_input/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
-      }
-    ]
-  },
-  {
     "component": "NavList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -980,160 +624,6 @@
     ]
   },
   {
-    "component": "RadioButton",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/radio_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/radio_button/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
-      }
-    ]
-  },
-  {
-    "component": "RadioButtonGroup",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/radio_button_group.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/radio_button_group/default/",
-    "parameters": [
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the group."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      }
-    ]
-  },
-  {
     "component": "SegmentedControl",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
@@ -1162,208 +652,6 @@
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "SelectList",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/select_list.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select_list/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
-      },
-      {
-        "name": "multiple",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to true, the selection will allow multiple choices."
-      },
-      {
-        "name": "include_blank",
-        "type": "Boolean, String",
-        "default": "N/A",
-        "description": "If set to true, an empty option will be created. If set to a string, the string will be used as the option's content and the value will be empty."
-      },
-      {
-        "name": "prompt",
-        "type": "String",
-        "default": "N/A",
-        "description": "Create a prompt option with blank value and the text asking user to select something."
-      }
-    ]
-  },
-  {
-    "component": "SubmitButton",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/submit_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/submit_button/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ]
   },
@@ -1452,134 +740,6 @@
     ]
   },
   {
-    "component": "TextArea",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_area.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/text_area/default/",
-    "parameters": [
-      {
-        "name": "name",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML name attribute."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value for the HTML id attribute."
-      },
-      {
-        "name": "class",
-        "type": "String",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
-      },
-      {
-        "name": "classes",
-        "type": "Array",
-        "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
-      },
-      {
-        "name": "caption",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
-      }
-    ]
-  },
-  {
     "component": "TextField",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_field.rb",
@@ -1601,19 +761,19 @@
         "name": "class",
         "type": "String",
         "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders."
+        "description": "A list of CSS classes to add to the input. Exists for compatibility with Rails form builders."
       },
       {
         "name": "classes",
-        "type": "Array",
+        "type": "String",
         "default": "N/A",
-        "description": "CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored)."
+        "description": "A list of CSS classes to add to the input. Combined with the `:class` argument."
       },
       {
         "name": "caption",
         "type": "String",
         "default": "N/A",
-        "description": "A string describing the field and what sorts of input it expects. Displayed below the input."
+        "description": "Caption text to render below the input."
       },
       {
         "name": "label",
@@ -1625,7 +785,7 @@
         "name": "visually_hide_label",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
+        "description": "Whether or not to visually hide the label. If `true` the label will be hidden visually but still available to screen readers."
       },
       {
         "name": "size",
@@ -1634,76 +794,34 @@
         "description": "The size of the field. One of `:large`, `:medium`, or `:small`."
       },
       {
+        "name": "show_clear_button",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether or not to include a clear button inside the input that clears the input's contents when clicked."
+      },
+      {
+        "name": "clear_button_id",
+        "type": "String",
+        "default": "N/A",
+        "description": "The HTML id attribute of the clear button."
+      },
+      {
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "Controls whether or not the input takes the full width of its container."
       },
       {
         "name": "disabled",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the input will not accept keyboard or mouse input."
-      },
-      {
-        "name": "hidden",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "When set to `true`, visually hides the field."
+        "description": "Whether or not the input should accept keyboard and mouse input."
       },
       {
         "name": "invalid",
         "type": "Boolean",
         "default": "N/A",
-        "description": "If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
-      },
-      {
-        "name": "validation_message",
-        "type": "String",
-        "default": "N/A",
-        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
-      },
-      {
-        "name": "label_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
-      },
-      {
-        "name": "scope_name_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "scope_id_to_model",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "aria",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current=\"true\"`."
-      },
-      {
-        "name": "data",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Key/value pairs that represent data attributes and their values. Eg. `data: { foo: \"bar\" }` becomes `data-foo=\"bar\"`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
+        "description": "If `true`, renders the input in a visually invalid state."
       },
       {
         "name": "placeholder",
@@ -1727,19 +845,31 @@
         "name": "leading_visual",
         "type": "Hash",
         "default": "N/A",
-        "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon](/components/beta/octicon) component."
+        "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon)."
       },
       {
-        "name": "show_clear_button",
-        "type": "Boolean",
-        "default": "N/A",
-        "description": "Whether or not to include a clear button inside the input that clears the input's contents when clicked."
-      },
-      {
-        "name": "clear_button_id",
+        "name": "validation_message",
         "type": "String",
         "default": "N/A",
-        "description": "The HTML id attribute of the clear button."
+        "description": "A validation message to display beneath the input. Implicitly sets `invalid` to `true`."
+      },
+      {
+        "name": "label_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "System arugments passed to the Rails builder's `#label` method. These arguments will appear as HTML attributes on the `<label>` tag."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      },
+      {
+        "name": "block",
+        "type": "Proc",
+        "default": "N/A",
+        "description": "Unused."
       }
     ]
   },
