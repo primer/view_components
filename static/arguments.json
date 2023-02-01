@@ -860,6 +860,12 @@
         "description": "System arugments passed to the Rails builder's `#label` method. These arguments will appear as HTML attributes on the `<label>` tag."
       },
       {
+        "name": "auto_check_src",
+        "type": "String",
+        "default": "N/A",
+        "description": "When provided, makes a request to the given URL whenever the contents of the text field changes. If the server responds with a non-2xx status code, the response body is used as the validation message."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
