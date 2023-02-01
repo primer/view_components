@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import {test, expect, Page} from '@playwright/test'
 import {getPreviewURLs} from './helpers'
 import type {ComponentPreviews} from './helpers'
@@ -16,8 +17,6 @@ test.beforeEach(async ({page}, testInfo) => {
 
 test('default snapshots', async ({page}) => {
   for (const preview of previewsJson) {
-    // eslint-disable-next-line no-console
-    console.log(`Testing ${preview.name}`)
     // If any preview example contains a "default" key, we'll use that as the default screenshot
     const defaultExample = preview.examples.find(example => example.name === 'default')
     if (!defaultExample) {
@@ -27,6 +26,7 @@ test('default snapshots', async ({page}) => {
     const previewUrl = defaultExample.inspect_path.replace('/lookbook/inspect', '/lookbook/preview')
     const componentSlug = previewUrl.replace('/lookbook/preview/', '').replace('/default', '')
 
+    console.log(`Generating snapshot ${preview.name}`, previewUrl)
     await page.goto(previewUrl)
     const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
     expect(defaultScreenshot).toMatchSnapshot([componentSlug, 'default.png'])
