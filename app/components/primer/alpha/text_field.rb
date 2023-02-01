@@ -98,6 +98,7 @@ module Primer
       # @param leading_visual [Hash] Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon).
       # @param validation_message [String] A validation message to display beneath the input. Implicitly sets `invalid` to `true`.
       # @param label_arguments [Hash] System arugments passed to the Rails builder's `#label` method. These arguments will appear as HTML attributes on the `<label>` tag.
+      # @param auto_check_src [String] When provided, makes a request to the given URL whenever the contents of the text field changes. If the server responds with a non-2xx status code, the response body is used as the validation message.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       # @param block [Proc] Unused.
     end
