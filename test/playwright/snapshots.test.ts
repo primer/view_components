@@ -19,15 +19,21 @@ test('default snapshots', async ({page}) => {
     // eslint-disable-next-line no-console
     console.log(`Testing ${preview.name}`)
     // If any preview example contains a "default" key, we'll use that as the default screenshot
-    const defaultExample = preview.examples.find(example => example.name === 'default')!
+    const defaultExample = preview.examples.find(example => example.name === 'default')
+    if (!defaultExample) {
+      continue
+    }
+
     const previewUrl = defaultExample.inspect_path.replace('/lookbook/inspect', '/lookbook/preview')
+    const componentSlug = previewUrl.replace('/lookbook/preview/', '').replace('/default', '')
+
     await page.goto(previewUrl)
     const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-    expect(defaultScreenshot).toMatchSnapshot([preview.name, 'default.png'])
-  }
+    expect(defaultScreenshot).toMatchSnapshot([componentSlug, 'default.png'])
 
-    // // Focus state
-    // await page.keyboard.press('Tab')
-    // const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-    // expect(focusedScreenshot).toMatchSnapshot([previewURL, 'focused.png'])
+    // Focus state
+    await page.keyboard.press('Tab')
+    const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+    expect(focusedScreenshot).toMatchSnapshot([componentSlug, 'focused.png'])
+  }
 })
