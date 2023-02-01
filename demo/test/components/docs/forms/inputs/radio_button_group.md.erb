@@ -20,11 +20,11 @@ end
 
 ## Common arguments
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `hidden` | Boolean | N/A | When set to `true`, visually hides the group. |
-| `caption` | String | N/A | A string describing the field and what sorts of input it expects. Displayed below the group. |
-| `label_arguments` | Hash | N/A | Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag. |
+| Name | Type | Description |
+| :- | :- | :- |
+| `hidden` | Boolean | When set to `true`, visually hides the group. |
+| `caption` | String | A string describing the field and what sorts of input it expects. Displayed below the group. |
+| `label_arguments` | Hash | Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag. |
 
 
 ## Methods
@@ -35,10 +35,10 @@ Adds a radio button to the group.
 
 
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | Hash | N/A | The arguments accepted by [RadioButton](<%= page_path(:radio_button_input) %>). |
-| `block` | Proc | N/A | The block accepted by [RadioButton](<%= page_path(:radio_button_input) %>). |
+| Name | Type | Description |
+| :- | :- | :- |
+| `system_arguments` | Hash | The arguments accepted by [RadioButton](<%= page_path(:radio_button_input) %>). |
+| `block` | Proc | The block accepted by [RadioButton](<%= page_path(:radio_button_input) %>). |
 
 
 ## Examples

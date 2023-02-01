@@ -73,12 +73,12 @@ module Primer
             <% unless specific_args.empty? %>
             ## Arguments
 
-            <%= generate_args_table(component, specific_args) %>
+            <%= generate_args_table(specific_args) %>
             <% end %>
 
             ## Common arguments
 
-            <%= generate_args_table(component, common_args_from(docs.params)) %>
+            <%= generate_args_table(common_args_from(docs.params)) %>
 
             <% unless documented_methods.empty? %>
             ## Methods
@@ -92,7 +92,7 @@ module Primer
 
                 <% if param_tags.any? %>
 
-            <%= generate_args_table(component, param_tags) %>
+            <%= generate_args_table(param_tags) %>
                 <% end %>
               <% end %>
             <% end %>
@@ -113,14 +113,12 @@ module Primer
         backend.registry
       end
 
-      def generate_args_table(component, params)
+      def generate_args_table(params)
         rows = params.map do |tag|
-          default_value = pretty_default_value(tag, component)
           description = backend.view_context.render(inline: tag.text.squish)
           parts = [
             "`#{tag.name}`",
             tag.types.join(", "),
-            default_value,
             description
           ]
 
@@ -128,8 +126,8 @@ module Primer
         end
 
         <<~MARKDOWN
-          | Name | Type | Default | Description |
-          | :- | :- | :- | :- |
+          | Name | Type | Description |
+          | :- | :- | :- |
           #{rows.join("\n")}
         MARKDOWN
       end
