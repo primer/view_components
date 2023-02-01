@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "kuby-core", "~> 0.18"
+gem "kuby-core", "~> 0.19"
 gem "kuby-azure", ">= 0.3.3", "< 1.0"
 gem "kuby-kind", "~> 0.1"
 gem "kind-rb", "~> 0.1"
