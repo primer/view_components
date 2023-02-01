@@ -1,17 +1,20 @@
-import {Browser} from '@playwright/test'
+/* eslint-disable import/no-nodejs-modules */
+import fs from 'fs'
+import path from 'path'
 
 export interface ComponentPreviews {
   name: string
+  lookup_path: string
   examples: Array<{
     name: string
     inspect_path: string
+    preview_path: string
   }>
 }
 
-export async function getPreviewURLs(browser: Browser): Promise<ComponentPreviews[]> {
-  const previewsPage = await browser.newPage()
-  await previewsPage.goto('/lookbook/previews.json')
-  const jsonString = await previewsPage.locator('pre').allInnerTexts()
+export function getPreviewURLs(): ComponentPreviews[] {
+  const jsonString = fs.readFileSync(path.join(__dirname, '../../static/previews.json'), {encoding: 'utf8', flag: 'r'})
 
-  return JSON.parse(jsonString[0])
+  // read file contents
+  return JSON.parse(jsonString)
 }
