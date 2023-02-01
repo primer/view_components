@@ -196,10 +196,10 @@ jobs:
       run: |
         npm ci
         bundle install
+        bundle exec rake static:dump
         cd demo
         npm ci
         bundle install
-        bundle exec rake static:dump
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
