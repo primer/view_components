@@ -134,12 +134,12 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `font_family` | Symbol | Font weight. <%= one_of([:mono]) %> |
+    # | `font_family` | Symbol | Font family. <%= one_of([:mono]) %> |
     # | `font_size` | String, Integer, Symbol | <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6, :small, :normal]) %> |
-    # | `font_style` | Symbol | Font weight. <%= one_of([:italic]) %> |
+    # | `font_style` | Symbol | Font style. <%= one_of([:italic]) %> |
     # | `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold, :emphasized]) %> |
     # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
-    # | `text_transform` | Symbol | Text alignment. <%= one_of([:uppercase]) %> |
+    # | `text_transform` | Symbol | Text transformation. <%= one_of([:uppercase]) %> |
     # | `underline` | Boolean | Whether text should be underlined. |
     # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #

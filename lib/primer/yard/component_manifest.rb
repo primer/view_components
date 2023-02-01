@@ -13,7 +13,6 @@ module Primer
         Primer::Alpha::Layout => {},
         Primer::Alpha::HellipButton => {},
         Primer::Alpha::Image => {},
-        Primer::LocalTime => { js: true },
         Primer::Alpha::OcticonSymbols => {},
         Primer::Alpha::ImageCrop => { js: true },
         Primer::IconButton => { js: true },
