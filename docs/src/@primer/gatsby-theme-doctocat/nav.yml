@@ -123,8 +123,6 @@
     url: "/components/button"
   - title: IconButton
     url: "/components/iconbutton"
-  - title: TimeAgo
-    url: "/components/timeago"
   - title: Tooltip
     url: "/components/tooltip"
 - title: Architecture decisions

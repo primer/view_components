@@ -1073,8 +1073,6 @@
     ],
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
-  "Primer::TimeAgoComponent": {
-  },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
     "ALIGN_MAPPING": {
