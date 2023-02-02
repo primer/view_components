@@ -37,7 +37,8 @@ module Primer
             **system_arguments,
             builder: @builder,
             form: @form,
-            scheme: scheme
+            scheme: scheme,
+            disabled: disabled?
           }
 
           @check_boxes << CheckBoxInput.new(**args, &block)

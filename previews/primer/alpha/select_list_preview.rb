@@ -44,13 +44,87 @@ module Primer
           validation_message: validation_message
         }
 
-        render(Primer::Alpha::SelectList.new(**system_arguments)) do |c|
-          c.option(label: "Lopez Island", value: "lopez")
-          c.option(label: "Shaw Island", value: "shaw")
-          c.option(label: "Orcas Island", value: "orcas")
-          c.option(label: "San Juan Island", value: "san_juan")
+        render(Primer::Alpha::SelectList.new(**system_arguments)) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
         end
       end
+
+      # @label Default
+      def default
+        render(Primer::Alpha::SelectList.new(name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @!group Options
+      #
+      # @label With caption
+      def with_caption
+        render(Primer::Alpha::SelectList.new(caption: "With a caption", name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label Visually hidden label
+      def visually_hide_label
+        render(Primer::Alpha::SelectList.new(visually_hide_label: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label Full width
+      def full_width
+        render(Primer::Alpha::SelectList.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label Disabled
+      def disabled
+        render(Primer::Alpha::SelectList.new(disabled: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label Invalid
+      def invalid
+        render(Primer::Alpha::SelectList.new(invalid: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label With validation message
+      def with_validation_message
+        render(Primer::Alpha::SelectList.new(validation_message: "An error occurred!", name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+      #
+      # @!endgroup
     end
   end
 end

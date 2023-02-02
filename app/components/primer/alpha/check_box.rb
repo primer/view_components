@@ -60,6 +60,7 @@ module Primer
       #
       # @macro form_input_arguments
       #
+      # @param name [String] Value for the HTML name attribute.
       # @param value [String] On form submission, this value will be sent to the server if the check box is checked. Defaults to "1".
       # @param unchecked_value [String] On form submission, this value will be sent to the server if the check box is _not_ checked. Defaults to "0".
       # @param scheme [Symbol] Controls how check box values are submitted to the server. <%= one_of(Primer::Forms::Dsl::CheckBoxInput::SCHEMES) %>.

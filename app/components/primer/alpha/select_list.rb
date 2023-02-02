@@ -19,6 +19,7 @@ module Primer
 
       # @!method initialize
       #
+      # @macro form_size_arguments
       # @macro form_input_arguments
       #
       # @param multiple [Boolean] If set to true, the selection will allow multiple choices.

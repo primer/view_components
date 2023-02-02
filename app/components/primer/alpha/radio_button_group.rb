@@ -19,6 +19,8 @@ module Primer
 
       # @!method initialize
       #
+      # @param name [String] Value for the HTML name attribute.
+      # @param label [String] Label text displayed above the input.
       # @param hidden [Boolean] When set to `true`, visually hides the group.
       # @param caption [String] A string describing the field and what sorts of input it expects. Displayed below the group.
       # @param label_arguments [Hash] Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag.
