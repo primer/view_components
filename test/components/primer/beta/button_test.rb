@@ -37,6 +37,12 @@ class PrimerBetaButtonTest < Minitest::Test
     assert_selector(".Button ~ tool-tip[for='button-id']", visible: false)
   end
 
+  def test_renders_buttons_as_a_group_item
+    render_inline(Primer::Beta::Button.new(group_item: true)) { "content" }
+
+    assert_selector(".Button.BtnGroup-item")
+  end
+
   def test_warns_on_use_of_tooltip_without_id
     err = assert_raises ArgumentError do
       render_inline(Primer::Beta::Button.new) do |component|

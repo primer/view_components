@@ -135,12 +135,14 @@ module Primer
       # @param align_content [Symbol] <%= one_of(Primer::Beta::Button::ALIGN_CONTENT_OPTIONS) %>
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
+      # @param group_item [Boolean] Whether button is part of a ButtonGroup.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
         size: DEFAULT_SIZE,
         block: false,
         align_content: DEFAULT_ALIGN_CONTENT,
+        group_item: false,
         **system_arguments
       )
         @scheme = scheme
@@ -162,7 +164,8 @@ module Primer
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "Button",
-          "Button--fullWidth" => block
+          "Button--fullWidth" => block,
+          "BtnGroup-item" => group_item
         )
       end
 
