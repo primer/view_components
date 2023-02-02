@@ -53,7 +53,6 @@ module Primer
         Primer::Beta::Subhead => {},
         Primer::Alpha::TabContainer => { js: true },
         Primer::Beta::Text => {},
-        Primer::TimeAgoComponent => { js: true },
         Primer::Beta::TimelineItem => {},
         Primer::Tooltip => {},
         Primer::Truncate => {},
