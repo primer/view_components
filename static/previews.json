@@ -1429,6 +1429,11 @@
         "name": "default"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/text_field/auto_check",
+        "preview_path": "/lookbook/preview/primer/alpha/text_field/auto_check",
+        "name": "auto_check"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/options",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/options",
         "name": "options"
@@ -1437,27 +1442,6 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/sizes",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/sizes",
         "name": "sizes"
-      }
-    ]
-  },
-  {
-    "name": "time_ago",
-    "lookup_path": "primer/time_ago",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/time_ago/playground",
-        "preview_path": "/lookbook/preview/primer/time_ago/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/time_ago/default",
-        "preview_path": "/lookbook/preview/primer/time_ago/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/time_ago/micro",
-        "preview_path": "/lookbook/preview/primer/time_ago/micro",
-        "name": "micro"
       }
     ]
   },
