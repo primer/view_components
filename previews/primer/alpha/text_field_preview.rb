@@ -9,6 +9,8 @@ module Primer
       # @param name text
       # @param id text
       # @param label text
+      # @param caption text
+      # @param required toggle
       # @param visually_hide_label toggle
       # @param size [Symbol] select [small, medium, large]
       # @param show_clear_button toggle
@@ -16,14 +18,17 @@ module Primer
       # @param full_width toggle
       # @param disabled toggle
       # @param invalid toggle
+      # @param validation_message text
       # @param placeholder text
       # @param inset toggle
       # @param monospace toggle
-      # @param leading_visual_icon text
+      # @param leading_visual_icon octicon
       def playground(
         name: "my-text-field",
         id: "my-text-field",
         label: "My text field",
+        caption: "My text field",
+        required: false,
         visually_hide_label: false,
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         show_clear_button: false,
@@ -31,6 +36,7 @@ module Primer
         full_width: false,
         disabled: false,
         invalid: false,
+        validation_message: nil,
         placeholder: nil,
         inset: false,
         monospace: false,
@@ -40,6 +46,8 @@ module Primer
           name: name,
           id: id,
           label: label,
+          caption: caption,
+          required: required,
           visually_hide_label: visually_hide_label,
           size: size,
           show_clear_button: show_clear_button,
@@ -47,6 +55,7 @@ module Primer
           full_width: full_width,
           disabled: disabled,
           invalid: invalid,
+          validation_message: validation_message,
           placeholder: placeholder,
           inset: inset,
           monospace: monospace
