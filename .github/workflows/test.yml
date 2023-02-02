@@ -196,6 +196,7 @@ jobs:
       run: |
         npm ci
         bundle install
+        bundle exec rake static:dump
         cd demo
         npm ci
         bundle install

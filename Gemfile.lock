@@ -255,7 +255,7 @@ DEPENDENCIES
   erb_lint
   erblint-github (= 0.1.0)
   listen (~> 3.0)
-  lookbook (~> 1)
+  lookbook (~> 1.5.1)
   matrix (~> 0.4.2)
   minitest (~> 5.0)
   mocha
