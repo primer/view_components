@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 # :nocov:
-
-require "primer/yard/docs_helper"
-
 module Primer
-  module YARD
+  module Yard
     # Shared functionality for generating documentation from YARD comments.
     class Backend
       include DocsHelper

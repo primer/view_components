@@ -91,7 +91,7 @@ module Demo
 
       ActiveSupport.on_load(:action_controller) do
         require "primer/yard/lookbook_docs_helper"
-        Lookbook::PageHelper.include(Primer::YARD::LookbookDocsHelper)
+        Lookbook::PageHelper.include(Primer::Yard::LookbookDocsHelper)
       end
     end
   end

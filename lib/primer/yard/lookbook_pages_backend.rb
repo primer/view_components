@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
 # :nocov:
-
-require "primer/yard/component_manifest"
-require "primer/yard/backend"
-require "primer/yard/lookbook_docs_helper"
-
 module Primer
-  module YARD
+  module Yard
     # A single Lookbook page.
     class LookbookPage
       include DocsHelper

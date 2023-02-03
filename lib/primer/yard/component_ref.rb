@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  module YARD
+  module Yard
+    # :nodoc:
     class ComponentRef
       ATTR_DEFAULTS = {
         js: false,

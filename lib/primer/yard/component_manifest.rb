@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 # :nocov:
-
-require "primer/yard/component_ref"
-
 module Primer
-  module YARD
+  module Yard
     # The set of documented components (and associated metadata).
     class ComponentManifest
       COMPONENTS = {

@@ -3,11 +3,8 @@
 # rubocop:disable Naming/MethodParameterName
 
 # :nocov:
-
-require "primer/yard/backend"
-
 module Primer
-  module YARD
+  module Yard
     # Backend that generates documentation for the legacy, Gatsby-powered PVC docsite.
     class LegacyGatsbyBackend < Backend
       class << self

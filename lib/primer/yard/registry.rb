@@ -2,12 +2,10 @@
 
 # :nocov:
 
-require "primer/view_components"
-require "primer/yard/docs_helper"
 require "view_component/test_helpers"
 
 module Primer
-  module YARD
+  module Yard
     # A wrapper around a YARD class reference that provides convenience methods
     # for extracting component parameters, accessibility status, etc.
     class RegistryEntry
@@ -98,7 +96,7 @@ module Primer
       class << self
         include ViewComponent::TestHelpers
         include Primer::ViewHelper
-        include Primer::YARD::DocsHelper
+        include Primer::Yard::DocsHelper
 
         def make
           registry = ::YARD::RegistryStore.new

@@ -24,7 +24,9 @@ namespace :docs do
   task build: [:build_gatsby_pages, :build_gatsby_adrs, :build_lookbook_pages]
 
   task build_gatsby_pages: :build_yard_registry do
-    registry = Primer::YARD::Registry.make
+    require "primer/yard"
+
+    registry = Primer::Yard::Registry.make
 
     require "primer/yard/legacy_gatsby_backend"
     require "primer/yard/component_manifest"
@@ -35,8 +37,8 @@ namespace :docs do
     components_content_glob = File.join(*%w[docs content components ** *.md])
     FileUtils.rm_rf(components_content_glob)
 
-    manifest = Primer::YARD::ComponentManifest.where(published: true)
-    backend = Primer::YARD::LegacyGatsbyBackend.new(registry, manifest)
+    manifest = Primer::Yard::ComponentManifest.where(published: true)
+    backend = Primer::Yard::LegacyGatsbyBackend.new(registry, manifest)
     args_for_components, errors = backend.generate
 
     unless errors.empty?
@@ -58,7 +60,7 @@ namespace :docs do
     puts "Markdown compiled."
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
-    components_needing_docs = all_components - Primer::YARD::ComponentManifest::COMPONENTS.keys
+    components_needing_docs = all_components - Primer::Yard::ComponentManifest::COMPONENTS.keys
 
     if components_needing_docs.any?
       puts
@@ -67,17 +69,17 @@ namespace :docs do
   end
 
   task build_lookbook_pages: :build_yard_registry do
-    require "primer/yard/registry"
-    require "primer/yard/lookbook_pages_backend"
-    require "primer/yard/component_manifest"
+    require "primer/yard"
 
-    registry = Primer::YARD::Registry.make
-    manifest = Primer::YARD::ComponentManifest.where(form_component: true)
-    backend = Primer::YARD::LookbookPagesBackend.new(registry, manifest)
+    registry = Primer::Yard::Registry.make
+    manifest = Primer::Yard::ComponentManifest.where(form_component: true)
+    backend = Primer::Yard::LookbookPagesBackend.new(registry, manifest)
     backend.generate
   end
 
   task :build_gatsby_adrs do
+    require "primer/yard"
+
     adr_content_dir = File.join(*%w[docs content adr])
 
     FileUtils.rm_rf(File.join(adr_content_dir))
@@ -123,16 +125,14 @@ namespace :docs do
   end
 
   task preview: :build_yard_registry do
-    registry = Primer::YARD::Registry.make
-
-    require "primer/yard/legacy_gatsby_backend"
+    require "primer/yard"
 
     FileUtils.rm_rf("previews/primer/docs/")
 
-    manifest = Primer::YARD::ComponentManifest
+    registry = Primer::Yard::Registry.make
 
     # Generate previews from documentation examples
-    manifest.all.each do |component_ref|
+    Primer::Yard::ComponentManifest.all.each do |component_ref|
       component = component_ref.klass
       docs = registry.find(component)
       next unless docs.constructor&.tags(:example)&.any?
@@ -147,7 +147,7 @@ namespace :docs do
         f.puts("  class #{docs.short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
-          name, _, code = Primer::YARD::LegacyGatsbyBackend.parse_example_tag(tag)
+          name, _, code = Primer::Yard::LegacyGatsbyBackend.parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
@@ -171,7 +171,7 @@ namespace :docs do
   end
 
   task build_yard_registry: :init_pvc do
-    require "primer/yard/registry"
+    require "primer/yard"
 
     ::YARD::Rake::YardocTask.new do |task|
       task.options << "--no-output"

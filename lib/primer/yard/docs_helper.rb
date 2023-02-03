@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 # :nocov:
-
 module Primer
-  module YARD
+  module Yard
     # Helper methods to use for yard documentation
     module DocsHelper
       def one_of(enumerable, lower: false, sort: true)
