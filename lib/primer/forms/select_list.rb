@@ -10,7 +10,7 @@ module Primer
         @input = input
         @input.add_input_classes(
           "FormControl-select",
-          "FormControl--medium"
+          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
         )
 
         @field_wrap_arguments = {

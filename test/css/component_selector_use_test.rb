@@ -40,7 +40,9 @@ IGNORED_SELECTORS = {
   Primer::Alpha::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
   Primer::Beta::Markdown => ["markdown-body"],
   Primer::Beta::Subhead => ["Button--medium"],
-  Primer::Beta::TimelineItem => ["octicon", "octicon-check"]
+  Primer::Beta::TimelineItem => ["octicon", "octicon-check"],
+  Primer::Alpha::SelectList => ["octicon", "octicon-alert-fill"],
+  Primer::Alpha::TextArea => ["octicon", "octicon-alert-fill"]
 }.freeze
 # rubocop:enable Style/WordArray
 

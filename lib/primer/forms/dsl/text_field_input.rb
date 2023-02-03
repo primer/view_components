@@ -25,11 +25,6 @@ module Primer
 
           super(**system_arguments)
 
-          add_input_classes(
-            "FormControl-input",
-            Primer::Forms::Dsl::Input::SIZE_MAPPINGS[size]
-          )
-
           add_input_data(:target, "primer-text-field.inputElement") if auto_check_src.present?
           add_input_classes("FormControl-inset") if inset?
           add_input_classes("FormControl-monospace") if monospace?

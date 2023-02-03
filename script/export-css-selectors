@@ -18,8 +18,14 @@ const export_selectors = folder => {
 
       const selectors = []
       root.walkRules(rule => {
-        rule.selector.split(',').forEach(ruleSelector => {
-          selectors.push(ruleSelector)
+        rule.selectors.forEach(ruleSelector => {
+          const pseudoStart = ruleSelector.search(/::?/)
+          if (pseudoStart > -1) {
+            ruleSelector = ruleSelector.substring(0, pseudoStart)
+          }
+          ruleSelector.trim().split(/(?=\.)|\s/).forEach(selector => {
+            selectors.push(selector.trim())
+          })
         })
       })
 
