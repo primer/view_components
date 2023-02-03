@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module Yard
     # :nodoc:
@@ -36,3 +37,4 @@ module Primer
     end
   end
 end
+# :nocov:
