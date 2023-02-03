@@ -132,7 +132,8 @@ namespace :docs do
     manifest = Primer::YARD::ComponentManifest
 
     # Generate previews from documentation examples
-    manifest.all_components.each do |component|
+    manifest.all.each do |component_ref|
+      component = component_ref.klass
       docs = registry.find(component)
       next unless docs.constructor&.tags(:example)&.any?
 

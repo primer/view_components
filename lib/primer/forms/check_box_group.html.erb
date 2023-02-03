@@ -1,5 +1,5 @@
-<div class="FormControl-check-group-wrap">
-  <%= content_tag(:fieldset, hidden: @input.hidden?) do %>
+<%= content_tag(:div, **@input.input_arguments) do %>
+  <fieldset>
     <% if @input.label %>
       <%= content_tag(:legend, **@input.label_arguments) do %>
         <%= @input.label %>
@@ -13,5 +13,5 @@
     <div class="mt-2">
       <%= render(Caption.new(input: @input)) %>
     </div>
-  <% end %>
-</div>
+  </fieldset>
+<% end %>

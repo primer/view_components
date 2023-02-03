@@ -14,8 +14,6 @@ module Primer
 
           super(**system_arguments)
 
-          add_label_classes("FormControl-label", "mb-2")
-
           yield(self) if block_given?
         end
 
