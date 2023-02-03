@@ -2,7 +2,7 @@
 
 module Primer
   # :nodoc:
-  module URLHelpers
+  module UrlHelpers
     class << self
       # use send to avoid yard warning
       send :include, Rails.application.routes.url_helpers

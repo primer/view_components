@@ -52,7 +52,7 @@ module Primer
       end
 
       def test_doesnt_use_control_click_with_href
-        render_inline(Primer::Alpha::SegmentedControl.new) do |component|
+        render_inline(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
           component.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
           component.with_item(tag: :a, href: "#", icon: :zap, label: "Item 2") { "Item 2" }
         end
@@ -63,7 +63,7 @@ module Primer
 
       def test_doesnt_render_with_too_many_items
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::SegmentedControl.new) do |component|
+          render_inline(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
             component.with_item(label: "Item 1", selected: true) { "Item 1" }
             component.with_item(label: "Item 2") { "Item 2" }
             component.with_item(label: "Item 3") { "Item 3" }
@@ -78,7 +78,7 @@ module Primer
 
       def test_doesnt_render_with_too_many_icon_items
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |component|
+          render_inline(Primer::Alpha::SegmentedControl.new(hide_labels: true, "aria-label": "File view")) do |component|
             component.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
             component.with_item(icon: :zap, label: "Item 2") { "Item 2" }
             component.with_item(icon: :zap, label: "Item 3") { "Item 3" }
@@ -90,6 +90,14 @@ module Primer
         end
 
         assert_equal(error.message, "A segmented control should have 2–5 choices with text labels, or up to 6 icon-only buttons.")
+      end
+
+      def test_raises_if_no_aria_label_is_provided
+        err = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::SegmentedControl.new)
+        end
+
+        assert_equal("`aria-label` or `aria-labelledby` is required.", err.message)
       end
     end
   end

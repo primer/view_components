@@ -12,6 +12,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
+      "aria-label": "File view",
       full_width: false
     }, proc { |component|
       component.with_item(label: "Button", selected: true)
@@ -27,7 +28,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
-    [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
@@ -107,40 +107,24 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
-    [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::Beta::TimelineItem, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
-    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}]
   ].freeze
 
   def test_registered_components
     ignored_components = [
-      "Primer::TimelineItemComponent",
-      "Primer::SubheadComponent",
-      "Primer::TabContainerComponent",
-      "Primer::HellipButton",
-      "Primer::StateComponent",
-      "Primer::OcticonSymbolsComponent",
-      "Primer::SpinnerComponent",
-      "Primer::OcticonComponent",
-      "Primer::Markdown",
-      "Primer::MenuComponent",
-      "Primer::LabelComponent",
-      "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
-      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::OcticonsSymbolComponent",
-      "Primer::Content",
-      "Primer::PopoverComponent",
-      "Primer::Dropdown",
-      "Primer::Dropdown::Menu"
+      "Primer::Content"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

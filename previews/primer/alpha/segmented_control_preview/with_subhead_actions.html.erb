@@ -1,0 +1,11 @@
+<%= render(Primer::Beta::Subhead.new) do |component| %>
+  <% component.with_heading(id: "scLabel-vert") { "File view" } %>
+  <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
+  <% component.with_actions do %>
+    <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-vert", "aria-describedby": "scCaption-vert")) do |component| %>
+      <% component.with_item(label: "Preview", selected: true) %>
+      <% component.with_item(label: "Raw") %>
+      <% component.with_item(label: "Blame") %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -32,8 +32,10 @@ module Primer
     #
     class ToggleSwitchForm < Primer::Forms::Base
       # Define the form on subclasses so render(Subclass.new) works as expected.
-      def self.inherited(base)
-        base.form do |toggle_switch_form|
+      # (this is called directly on this class, but also on classes
+      # that inherit from this class)
+      def self.define_form_on(klass)
+        klass.form do |toggle_switch_form|
           input = Dsl::ToggleSwitchInput.new(
             builder: toggle_switch_form.builder, form: self, **@system_arguments
           )
@@ -42,8 +44,13 @@ module Primer
         end
       end
 
+      def self.inherited(base)
+        super
+        define_form_on(base)
+      end
+
       # Define the form on self so render(ToggleSwitchForm.new) works as expected.
-      inherited(self)
+      define_form_on(self)
 
       # Override to avoid accepting a builder argument. We create our own builder
       # on render. See the implementation of render_in below.

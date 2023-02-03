@@ -8,12 +8,23 @@ module Primer
     module ActsAsComponent
       # :nodoc:
       module InstanceMethods
-        delegate :render, :content_tag, :output_buffer, :capture, to: :@view_context
+        delegate :render, :content_tag, :output_buffer, to: :@view_context
 
         def render_in(view_context, &block)
           @view_context = view_context
           before_render
           perform_render(&block)
+        end
+
+        # This is necessary to restore the functionality changed by https://github.com/rails/rails/pull/47194.
+        # I would love to remove this at some point, perhaps if we ever decide to replace
+        # ActsAsComponent with view component.
+        def capture(*args, &block)
+          old_buffer = @view_context.output_buffer
+          @view_context.output_buffer = ActionView::OutputBuffer.new
+          @view_context.capture(*args, &block)
+        ensure
+          @view_context.output_buffer = old_buffer
         end
 
         # :nocov:

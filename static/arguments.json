@@ -860,6 +860,12 @@
         "description": "System arugments passed to the Rails builder's `#label` method. These arguments will appear as HTML attributes on the `<label>` tag."
       },
       {
+        "name": "auto_check_src",
+        "type": "String",
+        "default": "N/A",
+        "description": "When provided, makes a request to the given URL whenever the contents of the text field changes. If the server responds with a non-2xx status code, the response body is used as the validation message."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -2326,80 +2332,6 @@
     ]
   },
   {
-    "component": "LocalTime",
-    "status": "deprecated",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
-    "parameters": [
-      {
-        "name": "datetime",
-        "type": "DateTime",
-        "default": "N/A",
-        "description": "The date to parse"
-      },
-      {
-        "name": "initial_text",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text to render before component is initialized"
-      },
-      {
-        "name": "weekday",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
-      },
-      {
-        "name": "year",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "month",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
-      },
-      {
-        "name": "day",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "hour",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "minute",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "second",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "time_zone_name",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "Navigation::Tab",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
@@ -2440,32 +2372,6 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "TimeAgo",
-    "status": "deprecated",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/default/",
-    "parameters": [
-      {
-        "name": "time",
-        "type": "Time",
-        "default": "N/A",
-        "description": "The time to be formatted"
-      },
-      {
-        "name": "micro",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If true then the text will be formatted in \"micro\" mode, using as few characters as possible"
       },
       {
         "name": "system_arguments",
