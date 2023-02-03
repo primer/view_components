@@ -11,7 +11,7 @@ module Primer
 
         @input.add_input_classes(
           "FormControl-input",
-          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size],
+          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
         )
 
         @field_wrap_arguments = {
