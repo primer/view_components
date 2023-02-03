@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## 0.0.121
+
+### Patch Changes
+
+- [#1791](https://github.com/primer/view_components/pull/1791) [`b68cf7f7`](https://github.com/primer/view_components/commit/b68cf7f7d74379765cd373a5ea060204e3cf7db2) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::LocalTime component
+
+* [#1808](https://github.com/primer/view_components/pull/1808) [`31544417`](https://github.com/primer/view_components/commit/31544417010274b4f8b3b6574587b917a0bbf0e4) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Rename URLHelpers to UrlHelpers to fix console error.
+
+- [#1788](https://github.com/primer/view_components/pull/1788) [`7ad70066`](https://github.com/primer/view_components/commit/7ad7006651dc4dbbd21f444ad10ee1fdb5c3eeba) Thanks [@camertron](https://github.com/camertron)! - Document TextField's auto_check_src argument
+
+* [#1784](https://github.com/primer/view_components/pull/1784) [`3b830167`](https://github.com/primer/view_components/commit/3b8301674ccd74e7ae31826a766883a0612a3960) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove unused deprecated component wrappers
+
+       - "Primer::Dropdown::Menu::Item"
+       - "Primer::Dropdown::Menu"
+       - "Primer::Dropdown"
+       - "Primer::HellipButton"
+       - "Primer::LabelComponent"
+       - "Primer::LinkComponent"
+       - "Primer::Markdown"
+       - "Primer::MenuComponent"
+       - "Primer::OcticonComponent"
+       - "Primer::OcticonSymbolsComponent"
+       - "Primer::PopoverComponent"
+       - "Primer::SpinnerComponent"
+       - "Primer::StateComponent"
+       - "Primer::SubheadComponent"
+       - "Primer::TabContainerComponent"
+       - "Primer::TimelineItemComponent::BadgeComponent"
+       - "Primer::TimelineItemComponent"
+
+- [#1787](https://github.com/primer/view_components/pull/1787) [`972dd7bd`](https://github.com/primer/view_components/commit/972dd7bd92e79b2e8b54555f91770c4c1b280709) Thanks [@neall](https://github.com/neall)! - Allow toggle-switch forms to use caption templates.
+
+* [#1792](https://github.com/primer/view_components/pull/1792) [`730b0a8d`](https://github.com/primer/view_components/commit/730b0a8d70a9e5bc42856c3f30779ebf0d2b9ac9) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::TimeAgoComponent
+
+- [#1776](https://github.com/primer/view_components/pull/1776) [`61b28872`](https://github.com/primer/view_components/commit/61b288721a0315bcad4694615c9b34ddad5d10b7) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding aria labeled by and described by check to SegmentedControl component. Marking as accessibility reviewed
+
+* [#1805](https://github.com/primer/view_components/pull/1805) [`238328a7`](https://github.com/primer/view_components/commit/238328a734cff1322d18c129d340bb5a254bc272) Thanks [@paulcsmith](https://github.com/paulcsmith)! - Update CloseButton to work with more aria-label types
+
 ## 0.0.120
 
 ### Patch Changes
