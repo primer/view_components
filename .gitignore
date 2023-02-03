@@ -20,6 +20,7 @@ demo/app/assets/stylesheets/prim*
 previews/docs/
 test/snapshots/docs/
 demo/test/snapshots/
+demo/test/components/docs/forms/inputs/
 docs/content/adr/
 docs/content/components/
 

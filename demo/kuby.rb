@@ -129,10 +129,9 @@ Kuby.define("ViewComponentsStorybook") do
         dockerfile.run("npm", "install")
       end
 
-      # Certain Lookbook pages (specifically form input pages) need the yardoc registry
-      # to link to other components.
-      insert :build_yard_registry, after: :assets_phase do |dockerfile|
-        dockerfile.run("bundle", "exec", "rake", "docs:build_yard_registry")
+      # Generate documentation pages served by Lookbook's pages feature
+      insert :build_lookbook_pages, after: :assets_phase do |dockerfile|
+        dockerfile.run("bundle", "exec", "rake", "docs:build_lookbook_pages")
       end
     end
 
