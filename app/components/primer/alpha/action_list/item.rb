@@ -156,6 +156,7 @@ module Primer
           active: false,
           on_click: nil,
           id: self.class.generate_id,
+          label_style: nil,
           **system_arguments
         )
           @list = list
@@ -192,7 +193,8 @@ module Primer
               label_classes,
               "ActionListItem-label",
               "ActionListItem-label--truncate" => @truncate_label
-            )
+            ),
+            style: label_style
           }
 
           @content_arguments[:id] = @id

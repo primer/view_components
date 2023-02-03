@@ -362,6 +362,18 @@ module Primer
           component.with_item(label: "Active item", href: "/", active: true)
         end
       end
+
+      # @label Item [label styled]
+      def item_label_styled
+        render(Primer::Alpha::ActionList.new(
+                 aria: { label: "List heading" }
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Styled item", href: "/", label_style: "font-size:20px;font-weight:bold") do |item|
+            item.with_leading_visual_icon(icon: :star)
+          end
+        end
+      end
     end
   end
 end
