@@ -6,33 +6,32 @@ const fs = require('fs');
 
 console.log('Exporting CSS selectors...');
 
-const export_selectors = folder => {
-  const folder_glob = folder + "/**/*.css"
+const export_selectors = (folder) => {
+  const folder_glob = folder + '/**/*.css'
 
-  glob(folder_glob, (err, files) => {
+  glob(folder_glob, (_err, files) => {
     files.forEach(file => {
-      const css = fs.readFileSync(file, 'utf8');
+      console.log(`Processing ${file}`)
+      const css = fs.readFileSync(file, 'utf8')
       const root = postcss.parse(css)
-      const componentNameRegex = new RegExp(`${folder.replace('\/','\\\/')}\\/(.*)\.css`)
+      const componentNameRegex = new RegExp(`${folder.replace('/','\\/')}\\/(.*).css`)
       const componentName = componentNameRegex.exec(file)[1]
-
       const selectors = []
+
       root.walkRules(rule => {
+        if (rule.parent.type === 'atrule' && rule.parent.name === 'keyframes') {
+          return
+        }
+
         rule.selectors.forEach(ruleSelector => {
-          const pseudoStart = ruleSelector.search(/::?/)
-          if (pseudoStart > -1) {
-            ruleSelector = ruleSelector.substring(0, pseudoStart)
-          }
-          ruleSelector.trim().split(/(?=\.)|\s/).forEach(selector => {
-            selectors.push(selector.trim())
-          })
+          selectors.push(ruleSelector)
         })
       })
 
-      fs.writeFileSync(`${file}.json`, JSON.stringify({ 'name': componentName, 'selectors': [...new Set(selectors)] }))
+      fs.writeFileSync(`${file}.json`, JSON.stringify({ 'name': componentName, 'selectors': [...new Set(selectors)] }, null, 2))
     })
   })
 }
 
 export_selectors('app/components/primer')
-export_selectors('app/css')
+export_selectors('app/lib/primer/css')

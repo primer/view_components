@@ -52,15 +52,19 @@ module Primer::RenderPreview
     ignore_list ||= {}
 
     filtered = (selectors || []).reject do |selector|
-      global_list = ignore_list[:global] || []
-      global_ignored = global_list.any? { |pattern| selector.match(pattern) }
-
-      component_filter = ignore_list[component_class]
-      component_ignored = component_filter ? component_filter.any? { |pattern| selector.match(pattern) } : false
-
-      global_ignored || component_ignored
+      ignore_class?(selector, component_class, ignore_list)
     end
 
     filtered.flatten.uniq
+  end
+
+  def ignore_class?(css_class, component_class, ignore_list)
+    global_list = ignore_list[:global] || []
+    global_ignored = global_list.any? { |pattern| css_class.match(pattern) }
+
+    component_filter = ignore_list[component_class]
+    component_ignored = component_filter ? component_filter.any? { |pattern| css_class.match(pattern) } : false
+
+    global_ignored || component_ignored
   end
 end

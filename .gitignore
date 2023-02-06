@@ -4,6 +4,7 @@ app/components/**/*.css
 app/components/**/*.css.json
 app/components/**/*.css.map
 app/components/**/*.d.ts
+app/lib/primer/css/*.css.json
 lib/primer/forms/**/*.js
 lib/primer/forms/**/*.css
 lib/primer/forms/**/*.css.json
