@@ -13,7 +13,7 @@ IGNORED_SELECTORS = {
   Primer::Alpha::NavList => ["ActionListItem--hasSubItem"],
   Primer::Beta::AutoComplete => ["ActionList"],
   Primer::Beta::Details => ["details-overlay"],
-  Primer::Beta::Markdown => ["markdown-body"],
+  Primer::Beta::Markdown => ["markdown-body"]
 }.freeze
 # rubocop:enable Style/WordArray
 
@@ -36,7 +36,6 @@ class ComponentSelectorUseTest < System::TestCase
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
   Primer::Component.descendants.each do |component_class|
-    class_test_name = component_class.name.downcase.gsub("::", "_")
     preview_class = get_preview_class(component_class)
     next unless preview_class
 
@@ -44,7 +43,7 @@ class ComponentSelectorUseTest < System::TestCase
     component_uri = preview_class.to_s.underscore.gsub("_preview", "")
 
     previews.each do |preview|
-      define_method("test_selectors_used_by_#{component_uri.parameterize(separator: "_")}_#{preview}_are_valid") do
+      define_method("test_selectors_used_by_#{component_uri.parameterize(separator: '_')}_#{preview}_are_valid") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
 
         global_ignored_selectors = IGNORED_SELECTORS.fetch(:global, [])
