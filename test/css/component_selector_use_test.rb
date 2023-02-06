@@ -7,11 +7,14 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 # rubocop:disable Style/WordArray
 IGNORED_SELECTORS = {
-  :global => ["octicon"],
+  :global => ["octicon", "btn-octicon", "btn", "btn-primary", "btn-danger", "btn-outline"],
   Primer::Alpha::ActionList => ["ActionListItem--hasSubItem"],
   Primer::Alpha::AutoComplete => ["form-control", "ActionList"],
+  Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
   Primer::Alpha::NavList => ["ActionListItem--hasSubItem"],
   Primer::Beta::AutoComplete => ["ActionList"],
+  Primer::Beta::ButtonGroup => ["BtnGroup", "BtnGroup-item"],
+  Primer::Beta::CloseButton => ["close-button"],
   Primer::Beta::Details => ["details-overlay"],
   Primer::Beta::Markdown => ["markdown-body"]
 }.freeze
