@@ -7,16 +7,18 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 # rubocop:disable Style/WordArray
 IGNORED_SELECTORS = {
+  # these are all provided by primer/css
   :global => ["octicon", "btn-octicon", "btn", "btn-primary", "btn-danger", "btn-outline"],
-  Primer::Alpha::ActionList => ["ActionListItem--hasSubItem"],
   Primer::Alpha::AutoComplete => ["form-control", "ActionList"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
-  Primer::Alpha::NavList => ["ActionListItem--hasSubItem"],
-  Primer::Beta::AutoComplete => ["ActionList"],
   Primer::Beta::ButtonGroup => ["BtnGroup", "BtnGroup-item"],
   Primer::Beta::CloseButton => ["close-button"],
   Primer::Beta::Details => ["details-overlay"],
-  Primer::Beta::Markdown => ["markdown-body"]
+  Primer::Beta::Markdown => ["markdown-body"],
+
+  # AutoComplete uses a pre-release version of the ActionList styles from primer/css.
+  # The .ActionList class does not exist in PVC.
+  Primer::Beta::AutoComplete => ["ActionList"]
 }.freeze
 # rubocop:enable Style/WordArray
 
@@ -31,10 +33,10 @@ class ComponentSelectorUseTest < System::TestCase
   extend Primer::RenderPreview
   include Primer::RenderPreview
 
-  COMPONENT_SELECTORS = Dir["app/{components,lib/primer}/**/*.css.json"].map do |file|
+  COMPONENT_SELECTORS = Dir["app/{components,lib/primer}/**/*.css.json"].flat_map do |file|
     data = JSON.parse(File.read(file))
-    data["selectors"].map { |sel| sel.gsub('\n', "").strip }
-  end.flatten.uniq
+    data["selectors"]
+  end.uniq
 
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
