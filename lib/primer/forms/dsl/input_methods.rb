@@ -87,7 +87,7 @@ module Primer
         # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
         def select_list(**options, &block)
           options = decorate_options(**options)
-          add_input SelectListInput.new(builder: builder, form: form, **options, &block)
+          add_input SelectInput.new(builder: builder, form: form, **options, &block)
         end
 
         # END select input methods

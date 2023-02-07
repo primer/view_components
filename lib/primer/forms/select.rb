@@ -3,7 +3,7 @@
 module Primer
   module Forms
     # :nodoc:
-    class SelectList < BaseComponent
+    class Select < BaseComponent
       delegate :builder, :form, to: :@input
 
       def initialize(input:)

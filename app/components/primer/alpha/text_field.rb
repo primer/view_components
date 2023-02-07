@@ -86,6 +86,7 @@ module Primer
       #   ) %>
       #
       # @macro form_size_arguments
+      # @macro form_full_width_arguments
       # @macro form_input_arguments
       #
       # @param placeholder [String] Placeholder text.

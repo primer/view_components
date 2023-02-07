@@ -2,7 +2,7 @@
 
 module Primer
   module Alpha
-    SelectList = Primer::FormComponents.from_input(Primer::Forms::Dsl::SelectListInput)
+    Select = Primer::FormComponents.from_input(Primer::Forms::Dsl::SelectInput)
 
     # Select lists are single-line text inputs rendered as `<select>` tags in HTML.
     #
@@ -14,7 +14,7 @@ module Primer
     #       end
     #     end
     #   end
-    class SelectList < Primer::Component
+    class Select < Primer::Component
       status :alpha
 
       # @!method initialize

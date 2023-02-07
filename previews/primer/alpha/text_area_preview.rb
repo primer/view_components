@@ -12,7 +12,6 @@ module Primer
       # @param caption text
       # @param required toggle
       # @param visually_hide_label toggle
-      # @param size [Symbol] select [small, medium, large]
       # @param full_width toggle
       # @param disabled toggle
       # @param invalid toggle
@@ -24,7 +23,6 @@ module Primer
         caption: "You can trust me, I'm a website",
         required: false,
         visually_hide_label: false,
-        size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         full_width: false,
         disabled: false,
         invalid: false,
@@ -37,7 +35,6 @@ module Primer
           caption: caption,
           required: required,
           visually_hide_label: visually_hide_label,
-          size: size,
           full_width: full_width,
           disabled: disabled,
           invalid: invalid,

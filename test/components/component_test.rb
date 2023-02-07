@@ -100,7 +100,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::MultiInput, { name: :foo, label: "Foo" }],
     [Primer::Alpha::RadioButtonGroup, { name: :foo, label: "Foo" }],
     [Primer::Alpha::RadioButton, { name: :foo, label: "Foo", value: "foo" }],
-    [Primer::Alpha::SelectList, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::Select, { name: :foo, label: "Foo" }],
     [Primer::Alpha::SubmitButton, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextArea, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],

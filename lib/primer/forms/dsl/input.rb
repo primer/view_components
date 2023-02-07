@@ -15,7 +15,6 @@ module Primer
         #   @param caption [String] A string describing the field and what sorts of input it expects. Displayed below the input.
         #   @param label [String] Label text displayed above the input.
         #   @param visually_hide_label [Boolean] When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers.
-        #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container.
         #   @param disabled [Boolean] When set to `true`, the input will not accept keyboard or mouse input.
         #   @param hidden [Boolean] When set to `true`, visually hides the field.
         #   @param invalid [Boolean] If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect.
@@ -30,6 +29,9 @@ module Primer
 
         # @!macro [new] form_size_arguments
         #   @param size [Symbol] The size of the field. <%= one_of(Primer::Forms::Dsl::Input::SIZE_OPTIONS) %>
+
+        # @!macro [new] form_full_width_arguments
+        #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container.
 
         # @!macro [new] form_system_arguments
         #   @param system_arguments [Hash] A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details.

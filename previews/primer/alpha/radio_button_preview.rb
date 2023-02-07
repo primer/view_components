@@ -12,7 +12,6 @@ module Primer
       # @param label text
       # @param caption text
       # @param visually_hide_label toggle
-      # @param full_width toggle
       # @param disabled toggle
       def playground(
         name: "my-radio-button",
@@ -21,7 +20,6 @@ module Primer
         label: "Battlestar Galactica",
         caption: "A pretty good show",
         visually_hide_label: false,
-        full_width: false,
         disabled: false
       )
         system_arguments = {
@@ -30,7 +28,6 @@ module Primer
           label: label,
           caption: caption,
           visually_hide_label: visually_hide_label,
-          full_width: full_width,
           disabled: disabled
         }
 
@@ -52,11 +49,6 @@ module Primer
       # @label Visually hidden label
       def visually_hide_label
         render(Primer::Alpha::RadioButton.new(visually_hide_label: true, name: "my-radio-button", label: "Battlestar Galactica", value: "bsg2"))
-      end
-
-      # @label Full width
-      def full_width
-        render(Primer::Alpha::RadioButton.new(full_width: true, name: "my-radio-button", label: "Battlestar Galactica", value: "bsg3"))
       end
 
       # @label Disabled

@@ -43,7 +43,7 @@ module Primer
       # @!method initialize
       #
       # @example Default
-      #   <%= render(Primer::Alpha::SelectList.new(name: :dietary_pref, label: "Dietary preference")) do |c| %>
+      #   <%= render(Primer::Alpha::Select.new(name: :dietary_pref, label: "Dietary preference")) do |c| %>
       #     <% c.option(label: "Meatatarian", value: "meatatarian") %>
       #     <% c.option(label: "Vegetarian", value: "vegetarian") %>
       #   <% end %>

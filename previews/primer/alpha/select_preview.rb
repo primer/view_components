@@ -2,8 +2,8 @@
 
 module Primer
   module Alpha
-    # @label SelectList
-    class SelectListPreview < ViewComponent::Preview
+    # @label Select
+    class SelectPreview < ViewComponent::Preview
       # @label Playground
       #
       # @param name text
