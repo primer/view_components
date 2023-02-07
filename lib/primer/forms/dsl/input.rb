@@ -181,7 +181,7 @@ module Primer
         end
 
         def disabled?
-          input_arguments.include?(:disabled)
+          !!input_arguments[:disabled]
         end
 
         def full_width?
@@ -241,7 +241,7 @@ module Primer
           {
             class: "FormControl-inlineValidation",
             id: validation_id,
-            hidden: valid?
+            hidden: valid? || validation_messages.empty?
           }
         end
 

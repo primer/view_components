@@ -14,8 +14,6 @@ module Primer
 
           super(**system_arguments)
 
-          add_label_classes("FormControl-label", "mb-2")
-
           yield(self) if block_given?
         end
 
@@ -37,7 +35,8 @@ module Primer
             **system_arguments,
             builder: @builder,
             form: @form,
-            scheme: scheme
+            scheme: scheme,
+            disabled: disabled?
           }
 
           @check_boxes << CheckBoxInput.new(**args, &block)
