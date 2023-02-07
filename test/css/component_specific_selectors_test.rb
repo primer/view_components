@@ -58,6 +58,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-select-wrap",
       ".FormControl-checkbox-wrap",
       ".FormControl-radio-wrap",
+      ".FormControl-radio-group-wrap fieldset",
+      ".FormControl-check-group-wrap fieldset",
       ".FormControl-toggleSwitchInput"
     ],
     Primer::Alpha::ButtonMarketing => [
