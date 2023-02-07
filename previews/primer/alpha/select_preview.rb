@@ -44,7 +44,7 @@ module Primer
           validation_message: validation_message
         }
 
-        render(Primer::Alpha::SelectList.new(**system_arguments)) do |component|
+        render(Primer::Alpha::Select.new(**system_arguments)) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -54,7 +54,7 @@ module Primer
 
       # @label Default
       def default
-        render(Primer::Alpha::SelectList.new(name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -66,7 +66,7 @@ module Primer
       #
       # @label With caption
       def with_caption
-        render(Primer::Alpha::SelectList.new(caption: "With a caption", name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(caption: "With a caption", name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -76,7 +76,7 @@ module Primer
 
       # @label Visually hidden label
       def visually_hide_label
-        render(Primer::Alpha::SelectList.new(visually_hide_label: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(visually_hide_label: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -86,7 +86,7 @@ module Primer
 
       # @label Full width
       def full_width
-        render(Primer::Alpha::SelectList.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -96,7 +96,7 @@ module Primer
 
       # @label Disabled
       def disabled
-        render(Primer::Alpha::SelectList.new(disabled: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(disabled: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -106,7 +106,7 @@ module Primer
 
       # @label Invalid
       def invalid
-        render(Primer::Alpha::SelectList.new(invalid: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(invalid: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -116,7 +116,7 @@ module Primer
 
       # @label With validation message
       def with_validation_message
-        render(Primer::Alpha::SelectList.new(validation_message: "An error occurred!", name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(validation_message: "An error occurred!", name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
