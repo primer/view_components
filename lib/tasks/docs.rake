@@ -63,6 +63,15 @@ namespace :docs do
     end
   end
 
+  task build_lookbook_pages: :build_yard_registry do
+    require "primer/yard"
+
+    registry = Primer::Yard::Registry.make
+    manifest = Primer::Yard::ComponentManifest.where(form_component: true)
+    backend = Primer::Yard::LookbookPagesBackend.new(registry, manifest)
+    backend.generate
+  end
+
   task :build_gatsby_adrs do
     adr_content_dir = File.join(*%w[docs content adr])
 

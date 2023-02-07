@@ -1,0 +1,30 @@
+---
+title: "Caption templates"
+id: caption_templates
+---
+
+All inputs support the `caption:` argument as a string, which renders explainer text underneath the input and validation message. Caption strings can be anything that responds to `#to_s`, meaning HTML-safe strings can be used in cases that need a little bit of markup:
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.text_field(
+        name: :disco_name,
+        label: "Disco name",
+        caption: "Enter your <strong>grooviest</strong> name".html_safe
+      )
+    end
+  end
+<% end %>
+
+## Defining caption templates
+
+In cases where a lot of logic or markup is necessary, or where the caption text is awkward to express in Ruby code, forms may define caption content in separate template files. Caption templates are located in a directory named after the form. For example, if `ExampleForm` lives in app/forms/example\_form.rb, its caption templates should be created in the `app/forms/example_form/` directory.
+
+Caption template files must be named after the field they describe. For example, a caption template for the `disco_name` field above would live in app/forms/example\_form/disco\_name_caption.html.erb.
+
+In cases where the `caption:` argument _and_ a caption template are provided, the `caption:` argument takes precedence.
+
+## Example
+
+<%= embed Primer::Forms::FormsPreview, :caption_template_form %>
