@@ -23,6 +23,13 @@ module Primer
           @monospace = system_arguments.delete(:monospace)
           @auto_check_src = system_arguments.delete(:auto_check_src)
 
+          if @leading_visual
+            @leading_visual[:classes] = class_names(
+              "FormControl-input-leadingVisual",
+              @leading_visual[:classes]
+            )
+          end
+
           super(**system_arguments)
 
           add_input_data(:target, "primer-text-field.inputElement") if auto_check_src.present?
