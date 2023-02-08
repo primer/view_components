@@ -2,7 +2,7 @@
 
 # :nocov:
 module Primer
-  module YARD
+  module Yard
     # YARD Handler to parse `renders_one` calls.
     class RendersOneHandler < ::YARD::Handlers::Ruby::Base
       handles method_call(:renders_one)

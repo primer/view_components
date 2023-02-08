@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 # :nocov:
-
 module Primer
-  module YARD
+  module Yard
     # Helper methods to use for yard documentation
     module DocsHelper
       def one_of(enumerable, lower: false, sort: true)
@@ -66,6 +65,20 @@ module Primer
         [m[:status]&.downcase, m[:name].gsub("::", ""), m[:name]]
       end
 
+      def pretty_default_value(tag, component)
+        params = tag.object.parameters.find { |param| [tag.name.to_s, "#{tag.name}:"].include?(param[0]) }
+        default = tag.defaults&.first || params&.second
+
+        return "N/A" unless default
+
+        constant_name = "#{component.name}::#{default}"
+        constant_value = default.safe_constantize || constant_name.safe_constantize
+
+        return pretty_value(default) if constant_value.nil?
+
+        pretty_value(constant_value)
+      end
+
       def pretty_value(val)
         case val
         when nil
@@ -79,3 +92,4 @@ module Primer
     end
   end
 end
+# :nocov:
