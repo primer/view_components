@@ -87,6 +87,7 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
   end
 
   def test_does_not_double_render_extra_content_in_production
+    # rubocop:disable Rails/Inquiry
     Rails.stub(:env, "production".inquiry) do
       # Since we've forced ourselves into the prod environment and there's no secret key base
       # configured for prod, we have to fake it by setting the appropriate environment variable.
@@ -100,6 +101,7 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
         end
       end
     end
+    # rubocop:enable Rails/Inquiry
 
     assert_text("extra", count: 1)
   end
