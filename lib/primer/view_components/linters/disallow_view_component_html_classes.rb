@@ -10,8 +10,10 @@ module ERBLint
     class DisallowViewComponentHtmlClasses < Linter
       include LinterRegistry
 
-      RESERVED_HTML_CLASSES = %w(
-        ActionListItem-visual
+      RESERVED_HTML_CLASSES = JSON.parse(
+        File.read(
+          File.join(__dir__, "..", "..", "..", "..", "static", "classes.json")
+        )
       ).freeze
 
       def run(processed_source)
