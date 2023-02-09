@@ -3,12 +3,12 @@
 require "lib/test_helper"
 require_relative "models/deep_thought"
 
-class Primer::Forms::SelectListInputTest < Minitest::Test
+class Primer::Forms::SelectInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class HiddenSelectListForm < ApplicationForm
-    form do |select_list_form|
-      select_list_form.select_list(name: :foo, label: "Foo", hidden: true) do |list|
+  class HiddenSelectForm < ApplicationForm
+    form do |select_form|
+      select_form.select_list(name: :foo, label: "Foo", hidden: true) do |list|
         list.option(label: "Foo", value: "foo")
       end
     end
@@ -17,16 +17,16 @@ class Primer::Forms::SelectListInputTest < Minitest::Test
   def test_hidden_select_list
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render(HiddenSelectListForm.new(f))
+        render(HiddenSelectForm.new(f))
       end
     end
 
     assert_selector "select#foo", visible: :hidden
   end
 
-  class SelectListDeepThoughtForm < ApplicationForm
-    form do |select_list_form|
-      select_list_form.select_list(name: :ultimate_answer, label: "Ultimate answer") do |list|
+  class SelectDeepThoughtForm < ApplicationForm
+    form do |select_form|
+      select_form.select_list(name: :ultimate_answer, label: "Ultimate answer") do |list|
         list.option(label: "Foo", value: "foo")
       end
     end
@@ -38,7 +38,7 @@ class Primer::Forms::SelectListInputTest < Minitest::Test
 
     render_in_view_context do
       primer_form_with(model: model, url: "/foo") do |f|
-        render(SelectListDeepThoughtForm.new(f))
+        render(SelectDeepThoughtForm.new(f))
       end
     end
 

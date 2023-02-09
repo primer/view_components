@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # :nodoc:
-class SelectListForm < ApplicationForm
+class SelectForm < ApplicationForm
   form do |check_form|
     check_form.select_list(name: "cities", label: "Cool cities", caption: "Select your favorite!", include_blank: true) do |city_list|
       city_list.option(label: "Lopez Island", value: "lopez_island")

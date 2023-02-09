@@ -9,10 +9,14 @@ module Primer
       def initialize(input:)
         @input = input
 
+        @input.add_input_classes(
+          "FormControl-input",
+          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
+        )
+
         @field_wrap_arguments = {
           class: class_names(
             "FormControl-input-wrap",
-            Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size],
             "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
             "FormControl-input-wrap--leadingVisual": @input.leading_visual?
           ),

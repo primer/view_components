@@ -23,12 +23,14 @@ module Primer
           @monospace = system_arguments.delete(:monospace)
           @auto_check_src = system_arguments.delete(:auto_check_src)
 
-          super(**system_arguments)
+          if @leading_visual
+            @leading_visual[:classes] = class_names(
+              "FormControl-input-leadingVisual",
+              @leading_visual[:classes]
+            )
+          end
 
-          add_input_classes(
-            "FormControl-input",
-            Primer::Forms::Dsl::Input::SIZE_MAPPINGS[size]
-          )
+          super(**system_arguments)
 
           add_input_data(:target, "primer-text-field.inputElement") if auto_check_src.present?
           add_input_classes("FormControl-inset") if inset?

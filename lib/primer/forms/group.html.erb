@@ -1,4 +1,4 @@
-<%= content_tag_if(horizontal?, :div, class: "d-flex", style: "gap: 15px;") do %>
+<%= content_tag_if(horizontal?, :div, class: "FormControl-horizontalGroup") do %>
   <% @inputs.each do |input| %>
     <%= render(input.to_component) %>
   <% end %>
