@@ -34,4 +34,20 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
 
     refute_selector ".field_with_errors", visible: :all
   end
+
+  class LeadingVisualTextFieldForm < ApplicationForm
+    form do |text_field_form|
+      text_field_form.text_field(name: :foo, label: "Foo", leading_visual: { icon: :search })
+    end
+  end
+
+  def test_leading_visual
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(LeadingVisualTextFieldForm.new(f))
+      end
+    end
+
+    assert_selector "svg.octicon.octicon-search.FormControl-input-leadingVisual"
+  end
 end

@@ -77,6 +77,13 @@ module Primer
         @body_arguments[:role] = :tablist
         @body_arguments[:"aria-label"] = label
       end
+
+      def before_render
+        # Eagerly evaluate content to avoid https://github.com/primer/view_components/issues/1790
+        content
+
+        super
+      end
     end
   end
 end

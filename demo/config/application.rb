@@ -9,6 +9,7 @@ require "sprockets/railtie"
 require "view_component"
 require "primer/view_components"
 require "primer/view_components/engine"
+require "octicons"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

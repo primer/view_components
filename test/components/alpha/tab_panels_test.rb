@@ -85,4 +85,24 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
       assert_text("extra")
     end
   end
+
+  def test_does_not_double_render_extra_content_in_production
+    # rubocop:disable Rails/Inquiry
+    Rails.stub(:env, "production".inquiry) do
+      # Since we've forced ourselves into the prod environment and there's no secret key base
+      # configured for prod, we have to fake it by setting the appropriate environment variable.
+      with_env("SECRET_KEY_BASE" => "abc123") do
+        render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |component|
+          component.with_tab(selected: true, id: "tab-1") do |tab|
+            tab.with_panel { "Panel 1" }
+            tab.with_text { "Tab 1" }
+          end
+          component.with_extra(align: :right) { "extra" }
+        end
+      end
+    end
+    # rubocop:enable Rails/Inquiry
+
+    assert_text("extra", count: 1)
+  end
 end

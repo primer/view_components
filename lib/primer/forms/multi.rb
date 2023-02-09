@@ -8,6 +8,8 @@ module Primer
 
       def initialize(input:)
         @input = input
+
+        Primer::Forms::Utils.classify(@input.input_arguments)
       end
     end
   end

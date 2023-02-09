@@ -4,7 +4,7 @@ module Primer
   module Forms
     module Dsl
       # :nodoc:
-      class SelectListInput < Input
+      class SelectInput < Input
         SELECT_ARGUMENTS = %i[multiple include_blank prompt].freeze
 
         # :nodoc:
@@ -41,7 +41,7 @@ module Primer
         end
 
         def to_component
-          SelectList.new(input: self)
+          Select.new(input: self)
         end
 
         # :nocov:

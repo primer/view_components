@@ -2,12 +2,10 @@
 
 # :nocov:
 
-require "primer/view_components"
-require "primer/yard/docs_helper"
 require "view_component/test_helpers"
 
 module Primer
-  module YARD
+  module Yard
     # A wrapper around a YARD class reference that provides convenience methods
     # for extracting component parameters, accessibility status, etc.
     class RegistryEntry
@@ -62,8 +60,9 @@ module Primer
       def public_methods
         # Returns: only public methods that belong to this class (i.e. no inherited methods)
         # excluding the constructor
-        @public_methods ||=
-          docs.meths.reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
+        @public_methods ||= docs.meths.reject do |mtd|
+          mtd.tag(:private) || mtd.name == :initialize
+        end
       end
 
       def title
@@ -89,20 +88,6 @@ module Primer
       def a11y_reviewed?
         metadata[:a11y_reviewed]
       end
-
-      def requires_js?
-        manifest.components_requiring_js.include?(component)
-      end
-
-      def includes_examples?
-        manifest.components_with_examples.include?(component)
-      end
-
-      private
-
-      def manifest
-        Primer::YARD::ComponentManifest
-      end
     end
 
     # Wrapper around an instance of YARD::Registry that provides easy access to component
@@ -111,11 +96,11 @@ module Primer
       class << self
         include ViewComponent::TestHelpers
         include Primer::ViewHelper
-        include Primer::YARD::DocsHelper
+        include Primer::Yard::DocsHelper
 
         def make
           registry = ::YARD::RegistryStore.new
-          registry.load!(".yardoc")
+          registry.load!(File.expand_path(File.join("..", "..", "..", ".yardoc"), __dir__))
 
           new(registry)
         end

@@ -48,6 +48,14 @@ module Primer
       Primer::Classify::Utilities.validate_class_names = old_value
     end
 
+    def with_env(env)
+      old_env = ENV.to_hash
+      ENV.replace(old_env.merge(env))
+      yield
+    ensure
+      ENV.replace(old_env)
+    end
+
     def assert_component_state(component, state)
       assert_equal component.status, Primer::Component::STATUSES[state]
     end
