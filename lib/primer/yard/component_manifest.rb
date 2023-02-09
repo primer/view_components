@@ -79,7 +79,7 @@ module Primer
         # Forms
         Primer::Alpha::TextField => { form_component: true },
         Primer::Alpha::TextArea => { form_component: true, published: false },
-        Primer::Alpha::SelectList => { form_component: true, published: false },
+        Primer::Alpha::Select => { form_component: true, published: false },
         Primer::Alpha::MultiInput => { form_component: true, js: true, published: false },
         Primer::Alpha::RadioButton => { form_component: true, published: false },
         Primer::Alpha::RadioButtonGroup => { form_component: true, published: false },

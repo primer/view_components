@@ -21,7 +21,7 @@ namespace :docs do
     sleep
   end
 
-  task build: [:build_gatsby_pages, :build_gatsby_adrs]
+  task build: [:build_gatsby_pages, :build_gatsby_adrs, :build_lookbook_pages]
 
   task build_gatsby_pages: :build_yard_registry do
     require "primer/yard"
