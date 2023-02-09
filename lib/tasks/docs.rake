@@ -165,7 +165,7 @@ namespace :docs do
   task :init_pvc do
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+    Dir[File.expand_path("../../app/components/primer/**/*.rb", __dir__)].sort.each { |file| require file }
   end
 
   task build_yard_registry: :init_pvc do

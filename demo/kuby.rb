@@ -131,7 +131,7 @@ Kuby.define("ViewComponentsStorybook") do
 
       # Generate documentation pages served by Lookbook's pages feature
       insert :build_lookbook_pages, after: :assets_phase do |dockerfile|
-        dockerfile.run("bundle", "exec", "rake", "docs:build_lookbook_pages")
+        dockerfile.run("cd", "..", "&&", "bundle", "exec", "rake", "docs:build_lookbook_pages")
       end
     end
 

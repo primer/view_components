@@ -35,7 +35,12 @@ module Primer
       end
 
       def generate
-        path = File.join(*%w[demo test components docs forms inputs], "#{docs.short_name.dasherize.underscore}.md.erb")
+        path = File.expand_path(
+          File.join(
+            *%w[.. .. .. demo test components docs forms inputs],
+            "#{docs.short_name.dasherize.underscore}.md.erb"
+          ), __dir__
+        )
 
         # rubocop:disable Lint/UselessAssignment
         documented_methods = docs.non_slot_methods.select do |mtd|
@@ -168,7 +173,9 @@ module Primer
       end
 
       def page_for(component_ref)
-        LookbookPage.new(component_ref, self, registry.find(component_ref.klass))
+        docs = registry.find(component_ref.klass)
+        puts "DOCS FOR #{component_ref.klass} ARE NIL" unless docs
+        LookbookPage.new(component_ref, self, docs)
       end
 
       def view_context
