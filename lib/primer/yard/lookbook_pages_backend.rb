@@ -174,7 +174,6 @@ module Primer
 
       def page_for(component_ref)
         docs = registry.find(component_ref.klass)
-        puts "DOCS FOR #{component_ref.klass} ARE NIL" unless docs
         LookbookPage.new(component_ref, self, docs)
       end
 

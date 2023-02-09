@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # :nocov:
 
 begin
-  require 'kuby'
+  require "kuby"
   Kuby.load!
 rescue LoadError, Kuby::MissingConfigError
   # Happens during docs:build, which runs in the context of the
