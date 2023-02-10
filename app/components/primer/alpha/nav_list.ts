@@ -2,7 +2,7 @@
 import {controller, target, targets} from '@github/catalyst'
 
 @controller
-class NavListElement extends HTMLElement {
+export class NavListElement extends HTMLElement {
   @target list: HTMLElement
   @targets items: HTMLElement[]
   @target showMoreItem: HTMLElement
