@@ -187,6 +187,9 @@ module Primer
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
 
+          @system_arguments[:data] ||= {}
+          @system_arguments[:data][:targets] = "#{list.custom_element_name}.items"
+
           @label_arguments = {
             classes: class_names(
               label_classes,
