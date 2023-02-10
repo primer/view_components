@@ -93,9 +93,7 @@ module Primer
           aria: {}
         }
 
-        if required?
-          @input_arguments[:aria][:required] = true
-        end
+        @input_arguments[:aria][:required] = true if required?
 
         ids = [].tap do |memo|
           memo << @validation_id if @validation_message

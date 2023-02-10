@@ -23,7 +23,7 @@ module Primer
 
         caption_id = page.find_css(".FormControl-caption")[0].attributes["id"].value
         validation_id = page.find_css(".FormControl-inlineValidation")[0].attributes["id"].value
-        described_by_ids = page.find_css("segmented-control ul")[0].attributes["aria-describedby"].value.split(" ")
+        described_by_ids = page.find_css("segmented-control ul")[0].attributes["aria-describedby"].value.split
 
         assert_includes(described_by_ids, caption_id)
         assert_includes(described_by_ids, validation_id)
