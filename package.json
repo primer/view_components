@@ -63,7 +63,7 @@
     "@github/markdownlint-github": "^0.2.2",
     "@playwright/test": "^1.27.1",
     "@primer/css": "20.4.7",
-    "@primer/primitives": "^7.9.0",
+    "@primer/primitives": "0.0.0-20230209203529",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
