@@ -9,7 +9,7 @@ require "test_helpers/retry"
 
 module System
   class TestCase < ActionDispatch::SystemTestCase
-    driven_by :cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
+    driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.

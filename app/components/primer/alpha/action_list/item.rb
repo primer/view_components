@@ -188,7 +188,7 @@ module Primer
           @system_arguments[:aria][:disabled] = "true" if @disabled
 
           @system_arguments[:data] ||= {}
-          @system_arguments[:data][:targets] = "#{list.custom_element_name}.items"
+          @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
 
           @label_arguments = {
             classes: class_names(
@@ -238,6 +238,10 @@ module Primer
             "ActionListContent--visual16" => leading_visual,
             "ActionListContent--blockDescription" => description && @description_scheme == :block
           )
+        end
+
+        def list_class
+          Primer::Alpha::ActionList
         end
       end
     end
