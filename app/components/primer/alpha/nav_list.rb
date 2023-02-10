@@ -17,6 +17,11 @@ module Primer
     class NavList < Primer::Component
       status :alpha
 
+      # @private
+      def self.custom_element_name
+        "nav-list"
+      end
+
       # Sections. Each section is a list of links and an optional heading.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Section) %>.
