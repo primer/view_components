@@ -46,7 +46,7 @@ module Primer
         @label_arguments = {
           classes: class_names(
             "FormControl-label",
-            @visually_hide_label ? "sr-only" : nil
+            visually_hide_label? ? "sr-only" : nil
           )
         }
 
