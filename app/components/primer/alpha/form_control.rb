@@ -37,13 +37,11 @@ module Primer
         @full_width = full_width
         @system_arguments = system_arguments
 
-        @system_arguments = {
-          classes: class_names(
-            @system_arguments[:classes],
-            "FormControl",
-            "FormControl--fullWidth" => full_width?
-          )
-        }
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "FormControl",
+          "FormControl--fullWidth" => full_width?
+        )
 
         @label_arguments = {
           classes: class_names(
