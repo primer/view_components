@@ -161,7 +161,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_horizontal_group
     render_preview :horizontal_form
 
-    assert_selector ".d-flex.flex-column .d-flex .FormControl", count: 2
+    assert_selector ".FormControl-horizontalGroup .FormControl", count: 2
   end
 
   def test_renders_multi_input
@@ -190,8 +190,8 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector ".FormControl-radio-wrap + .FormControl-radio-wrap + .FormControl-radio-wrap"
   end
 
-  def test_select_list_form
-    render_preview :select_list_form
+  def test_select_form
+    render_preview :select_form
 
     assert_selector ".FormControl-select option[value='']"
     assert_selector ".FormControl-select option[value=lopez_island]"

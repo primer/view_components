@@ -46,6 +46,17 @@
   }
 }
 
+.FormControl-spacingWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.FormControl-horizontalGroup {
+  display: flex;
+  column-gap: 0.5rem;
+}
+
 /* shared among all form control components (input, select, textarea, checkbox, radio) */
 @define-mixin Field {
   color: var(--color-fg-default);
@@ -529,6 +540,22 @@
 
   & .FormControl-label {
     cursor: pointer;
+  }
+}
+
+.FormControl-radio-group-wrap {
+  & fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
+
+.FormControl-check-group-wrap {
+  & fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
   }
 }
 

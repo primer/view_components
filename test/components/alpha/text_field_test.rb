@@ -82,7 +82,7 @@ class PrimerAlphaTextFieldTest < MiniTest::Test
     render_inline(Primer::Alpha::TextField.new(**@default_params, leading_visual: { icon: :search }))
 
     assert_selector ".FormControl-input-leadingVisualWrap" do
-      assert_selector "svg.octicon.octicon-search"
+      assert_selector "svg.octicon.octicon-search.FormControl-input-leadingVisual"
     end
   end
 end

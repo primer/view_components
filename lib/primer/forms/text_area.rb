@@ -8,7 +8,7 @@ module Primer
 
       def initialize(input:)
         @input = input
-        @input.add_input_classes("FormControl-input", "FormControl--medium")
+        @input.add_input_classes("FormControl-input", "FormControl-textarea")
 
         @field_wrap_arguments = {
           class: class_names("FormControl-input-wrap"),

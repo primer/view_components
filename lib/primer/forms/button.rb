@@ -49,7 +49,10 @@ module Primer
       def input_arguments
         @input_arguments ||= @input.input_arguments.deep_dup.tap do |args|
           # rails uses :class but PVC wants :classes
-          args[:classes] = args.delete(:class)
+          args[:classes] = class_names(
+            args[:classes],
+            args.delete(:class)
+          )
         end
       end
 

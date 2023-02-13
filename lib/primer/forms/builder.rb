@@ -29,10 +29,6 @@ module Primer
   module Forms
     # :nodoc:
     class Builder < ActionView::Helpers::FormBuilder
-      include Primer::ClassNameHelper
-
-      UTILITY_KEYS = Primer::Classify::Utilities::UTILITIES.keys.freeze
-
       alias primer_fields_for fields_for
 
       def label(method, text = nil, **options, &block)
@@ -67,20 +63,8 @@ module Primer
 
       private
 
-      # This method does the following:
-      #
-      # 1. Runs Primer's classify routine to convert entries like mb: 1 to mb-1.
-      # 2. Runs classify on both options[:class] and options[:classes]. The first
-      #    is expected by Rails/HTML while the second is specific to Primer.
-      # 3. Combines options[:class] and options[:classes] into options[:class]
-      #    so the options hash can be easily passed to Rails form builder methods.
-      #
       def classify(options)
-        options[:classes] = class_names(options.delete(:class), options[:classes])
-        options.merge!(Primer::Classify.call(options))
-        options.except!(*UTILITY_KEYS)
-        options[:class] = class_names(options[:class], options.delete(:classes))
-        options
+        Primer::Forms::Utils.classify(options)
       end
     end
   end

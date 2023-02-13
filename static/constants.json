@@ -127,6 +127,10 @@
       "large"
     ]
   },
+  "Primer::Alpha::CheckBox": {
+  },
+  "Primer::Alpha::CheckBoxGroup": {
+  },
   "Primer::Alpha::Dialog": {
     "Body": "Primer::Alpha::Dialog::Body",
     "DEFAULT_POSITION": "center",
@@ -217,6 +221,8 @@
       "button",
       "summary"
     ]
+  },
+  "Primer::Alpha::FormButton": {
   },
   "Primer::Alpha::HellipButton": {
   },
@@ -315,6 +321,8 @@
       "h6"
     ]
   },
+  "Primer::Alpha::MultiInput": {
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -325,12 +333,20 @@
   },
   "Primer::Alpha::OcticonSymbols": {
   },
+  "Primer::Alpha::RadioButton": {
+  },
+  "Primer::Alpha::RadioButtonGroup": {
+  },
   "Primer::Alpha::SegmentedControl": {
     "FULL_WIDTH_DEFAULT": false,
     "HIDE_LABELS_DEFAULT": false,
     "Item": "Primer::Alpha::SegmentedControl::Item"
   },
   "Primer::Alpha::SegmentedControl::Item": {
+  },
+  "Primer::Alpha::Select": {
+  },
+  "Primer::Alpha::SubmitButton": {
   },
   "Primer::Alpha::TabContainer": {
   },
@@ -349,6 +365,8 @@
       "nav",
       "div"
     ]
+  },
+  "Primer::Alpha::TextArea": {
   },
   "Primer::Alpha::TextField": {
   },
