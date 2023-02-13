@@ -3,6 +3,8 @@
 module Primer
   module Forms
     # :nodoc:
+    #
+    # @logical_path primer/
     class FormsPreview < ViewComponent::Preview
       def single_text_field_form; end
 
