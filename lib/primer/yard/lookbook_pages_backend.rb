@@ -37,7 +37,7 @@ module Primer
       def generate
         path = File.expand_path(
           File.join(
-            *%w[.. .. .. demo test components docs forms inputs],
+            *%w[.. .. .. previews pages forms inputs],
             "#{docs.short_name.dasherize.underscore}.md.erb"
           ), __dir__
         )
