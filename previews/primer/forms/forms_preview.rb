@@ -22,7 +22,7 @@ module Primer
 
       def array_check_box_group_form; end
 
-      def select_list_form; end
+      def select_form; end
 
       def radio_button_with_nested_form; end
 

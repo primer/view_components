@@ -21,12 +21,15 @@ namespace :docs do
     sleep
   end
 
-  task build: [:build_gatsby, :build_gatsby_adrs]
+  task build: [:build_gatsby_pages, :build_gatsby_adrs]
 
-  task build_gatsby: :build_yard_registry do
-    registry = Primer::YARD::Registry.make
+  task build_gatsby_pages: :build_yard_registry do
+    require "primer/yard"
+
+    registry = Primer::Yard::Registry.make
 
     require "primer/yard/legacy_gatsby_backend"
+    require "primer/yard/component_manifest"
 
     puts "Converting YARD documentation to Markdown files."
 
@@ -34,7 +37,8 @@ namespace :docs do
     components_content_glob = File.join(*%w[docs content components ** *.md])
     FileUtils.rm_rf(components_content_glob)
 
-    backend = Primer::YARD::LegacyGatsbyBackend.new(registry)
+    manifest = Primer::Yard::ComponentManifest.where(published: true)
+    backend = Primer::Yard::LegacyGatsbyBackend.new(registry, manifest)
     args_for_components, errors = backend.generate
 
     unless errors.empty?
@@ -55,7 +59,8 @@ namespace :docs do
 
     puts "Markdown compiled."
 
-    components_needing_docs = Primer::YARD::ComponentManifest.components_without_docs
+    all_components = Primer::Component.descendants - [Primer::BaseComponent]
+    components_needing_docs = all_components - Primer::Yard::ComponentManifest::COMPONENTS.keys
 
     if components_needing_docs.any?
       puts
@@ -109,16 +114,15 @@ namespace :docs do
   end
 
   task preview: :build_yard_registry do
-    registry = Primer::YARD::Registry.make
-
-    require "primer/yard/legacy_gatsby_backend"
+    require "primer/yard"
 
     FileUtils.rm_rf("previews/primer/docs/")
 
-    manifest = Primer::YARD::ComponentManifest
+    registry = Primer::Yard::Registry.make
 
     # Generate previews from documentation examples
-    manifest.all_components.each do |component|
+    Primer::Yard::ComponentManifest.all.each do |component_ref|
+      component = component_ref.klass
       docs = registry.find(component)
       next unless docs.constructor&.tags(:example)&.any?
 
@@ -132,7 +136,7 @@ namespace :docs do
         f.puts("  class #{docs.short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
-          name, _, code = Primer::YARD::LegacyGatsbyBackend.parse_example_tag(tag)
+          name, _, code = Primer::Yard::LegacyGatsbyBackend.parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
@@ -156,7 +160,7 @@ namespace :docs do
   end
 
   task build_yard_registry: :init_pvc do
-    require "primer/yard/registry"
+    require "primer/yard"
 
     ::YARD::Rake::YardocTask.new do |task|
       task.options << "--no-output"

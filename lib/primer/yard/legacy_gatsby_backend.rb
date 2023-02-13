@@ -3,12 +3,8 @@
 # rubocop:disable Naming/MethodParameterName
 
 # :nocov:
-
-require "primer/yard/component_manifest"
-require "primer/yard/backend"
-
 module Primer
-  module YARD
+  module Yard
     # Backend that generates documentation for the legacy, Gatsby-powered PVC docsite.
     class LegacyGatsbyBackend < Backend
       class << self
@@ -29,17 +25,19 @@ module Primer
         end
       end
 
-      attr_reader :registry
+      attr_reader :registry, :manifest
 
-      def initialize(registry)
+      def initialize(registry, manifest)
         @registry = registry
+        @manifest = manifest
       end
 
       def generate
         args_for_components = []
         errors = []
 
-        each_component do |component|
+        each_component do |component_ref|
+          component = component_ref.klass
           docs = registry.find(component)
           status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
 
@@ -66,7 +64,7 @@ module Primer
             f.puts
             f.puts("import Example from '#{metadata[:example_path]}'")
 
-            if docs.requires_js?
+            if component_ref.requires_js?
               f.puts("import RequiresJSFlash from '#{metadata[:require_js_path]}'")
               f.puts
               f.puts("<RequiresJSFlash />")
@@ -170,7 +168,7 @@ module Primer
                 f.puts(code.to_s)
                 f.puts("```")
               end
-            elsif manifest.components_with_examples.include?(component)
+            elsif component_ref.should_have_examples?
               errors << { component.name => { example: "No examples found" } }
             end
           end
@@ -219,11 +217,7 @@ module Primer
       end
 
       def each_component(&block)
-        manifest.components_with_docs.sort_by(&:name).each(&block)
-      end
-
-      def manifest
-        Primer::YARD::ComponentManifest
+        manifest.each(&block)
       end
 
       def source_url(component)

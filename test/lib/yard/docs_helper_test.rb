@@ -3,7 +3,7 @@
 require "lib/test_helper"
 
 class YardDocsHelperTest < Minitest::Test
-  include Primer::YARD::DocsHelper
+  include Primer::Yard::DocsHelper
 
   def test_sorts_one_of
     assert_equal "One of `one` or `two`.", one_of(%w[one two])

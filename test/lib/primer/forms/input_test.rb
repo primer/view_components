@@ -36,7 +36,7 @@ class Primer::Forms::InputTest < Minitest::Test
   end
 
   def test_merges_input_arguments
-    classes = @text_field.input_arguments[:class]
+    classes = @text_field.input_arguments[:class] || []
     data = @text_field.input_arguments.fetch(:data, {})
     aria = @text_field.input_arguments.fetch(:aria, {})
     describedby = aria.fetch(:describedby, "")

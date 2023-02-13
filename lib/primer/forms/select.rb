@@ -3,14 +3,14 @@
 module Primer
   module Forms
     # :nodoc:
-    class SelectList < BaseComponent
+    class Select < BaseComponent
       delegate :builder, :form, to: :@input
 
       def initialize(input:)
         @input = input
         @input.add_input_classes(
           "FormControl-select",
-          "FormControl--medium"
+          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
         )
 
         @field_wrap_arguments = {

@@ -14,8 +14,6 @@ module Primer
 
           super(**system_arguments)
 
-          add_label_classes("FormControl-label", "mb-2")
-
           yield(self) if block_given?
         end
 
@@ -29,7 +27,8 @@ module Primer
 
         def radio_button(**system_arguments, &block)
           @radio_buttons << RadioButtonInput.new(
-            builder: @builder, form: @form, name: @name, **system_arguments, &block
+            builder: @builder, form: @form, name: @name, disabled: disabled?,
+            **system_arguments, &block
           )
         end
       end
