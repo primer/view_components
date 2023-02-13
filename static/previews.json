@@ -824,101 +824,101 @@
   },
   {
     "name": "forms",
-    "lookup_path": "primer/forms/forms",
+    "lookup_path": "primer/forms",
     "examples": [
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/single_text_field_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/single_text_field_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/single_text_field_form",
+        "preview_path": "/lookbook/preview/primer/forms/single_text_field_form",
         "name": "single_text_field_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/multi_text_field_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/multi_text_field_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/multi_text_field_form",
+        "preview_path": "/lookbook/preview/primer/forms/multi_text_field_form",
         "name": "multi_text_field_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/text_field_and_checkbox_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/text_field_and_checkbox_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/text_field_and_checkbox_form",
+        "preview_path": "/lookbook/preview/primer/forms/text_field_and_checkbox_form",
         "name": "text_field_and_checkbox_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/horizontal_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/horizontal_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/horizontal_form",
+        "preview_path": "/lookbook/preview/primer/forms/horizontal_form",
         "name": "horizontal_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/composed_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/composed_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/composed_form",
+        "preview_path": "/lookbook/preview/primer/forms/composed_form",
         "name": "composed_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/submit_button_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/submit_button_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/submit_button_form",
+        "preview_path": "/lookbook/preview/primer/forms/submit_button_form",
         "name": "submit_button_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/radio_button_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/radio_button_group_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/radio_button_group_form",
+        "preview_path": "/lookbook/preview/primer/forms/radio_button_group_form",
         "name": "radio_button_group_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/check_box_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/check_box_group_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/check_box_group_form",
+        "preview_path": "/lookbook/preview/primer/forms/check_box_group_form",
         "name": "check_box_group_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/array_check_box_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/array_check_box_group_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/array_check_box_group_form",
+        "preview_path": "/lookbook/preview/primer/forms/array_check_box_group_form",
         "name": "array_check_box_group_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/select_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/select_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/select_form",
+        "preview_path": "/lookbook/preview/primer/forms/select_form",
         "name": "select_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/radio_button_with_nested_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/radio_button_with_nested_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/radio_button_with_nested_form",
+        "preview_path": "/lookbook/preview/primer/forms/radio_button_with_nested_form",
         "name": "radio_button_with_nested_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/check_box_with_nested_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/check_box_with_nested_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/check_box_with_nested_form",
+        "preview_path": "/lookbook/preview/primer/forms/check_box_with_nested_form",
         "name": "check_box_with_nested_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/caption_template_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/caption_template_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/caption_template_form",
+        "preview_path": "/lookbook/preview/primer/forms/caption_template_form",
         "name": "caption_template_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/after_content_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/after_content_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/after_content_form",
+        "preview_path": "/lookbook/preview/primer/forms/after_content_form",
         "name": "after_content_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/invalid_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/invalid_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/invalid_form",
+        "preview_path": "/lookbook/preview/primer/forms/invalid_form",
         "name": "invalid_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/multi_input_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/multi_input_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/multi_input_form",
+        "preview_path": "/lookbook/preview/primer/forms/multi_input_form",
         "name": "multi_input_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/name_with_question_mark_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/name_with_question_mark_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/name_with_question_mark_form",
+        "preview_path": "/lookbook/preview/primer/forms/name_with_question_mark_form",
         "name": "name_with_question_mark_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/immediate_validation_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/immediate_validation_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/immediate_validation_form",
+        "preview_path": "/lookbook/preview/primer/forms/immediate_validation_form",
         "name": "immediate_validation_form"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/forms/forms/example_toggle_switch_form",
-        "preview_path": "/lookbook/preview/primer/forms/forms/example_toggle_switch_form",
+        "inspect_path": "/lookbook/inspect/primer/forms/example_toggle_switch_form",
+        "preview_path": "/lookbook/preview/primer/forms/example_toggle_switch_form",
         "name": "example_toggle_switch_form"
       }
     ]
