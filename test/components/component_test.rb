@@ -112,7 +112,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
-    [Primer::Alpha::Banner, {}]
+    [Primer::Alpha::Banner, {}],
+    [Primer::Alpha::FormControl, { label: "Foo" }]
   ].freeze
 
   def test_registered_components
