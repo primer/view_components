@@ -17,6 +17,7 @@
   "Primer::Alpha::Dropdown::Menu": "alpha",
   "Primer::Alpha::Dropdown::Menu::Item": "alpha",
   "Primer::Alpha::FormButton": "alpha",
+  "Primer::Alpha::FormControl": "alpha",
   "Primer::Alpha::HellipButton": "alpha",
   "Primer::Alpha::HiddenTextExpander": "alpha",
   "Primer::Alpha::Image": "alpha",

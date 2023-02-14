@@ -21,7 +21,7 @@ namespace :docs do
     sleep
   end
 
-  task build: [:build_gatsby_pages, :build_gatsby_adrs]
+  task build: [:build_gatsby_pages, :build_gatsby_adrs, :build_lookbook_pages]
 
   task build_gatsby_pages: :build_yard_registry do
     require "primer/yard"
@@ -66,6 +66,15 @@ namespace :docs do
       puts
       puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
+  end
+
+  task build_lookbook_pages: :build_yard_registry do
+    require "primer/yard"
+
+    registry = Primer::Yard::Registry.make
+    manifest = Primer::Yard::ComponentManifest.where(form_component: true)
+    backend = Primer::Yard::LookbookPagesBackend.new(registry, manifest)
+    backend.generate
   end
 
   task :build_gatsby_adrs do
@@ -156,7 +165,7 @@ namespace :docs do
   task :init_pvc do
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+    Dir[File.expand_path("../../app/components/primer/**/*.rb", __dir__)].sort.each { |file| require file }
   end
 
   task build_yard_registry: :init_pvc do

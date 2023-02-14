@@ -1,0 +1,43 @@
+---
+title: "Miscellaneous inputs"
+label: "Miscellaneous Inputs"
+id: miscellaneous_inputs
+---
+
+Aside from the set of component-based form inputs, Primer forms also features several additional inputs.
+
+## Hidden inputs
+
+Primer supports standard hidden HTML inputs, eg. `<input type="hidden">`, via the `#hidden` method.
+
+### Usage
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.hidden(arguments)
+    end
+  end
+<% end %>
+
+`#hidden` is a thin wrapper around Rails' [`hidden_field` method](https://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html#method-i-hidden_field) and accepts the same arguments.
+
+## Separators
+
+Occasionally it can be appealing to visually distinguish parts of a form from each other. The `#separator` method adds a horizontal rule between inputs.
+
+### Usage
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.separator
+    end
+  end
+<% end %>
+
+`#separator` does not accept any arguments.
+
+### Example
+
+<%= embed Primer::Forms::FormsPreview, :multi_text_field_form %>

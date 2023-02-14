@@ -1,0 +1,9 @@
+<%= render(Primer::Alpha::FormControl.new(**system_arguments)) do |component| %>
+  <% component.with_input do |input_arguments| %>
+    <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "Best character", **input_arguments)) do |seg| %>
+      <% seg.with_item(label: "Han Solo", selected: true) %>
+      <% seg.with_item(label: "Luke Skywalker") %>
+      <% seg.with_item(label: "Leia Organa") %>
+    <% end %>
+  <% end %>
+<% end %>
