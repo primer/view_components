@@ -823,6 +823,27 @@
     ]
   },
   {
+    "name": "form_control",
+    "lookup_path": "primer/alpha/form_control",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/form_control/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/form_control/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/form_control/default",
+        "preview_path": "/lookbook/preview/primer/alpha/form_control/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/form_control/options",
+        "preview_path": "/lookbook/preview/primer/alpha/form_control/options",
+        "name": "options"
+      }
+    ]
+  },
+  {
     "name": "forms",
     "lookup_path": "primer/forms",
     "examples": [

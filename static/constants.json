@@ -224,6 +224,8 @@
   },
   "Primer::Alpha::FormButton": {
   },
+  "Primer::Alpha::FormControl": {
+  },
   "Primer::Alpha::HellipButton": {
   },
   "Primer::Alpha::HiddenTextExpander": {
