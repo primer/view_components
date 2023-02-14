@@ -101,10 +101,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "ActionListWrap"
-        )
         @selected_item_id = selected_item_id
       end
     end

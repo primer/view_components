@@ -61,10 +61,10 @@ module Primer
         **system_arguments
       )
         @id = self.class.generate_id
-        @role = role
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :ul
+        @system_arguments[:role] = role
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
@@ -73,6 +73,7 @@ module Primer
           system_arguments[:classes],
           "ActionListWrap",
           "ActionListWrap--subGroup",
+          "ActionListItem--hasSubItem",
           "ActionListWrap--divided" => @show_dividers
         )
 
@@ -81,18 +82,14 @@ module Primer
 
       # @private
       def before_render
+        aria_label = aria(:label, @system_arguments)
+
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
-        elsif aria(:label, @system_arguments).blank?
+          raise ArgumentError, "An aria-label should not be provided if a heading is present" if aria_label.present?
+        elsif aria_label.blank?
           raise ArgumentError, "An aria-label or heading must be provided"
         end
-
-        return if items.blank?
-
-        @list_wrapper_arguments[:classes] = class_names(
-          @list_wrapper_arguments[:classes],
-          "ActionListItem--hasSubItem"
-        )
       end
 
       # @private

@@ -50,6 +50,26 @@ module Primer
       system_arguments[:"aria-#{val}"] || system_arguments.dig(:aria, val.to_sym)
     end
 
+    def merge_aria(*hashes)
+      {}.tap do |result|
+        hashes.each do |hash|
+          next unless hash
+
+          result.merge!(hash[:aria] || {})
+
+          hash.each_pair do |key, val|
+            next if key == :aria
+
+            key_s = key.to_s
+
+            if key.start_with?("aria-")
+              result[key.sub("aria-", "").to_sym] = val
+            end
+          end
+        end
+      end
+    end
+
     def validate_aria_label
       aria_label = aria("label", @system_arguments)
       aria_labelledby = aria("labelledby", @system_arguments)

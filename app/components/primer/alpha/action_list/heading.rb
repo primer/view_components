@@ -25,7 +25,6 @@ module Primer
           @title = title
           @subtitle = subtitle
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
-          @system_arguments[:tag] = :li
           @system_arguments[:classes] = class_names(
             "ActionList-sectionDivider",
             SCHEME_MAPPINGS[@scheme],

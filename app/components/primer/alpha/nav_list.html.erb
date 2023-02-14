@@ -1,10 +1,10 @@
-<%= render(Primer::BaseComponent.new(tag: :ul, **@system_arguments)) do %>
-  <% sections.each_with_index do |section, index| %>
-    <% if index > 0 %>
-      <%= render(Primer::Alpha::ActionList::Divider.new) %>
-    <% end %>
-    <li>
+<%= render(Primer::BaseComponent.new(tag: :nav, **@system_arguments)) do %>
+  <nav-list>
+    <% sections.each_with_index do |section, index| %>
+      <% if index > 0 %>
+        <%= render(Primer::Alpha::ActionList::Divider.new) %>
+      <% end %>
       <%= section %>
-    </li>
-  <% end %>
+    <% end %>
+  </nav-list>
 <% end %>

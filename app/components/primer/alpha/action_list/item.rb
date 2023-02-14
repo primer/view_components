@@ -112,7 +112,7 @@ module Primer
         # @private
         renders_one :private_content
 
-        attr_reader :list, :href, :active, :disabled, :parent
+        attr_reader :id, :list, :href, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -148,7 +148,7 @@ module Primer
           parent: nil,
           truncate_label: false,
           href: nil,
-          role: :listitem,
+          role: nil,
           size: DEFAULT_SIZE,
           scheme: DEFAULT_SCHEME,
           disabled: false,
@@ -182,7 +182,7 @@ module Primer
             "ActionListItem"
           )
 
-          @system_arguments[:role] = role
+          @system_arguments[:role] = role if role
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
