@@ -50,13 +50,6 @@ module Primer
           overrides = { "data-item-id": @selected_by_ids.join(" ") }
 
           super(**system_arguments, **overrides)
-
-          if parent
-            @sub_list_arguments[:aria] = merge_aria(
-              @sub_list_arguments[:aria],
-              { labelledby: parent.id }
-            )
-          end
         end
 
         def active?
@@ -83,6 +76,11 @@ module Primer
           raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?
 
           return if items.blank?
+
+          @sub_list_arguments[:aria] = merge_aria(
+            @sub_list_arguments,
+            { aria: { labelledby: id } }
+          )
 
           raise ArgumentError, "Items with sub-items cannot have hrefs" if href.present?
 

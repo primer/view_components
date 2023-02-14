@@ -204,4 +204,19 @@ class PrimerComponentTest < Minitest::Test
       # rubocop:enable Rails/Inquiry
     end
   end
+
+  def test_merge_aria
+    component = Primer::Component.new
+
+    hash1 = { "aria-disabled": "true", aria: { labelledby: "foo" }, foo: "foo" }
+    hash2 = { aria: { invalid: "true" }, "aria-label": "bar", bar: "bar" }
+
+    merged_arias = component.send(:merge_aria, hash1, hash2)
+
+    assert_equal merged_arias, { disabled: "true", invalid: "true", labelledby: "foo", label: "bar" }
+
+    # assert aria info removed from original hashes
+    assert_equal hash1, { foo: "foo" }
+    assert_equal hash2, { bar: "bar" }
+  end
 end

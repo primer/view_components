@@ -50,20 +50,34 @@ module Primer
       system_arguments[:"aria-#{val}"] || system_arguments.dig(:aria, val.to_sym)
     end
 
+    # Merges hashes that contain "aria-*" keys and nested aria: hashes. Removes keys from
+    # each hash and returns them in the new hash.
+    #
+    # Eg. merge_aria({ "aria-disabled": "true" }, { aria: { invalid: "true" } })
+    #     => { disabled: "true", invalid: "true" }
+    #
+    # It's designed to be used to normalize and merge aria information from system_arguments
+    # hashes. Consider using this pattern in component initializers:
+    #
+    # @system_arguments[:aria] = merge_aria(
+    #   @system_arguments,
+    #   { aria: { labelled_by: id } }
+    # )
     def merge_aria(*hashes)
       {}.tap do |result|
         hashes.each do |hash|
           next unless hash
 
-          result.merge!(hash[:aria] || {})
+          result.merge!(hash.delete(:aria) || {})
 
-          hash.each_pair do |key, val|
-            next if key == :aria
-
+          hash.delete_if do |key, val|
             key_s = key.to_s
 
             if key.start_with?("aria-")
-              result[key.sub("aria-", "").to_sym] = val
+              result[key_s.sub("aria-", "").to_sym] = val
+              true
+            else
+              false
             end
           end
         end
