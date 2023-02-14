@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Add a standalone form control
+Add a standalone FormControl component
