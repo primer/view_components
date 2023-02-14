@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) do %>
-  <%= render(Primer::BaseComponent.new(tag: @tag, classes: "ActionList-sectionDivider-title", id: @list_id)) do %>
+  <%= render(Primer::BaseComponent.new(tag: @tag, classes: "ActionList-sectionDivider-title", id: @list_id, role: :heading, aria: { level: @heading_level })) do %>
     <%= @title %>
   <% end %>
   <%= render Primer::ConditionalWrapper.new(condition: @subtitle.present?, tag: :span, classes: "ActionListItem-description") do %>
