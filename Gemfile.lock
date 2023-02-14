@@ -99,7 +99,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (1.5.1)
+    lookbook (1.5.2)
       actioncable
       activemodel
       css_parser
@@ -164,7 +164,7 @@ GEM
     redcarpet (3.6.0)
     regexp_parser (2.6.2)
     rexml (3.2.5)
-    rouge (4.0.1)
+    rouge (4.1.0)
     rubocop (1.13.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -255,7 +255,7 @@ DEPENDENCIES
   erb_lint
   erblint-github (= 0.1.0)
   listen (~> 3.0)
-  lookbook (~> 1.5.1)
+  lookbook (~> 1.5.2)
   matrix (~> 0.4.2)
   minitest (~> 5.0)
   mocha
