@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# only delete tags that aren't "latest" or "latest-assets"
+CMD=$(cat <<CMD
+  acr purge --filter 'primer/view_components_storybook:^(?!latest(-assets)?$).*' --ago 0d --keep 20
+)
+
+az acr run --cmd "$CMD" --registry primer /dev/null
