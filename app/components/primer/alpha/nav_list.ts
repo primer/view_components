@@ -44,10 +44,10 @@ export class NavListElement extends HTMLElement {
   selectItemById(itemId: string | null): boolean {
     if (!itemId) return false
 
-    const selectedItem = this.findSelectedNavItemById(itemId)
+    const selectedItem = this.#findSelectedNavItemById(itemId)
 
     if (selectedItem) {
-      this.select(selectedItem)
+      this.#select(selectedItem)
       return true
     }
 
@@ -57,10 +57,10 @@ export class NavListElement extends HTMLElement {
   selectItemByHref(href: string | null): boolean {
     if (!href) return false
 
-    const selectedItem = this.findSelectedNavItemByHref(href)
+    const selectedItem = this.#findSelectedNavItemByHref(href)
 
     if (selectedItem) {
-      this.select(selectedItem)
+      this.#select(selectedItem)
       return true
     }
 
@@ -68,10 +68,10 @@ export class NavListElement extends HTMLElement {
   }
 
   selectItemByCurrentLocation(): boolean {
-    const selectedItem = this.findSelectedNavItemByCurrentLocation()
+    const selectedItem = this.#findSelectedNavItemByCurrentLocation()
 
     if (selectedItem) {
-      this.select(selectedItem)
+      this.#select(selectedItem)
       return true
     }
 
@@ -133,7 +133,7 @@ export class NavListElement extends HTMLElement {
       this.currentPage--
       return
     }
-    const fragment = this.parseHTML(document, html)
+    const fragment = this.#parseHTML(document, html)
     fragment?.querySelector('li > a')?.setAttribute('data-targets', 'nav-list.focusMarkers')
     this.list.insertBefore(fragment, this.showMoreItem)
     this.focusMarkers.pop()?.focus()
@@ -152,14 +152,14 @@ export class NavListElement extends HTMLElement {
     }
   }
 
-  private parseHTML(document: Document, html: string): DocumentFragment {
+  #parseHTML(document: Document, html: string): DocumentFragment {
     const template = document.createElement('template')
     // eslint-disable-next-line github/no-inner-html
     template.innerHTML = html
     return document.importNode(template.content, true)
   }
 
-  private findSelectedNavItemById(itemId: string): HTMLElement | null {
+  #findSelectedNavItemById(itemId: string): HTMLElement | null {
     // First we compare the selected link to data-item-id for each nav item
     for (const navItem of this.items) {
       const keys = navItem.getAttribute('data-item-id')?.split(' ') || []
@@ -172,7 +172,7 @@ export class NavListElement extends HTMLElement {
     return null
   }
 
-  private findSelectedNavItemByHref(href: string): HTMLElement | null {
+  #findSelectedNavItemByHref(href: string): HTMLElement | null {
     // If we didn't find a match, we compare the selected link to the href of each nav item
     const selectedNavItem = this.querySelector<HTMLAnchorElement>(`.ActionListContent[href="${href}"]`)
     if (selectedNavItem) {
@@ -182,17 +182,17 @@ export class NavListElement extends HTMLElement {
     return null
   }
 
-  private findSelectedNavItemByCurrentLocation(): HTMLElement | null {
-    return this.findSelectedNavItemByHref(window.location.pathname)
+  #findSelectedNavItemByCurrentLocation(): HTMLElement | null {
+    return this.#findSelectedNavItemByHref(window.location.pathname)
   }
 
-  private select(navItem: HTMLElement) {
+  #select(navItem: HTMLElement) {
     const currentlySelectedItem = this.querySelector('.ActionListItem--navActive') as HTMLElement
-    if (currentlySelectedItem) this.deselect(currentlySelectedItem)
+    if (currentlySelectedItem) this.#deselect(currentlySelectedItem)
 
     navItem.classList.add('ActionListItem--navActive')
 
-    const parentMenu = this.findParentMenu(navItem)
+    const parentMenu = this.#findParentMenu(navItem)
 
     if (parentMenu) {
       this.expandItem(parentMenu)
@@ -200,10 +200,10 @@ export class NavListElement extends HTMLElement {
     }
   }
 
-  private deselect(navItem: HTMLElement) {
+  #deselect(navItem: HTMLElement) {
     navItem.classList.remove('ActionListItem--navActive')
 
-    const parentMenu = this.findParentMenu(navItem)
+    const parentMenu = this.#findParentMenu(navItem)
 
     if (parentMenu) {
       this.collapseItem(parentMenu)
@@ -211,10 +211,10 @@ export class NavListElement extends HTMLElement {
     }
   }
 
-  private findParentMenu(navItem: HTMLElement): HTMLElement | null {
+  #findParentMenu(navItem: HTMLElement): HTMLElement | null {
     if (!navItem.classList.contains('ActionListItem--subItem')) return null
 
-    const parent = navItem.parentElement?.parentElement?.querySelector('button.ActionListContent')
+    const parent = navItem.closest('li.ActionListItem--hasSubItem')?.querySelector('button.ActionListContent')
 
     if (parent) {
       return parent as HTMLElement
