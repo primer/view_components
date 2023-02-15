@@ -84,4 +84,12 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
     assert_selector(".Overlay-body.Overlay-body--paddingCondensed")
   end
+
+  def test_footer_align
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, padding: :condensed)) do |component|
+      component.with_footer(align_content: :start) { "content" }
+    end
+
+    assert_selector(".Overlay-footer.Overlay-footer--alignStart")
+  end
 end
