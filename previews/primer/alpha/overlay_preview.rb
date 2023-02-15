@@ -10,6 +10,7 @@ module Primer
       # @param subtitle [String] text
       # @param role [Symbol] select [dialog, menu]
       # @param size [Symbol] select [auto, small, medium, medium_portrait, large, xlarge]
+      # @param padding [Symbol] select [normal, condensed, none]
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [inside_top, inside_bottom, inside_left, inside_right, inside_center, outside_top, outside_bottom, outside_left, outside_right]
       # @param allow_out_of_bounds [Boolean] toggle
@@ -18,13 +19,13 @@ module Primer
       # @param header_size [Symbol] select [medium, large]
       # @param button_text [String] text
       # @param body_text [String] text
-      def playground(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, placement: :anchored, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "")
+      def playground(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, padding: :normal, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "")
         render(Primer::Alpha::Overlay.new(
           title: title,
           subtitle: subtitle,
           role: role,
           size: size,
-          placement: placement,
+          padding: padding,
           anchor_align: anchor_align,
           anchor_side: anchor_side,
           allow_out_of_bounds: allow_out_of_bounds,
@@ -42,6 +43,7 @@ module Primer
       # @param subtitle [String] text
       # @param role [Symbol] select [dialog, menu]
       # @param size [Symbol] select [auto, small, medium, medium_portrait, large, xlarge]
+      # @param padding [Symbol] select [normal, condensed, none]
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [inside_top, inside_bottom, inside_left, inside_right, inside_center, outside_top, outside_bottom, outside_left, outside_right]
       # @param allow_out_of_bounds [Boolean] toggle
@@ -50,13 +52,13 @@ module Primer
       # @param header_size [Symbol] select [medium, large]
       # @param button_text [String] text
       # @param body_text [String] text
-      def default(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, placement: :anchored, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "")
+      def default(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, padding: :normal, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "")
         render(Primer::Alpha::Overlay.new(
           title: title,
           subtitle: subtitle,
           role: role,
           size: size,
-          placement: placement,
+          padding: padding,
           anchor_align: anchor_align,
           anchor_side: anchor_side,
           allow_out_of_bounds: allow_out_of_bounds,

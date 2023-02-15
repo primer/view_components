@@ -86,7 +86,13 @@ module Primer
       # Required body content.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :body, "Body"
+      renders_one :body, lambda { |padding: @padding, **system_arguments|
+        Primer::Alpha::Overlay::Body.new(
+          padding: padding,
+          **system_arguments
+        )
+      }
+
 
       # Footer content.
       #
@@ -124,6 +130,7 @@ module Primer
         popover: DEFAULT_POPOVER,
         defaultopen: false,
         size: DEFAULT_SIZE,
+        padding: DEFAULT_PADDING,
         anchor: nil,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
         anchor_side: DEFAULT_ANCHOR_SIDE,
@@ -152,6 +159,7 @@ module Primer
         @title = title
         @subtitle = subtitle
         @visually_hide_title = visually_hide_title
+        @padding = padding
 
         @system_arguments[:popover] = popover
         @system_arguments[:defaultopen] = "" if defaultopen

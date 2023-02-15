@@ -76,4 +76,12 @@ class PrimerAlphaOverlayTest < Minitest::Test
       assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
     end
   end
+
+  def test_body_padding
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, padding: :condensed)) do |component|
+      component.with_body { "content" }
+    end
+
+    assert_selector(".Overlay-body.Overlay-body--paddingCondensed")
+  end
 end
