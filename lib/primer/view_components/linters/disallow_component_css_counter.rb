@@ -12,7 +12,7 @@ end
 module ERBLint
   module Linters
     # Counts the number of times a class reserved for ViewComponents is used
-    class ViewComponentHtmlClassesCounter < BaseLinter
+    class DisallowComponentCssCounter < BaseLinter
       CLASSES = (
         JSON.parse(
           File.read(

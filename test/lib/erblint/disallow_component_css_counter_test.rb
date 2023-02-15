@@ -2,7 +2,7 @@
 
 require "lib/erblint_test_case"
 
-class ViewComponentHtmlClassesCounterTest < ErblintTestCase
+class DisallowComponentCssCounterTest < ErblintTestCase
   include Primer::BasicLinterSharedTests
 
   def test_no_warning_on_unrestricted_class
@@ -31,7 +31,7 @@ class ViewComponentHtmlClassesCounterTest < ErblintTestCase
   private
 
   def linter_class
-    ERBLint::Linters::ViewComponentHtmlClassesCounter
+    ERBLint::Linters::DisallowComponentCssCounter
   end
 
   def default_tag
