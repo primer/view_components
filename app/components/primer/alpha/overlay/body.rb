@@ -21,7 +21,7 @@ module Primer
           @system_arguments[:tag] = :div
           @system_arguments[:classes] = class_names(
             "Overlay-body",
-            padding = PADDING_MAPPINGS[fetch_or_fallback(PADDING_OPTIONS, padding, DEFAULT_PADDING)],
+            PADDING_MAPPINGS[fetch_or_fallback(PADDING_OPTIONS, padding, DEFAULT_PADDING)],
             system_arguments[:classes]
           )
         end
