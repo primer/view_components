@@ -85,6 +85,7 @@ module Primer
 
       # Required body content.
       #
+      # @param padding [Symbol] The padding. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :body, lambda { |padding: @padding, **system_arguments|
         Primer::Alpha::Overlay::Body.new(
@@ -117,6 +118,7 @@ module Primer
       # @param title [String] Describes the content of the Overlay.
       # @param subtitle [String] Provides dditional context for the Overlay, also setting the `aria-describedby` attribute.
       # @param size [Symbol] The size of the Overlay. <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>
+      # @param padding [Symbol] The padding given to the Overlay body. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
       # @param allow_out_of_bounds [Boolean] Allow the Overlay to overflow its container.
