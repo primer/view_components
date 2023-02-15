@@ -94,7 +94,6 @@ module Primer
         )
       }
 
-
       # Footer content.
       #
       # @param show_divider [Boolean] Show a divider between the footer and body.

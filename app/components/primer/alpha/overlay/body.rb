@@ -11,7 +11,6 @@ module Primer
       }.freeze
       PADDING_OPTIONS = PADDING_MAPPINGS.keys
 
-
       # A `Overlay::Body` is a compositional component, used to render the
       # Body of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.
       class Body < Primer::Component
