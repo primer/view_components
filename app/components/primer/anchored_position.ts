@@ -91,7 +91,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   get alignmentOffset(): number {
-    return 4
+    return Number(this.getAttribute('alignment-offset')) ?? 0
   }
 
   set alignmentOffset(value: number) {
