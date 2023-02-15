@@ -12,20 +12,21 @@ module Primer
 
         assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='true']") do
           assert_selector("svg.ActionListItem-collapseIcon")
-          assert_selector(".ActionList--subGroup .ActionListItem--subItem", text: "Interaction limits")
-          assert_selector(".ActionList--subGroup .ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
-          assert_selector(".ActionList--subGroup .ActionListItem--subItem", text: "Reported content")
+          assert_selector("ul.ActionList--subGroup[role=list]") do |sub_group|
+            sub_group.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
+            sub_group.assert_selector("li.ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
+            sub_group.assert_selector("li.ActionListItem--subItem", text: "Reported content")
+          end
         end
       end
 
       def test_groups
         render_preview(:default)
 
-        assert_selector("h3.ActionList-sectionDivider-title")
-        assert_selector("ul.ActionListWrap--subGroup li.ActionListItem") do
-          assert_selector("ul.ActionListWrap[aria-labelledby]")
-          assert_selector(".ActionList-sectionDivider")
-          assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
+        assert_selector("h2.ActionList-sectionDivider-title[role=heading]")
+
+        assert_selector("ul.ActionListWrap--subGroup[role=list] li.ActionListItem", text: "Moderation options") do |item|
+          item.assert_selector("ul.ActionList.ActionList--subGroup[role=list] li.ActionListItem--subItem")
         end
       end
 
@@ -96,8 +97,8 @@ module Primer
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new) do |component|
             component.with_section(aria: { label: "Nav list" }) do |section|
-              section.with_item(label: "Item at level 1", href: "/item_level_1") do |item|
-                item.with_item(label: "Item at level 2", href: "/item_level_2") do |sub_item|
+              section.with_item(label: "Item at level 1") do |item|
+                item.with_item(label: "Item at level 2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
                 end
               end
@@ -127,6 +128,35 @@ module Primer
         end
 
         assert_equal "Cannot render a trailing action for an item with subitems", error.message
+      end
+
+      def test_disallows_aria_label_when_heading_provided
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::Alpha::NavList.new) do |component|
+            component.with_section(aria: { label: "List" }) do |section|
+              section.with_heading(title: "List")
+            end
+          end
+        end
+
+        assert_equal "An aria-label should not be provided if a heading is present", error.message
+      end
+
+      def test_allows_customizing_heading_level
+        render_inline(Primer::Alpha::NavList.new) do |component|
+          component.with_section do |section|
+            section.with_heading(title: "List", heading_level: 3)
+          end
+        end
+
+        assert_selector "h3[role=heading][aria-level=3]", text: "List"
+      end
+
+      def test_sub_lists_labeled_by_parent_button
+        render_preview(:default)
+
+        id = page.find_css("button.ActionListContent", text: "Moderation options").first[:id]
+        assert_selector "ul.ActionList[aria-labelledby='#{id}']"
       end
     end
   end

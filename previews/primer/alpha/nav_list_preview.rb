@@ -51,7 +51,7 @@ module Primer
               item.with_leading_visual_icon(icon: :people)
             end
 
-            section.with_item(label: "Moderation options", href: "/moderation") do |item|
+            section.with_item(label: "Moderation options") do |item|
               item.with_leading_visual_icon(icon: :"comment-discussion")
 
               item.with_item(label: "Interaction limits", href: "/interaction-limits", selected_by_ids: :interaction_limits)
