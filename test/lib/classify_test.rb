@@ -346,10 +346,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("col-1 col-sm-2", { col: [1, 2] })
     assert_generated_class("col-12 col-lg-9", { col: [12, nil, nil, 9] })
     assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2", { p: [4, 3, 3, 3, 2] })
-
-    assert_raises ArgumentError do
-      Primer::Classify.call(border: %i[top left])
-    end
+    assert_generated_class("border-bottom border-sm-right border-lg-left", { border: [:bottom, :right, nil, :left, nil] })
   end
 
   def test_style
