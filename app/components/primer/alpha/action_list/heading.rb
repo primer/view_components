@@ -17,7 +17,7 @@ module Primer
 
         # @param list_id [String] The unique identifier of the sub list the heading belongs to. Used internally.
         # @param title [String] Sub list title.
-        # @param heading_level [Integer] Heading level. Level 2 results in an <h2> tag, level 3 an <h3> tag, etc.
+        # @param heading_level [Integer] Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc.
         # @param subtitle [String] Optional sub list description.
         # @param scheme [Symbol] Display a background color if scheme is `filled`.
         # @param tag [Integer] Semantic tag for the heading.
