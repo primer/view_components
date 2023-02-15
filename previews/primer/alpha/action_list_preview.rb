@@ -195,7 +195,7 @@ module Primer
             item.with_private_trailing_action_icon(icon: private_trailing_action_icon)
           end
 
-          item.with_trailing_action(show_on_hover: trailing_action_on_hover, icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
+          item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
 
@@ -294,7 +294,7 @@ module Primer
                  aria: { label: "List heading" }
                )) do |component|
           component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Button tooltip", size: :medium)
+            item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end
@@ -305,7 +305,7 @@ module Primer
                  aria: { label: "List heading" }
                )) do |component|
           component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Button tooltip", size: :medium)
+            item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end

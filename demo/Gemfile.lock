@@ -138,6 +138,7 @@ GEM
       signet (>= 0.16, < 2.a)
     helm-cli (0.3.0)
       helm-rb (~> 0.1)
+    helm-rb (0.2.1-arm64-darwin)
     helm-rb (0.2.1-x86_64-darwin)
     helm-rb (0.2.1-x86_64-linux)
     hotwire-livereload (1.2.2)
@@ -162,6 +163,7 @@ GEM
     jsonpath (1.1.2)
       multi_json
     jwt (2.6.0)
+    kind-rb (0.1.0-arm64-darwin)
     kind-rb (0.1.0-x86_64-darwin)
     kind-rb (0.1.0-x86_64-linux)
     krane (2.4.9)
@@ -182,6 +184,7 @@ GEM
       jsonpath (~> 1.0)
       recursive-open-struct (~> 1.1, >= 1.1.1)
       rest-client (~> 2.0)
+    kubectl-rb (0.2.1-arm64-darwin)
     kubectl-rb (0.2.1-x86_64-darwin)
     kubectl-rb (0.2.1-x86_64-linux)
     kubernetes-cli (0.4.0)
@@ -263,6 +266,8 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
+    nokogiri (1.14.1-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.1-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.1-x86_64-linux)
@@ -368,6 +373,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  arm64-darwin-21
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
