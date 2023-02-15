@@ -64,7 +64,7 @@ namespace :docs do
 
     if components_needing_docs.any?
       puts
-      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
+      puts "The following components need docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
   end
 

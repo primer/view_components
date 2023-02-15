@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     class ActionList
-      # Section heading rendered above the section contents.
+      # Group heading rendered above the group contents.
       class Divider < Primer::Component
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {

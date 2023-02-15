@@ -32,9 +32,9 @@ module Primer
 
       def test_no_selected_item
         render_inline(Primer::Alpha::NavList.new) do |component|
-          component.with_section(aria: { label: "Nav list" }) do |section|
-            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
-            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          component.with_group(aria: { label: "Nav list" }) do |group|
+            group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
+            group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
         end
 
@@ -43,9 +43,9 @@ module Primer
 
       def test_selected_item
         render_inline(Primer::Alpha::NavList.new(selected_item_id: :item2)) do |component|
-          component.with_section(aria: { label: "Nav list" }) do |section|
-            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
-            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          component.with_group(aria: { label: "Nav list" }) do |group|
+            group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
+            group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
         end
 
@@ -55,9 +55,9 @@ module Primer
 
       def test_item_can_be_selected_by_any_of_its_ids
         render_inline(Primer::Alpha::NavList.new(selected_item_id: :other_item1_id)) do |component|
-          component.with_section(aria: { label: "Nav list" }) do |section|
-            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
-            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          component.with_group(aria: { label: "Nav list" }) do |group|
+            group.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
+            group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
         end
 
@@ -82,10 +82,10 @@ module Primer
         current_page_href = "/item2"
 
         render_inline(Primer::Alpha::NavList.new) do |component|
-          component.with_section(aria: { label: "Nav list" }) do |section|
+          component.with_group(aria: { label: "Nav list" }) do |group|
             # use CurrentPageItem instead of a mock since the API supports it
-            section.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
-            section.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
+            group.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
+            group.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
           end
         end
 
@@ -96,8 +96,8 @@ module Primer
       def test_max_nesting_depth
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_section(aria: { label: "Nav list" }) do |section|
-              section.with_item(label: "Item at level 1") do |item|
+            component.with_group(aria: { label: "Nav list" }) do |group|
+              group.with_item(label: "Item at level 1") do |item|
                 item.with_item(label: "Item at level 2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
                 end
@@ -118,8 +118,8 @@ module Primer
       def test_disallow_subitems_and_trailing_action
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_section(aria: { label: "List" }) do |section|
-              section.with_item(label: "Level 1", href: "/level1") do |item|
+            component.with_group(aria: { label: "List" }) do |group|
+              group.with_item(label: "Level 1", href: "/level1") do |item|
                 item.with_item(label: "Level 2", href: "/level2")
                 item.with_trailing_action(icon: :megaphone, aria: { label: "Action" })
               end
@@ -133,8 +133,8 @@ module Primer
       def test_disallows_aria_label_when_heading_provided
         error = assert_raises(ArgumentError) do
           render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_section(aria: { label: "List" }) do |section|
-              section.with_heading(title: "List")
+            component.with_group(aria: { label: "List" }) do |group|
+              group.with_heading(title: "List")
             end
           end
         end
@@ -144,8 +144,8 @@ module Primer
 
       def test_allows_customizing_heading_level
         render_inline(Primer::Alpha::NavList.new) do |component|
-          component.with_section do |section|
-            section.with_heading(title: "List", heading_level: 3)
+          component.with_group do |group|
+            group.with_heading(title: "List", heading_level: 3)
           end
         end
 

@@ -121,7 +121,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
       "Primer::Alpha::NavList::Item",
-      "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::NavList::Group",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content"
