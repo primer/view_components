@@ -34,6 +34,9 @@ module Primer
       DEFAULT_ANCHOR_ALIGN = :start
       ANCHOR_ALIGN_OPTIONS = [DEFAULT_ANCHOR_ALIGN, :center, :end].freeze
 
+      DEFAULT_ANCHOR_OFFSET = :compact
+      ANCHOR_OFFSET_OPTIONS = [DEFAULT_ANCHOR_OFFSET, :spacious].freeze
+
       DEFAULT_ANCHOR_SIDE = :outside_bottom
       ANCHOR_SIDE_MAPPINGS = {
         :inside_top => "inside-top",
@@ -134,6 +137,7 @@ module Primer
         padding: DEFAULT_PADDING,
         anchor: nil,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
+        anchor_offset: DEFAULT_ANCHOR_OFFSET,
         anchor_side: DEFAULT_ANCHOR_SIDE,
         allow_out_of_bounds: false,
         visually_hide_title: false,
@@ -155,6 +159,7 @@ module Primer
         @system_arguments[:anchor] = anchor || "overlay-show-#{@system_arguments[:id]}"
         @system_arguments[:align] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN)
         @system_arguments[:side] = ANCHOR_SIDE_MAPPINGS[fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE)]
+        @system_arguments["anchor-offset"] = fetch_or_fallback(ANCHOR_OFFSET_OPTIONS, anchor_offset, DEFAULT_ANCHOR_OFFSET)
         @system_arguments["allow-out-of-bounds"] = true if allow_out_of_bounds
         @id = id.to_s
         @title = title

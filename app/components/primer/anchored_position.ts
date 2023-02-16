@@ -60,10 +60,12 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   get anchorOffset(): number {
-    return Number(this.getAttribute('anchor-offset')) ?? 4
+    const alias = this.getAttribute('anchor-offset')
+    if (alias === 'spacious' || alias === '8') return 8
+    return 4
   }
 
-  set anchorOffset(value: number) {
+  set anchorOffset(value: number | 'spacious' | 'compact') {
     this.setAttribute('anchor-offset', `${value}`)
   }
 
@@ -91,7 +93,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   get alignmentOffset(): number {
-    return Number(this.getAttribute('alignment-offset')) ?? 0
+    return Number(this.getAttribute('alignment-offset'))
   }
 
   set alignmentOffset(value: number) {
