@@ -61,11 +61,11 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
 
   get anchorOffset(): number {
     const alias = this.getAttribute('anchor-offset')
-    if (alias === 'spacious' || alias === '8') return 8
+    if (alias === 'normal' || alias === '8') return 8
     return 4
   }
 
-  set anchorOffset(value: number | 'spacious' | 'compact') {
+  set anchorOffset(value: number | 'normal' | 'compact') {
     this.setAttribute('anchor-offset', `${value}`)
   }
 
