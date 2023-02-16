@@ -7,7 +7,7 @@ module Primer
       ALIGN_CONTENT_MAPPINGS = {
         :start => "Overlay-footer--alignStart",
         :center => "Overlay-footer--alignCenter",
-        DEFAULT_ALIGN_CONTENT => "Overlay-footer--alignEnd",
+        DEFAULT_ALIGN_CONTENT => "Overlay-footer--alignEnd"
       }.freeze
       ALIGN_CONTENT_OPTIONS = ALIGN_CONTENT_MAPPINGS.keys
 

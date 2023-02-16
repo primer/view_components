@@ -5,9 +5,9 @@ module Primer
     class Overlay
       DEFAULT_PADDING = :normal
       PADDING_MAPPINGS = {
-        :normal => nil,
+        DEFAULT_PADDING => nil,
         :condensed => "Overlay-body--paddingCondensed",
-        :none => "Overlay-body--paddingNone",
+        :none => "Overlay-body--paddingNone"
       }.freeze
       PADDING_OPTIONS = PADDING_MAPPINGS.keys
 
