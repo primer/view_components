@@ -163,7 +163,6 @@ module Primer
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
-          @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
           @content_arguments = content_arguments
@@ -222,7 +221,6 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
             "ActionListItem--navActive" => active?
           )
 

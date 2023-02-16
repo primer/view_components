@@ -135,7 +135,6 @@ module Primer
       # @param private_leading_action_icon [Symbol] octicon
       # @param private_trailing_action_icon [Symbol] octicon
       # @param trailing_action toggle
-      # @param trailing_action_on_hover toggle
       # @param tooltip toggle
       def item(
         label: "Label",
@@ -156,7 +155,6 @@ module Primer
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
         private_trailing_action_icon: nil,
-        trailing_action_on_hover: false,
         trailing_action: false,
         tooltip: false
       )

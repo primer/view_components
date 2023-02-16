@@ -27,6 +27,16 @@
   },
   "Primer::Alpha::ActionList::Heading": {
     "DEFAULT_SCHEME": "subtle",
+    "HEADING_LEVELS": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "HEADING_MAX": 6,
+    "HEADING_MIN": 1,
     "SCHEME_MAPPINGS": {
       "subtle": null,
       "filled": "ActionList-sectionDivider--filled"
@@ -324,12 +334,12 @@
   "Primer::Alpha::MultiInput": {
   },
   "Primer::Alpha::NavList": {
-    "Item": "Primer::Alpha::NavList::Item",
-    "Section": "Primer::Alpha::NavList::Section"
+    "Group": "Primer::Alpha::NavList::Group",
+    "Item": "Primer::Alpha::NavList::Item"
+  },
+  "Primer::Alpha::NavList::Group": {
   },
   "Primer::Alpha::NavList::Item": {
-  },
-  "Primer::Alpha::NavList::Section": {
   },
   "Primer::Alpha::OcticonSymbols": {
   },
