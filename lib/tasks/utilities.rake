@@ -26,6 +26,7 @@ namespace :utilities do
       /^m[trblxy]?\b/,
       /^p[trblxy]?\b/,
       /^position\b/,
+      /^rounded\b/,
       /^wb\b/,
       /^width\b/,
       /^v\b/
