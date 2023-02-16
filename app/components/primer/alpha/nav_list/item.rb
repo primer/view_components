@@ -49,9 +49,7 @@ module Primer
 
           @list = system_arguments[:list]
 
-          if @list = system_arguments[:list]
-            @sub_list_arguments["data-action"] = "keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown"
-          end
+          @sub_list_arguments["data-action"] = "keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown" if @list
 
           overrides = { "data-item-id": @selected_by_ids.join(" ") }
 
