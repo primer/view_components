@@ -96,6 +96,268 @@
     - box-shadow-none
   false:
     - box-shadow-none
+:border:
+  :left:
+    - border-left
+    - border-sm-left
+    - border-md-left
+    - border-lg-left
+    - border-xl-left
+  :top:
+    - border-top
+    - border-sm-top
+    - border-md-top
+    - border-lg-top
+    - border-xl-top
+  :bottom:
+    - border-bottom
+    - border-sm-bottom
+    - border-md-bottom
+    - border-lg-bottom
+    - border-xl-bottom
+  :right:
+    - border-right
+    - border-sm-right
+    - border-md-right
+    - border-lg-right
+    - border-xl-right
+  :y:
+    - border-y
+  :x:
+    - border-x
+  true:
+    - border
+    - border-sm
+    - border-md
+    - border-lg
+    - border-xl
+  0:
+    - border-0
+    - border-sm-0
+    - border-md-0
+    - border-lg-0
+    - border-xl-0
+  false:
+    - border-0
+    - border-sm-0
+    - border-md-0
+    - border-lg-0
+    - border-xl-0
+  :dashed:
+    - border-dashed
+:border_top:
+  0:
+    - border-top-0
+    - border-sm-top-0
+    - border-md-top-0
+    - border-lg-top-0
+    - border-xl-top-0
+:border_bottom:
+  0:
+    - border-bottom-0
+    - border-sm-bottom-0
+    - border-md-bottom-0
+    - border-lg-bottom-0
+    - border-xl-bottom-0
+:border_left:
+  0:
+    - border-left-0
+    - border-sm-left-0
+    - border-md-left-0
+    - border-lg-left-0
+    - border-xl-left-0
+:border_right:
+  0:
+    - border-right-0
+    - border-sm-right-0
+    - border-md-right-0
+    - border-lg-right-0
+    - border-xl-right-0
+:border_radius:
+  true:
+    - rounded
+    - rounded-sm
+    - rounded-md
+    - rounded-lg
+    - rounded-xl
+  false:
+    - rounded-0
+    - rounded-sm-0
+    - rounded-md-0
+    - rounded-lg-0
+    - rounded-xl-0
+  0:
+    - rounded-0
+    - rounded-sm-0
+    - rounded-md-0
+    - rounded-lg-0
+    - rounded-xl-0
+  1:
+    - rounded-1
+    - rounded-sm-1
+    - rounded-md-1
+    - rounded-lg-1
+    - rounded-xl-1
+  2:
+    - rounded-2
+    - rounded-sm-2
+    - rounded-md-2
+    - rounded-lg-2
+    - rounded-xl-2
+  3:
+    - rounded-3
+    - rounded-sm-3
+    - rounded-md-3
+    - rounded-lg-3
+    - rounded-xl-3
+:border_radius_top:
+  0:
+    - rounded-top-0
+    - rounded-sm-top-0
+    - rounded-md-top-0
+    - rounded-lg-top-0
+    - rounded-xl-top-0
+  1:
+    - rounded-top-1
+    - rounded-sm-top-1
+    - rounded-md-top-1
+    - rounded-lg-top-1
+    - rounded-xl-top-1
+  2:
+    - rounded-top-2
+    - rounded-sm-top-2
+    - rounded-md-top-2
+    - rounded-lg-top-2
+    - rounded-xl-top-2
+  3:
+    - rounded-top-3
+    - rounded-sm-top-3
+    - rounded-md-top-3
+    - rounded-lg-top-3
+    - rounded-xl-top-3
+  4:
+    - rounded-top-4
+    - rounded-sm-top-4
+    - rounded-md-top-4
+    - rounded-lg-top-4
+    - rounded-xl-top-4
+  false:
+    - rounded-top-0
+    - rounded-sm-top-0
+    - rounded-md-top-0
+    - rounded-lg-top-0
+    - rounded-xl-top-0
+:border_radius_right:
+  0:
+    - rounded-right-0
+    - rounded-sm-right-0
+    - rounded-md-right-0
+    - rounded-lg-right-0
+    - rounded-xl-right-0
+  1:
+    - rounded-right-1
+    - rounded-sm-right-1
+    - rounded-md-right-1
+    - rounded-lg-right-1
+    - rounded-xl-right-1
+  2:
+    - rounded-right-2
+    - rounded-sm-right-2
+    - rounded-md-right-2
+    - rounded-lg-right-2
+    - rounded-xl-right-2
+  3:
+    - rounded-right-3
+    - rounded-sm-right-3
+    - rounded-md-right-3
+    - rounded-lg-right-3
+    - rounded-xl-right-3
+  4:
+    - rounded-right-4
+    - rounded-sm-right-4
+    - rounded-md-right-4
+    - rounded-lg-right-4
+    - rounded-xl-right-4
+  false:
+    - rounded-right-0
+    - rounded-sm-right-0
+    - rounded-md-right-0
+    - rounded-lg-right-0
+    - rounded-xl-right-0
+:border_radius_bottom:
+  0:
+    - rounded-bottom-0
+    - rounded-sm-bottom-0
+    - rounded-md-bottom-0
+    - rounded-lg-bottom-0
+    - rounded-xl-bottom-0
+  1:
+    - rounded-bottom-1
+    - rounded-sm-bottom-1
+    - rounded-md-bottom-1
+    - rounded-lg-bottom-1
+    - rounded-xl-bottom-1
+  2:
+    - rounded-bottom-2
+    - rounded-sm-bottom-2
+    - rounded-md-bottom-2
+    - rounded-lg-bottom-2
+    - rounded-xl-bottom-2
+  3:
+    - rounded-bottom-3
+    - rounded-sm-bottom-3
+    - rounded-md-bottom-3
+    - rounded-lg-bottom-3
+    - rounded-xl-bottom-3
+  4:
+    - rounded-bottom-4
+    - rounded-sm-bottom-4
+    - rounded-md-bottom-4
+    - rounded-lg-bottom-4
+    - rounded-xl-bottom-4
+  false:
+    - rounded-bottom-0
+    - rounded-sm-bottom-0
+    - rounded-md-bottom-0
+    - rounded-lg-bottom-0
+    - rounded-xl-bottom-0
+:border_radius_left:
+  0:
+    - rounded-left-0
+    - rounded-sm-left-0
+    - rounded-md-left-0
+    - rounded-lg-left-0
+    - rounded-xl-left-0
+  1:
+    - rounded-left-1
+    - rounded-sm-left-1
+    - rounded-md-left-1
+    - rounded-lg-left-1
+    - rounded-xl-left-1
+  2:
+    - rounded-left-2
+    - rounded-sm-left-2
+    - rounded-md-left-2
+    - rounded-lg-left-2
+    - rounded-xl-left-2
+  3:
+    - rounded-left-3
+    - rounded-sm-left-3
+    - rounded-md-left-3
+    - rounded-lg-left-3
+    - rounded-xl-left-3
+  4:
+    - rounded-left-4
+    - rounded-sm-left-4
+    - rounded-md-left-4
+    - rounded-lg-left-4
+    - rounded-xl-left-4
+  false:
+    - rounded-left-0
+    - rounded-sm-left-0
+    - rounded-md-left-0
+    - rounded-lg-left-0
+    - rounded-xl-left-0
 :justify_content:
   :flex_start:
     - flex-justify-start
