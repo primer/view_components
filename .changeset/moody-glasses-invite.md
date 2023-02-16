@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Add responsive values for border system argument #1829
+Add responsive values for `border` and `border-radius` system argument
