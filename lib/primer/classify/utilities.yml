@@ -22,6 +22,77 @@
   - anim-hover-grow
   :rotate:
   - anim-rotate
+:border:
+  :x:
+  - border-x
+  :y:
+  - border-y
+  true:
+  - border
+  0:
+  - border-0
+  - border-sm-0
+  - border-md-0
+  - border-lg-0
+  - border-xl-0
+  :top:
+  - border-top
+  - border-sm-top
+  - border-md-top
+  - border-lg-top
+  - border-xl-top
+  :right:
+  - border-right
+  - border-sm-right
+  - border-md-right
+  - border-lg-right
+  - border-xl-right
+  :bottom:
+  - border-bottom
+  - border-sm-bottom
+  - border-md-bottom
+  - border-lg-bottom
+  - border-xl-bottom
+  :left:
+  - border-left
+  - border-sm-left
+  - border-md-left
+  - border-lg-left
+  - border-xl-left
+  :top_0:
+  - border-top-0
+  - border-sm-top-0
+  - border-md-top-0
+  - border-lg-top-0
+  - border-xl-top-0
+  :right_0:
+  - border-right-0
+  - border-sm-right-0
+  - border-md-right-0
+  - border-lg-right-0
+  - border-xl-right-0
+  :bottom_0:
+  - border-bottom-0
+  - border-sm-bottom-0
+  - border-md-bottom-0
+  - border-lg-bottom-0
+  - border-xl-bottom-0
+  :left_0:
+  - border-left-0
+  - border-sm-left-0
+  - border-md-left-0
+  - border-lg-left-0
+  - border-xl-left-0
+  :sm:
+  - border-sm
+  :md:
+  - border-md
+  :lg:
+  - border-lg
+  :xl:
+  - border-xl
+  :dashed:
+  - border-dashed
 :color:
   :default:
   - color-fg-default
@@ -1603,92 +1674,6 @@
   - box-shadow-none
   false:
   - box-shadow-none
-:border:
-  :left:
-  - border-left
-  - border-sm-left
-  - border-md-left
-  - border-lg-left
-  - border-xl-left
-  :top:
-  - border-top
-  - border-sm-top
-  - border-md-top
-  - border-lg-top
-  - border-xl-top
-  :bottom:
-  - border-bottom
-  - border-sm-bottom
-  - border-md-bottom
-  - border-lg-bottom
-  - border-xl-bottom
-  :right:
-  - border-right
-  - border-sm-right
-  - border-md-right
-  - border-lg-right
-  - border-xl-right
-  :y:
-  - border-y
-  :x:
-  - border-x
-  true:
-  - border
-  - border-sm
-  - border-md
-  - border-lg
-  - border-xl 
-  0:
-  - border-0
-  - border-sm-0
-  - border-md-0
-  - border-lg-0
-  - border-xl-0
-  false:
-  - border-0
-  - border-sm-0
-  - border-md-0
-  - border-lg-0
-  - border-xl-0
-  :dashed:
-  - border-dashed
-:border_top:
-  0:
-  - border-top-0
-  - border-sm-top-0
-  - border-md-top-0
-  - border-lg-top-0
-  - border-xl-top-0
-:border_bottom:
-  0:
-  - border-bottom-0
-  - border-sm-bottom-0
-  - border-md-bottom-0
-  - border-lg-bottom-0
-  - border-xl-bottom-0
-:border_left:
-  0:
-  - border-left-0
-  - border-sm-left-0
-  - border-md-left-0
-  - border-lg-left-0
-  - border-xl-left-0
-:border_right:
-  0:
-  - border-right-0
-  - border-sm-right-0
-  - border-md-right-0
-  - border-lg-right-0
-  - border-xl-right-0
-:border_radius:
-  0:
-  - rounded-0
-  1:
-  - rounded-1
-  2:
-  - rounded-2
-  3:
-  - rounded-3
 :justify_content:
   :flex_start:
   - flex-justify-start

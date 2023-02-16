@@ -1,310 +1,268 @@
 :font_size:
-  "00":
-  - f00
+  '00':
+    - f00
   1:
-  - f1
+    - f1
   2:
-  - f2
+    - f2
   3:
-  - f3
+    - f3
   4:
-  - f4
+    - f4
   5:
-  - f5
+    - f5
   6:
-  - f6
+    - f6
   :small:
-  - text-small
+    - text-small
   :normal:
-  - text-normal
+    - text-normal
 :top:
   0:
-  - top-0
+    - top-0
   false:
-  - top-0
+    - top-0
 :bottom:
   0:
-  - bottom-0
+    - bottom-0
   false:
-  - bottom-0
+    - bottom-0
 :left:
   0:
-  - left-0
+    - left-0
   false:
-  - left-0
+    - left-0
 :right:
   0:
-  - right-0
+    - right-0
   false:
-  - right-0
+    - right-0
 :underline:
   true:
-  - text-underline
+    - text-underline
   false:
-  - no-underline
+    - no-underline
 :font_family:
   :mono:
-  - text-mono
+    - text-mono
 :font_style:
   :italic:
-  - text-italic
+    - text-italic
 :text_transform:
   :uppercase:
-  - text-uppercase
+    - text-uppercase
 :text_align:
   :right:
-  - text-right
-  - text-sm-right
-  - text-md-right
-  - text-lg-right
-  - text-xl-right
+    - text-right
+    - text-sm-right
+    - text-md-right
+    - text-lg-right
+    - text-xl-right
   :left:
-  - text-left
-  - text-sm-left
-  - text-md-left
-  - text-lg-left
-  - text-xl-left
+    - text-left
+    - text-sm-left
+    - text-md-left
+    - text-lg-left
+    - text-xl-left
   :center:
-  - text-center
-  - text-sm-center
-  - text-md-center
-  - text-lg-center
-  - text-xl-center
+    - text-center
+    - text-sm-center
+    - text-md-center
+    - text-lg-center
+    - text-xl-center
 :font_weight:
   :light:
-  - text-light
+    - text-light
   :normal:
-  - text-normal
+    - text-normal
   :bold:
-  - text-bold
+    - text-bold
   :semibold:
-  - text-semibold
+    - text-semibold
   :emphasized:
-  - text-emphasized
+    - text-emphasized
 :box_shadow:
   true:
-  - color-shadow-small
+    - color-shadow-small
   :small:
-  - color-shadow-small
+    - color-shadow-small
   :medium:
-  - color-shadow-medium
+    - color-shadow-medium
   :large:
-  - color-shadow-large
+    - color-shadow-large
   :extra_large:
-  - color-shadow-extra-large
+    - color-shadow-extra-large
   :none:
-  - box-shadow-none
+    - box-shadow-none
   false:
-  - box-shadow-none
-:border:
-  :left:
-  - border-left
-  :top:
-  - border-top
-  :bottom:
-  - border-bottom
-  :right:
-  - border-right
-  :y:
-  - border-y
-  :x:
-  - border-x
-  true:
-  - border
-  0:
-  - border-0
-  false:
-  - border-0
-  :dashed:
-  - border-dashed
-:border_top:
-  0:
-  - border-top-0
-:border_bottom:
-  0:
-  - border-bottom-0
-:border_left:
-  0:
-  - border-left-0
-:border_right:
-  0:
-  - border-right-0
-:border_radius:
-  0:
-  - rounded-0
-  1:
-  - rounded-1
-  2:
-  - rounded-2
-  3:
-  - rounded-3
+    - box-shadow-none
 :justify_content:
   :flex_start:
-  - flex-justify-start
-  - flex-sm-justify-start
-  - flex-md-justify-start
-  - flex-lg-justify-start
-  - flex-xl-justify-start
+    - flex-justify-start
+    - flex-sm-justify-start
+    - flex-md-justify-start
+    - flex-lg-justify-start
+    - flex-xl-justify-start
   :flex_end:
-  - flex-justify-end
-  - flex-sm-justify-end
-  - flex-md-justify-end
-  - flex-lg-justify-end
-  - flex-xl-justify-end
+    - flex-justify-end
+    - flex-sm-justify-end
+    - flex-md-justify-end
+    - flex-lg-justify-end
+    - flex-xl-justify-end
   :center:
-  - flex-justify-center
-  - flex-sm-justify-center
-  - flex-md-justify-center
-  - flex-lg-justify-center
-  - flex-xl-justify-center
+    - flex-justify-center
+    - flex-sm-justify-center
+    - flex-md-justify-center
+    - flex-lg-justify-center
+    - flex-xl-justify-center
   :space_between:
-  - flex-justify-between
-  - flex-sm-justify-between
-  - flex-md-justify-between
-  - flex-lg-justify-between
-  - flex-xl-justify-between
+    - flex-justify-between
+    - flex-sm-justify-between
+    - flex-md-justify-between
+    - flex-lg-justify-between
+    - flex-xl-justify-between
   :space_around:
-  - flex-justify-around
-  - flex-sm-justify-around
-  - flex-md-justify-around
-  - flex-lg-justify-around
-  - flex-xl-justify-around
+    - flex-justify-around
+    - flex-sm-justify-around
+    - flex-md-justify-around
+    - flex-lg-justify-around
+    - flex-xl-justify-around
 :align_items:
   :flex_start:
-  - flex-items-start
-  - flex-sm-items-start
-  - flex-md-items-start
-  - flex-lg-items-start
-  - flex-xl-items-start
+    - flex-items-start
+    - flex-sm-items-start
+    - flex-md-items-start
+    - flex-lg-items-start
+    - flex-xl-items-start
   :flex_end:
-  - flex-items-end
-  - flex-sm-items-end
-  - flex-md-items-end
-  - flex-lg-items-end
-  - flex-xl-items-end
+    - flex-items-end
+    - flex-sm-items-end
+    - flex-md-items-end
+    - flex-lg-items-end
+    - flex-xl-items-end
   :center:
-  - flex-items-center
-  - flex-sm-items-center
-  - flex-md-items-center
-  - flex-lg-items-center
-  - flex-xl-items-center
+    - flex-items-center
+    - flex-sm-items-center
+    - flex-md-items-center
+    - flex-lg-items-center
+    - flex-xl-items-center
   :baseline:
-  - flex-items-baseline
-  - flex-sm-items-baseline
-  - flex-md-items-baseline
-  - flex-lg-items-baseline
-  - flex-xl-items-baseline
+    - flex-items-baseline
+    - flex-sm-items-baseline
+    - flex-md-items-baseline
+    - flex-lg-items-baseline
+    - flex-xl-items-baseline
   :stretch:
-  - flex-items-stretch
-  - flex-sm-items-stretch
-  - flex-md-items-stretch
-  - flex-lg-items-stretch
-  - flex-xl-items-stretch
+    - flex-items-stretch
+    - flex-sm-items-stretch
+    - flex-md-items-stretch
+    - flex-lg-items-stretch
+    - flex-xl-items-stretch
 :flex_wrap:
   :wrap:
-  - flex-wrap
-  - flex-sm-wrap
-  - flex-md-wrap
-  - flex-lg-wrap
-  - flex-xl-wrap
+    - flex-wrap
+    - flex-sm-wrap
+    - flex-md-wrap
+    - flex-lg-wrap
+    - flex-xl-wrap
   :nowrap:
-  - flex-nowrap
-  - flex-sm-nowrap
-  - flex-md-nowrap
-  - flex-lg-nowrap
-  - flex-xl-nowrap
+    - flex-nowrap
+    - flex-sm-nowrap
+    - flex-md-nowrap
+    - flex-lg-nowrap
+    - flex-xl-nowrap
   :reverse:
-  - flex-wrap-reverse
-  - flex-sm-wrap-reverse
-  - flex-md-wrap-reverse
-  - flex-lg-wrap-reverse
-  - flex-xl-wrap-reverse
+    - flex-wrap-reverse
+    - flex-sm-wrap-reverse
+    - flex-md-wrap-reverse
+    - flex-lg-wrap-reverse
+    - flex-xl-wrap-reverse
 :direction:
   :column:
-  - flex-column
-  - flex-sm-column
-  - flex-md-column
-  - flex-lg-column
-  - flex-xl-column
+    - flex-column
+    - flex-sm-column
+    - flex-md-column
+    - flex-lg-column
+    - flex-xl-column
   :column_reverse:
-  - flex-column-reverse
-  - flex-sm-column-reverse
-  - flex-md-column-reverse
-  - flex-lg-column-reverse
-  - flex-xl-column-reverse
+    - flex-column-reverse
+    - flex-sm-column-reverse
+    - flex-md-column-reverse
+    - flex-lg-column-reverse
+    - flex-xl-column-reverse
   :row:
-  - flex-row
-  - flex-sm-row
-  - flex-md-row
-  - flex-lg-row
-  - flex-xl-row
+    - flex-row
+    - flex-sm-row
+    - flex-md-row
+    - flex-lg-row
+    - flex-xl-row
   :row_reverse:
-  - flex-row-reverse
-  - flex-sm-row-reverse
-  - flex-md-row-reverse
-  - flex-lg-row-reverse
-  - flex-xl-row-reverse
+    - flex-row-reverse
+    - flex-sm-row-reverse
+    - flex-md-row-reverse
+    - flex-lg-row-reverse
+    - flex-xl-row-reverse
 :flex:
   1:
-  - flex-1
-  - flex-sm-1
-  - flex-md-1
-  - flex-lg-1
-  - flex-xl-1
+    - flex-1
+    - flex-sm-1
+    - flex-md-1
+    - flex-lg-1
+    - flex-xl-1
   :auto:
-  - flex-auto
-  - flex-sm-auto
-  - flex-md-auto
-  - flex-lg-auto
-  - flex-xl-auto
+    - flex-auto
+    - flex-sm-auto
+    - flex-md-auto
+    - flex-lg-auto
+    - flex-xl-auto
 :align_self:
   :auto:
-  - flex-self-auto
-  - flex-sm-self-auto
-  - flex-md-self-auto
-  - flex-lg-self-auto
-  - flex-xl-self-auto
+    - flex-self-auto
+    - flex-sm-self-auto
+    - flex-md-self-auto
+    - flex-lg-self-auto
+    - flex-xl-self-auto
   :start:
-  - flex-self-start
-  - flex-sm-self-start
-  - flex-md-self-start
-  - flex-lg-self-start
-  - flex-xl-self-start
+    - flex-self-start
+    - flex-sm-self-start
+    - flex-md-self-start
+    - flex-lg-self-start
+    - flex-xl-self-start
   :end:
-  - flex-self-end
-  - flex-sm-self-end
-  - flex-md-self-end
-  - flex-lg-self-end
-  - flex-xl-self-end
+    - flex-self-end
+    - flex-sm-self-end
+    - flex-md-self-end
+    - flex-lg-self-end
+    - flex-xl-self-end
   :center:
-  - flex-self-center
-  - flex-sm-self-center
-  - flex-md-self-center
-  - flex-lg-self-center
-  - flex-xl-self-center
+    - flex-self-center
+    - flex-sm-self-center
+    - flex-md-self-center
+    - flex-lg-self-center
+    - flex-xl-self-center
   :baseline:
-  - flex-self-baseline
-  - flex-sm-self-baseline
-  - flex-md-self-baseline
-  - flex-lg-self-baseline
-  - flex-xl-self-baseline
+    - flex-self-baseline
+    - flex-sm-self-baseline
+    - flex-md-self-baseline
+    - flex-lg-self-baseline
+    - flex-xl-self-baseline
   :stretch:
-  - flex-self-stretch
-  - flex-sm-self-stretch
-  - flex-md-self-stretch
-  - flex-lg-self-stretch
-  - flex-xl-self-stretch
+    - flex-self-stretch
+    - flex-sm-self-stretch
+    - flex-md-self-stretch
+    - flex-lg-self-stretch
+    - flex-xl-self-stretch
 :flex_grow:
   0:
-  - flex-grow-0
-  - flex-sm-grow-0
-  - flex-md-grow-0
-  - flex-lg-grow-0
-  - flex-xl-grow-0
+    - flex-grow-0
+    - flex-sm-grow-0
+    - flex-md-grow-0
+    - flex-lg-grow-0
+    - flex-xl-grow-0
 :flex_shrink:
   0:
-  - flex-shrink-0
-  - flex-sm-shrink-0
-  - flex-md-shrink-0
-  - flex-lg-shrink-0
-  - flex-xl-shrink-0
+    - flex-shrink-0
+    - flex-sm-shrink-0
+    - flex-md-shrink-0
+    - flex-lg-shrink-0
+    - flex-xl-shrink-0

@@ -12,6 +12,7 @@ namespace :utilities do
     # rubocop:disable Lint/ConstantDefinitionInBlock
     SUPPORTED_KEYS = [
       /^anim\b/,
+      /^border\b/,
       /^color-bg\b/,
       /^color-border\b/,
       /^color-fg\b/,
