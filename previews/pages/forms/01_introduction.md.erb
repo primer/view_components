@@ -1,0 +1,44 @@
+---
+title: "Introduction"
+id: introduction
+---
+
+Primer contains a framework for declaratively building Rails forms. It was designed to meet the following goals:
+
+1. Be accessible by default.
+1. Integrate deeply with Ruby on Rails and its existing form capabilities.
+1. Follow web standards.
+1. Adhere to Primer's [form interface guidelines](/design/ui-patterns/forms).
+
+### Accessible by default
+
+Creating accessible forms can be challenging. Forms are a common source of accessibility issues, and can hinder someone from successfully completing and submitting a form. This can be true even for people who do not use assistive technologies.
+
+Primer forms are designed to be accessible by default - i.e. accessible without developer effort - borrowing from Rails' sane defaults philosophy.
+
+For example, Primer forms:
+
+1. Automatically associate labels, captions, and validation messages with their inputs.
+1. Use `<fieldset>`s where appropriate.
+1. Focus the first invalid input after submission.
+
+And more!
+
+### Integrates with Rails
+
+Primer forms augment Rails' battle-tested form capabilties, allowing developers to leverage their existing Rails knowledge. Primer forms delegate HTML generation to Rails, meaning inputs accept the same arguments as their vanilla Rails counterparts. For example, Primer's `#text_field` method accepts all the arguments Rails' `#text_field_tag` method accepts.
+
+Primer forms are emitted using the familiar `#render` method, and wrapped using `#primer_form_with`, analogous to Rails' `#form_with`.
+
+### Follows web standards
+
+Under the hood, Primer forms are just HTML with some JavaScript sprinkles. Nothing too fancy, meaning they should work pretty much everywhere.
+
+### What to read next
+
+1. Read the getting started guide.
+1. Take a look at the various form inputs.
+1. Explore form layout options.
+1. Compose forms together.
+1. Include custom validation messages.
+1. Submit boolean values immediately with toggle switch forms.

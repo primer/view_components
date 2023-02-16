@@ -1,0 +1,26 @@
+<%= render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(tag: :label, **@label_arguments)) do %>
+    <%= @label %>
+    <% if required? %>
+      <span aria-hidden="true">*</span>
+    <% end %>
+  <% end %>
+  <% if @input_block %>
+    <%= view_context.capture { @input_block.call(@input_arguments) } %>
+  <% end %>
+  <% if @validation_message %>
+    <%= render(Primer::BaseComponent.new(tag: :div, **@validation_arguments)) do %>
+      <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+      <span><%= @validation_message %></span>
+    <% end %>
+  <% end %>
+  <% if @init_caption || caption? %>
+    <span class="FormControl-caption" id="<%= @caption_id %>">
+      <% if caption? %>
+        <%= caption %>
+      <% else %>
+        <%= @init_caption %>
+      <% end %>
+    </span>
+  <% end %>
+<% end %>
