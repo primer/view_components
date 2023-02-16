@@ -34,8 +34,8 @@ module Primer
       DEFAULT_ANCHOR_ALIGN = :start
       ANCHOR_ALIGN_OPTIONS = [DEFAULT_ANCHOR_ALIGN, :center, :end].freeze
 
-      DEFAULT_ANCHOR_OFFSET = :compact
-      ANCHOR_OFFSET_OPTIONS = [DEFAULT_ANCHOR_OFFSET, :normal].freeze
+      DEFAULT_ANCHOR_OFFSET = :normal
+      ANCHOR_OFFSET_OPTIONS = [DEFAULT_ANCHOR_OFFSET, :spacious].freeze
 
       DEFAULT_ANCHOR_SIDE = :outside_bottom
       ANCHOR_SIDE_MAPPINGS = {
