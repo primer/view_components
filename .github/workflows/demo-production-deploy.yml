@@ -7,10 +7,15 @@ on:
   release:
     types: [published]
 
+permissions:
+  id-token: write # This is required for requesting the OIDC JWT for authing with Azure
+  contents: read  # This is required for actions/checkout
+
 jobs:
   build:
     if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - uses: actions/checkout@v3
     - name: Setup Ruby
@@ -25,7 +30,11 @@ jobs:
       run: echo $AZURE_ACR_PASSWORD | docker login primer.azurecr.io --username GitHubActions --password-stdin
     - uses: Azure/login@v1
       with:
-        creds: '{"clientId":"5ad1a188-b944-40eb-a2f8-cc683a6a65a0","clientSecret":"${{ secrets.AZURE_SPN_CLIENT_SECRET }}","subscriptionId":"550eb99d-d0c7-4651-a337-f53fa6520c4f","tenantId":"398a6654-997b-47e9-b12b-9515b896b4de"}'
+        # excluding a client secret here will cause a login via OpenID Connect (OIDC),
+        # which prevents us from having to rotate client credentials, etc
+        client-id: "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+        tenant-id: "398a6654-997b-47e9-b12b-9515b896b4de"
+        subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
     - name: Purge tags
       run: |
         # only delete tags that aren't "latest" or "latest-assets"
@@ -54,6 +63,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     needs: build
     steps:
     - uses: actions/checkout@v3
@@ -70,9 +80,17 @@ jobs:
       run: |
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
+    - uses: Azure/login@v1
+      with:
+        # excluding a client secret here will cause a login via OpenID Connect (OIDC),
+        # which prevents us from having to rotate client credentials, etc
+        client-id: "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+        tenant-id: "398a6654-997b-47e9-b12b-9515b896b4de"
+        subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
     - name: Deploy
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
-        AZURE_SPN_CLIENT_SECRET: ${{ secrets.AZURE_SPN_CLIENT_SECRET }}
-      run: bin/kuby -e production deploy
+      run: |
+        export AZURE_ACCESS_TOKEN=$(az account get-access-token --subscription 550eb99d-d0c7-4651-a337-f53fa6520c4f | jq -r .accessToken)
+        bin/kuby -e production deploy
