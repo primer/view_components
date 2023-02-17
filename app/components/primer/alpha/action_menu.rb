@@ -25,7 +25,9 @@ module Primer
       }
 
       # <%= link_to_component(Primer::Alpha::ActionMenu::Item) %>
-      renders_many :items, "Primer::Alpha::ActionMenu::Item"
+      renders_many :items, lambda { |**system_arguments|
+        Primer::Alpha::ActionMenu::Item.new(select_variant: @select_variant, **system_arguments)
+      }
 
       ANCHOR_ALIGN_DEFAULT = :start
       ANCHOR_ALIGN_OPTIONS = [ANCHOR_ALIGN_DEFAULT, :center, :end].freeze
@@ -34,6 +36,13 @@ module Primer
       ANCHOR_SIDE_OPTIONS = [:outside_top, ANCHOR_SIDE_DEFAULT, :outside_left, :outside_right].freeze
 
       DEFAULT_PRELOAD = false
+
+      DEFAULT_SELECT_VARIANT = :none
+      SELECT_VARIANT_OPTIONS = [
+        :single,
+        :multiple,
+        DEFAULT_SELECT_VARIANT
+      ].freeze
 
       # @example Default
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0") do |c| %>
@@ -252,11 +261,13 @@ module Primer
         anchor_side: ANCHOR_SIDE_DEFAULT,
         src: nil,
         preload: DEFAULT_PRELOAD,
+        select_variant: DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
         @menu_id = menu_id
         @src = src
         @preload = fetch_or_fallback_boolean(preload, DEFAULT_PRELOAD)
+        @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
         @system_arguments = deny_tag_argument(**system_arguments)
 
         @system_arguments[:preload] = true if @src.present? && @preload == true
@@ -264,6 +275,7 @@ module Primer
         @system_arguments[:tag] = :"action-menu"
         @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, ANCHOR_ALIGN_DEFAULT).to_s
         @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, ANCHOR_SIDE_DEFAULT).to_s.dasherize
+        @system_arguments[:"data-select-variant"] = @select_variant
       end
 
       private

@@ -132,7 +132,7 @@ module Primer
           is_divider: false,
           is_dangerous: false,
           disabled: false,
-          single_select: false,
+          select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT,
           **system_arguments
         )
           @is_divider = is_divider
@@ -140,7 +140,7 @@ module Primer
           @disabled = disabled
           @label = label
           @href = href
-          @single_select = single_select
+          @select_variant = select_variant
           @truncate_label = truncate_label
           # @tag = fetch_or_fallback(TAG_OPTIONS, tag, :span)
           @system_arguments = system_arguments
@@ -198,9 +198,13 @@ module Primer
           }
 
           # @system_arguments[:tag] = @tag
-          if @single_select
+          case @select_variant
+          when :single
             @system_arguments[:role] = "menuitemradio"
-            @system_arguments[:"aria-checked"] = true
+            @system_arguments[:"aria-checked"] ||= false
+          when :multiple
+            @system_arguments[:role] = "menuitemcheckbox"
+            @system_arguments[:"aria-checked"] ||= false
           else
             @system_arguments[:role] = "menuitem"
           end

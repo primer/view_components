@@ -2,6 +2,8 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 import type IncludeFragmentElement from '@github/include-fragment-element'
 
+type SelectVariant = 'single' | 'multiple' | null
+
 class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
   #firstCharactersOfItems: string[]
@@ -15,6 +17,10 @@ class ActionMenuElement extends HTMLElement {
 
   get anchorSide(): AnchorSide {
     return (this.getAttribute('data-anchor-side') || 'outside-bottom') as AnchorSide
+  }
+
+  get selectVariant(): SelectVariant {
+    return this.getAttribute('data-select-variant') as SelectVariant
   }
 
   get menu(): HTMLUListElement | null {
@@ -113,6 +119,12 @@ class ActionMenuElement extends HTMLElement {
 
   hide() {
     this.open = false
+  }
+
+  #clearSelectedItems() {
+    for (const item of this.querySelectorAll('[aria-checked]')) {
+      item.setAttribute('aria-checked', 'false')
+    }
   }
 
   #addEvents() {
@@ -383,8 +395,23 @@ class ActionMenuElement extends HTMLElement {
     }
   }
 
-  menuItemClick() {
-    this.hide()
+  menuItemClick(event: MouseEvent) {
+    const item = event.currentTarget as HTMLButtonElement
+
+    switch (this.selectVariant) {
+      case 'single':
+        this.#clearSelectedItems()
+        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
+        this.hide()
+        break
+      case 'multiple':
+        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
+        break
+      default:
+        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
+        this.hide()
+        break
+    }
   }
 
   menuItemMouseover(event: MouseEvent) {
