@@ -7,12 +7,12 @@ module Primer
   # :nocov:
   class Component < ViewComponent::Base
     if Module.const_defined?("ViewComponent::SlotableV2") &&
-      !(ViewComponent::Base < ViewComponent::SlotableV2)
+       !(ViewComponent::Base < ViewComponent::SlotableV2)
       include ViewComponent::SlotableV2
     end
 
     if Module.const_defined?("ViewComponent::PolymorphicSlots") &&
-      ViewComponent::Base < ViewComponent::PolymorphicSlots
+       ViewComponent::Base < ViewComponent::PolymorphicSlots
       include ViewComponent::PolymorphicSlots
     end
 
