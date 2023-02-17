@@ -1,0 +1,19 @@
+<%= render(Primer::Alpha::NavList.new) do |list| %>
+  <% list.with_group do |group| %>
+    <%= group.with_heading(title: "Shopping list") %>
+    <% group.with_item(label: "Bread", href: "/list/1") do |item| %>
+      <%= item.with_trailing_action(icon: :plus, aria: { label: "Click for alert" }, name: "bread_button") %>
+    <% end %>
+    <% group.with_item(label: "Cheese", href: "/list/2") do |item| %>
+      <%= item.with_trailing_action(icon: :plus, aria: { label: "Click for alert" }, name: "cheese_button") %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<script type="text/javascript" data-eval="true">
+  const breadButton = document.querySelector("[name=bread_button]")
+  breadButton.addEventListener("click", () => alert("You clicked on bread."))
+
+  const cheeseButton = document.querySelector("[name=cheese_button]")
+  cheeseButton.addEventListener("click", () => alert("You clicked on cheese."))
+</script>

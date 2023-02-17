@@ -76,17 +76,7 @@ module Primer
 
       # @label Trailing action
       def trailing_action
-        render(Primer::Alpha::NavList.new) do |list|
-          list.with_group do |group|
-            group.with_heading(title: "Shopping list")
-            group.with_item(label: "Bread", href: "/list/1") do |item|
-              item.with_trailing_action(icon: :plus, aria: { label: "Button tooltip" })
-            end
-            group.with_item(label: "Cheese", href: "/list/2") do |item|
-              item.with_trailing_action(icon: :plus, aria: { label: "Button tooltip" })
-            end
-          end
-        end
+        render_with_template
       end
     end
   end
