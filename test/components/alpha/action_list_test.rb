@@ -54,7 +54,7 @@ module Primer
       def test_list_labelled_by_heading
         render_preview(:default)
 
-        id = page.find_css(".ActionList-sectionDivider h2")[0].attributes["id"].value
+        id = page.find_css(".ActionList-sectionDivider h3")[0].attributes["id"].value
         assert_selector("ul.ActionListWrap[aria-labelledby='#{id}']")
       end
 

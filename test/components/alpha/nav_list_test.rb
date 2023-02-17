@@ -23,7 +23,7 @@ module Primer
       def test_groups
         render_preview(:default)
 
-        assert_selector("h2.ActionList-sectionDivider-title[role=heading]")
+        assert_selector("h3.ActionList-sectionDivider-title[role=heading]")
 
         assert_selector("ul.ActionListWrap--subGroup[role=list] li.ActionListItem", text: "Moderation options") do |item|
           item.assert_selector("ul.ActionList.ActionList--subGroup[role=list] li.ActionListItem--subItem")
