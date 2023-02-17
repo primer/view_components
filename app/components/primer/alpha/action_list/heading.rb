@@ -22,7 +22,7 @@ module Primer
         # @param scheme [Symbol] Display a background color if scheme is `filled`.
         # @param tag [Integer] Semantic tag for the heading.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(list_id:, title:, heading_level: 2, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
+        def initialize(list_id:, title:, heading_level: 3, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           raise "Heading level must be between #{HEADING_MIN} and #{HEADING_MAX}" unless HEADING_LEVELS.include?(heading_level)
 
           @heading_level = heading_level
