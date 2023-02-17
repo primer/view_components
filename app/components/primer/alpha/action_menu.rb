@@ -29,11 +29,11 @@ module Primer
         Primer::Alpha::ActionMenu::Item.new(select_variant: @select_variant, **system_arguments)
       }
 
-      ANCHOR_ALIGN_DEFAULT = :start
-      ANCHOR_ALIGN_OPTIONS = [ANCHOR_ALIGN_DEFAULT, :center, :end].freeze
+      DEFAULT_ANCHOR_ALIGN = :start
+      ANCHOR_ALIGN_OPTIONS = [DEFAULT_ANCHOR_ALIGN, :center, :end].freeze
 
-      ANCHOR_SIDE_DEFAULT = :outside_bottom
-      ANCHOR_SIDE_OPTIONS = [:outside_top, ANCHOR_SIDE_DEFAULT, :outside_left, :outside_right].freeze
+      DEFAULT_ANCHOR_SIDE = :outside_bottom
+      ANCHOR_SIDE_OPTIONS = [:outside_top, DEFAULT_ANCHOR_SIDE, :outside_left, :outside_right].freeze
 
       DEFAULT_PRELOAD = false
 
@@ -257,8 +257,8 @@ module Primer
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
       def initialize(
         menu_id:,
-        anchor_align: ANCHOR_ALIGN_DEFAULT,
-        anchor_side: ANCHOR_SIDE_DEFAULT,
+        anchor_align: DEFAULT_ANCHOR_ALIGN,
+        anchor_side: DEFAULT_ANCHOR_SIDE,
         src: nil,
         preload: DEFAULT_PRELOAD,
         select_variant: DEFAULT_SELECT_VARIANT,
@@ -273,8 +273,8 @@ module Primer
         @system_arguments[:preload] = true if @src.present? && @preload == true
 
         @system_arguments[:tag] = :"action-menu"
-        @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, ANCHOR_ALIGN_DEFAULT).to_s
-        @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, ANCHOR_SIDE_DEFAULT).to_s.dasherize
+        @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
+        @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE).to_s.dasherize
         @system_arguments[:"data-select-variant"] = @select_variant
       end
 

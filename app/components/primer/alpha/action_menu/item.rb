@@ -116,11 +116,10 @@ module Primer
         #  <% end %>
         # @param tag [Symbol] Optional. The tag to use for the item. <%= one_of(Primer::Alpha::ActionMenu::Item::TAG_OPTIONS) %>
         # @param is_divider [Boolean] Whether to render a divider.
-        # @param is_dangerous [Boolean] If item should be styled dangerously.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         def initialize(
-          label:,
+          label: nil,
           label_classes: nil,
           content_arguments: {},
           truncate_label: false,
@@ -128,21 +127,17 @@ module Primer
           size: DEFAULT_SIZE,
           scheme: DEFAULT_SCHEME,
           description_scheme: DEFAULT_DESCRIPTION_SCHEME,
-          # tag: :span,
           is_divider: false,
-          is_dangerous: false,
           disabled: false,
           select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT,
           **system_arguments
         )
           @is_divider = is_divider
-          @is_dangerous = is_dangerous
           @disabled = disabled
           @label = label
           @href = href
           @select_variant = select_variant
           @truncate_label = truncate_label
-          # @tag = fetch_or_fallback(TAG_OPTIONS, tag, :span)
           @system_arguments = system_arguments
           @content_arguments = content_arguments
 
@@ -186,6 +181,7 @@ module Primer
           if @href && !@disabled
             @content_arguments[:tag] = :a
             @content_arguments[:href] = @href
+            # @system_arguments[:role] = "none"
           else
             @content_arguments[:tag] = :span
           end
@@ -197,7 +193,6 @@ module Primer
             )
           }
 
-          # @system_arguments[:tag] = @tag
           case @select_variant
           when :single
             @system_arguments[:role] = "menuitemradio"
