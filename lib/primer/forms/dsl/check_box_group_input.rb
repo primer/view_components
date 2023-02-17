@@ -32,11 +32,11 @@ module Primer
         def check_box(**system_arguments, &block)
           args = {
             name: @name,
-            **system_arguments,
             builder: @builder,
             form: @form,
             scheme: scheme,
-            disabled: disabled?
+            disabled: disabled?,
+            **system_arguments
           }
 
           @check_boxes << CheckBoxInput.new(**args, &block)
