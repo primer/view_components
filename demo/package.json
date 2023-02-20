@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
-    "@primer/css": "^20.8.1",
+    "@primer/css": "^20.8.2",
     "@rails/actioncable": "^7.0.4",
     "@rails/ujs": "^7.0.4",
     "turbolinks": "^5.2.0",
