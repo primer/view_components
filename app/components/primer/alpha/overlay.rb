@@ -134,7 +134,7 @@ module Primer
         popover: DEFAULT_POPOVER,
         defaultopen: false,
         size: DEFAULT_SIZE,
-        padding: DEFAULT_PADDING,
+        padding: nil,
         anchor: nil,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
         anchor_offset: DEFAULT_ANCHOR_OFFSET,
