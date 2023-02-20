@@ -146,7 +146,6 @@ module Primer
         role:,
         subtitle: nil,
         popover: DEFAULT_POPOVER,
-        defaultopen: false,
         size: DEFAULT_SIZE,
         padding: DEFAULT_PADDING,
         anchor: nil,
@@ -182,7 +181,6 @@ module Primer
         @padding = padding
 
         @system_arguments[:popover] = popover
-        @system_arguments[:defaultopen] = "" if defaultopen
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:describedby] ||= "#{@id}-description"
       end
