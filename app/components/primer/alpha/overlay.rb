@@ -129,10 +129,14 @@ module Primer
       # @param id [String] The id of the Overlay.
       # @param title [String] Describes the content of the Overlay.
       # @param subtitle [String] Provides dditional context for the Overlay, also setting the `aria-describedby` attribute.
+      # @param popover [Symbol] The popover behaviour. <%= one_of(Primer::Alpha::Overlay::POPOVER_OPTIONS) %>
+      # @param popover [Symbol] The popover behaviour. <%= one_of(Primer::Alpha::Overlay::POPOVER_OPTIONS) %>
       # @param size [Symbol] The size of the Overlay. <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>
       # @param padding [Symbol] The padding given to the Overlay body. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
+      # @param anchor [String] An ID of the element to anchor onto. Defaults to the `show_button`.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param anchor_offset [Symbol] The anchor offset to give the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_OFFSET_OPTIONS) %>
       # @param allow_out_of_bounds [Boolean] Allow the Overlay to overflow its container.
       # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
       # @param role [String] The ARIA role. <%= one_of(Primer::Alpha::Overlay::ROLE_OPTIONS) %>
