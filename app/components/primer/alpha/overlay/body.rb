@@ -3,14 +3,6 @@
 module Primer
   module Alpha
     class Overlay
-      DEFAULT_PADDING = :normal
-      PADDING_MAPPINGS = {
-        DEFAULT_PADDING => nil,
-        :condensed => "Overlay-body--paddingCondensed",
-        :none => "Overlay-body--paddingNone"
-      }.freeze
-      PADDING_OPTIONS = PADDING_MAPPINGS.keys
-
       # A `Overlay::Body` is a compositional component, used to render the
       # Body of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.
       class Body < Primer::Component

@@ -20,6 +20,15 @@ module Primer
     #   `aria-labelledby` relationship between the title and the unique id
     #   of the Overlay.
     class Overlay < Primer::Component
+      DEFAULT_PADDING = :normal
+      PADDING_MAPPINGS = {
+        DEFAULT_PADDING => nil,
+        :condensed => "Overlay-body--paddingCondensed",
+        :none => "Overlay-body--paddingNone"
+      }.freeze
+
+      PADDING_OPTIONS = PADDING_MAPPINGS.keys
+
       DEFAULT_SIZE = :auto
       SIZE_MAPPINGS = {
         DEFAULT_SIZE => "Overlay--size-auto",
@@ -134,7 +143,7 @@ module Primer
         popover: DEFAULT_POPOVER,
         defaultopen: false,
         size: DEFAULT_SIZE,
-        padding: nil,
+        padding: DEFAULT_PADDING,
         anchor: nil,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
         anchor_offset: DEFAULT_ANCHOR_OFFSET,
