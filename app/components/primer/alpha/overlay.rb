@@ -119,6 +119,7 @@ module Primer
       #     <%= render(Primer::Alpha::Overlay.new(
       #       title: "Overlay Example",
       #       id: "my-Overlay",
+      #       role: :dialog,
       #     )) do |d| %>
       #       <% d.with_show_button { "Show Overlay" } %>
       #       <% d.with_body do %>
