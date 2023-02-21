@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.0.122
+
+### Patch Changes
+
+- [#1818](https://github.com/primer/view_components/pull/1818) [`c8fa002f`](https://github.com/primer/view_components/commit/c8fa002f807c508c86cd387512e3e81ef01b1db3) Thanks [@camertron](https://github.com/camertron)! - Fix issue in TabPanels causing extra content to render twice
+
+* [#1824](https://github.com/primer/view_components/pull/1824) [`2a234537`](https://github.com/primer/view_components/commit/2a2345372113dc23df1507fdcd6c588351cc3fd7) Thanks [@langermank](https://github.com/langermank)! - ToggleSwitch and SegmentedControl visual updates + Primitives (PCSS) version bump
+
+- [#1595](https://github.com/primer/view_components/pull/1595) [`f31bf3f9`](https://github.com/primer/view_components/commit/f31bf3f95a03efb4931a421b7d49df7aa22b6ea7) Thanks [@soberstadt](https://github.com/soberstadt)! - Change engine to mount on ActionController::Base
+
+* [#1832](https://github.com/primer/view_components/pull/1832) [`557ec8ba`](https://github.com/primer/view_components/commit/557ec8bad66e32a6a5183a9b6496d5910658de41) Thanks [@joelhawksley](https://github.com/joelhawksley)! - support ViewComponent v3.0.0.rc2
+
+- [#1821](https://github.com/primer/view_components/pull/1821) [`c12ae8c5`](https://github.com/primer/view_components/commit/c12ae8c5dbe9fd0b8c723cac297139976fa28552) Thanks [@camertron](https://github.com/camertron)! - Add a standalone FormControl component
+
+* [#1814](https://github.com/primer/view_components/pull/1814) [`8090cda2`](https://github.com/primer/view_components/commit/8090cda2a389a99e100ecea979d40602a3d52ae6) Thanks [@camertron](https://github.com/camertron)! - Expose additional form components
+
+- [#1827](https://github.com/primer/view_components/pull/1827) [`c0545a65`](https://github.com/primer/view_components/commit/c0545a659855c3c6ec20f5e9faf680b2e7a9cc52) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use lookbook 1.5.2
+
+* [#1833](https://github.com/primer/view_components/pull/1833) [`a90e1554`](https://github.com/primer/view_components/commit/a90e155475819bb5f82b0947916b46ada4ea1633) Thanks [@camertron](https://github.com/camertron)! - Fix regression causing check boxes to always render enabled
+
 ## 0.0.121
 
 ### Patch Changes
