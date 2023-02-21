@@ -76,7 +76,7 @@ module Demo
       }
       Lookbook.define_panel("assets", asset_panel_config)
 
-      config.lookbook.project_name = "Primer ViewComponents v#{Primer::ViewComponents::VERSION::STRING}"
+      config.lookbook.project_name = "Test v#{Primer::ViewComponents::VERSION::STRING}"
       config.lookbook.preview_display_options = {
         theme: [
           ["Light default", "light"],
