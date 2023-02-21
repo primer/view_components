@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.123
+
+### Patch Changes
+
+- [#1835](https://github.com/primer/view_components/pull/1835) [`498191b4`](https://github.com/primer/view_components/commit/498191b437a30abd15d3ca3996d26bfcfe73a717) Thanks [@camertron](https://github.com/camertron)! - Fix conditional inclusion of polymorphic slots module
+
+* [#1822](https://github.com/primer/view_components/pull/1822) [`ad56ddef`](https://github.com/primer/view_components/commit/ad56ddef07b2a4e45ca17f0838e5c211840f5873) Thanks [@camertron](https://github.com/camertron)! - Allow NavList selection/deselection by id/href in javascript
+
 ## 0.0.122
 
 ### Patch Changes
