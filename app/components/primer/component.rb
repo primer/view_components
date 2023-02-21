@@ -6,8 +6,16 @@ module Primer
   # @private
   # :nocov:
   class Component < ViewComponent::Base
-    include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
-    include ViewComponent::PolymorphicSlots unless ViewComponent::Base < ViewComponent::PolymorphicSlots
+    if Module.const_defined?("ViewComponent::SlotableV2") &&
+       !(ViewComponent::Base < ViewComponent::SlotableV2)
+      include ViewComponent::SlotableV2
+    end
+
+    if Module.const_defined?("ViewComponent::PolymorphicSlots") &&
+       ViewComponent::Base < ViewComponent::PolymorphicSlots
+      include ViewComponent::PolymorphicSlots
+    end
+
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
