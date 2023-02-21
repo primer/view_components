@@ -192,7 +192,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
 
       matched_selectors = []
       previews.each do |preview|
-        preview_page = render_preview(preview, preview_klass: preview_class)
+        preview_page = render_preview(preview, from: preview_class)
 
         selectors.each do |selector|
           result = preview_page.css(selector)

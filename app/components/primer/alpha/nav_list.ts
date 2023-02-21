@@ -2,8 +2,9 @@
 import {controller, target, targets} from '@github/catalyst'
 
 @controller
-class NavListElement extends HTMLElement {
+export class NavListElement extends HTMLElement {
   @target list: HTMLElement
+  @targets items: HTMLElement[]
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]
 
@@ -38,6 +39,43 @@ class NavListElement extends HTMLElement {
 
   get paginationSrc(): string {
     return this.showMoreItem.getAttribute('src') || ''
+  }
+
+  selectItemById(itemId: string | null): boolean {
+    if (!itemId) return false
+
+    const selectedItem = this.#findSelectedNavItemById(itemId)
+
+    if (selectedItem) {
+      this.#select(selectedItem)
+      return true
+    }
+
+    return false
+  }
+
+  selectItemByHref(href: string | null): boolean {
+    if (!href) return false
+
+    const selectedItem = this.#findSelectedNavItemByHref(href)
+
+    if (selectedItem) {
+      this.#select(selectedItem)
+      return true
+    }
+
+    return false
+  }
+
+  selectItemByCurrentLocation(): boolean {
+    const selectedItem = this.#findSelectedNavItemByCurrentLocation()
+
+    if (selectedItem) {
+      this.#select(selectedItem)
+      return true
+    }
+
+    return false
   }
 
   // expand collapsible item onClick
@@ -118,7 +156,7 @@ class NavListElement extends HTMLElement {
       this.currentPage--
       return
     }
-    const fragment = this.parseHTML(document, html)
+    const fragment = this.#parseHTML(document, html)
     fragment?.querySelector('li > a')?.setAttribute('data-targets', 'nav-list.focusMarkers')
     this.list.insertBefore(fragment, this.showMoreItem)
     this.focusMarkers.pop()?.focus()
@@ -137,11 +175,75 @@ class NavListElement extends HTMLElement {
     }
   }
 
-  private parseHTML(document: Document, html: string): DocumentFragment {
+  #parseHTML(document: Document, html: string): DocumentFragment {
     const template = document.createElement('template')
     // eslint-disable-next-line github/no-inner-html
     template.innerHTML = html
     return document.importNode(template.content, true)
+  }
+
+  #findSelectedNavItemById(itemId: string): HTMLElement | null {
+    // First we compare the selected link to data-item-id for each nav item
+    for (const navItem of this.items) {
+      const keys = navItem.getAttribute('data-item-id')?.split(' ') || []
+
+      if (keys.includes(itemId)) {
+        return navItem
+      }
+    }
+
+    return null
+  }
+
+  #findSelectedNavItemByHref(href: string): HTMLElement | null {
+    // If we didn't find a match, we compare the selected link to the href of each nav item
+    const selectedNavItem = this.querySelector<HTMLAnchorElement>(`.ActionListContent[href="${href}"]`)
+    if (selectedNavItem) {
+      return selectedNavItem.closest('.ActionListItem')
+    }
+
+    return null
+  }
+
+  #findSelectedNavItemByCurrentLocation(): HTMLElement | null {
+    return this.#findSelectedNavItemByHref(window.location.pathname)
+  }
+
+  #select(navItem: HTMLElement) {
+    const currentlySelectedItem = this.querySelector('.ActionListItem--navActive') as HTMLElement
+    if (currentlySelectedItem) this.#deselect(currentlySelectedItem)
+
+    navItem.classList.add('ActionListItem--navActive')
+
+    const parentMenu = this.#findParentMenu(navItem)
+
+    if (parentMenu) {
+      this.expandItem(parentMenu)
+      parentMenu.classList.add('ActionListContent--hasActiveSubItem')
+    }
+  }
+
+  #deselect(navItem: HTMLElement) {
+    navItem.classList.remove('ActionListItem--navActive')
+
+    const parentMenu = this.#findParentMenu(navItem)
+
+    if (parentMenu) {
+      this.collapseItem(parentMenu)
+      parentMenu.classList.remove('ActionListContent--hasActiveSubItem')
+    }
+  }
+
+  #findParentMenu(navItem: HTMLElement): HTMLElement | null {
+    if (!navItem.classList.contains('ActionListItem--subItem')) return null
+
+    const parent = navItem.closest('li.ActionListItem--hasSubItem')?.querySelector('button.ActionListContent')
+
+    if (parent) {
+      return parent as HTMLElement
+    } else {
+      return null
+    }
   }
 }
 

@@ -5,7 +5,7 @@ require "capybara/cuprite"
 
 # Then, we need to register our driver to be able to use it later
 # with #driven_by method.
-Capybara.register_driver(:cuprite) do |app|
+Capybara.register_driver(:primer_cuprite) do |app|
   Capybara::Cuprite::Driver.new(
     app,
     **{

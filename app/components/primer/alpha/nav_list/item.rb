@@ -133,6 +133,10 @@ module Primer
         def current_page?(url)
           helpers.current_page?(url)
         end
+
+        def list_class
+          Primer::Alpha::NavList
+        end
       end
     end
   end

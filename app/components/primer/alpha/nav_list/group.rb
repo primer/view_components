@@ -38,7 +38,7 @@ module Primer
 
         # @private
         def self.custom_element_name
-          "nav-list"
+          Primer::Alpha::NavList.custom_element_name
         end
 
         # @param selected_item_id [Symbol] The ID of the currently selected item. Used internally.

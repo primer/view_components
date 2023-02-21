@@ -25,8 +25,8 @@ jobs:
     if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     environment:
-      name: review-pr-${{ github.event.number }}
-      # The environment variable is computer later in this job in
+      name: preview
+      # The environment variable is computed later in this job in
       # the "Get preview app info" step.
       # That script sets environment variables which is used by Actions
       # to link a PR to a list of environments later.
@@ -44,7 +44,11 @@ jobs:
       run: echo $AZURE_ACR_PASSWORD | docker login primer.azurecr.io --username GitHubActions --password-stdin
     - uses: Azure/login@v1
       with:
-        creds: '{"clientId":"5ad1a188-b944-40eb-a2f8-cc683a6a65a0","clientSecret":"${{ secrets.AZURE_SPN_CLIENT_SECRET }}","subscriptionId":"550eb99d-d0c7-4651-a337-f53fa6520c4f","tenantId":"398a6654-997b-47e9-b12b-9515b896b4de"}'
+        # excluding a client secret here will cause a login via OpenID Connect (OIDC),
+        # which prevents us from having to rotate client credentials, etc
+        client-id: "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+        tenant-id: "398a6654-997b-47e9-b12b-9515b896b4de"
+        subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
 
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
