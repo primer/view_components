@@ -12,7 +12,7 @@ module Primer
     end
 
     if Module.const_defined?("ViewComponent::PolymorphicSlots") &&
-       ViewComponent::Base < ViewComponent::PolymorphicSlots
+       !(ViewComponent::Base < ViewComponent::PolymorphicSlots)
       include ViewComponent::PolymorphicSlots
     end
 
