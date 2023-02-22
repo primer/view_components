@@ -128,6 +128,20 @@ module Primer
 
         assert_equal "Cannot render a trailing action for an item with subitems", error.message
       end
+
+      def test_errors_when_passing_selected_by_ids_to_parent
+        error = assert_raises(RuntimeError) do
+          render_inline(Primer::Alpha::NavList.new) do |component|
+            component.with_section(aria: { label: "List" }) do |section|
+              section.with_item(label: "Level 1", href: "/level1", selected_by_ids: :foo) do |item|
+                item.with_item(label: "Level 2", href: "/level2")
+              end
+            end
+          end
+        end
+
+        assert_equal "Cannot pass `selected_by_ids:` for an item with subitems, since parent items cannot be selected", error.message
+      end
     end
   end
 end
