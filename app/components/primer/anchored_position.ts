@@ -4,14 +4,17 @@ import {getAnchoredPosition} from '@primer/behaviors'
 const updateWhenVisible = (() => {
   const anchors = new Set<AnchoredPositionElement>()
   let intersectionObserver: IntersectionObserver | null = null
-  function updateAnchorsOnResize() {
+  let resizeObserver: ResizeObserver | null = null
+  function updateVisibleAnchors() {
     for (const anchor of anchors) {
       anchor.update()
     }
   }
   return (el: AnchoredPositionElement) => {
     // eslint-disable-next-line github/prefer-observers
-    window.addEventListener('resize', updateAnchorsOnResize)
+    window.addEventListener('resize', updateVisibleAnchors)
+
+    el.ownerDocument.documentElement.addEventListener('scroll', updateVisibleAnchors)
     intersectionObserver ||= new IntersectionObserver(entries => {
       for (const entry of entries) {
         const target = entry.target as AnchoredPositionElement
@@ -23,6 +26,12 @@ const updateWhenVisible = (() => {
         }
       }
     })
+    resizeObserver ||= new ResizeObserver(entries => {
+      for (const anchor of anchors) {
+        anchor.update()
+      }
+    })
+    resizeObserver.observe(el.ownerDocument.documentElement)
     intersectionObserver.observe(el)
   }
 })()
