@@ -101,6 +101,9 @@ module Primer
         # the parent and bypass the problem entirely. Maybe not the most OO approach,
         # but it works.
         def item_active?(item)
+          # parent items cannot be active
+          return false if item.items.any?
+
           if item.selected_by_ids.present?
             item.selected_by_ids.include?(@selected_item_id)
           elsif item.href
