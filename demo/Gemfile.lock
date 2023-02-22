@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.121)
+    primer_view_components (0.0.123)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -186,7 +186,7 @@ GEM
     kubectl-rb (0.2.1-x86_64-linux)
     kubernetes-cli (0.4.0)
       kubectl-rb (~> 0.2)
-    kuby-azure (0.3.3)
+    kuby-azure (0.4.0)
       azure_mgmt_container_service (~> 0.20)
       kube-dsl (~> 0.1)
     kuby-cert-manager (0.4.0)
@@ -267,7 +267,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.1-x86_64-linux)
       racc (~> 1.4)
-    octicons (17.11.1)
+    octicons (17.12.0)
     oj (3.14.0)
     os (1.1.4)
     pry (0.14.1)
@@ -382,7 +382,7 @@ DEPENDENCIES
   hotwire-livereload (~> 1.1)
   importmap-rails
   kind-rb (~> 0.1)
-  kuby-azure (>= 0.3.3, < 1.0)
+  kuby-azure (~> 0.4.0)
   kuby-core (~> 0.19)
   kuby-kind (~> 0.1)
   lookbook (~> 1.5.1)

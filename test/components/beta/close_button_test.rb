@@ -54,12 +54,12 @@ class PrimerBetaCloseButtonTest < Minitest::Test
     # are duplicate attributes on a given element, Capybara will ignore the second one.
     # So if we use `refute_selector` the test will pass even if there is a duplicate
     # `aria-label` in the generated HTML.
-    refute_includes @rendered_content, 'aria-label="Close"'
+    refute_includes rendered_content, 'aria-label="Close"'
 
     # Test with String style `aria-label`
     render_inline(Primer::Beta::CloseButton.new("aria-label": "Label"))
 
     assert_selector("button[type='button'][aria-label='Label'].close-button")
-    refute_includes @rendered_content, 'aria-label="Close"'
+    refute_includes rendered_content, 'aria-label="Close"'
   end
 end
