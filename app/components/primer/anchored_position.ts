@@ -123,6 +123,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     updateWhenVisible(this)
   }
 
+  static observedAttributes = ['align', 'side', 'anchor', 'alignment-offset', 'allow-out-of-bounds']
   attributeChangedCallback() {
     this.update()
   }
