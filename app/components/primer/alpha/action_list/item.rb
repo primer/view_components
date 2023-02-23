@@ -84,8 +84,11 @@ module Primer
         # A button rendered after the trailing icon that can be used to show a menu, activate
         # a dialog, etc.
         #
+        # @param show_on_hover [Boolean] Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`.
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
-        renders_one :trailing_action, lambda { |**system_arguments|
+        renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
+          @trailing_action_on_hover = show_on_hover
+
           Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
@@ -162,6 +165,7 @@ module Primer
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
+          @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
           @content_arguments = content_arguments
@@ -223,6 +227,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
+            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
             "ActionListItem--navActive" => active?
           )
 

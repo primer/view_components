@@ -33,6 +33,12 @@ module Primer
         assert_selector(".ActionListItem > tool-tip")
       end
 
+      def test_item_trailing_action_on_hover
+        render_preview(:item, params: { trailing_action: "arrow-down", trailing_action_on_hover: true })
+
+        assert_selector(".ActionListItem--trailingActionHover")
+      end
+
       def test_item_leading_visual_avatar
         render_preview(:item, params: { leading_visual_avatar_src: "/" })
 

@@ -76,7 +76,6 @@ module Primer
 
       # @label Trailing action
       def trailing_action
-        render_with_template
       end
     end
   end
