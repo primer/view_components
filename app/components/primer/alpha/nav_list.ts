@@ -162,6 +162,10 @@ export class NavListElement extends HTMLElement {
   #findSelectedNavItemById(itemId: string): HTMLElement | null {
     // First we compare the selected link to data-item-id for each nav item
     for (const navItem of this.items) {
+      if (navItem.classList.contains('ActionListItem--hasSubItem')) {
+        continue
+      }
+
       const keys = navItem.getAttribute('data-item-id')?.split(' ') || []
 
       if (keys.includes(itemId)) {

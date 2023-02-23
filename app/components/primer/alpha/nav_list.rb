@@ -67,7 +67,7 @@ module Primer
       #   <%= render(Primer::Alpha::NavList.new(selected_item_id: :email_notifications)) do |component| %>
       #     <% component.with_section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.with_heading(title: "Account Settings") %>
-      #       <% section.with_item(label: "Notification settings", selected_by_ids: :notifications) do |item| %>
+      #       <% section.with_item(label: "Notification settings") do |item| %>
       #         <% item.with_leading_visual_icon(icon: :bell) %>
       #         <% item.with_item(label: "Email", selected_by_ids: :email_notifications, href: "/account/notifications/email") do |subitem| %>
       #           <% subitem.with_trailing_visual_icon(icon: :mail) %>
@@ -76,7 +76,7 @@ module Primer
       #           <% subitem.with_trailing_visual_icon(icon: :"device-mobile") %>
       #         <% end %>
       #       <% end %>
-      #       <% section.with_item(label: "Messages", selected_by_ids: :messages) do |item| %>
+      #       <% section.with_item(label: "Messages") do |item| %>
       #         <% item.with_leading_visual_icon(icon: :bookmark) %>
       #         <% item.with_item(label: "Inbox", href: "/account/messages/inbox") do |subitem| %>
       #           <% subitem.with_trailing_visual_counter(count: 10) %>
