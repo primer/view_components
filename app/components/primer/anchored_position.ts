@@ -24,7 +24,7 @@ const updateWhenVisible = (() => {
         }
       }
     })
-    resizeObserver ||= new ResizeObserver(entries => {
+    resizeObserver ||= new ResizeObserver(() => {
       for (const anchor of anchors) {
         anchor.update()
       }
