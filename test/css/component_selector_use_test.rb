@@ -92,8 +92,7 @@ class ComponentSelectorUseTest < System::TestCase
                 if (node.matches(componentSelector) || node.querySelectorAll(`:scope > ${componentSelector}`).length > 0) {
                   return true;
                 }
-              } catch (e) {
-                return false;
+              } catch {
               }
             }
 
