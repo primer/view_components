@@ -154,7 +154,7 @@ module Primer
         anchor_side: DEFAULT_ANCHOR_SIDE,
         allow_out_of_bounds: false,
         visually_hide_title: false,
-        id: "overlay-#{(36**3 + rand(36**4)).to_s(36)}",
+        id: self.class.generate_id,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
