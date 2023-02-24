@@ -57,7 +57,7 @@ module Primer
         end
 
         def active?
-          item_active?(self)
+          item_active?(self) && items.empty?
         end
 
         # Cause this item to show its list of sub items when rendered.
@@ -78,6 +78,8 @@ module Primer
           super
 
           raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?
+
+          raise "Cannot pass `selected_by_ids:` for an item with subitems, since parent items cannot be selected" if items.present? && @selected_by_ids.present?
 
           return if items.blank?
 
