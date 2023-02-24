@@ -23,9 +23,9 @@ module Primer
       def test_groups
         render_preview(:default)
 
-        assert_selector("h3.ActionList-sectionDivider-title[role=heading]")
+        assert_selector("h3.ActionList-sectionDivider-title")
 
-        assert_selector("ul.ActionListWrap--subGroup[role=list] li.ActionListItem", text: "Moderation options") do |item|
+        assert_selector("ul.ActionListWrap[role=list] li.ActionListItem", text: "Moderation options") do |item|
           item.assert_selector("ul.ActionList.ActionList--subGroup[role=list] li.ActionListItem--subItem")
         end
       end
@@ -149,7 +149,7 @@ module Primer
           end
         end
 
-        assert_selector "h3[role=heading][aria-level=3]", text: "List"
+        assert_selector "h3[aria-level=3]", text: "List"
       end
 
       def test_sub_lists_labeled_by_parent_button

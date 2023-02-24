@@ -72,8 +72,6 @@ module Primer
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
           "ActionListWrap",
-          "ActionListWrap--subGroup",
-          "ActionListItem--hasSubItem",
           "ActionListWrap--divided" => @show_dividers
         )
 
