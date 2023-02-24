@@ -159,11 +159,11 @@ module Primer
       def test_allows_customizing_heading_level
         render_inline(Primer::Alpha::NavList.new) do |component|
           component.with_group do |group|
-            group.with_heading(title: "List", heading_level: 3)
+            group.with_heading(title: "List", heading_level: 2)
           end
         end
 
-        assert_selector "h3[aria-level=3]", text: "List"
+        assert_selector "h2", text: "List"
       end
 
       def test_sub_lists_labeled_by_parent_button
