@@ -1,6 +1,8 @@
 [
   {
     "name": "action_list",
+    "component": "ActionList",
+    "status": "alpha",
     "lookup_path": "primer/alpha/action_list",
     "examples": [
       {
@@ -112,6 +114,8 @@
   },
   {
     "name": "auto_complete",
+    "component": "AutoComplete",
+    "status": "deprecated",
     "lookup_path": "primer/alpha/auto_complete",
     "examples": [
       {
@@ -133,6 +137,8 @@
   },
   {
     "name": "auto_complete",
+    "component": "AutoComplete",
+    "status": "beta",
     "lookup_path": "primer/beta/auto_complete",
     "examples": [
       {
@@ -219,6 +225,8 @@
   },
   {
     "name": "auto_complete_item",
+    "component": "AutoComplete::Item",
+    "status": "beta",
     "lookup_path": "primer/beta/auto_complete_item",
     "examples": [
       {
@@ -240,6 +248,8 @@
   },
   {
     "name": "avatar",
+    "component": "Avatar",
+    "status": "beta",
     "lookup_path": "primer/beta/avatar",
     "examples": [
       {
@@ -271,6 +281,8 @@
   },
   {
     "name": "avatar_stack",
+    "component": "AvatarStack",
+    "status": "beta",
     "lookup_path": "primer/beta/avatar_stack",
     "examples": [
       {
@@ -297,6 +309,8 @@
   },
   {
     "name": "banner",
+    "component": "Banner",
+    "status": "alpha",
     "lookup_path": "primer/alpha/banner",
     "examples": [
       {
@@ -338,6 +352,8 @@
   },
   {
     "name": "base_button",
+    "component": "BaseButton",
+    "status": "beta",
     "lookup_path": "primer/beta/base_button",
     "examples": [
       {
@@ -354,6 +370,8 @@
   },
   {
     "name": "blankslate",
+    "component": "Blankslate",
+    "status": "beta",
     "lookup_path": "primer/beta/blankslate",
     "examples": [
       {
@@ -410,6 +428,8 @@
   },
   {
     "name": "border_box",
+    "component": "BorderBox",
+    "status": "beta",
     "lookup_path": "primer/beta/border_box",
     "examples": [
       {
@@ -441,6 +461,8 @@
   },
   {
     "name": "breadcrumbs",
+    "component": "Breadcrumbs",
+    "status": "beta",
     "lookup_path": "primer/beta/breadcrumbs",
     "examples": [
       {
@@ -457,6 +479,8 @@
   },
   {
     "name": "button",
+    "component": "Button",
+    "status": "beta",
     "lookup_path": "primer/beta/button",
     "examples": [
       {
@@ -533,6 +557,8 @@
   },
   {
     "name": "button_group",
+    "component": "ButtonGroup",
+    "status": "beta",
     "lookup_path": "primer/beta/button_group",
     "examples": [
       {
@@ -549,6 +575,8 @@
   },
   {
     "name": "button_marketing",
+    "component": "ButtonMarketing",
+    "status": "alpha",
     "lookup_path": "primer/alpha/button_marketing",
     "examples": [
       {
@@ -575,6 +603,8 @@
   },
   {
     "name": "check_box",
+    "component": "CheckBox",
+    "status": "alpha",
     "lookup_path": "primer/alpha/check_box",
     "examples": [
       {
@@ -596,6 +626,8 @@
   },
   {
     "name": "check_box_group",
+    "component": "CheckBoxGroup",
+    "status": "alpha",
     "lookup_path": "primer/alpha/check_box_group",
     "examples": [
       {
@@ -617,6 +649,8 @@
   },
   {
     "name": "clipboard_copy",
+    "component": "ClipboardCopy",
+    "status": "beta",
     "lookup_path": "primer/beta/clipboard_copy",
     "examples": [
       {
@@ -643,6 +677,8 @@
   },
   {
     "name": "close_button",
+    "component": "CloseButton",
+    "status": "beta",
     "lookup_path": "primer/beta/close_button",
     "examples": [
       {
@@ -659,6 +695,8 @@
   },
   {
     "name": "counter",
+    "component": "Counter",
+    "status": "beta",
     "lookup_path": "primer/beta/counter",
     "examples": [
       {
@@ -690,6 +728,8 @@
   },
   {
     "name": "details",
+    "component": "Details",
+    "status": "beta",
     "lookup_path": "primer/beta/details",
     "examples": [
       {
@@ -716,6 +756,8 @@
   },
   {
     "name": "dialog",
+    "component": "Dialog",
+    "status": "alpha",
     "lookup_path": "primer/alpha/dialog",
     "examples": [
       {
@@ -767,6 +809,8 @@
   },
   {
     "name": "dropdown",
+    "component": "Dropdown",
+    "status": "alpha",
     "lookup_path": "primer/alpha/dropdown",
     "examples": [
       {
@@ -798,6 +842,8 @@
   },
   {
     "name": "flash",
+    "component": "Flash",
+    "status": "beta",
     "lookup_path": "primer/beta/flash",
     "examples": [
       {
@@ -824,6 +870,8 @@
   },
   {
     "name": "form_control",
+    "component": "FormControl",
+    "status": "alpha",
     "lookup_path": "primer/alpha/form_control",
     "examples": [
       {
@@ -844,108 +892,9 @@
     ]
   },
   {
-    "name": "forms",
-    "lookup_path": "primer/forms",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/single_text_field_form",
-        "preview_path": "/lookbook/preview/primer/forms/single_text_field_form",
-        "name": "single_text_field_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/multi_text_field_form",
-        "preview_path": "/lookbook/preview/primer/forms/multi_text_field_form",
-        "name": "multi_text_field_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/text_field_and_checkbox_form",
-        "preview_path": "/lookbook/preview/primer/forms/text_field_and_checkbox_form",
-        "name": "text_field_and_checkbox_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/horizontal_form",
-        "preview_path": "/lookbook/preview/primer/forms/horizontal_form",
-        "name": "horizontal_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/composed_form",
-        "preview_path": "/lookbook/preview/primer/forms/composed_form",
-        "name": "composed_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/submit_button_form",
-        "preview_path": "/lookbook/preview/primer/forms/submit_button_form",
-        "name": "submit_button_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/radio_button_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/radio_button_group_form",
-        "name": "radio_button_group_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/check_box_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/check_box_group_form",
-        "name": "check_box_group_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/array_check_box_group_form",
-        "preview_path": "/lookbook/preview/primer/forms/array_check_box_group_form",
-        "name": "array_check_box_group_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/select_form",
-        "preview_path": "/lookbook/preview/primer/forms/select_form",
-        "name": "select_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/radio_button_with_nested_form",
-        "preview_path": "/lookbook/preview/primer/forms/radio_button_with_nested_form",
-        "name": "radio_button_with_nested_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/check_box_with_nested_form",
-        "preview_path": "/lookbook/preview/primer/forms/check_box_with_nested_form",
-        "name": "check_box_with_nested_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/caption_template_form",
-        "preview_path": "/lookbook/preview/primer/forms/caption_template_form",
-        "name": "caption_template_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/after_content_form",
-        "preview_path": "/lookbook/preview/primer/forms/after_content_form",
-        "name": "after_content_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/invalid_form",
-        "preview_path": "/lookbook/preview/primer/forms/invalid_form",
-        "name": "invalid_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/multi_input_form",
-        "preview_path": "/lookbook/preview/primer/forms/multi_input_form",
-        "name": "multi_input_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/name_with_question_mark_form",
-        "preview_path": "/lookbook/preview/primer/forms/name_with_question_mark_form",
-        "name": "name_with_question_mark_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/immediate_validation_form",
-        "preview_path": "/lookbook/preview/primer/forms/immediate_validation_form",
-        "name": "immediate_validation_form"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/forms/example_toggle_switch_form",
-        "preview_path": "/lookbook/preview/primer/forms/example_toggle_switch_form",
-        "name": "example_toggle_switch_form"
-      }
-    ]
-  },
-  {
     "name": "heading",
+    "component": "Heading",
+    "status": "beta",
     "lookup_path": "primer/beta/heading",
     "examples": [
       {
@@ -962,6 +911,8 @@
   },
   {
     "name": "hellip_button",
+    "component": "HellipButton",
+    "status": "alpha",
     "lookup_path": "primer/alpha/hellip_button",
     "examples": [
       {
@@ -978,6 +929,8 @@
   },
   {
     "name": "hidden_text_expander",
+    "component": "HiddenTextExpander",
+    "status": "alpha",
     "lookup_path": "primer/alpha/hidden_text_expander",
     "examples": [
       {
@@ -994,6 +947,8 @@
   },
   {
     "name": "icon_button",
+    "component": "IconButton",
+    "status": "beta",
     "lookup_path": "primer/beta/icon_button",
     "examples": [
       {
@@ -1020,6 +975,8 @@
   },
   {
     "name": "image_crop",
+    "component": "ImageCrop",
+    "status": "alpha",
     "lookup_path": "primer/alpha/image_crop",
     "examples": [
       {
@@ -1041,6 +998,8 @@
   },
   {
     "name": "label",
+    "component": "Label",
+    "status": "beta",
     "lookup_path": "primer/beta/label",
     "examples": [
       {
@@ -1072,6 +1031,8 @@
   },
   {
     "name": "layout",
+    "component": "Layout",
+    "status": "alpha",
     "lookup_path": "primer/alpha/layout",
     "examples": [
       {
@@ -1118,6 +1079,8 @@
   },
   {
     "name": "layout",
+    "component": "Layout",
+    "status": "alpha",
     "lookup_path": "primer/layout",
     "examples": [
       {
@@ -1134,6 +1097,8 @@
   },
   {
     "name": "link",
+    "component": "Link",
+    "status": "beta",
     "lookup_path": "primer/beta/link",
     "examples": [
       {
@@ -1160,6 +1125,8 @@
   },
   {
     "name": "markdown",
+    "component": "Markdown",
+    "status": "beta",
     "lookup_path": "primer/beta/markdown",
     "examples": [
       {
@@ -1176,6 +1143,8 @@
   },
   {
     "name": "menu",
+    "component": "Menu",
+    "status": "alpha",
     "lookup_path": "primer/alpha/menu",
     "examples": [
       {
@@ -1192,6 +1161,8 @@
   },
   {
     "name": "multi_input",
+    "component": "MultiInput",
+    "status": "alpha",
     "lookup_path": "primer/alpha/multi_input",
     "examples": [
       {
@@ -1223,6 +1194,8 @@
   },
   {
     "name": "nav_list",
+    "component": "NavList",
+    "status": "alpha",
     "lookup_path": "primer/alpha/nav_list",
     "examples": [
       {
@@ -1249,6 +1222,8 @@
   },
   {
     "name": "octicon",
+    "component": "Octicon",
+    "status": "beta",
     "lookup_path": "primer/beta/octicon",
     "examples": [
       {
@@ -1265,6 +1240,8 @@
   },
   {
     "name": "popover",
+    "component": "Popover",
+    "status": "beta",
     "lookup_path": "primer/beta/popover",
     "examples": [
       {
@@ -1291,6 +1268,8 @@
   },
   {
     "name": "progress_bar",
+    "component": "ProgressBar",
+    "status": "beta",
     "lookup_path": "primer/beta/progress_bar",
     "examples": [
       {
@@ -1312,6 +1291,8 @@
   },
   {
     "name": "radio_button",
+    "component": "RadioButton",
+    "status": "alpha",
     "lookup_path": "primer/alpha/radio_button",
     "examples": [
       {
@@ -1333,6 +1314,8 @@
   },
   {
     "name": "radio_button_group",
+    "component": "RadioButtonGroup",
+    "status": "alpha",
     "lookup_path": "primer/alpha/radio_button_group",
     "examples": [
       {
@@ -1354,6 +1337,8 @@
   },
   {
     "name": "relative_time",
+    "component": "RelativeTime",
+    "status": "beta",
     "lookup_path": "primer/beta/relative_time",
     "examples": [
       {
@@ -1385,6 +1370,8 @@
   },
   {
     "name": "segmented_control",
+    "component": "SegmentedControl",
+    "status": "alpha",
     "lookup_path": "primer/alpha/segmented_control",
     "examples": [
       {
@@ -1426,6 +1413,8 @@
   },
   {
     "name": "select",
+    "component": "Select",
+    "status": "alpha",
     "lookup_path": "primer/alpha/select",
     "examples": [
       {
@@ -1447,6 +1436,8 @@
   },
   {
     "name": "spinner",
+    "component": "Spinner",
+    "status": "beta",
     "lookup_path": "primer/beta/spinner",
     "examples": [
       {
@@ -1463,6 +1454,8 @@
   },
   {
     "name": "state",
+    "component": "State",
+    "status": "beta",
     "lookup_path": "primer/beta/state",
     "examples": [
       {
@@ -1489,6 +1482,8 @@
   },
   {
     "name": "subhead",
+    "component": "Subhead",
+    "status": "beta",
     "lookup_path": "primer/beta/subhead",
     "examples": [
       {
@@ -1520,6 +1515,8 @@
   },
   {
     "name": "tab_nav",
+    "component": "TabNav",
+    "status": "alpha",
     "lookup_path": "primer/alpha/tab_nav",
     "examples": [
       {
@@ -1541,6 +1538,8 @@
   },
   {
     "name": "tab_panels",
+    "component": "TabPanels",
+    "status": "alpha",
     "lookup_path": "primer/alpha/tab_panels",
     "examples": [
       {
@@ -1557,6 +1556,8 @@
   },
   {
     "name": "text",
+    "component": "Text",
+    "status": "beta",
     "lookup_path": "primer/beta/text",
     "examples": [
       {
@@ -1573,6 +1574,8 @@
   },
   {
     "name": "text_area",
+    "component": "TextArea",
+    "status": "alpha",
     "lookup_path": "primer/alpha/text_area",
     "examples": [
       {
@@ -1594,6 +1597,8 @@
   },
   {
     "name": "text_field",
+    "component": "TextField",
+    "status": "alpha",
     "lookup_path": "primer/alpha/text_field",
     "examples": [
       {
@@ -1625,6 +1630,8 @@
   },
   {
     "name": "timeline_item",
+    "component": "TimelineItem",
+    "status": "beta",
     "lookup_path": "primer/beta/timeline_item",
     "examples": [
       {
@@ -1641,6 +1648,8 @@
   },
   {
     "name": "toggle_switch",
+    "component": "ToggleSwitch",
+    "status": "alpha",
     "lookup_path": "primer/alpha/toggle_switch",
     "examples": [
       {
@@ -1702,6 +1711,8 @@
   },
   {
     "name": "tooltip",
+    "component": "Tooltip",
+    "status": "alpha",
     "lookup_path": "primer/alpha/tooltip",
     "examples": [
       {
@@ -1743,6 +1754,8 @@
   },
   {
     "name": "truncate",
+    "component": "Truncate",
+    "status": "beta",
     "lookup_path": "primer/beta/truncate",
     "examples": [
       {
@@ -1774,6 +1787,8 @@
   },
   {
     "name": "underline_nav",
+    "component": "UnderlineNav",
+    "status": "alpha",
     "lookup_path": "primer/alpha/underline_nav",
     "examples": [
       {
@@ -1795,6 +1810,8 @@
   },
   {
     "name": "underline_panels",
+    "component": "UnderlinePanels",
+    "status": "alpha",
     "lookup_path": "primer/alpha/underline_panels",
     "examples": [
       {

@@ -90,6 +90,8 @@ module Primer
         end
       end
     end
+
+    DocsHelper.extend(DocsHelper)
   end
 end
 # :nocov:
