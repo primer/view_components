@@ -2,6 +2,8 @@
   {
     "component": "ActionList",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
     "parameters": [
@@ -173,6 +175,8 @@
   {
     "component": "ActionList::Divider",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionListDivider",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
     "parameters": [
@@ -199,6 +203,8 @@
   {
     "component": "ActionList::Heading",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionListHeading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
     "parameters": [
@@ -249,6 +255,8 @@
   {
     "component": "ActionList::Item",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionListItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/item/default/",
     "parameters": [
@@ -415,6 +423,8 @@
   {
     "component": "AutoComplete",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "AutoComplete",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/auto_complete.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/auto_complete/default/",
     "parameters": [
@@ -526,6 +536,8 @@
   {
     "component": "AutoComplete::Item",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "AutoCompleteItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/auto_complete/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/auto_complete/item/default/",
     "parameters": [
@@ -564,6 +576,8 @@
   {
     "component": "Banner",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Banner",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/banner.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
@@ -666,6 +680,8 @@
   {
     "component": "ButtonMarketing",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ButtonMarketing",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/button_marketing/default/",
     "parameters": [
@@ -729,6 +745,8 @@
   {
     "component": "CheckBox",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "CheckBox",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/check_box.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/check_box/default/",
     "parameters": [
@@ -889,6 +907,8 @@
   {
     "component": "CheckBoxGroup",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "CheckBoxGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/check_box_group.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/check_box_group/default/",
     "parameters": [
@@ -947,6 +967,8 @@
   {
     "component": "Dialog",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "Dialog",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/default/",
     "parameters": [
@@ -1118,6 +1140,8 @@
   {
     "component": "Dialog::Body",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "DialogBody",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
     "parameters": [
@@ -1138,6 +1162,8 @@
   {
     "component": "Dialog::Footer",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "DialogFooter",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/footer.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/footer/default/",
     "parameters": [
@@ -1164,6 +1190,8 @@
   {
     "component": "Dialog::Header",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "DialogHeader",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/header.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
     "parameters": [
@@ -1208,6 +1236,8 @@
   {
     "component": "Dropdown",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Dropdown",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/default/",
     "parameters": [
@@ -1306,6 +1336,8 @@
   {
     "component": "Dropdown::Menu",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "DropdownMenu",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/default/",
     "parameters": [
@@ -1367,6 +1399,8 @@
   {
     "component": "Dropdown::Menu::Item",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "DropdownMenuItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
     "parameters": [
@@ -1382,6 +1416,8 @@
   {
     "component": "FormButton",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "FormButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/form_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/form_button/default/",
     "parameters": [
@@ -1444,6 +1480,8 @@
   {
     "component": "FormControl",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "FormControl",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/form_control.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/form_control/default/",
     "parameters": [
@@ -1527,6 +1565,8 @@
   {
     "component": "HellipButton",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "HellipButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hellip_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hellip_button/default/",
     "parameters": [
@@ -1562,6 +1602,8 @@
   {
     "component": "HiddenTextExpander",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "HiddenTextExpander",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hidden_text_expander/default/",
     "parameters": [
@@ -1603,6 +1645,8 @@
   {
     "component": "Image",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Image",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image/default/",
     "parameters": [
@@ -1641,6 +1685,8 @@
   {
     "component": "ImageCrop",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ImageCrop",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image_crop.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image_crop/default/",
     "parameters": [
@@ -1698,6 +1744,8 @@
   {
     "component": "Layout",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Layout",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/default/",
     "parameters": [
@@ -1822,6 +1870,8 @@
   {
     "component": "Layout::Main",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "LayoutMain",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/main.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/main/default/",
     "parameters": [
@@ -1848,6 +1898,8 @@
   {
     "component": "Layout::Sidebar",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "LayoutSidebar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
     "parameters": [
@@ -1863,6 +1915,8 @@
   {
     "component": "Menu",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Menu",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/menu.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/menu/default/",
     "parameters": [
@@ -1933,6 +1987,8 @@
   {
     "component": "MultiInput",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "MultiInput",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/multi_input.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/multi_input/default/",
     "parameters": [
@@ -2079,6 +2135,8 @@
   {
     "component": "NavList",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/default/",
     "parameters": [
@@ -2135,6 +2193,8 @@
   {
     "component": "NavList::Item",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/item/default/",
     "parameters": [
@@ -2247,6 +2307,8 @@
   {
     "component": "NavList::Section",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListSection",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/section.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/default/",
     "parameters": [
@@ -2326,6 +2388,8 @@
   {
     "component": "OcticonSymbols",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OcticonSymbols",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/octicon_symbols.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/octicon_symbols/default/",
     "parameters": [
@@ -2346,6 +2410,8 @@
   {
     "component": "RadioButton",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "RadioButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/radio_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/radio_button/default/",
     "parameters": [
@@ -2482,6 +2548,8 @@
   {
     "component": "RadioButtonGroup",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "RadioButtonGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/radio_button_group.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/radio_button_group/default/",
     "parameters": [
@@ -2540,6 +2608,8 @@
   {
     "component": "SegmentedControl",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "SegmentedControl",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/segmented_control/default/",
     "parameters": [
@@ -2623,6 +2693,8 @@
   {
     "component": "SegmentedControl::Item",
     "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "SegmentedControlItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/segmented_control/item/default/",
     "parameters": [
@@ -2661,6 +2733,8 @@
   {
     "component": "Select",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Select",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/select.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select/default/",
     "parameters": [
@@ -2821,6 +2895,8 @@
   {
     "component": "SubmitButton",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "SubmitButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/submit_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/submit_button/default/",
     "parameters": [
@@ -2883,6 +2959,8 @@
   {
     "component": "TabContainer",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TabContainer",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_container.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_container/default/",
     "parameters": [
@@ -2903,6 +2981,8 @@
   {
     "component": "TabNav",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TabNav",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_nav/default/",
     "parameters": [
@@ -2984,6 +3064,8 @@
   {
     "component": "TabPanels",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TabPanels",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_panels.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_panels/default/",
     "parameters": [
@@ -3072,6 +3154,8 @@
   {
     "component": "TextArea",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TextArea",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_area.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/text_area/default/",
     "parameters": [
@@ -3214,6 +3298,8 @@
   {
     "component": "TextField",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TextField",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_field.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/text_field/default/",
     "parameters": [
@@ -3414,6 +3500,8 @@
   {
     "component": "ToggleSwitch",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ToggleSwitch",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/toggle_switch.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/toggle_switch/default/",
     "parameters": [
@@ -3524,6 +3612,8 @@
   {
     "component": "Tooltip",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Tooltip",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tooltip/default/",
     "parameters": [
@@ -3602,6 +3692,8 @@
   {
     "component": "UnderlineNav",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "UnderlineNav",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_nav/default/",
     "parameters": [
@@ -3695,6 +3787,8 @@
   {
     "component": "UnderlinePanels",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "UnderlinePanels",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panels.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_panels/default/",
     "parameters": [
@@ -3789,6 +3883,8 @@
   {
     "component": "Base",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Base",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/base_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/base/default/",
     "parameters": [
@@ -3804,6 +3900,8 @@
   {
     "component": "AutoComplete",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "AutoComplete",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/default/",
     "parameters": [
@@ -4022,6 +4120,8 @@
   {
     "component": "AutoComplete::Item",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "AutoCompleteItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/item/default/",
     "parameters": [
@@ -4121,6 +4221,8 @@
   {
     "component": "Avatar",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Avatar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar/default/",
     "parameters": [
@@ -4195,6 +4297,8 @@
   {
     "component": "AvatarStack",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "AvatarStack",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar_stack.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar_stack/default/",
     "parameters": [
@@ -4269,6 +4373,8 @@
   {
     "component": "BaseButton",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "BaseButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/base_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/base_button/default/",
     "parameters": [
@@ -4316,6 +4422,8 @@
   {
     "component": "Blankslate",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Blankslate",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/blankslate/default/",
     "parameters": [
@@ -4480,6 +4588,8 @@
   {
     "component": "BorderBox",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "BorderBox",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/default/",
     "parameters": [
@@ -4583,6 +4693,8 @@
   {
     "component": "BorderBox::Header",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "BorderBoxHeader",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box/header.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/header/default/",
     "parameters": [
@@ -4620,6 +4732,8 @@
   {
     "component": "Breadcrumbs",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Breadcrumbs",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/default/",
     "parameters": [
@@ -4666,6 +4780,8 @@
   {
     "component": "Breadcrumbs::Item",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "BreadcrumbsItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/item/default/",
     "parameters": [
@@ -4681,6 +4797,8 @@
   {
     "component": "Button",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Button",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/default/",
     "parameters": [
@@ -4859,6 +4977,8 @@
   {
     "component": "ButtonGroup",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ButtonGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/default/",
     "parameters": [
@@ -4911,6 +5031,8 @@
   {
     "component": "ClipboardCopy",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ClipboardCopy",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy/default/",
     "parameters": [
@@ -4968,6 +5090,8 @@
   {
     "component": "CloseButton",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "CloseButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/close_button/default/",
     "parameters": [
@@ -5003,6 +5127,8 @@
   {
     "component": "Counter",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Counter",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/counter/default/",
     "parameters": [
@@ -5083,6 +5209,8 @@
   {
     "component": "Details",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Details",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/details.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/details/default/",
     "parameters": [
@@ -5169,6 +5297,8 @@
   {
     "component": "Flash",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Flash",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/flash/default/",
     "parameters": [
@@ -5249,6 +5379,8 @@
   {
     "component": "Heading",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Heading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/heading/default/",
     "parameters": [
@@ -5284,6 +5416,8 @@
   {
     "component": "IconButton",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "IconButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/icon_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/icon_button/default/",
     "parameters": [
@@ -5383,6 +5517,8 @@
   {
     "component": "Label",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Label",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/label.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/label/default/",
     "parameters": [
@@ -5457,6 +5593,8 @@
   {
     "component": "Link",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Link",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/link.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
     "parameters": [
@@ -5543,6 +5681,8 @@
   {
     "component": "Markdown",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Markdown",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/markdown.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/markdown/default/",
     "parameters": [
@@ -5578,6 +5718,8 @@
   {
     "component": "Octicon",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Octicon",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/octicon.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/octicon/default/",
     "parameters": [
@@ -5631,6 +5773,8 @@
   {
     "component": "Popover",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Popover",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/popover.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/popover/default/",
     "parameters": [
@@ -5711,6 +5855,8 @@
   {
     "component": "ProgressBar",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ProgressBar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/progress_bar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/progress_bar/default/",
     "parameters": [
@@ -5774,6 +5920,8 @@
   {
     "component": "RelativeTime",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "RelativeTime",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/relative_time.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/relative_time/default/",
     "parameters": [
@@ -5920,6 +6068,8 @@
   {
     "component": "Spinner",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Spinner",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/spinner.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/spinner/default/",
     "parameters": [
@@ -5961,6 +6111,8 @@
   {
     "component": "State",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "State",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/state.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/state/default/",
     "parameters": [
@@ -6024,6 +6176,8 @@
   {
     "component": "Subhead",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Subhead",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/subhead.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/subhead/default/",
     "parameters": [
@@ -6127,6 +6281,8 @@
   {
     "component": "Text",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Text",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/text/default/",
     "parameters": [
@@ -6162,6 +6318,8 @@
   {
     "component": "TimelineItem",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "TimelineItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/default/",
     "parameters": [
@@ -6238,6 +6396,8 @@
   {
     "component": "TimelineItem::Badge",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "TimelineItemBadge",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item/badge.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/badge/default/",
     "parameters": [
@@ -6253,6 +6413,8 @@
   {
     "component": "Truncate",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Truncate",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/default/",
     "parameters": [
@@ -6326,6 +6488,8 @@
   {
     "component": "Truncate::TruncateText",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TruncateTruncateText",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate/truncate_text.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/truncate_text/default/",
     "parameters": [
@@ -6341,6 +6505,8 @@
   {
     "component": "Blankslate",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "Blankslate",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/blankslate/default/",
     "parameters": [
@@ -6462,6 +6628,8 @@
   {
     "component": "Box",
     "status": "stable",
+    "a11y_reviewed": false,
+    "short_name": "Box",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/box.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/box/default/",
     "parameters": [
@@ -6482,6 +6650,8 @@
   {
     "component": "Button",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "Button",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/default/",
     "parameters": [
@@ -6591,6 +6761,8 @@
   {
     "component": "ConditionalWrapper",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ConditionalWrapper",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/conditional_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/conditional_wrapper/default/",
     "parameters": [
@@ -6606,6 +6778,8 @@
   {
     "component": "Content",
     "status": "stable",
+    "a11y_reviewed": false,
+    "short_name": "Content",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
     "parameters": [
@@ -6621,6 +6795,8 @@
   {
     "component": "IconButton",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "IconButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/icon_button/default/",
     "parameters": [
@@ -6689,6 +6865,8 @@
   {
     "component": "Layout",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Layout",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/default/",
     "parameters": [
@@ -6789,6 +6967,8 @@
   {
     "component": "Navigation::Tab",
     "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavigationTab",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/navigation/tab/default/",
     "parameters": [
@@ -6892,6 +7072,8 @@
   {
     "component": "Tooltip",
     "status": "deprecated",
+    "a11y_reviewed": false,
+    "short_name": "Tooltip",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tooltip/default/",
     "parameters": [
@@ -6942,6 +7124,8 @@
   {
     "component": "Truncate",
     "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "Truncate",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/truncate/default/",
     "parameters": [

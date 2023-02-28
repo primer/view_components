@@ -112,6 +112,8 @@ namespace :static do
       {
         "component" => docs.metadata[:title],
         "status" => component.status.to_s,
+        "a11y_reviewed" => docs.metadata[:a11y_reviewed] == "true",
+        "short_name" => docs.short_name,
         "source" => ref.source_url,
         "lookbook" => ref.lookbook_url,
         "parameters" => args,
