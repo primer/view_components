@@ -144,6 +144,7 @@ module Primer
         **system_arguments
       )
         @scheme = scheme
+        @block = block
 
         @system_arguments = system_arguments
 
@@ -162,7 +163,7 @@ module Primer
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "Button",
-          "Button--fullWidth" => block
+          "Button--fullWidth" => @block
         )
       end
 

@@ -1,4 +1,4 @@
-<%= render Primer::ConditionalWrapper.new(condition: tooltip.present?, tag: :div, classes: "Button-withTooltip") do -%>
+<%= render Primer::ConditionalWrapper.new(condition: tooltip.present?, tag: :div, display: (:block if @block), classes: "Button-withTooltip") do -%>
   <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
     <span class="<%= @align_content_classes %>">
       <% if leading_visual %>
