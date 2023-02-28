@@ -104,6 +104,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::SubmitButton, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextArea, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::Overlay, { title: "Test", role: :dialog }, proc { |component|
+      component.with_header { "Foo" }
+      component.with_body { "Foo" }
+    }],
+    [Primer::Alpha::Overlay::Header, { title: "Test", id: "test" }],
+    [Primer::Alpha::Overlay::Body, {}],
+    [Primer::Alpha::Overlay::Footer, {}],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
