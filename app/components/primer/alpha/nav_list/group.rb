@@ -6,10 +6,10 @@ module Primer
       # A logical grouping of navigation links with an optional heading.
       #
       # See <%= link_to_component(Primer::Alpha::NavList) %> for usage examples.
-      class Section < ActionList
-        # A special "show more" list item that appears at the bottom of the section. Clicking
+      class Group < ActionList
+        # A special "show more" list item that appears at the bottom of the group. Clicking
         # the item will fetch the next page of results from the URL passed in the `src` argument
-        # and append the resulting chunk of HTML to the section.
+        # and append the resulting chunk of HTML to the group.
         #
         # @param src [String] The URL to query for additional pages of list items.
         # @param pages [Integer] The total number of pages in the result set.
@@ -51,14 +51,14 @@ module Primer
           super(**@system_arguments)
         end
 
-        # Cause this section to show its list of sub items when rendered.
+        # Cause this group to show its list of sub items when rendered.
         # :nocov:
         def expand!
           @expanded = true
         end
         # :nocov:
 
-        # The items contained within this section.
+        # The items contained within this group.
         #
         # @return [Array<Primer::Alpha::ActionList::Item>]
         def items

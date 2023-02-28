@@ -68,7 +68,7 @@ module Primer
         # Examples can be seen in the NavList docs
         Primer::Alpha::NavList => { js: true },
         Primer::Alpha::NavList::Item => { js: true, examples: false },
-        Primer::Alpha::NavList::Section => { js: true, examples: false },
+        Primer::Alpha::NavList::Group => { js: true, examples: false },
 
         # ActionList is a base component that should not be used by itself, and thus
         # does not have examples of its own

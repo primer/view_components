@@ -47,6 +47,10 @@ module Primer
             )
           }
 
+          @list = system_arguments[:list]
+
+          @sub_list_arguments["data-action"] = "keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown" if @list
+
           overrides = { "data-item-id": @selected_by_ids.join(" ") }
 
           super(**system_arguments, **overrides)
@@ -79,9 +83,19 @@ module Primer
 
           return if items.blank?
 
+          @sub_list_arguments[:aria] = merge_aria(
+            @sub_list_arguments,
+            { aria: { labelledby: id } }
+          )
+
+          raise ArgumentError, "Items with sub-items cannot have hrefs" if href.present?
+
           @content_arguments[:tag] = :button
           @content_arguments[:"aria-expanded"] = @expanded.to_s
-          @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
+          @content_arguments[:"data-action"] = "
+            click:#{@list.custom_element_name}#handleItemWithSubItemClick
+            keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown
+          "
 
           with_private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
 

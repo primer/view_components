@@ -26,7 +26,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem-action",
       ".ActionListItem--subItem > .ActionListContent > .ActionListItem-label",
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
-      ".ActionList-sectionDivider--filled"
+      ".ActionList-sectionDivider--filled",
+      ".ActionListItem--trailingActionHover .ActionListItem-trailingAction"
     ],
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"

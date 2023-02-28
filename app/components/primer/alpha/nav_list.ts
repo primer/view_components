@@ -87,6 +87,7 @@ export class NavListElement extends HTMLElement {
   collapseItem(item: HTMLElement) {
     item.nextElementSibling?.setAttribute('data-hidden', '')
     item.setAttribute('aria-expanded', 'false')
+    item.focus()
   }
 
   itemIsExpanded(item: HTMLElement | null) {
@@ -107,6 +108,28 @@ export class NavListElement extends HTMLElement {
       this.collapseItem(button)
     } else {
       this.expandItem(button)
+    }
+
+    e.stopPropagation()
+  }
+
+  // collapse item
+  handleItemWithSubItemKeydown(e: KeyboardEvent) {
+    const el = e.currentTarget
+    if (!(el instanceof HTMLElement)) return
+
+    let button = el.closest<HTMLButtonElement>('button')
+    if (!button) {
+      const button_id = el.getAttribute('aria-labelledby')
+      if (button_id) {
+        button = document.getElementById(button_id) as HTMLButtonElement
+      } else {
+        return
+      }
+    }
+
+    if (this.itemIsExpanded(button) && e.key === 'Escape') {
+      this.collapseItem(button)
     }
 
     e.stopPropagation()
