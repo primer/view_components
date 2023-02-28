@@ -41,7 +41,7 @@ jobs:
 
   semver-label:
     if: ${{ github.repository == 'primer/view_components' }}
-    name: Semantic Version Label
+    name: semver label
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
