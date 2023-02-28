@@ -63,6 +63,7 @@ module Primer
         Primer::Alpha::TabPanels => { js: true },
         Primer::Alpha::Tooltip => { js: true },
         Primer::Alpha::ToggleSwitch => { js: true },
+        Primer::Alpha::Overlay => { js: true },
 
         # Examples can be seen in the NavList docs
         Primer::Alpha::NavList => { js: true },

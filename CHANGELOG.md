@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.1.0
+
+### Minor Changes
+
+- [#1401](https://github.com/primer/view_components/pull/1401) [`f824d1d0`](https://github.com/primer/view_components/commit/f824d1d0e8337ef34eef6af2419bd9ecc8537fe3) Thanks [@keithamus](https://github.com/keithamus)! - Add Overlay component
+
+### Patch Changes
+
+- [#1844](https://github.com/primer/view_components/pull/1844) [`15869d48`](https://github.com/primer/view_components/commit/15869d48ad3b22151ef97290fb0f1c8cf8dc6c6f) Thanks [@camertron](https://github.com/camertron)! - Remove extra space between flash icon and message
+
+* [#1840](https://github.com/primer/view_components/pull/1840) [`04b75c70`](https://github.com/primer/view_components/commit/04b75c70e4b42a82e4a4ce31a976bfd1e5c6e9fa) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing NavList parents to appear selected
+
+- [#1845](https://github.com/primer/view_components/pull/1845) [`98792bdd`](https://github.com/primer/view_components/commit/98792bdd47c8f0ac50ef839ab5e5948984d66c3b) Thanks [@camertron](https://github.com/camertron)! - Use system arguments instead of utility classes for NavList's "show more" item
+
+* [#1823](https://github.com/primer/view_components/pull/1823) [`5eadffd3`](https://github.com/primer/view_components/commit/5eadffd354891a3befb3b9152a16ba0a7c375aec) Thanks [@neall](https://github.com/neall)! - Add general reserved-class-checking linter
+
 ## 0.0.123
 
 ### Patch Changes

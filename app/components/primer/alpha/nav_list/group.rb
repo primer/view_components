@@ -28,10 +28,10 @@ module Primer
           system_arguments[:data][:action] = "click:nav-list#showMore"
           system_arguments[:data][:"current-page"] = "1"
           system_arguments[:data][:"total-pages"] = pages.to_s
-          system_arguments[:label_classes] = class_names(
-            system_arguments[:label_classes],
-            "color-fg-accent"
-          )
+          system_arguments[:label_arguments] = {
+            **system_arguments[:label_arguments] || {},
+            color: :accent
+          }
 
           component_klass.new(list: self, src: src, **system_arguments)
         }

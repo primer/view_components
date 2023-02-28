@@ -1,4 +1,6 @@
+import '@oddbird/popover-polyfill'
 import './alpha/dropdown'
+import './anchored_position'
 import './alpha/image_crop'
 import './alpha/modal_dialog'
 import './alpha/nav_list'
