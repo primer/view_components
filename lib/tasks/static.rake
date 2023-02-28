@@ -67,7 +67,7 @@ namespace :static do
       )
     )
 
-    arguments = Primer::Component.descendants.sort_by(&:name).map do |component|
+    data = Primer::Component.descendants.sort_by(&:name).map do |component|
       docs = registry.find(component)
       ref = Primer::Yard::ComponentManifest.ref_for(component)
 
@@ -86,18 +86,42 @@ namespace :static do
         preview["component"] == docs.metadata[:title] && preview["status"] == component.status.to_s
       end
 
+      slots = docs.slot_methods.map do |slot_method|
+        param_tags = slot_method.tags(:param)
+
+        args = param_tags.map do |tag|
+          default_value = Primer::Yard::DocsHelper.pretty_default_value(tag, component)
+
+          {
+            "name" => tag.name,
+            "type" => tag.types.join(", "),
+            "default" => default_value,
+            "description" => view_context.render(inline: tag.text.squish)
+          }
+        end
+
+        {
+          "name" => slot_method.name,
+          "description" => if slot_method.base_docstring.to_s.present?
+            view_context.render(inline: slot_method.base_docstring)
+          end,
+          "parameters" => args
+        }
+      end
+
       {
         "component" => docs.metadata[:title],
         "status" => component.status.to_s,
         "source" => ref.source_url,
         "lookbook" => ref.lookbook_url,
         "parameters" => args,
+        "slots" => slots,
         "previews" => (preview_data || {}).fetch("examples", [])
       }
     end
 
     File.open(File.join(Primer::ViewComponents::DEFAULT_STATIC_PATH, "arguments.json"), "w") do |f|
-      f.write(JSON.pretty_generate(arguments))
+      f.write(JSON.pretty_generate(data))
     end
   end
 end

@@ -6,34 +6,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
     "parameters": [
       {
-        "name": "role",
-        "type": "Symbol",
-        "default": "`:list`",
-        "description": "ARIA role describing the function of the list. listbox and menu are a common values."
-      },
-      {
-        "name": "item_classes",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Additional CSS classes to attach to items."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:full`",
-        "description": "One of `:full` or `:inset`.. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges."
-      },
-      {
-        "name": "show_dividers",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Display a divider above each item in the list when it does not follow a header or divider."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [ActionList::Item](/components/alpha/actionlistitem)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "heading",
+        "description": "Heading text rendered above the list of items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [ActionList::Heading](/components/alpha/actionlistheading)."
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [ActionList::Item](/components/alpha/actionlistitem)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -163,6 +165,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -210,6 +215,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -221,100 +229,75 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/item/default/",
     "parameters": [
       {
-        "name": "list",
-        "type": "Primer::Alpha::ActionList",
-        "default": "N/A",
-        "description": "The list that contains this item. Used internally."
-      },
-      {
-        "name": "parent",
-        "type": "Primer::Alpha::ActionList::Item",
-        "default": "`nil`",
-        "description": "This item's parent item. `nil` if this item is at the root. Used internally."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Item label."
-      },
-      {
-        "name": "label_classes",
-        "type": "String",
-        "default": "`nil`",
-        "description": "CSS classes that will be added to the label."
-      },
-      {
-        "name": "content_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
-      },
-      {
-        "name": "truncate_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Truncate label with ellipsis."
-      },
-      {
-        "name": "href",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Link URL."
-      },
-      {
-        "name": "role",
-        "type": "String",
-        "default": "`:listitem`",
-        "description": "ARIA role describing the function of the item."
-      },
-      {
-        "name": "size",
+        "name": "type",
         "type": "Symbol",
-        "default": "`:medium`",
-        "description": "Controls block sizing of the item."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "Controls color/style based on behavior."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Disabled items are not clickable and visually dim."
-      },
-      {
-        "name": "description_scheme",
-        "type": "Symbol",
-        "default": "`:block`",
-        "description": "Display description inline with label, or block on the next line."
-      },
-      {
-        "name": "active",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Sets an active state on navigational items."
-      },
-      {
-        "name": "on_click",
-        "type": "String",
-        "default": "`nil`",
-        "description": "JavaScript to execute when the item is clicked."
-      },
-      {
-        "name": "id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "Used internally."
+        "default": "`:description`",
+        "description": "One of `:description` or `:label`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [Tooltip](/components/alpha/tooltip)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "description",
+        "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "leading_visual",
+        "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by [Octicon](/components/beta/octicon).\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by [Avatar](/components/beta/avatar).\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by [Octicon](/components/beta/octicon).\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by [Label](/components/beta/label).\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by [Counter](/components/beta/counter).\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "trailing_action",
+        "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
+        "parameters": [
+          {
+            "name": "show_on_hover",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [IconButton](/components/beta/iconbutton)."
+          }
+        ]
+      },
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the [Tooltip](/components/alpha/tooltip) documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [Tooltip](/components/alpha/tooltip)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -328,64 +311,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/auto_complete/default/",
     "parameters": [
       {
-        "name": "label_text",
-        "type": "String",
-        "default": "N/A",
-        "description": "The label of the input."
-      },
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The route to query."
-      },
-      {
-        "name": "input_id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Id of the input element."
-      },
-      {
-        "name": "input_name",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Optional name of the input element, defaults to `input_id` when not set."
-      },
-      {
-        "name": "list_id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Id of the list element."
-      },
-      {
-        "name": "with_icon",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Controls if a search icon is visible, defaults to `false`."
-      },
-      {
-        "name": "is_label_visible",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "Controls if the label is visible. If `false`, screen reader only text will be added."
-      },
-      {
-        "name": "is_clearable",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds optional clear button."
-      },
-      {
-        "name": "is_label_inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Controls if the label is inline. On smaller screens, label will always become stacked."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "results",
+        "description": "Customizable results list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "input",
+        "description": "Customizable input used to search for results.\nIt is preferred to use this slot sparingly - it will be created by default if not explicity added.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -437,6 +392,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -447,53 +405,15 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/banner.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
+
+    ],
+    "slots": [
       {
-        "name": "full",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component should take up the full width of the screen."
-      },
-      {
-        "name": "full_when_narrow",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component should take up the full width of the screen when rendered inside smaller viewports."
-      },
-      {
-        "name": "dismissible",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component can be dismissed with an \"x\" button."
-      },
-      {
-        "name": "description",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Description text rendered underneath the message."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "The name of an [Octicon](https://primer.style/octicons/) icon to use. If no icon is provided, a default one will be chosen based on the scheme."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
-      },
-      {
-        "name": "reappear",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "name": "action",
+        "description": "A button or custom content that will render on the right-hand side of the component.\n\nTo render a button, call the `with_action_button` method, which accepts the arguments accepted by [Button](/components/beta/button).\n\nTo render custom content, call the `with_action_content` method and pass a block that returns HTML.",
+        "parameters": [
+
+        ]
       }
     ],
     "previews": [
@@ -570,6 +490,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -733,6 +656,9 @@
         "description": "Controls how check box values are submitted to the server. One of `:array` or `:boolean`.."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/check_box/playground",
@@ -788,6 +714,9 @@
         "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/check_box_group/playground",
@@ -813,52 +742,84 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/default/",
     "parameters": [
       {
-        "name": "id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "The id of the dialog."
-      },
-      {
-        "name": "title",
-        "type": "String",
-        "default": "N/A",
-        "description": "Describes the content of the dialog."
-      },
-      {
-        "name": "subtitle",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Provides additional context for the dialog, also setting the `aria-describedby` attribute."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "The size of the dialog. One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
-      },
-      {
-        "name": "position",
-        "type": "Symbol",
-        "default": "`:center`",
-        "description": "The position of the dialog. One of `:center`, `:left`, or `:right`."
-      },
-      {
-        "name": "position_narrow",
-        "type": "Symbol",
-        "default": "`:inherit`",
-        "description": "The position of the dialog when narrow. One of `:bottom`, `:fullscreen`, `:inherit`, `:left`, or `:right`."
-      },
-      {
-        "name": "visually_hide_title",
+        "name": "show_divider",
         "type": "Boolean",
-        "default": "`false`",
-        "description": "If true will hide the heading title, while still making it available to Screen Readers."
+        "default": "N/A",
+        "description": "Show a divider between the footer and body."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "show_button",
+        "description": "Optional button to open the dialog.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Button](/components/beta/button)."
+          }
+        ]
+      },
+      {
+        "name": "header",
+        "description": "Header content.",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "description": "Required body content.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "footer",
+        "description": "Footer content.",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -922,6 +883,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -944,6 +908,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
 
@@ -986,6 +953,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -997,22 +967,79 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/default/",
     "parameters": [
       {
-        "name": "overlay",
+        "name": "as",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:dark`, `:default`, or `:none`."
+        "default": "N/A",
+        "description": "When `as` is `:list`, wraps the menu in a `<ul>` with a `<li>` for each item."
       },
       {
-        "name": "with_caret",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not a caret should be rendered in the button."
+        "name": "direction",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "Pass `:dark` for dark mode theming"
+      },
+      {
+        "name": "header",
+        "type": "String",
+        "default": "N/A",
+        "description": "Optional string to display as the header"
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "button",
+        "description": "Required trigger for the dropdown. Has the same arguments as [Button](/components/button),\nbut it is locked as a `summary` tag.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "menu",
+        "description": "Required context menu for the dropdown.",
+        "parameters": [
+          {
+            "name": "as",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "When `as` is `:list`, wraps the menu in a `<ul>` with a `<li>` for each item."
+          },
+          {
+            "name": "direction",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`."
+          },
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Pass `:dark` for dark mode theming"
+          },
+          {
+            "name": "header",
+            "type": "String",
+            "default": "N/A",
+            "description": "Optional string to display as the header"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -1050,28 +1077,48 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/default/",
     "parameters": [
       {
-        "name": "as",
+        "name": "tag",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "When `as` is `:list`, wraps the menu in a `<ul>` with a `<li>` for each item."
+        "default": "N/A",
+        "description": "One of `:a`, `:button`, or `:summary`.."
       },
       {
-        "name": "direction",
-        "type": "Symbol",
-        "default": "`:se`",
-        "description": "One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`.."
-      },
-      {
-        "name": "header",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Header to be displayed above the menu."
+        "name": "divider",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether the item is a divider without any function."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": null,
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:a`, `:button`, or `:summary`.."
+          },
+          {
+            "name": "divider",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the item is a divider without any function."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -1084,6 +1131,9 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
     "parameters": [
+
+    ],
+    "slots": [
 
     ],
     "previews": [
@@ -1145,6 +1195,9 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -1155,47 +1208,22 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/form_control.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/form_control/default/",
     "parameters": [
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Label text displayed above the input."
-      },
+
+    ],
+    "slots": [
       {
         "name": "caption",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Describes the field and what sort of input it expects. Displayed below the input. Note that the `caption` slot is also available and takes precedence over this argument when provided."
+        "description": "Describes the field and what sorts of input it expects. Displayed below the input.\nNote that this slot takes precedence over the `caption:` argument in the constructor.",
+        "parameters": [
+
+        ]
       },
       {
-        "name": "validation_message",
-        "type": "String",
-        "default": "`nil`",
-        "description": "A string displayed in red between the caption and the input indicating the input's contents are invalid."
-      },
-      {
-        "name": "required",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "When set to `true`, the form control will take up all the horizontal space allowed by its container."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "name": "input",
+        "description": "The input content. Yields a set of [System arguments](/system-arguments) that should be added to the input.",
+        "parameters": [
+
+        ]
       }
     ],
     "previews": [
@@ -1235,6 +1263,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/hellip_button/default",
@@ -1272,6 +1303,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -1317,6 +1351,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -1328,22 +1365,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image_crop/default/",
     "parameters": [
       {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The path of the image to crop."
-      },
-      {
-        "name": "rounded",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "If the crop mask should be a circle. Defaults to true."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "loading",
+        "description": "A loading indicator that is shown while the image is loading.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -1371,28 +1410,78 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/default/",
     "parameters": [
       {
-        "name": "stacking_breakpoint",
+        "name": "width",
         "type": "Symbol",
-        "default": "`:md`",
-        "description": "When the `Layout` should change from rows into columns. One of `:lg`, `:md`, or `:sm`."
+        "default": "N/A",
+        "description": "One of `:default`, `:narrow`, or `:wide`."
       },
       {
-        "name": "first_in_source",
+        "name": "col_placement",
         "type": "Symbol",
-        "default": "`:sidebar`",
-        "description": "Which element to render first in the HTML. This will change the keyboard navigation order. One of `:main` or `:sidebar`."
+        "default": "N/A",
+        "description": "Sidebar placement when `Layout` is in column modes. One of `:end` or `:start`."
       },
       {
-        "name": "gutter",
+        "name": "row_placement",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "The amount of space between the main section and the sidebar. One of `:condensed`, `:default`, `:none`, or `:spacious`."
+        "default": "N/A",
+        "description": "Sidebar placement when `Layout` is in row mode. One of `:end`, `:none`, or `:start`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "main",
+        "description": "The layout's main content.",
+        "parameters": [
+          {
+            "name": "width",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:full`, `:lg`, `:md`, or `:xl`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "sidebar",
+        "description": "The layout's sidebar.",
+        "parameters": [
+          {
+            "name": "width",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:default`, `:narrow`, or `:wide`."
+          },
+          {
+            "name": "col_placement",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Sidebar placement when `Layout` is in column modes. One of `:end` or `:start`."
+          },
+          {
+            "name": "row_placement",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Sidebar placement when `Layout` is in row mode. One of `:end`, `:none`, or `:start`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -1457,6 +1546,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -1467,6 +1559,9 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
     "parameters": [
+
+    ],
+    "slots": [
 
     ],
     "previews": [
@@ -1480,10 +1575,66 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/menu/default/",
     "parameters": [
       {
+        "name": "href",
+        "type": "String",
+        "default": "N/A",
+        "description": "URL to be used for the Link"
+      },
+      {
+        "name": "selected",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether the item is the current selection"
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "heading",
+        "description": "Optional menu heading",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Required list of navigational links",
+        "parameters": [
+          {
+            "name": "href",
+            "type": "String",
+            "default": "N/A",
+            "description": "URL to be used for the Link"
+          },
+          {
+            "name": "selected",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the item is the current selection"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -1614,6 +1765,9 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/multi_input/playground",
@@ -1649,16 +1803,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/default/",
     "parameters": [
       {
-        "name": "selected_item_id",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [NavList::Section](/components/alpha/navlistsection)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "sections",
+        "description": "Sections. Each section is a list of links and an optional heading.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [NavList::Section](/components/alpha/navlistsection)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -1691,34 +1853,87 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/item/default/",
     "parameters": [
       {
-        "name": "selected_item_id",
+        "name": "type",
         "type": "Symbol",
-        "default": "`nil`",
-        "description": "The ID of the currently selected list item. Used internally."
-      },
-      {
-        "name": "selected_by_ids",
-        "type": "Array<Symbol>",
-        "default": "`[]`",
-        "description": "The list of IDs that select this item. In other words, if the `selected_item_id` attribute on the parent `NavList` is set to one of these IDs, the item will appear selected."
-      },
-      {
-        "name": "expanded",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether this item shows (expands) or hides (collapses) its list of sub items."
-      },
-      {
-        "name": "sub_item",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not this item is nested under a parent item. Used internally."
+        "default": "`:description`",
+        "description": "One of `:description` or `:label`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [Tooltip](/components/alpha/tooltip)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": null,
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [ActionList::Item](/components/alpha/actionlistitem)."
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "leading_visual",
+        "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by [Octicon](/components/beta/octicon).\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by [Avatar](/components/beta/avatar).\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by [Octicon](/components/beta/octicon).\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by [Label](/components/beta/label).\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by [Counter](/components/beta/counter).\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "trailing_action",
+        "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
+        "parameters": [
+          {
+            "name": "show_on_hover",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [IconButton](/components/beta/iconbutton)."
+          }
+        ]
+      },
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the [Tooltip](/components/alpha/tooltip) documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [Tooltip](/components/alpha/tooltip)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -1732,16 +1947,66 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/default/",
     "parameters": [
       {
-        "name": "selected_item_id",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "The ID of the currently selected item. Used internally."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [ActionList::Heading](/components/alpha/actionlistheading)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "show_more_item",
+        "description": "A special \"show more\" list item that appears at the bottom of the section. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the section.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The URL to query for additional pages of list items."
+          },
+          {
+            "name": "pages",
+            "type": "Integer",
+            "default": "N/A",
+            "description": "The total number of pages in the result set."
+          },
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "N/A",
+            "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "description": "Heading text rendered above the list of items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [ActionList::Heading](/components/alpha/actionlistheading)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -1760,6 +2025,9 @@
         "default": "`[]`",
         "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
 
@@ -1880,6 +2148,9 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/radio_button/playground",
@@ -1935,6 +2206,9 @@
         "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/radio_button_group/playground",
@@ -1960,28 +2234,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/segmented_control/default/",
     "parameters": [
       {
-        "name": "hide_labels",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to hide the labels and only show the icons"
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If the component should be full width"
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:large`, `:medium`, or `:small`."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": "Use to render an item in the segmented control",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -2052,6 +2322,9 @@
         "default": "`false`",
         "description": "Whether to only show the icon"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
 
@@ -2196,6 +2469,9 @@
         "description": "Create a prompt option with blank value and the text asking user to select something."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/select/playground",
@@ -2269,6 +2545,9 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -2286,6 +2565,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -2297,28 +2579,42 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_nav/default/",
     "parameters": [
       {
-        "name": "tag",
+        "name": "align",
         "type": "Symbol",
-        "default": "`:nav`",
-        "description": "One of `:div` or `:nav`."
-      },
-      {
-        "name": "label",
-        "type": "String",
         "default": "N/A",
-        "description": "Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements."
+        "description": "One of `:left` or `:right`."
+      }
+    ],
+    "slots": [
+      {
+        "name": "tabs",
+        "description": "Tabs to be rendered. For more information, refer to [Navigation::Tab](/components/navigationtab).",
+        "parameters": [
+          {
+            "name": "selected",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the tab is selected."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       },
       {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "name": "extra",
+        "description": "Renders extra content to the `TabNav`. This will be rendered after the tabs.",
+        "parameters": [
+          {
+            "name": "align",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:left` or `:right`."
+          }
+        ]
       }
     ],
     "previews": [
@@ -2346,34 +2642,48 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_panels/default/",
     "parameters": [
       {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Sets an `aria-label` that helps assistive technology users understand the purpose of the tabs."
-      },
-      {
         "name": "align",
         "type": "Symbol",
         "default": "N/A",
-        "description": "One of `:left` or `:right`. - Defaults to left"
+        "description": "One of `:left` or `:right`."
+      }
+    ],
+    "slots": [
+      {
+        "name": "tabs",
+        "description": "Tabs to be rendered. For more information, refer to [Navigation::Tab](/components/navigationtab).",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "String",
+            "default": "N/A",
+            "description": "Unique ID of tab."
+          },
+          {
+            "name": "selected",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the tab is selected."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       },
       {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "name": "extra",
+        "description": "Renders extra content to the `TabPanels`. This will be rendered after the tabs.",
+        "parameters": [
+          {
+            "name": "align",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:left` or `:right`."
+          }
+        ]
       }
     ],
     "previews": [
@@ -2509,6 +2819,9 @@
         "default": "N/A",
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -2697,6 +3010,9 @@
         "description": "The HTML id attribute of the clear button."
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/playground",
@@ -2773,6 +3089,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -2869,6 +3188,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/tooltip/playground",
@@ -2916,32 +3238,52 @@
       {
         "name": "tag",
         "type": "Symbol",
-        "default": "`:nav`",
-        "description": "One of `:div` or `:nav`."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements."
-      },
-      {
-        "name": "align",
-        "type": "Symbol",
-        "default": "`:left`",
-        "description": "One of `:left` or `:right`. - Defaults to left"
-      },
-      {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
+        "default": "`:div`",
+        "description": "One of `:div` or `:span`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "tabs",
+        "description": "Use the tabs to list page links.",
+        "parameters": [
+          {
+            "name": "selected",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the tab is selected."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "actions",
+        "description": "Use actions for a call to action.",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "`:div`",
+            "description": "One of `:div` or `:span`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -2969,34 +3311,60 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_panels/default/",
     "parameters": [
       {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "Sets an `aria-label` that helps assistive technology users understand the purpose of the tabs."
-      },
-      {
-        "name": "align",
+        "name": "tag",
         "type": "Symbol",
-        "default": "`:left`",
-        "description": "One of `:left` or `:right`. - Defaults to left"
-      },
-      {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
+        "default": "`:div`",
+        "description": "One of `:div` or `:span`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "tabs",
+        "description": "Use to render a button and an associated panel slot. See the example below or refer to [Navigation::Tab](/components/navigationtab).",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "String",
+            "default": "N/A",
+            "description": "Unique ID of tab."
+          },
+          {
+            "name": "selected",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether the tab is selected."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "actions",
+        "description": "Use actions for a call to action.",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "`:div`",
+            "description": "One of `:div` or `:span`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3020,6 +3388,9 @@
     "parameters": [
 
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -3031,94 +3402,48 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/default/",
     "parameters": [
       {
-        "name": "label_text",
-        "type": "String",
-        "default": "N/A",
-        "description": "The label of the input."
-      },
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The route to query."
-      },
-      {
-        "name": "input_id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Id of the input element."
-      },
-      {
-        "name": "input_name",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Optional name of the input element, defaults to `input_id` when not set."
-      },
-      {
-        "name": "list_id",
-        "type": "String",
-        "default": "N/A",
-        "description": "Id of the list element."
-      },
-      {
-        "name": "visually_hide_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Controls if the label is visible. If `true`, screen reader only text will be added."
-      },
-      {
-        "name": "show_clear_button",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds optional clear button."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "results",
+        "description": "Customizable results list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       },
       {
-        "name": "size",
-        "type": "Hash",
-        "default": "`:medium`",
-        "description": "Input size can be small, medium (default), or large"
+        "name": "leading_visual",
+        "description": "Leading visual.\n\n- `leading_visual_icon` for a [Octicon](/components/beta/octicon).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Octicon](/components/beta/octicon)."
+          }
+        ]
       },
       {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Input can be full-width or fit to content"
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Disabled input"
-      },
-      {
-        "name": "invalid",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Invalid input"
-      },
-      {
-        "name": "placeholder",
-        "type": "String",
-        "default": "`nil`",
-        "description": "The placeholder text displayed within the input"
-      },
-      {
-        "name": "inset",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "subtle input background color"
-      },
-      {
-        "name": "monospace",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "monospace input font family"
+        "name": "input",
+        "description": "Customizable input used to search for results.\nIt is preferred to use this slot sparingly - it will be created by default if not explicity added.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3211,40 +3536,48 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/item/default/",
     "parameters": [
       {
-        "name": "value",
-        "type": "String",
-        "default": "N/A",
-        "description": "Value of the item."
-      },
-      {
-        "name": "selected",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the item is selected."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the item is disabled."
-      },
-      {
-        "name": "description_variant",
-        "type": "Hash",
-        "default": "`:block`",
-        "description": "Changes the description style. Allowed values are :inline, :block"
-      },
-      {
-        "name": "description",
-        "type": "String",
-        "default": "N/A",
-        "description": "Display description text below label"
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading_visual",
+        "description": "The leading visual rendered before the link.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [Avatar](/components/beta/avatar) or [Octicon](/components/beta/octicon)"
+          }
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "The trailing visual rendered after the link.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [Octicon](/components/beta/octicon), [Label](/components/beta/label), or [Counter](/components/beta/counter)"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "description": "Optional description",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3308,6 +3641,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/avatar/playground",
@@ -3343,34 +3679,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar_stack/default/",
     "parameters": [
       {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:div`",
-        "description": "One of `:div` or `:span`."
-      },
-      {
-        "name": "align",
-        "type": "Symbol",
-        "default": "`:left`",
-        "description": "One of `:left` or `:right`."
-      },
-      {
-        "name": "tooltipped",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to add a tooltip to the stack or not."
-      },
-      {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can be changed using `tag:` to one of `:div` or `:span`."
-      },
-      {
-        "name": "system_arguments",
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [Avatar](/components/beta/avatar)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "avatars",
+        "description": "Required list of stacked avatars.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Avatar](/components/beta/avatar)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -3427,6 +3753,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/base_button/playground",
@@ -3447,28 +3776,96 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/blankslate/default/",
     "parameters": [
       {
-        "name": "narrow",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds a maximum width of `485px` to the Blankslate."
-      },
-      {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Increases the padding from `32px` to `80px 40px`."
-      },
-      {
-        "name": "border",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds a border around the Blankslate."
+        "name": "href",
+        "type": "String",
+        "default": "N/A",
+        "description": "URL to be used for the secondary action."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "visual",
+        "description": "Optional visual.\n\nUse:\n\n- `visual_icon` for an [Octicon](/components/beta/octicon).\n- `visual_image` for an [Image](/components/alpha/image).\n- `visual_spinner` for a [Spinner](/components/beta/spinner).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "description": "Required heading.",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "String",
+            "default": "N/A",
+            "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "description": "Optional description.\n\n- The description should always be informative and actionable.\n- Don't use phrases like \"You can\".",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "primary_action",
+        "description": "Optional primary action\n\nThe `primary_action` slot renders an anchor link which is visually styled as a button to provide more emphasis to the\nBlankslate's primary action.",
+        "parameters": [
+          {
+            "name": "href",
+            "type": "String",
+            "default": "N/A",
+            "description": "URL to be used for the primary action."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "secondary_action",
+        "description": "Optional secondary action\n\nThe `secondary_action` slot renders a normal anchor link, which can be used to redirect the user to additional information\n(e.g. Help documentation).",
+        "parameters": [
+          {
+            "name": "href",
+            "type": "String",
+            "default": "N/A",
+            "description": "URL to be used for the secondary action."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3531,16 +3928,72 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/default/",
     "parameters": [
       {
-        "name": "padding",
+        "name": "scheme",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:condensed`, `:default`, or `:spacious`."
+        "default": "N/A",
+        "description": "Color scheme. One of `:default`, `:info`, `:neutral`, or `:warning`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "header",
+        "description": "Optional Header.\n\nWhen using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "description": "Optional Body.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "footer",
+        "description": "Optional Footer.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "rows",
+        "description": "Use Rows to add rows with borders and maintain the same padding.",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Color scheme. One of `:default`, `:info`, `:neutral`, or `:warning`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3578,10 +4031,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/header/default/",
     "parameters": [
       {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "description": "Optional Title.",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3595,10 +4074,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/default/",
     "parameters": [
       {
+        "name": "href",
+        "type": "String",
+        "default": "N/A",
+        "description": "The URL to link to."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": null,
+        "parameters": [
+          {
+            "name": "href",
+            "type": "String",
+            "default": "N/A",
+            "description": "The URL to link to."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -3622,6 +4127,9 @@
     "parameters": [
 
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -3633,46 +4141,72 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/default/",
     "parameters": [
       {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:invisible`, `:link`, `:primary`, or `:secondary`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:large`, `:medium`, or `:small`."
-      },
-      {
-        "name": "block",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether button is full-width with `display: block`."
-      },
-      {
-        "name": "align_content",
-        "type": "Symbol",
-        "default": "`:center`",
-        "description": "One of `:center` or `:start`."
-      },
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
-      },
-      {
         "name": "type",
         "type": "Symbol",
-        "default": "`:button`",
-        "description": "One of `:button`, `:reset`, or `:submit`."
+        "default": "`:description`",
+        "description": "One of `:description` or `:label`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading_visual",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a [Octicon](/components/beta/octicon).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Octicon](/components/beta/octicon)."
+          }
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a [Counter](/components/beta/counter).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Counter](/components/beta/counter)."
+          }
+        ]
+      },
+      {
+        "name": "trailing_action",
+        "description": "Trailing action appears to the right of the trailing visual.\n\nUse:\n\n- `trailing_action_icon` for a [Octicon](/components/beta/octicon).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Octicon](/components/beta/octicon)."
+          }
+        ]
+      },
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the [Tooltip](/components/alpha/tooltip) documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -3755,22 +4289,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/default/",
     "parameters": [
       {
-        "name": "variant",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "DEPRECATED. One of `:medium` or `:small`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:medium` or `:small`."
-      },
-      {
-        "name": "system_arguments",
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [Button](/components/button) except for `size` and `group_item`."
+      }
+    ],
+    "slots": [
+      {
+        "name": "buttons",
+        "description": "Required list of buttons to be rendered.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Button](/components/button) except for `size` and `group_item`."
+          }
+        ]
       }
     ],
     "previews": [
@@ -3817,6 +4353,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/clipboard_copy/playground",
@@ -3858,6 +4397,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -3921,6 +4463,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/counter/playground",
@@ -3956,22 +4501,54 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/details/default/",
     "parameters": [
       {
-        "name": "overlay",
+        "name": "tag",
         "type": "Symbol",
-        "default": "`:none`",
-        "description": "Dictates the type of overlay to render with. One of `:dark`, `:default`, or `:none`."
+        "default": "`:div`",
+        "description": "One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`."
       },
       {
-        "name": "reset",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Defaults to false. If set to true, it will remove the default caret and remove style from the summary element"
-      },
-      {
-        "name": "system_arguments",
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [System arguments](/system-arguments)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "summary",
+        "description": "Use the Summary slot as a trigger to reveal the content.",
+        "parameters": [
+          {
+            "name": "button",
+            "type": "Boolean",
+            "default": "`true`",
+            "description": "Whether to render the Summary as a button or not."
+          },
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [System arguments](/system-arguments)."
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "description": "Use the Body slot as the main content to be shown when triggered by the Summary.",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "`:div`",
+            "description": "One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`."
+          },
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [System arguments](/system-arguments)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -4004,40 +4581,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/flash/default/",
     "parameters": [
       {
-        "name": "full",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component should take up the full width of the screen."
-      },
-      {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to add margin to the bottom of the component."
-      },
-      {
-        "name": "dismissible",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component can be dismissed with an X button."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "Name of Octicon icon to use."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "action",
+        "description": "Optional action content showed on the right side of the component.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -4081,6 +4642,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -4168,6 +4732,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/icon_button/playground",
@@ -4234,6 +4801,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/label/playground",
@@ -4269,40 +4839,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
     "parameters": [
       {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
-        "name": "href",
-        "type": "String",
-        "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
-      },
-      {
-        "name": "scheme",
+        "name": "type",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default`, `:primary`, or `:secondary`."
-      },
-      {
-        "name": "muted",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Uses light gray for Link color, and blue on hover."
-      },
-      {
-        "name": "underline",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "Whether or not to underline the link."
+        "default": "`:description`",
+        "description": "One of `:description` or `:label`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the link. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nThe tooltip will appear adjacent to the anchor element. Both the tooltip and the anchor will be nested\nunder a positioning wrapper.\nConsult the [Tooltip](/components/alpha/tooltip) documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -4346,6 +4912,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
@@ -4397,6 +4966,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/octicon/playground",
@@ -4417,10 +4989,66 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/popover/default/",
     "parameters": [
       {
+        "name": "caret",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "One of `:bottom`, `:bottom_left`, `:bottom_right`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top`, `:top_left`, or `:top_right`."
+      },
+      {
+        "name": "large",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether to use the large version of the component."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "heading",
+        "description": "The heading",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "`:h4`",
+            "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "description": "The body",
+        "parameters": [
+          {
+            "name": "caret",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:bottom`, `:bottom_left`, `:bottom_right`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top`, `:top_left`, or `:top_right`."
+          },
+          {
+            "name": "large",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether to use the large version of the component."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -4453,16 +5081,48 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/progress_bar/default/",
     "parameters": [
       {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default`, `:large`, or `:small`. Increases height."
+        "name": "percentage",
+        "type": "Integer",
+        "default": "N/A",
+        "description": "The percent complete"
       },
       {
-        "name": "system_arguments",
+        "name": "bg",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The background color"
+      },
+      {
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [System arguments](/system-arguments)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": "Use the Item slot to add an item to the progress bar",
+        "parameters": [
+          {
+            "name": "percentage",
+            "type": "Integer",
+            "default": "N/A",
+            "description": "The percent complete"
+          },
+          {
+            "name": "bg",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "The background color"
+          },
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [System arguments](/system-arguments)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -4598,6 +5258,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/relative_time/playground",
@@ -4651,6 +5314,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/spinner/playground",
@@ -4701,6 +5367,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/state/playground",
@@ -4731,22 +5400,60 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/subhead/default/",
     "parameters": [
       {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to add spacing to the Subhead."
-      },
-      {
-        "name": "hide_border",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to hide the border under the heading."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "heading",
+        "description": "The heading",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:div`, `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "danger",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether to style the heading as dangerous."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "actions",
+        "description": "Actions",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "description": "The description",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -4796,6 +5503,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/text/playground",
@@ -4816,16 +5526,54 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/default/",
     "parameters": [
       {
-        "name": "condensed",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "avatar",
+        "description": "Avatar to be rendered to the left of the Badge.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Avatar](/components/beta/avatar)."
+          }
+        ]
+      },
+      {
+        "name": "badge",
+        "description": "Badge that will be connected to other TimelineItems.",
+        "parameters": [
+          {
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "description": "Body to be rendered to the left of the Badge.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -4849,6 +5597,9 @@
     "parameters": [
 
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -4860,10 +5611,60 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/default/",
     "parameters": [
       {
+        "name": "priority",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "if true, the text will be given priority"
+      },
+      {
+        "name": "expandable",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "if true, the text will expand on hover or focus"
+      },
+      {
+        "name": "max_width",
+        "type": "Integer",
+        "default": "N/A",
+        "description": "if provided, the text will be truncated at a maximum width"
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": "Text slot used for the truncated text.",
+        "parameters": [
+          {
+            "name": "priority",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "if true, the text will be given priority"
+          },
+          {
+            "name": "expandable",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "if true, the text will expand on hover or focus"
+          },
+          {
+            "name": "max_width",
+            "type": "Integer",
+            "default": "N/A",
+            "description": "if provided, the text will be truncated at a maximum width"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -4902,6 +5703,9 @@
     "parameters": [
 
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -4913,100 +5717,24 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/blankslate/default/",
     "parameters": [
       {
-        "name": "title",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "Text that appears in a larger bold font."
-      },
-      {
-        "name": "title_tag",
-        "type": "Symbol",
-        "default": "`:h3`",
-        "description": "HTML tag to use for title."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol",
-        "default": "`\"\"`",
-        "description": "Octicon icon to use at top of component."
-      },
-      {
-        "name": "icon_size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`)."
-      },
-      {
-        "name": "image_src",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "Image to display."
-      },
-      {
-        "name": "image_alt",
-        "type": "String",
-        "default": "`\" \"`",
-        "description": "Alt text for image."
-      },
-      {
-        "name": "description",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "Text that appears below the title. Typically a whole sentence."
-      },
-      {
-        "name": "button_text",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "The text of the button."
-      },
-      {
-        "name": "button_url",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "The URL where the user will be taken after clicking the button."
-      },
-      {
-        "name": "button_classes",
-        "type": "String",
-        "default": "`\"btn-primary my-3\"`",
-        "description": "Classes to apply to action button"
-      },
-      {
-        "name": "link_text",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "The text of the link."
-      },
-      {
-        "name": "link_url",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "The URL where the user will be taken after clicking the link."
-      },
-      {
-        "name": "narrow",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds a maximum width."
-      },
-      {
-        "name": "large",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Increases the font size."
-      },
-      {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Adds extra padding."
-      },
-      {
-        "name": "system_arguments",
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [Spinner](/components/beta/spinner)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "spinner",
+        "description": "Optional Spinner.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Spinner](/components/beta/spinner)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -5026,6 +5754,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -5037,58 +5768,60 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/default/",
     "parameters": [
       {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, or `:primary`."
-      },
-      {
-        "name": "variant",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "DEPRECATED. One of `:medium` or `:small`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:medium` or `:small`."
-      },
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
-      },
-      {
         "name": "type",
         "type": "Symbol",
-        "default": "`:button`",
-        "description": "One of `:button`, `:reset`, or `:submit`."
-      },
-      {
-        "name": "group_item",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether button is part of a ButtonGroup."
-      },
-      {
-        "name": "block",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether button is full-width with `display: block`."
-      },
-      {
-        "name": "dropdown",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to render a dropdown caret."
+        "default": "`:description`",
+        "description": "One of `:description` or `:label`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading_visual",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a [Octicon](/components/beta/octicon).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Octicon](/components/beta/octicon)."
+          }
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a [Counter](/components/beta/counter).",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Counter](/components/beta/counter)."
+          }
+        ]
+      },
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the [Tooltip](/components/alpha/tooltip) documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as [Tooltip](/components/alpha/tooltip)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -5103,6 +5836,9 @@
     "parameters": [
 
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -5113,6 +5849,9 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
     "parameters": [
+
+    ],
+    "slots": [
 
     ],
     "previews": [
@@ -5180,6 +5919,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -5191,28 +5933,36 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/default/",
     "parameters": [
       {
-        "name": "responsive",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to collapse layout to a single column at smaller widths."
-      },
-      {
-        "name": "side",
-        "type": "Symbol",
-        "default": "`:right`",
-        "description": "Which side to display the sidebar on. One of `:left` or `:right`."
-      },
-      {
-        "name": "sidebar_col",
-        "type": "Integer",
-        "default": "`3`",
-        "description": "Sidebar column width."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ],
+    "slots": [
+      {
+        "name": "main",
+        "description": "The main content",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "sidebar",
+        "description": "The sidebar content",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
       }
     ],
     "previews": [
@@ -5265,46 +6015,60 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/navigation/tab/default/",
     "parameters": [
       {
-        "name": "list",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab is an item in a `<ul>` list."
-      },
-      {
-        "name": "selected",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab is selected or not."
-      },
-      {
-        "name": "with_panel",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab has an associated panel."
-      },
-      {
-        "name": "panel_id",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "Only applies if `with_panel` is `true`. Unique id of panel."
-      },
-      {
-        "name": "icon_classes",
-        "type": "Boolean",
-        "default": "`\"\"`",
-        "description": "Classes that must always be applied to icons."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
+        "name": "kwargs",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The same arguments as [Counter](/components/beta/counter)."
+      }
+    ],
+    "slots": [
+      {
+        "name": "panel",
+        "description": "Panel controlled by the Tab. This will not render anything in the tab itself.\nIt will provide a accessor for the Tab's parent to call and render the panel\ncontent in the appropriate place.\nRefer to `UnderlineNav` and `TabNav` implementations for examples.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ]
+      },
+      {
+        "name": "icon",
+        "description": "Icon to be rendered in the Tab left.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Octicon](/components/beta/octicon)."
+          }
+        ]
+      },
+      {
+        "name": "text",
+        "description": "The Tab's text.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Text](/components/beta/text)."
+          }
+        ]
+      },
+      {
+        "name": "counter",
+        "description": "Counter to be rendered in the Tab right.",
+        "parameters": [
+          {
+            "name": "kwargs",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The same arguments as [Counter](/components/beta/counter)."
+          }
+        ]
       }
     ],
     "previews": [
@@ -5354,6 +6118,9 @@
         "description": "[System arguments](/system-arguments)"
       }
     ],
+    "slots": [
+
+    ],
     "previews": [
 
     ]
@@ -5394,6 +6161,9 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ],
+    "slots": [
+
     ],
     "previews": [
       {
