@@ -343,6 +343,13 @@
   },
   "Primer::Alpha::NavList::Item": {
   },
+  "Primer::Alpha::Navigation::Tab": {
+    "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
+      true,
+      "page"
+    ],
+    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
+  },
   "Primer::Alpha::OcticonSymbols": {
   },
   "Primer::Alpha::Overlay": {
@@ -1199,11 +1206,6 @@
     "MAX_COL": 12
   },
   "Primer::Navigation::TabComponent": {
-    "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
-      true,
-      "page"
-    ],
-    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

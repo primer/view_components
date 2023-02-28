@@ -85,7 +85,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
     [Primer::Alpha::Menu, {}, proc { |component| component.with_item(href: "#url") { "Item" } }],
-    [Primer::Navigation::TabComponent, {}],
+    [Primer::Alpha::Navigation::Tab, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
@@ -132,7 +132,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::NavList::Group",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::Content"
+      "Primer::Content",
+      "Primer::Navigation::TabComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
