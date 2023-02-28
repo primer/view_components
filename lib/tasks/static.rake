@@ -51,7 +51,7 @@ namespace :static do
     end
   end
 
-  task dump_arguments: "docs:build_yard_registry" do
+  task dump_arguments: ["docs:build_yard_registry", :dump_previews] do
     require "json"
 
     registry = Primer::Yard::Registry.make
@@ -60,6 +60,12 @@ namespace :static do
       vc.singleton_class.include(Primer::Yard::DocsHelper)
       vc.singleton_class.include(Primer::ViewHelper)
     end
+
+    previews = JSON.parse(
+      File.read(
+        File.join(Primer::ViewComponents::DEFAULT_STATIC_PATH, "previews.json")
+      )
+    )
 
     arguments = Primer::Component.descendants.sort_by(&:name).map do |component|
       docs = registry.find(component)
@@ -76,12 +82,17 @@ namespace :static do
         }
       end
 
+      preview_data = previews.find do |preview|
+        preview["component"] == docs.metadata[:title] && preview["status"] == component.status.to_s
+      end
+
       {
         "component" => docs.metadata[:title],
         "status" => component.status.to_s,
         "source" => ref.source_url,
         "lookbook" => ref.lookbook_url,
-        "parameters" => args
+        "parameters" => args,
+        "previews" => (preview_data || {}).fetch("examples", [])
       }
     end
 
