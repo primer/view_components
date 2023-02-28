@@ -2196,10 +2196,10 @@
     ]
   },
   {
-    "component": "NavList::Section",
+    "component": "NavList::Group",
     "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/section.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/default/",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
     "parameters": [
       {
         "name": "selected_item_id",
@@ -2292,6 +2292,12 @@
         "description": "Sub list title."
       },
       {
+        "name": "heading_level",
+        "type": "Integer",
+        "default": "`3`",
+        "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
+      },
+      {
         "name": "subtitle",
         "type": "String",
         "default": "`nil`",
@@ -2305,8 +2311,8 @@
       },
       {
         "name": "tag",
-        "type": "Symbol",
-        "default": "`:h3`",
+        "type": "Integer",
+        "default": "N/A",
         "description": "Semantic tag for the heading."
       },
       {
@@ -2374,7 +2380,7 @@
       {
         "name": "role",
         "type": "String",
-        "default": "`:listitem`",
+        "default": "`nil`",
         "description": "ARIA role describing the function of the item."
       },
       {
