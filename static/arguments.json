@@ -356,56 +356,6 @@
     ]
   },
   {
-    "component": "Navigation::Tab",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/navigation/tab.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/navigation/tab_preview/default/",
-    "parameters": [
-      {
-        "name": "list",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab is an item in a `<ul>` list."
-      },
-      {
-        "name": "selected",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab is selected or not."
-      },
-      {
-        "name": "with_panel",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the Tab has an associated panel."
-      },
-      {
-        "name": "panel_id",
-        "type": "String",
-        "default": "`\"\"`",
-        "description": "Only applies if `with_panel` is `true`. Unique id of panel."
-      },
-      {
-        "name": "icon_classes",
-        "type": "Boolean",
-        "default": "`\"\"`",
-        "description": "Classes that must always be applied to icons."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "OcticonSymbols",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/octicon_symbols.rb",
@@ -1485,6 +1435,106 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/menu.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/menu/default/",
     "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Navigation::Tab",
+    "status": "deprecated",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/navigation/tab/default/",
+    "parameters": [
+      {
+        "name": "list",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is an item in a `<ul>` list."
+      },
+      {
+        "name": "selected",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is selected or not."
+      },
+      {
+        "name": "with_panel",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab has an associated panel."
+      },
+      {
+        "name": "panel_id",
+        "type": "String",
+        "default": "`\"\"`",
+        "description": "Only applies if `with_panel` is `true`. Unique id of panel."
+      },
+      {
+        "name": "icon_classes",
+        "type": "Boolean",
+        "default": "`\"\"`",
+        "description": "Classes that must always be applied to icons."
+      },
+      {
+        "name": "wrapper_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Navigation::Tab",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/navigation/tab.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/navigation/tab/default/",
+    "parameters": [
+      {
+        "name": "list",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is an item in a `<ul>` list."
+      },
+      {
+        "name": "selected",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is selected or not."
+      },
+      {
+        "name": "with_panel",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab has an associated panel."
+      },
+      {
+        "name": "panel_id",
+        "type": "String",
+        "default": "`\"\"`",
+        "description": "Only applies if `with_panel` is `true`. Unique id of panel."
+      },
+      {
+        "name": "icon_classes",
+        "type": "Boolean",
+        "default": "`\"\"`",
+        "description": "Classes that must always be applied to icons."
+      },
+      {
+        "name": "wrapper_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
+      },
       {
         "name": "system_arguments",
         "type": "Hash",
