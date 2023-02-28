@@ -335,6 +335,108 @@
   },
   "Primer::Alpha::OcticonSymbols": {
   },
+  "Primer::Alpha::Overlay": {
+    "ALIGN_CONTENT_MAPPINGS": {
+      "start": "Overlay-footer--alignStart",
+      "center": "Overlay-footer--alignCenter",
+      "end": "Overlay-footer--alignEnd"
+    },
+    "ALIGN_CONTENT_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_ALIGN_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_OFFSET_OPTIONS": [
+      "normal",
+      "spacious"
+    ],
+    "ANCHOR_SIDE_MAPPINGS": {
+      "inside_top": "inside-top",
+      "inside_bottom": "inside-bottom",
+      "inside_left": "inside-left",
+      "inside_right": "inside-right",
+      "inside_center": "inside-center",
+      "outside_top": "outside-top",
+      "outside_bottom": "outside-bottom",
+      "outside_left": "outside-left",
+      "outside_right": "outside-right"
+    },
+    "ANCHOR_SIDE_OPTIONS": [
+      "inside_top",
+      "inside_bottom",
+      "inside_left",
+      "inside_right",
+      "inside_center",
+      "outside_top",
+      "outside_bottom",
+      "outside_left",
+      "outside_right"
+    ],
+    "Body": "Primer::Alpha::Overlay::Body",
+    "DEFAULT_ALIGN_CONTENT": "end",
+    "DEFAULT_ANCHOR_ALIGN": "start",
+    "DEFAULT_ANCHOR_OFFSET": "normal",
+    "DEFAULT_ANCHOR_SIDE": "outside_bottom",
+    "DEFAULT_PADDING": "normal",
+    "DEFAULT_POPOVER": "auto",
+    "DEFAULT_SIZE": "auto",
+    "Footer": "Primer::Alpha::Overlay::Footer",
+    "Header": "Primer::Alpha::Overlay::Header",
+    "PADDING_MAPPINGS": {
+      "normal": null,
+      "condensed": "Overlay-body--paddingCondensed",
+      "none": "Overlay-body--paddingNone"
+    },
+    "PADDING_OPTIONS": [
+      "normal",
+      "condensed",
+      "none"
+    ],
+    "POPOVER_OPTIONS": [
+      "auto",
+      "manual"
+    ],
+    "ROLE_OPTIONS": [
+      "dialog",
+      "menu"
+    ],
+    "SIZE_MAPPINGS": {
+      "auto": "Overlay--size-auto",
+      "small": "Overlay--size-small",
+      "medium": "Overlay--size-medium",
+      "medium_portrait": "Overlay--size-medium-portrait",
+      "large": "Overlay--size-large",
+      "xlarge": "Overlay--size-xlarge"
+    },
+    "SIZE_OPTIONS": [
+      "auto",
+      "small",
+      "medium",
+      "medium_portrait",
+      "large",
+      "xlarge"
+    ]
+  },
+  "Primer::Alpha::Overlay::Body": {
+  },
+  "Primer::Alpha::Overlay::Footer": {
+  },
+  "Primer::Alpha::Overlay::Header": {
+    "DEFAULT_SIZE": "medium",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Overlay-header--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ]
+  },
   "Primer::Alpha::RadioButton": {
   },
   "Primer::Alpha::RadioButtonGroup": {
