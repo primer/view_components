@@ -165,7 +165,6 @@ module Primer
         @system_arguments[:classes] = class_names(
           "Overlay",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
-          "Overlay--motion-scaleFade",
           system_arguments[:classes]
         )
         @system_arguments[:tag] = "anchored-position"
