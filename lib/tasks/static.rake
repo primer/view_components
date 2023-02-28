@@ -89,7 +89,7 @@ namespace :static do
       slots = docs.slot_methods.map do |slot_method|
         param_tags = slot_method.tags(:param)
 
-        args = param_tags.map do |tag|
+        slot_args = param_tags.map do |tag|
           default_value = Primer::Yard::DocsHelper.pretty_default_value(tag, component)
 
           {
@@ -105,7 +105,7 @@ namespace :static do
           "description" => if slot_method.base_docstring.to_s.present?
             view_context.render(inline: slot_method.base_docstring)
           end,
-          "parameters" => args
+          "parameters" => slot_args
         }
       end
 
