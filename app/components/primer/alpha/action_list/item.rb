@@ -112,7 +112,7 @@ module Primer
         # @private
         renders_one :private_content
 
-        attr_reader :list, :href, :active, :disabled, :parent
+        attr_reader :id, :list, :href, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -128,6 +128,7 @@ module Primer
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label.
         # @param label_classes [String] CSS classes that will be added to the label.
+        # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
@@ -144,11 +145,12 @@ module Primer
           list:,
           label:,
           label_classes: nil,
+          label_arguments: {},
           content_arguments: {},
           parent: nil,
           truncate_label: false,
           href: nil,
-          role: :listitem,
+          role: nil,
           size: DEFAULT_SIZE,
           scheme: DEFAULT_SCHEME,
           disabled: false,
@@ -182,14 +184,19 @@ module Primer
             "ActionListItem"
           )
 
-          @system_arguments[:role] = role
+          @system_arguments[:role] = role if role
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
 
+          @system_arguments[:data] ||= {}
+          @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
+
           @label_arguments = {
+            **label_arguments,
             classes: class_names(
               label_classes,
+              label_arguments[:classes],
               "ActionListItem-label",
               "ActionListItem-label--truncate" => @truncate_label
             )
@@ -235,6 +242,10 @@ module Primer
             "ActionListContent--visual16" => leading_visual,
             "ActionListContent--blockDescription" => description && @description_scheme == :block
           )
+        end
+
+        def list_class
+          Primer::Alpha::ActionList
         end
       end
     end

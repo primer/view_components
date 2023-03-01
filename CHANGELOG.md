@@ -1,5 +1,49 @@
 # CHANGELOG
 
+## 0.1.0
+
+### Minor Changes
+
+- [#1401](https://github.com/primer/view_components/pull/1401) [`f824d1d0`](https://github.com/primer/view_components/commit/f824d1d0e8337ef34eef6af2419bd9ecc8537fe3) Thanks [@keithamus](https://github.com/keithamus)! - Add Overlay component
+
+### Patch Changes
+
+- [#1844](https://github.com/primer/view_components/pull/1844) [`15869d48`](https://github.com/primer/view_components/commit/15869d48ad3b22151ef97290fb0f1c8cf8dc6c6f) Thanks [@camertron](https://github.com/camertron)! - Remove extra space between flash icon and message
+
+* [#1840](https://github.com/primer/view_components/pull/1840) [`04b75c70`](https://github.com/primer/view_components/commit/04b75c70e4b42a82e4a4ce31a976bfd1e5c6e9fa) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing NavList parents to appear selected
+
+- [#1845](https://github.com/primer/view_components/pull/1845) [`98792bdd`](https://github.com/primer/view_components/commit/98792bdd47c8f0ac50ef839ab5e5948984d66c3b) Thanks [@camertron](https://github.com/camertron)! - Use system arguments instead of utility classes for NavList's "show more" item
+
+* [#1823](https://github.com/primer/view_components/pull/1823) [`5eadffd3`](https://github.com/primer/view_components/commit/5eadffd354891a3befb3b9152a16ba0a7c375aec) Thanks [@neall](https://github.com/neall)! - Add general reserved-class-checking linter
+
+## 0.0.123
+
+### Patch Changes
+
+- [#1835](https://github.com/primer/view_components/pull/1835) [`498191b4`](https://github.com/primer/view_components/commit/498191b437a30abd15d3ca3996d26bfcfe73a717) Thanks [@camertron](https://github.com/camertron)! - Fix conditional inclusion of polymorphic slots module
+
+* [#1822](https://github.com/primer/view_components/pull/1822) [`ad56ddef`](https://github.com/primer/view_components/commit/ad56ddef07b2a4e45ca17f0838e5c211840f5873) Thanks [@camertron](https://github.com/camertron)! - Allow NavList selection/deselection by id/href in javascript
+
+## 0.0.122
+
+### Patch Changes
+
+- [#1818](https://github.com/primer/view_components/pull/1818) [`c8fa002f`](https://github.com/primer/view_components/commit/c8fa002f807c508c86cd387512e3e81ef01b1db3) Thanks [@camertron](https://github.com/camertron)! - Fix issue in TabPanels causing extra content to render twice
+
+* [#1824](https://github.com/primer/view_components/pull/1824) [`2a234537`](https://github.com/primer/view_components/commit/2a2345372113dc23df1507fdcd6c588351cc3fd7) Thanks [@langermank](https://github.com/langermank)! - ToggleSwitch and SegmentedControl visual updates + Primitives (PCSS) version bump
+
+- [#1595](https://github.com/primer/view_components/pull/1595) [`f31bf3f9`](https://github.com/primer/view_components/commit/f31bf3f95a03efb4931a421b7d49df7aa22b6ea7) Thanks [@soberstadt](https://github.com/soberstadt)! - Change engine to mount on ActionController::Base
+
+* [#1832](https://github.com/primer/view_components/pull/1832) [`557ec8ba`](https://github.com/primer/view_components/commit/557ec8bad66e32a6a5183a9b6496d5910658de41) Thanks [@joelhawksley](https://github.com/joelhawksley)! - support ViewComponent v3.0.0.rc2
+
+- [#1821](https://github.com/primer/view_components/pull/1821) [`c12ae8c5`](https://github.com/primer/view_components/commit/c12ae8c5dbe9fd0b8c723cac297139976fa28552) Thanks [@camertron](https://github.com/camertron)! - Add a standalone FormControl component
+
+* [#1814](https://github.com/primer/view_components/pull/1814) [`8090cda2`](https://github.com/primer/view_components/commit/8090cda2a389a99e100ecea979d40602a3d52ae6) Thanks [@camertron](https://github.com/camertron)! - Expose additional form components
+
+- [#1827](https://github.com/primer/view_components/pull/1827) [`c0545a65`](https://github.com/primer/view_components/commit/c0545a659855c3c6ec20f5e9faf680b2e7a9cc52) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use lookbook 1.5.2
+
+* [#1833](https://github.com/primer/view_components/pull/1833) [`a90e1554`](https://github.com/primer/view_components/commit/a90e155475819bb5f82b0947916b46ada4ea1633) Thanks [@camertron](https://github.com/camertron)! - Fix regression causing check boxes to always render enabled
+
 ## 0.0.121
 
 ### Patch Changes

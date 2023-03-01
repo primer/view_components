@@ -47,13 +47,17 @@ module Primer
             )
           }
 
+          @list = system_arguments[:list]
+
+          @sub_list_arguments["data-action"] = "keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown" if @list
+
           overrides = { "data-item-id": @selected_by_ids.join(" ") }
 
           super(**system_arguments, **overrides)
         end
 
         def active?
-          item_active?(self)
+          item_active?(self) && items.empty?
         end
 
         # Cause this item to show its list of sub items when rendered.
@@ -75,11 +79,23 @@ module Primer
 
           raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?
 
+          raise "Cannot pass `selected_by_ids:` for an item with subitems, since parent items cannot be selected" if items.present? && @selected_by_ids.present?
+
           return if items.blank?
+
+          @sub_list_arguments[:aria] = merge_aria(
+            @sub_list_arguments,
+            { aria: { labelledby: id } }
+          )
+
+          raise ArgumentError, "Items with sub-items cannot have hrefs" if href.present?
 
           @content_arguments[:tag] = :button
           @content_arguments[:"aria-expanded"] = @expanded.to_s
-          @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
+          @content_arguments[:"data-action"] = "
+            click:#{@list.custom_element_name}#handleItemWithSubItemClick
+            keydown:#{@list.custom_element_name}#handleItemWithSubItemKeydown
+          "
 
           with_private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
 
@@ -118,6 +134,10 @@ module Primer
 
         def current_page?(url)
           helpers.current_page?(url)
+        end
+
+        def list_class
+          Primer::Alpha::NavList
         end
       end
     end

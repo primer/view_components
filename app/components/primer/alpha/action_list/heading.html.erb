@@ -1,4 +1,4 @@
-<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+<%= render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) do %>
   <%= render(Primer::BaseComponent.new(tag: @tag, classes: "ActionList-sectionDivider-title", id: @list_id)) do %>
     <%= @title %>
   <% end %>

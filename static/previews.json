@@ -1264,6 +1264,27 @@
     ]
   },
   {
+    "name": "overlay",
+    "lookup_path": "primer/alpha/overlay",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/default",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
+        "name": "middle_of_page"
+      }
+    ]
+  },
+  {
     "name": "popover",
     "lookup_path": "primer/beta/popover",
     "examples": [

@@ -45,6 +45,7 @@ module Primer
         Primer::Beta::Markdown => {},
         Primer::Alpha::Menu => {},
         Primer::Navigation::TabComponent => {},
+        Primer::Alpha::Navigation::Tab => {},
         Primer::Beta::Octicon => {},
         Primer::Beta::Popover => {},
         Primer::Beta::ProgressBar => {},
@@ -63,11 +64,12 @@ module Primer
         Primer::Alpha::TabPanels => { js: true },
         Primer::Alpha::Tooltip => { js: true },
         Primer::Alpha::ToggleSwitch => { js: true },
+        Primer::Alpha::Overlay => { js: true },
 
         # Examples can be seen in the NavList docs
         Primer::Alpha::NavList => { js: true },
         Primer::Alpha::NavList::Item => { js: true, examples: false },
-        Primer::Alpha::NavList::Section => { js: true, examples: false },
+        Primer::Alpha::NavList::Group => { js: true, examples: false },
 
         # ActionList is a base component that should not be used by itself, and thus
         # does not have examples of its own
