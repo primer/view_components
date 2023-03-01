@@ -11,14 +11,6 @@ class ActionMenuElement extends HTMLElement {
   #lastMenuItem: HTMLElement
   #shouldTryLoadingFragment = true
 
-  get anchorAlign(): AnchorAlignment {
-    return (this.getAttribute('data-anchor-align') || 'start') as AnchorAlignment
-  }
-
-  get anchorSide(): AnchorSide {
-    return (this.getAttribute('data-anchor-side') || 'outside-bottom') as AnchorSide
-  }
-
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
   }
@@ -133,7 +125,6 @@ class ActionMenuElement extends HTMLElement {
 
     if (!this.trigger || !this.menu) return
     this.trigger.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
-    this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
 
     if (this.hasAttribute('preload')) {
       this.trigger.addEventListener('mouseenter', this.loadHTMLFragment.bind(this), {signal})
@@ -181,7 +172,7 @@ class ActionMenuElement extends HTMLElement {
         item.tabIndex = -1
       }
     }
-  }
+}
 
   setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
     if (!this.menuItems) return
@@ -299,18 +290,6 @@ class ActionMenuElement extends HTMLElement {
       event.stopPropagation()
       event.preventDefault()
     }
-  }
-
-  buttonClick(event: MouseEvent) {
-    if (this.open) {
-      this.hide()
-    } else {
-      this.show()
-      this.setFocusToMenuItem(this.#firstMenuItem)
-    }
-
-    event.stopPropagation()
-    event.preventDefault()
   }
 
   menuItemKeydown(event: KeyboardEvent) {

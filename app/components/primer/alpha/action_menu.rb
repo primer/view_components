@@ -13,15 +13,13 @@ module Primer
     #   Additional information around the keyboard functionality and implementation can be found on the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#menu).
     class ActionMenu < Primer::Component
       status :alpha
+
       # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
       #
       # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :trigger, lambda { |icon: nil, **system_arguments|
-        if icon
-          Primer::Beta::IconButton.new(scheme: :invisible, role: "button", icon: icon, "aria-haspopup": true, "aria-expanded": false, "aria-controls": list_id, id: menu_id, **system_arguments)
-        else
-          Primer::Beta::Button.new(scheme: :default, role: "button", "aria-haspopup": true, "aria-controls": list_id, "aria-expanded": false, id: menu_id, **system_arguments)
-        end
+      renders_one :show_button, lambda { |**system_arguments, &block|
+        @show_button_arguments = system_arguments
+        @show_button_block = block.call
       }
 
       # <%= link_to_component(Primer::Alpha::ActionMenu::Item) %>
@@ -46,7 +44,7 @@ module Primer
 
       # @example Default
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0") do |c| %>
-      #    <% c.with_trigger { "Menu" } %>
+      #    <% c.with_show_button { "Menu" } %>
       #    <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design
       #    <% end %>
@@ -60,7 +58,7 @@ module Primer
       #
       # @example With caret
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-1") do |c| %>
-      #    <% c.with_trigger(with_caret: true) { "Menu" } %>
+      #    <% c.with_show_button(with_caret: true) { "Menu" } %>
       #    <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design
       #    <% end %>
@@ -77,7 +75,7 @@ module Primer
       #     Set `icon:` to the octicon you want to use. Always provide an accessible name for the menu by setting `aria-label`.
       #   @code
       #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-2") do |c| %>
-      #      <% c.with_trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #      <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #      <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #        Primer Design Link
       #      <% end %>
@@ -91,7 +89,7 @@ module Primer
       #
       # @example With divider
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3") do |c| %>
-      #    <% c.with_trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #    <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #    <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design Link
       #    <% end %>
@@ -106,7 +104,7 @@ module Primer
       #
       # @example With danger item
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-4") do |c| %>
-      #    <% c.with_trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #    <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #    <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design Link
       #    <% end %>
@@ -126,7 +124,7 @@ module Primer
       #     Align the menu to the center of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-5", anchor_align: :center, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -135,7 +133,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-6", anchor_align: :center, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -144,7 +142,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::Alpha.new(menu_id: "my-action-menu-7", anchor_align: :center, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -153,7 +151,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-8", anchor_align: :center, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -167,7 +165,7 @@ module Primer
       #     Align the menu to the start of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-9", anchor_align: :start, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -176,7 +174,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-10", anchor_align: :start, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -185,7 +183,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-11", anchor_align: :start, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -194,7 +192,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-12", anchor_align: :start, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -208,7 +206,7 @@ module Primer
       #     Align the menu to the end of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-13", anchor_align: :end, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -217,7 +215,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-14", anchor_align: :end, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -226,7 +224,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-15", anchor_align: :end, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -235,7 +233,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-16", anchor_align: :end, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_trigger(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -246,7 +244,7 @@ module Primer
       #
       # @example With deferred menu content loaded with an `include-fragment`
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3", src: "/") do |c| %>
-      #    <% c.with_trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #    <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
@@ -256,7 +254,7 @@ module Primer
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
       def initialize(
-        menu_id:,
+        menu_id: self.class.generate_id,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
         anchor_side: DEFAULT_ANCHOR_SIDE,
         src: nil,
@@ -276,6 +274,15 @@ module Primer
         @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
         @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE).to_s.dasherize
         @system_arguments[:"data-select-variant"] = @select_variant
+
+        @overlay_arguments = {
+          id: @menu_id,
+          role: :menu,
+          title: "Menu",
+          visually_hide_title: true
+        }
+
+        @button_arguments = {}
       end
 
       private

@@ -12,8 +12,8 @@ module Primer
       def playground(
         select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::ActionMenu::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::ActionMenu::DEFAULT_ANCHOR_SIDE
       )
-        render(Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0", select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side)) do |c|
-          c.with_trigger { "Menu" }
+        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side)) do |c|
+          c.with_show_button { "Menu" }
           c.with_item(label: "Copy link")
           c.with_item(label: "Quote reply")
           c.with_item(label: "Reference in new issue")
@@ -26,8 +26,8 @@ module Primer
       # @label Default
       #
       def default
-        render(Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0")) do |c|
-          c.with_trigger { "Menu" }
+        render(Primer::Alpha::ActionMenu.new) do |c|
+          c.with_show_button { "Menu" }
           c.with_item(label: "Copy link")
           c.with_item(label: "Quote reply")
           c.with_item(label: "Reference in new issue")
@@ -40,8 +40,8 @@ module Primer
       # @label Single select
       #
       def single_select
-        render(Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0", select_variant: :single)) do |c|
-          c.with_trigger { "Menu" }
+        render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |c|
+          c.with_show_button { "Menu" }
           c.with_item(label: "Fast forward")
           c.with_item(label: "Recursive")
           c.with_item(label: "Ours")
@@ -52,8 +52,8 @@ module Primer
       # @label Multiple select
       #
       def multiple
-        render(Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0", select_variant: :multiple)) do |c|
-          c.with_trigger { "Menu" }
+        render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |c|
+          c.with_show_button { "Menu" }
           c.with_item(label: "langermank", description_scheme: :inline) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
             item.with_description.with_content("Katie Langerman")
@@ -72,8 +72,8 @@ module Primer
       # @label Links
       #
       def links
-        render(Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0")) do |c|
-          c.with_trigger { "Menu" }
+        render(Primer::Alpha::ActionMenu.new) do |c|
+          c.with_show_button { "Menu" }
           c.with_item(label: "Settings", href: "/")
           c.with_item(label: "Your respositories", href: "/")
         end
