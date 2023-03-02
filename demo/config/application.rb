@@ -7,7 +7,9 @@ require "action_view/railtie"
 require "active_model/railtie"
 require "sprockets/railtie"
 require "view_component"
+require "primer/view_components"
 require "primer/view_components/engine"
+require "octicons"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -43,10 +45,32 @@ module Demo
         label: "Assets",
         partial: "lookbook/panels/assets",
         locals: lambda do |data|
-          assets = data.preview.components.map do |component|
-            asset_files = Dir[Rails.root.join("../", "#{component.full_path.to_s.chomp('.rb')}.{css,ts}")]
-            asset_files.map { |path| Pathname.new path }
-          end.flatten.compact
+          assets = data.preview.components.flat_map do |component|
+            asset_files = Dir[Primer::ViewComponents.root.join("app", "components", "#{component.relative_file_path.to_s.chomp('.rb')}.{css,ts}")]
+            asset_files.map do |path_str|
+              path = Pathname(path_str)
+              { path: path, language: path.extname == ".ts" ? :js : :css }
+            end
+          end
+
+          assets += data.examples.each_with_object([]) do |rendered_example, memo|
+            form_constants = rendered_example.source.match(/([\w:]+Form)\.new/)&.captures || []
+            form_constants.each do |form_constant|
+              path, = Kernel.const_source_location(form_constant)
+              memo << { path: Pathname(path), language: :ruby }
+
+              const = Kernel.const_get(form_constant)
+              next unless const.template_root_path
+
+              Dir[File.join(const.template_root_path, "*_caption.html.erb")].each do |template_caption_path|
+                memo << { path: Pathname(template_caption_path), language: :erb }
+              end
+
+              after_content_path = Pathname(File.join(const.template_root_path, "after_content.html.erb"))
+              memo << { path: after_content_path, language: :erb } if after_content_path.exist?
+            end
+          end
+
           { assets: assets }
         end
       }
@@ -65,6 +89,13 @@ module Demo
           ["All themes", "all"]
         ]
       }
+
+      config.lookbook.page_paths = [Rails.root.join("../previews/pages")]
+
+      ActiveSupport.on_load(:action_controller) do
+        require "primer/yard/lookbook_docs_helper"
+        Lookbook::PageHelper.include(Primer::Yard::LookbookDocsHelper)
+      end
     end
   end
 end

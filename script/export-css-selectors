@@ -1,32 +1,83 @@
 #!/usr/bin/env node
 
-const postcss = require('postcss');
-const glob = require('glob');
-const fs = require('fs');
+const postcss = require('postcss')
+const { readFile, writeFile } = require('node:fs/promises')
+const { promisify } = require('util')
+const glob = promisify(require('glob'))
+const CSSwhat = require('css-what')
 
-console.log('Exporting CSS selectors...');
+console.log('Exporting CSS selectors...')
 
-const export_selectors = folder => {
-  const folder_glob = folder + "/**/*.css"
+const exportSelectors = (folder) => {
+  const folder_glob = folder + '/**/*.css'
+  const componentNameRegex = new RegExp(`${folder.replace('/','\\/')}\\/(.*).css`)
 
-  glob(folder_glob, (err, files) => {
-    files.forEach(file => {
-      const css = fs.readFileSync(file, 'utf8');
-      const root = postcss.parse(css)
-      const componentNameRegex = new RegExp(`${folder.replace('\/','\\\/')}\\/(.*)\.css`)
-      const componentName = componentNameRegex.exec(file)[1]
+  return glob(folder_glob).then(files =>
+    Promise.all(
+      files.map(async (file) => {
+        console.log(`Processing ${file}`)
+        const css = await readFile(file, 'utf8')
+        const root = postcss.parse(css)
+        const componentName = componentNameRegex.exec(file)[1]
 
-      const selectors = []
-      root.walkRules(rule => {
-        rule.selector.split(',').forEach(ruleSelector => {
-          selectors.push(ruleSelector)
+        const selectors = []
+        const classes = []
+
+        root.walkRules(rule => {
+          // @keyframes at-rules have children that look like they have normal
+          // CSS selectors, but they're each just "from", "to", or a percentage.
+          // Either way, we don't have to worry about them as selectors and they
+          // don't include any classes.
+          if (rule.parent?.type === 'atrule' && rule.parent?.name === 'keyframes') {
+            return
+          }
+
+          rule.selectors.forEach(ruleSelector => {
+            selectors.push(ruleSelector)
+            CSSwhat.parse(ruleSelector)[0].forEach(ruleObj => {
+              if (ruleObj.type === 'attribute' && ruleObj.name === 'class') {
+                classes.push(ruleObj.value)
+              }
+            })
+          })
         })
-      })
 
-      fs.writeFileSync(`${file}.json`, JSON.stringify({ 'name': componentName, 'selectors': [...new Set(selectors)] }))
-    })
-  })
+        console.log(`Writing ${file}.json`)
+        writeFile(
+          `${file}.json`,
+          JSON.stringify({
+            name: componentName,
+            selectors: [...new Set(selectors)],
+            classes: [...new Set(classes)]
+          }, null, 2)
+        ).catch(error => console.error(`Failed to write ${file}.json`, { error }))
+
+        return classes
+      })
+    )
+  )
 }
 
-export_selectors('app/components/primer')
-export_selectors('app/css')
+// stylesheets under app/lib/primer/css need their individual
+// json files generated
+exportSelectors('app/lib/primer/css')
+
+// class names referenced under app/components/primer might need
+// to be reserved in addition to getting individual json files
+const classShouldBeReserved = className =>
+  (className[0].toUpperCase() === className[0])
+exportSelectors('app/components/primer')
+  .then(classLists => {
+    console.log(`Writing static/classes.json`)
+    return writeFile(
+      'static/classes.json',
+      JSON.stringify(
+        [...new Set(classLists.reduce((a, b) => a.concat(b)))]
+          .filter(classShouldBeReserved)
+          .sort(),
+        null,
+        2
+      )
+    )
+  })
+  .catch(error => console.error("failed to write static/classes.json", { error }))

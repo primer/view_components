@@ -44,8 +44,22 @@ class PrimerBetaCloseButtonTest < Minitest::Test
   end
 
   def test_can_override_aria_label
+    # Test with nested hash style `aria-label`
     render_inline(Primer::Beta::CloseButton.new(aria: { label: "Label" }))
+    assert_selector("button[type='button'][aria-label='Label'].close-button")
+
+    # Ensure the default `aria-label` is not in the generated HTML
+    #
+    # Note: Must use `refute_includes` instead of `refute_selector`. If there
+    # are duplicate attributes on a given element, Capybara will ignore the second one.
+    # So if we use `refute_selector` the test will pass even if there is a duplicate
+    # `aria-label` in the generated HTML.
+    refute_includes rendered_content, 'aria-label="Close"'
+
+    # Test with String style `aria-label`
+    render_inline(Primer::Beta::CloseButton.new("aria-label": "Label"))
 
     assert_selector("button[type='button'][aria-label='Label'].close-button")
+    refute_includes rendered_content, 'aria-label="Close"'
   end
 end

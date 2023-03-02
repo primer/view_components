@@ -32,6 +32,9 @@ Naming/MethodParameterName:
 Rails/RefuteMethods:
   Enabled: false
 
+Rails/FilePath:
+  EnforcedStyle: arguments
+
 Style/MultipleComparison:
   Enabled: true
   Exclude:

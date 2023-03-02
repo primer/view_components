@@ -7,6 +7,7 @@ module Primer
       # It wraps the Button and IconButton components to provide the correct styles
       class Item < Primer::BaseComponent
         status :alpha
+        audited_at "2023-02-01"
 
         # @param label [String] The label to use
         # @param selected [Boolean] Whether the item is selected

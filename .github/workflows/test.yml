@@ -196,6 +196,7 @@ jobs:
       run: |
         npm ci
         bundle install
+        bundle exec rake static:dump
         cd demo
         npm ci
         bundle install
@@ -232,7 +233,7 @@ jobs:
       run: exit 1
   selectors:
     name: CSS coverage
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-8-cores
     steps:
       - name: Checkout
         uses: actions/checkout@v3

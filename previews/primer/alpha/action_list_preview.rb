@@ -17,8 +17,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Item one", href: "/") do |item|
@@ -46,8 +45,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Item one", href: "/") do |item|
@@ -75,8 +73,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Leading SVG visual", href: "/") do |item|
@@ -113,14 +110,9 @@ module Primer
         list_id: "unique-id",
         subtitle: "This is a subtitle"
       )
-        render_with_template(
-          locals: {
-            scheme: scheme,
-            title: title,
-            list_id: list_id,
-            subtitle: subtitle
-          }
-        )
+        render(Primer::Alpha::ActionList::Heading.new(
+          scheme: scheme, list_id: list_id, title: title, subtitle: subtitle
+        ))
       end
 
       # @label Item [playground]

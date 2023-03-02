@@ -1,5 +1,109 @@
 # CHANGELOG
 
+## 0.1.0
+
+### Minor Changes
+
+- [#1401](https://github.com/primer/view_components/pull/1401) [`f824d1d0`](https://github.com/primer/view_components/commit/f824d1d0e8337ef34eef6af2419bd9ecc8537fe3) Thanks [@keithamus](https://github.com/keithamus)! - Add Overlay component
+
+### Patch Changes
+
+- [#1844](https://github.com/primer/view_components/pull/1844) [`15869d48`](https://github.com/primer/view_components/commit/15869d48ad3b22151ef97290fb0f1c8cf8dc6c6f) Thanks [@camertron](https://github.com/camertron)! - Remove extra space between flash icon and message
+
+* [#1840](https://github.com/primer/view_components/pull/1840) [`04b75c70`](https://github.com/primer/view_components/commit/04b75c70e4b42a82e4a4ce31a976bfd1e5c6e9fa) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing NavList parents to appear selected
+
+- [#1845](https://github.com/primer/view_components/pull/1845) [`98792bdd`](https://github.com/primer/view_components/commit/98792bdd47c8f0ac50ef839ab5e5948984d66c3b) Thanks [@camertron](https://github.com/camertron)! - Use system arguments instead of utility classes for NavList's "show more" item
+
+* [#1823](https://github.com/primer/view_components/pull/1823) [`5eadffd3`](https://github.com/primer/view_components/commit/5eadffd354891a3befb3b9152a16ba0a7c375aec) Thanks [@neall](https://github.com/neall)! - Add general reserved-class-checking linter
+
+## 0.0.123
+
+### Patch Changes
+
+- [#1835](https://github.com/primer/view_components/pull/1835) [`498191b4`](https://github.com/primer/view_components/commit/498191b437a30abd15d3ca3996d26bfcfe73a717) Thanks [@camertron](https://github.com/camertron)! - Fix conditional inclusion of polymorphic slots module
+
+* [#1822](https://github.com/primer/view_components/pull/1822) [`ad56ddef`](https://github.com/primer/view_components/commit/ad56ddef07b2a4e45ca17f0838e5c211840f5873) Thanks [@camertron](https://github.com/camertron)! - Allow NavList selection/deselection by id/href in javascript
+
+## 0.0.122
+
+### Patch Changes
+
+- [#1818](https://github.com/primer/view_components/pull/1818) [`c8fa002f`](https://github.com/primer/view_components/commit/c8fa002f807c508c86cd387512e3e81ef01b1db3) Thanks [@camertron](https://github.com/camertron)! - Fix issue in TabPanels causing extra content to render twice
+
+* [#1824](https://github.com/primer/view_components/pull/1824) [`2a234537`](https://github.com/primer/view_components/commit/2a2345372113dc23df1507fdcd6c588351cc3fd7) Thanks [@langermank](https://github.com/langermank)! - ToggleSwitch and SegmentedControl visual updates + Primitives (PCSS) version bump
+
+- [#1595](https://github.com/primer/view_components/pull/1595) [`f31bf3f9`](https://github.com/primer/view_components/commit/f31bf3f95a03efb4931a421b7d49df7aa22b6ea7) Thanks [@soberstadt](https://github.com/soberstadt)! - Change engine to mount on ActionController::Base
+
+* [#1832](https://github.com/primer/view_components/pull/1832) [`557ec8ba`](https://github.com/primer/view_components/commit/557ec8bad66e32a6a5183a9b6496d5910658de41) Thanks [@joelhawksley](https://github.com/joelhawksley)! - support ViewComponent v3.0.0.rc2
+
+- [#1821](https://github.com/primer/view_components/pull/1821) [`c12ae8c5`](https://github.com/primer/view_components/commit/c12ae8c5dbe9fd0b8c723cac297139976fa28552) Thanks [@camertron](https://github.com/camertron)! - Add a standalone FormControl component
+
+* [#1814](https://github.com/primer/view_components/pull/1814) [`8090cda2`](https://github.com/primer/view_components/commit/8090cda2a389a99e100ecea979d40602a3d52ae6) Thanks [@camertron](https://github.com/camertron)! - Expose additional form components
+
+- [#1827](https://github.com/primer/view_components/pull/1827) [`c0545a65`](https://github.com/primer/view_components/commit/c0545a659855c3c6ec20f5e9faf680b2e7a9cc52) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use lookbook 1.5.2
+
+* [#1833](https://github.com/primer/view_components/pull/1833) [`a90e1554`](https://github.com/primer/view_components/commit/a90e155475819bb5f82b0947916b46ada4ea1633) Thanks [@camertron](https://github.com/camertron)! - Fix regression causing check boxes to always render enabled
+
+## 0.0.121
+
+### Patch Changes
+
+- [#1791](https://github.com/primer/view_components/pull/1791) [`b68cf7f7`](https://github.com/primer/view_components/commit/b68cf7f7d74379765cd373a5ea060204e3cf7db2) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::LocalTime component
+
+* [#1808](https://github.com/primer/view_components/pull/1808) [`31544417`](https://github.com/primer/view_components/commit/31544417010274b4f8b3b6574587b917a0bbf0e4) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Rename URLHelpers to UrlHelpers to fix console error.
+
+- [#1788](https://github.com/primer/view_components/pull/1788) [`7ad70066`](https://github.com/primer/view_components/commit/7ad7006651dc4dbbd21f444ad10ee1fdb5c3eeba) Thanks [@camertron](https://github.com/camertron)! - Document TextField's auto_check_src argument
+
+* [#1784](https://github.com/primer/view_components/pull/1784) [`3b830167`](https://github.com/primer/view_components/commit/3b8301674ccd74e7ae31826a766883a0612a3960) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove unused deprecated component wrappers
+
+       - "Primer::Dropdown::Menu::Item"
+       - "Primer::Dropdown::Menu"
+       - "Primer::Dropdown"
+       - "Primer::HellipButton"
+       - "Primer::LabelComponent"
+       - "Primer::LinkComponent"
+       - "Primer::Markdown"
+       - "Primer::MenuComponent"
+       - "Primer::OcticonComponent"
+       - "Primer::OcticonSymbolsComponent"
+       - "Primer::PopoverComponent"
+       - "Primer::SpinnerComponent"
+       - "Primer::StateComponent"
+       - "Primer::SubheadComponent"
+       - "Primer::TabContainerComponent"
+       - "Primer::TimelineItemComponent::BadgeComponent"
+       - "Primer::TimelineItemComponent"
+
+- [#1787](https://github.com/primer/view_components/pull/1787) [`972dd7bd`](https://github.com/primer/view_components/commit/972dd7bd92e79b2e8b54555f91770c4c1b280709) Thanks [@neall](https://github.com/neall)! - Allow toggle-switch forms to use caption templates.
+
+* [#1792](https://github.com/primer/view_components/pull/1792) [`730b0a8d`](https://github.com/primer/view_components/commit/730b0a8d70a9e5bc42856c3f30779ebf0d2b9ac9) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::TimeAgoComponent
+
+- [#1776](https://github.com/primer/view_components/pull/1776) [`61b28872`](https://github.com/primer/view_components/commit/61b288721a0315bcad4694615c9b34ddad5d10b7) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding aria labeled by and described by check to SegmentedControl component. Marking as accessibility reviewed
+
+* [#1805](https://github.com/primer/view_components/pull/1805) [`238328a7`](https://github.com/primer/view_components/commit/238328a734cff1322d18c129d340bb5a254bc272) Thanks [@paulcsmith](https://github.com/paulcsmith)! - Update CloseButton to work with more aria-label types
+
+## 0.0.120
+
+### Patch Changes
+
+- [#1772](https://github.com/primer/view_components/pull/1772) [`9dfec861`](https://github.com/primer/view_components/commit/9dfec861e67aa90a392a0047ae7a06bdbcd1d437) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated Primer::ClipboardCopy component and clipboard_copy.rb file
+
+* [#1771](https://github.com/primer/view_components/pull/1771) [`0541d18c`](https://github.com/primer/view_components/commit/0541d18c9d76155f5aea3e72420884b97c0ac3b9) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated box_component.rb file `Primer::BoxComponent`
+
+- [#1782](https://github.com/primer/view_components/pull/1782) [`809d8d32`](https://github.com/primer/view_components/commit/809d8d3226ba62ce1040e5d9d5feacdbff1654f9) Thanks [@jdennes](https://github.com/jdennes)! - Prefer Primer::Beta::Button in ERBLint::Linters::ButtonComponentMigrationCounter
+
+* [#1783](https://github.com/primer/view_components/pull/1783) [`7337d5ef`](https://github.com/primer/view_components/commit/7337d5ef691c07288d42ba14bf2ac30a2eb11737) Thanks [@langermank](https://github.com/langermank)! - Remove the deprecated `Primer::DropdownMenuComponent`.
+
+- [#1768](https://github.com/primer/view_components/pull/1768) [`fe8e7071`](https://github.com/primer/view_components/commit/fe8e7071d90aa6bc8fe838fb75af384466f31bfa) Thanks [@jdennes](https://github.com/jdennes)! - Add RuboCop::Cop::Primer::TestSelector to encourage use of the test_selector argument
+
+* [#1780](https://github.com/primer/view_components/pull/1780) [`49d27b22`](https://github.com/primer/view_components/commit/49d27b22724deeb68b8e017306c97808813e3ee3) Thanks [@langermank](https://github.com/langermank)! - Bug fix: Adjust the body tag padding-right when an overlay is open to avoid page shift
+
+- [#1767](https://github.com/primer/view_components/pull/1767) [`cf28f5e4`](https://github.com/primer/view_components/commit/cf28f5e4179b73fe9307a944fdba52fc8e86449e) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Use ViewComponent 3.0.0.rc1
+
+* [#1770](https://github.com/primer/view_components/pull/1770) [`b8b0308d`](https://github.com/primer/view_components/commit/b8b0308d9c12c98cc491cc2b9db905a3f0bb1073) Thanks [@tomthorogood](https://github.com/tomthorogood)! - Fix incorrect typography descriptions
+
+- [#1781](https://github.com/primer/view_components/pull/1781) [`716abfb1`](https://github.com/primer/view_components/commit/716abfb1ddb026790c8d26f6d88f5de472946d3e) Thanks [@jdennes](https://github.com/jdennes)! - Correct contributing guidelines
+
 ## 0.0.119
 
 ### Patch Changes

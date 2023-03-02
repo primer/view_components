@@ -101,7 +101,7 @@ module Primer
       #       <% d.with_body do %>
       #         <p>Some content</p>
       #       <% end %>
-      #       <% d.footer do %>
+      #       <% d.with_footer do %>
       #         <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
       #         <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
       #       <% end %>

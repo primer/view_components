@@ -31,8 +31,8 @@ options.
 
 ```yml
 - component: [string]
-  autocorrect: [boolean] 
-  replacement: [string] 
+  autocorrect: [boolean]
+  replacement: [string]
   guide: [string]
 ```
 
@@ -71,18 +71,18 @@ configurations for more information.
 1. An autocorrectable deprecation without a migration guide
 
 ```yml
-  - component: "Primer::LabelComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: true
-    replacement: "Primer::Beta::Label
+    replacement: "Primer::Beta::Component
 ```
 
 2. An autocorrectable deprecation with a migration guide to provide more information about the changes
 
 ```yml
-  - component: "Primer::LabelComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: true
-    replacement: "Primer::Beta::Label
-    guide: "https://example.com/label_component"
+    replacement: "Primer::Beta::Component
+    guide: "https://example.com/primer_component"
 ```
 
 3. A non-autocorrectable deprecation, with a replacement component and migration guide
@@ -97,7 +97,7 @@ configurations for more information.
 4. A non-autocorrectable deprecation, without a replacement component, and with a guide to alternatives
 
 ```yml
-  - component: "Primer::DropdownMenuComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: false
     guide: "https://example.com/dropdown_menu_alternatives"
 ```

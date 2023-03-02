@@ -5,6 +5,9 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "7.0.3").to_s
 
+# remove when https://github.com/rails/rails/pull/47142 is merged
+gem "rack", "~> 2.0"
+
 gem "rack-cors"
 gem "rake", "~> 13.0"
 
@@ -35,7 +38,7 @@ gem "webpacker", "~> 5.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 1.2.1" unless rails_version.to_f < 7
+gem "lookbook", "~> 1.5.2" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 group :test do

@@ -12,6 +12,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
+      "aria-label": "File view",
       full_width: false
     }, proc { |component|
       component.with_item(label: "Button", selected: true)
@@ -27,7 +28,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
-    [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
@@ -77,7 +77,6 @@ class PrimerComponentTest < Minitest::Test
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],
-    [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
     [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
@@ -86,7 +85,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
     [Primer::Alpha::Menu, {}, proc { |component| component.with_item(href: "#url") { "Item" } }],
-    [Primer::Navigation::TabComponent, {}],
+    [Primer::Alpha::Navigation::Tab, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
@@ -95,44 +94,46 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Subhead, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
     [Primer::Alpha::TabContainer, {}, proc { "Foo" }],
     [Primer::Alpha::ToggleSwitch, {}],
+    [Primer::Alpha::CheckBoxGroup, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::CheckBox, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::FormButton, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::MultiInput, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::RadioButtonGroup, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::RadioButton, { name: :foo, label: "Foo", value: "foo" }],
+    [Primer::Alpha::Select, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::SubmitButton, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::TextArea, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::Overlay, { title: "Test", role: :dialog }, proc { |component|
+      component.with_header { "Foo" }
+      component.with_body { "Foo" }
+    }],
+    [Primer::Alpha::Overlay::Header, { title: "Test", id: "test" }],
+    [Primer::Alpha::Overlay::Body, {}],
+    [Primer::Alpha::Overlay::Footer, {}],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
-    [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::Beta::TimelineItem, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
-    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
-    [Primer::Alpha::Banner, {}]
+    [Primer::Alpha::Banner, {}],
+    [Primer::Alpha::FormControl, { label: "Foo" }]
   ].freeze
 
   def test_registered_components
     ignored_components = [
-      "Primer::TimelineItemComponent",
-      "Primer::SubheadComponent",
-      "Primer::TabContainerComponent",
-      "Primer::HellipButton",
-      "Primer::StateComponent",
-      "Primer::OcticonSymbolsComponent",
-      "Primer::SpinnerComponent",
-      "Primer::OcticonComponent",
-      "Primer::Markdown",
-      "Primer::MenuComponent",
-      "Primer::LabelComponent",
-      "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
-      "Primer::Alpha::ActionList::Separator",
-      "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::NavList::Item",
+      "Primer::Alpha::NavList::Group",
+      "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::PopoverComponent",
-      "Primer::Dropdown",
-      "Primer::Dropdown::Menu"
+      "Primer::Navigation::TabComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
@@ -211,5 +212,20 @@ class PrimerComponentTest < Minitest::Test
       end
       # rubocop:enable Rails/Inquiry
     end
+  end
+
+  def test_merge_aria
+    component = Primer::Component.new
+
+    hash1 = { "aria-disabled": "true", aria: { labelledby: "foo" }, foo: "foo" }
+    hash2 = { aria: { invalid: "true" }, "aria-label": "bar", bar: "bar" }
+
+    merged_arias = component.send(:merge_aria, hash1, hash2)
+
+    assert_equal merged_arias, { disabled: "true", invalid: "true", labelledby: "foo", label: "bar" }
+
+    # assert aria info removed from original hashes
+    assert_equal hash1, { foo: "foo" }
+    assert_equal hash2, { bar: "bar" }
   end
 end

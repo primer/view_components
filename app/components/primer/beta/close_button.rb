@@ -28,7 +28,7 @@ module Primer
           "close-button",
           system_arguments[:classes]
         )
-        @system_arguments[:"aria-label"] ||= "Close"
+        @system_arguments[:"aria-label"] = aria("label", system_arguments) || "Close"
       end
 
       def call

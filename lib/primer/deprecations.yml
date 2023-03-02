@@ -22,92 +22,13 @@ deprecations:
     replacement: "Primer::Beta::Button"
     guide: "https://primer.style/view-components/guides/primer_button_component"
 
-  - component: "Primer::DropdownMenuComponent"
-    autocorrect: false
-    replacement: "Primer::Beta::Dropdown"
-    guide: "https://primer.style/view-components/guides/primer_dropdown_menu_component"
-
-  - component: "Primer::Dropdown"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown"
-
-  - component: "Primer::Dropdown::Menu"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown::Menu"
-
-  - component: "Primer::Dropdown::Menu::Item"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown::Menu::Item"
-
-  - component: "Primer::HellipButton"
-    autocorrect: true
-    replacement: "Primer::Alpha::HellipButton"
-
   - component: "Primer::IconButton"
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
 
-  - component: "Primer::LabelComponent"
+  - component: "Primer::Navigation::TabComponent"
     autocorrect: true
-    replacement: "Primer::Beta::Label"
-
-  - component: "Primer::LocalTime"
-    autocorrect: false
-    replacement: "Primer::Beta::RelativeTime"
-    guide: "https://primer.style/view-components/guides/primer_local_time"
-
-  - component: "Primer::LinkComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Link"
-
-  - component: "Primer::Markdown"
-    autocorrect: true
-    replacement: "Primer::Beta::Markdown"
-
-  - component: "Primer::MenuComponent"
-    autocorrect: true
-    replacement: "Primer::Alpha::Menu"
-
-  - component: "Primer::OcticonComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Octicon"
-
-  - component: "Primer::OcticonSymbolsComponent"
-    autocorrect: true
-    replacement: "Primer::Alpha::OcticonSymbols"
-
-  - component: "Primer::PopoverComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Popover"
-
-  - component: "Primer::SpinnerComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Spinner"
-
-  - component: "Primer::StateComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::State"
-
-  - component: "Primer::SubheadComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Subhead"
-
-  - component: "Primer::TabContainerComponent"
-    autocorrect: true
-    replacement: "Primer::Alpha::TabContainer"
-
-  - component: "Primer::TimeAgoComponent"
-    autocorrect: false
-    replacement: "Primer::Beta::RelativeTime"
-    guide: "https://primer.style/view-components/guides/primer_time_ago"
-
-  - component: "Primer::TimelineItemComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::TimelineItem"
-
-  - component: "Primer::TimelineItemComponent::BadgeComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::TimelineItem::Badge"
+    replacement: "Primer::Alpha::Navigation::Tab"
 
   - component: "Primer::Tooltip"
     autocorrect: true

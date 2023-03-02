@@ -27,6 +27,16 @@
   },
   "Primer::Alpha::ActionList::Heading": {
     "DEFAULT_SCHEME": "subtle",
+    "HEADING_LEVELS": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "HEADING_MAX": 6,
+    "HEADING_MIN": 1,
     "SCHEME_MAPPINGS": {
       "subtle": null,
       "filled": "ActionList-sectionDivider--filled"
@@ -127,6 +137,10 @@
       "large"
     ]
   },
+  "Primer::Alpha::CheckBox": {
+  },
+  "Primer::Alpha::CheckBoxGroup": {
+  },
   "Primer::Alpha::Dialog": {
     "Body": "Primer::Alpha::Dialog::Body",
     "DEFAULT_POSITION": "center",
@@ -217,6 +231,10 @@
       "button",
       "summary"
     ]
+  },
+  "Primer::Alpha::FormButton": {
+  },
+  "Primer::Alpha::FormControl": {
   },
   "Primer::Alpha::HellipButton": {
   },
@@ -315,15 +333,130 @@
       "h6"
     ]
   },
+  "Primer::Alpha::MultiInput": {
+  },
   "Primer::Alpha::NavList": {
-    "Item": "Primer::Alpha::NavList::Item",
-    "Section": "Primer::Alpha::NavList::Section"
+    "Group": "Primer::Alpha::NavList::Group",
+    "Item": "Primer::Alpha::NavList::Item"
+  },
+  "Primer::Alpha::NavList::Group": {
   },
   "Primer::Alpha::NavList::Item": {
   },
-  "Primer::Alpha::NavList::Section": {
+  "Primer::Alpha::Navigation::Tab": {
+    "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
+      true,
+      "page"
+    ],
+    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
   "Primer::Alpha::OcticonSymbols": {
+  },
+  "Primer::Alpha::Overlay": {
+    "ALIGN_CONTENT_MAPPINGS": {
+      "start": "Overlay-footer--alignStart",
+      "center": "Overlay-footer--alignCenter",
+      "end": "Overlay-footer--alignEnd"
+    },
+    "ALIGN_CONTENT_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_ALIGN_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_OFFSET_OPTIONS": [
+      "normal",
+      "spacious"
+    ],
+    "ANCHOR_SIDE_MAPPINGS": {
+      "inside_top": "inside-top",
+      "inside_bottom": "inside-bottom",
+      "inside_left": "inside-left",
+      "inside_right": "inside-right",
+      "inside_center": "inside-center",
+      "outside_top": "outside-top",
+      "outside_bottom": "outside-bottom",
+      "outside_left": "outside-left",
+      "outside_right": "outside-right"
+    },
+    "ANCHOR_SIDE_OPTIONS": [
+      "inside_top",
+      "inside_bottom",
+      "inside_left",
+      "inside_right",
+      "inside_center",
+      "outside_top",
+      "outside_bottom",
+      "outside_left",
+      "outside_right"
+    ],
+    "Body": "Primer::Alpha::Overlay::Body",
+    "DEFAULT_ALIGN_CONTENT": "end",
+    "DEFAULT_ANCHOR_ALIGN": "start",
+    "DEFAULT_ANCHOR_OFFSET": "normal",
+    "DEFAULT_ANCHOR_SIDE": "outside_bottom",
+    "DEFAULT_PADDING": "normal",
+    "DEFAULT_POPOVER": "auto",
+    "DEFAULT_SIZE": "auto",
+    "Footer": "Primer::Alpha::Overlay::Footer",
+    "Header": "Primer::Alpha::Overlay::Header",
+    "PADDING_MAPPINGS": {
+      "normal": null,
+      "condensed": "Overlay-body--paddingCondensed",
+      "none": "Overlay-body--paddingNone"
+    },
+    "PADDING_OPTIONS": [
+      "normal",
+      "condensed",
+      "none"
+    ],
+    "POPOVER_OPTIONS": [
+      "auto",
+      "manual"
+    ],
+    "ROLE_OPTIONS": [
+      "dialog",
+      "menu"
+    ],
+    "SIZE_MAPPINGS": {
+      "auto": "Overlay--size-auto",
+      "small": "Overlay--size-small",
+      "medium": "Overlay--size-medium",
+      "medium_portrait": "Overlay--size-medium-portrait",
+      "large": "Overlay--size-large",
+      "xlarge": "Overlay--size-xlarge"
+    },
+    "SIZE_OPTIONS": [
+      "auto",
+      "small",
+      "medium",
+      "medium_portrait",
+      "large",
+      "xlarge"
+    ]
+  },
+  "Primer::Alpha::Overlay::Body": {
+  },
+  "Primer::Alpha::Overlay::Footer": {
+  },
+  "Primer::Alpha::Overlay::Header": {
+    "DEFAULT_SIZE": "medium",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Overlay-header--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ]
+  },
+  "Primer::Alpha::RadioButton": {
+  },
+  "Primer::Alpha::RadioButtonGroup": {
   },
   "Primer::Alpha::SegmentedControl": {
     "FULL_WIDTH_DEFAULT": false,
@@ -331,6 +464,10 @@
     "Item": "Primer::Alpha::SegmentedControl::Item"
   },
   "Primer::Alpha::SegmentedControl::Item": {
+  },
+  "Primer::Alpha::Select": {
+  },
+  "Primer::Alpha::SubmitButton": {
   },
   "Primer::Alpha::TabContainer": {
   },
@@ -349,6 +486,8 @@
       "nav",
       "div"
     ]
+  },
+  "Primer::Alpha::TextArea": {
   },
   "Primer::Alpha::TextField": {
   },
@@ -1033,32 +1172,6 @@
   },
   "Primer::Content": {
   },
-  "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
-  },
-  "Primer::Dropdown::Menu": {
-    "Item": "Primer::Dropdown::Menu::Item"
-  },
-  "Primer::Dropdown::Menu::Item": {
-  },
-  "Primer::DropdownMenuComponent": {
-    "DIRECTION_DEFAULT": "se",
-    "DIRECTION_OPTIONS": [
-      "se",
-      "sw",
-      "w",
-      "e",
-      "ne",
-      "s"
-    ],
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "dark": "dropdown-menu-dark"
-    }
-  },
-  "Primer::HellipButton": {
-  },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -1069,8 +1182,6 @@
       "default",
       "danger"
     ]
-  },
-  "Primer::LabelComponent": {
   },
   "Primer::LayoutComponent": {
     "ALLOWED_SIDEBAR_COLS": [
@@ -1094,51 +1205,7 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::LinkComponent": {
-  },
-  "Primer::LocalTime": {
-    "DEFAULT_DIGIT_TYPE": "numeric",
-    "DEFAULT_TEXT_TYPE": "short",
-    "DIGIT_TYPE_OPTIONS": [
-      "numeric",
-      "2-digit"
-    ],
-    "TEXT_TYPE_OPTIONS": [
-      "short",
-      "long"
-    ]
-  },
-  "Primer::Markdown": {
-  },
-  "Primer::MenuComponent": {
-  },
   "Primer::Navigation::TabComponent": {
-    "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
-      true,
-      "page"
-    ],
-    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
-  },
-  "Primer::OcticonComponent": {
-  },
-  "Primer::OcticonSymbolsComponent": {
-  },
-  "Primer::PopoverComponent": {
-  },
-  "Primer::SpinnerComponent": {
-  },
-  "Primer::StateComponent": {
-  },
-  "Primer::SubheadComponent": {
-  },
-  "Primer::TabContainerComponent": {
-  },
-  "Primer::TimeAgoComponent": {
-  },
-  "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
-  },
-  "Primer::TimelineItemComponent::BadgeComponent": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

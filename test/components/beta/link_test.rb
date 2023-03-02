@@ -21,7 +21,7 @@ class PrimerBetaLinkTest < Minitest::Test
   def test_renders_without_trailing_newline
     render_inline(Primer::Beta::Link.new(href: "http://joe-jonas-shirtless.com")) { "content" }
 
-    refute @rendered_content.end_with?("\n")
+    refute rendered_content.end_with?("\n")
   end
 
   def test_renders_as_a_link

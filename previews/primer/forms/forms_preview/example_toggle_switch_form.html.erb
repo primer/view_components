@@ -1,3 +1,3 @@
-<%= render(ExampleToggleSwitchForm.new(csrf: "let_me_in", src: toggle_switch_index_path, id: "success-toggle")) %>
+<%= render(ExampleToggleSwitchForm.new(csrf: "let_me_in", label: "Good example", src: toggle_switch_index_path, id: "success-toggle")) %>
 <hr>
-<%= render(ExampleToggleSwitchForm.new(csrf: "a_bad_value", src: toggle_switch_index_path, id: "error-toggle")) %>
+<%= render(ExampleToggleSwitchForm.new(csrf: "a_bad_value", label: "Bad example", src: toggle_switch_index_path, id: "error-toggle")) %>

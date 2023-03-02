@@ -152,12 +152,18 @@ module Primer
       # NOTE: this preview uses a group to force it's display below the other groups
       # @!group With link as tag
       def with_link_as_tag
-        render(Primer::Alpha::SegmentedControl.new) do |component|
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
           component.with_item(tag: :a, href: "#", label: "Preview", icon: :eye, selected: true)
           component.with_item(tag: :a, href: "#", label: "Raw", icon: :"file-code")
           component.with_item(tag: :a, href: "#", label: "Blame", icon: :people)
         end
       end
+      # @!endgroup
+
+      # @!group With aria labeled headings
+      def with_subhead_actions; end
+
+      def with_label_and_caption; end
       # @!endgroup
     end
   end

@@ -7,12 +7,12 @@
     "build": "gatsby build --prefix-paths"
   },
   "dependencies": {
-    "@primer/behaviors": "^1.3.1",
-    "@primer/css": "^20.8.0",
-    "@primer/gatsby-theme-doctocat": "^4.2.3",
-    "@primer/octicons-react": "^17.10.0",
-    "@primer/primitives": "^7.10.0",
-    "@primer/react": "^35.16.0",
+    "@primer/behaviors": "^1.3.3",
+    "@primer/css": "^20.8.3",
+    "@primer/gatsby-theme-doctocat": "^4.4.0",
+    "@primer/octicons-react": "^17.12.0",
+    "@primer/primitives": "^7.11.1",
+    "@primer/react": "^35.20.0",
     "gatsby": "^2.24.63",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

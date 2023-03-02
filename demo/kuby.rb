@@ -2,6 +2,7 @@
 
 require "kuby/azure"
 require "kuby/kind"
+require "ms_rest"
 
 # NPM package
 class NpmPackage < Kuby::Docker::Packages::Package
@@ -128,6 +129,11 @@ Kuby.define("ViewComponentsStorybook") do
       insert :build_demo_assets, before: :assets_phase do |dockerfile|
         dockerfile.run("npm", "install")
       end
+
+      # Generate documentation pages served by Lookbook's pages feature
+      insert :build_lookbook_pages, after: :assets_phase do |dockerfile|
+        dockerfile.run("cd", "..", "&&", "bundle", "exec", "rake", "docs:build_lookbook_pages")
+      end
     end
 
     kubernetes do
@@ -146,11 +152,14 @@ Kuby.define("ViewComponentsStorybook") do
       provider :azure do
         subscription_id "550eb99d-d0c7-4651-a337-f53fa6520c4f"
         tenant_id "398a6654-997b-47e9-b12b-9515b896b4de"
+        client_id "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+
         resource_group_name "primer"
         resource_name "primer"
 
-        client_id "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
-        client_secret ENV["AZURE_SPN_CLIENT_SECRET"]
+        credentials MsRest::TokenCredentials.new(
+          MsRest::StringTokenProvider.new(ENV["AZURE_ACCESS_TOKEN"])
+        )
       end
 
       configure_plugin :rails_app do

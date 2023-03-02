@@ -40,7 +40,7 @@ class PrimerAlphaHellipButtonTest < Minitest::Test
       render_inline(Primer::Alpha::HellipButton.new)
     end
 
-    assert_equal("`aria-label` is required.", err.message)
+    assert_equal("`aria-label` or `aria-labelledby` is required.", err.message)
   end
 
   def test_does_not_render_content

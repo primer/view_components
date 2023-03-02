@@ -1,0 +1,22 @@
+---
+title: "Groups and layouts"
+label: "Groups and Layouts"
+id: groups_layouts
+---
+
+By default, forms are oriented vertically. In other words, inputs are rendered from top to bottom in the order they are defined. Rendering inputs this way is generally more accessible than rendering inputs side-by-side, and should be preferred for most use-cases.
+
+However in certain circumstances it may be appropriate to render groups of inputs horizontally, and Primer forms provides a grouping mechanism for doing so:
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.group(layout: :horizontal) do |name_group|
+        name_group.text_field(name: :first_name, label: "First name")
+        name_group.text_field(name: :last_name, label: "Last name")
+      end
+    end
+  end
+<% end %>
+
+The `layout:` argument also accepts a `:vertical` option, which is the default.

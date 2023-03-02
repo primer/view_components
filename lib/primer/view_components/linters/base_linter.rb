@@ -40,7 +40,7 @@ module ERBLint
 
         tags.each do |tag|
           next if tag.closing?
-          next unless self.class::TAGS&.include?(tag.name)
+          next if self.class::TAGS&.none?(tag.name)
 
           classes = tag.attributes["class"]&.value&.split(" ") || []
           tag_tree[tag][:offense] = false

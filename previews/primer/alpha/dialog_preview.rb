@@ -127,6 +127,21 @@ module Primer
                                show_divider: show_divider
                              })
       end
+
+      # @label Page with scrollbar and dialog
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      def body_has_scrollbar_overflow(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+        render_with_template(locals: {
+                               title: title,
+                               subtitle: subtitle,
+                               button_text: button_text,
+                               show_divider: show_divider
+                             })
+      end
     end
   end
 end

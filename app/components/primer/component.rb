@@ -6,8 +6,16 @@ module Primer
   # @private
   # :nocov:
   class Component < ViewComponent::Base
-    include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
-    include ViewComponent::PolymorphicSlots unless ViewComponent::Base < ViewComponent::PolymorphicSlots
+    if Module.const_defined?("ViewComponent::SlotableV2") &&
+       !(ViewComponent::Base < ViewComponent::SlotableV2)
+      include ViewComponent::SlotableV2
+    end
+
+    if Module.const_defined?("ViewComponent::PolymorphicSlots") &&
+       !(ViewComponent::Base < ViewComponent::PolymorphicSlots)
+      include ViewComponent::PolymorphicSlots
+    end
+
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
@@ -50,9 +58,44 @@ module Primer
       system_arguments[:"aria-#{val}"] || system_arguments.dig(:aria, val.to_sym)
     end
 
+    # Merges hashes that contain "aria-*" keys and nested aria: hashes. Removes keys from
+    # each hash and returns them in the new hash.
+    #
+    # Eg. merge_aria({ "aria-disabled": "true" }, { aria: { invalid: "true" } })
+    #     => { disabled: "true", invalid: "true" }
+    #
+    # It's designed to be used to normalize and merge aria information from system_arguments
+    # hashes. Consider using this pattern in component initializers:
+    #
+    # @system_arguments[:aria] = merge_aria(
+    #   @system_arguments,
+    #   { aria: { labelled_by: id } }
+    # )
+    def merge_aria(*hashes)
+      {}.tap do |result|
+        hashes.each do |hash|
+          next unless hash
+
+          result.merge!(hash.delete(:aria) || {})
+
+          hash.delete_if do |key, val|
+            key_s = key.to_s
+
+            if key.start_with?("aria-")
+              result[key_s.sub("aria-", "").to_sym] = val
+              true
+            else
+              false
+            end
+          end
+        end
+      end
+    end
+
     def validate_aria_label
       aria_label = aria("label", @system_arguments)
-      raise ArgumentError, "`aria-label` is required." if aria_label.nil? && !Rails.env.production?
+      aria_labelledby = aria("labelledby", @system_arguments)
+      raise ArgumentError, "`aria-label` or `aria-labelledby` is required." if aria_label.nil? && aria_labelledby.nil? && !Rails.env.production?
     end
 
     def silence_deprecations?
