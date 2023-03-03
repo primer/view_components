@@ -33,6 +33,16 @@ class PrimerAlphaOverlayTest < Minitest::Test
     assert_selector("[popovertoggletarget]")
   end
 
+  def test_renders_show_icon_button
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
+      component.with_body { "Hello" }
+      component.with_show_button(icon: :star, "aria-label": "Star")
+    end
+
+    assert_selector("[popovertoggletarget]")
+  end
+
+
   def test_raises_on_missing_title
     error = assert_raises(ArgumentError) do
       render_inline(Primer::Alpha::Overlay.new(role: :dialog))

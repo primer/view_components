@@ -20,7 +20,8 @@ module Primer
       # @param header_size [Symbol] select [medium, large]
       # @param button_text [String] text
       # @param body_text [String] text
-      def playground(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, padding: :normal, anchor_align: :center, anchor_offset: :normal, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "")
+      # @param icon [Symbol] octicon
+      def playground(title: "Test Overlay", subtitle: nil, role: :dialog, size: :auto, padding: :normal, anchor_align: :center, anchor_offset: :normal, anchor_side: :outside_bottom, allow_out_of_bounds: false, visually_hide_title: false, header_size: :medium, button_text: "Show Overlay", body_text: "", icon: :none)
         render(Primer::Alpha::Overlay.new(
                  title: title,
                  subtitle: subtitle,
@@ -34,7 +35,11 @@ module Primer
                  visually_hide_title: visually_hide_title,
                )) do |d|
           d.with_header(title: title, size: header_size)
-          d.with_show_button { button_text }
+          if icon.present? and icon != :none
+            d.with_show_button(icon: icon, "aria-label": icon.to_s)
+          else
+            d.with_show_button { button_text }
+          end
           d.with_body { body_text }
         end
       end
