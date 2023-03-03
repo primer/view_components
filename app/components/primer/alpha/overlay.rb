@@ -74,10 +74,7 @@ module Primer
         )
         system_arguments[:id] = show_button_id
         system_arguments["popovertoggletarget"] = overlay_id
-        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({
-          "controls": overlay_id,
-          "haspopup": "true"
-        })
+        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({ controls: overlay_id, haspopup: "true" })
         if system_arguments[:icon]
           Primer::Beta::IconButton.new(**system_arguments)
         else
@@ -205,7 +202,6 @@ module Primer
       def show_button_id
         "overlay-show-#{overlay_id}"
       end
-
     end
   end
 end
