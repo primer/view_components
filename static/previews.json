@@ -1557,6 +1557,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_icons_and_counters",
         "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_extra",
+        "name": "with_extra"
       }
     ]
   },
@@ -1573,6 +1578,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/default",
         "preview_path": "/lookbook/preview/primer/alpha/tab_panels/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_panels/with_extra",
+        "name": "with_extra"
       }
     ]
   },
