@@ -68,14 +68,18 @@ module Primer
       # Optional button to open the Overlay.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
-        system_arguments[:id] = "overlay-show-#{@system_arguments[:id]}"
-        system_arguments["popovertoggletarget"] = @system_arguments[:id]
-        system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-        Primer::Beta::Button.new(**system_arguments)
+        system_arguments[:id] = show_button_id
+        system_arguments["popovertoggletarget"] = overlay_id
+        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({ controls: overlay_id, haspopup: "true" })
+        if icon.present?
+          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
+        else
+          Primer::Beta::Button.new(**system_arguments)
+        end
       }
 
       # Header content.
@@ -187,6 +191,16 @@ module Primer
       def before_render
         with_header unless header?
         with_body unless body?
+      end
+
+      private
+
+      def overlay_id
+        @system_arguments[:id]
+      end
+
+      def show_button_id
+        "overlay-show-#{overlay_id}"
       end
     end
   end
