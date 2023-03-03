@@ -34,7 +34,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       tmux
 
 # Install overmind
-RUN curl --fail --location --output /usr/bin/overmind.gz https://github.com/DarthSim/overmind/releases/download/v2.1.0/overmind-v2.1.0-linux-amd64.gz && \
+RUN curl --fail --location --output /usr/bin/overmind.gz https://github.com/DarthSim/overmind/releases/download/v2.4.0/overmind-v2.4.0-linux-amd64.gz && \
       gunzip /usr/bin/overmind.gz && \
       chmod +x /usr/bin/overmind
 
