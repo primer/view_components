@@ -72,10 +72,12 @@ module Primer
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
-        system_arguments[:id] = "overlay-show-#{@system_arguments[:id]}"
-        system_arguments["popovertoggletarget"] = @system_arguments[:id]
-        system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-        Primer::Beta::Button.new(**system_arguments)
+        system_arguments[:id] = show_button_id
+        system_arguments["popovertoggletarget"] = overlay_id
+        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({
+          "controls": overlay_id,
+          "haspopup": "true"
+        })
       }
 
       # Header content.
@@ -188,6 +190,17 @@ module Primer
         with_header unless header?
         with_body unless body?
       end
+
+      private
+
+      def overlay_id
+        @system_arguments[:id]
+      end
+
+      def show_button_id
+        "overlay-show-#{overlay_id}"
+      end
+
     end
   end
 end
