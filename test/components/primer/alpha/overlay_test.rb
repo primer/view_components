@@ -42,7 +42,6 @@ class PrimerAlphaOverlayTest < Minitest::Test
     assert_selector("[popovertoggletarget]")
   end
 
-
   def test_raises_on_missing_title
     error = assert_raises(ArgumentError) do
       render_inline(Primer::Alpha::Overlay.new(role: :dialog))
