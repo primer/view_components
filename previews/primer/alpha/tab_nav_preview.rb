@@ -50,6 +50,16 @@ module Primer
           end
         end
       end
+
+      # @param align [Symbol] select [left, right]
+      def with_extra(align: :right)
+        render(Primer::Alpha::TabNav.new(label: "With icons and counters")) do |component|
+          component.with_tab(selected: true, href: "#") { "Tab 1" }
+          component.with_tab(href: "#") { "Tab 2" }
+          component.with_tab(href: "#") { "Tab 3" }
+          component.with_extra(align: align) { "Extra" }
+        end
+      end
     end
   end
 end
