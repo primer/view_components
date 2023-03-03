@@ -57,7 +57,9 @@ module Primer
           component.with_tab(selected: true, href: "#") { "Tab 1" }
           component.with_tab(href: "#") { "Tab 2" }
           component.with_tab(href: "#") { "Tab 3" }
-          component.with_extra(align: align) { "Extra" }
+          component.with_extra(align: align) do
+            render(Primer::Beta::Button.new) { "Extra Button" }
+          end
         end
       end
     end
