@@ -78,6 +78,11 @@ module Primer
           "controls": overlay_id,
           "haspopup": "true"
         })
+        if system_arguments[:icon]
+          Primer::Beta::IconButton.new(**system_arguments)
+        else
+          Primer::Beta::Button.new(**system_arguments)
+        end
       }
 
       # Header content.
