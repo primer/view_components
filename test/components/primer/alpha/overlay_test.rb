@@ -7,7 +7,7 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
   def test_renders_title_and_body
     render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
-      component.with_header {}
+      component.with_header
       component.with_body { "Hello" }
     end
 

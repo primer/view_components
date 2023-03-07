@@ -32,10 +32,10 @@ module Primer
                  anchor_offset: anchor_offset,
                  anchor_side: anchor_side,
                  allow_out_of_bounds: allow_out_of_bounds,
-                 visually_hide_title: visually_hide_title,
+                 visually_hide_title: visually_hide_title
                )) do |d|
           d.with_header(title: title, size: header_size)
-          if icon.present? and icon != :none
+          if icon.present? && (icon != :none)
             d.with_show_button(icon: icon, "aria-label": icon.to_s)
           else
             d.with_show_button { button_text }
@@ -69,7 +69,7 @@ module Primer
                  anchor_align: anchor_align,
                  anchor_side: anchor_side,
                  allow_out_of_bounds: allow_out_of_bounds,
-                 visually_hide_title: visually_hide_title,
+                 visually_hide_title: visually_hide_title
                )) do |d|
           d.with_header(title: title, size: header_size)
           d.with_show_button { button_text }
@@ -79,7 +79,6 @@ module Primer
 
       # @label Menu No Header
       #
-      # @param title [String] text
       # @param size [Symbol] select [auto, small, medium, medium_portrait, large, xlarge]
       # @param padding [Symbol] select [normal, condensed, none]
       # @param anchor_align [Symbol] select [start, center, end]
@@ -88,7 +87,7 @@ module Primer
       #
       # @param button_text [String] text
       # @param body_text [String] text
-      def menu_no_header(title: "Test Overlay", size: :auto, padding: :normal, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, button_text: "Show Overlay Menu", body_text: "This is a menu")
+      def menu_no_header(size: :auto, padding: :normal, anchor_align: :center, anchor_side: :outside_bottom, allow_out_of_bounds: false, button_text: "Show Overlay Menu", body_text: "This is a menu")
         render(Primer::Alpha::Overlay.new(
                  title: "Menu",
                  role: :menu,
@@ -96,7 +95,7 @@ module Primer
                  padding: padding,
                  anchor_align: anchor_align,
                  anchor_side: anchor_side,
-                 allow_out_of_bounds: allow_out_of_bounds,
+                 allow_out_of_bounds: allow_out_of_bounds
                )) do |d|
           d.with_show_button { button_text }
           d.with_body { body_text }
