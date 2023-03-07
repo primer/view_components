@@ -87,7 +87,7 @@ module Primer
           end
         end
 
-        assert_match /This component has a fixed tag/, error.message
+        assert_match(/This component has a fixed tag/, error.message)
       end
     end
   end
