@@ -79,6 +79,16 @@ module Primer
 
         assert_selector(".ActionListItem-visual--leading", count: 2)
       end
+
+      def test_heading_denies_tag_argument
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { lable: "List" })) do |component|
+            component.with_heading(title: "Foo", tag: :foo)
+          end
+        end
+
+        assert_match /This component has a fixed tag/, error.message
+      end
     end
   end
 end

@@ -27,7 +27,7 @@ module Primer
 
           @heading_level = heading_level
           @tag = :"h#{heading_level}"
-          @system_arguments = system_arguments
+          @system_arguments = deny_tag_argument(**system_arguments)
           @list_id = list_id
           @title = title
           @subtitle = subtitle
