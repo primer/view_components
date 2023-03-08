@@ -33,6 +33,7 @@ module Primer
           c.with_item(label: "Reference in new issue")
           c.with_item(is_divider: true)
           c.with_item(label: "Edit")
+          c.with_item(label: "Edit")
           c.with_item(label: "Delete", scheme: :danger)
         end
       end

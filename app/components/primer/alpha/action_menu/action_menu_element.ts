@@ -1,14 +1,14 @@
-import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
-import {getAnchoredPosition} from '@primer/behaviors'
-import type IncludeFragmentElement from '@github/include-fragment-element'
-
 type SelectVariant = 'single' | 'multiple' | null
 
-class ActionMenuElement extends HTMLElement {
+const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
+
+function isPrintableCharacter(str: string) {
+  return str.length === 1 && str.match(/\S/)
+}
+
+export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-  #firstCharactersOfItems: string[]
-  #firstMenuItem: HTMLElement
-  #lastMenuItem: HTMLElement
+  #previouslyFocusedElement: Element | null = null
   #shouldTryLoadingFragment = true
 
   get selectVariant(): SelectVariant {
@@ -19,145 +19,59 @@ class ActionMenuElement extends HTMLElement {
     return this.querySelector<HTMLUListElement>('[role="menu"]')
   }
 
-  get trigger(): HTMLButtonElement | null {
-    return this.querySelector<HTMLButtonElement>('button')
+  get popoverElement(): HTMLElement | null {
+    return this.querySelector<HTMLElement>('[popover]')
   }
 
-  get overlay(): HTMLDivElement | null {
-    return this.querySelector<HTMLDivElement>('.Overlay')
-  }
-
-  get menuItems(): HTMLElement[] | null {
-    if (!this.menu) return null
-
-    return Array.from(
-      this.menu.querySelectorAll<HTMLElement>('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'),
-    )
-  }
-
-  get includeFragment(): IncludeFragmentElement | null {
-    return this.querySelector<IncludeFragmentElement>(`[data-target~="action-menu.includeFragment"]`)
+  get menuItems(): HTMLElement[] {
+    return Array.from(this.menu?.querySelectorAll<HTMLElement>(menuItemSelector) ?? [])
   }
 
   get includeFragmentLoadingItem(): HTMLElement | null {
     return this.querySelector<HTMLElement>(`[data-target~="action-menu.includeFragmentLoadingItem"]`)
   }
 
-  get open() {
-    return this.hasAttribute('open')
-  }
-
-  set open(value: boolean) {
-    const initialBodyWidth = document.body.clientWidth
-
-    const observer = new ResizeObserver(entries => {
-      for (const entry of entries) {
-        if (initialBodyWidth !== entry.contentRect.width && this.open) {
-          this.#updatePosition()
-        }
-      }
-    })
-
-    if (value) {
-      if (this.open) return
-      if (!this.trigger || !this.menu) return
-
-      this.setAttribute('open', '')
-      this.trigger.setAttribute('aria-expanded', 'true')
-      this.overlay?.removeAttribute('hidden')
-      this.menu.style.visibility = 'hidden'
-
-      this.#updatePosition()
-      // If the window width is changed when the menu is open,
-      // this keeps the menu aligned to the button
-      observer.observe(document.body)
-
-      this.menu.style.visibility = 'visible'
-
-      if (this.includeFragmentLoadingItem) {
-        this.includeFragmentLoadingItem.tabIndex = 0
-        this.includeFragmentLoadingItem.focus()
-      }
-    } else {
-      if (!this.open) return
-      this.removeAttribute('open')
-      this.trigger?.setAttribute('aria-expanded', 'false')
-      this.overlay && this.overlay.setAttribute('hidden', 'true')
-      observer.unobserve(document.body)
-
-      // TODO: Do this without a setTimeout
-      setTimeout(() => {
-        // There are some actions that may move focus to another part of the page intentionally.
-        // For example: "Quote Reply" in the comment options moves focus to the comment box.
-        // This only moves focus to the trigger if it's not managed in another way.
-        if (document.activeElement === document.body) this.trigger?.focus()
-      }, 1)
-    }
-  }
-
   connectedCallback() {
-    if (!this.trigger) return
+    this.#abortController = new AbortController()
+    const {signal} = this.#abortController
 
-    this.#addEvents()
+    this.addEventListener('keydown', this, {signal})
+    this.addEventListener('click', this, {signal})
+    this.addEventListener('mouseover', this, {signal})
+    this.popoverElement?.addEventListener('beforetoggle', this, {signal})
   }
 
   disconnectedCallback() {
     this.#abortController.abort()
   }
 
-  show() {
-    this.open = true
-  }
-
-  hide() {
-    this.open = false
-  }
-
-  #clearSelectedItems() {
-    for (const item of this.querySelectorAll('[aria-checked]')) {
-      item.setAttribute('aria-checked', 'false')
-    }
-  }
-
-  #addEvents() {
-    this.#abortController = new AbortController()
-    const {signal} = this.#abortController
-
-    if (!this.trigger || !this.menu) return
-    this.trigger.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
-
-    if (this.hasAttribute('preload')) {
-      this.trigger.addEventListener('mouseenter', this.loadHTMLFragment.bind(this), {signal})
-      this.trigger.addEventListener('focus', this.loadHTMLFragment.bind(this), {signal})
-    }
-
-    this.#firstCharactersOfItems = []
-
-    this.#addEventsToMenuItems(signal)
-
-    if (this.includeFragment) {
-      this.includeFragment.addEventListener('load', this.handleIncludeFragmentLoaded.bind(this))
-    }
-
-    window.addEventListener('mousedown', this.backgroundMousedown.bind(this), true)
-  }
-
-  #addEventsToMenuItems(signal: AbortSignal) {
-    if (!this.menuItems) return
-
-    for (const menuItem of this.menuItems) {
-      if (menuItem.textContent) {
-        this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
+  handleEvent(event: Event) {
+    const target = event.target
+    const isMenuItem = target instanceof HTMLElement && target.matches(menuItemSelector)
+    if (event.type === 'beforetoggle' && (event as BeforeToggleEvent).newState === 'open') {
+      if (this.includeFragmentLoadingItem) {
+        this.includeFragmentLoadingItem.tabIndex = 0
+        this.includeFragmentLoadingItem.focus()
       }
-
-      menuItem.addEventListener('keydown', this.menuItemKeydown.bind(this), {signal})
-      menuItem.addEventListener('click', this.menuItemClick.bind(this), {signal})
-      menuItem.addEventListener('mouseover', this.menuItemMouseover.bind(this), {signal})
-
-      if (!this.#firstMenuItem) {
-        this.#firstMenuItem = menuItem
-      }
-      this.#lastMenuItem = menuItem
+      this.#previouslyFocusedElement = document.activeElement
+    } else if (event.type === 'beforetoggle' && (event as BeforeToggleEvent).newState === 'closed') {
+      // TODO: Do this without a setTimeout
+      setTimeout(() => {
+        // There are some actions that may move focus to another part of the page intentionally.
+        // For example: "Quote Reply" in the comment options moves focus to the comment box.
+        // This only moves focus to the trigger if it's not managed in another way.
+        if (document.activeElement === document.body && this.#previouslyFocusedElement instanceof HTMLElement) {
+          this.#previouslyFocusedElement.focus()
+        }
+      }, 1)
+    } else if (!isMenuItem && event.type === 'keydown') {
+      this.buttonKeydown(event as KeyboardEvent)
+    } else if (isMenuItem && event.type === 'keydown') {
+      this.menuItemKeydown(event as KeyboardEvent)
+    } else if (isMenuItem && event.type === 'click') {
+      this.menuItemClick(event as MouseEvent)
+    } else if (isMenuItem && event.type === 'mouseover') {
+      this.menuItemMouseover(event as MouseEvent)
     }
   }
 
@@ -172,16 +86,14 @@ class ActionMenuElement extends HTMLElement {
         item.tabIndex = -1
       }
     }
-}
+  }
 
   setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
-    if (!this.menuItems) return
-
-    let newMenuItem = null
+    let newMenuItem: HTMLElement
     let index = null
 
-    if (currentMenuItem === this.#firstMenuItem) {
-      newMenuItem = this.#lastMenuItem
+    if (currentMenuItem === this.menuItems[0]) {
+      newMenuItem = this.menuItems.at(-1)!
     } else {
       index = this.menuItems.indexOf(currentMenuItem)
       newMenuItem = this.menuItems[index - 1]
@@ -198,8 +110,8 @@ class ActionMenuElement extends HTMLElement {
     let newMenuItem = null
     let index = null
 
-    if (currentMenuItem === this.#lastMenuItem) {
-      newMenuItem = this.#firstMenuItem
+    if (currentMenuItem === this.menuItems.at(-1)) {
+      newMenuItem = this.menuItems[0]
     } else {
       index = this.menuItems.indexOf(currentMenuItem)
       newMenuItem = this.menuItems[index + 1]
@@ -211,157 +123,117 @@ class ActionMenuElement extends HTMLElement {
 
   setFocusByFirstCharacter(currentMenuItem: HTMLElement, character: string) {
     if (!this.menuItems) return
-
-    let start = null
-    let index = null
-
-    if (character.length > 1) {
-      return
-    }
+    if (character.length > 1) return
 
     character = character.toLowerCase()
 
     // Get start index for search based on position of currentMenuItem
-    start = this.menuItems.indexOf(currentMenuItem) + 1
+    let start = this.menuItems.indexOf(currentMenuItem) + 1
     if (start >= this.menuItems.length) {
       start = 0
     }
 
     // Check remaining slots in the menu
-    index = this.#firstCharactersOfItems.indexOf(character, start)
-
-    // If character is not found in remaining slots, check from beginning
-    if (index === -1) {
-      index = this.#firstCharactersOfItems.indexOf(character, 0)
+    for (const menuItem of this.menuItems.slice(start).concat(this.menuItems.slice(0, start))) {
+      if (menuItem.textContent?.trim()[0].toLowerCase() === character) {
+        this.setFocusToMenuItem(menuItem)
+        return
+      }
     }
-
-    // If match is found
-    if (index > -1) {
-      this.setFocusToMenuItem(this.menuItems[index])
-    }
-  }
-
-  #updatePosition() {
-    if (!this.trigger || !this.menu) return
-
-    const float = this.querySelector<HTMLElement>('[data-menu-overlay]') || this.menu
-    const anchor = this.trigger
-    const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
-
-    float.style.top = `${top}px`
-    float.style.left = `${left}px`
   }
 
   // Menu event handlers
   buttonKeydown(event: KeyboardEvent) {
-    // TODO: use data-hotkey
-    // eslint-disable-next-line no-restricted-syntax
-    const key = event.key
-    let flag = false
-
-    switch (key) {
+    switch (event.key) {
       case ' ':
       case 'Enter':
       case 'ArrowDown':
       case 'Down':
-        this.show()
-        this.setFocusToMenuItem(this.#firstMenuItem)
-        flag = true
+        this.popoverElement?.showPopover()
+        this.setFocusToMenuItem(this.menuItems[0])
         break
 
       case 'Esc':
       case 'Escape':
-        this.hide()
-        flag = true
+        this.popoverElement?.hidePopover()
         break
 
       case 'Up':
       case 'ArrowUp':
-        this.show()
-        this.setFocusToMenuItem(this.#lastMenuItem)
-        flag = true
+        this.popoverElement?.showPopover()
+        this.setFocusToMenuItem(this.menuItems.at(-1)!)
         break
 
       default:
-        break
+        return
     }
 
-    if (flag) {
-      event.stopPropagation()
-      event.preventDefault()
-    }
+    event.stopPropagation()
+    event.preventDefault()
   }
 
   menuItemKeydown(event: KeyboardEvent) {
-    const currentTarget = event.currentTarget
-    // eslint-disable-next-line no-restricted-syntax
+    const target = event.target
     const key = event.key
     let flag = false
 
-    function isPrintableCharacter(str: string) {
-      return str.length === 1 && str.match(/\S/)
-    }
-
-    // eslint-disable-next-line no-restricted-syntax
     if (event.ctrlKey || event.altKey || event.metaKey) {
       return
     }
 
     if (event.shiftKey) {
       if (isPrintableCharacter(key)) {
-        this.setFocusByFirstCharacter(currentTarget as HTMLElement, key)
+        this.setFocusByFirstCharacter(target as HTMLElement, key)
         flag = true
       }
 
-      // eslint-disable-next-line no-restricted-syntax
       if (event.key === 'Tab') {
-        this.trigger?.focus()
-        this.hide()
+        this.popoverElement?.hidePopover()
         flag = true
       }
     } else {
       switch (key) {
         case 'Enter':
-          this.hide()
+          this.popoverElement?.hidePopover()
           break
 
         case 'Esc':
         case 'Escape':
-          this.hide()
+          this.popoverElement?.hidePopover()
           flag = true
           break
 
         case 'Up':
         case 'ArrowUp':
-          this.setFocusToPreviousMenuItem(currentTarget as HTMLElement)
+          this.setFocusToPreviousMenuItem(target as HTMLElement)
           flag = true
           break
 
         case 'ArrowDown':
         case 'Down':
-          this.setFocusToNextMenuItem(currentTarget as HTMLElement)
+          this.setFocusToNextMenuItem(target as HTMLElement)
           flag = true
           break
 
         case 'Home':
         case 'PageUp':
-          this.setFocusToMenuItem(this.#firstMenuItem)
+          this.setFocusToMenuItem(this.menuItems[0])
           flag = true
           break
 
         case 'End':
         case 'PageDown':
-          this.setFocusToMenuItem(this.#lastMenuItem)
+          this.setFocusToMenuItem(this.menuItems.at(-1)!)
           flag = true
           break
 
         case 'Tab':
-          this.hide()
+          this.popoverElement?.hidePopover()
           break
 
         default:
           if (isPrintableCharacter(key)) {
-            this.setFocusByFirstCharacter(currentTarget as HTMLElement, key)
+            this.setFocusByFirstCharacter(target as HTMLElement, key)
             flag = true
           }
           break
@@ -379,54 +251,24 @@ class ActionMenuElement extends HTMLElement {
 
     switch (this.selectVariant) {
       case 'single':
-        this.#clearSelectedItems()
+        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+          checkedItem.setAttribute('aria-checked', 'false')
+        }
         item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-        this.hide()
+        this.popoverElement?.hidePopover()
         break
       case 'multiple':
         item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
         break
       default:
         item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-        this.hide()
+        this.popoverElement?.hidePopover()
         break
     }
   }
 
   menuItemMouseover(event: MouseEvent) {
     ;(event.currentTarget as HTMLButtonElement).focus()
-  }
-
-  backgroundMousedown(event: MouseEvent) {
-    if (!this) return
-
-    if (!this.contains(event.target as Node)) {
-      if (this.open) {
-        this.hide()
-      }
-    }
-  }
-
-  handleIncludeFragmentLoaded() {
-    const {signal} = this.#abortController
-    this.#addEventsToMenuItems(signal)
-
-    if (this.open) {
-      this.setFocusToMenuItem(this.#firstMenuItem)
-    }
-  }
-
-  async loadHTMLFragment(): Promise<string | undefined> {
-    if (!this.#shouldTryLoadingFragment) return
-    this.#shouldTryLoadingFragment = false
-    try {
-      const htmlFragment = await this.includeFragment?.load()
-      return htmlFragment
-    } catch (e) {
-      //allow retries on failure
-      this.#shouldTryLoadingFragment = true
-      return
-    }
   }
 }
 
