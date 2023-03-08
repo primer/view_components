@@ -7,7 +7,7 @@ module Primer
     module GenerateInfoArch
       class << self
         def call
-          Primer::Component.descendants.sort_by(&:name).each do |component|
+          Primer::Component.descendants.sort_by(&:name).map do |component|
             docs = registry.find(component)
 
             preview_data = previews.find do |preview|
