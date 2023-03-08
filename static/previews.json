@@ -1239,6 +1239,32 @@
     ]
   },
   {
+    "name": "overlay",
+    "lookup_path": "primer/alpha/overlay",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/default",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/menu_no_header",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/menu_no_header",
+        "name": "menu_no_header"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
+        "name": "middle_of_page"
+      }
+    ]
+  },
+  {
     "name": "popover",
     "component": "Popover",
     "status": "beta",
@@ -1533,6 +1559,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_icons_and_counters",
         "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_extra",
+        "name": "with_extra"
       }
     ]
   },
@@ -1551,6 +1582,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/default",
         "preview_path": "/lookbook/preview/primer/alpha/tab_panels/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_panels/with_extra",
+        "name": "with_extra"
       }
     ]
   },

@@ -87,6 +87,7 @@
     /* current/selected underline */
     &::after {
       position: absolute;
+      z-index: 1; /* raise above full-width flash banner */
       right: 50%;
       bottom: calc(50% - 25px); /* 48px total height / 2 (24px) + 1px */
       width: 100%;

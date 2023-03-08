@@ -82,6 +82,12 @@
         "description": "Sub list title."
       },
       {
+        "name": "heading_level",
+        "type": "Integer",
+        "default": "`3`",
+        "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
+      },
+      {
         "name": "subtitle",
         "type": "String",
         "default": "`nil`",
@@ -95,8 +101,8 @@
       },
       {
         "name": "tag",
-        "type": "Symbol",
-        "default": "`:h3`",
+        "type": "Integer",
+        "default": "N/A",
         "description": "Semantic tag for the heading."
       },
       {
@@ -140,6 +146,12 @@
         "description": "CSS classes that will be added to the label."
       },
       {
+        "name": "label_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "[System arguments](/system-arguments) used to construct the label."
+      },
+      {
         "name": "content_arguments",
         "type": "Hash",
         "default": "`{}`",
@@ -160,7 +172,7 @@
       {
         "name": "role",
         "type": "String",
-        "default": "`:listitem`",
+        "default": "`nil`",
         "description": "ARIA role describing the function of the item."
       },
       {
@@ -1252,6 +1264,28 @@
     ]
   },
   {
+    "component": "NavList::Group",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "NavList::Item",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1292,18 +1326,48 @@
     ]
   },
   {
-    "component": "NavList::Section",
+    "component": "Navigation::Tab",
     "status": "alpha",
     "a11y_reviewed": false,
-    "short_name": "NavListSection",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/section.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/default/",
+    "short_name": "NavigationTab",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/navigation/tab.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/navigation/tab/default/",
     "parameters": [
       {
-        "name": "selected_item_id",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "The ID of the currently selected item. Used internally."
+        "name": "list",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is an item in a `<ul>` list."
+      },
+      {
+        "name": "selected",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab is selected or not."
+      },
+      {
+        "name": "with_panel",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the Tab has an associated panel."
+      },
+      {
+        "name": "panel_id",
+        "type": "String",
+        "default": "`\"\"`",
+        "description": "Only applies if `with_panel` is `true`. Unique id of panel."
+      },
+      {
+        "name": "icon_classes",
+        "type": "Boolean",
+        "default": "`\"\"`",
+        "description": "Classes that must always be applied to icons."
+      },
+      {
+        "name": "wrapper_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
       },
       {
         "name": "system_arguments",
@@ -1326,6 +1390,196 @@
         "type": "Array<Hash>",
         "default": "`[]`",
         "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
+      }
+    ]
+  },
+  {
+    "component": "Overlay",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Overlay",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/default/",
+    "parameters": [
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The id of the Overlay."
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "Describes the content of the Overlay."
+      },
+      {
+        "name": "subtitle",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+      },
+      {
+        "name": "popover",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "The popover behaviour. One of `:auto` or `:manual`."
+      },
+      {
+        "name": "popover",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "The popover behaviour. One of `:auto` or `:manual`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "The size of the Overlay. One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
+      },
+      {
+        "name": "padding",
+        "type": "Symbol",
+        "default": "`:normal`",
+        "description": "The padding given to the Overlay body. One of `:condensed`, `:none`, or `:normal`."
+      },
+      {
+        "name": "anchor",
+        "type": "String",
+        "default": "`nil`",
+        "description": "An ID of the element to anchor onto. Defaults to the `show_button`."
+      },
+      {
+        "name": "anchor_align",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "The anchor alignment of the Overlay. One of `:center`, `:end`, or `:start`."
+      },
+      {
+        "name": "anchor_side",
+        "type": "Symbol",
+        "default": "`:outside_bottom`",
+        "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+      },
+      {
+        "name": "anchor_offset",
+        "type": "Symbol",
+        "default": "`:normal`",
+        "description": "The anchor offset to give the Overlay. One of `:normal` or `:spacious`."
+      },
+      {
+        "name": "allow_out_of_bounds",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Allow the Overlay to overflow its container."
+      },
+      {
+        "name": "visually_hide_title",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "If true will hide the heading title, while still making it available to Screen Readers."
+      },
+      {
+        "name": "role",
+        "type": "String",
+        "default": "N/A",
+        "description": "The ARIA role. One of `:dialog` or `:menu`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Overlay::Body",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OverlayBody",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Overlay::Footer",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OverlayFooter",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+    "parameters": [
+      {
+        "name": "show_divider",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Show a divider between the footer and body."
+      },
+      {
+        "name": "align_content",
+        "type": "Symbol",
+        "default": "`DEFAULT_ALIGN_CONTENT`",
+        "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Overlay::Header",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OverlayHeader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "Describes the content of the Overlay."
+      },
+      {
+        "name": "subtitle",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "The size of the Header. One of `:large` or `:medium`."
+      },
+      {
+        "name": "divider",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Show a divider between the header and body."
+      },
+      {
+        "name": "visually_hide_title",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
       }
     ]
   },
@@ -3845,7 +4099,7 @@
   },
   {
     "component": "Navigation::Tab",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "NavigationTab",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",

@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 0.1.1
+
+### Patch Changes
+
+- [#1864](https://github.com/primer/view_components/pull/1864) [`1476b869`](https://github.com/primer/view_components/commit/1476b869db27a6ed50b7e8d83db6ef475efb31de) Thanks [@simurai](https://github.com/simurai)! - Fix underline of UnderlineNav being cut off when followed by a flash banner
+
+* [#1865](https://github.com/primer/view_components/pull/1865) [`df8dcced`](https://github.com/primer/view_components/commit/df8dcceda484c2582f9085e11e5678c1f0bd446d) Thanks [@keithamus](https://github.com/keithamus)! - Add aria attributes to Overlay show_button
+
+- [#1865](https://github.com/primer/view_components/pull/1865) [`df8dcced`](https://github.com/primer/view_components/commit/df8dcceda484c2582f9085e11e5678c1f0bd446d) Thanks [@keithamus](https://github.com/keithamus)! - Allow for IconButtons in overlay show_button
+
+* [#1867](https://github.com/primer/view_components/pull/1867) [`c6bfce04`](https://github.com/primer/view_components/commit/c6bfce043a9cf197a7b212e96bc0178bc5310246) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing TabNav double render of extra content
+
+- [#1828](https://github.com/primer/view_components/pull/1828) [`4e6201d4`](https://github.com/primer/view_components/commit/4e6201d4307f923f24a2fd04b6bb30ddb1cf5337) Thanks [@camertron](https://github.com/camertron)! - Address accessibility issues in NavList and ActionList
+
+* [#1730](https://github.com/primer/view_components/pull/1730) [`8c77e133`](https://github.com/primer/view_components/commit/8c77e133ba2507e6dd70d0666ea78b50a57d4144) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move Primer::Navigation::TabComponent to Primer::Alpha::Navigation::Tab
+
+- [#1850](https://github.com/primer/view_components/pull/1850) [`a909eae0`](https://github.com/primer/view_components/commit/a909eae016c1716387799c76a00019b5a03cc25c) Thanks [@mayamessinger](https://github.com/mayamessinger)! - Fix beta button tooltip compatibility with display :block
+
+* [#1847](https://github.com/primer/view_components/pull/1847) [`16b16264`](https://github.com/primer/view_components/commit/16b162646fb51422d6604addbd27cb6bf0978106) Thanks [@keithamus](https://github.com/keithamus)! - Remove animation from Overlay component
+
+## 0.1.0
+
+### Minor Changes
+
+- [#1401](https://github.com/primer/view_components/pull/1401) [`f824d1d0`](https://github.com/primer/view_components/commit/f824d1d0e8337ef34eef6af2419bd9ecc8537fe3) Thanks [@keithamus](https://github.com/keithamus)! - Add Overlay component
+
+### Patch Changes
+
+- [#1844](https://github.com/primer/view_components/pull/1844) [`15869d48`](https://github.com/primer/view_components/commit/15869d48ad3b22151ef97290fb0f1c8cf8dc6c6f) Thanks [@camertron](https://github.com/camertron)! - Remove extra space between flash icon and message
+
+* [#1840](https://github.com/primer/view_components/pull/1840) [`04b75c70`](https://github.com/primer/view_components/commit/04b75c70e4b42a82e4a4ce31a976bfd1e5c6e9fa) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing NavList parents to appear selected
+
+- [#1845](https://github.com/primer/view_components/pull/1845) [`98792bdd`](https://github.com/primer/view_components/commit/98792bdd47c8f0ac50ef839ab5e5948984d66c3b) Thanks [@camertron](https://github.com/camertron)! - Use system arguments instead of utility classes for NavList's "show more" item
+
+* [#1823](https://github.com/primer/view_components/pull/1823) [`5eadffd3`](https://github.com/primer/view_components/commit/5eadffd354891a3befb3b9152a16ba0a7c375aec) Thanks [@neall](https://github.com/neall)! - Add general reserved-class-checking linter
+
 ## 0.0.123
 
 ### Patch Changes

@@ -104,4 +104,22 @@ class PrimerAlphaTabNavTest < Minitest::Test
       refute_selector("ul.tabnav-tabs.tabnav")
     end
   end
+
+  def test_does_not_double_render_extra_content_in_production
+    # rubocop:disable Rails/Inquiry
+    Rails.stub(:env, "production".inquiry) do
+      # Since we've forced ourselves into the prod environment and there's no secret key base
+      # configured for prod, we have to fake it by setting the appropriate environment variable.
+      with_env("SECRET_KEY_BASE" => "abc123") do
+        render_inline(Primer::Alpha::TabNav.new(label: "label")) do |component|
+          component.with_tab(selected: true) { "Tab 1" }
+          component.with_tab { "Tab 2" }
+          component.with_extra { "extra" }
+        end
+      end
+    end
+    # rubocop:enable Rails/Inquiry
+
+    assert_text("extra", count: 1)
+  end
 end
