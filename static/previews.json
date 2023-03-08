@@ -1278,6 +1278,11 @@
         "name": "default"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/menu_no_header",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/menu_no_header",
+        "name": "menu_no_header"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
         "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page"
