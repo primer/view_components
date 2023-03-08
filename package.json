@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -54,7 +54,7 @@
     "@github/mini-throttle": "^2.1.0",
     "@github/relative-time-element": "^4.0.0",
     "@github/tab-container-element": "^3.1.2",
-    "@oddbird/popover-polyfill": "^0.0.8",
+    "@oddbird/popover-polyfill": "^0.0.10",
     "@primer/behaviors": "^1.2.0"
   },
   "devDependencies": {

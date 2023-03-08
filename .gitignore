@@ -54,3 +54,4 @@ tmp/
 
 # Simplecov folder
 coverage/
+demo/public/assets/

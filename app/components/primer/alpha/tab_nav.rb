@@ -124,6 +124,13 @@ module Primer
 
         aria_label_for_page_nav(label)
       end
+
+      def before_render
+        # Eagerly evaluate content to avoid https://github.com/primer/view_components/issues/1790
+        content
+
+        super
+      end
     end
   end
 end

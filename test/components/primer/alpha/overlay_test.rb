@@ -7,11 +7,23 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
   def test_renders_title_and_body
     render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
+      component.with_header
       component.with_body { "Hello" }
     end
 
     assert_selector("anchored-position[role='dialog']") do
       assert_selector("h1", text: "Title")
+      assert_selector(".Overlay-body", text: "Hello")
+    end
+  end
+
+  def test_does_not_render_header_if_omitted
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
+      component.with_body { "Hello" }
+    end
+
+    assert_selector("anchored-position[role='dialog'][aria-label='Title']") do
+      refute_selector("h1", text: "Title")
       assert_selector(".Overlay-body", text: "Hello")
     end
   end
@@ -28,6 +40,15 @@ class PrimerAlphaOverlayTest < Minitest::Test
     render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
       component.with_body { "Hello" }
       component.with_show_button { "Show" }
+    end
+
+    assert_selector("[popovertoggletarget]")
+  end
+
+  def test_renders_show_icon_button
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
+      component.with_body { "Hello" }
+      component.with_show_button(icon: :star, "aria-label": "Star")
     end
 
     assert_selector("[popovertoggletarget]")
@@ -65,16 +86,6 @@ class PrimerAlphaOverlayTest < Minitest::Test
     end
 
     assert_selector("anchored-position[id^='overlay-']")
-  end
-
-  def test_renders_subtitle_with_describedby
-    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, id: "my-dialog", subtitle: "Subtitle")) do |component|
-      component.with_body { "content" }
-    end
-
-    assert_selector("anchored-position[id='my-dialog'][aria-describedby='my-dialog-description']") do
-      assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
-    end
   end
 
   def test_body_padding

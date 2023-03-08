@@ -68,19 +68,15 @@ module Primer
       # Optional button to open the Overlay.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
-        system_arguments[:id] = button_id
+        system_arguments[:id] = show_button_id
         system_arguments["popovertoggletarget"] = overlay_id
-        system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": overlay_id })
-        system_arguments[:role] = "button"
-        system_arguments["aria-controls"] = overlay_id
-        system_arguments[:"aria-haspopup"] = "true"
-        system_arguments[:"aria-expanded"] = "false"
-        if system_arguments[:icon]
-          Primer::Beta::IconButton.new(**system_arguments)
+        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({ controls: overlay_id, haspopup: "true" })
+        if icon.present?
+          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
         else
           Primer::Beta::Button.new(**system_arguments)
         end
@@ -93,7 +89,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |divider: false, size: :medium, visually_hide_title: @visually_hide_title, **system_arguments|
         Primer::Alpha::Overlay::Header.new(
-          id: @id,
+          id: title_id,
           title: @title,
           subtitle: @subtitle,
           size: size,
@@ -189,10 +185,14 @@ module Primer
 
         @system_arguments[:popover] = popover
         @system_arguments[:aria] ||= {}
-        @system_arguments[:aria][:describedby] ||= "#{@id}-description"
       end
 
       def before_render
+        if header?
+          @system_arguments[:aria][:labelledby] ||= title_id
+        else
+          @system_arguments[:aria][:label] = @title
+        end
         with_body unless body?
       end
 
@@ -202,8 +202,12 @@ module Primer
         @system_arguments[:id]
       end
 
-      def button_id
-        "overlay-show-#{@system_arguments[:id]}"
+      def title_id
+        "overlay-title-#{overlay_id}"
+      end
+
+      def show_button_id
+        "overlay-show-#{overlay_id}"
       end
     end
   end
