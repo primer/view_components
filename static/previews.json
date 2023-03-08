@@ -1240,6 +1240,8 @@
   },
   {
     "name": "overlay",
+    "component": "Overlay",
+    "status": "alpha",
     "lookup_path": "primer/alpha/overlay",
     "examples": [
       {
