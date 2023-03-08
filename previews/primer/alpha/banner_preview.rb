@@ -8,15 +8,16 @@ module Primer
       #
       # @param full toggle
       # @param full_when_narrow toggle
+      # @param centered_when_full toggle
       # @param dismissible toggle
       # @param icon [Symbol] octicon
       # @param scheme [Symbol] select [default, warning, danger, success]
       # @param content text
       # @param description text
       # @param reappear [Boolean]
-      def playground(full: false, full_when_narrow: false, dismissible: false, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, reappear: true, content: "This is a banner!", description: nil)
+      def playground(full: false, full_when_narrow: false, centered_when_full: false, dismissible: false, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, reappear: true, content: "This is a banner!", description: nil)
         icon = nil if icon == :none
-        render(Primer::Alpha::Banner.new(full: full, full_when_narrow: full_when_narrow, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, description: description, reappear: reappear)) { content }
+        render(Primer::Alpha::Banner.new(full: full, full_when_narrow: full_when_narrow, centered_when_full: centered_when_full, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, description: description, reappear: reappear)) { content }
       end
 
       # @label Default

@@ -94,6 +94,12 @@ class PrimerBannerTest < Minitest::Test
     assert_selector(".Banner.Banner--full-whenNarrow", text: "foo")
   end
 
+  def test_renders_centered_when_full
+    render_inline(Primer::Alpha::Banner.new(full: true, centered_when_full: true)) { "foo" }
+
+    assert_selector(".Banner.Banner--full.Banner--centered", text: "foo")
+  end
+
   def test_renders_custom_icon
     render_inline(Primer::Alpha::Banner.new(icon: :alert)) { "foo" }
 

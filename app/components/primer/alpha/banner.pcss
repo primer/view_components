@@ -44,7 +44,6 @@
   }
 
   & .Banner-message {
-    max-width: var(--primer-breakpoint-medium, 768px);
     padding: var(--base-size-6, 6px) var(--base-size-8, 8px);
     grid-area: message;
     align-self: center;
@@ -114,9 +113,20 @@
     border-right: 0;
     border-left: 0;
     border-radius: 0;
+  }
+
+  /* Centered */
+
+  &.Banner--full.Banner--centered {
     grid-template-areas: '. visual message actions close .';
     grid-template-columns: 1fr min-content minmax(0,auto) minmax(0,auto) min-content 1fr;
+
+    & .Banner-message {
+      max-width: var(--primer-breakpoint-medium, 768px);
+    }
   }
+
+  /* Full when narrow */
 
   @media (max-width: 767.98px) {
     &.Banner--full-whenNarrow {

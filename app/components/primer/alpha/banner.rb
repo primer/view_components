@@ -81,13 +81,14 @@ module Primer
       #
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
+      # @param centered_when_full [Boolean] Whether the content is centered and the message has a max-width.
       # @param dismissible [Boolean] Whether the component can be dismissed with an "x" button.
       # @param description [String] Description text rendered underneath the message.
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
       # @param reappear [Boolean] Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(full: false, full_when_narrow: false, dismissible: false, description: nil, icon: nil, scheme: DEFAULT_SCHEME, reappear: false, **system_arguments)
+      def initialize(full: false, full_when_narrow: false, centered_when_full: false, dismissible: false, description: nil, icon: nil, scheme: DEFAULT_SCHEME, reappear: false, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
         @dismissible = dismissible
@@ -104,7 +105,8 @@ module Primer
           LEGACY_SCHEME_MAPPINGS[@scheme],
           "Banner--full": full,
           "flash-full": full, # legacy
-          "Banner--full-whenNarrow": full_when_narrow
+          "Banner--full-whenNarrow": full_when_narrow,
+          "Banner--centered": centered_when_full
         )
 
         @message_arguments = {
