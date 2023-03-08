@@ -94,10 +94,10 @@ module Primer
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "My Favorite Foods") %>
       #       <% group.with_item(label: "Popplers", selected_by_ids: :popplers, href: "/foods/popplers") do |item| %>
-      #         <% item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Add new food", size: :medium) %>
+      #         <% item.with_trailing_action(icon: "plus", "aria-label": "Add new food", size: :medium) %>
       #       <% end %>
       #       <% group.with_item(label: "Slurm", selected_by_ids: :slurm, href: "/foods/slurm") do |item| %>
-      #         <% item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Add new food", size: :medium) %>
+      #         <% item.with_trailing_action(icon: "plus", "aria-label": "Add new food", size: :medium) %>
       #       <% end %>
       #     <% end %>
       #   <% end %>
