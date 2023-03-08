@@ -89,7 +89,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |divider: false, size: :medium, visually_hide_title: @visually_hide_title, **system_arguments|
         Primer::Alpha::Overlay::Header.new(
-          id: @id,
+          id: title_id,
           title: @title,
           subtitle: @subtitle,
           size: size,
@@ -185,11 +185,14 @@ module Primer
 
         @system_arguments[:popover] = popover
         @system_arguments[:aria] ||= {}
-        @system_arguments[:aria][:describedby] ||= "#{@id}-description"
       end
 
       def before_render
-        with_header unless header?
+        if header?
+          @system_arguments[:aria][:labelledby] ||= title_id
+        else
+          @system_arguments[:aria][:label] = @title
+        end
         with_body unless body?
       end
 
@@ -197,6 +200,10 @@ module Primer
 
       def overlay_id
         @system_arguments[:id]
+      end
+
+      def title_id
+        "overlay-title-#{overlay_id}"
       end
 
       def show_button_id
