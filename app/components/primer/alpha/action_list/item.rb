@@ -88,7 +88,7 @@ module Primer
         renders_one :trailing_action, lambda { |**system_arguments|
           Primer::Beta::IconButton.new(
             classes: class_names(
-              system_arguments.delete(:classes),
+              system_arguments[:classes],
               "ActionListItem-trailingAction"
             ),
 
