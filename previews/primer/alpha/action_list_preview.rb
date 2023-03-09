@@ -168,7 +168,6 @@ module Primer
       # @param private_leading_action_icon [Symbol] octicon
       # @param private_trailing_action_icon [Symbol] octicon
       # @param trailing_action toggle
-      # @param trailing_action_on_hover toggle
       # @param tooltip toggle
       def item(
         label: "Label",
@@ -189,7 +188,6 @@ module Primer
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
         private_trailing_action_icon: nil,
-        trailing_action_on_hover: false,
         trailing_action: false,
         tooltip: false
       )
@@ -228,7 +226,7 @@ module Primer
             item.with_private_trailing_action_icon(icon: private_trailing_action_icon)
           end
 
-          item.with_trailing_action(show_on_hover: trailing_action_on_hover, icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
+          item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
 
@@ -327,18 +325,7 @@ module Primer
                  aria: { label: "List heading" }
                )) do |component|
           component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Button tooltip", size: :medium)
-          end
-        end
-      end
-
-      # @label Item [trailing action on hover]
-      def item_trailing_action_hover
-        render(Primer::Alpha::ActionList.new(
-                 aria: { label: "List heading" }
-               )) do |component|
-          component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Button tooltip", size: :medium)
+            item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end
