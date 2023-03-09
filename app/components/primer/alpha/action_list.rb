@@ -90,12 +90,13 @@ module Primer
       # @private
       def before_render
         aria_label = aria(:label, @system_arguments)
+        aria_labelledby = aria(:labelledby, @system_arguments)
 
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
           raise ArgumentError, "An aria-label should not be provided if a heading is present" if aria_label.present?
-        elsif aria_label.blank?
-          raise ArgumentError, "An aria-label or heading must be provided"
+        elsif aria_label.blank? && aria_labelledby.blank?
+          raise ArgumentError, "An aria-label, aria-labelledby, or heading must be provided"
         end
       end
 

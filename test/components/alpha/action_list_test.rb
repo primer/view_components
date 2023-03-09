@@ -12,7 +12,7 @@ module Primer
           render_inline(Primer::Alpha::ActionList.new)
         end
 
-        assert_includes(error.message, "label or heading must be provided")
+        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
       end
 
       def test_active_item
