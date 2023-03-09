@@ -39,14 +39,28 @@ module Primer
         Heading.new(list_id: @id, **system_arguments)
       }
 
-      # Items.
+      # Adds an item to the list.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      renders_many :items, lambda { |**system_arguments|
-        build_item(**system_arguments).tap do |item|
+      def with_item(**system_arguments)
+        @items << build_item(**system_arguments).tap do |item|
+          yield item if block_given?
+
           will_add_item(item)
         end
-      }
+      end
+
+      # Adds a divider to the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      def with_divider(**system_arguments)
+        @items << ActionList::Divider.new(**system_arguments).tap do |divider|
+          yield divider if block_given?
+        end
+      end
+
+      # Returns the current list of items.
+      attr_reader :items
 
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param item_classes [String] Additional CSS classes to attach to items.
@@ -60,6 +74,7 @@ module Primer
         show_dividers: false,
         **system_arguments
       )
+        @items = []
         @id = self.class.generate_id
 
         @system_arguments = system_arguments

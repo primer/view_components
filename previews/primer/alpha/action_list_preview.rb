@@ -89,6 +89,39 @@ module Primer
         end
       end
 
+      # @label With manual dividers
+      #
+      # @param role text
+      # @param scheme [Symbol] select [full, inset]
+      # @param show_dividers toggle
+      def with_manual_dividers(
+        role: Primer::Alpha::ActionList::DEFAULT_ROLE,
+        scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
+        show_dividers: false
+      )
+        render(Primer::Alpha::ActionList.new(
+          role: role,
+          scheme: scheme,
+          show_dividers: show_dividers
+        )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+          component.with_divider
+          component.with_item(label: "Item two", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :star)
+          end
+          component.with_item(label: "Item three", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :heart)
+          end
+          component.with_divider
+          component.with_item(label: "Item four", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :bug)
+          end
+        end
+      end
+
       # @label Divider
       #
       # @param scheme [Symbol] select [subtle, filled]

@@ -16,8 +16,8 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(scheme: DEFAULT_SCHEME, **system_arguments)
           @system_arguments = system_arguments
-          @system_arguments[:tag] = :div
-          @system_arguments[:role] = :separator
+          @system_arguments[:tag] = :li
+          @system_arguments[:role] = :presentation
           @system_arguments[:'aria-hidden'] = true
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
           @system_arguments[:classes] = class_names(
