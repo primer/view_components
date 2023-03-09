@@ -79,11 +79,6 @@
         "name": "item_trailing_action"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action_hover",
-        "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action_hover",
-        "name": "item_trailing_action_hover"
-      },
-      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_danger",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_danger",
         "name": "item_danger"
