@@ -8,7 +8,7 @@
       <% if index > 0 && @show_dividers && !item.is_a?(Divider) && !items[index - 1].is_a?(Divider) %>
         <%= render(Primer::Alpha::ActionList::Divider.new) %>
       <% end %>
-      <%= render(item) %>
+      <%= item %>
     <% end %>
   <% end %>
 <% end %>
