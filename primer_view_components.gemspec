@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency     "actionview", ">= 5.0.0"
   spec.add_runtime_dependency     "activesupport", ">= 5.0.0"
-  spec.add_runtime_dependency     "octicons", ">= 17.0.0"
+  spec.add_runtime_dependency     "octicons", ">= 18.0.0"
   spec.add_runtime_dependency     "view_component", ["> 2.0", "< 4.0"]
 
   spec.add_development_dependency "allocation_stats", "~> 0.1"
