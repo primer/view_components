@@ -6,6 +6,14 @@ module Primer
   module Alpha
     # OcticonSymbols renders a symbol dictionary using a list of <%= link_to_octicons %>.
     class OcticonSymbols < Primer::Component
+      include ViewComponent::InlineTemplate
+
+      erb_template <<~ERB
+        <svg xmlns="http://www.w3.org/2000/svg" hidden>
+          <%= symbol_tags %>
+        </svg>
+      ERB
+
       # @example Symbol dictionary
       #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :success)) %>
       #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :danger)) %>
