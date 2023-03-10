@@ -48,7 +48,7 @@ The following arguments for the component initializer have changed between the d
 of the `Truncate` component.
 
 | From `Primer::Truncate` | To `Primer::Beta::Truncate` | Notes                                                                    |
-|-------------------------+-----------------------------+--------------------------------------------------------------------------|
+|-------------------------|-----------------------------|--------------------------------------------------------------------------|
 | `tag`                   | `tag`                       | Previously defaulted to `:div`, now `:span`.                             |
 | `inline`                | n/a                         | Removed in `Primer::Beta::Truncate`.                                     |
 | n/a                     | `priority`                  | If `true`, the text will be given priority (by increasing `flex-basis`). |
