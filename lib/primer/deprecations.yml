@@ -26,6 +26,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
 
+  - component: "Primer::LayoutComponent"
+    autocorrect: false
+    replacement: "Primer::Alpha::Layout"
+
   - component: "Primer::Navigation::TabComponent"
     autocorrect: true
     replacement: "Primer::Alpha::Navigation::Tab"
