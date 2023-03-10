@@ -79,6 +79,9 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
+      # @example With description
+      #   <%= render(Primer::Alpha::Banner.new(icon: :people, description: "With a description.")) { "This is a banner" } %>
+      #
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
       # @param dismissible [Boolean] Whether the component can be dismissed with an "x" button.
