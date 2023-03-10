@@ -94,6 +94,12 @@ class PrimerBannerTest < Minitest::Test
     assert_selector(".Banner.Banner--full-whenNarrow", text: "foo")
   end
 
+  def test_renders_centered_when_full_and_a_lot_of_content
+    render_inline(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner with a lot of content. It is centered and has a max-width to make sure that the text doesn't exceed too long and starts wrapping onto multiple lines." }
+
+    assert_selector(".Banner.Banner--full.Banner--centered")
+  end
+
   def test_renders_centered_when_full_and_long_description
     render_inline(Primer::Alpha::Banner.new(full: true, description: "This is a full width banner with a lot of content. It is centered and has a max-width to make sure that the text doesn't exceed too long and starts wrapping onto multiple lines.")) { "foo" }
 
