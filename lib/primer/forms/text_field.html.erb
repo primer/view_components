@@ -1,4 +1,4 @@
-<%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "primer-text-field") do %>
+<primer-text-field>
   <%= render(FormControl.new(input: @input)) do %>
     <%= content_tag(:div, **@field_wrap_arguments) do %>
       <% if @input.leading_visual %>
@@ -10,10 +10,10 @@
         <%= builder.text_field(@input.name, **@input.input_arguments) %>
       <% end %>
       <% if @input.show_clear_button? %>
-        <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
+        <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear" data-action="click:primer-text-field#clearContents">
           <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
         </button>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
+</primer-text-field>
