@@ -37,3 +37,4 @@ deprecations:
   - component: "Primer::Truncate"
     autocorrect: false
     replacement: "Primer::Beta::Truncate"
+    guide: "https://primer.style/view-components/guides/primer_truncate"
