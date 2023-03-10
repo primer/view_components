@@ -84,11 +84,19 @@ module Primer
           Primer::Alpha::Banner.new(
             full: true,
             dismissible: true,
-            description: "It also has a short description."
+            description: "It also has a description that appears on a new line."
           )
         ) do |component|
           component.with_action_button(size: :small) { "Take action" }
           "This is a full width banner."
+        end
+      end
+
+      # @label Full width with a lot of content
+      def full_width_with_a_lot_of_content
+        render(Primer::Alpha::Banner.new(full: true, dismissible: true)) do |component|
+          component.with_action_button(size: :small) { "Take action" }
+          "This is a full width banner with a lot of content (over 120 characters). It will center the content and add a max-width so that the text doesn't exceed too long and starts wrapping onto muliple lines."
         end
       end
 

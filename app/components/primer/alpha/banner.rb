@@ -90,6 +90,7 @@ module Primer
       def initialize(full: false, full_when_narrow: false, dismissible: false, description: nil, icon: nil, scheme: DEFAULT_SCHEME, reappear: false, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
+        @full = full
         @dismissible = dismissible
         @description = description
         @reappear = reappear
@@ -104,8 +105,7 @@ module Primer
           LEGACY_SCHEME_MAPPINGS[@scheme],
           "Banner--full": full,
           "flash-full": full, # legacy
-          "Banner--full-whenNarrow": full_when_narrow,
-          "Banner--centered": full && description && description.length > 120 # center with max-width for long descriptions
+          "Banner--full-whenNarrow": full_when_narrow
         )
 
         @message_arguments = {
@@ -121,6 +121,14 @@ module Primer
       end
 
       private
+
+      def before_render
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          # Center with max-width for a lot of content or long descriptions
+          "Banner--centered": @full && content && content.length > 120 || @full && @description && @description.length > 120
+        )
+      end
 
       def custom_element_name
         "x-banner"
