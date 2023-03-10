@@ -7,6 +7,18 @@ module Primer
     #   A `SegmentedControl` should not be used in a form as a replacement for something like a radio group or select.
     #   See the [Accessibility section](https://primer.style/design/components/segmented-control#accessibility) of the SegmentedControl interface guidelines for more details.
     class SegmentedControl < Primer::Component
+      include ViewComponent::InlineTemplate
+
+      erb_template <<~ERB
+        <segmented-control>
+          <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+            <% items.each do |item| %>
+              <%= item %>
+            <% end %>
+          <% end %>
+        </segmented-control>
+      ERB
+
       status :alpha
       audited_at "2023-02-01"
 
