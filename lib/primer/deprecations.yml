@@ -29,6 +29,7 @@ deprecations:
   - component: "Primer::LayoutComponent"
     autocorrect: false
     replacement: "Primer::Alpha::Layout"
+    guide: "https://primer.style/view-components/guides/primer_layout_component"
 
   - component: "Primer::Navigation::TabComponent"
     autocorrect: true
