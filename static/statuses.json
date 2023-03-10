@@ -95,5 +95,5 @@
   "Primer::LayoutComponent": "alpha",
   "Primer::Navigation::TabComponent": "deprecated",
   "Primer::Tooltip": "deprecated",
-  "Primer::Truncate": "beta"
+  "Primer::Truncate": "deprecated"
 }
