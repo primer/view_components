@@ -12,7 +12,7 @@ module Primer
           render_inline(Primer::Alpha::ActionList.new)
         end
 
-        assert_includes(error.message, "label or heading must be provided")
+        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
       end
 
       def test_active_item
@@ -82,6 +82,32 @@ module Primer
         end
 
         assert_match(/This component has a fixed tag/, error.message)
+      end
+
+      def test_manual_dividers
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", href: "/item1")
+          component.with_item(label: "Item 2", href: "/item2")
+          component.with_divider
+          component.with_item(label: "Item 3", href: "/item3")
+        end
+
+        list_items = page.find_css("ul.ActionListWrap li").map do |list_item|
+          classes = list_item["class"].split
+
+          if classes.include?("ActionListItem")
+            { type: :item, href: list_item.css("a").first["href"] }
+          elsif classes.include?("ActionList-sectionDivider")
+            { type: :divider }
+          end
+        end
+
+        assert_equal list_items, [
+          { type: :item, href: "/item1" },
+          { type: :item, href: "/item2" },
+          { type: :divider },
+          { type: :item, href: "/item3" }
+        ]
       end
     end
   end
