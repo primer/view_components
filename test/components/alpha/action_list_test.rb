@@ -109,6 +109,14 @@ module Primer
           { type: :item, href: "/item3" }
         ]
       end
+
+      def test_allows_custom_item_tag
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", content_arguments: { tag: :"clipboard-copy" })
+        end
+
+        assert_selector "clipboard-copy.ActionListContent"
+      end
     end
   end
 end
