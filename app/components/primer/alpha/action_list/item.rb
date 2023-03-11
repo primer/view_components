@@ -212,12 +212,14 @@ module Primer
             SIZE_MAPPINGS[@size]
           )
 
-          if @href && !@disabled
-            @content_arguments[:tag] = :a
-            @content_arguments[:href] = @href
-          else
-            @content_arguments[:tag] = :button
-            @content_arguments[:onclick] = on_click if on_click
+          unless @content_arguments[:tag]
+            if @href && !@disabled
+              @content_arguments[:tag] = :a
+              @content_arguments[:href] = @href
+            else
+              @content_arguments[:tag] = :button
+              @content_arguments[:onclick] = on_click if on_click
+            end
           end
 
           @description_wrapper_arguments = {
