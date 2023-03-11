@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- [#1880](https://github.com/primer/view_components/pull/1880) [`7a160a4c`](https://github.com/primer/view_components/commit/7a160a4c6db18687fdc5ebebbe5dc9ab0926443a) Thanks [@camertron](https://github.com/camertron)! - Allow consumers to set ActionList item content's tag
+
+* [#1869](https://github.com/primer/view_components/pull/1869) [`53b99f6a`](https://github.com/primer/view_components/commit/53b99f6ae1c7fdfb4b929d6f60215aacedbcdfc7) Thanks [@keithamus](https://github.com/keithamus)! - Make Overlay headings optional
+
+- [#1873](https://github.com/primer/view_components/pull/1873) [`125861b8`](https://github.com/primer/view_components/commit/125861b8cbff95db90126f8c0aa297b9a0bb4ade) Thanks [@camertron](https://github.com/camertron)! - Remove ability to show trailing action buttons in ActionList and NavList on hover
+
+* [#1875](https://github.com/primer/view_components/pull/1875) [`8bbeb72a`](https://github.com/primer/view_components/commit/8bbeb72a5ef60917265b93791cd20ab99045540e) Thanks [@camertron](https://github.com/camertron)! - Allow ActionList dividers to be added manually
+
+- [#1871](https://github.com/primer/view_components/pull/1871) [`6b1170ae`](https://github.com/primer/view_components/commit/6b1170aef5b5f703e239881bdd0717c6e4c1a973) Thanks [@camertron](https://github.com/camertron)! - Deny tag argument for ActionList headings
+
+* [#1876](https://github.com/primer/view_components/pull/1876) [`b3b94e98`](https://github.com/primer/view_components/commit/b3b94e989f51fcc776cf312208bd4dcadde31161) Thanks [@antn](https://github.com/antn)! - Upgrade octicons to >= 18.0.0
+
 ## 0.1.1
 
 ### Patch Changes
