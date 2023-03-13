@@ -3,7 +3,7 @@
 module Primer
   # Use `Truncate` to shorten overflowing text with an ellipsis.
   class Truncate < Primer::Component
-    status :beta
+    status :deprecated
 
     DEFAULT_TAG = :div
     TAG_OPTIONS = [DEFAULT_TAG, :span, :p, :strong].freeze

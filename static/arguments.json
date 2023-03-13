@@ -1805,7 +1805,7 @@
   },
   {
     "component": "Truncate",
-    "status": "beta",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/truncate/default/",
     "parameters": [
