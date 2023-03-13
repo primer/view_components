@@ -4,14 +4,6 @@
 
 ### Patch Changes
 
-- [#1877](https://github.com/primer/view_components/pull/1877) [`864fb98f`](https://github.com/primer/view_components/commit/864fb98fd38af79490b326caf3a0fe325ffb3066) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::Truncate in favor of Primer::Beta::Truncate, and adding a migration guide
-
-* [#1878](https://github.com/primer/view_components/pull/1878) [`9c211ce2`](https://github.com/primer/view_components/commit/9c211ce222e774acef11d1d438adfdc6251ce5ac) Thanks [@camertron](https://github.com/camertron)! - Attach behavior to TextField's clear button
-
-## 0.1.2
-
-### Patch Changes
-
 - [#1880](https://github.com/primer/view_components/pull/1880) [`7a160a4c`](https://github.com/primer/view_components/commit/7a160a4c6db18687fdc5ebebbe5dc9ab0926443a) Thanks [@camertron](https://github.com/camertron)! - Allow consumers to set ActionList item content's tag
 
 * [#1869](https://github.com/primer/view_components/pull/1869) [`53b99f6a`](https://github.com/primer/view_components/commit/53b99f6ae1c7fdfb4b929d6f60215aacedbcdfc7) Thanks [@keithamus](https://github.com/keithamus)! - Make Overlay headings optional
@@ -23,6 +15,10 @@
 - [#1871](https://github.com/primer/view_components/pull/1871) [`6b1170ae`](https://github.com/primer/view_components/commit/6b1170aef5b5f703e239881bdd0717c6e4c1a973) Thanks [@camertron](https://github.com/camertron)! - Deny tag argument for ActionList headings
 
 * [#1876](https://github.com/primer/view_components/pull/1876) [`b3b94e98`](https://github.com/primer/view_components/commit/b3b94e989f51fcc776cf312208bd4dcadde31161) Thanks [@antn](https://github.com/antn)! - Upgrade octicons to >= 18.0.0
+
+- [#1877](https://github.com/primer/view_components/pull/1877) [`864fb98f`](https://github.com/primer/view_components/commit/864fb98fd38af79490b326caf3a0fe325ffb3066) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::Truncate in favor of Primer::Beta::Truncate, and adding a migration guide
+
+* [#1878](https://github.com/primer/view_components/pull/1878) [`9c211ce2`](https://github.com/primer/view_components/commit/9c211ce222e774acef11d1d438adfdc6251ce5ac) Thanks [@camertron](https://github.com/camertron)! - Attach behavior to TextField's clear button
 
 ## 0.1.1
 
