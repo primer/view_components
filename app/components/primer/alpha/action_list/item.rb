@@ -130,7 +130,7 @@ module Primer
 
         # @param list [Primer::Alpha::ActionList] The list that contains this item. Used internally.
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
-        # @param label [String] Item label.
+        # @param label [String] Item label. If no label is provided, content is used.
         # @param label_classes [String] CSS classes that will be added to the label.
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
@@ -147,7 +147,7 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           list:,
-          label:,
+          label: nil,
           label_classes: nil,
           label_arguments: {},
           content_arguments: {},
