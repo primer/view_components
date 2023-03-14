@@ -12,7 +12,7 @@ module Primer
           render_inline(Primer::Alpha::ActionList.new)
         end
 
-        assert_includes(error.message, "label or heading must be provided")
+        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
       end
 
       def test_active_item
@@ -31,12 +31,6 @@ module Primer
         render_preview(:item, params: { tooltip: true })
 
         assert_selector(".ActionListItem > tool-tip")
-      end
-
-      def test_item_trailing_action_on_hover
-        render_preview(:item, params: { trailing_action: "arrow-down", trailing_action_on_hover: true })
-
-        assert_selector(".ActionListItem--trailingActionHover")
       end
 
       def test_item_leading_visual_avatar
@@ -78,6 +72,50 @@ module Primer
         render_preview(:leading_visuals)
 
         assert_selector(".ActionListItem-visual--leading", count: 2)
+      end
+
+      def test_heading_denies_tag_argument
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { lable: "List" })) do |component|
+            component.with_heading(title: "Foo", tag: :foo)
+          end
+        end
+
+        assert_match(/This component has a fixed tag/, error.message)
+      end
+
+      def test_manual_dividers
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", href: "/item1")
+          component.with_item(label: "Item 2", href: "/item2")
+          component.with_divider
+          component.with_item(label: "Item 3", href: "/item3")
+        end
+
+        list_items = page.find_css("ul.ActionListWrap li").map do |list_item|
+          classes = list_item["class"].split
+
+          if classes.include?("ActionListItem")
+            { type: :item, href: list_item.css("a").first["href"] }
+          elsif classes.include?("ActionList-sectionDivider")
+            { type: :divider }
+          end
+        end
+
+        assert_equal list_items, [
+          { type: :item, href: "/item1" },
+          { type: :item, href: "/item2" },
+          { type: :divider },
+          { type: :item, href: "/item3" }
+        ]
+      end
+
+      def test_allows_custom_item_tag
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", content_arguments: { tag: :"clipboard-copy" })
+        end
+
+        assert_selector "clipboard-copy.ActionListContent"
       end
     end
   end

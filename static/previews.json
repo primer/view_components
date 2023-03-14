@@ -19,6 +19,11 @@
         "name": "leading_visuals"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/with_manual_dividers",
+        "preview_path": "/lookbook/preview/primer/alpha/action_list/with_manual_dividers",
+        "name": "with_manual_dividers"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/divider",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/divider",
         "name": "divider"
@@ -77,11 +82,6 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action",
         "name": "item_trailing_action"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action_hover",
-        "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action_hover",
-        "name": "item_trailing_action_hover"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_danger",

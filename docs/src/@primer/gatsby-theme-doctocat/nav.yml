@@ -127,6 +127,8 @@
     url: "/components/iconbutton"
   - title: Tooltip
     url: "/components/tooltip"
+  - title: Truncate
+    url: "/components/truncate"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

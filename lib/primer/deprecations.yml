@@ -33,3 +33,8 @@ deprecations:
   - component: "Primer::Tooltip"
     autocorrect: true
     replacement: "Primer::Alpha::Tooltip"
+
+  - component: "Primer::Truncate"
+    autocorrect: false
+    replacement: "Primer::Beta::Truncate"
+    guide: "https://primer.style/view-components/guides/primer_truncate"
