@@ -131,11 +131,6 @@ export class ActionMenuElement extends HTMLElement {
         this.setFocusToMenuItem(this.menuItems[0])
         break
 
-      case 'Esc':
-      case 'Escape':
-        this.popoverElement?.hidePopover()
-        break
-
       case 'Up':
       case 'ArrowUp':
         this.popoverElement?.showPopover()
@@ -173,12 +168,6 @@ export class ActionMenuElement extends HTMLElement {
       switch (key) {
         case 'Enter':
           this.popoverElement?.hidePopover()
-          break
-
-        case 'Esc':
-        case 'Escape':
-          this.popoverElement?.hidePopover()
-          flag = true
           break
 
         case 'Up':
