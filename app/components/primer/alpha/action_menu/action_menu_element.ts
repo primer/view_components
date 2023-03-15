@@ -14,6 +14,10 @@ export class ActionMenuElement extends HTMLElement {
     return this.getAttribute('data-select-variant') as SelectVariant
   }
 
+  set selectVariant(variant: SelectVariant) {
+    return this.setAttribute('data-select-variant', variant)
+  }
+
   get popoverElement(): HTMLElement | null {
     return this.querySelector<HTMLElement>('[popover]')
   }
