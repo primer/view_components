@@ -6,7 +6,7 @@
         <include-fragment src="<%= @src %>" loading="lazy" data-target="action-menu.includeFragment">
           <li
             class="ActionListItem d-flex flex-items-center flex-justify-center text-center"
-            data-target="action-menu.includeFragmentLoadingItem"
+            autofocus
             aria-disabled="true">
             <%= render Primer::Beta::Spinner.new(m: 2, aria: { label: "Loading content..." }) %>
           </li>

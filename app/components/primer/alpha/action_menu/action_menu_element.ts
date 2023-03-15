@@ -8,7 +8,6 @@ function isPrintableCharacter(str: string) {
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-  #previouslyFocusedElement: Element | null = null
   #shouldTryLoadingFragment = true
 
   get selectVariant(): SelectVariant {
@@ -27,10 +26,6 @@ export class ActionMenuElement extends HTMLElement {
     return Array.from(this.menu?.querySelectorAll<HTMLElement>(menuItemSelector) ?? [])
   }
 
-  get includeFragmentLoadingItem(): HTMLElement | null {
-    return this.querySelector<HTMLElement>(`[data-target~="action-menu.includeFragmentLoadingItem"]`)
-  }
-
   connectedCallback() {
     this.#abortController = new AbortController()
     const {signal} = this.#abortController
@@ -38,7 +33,6 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('keydown', this, {signal})
     this.addEventListener('click', this, {signal})
     this.addEventListener('mouseover', this, {signal})
-    this.popoverElement?.addEventListener('beforetoggle', this, {signal})
   }
 
   disconnectedCallback() {
@@ -48,23 +42,7 @@ export class ActionMenuElement extends HTMLElement {
   handleEvent(event: Event) {
     const target = event.target
     const isMenuItem = target instanceof HTMLElement && target.matches(menuItemSelector)
-    if (event.type === 'beforetoggle' && (event as BeforeToggleEvent).newState === 'open') {
-      if (this.includeFragmentLoadingItem) {
-        this.includeFragmentLoadingItem.tabIndex = 0
-        this.includeFragmentLoadingItem.focus()
-      }
-      this.#previouslyFocusedElement = document.activeElement
-    } else if (event.type === 'beforetoggle' && (event as BeforeToggleEvent).newState === 'closed') {
-      // TODO: Do this without a setTimeout
-      setTimeout(() => {
-        // There are some actions that may move focus to another part of the page intentionally.
-        // For example: "Quote Reply" in the comment options moves focus to the comment box.
-        // This only moves focus to the trigger if it's not managed in another way.
-        if (document.activeElement === document.body && this.#previouslyFocusedElement instanceof HTMLElement) {
-          this.#previouslyFocusedElement.focus()
-        }
-      }, 1)
-    } else if (!isMenuItem && event.type === 'keydown') {
+    if (!isMenuItem && event.type === 'keydown') {
       this.buttonKeydown(event as KeyboardEvent)
     } else if (isMenuItem && event.type === 'keydown') {
       this.menuItemKeydown(event as KeyboardEvent)
