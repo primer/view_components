@@ -14,16 +14,12 @@ export class ActionMenuElement extends HTMLElement {
     return this.getAttribute('data-select-variant') as SelectVariant
   }
 
-  get menu(): HTMLUListElement | null {
-    return this.querySelector<HTMLUListElement>('[role="menu"]')
-  }
-
   get popoverElement(): HTMLElement | null {
     return this.querySelector<HTMLElement>('[popover]')
   }
 
   get menuItems(): HTMLElement[] {
-    return Array.from(this.menu?.querySelectorAll<HTMLElement>(menuItemSelector) ?? [])
+    return Array.from(this.querySelectorAll<HTMLElement>(menuItemSelector) ?? [])
   }
 
   connectedCallback() {
