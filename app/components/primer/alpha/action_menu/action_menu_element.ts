@@ -148,8 +148,6 @@ export class ActionMenuElement extends HTMLElement {
   menuItemKeydown(event: KeyboardEvent) {
     const target = event.target
     const key = event.key
-    let flag = false
-
     if (event.ctrlKey || event.altKey || event.metaKey) {
       return
     }
@@ -157,60 +155,53 @@ export class ActionMenuElement extends HTMLElement {
     if (event.shiftKey) {
       if (isPrintableCharacter(key)) {
         this.setFocusByFirstCharacter(target as HTMLElement, key)
-        flag = true
       }
 
       if (event.key === 'Tab') {
         this.popoverElement?.hidePopover()
-        flag = true
       }
     } else {
       switch (key) {
         case 'Enter':
           this.popoverElement?.hidePopover()
-          break
+          return
 
         case 'Up':
         case 'ArrowUp':
           this.setFocusToPreviousMenuItem(target as HTMLElement)
-          flag = true
           break
 
         case 'ArrowDown':
         case 'Down':
           this.setFocusToNextMenuItem(target as HTMLElement)
-          flag = true
           break
 
         case 'Home':
         case 'PageUp':
           this.setFocusToMenuItem(this.menuItems[0])
-          flag = true
           break
 
         case 'End':
         case 'PageDown':
           this.setFocusToMenuItem(this.menuItems.at(-1)!)
-          flag = true
           break
 
         case 'Tab':
           this.popoverElement?.hidePopover()
-          break
+          return
 
         default:
           if (isPrintableCharacter(key)) {
             this.setFocusByFirstCharacter(target as HTMLElement, key)
-            flag = true
+            break
+          } else {
+            return
           }
-          break
       }
     }
 
-    if (flag) {
-      event.stopPropagation()
-      event.preventDefault()
-    }
+    event.stopPropagation()
+    event.preventDefault()
   }
 
   menuItemClick(event: MouseEvent) {
