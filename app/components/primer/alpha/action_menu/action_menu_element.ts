@@ -1,38 +1,41 @@
+const popoverSelector = (() => {
+  try {
+    document.querySelector(':open')
+    return ':open'
+  } catch {
+    return '.\\:open'
+  }
+})()
+
 type SelectVariant = 'single' | 'multiple' | null
 
 const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
 
-function isPrintableCharacter(str: string) {
-  return str.length === 1 && str.match(/\S/)
-}
-
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-  #shouldTryLoadingFragment = true
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
   }
 
   set selectVariant(variant: SelectVariant) {
-    return this.setAttribute('data-select-variant', variant)
+    if (variant) {
+      this.setAttribute('data-select-variant', variant)
+    } else {
+      this.removeAttribute('variant')
+    }
   }
 
   get popoverElement(): HTMLElement | null {
     return this.querySelector<HTMLElement>('[popover]')
   }
 
-  get menuItems(): HTMLElement[] {
-    return Array.from(this.querySelectorAll<HTMLElement>(menuItemSelector) ?? [])
-  }
-
   connectedCallback() {
-    this.#abortController = new AbortController()
-    const {signal} = this.#abortController
-
+    const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('keydown', this, {signal})
     this.addEventListener('click', this, {signal})
     this.addEventListener('mouseover', this, {signal})
+    this.addEventListener('focusout', this, {signal})
   }
 
   disconnectedCallback() {
@@ -40,193 +43,34 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
-    const target = event.target
-    const isMenuItem = target instanceof HTMLElement && target.matches(menuItemSelector)
-    if (!isMenuItem && event.type === 'keydown') {
-      this.buttonKeydown(event as KeyboardEvent)
-    } else if (isMenuItem && event.type === 'keydown') {
-      this.menuItemKeydown(event as KeyboardEvent)
-    } else if (isMenuItem && event.type === 'click') {
-      this.menuItemClick(event as MouseEvent)
-    } else if (isMenuItem && event.type === 'mouseover') {
-      this.menuItemMouseover(event as MouseEvent)
-    }
-  }
+    if (!this.popoverElement?.matches(popoverSelector)) return
 
-  setFocusToMenuItem(newMenuItem: HTMLElement) {
-    if (!this.menuItems) return
-
-    for (const item of this.menuItems) {
-      if (item === newMenuItem) {
-        item.tabIndex = 0
-        newMenuItem.focus()
+    if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
+      this.popoverElement?.hidePopover()
+    } else if (
+      (event instanceof KeyboardEvent &&
+        event.type === 'keydown' &&
+        !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+        event.key === 'Enter') ||
+      (event instanceof MouseEvent && event.type === 'click')
+    ) {
+      const item = (event.target as Element).closest(menuItemSelector)
+      if (!item) return
+      if (this.selectVariant === 'multiple') {
+        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
       } else {
-        item.tabIndex = -1
-      }
-    }
-  }
-
-  setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
-    let newMenuItem: HTMLElement
-    let index = null
-
-    if (currentMenuItem === this.menuItems[0]) {
-      newMenuItem = this.menuItems.at(-1)!
-    } else {
-      index = this.menuItems.indexOf(currentMenuItem)
-      newMenuItem = this.menuItems[index - 1]
-    }
-
-    this.setFocusToMenuItem(newMenuItem)
-
-    return newMenuItem
-  }
-
-  setFocusToNextMenuItem(currentMenuItem: HTMLElement) {
-    if (!this.menuItems) return
-
-    let newMenuItem = null
-    let index = null
-
-    if (currentMenuItem === this.menuItems.at(-1)) {
-      newMenuItem = this.menuItems[0]
-    } else {
-      index = this.menuItems.indexOf(currentMenuItem)
-      newMenuItem = this.menuItems[index + 1]
-    }
-    this.setFocusToMenuItem(newMenuItem)
-
-    return newMenuItem
-  }
-
-  setFocusByFirstCharacter(currentMenuItem: HTMLElement, character: string) {
-    if (!this.menuItems) return
-    if (character.length > 1) return
-
-    character = character.toLowerCase()
-
-    // Get start index for search based on position of currentMenuItem
-    let start = this.menuItems.indexOf(currentMenuItem) + 1
-    if (start >= this.menuItems.length) {
-      start = 0
-    }
-
-    // Check remaining slots in the menu
-    for (const menuItem of this.menuItems.slice(start).concat(this.menuItems.slice(0, start))) {
-      if (menuItem.textContent?.trim()[0].toLowerCase() === character) {
-        this.setFocusToMenuItem(menuItem)
-        return
-      }
-    }
-  }
-
-  // Menu event handlers
-  buttonKeydown(event: KeyboardEvent) {
-    switch (event.key) {
-      case ' ':
-      case 'Enter':
-      case 'ArrowDown':
-      case 'Down':
-        this.popoverElement?.showPopover()
-        this.setFocusToMenuItem(this.menuItems[0])
-        break
-
-      case 'Up':
-      case 'ArrowUp':
-        this.popoverElement?.showPopover()
-        this.setFocusToMenuItem(this.menuItems.at(-1)!)
-        break
-
-      default:
-        return
-    }
-
-    event.stopPropagation()
-    event.preventDefault()
-  }
-
-  menuItemKeydown(event: KeyboardEvent) {
-    const target = event.target
-    const key = event.key
-    if (event.ctrlKey || event.altKey || event.metaKey) {
-      return
-    }
-
-    if (event.shiftKey) {
-      if (isPrintableCharacter(key)) {
-        this.setFocusByFirstCharacter(target as HTMLElement, key)
-      }
-
-      if (event.key === 'Tab') {
-        this.popoverElement?.hidePopover()
-      }
-    } else {
-      switch (key) {
-        case 'Enter':
-          this.popoverElement?.hidePopover()
-          return
-
-        case 'Up':
-        case 'ArrowUp':
-          this.setFocusToPreviousMenuItem(target as HTMLElement)
-          break
-
-        case 'ArrowDown':
-        case 'Down':
-          this.setFocusToNextMenuItem(target as HTMLElement)
-          break
-
-        case 'Home':
-        case 'PageUp':
-          this.setFocusToMenuItem(this.menuItems[0])
-          break
-
-        case 'End':
-        case 'PageDown':
-          this.setFocusToMenuItem(this.menuItems.at(-1)!)
-          break
-
-        case 'Tab':
-          this.popoverElement?.hidePopover()
-          return
-
-        default:
-          if (isPrintableCharacter(key)) {
-            this.setFocusByFirstCharacter(target as HTMLElement, key)
-            break
-          } else {
-            return
+        if (this.selectVariant === 'single') {
+          for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+            if (checkedItem !== item) {
+              checkedItem.setAttribute('aria-checked', 'false')
+            }
           }
-      }
-    }
-
-    event.stopPropagation()
-    event.preventDefault()
-  }
-
-  menuItemClick(event: MouseEvent) {
-    const item = event.currentTarget as HTMLButtonElement
-
-    switch (this.selectVariant) {
-      case 'single':
-        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
-          checkedItem.setAttribute('aria-checked', 'false')
         }
         item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
         this.popoverElement?.hidePopover()
-        break
-      case 'multiple':
-        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-        break
-      default:
-        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-        this.popoverElement?.hidePopover()
-        break
+        event.preventDefault()
+      }
     }
-  }
-
-  menuItemMouseover(event: MouseEvent) {
-    ;(event.currentTarget as HTMLButtonElement).focus()
   }
 }
 
