@@ -2394,8 +2394,8 @@
       {
         "name": "label",
         "type": "String",
-        "default": "N/A",
-        "description": "Item label."
+        "default": "`nil`",
+        "description": "Item label. If no label is provided, content is used."
       },
       {
         "name": "label_classes",
