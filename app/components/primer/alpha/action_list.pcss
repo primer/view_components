@@ -336,7 +336,8 @@
       &:hover {
         background: var(--color-action-list-item-danger-hover-bg);
 
-        & .ActionListItem-label {
+        & .ActionListItem-label,
+        & .ActionListItem-visual {
           color: var(--color-action-list-item-danger-hover-text);
         }
       }
@@ -345,6 +346,11 @@
     & .ActionListContent {
       &:active {
         background: var(--color-action-list-item-danger-active-bg);
+
+        & .ActionListItem-label,
+        & .ActionListItem-visual {
+          color: var(--color-action-list-item-danger-hover-text);
+        }
       }
     }
   }
