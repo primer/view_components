@@ -14,19 +14,6 @@ module Primer
     class ActionMenu < Primer::Component
       status :alpha
 
-      # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
-      #
-      # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_button, lambda { |**system_arguments, &block|
-        @show_button_arguments = system_arguments
-        @show_button_block = block.call
-      }
-
-      # <%= link_to_component(Primer::Alpha::ActionMenu::Item) %>
-      renders_many :items, lambda { |**system_arguments|
-        Primer::Alpha::ActionMenu::Item.new(select_variant: @select_variant, **system_arguments)
-      }
-
       DEFAULT_ANCHOR_ALIGN = :start
       ANCHOR_ALIGN_OPTIONS = [DEFAULT_ANCHOR_ALIGN, :center, :end].freeze
 
@@ -34,13 +21,11 @@ module Primer
       ANCHOR_SIDE_OPTIONS = [:outside_top, DEFAULT_ANCHOR_SIDE, :outside_left, :outside_right].freeze
 
       DEFAULT_PRELOAD = false
-
       DEFAULT_SELECT_VARIANT = :none
-      SELECT_VARIANT_OPTIONS = [
-        :single,
-        :multiple,
-        DEFAULT_SELECT_VARIANT
-      ].freeze
+
+      attr_reader :list, :preload
+
+      alias preload? preload
 
       # @example Default
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-0") do |c| %>
@@ -259,36 +244,74 @@ module Primer
         anchor_side: DEFAULT_ANCHOR_SIDE,
         src: nil,
         preload: DEFAULT_PRELOAD,
-        select_variant: DEFAULT_SELECT_VARIANT,
+        select_variant: ActionList::DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
         @menu_id = menu_id
         @src = src
         @preload = fetch_or_fallback_boolean(preload, DEFAULT_PRELOAD)
-        @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:preload] = true if @src.present? && @preload == true
+        @system_arguments[:preload] = true if @src.present? && preload?
 
         @system_arguments[:tag] = :"action-menu"
         @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
         @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE).to_s.dasherize
-        @system_arguments[:"data-select-variant"] = @select_variant
+        @system_arguments[:"data-select-variant"] = select_variant
 
-        @overlay_arguments = {
+        @overlay = Primer::Alpha::Overlay.new(
           id: @menu_id,
           role: :menu,
           title: "Menu",
           visually_hide_title: true
-        }
+        )
 
-        @button_arguments = {}
+        @list = Primer::Alpha::ActionMenu::List.new(
+          menu_id: menu_id,
+          select_variant: select_variant
+        )
+      end
+
+      # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
+      #
+      # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
+      def with_show_button(**system_arguments, &block)
+        @overlay.with_show_button(**system_arguments, &block)
+      end
+
+      # Retrieves the show button.
+      def show_button
+        @overlay.show_button
+      end
+
+      # Adds a new item to the list.
+      #
+      # @param tag [Symbol] Optional. The tag to use for the item. <%= one_of(Primer::Experimental::ActionMenu::TAG_OPTIONS) %>
+      # @param is_dangerous [Boolean] If item should be styled dangerously. Equivalent to passing `scheme: :danger`.
+      #
+      # Also accepts the same arguments as <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      def with_item(**system_arguments, &block)
+        @list.with_item(**system_arguments, &block)
+      end
+
+      # Retrieves the list of items.
+      def items
+        @list.items
+      end
+
+      # Adds a divider to the list.
+      #
+      # Accepts the same arguments as <%= link_to_component(Primer::Alpha::ActionList::Divider) %>
+      def with_divider(**system_arguments, &block)
+        @list.with_divider(**system_arguments, &block)
       end
 
       private
 
       def before_render
-        raise ArgumentError, "you cannot use `items` when `src` is specified" if @src.present? && items.any?
+        content
+
+        raise ArgumentError, "`items` cannot be set when `src` is specified" if @src.present? && items.any?
       end
 
       def menu_id

@@ -20,6 +20,13 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+      DEFAULT_SELECT_VARIANT = :none
+      SELECT_VARIANT_OPTIONS = [
+        :single,
+        :multiple,
+        DEFAULT_SELECT_VARIANT
+      ].freeze
+
       # :nocov:
       # @private
       def self.custom_element_name
@@ -57,6 +64,8 @@ module Primer
         set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
       end
 
+      attr_reader :select_variant
+
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param item_classes [String] Additional CSS classes to attach to items.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %>. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
@@ -67,6 +76,7 @@ module Primer
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
+        select_variant: DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
         @id = self.class.generate_id
@@ -77,6 +87,7 @@ module Primer
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
+        @select_variant = select_variant
         @system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
@@ -102,6 +113,10 @@ module Primer
 
       # @private
       def build_item(**system_arguments)
+        if select_variant == :single && system_arguments[:active] && items.count(&:active?) > 0
+          raise ArgumentError, "only a single item may be active when select_variant is set to :single"
+        end
+
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes]

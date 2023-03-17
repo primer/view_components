@@ -42,7 +42,9 @@ module Primer
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: Primer::Beta::Octicon,
+          icon: lambda { |**system_arguments|
+            Primer::Beta::Octicon.new(classes: "ActionList-item-visual ActionList-item-visual--leading", **system_arguments)
+          },
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
@@ -141,7 +143,7 @@ module Primer
         # @param scheme [Symbol] Controls color/style based on behavior.
         # @param disabled [Boolean] Disabled items are not clickable and visually dim.
         # @param description_scheme [Symbol] Display description inline with label, or block on the next line.
-        # @param active [Boolean] Sets an active state on navigational items.
+        # @param active [Boolean] If the parent list's `select_variant` is set to `:single` or `:multiple`, causes this item to render checked.
         # @param on_click [String] JavaScript to execute when the item is clicked.
         # @param id [String] Used internally.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -191,6 +193,7 @@ module Primer
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
+          @system_arguments[:aria][:checked] = active?
 
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
@@ -235,8 +238,7 @@ module Primer
         def before_render
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
-            "ActionListItem--withActions" => trailing_action.present?,
-            "ActionListItem--navActive" => active?
+            "ActionListItem--withActions" => trailing_action.present?
           )
 
           return unless leading_visual

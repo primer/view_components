@@ -1,3 +1,5 @@
+import '@github/include-fragment-element'
+
 const popoverSelector = (() => {
   try {
     document.querySelector(':open')

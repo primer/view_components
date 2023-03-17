@@ -1,23 +1,18 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <focus-group direction="vertical" mnemonics retain>
-    <%= render Primer::Alpha::Overlay.new(**@overlay_arguments) do |overlay| %>
-      <% overlay.with_show_button(**@show_button_arguments).with_content(@show_button_block) %>
-        <ul class="ActionListWrap--inset" id="<%= @menu_id %>-list" aria-labelledby="<%= @menu_id %>-text">
-          <% if @src.present? %>
-            <include-fragment src="<%= @src %>" loading="lazy" data-target="action-menu.includeFragment">
-              <li
-                class="ActionListItem d-flex flex-items-center flex-justify-center text-center"
-                autofocus
-                aria-disabled="true">
-                <%= render Primer::Beta::Spinner.new(m: 2, aria: { label: "Loading content..." }) %>
-              </li>
-            </include-fragment>
-          <% else %>
-            <% items.each do |item| %>
-              <%= item %>
-            <% end %>
-          <% end %>
-        </ul>
+    <%= render(@overlay) do |overlay| %>
+      <% if @src.present? %>
+        <include-fragment src="<%= @src %>" loading="<%= preload? ? "eager" : "lazy" %>" data-target="action-menu.includeFragment">
+          <div
+            class="ActionListItem d-flex flex-items-center flex-justify-center text-center"
+            autofocus
+            aria-disabled="true">
+            <%= render Primer::Beta::Spinner.new(m: 2, aria: { label: "Loading content..." }) %>
+          </div>
+        </include-fragment>
+      <% else %>
+        <%= render(@list) %>
+      <% end %>
     <% end %>
   </focus-group>
 <% end %>
