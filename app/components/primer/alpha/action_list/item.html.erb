@@ -12,7 +12,7 @@
     <% end %>
     <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
       <%= render(Primer::BaseComponent.new(tag: :span, **@label_arguments)) do %>
-        <%= @label %>
+        <%= @label || content %>
       <% end %>
       <% if description? %>
         <span class="ActionListItem-description">
