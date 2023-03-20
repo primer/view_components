@@ -127,17 +127,17 @@ The main and sidebar components also have some new, additional slots.
 
 New on the `main` component:
 
-- `width`: One of `:full`, `:xl`, `:lg`, or `:med`. A `:full` width will stretch
+* `width`: One of `:full`, `:xl`, `:lg`, or `:med`. A `:full` width will stretch
   the main column to cover all available space.
 
 New on the `sidebar` component:
 
-- `width`: One of `:default`, `:narrow`, or `:wide`. Replaces the deprecated
+* `width`: One of `:default`, `:narrow`, or `:wide`. Replaces the deprecated
   `Primer::LayoutComponent#sidebar_col` argument.
-- `col_placement`: Sidebar placement in column mode. One of `:start` or `:end`.
+* `col_placement`: Sidebar placement in column mode. One of `:start` or `:end`.
   Use this in combination with `row_placement` to duplicate the functionality of
   the deprecated `Primer::LayoutComponent#side` argument.
-- `row_placement`: Sidebar placement in row mode. One of `:start`, `:end`, or `:none`.
+* `row_placement`: Sidebar placement in row mode. One of `:start`, `:end`, or `:none`.
 
 Please see the following documentation for complete descriptions and examples.
 
