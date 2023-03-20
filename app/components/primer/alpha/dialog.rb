@@ -126,32 +126,37 @@ module Primer
       )
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:tag] = "modal-dialog"
-        @system_arguments[:role] = "dialog"
-        @system_arguments[:id] = id
-        @system_arguments[:aria] = { modal: true }
-        @system_arguments[:classes] = class_names(
-          "Overlay",
-          "Overlay-whenNarrow",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
-          "Overlay--motion-scaleFade",
-          system_arguments[:classes]
-        )
-        @backdrop_classes = class_names(
-          POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, position, DEFAULT_POSITION)],
-          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, position_narrow, DEFAULT_POSITION_NARROW)]
-        )
-
         @id = id.to_s
         @title = title
+        @subtitle = subtitle
+        @size = size
         @position = position
         @position_narrow = position_narrow
         @visually_hide_title = visually_hide_title
 
-        @subtitle = subtitle
-
-        @system_arguments[:aria] ||= {}
-        @system_arguments[:aria][:describedby] ||= "#{@id}-description"
+        @system_arguments[:tag] = "modal-dialog"
+        @system_arguments[:role] = "dialog"
+        @system_arguments[:id] = @id
+        @system_arguments[:aria] = { modal: true }
+        @system_arguments[:aria] = merge_aria(
+          @system_arguments, {
+            aria: {
+              disabled: true,
+              describedby: "#{@id}-title #{@id}-description"
+            }
+          }
+        )
+        @system_arguments[:classes] = class_names(
+          "Overlay",
+          "Overlay-whenNarrow",
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
+          "Overlay--motion-scaleFade",
+          system_arguments[:classes]
+        )
+        @backdrop_classes = class_names(
+          POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, @position, DEFAULT_POSITION)],
+          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, @position_narrow, DEFAULT_POSITION_NARROW)]
+        )
       end
 
       def before_render

@@ -1,7 +1,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <div class="Overlay-headerContentWrap">
     <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title <% if @visually_hide_title || content.present? %>sr-only<% end %>"><%= @title %></h1>
+      <h1 class="Overlay-title <% if @visually_hide_title || content.present? %>sr-only<% end %>" id="<%= @id %>-title">
+        <%= @title %>
+      </h1>
       <% if content.present? %>
         <%= content %>
       <% elsif @subtitle.present? %>
