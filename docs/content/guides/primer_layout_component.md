@@ -31,7 +31,7 @@ For example, to create a narrower sidebar:
 <% end %>
 ```
 
-### TODO Sidebar placement
+### Sidebar placement
 
 Sidebar placement was previously limited to either `:left` or `:right`. We can
 still configure those, but we can also now configure whether the sidebar should
