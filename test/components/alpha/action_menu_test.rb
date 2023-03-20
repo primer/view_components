@@ -1,78 +1,64 @@
-# typed: false
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 
 module Primer
-  module Experimental
-    class ActionMenuTest < GitHub::TestCase
-      include ActionView::Helpers::TagHelper
-      include GitHub::ComponentTestHelpers
-
-      def test_raises_if_no_menu_id_passed_in
-        err = assert_raises ArgumentError do
-          render_inline Primer::Experimental::ActionMenu.new do |component|
-            component.with_trigger { "Trigger" }
-            component.with_item(classes: "do-something-js") { "Does something" }
-          end
-        end
-        assert_match(/missing keyword: :menu_id/, err.message)
-      end
+  module Alpha
+    class ActionMenuTest < Minitest::Test
+      include Primer::ComponentTestHelpers
 
       def test_raises_error_if_no_action_is_passed_in
         err = assert_raises ArgumentError do
-          render_inline Primer::Experimental::ActionMenu.new(menu_id: "no-action-menu-id") do |component|
-            component.with_trigger { "Trigger" }
+          render_inline Primer::Alpha::ActionMenu.new(menu_id: "no-action-menu-id") do |component|
+            component.with_show_button { "Trigger" }
             component.with_item
             "<summary onclick='() => {}'>
-                <details>
+              <details>
                 Trying to pass in an interactive element with a nested action
-                </details>
-              </summary>"
+              </details>
+            </summary>"
           end
         end
         assert_includes err.message, "One of the following are required to apply functionality"
       end
 
-      test "raises error if items and src are specified" do
+      def test_raises_error_if_items_and_src_are_specified
         err = assert_raises ArgumentError do
-          render_inline Primer::Experimental::ActionMenu.new(menu_id: "deferred-menu-items", src: "/") do |component|
-            component.with_trigger { "Trigger" }
-            component.with_item(classes: "do-something-js") { "Does something" }
+          render_inline Primer::Alpha::ActionMenu.new(menu_id: "deferred-menu-items", src: "/") do |component|
+            component.with_show_button { "Trigger" }
+            component.with_item(label: "Does something", classes: "do-something-js")
           end
         end
-        assert_equal "you cannot use `items` when `src` is specified", err.message
+        assert_equal "`items` cannot be set when `src` is specified", err.message
       end
 
       def test_renders_with_relevant_accessibility_attributes
         render_preview(:default)
 
         assert_selector("action-menu") do
-          assert_selector("button[id='menu-1-text'][aria-haspopup='true'][aria-expanded='false']", text: "Trigger")
+          assert_selector("button[id='overlay-show-menu-1'][aria-haspopup='true']", text: "Menu")
           assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-text'][role='menu']", visible: false) do
-            assert_selector("li[role='none']", visible: false) do
-              assert_selector("span[role='menuitem']", text: "Does something", visible: false)
-            end
+            assert_selector("li[role='menuitem']", visible: false)
           end
         end
       end
 
-      def test_falls_back_to_span_if_non_allowed_tag_is_set_as_menu_item
+      def test_falls_back_to_span_if_disallowed_tag_is_given
         without_fetch_or_fallback_raises do
-          render_inline Primer::Experimental::ActionMenu.new(menu_id: "bad-menu") do |component|
-            component.with_trigger { "Trigger" }
-            component.with_item(tag: :details, onclick: "() => {console.log('hey')}") { "Does something" }
+          render_inline Primer::Alpha::ActionMenu.new(menu_id: "bad-menu") do |component|
+            component.with_show_button { "Trigger" }
+            component.with_item(tag: :details, label: "Does something", "onclick": "() => {console.log('hey')}")
           end
         end
 
-        assert_selector("span[role='menuitem']", visible: false)
+        assert_selector("span.ActionListContent", visible: false)
       end
 
       def test_falls_back_to_default_anchor_align_and_anchor_side_if_non_allowed_option_is_set
         without_fetch_or_fallback_raises do
-          render_inline Primer::Experimental::ActionMenu.new(menu_id: "menu-1", anchor_side: :inside_out, anchor_align: :upside_down) do |component|
-            component.with_trigger { "Trigger" }
-            component.with_item(classes: "do-something-js") { "Does something" }
+          render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1", anchor_side: :inside_out, anchor_align: :upside_down) do |component|
+            component.with_show_button { "Trigger" }
+            component.with_item(label: "Does something", classes: "do-something-js")
           end
         end
 
@@ -83,62 +69,59 @@ module Primer
         render_preview(:with_icon_button)
 
         assert_selector("action-menu", visible: false) do
-          assert_selector("button[id='menu-3-text'][aria-haspopup='true'][aria-expanded='false']", visible: false) do
+          assert_selector("button[aria-haspopup='true']", visible: false) do
             assert_selector("svg", visible: false)
           end
-          assert_selector("tool-tip[for='menu-3-text']", text: "Menu", visible: false)
+
+          assert_selector("tool-tip", text: "Menu", visible: false)
         end
       end
 
       def test_allows_some_tags_as_nested_menu_item
-        render_preview(:with_items)
+        render_preview(:with_actions)
 
         assert_selector("action-menu") do
-          assert_selector("button[id='menu-2-text'][aria-haspopup='true'][aria-expanded='false']", text: "Trigger")
+          assert_selector("button[aria-haspopup='true']", text: "Trigger")
           assert_selector("ul", visible: false) do
-            assert_selector("li[role='none']", visible: false) do
-              assert_selector("button[role='menuitem']", text: "Does something", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("button", text: "Does something", visible: false)
             end
-            assert_selector("li[role='none']", visible: false) do
-              assert_selector("a[role='menuitem'][href='/']", text: "Site", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("a[href='/']", text: "Site", visible: false)
             end
-            assert_selector("li[role='none']", visible: false) do
-              assert_selector("clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("clipboard-copy", text: "Copy text", visible: false)
             end
           end
         end
       end
 
-      test "renders with include-fragment if src is specified" do
-        render_inline Primer::Experimental::ActionMenu.new(menu_id: "deferred-menu", src: "/") do |component|
-          component.with_trigger { "Trigger" }
+      def test_renders_with_include_fragment_if_src_is_specified
+        render_inline Primer::Alpha::ActionMenu.new(menu_id: "deferred-menu", src: "/") do |component|
+          component.with_show_button { "Trigger" }
         end
 
         assert_selector("action-menu") do
-          assert_selector("button[id='deferred-menu-text'][aria-haspopup='true'][aria-expanded='false']", text: "Trigger")
-          assert_selector("ul", visible: false) do
-            assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
-              assert_selector("li.ActionList-item[aria-disabled='true']", visible: false)
-            end
+          assert_selector("button[id='overlay-show-deferred-menu'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
+            assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end
         end
       end
 
-      test "renders include-fragment with preload" do
-        render_inline Primer::Experimental::ActionMenu.new(
+      def test_renders_include_fragment_with_preload
+        render_inline Primer::Alpha::ActionMenu.new(
           menu_id: "deferred-menu",
           src: "/",
-          preload: true
+          preload: true,
         ) do |component|
-          component.with_trigger { "Trigger" }
+          component.with_show_button { "Trigger" }
         end
 
         assert_selector("action-menu[preload='true']") do
-          assert_selector("button[id='deferred-menu-text'][aria-haspopup='true'][aria-expanded='false']", text: "Trigger")
-          assert_selector("ul", visible: false) do
-            assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
-              assert_selector("li.ActionList-item[aria-disabled='true']", visible: false)
-            end
+          assert_selector("button[id='overlay-show-deferred-menu'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
+            assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end
         end
       end

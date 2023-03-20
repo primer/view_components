@@ -26,7 +26,7 @@ module Primer
       # @label Default
       #
       def default
-        render(Primer::Alpha::ActionMenu.new) do |menu|
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "Copy link", value: "")
           menu.with_item(label: "Quote reply", value: "")
@@ -35,6 +35,13 @@ module Primer
           menu.with_item(label: "Edit", value: "")
           menu.with_item(label: "Edit", value: "")
           menu.with_item(label: "Delete", scheme: :danger, value: "")
+        end
+      end
+
+      def with_icon_button
+        render(Primer::Alpha::ActionMenu.new) do |menu|
+          menu.with_show_button(icon: :star, "aria-label": "Menu")
+          menu.with_item(label: "Does something", value: "")
         end
       end
 
@@ -123,6 +130,16 @@ module Primer
       def with_deferred_preloaded_content
         render(Primer::Alpha::ActionMenu.new(menu_id: "deferred-preload", preload: true, src: UrlHelpers.action_menu_deferred_preload_path)) do |menu|
           menu.with_show_button { "Menu with deferred and preloaded content" }
+        end
+      end
+
+      # @label With actions
+      def with_actions
+        render(Primer::Alpha::ActionMenu.new) do |component|
+          component.with_show_button { "Trigger" }
+          component.with_item(label: "Does something", tag: :button, classes: "do-something-js")
+          component.with_item(label: "Site", tag: :a, href: "/")
+          component.with_item(label: "Copy text", tag: :"clipboard-copy", value: "Text to copy")
         end
       end
     end
