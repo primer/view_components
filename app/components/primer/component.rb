@@ -118,11 +118,12 @@ module Primer
           prefix_hash = hash.delete(prefix) || {}
 
           prefix_hash.each_pair do |key, val|
-            result[key] = if plural_keys.include?(key)
-              [*(result[key] || "").split, val].join(" ").strip
-            else
-              val
-            end
+            result[key] =
+              if plural_keys.include?(key)
+                [*(result[key] || "").split, val].join(" ").strip
+              else
+                val
+              end
           end
 
           hash.delete_if do |key, val|
@@ -131,11 +132,12 @@ module Primer
             if key.start_with?("#{prefix}-")
               bare_key = key_s.sub("#{prefix}-", "").to_sym
 
-              result[bare_key] = if plural_keys.include?(bare_key)
-                [*(result[bare_key] || "").split, val].join(" ").strip
-              else
-                val
-              end
+              result[bare_key] =
+                if plural_keys.include?(bare_key)
+                  [*(result[bare_key] || "").split, val].join(" ").strip
+                else
+                  val
+                end
 
               true
             else
