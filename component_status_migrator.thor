@@ -31,7 +31,12 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def check_current_status
-    puts from_status
+    from_version = ComponentVersion.new(name)
+
+    p from_version.name
+    p from_version.status
+    p from_version.path
+
     exit
   end
 
@@ -331,5 +336,59 @@ class ComponentStatusMigrator < Thor::Group
       m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
       m[:name].gsub("::", "").downcase
     end
+  end
+end
+
+class ComponentVersion
+  COMPONENT_PATH = File.join("app", "components", "primer")
+
+  attr_reader :name, :status
+
+  def initialize(name, status = nil)
+    @name = name
+    @status = (status || inferred_status).to_sym
+  end
+
+  def path
+    if [:deprecated, :stable].include?(status)
+      COMPONENT_PATH
+    else
+      File.join(COMPONENT_PATH, status.to_s)
+    end
+  end
+
+  private
+
+  def inferred_status
+    component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
+
+    if component_paths.empty?
+      raise("Couldn't find #{ component_file_name } in component directory")
+    end
+
+    if component_paths.size > 1
+      raise("Found multiple files named #{ component_file_name } in component directory, can't infer version")
+    end
+
+    component_path = component_paths.first
+    component_directory = File.dirname(component_path)
+
+    if component_directory != COMPONENT_PATH
+      File.split(component_directory).last.to_sym
+    else
+      content = File.read(component_path)
+
+      if content =~ /^\s+status\s+:stable\s*$/
+        :stable
+      elsif content =~ /^\s+status\s+:deprecated\s*$/
+        :deprecated
+      else
+        raise("Can't infer version of #{ component_path }")
+      end
+    end
+  end
+
+  def component_file_name
+    "#{ name.underscore }.rb"
   end
 end
