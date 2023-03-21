@@ -28,13 +28,14 @@ module Primer
         # @param label_classes [Array] An array of classes (strings) to apply to the label.
         # @param label_arguments [Hash] A set of <%= link_to_system_arguments %> to apply to the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments %> passed to the link, button, etc.
-        def with_item(label: nil, tag: DEFAULT_ITEM_TAG, active: false, is_dangerous: false, disabled: false, hidden: false, label_classes: "", label_arguments: {}, **content_arguments, &block)
+        def with_item(label: nil, tag: DEFAULT_ITEM_TAG, active: false, is_dangerous: false, disabled: false, hidden: false, label_classes: "", label_arguments: {}, autofocus: false, **content_arguments, &block)
           content_arguments[:tag] = fetch_or_fallback(ITEM_TAG_OPTIONS, tag, DEFAULT_ITEM_TAG)
 
           list_item_arguments = {}
           list_item_arguments[:scheme] = :danger if is_dangerous
           list_item_arguments[:role] = ITEM_ROLE_MAP.fetch(select_variant, ITEM_ROLE_MAP[:default])
           list_item_arguments[:tabindex] = -1
+          list_item_arguments[:autofocus] = "" if autofocus
 
           if disabled
             content_arguments[:aria] = merge_aria(
