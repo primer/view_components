@@ -101,12 +101,12 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module_to_preview
-    return if new_version.stable?
+    return unless new_version.component_belongs_in_module?
     return nil unless File.exist?(new_version.preview_path)
 
     insert_into_file(
       new_version.preview_path,
-      "  module #{new_version.class_status}\n",
+      "  module #{new_version.module_name}\n",
       after: "module Primer\n"
     )
 
@@ -150,7 +150,7 @@ class ComponentStatusMigrator < Thor::Group
     gsub_file(
       new_version.test_path,
       /class .*Test </,
-      "class Primer#{new_version.class_status}#{name_without_suffix.gsub('::', '')}Test <"
+      "class Primer#{new_version.module_name}#{name_without_suffix.gsub('::', '')}Test <"
     )
   end
 
@@ -276,11 +276,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def status_folder_name
-    @status_folder_name ||= "#{status}/" unless new_version.stable?
+    @status_folder_name ||= "#{status}/" if new_version.component_belongs_in_module?
   end
 
   def status_module
-    @status_module ||= "#{new_version.class_status}::" unless new_version.stable?
+    @status_module ||= "#{new_version.module_name}::" if new_version.component_belongs_in_module?
   end
 
   def status
@@ -288,7 +288,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def status_url
-    @status_url ||= "#{status}/" unless new_version.stable?
+    @status_url ||= "#{status}/" if new_version.component_belongs_in_module?
   end
 
   def name_without_suffix
@@ -318,12 +318,12 @@ class ComponentVersion
     @status = (status || inferred_status).to_sym
   end
 
-  def stable?
-    status == :stable
+  def module_name
+    status.to_s.capitalize if !component_belongs_in_module?
   end
 
-  def class_status
-    status.to_s.capitalize if !stable?
+  def component_belongs_in_module?
+    ![:deprecated, :stable].include?(status)
   end
 
   def controller_path
@@ -381,10 +381,10 @@ class ComponentVersion
   end
 
   def status_directory
-    if stable?
-      ""
-    else
+    if component_belongs_in_module?
       status.to_s
+    else
+      ""
     end
   end
 
