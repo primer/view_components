@@ -40,14 +40,6 @@ class ComponentStatusMigrator < Thor::Group
     move_file("template", template_path, template_path_with_status)
   end
 
-  def move_reamining_files
-    Dir["app/components/primer/#{name.underscore}.*"].each do |file_path|
-      file_name = File.basename(file_path)
-      new_path = "#{status_full_path}#{file_name.gsub('_component', '')}"
-      move_file("misc", file_path, new_path)
-    end
-  end
-
   def update_css
     gsub_file(primer_css_file, component_css_import, component_css_import_with_status)
   end
