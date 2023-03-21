@@ -1643,6 +1643,11 @@
         "name": "default"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/text_field/with_data_target",
+        "preview_path": "/lookbook/preview/primer/alpha/text_field/with_data_target",
+        "name": "with_data_target"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/auto_check",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/auto_check",
         "name": "auto_check"
