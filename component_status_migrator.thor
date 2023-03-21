@@ -119,10 +119,14 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_component_class
-    if name == name_without_suffix
+    if old_version.name == new_version.name
       puts "No change needed - component suffix not removed from component class name"
     else
-      gsub_file(new_version.controller_path, "class #{name}", "class #{name_without_suffix}")
+      gsub_file(
+        new_version.controller_path,
+        "class #{old_version.name}",
+        "class #{new_version.name}"
+      )
     end
   end
 
