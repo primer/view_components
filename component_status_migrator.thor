@@ -136,8 +136,21 @@ class ComponentStatusMigrator < Thor::Group
 
   def rename_nav_entry
     nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
-    gsub_file(nav_file, "title: #{name}", "title: #{name_without_suffix}")
-    gsub_file(nav_file, "url: \"/components/#{name_without_suffix.downcase}\"", "url: \"/components/#{status_url}#{name_without_suffix.downcase}\"")
+
+    gsub_file(
+      nav_file,
+      "title: #{old_version.name}",
+      "title: #{new_version.name}",
+    )
+
+    old_path = File.join("/", "components", old_version.status_directory, new_version.name.downcase)
+    new_path = File.join("/", "components", new_version.status_directory, new_version.name.downcase)
+
+    gsub_file(
+      nav_file,
+      "url: \"#{old_path}\"",
+      "url: \"#{new_path}\""
+    )
   end
 
   def update_primer_js_imports
@@ -372,6 +385,14 @@ class ComponentVersion
     File.join(".", status_directory, "#{name.underscore}.pcss")
   end
 
+  def status_directory
+    if component_belongs_in_module?
+      status.to_s
+    else
+      ""
+    end
+  end
+
   private
 
   def inferred_status
@@ -394,14 +415,6 @@ class ComponentVersion
       end
     else
       File.split(component_directory).last.to_sym
-    end
-  end
-
-  def status_directory
-    if component_belongs_in_module?
-      status.to_s
-    else
-      ""
     end
   end
 
