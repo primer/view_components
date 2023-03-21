@@ -21,7 +21,7 @@ class ComponentStatusMigrator < Thor::Group
     default: "alpha",
     desc: "Status of the component. Valid values: #{STATUSES.join(', ')}",
     required: true,
-    type: :string,
+    type: :string
   )
 
   def self.source_root
@@ -40,7 +40,7 @@ class ComponentStatusMigrator < Thor::Group
     move_file(
       "controller",
       old_version.controller_path,
-      new_version.controller_path,
+      new_version.controller_path
     )
   end
 
@@ -49,7 +49,7 @@ class ComponentStatusMigrator < Thor::Group
       move_file(
         "template",
         old_version.template_path,
-        new_version.template_path,
+        new_version.template_path
       )
     end
   end
@@ -67,7 +67,7 @@ class ComponentStatusMigrator < Thor::Group
       move_file(
         "test",
         old_version.test_path,
-        new_version.test_path,
+        new_version.test_path
       )
     end
   end
@@ -77,25 +77,25 @@ class ComponentStatusMigrator < Thor::Group
       move_file(
         "preview",
         old_version.preview_path,
-        new_version.preview_path,
+        new_version.preview_path
       )
     end
   end
 
   def add_module_to_component
-    # TODO avoid adding the module twice
-    if !stable?
+    # TODO: avoid adding the module twice
+    unless stable?
       insert_into_file(
         new_version.controller_path,
         "  module #{new_version.class_status}\n",
-        after: "module Primer\n",
+        after: "module Primer\n"
       )
 
       insert_into_file(
         new_version.controller_path,
         "  end\n",
         before: /^end$/,
-        force: true,
+        force: true
       )
     end
   end
@@ -107,14 +107,14 @@ class ComponentStatusMigrator < Thor::Group
     insert_into_file(
       new_version.preview_path,
       "  module #{new_version.class_status}\n",
-      after: "module Primer\n",
+      after: "module Primer\n"
     )
 
     insert_into_file(
       new_version.preview_path,
       "  end\n",
       before: /^end$/,
-      force: true,
+      force: true
     )
   end
 
@@ -146,7 +146,7 @@ class ComponentStatusMigrator < Thor::Group
     gsub_file(
       new_version.test_path,
       /class .*Test </,
-      "class Primer#{new_version.class_status}#{name_without_suffix.gsub('::', '')}Test <",
+      "class Primer#{new_version.class_status}#{name_without_suffix.gsub('::', '')}Test <"
     )
   end
 
@@ -224,6 +224,7 @@ class ComponentStatusMigrator < Thor::Group
     # rubocop will exit with a non-zero code, due to
     # the expected linter failures. this causes thor
     # to stop running the script before it should
+    exit 1 # TODO remove this!
     run("bundle exec rubocop -a; exit 0")
   end
 
@@ -318,9 +319,7 @@ class ComponentVersion
   end
 
   def class_status
-    if status != :stable
-      status.to_s.capitalize
-    end
+    status.to_s.capitalize if status != :stable
   end
 
   def controller_path
@@ -328,21 +327,21 @@ class ComponentVersion
   end
 
   def template_path
-    File.join(base_path, "#{ name.underscore }.html.erb")
+    File.join(base_path, "#{name.underscore}.html.erb")
   end
 
   def test_path
-    File.join("test", "components", status_directory, "#{ name.underscore }_test.rb")
+    File.join("test", "components", status_directory, "#{name.underscore}_test.rb")
   end
 
   def preview_path
     preview_directory = File.join("previews", "primer", status_directory)
-    path_with_component = File.join(preview_directory, "#{ name.underscore }_component_preview.rb")
+    path_with_component = File.join(preview_directory, "#{name.underscore}_component_preview.rb")
 
     if File.exist?(path_with_component)
       path_with_component
     else
-      path_with_component = File.join(preview_directory, "#{ name.underscore }_preview.rb")
+      path_with_component = File.join(preview_directory, "#{name.underscore}_preview.rb")
     end
   end
 
@@ -355,29 +354,25 @@ class ComponentVersion
   def inferred_status
     component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
 
-    if component_paths.empty?
-      raise("Couldn't find #{ component_file_name } in component directory")
-    end
+    raise("Couldn't find #{component_file_name} in component directory") if component_paths.empty?
 
-    if component_paths.size > 1
-      raise("Found multiple files named #{ component_file_name } in component directory, can't infer version")
-    end
+    raise("Found multiple files named #{component_file_name} in component directory, can't infer version") if component_paths.size > 1
 
     component_path = component_paths.first
     component_directory = File.dirname(component_path)
 
-    if component_directory != COMPONENT_PATH
-      File.split(component_directory).last.to_sym
-    else
+    if component_directory == COMPONENT_PATH
       content = File.read(component_path)
 
-      if content =~ /^\s+status\s+:stable\s*$/
+      if /^\s+status\s+:stable\s*$/.match?(content)
         :stable
-      elsif content =~ /^\s+status\s+:deprecated\s*$/
+      elsif /^\s+status\s+:deprecated\s*$/.match?(content)
         :deprecated
       else
-        raise("Can't infer version of #{ component_path }")
+        raise("Can't infer version of #{component_path}")
       end
+    else
+      File.split(component_directory).last.to_sym
     end
   end
 
@@ -394,6 +389,6 @@ class ComponentVersion
   end
 
   def component_file_name
-    "#{ name.underscore }.rb"
+    "#{name.underscore}.rb"
   end
 end
