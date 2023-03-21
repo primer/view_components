@@ -58,20 +58,16 @@ export class ActionMenuElement extends HTMLElement {
     ) {
       const item = (event.target as Element).closest(menuItemSelector)
       if (!item) return
-      if (this.selectVariant === 'multiple') {
-        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-      } else {
-        if (this.selectVariant === 'single') {
-          for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
-            if (checkedItem !== item) {
-              checkedItem.setAttribute('aria-checked', 'false')
-            }
+      if (this.selectVariant === 'single') {
+        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+          if (checkedItem !== item) {
+            checkedItem.setAttribute('aria-checked', 'false')
           }
         }
-        item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
-        this.popoverElement?.hidePopover()
-        event.preventDefault()
       }
+      item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
+      event.preventDefault()
+      this.popoverElement?.hidePopover()
     }
   }
 }
