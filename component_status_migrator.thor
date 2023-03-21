@@ -115,9 +115,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_preview_label
-    return nil unless File.exist?(new_version.preview_path)
-
-    gsub_file(new_version.preview_path, /# @label #{name}/, "# @label #{name_without_suffix}")
+    if File.exist?(new_version.preview_path)
+      gsub_file(
+        new_version.preview_path,
+        /# @label #{old_version.name}/,
+        "# @label #{new_version.name}",
+      )
+    end
   end
 
   def rename_test_class
