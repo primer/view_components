@@ -105,11 +105,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_preview_class
-    return nil unless File.exist?(new_version.preview_path)
-
-    original_preview_class = /class .*Preview < ViewComponent::Preview/
-    updated_preview_class = "class #{name_without_suffix}Preview < ViewComponent::Preview"
-    gsub_file(new_version.preview_path, original_preview_class, updated_preview_class)
+    if File.exist?(new_version.preview_path)
+      gsub_file(
+        new_version.preview_path,
+        /class .*Preview < ViewComponent::Preview/,
+        "class #{new_version.name}Preview < ViewComponent::Preview"
+      )
+    end
   end
 
   def rename_preview_label
