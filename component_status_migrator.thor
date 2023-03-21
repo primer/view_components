@@ -227,7 +227,7 @@ class ComponentStatusMigrator < Thor::Group
       copy_file(old_path, new_path)
       remove_file(old_path)
     else
-      puts "Nothing moved. #{file_type.capitalize} file not found: #{new_path}"
+      puts "Nothing moved. #{file_type.capitalize} file not found: #{old_path}"
     end
   end
 
