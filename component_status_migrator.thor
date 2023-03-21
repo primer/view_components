@@ -125,13 +125,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_test_class
-    return nil unless File.exist?(new_version.test_path)
-
-    gsub_file(
-      new_version.test_path,
-      /class .*Test </,
-      "class Primer#{new_version.module_name}#{name_without_suffix.gsub('::', '')}Test <"
-    )
+    if File.exist?(new_version.test_path)
+      gsub_file(
+        new_version.test_path,
+        /class .*Test </,
+        "class Primer#{new_version.module_name}#{new_version.name.gsub('::', '')}Test <"
+      )
+    end
   end
 
   def rename_nav_entry
