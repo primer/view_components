@@ -30,24 +30,22 @@ class ComponentStatusMigrator < Thor::Group
     raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
 
-  def check_current_status
-    from_version = ComponentVersion.new(name)
-
-    p from_version.name
-    p from_version.status
-    p from_version.path
-
-    exit
-  end
-
   def move_controller
-    move_file("controller", controller_path, controller_path_with_status)
+    move_file(
+      "controller",
+      old_version.controller_path,
+      new_version.controller_path,
+    )
   end
 
   def move_template
-    return nil unless File.exist?(template_path)
-
-    move_file("template", template_path, template_path_with_status)
+    if File.exist?(old_version.template_path)
+      move_file(
+        "template",
+        old_version.template_path,
+        new_version.template_path,
+      )
+    end
   end
 
   def update_css
@@ -55,58 +53,71 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_test
-    return nil unless File.exist?(test_path)
-
-    move_file("test", test_path, test_path_with_status)
+    if File.exist?(old_version.test_path)
+      move_file(
+        "test",
+        old_version.test_path,
+        new_version.test_path,
+      )
+    end
   end
 
   def move_preview
-    return nil unless File.exist?(preview_path)
-
-    move_file("preview", preview_path, preview_path_with_status)
+    if File.exist?(old_version.preview_path)
+      move_file(
+        "preview",
+        old_version.preview_path,
+        new_version.preview_path,
+      )
+    end
   end
 
   def add_module_to_component
-    return if stable?
-
-    insert_into_file(controller_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
-    insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+    # TODO avoid adding the module twice
+    if !stable?
+      insert_into_file(new_version.controller_path, "  module #{class_status}\n", after: "module Primer\n")
+      insert_into_file(new_version.controller_path, "  end\n", before: /^end$/, force: true)
+    end
   end
 
   def add_module_to_preview
     return if stable?
-    return nil unless File.exist?(preview_path_with_status)
+    return nil unless File.exist?(new_version.preview_path)
 
-    insert_into_file(preview_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
-    insert_into_file(preview_path_with_status, "  end\n", before: /^end$/, force: true)
+    insert_into_file(new_version.preview_path, "  module #{class_status}\n", after: "module Primer\n")
+    insert_into_file(new_version.preview_path, "  end\n", before: /^end$/, force: true)
   end
 
   def remove_suffix_from_component_class
     if name == name_without_suffix
       puts "No change needed - component suffix not removed from component class name"
     else
-      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+      gsub_file(new_version.controller_path, "class #{name}", "class #{name_without_suffix}")
     end
   end
 
   def remove_suffix_from_preview_class
-    return nil unless File.exist?(preview_path_with_status)
+    return nil unless File.exist?(new_version.preview_path)
 
     original_preview_class = /class .*Preview < ViewComponent::Preview/
     updated_preview_class = "class #{name_without_suffix}Preview < ViewComponent::Preview"
-    gsub_file(preview_path_with_status, original_preview_class, updated_preview_class)
+    gsub_file(new_version.preview_path, original_preview_class, updated_preview_class)
   end
 
   def rename_preview_label
-    return nil unless File.exist?(preview_path_with_status)
+    return nil unless File.exist?(new_version.preview_path)
 
-    gsub_file(preview_path_with_status, /# @label #{name}/, "# @label #{name_without_suffix}")
+    gsub_file(new_version.preview_path, /# @label #{name}/, "# @label #{name_without_suffix}")
   end
 
   def rename_test_class
-    return nil unless File.exist?(test_path_with_status)
+    return nil unless File.exist?(new_version.test_path)
 
-    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <")
+    gsub_file(
+      new_version.test_path,
+      /class .*Test </,
+      "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <",
+    )
   end
 
   def rename_nav_entry
@@ -126,7 +137,7 @@ class ComponentStatusMigrator < Thor::Group
     exclude_files = [
       ".overmind.sock",
       "CHANGELOG.md",
-      test_path
+      old_version.test_path
     ]
 
     exclude_folders = [
@@ -149,11 +160,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_alias
-    return if controller_path == controller_path_with_status
+    return if old_version.controller_path == new_version.controller_path
 
-    remove_file(controller_path)
+    remove_file(old_version.controller_path)
     create_file(
-      controller_path,
+      old_version.controller_path,
       "# frozen_string_literal: true\n\nmodule Primer\n\tclass #{name} < Primer::#{status_module}#{name_without_suffix}\n\t\tstatus :deprecated\n\tend\nend"
     )
   end
@@ -210,23 +221,25 @@ class ComponentStatusMigrator < Thor::Group
 
   private
 
+  def new_version
+    @new_version ||= ComponentVersion.new(name.gsub("Component", ""), status)
+  end
+
+  def old_version
+    @old_version ||= ComponentVersion.new(name)
+  end
+
   def class_status
     @class_status ||= status.capitalize unless stable?
   end
 
-  def controller_path
-    @controller_path ||= "app/components/primer/#{name.underscore}.rb"
-  end
-
-  def controller_path_with_status
-    @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
-  end
-
   def component_css_import
+    # TODO use relative location
     @component_css_import ||= "import \"./#{name.underscore}.pcss\""
   end
 
   def component_css_import_with_status
+    # TODO use relative location
     @component_css_import_with_status ||= "import \"./#{status_folder_name}#{name_without_suffix.underscore}.pcss\""
   end
 
@@ -241,18 +254,6 @@ class ComponentStatusMigrator < Thor::Group
     end
   end
 
-  def preview_path
-    @preview_path ||= begin
-      path = "previews/primer/#{name.underscore}_preview.rb"
-      path_with_component = "previews/primer/#{name.underscore}_component_preview.rb"
-      File.exist?(path_with_component) ? path_with_component : path
-    end
-  end
-
-  def preview_path_with_status
-    @preview_path_with_status ||= "previews/primer/#{status_folder_name}#{name_without_suffix.underscore}_preview.rb"
-  end
-
   def stable?
     @stable ||= status == "stable"
   end
@@ -265,57 +266,8 @@ class ComponentStatusMigrator < Thor::Group
     @status_module ||= "#{class_status}::" unless stable?
   end
 
-  def status_full_path
-    @status_full_path ||= "app/components/primer/#{status_folder_name}"
-  end
-
-  def template_path
-    @template_path ||= "app/components/primer/#{name.underscore}.html.erb"
-  end
-
-  def template_path_with_status
-    @template_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.html.erb"
-  end
-
-  def test_path
-    @test_path ||= "test/components/#{name.underscore}_test.rb"
-  end
-
-  def test_path_with_status
-    @test_path_with_status ||= "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
-  end
-
-  def docs_path
-    @docs_path ||= "/components/#{short_name}.md"
-  end
-
-  def docs_path_with_status
-    @docs_path_with_status ||= "/components/#{status_folder_name}#{short_name}.md"
-  end
-
   def status
     @status ||= options[:status].downcase
-  end
-
-  def from_status
-    @detected_status ||= STATUSES.detect { |from_status|
-      controller_path = File.join(
-        source_path_for_status(from_status),
-        "#{name.underscore}.rb",
-      )
-
-      File.exists?(controller_path)
-    }
-
-    @detected_status || raise("Couldn't find #{name.underscore}.rb in component directory")
-  end
-
-  def source_path_for_status(from_status)
-    if from_status == "deprecated"
-      File.join("app", "components", "primer")
-    else
-      File.join("app", "components", "primer", from_status)
-    end
   end
 
   def status_url
@@ -327,7 +279,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def primer_css_file
-    @primer_css_file ||= "app/components/primer/primer.pcss"
+    "app/components/primer/primer.pcss"
   end
 
   def short_name
@@ -349,11 +301,26 @@ class ComponentVersion
     @status = (status || inferred_status).to_sym
   end
 
-  def path
-    if [:deprecated, :stable].include?(status)
-      COMPONENT_PATH
+  def controller_path
+    File.join(base_path, component_file_name)
+  end
+
+  def template_path
+    File.join(base_path, "#{ name.underscore }.html.erb")
+  end
+
+  def test_path
+    File.join("test", "components", status_directory, "#{ name.underscore }_test.rb")
+  end
+
+  def preview_path
+    preview_directory = File.join("previews", "primer", status_directory)
+    path_with_component = File.join(preview_directory, "#{ name.underscore }_component_preview.rb")
+
+    if File.exist?(path_with_component)
+      path_with_component
     else
-      File.join(COMPONENT_PATH, status.to_s)
+      path_with_component = File.join(preview_directory, "#{ name.underscore }_preview.rb")
     end
   end
 
@@ -386,6 +353,18 @@ class ComponentVersion
         raise("Can't infer version of #{ component_path }")
       end
     end
+  end
+
+  def status_directory
+    if [:deprecated, :stable].include?(status)
+      ""
+    else
+      status.to_s
+    end
+  end
+
+  def base_path
+    File.join(COMPONENT_PATH, status_directory)
   end
 
   def component_file_name
