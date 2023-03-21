@@ -391,10 +391,8 @@ class ComponentVersion
 
       if /^\s+status\s+:stable\s*$/.match?(content)
         :stable
-      elsif /^\s+status\s+:deprecated\s*$/.match?(content)
-        :deprecated
       else
-        raise("Can't infer version of #{component_path}")
+        :deprecated
       end
     else
       File.split(component_directory).last.to_sym
