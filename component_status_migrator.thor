@@ -83,52 +83,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module_to_component
-    if old_version.component_belongs_in_module?
-      gsub_file(
-        new_version.controller_path,
-        /^  module #{old_version.module_name}$\n/,
-        ""
-      )
-
-      gsub_file(
-        new_version.controller_path,
-        "  end\nend\n",
-        "end\n"
-      )
-    end
-
-    if new_version.component_belongs_in_module?
-      insert_into_file(
-        new_version.controller_path,
-        "  module #{new_version.module_name}\n",
-        after: "module Primer\n"
-      )
-
-      insert_into_file(
-        new_version.controller_path,
-        "  end\n",
-        before: /^end$/,
-        force: true
-      )
-    end
+    update_ruby_version_module(new_version.controller_path)
   end
 
   def add_module_to_preview
-    return unless new_version.component_belongs_in_module?
-    return nil unless File.exist?(new_version.preview_path)
-
-    insert_into_file(
-      new_version.preview_path,
-      "  module #{new_version.module_name}\n",
-      after: "module Primer\n"
-    )
-
-    insert_into_file(
-      new_version.preview_path,
-      "  end\n",
-      before: /^end$/,
-      force: true
-    )
+    if File.exist?(new_version.preview_path)
+      update_ruby_version_module(new_version.preview_path)
+    end
   end
 
   def remove_suffix_from_component_class
@@ -293,6 +254,37 @@ class ComponentStatusMigrator < Thor::Group
       remove_file(old_path)
     else
       puts "Nothing moved. #{file_type.capitalize} file not found: #{old_path}"
+    end
+  end
+
+  def update_ruby_version_module(path)
+    if old_version.component_belongs_in_module?
+      gsub_file(
+        path,
+        /^  module #{old_version.module_name}$\n/,
+        ""
+      )
+
+      gsub_file(
+        path,
+        "  end\nend\n",
+        "end\n"
+      )
+    end
+
+    if new_version.component_belongs_in_module?
+      insert_into_file(
+        path,
+        "  module #{new_version.module_name}\n",
+        after: "module Primer\n"
+      )
+
+      insert_into_file(
+        path,
+        "  end\n",
+        before: /^end$/,
+        force: true
+      )
     end
   end
 
