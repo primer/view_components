@@ -23,5 +23,12 @@ module Alpha
 
       assert_selector ".FormControl-inlineValidation", text: "Error! Error!"
     end
+
+    def test_custom_data_target
+      visit_preview(:with_data_target)
+
+      assert_selector "input[data-target*='primer-text-field.inputElement']"
+      assert_selector "input[data-target*='custom-component.inputElement']"
+    end
   end
 end
