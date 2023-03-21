@@ -16,7 +16,13 @@ class ComponentStatusMigrator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. Valid values: #{STATUSES.join(', ')}", required: true, type: :string
+  class_option(
+    :status,
+    default: "alpha",
+    desc: "Status of the component. Valid values: #{STATUSES.join(', ')}",
+    required: true,
+    type: :string,
+  )
 
   def self.source_root
     File.dirname(__FILE__)
@@ -75,8 +81,18 @@ class ComponentStatusMigrator < Thor::Group
   def add_module_to_component
     # TODO avoid adding the module twice
     if !stable?
-      insert_into_file(new_version.controller_path, "  module #{class_status}\n", after: "module Primer\n")
-      insert_into_file(new_version.controller_path, "  end\n", before: /^end$/, force: true)
+      insert_into_file(
+        new_version.controller_path,
+        "  module #{new_version.class_status}\n",
+        after: "module Primer\n",
+      )
+
+      insert_into_file(
+        new_version.controller_path,
+        "  end\n",
+        before: /^end$/,
+        force: true,
+      )
     end
   end
 
@@ -84,8 +100,18 @@ class ComponentStatusMigrator < Thor::Group
     return if stable?
     return nil unless File.exist?(new_version.preview_path)
 
-    insert_into_file(new_version.preview_path, "  module #{class_status}\n", after: "module Primer\n")
-    insert_into_file(new_version.preview_path, "  end\n", before: /^end$/, force: true)
+    insert_into_file(
+      new_version.preview_path,
+      "  module #{new_version.class_status}\n",
+      after: "module Primer\n",
+    )
+
+    insert_into_file(
+      new_version.preview_path,
+      "  end\n",
+      before: /^end$/,
+      force: true,
+    )
   end
 
   def remove_suffix_from_component_class
@@ -116,7 +142,7 @@ class ComponentStatusMigrator < Thor::Group
     gsub_file(
       new_version.test_path,
       /class .*Test </,
-      "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <",
+      "class Primer#{new_version.class_status}#{name_without_suffix.gsub('::', '')}Test <",
     )
   end
 
@@ -229,10 +255,6 @@ class ComponentStatusMigrator < Thor::Group
     @old_version ||= ComponentVersion.new(name)
   end
 
-  def class_status
-    @class_status ||= status.capitalize unless stable?
-  end
-
   def component_css_import
     # TODO use relative location
     @component_css_import ||= "import \"./#{name.underscore}.pcss\""
@@ -255,7 +277,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def stable?
-    @stable ||= status == "stable"
+    status == "stable"
   end
 
   def status_folder_name
@@ -263,7 +285,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def status_module
-    @status_module ||= "#{class_status}::" unless stable?
+    @status_module ||= "#{new_version.class_status}::" unless stable?
   end
 
   def status
@@ -299,6 +321,12 @@ class ComponentVersion
   def initialize(name, status = nil)
     @name = name
     @status = (status || inferred_status).to_sym
+  end
+
+  def class_status
+    if status != :stable
+      status.to_s.capitalize
+    end
   end
 
   def controller_path
