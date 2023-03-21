@@ -180,7 +180,7 @@ class ComponentStatusMigrator < Thor::Group
     cmd = ["grep -rl #{name} ."]
     cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
-    cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
+    cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{new_version.module_prefix}#{new_version.name}/g'"
 
     run(cmd.join(" "))
   end
@@ -195,7 +195,7 @@ class ComponentStatusMigrator < Thor::Group
       # frozen_string_literal: true
 
       module Primer
-        class #{name} < Primer::#{status_module}#{name_without_suffix}
+        class #{name} < Primer::#{new_version.module_prefix}#{new_version.name}
           status :deprecated
         end
       end
@@ -206,7 +206,7 @@ class ComponentStatusMigrator < Thor::Group
   def add_to_deprecated_component_configuration
     content = []
     content << "  - component: \"Primer::#{name}\"\n"
-    content << "    replacement: \"Primer::#{status_module}#{name_without_suffix}\"\n"
+    content << "    replacement: \"Primer::#{new_version.module_prefix}#{new_version.name}\"\n"
 
     insert_into_file(
       "lib/primer/deprecations.yml",
@@ -246,7 +246,7 @@ class ComponentStatusMigrator < Thor::Group
     puts "------------------------------------"
     puts ""
     puts "Original Component: 'Primer::#{name}'"
-    puts "     New Component: 'Primer::#{status_module}#{name_without_suffix}'"
+    puts "     New Component: 'Primer::#{new_version.module_prefix}#{new_version.name}'"
     puts ""
     puts "IMPORTANT NOTE:"
     puts ""
@@ -306,24 +306,8 @@ class ComponentStatusMigrator < Thor::Group
     end
   end
 
-  def status_folder_name
-    @status_folder_name ||= "#{status}/" if new_version.component_belongs_in_module?
-  end
-
-  def status_module
-    @status_module ||= "#{new_version.module_name}::" if new_version.component_belongs_in_module?
-  end
-
   def status
     @status ||= options[:status].downcase
-  end
-
-  def status_url
-    @status_url ||= "#{status}/" if new_version.component_belongs_in_module?
-  end
-
-  def name_without_suffix
-    @name_without_suffix ||= name.gsub("Component", "")
   end
 
   def primer_css_file
@@ -351,6 +335,12 @@ class ComponentVersion
 
   def module_name
     status.to_s.capitalize if component_belongs_in_module?
+  end
+
+  def module_prefix
+    if component_belongs_in_module?
+      "#{module_name}::"
+    end
   end
 
   def component_belongs_in_module?
