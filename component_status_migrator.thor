@@ -84,7 +84,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def add_module_to_component
     # TODO: avoid adding the module twice
-    unless stable?
+    if !new_version.stable?
       insert_into_file(
         new_version.controller_path,
         "  module #{new_version.class_status}\n",
@@ -101,7 +101,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module_to_preview
-    return if stable?
+    return if new_version.stable?
     return nil unless File.exist?(new_version.preview_path)
 
     insert_into_file(
@@ -271,16 +271,12 @@ class ComponentStatusMigrator < Thor::Group
     end
   end
 
-  def stable?
-    status == "stable"
-  end
-
   def status_folder_name
-    @status_folder_name ||= "#{status}/" unless stable?
+    @status_folder_name ||= "#{status}/" unless new_version.stable?
   end
 
   def status_module
-    @status_module ||= "#{new_version.class_status}::" unless stable?
+    @status_module ||= "#{new_version.class_status}::" unless new_version.stable?
   end
 
   def status
@@ -288,7 +284,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def status_url
-    @status_url ||= "#{status}/" unless stable?
+    @status_url ||= "#{status}/" unless new_version.stable?
   end
 
   def name_without_suffix
@@ -318,8 +314,12 @@ class ComponentVersion
     @status = (status || inferred_status).to_sym
   end
 
+  def stable?
+    status == :stable
+  end
+
   def class_status
-    status.to_s.capitalize if status != :stable
+    status.to_s.capitalize if !stable?
   end
 
   def controller_path
@@ -377,7 +377,7 @@ class ComponentVersion
   end
 
   def status_directory
-    if [:deprecated, :stable].include?(status)
+    if stable?
       ""
     else
       status.to_s
