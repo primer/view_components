@@ -83,11 +83,24 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module_to_component
-    # TODO: avoid adding the module twice
-    if !new_version.stable?
+    if old_version.component_belongs_in_module?
+      gsub_file(
+        new_version.controller_path,
+        /^  module #{old_version.module_name}$\n/,
+        ""
+      )
+
+      gsub_file(
+        new_version.controller_path,
+        "  end\nend\n",
+        "end\n"
+      )
+    end
+
+    if new_version.component_belongs_in_module?
       insert_into_file(
         new_version.controller_path,
-        "  module #{new_version.class_status}\n",
+        "  module #{new_version.module_name}\n",
         after: "module Primer\n"
       )
 
@@ -327,7 +340,7 @@ class ComponentVersion
   end
 
   def module_name
-    status.to_s.capitalize if !component_belongs_in_module?
+    status.to_s.capitalize if component_belongs_in_module?
   end
 
   def component_belongs_in_module?
