@@ -30,6 +30,11 @@ class ComponentStatusMigrator < Thor::Group
     raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
 
+  def check_current_status
+    puts from_status
+    exit
+  end
+
   def move_controller
     move_file("controller", controller_path, controller_path_with_status)
   end
@@ -285,6 +290,27 @@ class ComponentStatusMigrator < Thor::Group
 
   def status
     @status ||= options[:status].downcase
+  end
+
+  def from_status
+    @detected_status ||= STATUSES.detect { |from_status|
+      controller_path = File.join(
+        source_path_for_status(from_status),
+        "#{name.underscore}.rb",
+      )
+
+      File.exists?(controller_path)
+    }
+
+    @detected_status || raise("Couldn't find #{name.underscore}.rb in component directory")
+  end
+
+  def source_path_for_status(from_status)
+    if from_status == "deprecated"
+      File.join("app", "components", "primer")
+    else
+      File.join("app", "components", "primer", from_status)
+    end
   end
 
   def status_url
