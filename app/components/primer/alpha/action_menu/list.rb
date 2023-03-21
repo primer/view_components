@@ -8,7 +8,7 @@ module Primer
       # used as a standalone component.
       #
       # One of the following is required to apply functionality to the menu item: <%= one_of(Primer::Alpha::ActionMenu::List::ACTION_OPTIONS) %>
-      class List < Primer::Alpha::ActionList # rubocop:disable ViewComponent/EncouragePreviewsForPrimer
+      class List < Primer::Alpha::ActionList
         DEFAULT_ITEM_TAG = :span
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
         ITEM_ACTION_OPTIONS = [:classes, :onclick, :href, :value].freeze
@@ -47,9 +47,11 @@ module Primer
             content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
+          # rubocop:disable Style/IfUnlessModifier
           unless content_arguments.each_key.any? { |key| ITEM_ACTION_OPTIONS.include?(key.to_sym) }
-            raise ArgumentError, "One of the following are required to apply functionality: #{ITEM_ACTION_OPTIONS.to_sentence(last_word_connector: " or ")}"
+            raise ArgumentError, "One of the following are required to apply functionality: #{ITEM_ACTION_OPTIONS.to_sentence(last_word_connector: ' or ')}"
           end
+          # rubocop:enable Style/IfUnlessModifier
 
           super(
             label: label,
@@ -59,7 +61,8 @@ module Primer
             **list_item_arguments,
             label_classes: label_classes,
             label_arguments: label_arguments,
-            content_arguments: content_arguments
+            content_arguments: content_arguments,
+            &block
           )
         end
 

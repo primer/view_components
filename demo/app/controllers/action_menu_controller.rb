@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class ActionMenuController < ApplicationController
   layout false
 

@@ -47,7 +47,7 @@ module Primer
         without_fetch_or_fallback_raises do
           render_inline Primer::Alpha::ActionMenu.new(menu_id: "bad-menu") do |component|
             component.with_show_button { "Trigger" }
-            component.with_item(tag: :details, label: "Does something", "onclick": "() => {console.log('hey')}")
+            component.with_item(tag: :details, label: "Does something", onclick: "() => {console.log('hey')}")
           end
         end
 
@@ -113,7 +113,7 @@ module Primer
         render_inline Primer::Alpha::ActionMenu.new(
           menu_id: "deferred-menu",
           src: "/",
-          preload: true,
+          preload: true
         ) do |component|
           component.with_show_button { "Trigger" }
         end

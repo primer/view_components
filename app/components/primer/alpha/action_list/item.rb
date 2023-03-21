@@ -193,7 +193,6 @@ module Primer
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
-          @system_arguments[:aria][:checked] = active?
 
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
@@ -236,6 +235,8 @@ module Primer
         private
 
         def before_render
+          @system_arguments[:aria][:checked] = active?
+
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?

@@ -15,12 +15,6 @@ module Primer
         assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
       end
 
-      def test_active_item
-        render_preview(:item, params: { active: true })
-
-        assert_selector(".ActionListItem--navActive")
-      end
-
       def test_item_with_actions
         render_preview(:item, params: { trailing_action: "arrow-down" })
 

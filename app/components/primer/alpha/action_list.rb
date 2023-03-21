@@ -113,9 +113,11 @@ module Primer
 
       # @private
       def build_item(**system_arguments)
-        if select_variant == :single && system_arguments[:active] && items.count(&:active?) > 0
+        # rubocop:disable Style/IfUnlessModifier
+        if select_variant == :single && system_arguments[:active] && items.count(&:active?).positive?
           raise ArgumentError, "only a single item may be active when select_variant is set to :single"
         end
+        # rubocop:enable Style/IfUnlessModifier
 
         system_arguments[:classes] = class_names(
           @item_classes,
