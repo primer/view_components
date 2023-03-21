@@ -235,7 +235,10 @@ module Primer
         private
 
         def before_render
-          @system_arguments[:aria][:checked] = active?
+          @system_arguments[:aria] = merge_aria(
+            @system_arguments,
+            { aria: { checked: active? } }
+          )
 
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
