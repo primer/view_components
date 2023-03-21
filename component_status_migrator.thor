@@ -93,9 +93,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_component_class
-    if old_version.name == new_version.name
-      puts "No change needed - component suffix not removed from component class name"
-    else
+    if old_version.name != new_version.name
       gsub_file(
         new_version.controller_path,
         "class #{old_version.name}",
@@ -154,10 +152,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_primer_js_imports
-    primer_js = "app/components/primer/primer.ts"
-    original_content = "import './#{name.underscore}'"
-    updated_content = "import './#{status_folder_name}#{name_without_suffix.underscore}'"
-    gsub_file(primer_js, original_content, updated_content)
+    gsub_file(
+      "app/components/primer/primer.ts",
+      "import '#{old_version.primer_js_import_path}'",
+      "import '#{new_version.primer_js_import_path}'"
+    )
   end
 
   def update_all_references
@@ -383,6 +382,10 @@ class ComponentVersion
 
   def css_import_path
     File.join(".", status_directory, "#{name.underscore}.pcss")
+  end
+
+  def primer_js_import_path
+    File.join(".", status_directory, "#{name.underscore}")
   end
 
   def status_directory
