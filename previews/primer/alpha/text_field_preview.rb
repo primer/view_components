@@ -167,6 +167,13 @@ module Primer
       end
       #
       # @!endgroup
+
+      # @label With data target attribute
+      def with_data_target
+        render(Primer::Alpha::TextField.new(name: "my-text-field", label: "My text field", data: { target: "custom-component.inputElement" }))
+      end
+      #
+      # @!endgroup
     end
   end
 end
