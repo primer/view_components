@@ -55,7 +55,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_css
-    gsub_file(primer_css_file, component_css_import, component_css_import_with_status)
+    gsub_file(
+      primer_css_file,
+      "import \"#{old_version.css_import_path}\"",
+      "import \"#{new_version.css_import_path}\""
+    )
   end
 
   def move_test
@@ -255,16 +259,6 @@ class ComponentStatusMigrator < Thor::Group
     @old_version ||= ComponentVersion.new(name)
   end
 
-  def component_css_import
-    # TODO use relative location
-    @component_css_import ||= "import \"./#{name.underscore}.pcss\""
-  end
-
-  def component_css_import_with_status
-    # TODO use relative location
-    @component_css_import_with_status ||= "import \"./#{status_folder_name}#{name_without_suffix.underscore}.pcss\""
-  end
-
   def move_file(file_type, old_path, new_path)
     if old_path == new_path
       puts "No change needed - #{file_type} file not moved"
@@ -350,6 +344,10 @@ class ComponentVersion
     else
       path_with_component = File.join(preview_directory, "#{ name.underscore }_preview.rb")
     end
+  end
+
+  def css_import_path
+    File.join(".", status_directory, "#{name.underscore}.pcss")
   end
 
   private
