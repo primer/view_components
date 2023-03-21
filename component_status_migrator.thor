@@ -199,7 +199,15 @@ class ComponentStatusMigrator < Thor::Group
     remove_file(old_version.controller_path)
     create_file(
       old_version.controller_path,
-      "# frozen_string_literal: true\n\nmodule Primer\n\tclass #{name} < Primer::#{status_module}#{name_without_suffix}\n\t\tstatus :deprecated\n\tend\nend"
+      <<~DEPRECATED_CLASS
+      # frozen_string_literal: true
+
+      module Primer
+        class #{name} < Primer::#{status_module}#{name_without_suffix}
+          status :deprecated
+        end
+      end
+      DEPRECATED_CLASS
     )
   end
 
