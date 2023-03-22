@@ -11,10 +11,11 @@ const popoverSelector = (() => {
 
 type SelectVariant = 'single' | 'multiple' | null
 
-const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
+const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
+  #originalLabel = ''
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -28,8 +29,35 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
+  get dynamicLabelPrefix(): string {
+    const prefix = this.getAttribute('data-dynamic-label-prefix')
+    if (!prefix) return ''
+    return `${prefix}:`
+  }
+
+  set dynamicLabelPrefix(value: string) {
+    this.setAttribute('data-dynamic-label', value)
+  }
+
+  get dynamicLabel(): boolean {
+    return this.hasAttribute('data-dynamic-label')
+  }
+
+  set dynamicLabel(value: boolean) {
+    this.toggleAttribute('data-dynamic-label', value)
+  }
+
   get popoverElement(): HTMLElement | null {
     return this.querySelector<HTMLElement>('[popover]')
+  }
+
+  get invokerElement(): HTMLElement | null {
+    const id = this.querySelector('[role=menu]')?.id
+    if (!id) return null
+    for (const el of this.querySelectorAll(`[aria-controls]`)) {
+      if (el.getAttribute('aria-controls') === id) return el as HTMLElement
+    }
+    return null
   }
 
   connectedCallback() {
@@ -38,6 +66,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('click', this, {signal})
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
+    this.#setDynamicLabel()
   }
 
   disconnectedCallback() {
@@ -56,18 +85,40 @@ export class ActionMenuElement extends HTMLElement {
         event.key === 'Enter') ||
       (event instanceof MouseEvent && event.type === 'click')
     ) {
-      const item = (event.target as Element).closest(menuItemSelector)
+      const item = (event.target as Element).closest(menuItemSelectors.join(','))
       if (!item) return
+      const ariaChecked = item.getAttribute('aria-checked')
+      const checked = ariaChecked !== 'true'
+      item.setAttribute('aria-checked', `${checked}`)
       if (this.selectVariant === 'single') {
-        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+        const selector = menuItemSelectors.map(s => `${s}[aria-checked]`).join(',')
+        for (const checkedItem of this.querySelectorAll(selector)) {
           if (checkedItem !== item) {
             checkedItem.setAttribute('aria-checked', 'false')
           }
         }
+        this.#setDynamicLabel()
       }
-      item.setAttribute('aria-checked', `${item.getAttribute('aria-checked') === 'false'}`)
       event.preventDefault()
       this.popoverElement?.hidePopover()
+    }
+  }
+
+  #setDynamicLabel() {
+    if (!this.dynamicLabel) return
+    const invoker = this.invokerElement
+    if (!invoker) return
+    const selector = menuItemSelectors.map(s => `${s}[aria-checked=true]`).join(',')
+    const item = this.querySelector(selector)
+    if (item && this.dynamicLabel) {
+      this.#originalLabel ||= invoker.textContent || ''
+      const prefixSpan = document.createElement('span')
+      const contentSpan = document.createElement('span')
+      prefixSpan.textContent = this.dynamicLabelPrefix
+      contentSpan.textContent = item.textContent || ''
+      invoker.replaceChildren(prefixSpan, contentSpan)
+    } else {
+      invoker.textContent = this.#originalLabel
     }
   }
 }
