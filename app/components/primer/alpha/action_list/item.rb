@@ -43,7 +43,7 @@ module Primer
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
           icon: lambda { |**system_arguments|
-            Primer::Beta::Octicon.new(classes: "ActionList-item-visual ActionList-item-visual--leading", **system_arguments)
+            Primer::Beta::Octicon.new(classes: "ActionListItem-visual ActionListItem-visual--leading", **system_arguments)
           },
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
@@ -190,11 +190,11 @@ module Primer
           )
 
           @system_arguments[:role] = role ||
-            if @list.allows_selection?
-              ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
-            elsif @list.acts_as_menu?
-              ActionList::MENU_ITEM_ROLE
-            end
+                                     if @list.allows_selection?
+                                       ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
+                                     elsif @list.acts_as_menu?
+                                       ActionList::MENU_ITEM_ROLE
+                                     end
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled

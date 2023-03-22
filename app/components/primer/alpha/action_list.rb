@@ -103,12 +103,12 @@ module Primer
         )
 
         @system_arguments[:role] = role ||
-          case @select_variant
-          when :single, :multiple
-            MENU_ROLE
-          else
-            DEFAULT_ROLE
-          end
+                                   case @select_variant
+                                   when :single, :multiple
+                                     MENU_ROLE
+                                   else
+                                     DEFAULT_ROLE
+                                   end
 
         @list_wrapper_arguments = {}
       end
