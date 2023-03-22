@@ -32,6 +32,10 @@ class ComponentStatusMigrator < Thor::Group
     true
   end
 
+  def explain_migration
+    puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
+  end
+
   def validate_status
     raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
@@ -180,7 +184,7 @@ class ComponentStatusMigrator < Thor::Group
     cmd = ["grep -rl #{name} ."]
     cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
-    cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{new_version.module_prefix}#{new_version.name}/g'"
+    cmd << "| xargs sed -i '' 's/#{old_version.fully_qualified_class_name}/#{new_version.fully_qualified_class_name}/g'"
 
     run(cmd.join(" "))
   end
@@ -195,7 +199,7 @@ class ComponentStatusMigrator < Thor::Group
       # frozen_string_literal: true
 
       module Primer
-        class #{name} < Primer::#{new_version.module_prefix}#{new_version.name}
+        class #{name} < #{new_version.fully_qualified_class_name}
           status :deprecated
         end
       end
@@ -205,8 +209,8 @@ class ComponentStatusMigrator < Thor::Group
 
   def add_to_deprecated_component_configuration
     content = [
-      "  - component: \"Primer::#{name}\"\n",
-      "    replacement: \"Primer::#{new_version.module_prefix}#{new_version.name}\"\n"
+      "  - component: \"#{old_version.fully_qualified_class_name}\"\n",
+      "    replacement: \"#{new_version.fully_qualified_class_name}\"\n"
     ]
 
     insert_into_file(
@@ -219,7 +223,7 @@ class ComponentStatusMigrator < Thor::Group
   def add_to_ignored_component_test
     insert_into_file(
       "test/components/component_test.rb",
-      "\"Primer::#{old_version.name}\",\n",
+      "\"#{old_version.fully_qualified_class_name}\",\n",
       after: "ignored_components = [\n"
     )
   end
@@ -246,8 +250,8 @@ class ComponentStatusMigrator < Thor::Group
     puts "Component Status Migration Completed"
     puts "------------------------------------"
     puts ""
-    puts "Original Component: 'Primer::#{old_version.module_prefix}#{old_version.name}'"
-    puts "     New Component: 'Primer::#{new_version.module_prefix}#{new_version.name}'"
+    puts "Original Component: '#{old_version.fully_qualified_class_name}'"
+    puts "     New Component: '#{new_version.fully_qualified_class_name}'"
     puts ""
     puts "IMPORTANT NOTE:"
     puts ""
@@ -326,9 +330,11 @@ class ComponentVersion
     status.to_s.capitalize if component_belongs_in_module?
   end
 
-  def module_prefix
+  def fully_qualified_class_name
     if component_belongs_in_module?
-      "#{module_name}::"
+      "Primer::#{module_name}::#{name}"
+    else
+      "Primer::#{name}"
     end
   end
 
