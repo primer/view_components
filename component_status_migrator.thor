@@ -139,8 +139,12 @@ class ComponentStatusMigrator < Thor::Group
     true
   end
 
-  def explain_migration
-    puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
+  def verify_different_statuses
+    if old_version.status == new_version.status
+      raise "#{old_version.name} is already in \"#{old_version.status}\""
+    else
+      puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
+    end
   end
 
   def validate_status
