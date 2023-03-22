@@ -11,7 +11,7 @@ class ComponentVersion
 
   def initialize(name, status = nil)
     @name = name
-    @status = (status || inferred_status).to_sym
+    @status = (status || inferred_component_status).to_sym
 
     raise "Invalid status: #{@status}" unless STATUSES.include?(@status)
   end
@@ -85,31 +85,62 @@ class ComponentVersion
 
   private
 
-  def inferred_status
+  def inferred_component_status
     component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
 
-    raise("Couldn't find #{component_file_name} in component directory") if component_paths.empty?
-
-    raise("Found multiple files named #{component_file_name} in component directory, can't infer version") if component_paths.size > 1
-
-    component_path = component_paths.first
-    component_directory = File.dirname(component_path)
-
-    if component_directory == COMPONENT_PATH
-      infer_status_from_code(component_path)
+    if component_paths.empty?
+      raise("Couldn't find #{component_file_name} in component directory")
+    elsif component_paths.size == 1
+      inferred_status(component_paths.first)
     else
-      File.split(component_directory).last.to_sym
+      active_statuses = component_paths.map { |path|
+        inferred_status(path)
+      }.select { |status|
+        status != :deprecated
+      }
+
+      if active_statuses.empty?
+        :deprecated
+      elsif active_statuses.size == 1
+        active_statuses.first
+      else
+        raise("Found multiple components named #{name}, can't infer version between: #{ active_statuses.map(&:to_s).join(", ") }")
+      end
     end
   end
 
-  def infer_status_from_source(path)
-    content = File.read(path)
-
-    if /^\s+status\s+:stable\s*$/.match?(content)
-      :stable
+  def inferred_status(path)
+    if contains_status_annotation?(path)
+      inferred_status_by_source(path)
+    elsif !in_base_directory?(path)
+      inferred_status_by_directory(path)
     else
       :deprecated
     end
+  end
+
+  def in_base_directory?(path)
+    File.dirname(path) == COMPONENT_PATH
+  end
+
+  def contains_status_annotation?(path)
+    !!status_annotation(path)
+  end
+
+  def status_annotation(path)
+    content = File.read(path)
+
+    STATUSES.detect { |status|
+      /^\s+status\s+:#{status}\s*$/.match?(content)
+    }
+  end
+
+  def inferred_status_by_source(path)
+    status_annotation(path) || :deprecated
+  end
+
+  def inferred_status_by_directory(path)
+    File.split(File.dirname(path)).last.to_sym
   end
 
   def component_file_name
