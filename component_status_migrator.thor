@@ -56,7 +56,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def update_css
     gsub_file(
-      primer_css_file,
+      "app/components/primer/primer.pcss",
       "import \"#{old_version.css_import_path}\"",
       "import \"#{new_version.css_import_path}\""
     )
@@ -257,6 +257,10 @@ class ComponentStatusMigrator < Thor::Group
 
   private
 
+  def status
+    options[:status].downcase
+  end
+
   def new_version
     @new_version ||= ComponentVersion.new(name.gsub("Component", ""), status)
   end
@@ -304,22 +308,6 @@ class ComponentStatusMigrator < Thor::Group
         before: /^end$/,
         force: true
       )
-    end
-  end
-
-  def status
-    @status ||= options[:status].downcase
-  end
-
-  def primer_css_file
-    "app/components/primer/primer.pcss"
-  end
-
-  def short_name
-    @short_name ||= begin
-      name_with_status = name.gsub(/Primer::|Component/, "")
-      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
-      m[:name].gsub("::", "").downcase
     end
   end
 end
