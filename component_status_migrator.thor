@@ -204,9 +204,10 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_to_deprecated_component_configuration
-    content = []
-    content << "  - component: \"Primer::#{name}\"\n"
-    content << "    replacement: \"Primer::#{new_version.module_prefix}#{new_version.name}\"\n"
+    content = [
+      "  - component: \"Primer::#{name}\"\n",
+      "    replacement: \"Primer::#{new_version.module_prefix}#{new_version.name}\"\n"
+    ]
 
     insert_into_file(
       "lib/primer/deprecations.yml",
@@ -218,7 +219,7 @@ class ComponentStatusMigrator < Thor::Group
   def add_to_ignored_component_test
     insert_into_file(
       "test/components/component_test.rb",
-      "\"Primer::#{name}\",\n",
+      "\"Primer::#{old_version.name}\",\n",
       after: "ignored_components = [\n"
     )
   end
@@ -245,12 +246,12 @@ class ComponentStatusMigrator < Thor::Group
     puts "Component Status Migration Completed"
     puts "------------------------------------"
     puts ""
-    puts "Original Component: 'Primer::#{name}'"
+    puts "Original Component: 'Primer::#{old_version.module_prefix}#{old_version.name}'"
     puts "     New Component: 'Primer::#{new_version.module_prefix}#{new_version.name}'"
     puts ""
     puts "IMPORTANT NOTE:"
     puts ""
-    puts "The original component has been marked as deprecated, but needs additional configuration. Please update the entry in 'lib/primer/deprecations.yml'."
+    puts "The original component has been migrated, but may need additional configuration. Please update the entry in 'lib/primer/deprecations.yml'."
     puts ""
   end
 
