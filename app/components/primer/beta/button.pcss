@@ -27,7 +27,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: var(--primer-control-medium-gap, 8px);
+  gap: var(--base-size-4, 4px);
   min-width: max-content;
 
   /* mobile friendly sizing */
@@ -280,7 +280,8 @@ summary.Button {
     text-decoration: underline;
   }
 
-  &:focus-visible, &:focus {
+  &:focus-visible,
+  &:focus {
     outline-offset: 2px;
   }
 
@@ -326,7 +327,6 @@ summary.Button {
     border-color: var(--color-btn-border);
   }
 }
-
 
 .Button--iconOnly {
   display: grid;
