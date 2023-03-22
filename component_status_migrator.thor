@@ -5,13 +5,15 @@ require "active_support/core_ext/string/inflections"
 
 class ComponentVersion
   COMPONENT_PATH = File.join("app", "components", "primer")
-  STATUSES = %w[alpha beta deprecated stable experimental].freeze
+  STATUSES = [:alpha, :beta, :deprecated, :stable, :experimental].freeze
 
   attr_reader :name, :status
 
   def initialize(name, status = nil)
     @name = name
     @status = (status || inferred_status).to_sym
+
+    raise "Invalid status: #{@status}" unless STATUSES.include?(@status)
   end
 
   def module_name
@@ -144,10 +146,6 @@ class ComponentStatusMigrator < Thor::Group
     else
       puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
     end
-  end
-
-  def validate_status
-    raise "Invalid status: #{status}" unless ComponentVersion::STATUSES.include?(status)
   end
 
   def move_controller
