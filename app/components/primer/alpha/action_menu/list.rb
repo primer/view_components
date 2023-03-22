@@ -23,8 +23,19 @@ module Primer
         # @param label_classes [Array] An array of classes (strings) to apply to the label.
         # @param label_arguments [Hash] A set of <%= link_to_system_arguments %> to apply to the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments %> passed to the link, button, etc.
-        def with_item(label: nil, tag: DEFAULT_ITEM_TAG, active: false, is_dangerous: false, disabled: false, hidden: false, label_classes: "", label_arguments: {}, autofocus: false, **content_arguments, &block)
-          content_arguments[:tag] = fetch_or_fallback(ITEM_TAG_OPTIONS, tag, DEFAULT_ITEM_TAG)
+        def with_item(label: nil, tag: nil, href: nil, active: false, is_dangerous: false, disabled: false, hidden: false, label_classes: "", label_arguments: {}, autofocus: false, **content_arguments, &block)
+          content_arguments[:tag] =
+            if tag && ITEM_TAG_OPTIONS.include?(tag)
+              tag
+            elsif href && !disabled
+              :a
+            else
+              DEFAULT_ITEM_TAG
+            end
+
+          if content_arguments[:tag] == :a
+            content_arguments[:href] = href
+          end
 
           list_item_arguments = {}
           list_item_arguments[:scheme] = :danger if is_dangerous
@@ -43,7 +54,11 @@ module Primer
 
           # rubocop:disable Style/IfUnlessModifier
           unless content_arguments.each_key.any? { |key| ITEM_ACTION_OPTIONS.include?(key.to_sym) }
-            raise ArgumentError, "One of the following are required to apply functionality: #{ITEM_ACTION_OPTIONS.to_sentence(last_word_connector: ' or ')}"
+            # Allow href + span since the only way for both of those to be set is if we
+            # force the tag to :span above, i.e. when the item is disabled.
+            unless href && content_arguments[:tag] == :span
+              raise ArgumentError, "One of the following are required to apply functionality: #{ITEM_ACTION_OPTIONS.to_sentence(last_word_connector: ' or ')}"
+            end
           end
           # rubocop:enable Style/IfUnlessModifier
 
