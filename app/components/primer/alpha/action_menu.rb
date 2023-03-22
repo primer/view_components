@@ -276,7 +276,7 @@ module Primer
       #
       # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
       def with_show_button(**system_arguments, &block)
-        @overlay.with_show_button(**system_arguments, &block)
+        @overlay.with_show_button(**system_arguments, id: menu_id, &block)
       end
 
       # Retrieves the show button.

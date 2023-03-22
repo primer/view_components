@@ -12,11 +12,6 @@ module Primer
         DEFAULT_ITEM_TAG = :span
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
         ITEM_ACTION_OPTIONS = [:classes, :onclick, :href, :value].freeze
-        ITEM_ROLE_MAP = {
-          single: "menuitemradio",
-          multiple: "menuitemcheckbox",
-          default: "menuitem"
-        }.freeze
 
         # Adds a new item to the list.
         #
@@ -33,7 +28,6 @@ module Primer
 
           list_item_arguments = {}
           list_item_arguments[:scheme] = :danger if is_dangerous
-          list_item_arguments[:role] = ITEM_ROLE_MAP.fetch(select_variant, ITEM_ROLE_MAP[:default])
           list_item_arguments[:tabindex] = -1
           list_item_arguments[:autofocus] = "" if autofocus
 
@@ -75,7 +69,7 @@ module Primer
             { aria: { labelledby: self.menu_id } }
           )
 
-          system_arguments[:role] = "menu"
+          system_arguments[:role] = :menu
           system_arguments[:scheme] = :inset
           system_arguments[:id] = list_id
 

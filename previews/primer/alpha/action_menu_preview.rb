@@ -38,6 +38,8 @@ module Primer
         end
       end
 
+      # @label With icon button
+      #
       def with_icon_button
         render(Primer::Alpha::ActionMenu.new) do |menu|
           menu.with_show_button(icon: :star, "aria-label": "Menu")
@@ -59,7 +61,7 @@ module Primer
 
       # @label Multiple select
       #
-      def multiple
+      def multiple_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "langermank", description_scheme: :inline, value: "") do |item|
@@ -88,6 +90,7 @@ module Primer
       end
 
       # @label Single item selected
+      #
       def single_selected_item
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
@@ -99,7 +102,7 @@ module Primer
 
       # @label Multiple items selected
       #
-      def multiple
+      def multiple_selected_items
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "langermank", description_scheme: :inline, value: "", active: true) do |item|
@@ -134,6 +137,7 @@ module Primer
       end
 
       # @label With actions
+      #
       def with_actions
         render(Primer::Alpha::ActionMenu.new) do |component|
           component.with_show_button { "Trigger" }

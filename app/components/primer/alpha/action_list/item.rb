@@ -189,7 +189,12 @@ module Primer
             "ActionListItem"
           )
 
-          @system_arguments[:role] = role if role
+          @system_arguments[:role] = role ||
+            if @list.allows_selection?
+              ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
+            elsif @list.acts_as_menu?
+              ActionList::MENU_ITEM_ROLE
+            end
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
@@ -235,10 +240,12 @@ module Primer
         private
 
         def before_render
-          @system_arguments[:aria] = merge_aria(
-            @system_arguments,
-            { aria: { checked: active? } }
-          )
+          if @list.allows_selection?
+            @system_arguments[:aria] = merge_aria(
+              @system_arguments,
+              { aria: { checked: active? } }
+            )
+          end
 
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],

@@ -72,7 +72,7 @@ module Primer
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
-        system_arguments[:id] = show_button_id
+        system_arguments[:id] ||= show_button_id
         system_arguments["popovertoggletarget"] = overlay_id
         system_arguments[:aria] = (system_arguments[:aria] || {}).merge({ controls: overlay_id, haspopup: "true" })
         if icon.present?

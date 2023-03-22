@@ -13,6 +13,9 @@ module Primer
 
       DEFAULT_ROLE = :list
 
+      MENU_ROLE = :menu
+      MENU_ITEM_ROLE = :menuitem
+
       DEFAULT_SCHEME = :full
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => nil,
@@ -26,6 +29,11 @@ module Primer
         :multiple,
         DEFAULT_SELECT_VARIANT
       ].freeze
+
+      SELECT_VARIANT_ROLE_MAP = {
+        single: :menuitemradio,
+        multiple: :menuitemcheckbox
+      }.freeze
 
       # :nocov:
       # @private
@@ -72,7 +80,7 @@ module Primer
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        role: DEFAULT_ROLE,
+        role: nil,
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
@@ -83,7 +91,6 @@ module Primer
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :ul
-        @system_arguments[:role] = role
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
@@ -94,6 +101,14 @@ module Primer
           "ActionListWrap",
           "ActionListWrap--divided" => @show_dividers
         )
+
+        @system_arguments[:role] = role ||
+          case @select_variant
+          when :single, :multiple
+            MENU_ROLE
+          else
+            DEFAULT_ROLE
+          end
 
         @list_wrapper_arguments = {}
       end
@@ -114,7 +129,7 @@ module Primer
       # @private
       def build_item(**system_arguments)
         # rubocop:disable Style/IfUnlessModifier
-        if select_variant == :single && system_arguments[:active] && items.count(&:active?).positive?
+        if single_select? && system_arguments[:active] && items.count(&:active?).positive?
           raise ArgumentError, "only a single item may be active when select_variant is set to :single"
         end
         # rubocop:enable Style/IfUnlessModifier
@@ -125,6 +140,22 @@ module Primer
         )
 
         ActionList::Item.new(list: self, **system_arguments)
+      end
+
+      def single_select?
+        select_variant == :single
+      end
+
+      def multi_select?
+        select_variant == :multiple
+      end
+
+      def allows_selection?
+        single_select? || multi_select?
+      end
+
+      def acts_as_menu?
+        @system_arguments[:role] == :menu
       end
 
       # @private
