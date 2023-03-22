@@ -91,15 +91,19 @@ class ComponentVersion
     component_directory = File.dirname(component_path)
 
     if component_directory == COMPONENT_PATH
-      content = File.read(component_path)
-
-      if /^\s+status\s+:stable\s*$/.match?(content)
-        :stable
-      else
-        :deprecated
-      end
+      infer_status_from_code(component_path)
     else
       File.split(component_directory).last.to_sym
+    end
+  end
+
+  def infer_status_from_source(path)
+    content = File.read(path)
+
+    if /^\s+status\s+:stable\s*$/.match?(content)
+      :stable
+    else
+      :deprecated
     end
   end
 
