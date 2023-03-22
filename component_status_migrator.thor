@@ -11,7 +11,7 @@ class ComponentVersion
 
   def initialize(name, status = nil)
     @name = name
-    @status = (status || inferred_component_status).to_sym
+    @status = status || inferred_component_status
 
     raise "Invalid status: #{@status}" unless STATUSES.include?(@status)
   end
@@ -414,12 +414,11 @@ class ComponentStatusMigrator < Thor::Group
 
   private
 
-  def status
-    options[:status].downcase
-  end
-
   def new_version
-    @new_version ||= ComponentVersion.new(name.gsub("Component", ""), status)
+    @new_version ||= ComponentVersion.new(
+      name.gsub("Component", ""),
+      options[:status].downcase.to_sym
+    )
   end
 
   def old_version
