@@ -3,6 +3,7 @@
 require "thor"
 require "active_support/core_ext/string/inflections"
 
+# :nodoc:
 class ComponentVersion
   COMPONENT_PATH = File.join("app", "components", "primer")
   STATUSES = [:alpha, :beta, :deprecated, :stable, :experimental].freeze
@@ -28,12 +29,12 @@ class ComponentVersion
     if component_belongs_in_module?
       "#{module_name}::#{name}"
     else
-      "#{name}"
+      name.to_s
     end
   end
 
   def component_belongs_in_module?
-    ![:deprecated, :stable].include?(status)
+    [:deprecated, :stable].exclude?(status)
   end
 
   def controller_path
@@ -63,7 +64,7 @@ class ComponentVersion
     if File.exist?(path_with_component)
       path_with_component
     else
-      path_with_component = File.join(preview_directory, "#{name.underscore}_preview.rb")
+      File.join(preview_directory, "#{name.underscore}_preview.rb")
     end
   end
 
@@ -72,7 +73,7 @@ class ComponentVersion
   end
 
   def primer_js_import_path
-    File.join(".", status_directory, "#{name.underscore}")
+    File.join(".", status_directory, name.underscore.to_s)
   end
 
   def status_directory
@@ -88,23 +89,22 @@ class ComponentVersion
   def inferred_component_status
     component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
 
-    if component_paths.empty?
-      raise("Couldn't find #{component_file_name} in component directory")
-    elsif component_paths.size == 1
+    raise("Couldn't find #{component_file_name} in component directory") if component_paths.empty?
+
+    if component_paths.size == 1
       inferred_status(component_paths.first)
     else
-      active_statuses = component_paths.map { |path|
-        inferred_status(path)
-      }.select { |status|
-        status != :deprecated
-      }
+      active_statuses = component_paths.filter_map do |path|
+        status = inferred_status(path)
+        status if status == :deprecated
+      end
 
       if active_statuses.empty?
         :deprecated
       elsif active_statuses.size == 1
         active_statuses.first
       else
-        raise("Found multiple components named #{name}, can't infer version between: #{ active_statuses.map(&:to_s).join(", ") }")
+        raise("Found multiple components named #{name}, can't infer version between: #{active_statuses.map(&:to_s).join(', ')}")
       end
     end
   end
@@ -130,9 +130,9 @@ class ComponentVersion
   def status_annotation(path)
     content = File.read(path)
 
-    STATUSES.detect { |status|
+    STATUSES.detect do |status|
       /^\s+status\s+:#{status}\s*$/.match?(content)
-    }
+    end
   end
 
   def inferred_status_by_source(path)
@@ -176,11 +176,9 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def verify_different_statuses
-    if old_version.status == new_version.status
-      raise "#{old_version.name} is already \"#{old_version.status}\"!"
-    else
-      puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
-    end
+    raise "#{old_version.name} is already \"#{old_version.status}\"!" if old_version.status == new_version.status
+
+    puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
   end
 
   def move_controller
@@ -192,13 +190,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_template
-    if File.exist?(old_version.template_path)
-      move_file(
-        "template",
-        old_version.template_path,
-        new_version.template_path
-      )
-    end
+    return unless File.exist?(old_version.template_path)
+
+    move_file(
+      "template",
+      old_version.template_path,
+      new_version.template_path
+    )
   end
 
   def move_assets
@@ -220,23 +218,23 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_test
-    if File.exist?(old_version.test_path)
-      move_file(
-        "test",
-        old_version.test_path,
-        new_version.test_path
-      )
-    end
+    return unless File.exist?(old_version.test_path)
+
+    move_file(
+      "test",
+      old_version.test_path,
+      new_version.test_path
+    )
   end
 
   def move_preview
-    if File.exist?(old_version.preview_path)
-      move_file(
-        "preview",
-        old_version.preview_path,
-        new_version.preview_path
-      )
-    end
+    return unless File.exist?(old_version.preview_path)
+
+    move_file(
+      "preview",
+      old_version.preview_path,
+      new_version.preview_path
+    )
   end
 
   def add_module_to_component
@@ -244,49 +242,47 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module_to_preview
-    if File.exist?(new_version.preview_path)
-      update_ruby_version_module(new_version.preview_path)
-    end
+    update_ruby_version_module(new_version.preview_path) if File.exist?(new_version.preview_path)
   end
 
   def remove_suffix_from_component_class
-    if old_version.name != new_version.name
-      gsub_file(
-        new_version.controller_path,
-        "class #{old_version.name}",
-        "class #{new_version.name}"
-      )
-    end
+    return if old_version.name == new_version.name
+
+    gsub_file(
+      new_version.controller_path,
+      "class #{old_version.name}",
+      "class #{new_version.name}"
+    )
   end
 
   def remove_suffix_from_preview_class
-    if File.exist?(new_version.preview_path)
-      gsub_file(
-        new_version.preview_path,
-        /class .*Preview < ViewComponent::Preview/,
-        "class #{new_version.name}Preview < ViewComponent::Preview"
-      )
-    end
+    return unless File.exist?(new_version.preview_path)
+
+    gsub_file(
+      new_version.preview_path,
+      /class .*Preview < ViewComponent::Preview/,
+      "class #{new_version.name}Preview < ViewComponent::Preview"
+    )
   end
 
   def rename_preview_label
-    if File.exist?(new_version.preview_path)
-      gsub_file(
-        new_version.preview_path,
-        /# @label #{old_version.name}/,
-        "# @label #{new_version.name}",
-      )
-    end
+    return unless File.exist?(new_version.preview_path)
+
+    gsub_file(
+      new_version.preview_path,
+      /# @label #{old_version.name}/,
+      "# @label #{new_version.name}"
+    )
   end
 
   def rename_test_class
-    if File.exist?(new_version.test_path)
-      gsub_file(
-        new_version.test_path,
-        /class .*Test </,
-        "class Primer#{new_version.module_name}#{new_version.name.gsub('::', '')}Test <"
-      )
-    end
+    return unless File.exist?(new_version.test_path)
+
+    gsub_file(
+      new_version.test_path,
+      /class .*Test </,
+      "class Primer#{new_version.module_name}#{new_version.name.gsub('::', '')}Test <"
+    )
   end
 
   def rename_nav_entry
@@ -295,7 +291,7 @@ class ComponentStatusMigrator < Thor::Group
     gsub_file(
       nav_file,
       "title: #{old_version.name}",
-      "title: #{new_version.name}",
+      "title: #{new_version.name}"
     )
 
     old_path = File.join("/", "components", old_version.status_directory, new_version.name.downcase)
@@ -349,13 +345,13 @@ class ComponentStatusMigrator < Thor::Group
     create_file(
       old_version.controller_path,
       <<~DEPRECATED_CLASS
-      # frozen_string_literal: true
+        # frozen_string_literal: true
 
-      module Primer
-        class #{old_version.qualified_class_name} < #{new_version.qualified_class_name}
-          status :deprecated
+        module Primer
+          class #{old_version.qualified_class_name} < #{new_version.qualified_class_name}
+            status :deprecated
+          end
         end
-      end
       DEPRECATED_CLASS
     )
   end
@@ -386,7 +382,6 @@ class ComponentStatusMigrator < Thor::Group
     # rubocop will exit with a non-zero code, due to
     # the expected linter failures. this causes thor
     # to stop running the script before it should
-    exit 1 # TODO remove this!
     run("bundle exec rubocop -a; exit 0")
   end
 
@@ -451,19 +446,19 @@ class ComponentStatusMigrator < Thor::Group
       )
     end
 
-    if new_version.component_belongs_in_module?
-      insert_into_file(
-        path,
-        "  module #{new_version.module_name}\n",
-        after: "module Primer\n"
-      )
+    return unless new_version.component_belongs_in_module?
 
-      insert_into_file(
-        path,
-        "  end\n",
-        before: /^end$/,
-        force: true
-      )
-    end
+    insert_into_file(
+      path,
+      "  module #{new_version.module_name}\n",
+      after: "module Primer\n"
+    )
+
+    insert_into_file(
+      path,
+      "  end\n",
+      before: /^end$/,
+      force: true
+    )
   end
 end
