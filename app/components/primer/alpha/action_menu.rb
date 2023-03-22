@@ -244,6 +244,8 @@ module Primer
         anchor_side: DEFAULT_ANCHOR_SIDE,
         src: nil,
         preload: DEFAULT_PRELOAD,
+        dynamic_label: false,
+        dynamic_label_prefix: nil,
         select_variant: ActionList::DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
@@ -258,6 +260,8 @@ module Primer
         @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
         @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE).to_s.dasherize
         @system_arguments[:"data-select-variant"] = select_variant
+        @system_arguments[:"data-dynamic-label"] = "" if dynamic_label
+        @system_arguments[:"data-dynamic-label-prefix"] = dynamic_label_prefix if dynamic_label_prefix.present?
 
         @overlay = Primer::Alpha::Overlay.new(
           id: @menu_id,

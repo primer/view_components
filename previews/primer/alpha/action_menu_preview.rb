@@ -100,6 +100,18 @@ module Primer
         end
       end
 
+      # @label Single Select with Internal Label
+      #
+      def single_select_with_internal_label
+        render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
+          menu.with_show_button { "Menu" }
+          menu.with_item(label: "Copy link", value: "")
+          menu.with_item(label: "Quote reply", active: true, value: "")
+          menu.with_item(label: "Reference in new issue", value: "")
+        end
+      end
+
+
       # @label Multiple items selected
       #
       def multiple_selected_items
