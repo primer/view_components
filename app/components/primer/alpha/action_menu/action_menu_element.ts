@@ -112,7 +112,7 @@ export class ActionMenuElement extends HTMLElement {
     const item = this.querySelector(selector)
     if (item && this.dynamicLabel) {
       this.#originalLabel ||= invoker.textContent || ''
-      const prefixSpan = document.createElement('span')
+      const prefixSpan = document.createElement('span class="color-fg-muted"')
       const contentSpan = document.createElement('span')
       prefixSpan.textContent = this.dynamicLabelPrefix
       contentSpan.textContent = item.textContent || ''
