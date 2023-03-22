@@ -7,21 +7,6 @@ module Primer
     class ActionMenuTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
-      def test_raises_error_if_no_action_is_passed_in
-        err = assert_raises ArgumentError do
-          render_inline Primer::Alpha::ActionMenu.new(menu_id: "no-action-menu-id") do |component|
-            component.with_show_button { "Trigger" }
-            component.with_item
-            "<summary onclick='() => {}'>
-              <details>
-                Trying to pass in an interactive element with a nested action
-              </details>
-            </summary>"
-          end
-        end
-        assert_includes err.message, "One of the following are required to apply functionality"
-      end
-
       def test_raises_error_if_items_and_src_are_specified
         err = assert_raises ArgumentError do
           render_inline Primer::Alpha::ActionMenu.new(menu_id: "deferred-menu-items", src: "/") do |component|

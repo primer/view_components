@@ -13,70 +13,67 @@ module Primer
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
         ITEM_ACTION_OPTIONS = [:classes, :onclick, :href, :value].freeze
 
+        DEFAULT_SELECT_VARIANT = :none
+        SELECT_VARIANT_OPTIONS = [
+          :single,
+          :multiple,
+          DEFAULT_SELECT_VARIANT
+        ].freeze
+
+        ACTION_LIST_ITEM_ARGS = Primer::Alpha::ActionList::Item
+          .instance_method(:initialize)
+          .parameters
+          .each_with_object([]) do |(arg_type, arg), memo|
+            memo << arg if arg_type == :keyreq || arg_type == :key
+          end
+          .freeze
+
         # Adds a new item to the list.
         #
-        # @param label [String] The text to display for the item. If not provided, the content will be used instead.
-        # @param tag [Symbol] Optional. The tag to use for the item. <%= one_of(Primer::Alpha::ActionMenu::TAG_OPTIONS) %>
-        # @param is_dangerous [Boolean] If item should be styled dangerously. Equivalent to passing `scheme: :danger`.
-        # @param disabled [Boolean] Set to true if the item should appear disabled and ignore user interaction.
-        # @param hidden [Boolean] Set to true if the item should be hidden.
-        # @param label_classes [Array] An array of classes (strings) to apply to the label.
-        # @param label_arguments [Hash] A set of <%= link_to_system_arguments %> to apply to the label.
-        # @param content_arguments [Hash] <%= link_to_system_arguments %> passed to the link, button, etc.
-        def with_item(label: nil, tag: nil, href: nil, active: false, is_dangerous: false, disabled: false, hidden: false, label_classes: "", label_arguments: {}, autofocus: false, **content_arguments, &block)
+        # @param system_arguments [Hash] The same arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
+        def with_item(**system_arguments, &block)
+          content_arguments = system_arguments.delete(:content_arguments) || {}
+          list_item_arguments = system_arguments.slice(*ACTION_LIST_ITEM_ARGS)
+
           content_arguments[:tag] =
-            if tag && ITEM_TAG_OPTIONS.include?(tag)
-              tag
-            elsif href && !disabled
+            if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
+              system_arguments[:tag]
+            elsif list_item_arguments[:href] && !list_item_arguments[:disabled]
               :a
             else
               DEFAULT_ITEM_TAG
             end
 
           if content_arguments[:tag] == :a
-            content_arguments[:href] = href
+            content_arguments[:href] = list_item_arguments.delete(:href)
           end
 
-          list_item_arguments = {}
-          list_item_arguments[:scheme] = :danger if is_dangerous
           list_item_arguments[:tabindex] = -1
-          list_item_arguments[:autofocus] = "" if autofocus
+          list_item_arguments[:autofocus] = "" if list_item_arguments[:autofocus]
 
-          if disabled
+          if list_item_arguments[:disabled]
             content_arguments[:aria] = merge_aria(
               content_arguments,
               { aria: { disabled: true } }
             )
 
-            list_item_arguments[:aria] = { disabled: true }
+            list_item_arguments[:aria] = merge_aria(
+              list_item_arguments,
+              { aria: { disabled: true } }
+            )
+
             content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
-          # rubocop:disable Style/IfUnlessModifier
-          unless content_arguments.each_key.any? { |key| ITEM_ACTION_OPTIONS.include?(key.to_sym) }
-            # Allow href + span since the only way for both of those to be set is if we
-            # force the tag to :span above, i.e. when the item is disabled.
-            unless href && content_arguments[:tag] == :span
-              raise ArgumentError, "One of the following are required to apply functionality: #{ITEM_ACTION_OPTIONS.to_sentence(last_word_connector: ' or ')}"
-            end
-          end
-          # rubocop:enable Style/IfUnlessModifier
-
           super(
-            label: label,
-            disabled: disabled,
-            hidden: hidden,
-            active: active,
             **list_item_arguments,
-            label_classes: label_classes,
-            label_arguments: label_arguments,
             content_arguments: content_arguments,
             &block
           )
         end
 
         # @param menu_id [String] ID of the parent menu.
-        def initialize(menu_id:, **system_arguments, &block)
+        def initialize(menu_id:, select_variant:, **system_arguments, &block)
           @menu_id = menu_id
 
           system_arguments[:aria] = merge_aria(
@@ -88,7 +85,9 @@ module Primer
           system_arguments[:scheme] = :inset
           system_arguments[:id] = list_id
 
-          super(**system_arguments, &block)
+          select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
+
+          super(select_variant: select_variant, **system_arguments, &block)
         end
 
         def menu_id

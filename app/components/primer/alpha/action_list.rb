@@ -27,12 +27,14 @@ module Primer
       SELECT_VARIANT_OPTIONS = [
         :single,
         :multiple,
+        :multiple_checkbox,
         DEFAULT_SELECT_VARIANT
       ].freeze
 
       SELECT_VARIANT_ROLE_MAP = {
         single: :menuitemradio,
-        multiple: :menuitemcheckbox
+        multiple: :menuitemcheckbox,
+        multiple_checkbox: :menuitemcheckbox
       }.freeze
 
       # :nocov:
@@ -102,13 +104,7 @@ module Primer
           "ActionListWrap--divided" => @show_dividers
         )
 
-        @system_arguments[:role] = role ||
-                                   case @select_variant
-                                   when :single, :multiple
-                                     MENU_ROLE
-                                   else
-                                     DEFAULT_ROLE
-                                   end
+        @system_arguments[:role] = role || allows_selection? ? MENU_ROLE : DEFAULT_ROLE
 
         @list_wrapper_arguments = {}
       end
@@ -147,7 +143,7 @@ module Primer
       end
 
       def multi_select?
-        select_variant == :multiple
+        select_variant == :multiple || select_variant == :multiple_checkbox
       end
 
       def allows_selection?
