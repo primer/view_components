@@ -109,7 +109,57 @@ module Primer
           component.with_item(label: "Item 1", content_arguments: { tag: :"clipboard-copy" })
         end
 
-        assert_selector "clipboard-copy.ActionListContent"
+        assert_selector("clipboard-copy.ActionListContent")
+      end
+
+      def test_uses_list_role_when_select_disabled
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1")
+        end
+
+        assert_selector("ul.ActionListWrap[role=list]")
+        assert page.find_css("li.ActionListItem").first["role"].nil?
+      end
+
+      def test_uses_correct_menu_and_item_roles_when_single_select
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, select_variant: :single)) do |component|
+          component.with_item(label: "Item 1")
+        end
+
+        assert_selector("ul.ActionListWrap[role=menu]") do
+          assert_selector("li.ActionListItem[role=menuitemradio]")
+        end
+      end
+
+      def test_uses_correct_menu_and_item_roles_when_multi_select
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, select_variant: :multiple)) do |component|
+          component.with_item(label: "Item 1")
+        end
+
+        assert_selector("ul.ActionListWrap[role=menu]") do
+          assert_selector("li.ActionListItem[role=menuitemcheckbox]")
+        end
+      end
+
+      def test_uses_correct_item_role_when_role_set_to_menu
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, role: :menu)) do |component|
+          component.with_item(label: "Item 1")
+        end
+
+        assert_selector("ul.ActionListWrap[role=menu]") do
+          assert_selector("li.ActionListItem[role=menuitem]")
+        end
+      end
+
+      def test_raises_when_two_items_selected_under_single_select
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, select_variant: :single)) do |component|
+            component.with_item(label: "Item 1", active: true)
+            component.with_item(label: "Item 2", active: true)
+          end
+        end
+
+        assert_match(/only a single item may be active/, error.message)
       end
     end
   end

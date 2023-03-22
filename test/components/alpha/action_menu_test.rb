@@ -125,6 +125,15 @@ module Primer
           end
         end
       end
+
+      def test_disabled
+        render_preview(:with_disabled_items)
+
+        assert_selector("li[aria-disabled=true]") do
+          assert_selector("button.ActionListContent[aria-disabled=true][disabled=disabled]", text: "Does something")
+          assert_selector("a.ActionListContent[aria-disabled=true]", text: "Site")
+        end
+      end
     end
   end
 end

@@ -279,11 +279,6 @@ module Primer
         @overlay.with_show_button(**system_arguments, id: menu_id, &block)
       end
 
-      # Retrieves the show button.
-      def show_button
-        @overlay.show_button
-      end
-
       # Adds a new item to the list.
       #
       # @param tag [Symbol] Optional. The tag to use for the item. <%= one_of(Primer::Experimental::ActionMenu::TAG_OPTIONS) %>
@@ -316,10 +311,6 @@ module Primer
 
       def menu_id
         "#{@menu_id}-text"
-      end
-
-      def list_id
-        "#{@menu_id}-list"
       end
 
       def render?

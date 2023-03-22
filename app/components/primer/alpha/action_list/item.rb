@@ -193,7 +193,7 @@ module Primer
                                      if @list.allows_selection?
                                        ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
                                      elsif @list.acts_as_menu?
-                                       ActionList::MENU_ITEM_ROLE
+                                       ActionList::DEFAULT_MENU_ITEM_ROLE
                                      end
 
           @system_arguments[:aria] ||= {}

@@ -146,6 +146,16 @@ module Primer
           component.with_item(label: "Copy text", tag: :"clipboard-copy", value: "Text to copy")
         end
       end
+
+      # @label With disabled items
+      #
+      def with_disabled_items
+        render(Primer::Alpha::ActionMenu.new) do |component|
+          component.with_show_button { "Trigger" }
+          component.with_item(label: "Does something", tag: :button, value: "", disabled: true)
+          component.with_item(label: "Site", tag: :a, href: "/", disabled: true)
+        end
+      end
     end
   end
 end
