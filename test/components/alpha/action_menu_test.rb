@@ -134,6 +134,14 @@ module Primer
           assert_selector("a.ActionListContent[aria-disabled=true]", text: "Site")
         end
       end
+
+      def test_renders_a_tag_when_href_provided
+        render_preview(:links)
+
+        assert_selector("li a[href='/']", text: "Settings")
+        assert_selector("li a[href='/']", text: "Your repositories")
+        assert_selector("li span[aria-disabled=true]", text: "Disabled")
+      end
     end
   end
 end

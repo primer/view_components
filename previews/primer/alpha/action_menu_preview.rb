@@ -85,7 +85,8 @@ module Primer
         render(Primer::Alpha::ActionMenu.new) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "Settings", href: "/")
-          menu.with_item(label: "Your respositories", href: "/")
+          menu.with_item(label: "Your repositories", href: "/")
+          menu.with_item(label: "Disabled", href: "/", disabled: true)
         end
       end
 
