@@ -4,6 +4,110 @@ require "thor"
 require "fileutils"
 require "active_support/core_ext/string/inflections"
 
+class ComponentVersion
+  COMPONENT_PATH = File.join("app", "components", "primer")
+  STATUSES = %w[alpha beta deprecated stable experimental].freeze
+
+  attr_reader :name, :status
+
+  def initialize(name, status = nil)
+    @name = name
+    @status = (status || inferred_status).to_sym
+  end
+
+  def module_name
+    status.to_s.capitalize if component_belongs_in_module?
+  end
+
+  def fully_qualified_class_name
+    if component_belongs_in_module?
+      "Primer::#{module_name}::#{name}"
+    else
+      "Primer::#{name}"
+    end
+  end
+
+  def component_belongs_in_module?
+    ![:deprecated, :stable].include?(status)
+  end
+
+  def controller_path
+    File.join(base_path, component_file_name)
+  end
+
+  def base_path
+    File.join(COMPONENT_PATH, status_directory)
+  end
+
+  def static_asset_paths
+    Dir.glob(File.join(base_path, "#{name.underscore}*"))
+  end
+
+  def template_path
+    File.join(base_path, "#{name.underscore}.html.erb")
+  end
+
+  def test_path
+    File.join("test", "components", status_directory, "#{name.underscore}_test.rb")
+  end
+
+  def preview_path
+    preview_directory = File.join("previews", "primer", status_directory)
+    path_with_component = File.join(preview_directory, "#{name.underscore}_component_preview.rb")
+
+    if File.exist?(path_with_component)
+      path_with_component
+    else
+      path_with_component = File.join(preview_directory, "#{name.underscore}_preview.rb")
+    end
+  end
+
+  def css_import_path
+    File.join(".", status_directory, "#{name.underscore}.pcss")
+  end
+
+  def primer_js_import_path
+    File.join(".", status_directory, "#{name.underscore}")
+  end
+
+  def status_directory
+    if component_belongs_in_module?
+      status.to_s
+    else
+      ""
+    end
+  end
+
+  private
+
+  def inferred_status
+    component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
+
+    raise("Couldn't find #{component_file_name} in component directory") if component_paths.empty?
+
+    raise("Found multiple files named #{component_file_name} in component directory, can't infer version") if component_paths.size > 1
+
+    component_path = component_paths.first
+    component_directory = File.dirname(component_path)
+
+    if component_directory == COMPONENT_PATH
+      content = File.read(component_path)
+
+      if /^\s+status\s+:stable\s*$/.match?(content)
+        :stable
+      else
+        :deprecated
+      end
+    else
+      File.split(component_directory).last.to_sym
+    end
+  end
+
+  def component_file_name
+    "#{name.underscore}.rb"
+  end
+end
+
 # Migrates components to their new namespace.
 #
 # Usage:
@@ -13,14 +117,12 @@ require "active_support/core_ext/string/inflections"
 class ComponentStatusMigrator < Thor::Group
   include Thor::Actions
 
-  STATUSES = %w[alpha beta deprecated stable experimental].freeze
-
   # Define arguments and options
   argument :name
   class_option(
     :status,
     default: "alpha",
-    desc: "Status of the component. Valid values: #{STATUSES.join(', ')}",
+    desc: "Status of the component. Valid values: #{ComponentVersion::STATUSES.join(', ')}",
     required: true,
     type: :string
   )
@@ -38,7 +140,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def validate_status
-    raise "Invalid status: #{status}" unless STATUSES.include?(status)
+    raise "Invalid status: #{status}" unless ComponentVersion::STATUSES.include?(status)
   end
 
   def move_controller
@@ -321,108 +423,5 @@ class ComponentStatusMigrator < Thor::Group
         force: true
       )
     end
-  end
-end
-
-class ComponentVersion
-  COMPONENT_PATH = File.join("app", "components", "primer")
-
-  attr_reader :name, :status
-
-  def initialize(name, status = nil)
-    @name = name
-    @status = (status || inferred_status).to_sym
-  end
-
-  def module_name
-    status.to_s.capitalize if component_belongs_in_module?
-  end
-
-  def fully_qualified_class_name
-    if component_belongs_in_module?
-      "Primer::#{module_name}::#{name}"
-    else
-      "Primer::#{name}"
-    end
-  end
-
-  def component_belongs_in_module?
-    ![:deprecated, :stable].include?(status)
-  end
-
-  def controller_path
-    File.join(base_path, component_file_name)
-  end
-
-  def base_path
-    File.join(COMPONENT_PATH, status_directory)
-  end
-
-  def static_asset_paths
-    Dir.glob(File.join(base_path, "#{name.underscore}*"))
-  end
-
-  def template_path
-    File.join(base_path, "#{name.underscore}.html.erb")
-  end
-
-  def test_path
-    File.join("test", "components", status_directory, "#{name.underscore}_test.rb")
-  end
-
-  def preview_path
-    preview_directory = File.join("previews", "primer", status_directory)
-    path_with_component = File.join(preview_directory, "#{name.underscore}_component_preview.rb")
-
-    if File.exist?(path_with_component)
-      path_with_component
-    else
-      path_with_component = File.join(preview_directory, "#{name.underscore}_preview.rb")
-    end
-  end
-
-  def css_import_path
-    File.join(".", status_directory, "#{name.underscore}.pcss")
-  end
-
-  def primer_js_import_path
-    File.join(".", status_directory, "#{name.underscore}")
-  end
-
-  def status_directory
-    if component_belongs_in_module?
-      status.to_s
-    else
-      ""
-    end
-  end
-
-  private
-
-  def inferred_status
-    component_paths = Dir.glob(File.join(COMPONENT_PATH, "**", component_file_name))
-
-    raise("Couldn't find #{component_file_name} in component directory") if component_paths.empty?
-
-    raise("Found multiple files named #{component_file_name} in component directory, can't infer version") if component_paths.size > 1
-
-    component_path = component_paths.first
-    component_directory = File.dirname(component_path)
-
-    if component_directory == COMPONENT_PATH
-      content = File.read(component_path)
-
-      if /^\s+status\s+:stable\s*$/.match?(content)
-        :stable
-      else
-        :deprecated
-      end
-    else
-      File.split(component_directory).last.to_sym
-    end
-  end
-
-  def component_file_name
-    "#{name.underscore}.rb"
   end
 end
