@@ -21,10 +21,14 @@ class ComponentVersion
   end
 
   def fully_qualified_class_name
+    "Primer::#{qualified_class_name}"
+  end
+
+  def qualified_class_name
     if component_belongs_in_module?
-      "Primer::#{module_name}::#{name}"
+      "#{module_name}::#{name}"
     else
-      "Primer::#{name}"
+      "#{name}"
     end
   end
 
@@ -142,7 +146,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def verify_different_statuses
     if old_version.status == new_version.status
-      raise "#{old_version.name} is already in \"#{old_version.status}\""
+      raise "#{old_version.name} is already \"#{old_version.status}\"!"
     else
       puts "Migrating #{old_version.fully_qualified_class_name} -> #{new_version.fully_qualified_class_name}"
     end
@@ -317,7 +321,7 @@ class ComponentStatusMigrator < Thor::Group
       # frozen_string_literal: true
 
       module Primer
-        class #{name} < #{new_version.fully_qualified_class_name}
+        class #{old_version.qualified_class_name} < #{new_version.qualified_class_name}
           status :deprecated
         end
       end
