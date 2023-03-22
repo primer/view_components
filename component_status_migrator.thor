@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "thor"
-require "fileutils"
 require "active_support/core_ext/string/inflections"
 
 class ComponentVersion
@@ -171,8 +170,11 @@ class ComponentStatusMigrator < Thor::Group
 
   def move_assets
     old_version.static_asset_paths.each do |static_asset_path|
-      puts "Moving #{static_asset_path} -> #{new_version.base_path}"
-      FileUtils.mv(static_asset_path, new_version.base_path)
+      copy_file(
+        static_asset_path,
+        File.join(new_version.base_path, File.basename(static_asset_path))
+      )
+      remove_file(static_asset_path)
     end
   end
 
