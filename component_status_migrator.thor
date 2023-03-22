@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "thor"
+require "fileutils"
 require "active_support/core_ext/string/inflections"
 
 # Migrates components to their new namespace.
@@ -55,6 +56,13 @@ class ComponentStatusMigrator < Thor::Group
         old_version.template_path,
         new_version.template_path
       )
+    end
+  end
+
+  def move_assets
+    old_version.static_asset_paths.each do |static_asset_path|
+      puts "Moving #{static_asset_path} -> #{new_version.base_path}"
+      FileUtils.mv(static_asset_path, new_version.base_path)
     end
   end
 
@@ -346,6 +354,14 @@ class ComponentVersion
     File.join(base_path, component_file_name)
   end
 
+  def base_path
+    File.join(COMPONENT_PATH, status_directory)
+  end
+
+  def static_asset_paths
+    Dir.glob(File.join(base_path, "#{name.underscore}*"))
+  end
+
   def template_path
     File.join(base_path, "#{name.underscore}.html.erb")
   end
@@ -404,10 +420,6 @@ class ComponentVersion
     else
       File.split(component_directory).last.to_sym
     end
-  end
-
-  def base_path
-    File.join(COMPONENT_PATH, status_directory)
   end
 
   def component_file_name
