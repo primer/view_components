@@ -1,0 +1,15 @@
+<%= render(Primer::Alpha::ActionMenu.new) do |component| %>
+  <% component.with_show_button { "Menu" } %>
+  <% component.with_item(label: "Item", tag: :button, value: "") %>
+  <% component.with_item(label: "Show dialog", tag: :button, "data-show-dialog-id": "my-dialog", value: "", scheme: "danger") %>
+<% end %>
+
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: "Confirm deletion")) do |d| %>
+  <%= render(Primer::Alpha::Dialog::Body.new()) do %>
+    Are you sure you want to delete this?
+  <% end %>
+  <%= render(Primer::Alpha::Dialog::Footer.new()) do %>
+    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Delete" } %>
+  <% end %>
+<% end %>

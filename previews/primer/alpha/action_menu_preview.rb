@@ -27,7 +27,7 @@ module Primer
       #
       def default
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button { "Menu" }
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
           menu.with_item(label: "Copy link", value: "")
           menu.with_item(label: "Quote reply", value: "")
           menu.with_item(label: "Reference in new issue", value: "")
@@ -111,7 +111,6 @@ module Primer
         end
       end
 
-
       # @label Multiple items selected
       #
       def multiple_selected_items
@@ -167,6 +166,14 @@ module Primer
           component.with_item(label: "Does something", tag: :button, value: "", disabled: true)
           component.with_item(label: "Site", tag: :a, href: "/", disabled: true)
         end
+      end
+
+      # @label Opens a dialog
+      #
+      def opens_dialog(menu_id: "menu-1")
+        render_with_template(locals: {
+                               menu_id: menu_id
+                             })
       end
     end
   end
