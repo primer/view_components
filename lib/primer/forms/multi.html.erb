@@ -1,9 +1,7 @@
-<%= content_tag(:div, **@input.input_arguments) do %>
-  <%= render(FormControl.new(input: @input)) do %>
-    <primer-multi-input data-name="<%= @input.name %>">
-      <% @input.inputs.each do |child_input| %>
-        <%= render(child_input.to_component) %>
-      <% end %>
-    </primer-multi-input>
-  <% end %>
+<%= render(FormControl.new(input: @input, **@input.input_arguments)) do %>
+  <primer-multi-input data-name="<%= @input.name %>">
+    <% @input.inputs.each do |child_input| %>
+      <%= render(child_input.to_component) %>
+    <% end %>
+  </primer-multi-input>
 <% end %>
