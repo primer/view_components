@@ -1335,7 +1335,7 @@
   },
   {
     "component": "Layout",
-    "status": "alpha",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/default/",
     "parameters": [
