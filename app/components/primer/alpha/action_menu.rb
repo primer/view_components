@@ -21,7 +21,13 @@ module Primer
       ANCHOR_SIDE_OPTIONS = [:outside_top, DEFAULT_ANCHOR_SIDE, :outside_left, :outside_right].freeze
 
       DEFAULT_PRELOAD = false
+
       DEFAULT_SELECT_VARIANT = :none
+      SELECT_VARIANT_OPTIONS = [
+        :single,
+        :multiple,
+        DEFAULT_SELECT_VARIANT
+      ].freeze
 
       attr_reader :list, :preload
 
@@ -233,11 +239,11 @@ module Primer
       #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_SIDE_OPTIONS) %>
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         menu_id: self.class.generate_id,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
@@ -246,7 +252,7 @@ module Primer
         preload: DEFAULT_PRELOAD,
         dynamic_label: false,
         dynamic_label_prefix: nil,
-        select_variant: ActionList::DEFAULT_SELECT_VARIANT,
+        select_variant: DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
         @menu_id = menu_id
@@ -255,6 +261,8 @@ module Primer
         @system_arguments = deny_tag_argument(**system_arguments)
 
         @system_arguments[:preload] = true if @src.present? && preload?
+
+        select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
 
         @system_arguments[:tag] = :"action-menu"
         @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
