@@ -1,15 +1,14 @@
-<%= render(Primer::BaseComponent.new(tag: :ul, role: @role, classes: "ActionListWrap")) do %>
+<%= render(Primer::BaseComponent.new(tag: :div)) do %>
   <% if heading %>
     <%= heading %>
   <% end %>
-  <%= render(Primer::BaseComponent.new(tag: :li, **@list_wrapper_arguments)) do %>
-    <%= render(Primer::BaseComponent.new(tag: :ul, **@system_arguments)) do %>
-      <% items.each_with_index do |item, index| %>
-        <% if index > 0 && @show_dividers %>
-          <%= render(Primer::Alpha::ActionList::Divider.new) %>
-        <% end %>
-        <%= item %>
+  <%= render(Primer::BaseComponent.new(tag: :ul, **@system_arguments)) do %>
+    <% items.each_with_index do |item, index| %>
+      <%# the conditions here make sure two dividers are never rendered one after the other %>
+      <% if index > 0 && @show_dividers && !item.is_a?(Divider) && !items[index - 1].is_a?(Divider) %>
+        <%= render(Primer::Alpha::ActionList::Divider.new) %>
       <% end %>
+      <%= item %>
     <% end %>
   <% end %>
 <% end %>

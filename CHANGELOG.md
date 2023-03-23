@@ -1,5 +1,89 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- [#1880](https://github.com/primer/view_components/pull/1880) [`7a160a4c`](https://github.com/primer/view_components/commit/7a160a4c6db18687fdc5ebebbe5dc9ab0926443a) Thanks [@camertron](https://github.com/camertron)! - Allow consumers to set ActionList item content's tag
+
+* [#1869](https://github.com/primer/view_components/pull/1869) [`53b99f6a`](https://github.com/primer/view_components/commit/53b99f6ae1c7fdfb4b929d6f60215aacedbcdfc7) Thanks [@keithamus](https://github.com/keithamus)! - Make Overlay headings optional
+
+- [#1873](https://github.com/primer/view_components/pull/1873) [`125861b8`](https://github.com/primer/view_components/commit/125861b8cbff95db90126f8c0aa297b9a0bb4ade) Thanks [@camertron](https://github.com/camertron)! - Remove ability to show trailing action buttons in ActionList and NavList on hover
+
+* [#1875](https://github.com/primer/view_components/pull/1875) [`8bbeb72a`](https://github.com/primer/view_components/commit/8bbeb72a5ef60917265b93791cd20ab99045540e) Thanks [@camertron](https://github.com/camertron)! - Allow ActionList dividers to be added manually
+
+- [#1871](https://github.com/primer/view_components/pull/1871) [`6b1170ae`](https://github.com/primer/view_components/commit/6b1170aef5b5f703e239881bdd0717c6e4c1a973) Thanks [@camertron](https://github.com/camertron)! - Deny tag argument for ActionList headings
+
+* [#1876](https://github.com/primer/view_components/pull/1876) [`b3b94e98`](https://github.com/primer/view_components/commit/b3b94e989f51fcc776cf312208bd4dcadde31161) Thanks [@antn](https://github.com/antn)! - Upgrade octicons to >= 18.0.0
+
+- [#1877](https://github.com/primer/view_components/pull/1877) [`864fb98f`](https://github.com/primer/view_components/commit/864fb98fd38af79490b326caf3a0fe325ffb3066) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::Truncate in favor of Primer::Beta::Truncate, and adding a migration guide
+
+* [#1878](https://github.com/primer/view_components/pull/1878) [`9c211ce2`](https://github.com/primer/view_components/commit/9c211ce222e774acef11d1d438adfdc6251ce5ac) Thanks [@camertron](https://github.com/camertron)! - Attach behavior to TextField's clear button
+
+## 0.1.1
+
+### Patch Changes
+
+- [#1864](https://github.com/primer/view_components/pull/1864) [`1476b869`](https://github.com/primer/view_components/commit/1476b869db27a6ed50b7e8d83db6ef475efb31de) Thanks [@simurai](https://github.com/simurai)! - Fix underline of UnderlineNav being cut off when followed by a flash banner
+
+* [#1865](https://github.com/primer/view_components/pull/1865) [`df8dcced`](https://github.com/primer/view_components/commit/df8dcceda484c2582f9085e11e5678c1f0bd446d) Thanks [@keithamus](https://github.com/keithamus)! - Add aria attributes to Overlay show_button
+
+- [#1865](https://github.com/primer/view_components/pull/1865) [`df8dcced`](https://github.com/primer/view_components/commit/df8dcceda484c2582f9085e11e5678c1f0bd446d) Thanks [@keithamus](https://github.com/keithamus)! - Allow for IconButtons in overlay show_button
+
+* [#1867](https://github.com/primer/view_components/pull/1867) [`c6bfce04`](https://github.com/primer/view_components/commit/c6bfce043a9cf197a7b212e96bc0178bc5310246) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing TabNav double render of extra content
+
+- [#1828](https://github.com/primer/view_components/pull/1828) [`4e6201d4`](https://github.com/primer/view_components/commit/4e6201d4307f923f24a2fd04b6bb30ddb1cf5337) Thanks [@camertron](https://github.com/camertron)! - Address accessibility issues in NavList and ActionList
+
+* [#1730](https://github.com/primer/view_components/pull/1730) [`8c77e133`](https://github.com/primer/view_components/commit/8c77e133ba2507e6dd70d0666ea78b50a57d4144) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move Primer::Navigation::TabComponent to Primer::Alpha::Navigation::Tab
+
+- [#1850](https://github.com/primer/view_components/pull/1850) [`a909eae0`](https://github.com/primer/view_components/commit/a909eae016c1716387799c76a00019b5a03cc25c) Thanks [@mayamessinger](https://github.com/mayamessinger)! - Fix beta button tooltip compatibility with display :block
+
+* [#1847](https://github.com/primer/view_components/pull/1847) [`16b16264`](https://github.com/primer/view_components/commit/16b162646fb51422d6604addbd27cb6bf0978106) Thanks [@keithamus](https://github.com/keithamus)! - Remove animation from Overlay component
+
+## 0.1.0
+
+### Minor Changes
+
+- [#1401](https://github.com/primer/view_components/pull/1401) [`f824d1d0`](https://github.com/primer/view_components/commit/f824d1d0e8337ef34eef6af2419bd9ecc8537fe3) Thanks [@keithamus](https://github.com/keithamus)! - Add Overlay component
+
+### Patch Changes
+
+- [#1844](https://github.com/primer/view_components/pull/1844) [`15869d48`](https://github.com/primer/view_components/commit/15869d48ad3b22151ef97290fb0f1c8cf8dc6c6f) Thanks [@camertron](https://github.com/camertron)! - Remove extra space between flash icon and message
+
+* [#1840](https://github.com/primer/view_components/pull/1840) [`04b75c70`](https://github.com/primer/view_components/commit/04b75c70e4b42a82e4a4ce31a976bfd1e5c6e9fa) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing NavList parents to appear selected
+
+- [#1845](https://github.com/primer/view_components/pull/1845) [`98792bdd`](https://github.com/primer/view_components/commit/98792bdd47c8f0ac50ef839ab5e5948984d66c3b) Thanks [@camertron](https://github.com/camertron)! - Use system arguments instead of utility classes for NavList's "show more" item
+
+* [#1823](https://github.com/primer/view_components/pull/1823) [`5eadffd3`](https://github.com/primer/view_components/commit/5eadffd354891a3befb3b9152a16ba0a7c375aec) Thanks [@neall](https://github.com/neall)! - Add general reserved-class-checking linter
+
+## 0.0.123
+
+### Patch Changes
+
+- [#1835](https://github.com/primer/view_components/pull/1835) [`498191b4`](https://github.com/primer/view_components/commit/498191b437a30abd15d3ca3996d26bfcfe73a717) Thanks [@camertron](https://github.com/camertron)! - Fix conditional inclusion of polymorphic slots module
+
+* [#1822](https://github.com/primer/view_components/pull/1822) [`ad56ddef`](https://github.com/primer/view_components/commit/ad56ddef07b2a4e45ca17f0838e5c211840f5873) Thanks [@camertron](https://github.com/camertron)! - Allow NavList selection/deselection by id/href in javascript
+
+## 0.0.122
+
+### Patch Changes
+
+- [#1818](https://github.com/primer/view_components/pull/1818) [`c8fa002f`](https://github.com/primer/view_components/commit/c8fa002f807c508c86cd387512e3e81ef01b1db3) Thanks [@camertron](https://github.com/camertron)! - Fix issue in TabPanels causing extra content to render twice
+
+* [#1824](https://github.com/primer/view_components/pull/1824) [`2a234537`](https://github.com/primer/view_components/commit/2a2345372113dc23df1507fdcd6c588351cc3fd7) Thanks [@langermank](https://github.com/langermank)! - ToggleSwitch and SegmentedControl visual updates + Primitives (PCSS) version bump
+
+- [#1595](https://github.com/primer/view_components/pull/1595) [`f31bf3f9`](https://github.com/primer/view_components/commit/f31bf3f95a03efb4931a421b7d49df7aa22b6ea7) Thanks [@soberstadt](https://github.com/soberstadt)! - Change engine to mount on ActionController::Base
+
+* [#1832](https://github.com/primer/view_components/pull/1832) [`557ec8ba`](https://github.com/primer/view_components/commit/557ec8bad66e32a6a5183a9b6496d5910658de41) Thanks [@joelhawksley](https://github.com/joelhawksley)! - support ViewComponent v3.0.0.rc2
+
+- [#1821](https://github.com/primer/view_components/pull/1821) [`c12ae8c5`](https://github.com/primer/view_components/commit/c12ae8c5dbe9fd0b8c723cac297139976fa28552) Thanks [@camertron](https://github.com/camertron)! - Add a standalone FormControl component
+
+* [#1814](https://github.com/primer/view_components/pull/1814) [`8090cda2`](https://github.com/primer/view_components/commit/8090cda2a389a99e100ecea979d40602a3d52ae6) Thanks [@camertron](https://github.com/camertron)! - Expose additional form components
+
+- [#1827](https://github.com/primer/view_components/pull/1827) [`c0545a65`](https://github.com/primer/view_components/commit/c0545a659855c3c6ec20f5e9faf680b2e7a9cc52) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use lookbook 1.5.2
+
+* [#1833](https://github.com/primer/view_components/pull/1833) [`a90e1554`](https://github.com/primer/view_components/commit/a90e155475819bb5f82b0947916b46ada4ea1633) Thanks [@camertron](https://github.com/camertron)! - Fix regression causing check boxes to always render enabled
+
 ## 0.0.121
 
 ### Patch Changes

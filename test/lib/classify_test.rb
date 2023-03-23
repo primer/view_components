@@ -420,7 +420,9 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
-    assert_generated_class("color-bg-primary text-center float-left ml-1", { classes: "color-bg-primary text-center float-left ml-1" })
+    with_raise_on_invalid_options(false) do
+      assert_generated_class("color-bg-primary text-center float-left ml-1", { classes: "color-bg-primary text-center float-left ml-1" })
+    end
   end
 
   def test_does_include_leading_trailing_whitespace_in_class

@@ -5,7 +5,6 @@
   list-style: none;
   background-color: var(--color-segmented-control-bg);
   border-radius: var(--primer-borderRadius-medium, 6px);
-  box-shadow: var(--primer-borderInset-thin, inset 0 0 0 max(1px, 0.0625rem)) var(--color-border-default);
 }
 
 .SegmentedControl-item {
@@ -17,7 +16,7 @@
 
   /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
-    background-color: var(--color-btn-bg);
+    background-color: var(--color-segmented-control-button-bg);
     border-color: var(--color-segmented-control-button-selected-border);
 
     & .Button {
@@ -64,17 +63,29 @@
     color: var(--color-btn-text);
 
     &:focus-visible {
-      outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
+      outline-offset: calc(
+        var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px)
+      );
       border-radius: calc(var(--primer-borderRadius-medium, 6px) - 5px);
     }
   }
 
   & .Button--small {
-    height: calc(var(--primer-control-small-size, 28px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
-    padding: 0 calc(var(--primer-control-small-paddingInline-condensed, 8px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+    height: calc(
+      var(--primer-control-small-size, 28px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+        var(--primer-borderWidth-thin, 1px) * 2
+    );
+    padding: 0
+      calc(
+        var(--primer-control-small-paddingInline-condensed, 8px) -
+          var(--primer-control-xsmall-paddingInline-condensed, 4px)
+      );
 
     &.Button--iconOnly {
-      width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+      width: calc(
+        var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+          var(--primer-borderWidth-thin, 1px) * 2
+      );
 
       &::before {
         @mixin minTouchTarget var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px);
@@ -83,11 +94,21 @@
   }
 
   & .Button--medium {
-    height: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
-    padding: 0 calc(var(--primer-control-medium-paddingInline-normal, 12px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+    height: calc(
+      var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+        var(--primer-borderWidth-thin, 1px) * 2
+    );
+    padding: 0
+      calc(
+        var(--primer-control-medium-paddingInline-normal, 12px) -
+          var(--primer-control-xsmall-paddingInline-condensed, 4px)
+      );
 
     &.Button--iconOnly {
-      width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+      width: calc(
+        var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+          var(--primer-borderWidth-thin, 1px) * 2
+      );
 
       &::before {
         @mixin minTouchTarget var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px);
@@ -96,11 +117,21 @@
   }
 
   & .Button--large {
-    height: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
-    padding: 0 calc(var(--primer-control-large-paddingInline-spacious, 16px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+    height: calc(
+      var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+        var(--primer-borderWidth-thin, 1px) * 2
+    );
+    padding: 0
+      calc(
+        var(--primer-control-large-paddingInline-spacious, 16px) -
+          var(--primer-control-xsmall-paddingInline-condensed, 4px)
+      );
 
     &.Button--iconOnly {
-      width: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+      width: calc(
+        var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 -
+          var(--primer-borderWidth-thin, 1px) * 2
+      );
 
       &::before {
         @mixin minTouchTarget var(--primer-control-large-size, 40px), var(--primer-control-large-size, 40px);

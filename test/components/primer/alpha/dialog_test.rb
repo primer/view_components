@@ -50,12 +50,13 @@ class PrimerAlphaDialogTest < Minitest::Test
     assert_selector("modal-dialog[id^='dialog-']")
   end
 
-  def test_renders_subtitle_with_describedby
+  def test_renders_title_and_subtitle_with_describedby
     render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
       component.with_body { "content" }
     end
 
-    assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-description']") do
+    assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-title my-dialog-description']") do
+      assert_selector("h1[id='my-dialog-title']", text: "Title")
       assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
     end
   end

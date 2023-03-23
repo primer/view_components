@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     class ActionList
-      # Section heading rendered above the section contents.
+      # Group heading rendered above the group contents.
       class Divider < Primer::Component
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
@@ -17,7 +17,7 @@ module Primer
         def initialize(scheme: DEFAULT_SCHEME, **system_arguments)
           @system_arguments = system_arguments
           @system_arguments[:tag] = :li
-          @system_arguments[:role] = :separator
+          @system_arguments[:role] = :presentation
           @system_arguments[:'aria-hidden'] = true
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
           @system_arguments[:classes] = class_names(
@@ -27,7 +27,7 @@ module Primer
         end
 
         def call
-          render(Primer::BaseComponent.new(**@system_arguments)) { "" }
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
         end
       end
     end

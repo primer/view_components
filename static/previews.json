@@ -19,6 +19,11 @@
         "name": "leading_visuals"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/with_manual_dividers",
+        "preview_path": "/lookbook/preview/primer/alpha/action_list/with_manual_dividers",
+        "name": "with_manual_dividers"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/divider",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/divider",
         "name": "divider"
@@ -77,11 +82,6 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action",
         "name": "item_trailing_action"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action_hover",
-        "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action_hover",
-        "name": "item_trailing_action_hover"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_danger",
@@ -1264,6 +1264,32 @@
     ]
   },
   {
+    "name": "overlay",
+    "lookup_path": "primer/alpha/overlay",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/default",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/menu_no_header",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/menu_no_header",
+        "name": "menu_no_header"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
+        "name": "middle_of_page"
+      }
+    ]
+  },
+  {
     "name": "popover",
     "lookup_path": "primer/beta/popover",
     "examples": [
@@ -1536,6 +1562,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_icons_and_counters",
         "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_nav/with_extra",
+        "name": "with_extra"
       }
     ]
   },
@@ -1552,6 +1583,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/default",
         "preview_path": "/lookbook/preview/primer/alpha/tab_panels/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/with_extra",
+        "preview_path": "/lookbook/preview/primer/alpha/tab_panels/with_extra",
+        "name": "with_extra"
       }
     ]
   },
@@ -1605,6 +1641,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/default",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/text_field/with_data_target",
+        "preview_path": "/lookbook/preview/primer/alpha/text_field/with_data_target",
+        "name": "with_data_target"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/auto_check",

@@ -10,18 +10,6 @@
   align-items: center;
   display: inline-flex;
   gap: var(--primer-controlStack-medium-gap-condensed, 8px);
-
-  &:hover {
-    & .ToggleSwitch-knob {
-      background-color: var(--color-btn-hover-bg);
-    }
-  }
-
-  &:active {
-    & .ToggleSwitch-knob {
-      background-color: var(--color-btn-active-bg);
-    }
-  }
 }
 
 .ToggleSwitch--checked {
@@ -56,7 +44,15 @@
 
   &:focus,
   &:focus-visible {
-    outline-offset: 0;
+    outline-offset: 1px;
+  }
+
+  &:hover {
+    background-color: var(--color-switch-track-hover-bg);
+  }
+
+  &:active {
+    background-color: var(--color-switch-track-active-bg);
   }
 
   @media (pointer: coarse) {
@@ -75,42 +71,29 @@
 }
 
 .ToggleSwitch-track[aria-checked='true'][aria-disabled='true'] {
-  background-color: var(--color-canvas-subtle);
-  border-color: var(--color-border-subtle);
-
-  &:hover,
-  &:active {
-    background-color: var(--color-canvas-subtle);
-
-    /* This is the most straightforward way of setting the knob's styles when the
-    ** switch is both checked and disabled. */
-
-    & .ToggleSwitch-knob {
-      background-color: var(--color-switch-knob-checked-disabled-bg);
-    }
-  }
-
-  & .ToggleSwitch-knob {
-    background-color: var(--color-switch-knob-checked-disabled-bg);
-  }
+  background-color: var(--color-switch-track-disabled-bg);
+  color: var(--color-switch-track-checked-disabled-fg);
+  border-color: transparent;
 }
 
 .ToggleSwitch-track[aria-checked='true'] {
   background-color: var(--color-switch-track-checked-bg);
   border-color: var(--color-switch-track-checked-border);
 
-  &:hover {
-    background-color: var(--color-switch-track-checked-hover-bg);
-  }
+  &:not([aria-disabled='true']) {
+    &:hover {
+      background-color: var(--color-switch-track-checked-hover-bg);
+    }
 
-  &:active {
-    background-color: var(--color-switch-track-checked-active-bg);
+    &:active {
+      background-color: var(--color-switch-track-checked-active-bg);
+    }
   }
 
   & .ToggleSwitch-knob {
     background-color: var(--color-switch-knob-checked-bg);
-    border: 0;
-    transform: translateX(calc(100% + 1px));
+    border-color: var(--color-switch-knob-checked-border);
+    transform: translateX(100%);
   }
 
   & .ToggleSwitch-lineIcon {
@@ -124,33 +107,21 @@
 
 .ToggleSwitch-track[aria-disabled='true'] {
   cursor: not-allowed;
-  background-color: var(--color-canvas-subtle);
-  border-color: var(--color-border-subtle);
+  background-color: var(--color-switch-track-disabled-bg);
+  border-color: transparent;
   transition-property: none;
-
-  &:hover,
-  &:active {
-    & .ToggleSwitch-knob {
-      background-color: var(--color-btn-bg);
-    }
-  }
 
   & .ToggleSwitch-knob {
     border-color: var(--color-border-default);
     box-shadow: none;
-
-    &:hover,
-    &:active {
-      background-color: var(--color-btn-bg);
-    }
   }
 
   & .ToggleSwitch-lineIcon {
-    color: var(--color-fg-subtle);
+    color: var(--color-switch-track-disabled-fg);
   }
 
   & .ToggleSwitch-circleIcon {
-    color: var(--color-fg-subtle);
+    color: var(--color-switch-track-disabled-fg);
   }
 }
 
@@ -164,7 +135,7 @@
 
 .ToggleSwitch-lineIcon {
   line-height: 0;
-  color: var(--color-accent-fg);
+  color: var(--color-switch-track-checked-fg);
   transition-duration: 80ms;
   transition-property: transform;
   transform: translateX(-100%);
@@ -173,7 +144,7 @@
 
 .ToggleSwitch-circleIcon {
   line-height: 0;
-  color: var(--color-fg-default);
+  color: var(--color-switch-track-fg);
   transition-duration: 80ms;
   transition-property: transform;
   transform: translateX(0);
@@ -182,18 +153,17 @@
 
 .ToggleSwitch-knob {
   position: absolute;
-  top: -1px;
-  bottom: -1px;
+  top: 0;
+  bottom: 0;
   z-index: 1;
   width: 50%;
-  background-color: var(--color-btn-bg);
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-track-border);
+  background-color: var(--color-switch-knob-bg);
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-knob-border);
   border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-medium), var(--color-btn-inset-shadow);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: transform;
-  transform: translateX(-1px);
 
   @media (prefers-reduced-motion) {
     transition: none;

@@ -32,7 +32,7 @@ module Primer
 
           super(**system_arguments)
 
-          add_input_data(:target, "primer-text-field.inputElement") if auto_check_src.present?
+          add_input_data(:target, "primer-text-field.inputElement #{system_arguments.dig(:data, :target) || ''}")
           add_input_classes("FormControl-inset") if inset?
           add_input_classes("FormControl-monospace") if monospace?
         end

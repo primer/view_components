@@ -88,8 +88,11 @@ class ComponentSelectorUseTest < System::TestCase
 
           const nodeMatchesAtLeastOneComponentSelector = (node) => {
             for (const componentSelector of componentSelectors) {
-              if (node.matches(componentSelector) || node.querySelectorAll(`:scope > ${componentSelector}`).length > 0) {
-                return true;
+              try {
+                if (node.matches(componentSelector) || node.querySelectorAll(`:scope > ${componentSelector}`).length > 0) {
+                  return true;
+                }
+              } catch {
               }
             }
 

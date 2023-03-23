@@ -85,7 +85,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
     [Primer::Alpha::Menu, {}, proc { |component| component.with_item(href: "#url") { "Item" } }],
-    [Primer::Navigation::TabComponent, {}],
+    [Primer::Alpha::Navigation::Tab, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
@@ -104,6 +104,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::SubmitButton, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextArea, { name: :foo, label: "Foo" }],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
+    [Primer::Alpha::Overlay, { title: "Test", role: :dialog }, proc { |component|
+      component.with_header { "Foo" }
+      component.with_body { "Foo" }
+    }],
+    [Primer::Alpha::Overlay::Header, { title: "Test", id: "test" }],
+    [Primer::Alpha::Overlay::Body, {}],
+    [Primer::Alpha::Overlay::Footer, {}],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
@@ -122,10 +129,11 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
       "Primer::Alpha::NavList::Item",
-      "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::NavList::Group",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::Content"
+      "Primer::Content",
+      "Primer::Navigation::TabComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
@@ -204,5 +212,35 @@ class PrimerComponentTest < Minitest::Test
       end
       # rubocop:enable Rails/Inquiry
     end
+  end
+
+  def test_merge_aria
+    component = Primer::Component.new
+
+    hash1 = { "aria-disabled": "true", aria: { labelledby: "foo", describedby: "foo" }, foo: "foo" }
+    hash2 = { aria: { invalid: "true", labelledby: "bar" }, "aria-label": "bar", bar: "bar", "aria-labelledby": "baz", "aria-describedby": nil }
+
+    merged_arias = component.send(:merge_aria, hash1, hash2)
+
+    assert_equal merged_arias, { disabled: "true", invalid: "true", labelledby: "foo bar baz", label: "bar", describedby: "foo" }
+
+    # assert aria info removed from original hashes
+    assert_equal hash1, { foo: "foo" }
+    assert_equal hash2, { bar: "bar" }
+  end
+
+  def test_merge_data
+    component = Primer::Component.new
+
+    hash1 = { "data-foo": "true", data: { target: "foo" }, foo: "foo" }
+    hash2 = { data: { bar: "false", target: "bar" }, "data-baz": "baz", bar: "bar", "data-target": "baz" }
+
+    merged_data = component.send(:merge_data, hash1, hash2)
+
+    assert_equal merged_data, { foo: "true", bar: "false", target: "foo bar baz", baz: "baz" }
+
+    # assert aria info removed from original hashes
+    assert_equal hash1, { foo: "foo" }
+    assert_equal hash2, { bar: "bar" }
   end
 end

@@ -14,6 +14,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 jobs:
   label:
@@ -38,3 +39,52 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: "Check for changeset"
         run: script/check-for-changeset
+
+  semver-label:
+    if: ${{ github.repository == 'primer/view_components' }}
+    name: semver label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        id: version-result
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          result-encoding: string
+          script: |
+            const diff_url = context.payload.pull_request.diff_url
+            const result = await github.request(diff_url)
+            const match = [...result.data.matchAll(/^\+['"]@primer\/view-components['"]:\s(patch|minor|major)/mg)]
+            if (match && match[0]) {
+              return match[0][1]
+            }
+      - uses: actions/github-script@v6
+        env:
+          RELEASE: ${{ steps.version-result.outputs.result }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            if (process.env.RELEASE == 'undefined') { return }
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            })
+            const currentLabels = issue.data.labels.map( l => l.name)
+            const newLabel = `${process.env.RELEASE} release`
+            if (!currentLabels.includes(newLabel)) {
+              const otherReleaseLabels = currentLabels.filter( l => l.endsWith(' release'))
+              if (otherReleaseLabels.length) {
+                github.rest.issues.removeLabel({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: [otherReleaseLabels]
+                })
+              }
+              github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: [newLabel]
+              })
+            }

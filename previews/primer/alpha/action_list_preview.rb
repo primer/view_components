@@ -17,8 +17,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Item one", href: "/") do |item|
@@ -46,8 +45,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Item one", href: "/") do |item|
@@ -75,8 +73,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  role: role,
                  scheme: scheme,
-                 show_dividers: show_dividers,
-                 aria: { label: "Action List" }
+                 show_dividers: show_dividers
                )) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Leading SVG visual", href: "/") do |item|
@@ -88,6 +85,39 @@ module Primer
             item.with_leading_visual_content do
               '<span style="width: 16px; height: 16px; display: block; text-align: center; line-height: 16px">A</span>'.html_safe
             end
+          end
+        end
+      end
+
+      # @label With manual dividers
+      #
+      # @param role text
+      # @param scheme [Symbol] select [full, inset]
+      # @param show_dividers toggle
+      def with_manual_dividers(
+        role: Primer::Alpha::ActionList::DEFAULT_ROLE,
+        scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
+        show_dividers: false
+      )
+        render(Primer::Alpha::ActionList.new(
+          role: role,
+          scheme: scheme,
+          show_dividers: show_dividers
+        )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+          component.with_divider
+          component.with_item(label: "Item two", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :star)
+          end
+          component.with_item(label: "Item three", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :heart)
+          end
+          component.with_divider
+          component.with_item(label: "Item four", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :bug)
           end
         end
       end
@@ -113,14 +143,9 @@ module Primer
         list_id: "unique-id",
         subtitle: "This is a subtitle"
       )
-        render_with_template(
-          locals: {
-            scheme: scheme,
-            title: title,
-            list_id: list_id,
-            subtitle: subtitle
-          }
-        )
+        render(Primer::Alpha::ActionList::Heading.new(
+          scheme: scheme, list_id: list_id, title: title, subtitle: subtitle
+        ))
       end
 
       # @label Item [playground]
@@ -143,7 +168,6 @@ module Primer
       # @param private_leading_action_icon [Symbol] octicon
       # @param private_trailing_action_icon [Symbol] octicon
       # @param trailing_action toggle
-      # @param trailing_action_on_hover toggle
       # @param tooltip toggle
       def item(
         label: "Label",
@@ -164,7 +188,6 @@ module Primer
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
         private_trailing_action_icon: nil,
-        trailing_action_on_hover: false,
         trailing_action: false,
         tooltip: false
       )
@@ -203,7 +226,7 @@ module Primer
             item.with_private_trailing_action_icon(icon: private_trailing_action_icon)
           end
 
-          item.with_trailing_action(show_on_hover: trailing_action_on_hover, icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
+          item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
 
@@ -302,18 +325,7 @@ module Primer
                  aria: { label: "List heading" }
                )) do |component|
           component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Button tooltip", size: :medium)
-          end
-        end
-      end
-
-      # @label Item [trailing action on hover]
-      def item_trailing_action_hover
-        render(Primer::Alpha::ActionList.new(
-                 aria: { label: "List heading" }
-               )) do |component|
-          component.with_item(label: "Default item", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Button tooltip", size: :medium)
+            item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end

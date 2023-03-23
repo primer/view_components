@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Expose additional form components
+Associate title with dialog

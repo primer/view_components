@@ -33,6 +33,11 @@ module Primer
           end
         end
       end
+
+      # @param align [Symbol] select [left, right]
+      def with_extra(align: :right)
+        render_with_template(locals: { align: align })
+      end
     end
   end
 end
