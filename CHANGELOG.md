@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.1.3
+
+### Patch Changes
+
+- [#1895](https://github.com/primer/view_components/pull/1895) [`e53f1995`](https://github.com/primer/view_components/commit/e53f1995e6b97a92169479255196c1eec07cbd1f) Thanks [@camertron](https://github.com/camertron)! - Modify merge_aria to combine plural attributes; introduce merge_data
+
+* [#1894](https://github.com/primer/view_components/pull/1894) [`5d118b0a`](https://github.com/primer/view_components/commit/5d118b0ae8b10429801f12f8c08e9aaf4895dbab) Thanks [@mikekavouras](https://github.com/mikekavouras)! - Update Primer::Alpha::TextInput to support multiple target attributes
+
+- [#1887](https://github.com/primer/view_components/pull/1887) [`9cc2f5bf`](https://github.com/primer/view_components/commit/9cc2f5bf3a59e7c97ca44b4b17da7c849bda5e2a) Thanks [@camertron](https://github.com/camertron)! - ActionList item and divider content
+
+* [#1892](https://github.com/primer/view_components/pull/1892) [`d72334d1`](https://github.com/primer/view_components/commit/d72334d1ef2a40e3ed1e96bfebc1b896752c521c) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::LayoutComponent in favor of Primer::Alpha::Layout, and add a migration guide
+
+- [#1891](https://github.com/primer/view_components/pull/1891) [`5f48d6f8`](https://github.com/primer/view_components/commit/5f48d6f83d0aa5b82ca3a764161cfafae9de8fe5) Thanks [@camertron](https://github.com/camertron)! - Associate title with dialog
+
+* [#1889](https://github.com/primer/view_components/pull/1889) [`dd1d382d`](https://github.com/primer/view_components/commit/dd1d382d52abaff1edadb64cd4eef89515c17184) Thanks [@langermank](https://github.com/langermank)! - Bug fix: ActionList `danger` variant hover/active contrast
+
 ## 0.1.2
 
 ### Patch Changes
