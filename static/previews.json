@@ -1117,22 +1117,6 @@
     ]
   },
   {
-    "name": "layout",
-    "lookup_path": "primer/layout",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/layout/playground",
-        "preview_path": "/lookbook/preview/primer/layout/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/layout/default",
-        "preview_path": "/lookbook/preview/primer/layout/default",
-        "name": "default"
-      }
-    ]
-  },
-  {
     "name": "link",
     "lookup_path": "primer/beta/link",
     "examples": [
