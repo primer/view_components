@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Fix width of text fields
+Fix widths of text fields and multi inputs.
