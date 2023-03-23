@@ -63,13 +63,16 @@ class PrimerAlphaOverlayTest < Minitest::Test
     assert_includes(error.message, "title")
   end
 
-  def test_raises_on_missing_role
-    error = assert_raises(ArgumentError) do
-      render_inline(Primer::Alpha::Overlay.new(title: "Title"))
+  def test_role_is_optional
+    render_inline(Primer::Alpha::Overlay.new(title: "Title")) do |component|
+      component.with_header
+      component.with_body { "Hello" }
     end
 
-    assert_includes(error.message, "missing keyword:")
-    assert_includes(error.message, "role")
+    assert_selector("anchored-position:not([role])") do
+      assert_selector("h1", text: "Title")
+      assert_selector(".Overlay-body", text: "Hello")
+    end
   end
 
   def test_renders_provided_id

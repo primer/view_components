@@ -63,7 +63,7 @@ module Primer
       DEFAULT_POPOVER = :auto
       POPOVER_OPTIONS = [DEFAULT_POPOVER, :manual].freeze
 
-      ROLE_OPTIONS = [:dialog, :menu].freeze
+      ROLE_OPTIONS = [:dialog, :menu, nil].freeze
 
       # Optional button to open the Overlay.
       #
@@ -147,7 +147,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
-        role:,
+        role: nil,
         subtitle: nil,
         popover: DEFAULT_POPOVER,
         size: DEFAULT_SIZE,
@@ -163,7 +163,7 @@ module Primer
       )
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:role] = fetch_or_fallback(ROLE_OPTIONS, role)
+        @system_arguments[:role] = fetch_or_fallback(ROLE_OPTIONS, role) if role.present?
 
         @system_arguments[:id] = id.to_s
         @system_arguments[:classes] = class_names(

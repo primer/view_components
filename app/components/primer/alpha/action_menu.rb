@@ -273,7 +273,6 @@ module Primer
 
         @overlay = Primer::Alpha::Overlay.new(
           id: @menu_id,
-          role: :menu,
           title: "Menu",
           visually_hide_title: true
         )
