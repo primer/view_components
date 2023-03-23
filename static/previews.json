@@ -115,29 +115,6 @@
   {
     "name": "auto_complete",
     "component": "AutoComplete",
-    "status": "deprecated",
-    "lookup_path": "primer/alpha/auto_complete",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/default",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/more_examples",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/more_examples",
-        "name": "more_examples"
-      }
-    ]
-  },
-  {
-    "name": "auto_complete",
-    "component": "AutoComplete",
     "status": "beta",
     "lookup_path": "primer/beta/auto_complete",
     "examples": [
@@ -220,6 +197,29 @@
         "inspect_path": "/lookbook/inspect/primer/beta/auto_complete/sizes",
         "preview_path": "/lookbook/preview/primer/beta/auto_complete/sizes",
         "name": "sizes"
+      }
+    ]
+  },
+  {
+    "name": "auto_complete",
+    "component": "AutoComplete",
+    "status": "deprecated",
+    "lookup_path": "primer/alpha/auto_complete",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/default",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/more_examples",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/more_examples",
+        "name": "more_examples"
       }
     ]
   },

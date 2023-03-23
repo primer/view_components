@@ -7,7 +7,7 @@ module Primer
     module GenerateInfoArch
       class << self
         def call
-          Primer::Component.descendants.sort_by(&:name).map do |component|
+          component_docs = Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, memo|
             docs = registry.find(component)
 
             preview_data = previews.find do |preview|
@@ -45,9 +45,37 @@ module Primer
 
             arg_data.merge!(
               "slots" => slots,
-              "previews" => (preview_data || {}).fetch("examples", [])
+              "previews" => (preview_data || {}).fetch("examples", []),
+              "sub_components" => []
             )
+
+            memo[component] = arg_data
           end
+
+          statuses = Primer::Status::Dsl::STATUSES.keys.map(&:to_s).map(&:capitalize)
+
+          Primer::Component.descendants.each do |component|
+            fq_class = component.name.to_s.split("::")
+            fq_class.shift # remove Primer::
+            status = fq_class.shift if statuses.include?(fq_class.first) # remove Status::
+
+            parent, *child = *fq_class
+
+            next if child.empty?
+
+            parent_class = Primer
+            parent_class = parent_class.const_get(status) if status
+            parent_class = parent_class.const_get(parent)
+
+            parent_docs = component_docs[parent_class]
+            next unless parent_docs
+
+            if (child_docs = component_docs.delete(component))
+              parent_docs["sub_components"] << child_docs
+            end
+          end
+
+          component_docs.values
         end
 
         private
