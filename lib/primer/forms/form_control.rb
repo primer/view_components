@@ -6,8 +6,9 @@ module Primer
     class FormControl < BaseComponent
       delegate :builder, :form, to: :@input
 
-      def initialize(input:)
+      def initialize(input:, tag: :div)
         @input = input
+        @tag = tag
         @input.add_label_classes("FormControl-label")
         @form_group_arguments = {
           class: class_names(

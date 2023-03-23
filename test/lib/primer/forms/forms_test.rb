@@ -275,4 +275,10 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector "input[name=enabled]"
     assert_selector ".my-test-caption"
   end
+
+  def test_text_field_custom_element_is_form_control
+    render_preview :single_text_field_form
+
+    assert_selector "primer-text-field.FormControl"
+  end
 end
