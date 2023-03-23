@@ -189,12 +189,7 @@ module Primer
             "ActionListItem"
           )
 
-          @system_arguments[:role] = role ||
-                                     if @list.allows_selection?
-                                       ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
-                                     elsif @list.acts_as_menu?
-                                       ActionList::DEFAULT_MENU_ITEM_ROLE
-                                     end
+          @system_arguments[:role] = :none
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
@@ -228,6 +223,13 @@ module Primer
               @content_arguments[:onclick] = on_click if on_click
             end
           end
+
+          @content_arguments[:role] = role ||
+                                      if @list.allows_selection?
+                                        ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
+                                      elsif @list.acts_as_menu?
+                                        ActionList::DEFAULT_MENU_ITEM_ROLE
+                                      end
 
           @description_wrapper_arguments = {
             classes: class_names(
