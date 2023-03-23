@@ -85,14 +85,15 @@ export class ActionMenuElement extends HTMLElement {
         event.key === 'Enter') ||
       (event instanceof MouseEvent && event.type === 'click')
     ) {
-      const item = (event.target as Element).closest(menuItemSelectors.join(','))
+      const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
       const checked = ariaChecked !== 'true'
       item.setAttribute('aria-checked', `${checked}`)
       if (this.selectVariant === 'single') {
-        const selector = menuItemSelectors.map(s => `${s}[aria-checked]`).join(',')
-        for (const checkedItem of this.querySelectorAll(selector)) {
+        const selector = menuItemSelectors.map(s => `li[aria-checked] ${s}`).join(',')
+        for (const checkedItemContent of this.querySelectorAll(selector)) {
+          const checkedItem = checkedItemContent.closest('li')!
           if (checkedItem !== item) {
             checkedItem.setAttribute('aria-checked', 'false')
           }
