@@ -118,7 +118,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=list]")
-        assert page.find_css("li.ActionListItem").first["role"].nil?
+        assert page.find_css("button.ActionListContent").first["role"].nil?
       end
 
       def test_uses_correct_menu_and_item_roles_when_single_select
@@ -127,7 +127,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitemradio]")
+          assert_selector("li.ActionListItem button[role=menuitemradio]")
         end
       end
 
@@ -137,7 +137,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitemcheckbox]")
+          assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
         end
       end
 
@@ -147,7 +147,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitem]")
+          assert_selector("li.ActionListItem button[role=menuitem]")
         end
       end
 
