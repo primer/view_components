@@ -29,9 +29,11 @@ module Primer
           # disallow setting item's tag
           system_arguments.delete(:tag)
 
+          # rubocop:disable Style/IfUnlessModifier
           if content_arguments[:tag] == :a
             content_arguments[:href] = system_arguments.delete(:href)
           end
+          # rubocop:enable Style/IfUnlessModifier
 
           system_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]
