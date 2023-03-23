@@ -472,7 +472,8 @@
     ],
     "ROLE_OPTIONS": [
       "dialog",
-      "menu"
+      "menu",
+      null
     ],
     "SIZE_MAPPINGS": {
       "auto": "Overlay--size-auto",

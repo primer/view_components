@@ -27,7 +27,7 @@ module Primer
 
       # @example Default
       #
-      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button", id: "search-button")) %>
+      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button")) %>
       #
       # @example Schemes
       #

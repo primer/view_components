@@ -94,7 +94,7 @@
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::IconButton": "deprecated",
-  "Primer::LayoutComponent": "alpha",
+  "Primer::LayoutComponent": "deprecated",
   "Primer::Navigation::TabComponent": "deprecated",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "deprecated"

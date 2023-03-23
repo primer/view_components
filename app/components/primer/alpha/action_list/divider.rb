@@ -27,7 +27,7 @@ module Primer
         end
 
         def call
-          render(Primer::BaseComponent.new(**@system_arguments)) { "" }
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
         end
       end
     end
