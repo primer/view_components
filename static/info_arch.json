@@ -172,12 +172,12 @@
         "name": "item_active"
       }
     ],
-    "sub_components": [
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider"
-      },
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider"
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item"
@@ -212,7 +212,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -274,7 +274,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -452,7 +452,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -569,7 +569,7 @@
         "name": "more_examples"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::AutoComplete::Item"
       }
@@ -615,7 +615,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -723,7 +723,7 @@
         "name": "schemes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -792,7 +792,7 @@
         "name": "size_variants"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -958,7 +958,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1022,7 +1022,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1199,7 +1199,7 @@
         "name": "body_has_scrollbar_overflow"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body"
       },
@@ -1233,7 +1233,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1265,7 +1265,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1315,7 +1315,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1419,7 +1419,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu"
       },
@@ -1491,7 +1491,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1512,7 +1512,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1580,7 +1580,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1669,7 +1669,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1710,7 +1710,7 @@
         "name": "playground"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1757,7 +1757,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1801,7 +1801,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1864,7 +1864,7 @@
         "name": "loading"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -1994,7 +1994,7 @@
         "name": "stacking_breakpoint"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Layout::Sidebar"
       },
@@ -2031,7 +2031,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2052,7 +2052,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2128,7 +2128,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2280,7 +2280,7 @@
         "name": "disabled"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2342,7 +2342,7 @@
         "name": "trailing_action"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group"
       },
@@ -2432,7 +2432,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2550,7 +2550,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2659,7 +2659,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2685,7 +2685,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2885,7 +2885,7 @@
         "name": "middle_of_page"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Footer"
       },
@@ -2919,7 +2919,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -2957,7 +2957,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3013,7 +3013,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3155,7 +3155,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3219,7 +3219,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3308,7 +3308,7 @@
         "name": "with_link_as_tag"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::SegmentedControl::Item"
       }
@@ -3354,7 +3354,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3520,7 +3520,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3588,7 +3588,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3614,7 +3614,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3706,7 +3706,7 @@
         "name": "with_extra"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3805,7 +3805,7 @@
         "name": "with_extra"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -3953,7 +3953,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4159,7 +4159,7 @@
         "name": "sizes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4275,7 +4275,7 @@
         "name": "with_bad_csrf_token"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4359,7 +4359,7 @@
         "name": "tooltip_enabled_elements"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4458,7 +4458,7 @@
         "name": "with_icons_and_counters"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4558,7 +4558,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4579,7 +4579,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4803,7 +4803,7 @@
         "name": "sizes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::AutoComplete::Item"
       }
@@ -4910,7 +4910,7 @@
         "name": "with_description"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -4990,7 +4990,7 @@
         "name": "sizes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5070,7 +5070,7 @@
         "name": "multiple_avatars"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5123,7 +5123,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5293,7 +5293,7 @@
         "name": "options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5402,7 +5402,7 @@
         "name": "padding"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::BorderBox::Header"
       }
@@ -5447,7 +5447,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5499,7 +5499,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::Breadcrumbs::Item"
       }
@@ -5522,7 +5522,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5706,7 +5706,7 @@
         "name": "with_tooltip"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5764,7 +5764,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5827,7 +5827,7 @@
         "name": "element"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5868,7 +5868,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -5954,7 +5954,7 @@
         "name": "rounded_number"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6046,7 +6046,7 @@
         "name": "without_button"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6132,7 +6132,7 @@
         "name": "more_options"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6173,7 +6173,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6278,7 +6278,7 @@
         "name": "danger"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6358,7 +6358,7 @@
         "name": "sizes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6450,7 +6450,7 @@
         "name": "color_scheme"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6491,7 +6491,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6550,7 +6550,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6636,7 +6636,7 @@
         "name": "directions"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6705,7 +6705,7 @@
         "name": "sizes"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6857,7 +6857,7 @@
         "name": "count_down_timer"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6904,7 +6904,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -6973,7 +6973,7 @@
         "name": "states"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7082,7 +7082,7 @@
         "name": "spacing"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7123,7 +7123,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7205,7 +7205,7 @@
         "name": "default"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::TimelineItem::Badge"
       }
@@ -7228,7 +7228,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7307,7 +7307,7 @@
         "name": "max_widths"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::Truncate::TruncateText"
       }
@@ -7330,7 +7330,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7457,7 +7457,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7483,7 +7483,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7598,7 +7598,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7619,7 +7619,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7640,7 +7640,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7714,7 +7714,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7820,7 +7820,7 @@
         "name": "stacking_breakpoint"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7929,7 +7929,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -7985,7 +7985,7 @@
     "previews": [
 
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   },
@@ -8035,7 +8035,7 @@
         "name": "max_widths"
       }
     ],
-    "sub_components": [
+    "subcomponents": [
 
     ]
   }

@@ -48,7 +48,7 @@ module Primer
               **arg_data,
               "slots" => slots,
               "previews" => (preview_data || {}).fetch("examples", []),
-              "sub_components" => []
+              "subcomponents" => []
             }
           end
 
@@ -70,7 +70,7 @@ module Primer
             parent_docs = component_docs[parent_class]
             next unless parent_docs
 
-            parent_docs["sub_components"] << {
+            parent_docs["subcomponents"] << {
               "fully_qualified_name" => component.name
             }
           end
