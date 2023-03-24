@@ -43,13 +43,13 @@ module Primer
               }
             end
 
-            arg_data.merge!(
+            memo[component] = {
+              "fully_qualified_name" => component.name,
+              **arg_data,
               "slots" => slots,
               "previews" => (preview_data || {}).fetch("examples", []),
               "sub_components" => []
-            )
-
-            memo[component] = arg_data
+            }
           end
 
           statuses = Primer::Status::Dsl::STATUSES.keys.map(&:to_s).map(&:capitalize)
@@ -70,9 +70,7 @@ module Primer
             parent_docs = component_docs[parent_class]
             next unless parent_docs
 
-            if (child_docs = component_docs.delete(component))
-              parent_docs["sub_components"] << child_docs
-            end
+            parent_docs["sub_components"] << component.name
           end
 
           component_docs.values
