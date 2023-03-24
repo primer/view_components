@@ -70,7 +70,9 @@ module Primer
             parent_docs = component_docs[parent_class]
             next unless parent_docs
 
-            parent_docs["sub_components"] << component.name
+            parent_docs["sub_components"] << {
+              "fully_qualified_name" => component.name
+            }
           end
 
           component_docs.values

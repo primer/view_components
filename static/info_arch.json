@@ -173,9 +173,15 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::ActionList::Divider",
-      "Primer::Alpha::ActionList::Heading",
-      "Primer::Alpha::ActionList::Item"
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Heading"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Item"
+      }
     ]
   },
   {
@@ -564,7 +570,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::AutoComplete::Item"
+      {
+        "fully_qualified_name": "Primer::Alpha::AutoComplete::Item"
+      }
     ]
   },
   {
@@ -1192,9 +1200,15 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::Dialog::Body",
-      "Primer::Alpha::Dialog::Header",
-      "Primer::Alpha::Dialog::Footer"
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Body"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Header"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Footer"
+      }
     ]
   },
   {
@@ -1406,8 +1420,12 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::Dropdown::Menu::Item",
-      "Primer::Alpha::Dropdown::Menu"
+      {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item"
+      }
     ]
   },
   {
@@ -1977,8 +1995,12 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::Layout::Sidebar",
-      "Primer::Alpha::Layout::Main"
+      {
+        "fully_qualified_name": "Primer::Alpha::Layout::Sidebar"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Layout::Main"
+      }
     ]
   },
   {
@@ -2321,8 +2343,12 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::NavList::Group",
-      "Primer::Alpha::NavList::Item"
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Group"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Item"
+      }
     ]
   },
   {
@@ -2860,9 +2886,15 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::Overlay::Footer",
-      "Primer::Alpha::Overlay::Body",
-      "Primer::Alpha::Overlay::Header"
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body"
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Header"
+      }
     ]
   },
   {
@@ -3277,7 +3309,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Alpha::SegmentedControl::Item"
+      {
+        "fully_qualified_name": "Primer::Alpha::SegmentedControl::Item"
+      }
     ]
   },
   {
@@ -4770,7 +4804,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Beta::AutoComplete::Item"
+      {
+        "fully_qualified_name": "Primer::Beta::AutoComplete::Item"
+      }
     ]
   },
   {
@@ -5367,7 +5403,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Beta::BorderBox::Header"
+      {
+        "fully_qualified_name": "Primer::Beta::BorderBox::Header"
+      }
     ]
   },
   {
@@ -5462,7 +5500,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Beta::Breadcrumbs::Item"
+      {
+        "fully_qualified_name": "Primer::Beta::Breadcrumbs::Item"
+      }
     ]
   },
   {
@@ -7166,7 +7206,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Beta::TimelineItem::Badge"
+      {
+        "fully_qualified_name": "Primer::Beta::TimelineItem::Badge"
+      }
     ]
   },
   {
@@ -7266,7 +7308,9 @@
       }
     ],
     "sub_components": [
-      "Primer::Beta::Truncate::TruncateText"
+      {
+        "fully_qualified_name": "Primer::Beta::Truncate::TruncateText"
+      }
     ]
   },
   {
