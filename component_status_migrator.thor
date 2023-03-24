@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "thor"
-require "active_support/core_ext/string/inflections"
 
 # :nodoc:
 class ComponentVersion
