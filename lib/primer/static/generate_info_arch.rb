@@ -45,6 +45,7 @@ module Primer
 
             memo[component] = {
               "fully_qualified_name" => component.name,
+              "description" => docs.base_docstring,
               **arg_data,
               "slots" => slots,
               "previews" => (preview_data || {}).fetch("examples", []),

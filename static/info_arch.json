@@ -1,6 +1,7 @@
 [
   {
     "fully_qualified_name": "Primer::Alpha::ActionList",
+    "description": "An ActionList is a styled list of links. It acts as the base component for many\nother menu-type components, including `ActionMenu` and `SelectPanel`, as well as\nthe navigational component `NavList`.\n\nEach item in an action list can be augmented by specifying corresponding leading\nand/or trailing visuals.",
     "component": "ActionList",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -174,39 +175,8 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
+        "description": "Heading used to describe each sub list within an action list.",
         "component": "ActionList::Heading",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -269,6 +239,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item",
+        "description": "An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters.",
         "component": "ActionList::Item",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -444,11 +415,45 @@
         "subcomponents": [
 
         ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
       }
     ]
   },
   {
     "fully_qualified_name": "Primer::Alpha::AutoComplete",
+    "description": "Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the\ninput field. This list is populated by server search results.",
     "component": "AutoComplete",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -563,6 +568,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::AutoComplete::Item",
+        "description": "Use `AutoCompleteItem` to list results of an auto-completed search.",
         "component": "AutoComplete::Item",
         "status": "deprecated",
         "a11y_reviewed": false,
@@ -609,6 +615,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Banner",
+    "description": "Use `Banner` to highlight important information.",
     "component": "Banner",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -717,6 +724,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ButtonMarketing",
+    "description": "Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.",
     "component": "ButtonMarketing",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -786,6 +794,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::CheckBox",
+    "description": "Check boxes are true/false inputs rendered as `<input type=\"checkbox\">` in HTML.\n\n## Schemes\n\nCheck boxes can submit values to the server using one of two schemes, either `:array`\nor `:boolean` (the default). Check boxes with a scheme of `:boolean` function like normal\nHTML check boxes. If they are checked, a value of \"1\" is sent to the server; if they are\nunchecked, a value of \"0\" is sent to the server. The checked and unchecked values can be\ncustomized via the `:value` and `:unchecked_value` arguments respectively.\n\nWhereas `:boolean` check boxes must have unique names, `:array` check boxes all have the\nsame name. On form submission, Rails will aggregate the values of the check boxes with the\nsame name and provide them to the controller as an array. If `:scheme:` is `:array`, the\n`:value` argument must also be provided. The `:unchecked_value` argument is ignored. If a\ncheck box is checked on submit, its corresponding value will appear in the array. If it is\nnot checked, its value will not appear in the array.\n\n## Caption templates\n\nCaption templates for `:array`-type check boxes work a little differently than they do for\nother input types. Because the name must be the same for all check boxes that make up an\narray, caption template file names are comprised of both the name _and_ the value of each\ncheck box. For example, a check box with the name `foo` and value `bar` must have a caption\ntemplate named `foo_bar_caption.html.erb`.\n\n## Nested Forms\n\nCheck boxes can have \"nested\" forms that are rendered below the caption. A common use-case\nis a form that is hidden until the check box is checked. Nested forms are indented slightly\nto align with the label and caption.\n\nDefine a nested form via the `#nested_form` method, which is expected to return an instance\nof a Primer form (see the usage section below).\n\nAny fields defined in the nested form are submitted along with the parent form's fields.\n\n**NOTE**: Check boxes do not automatically show or hide nested forms. If such behavior is\ndesired, it must be done by hand.",
     "component": "CheckBox",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -952,6 +961,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::CheckBoxGroup",
+    "description": "Check box groups consist of one or more related check boxes.",
     "component": "CheckBoxGroup",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1016,6 +1026,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Dialog",
+    "description": "A `Dialog` is used to remove the user from the main application flow,\nto confirm actions, ask for disambiguation or to present small forms.",
     "component": "Dialog",
     "status": "alpha",
     "a11y_reviewed": true,
@@ -1190,6 +1201,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
         "component": "Dialog::Body",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1216,6 +1228,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
+        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
         "component": "Dialog::Header",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1266,6 +1279,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
+        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
         "component": "Dialog::Footer",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1300,6 +1314,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Dropdown",
+    "description": "`Dropdown` is a lightweight context menu for housing navigation and actions.\nThey're great for instances where you don't need the full power (and code) of the SelectMenu.",
     "component": "Dropdown",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1400,7 +1415,30 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
+        "description": "Items to be rendered in the `Dropdown` menu.",
+        "component": "Dropdown::Menu::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "DropdownMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
+        "description": "This component is part of `Dropdown` and should not be\nused as a standalone component.",
         "component": "Dropdown::Menu",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -1465,32 +1503,12 @@
         "subcomponents": [
 
         ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
-        "component": "Dropdown::Menu::Item",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "DropdownMenuItem",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
       }
     ]
   },
   {
     "fully_qualified_name": "Primer::Alpha::FormButton",
+    "description": "A button input rendered using the HTML `<button type=\"button\">` tag.\n\nThis component wraps the Primer button component and supports the same slots and arguments.",
     "component": "FormButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1559,6 +1577,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::FormControl",
+    "description": "Wraps an input (or arbitrary content) with a label above and a caption and validation message beneath.\nNOTE: This `FormControl` component is designed for wrapping inputs that aren't supported by the Primer\nforms framework.",
     "component": "FormControl",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1648,6 +1667,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::HellipButton",
+    "description": "Use `HellipButton` to render a button with a hellip. Often used for hidden text expanders.",
     "component": "HellipButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1689,6 +1709,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::HiddenTextExpander",
+    "description": "Use `HiddenTextExpander` to indicate and toggle hidden text.",
     "component": "HiddenTextExpander",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1736,6 +1757,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Image",
+    "description": "Use `Image` to render images.",
     "component": "Image",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1780,6 +1802,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ImageCrop",
+    "description": "A client-side mechanism to crop images.",
     "component": "ImageCrop",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1843,6 +1866,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Layout",
+    "description": "`Layout` provides foundational patterns for responsive pages.\n`Layout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.\n On smaller screens, `Layout` uses vertically stacked rows to display content.\n\n`Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Sidebar`side-by-side (on a desktop of tablet device, per instance);\nor it flows as a row, when `Main` and `Sidebar` are stacked vertically (e.g. on a mobile device).\n`Layout` should always work in any screen size.",
     "component": "Layout",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1970,6 +1994,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Layout::Sidebar",
+        "description": "The layout's sidebar content.",
         "component": "Layout::Sidebar",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -1991,6 +2016,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Layout::Main",
+        "description": "The layout's main content.",
         "component": "Layout::Main",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2025,6 +2051,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Menu",
+    "description": "Use `Menu` to create vertical lists of navigational links.",
     "component": "Menu",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2101,6 +2128,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::MultiInput",
+    "description": "Multi inputs are comprised of multiple constituent fields, only one of which is visible\nat a given time. They are designed for situations where constituent inputs are shown or\nhidden based on the value of another field. For example, consider an address form. If\nthe user chooses the USA as the country, the region input should show a list of states\nand US territories; if the user instead chooses Canada, the region input should show a\nlist of Canadian provinces, etc.\n\nUnlike everywhere else in Primer forms, constituent inputs are not directly passed a\n`name` attribute. Instead, developers pass a `name` attribute to the multi input itself.\nThe multi input then automatically assigns each constituent input the same name. This is\ndone so that the multi input looks like a single field from the server's point of view.\nUsing the address form example from earlier, this means only one value - either a US state\nor a Canadian provice - will be submitted to the server under the `region` key.\n\nActually, that's not quite true. Constituent inputs _are_ given a `name`, but it's added to\nthe input as the `data-name` attribute as a way to identify constituent inputs, and will not\nbe sent to the server.",
     "component": "MultiInput",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2253,6 +2281,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::NavList",
+    "description": "`NavList` provides a simple way to render side navigation, i.e. navigation\nthat appears to the left or right side of some main content. Each group in a\nnav list is a list of links.\n\nNav list groups can contain sub items. Rather than navigating to a URL, groups\nwith sub items expand and collapse on click. To indicate this functionality, the\ngroup will automatically render with a trailing chevron icon that changes direction\nwhen the group expands and collapses.\n\nNav list items appear visually active when selected. Each nav item must have one\nor more ID values that determine which item will appear selected. Use the\n`selected_item_id` argument to select the appropriate item.",
     "component": "NavList",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2312,6 +2341,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee <%= link_to_component(Primer::Alpha::NavList) %> for usage examples.",
         "component": "NavList::Group",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2397,6 +2427,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
+        "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
         "component": "NavList::Item",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2517,6 +2548,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Navigation::Tab",
+    "description": "This component is part of navigation components such as `Primer::Alpha::TabNav`\nand `Primer::Alpha::UnderlineNav` and should not be used by itself.",
     "component": "Navigation::Tab",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2626,6 +2658,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::OcticonSymbols",
+    "description": "OcticonSymbols renders a symbol dictionary using a list of <%= link_to_octicons %>.",
     "component": "OcticonSymbols",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2652,6 +2685,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Overlay",
+    "description": "Overlay components codify design patterns related to floating surfaces such\nas dialogs and menus. They are private components intended to be used by\nspecialized components, and mostly contain presentational logic and\nbehavior.",
     "component": "Overlay",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2848,33 +2882,8 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "component": "Overlay::Body",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
         "component": "Overlay::Footer",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2912,7 +2921,35 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
+        "component": "Overlay::Body",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
         "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2971,6 +3008,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::RadioButton",
+    "description": "Radio buttons represent one of a set of options and are rendered as `<input type=\"radio\">` in HTML.\n**NOTE**: You probably want to use the <%= link_to_component(Primer::Alpha::RadioButtonGroup) %>\ncomponent instead, as it allows rendering a group of options.",
     "component": "RadioButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3113,6 +3151,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::RadioButtonGroup",
+    "description": "A group of mutually exclusive radio buttons.",
     "component": "RadioButtonGroup",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3177,6 +3216,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::SegmentedControl",
+    "description": "Use a segmented control to let users select an option from a short list and immediately apply the selection",
     "component": "SegmentedControl",
     "status": "alpha",
     "a11y_reviewed": true,
@@ -3263,6 +3303,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::SegmentedControl::Item",
+        "description": "SegmentedControl::Item is a private component that is only used by SegmentedControl\nIt wraps the Button and IconButton components to provide the correct styles",
         "component": "SegmentedControl::Item",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -3309,6 +3350,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Select",
+    "description": "Select lists are single-line text inputs rendered as `<select>` tags in HTML.",
     "component": "Select",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3475,6 +3517,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::SubmitButton",
+    "description": "A submit button input rendered using the HTML `<button type=\"submit\">` tag.\n\nThis component wraps the Primer button component and supports the same slots and arguments.",
     "component": "SubmitButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3543,6 +3586,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabContainer",
+    "description": "Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.\nIt only provides the tab functionality. If you want styled Tabs you can look at <%= link_to_component(Primer::Alpha::TabNav) %>.\n\nThis component requires javascript.",
     "component": "TabContainer",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3569,6 +3613,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabNav",
+    "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use <%= link_to_component(Primer::Alpha::TabPanels) %> instead.",
     "component": "TabNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3661,6 +3706,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabPanels",
+    "description": "Use `TabPanels` for tabs with panel navigation.",
     "component": "TabPanels",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3760,6 +3806,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TextArea",
+    "description": "Text areas are multi-line text inputs rendered using the `<textarea>` tag in HTML.",
     "component": "TextArea",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3908,6 +3955,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TextField",
+    "description": "Text fields are single-line text inputs rendered as `<input type=\"text\">` in HTML.",
     "component": "TextField",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4114,6 +4162,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ToggleSwitch",
+    "description": "The ToggleSwitch component is a button that toggles between two boolean states. It is meant to be used for\nsettings that should cause an immediate update. If configured with a \"src\" attribute, the component will\nmake a POST request containing data of the form \"value: 0 | 1\".",
     "component": "ToggleSwitch",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4230,6 +4279,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Tooltip",
+    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::Beta::Link)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
     "component": "Tooltip",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4314,6 +4364,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlineNav",
+    "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use <%= link_to_component(Primer::Alpha::UnderlinePanels) %> instead.",
     "component": "UnderlineNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4413,6 +4464,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlinePanels",
+    "description": "Use `UnderlinePanels` to style tabs with an associated panel and an underlined selected state.",
     "component": "UnderlinePanels",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4513,6 +4565,7 @@
   },
   {
     "fully_qualified_name": "Primer::BaseComponent",
+    "description": "All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).\n\nUnder the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).\n\n## Responsive values\n\nTo apply different values across responsive breakpoints, pass an array with up to five values in the order `[default, small, medium, large, xlarge]`. To skip a breakpoint, pass `nil`.\n\nFor example:\n\n```erb\n<%= render Primer::Beta::Heading.new(mt: [0, nil, nil, 4, 2]) do %>\n  Hello world\n<% end %>\n```\n\nRenders:\n\n```html\n<h1 class=\"mt-0 mt-lg-4 mt-xl-2\">Hello world</h1>\n```",
     "component": "Base",
     "status": "beta",
     "a11y_reviewed": false,
@@ -4534,6 +4587,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::AutoComplete",
+    "description": "Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the\ninput field. This list is populated by server search results.",
     "component": "AutoComplete",
     "status": "beta",
     "a11y_reviewed": false,
@@ -4755,6 +4809,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::AutoComplete::Item",
+        "description": "Use `AutoCompleteItem` to list results of an auto-completed search.",
         "component": "AutoComplete::Item",
         "status": "beta",
         "a11y_reviewed": false,
@@ -4862,6 +4917,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Avatar",
+    "description": "`Avatar` can be used to represent users and organizations on GitHub.\n\n- Use the default circle avatar for users, and the square shape\nfor organizations or any other non-human avatars.\n- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.\n- Set `size` to update the height and width of the `Avatar` in pixels.\n- To stack multiple avatars together, use <%= link_to_component(Primer::Beta::AvatarStack) %>.",
     "component": "Avatar",
     "status": "beta",
     "a11y_reviewed": false,
@@ -4942,6 +4998,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::AvatarStack",
+    "description": "Use `AvatarStack` to stack multiple avatars together.",
     "component": "AvatarStack",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5022,6 +5079,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::BaseButton",
+    "description": "Use `BaseButton` to render an unstyled `<button>` tag that can be customized.",
     "component": "BaseButton",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5075,6 +5133,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Blankslate",
+    "description": "Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.",
     "component": "Blankslate",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5245,6 +5304,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::BorderBox",
+    "description": "`BorderBox` is a Box component with a border.",
     "component": "BorderBox",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5351,6 +5411,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::BorderBox::Header",
+        "description": "`BorderBox::Header` is used inside `BorderBox` to render its header slot.",
         "component": "BorderBox::Header",
         "status": "beta",
         "a11y_reviewed": false,
@@ -5396,6 +5457,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Breadcrumbs",
+    "description": "Use `Breadcrumbs` to display page hierarchy.\n\n#### Known issues\n\n##### Responsiveness\n\n`Breadcrumbs` is not optimized for responsive designs.",
     "component": "Breadcrumbs",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5445,6 +5507,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::Breadcrumbs::Item",
+        "description": "This component is part of `Primer::Beta::Breadcrumbs` and should not be\nused as a standalone component.",
         "component": "Breadcrumbs::Item",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -5468,6 +5531,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Button",
+    "description": "Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.",
     "component": "Button",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5652,6 +5716,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::ButtonGroup",
+    "description": "Use `ButtonGroup` to render a series of buttons.",
     "component": "ButtonGroup",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5710,6 +5775,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopy",
+    "description": "Use `ClipboardCopy` to copy element text content or input values to the clipboard.",
     "component": "ClipboardCopy",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5773,6 +5839,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::CloseButton",
+    "description": "Use `CloseButton` to render an `×` without default button styles.\n\n[0]: https://primer.style/view-components/system-arguments#html-attributes",
     "component": "CloseButton",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5814,6 +5881,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Counter",
+    "description": "Use `Counter` to add a count to navigational elements and buttons.",
     "component": "Counter",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5900,6 +5968,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Details",
+    "description": "Use `DetailsComponent` to reveal content after clicking a button.",
     "component": "Details",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5992,6 +6061,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Flash",
+    "description": "Use `Flash` to inform users of successful or pending actions.",
     "component": "Flash",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6078,6 +6148,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Heading",
+    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using <%= link_to_component(Primer::Beta::Text) %> with relevant <%= link_to_typography_docs %>\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
     "component": "Heading",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6119,6 +6190,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::IconButton",
+    "description": "Use `IconButton` to render Icon-only buttons without the default button styles.\n\n`IconButton` will always render with a tooltip unless the tag is `:summary`.\n`IconButton` will always render with a tooltip unless the tag is `:summary`.",
     "component": "IconButton",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6224,6 +6296,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Label",
+    "description": "Use `Label` to add contextual metadata to a design.",
     "component": "Label",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6304,6 +6377,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Link",
+    "description": "Use `Link` for navigating from one page to another. `Link` styles anchor tags with default blue styling and hover text-decoration.",
     "component": "Link",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6396,6 +6470,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Markdown",
+    "description": "Use `Markdown` to wrap markdown content.",
     "component": "Markdown",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6437,6 +6512,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Octicon",
+    "description": "`Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.\n`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.",
     "component": "Octicon",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6496,6 +6572,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Popover",
+    "description": "Use `Popover` to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.\n\nBy default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.",
     "component": "Popover",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6582,6 +6659,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::ProgressBar",
+    "description": "Use `ProgressBar` to visualize task completion.",
     "component": "ProgressBar",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6651,6 +6729,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::RelativeTime",
+    "description": "Formats a timestamp as a localized string or as relative text that auto-updates in the user's browser.",
     "component": "RelativeTime",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6803,6 +6882,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Spinner",
+    "description": "Use `Spinner` to let users know that content is being loaded.",
     "component": "Spinner",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6850,6 +6930,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::State",
+    "description": "Use `State` for rendering the status of an item.",
     "component": "State",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6919,6 +7000,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Subhead",
+    "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::Beta::Link) %>.",
     "component": "Subhead",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7028,6 +7110,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Text",
+    "description": "`Text` is a wrapper component that will apply typography styles to the text inside.",
     "component": "Text",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7069,6 +7152,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::TimelineItem",
+    "description": "Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.",
     "component": "TimelineItem",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7148,6 +7232,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::TimelineItem::Badge",
+        "description": "This component is part of `Primer::Beta::TimelineItem` and should not be\nused as a standalone component.",
         "component": "TimelineItem::Badge",
         "status": "beta",
         "a11y_reviewed": false,
@@ -7171,6 +7256,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Truncate",
+    "description": "Use `Truncate` to shorten overflowing text with an ellipsis.",
     "component": "Truncate",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7247,6 +7333,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Beta::Truncate::TruncateText",
+        "description": "This component is part of `Primer::Beta::Truncate` and should not be\nused as a standalone component.",
         "component": "Truncate::TruncateText",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -7270,6 +7357,7 @@
   },
   {
     "fully_qualified_name": "Primer::BlankslateComponent",
+    "description": "Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.",
     "component": "Blankslate",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -7397,6 +7485,7 @@
   },
   {
     "fully_qualified_name": "Primer::Box",
+    "description": "`Box` is a basic wrapper component for most layout related needs.",
     "component": "Box",
     "status": "stable",
     "a11y_reviewed": false,
@@ -7423,6 +7512,7 @@
   },
   {
     "fully_qualified_name": "Primer::ButtonComponent",
+    "description": "Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.",
     "component": "Button",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -7538,6 +7628,7 @@
   },
   {
     "fully_qualified_name": "Primer::ConditionalWrapper",
+    "description": "Conditionally renders a `Primer::BaseComponent` around the given content. If the given condition\nis true, a `Primer::BaseComponent` will render around the content. If the condition is false, only\nthe content is rendered.",
     "component": "ConditionalWrapper",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -7559,6 +7650,7 @@
   },
   {
     "fully_qualified_name": "Primer::Content",
+    "description": "Use `Content` as a helper to render content passed to a slot without adding any tags.",
     "component": "Content",
     "status": "stable",
     "a11y_reviewed": false,
@@ -7580,6 +7672,7 @@
   },
   {
     "fully_qualified_name": "Primer::IconButton",
+    "description": "Use `IconButton` to render Icon-only buttons without the default button styles.\n\n`IconButton` will always render with a tooltip unless the tag is `:summary`.",
     "component": "IconButton",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -7654,6 +7747,7 @@
   },
   {
     "fully_qualified_name": "Primer::LayoutComponent",
+    "description": "Use `Layout` to build a main/sidebar layout.",
     "component": "Layout",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -7760,6 +7854,7 @@
   },
   {
     "fully_qualified_name": "Primer::Navigation::TabComponent",
+    "description": "nodoc",
     "component": "Navigation::Tab",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -7869,6 +7964,7 @@
   },
   {
     "fully_qualified_name": "Primer::Tooltip",
+    "description": "`Tooltip` is a wrapper component that will apply a tooltip to the provided content.",
     "component": "Tooltip",
     "status": "deprecated",
     "a11y_reviewed": false,
@@ -7925,6 +8021,7 @@
   },
   {
     "fully_qualified_name": "Primer::Truncate",
+    "description": "Use `Truncate` to shorten overflowing text with an ellipsis.",
     "component": "Truncate",
     "status": "beta",
     "a11y_reviewed": false,
