@@ -238,6 +238,39 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item",
         "description": "An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters.",
         "component": "ActionList::Item",
@@ -408,39 +441,6 @@
               }
             ]
           }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
         ],
         "previews": [
 
@@ -1201,7 +1201,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body",
-        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See [Dialog](/components/alpha/dialog).",
         "component": "Dialog::Body",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1228,7 +1228,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
-        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
+        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See [Dialog](/components/alpha/dialog).",
         "component": "Dialog::Header",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1279,7 +1279,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
-        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.",
+        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See [Dialog](/components/alpha/dialog).",
         "component": "Dialog::Footer",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1415,28 +1415,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
-        "description": "Items to be rendered in the `Dropdown` menu.",
-        "component": "Dropdown::Menu::Item",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "DropdownMenuItem",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
         "description": "This component is part of `Dropdown` and should not be\nused as a standalone component.",
         "component": "Dropdown::Menu",
@@ -1496,6 +1474,28 @@
               }
             ]
           }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
+        "description": "Items to be rendered in the `Dropdown` menu.",
+        "component": "Dropdown::Menu::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "DropdownMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
         ],
         "previews": [
 
@@ -2341,7 +2341,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee <%= link_to_component(Primer::Alpha::NavList) %> for usage examples.",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee [NavList](/components/alpha/navlist) for usage examples.",
         "component": "NavList::Group",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2658,7 +2658,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::OcticonSymbols",
-    "description": "OcticonSymbols renders a symbol dictionary using a list of <%= link_to_octicons %>.",
+    "description": "OcticonSymbols renders a symbol dictionary using a list of [Octicon](https://primer.style/octicons/).",
     "component": "OcticonSymbols",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -2883,7 +2883,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See [Overlay](/components/alpha/overlay).",
         "component": "Overlay::Footer",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2922,7 +2922,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See [Overlay](/components/alpha/overlay).",
         "component": "Overlay::Body",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2949,7 +2949,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See <%= link_to_component(Primer::Alpha::Overlay) %>.",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See [Overlay](/components/alpha/overlay).",
         "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -3008,7 +3008,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::RadioButton",
-    "description": "Radio buttons represent one of a set of options and are rendered as `<input type=\"radio\">` in HTML.\n**NOTE**: You probably want to use the <%= link_to_component(Primer::Alpha::RadioButtonGroup) %>\ncomponent instead, as it allows rendering a group of options.",
+    "description": "Radio buttons represent one of a set of options and are rendered as `<input type=\"radio\">` in HTML.\n**NOTE**: You probably want to use the [RadioButtonGroup](/components/alpha/radiobuttongroup)\ncomponent instead, as it allows rendering a group of options.",
     "component": "RadioButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3586,7 +3586,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabContainer",
-    "description": "Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.\nIt only provides the tab functionality. If you want styled Tabs you can look at <%= link_to_component(Primer::Alpha::TabNav) %>.\n\nThis component requires javascript.",
+    "description": "Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.\nIt only provides the tab functionality. If you want styled Tabs you can look at [TabNav](/components/alpha/tabnav).\n\nThis component requires javascript.",
     "component": "TabContainer",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3613,7 +3613,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabNav",
-    "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use <%= link_to_component(Primer::Alpha::TabPanels) %> instead.",
+    "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use [TabPanels](/components/alpha/tabpanels) instead.",
     "component": "TabNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4279,7 +4279,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Tooltip",
-    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::Beta::Link)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
+    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of [Button](/components/button), [Link](/components/beta/link), or [IconButton](/components/iconbutton). Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
     "component": "Tooltip",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4364,7 +4364,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlineNav",
-    "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use <%= link_to_component(Primer::Alpha::UnderlinePanels) %> instead.",
+    "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use [UnderlinePanels](/components/alpha/underlinepanels) instead.",
     "component": "UnderlineNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4917,7 +4917,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Avatar",
-    "description": "`Avatar` can be used to represent users and organizations on GitHub.\n\n- Use the default circle avatar for users, and the square shape\nfor organizations or any other non-human avatars.\n- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.\n- Set `size` to update the height and width of the `Avatar` in pixels.\n- To stack multiple avatars together, use <%= link_to_component(Primer::Beta::AvatarStack) %>.",
+    "description": "`Avatar` can be used to represent users and organizations on GitHub.\n\n- Use the default circle avatar for users, and the square shape\nfor organizations or any other non-human avatars.\n- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.\n- Set `size` to update the height and width of the `Avatar` in pixels.\n- To stack multiple avatars together, use [AvatarStack](/components/beta/avatarstack).",
     "component": "Avatar",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6148,7 +6148,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Heading",
-    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using <%= link_to_component(Primer::Beta::Text) %> with relevant <%= link_to_typography_docs %>\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
+    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using [Text](/components/beta/text) with relevant [Typography](/system-arguments#typography)\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
     "component": "Heading",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6512,7 +6512,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Octicon",
-    "description": "`Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.\n`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.",
+    "description": "`Octicon` renders an [Octicon](https://primer.style/octicons/) with [System arguments](/system-arguments).\n`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.",
     "component": "Octicon",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7000,7 +7000,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Subhead",
-    "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::Beta::Link) %>.",
+    "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use [Button](/components/button) or [Link](/components/beta/link).",
     "component": "Subhead",
     "status": "beta",
     "a11y_reviewed": false,

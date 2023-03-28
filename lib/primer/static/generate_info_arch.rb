@@ -43,9 +43,15 @@ module Primer
               }
             end
 
+            description = if component == Primer::BaseComponent
+              docs.base_docstring
+            else
+              view_context.render(inline: docs.base_docstring)
+            end
+
             memo[component] = {
               "fully_qualified_name" => component.name,
-              "description" => docs.base_docstring,
+              "description" => description,
               **arg_data,
               "slots" => slots,
               "previews" => (preview_data || {}).fetch("examples", []),
