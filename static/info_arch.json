@@ -66,6 +66,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/playground",
@@ -230,6 +233,9 @@
         "slots": [
 
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -261,6 +267,9 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -442,6 +451,64 @@
             ]
           }
         ],
+        "methods": [
+          {
+            "name": "id",
+            "description": "Returns the value of attribute id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "list",
+            "description": "Returns the value of attribute list.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "href",
+            "description": "Returns the value of attribute href.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "active",
+            "description": "Returns the value of attribute active.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "disabled",
+            "description": "Returns the value of attribute disabled.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "parent",
+            "description": "Returns the value of attribute parent.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "active?",
+            "description": "Returns the value of attribute active.\nWhether or not this item is active.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "disabled?",
+            "description": "Returns the value of attribute disabled.\nWhether or not this item is disabled.",
+            "parameters": [
+
+            ]
+          }
+        ],
         "previews": [
 
         ],
@@ -548,6 +615,20 @@
         ]
       }
     ],
+    "methods": [
+      {
+        "name": "label_classes",
+        "description": "Private: determines the label classes based on component configration.\n\nIf the label is not visible, return an empty string.",
+        "parameters": [
+          {
+            "name": "args",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The component configuration."
+          }
+        ]
+      }
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
@@ -602,6 +683,9 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -680,6 +764,9 @@
 
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -764,6 +851,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -938,6 +1028,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/check_box/playground",
@@ -1002,6 +1095,26 @@
     ],
     "slots": [
 
+    ],
+    "methods": [
+      {
+        "name": "check_box",
+        "description": "Adds a check box to the group.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [CheckBox](/components/alpha/checkbox)."
+          },
+          {
+            "name": "block",
+            "type": "Proc",
+            "default": "N/A",
+            "description": "The block accepted by [CheckBox](/components/alpha/checkbox)."
+          }
+        ]
+      }
     ],
     "previews": [
       {
@@ -1151,6 +1264,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/dialog/playground",
@@ -1219,6 +1335,9 @@
         "slots": [
 
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -1270,6 +1389,9 @@
         "slots": [
 
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -1301,6 +1423,9 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -1385,6 +1510,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -1475,6 +1603,9 @@
             ]
           }
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -1495,6 +1626,9 @@
 
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -1566,6 +1700,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -1644,6 +1781,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/form_control/playground",
@@ -1689,6 +1829,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -1737,6 +1880,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -1793,6 +1939,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -1842,6 +1991,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -1949,6 +2101,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/layout/playground",
@@ -2007,6 +2162,9 @@
         "slots": [
 
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -2038,6 +2196,9 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -2109,6 +2270,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -2248,6 +2412,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/multi_input/playground",
@@ -2316,6 +2483,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/playground",
@@ -2339,92 +2509,6 @@
       }
     ],
     "subcomponents": [
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee [NavList](/components/alpha/navlist) for usage examples.",
-        "component": "NavList::Group",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "NavListGroup",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
-        "parameters": [
-          {
-            "name": "selected_item_id",
-            "type": "Symbol",
-            "default": "`nil`",
-            "description": "The ID of the currently selected item. Used internally."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-          {
-            "name": "show_more_item",
-            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
-            "parameters": [
-              {
-                "name": "src",
-                "type": "String",
-                "default": "N/A",
-                "description": "The URL to query for additional pages of list items."
-              },
-              {
-                "name": "pages",
-                "type": "Integer",
-                "default": "N/A",
-                "description": "The total number of pages in the result set."
-              },
-              {
-                "name": "component_klass",
-                "type": "Class",
-                "default": "N/A",
-                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
-              },
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
-              }
-            ]
-          },
-          {
-            "name": "items",
-            "description": "Items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
-              }
-            ]
-          },
-          {
-            "name": "heading",
-            "description": "Heading text rendered above the list of items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by [ActionList::Heading](/components/alpha/actionlistheading)."
-              }
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
         "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
@@ -2534,6 +2618,138 @@
                 "default": "N/A",
                 "description": "The arguments accepted by [Tooltip](/components/alpha/tooltip)."
               }
+            ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "selected_by_ids",
+            "description": "Returns the value of attribute selected_by_ids.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "sub_item",
+            "description": "Returns the value of attribute sub_item.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "sub_item?",
+            "description": "Returns the value of attribute sub_item.\nWhether or not this item is nested under a parent item.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "expand!",
+            "description": "Cause this item to show its list of sub items when rendered.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "item_active?",
+            "description": "Normally it would be easier to simply ask each item for its active status, eg.\nitems.any?(&:active?), but unfortunately the view context is not set on each\nitem until _after_ the parent's before_render, etc methods have been called.\nThis means helper methods like current_page? will blow up with an error, since\n`helpers` is simply an alias for the view context (i.e. an instance of\nActionView::Base). Since we know the view context for the parent object must\nbe set before `before_render` is invoked, we can call helper methods here in\nthe parent and bypass the problem entirely. Maybe not the most OO approach,\nbut it works.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Group",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee [NavList](/components/alpha/navlist) for usage examples.",
+        "component": "NavList::Group",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListGroup",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+          {
+            "name": "show_more_item",
+            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The URL to query for additional pages of list items."
+              },
+              {
+                "name": "pages",
+                "type": "Integer",
+                "default": "N/A",
+                "description": "The total number of pages in the result set."
+              },
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by [NavList::Item](/components/alpha/navlistitem)."
+              }
+            ]
+          },
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by [ActionList::Heading](/components/alpha/actionlistheading)."
+              }
+            ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "expand!",
+            "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
+            "parameters": [
+
             ]
           }
         ],
@@ -2649,6 +2865,15 @@
         ]
       }
     ],
+    "methods": [
+      {
+        "name": "selected",
+        "description": "Returns the value of attribute selected.",
+        "parameters": [
+
+        ]
+      }
+    ],
     "previews": [
 
     ],
@@ -2674,6 +2899,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -2858,6 +3086,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/overlay/playground",
@@ -2881,72 +3112,6 @@
       }
     ],
     "subcomponents": [
-      {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See [Overlay](/components/alpha/overlay).",
-        "component": "Overlay::Footer",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
-          },
-          {
-            "name": "align_content",
-            "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See [Overlay](/components/alpha/overlay).",
-        "component": "Overlay::Body",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
         "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See [Overlay](/components/alpha/overlay).",
@@ -2995,6 +3160,81 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See [Overlay](/components/alpha/overlay).",
+        "component": "Overlay::Footer",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "align_content",
+            "type": "Symbol",
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See [Overlay](/components/alpha/overlay).",
+        "component": "Overlay::Body",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -3128,6 +3368,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/radio_button/playground",
@@ -3192,6 +3435,26 @@
     ],
     "slots": [
 
+    ],
+    "methods": [
+      {
+        "name": "radio_button",
+        "description": "Adds a radio button to the group.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by [RadioButton](/components/alpha/radiobutton)."
+          },
+          {
+            "name": "block",
+            "type": "Proc",
+            "default": "N/A",
+            "description": "The block accepted by [RadioButton](/components/alpha/radiobutton)."
+          }
+        ]
+      }
     ],
     "previews": [
       {
@@ -3262,6 +3525,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -3337,6 +3603,9 @@
           }
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -3494,6 +3763,26 @@
     "slots": [
 
     ],
+    "methods": [
+      {
+        "name": "option",
+        "description": "Adds an option to the list.",
+        "parameters": [
+          {
+            "name": "label",
+            "type": "String",
+            "default": "N/A",
+            "description": "The user-facing label for the option."
+          },
+          {
+            "name": "value",
+            "type": "String",
+            "default": "N/A",
+            "description": "The value sent to the server on form submission."
+          }
+        ]
+      }
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/select/playground",
@@ -3577,6 +3866,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -3602,6 +3894,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -3677,6 +3972,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -3782,6 +4080,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -3930,6 +4231,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -4129,6 +4433,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/playground",
@@ -4214,6 +4521,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -4319,6 +4629,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -4441,6 +4754,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/underline_nav/playground",
@@ -4547,6 +4863,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/underline_panels/playground",
@@ -4576,6 +4895,9 @@
 
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -4723,6 +5045,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -4892,6 +5217,15 @@
             ]
           }
         ],
+        "methods": [
+          {
+            "name": "description_variant_class",
+            "description": "Description variant class.",
+            "parameters": [
+
+            ]
+          }
+        ],
         "previews": [
           {
             "inspect_path": "/lookbook/inspect/primer/beta/auto_complete_item/playground",
@@ -4963,6 +5297,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -5051,6 +5388,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/avatar_stack/playground",
@@ -5113,6 +5453,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -5245,6 +5588,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -5381,6 +5727,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/border_box/playground",
@@ -5446,6 +5795,9 @@
             ]
           }
         ],
+        "methods": [
+
+        ],
         "previews": [
 
         ],
@@ -5492,6 +5844,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/breadcrumbs/playground",
@@ -5519,6 +5874,46 @@
         ],
         "slots": [
 
+        ],
+        "methods": [
+          {
+            "name": "selected",
+            "description": "Returns the value of attribute selected.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "selected=",
+            "description": "Sets the attribute selected",
+            "parameters": [
+              {
+                "name": "value",
+                "type": null,
+                "default": "N/A",
+                "description": "the value to set the attribute selected to."
+              }
+            ]
+          },
+          {
+            "name": "href",
+            "description": "Returns the value of attribute href.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "href=",
+            "description": "Sets the attribute href",
+            "parameters": [
+              {
+                "name": "value",
+                "type": null,
+                "default": "N/A",
+                "description": "the value to set the attribute href to."
+              }
+            ]
+          }
         ],
         "previews": [
 
@@ -5637,6 +6032,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -5757,6 +6155,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button_group/playground",
@@ -5811,6 +6212,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/clipboard_copy/playground",
@@ -5861,6 +6265,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -5933,6 +6340,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -6033,6 +6443,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/details/playground",
@@ -6120,6 +6533,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/flash/playground",
@@ -6170,6 +6586,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -6268,6 +6687,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/icon_button/playground",
@@ -6342,6 +6764,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -6442,6 +6867,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/link/playground",
@@ -6492,6 +6920,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -6552,6 +6983,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -6631,6 +7065,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/popover/playground",
@@ -6705,6 +7142,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -6849,6 +7289,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/relative_time/playground",
@@ -6912,6 +7355,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/spinner/playground",
@@ -6970,6 +7416,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -7077,6 +7526,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/subhead/playground",
@@ -7132,6 +7584,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -7217,6 +7672,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/timeline_item/playground",
@@ -7243,6 +7701,9 @@
 
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -7303,6 +7764,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/truncate/playground",
@@ -7344,6 +7808,9 @@
 
         ],
         "slots": [
+
+        ],
+        "methods": [
 
         ],
         "previews": [
@@ -7476,6 +7943,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -7501,6 +7971,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -7619,6 +8092,22 @@
         ]
       }
     ],
+    "methods": [
+      {
+        "name": "icon",
+        "description": "remove alias when all buttons are migrated to new slot names",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "counter",
+        "description": "remove alias when all buttons are migrated to new slot names",
+        "parameters": [
+
+        ]
+      }
+    ],
     "previews": [
 
     ],
@@ -7641,6 +8130,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -7661,6 +8153,9 @@
 
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [
@@ -7738,6 +8233,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -7805,6 +8303,9 @@
           }
         ]
       }
+    ],
+    "methods": [
+
     ],
     "previews": [
       {
@@ -7955,6 +8456,9 @@
         ]
       }
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -8012,6 +8516,9 @@
     "slots": [
 
     ],
+    "methods": [
+
+    ],
     "previews": [
 
     ],
@@ -8037,6 +8544,9 @@
       }
     ],
     "slots": [
+
+    ],
+    "methods": [
 
     ],
     "previews": [

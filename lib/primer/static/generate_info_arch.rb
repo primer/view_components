@@ -5,6 +5,8 @@ require "json"
 module Primer
   module Static
     module GenerateInfoArch
+      SKIP_METHODS = %i(call before_render).freeze
+
       class << self
         def call
           component_docs = Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, memo|
@@ -20,26 +22,36 @@ module Primer
                 component_args["status"] == component.status.to_s
             end
 
-            slots = docs.slot_methods.map do |slot_method|
+            slot_docs = docs.slot_methods.map do |slot_method|
               param_tags = slot_method.tags(:param)
-
-              slot_args = param_tags.map do |tag|
-                default_value = Primer::Yard::DocsHelper.pretty_default_value(tag, component)
-
-                {
-                  "name" => tag.name,
-                  "type" => tag.types.join(", "),
-                  "default" => default_value,
-                  "description" => view_context.render(inline: tag.text.squish)
-                }
-              end
 
               {
                 "name" => slot_method.name,
                 "description" => if slot_method.base_docstring.to_s.present?
                   view_context.render(inline: slot_method.base_docstring)
                 end,
-                "parameters" => slot_args
+                "parameters" => serialize_params(param_tags, component)
+              }
+            end
+
+            mtds = docs.non_slot_methods.select do |mtd|
+              # binding.irb if component == Primer::Alpha::RadioButtonGroup && mtd.name == :merge_aria
+              next false unless mtd.base_docstring.to_s.present?
+              next false if SKIP_METHODS.include?(mtd.name)
+
+              method_location, _ = mtd.files.first
+              class_location, _ = docs.docs.files.first
+
+              method_location == class_location
+            end
+
+            method_docs = mtds.map do |mtd|
+              param_tags = mtd.tags(:param)
+
+              {
+                "name" => mtd.name,
+                "description" => view_context.render(inline: mtd.base_docstring),
+                "parameters" => serialize_params(param_tags, component)
               }
             end
 
@@ -53,7 +65,8 @@ module Primer
               "fully_qualified_name" => component.name,
               "description" => description,
               **arg_data,
-              "slots" => slots,
+              "slots" => slot_docs,
+              "methods" => method_docs,
               "previews" => (preview_data || {}).fetch("examples", []),
               "subcomponents" => []
             }
@@ -86,6 +99,19 @@ module Primer
         end
 
         private
+
+        def serialize_params(param_tags, component)
+          param_tags.map do |tag|
+            default_value = Primer::Yard::DocsHelper.pretty_default_value(tag, component)
+
+            {
+              "name" => tag.name,
+              "type" => tag.types ? tag.types.join(", ") : nil,
+              "default" => default_value,
+              "description" => view_context.render(inline: tag.text.squish)
+            }
+          end
+        end
 
         def previews
           @previews ||= JSON.parse(Static.read(:previews))
