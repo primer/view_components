@@ -35,7 +35,6 @@ module Primer
             end
 
             mtds = docs.non_slot_methods.select do |mtd|
-              # binding.irb if component == Primer::Alpha::RadioButtonGroup && mtd.name == :merge_aria
               next false unless mtd.base_docstring.to_s.present?
               next false if SKIP_METHODS.include?(mtd.name)
 
@@ -106,7 +105,7 @@ module Primer
 
             {
               "name" => tag.name,
-              "type" => tag.types ? tag.types.join(", ") : nil,
+              "type" => tag.types&.join(", ") || "",
               "default" => default_value,
               "description" => view_context.render(inline: tag.text.squish)
             }
