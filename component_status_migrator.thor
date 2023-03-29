@@ -337,9 +337,25 @@ class ComponentStatusMigrator < Thor::Group
     cmd = ["grep -rl #{name} ."]
     cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
-    cmd << "| xargs sed -i '' 's/#{old_version.fully_qualified_class_name}/#{new_version.fully_qualified_class_name}/g'"
+    cmd << "| xargs #{inline_sed} -e 's/#{old_version.fully_qualified_class_name}/#{new_version.fully_qualified_class_name}/g'"
 
     run(cmd.join(" "))
+  end
+
+  def inline_sed
+    # GNU and FreeBSD/Mac seds have mutually incompatible syntax for modifying
+    # files inline.
+    if using_gnu_sed?
+      "sed -i"
+    else
+      "sed -i ''"
+    end
+  end
+
+  def using_gnu_sed?
+    # GNU sed has a "--help" option and exits successfully when it's used;
+    # FreeBSD/Mac sed doesn't.
+    system("sed --help > /dev/null 2>&1")
   end
 
   def add_alias
