@@ -52,6 +52,12 @@ jobs:
       run: |
         docker pull primer.azurecr.io/primer/view_components_storybook:latest || true
         docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets || true
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      with:
+        limit-access-to-actor: true
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
