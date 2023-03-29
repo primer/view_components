@@ -45,7 +45,7 @@ class ComponentVersion
   end
 
   def static_asset_paths
-    Dir.glob(File.join(base_path, "#{name.underscore}*"))
+    Dir.glob(File.join(base_path, "#{name.underscore}.*"))
   end
 
   def template_path
