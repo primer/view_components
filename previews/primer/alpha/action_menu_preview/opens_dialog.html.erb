@@ -1,7 +1,13 @@
 <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
   <% component.with_show_button { "Menu" } %>
   <% component.with_item(label: "Item", tag: :button, value: "") %>
-  <% component.with_item(label: "Show dialog", tag: :button, "data-show-dialog-id": "my-dialog", value: "", scheme: :danger) %>
+  <% component.with_item(
+    label: "Show dialog",
+    tag: :button,
+    content_arguments: { "data-show-dialog-id": "my-dialog" },
+    value: "",
+    scheme: :danger
+  ) %>
 <% end %>
 
 <%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: "Confirm deletion")) do |d| %>
