@@ -337,18 +337,18 @@ class ComponentStatusMigrator < Thor::Group
     cmd = ["grep -rl #{name} ."]
     cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
-    cmd << "| xargs #{inline_sed} -e 's/#{old_version.fully_qualified_class_name}/#{new_version.fully_qualified_class_name}/g'"
+    cmd << "| xargs #{replace_class_name_command}"
 
     run(cmd.join(" "))
   end
 
-  def inline_sed
+  def replace_class_name_command
     # GNU and FreeBSD/Mac seds have mutually incompatible syntax for modifying
-    # files inline.
+    # files inline and identifying word boundaries.
     if using_gnu_sed?
-      "sed -i"
+      "sed -i -e 's/#{old_version.fully_qualified_class_name}\\>/#{new_version.fully_qualified_class_name}/g'"
     else
-      "sed -i ''"
+      "sed -i '' -e 's/#{old_version.fully_qualified_class_name}[[:>:]]/#{new_version.fully_qualified_class_name}/g'"
     end
   end
 
