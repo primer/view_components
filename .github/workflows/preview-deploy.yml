@@ -57,6 +57,12 @@ jobs:
       run: |
         docker pull ${{ env.IMAGE_URL }}:latest || true
         docker pull ${{ env.IMAGE_URL }}:latest-assets || true
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      with:
+        limit-access-to-actor: true
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
