@@ -66,22 +66,13 @@ module Primer
 
           system_arguments[:aria] = merge_aria(
             system_arguments,
-            { aria: { labelledby: self.menu_id } }
+            { aria: { labelledby: "#{@menu_id}-button" } }
           )
 
           system_arguments[:role] = :menu
           system_arguments[:scheme] = :inset
-          system_arguments[:id] = list_id
 
           super(**system_arguments, &block)
-        end
-
-        def menu_id
-          "#{@menu_id}-text"
-        end
-
-        def list_id
-          "#{@menu_id}-list"
         end
       end
     end

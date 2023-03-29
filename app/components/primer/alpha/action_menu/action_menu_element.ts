@@ -11,7 +11,7 @@ const popoverSelector = (() => {
 
 type SelectVariant = 'single' | 'multiple' | null
 
-const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
+const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]', '[role="none"]']
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController

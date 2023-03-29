@@ -272,13 +272,14 @@ module Primer
         @system_arguments[:"data-dynamic-label-prefix"] = dynamic_label_prefix if dynamic_label_prefix.present?
 
         @overlay = Primer::Alpha::Overlay.new(
-          id: @menu_id,
+          id: "#{@menu_id}-overlay",
           title: "Menu",
           visually_hide_title: true
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(
-          menu_id: menu_id,
+          id: "#{@menu_id}-list",
+          menu_id: @menu_id,
           select_variant: select_variant
         )
       end
@@ -287,7 +288,7 @@ module Primer
       #
       # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
       def with_show_button(**system_arguments, &block)
-        @overlay.with_show_button(**system_arguments, id: menu_id, &block)
+        @overlay.with_show_button(**system_arguments, id: "#{@menu_id}-button", controls: "#{@menu_id}-list", &block)
       end
 
       # Adds a new item to the list.
@@ -318,10 +319,6 @@ module Primer
         content
 
         raise ArgumentError, "`items` cannot be set when `src` is specified" if @src.present? && items.any?
-      end
-
-      def menu_id
-        "#{@menu_id}-text"
       end
 
       def render?

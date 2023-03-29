@@ -21,8 +21,8 @@ module Primer
         render_preview(:default)
 
         assert_selector("action-menu") do
-          assert_selector("button[id='menu-1-text'][aria-haspopup='true']", text: "Menu")
-          assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-text'][role='menu']", visible: false) do
+          assert_selector("button[id='menu-1-button'][aria-haspopup='true']", text: "Menu")
+          assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do
             assert_selector("li", visible: false) do
               assert_selector("span[role='menuitem']")
             end
@@ -89,7 +89,7 @@ module Primer
         end
 
         assert_selector("action-menu") do
-          assert_selector("button[id='deferred-menu-text'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
           assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
             assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end
@@ -106,7 +106,7 @@ module Primer
         end
 
         assert_selector("action-menu[preload='true']") do
-          assert_selector("button[id='deferred-menu-text'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
           assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
             assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end

@@ -42,7 +42,7 @@ class PrimerAlphaOverlayTest < Minitest::Test
       component.with_show_button { "Show" }
     end
 
-    assert_selector("[popovertoggletarget]")
+    assert_selector("[popovertarget]")
   end
 
   def test_renders_show_icon_button
@@ -51,7 +51,7 @@ class PrimerAlphaOverlayTest < Minitest::Test
       component.with_show_button(icon: :star, "aria-label": "Star")
     end
 
-    assert_selector("[popovertoggletarget]")
+    assert_selector("[popovertarget]")
   end
 
   def test_raises_on_missing_title
