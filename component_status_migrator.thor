@@ -5,7 +5,7 @@ require "thor"
 # :nodoc:
 class ComponentVersion
   COMPONENT_PATH = File.join("app", "components", "primer")
-  STATUSES = [:alpha, :beta, :deprecated, :stable, :experimental].freeze
+  STATUSES = [:stable, :beta, :alpha, :deprecated, :experimental].freeze
 
   attr_reader :name, :status
 
@@ -95,7 +95,7 @@ class ComponentVersion
     else
       active_statuses = component_paths.filter_map do |path|
         status = inferred_status(path)
-        status if status == :deprecated
+        status unless status == :deprecated
       end
 
       if active_statuses.empty?
@@ -103,13 +103,15 @@ class ComponentVersion
       elsif active_statuses.size == 1
         active_statuses.first
       else
-        raise("Found multiple components named #{name}, can't infer version between: #{active_statuses.map(&:to_s).join(', ')}")
+        latest_status = STATUSES.detect { |status| active_statuses.include?(status) }
+        puts("Found multiple components named #{name} in states #{active_statuses.map(&:to_s).join(', ')}, assuming #{latest_status}")
+        latest_status
       end
     end
   end
 
   def inferred_status(path)
-    if contains_status_annotation?(path)
+    if defines_status_in_source?(path)
       inferred_status_by_source(path)
     elsif !in_base_directory?(path)
       inferred_status_by_directory(path)
@@ -122,20 +124,23 @@ class ComponentVersion
     File.dirname(path) == COMPONENT_PATH
   end
 
-  def contains_status_annotation?(path)
-    !!status_annotation(path)
+  def defines_status_in_source?(path)
+    !!status_in_source(path)
   end
 
-  def status_annotation(path)
+  def status_in_source(path)
     content = File.read(path)
 
     STATUSES.detect do |status|
-      /^\s+status\s+:#{status}\s*$/.match?(content)
+      status_regex = /^\s+status\s+:#{status}\s*$/
+      module_regex = /^\s+module\s+#{status.to_s.capitalize}\s*$/
+
+      status_regex.match?(content) || module_regex.match?(content)
     end
   end
 
   def inferred_status_by_source(path)
-    status_annotation(path) || :deprecated
+    status_in_source(path) || :deprecated
   end
 
   def inferred_status_by_directory(path)
