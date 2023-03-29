@@ -61,7 +61,7 @@ module Primer
         system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
         if icon.present?
           Primer::Beta::IconButton.new(icon: icon, **system_arguments)
-        else 
+        else
           Primer::Beta::Button.new(**system_arguments)
         end
       }
