@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- [#1829](https://github.com/primer/view_components/pull/1829) [`bb54d982`](https://github.com/primer/view_components/commit/bb54d982433910ae28005b72de73ca69a6f8a8f3) Thanks [@josepmartins](https://github.com/josepmartins)! - Add responsive values for `border` and `border-radius` system argument
+
+* [#1897](https://github.com/primer/view_components/pull/1897) [`eae7a7f8`](https://github.com/primer/view_components/commit/eae7a7f8a4891efa4873558d380eabb638272095) Thanks [@camertron](https://github.com/camertron)! - Fix widths of text fields and multi inputs.
+
 ## 0.1.3
 
 ### Patch Changes
