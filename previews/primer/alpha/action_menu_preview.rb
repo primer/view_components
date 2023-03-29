@@ -176,6 +176,12 @@ module Primer
                                menu_id: menu_id
                              })
       end
+
+      # @label Nested Menus
+      #
+      def nested_menus()
+        render_with_template(locals: {})
+      end
     end
   end
 end

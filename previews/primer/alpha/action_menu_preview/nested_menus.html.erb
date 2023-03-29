@@ -1,0 +1,25 @@
+<%= render(Primer::Alpha::ActionMenu.new) do |component| %>
+  <% component.with_show_button { "Menu" } %>
+  <% component.with_menu(label: "Layout", tag: :button, value: "") do |submenu| %>
+    <% submenu.with_item(label: "Table") do |item| %>
+      <% item.with_leading_visual_icon(icon: :table) %>
+    <% end %>
+    <% submenu.with_item(label: "Board") do |item| %>
+      <% item.with_leading_visual_icon(icon: :project) %>
+    <% end %>
+    <% submenu.with_item(label: "Roadmap") do |item| %>
+      <% item.with_leading_visual_icon(icon: :project) %>
+    <% end %>
+  <% end %>
+  <% component.with_menu(label: "Configuration", tag: :button, value: "") do |submenu| %>
+    <% submenu.with_item(label: "Markers") do |item| %>
+      <% item.with_leading_visual_icon(icon: :location) %>
+    <% end %>
+    <% submenu.with_item(label: "Group") do |item| %>
+      <% item.with_leading_visual_icon(icon: :apps) %>
+    <% end %>
+    <% submenu.with_item(label: "Date") do |item| %>
+      <% item.with_leading_visual_icon(icon: :calendar) %>
+    <% end %>
+  <% end %>
+<% end %>

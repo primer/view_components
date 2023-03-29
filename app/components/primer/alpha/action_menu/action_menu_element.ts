@@ -78,6 +78,11 @@ export class ActionMenuElement extends HTMLElement {
 
     if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
       this.popoverElement?.hidePopover()
+    } else if (event instanceof MouseEvent && event.type === 'mouseover') {
+      const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
+      if (item && item.hasAttribute('data-actionmenu-submenu')) {
+        item.querySelector('button')?.popoverTargetElement?.showPopover()
+      }
     } else if (
       (event instanceof KeyboardEvent &&
         event.type === 'keydown' &&
@@ -87,6 +92,7 @@ export class ActionMenuElement extends HTMLElement {
     ) {
       const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
+      if (item.hasAttribute('data-actionmenu-submenu')) return
       const ariaChecked = item.getAttribute('aria-checked')
       const checked = ariaChecked !== 'true'
       item.setAttribute('aria-checked', `${checked}`)

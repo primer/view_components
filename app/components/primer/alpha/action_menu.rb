@@ -253,6 +253,7 @@ module Primer
         dynamic_label: false,
         dynamic_label_prefix: nil,
         select_variant: DEFAULT_SELECT_VARIANT,
+        anchor: nil,
         **system_arguments
       )
         @menu_id = menu_id
@@ -274,6 +275,7 @@ module Primer
         @overlay = Primer::Alpha::Overlay.new(
           id: @menu_id,
           title: "Menu",
+          anchor: anchor,
           visually_hide_title: true
         )
 
@@ -300,9 +302,29 @@ module Primer
         @list.with_item(**system_arguments, &block)
       end
 
+      # Adds a new item to the list.
+      #
+      # Also accepts the same arguments as <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      def with_menu(menu_arguments: {}, **system_arguments, &block)
+        item_id = Primer::Alpha::ActionList::Item.generate_id
+        submenu = Primer::Alpha::ActionMenu.new(anchor: item_id, **menu_arguments)
+        @list.with_item(content_arguments: {
+          popovertarget: submenu.id,
+          id: item_id,
+        }, "data-actionmenu-submenu": "", **system_arguments) do |item|
+          block.call(submenu)
+          item.with_trailing_visual_icon(icon: :"chevron-right")
+          item.with_private_content { render submenu }
+        end
+      end
+
       # Retrieves the list of items.
       def items
         @list.items
+      end
+
+      def id
+        @menu_id
       end
 
       # Adds a divider to the list.

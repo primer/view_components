@@ -12,3 +12,10 @@
 anchored-position {
   display: block;
 }
+
+/** HACKS!!! DO NOT SHIP!!! **/
+.Overlay[popover].\:open [popover].\:open {
+  position: fixed;
+  left: 200px;
+  top: 50px;
+}
