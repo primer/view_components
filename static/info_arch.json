@@ -49,7 +49,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{link_to_component(Primer::Alpha::ActionList::Heading)}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
           }
         ]
       },
@@ -61,7 +61,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{link_to_component(Primer::Alpha::ActionList::Item)}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
         ]
       }
@@ -178,42 +178,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
         "description": "Heading used to describe each sub list within an action list.",
         "component": "ActionList::Heading",
@@ -258,6 +222,42 @@
             "type": "Integer",
             "default": "N/A",
             "description": "Semantic tag for the heading."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
           },
           {
             "name": "system_arguments",
@@ -402,14 +402,14 @@
           },
           {
             "name": "leading_visual",
-            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Octicon)}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Avatar)}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
             "parameters": [
 
             ]
           },
           {
             "name": "trailing_visual",
-            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Octicon)}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Label)}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Counter)}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
             "parameters": [
 
             ]
@@ -428,13 +428,13 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Beta::IconButton)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
               }
             ]
           },
           {
             "name": "tooltip",
-            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{link_to_component(Primer::Alpha::Tooltip)}} documentation for more information.",
+            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
             "parameters": [
               {
                 "name": "type",
@@ -446,7 +446,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::Tooltip)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
               }
             ]
           }
@@ -759,7 +759,7 @@
     "slots": [
       {
         "name": "action",
-        "description": "A button or custom content that will render on the right-hand side of the component.\n\nTo render a button, call the `with_action_button` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Button)}}.\n\nTo render custom content, call the `with_action_content` method and pass a block that returns HTML.",
+        "description": "A button or custom content that will render on the right-hand side of the component.\n\nTo render a button, call the `with_action_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}.\n\nTo render custom content, call the `with_action_content` method and pass a block that returns HTML.",
         "parameters": [
 
         ]
@@ -1105,13 +1105,13 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{link_to_component(Primer::Alpha::CheckBox)}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::CheckBox{{/link_to_component}}."
           },
           {
             "name": "block",
             "type": "Proc",
             "default": "N/A",
-            "description": "The block accepted by {{link_to_component(Primer::Alpha::CheckBox)}}."
+            "description": "The block accepted by {{#link_to_component}}Primer::Alpha::CheckBox{{/link_to_component}}."
           }
         ]
       }
@@ -1205,7 +1205,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Button)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}."
           }
         ]
       },
@@ -1317,7 +1317,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body",
-        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{link_to_component(Primer::Alpha::Dialog)}}.",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Body",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1347,7 +1347,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
-        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{link_to_component(Primer::Alpha::Dialog)}}.",
+        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Header",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1401,7 +1401,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
-        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{link_to_component(Primer::Alpha::Dialog)}}.",
+        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Footer",
         "status": "alpha",
         "a11y_reviewed": true,
@@ -1469,7 +1469,7 @@
     "slots": [
       {
         "name": "button",
-        "description": "Required trigger for the dropdown. Has the same arguments as {{link_to_component(Primer::ButtonComponent)}},\nbut it is locked as a `summary` tag.",
+        "description": "Required trigger for the dropdown. Has the same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}},\nbut it is locked as a `summary` tag.",
         "parameters": [
 
         ]
@@ -1543,31 +1543,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
-        "description": "Items to be rendered in the `Dropdown` menu.",
-        "component": "Dropdown::Menu::Item",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "DropdownMenuItem",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
         "description": "This component is part of `Dropdown` and should not be\nused as a standalone component.",
         "component": "Dropdown::Menu",
@@ -1627,6 +1602,31 @@
               }
             ]
           }
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
+        "description": "Items to be rendered in the `Dropdown` menu.",
+        "component": "Dropdown::Menu::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "DropdownMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
         ],
         "methods": [
 
@@ -2478,7 +2478,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{link_to_component(Primer::Alpha::NavList::Group)}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Group{{/link_to_component}}."
           }
         ]
       }
@@ -2511,7 +2511,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{link_to_component(Primer::Alpha::NavList)}} for usage examples.",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
         "component": "NavList::Group",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -2559,7 +2559,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::NavList::Item)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
               }
             ]
           },
@@ -2571,7 +2571,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::NavList::Item)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
               }
             ]
           },
@@ -2583,7 +2583,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::ActionList::Heading)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
               }
             ]
           }
@@ -2654,7 +2654,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::ActionList::Item)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
               }
             ]
           },
@@ -2667,14 +2667,14 @@
           },
           {
             "name": "leading_visual",
-            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Octicon)}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Avatar)}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
             "parameters": [
 
             ]
           },
           {
             "name": "trailing_visual",
-            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Octicon)}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Label)}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{link_to_component(Primer::Beta::Counter)}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
             "parameters": [
 
             ]
@@ -2693,13 +2693,13 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Beta::IconButton)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
               }
             ]
           },
           {
             "name": "tooltip",
-            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{link_to_component(Primer::Alpha::Tooltip)}} documentation for more information.",
+            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
             "parameters": [
               {
                 "name": "type",
@@ -2711,7 +2711,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Alpha::Tooltip)}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
               }
             ]
           }
@@ -2836,7 +2836,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
@@ -2848,7 +2848,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Text)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Text{{/link_to_component}}."
           }
         ]
       },
@@ -2860,7 +2860,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Counter)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}."
           }
         ]
       }
@@ -3021,7 +3021,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::ButtonComponent)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
           }
         ]
       },
@@ -3113,8 +3113,50 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Footer",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "align_content",
+            "type": "Symbol",
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{link_to_component(Primer::Alpha::Overlay)}}.",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "component": "Overlay::Body",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -3144,7 +3186,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{link_to_component(Primer::Alpha::Overlay)}}.",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -3201,54 +3243,12 @@
         "subcomponents": [
 
         ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{link_to_component(Primer::Alpha::Overlay)}}.",
-        "component": "Overlay::Footer",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
-          },
-          {
-            "name": "align_content",
-            "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
       }
     ]
   },
   {
     "fully_qualified_name": "Primer::Alpha::RadioButton",
-    "description": "Radio buttons represent one of a set of options and are rendered as `<input type=\"radio\">` in HTML.\n**NOTE**: You probably want to use the {{link_to_component(Primer::Alpha::RadioButtonGroup)}}\ncomponent instead, as it allows rendering a group of options.",
+    "description": "Radio buttons represent one of a set of options and are rendered as `<input type=\"radio\">` in HTML.\n**NOTE**: You probably want to use the {{#link_to_component}}Primer::Alpha::RadioButtonGroup{{/link_to_component}}\ncomponent instead, as it allows rendering a group of options.",
     "component": "RadioButton",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3445,13 +3445,13 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{link_to_component(Primer::Alpha::RadioButton)}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::RadioButton{{/link_to_component}}."
           },
           {
             "name": "block",
             "type": "Proc",
             "default": "N/A",
-            "description": "The block accepted by {{link_to_component(Primer::Alpha::RadioButton)}}."
+            "description": "The block accepted by {{#link_to_component}}Primer::Alpha::RadioButton{{/link_to_component}}."
           }
         ]
       }
@@ -3878,7 +3878,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabContainer",
-    "description": "Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.\nIt only provides the tab functionality. If you want styled Tabs you can look at {{link_to_component(Primer::Alpha::TabNav)}}.\n\nThis component requires javascript.",
+    "description": "Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.\nIt only provides the tab functionality. If you want styled Tabs you can look at {{#link_to_component}}Primer::Alpha::TabNav{{/link_to_component}}.\n\nThis component requires javascript.",
     "component": "TabContainer",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3908,7 +3908,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabNav",
-    "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use {{link_to_component(Primer::Alpha::TabPanels)}} instead.",
+    "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use {{#link_to_component}}Primer::Alpha::TabPanels{{/link_to_component}} instead.",
     "component": "TabNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3944,7 +3944,7 @@
     "slots": [
       {
         "name": "tabs",
-        "description": "Tabs to be rendered. For more information, refer to {{link_to_component(Primer::Alpha::Navigation::Tab)}}.",
+        "description": "Tabs to be rendered. For more information, refer to {{#link_to_component}}Primer::Alpha::Navigation::Tab{{/link_to_component}}.",
         "parameters": [
           {
             "name": "selected",
@@ -4046,7 +4046,7 @@
     "slots": [
       {
         "name": "tabs",
-        "description": "Tabs to be rendered. For more information, refer to {{link_to_component(Primer::Alpha::Navigation::Tab)}}.",
+        "description": "Tabs to be rendered. For more information, refer to {{#link_to_component}}Primer::Alpha::Navigation::Tab{{/link_to_component}}.",
         "parameters": [
           {
             "name": "id",
@@ -4589,7 +4589,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Tooltip",
-    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of {{link_to_component(Primer::ButtonComponent)}}, {{link_to_component(Primer::Beta::Link)}}, or {{link_to_component(Primer::IconButton)}}. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
+    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}, or {{#link_to_component}}Primer::IconButton{{/link_to_component}}. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
     "component": "Tooltip",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4677,7 +4677,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlineNav",
-    "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use {{link_to_component(Primer::Alpha::UnderlinePanels)}} instead.",
+    "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use {{#link_to_component}}Primer::Alpha::UnderlinePanels{{/link_to_component}} instead.",
     "component": "UnderlineNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4822,7 +4822,7 @@
     "slots": [
       {
         "name": "tabs",
-        "description": "Use to render a button and an associated panel slot. See the example below or refer to {{link_to_component(Primer::Alpha::Navigation::Tab)}}.",
+        "description": "Use to render a button and an associated panel slot. See the example below or refer to {{#link_to_component}}Primer::Alpha::Navigation::Tab{{/link_to_component}}.",
         "parameters": [
           {
             "name": "id",
@@ -5023,13 +5023,13 @@
       },
       {
         "name": "leading_visual",
-        "description": "Leading visual.\n\n- `leading_visual_icon` for a {{link_to_component(Primer::Beta::Octicon)}}.",
+        "description": "Leading visual.\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
@@ -5188,7 +5188,7 @@
                 "name": "kwargs",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Beta::Avatar)}} or {{link_to_component(Primer::Beta::Octicon)}}"
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}} or {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}"
               }
             ]
           },
@@ -5200,7 +5200,7 @@
                 "name": "kwargs",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{link_to_component(Primer::Beta::Octicon)}}, {{link_to_component(Primer::Beta::Label)}}, or {{link_to_component(Primer::Beta::Counter)}}"
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}, or {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}"
               }
             ]
           },
@@ -5251,7 +5251,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Avatar",
-    "description": "`Avatar` can be used to represent users and organizations on GitHub.\n\n- Use the default circle avatar for users, and the square shape\nfor organizations or any other non-human avatars.\n- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.\n- Set `size` to update the height and width of the `Avatar` in pixels.\n- To stack multiple avatars together, use {{link_to_component(Primer::Beta::AvatarStack)}}.",
+    "description": "`Avatar` can be used to represent users and organizations on GitHub.\n\n- Use the default circle avatar for users, and the square shape\nfor organizations or any other non-human avatars.\n- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.\n- Set `size` to update the height and width of the `Avatar` in pixels.\n- To stack multiple avatars together, use {{#link_to_component}}Primer::Beta::AvatarStack{{/link_to_component}}.",
     "component": "Avatar",
     "status": "beta",
     "a11y_reviewed": false,
@@ -5383,7 +5383,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Avatar)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
           }
         ]
       }
@@ -5512,7 +5512,7 @@
     "slots": [
       {
         "name": "visual",
-        "description": "Optional visual.\n\nUse:\n\n- `visual_icon` for an {{link_to_component(Primer::Beta::Octicon)}}.\n- `visual_image` for an {{link_to_component(Primer::Alpha::Image)}}.\n- `visual_spinner` for a {{link_to_component(Primer::Beta::Spinner)}}.",
+        "description": "Optional visual.\n\nUse:\n\n- `visual_icon` for an {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n- `visual_image` for an {{#link_to_component}}Primer::Alpha::Image{{/link_to_component}}.\n- `visual_spinner` for a {{#link_to_component}}Primer::Beta::Spinner{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -5980,43 +5980,43 @@
     "slots": [
       {
         "name": "leading_visual",
-        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{link_to_component(Primer::Beta::Octicon)}}.",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
       {
         "name": "trailing_visual",
-        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a {{link_to_component(Primer::Beta::Counter)}}.",
+        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Counter)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}."
           }
         ]
       },
       {
         "name": "trailing_action",
-        "description": "Trailing action appears to the right of the trailing visual.\n\nUse:\n\n- `trailing_action_icon` for a {{link_to_component(Primer::Beta::Octicon)}}.",
+        "description": "Trailing action appears to the right of the trailing visual.\n\nUse:\n\n- `trailing_action_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
       {
         "name": "tooltip",
-        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the {{link_to_component(Primer::Alpha::Tooltip)}} documentation for more information.",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
         "parameters": [
           {
             "name": "type",
@@ -6028,7 +6028,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Alpha::Tooltip)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
           }
         ]
       }
@@ -6150,7 +6150,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::ButtonComponent)}} except for `size` and `group_item`."
+            "description": "The same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} except for `size` and `group_item`."
           }
         ]
       }
@@ -6564,7 +6564,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Heading",
-    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using {{link_to_component(Primer::Beta::Text)}} with relevant [Typography](/system-arguments#typography)\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
+    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using {{#link_to_component}}Primer::Beta::Text{{/link_to_component}} with relevant [Typography](/system-arguments#typography)\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
     "component": "Heading",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6850,7 +6850,7 @@
     "slots": [
       {
         "name": "tooltip",
-        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the link. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nThe tooltip will appear adjacent to the anchor element. Both the tooltip and the anchor will be nested\nunder a positioning wrapper.\nConsult the {{link_to_component(Primer::Alpha::Tooltip)}} documentation for more information.",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the link. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nThe tooltip will appear adjacent to the anchor element. Both the tooltip and the anchor will be nested\nunder a positioning wrapper.\nConsult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
         "parameters": [
           {
             "name": "type",
@@ -6862,7 +6862,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Alpha::Tooltip)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
           }
         ]
       }
@@ -7449,7 +7449,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Subhead",
-    "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use {{link_to_component(Primer::ButtonComponent)}} or {{link_to_component(Primer::Beta::Link)}}.",
+    "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} or {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}.",
     "component": "Subhead",
     "status": "beta",
     "a11y_reviewed": false,
@@ -7637,7 +7637,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Avatar)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
           }
         ]
       },
@@ -7938,7 +7938,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Spinner)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Spinner{{/link_to_component}}."
           }
         ]
       }
@@ -8051,31 +8051,31 @@
     "slots": [
       {
         "name": "leading_visual",
-        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{link_to_component(Primer::Beta::Octicon)}}.",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
       {
         "name": "trailing_visual",
-        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a {{link_to_component(Primer::Beta::Counter)}}.",
+        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Beta::Counter)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}."
           }
         ]
       },
       {
         "name": "tooltip",
-        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the {{link_to_component(Primer::Alpha::Tooltip)}} documentation for more information.",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
         "parameters": [
           {
             "name": "type",
@@ -8087,7 +8087,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "Same arguments as {{link_to_component(Primer::Alpha::Tooltip)}}."
+            "description": "Same arguments as {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
           }
         ]
       }
@@ -8427,7 +8427,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Octicon)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
           }
         ]
       },
@@ -8439,7 +8439,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Text)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Text{{/link_to_component}}."
           }
         ]
       },
@@ -8451,7 +8451,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{link_to_component(Primer::Beta::Counter)}}."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}."
           }
         ]
       }

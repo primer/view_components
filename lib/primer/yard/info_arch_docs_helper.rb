@@ -8,7 +8,7 @@ module Primer
       include DocsHelper
 
       def link_to_component(component)
-        "{{link_to_component(#{component})}}"
+        "{{#link_to_component}}#{component}{{/link_to_component}}"
       end
     end
   end
