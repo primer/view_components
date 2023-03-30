@@ -122,7 +122,7 @@ module Primer
 
         def view_context
           @view_context ||= ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context.tap do |vc|
-            vc.singleton_class.include(Primer::Yard::DocsHelper)
+            vc.singleton_class.include(Primer::Yard::InfoArchDocsHelper)
             vc.singleton_class.include(Primer::ViewHelper)
           end
         end
