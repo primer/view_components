@@ -281,7 +281,6 @@ module Primer
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(
-          id: "#{@menu_id}-list",
           menu_id: @menu_id,
           select_variant: select_variant
         )

@@ -71,6 +71,7 @@ module Primer
 
           system_arguments[:role] = :menu
           system_arguments[:scheme] = :inset
+          system_arguments[:id] = "#{@menu_id}-list"
 
           super(**system_arguments, &block)
         end

@@ -76,6 +76,7 @@ module Primer
 
       attr_reader :select_variant, :role
 
+      # @param id [String] HTML ID value.
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param item_classes [String] Additional CSS classes to attach to items.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %>. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
@@ -83,6 +84,7 @@ module Primer
       # @param select_variant [Symbol] How items may be selected in the list. <%= one_of(Primer::Alpha::ActionList::SELECT_VARIANT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
+        id: self.class.generate_id,
         role: nil,
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
@@ -90,9 +92,9 @@ module Primer
         select_variant: DEFAULT_SELECT_VARIANT,
         **system_arguments
       )
-        @id = self.class.generate_id
-
         @system_arguments = system_arguments
+        @id = id
+        @system_arguments[:id] = @id
         @system_arguments[:tag] = :ul
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
