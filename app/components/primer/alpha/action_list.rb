@@ -74,7 +74,7 @@ module Primer
         set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
       end
 
-      attr_reader :select_variant
+      attr_reader :select_variant, :role
 
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param item_classes [String] Additional CSS classes to attach to items.
@@ -105,7 +105,8 @@ module Primer
           "ActionListWrap--divided" => @show_dividers
         )
 
-        @system_arguments[:role] = role || allows_selection? ? MENU_ROLE : DEFAULT_ROLE
+        @role = role || allows_selection? ? MENU_ROLE : DEFAULT_ROLE
+        @system_arguments[:role] = @role
 
         @list_wrapper_arguments = {}
       end

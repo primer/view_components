@@ -13,6 +13,7 @@
   "ActionListContent--visual24",
   "ActionListItem",
   "ActionListItem--danger",
+  "ActionListItem--disabled",
   "ActionListItem--hasSubItem",
   "ActionListItem--navActive",
   "ActionListItem--subItem",

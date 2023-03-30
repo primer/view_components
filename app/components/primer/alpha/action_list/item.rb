@@ -186,13 +186,11 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
-            "ActionListItem"
+            "ActionListItem",
+            "ActionListItem--disabled" => @disabled
           )
 
           @system_arguments[:role] = :none
-
-          @system_arguments[:aria] ||= {}
-          @system_arguments[:aria][:disabled] = "true" if @disabled
 
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
@@ -222,6 +220,13 @@ module Primer
               @content_arguments[:tag] = :button
               @content_arguments[:onclick] = on_click if on_click
             end
+          end
+
+          if @disabled
+            @content_arguments[:aria] ||= merge_aria(
+              @content_arguments,
+              { aria: { disabled: "true" } }
+            )
           end
 
           @content_arguments[:role] = role ||
