@@ -300,6 +300,7 @@
 
   /* disabled */
 
+  &.ActionListItem--disabled,
   &[aria-disabled='true'] {
     & .ActionListContent {
       & .ActionListItem-label,
@@ -311,9 +312,7 @@
         fill: var(--color-primer-fg-disabled);
       }
     }
-  }
 
-  &.ActionListItem--disabled {
     @media (hover: hover) {
       &:hover {
         cursor: not-allowed;
