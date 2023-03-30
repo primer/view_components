@@ -89,6 +89,7 @@ module Primer
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
         renders_one :trailing_action, lambda { |**system_arguments|
           Primer::Beta::IconButton.new(
+            scheme: :invisible,
             classes: class_names(
               system_arguments[:classes],
               "ActionListItem-trailingAction"
