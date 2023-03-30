@@ -269,6 +269,22 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
+  def update_component_status
+    if component_has_status_annotation?
+      gsub_file(
+        new_version.controller_path,
+        /^\s+status\s+:#{old_version.status}\s*$/,
+        "status :#{new_version.status}"
+      )
+    else
+      insert_into_file(
+        new_version.controller_path,
+        "status :#{new_version.status}\n\n",
+        after: "class #{new_version.name} < Primer::Component\n"
+      )
+    end
+  end
+
   def rename_preview_label
     return unless File.exist?(new_version.preview_path)
 
@@ -438,6 +454,10 @@ class ComponentStatusMigrator < Thor::Group
 
   def old_version
     @old_version ||= ComponentVersion.new(name)
+  end
+
+  def component_has_status_annotation?
+    File.read(new_version.controller_path).match?(/^\s+status\s+:#{old_version.status}\s*$/)
   end
 
   def move_file(file_type, old_path, new_path)
