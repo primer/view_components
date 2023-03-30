@@ -36,10 +36,6 @@ jobs:
         bundle exec rake docs:preview
         npm ci
         cd demo && npm ci
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      with:
-        limit-access-to-actor: true
     - name: Test
       run: bundle exec rake test:accessibility
   components:
