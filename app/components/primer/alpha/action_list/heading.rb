@@ -17,13 +17,14 @@ module Primer
 
         attr_reader :id
 
+        # @param id [String] The group's identifier (ID attribute in HTML).
         # @param title [String] Sub list title.
         # @param heading_level [Integer] Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc.
         # @param subtitle [String] Optional sub list description.
         # @param scheme [Symbol] Display a background color if scheme is `filled`.
         # @param tag [Integer] Semantic tag for the heading.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(id: self.class.generate_id, title:, heading_level: 3, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
+        def initialize(title:, id: self.class.generate_id, heading_level: 3, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           raise "Heading level must be between #{HEADING_MIN} and #{HEADING_MAX}" unless HEADING_LEVELS.include?(heading_level)
 
           @id = id
