@@ -239,11 +239,14 @@ module Primer
       #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
-      # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_ALIGN_OPTIONS) %>
-      # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_SIDE_OPTIONS) %>
+      # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_ALIGN_OPTIONS) %>.
+      # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_SIDE_OPTIONS) %>.
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
+      # @param dynamic_label_prefix [String] If provided, the prefix is prepended to the dynamic label and displayed in the show button.
+      # @param select_variant [Symbol]. <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
       def initialize(
         menu_id: self.class.generate_id,
         anchor_align: DEFAULT_ANCHOR_ALIGN,
