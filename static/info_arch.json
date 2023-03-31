@@ -37,7 +37,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -197,7 +197,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -263,7 +263,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -317,13 +317,13 @@
             "name": "label_arguments",
             "type": "Hash",
             "default": "`{}`",
-            "description": "[System arguments](/system-arguments) used to construct the label."
+            "description": "{{link_to_system_arguments_docs}} used to construct the label."
           },
           {
             "name": "content_arguments",
             "type": "Hash",
             "default": "`{}`",
-            "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
+            "description": "{{link_to_system_arguments_docs}} used to construct the item's anchor or button tag."
           },
           {
             "name": "truncate_label",
@@ -389,7 +389,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -586,7 +586,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -679,7 +679,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -753,7 +753,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -847,7 +847,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1066,7 +1066,7 @@
         "name": "name",
         "type": "String",
         "default": "N/A",
-        "description": "Value for the HTML name attribute. When provided, the check box values will be submitted in to the server in `:array` mode. See the [CheckBox](/components/alpha/checkbox) for more information."
+        "description": "Value for the HTML name attribute. When provided, the check box values will be submitted in to the server in `:array` mode. See the {{#link_to_component}}Primer::Alpha::CheckBox{{/link_to_component}} for more information."
       },
       {
         "name": "label",
@@ -1193,7 +1193,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1329,7 +1329,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -1383,7 +1383,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -1419,7 +1419,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -1463,7 +1463,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1574,7 +1574,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -1762,7 +1762,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1825,7 +1825,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1870,13 +1870,13 @@
         "name": "button_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the button element."
+        "description": "{{link_to_system_arguments_docs}} for the button element."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1933,7 +1933,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -1975,7 +1975,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -2048,7 +2048,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -2192,7 +2192,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -2224,7 +2224,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -2466,7 +2466,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -2529,7 +2529,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -2642,7 +2642,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -2806,13 +2806,13 @@
         "name": "wrapper_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
+        "description": "{{link_to_system_arguments_docs}} to be used in the `<li>` wrapper when the tab is an item in a list."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -3009,7 +3009,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -3138,7 +3138,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -3168,7 +3168,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -3228,7 +3228,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -3509,7 +3509,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -3890,7 +3890,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -3932,13 +3932,13 @@
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4028,19 +4028,19 @@
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
       },
       {
         "name": "wrapper_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the `TabContainer` wrapper."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4415,7 +4415,7 @@
         "name": "leading_visual",
         "type": "Hash",
         "default": "N/A",
-        "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon](/components/beta/octicon) component."
+        "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}} component."
       },
       {
         "name": "show_clear_button",
@@ -4517,7 +4517,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4625,7 +4625,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4707,13 +4707,13 @@
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4804,19 +4804,19 @@
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
       },
       {
         "name": "wrapper_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
+        "description": "{{link_to_system_arguments_docs}} for the `TabContainer` wrapper."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -4938,7 +4938,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       },
       {
         "name": "size",
@@ -5151,7 +5151,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -5268,7 +5268,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5340,13 +5340,13 @@
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can be changed using `tag:` to one of `:div` or `:span`."
+        "description": "Parameters to add to the Body. If `tooltipped` is set, has the same arguments as {{#link_to_component}}Primer::Tooltip{{/link_to_component}}. The default tag is `:div` but can be changed using `tag:` to one of `:div` or `:span`."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5424,7 +5424,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5481,7 +5481,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5643,7 +5643,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5747,7 +5747,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
+            "description": "{{link_to_system_arguments_docs}}"
           }
         ],
         "slots": [
@@ -5796,7 +5796,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -5949,7 +5949,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6113,7 +6113,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6181,7 +6181,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6236,7 +6236,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6311,7 +6311,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6377,7 +6377,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6491,7 +6491,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6557,7 +6557,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6656,7 +6656,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6735,7 +6735,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6819,7 +6819,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6891,7 +6891,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6948,13 +6948,13 @@
         "name": "use_symbol",
         "type": "Boolean",
         "default": "`false`",
-        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/alpha/octiconsymbols)."
+        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with {{#link_to_component}}Primer::Alpha::OcticonSymbols{{/link_to_component}}."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -6993,7 +6993,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7089,7 +7089,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7258,7 +7258,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7324,7 +7324,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7387,7 +7387,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7448,7 +7448,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7555,7 +7555,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7600,7 +7600,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7704,7 +7704,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7901,7 +7901,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -7942,7 +7942,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8020,7 +8020,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8196,13 +8196,13 @@
         "name": "box",
         "type": "Boolean",
         "default": "`false`",
-        "description": "Whether the button is in a [BorderBox](/components/beta/borderbox). If `true`, the button will have the `Box-btn-octicon` class."
+        "description": "Whether the button is in a {{#link_to_component}}Primer::Beta::BorderBox{{/link_to_component}}. If `true`, the button will have the `Box-btn-octicon` class."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8250,7 +8250,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8372,13 +8372,13 @@
         "name": "wrapper_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
+        "description": "{{link_to_system_arguments_docs}} to be used in the `<li>` wrapper when the tab is an item in a list."
       },
       {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8485,7 +8485,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8515,7 +8515,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [

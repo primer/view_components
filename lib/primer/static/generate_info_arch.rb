@@ -130,7 +130,7 @@ module Primer
         end
 
         def args
-          @args ||= JSON.parse(Static.read(:arguments))
+          @args ||= Primer::Static::GenerateArguments.call(view_context: view_context)
         end
 
         def view_context

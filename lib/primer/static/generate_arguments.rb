@@ -6,7 +6,7 @@ module Primer
   module Static
     module GenerateArguments
       class << self
-        def call
+        def call(view_context: self.view_context)
           Primer::Component.descendants.sort_by(&:name).map do |component|
             docs = registry.find(component)
             ref = Primer::Yard::ComponentManifest.ref_for(component)
