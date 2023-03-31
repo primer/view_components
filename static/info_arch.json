@@ -409,7 +409,7 @@
           },
           {
             "name": "trailing_visual",
-            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
             "parameters": [
 
             ]
@@ -1316,36 +1316,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
-        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "component": "Dialog::Body",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
         "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Header",
@@ -1415,6 +1385,36 @@
             "default": "`false`",
             "description": "Show a divider between the footer and body."
           },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "component": "Dialog::Body",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
+        "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -1543,6 +1543,31 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
+        "description": "Items to be rendered in the `Dropdown` menu.",
+        "component": "Dropdown::Menu::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "DropdownMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
         "description": "This component is part of `Dropdown` and should not be\nused as a standalone component.",
         "component": "Dropdown::Menu",
@@ -1602,31 +1627,6 @@
               }
             ]
           }
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
-        "description": "Items to be rendered in the `Dropdown` menu.",
-        "component": "Dropdown::Menu::Item",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "DropdownMenuItem",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
         ],
         "methods": [
 
@@ -2674,7 +2674,7 @@
           },
           {
             "name": "trailing_visual",
-            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }`\n```",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
             "parameters": [
 
             ]
@@ -3113,26 +3113,44 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Footer",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "short_name": "OverlayHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
         "parameters": [
           {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the Overlay."
           },
           {
-            "name": "align_content",
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "size",
             "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+            "default": "`:medium`",
+            "description": "The size of the Header. One of `:large` or `:medium`."
+          },
+          {
+            "name": "divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
           },
           {
             "name": "system_arguments",
@@ -3185,44 +3203,26 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Header",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Footer",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
         "parameters": [
           {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the Overlay."
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
           },
           {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "size",
+            "name": "align_content",
             "type": "Symbol",
-            "default": "`:medium`",
-            "description": "The size of the Header. One of `:large` or `:medium`."
-          },
-          {
-            "name": "divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
           },
           {
             "name": "system_arguments",
@@ -6539,7 +6539,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Heading",
-    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using {{#link_to_component}}Primer::Beta::Text{{/link_to_component}} with relevant [Typography](/system-arguments#typography)\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
+    "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using {{#link_to_component}}Primer::Beta::Text{{/link_to_component}} with relevant {{link_to_typography_docs}}\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
     "component": "Heading",
     "status": "beta",
     "a11y_reviewed": false,

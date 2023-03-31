@@ -14,6 +14,14 @@ module Primer
       def link_to_system_arguments_docs
         "{{link_to_system_arguments_docs}}"
       end
+
+      def link_to_typography_docs
+        "{{link_to_typography_docs}}"
+      end
+
+      def link_to_accessibility
+        "{{link_to_accessibility}}"
+      end
     end
   end
 end
