@@ -9,7 +9,9 @@ module Primer
 
       class << self
         def call
-          component_docs = Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, memo|
+          components = Primer::Component.descendants.sort_by(&:name) - [Primer::BaseComponent]
+
+          component_docs = components.each_with_object({}) do |component, memo|
             docs = registry.find(component)
 
             preview_data = previews.find do |preview|
