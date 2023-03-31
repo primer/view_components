@@ -178,6 +178,42 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "[System arguments](/system-arguments)"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
         "description": "Heading used to describe each sub list within an action list.",
         "component": "ActionList::Heading",
@@ -222,42 +258,6 @@
             "type": "Integer",
             "default": "N/A",
             "description": "Semantic tag for the heading."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "[System arguments](/system-arguments)"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
           },
           {
             "name": "system_arguments",
@@ -8579,5 +8579,11 @@
     "subcomponents": [
 
     ]
+  },
+  {
+    "component": "BaseComponent",
+    "fully_qualified_name": "Primer::BaseComponent",
+    "description_md": "All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).\n\nUnder the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).\n\n## Responsive values\n\nTo apply different values across responsive breakpoints, pass an array with up to five values in the order `[default, small, medium, large, xlarge]`. To skip a breakpoint, pass `nil`.\n\nFor example:\n\n```erb\n<%= render Primer::Beta::Heading.new(mt: [0, nil, nil, 4, 2]) do %>\n  Hello world\n<% end %>\n```\n\nRenders:\n\n```html\n<h1 class=\"mt-0 mt-lg-4 mt-xl-2\">Hello world</h1>\n```",
+    "args_md": "## HTML attributes\n\nSystem arguments include most HTML attributes. For example:\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `aria` | `Hash` | Aria attributes: `aria: { label: \"foo\" }` renders `aria-label='foo'`. |\n| `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |\n| `height` | `Integer` | Height. |\n| `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |\n| `style` | `String` | Inline styles. |\n| `title` | `String` | The `title` attribute. |\n| `width` | `Integer` | Width. |\n\n## Animation\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `animation` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:animation)) %> |\n\n## Border\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `border_bottom` | Integer | Set to `0` to remove the bottom border. |\n| `border_left` | Integer | Set to `0` to remove the left border. |\n| `border_radius` | Integer | <%= one_of([0, 1, 2, 3]) %> |\n| `border_right` | Integer | Set to `0` to remove the right border. |\n| `border_top` | Integer | Set to `0` to remove the top border. |\n| `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %> |\n| `box_shadow` | Boolean, Symbol | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %> |\n\n## Color\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bg` | Symbol | Background color. <%= one_of(Primer::Classify::Utilities.mappings(:bg)) %> |\n| `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::Utilities.mappings(:border_color)) %> |\n| `color` | Symbol | Text color. <%= one_of(Primer::Classify::Utilities.mappings(:color)) %> |\n\n## Flex\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `align_items` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_ITEMS_VALUES) %> |\n| `align_self` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_SELF_VALUES) %> |\n| `direction` | Symbol | <%= one_of(Primer::Classify::FLEX_DIRECTION_VALUES) %> |\n| `flex` | Integer, Symbol | <%= one_of(Primer::Classify::FLEX_VALUES) %> |\n| `flex_grow` | Integer | To enable, set to `0`. |\n| `flex_shrink` | Integer | To enable, set to `0`. |\n| `flex_wrap` | Symbol | <%= one_of(Primer::Classify::FLEX_WRAP_MAPPINGS.keys) %> |\n| `justify_content` | Symbol | <%= one_of(Primer::Classify::FLEX_JUSTIFY_CONTENT_VALUES) %> |\n\n## Grid\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `clearfix` | Boolean | Whether to assign the `clearfix` class. |\n| `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Utilities.mappings(:col)) %> |\n| `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Utilities.mappings(:container)) %> |\n\n## Layout\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |\n| `w` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> |\n| `h` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> |\n| `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |\n| `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |\n| `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |\n\n## Position\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bottom` | Boolean | If `false`, sets `bottom: 0`. |\n| `float` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:float)) %> |\n| `left` | Boolean | If `false`, sets `left: 0`. |\n| `position` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:position)) %> |\n| `right` | Boolean | If `false`, sets `right: 0`. |\n| `top` | Boolean | If `false`, sets `top: 0`. |\n\n## Spacing\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `m` | Integer | Margin. <%= one_of(Primer::Classify::Utilities.mappings(:m)) %> |\n| `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Utilities.mappings(:mb)) %> |\n| `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Utilities.mappings(:ml)) %> |\n| `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Utilities.mappings(:mr)) %> |\n| `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Utilities.mappings(:mt)) %> |\n| `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Utilities.mappings(:mx)) %> |\n| `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Utilities.mappings(:my)) %> |\n| `p` | Integer | Padding. <%= one_of(Primer::Classify::Utilities.mappings(:p)) %> |\n| `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Utilities.mappings(:pb)) %> |\n| `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pl)) %> |\n| `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |\n| `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |\n| `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |\n| `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |\n\n## Typography\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `font_family` | Symbol | Font family. <%= one_of([:mono]) %> |\n| `font_size` | String, Integer, Symbol | <%= one_of([\"00\", 0, 1, 2, 3, 4, 5, 6, :small, :normal]) %> |\n| `font_style` | Symbol | Font style. <%= one_of([:italic]) %> |\n| `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold, :emphasized]) %> |\n| `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |\n| `text_transform` | Symbol | Text transformation. <%= one_of([:uppercase]) %> |\n| `underline` | Boolean | Whether text should be underlined. |\n| `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |\n\n## Other\n\n| Name | Type | Description |\n| :- | :- | :- |\n| classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |\n| test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |"
   }
 ]

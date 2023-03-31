@@ -94,10 +94,21 @@ module Primer
             end
           end
 
-          component_docs.values
+          component_docs.values + [system_args_docs]
         end
 
         private
+
+        def system_args_docs
+          docs = registry.find(Primer::BaseComponent)
+
+          {
+            component: "BaseComponent",
+            fully_qualified_name: "Primer::BaseComponent",
+            description_md: docs.base_docstring,
+            args_md: docs.constructor.base_docstring
+          }
+        end
 
         def serialize_params(param_tags, component)
           param_tags.map do |tag|
