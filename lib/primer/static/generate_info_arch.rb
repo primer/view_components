@@ -108,7 +108,7 @@ module Primer
             component: "BaseComponent",
             fully_qualified_name: "Primer::BaseComponent",
             description_md: docs.base_docstring,
-            args_md: docs.constructor.base_docstring
+            args_md: view_context.render(inline: docs.constructor.base_docstring)
           }
         end
 

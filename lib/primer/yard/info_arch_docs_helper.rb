@@ -10,6 +10,10 @@ module Primer
       def link_to_component(component)
         "{{#link_to_component}}#{component}{{/link_to_component}}"
       end
+
+      def link_to_system_arguments_docs
+        "{{link_to_system_arguments_docs}}"
+      end
     end
   end
 end
