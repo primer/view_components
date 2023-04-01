@@ -48,7 +48,16 @@ module Primer
         end
       }
 
-      # @param role [Symbol] ARIA role describing the function of the list. listbox and menu are a common values.
+      # Adds a divider to the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      def with_divider(**system_arguments, &block)
+        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
+        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
+        set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
+      end
+
+      # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param item_classes [String] Additional CSS classes to attach to items.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %> `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
@@ -81,12 +90,13 @@ module Primer
       # @private
       def before_render
         aria_label = aria(:label, @system_arguments)
+        aria_labelledby = aria(:labelledby, @system_arguments)
 
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
           raise ArgumentError, "An aria-label should not be provided if a heading is present" if aria_label.present?
-        elsif aria_label.blank?
-          raise ArgumentError, "An aria-label or heading must be provided"
+        elsif aria_label.blank? && aria_labelledby.blank?
+          raise ArgumentError, "An aria-label, aria-labelledby, or heading must be provided"
         end
       end
 

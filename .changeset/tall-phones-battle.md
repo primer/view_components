@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Make Overlay headings optional
+Fix up reserved CSS class linter

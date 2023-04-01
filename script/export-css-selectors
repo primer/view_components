@@ -8,11 +8,16 @@ const CSSwhat = require('css-what')
 
 console.log('Exporting CSS selectors...')
 
+const capitalize = (s) => s.slice(0, 1).toUpperCase() + s.slice(1)
+const snakeToCamelCase = (s) => s.split('_').map(capitalize).join('')
+const componentNameToRubyClass = (componentName) =>
+  'Primer::' + componentName.split('/').map(snakeToCamelCase).join('::')
+
 const exportSelectors = (folder) => {
-  const folder_glob = folder + '/**/*.css'
+  const folderGlob = `${folder}/**/*.css`
   const componentNameRegex = new RegExp(`${folder.replace('/','\\/')}\\/(.*).css`)
 
-  return glob(folder_glob).then(files =>
+  return glob(folderGlob).then(files =>
     Promise.all(
       files.map(async (file) => {
         console.log(`Processing ${file}`)
@@ -21,7 +26,7 @@ const exportSelectors = (folder) => {
         const componentName = componentNameRegex.exec(file)[1]
 
         const selectors = []
-        const classes = []
+        const classFiles = []
 
         root.walkRules(rule => {
           // @keyframes at-rules have children that look like they have normal
@@ -34,11 +39,11 @@ const exportSelectors = (folder) => {
 
           rule.selectors.forEach(ruleSelector => {
             selectors.push(ruleSelector)
-            CSSwhat.parse(ruleSelector)[0].forEach(ruleObj => {
-              if (ruleObj.type === 'attribute' && ruleObj.name === 'class') {
-                classes.push(ruleObj.value)
-              }
-            })
+            const ruleObj = CSSwhat.parse(ruleSelector)[0][0]
+            if (ruleObj.type === 'attribute' && ruleObj.name === 'class') {
+              const baseHtmlClass = ruleObj.value
+              classFiles.push([baseHtmlClass, componentNameToRubyClass(componentName)])
+            }
           })
         })
 
@@ -47,37 +52,54 @@ const exportSelectors = (folder) => {
           `${file}.json`,
           JSON.stringify({
             name: componentName,
-            selectors: [...new Set(selectors)],
-            classes: [...new Set(classes)]
+            selectors: [...new Set(selectors)]
           }, null, 2)
         ).catch(error => console.error(`Failed to write ${file}.json`, { error }))
 
-        return classes
+        return classFiles
       })
     )
   )
 }
 
-// stylesheets under app/lib/primer/css need their individual
-// json files generated
-exportSelectors('app/lib/primer/css')
-
 // class names referenced under app/components/primer might need
 // to be reserved in addition to getting individual json files
 const classShouldBeReserved = className =>
   (className[0].toUpperCase() === className[0])
+
 exportSelectors('app/components/primer')
   .then(classLists => {
-    console.log(`Writing static/classes.json`)
+    const htmlClassToRubyClasses = {}
+
+    classLists
+      .reduce(((a, b) => a.concat(b)), [])
+      .filter(cf => classShouldBeReserved(cf[0]))
+      // sort by length so we process e.g. "Label" before "Label--accent"
+      .sort(([htmlClassA], [htmlClassB]) => htmlClassA.length - htmlClassB.length)
+      .forEach(([htmlClass, rubyClass]) => {
+        if (!htmlClassToRubyClasses[htmlClass]) {
+          htmlClassToRubyClasses[htmlClass] = new Set()
+        }
+
+        htmlClassToRubyClasses[htmlClass].add(rubyClass)
+      })
+
+    console.log('Writing static/classes.json')
     return writeFile(
       'static/classes.json',
       JSON.stringify(
-        [...new Set(classLists.reduce((a, b) => a.concat(b)))]
-          .filter(classShouldBeReserved)
-          .sort(),
+        Object.fromEntries(
+          Object
+            .entries(htmlClassToRubyClasses)
+            .map(([key, set]) => [key, [...set.values()]])
+        ),
         null,
         2
       )
     )
   })
   .catch(error => console.error("failed to write static/classes.json", { error }))
+
+// stylesheets under app/lib/primer/css need their individual
+// json files generated
+exportSelectors('app/lib/primer/css')

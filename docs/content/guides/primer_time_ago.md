@@ -36,8 +36,8 @@ noted, however.
 | `micro` | `format: :micro` | Instead of a boolean flag, set the `format` argument to the value of `:micro`                                           |
 | n/a     | `tense: :past`   | Required for displaying how long ago the set time was. This argument tells `RelativeTime` to behave like `TimeAgo` did. |
 
-The remaining arguments for `RelativeTime` can be found in the docu7mentation
-for that component.
+The remaining arguments for `RelativeTime` can be found in the documentation for
+that component.
 
 Please see the following for complete descriptions and examples.
 

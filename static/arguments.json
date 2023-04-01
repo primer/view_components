@@ -9,7 +9,7 @@
     "parameters": [
       {
         "name": "role",
-        "type": "Symbol",
+        "type": "Boolean",
         "default": "`:list`",
         "description": "ARIA role describing the function of the list. listbox and menu are a common values."
       },
@@ -136,8 +136,8 @@
       {
         "name": "label",
         "type": "String",
-        "default": "N/A",
-        "description": "Item label."
+        "default": "`nil`",
+        "description": "Item label. If no label is provided, content is used."
       },
       {
         "name": "label_classes",
@@ -4065,7 +4065,7 @@
   },
   {
     "component": "Layout",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Layout",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
@@ -4197,7 +4197,7 @@
   },
   {
     "component": "Truncate",
-    "status": "beta",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Truncate",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb",

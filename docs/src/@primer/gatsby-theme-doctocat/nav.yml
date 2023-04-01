@@ -125,8 +125,12 @@
     url: "/components/button"
   - title: IconButton
     url: "/components/iconbutton"
+  - title: LayoutComponent
+    url: "/components/layout"
   - title: Tooltip
     url: "/components/tooltip"
+  - title: Truncate
+    url: "/components/truncate"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

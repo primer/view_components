@@ -1,10 +1,10 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.1.1)
+    primer_view_components (0.1.4)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-      octicons (>= 17.0.0)
+      octicons (>= 18.0.0)
       view_component (> 2.0, < 4.0)
 
 GEM
@@ -272,7 +272,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
-    octicons (18.0.0)
+    octicons (18.3.0)
     oj (3.14.0)
     os (1.1.4)
     pry (0.14.1)
@@ -285,7 +285,7 @@ GEM
     puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.2)
+    rack (2.2.6.4)
     rack-cors (2.0.0)
       rack (>= 2.0.0)
     rack-test (2.0.2)

@@ -21,6 +21,11 @@
         "name": "leading_visuals"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/with_manual_dividers",
+        "preview_path": "/lookbook/preview/primer/alpha/action_list/with_manual_dividers",
+        "name": "with_manual_dividers"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/divider",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/divider",
         "name": "divider"
@@ -81,11 +86,6 @@
         "name": "item_trailing_action"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action_hover",
-        "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action_hover",
-        "name": "item_trailing_action_hover"
-      },
-      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_danger",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_danger",
         "name": "item_danger"
@@ -109,6 +109,29 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_active",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_active",
         "name": "item_active"
+      }
+    ]
+  },
+  {
+    "name": "auto_complete",
+    "component": "AutoComplete",
+    "status": "deprecated",
+    "lookup_path": "primer/alpha/auto_complete",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/default",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/more_examples",
+        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/more_examples",
+        "name": "more_examples"
       }
     ]
   },
@@ -197,29 +220,6 @@
         "inspect_path": "/lookbook/inspect/primer/beta/auto_complete/sizes",
         "preview_path": "/lookbook/preview/primer/beta/auto_complete/sizes",
         "name": "sizes"
-      }
-    ]
-  },
-  {
-    "name": "auto_complete",
-    "component": "AutoComplete",
-    "status": "deprecated",
-    "lookup_path": "primer/alpha/auto_complete",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/default",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/more_examples",
-        "preview_path": "/lookbook/preview/primer/alpha/auto_complete/more_examples",
-        "name": "more_examples"
       }
     ]
   },
@@ -1078,24 +1078,6 @@
     ]
   },
   {
-    "name": "layout",
-    "component": "Layout",
-    "status": "alpha",
-    "lookup_path": "primer/layout",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/layout/playground",
-        "preview_path": "/lookbook/preview/primer/layout/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/layout/default",
-        "preview_path": "/lookbook/preview/primer/layout/default",
-        "name": "default"
-      }
-    ]
-  },
-  {
     "name": "link",
     "component": "Link",
     "status": "beta",
@@ -1648,6 +1630,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/default",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/text_field/with_data_target",
+        "preview_path": "/lookbook/preview/primer/alpha/text_field/with_data_target",
+        "name": "with_data_target"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/auto_check",

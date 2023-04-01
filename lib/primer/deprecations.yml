@@ -26,6 +26,11 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
 
+  - component: "Primer::LayoutComponent"
+    autocorrect: false
+    replacement: "Primer::Alpha::Layout"
+    guide: "https://primer.style/view-components/guides/primer_layout_component"
+
   - component: "Primer::Navigation::TabComponent"
     autocorrect: true
     replacement: "Primer::Alpha::Navigation::Tab"
@@ -33,3 +38,8 @@ deprecations:
   - component: "Primer::Tooltip"
     autocorrect: true
     replacement: "Primer::Alpha::Tooltip"
+
+  - component: "Primer::Truncate"
+    autocorrect: false
+    replacement: "Primer::Beta::Truncate"
+    guide: "https://primer.style/view-components/guides/primer_truncate"

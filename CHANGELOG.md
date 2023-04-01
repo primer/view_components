@@ -1,5 +1,49 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- [#1829](https://github.com/primer/view_components/pull/1829) [`bb54d982`](https://github.com/primer/view_components/commit/bb54d982433910ae28005b72de73ca69a6f8a8f3) Thanks [@josepmartins](https://github.com/josepmartins)! - Add responsive values for `border` and `border-radius` system argument
+
+* [#1897](https://github.com/primer/view_components/pull/1897) [`eae7a7f8`](https://github.com/primer/view_components/commit/eae7a7f8a4891efa4873558d380eabb638272095) Thanks [@camertron](https://github.com/camertron)! - Fix widths of text fields and multi inputs.
+
+## 0.1.3
+
+### Patch Changes
+
+- [#1895](https://github.com/primer/view_components/pull/1895) [`e53f1995`](https://github.com/primer/view_components/commit/e53f1995e6b97a92169479255196c1eec07cbd1f) Thanks [@camertron](https://github.com/camertron)! - Modify merge_aria to combine plural attributes; introduce merge_data
+
+* [#1894](https://github.com/primer/view_components/pull/1894) [`5d118b0a`](https://github.com/primer/view_components/commit/5d118b0ae8b10429801f12f8c08e9aaf4895dbab) Thanks [@mikekavouras](https://github.com/mikekavouras)! - Update Primer::Alpha::TextInput to support multiple target attributes
+
+- [#1887](https://github.com/primer/view_components/pull/1887) [`9cc2f5bf`](https://github.com/primer/view_components/commit/9cc2f5bf3a59e7c97ca44b4b17da7c849bda5e2a) Thanks [@camertron](https://github.com/camertron)! - ActionList item and divider content
+
+* [#1892](https://github.com/primer/view_components/pull/1892) [`d72334d1`](https://github.com/primer/view_components/commit/d72334d1ef2a40e3ed1e96bfebc1b896752c521c) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::LayoutComponent in favor of Primer::Alpha::Layout, and add a migration guide
+
+- [#1891](https://github.com/primer/view_components/pull/1891) [`5f48d6f8`](https://github.com/primer/view_components/commit/5f48d6f83d0aa5b82ca3a764161cfafae9de8fe5) Thanks [@camertron](https://github.com/camertron)! - Associate title with dialog
+
+* [#1889](https://github.com/primer/view_components/pull/1889) [`dd1d382d`](https://github.com/primer/view_components/commit/dd1d382d52abaff1edadb64cd4eef89515c17184) Thanks [@langermank](https://github.com/langermank)! - Bug fix: ActionList `danger` variant hover/active contrast
+
+## 0.1.2
+
+### Patch Changes
+
+- [#1880](https://github.com/primer/view_components/pull/1880) [`7a160a4c`](https://github.com/primer/view_components/commit/7a160a4c6db18687fdc5ebebbe5dc9ab0926443a) Thanks [@camertron](https://github.com/camertron)! - Allow consumers to set ActionList item content's tag
+
+* [#1869](https://github.com/primer/view_components/pull/1869) [`53b99f6a`](https://github.com/primer/view_components/commit/53b99f6ae1c7fdfb4b929d6f60215aacedbcdfc7) Thanks [@keithamus](https://github.com/keithamus)! - Make Overlay headings optional
+
+- [#1873](https://github.com/primer/view_components/pull/1873) [`125861b8`](https://github.com/primer/view_components/commit/125861b8cbff95db90126f8c0aa297b9a0bb4ade) Thanks [@camertron](https://github.com/camertron)! - Remove ability to show trailing action buttons in ActionList and NavList on hover
+
+* [#1875](https://github.com/primer/view_components/pull/1875) [`8bbeb72a`](https://github.com/primer/view_components/commit/8bbeb72a5ef60917265b93791cd20ab99045540e) Thanks [@camertron](https://github.com/camertron)! - Allow ActionList dividers to be added manually
+
+- [#1871](https://github.com/primer/view_components/pull/1871) [`6b1170ae`](https://github.com/primer/view_components/commit/6b1170aef5b5f703e239881bdd0717c6e4c1a973) Thanks [@camertron](https://github.com/camertron)! - Deny tag argument for ActionList headings
+
+* [#1876](https://github.com/primer/view_components/pull/1876) [`b3b94e98`](https://github.com/primer/view_components/commit/b3b94e989f51fcc776cf312208bd4dcadde31161) Thanks [@antn](https://github.com/antn)! - Upgrade octicons to >= 18.0.0
+
+- [#1877](https://github.com/primer/view_components/pull/1877) [`864fb98f`](https://github.com/primer/view_components/commit/864fb98fd38af79490b326caf3a0fe325ffb3066) Thanks [@hrs](https://github.com/hrs)! - Deprecate Primer::Truncate in favor of Primer::Beta::Truncate, and adding a migration guide
+
+* [#1878](https://github.com/primer/view_components/pull/1878) [`9c211ce2`](https://github.com/primer/view_components/commit/9c211ce222e774acef11d1d438adfdc6251ce5ac) Thanks [@camertron](https://github.com/camertron)! - Attach behavior to TextField's clear button
+
 ## 0.1.1
 
 ### Patch Changes

@@ -11,7 +11,7 @@
     "parameters": [
       {
         "name": "role",
-        "type": "Symbol",
+        "type": "Boolean",
         "default": "`:list`",
         "description": "ARIA role describing the function of the list. listbox and menu are a common values."
       },
@@ -67,7 +67,18 @@
       }
     ],
     "methods": [
-
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list of items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+          }
+        ]
+      }
     ],
     "previews": [
       {
@@ -84,6 +95,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/leading_visuals",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/leading_visuals",
         "name": "leading_visuals"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/with_manual_dividers",
+        "preview_path": "/lookbook/preview/primer/alpha/action_list/with_manual_dividers",
+        "name": "with_manual_dividers"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/divider",
@@ -146,11 +162,6 @@
         "name": "item_trailing_action"
       },
       {
-        "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_trailing_action_hover",
-        "preview_path": "/lookbook/preview/primer/alpha/action_list/item_trailing_action_hover",
-        "name": "item_trailing_action_hover"
-      },
-      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/item_danger",
         "preview_path": "/lookbook/preview/primer/alpha/action_list/item_danger",
         "name": "item_danger"
@@ -177,42 +188,6 @@
       }
     ],
     "subcomponents": [
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
         "description": "Heading used to describe each sub list within an action list.",
@@ -304,8 +279,8 @@
           {
             "name": "label",
             "type": "String",
-            "default": "N/A",
-            "description": "Item label."
+            "default": "`nil`",
+            "description": "Item label. If no label is provided, content is used."
           },
           {
             "name": "label_classes",
@@ -419,12 +394,6 @@
             "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
             "parameters": [
               {
-                "name": "show_on_hover",
-                "type": "Boolean",
-                "default": "N/A",
-                "description": "Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`."
-              },
-              {
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
@@ -508,6 +477,42 @@
 
             ]
           }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
         ],
         "previews": [
 
@@ -1316,6 +1321,42 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
+        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "component": "Dialog::Footer",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body",
         "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Body",
@@ -1378,42 +1419,6 @@
             "type": "Boolean",
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
-        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "component": "Dialog::Footer",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
           },
           {
             "name": "system_arguments",
@@ -2148,31 +2153,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Layout::Sidebar",
-        "description": "The layout's sidebar content.",
-        "component": "Layout::Sidebar",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "LayoutSidebar",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Layout::Main",
         "description": "The layout's main content.",
         "component": "Layout::Main",
@@ -2194,6 +2174,31 @@
             "default": "N/A",
             "description": "{{link_to_system_arguments_docs}}"
           }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Layout::Sidebar",
+        "description": "The layout's sidebar content.",
+        "component": "Layout::Sidebar",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "LayoutSidebar",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
+        "parameters": [
+
         ],
         "slots": [
 
@@ -2684,12 +2689,6 @@
             "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
             "parameters": [
               {
-                "name": "show_on_hover",
-                "type": "Boolean",
-                "default": "N/A",
-                "description": "Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`."
-              },
-              {
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
@@ -3113,48 +3112,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Footer",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
-          },
-          {
-            "name": "align_content",
-            "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Body",
         "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "component": "Overlay::Body",
@@ -3223,6 +3180,48 @@
             "type": "Boolean",
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Footer",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "align_content",
+            "type": "Symbol",
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
           },
           {
             "name": "system_arguments",
@@ -4446,6 +4445,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/default",
         "preview_path": "/lookbook/preview/primer/alpha/text_field/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/text_field/with_data_target",
+        "preview_path": "/lookbook/preview/primer/alpha/text_field/with_data_target",
+        "name": "with_data_target"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/auto_check",
@@ -8222,29 +8226,29 @@
     "fully_qualified_name": "Primer::LayoutComponent",
     "description": "Use `Layout` to build a main/sidebar layout.",
     "component": "Layout",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Layout",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/default/",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/default/",
     "parameters": [
       {
-        "name": "stacking_breakpoint",
-        "type": "Symbol",
-        "default": "`:md`",
-        "description": "When the `Layout` should change from rows into columns. One of `:lg`, `:md`, or `:sm`."
+        "name": "responsive",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to collapse layout to a single column at smaller widths."
       },
       {
-        "name": "first_in_source",
+        "name": "side",
         "type": "Symbol",
-        "default": "`:sidebar`",
-        "description": "Which element to render first in the HTML. This will change the keyboard navigation order. One of `:main` or `:sidebar`."
+        "default": "`:right`",
+        "description": "Which side to display the sidebar on. One of `:left` or `:right`."
       },
       {
-        "name": "gutter",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "The amount of space between the main section and the sidebar. One of `:condensed`, `:default`, `:none`, or `:spacious`."
+        "name": "sidebar_col",
+        "type": "Integer",
+        "default": "`3`",
+        "description": "Sidebar column width."
       },
       {
         "name": "system_arguments",
@@ -8283,46 +8287,7 @@
 
     ],
     "previews": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/playground",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/default",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/gutter",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/gutter",
-        "name": "gutter"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/main_width",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/main_width",
-        "name": "main_width"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/sidebar_column_placement",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/sidebar_column_placement",
-        "name": "sidebar_column_placement"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/sidebar_row_placement",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/sidebar_row_placement",
-        "name": "sidebar_row_placement"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/sidebar_width",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/sidebar_width",
-        "name": "sidebar_width"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/alpha/layout/stacking_breakpoint",
-        "preview_path": "/lookbook/preview/primer/alpha/layout/stacking_breakpoint",
-        "name": "stacking_breakpoint"
-      }
+
     ],
     "subcomponents": [
 
@@ -8505,12 +8470,36 @@
     "fully_qualified_name": "Primer::Truncate",
     "description": "Use `Truncate` to shorten overflowing text with an ellipsis.",
     "component": "Truncate",
-    "status": "beta",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Truncate",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/default/",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/truncate/default/",
     "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div`, `:p`, `:span`, or `:strong`."
+      },
+      {
+        "name": "inline",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the element is inline (or inline-block)."
+      },
+      {
+        "name": "expandable",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`."
+      },
+      {
+        "name": "max_width",
+        "type": "Integer",
+        "default": "`nil`",
+        "description": "Sets the max-width of the text."
+      },
       {
         "name": "system_arguments",
         "type": "Hash",
@@ -8525,31 +8514,7 @@
 
     ],
     "previews": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/truncate/playground",
-        "preview_path": "/lookbook/preview/primer/beta/truncate/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/truncate/default",
-        "preview_path": "/lookbook/preview/primer/beta/truncate/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/truncate/multiple_items",
-        "preview_path": "/lookbook/preview/primer/beta/truncate/multiple_items",
-        "name": "multiple_items"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/truncate/advanced_multiple_items",
-        "preview_path": "/lookbook/preview/primer/beta/truncate/advanced_multiple_items",
-        "name": "advanced_multiple_items"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/truncate/max_widths",
-        "preview_path": "/lookbook/preview/primer/beta/truncate/max_widths",
-        "name": "max_widths"
-      }
+
     ],
     "subcomponents": [
 

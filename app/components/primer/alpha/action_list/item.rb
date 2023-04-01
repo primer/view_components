@@ -84,12 +84,16 @@ module Primer
         # A button rendered after the trailing icon that can be used to show a menu, activate
         # a dialog, etc.
         #
-        # @param show_on_hover [Boolean] Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`.
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
-        renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
-          @trailing_action_on_hover = show_on_hover
+        renders_one :trailing_action, lambda { |**system_arguments|
+          Primer::Beta::IconButton.new(
+            classes: class_names(
+              system_arguments[:classes],
+              "ActionListItem-trailingAction"
+            ),
 
-          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
+            **system_arguments
+          )
         }
 
         # `Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as
@@ -126,7 +130,7 @@ module Primer
 
         # @param list [Primer::Alpha::ActionList] The list that contains this item. Used internally.
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
-        # @param label [String] Item label.
+        # @param label [String] Item label. If no label is provided, content is used.
         # @param label_classes [String] CSS classes that will be added to the label.
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
@@ -143,7 +147,7 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           list:,
-          label:,
+          label: nil,
           label_classes: nil,
           label_arguments: {},
           content_arguments: {},
@@ -167,7 +171,6 @@ module Primer
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
-          @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
           @content_arguments = content_arguments
@@ -209,12 +212,14 @@ module Primer
             SIZE_MAPPINGS[@size]
           )
 
-          if @href && !@disabled
-            @content_arguments[:tag] = :a
-            @content_arguments[:href] = @href
-          else
-            @content_arguments[:tag] = :button
-            @content_arguments[:onclick] = on_click if on_click
+          unless @content_arguments[:tag]
+            if @href && !@disabled
+              @content_arguments[:tag] = :a
+              @content_arguments[:href] = @href
+            else
+              @content_arguments[:tag] = :button
+              @content_arguments[:onclick] = on_click if on_click
+            end
           end
 
           @description_wrapper_arguments = {
@@ -231,7 +236,6 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
             "ActionListItem--navActive" => active?
           )
 
