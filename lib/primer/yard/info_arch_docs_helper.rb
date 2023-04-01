@@ -22,6 +22,10 @@ module Primer
       def link_to_accessibility
         "{{link_to_accessibility}}"
       end
+
+      def link_to_octicons
+        "{{link_to_octicons}}"
+      end
     end
   end
 end

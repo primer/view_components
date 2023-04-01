@@ -735,7 +735,7 @@
         "name": "icon",
         "type": "Symbol",
         "default": "`nil`",
-        "description": "The name of an [Octicon](https://primer.style/octicons/) icon to use. If no icon is provided, a default one will be chosen based on the scheme."
+        "description": "The name of an {{link_to_octicons}} icon to use. If no icon is provided, a default one will be chosen based on the scheme."
       },
       {
         "name": "scheme",
@@ -1316,6 +1316,36 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "component": "Dialog::Body",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
         "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Header",
@@ -1385,36 +1415,6 @@
             "default": "`false`",
             "description": "Show a divider between the footer and body."
           },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
-        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "component": "Dialog::Body",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
-        "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -2883,7 +2883,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::OcticonSymbols",
-    "description": "OcticonSymbols renders a symbol dictionary using a list of [Octicon](https://primer.style/octicons/).",
+    "description": "OcticonSymbols renders a symbol dictionary using a list of {{link_to_octicons}}.",
     "component": "OcticonSymbols",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3113,44 +3113,26 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Header",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Footer",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
         "parameters": [
           {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the Overlay."
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
           },
           {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "size",
+            "name": "align_content",
             "type": "Symbol",
-            "default": "`:medium`",
-            "description": "The size of the Header. One of `:large` or `:medium`."
-          },
-          {
-            "name": "divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
           },
           {
             "name": "system_arguments",
@@ -3203,26 +3185,44 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Footer",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "short_name": "OverlayHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
         "parameters": [
           {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the Overlay."
           },
           {
-            "name": "align_content",
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "size",
             "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+            "default": "`:medium`",
+            "description": "The size of the Header. One of `:large` or `:medium`."
+          },
+          {
+            "name": "divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
           },
           {
             "name": "system_arguments",
@@ -6596,7 +6596,7 @@
         "name": "icon",
         "type": "String",
         "default": "N/A",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+        "description": "Name of {{link_to_octicons}} to use."
       },
       {
         "name": "wrapper_arguments",
@@ -6918,7 +6918,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Octicon",
-    "description": "`Octicon` renders an [Octicon](https://primer.style/octicons/) with {{link_to_system_arguments_docs}}.\n`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.",
+    "description": "`Octicon` renders an {{link_to_octicons}} with {{link_to_system_arguments_docs}}.\n`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.",
     "component": "Octicon",
     "status": "beta",
     "a11y_reviewed": false,
@@ -6930,13 +6930,13 @@
         "name": "icon_name",
         "type": "Symbol, String",
         "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+        "description": "Name of {{link_to_octicons}} to use."
       },
       {
         "name": "icon",
         "type": "Symbol, String",
         "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+        "description": "Name of {{link_to_octicons}} to use."
       },
       {
         "name": "size",
@@ -7624,7 +7624,7 @@
             "name": "icon",
             "type": "String",
             "default": "N/A",
-            "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+            "description": "Name of {{link_to_octicons}} to use."
           },
           {
             "name": "system_arguments",
@@ -8160,7 +8160,7 @@
         "name": "icon",
         "type": "String",
         "default": "N/A",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+        "description": "Name of {{link_to_octicons}} to use."
       },
       {
         "name": "tag",
