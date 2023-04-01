@@ -4,8 +4,9 @@ require "json"
 
 module Primer
   module Static
+    # :nodoc:
     module GenerateInfoArch
-      SKIP_METHODS = %i(call before_render).freeze
+      SKIP_METHODS = %i[call before_render].freeze
 
       class << self
         def call
@@ -29,19 +30,22 @@ module Primer
 
               {
                 "name" => slot_method.name,
-                "description" => if slot_method.base_docstring.to_s.present?
-                  view_context.render(inline: slot_method.base_docstring)
-                end,
+                # rubocop:disable Style/IfUnlessModifier
+                "description" =>
+                  if slot_method.base_docstring.to_s.present?
+                    view_context.render(inline: slot_method.base_docstring)
+                  end,
+                # rubocop:enable Style/IfUnlessModifier
                 "parameters" => serialize_params(param_tags, component)
               }
             end
 
             mtds = docs.non_slot_methods.select do |mtd|
-              next false unless mtd.base_docstring.to_s.present?
+              next false if mtd.base_docstring.to_s.blank?
               next false if SKIP_METHODS.include?(mtd.name)
 
-              method_location, _ = mtd.files.first
-              class_location, _ = docs.docs.files.first
+              method_location, = mtd.files.first
+              class_location, = docs.docs.files.first
 
               method_location == class_location
             end
@@ -56,11 +60,12 @@ module Primer
               }
             end
 
-            description = if component == Primer::BaseComponent
-              docs.base_docstring
-            else
-              view_context.render(inline: docs.base_docstring)
-            end
+            description =
+              if component == Primer::BaseComponent
+                docs.base_docstring
+              else
+                view_context.render(inline: docs.base_docstring)
+              end
 
             memo[component] = {
               "fully_qualified_name" => component.name,

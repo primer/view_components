@@ -3,6 +3,7 @@
 require "json"
 
 module Primer
+  # :nodoc:
   module Static
     DEFAULT_STATIC_PATH = File.expand_path("static").freeze
 

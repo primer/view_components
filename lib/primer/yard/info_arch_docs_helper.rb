@@ -3,7 +3,7 @@
 # :nocov:
 module Primer
   module Yard
-    # Helper methods to use for yard documentation
+    # Helper methods to use for info arch yard documentation
     module InfoArchDocsHelper
       include DocsHelper
 

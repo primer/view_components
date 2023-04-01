@@ -4,6 +4,7 @@ require "json"
 
 module Primer
   module Static
+    # :nodoc:
     module GenerateArguments
       class << self
         def call(view_context: self.view_context)

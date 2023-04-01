@@ -2,6 +2,7 @@
 
 module Primer
   module Static
+    # :nodoc:
     module GenerateAuditedAt
       class << self
         def call

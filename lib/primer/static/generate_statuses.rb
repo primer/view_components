@@ -2,6 +2,7 @@
 
 module Primer
   module Static
+    # :nodoc:
     module GenerateStatuses
       class << self
         def call

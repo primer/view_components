@@ -2,6 +2,7 @@
 
 module Primer
   module Static
+    # :nodoc:
     module GenerateConstants
       class << self
         def call
