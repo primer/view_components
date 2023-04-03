@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 require "json"
 
 module Primer
