@@ -179,6 +179,60 @@ module Primer
                                menu_id: menu_id
                              })
       end
+
+      # @label Align end
+      #
+      def align_end(menu_id: "menu-1")
+        render_with_template(locals: {
+                               menu_id: menu_id
+                             })
+      end
+
+      # @label [Item] Block description
+      #
+      def block_description
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_item(label: "Item label", value: "") do |item|
+            item.with_description.with_content("Block description")
+          end
+        end
+      end
+
+      # @label [Item] Inline description
+      #
+      def inline_description
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+            item.with_description.with_content("Inline description")
+          end
+        end
+      end
+
+      # @label [Item] Leading visual
+      #
+      def leading_visual
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+            item.with_leading_visual_icon(icon: :gear)
+            item.with_description.with_content("Inline description")
+          end
+        end
+      end
+
+      # @label [Item] Leading visual single select
+      #
+      def leading_visual_single_select
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1", select_variant: :single)) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+            item.with_leading_visual_icon(icon: :gear)
+            item.with_description.with_content("Inline description")
+          end
+        end
+      end
     end
   end
 end
