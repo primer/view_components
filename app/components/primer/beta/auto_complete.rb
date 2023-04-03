@@ -173,7 +173,7 @@ module Primer
       # @param placeholder [String] The placeholder text displayed within the input
       # @param inset [Boolean] subtle input background color
       # @param monospace [Boolean] monospace input font family
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, width: :auto, disabled: false, invalid: false, inset: false, monospace: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, width: DEFAULT_WIDTH, disabled: false, invalid: false, inset: false, monospace: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
