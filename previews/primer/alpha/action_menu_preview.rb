@@ -32,9 +32,12 @@ module Primer
           menu.with_item(label: "Quote reply", value: "")
           menu.with_item(label: "Reference in new issue", value: "")
           menu.with_divider
-          menu.with_item(label: "Edit", value: "")
-          menu.with_item(label: "Edit", value: "")
-          menu.with_item(label: "Delete", scheme: :danger, value: "")
+          menu.with_item(label: "Edit", value: "") do |item|
+            item.with_description.with_content("Change settings")
+          end
+          menu.with_item(label: "Delete", scheme: :danger, value: "") do |item|
+            item.with_description.with_content("Sayonara")
+          end
         end
       end
 
