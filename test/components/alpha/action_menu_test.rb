@@ -49,7 +49,7 @@ module Primer
           end
         end
 
-        assert_selector("action-menu[data-anchor-side='outside-bottom'][data-anchor-align='start']", visible: false)
+        assert_selector("anchored-position[side='outside-bottom'][align='start']", visible: false)
       end
 
       def test_allows_trigger_button_to_be_icon_button
