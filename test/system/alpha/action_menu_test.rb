@@ -18,5 +18,10 @@ module Alpha
 
       assert_selector("action-menu button[aria-controls]", text: "Menu")
     end
+
+    def test_anchor_align
+      visit_preview(:align_end)
+      assert_selector("anchored-position[align=end]")
+    end
   end
 end

@@ -10,7 +10,7 @@ module Primer
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
       def playground(
-        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::ActionMenu::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::ActionMenu::DEFAULT_ANCHOR_SIDE
+        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE
       )
         render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side)) do |menu|
           menu.with_show_button { "Menu" }

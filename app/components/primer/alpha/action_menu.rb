@@ -14,12 +14,6 @@ module Primer
     class ActionMenu < Primer::Component
       status :alpha
 
-      DEFAULT_ANCHOR_ALIGN = :start
-      ANCHOR_ALIGN_OPTIONS = [DEFAULT_ANCHOR_ALIGN, :center, :end].freeze
-
-      DEFAULT_ANCHOR_SIDE = :outside_bottom
-      ANCHOR_SIDE_OPTIONS = [:outside_top, DEFAULT_ANCHOR_SIDE, :outside_left, :outside_right].freeze
-
       DEFAULT_PRELOAD = false
 
       DEFAULT_SELECT_VARIANT = :none
@@ -239,8 +233,8 @@ module Primer
       #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
-      # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_ALIGN_OPTIONS) %>.
-      # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::ActionMenu::ANCHOR_SIDE_OPTIONS) %>.
+      # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>.
+      # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>.
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
       # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
@@ -249,8 +243,8 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
       def initialize(
         menu_id: self.class.generate_id,
-        anchor_align: DEFAULT_ANCHOR_ALIGN,
-        anchor_side: DEFAULT_ANCHOR_SIDE,
+        anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
+        anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
         src: nil,
         preload: DEFAULT_PRELOAD,
         dynamic_label: false,
@@ -268,8 +262,6 @@ module Primer
         select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
 
         @system_arguments[:tag] = :"action-menu"
-        @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, DEFAULT_ANCHOR_ALIGN).to_s
-        @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, DEFAULT_ANCHOR_SIDE).to_s.dasherize
         @system_arguments[:"data-select-variant"] = select_variant
         @system_arguments[:"data-dynamic-label"] = "" if dynamic_label
         @system_arguments[:"data-dynamic-label-prefix"] = dynamic_label_prefix if dynamic_label_prefix.present?
@@ -277,7 +269,9 @@ module Primer
         @overlay = Primer::Alpha::Overlay.new(
           id: "#{@menu_id}-overlay",
           title: "Menu",
-          visually_hide_title: true
+          visually_hide_title: true,
+          anchor_align: anchor_align,
+          anchor_side: anchor_side
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(
