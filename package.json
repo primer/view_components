@@ -44,13 +44,13 @@
     "build:css": "script/build-assets css"
   },
   "dependencies": {
-    "@github/auto-check-element": "^5.2.0",
+    "@github/auto-check-element": "github:github/auto-check-element#d621001b8c8dd314adf02ea2882138288778a293",
     "@github/auto-complete-element": "^3.3.4",
     "@github/catalyst": "^1.6.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
-    "@github/mini-throttle": "^2.1.0",
+    "@github/mini-throttle": "^2.0.1",
     "@github/relative-time-element": "^4.0.0",
     "@github/tab-container-element": "^3.1.2",
     "@oddbird/popover-polyfill": "^0.0.10",
