@@ -2,84 +2,94 @@
 
 require "components/test_helper"
 
-class PrimerAlphaDialogTest < Minitest::Test
-  include Primer::ComponentTestHelpers
+module Primer
+  module Alpha
+    class DialogTest < Minitest::Test
+      include Primer::ComponentTestHelpers
 
-  def test_renders_title_and_body
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
-      component.with_body { "Hello" }
-    end
+      def test_renders_title_and_body
+        render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+          component.with_body { "Hello" }
+        end
 
-    assert_selector("modal-dialog[role='dialog']") do
-      assert_selector("h1", text: "Title")
-      assert_selector(".Overlay-body", text: "Hello")
-    end
-  end
+        assert_selector("modal-dialog[role='dialog']") do
+          assert_selector("h1", text: "Title")
+          assert_selector(".Overlay-body", text: "Hello")
+        end
+      end
 
-  def test_renders_show_button
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
-      component.with_body { "Hello" }
-      component.with_show_button { "Show" }
-    end
+      def test_renders_show_button
+        render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+          component.with_body { "Hello" }
+          component.with_show_button { "Show" }
+        end
 
-    assert_selector("[data-show-dialog-id]")
-  end
+        assert_selector("[data-show-dialog-id]")
+      end
 
-  def test_raises_on_missing_title
-    error = assert_raises(ArgumentError) do
-      render_inline(Primer::Alpha::Dialog.new)
-    end
+      def test_renders_icon_show_button
+        render_preview :playground, params: { icon: :ellipsis }
 
-    assert_includes(error.message, "missing keyword:")
-    assert_includes(error.message, "title")
-  end
+        assert_selector("button[data-show-dialog-id] svg.octicon.octicon-ellipsis")
+      end
 
-  def test_renders_provided_id
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-id")) do |component|
-      component.with_body { "content" }
-    end
+      def test_raises_on_missing_title
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::Alpha::Dialog.new)
+        end
 
-    assert_selector("modal-dialog[id='my-id']")
-  end
+        assert_includes(error.message, "missing keyword:")
+        assert_includes(error.message, "title")
+      end
 
-  def test_renders_random_id
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
-      component.with_body { "content" }
-    end
+      def test_renders_provided_id
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-id")) do |component|
+          component.with_body { "content" }
+        end
 
-    assert_selector("modal-dialog[id^='dialog-']")
-  end
+        assert_selector("modal-dialog[id='my-id']")
+      end
 
-  def test_renders_title_and_subtitle_with_describedby
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
-      component.with_body { "content" }
-    end
+      def test_renders_random_id
+        render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+          component.with_body { "content" }
+        end
 
-    assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-title my-dialog-description']") do
-      assert_selector("h1[id='my-dialog-title']", text: "Title")
-      assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
-    end
-  end
+        assert_selector("modal-dialog[id^='dialog-']")
+      end
 
-  def test_renders_footer_without_divider_by_default
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
-      component.with_body { "content" }
-      component.with_footer { "footer" }
-    end
+      def test_renders_title_and_subtitle_with_describedby
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+          component.with_body { "content" }
+        end
 
-    assert_selector("modal-dialog") do
-      assert_selector(".Overlay-footer:not(.Overlay-footer--divided)")
-    end
-  end
+        assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-title my-dialog-description']") do
+          assert_selector("h1[id='my-dialog-title']", text: "Title")
+          assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
+        end
+      end
 
-  def test_renders_footer_with_divider_if_show_divider_is_true
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
-      component.with_body { "content" }
-      component.with_footer(show_divider: true) { "footer" }
-    end
+      def test_renders_footer_without_divider_by_default
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+          component.with_body { "content" }
+          component.with_footer { "footer" }
+        end
 
-    assert_selector("modal-dialog") do
-      assert_selector(".Overlay-footer.Overlay-footer--divided")
+        assert_selector("modal-dialog") do
+          assert_selector(".Overlay-footer:not(.Overlay-footer--divided)")
+        end
+      end
+
+      def test_renders_footer_with_divider_if_show_divider_is_true
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+          component.with_body { "content" }
+          component.with_footer(show_divider: true) { "footer" }
+        end
+
+        assert_selector("modal-dialog") do
+          assert_selector(".Overlay-footer.Overlay-footer--divided")
+        end
+      end
     end
   end
 end
