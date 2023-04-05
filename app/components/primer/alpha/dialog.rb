@@ -53,13 +53,17 @@ module Primer
       # Optional button to open the dialog.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
         system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
         system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-        Primer::Beta::Button.new(**system_arguments)
+        if icon.present?
+          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
+        else
+          Primer::Beta::Button.new(**system_arguments)
+        end
       }
 
       # Header content.

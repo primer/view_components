@@ -33,7 +33,6 @@ module Primer
       end
 
       def generate
-        args_for_components = []
         errors = []
 
         each_component do |component_ref|
@@ -42,8 +41,8 @@ module Primer
           status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
 
           metadata = docs.metadata.merge(
-            source: source_url(component),
-            lookbook: lookbook_url(component),
+            source: component_ref.source_url,
+            lookbook: component_ref.lookbook_url,
             path: "docs/content/components/#{status_path}#{docs.short_name.downcase}.md",
             example_path: example_path(component),
             require_js_path: require_js_path(component)
@@ -113,29 +112,10 @@ module Primer
               errors << { component.name => err }
             end
 
-            args = []
             docs.params.each do |tag|
               default_value = pretty_default_value(tag, component)
-
-              args << {
-                "name" => tag.name,
-                "type" => tag.types.join(", "),
-                "default" => default_value,
-                "description" => view_context.render(inline: tag.text.squish)
-              }
-
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text.squish)} |")
             end
-
-            component_args = {
-              "component" => metadata[:title],
-              "status" => component.status.to_s,
-              "source" => metadata[:source],
-              "lookbook" => metadata[:lookbook],
-              "parameters" => args
-            }
-
-            args_for_components << component_args
 
             if docs.slot_methods.any?
               f.puts
@@ -190,7 +170,7 @@ module Primer
           f.puts(view_context.render(inline: system_args_docs.constructor.base_docstring))
         end
 
-        [args_for_components, errors]
+        errors
       end
 
       private
@@ -218,18 +198,6 @@ module Primer
 
       def each_component(&block)
         manifest.each(&block)
-      end
-
-      def source_url(component)
-        path = component.name.split("::").map(&:underscore).join("/")
-
-        "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
-      end
-
-      def lookbook_url(component)
-        path = component.name.underscore.gsub("_component", "")
-
-        "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
       end
 
       def example_path(component)

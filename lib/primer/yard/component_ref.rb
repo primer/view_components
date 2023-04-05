@@ -34,6 +34,20 @@ module Primer
       def form_component?
         @attrs.fetch(:form_component, ATTR_DEFAULTS[:form_component])
       end
+
+      def source_url
+        @source_url ||= begin
+          path = klass.name.split("::").map(&:underscore).join("/")
+          "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
+        end
+      end
+
+      def lookbook_url
+        @lookbook_url ||= begin
+          path = klass.name.underscore.gsub("_component", "")
+          "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+        end
+      end
     end
   end
 end

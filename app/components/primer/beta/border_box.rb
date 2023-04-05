@@ -26,7 +26,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       # @accessibility
-      # When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
+      # When using header.with_title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
       renders_one :header, "Primer::Beta::BorderBox::Header"
 
       # Optional Body.
@@ -72,8 +72,8 @@ module Primer
 
       # @example Header with title, body, rows, and footer
       #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-      #     <% component.with_header do |h| %>
-      #       <% h.title(tag: :h2) do %>
+      #     <% component.with_header do |header| %>
+      #       <% header.with_title(tag: :h2) do %>
       #         Header
       #       <% end %>
       #     <% end %>

@@ -289,10 +289,7 @@ module Primer
 
       # Adds a new item to the list.
       #
-      # @param tag [Symbol] Optional. The tag to use for the item. <%= one_of(Primer::Experimental::ActionMenu::TAG_OPTIONS) %>
-      # @param is_dangerous [Boolean] If item should be styled dangerously. Equivalent to passing `scheme: :danger`.
-      #
-      # Also accepts the same arguments as <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
       def with_item(**system_arguments, &block)
         @list.with_item(**system_arguments, &block)
       end
@@ -304,7 +301,7 @@ module Primer
 
       # Adds a divider to the list.
       #
-      # Accepts the same arguments as <%= link_to_component(Primer::Alpha::ActionList::Divider) %>
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>'s `divider` slot.
       def with_divider(**system_arguments, &block)
         @list.with_divider(**system_arguments, &block)
       end

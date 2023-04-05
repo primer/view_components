@@ -92,19 +92,6 @@
     ]
   },
   "Primer::Alpha::ActionMenu": {
-    "ANCHOR_ALIGN_OPTIONS": [
-      "start",
-      "center",
-      "end"
-    ],
-    "ANCHOR_SIDE_OPTIONS": [
-      "outside_top",
-      "outside_bottom",
-      "outside_left",
-      "outside_right"
-    ],
-    "DEFAULT_ANCHOR_ALIGN": "start",
-    "DEFAULT_ANCHOR_SIDE": "outside_bottom",
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "none",
     "List": "Primer::Alpha::ActionMenu::List",

@@ -69,7 +69,7 @@ module Primer
         #
         # To render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:
         # ```ruby
-        # with_leading_visual_text { "Text here" }`
+        # with_leading_visual_text { "Text here" }
         # ```
         renders_one :trailing_visual, types: {
           icon: Primer::Beta::Octicon,
