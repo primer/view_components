@@ -21,6 +21,9 @@ module Alpha
 
     def test_anchor_align
       visit_preview(:align_end)
+
+      find("action-menu button[aria-controls]").click
+
       assert_selector("anchored-position[align=end]")
     end
   end
