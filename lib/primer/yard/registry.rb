@@ -28,6 +28,7 @@ module Primer
 
           {
             title: class_name,
+            class_name: class_name,
             component_id: short_name.underscore,
             status: status.capitalize,
             status_module: status_module,
@@ -42,7 +43,7 @@ module Primer
       end
 
       def params
-        constructor.tags(:param)
+        constructor&.tags(:param) || []
       end
 
       def slot_methods

@@ -2,6 +2,7 @@
 
 # :nocov:
 module Primer
+  # :nodoc:
   module Yard
     # Helper methods to use for yard documentation
     module DocsHelper
@@ -90,6 +91,8 @@ module Primer
         end
       end
     end
+
+    DocsHelper.extend(DocsHelper)
   end
 end
 # :nocov:
