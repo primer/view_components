@@ -18,16 +18,15 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::ActionList => [
       ".ActionListWrap--inset",
       ".ActionListItem.ActionListItem--hasSubItem > .ActionListContent",
-      ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
       ".ActionListItem.ActionListItem--danger .ActionListItem-visual",
-      ".ActionListContent.ActionListContent--blockDescription .ActionListItem-visual",
       ".ActionListItem-action--leading",
       ".ActionListItem-action--trailing",
       ".ActionListItem-action",
       ".ActionListItem--subItem > .ActionListContent > .ActionListItem-label",
-      ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
+      ".ActionListItem--trailingActionHover .ActionListItem-trailingAction",
       ".ActionList-sectionDivider--filled",
-      ".ActionListItem--trailingActionHover .ActionListItem-trailingAction"
+      ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
+      ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label"
     ],
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"

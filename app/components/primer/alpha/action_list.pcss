@@ -172,6 +172,15 @@
 
       @media screen and (prefers-reduced-motion: no-preference) {
         animation: checkmarkIn 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
+        @keyframes checkmarkIn {
+          from {
+            clip-path: inset(16px 0 0 0);
+          }
+
+          to {
+            clip-path: inset(0 0 0 0);
+          }
+        }
       }
     }
 
@@ -206,6 +215,15 @@
 
       @media screen and (prefers-reduced-motion: no-preference) {
         animation: checkmarkOut 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
+        @keyframes checkmarkOut {
+          from {
+            clip-path: inset(0 0 0 0);
+          }
+
+          to {
+            clip-path: inset(16px 0 0 0);
+          }
+        }
       }
     }
 
@@ -221,26 +239,6 @@
     & .ActionListItem-multiSelectIconRect {
       fill: var(--color-canvas-default);
       border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
-    }
-  }
-
-  @keyframes checkmarkIn {
-    from {
-      clip-path: inset(16px 0 0 0);
-    }
-
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-
-  @keyframes checkmarkOut {
-    from {
-      clip-path: inset(0 0 0 0);
-    }
-
-    to {
-      clip-path: inset(16px 0 0 0);
     }
   }
 
@@ -300,6 +298,7 @@
 
   /* disabled */
 
+  &.ActionListItem--disabled,
   &[aria-disabled='true'] {
     & .ActionListContent {
       & .ActionListItem-label,

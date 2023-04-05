@@ -113,6 +113,109 @@
     ]
   },
   {
+    "name": "action_menu",
+    "component": "ActionMenu",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/action_menu",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_icon_button",
+        "name": "with_icon_button"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select",
+        "name": "single_select"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select",
+        "name": "multiple_select"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/links",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/links",
+        "name": "links"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_selected_item",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_selected_item",
+        "name": "single_selected_item"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_with_internal_label",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_with_internal_label",
+        "name": "single_select_with_internal_label"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_selected_items",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_selected_items",
+        "name": "multiple_selected_items"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_deferred_content",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_deferred_content",
+        "name": "with_deferred_content"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_deferred_preloaded_content",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_deferred_preloaded_content",
+        "name": "with_deferred_preloaded_content"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_actions",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_actions",
+        "name": "with_actions"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
+        "name": "with_disabled_items"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/opens_dialog",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/opens_dialog",
+        "name": "opens_dialog"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/align_end",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/align_end",
+        "name": "align_end"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/block_description",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/block_description",
+        "name": "block_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/inline_description",
+        "name": "inline_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/leading_visual",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/leading_visual",
+        "name": "leading_visual"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/leading_visual_single_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/leading_visual_single_select",
+        "name": "leading_visual_single_select"
+      }
+    ]
+  },
+  {
     "name": "auto_complete",
     "component": "AutoComplete",
     "status": "deprecated",

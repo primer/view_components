@@ -50,10 +50,11 @@
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
+    "@github/include-fragment-element": "^6.1.1",
     "@github/mini-throttle": "^2.1.0",
     "@github/relative-time-element": "^4.0.0",
     "@github/tab-container-element": "^3.1.2",
-    "@oddbird/popover-polyfill": "^0.0.10",
+    "@oddbird/popover-polyfill": "^0.1.1",
     "@primer/behaviors": "^1.2.0"
   },
   "devDependencies": {

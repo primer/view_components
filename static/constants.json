@@ -1,10 +1,13 @@
 {
   "Primer::Alpha::ActionList": {
+    "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
+    "DEFAULT_SELECT_VARIANT": "none",
     "Divider": "Primer::Alpha::ActionList::Divider",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
+    "MENU_ROLE": "menu",
     "SCHEME_MAPPINGS": {
       "full": null,
       "inset": "ActionListWrap--inset"
@@ -12,7 +15,18 @@
     "SCHEME_OPTIONS": [
       "full",
       "inset"
-    ]
+    ],
+    "SELECT_VARIANT_OPTIONS": [
+      "single",
+      "multiple",
+      "multiple_checkbox",
+      "none"
+    ],
+    "SELECT_VARIANT_ROLE_MAP": {
+      "single": "menuitemradio",
+      "multiple": "menuitemcheckbox",
+      "multiple_checkbox": "menuitemcheckbox"
+    }
   },
   "Primer::Alpha::ActionList::Divider": {
     "DEFAULT_SCHEME": "subtle",
@@ -75,6 +89,31 @@
       "medium",
       "large",
       "xlarge"
+    ]
+  },
+  "Primer::Alpha::ActionMenu": {
+    "DEFAULT_PRELOAD": false,
+    "DEFAULT_SELECT_VARIANT": "none",
+    "List": "Primer::Alpha::ActionMenu::List",
+    "SELECT_VARIANT_OPTIONS": [
+      "single",
+      "multiple",
+      "none"
+    ]
+  },
+  "Primer::Alpha::ActionMenu::List": {
+    "DEFAULT_ITEM_TAG": "span",
+    "ITEM_ACTION_OPTIONS": [
+      "classes",
+      "onclick",
+      "href",
+      "value"
+    ],
+    "ITEM_TAG_OPTIONS": [
+      "a",
+      "button",
+      "clipboard-copy",
+      "span"
     ]
   },
   "Primer::Alpha::AutoComplete": {
@@ -420,7 +459,8 @@
     ],
     "ROLE_OPTIONS": [
       "dialog",
-      "menu"
+      "menu",
+      null
     ],
     "SIZE_MAPPINGS": {
       "auto": "Overlay--size-auto",

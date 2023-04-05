@@ -1,0 +1,6 @@
+<div style="display: grid; place-content: center;">
+<%= render(Primer::Alpha::ActionMenu.new(anchor_align: :end)) do |component| %>
+  <% component.with_show_button { "Menu" } %>
+  <% component.with_item(label: "Item", tag: :button, value: "") %>
+<% end %>
+</div>

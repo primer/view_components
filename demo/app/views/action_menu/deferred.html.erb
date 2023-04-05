@@ -1,0 +1,5 @@
+<%= render(Primer::Alpha::ActionMenu::List.new(menu_id: "deferred")) do |list| %>
+  <% list.with_item(label: "Copy link", value: "", autofocus: true) %>
+  <% list.with_item(label: "Quote reply", value: "") %>
+  <% list.with_item(label: "Reference in new issue", value: "") %>
+<% end %>

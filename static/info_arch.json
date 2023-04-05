@@ -10,9 +10,15 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
     "parameters": [
       {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "HTML ID value."
+      },
+      {
         "name": "role",
         "type": "Boolean",
-        "default": "`:list`",
+        "default": "`nil`",
         "description": "ARIA role describing the function of the list. listbox and menu are a common values."
       },
       {
@@ -32,6 +38,12 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Display a divider above each item in the list when it does not follow a header or divider."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
         "name": "system_arguments",
@@ -77,6 +89,20 @@
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
           }
+        ]
+      },
+      {
+        "name": "select_variant",
+        "description": "Returns the value of attribute select_variant.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "role",
+        "description": "Returns the value of attribute role.",
+        "parameters": [
+
         ]
       }
     ],
@@ -189,6 +215,114 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Group heading rendered above the group contents.",
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
+        "description": "Heading used to describe each sub list within an action list.",
+        "component": "ActionList::Heading",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "The group's identifier (ID attribute in HTML)."
+          },
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Sub list title."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`3`",
+            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional sub list description."
+          },
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "tag",
+            "type": "Integer",
+            "default": "N/A",
+            "description": "Semantic tag for the heading."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "id",
+            "description": "Returns the value of attribute id.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item",
         "description": "An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters.",
         "component": "ActionList::Item",
@@ -280,7 +414,7 @@
             "name": "active",
             "type": "Boolean",
             "default": "`false`",
-            "description": "Sets an active state on navigational items."
+            "description": "If the parent list's `select_variant` is set to `:single` or `:multiple`, causes this item to render checked."
           },
           {
             "name": "on_click",
@@ -418,88 +552,256 @@
         "subcomponents": [
 
         ]
+      }
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::Alpha::ActionMenu",
+    "description": "The ActionMenu should be used when a user can select a single option triggering an action from a list of items. Primer will automatically nest an `Item` within a presentational `<li>` tag.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. If one isn't selected, a fallback `:span` will be used. To add functionality, use a `.js` class to create the functionality, or an `onclick` handler.",
+    "component": "ActionMenu",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/default/",
+    "parameters": [
+      {
+        "name": "menu_id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "Id of the menu."
       },
       {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
-        "description": "Heading used to describe each sub list within an action list.",
-        "component": "ActionList::Heading",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListHeading",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
+        "name": "anchor_align",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "One of `:center`, `:end`, or `:start`.."
+      },
+      {
+        "name": "anchor_side",
+        "type": "Symbol",
+        "default": "`:outside_bottom`",
+        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
+      },
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Used with an `include-fragment` element to load menu content from the given source URL."
+      },
+      {
+        "name": "preload",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "When true, and src is present, loads the `include-fragment` on trigger hover."
+      },
+      {
+        "name": "dynamic_label",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to display the text of the currently selected item in the show button."
+      },
+      {
+        "name": "dynamic_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": ". One of `:multiple`, `:none`, or `:single`.."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}."
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+      {
+        "name": "list",
+        "description": "Returns the value of attribute list.",
         "parameters": [
-          {
-            "name": "list_id",
-            "type": "String",
-            "default": "N/A",
-            "description": "The unique identifier of the sub list the heading belongs to. Used internally."
-          },
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Sub list title."
-          },
-          {
-            "name": "heading_level",
-            "type": "Integer",
-            "default": "`3`",
-            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Optional sub list description."
-          },
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "tag",
-            "type": "Integer",
-            "default": "N/A",
-            "description": "Semantic tag for the heading."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
 
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "name": "preload",
+        "description": "Returns the value of attribute preload.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "preload?",
+        "description": "Returns the value of attribute preload.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "with_show_button",
+        "description": "Button to activate the menu. This may be a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} or {{#link_to_component}}Primer::IconButton{{/link_to_component}}.",
         "parameters": [
           {
-            "name": "scheme",
+            "name": "icon",
             "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
+            "default": "N/A",
+            "description": "Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "with_item",
+        "description": "Adds a new item to the list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Retrieves the list of items.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `divider` slot."
+          }
+        ]
+      }
+    ],
+    "previews": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/playground",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_icon_button",
+        "name": "with_icon_button"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select",
+        "name": "single_select"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select",
+        "name": "multiple_select"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/links",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/links",
+        "name": "links"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_selected_item",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_selected_item",
+        "name": "single_selected_item"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_with_internal_label",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_with_internal_label",
+        "name": "single_select_with_internal_label"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_selected_items",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_selected_items",
+        "name": "multiple_selected_items"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_deferred_content",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_deferred_content",
+        "name": "with_deferred_content"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_deferred_preloaded_content",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_deferred_preloaded_content",
+        "name": "with_deferred_preloaded_content"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_actions",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_actions",
+        "name": "with_actions"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
+        "name": "with_disabled_items"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/opens_dialog",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/opens_dialog",
+        "name": "opens_dialog"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/align_end",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/align_end",
+        "name": "align_end"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/block_description",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/block_description",
+        "name": "block_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/inline_description",
+        "name": "inline_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/leading_visual",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/leading_visual",
+        "name": "leading_visual"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/leading_visual_single_select",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/leading_visual_single_select",
+        "name": "leading_visual_single_select"
+      }
+    ],
+    "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::List",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "component": "ActionMenu::List",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuList",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
+        "parameters": [
+          {
+            "name": "menu_id",
+            "type": "String",
+            "default": "N/A",
+            "description": "ID of the parent menu."
           },
           {
             "name": "system_arguments",
@@ -509,10 +811,44 @@
           }
         ],
         "slots": [
-
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+              }
+            ]
+          }
         ],
         "methods": [
-
+          {
+            "name": "with_item",
+            "description": "Adds a new item to the list.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The same arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+              }
+            ]
+          }
         ],
         "previews": [
 
@@ -2945,12 +3281,6 @@
         "description": "The popover behaviour. One of `:auto` or `:manual`."
       },
       {
-        "name": "popover",
-        "type": "Symbol",
-        "default": "`:auto`",
-        "description": "The popover behaviour. One of `:auto` or `:manual`."
-      },
-      {
         "name": "size",
         "type": "Symbol",
         "default": "`:auto`",
@@ -3001,8 +3331,8 @@
       {
         "name": "role",
         "type": "String",
-        "default": "N/A",
-        "description": "The ARIA role. One of `:dialog` or `:menu`."
+        "default": "`nil`",
+        "description": "The ARIA role. One of `nil`, `:dialog`, or `:menu`."
       },
       {
         "name": "system_arguments",
@@ -3112,45 +3442,15 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Header",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Body",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
+        "short_name": "OverlayBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
         "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the Overlay."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "size",
-            "type": "Symbol",
-            "default": "`:medium`",
-            "description": "The size of the Header. One of `:large` or `:medium`."
-          },
-          {
-            "name": "divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -3214,15 +3514,45 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "component": "Overlay::Body",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+        "short_name": "OverlayHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
         "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the Overlay."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "`:medium`",
+            "description": "The size of the Header. One of `:large` or `:medium`."
+          },
+          {
+            "name": "divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
           {
             "name": "system_arguments",
             "type": "Hash",

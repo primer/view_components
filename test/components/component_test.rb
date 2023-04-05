@@ -120,7 +120,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
-    [Primer::Alpha::FormControl, { label: "Foo" }]
+    [Primer::Alpha::FormControl, { label: "Foo" }],
+    [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }]
   ].freeze
 
   def test_registered_components
@@ -128,6 +129,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::ActionMenu::List",
       "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Group",
       "Primer::Alpha::OcticonSymbols",
