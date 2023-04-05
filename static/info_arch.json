@@ -1321,42 +1321,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
-        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "component": "Dialog::Footer",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
         "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "component": "Dialog::Header",
@@ -1389,6 +1353,42 @@
             "type": "Boolean",
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
+        "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "component": "Dialog::Footer",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
           },
           {
             "name": "system_arguments",
@@ -2515,101 +2515,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
-        "component": "NavList::Group",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "NavListGroup",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
-        "parameters": [
-          {
-            "name": "selected_item_id",
-            "type": "Symbol",
-            "default": "`nil`",
-            "description": "The ID of the currently selected item. Used internally."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-          {
-            "name": "show_more_item",
-            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
-            "parameters": [
-              {
-                "name": "src",
-                "type": "String",
-                "default": "N/A",
-                "description": "The URL to query for additional pages of list items."
-              },
-              {
-                "name": "pages",
-                "type": "Integer",
-                "default": "N/A",
-                "description": "The total number of pages in the result set."
-              },
-              {
-                "name": "component_klass",
-                "type": "Class",
-                "default": "N/A",
-                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
-              },
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "items",
-            "description": "Items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "heading",
-            "description": "Heading text rendered above the list of items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
-              }
-            ]
-          }
-        ],
-        "methods": [
-          {
-            "name": "expand!",
-            "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
-            "parameters": [
-
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
         "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
         "component": "NavList::Item",
@@ -2747,6 +2652,101 @@
           {
             "name": "item_active?",
             "description": "Normally it would be easier to simply ask each item for its active status, eg.\nitems.any?(&:active?), but unfortunately the view context is not set on each\nitem until _after_ the parent's before_render, etc methods have been called.\nThis means helper methods like current_page? will blow up with an error, since\n`helpers` is simply an alias for the view context (i.e. an instance of\nActionView::Base). Since we know the view context for the parent object must\nbe set before `before_render` is invoked, we can call helper methods here in\nthe parent and bypass the problem entirely. Maybe not the most OO approach,\nbut it works.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Group",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
+        "component": "NavList::Group",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListGroup",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+          {
+            "name": "show_more_item",
+            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The URL to query for additional pages of list items."
+              },
+              {
+                "name": "pages",
+                "type": "Integer",
+                "default": "N/A",
+                "description": "The total number of pages in the result set."
+              },
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              }
+            ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "expand!",
+            "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
             "parameters": [
 
             ]
@@ -5653,7 +5653,7 @@
     "slots": [
       {
         "name": "header",
-        "description": "Optional Header.\n\nWhen using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.",
+        "description": "Optional Header.\n\nWhen using header.with_title, the recommended tag is a heading tag, such as h1, h2, h3, etc.",
         "parameters": [
           {
             "name": "system_arguments",
