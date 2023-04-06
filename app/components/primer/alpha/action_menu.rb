@@ -126,7 +126,7 @@ module Primer
       #         Item 2 that does another thing
       #       <% end %>
       #     <% end %>
-      #     <%= render Primer::Alpha::Alpha.new(menu_id: "my-action-menu-7", anchor_align: :center, anchor_side: :outside_right) do |c| %>
+      #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-7", anchor_align: :center, anchor_side: :outside_right) do |c| %>
       #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
       #       <% c.with_item do %>
       #         Item 1 that does something
