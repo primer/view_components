@@ -47,4 +47,10 @@ Rails.application.configure do
 
   config.autoload_paths << Rails.root.join("..", "test", "forms")
   config.view_component.preview_paths << Rails.root.join("..", "test", "previews")
+
+  # rubocop:disable Style/IfUnlessModifier
+  if ENV.fetch("VC_COMPAT_PATCH_ENABLED", "false") == "true"
+    config.view_component.capture_compatibility_patch_enabled = true
+  end
+  # rubocop:enable Style/IfUnlessModifier
 end
