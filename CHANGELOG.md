@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.1.5
+
+### Patch Changes
+
+- [#1830](https://github.com/primer/view_components/pull/1830) [`d7e4f5d0`](https://github.com/primer/view_components/commit/d7e4f5d0d029a838696a16b0d85f928fe8b9268a) Thanks [@langermank](https://github.com/langermank)! - ActionMenu upstream from Experimental
+
+* [#1903](https://github.com/primer/view_components/pull/1903) [`bb627a21`](https://github.com/primer/view_components/commit/bb627a21b0df7a109cbb939dbf8c171a368670bc) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Migrate usage of old Slots API in previews.
+
+- [#1900](https://github.com/primer/view_components/pull/1900) [`9cd530ee`](https://github.com/primer/view_components/commit/9cd530eece6284848c4d7f9b0c8f1cd4e71537b0) Thanks [@keithamus](https://github.com/keithamus)! - Add the ability to pass an icon to Dialog `with_show_button`, which will turn it from a Beta::Button to a Beta::IconButton.
+
+* [#1932](https://github.com/primer/view_components/pull/1932) [`5602fbbb`](https://github.com/primer/view_components/commit/5602fbbbc5783ba88f075d972c00082109da7e84) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix use of removed slots API in docs.
+
+- [#1907](https://github.com/primer/view_components/pull/1907) [`c691fbeb`](https://github.com/primer/view_components/commit/c691fbeb6e65f1a4fc420933123a44664a6a4f5d) Thanks [@neall](https://github.com/neall)! - Fix up reserved CSS class linter
+
 ## 0.1.4
 
 ### Patch Changes
