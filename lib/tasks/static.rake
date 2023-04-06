@@ -1,37 +1,29 @@
 # frozen_string_literal: true
 
 namespace :static do
-  task :dump do
-    ENV["RAILS_ENV"] = "test"
-    require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    require "primer/view_components"
-    require "lookbook"
-    # Loads all components for `.descendants` to work properly
-    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+  task dump: [:dump_statuses, :dump_constants, :dump_audited_at, :dump_previews, :dump_arguments, :dump_info_arch]
 
-    Primer::ViewComponents.dump(:statuses)
-    Primer::ViewComponents.dump(:constants)
-    Primer::ViewComponents.dump(:audited_at)
+  task dump_statuses: :init_pvc do
+    Primer::Static.dump(:statuses)
+  end
 
-    previews = Lookbook.previews.map do |preview|
-      {
-        name: preview.name,
-        lookup_path: preview.lookup_path,
-        examples: preview.examples.map { |example|
-          {
-            inspect_path: example.url_path,
-            preview_path: example.url_path.sub("/inspect/", "/preview/"),
-            name: example.name
-          }
-        }
-      }
-    end
+  task dump_constants: :init_pvc do
+    Primer::Static.dump(:constants)
+  end
 
-    require "json"
+  task dump_audited_at: :init_pvc do
+    Primer::Static.dump(:audited_at)
+  end
 
-    File.open(File.join(Primer::ViewComponents::DEFAULT_STATIC_PATH, "previews.json"), "w") do |f|
-      f.write(JSON.pretty_generate(previews))
-      f.write($INPUT_RECORD_SEPARATOR)
-    end
+  task dump_previews: :init_pvc do
+    Primer::Static.dump(:previews)
+  end
+
+  task dump_arguments: ["docs:build_yard_registry", :init_pvc] do
+    Primer::Static.dump(:arguments)
+  end
+
+  task dump_info_arch: ["docs:build_yard_registry", :dump_previews, :dump_arguments] do
+    Primer::Static.dump(:info_arch)
   end
 end

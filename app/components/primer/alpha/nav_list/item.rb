@@ -73,6 +73,11 @@ module Primer
               @content_arguments[:classes],
               "ActionListContent--hasActiveSubItem"
             )
+          else
+            @system_arguments[:classes] = class_names(
+              @system_arguments[:classes],
+              "ActionListItem--navActive" => active?
+            )
           end
 
           super

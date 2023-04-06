@@ -344,7 +344,10 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |component|
-          component.with_item(label: "Disabled item", href: "/", disabled: true)
+          component.with_item(label: "Disabled item", href: "/", disabled: true) do |item|
+            item.with_description { "Item description" }
+            item.with_leading_visual_icon(icon: :gear)
+          end
         end
       end
 

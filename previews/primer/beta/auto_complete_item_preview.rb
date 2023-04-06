@@ -2,6 +2,7 @@
 
 module Primer
   module Beta
+    # @component Primer::Beta::AutoComplete::Item
     # @label AutoCompleteItem
     class AutoCompleteItemPreview < ViewComponent::Preview
       # @label Playground

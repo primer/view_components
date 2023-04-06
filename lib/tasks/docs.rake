@@ -2,6 +2,14 @@
 
 require "active_support/inflector"
 
+task :init_pvc do
+  ENV["RAILS_ENV"] = "test"
+  ENV["VC_COMPAT_PATCH_ENABLED"] = "true"
+
+  require File.expand_path("./../../demo/config/environment.rb", __dir__)
+  Dir[File.expand_path("../../app/components/primer/**/*.rb", __dir__)].sort.each { |file| require file }
+end
+
 namespace :docs do
   task :livereload do
     require "listen"
@@ -39,7 +47,7 @@ namespace :docs do
 
     manifest = Primer::Yard::ComponentManifest.where(published: true)
     backend = Primer::Yard::LegacyGatsbyBackend.new(registry, manifest)
-    args_for_components, errors = backend.generate
+    errors = backend.generate
 
     unless errors.empty?
       puts "==============================================="
@@ -50,11 +58,7 @@ namespace :docs do
       puts "==============================================="
       puts "==============================================="
 
-    raise
-    end
-
-    File.open("static/arguments.json", "w") do |f|
-      f.puts JSON.pretty_generate(args_for_components)
+      raise
     end
 
     puts "Markdown compiled."
@@ -160,12 +164,6 @@ namespace :docs do
         f.puts("end")
       end
     end
-  end
-
-  task :init_pvc do
-    ENV["RAILS_ENV"] = "test"
-    require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    Dir[File.expand_path("../../app/components/primer/**/*.rb", __dir__)].sort.each { |file| require file }
   end
 
   task build_yard_registry: :init_pvc do

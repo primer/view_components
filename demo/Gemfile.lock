@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.1.4)
+    primer_view_components (0.1.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -282,11 +282,11 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.1)
-    puma (6.1.1)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
-    rack-cors (2.0.0)
+    rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -360,7 +360,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (2.82.0)
+    view_component (3.0.0.rc5)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -394,7 +394,7 @@ DEPENDENCIES
   lookbook (~> 1.5.3)
   primer_view_components!
   pry-byebug
-  puma (~> 6.1.1)
+  puma (~> 6.2.1)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
@@ -404,7 +404,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (>= 2.81.0)
+  view_component (>= 3.0.0.rc5)
 
 BUNDLED WITH
    2.2.33

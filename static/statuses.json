@@ -3,6 +3,8 @@
   "Primer::Alpha::ActionList::Divider": "alpha",
   "Primer::Alpha::ActionList::Heading": "alpha",
   "Primer::Alpha::ActionList::Item": "alpha",
+  "Primer::Alpha::ActionMenu": "alpha",
+  "Primer::Alpha::ActionMenu::List": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::Banner": "alpha",

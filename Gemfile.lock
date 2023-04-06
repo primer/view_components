@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.1.4)
+    primer_view_components (0.1.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -49,7 +49,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bootsnap (1.15.0)
+    bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.38.0)
@@ -119,8 +119,8 @@ GEM
     minitest (5.17.0)
     mocha (2.0.2)
       ruby2_keywords (>= 0.0.5)
-    msgpack (1.6.0)
-    nio4r (2.5.8)
+    msgpack (1.7.0)
+    nio4r (2.5.9)
     nokogiri (1.14.0)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -134,11 +134,11 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (5.6.5)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.2)
-    rack-cors (1.1.1)
+    rack (2.2.6.4)
+    rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-proxy (0.7.6)
       rack
@@ -261,8 +261,8 @@ DEPENDENCIES
   mocha
   primer_view_components!
   pry
-  puma (~> 5.6.4)
-  rack (~> 2.0)
+  puma (~> 6.2.1)
+  rack (~> 2.2)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)

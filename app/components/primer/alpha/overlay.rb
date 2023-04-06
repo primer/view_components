@@ -63,22 +63,23 @@ module Primer
       DEFAULT_POPOVER = :auto
       POPOVER_OPTIONS = [DEFAULT_POPOVER, :manual].freeze
 
-      ROLE_OPTIONS = [:dialog, :menu].freeze
+      ROLE_OPTIONS = [:dialog, :menu, nil].freeze
 
       # Optional button to open the Overlay.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_button, lambda { |icon: nil, **system_arguments|
-        system_arguments[:classes] = class_names(
-          system_arguments[:classes]
+      renders_one :show_button, lambda { |icon: nil, controls: nil, **button_arguments|
+        button_arguments[:classes] = class_names(
+          button_arguments[:classes]
         )
-        system_arguments[:id] = show_button_id
-        system_arguments["popovertoggletarget"] = overlay_id
-        system_arguments[:aria] = (system_arguments[:aria] || {}).merge({ controls: overlay_id, haspopup: "true" })
+        button_arguments[:id] ||= show_button_id
+        @system_arguments[:anchor] = button_arguments[:id]
+        button_arguments["popovertarget"] = @id
+        button_arguments[:aria] = (button_arguments[:aria] || {}).merge({ controls: controls, haspopup: "true" })
         if icon.present?
-          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
+          Primer::Beta::IconButton.new(icon: icon, **button_arguments)
         else
-          Primer::Beta::Button.new(**system_arguments)
+          Primer::Beta::Button.new(**button_arguments)
         end
       }
 
@@ -134,7 +135,6 @@ module Primer
       # @param title [String] Describes the content of the Overlay.
       # @param subtitle [String] Provides dditional context for the Overlay, also setting the `aria-describedby` attribute.
       # @param popover [Symbol] The popover behaviour. <%= one_of(Primer::Alpha::Overlay::POPOVER_OPTIONS) %>
-      # @param popover [Symbol] The popover behaviour. <%= one_of(Primer::Alpha::Overlay::POPOVER_OPTIONS) %>
       # @param size [Symbol] The size of the Overlay. <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>
       # @param padding [Symbol] The padding given to the Overlay body. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
       # @param anchor [String] An ID of the element to anchor onto. Defaults to the `show_button`.
@@ -147,7 +147,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
-        role:,
+        role: nil,
         subtitle: nil,
         popover: DEFAULT_POPOVER,
         size: DEFAULT_SIZE,
@@ -163,7 +163,7 @@ module Primer
       )
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:role] = fetch_or_fallback(ROLE_OPTIONS, role)
+        @system_arguments[:role] = fetch_or_fallback(ROLE_OPTIONS, role) if role.present?
 
         @system_arguments[:id] = id.to_s
         @system_arguments[:classes] = class_names(
@@ -198,16 +198,12 @@ module Primer
 
       private
 
-      def overlay_id
-        @system_arguments[:id]
-      end
-
       def title_id
-        "overlay-title-#{overlay_id}"
+        "overlay-title-#{@id}"
       end
 
       def show_button_id
-        "overlay-show-#{overlay_id}"
+        "overlay-show-#{@id}"
       end
     end
   end
