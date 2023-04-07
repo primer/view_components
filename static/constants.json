@@ -599,6 +599,7 @@
   },
   "Primer::Beta::AutoComplete": {
     "DEFAULT_SIZE": "medium",
+    "DEFAULT_WIDTH": "auto",
     "Item": "Primer::Beta::AutoComplete::Item",
     "SIZE_MAPPINGS": {
       "small": "FormControl-small",
@@ -609,6 +610,22 @@
       "small",
       "medium",
       "large"
+    ],
+    "WIDTH_MAPPINGS": {
+      "auto": "Overlay--width-auto",
+      "small": "Overlay--width-small",
+      "medium": "Overlay--width-medium",
+      "large": "Overlay--width-large",
+      "xlarge": "Overlay--width-xlarge",
+      "xxlarge": "Overlay--width-xxlarge"
+    },
+    "WIDTH_OPTIONS": [
+      "auto",
+      "small",
+      "medium",
+      "large",
+      "xlarge",
+      "xxlarge"
     ]
   },
   "Primer::Beta::AutoComplete::Item": {
