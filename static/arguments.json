@@ -2739,6 +2739,12 @@
         "description": "Input can be full-width or fit to content"
       },
       {
+        "name": "width",
+        "type": "String",
+        "default": "`:auto`",
+        "description": "Optional parameter to set max width of results list. One of `:auto`, `:large`, `:medium`, `:small`, `:xlarge`, or `:xxlarge`."
+      },
+      {
         "name": "disabled",
         "type": "Boolean",
         "default": "`false`",
