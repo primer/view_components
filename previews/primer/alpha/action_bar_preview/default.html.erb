@@ -1,0 +1,58 @@
+<%= render(Primer::Alpha::ActionBar.new) do |component| %>
+  <% component.with_item(id: "zap-1", icon: :zap, label: "Test zap 1") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :zap, id: "zap-1", "aria-label": "Test zap 1") %>
+  <% end %>
+  <% component.with_item(id: "zap-2", icon: :zap, label: "Test zap 2") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :zap, id: "zap-2", "aria-label": "Test zap 2") %>
+  <% end %>
+  <% component.with_item(id: "zap-3", icon: :zap, label: "Test zap 3") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :zap, id: "zap-3", "aria-label": "Test zap 3") %>
+  <% end %>
+  <% component.with_item(id: "zap-4", icon: :zap, label: "Test zap 4") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :zap, id: "zap-4", "aria-label": "Test zap 4") %>
+  <% end %>
+  <% component.with_item(id: "zap-5", icon: :zap, label: "Test zap 5") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :zap, id: "zap-5", "aria-label": "Test zap 5") %>
+  <% end %>
+  <% component.with_item(is_divider: true) %>
+  <% component.with_item(id: "pencil-1", icon: :pencil, label: "Test pencil 1") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :pencil, id: "pencil-1", "aria-label": "Test pencil 1") %>
+  <% end %>
+  <% component.with_item(id: "pencil-2", icon: :pencil, label: "Test pencil 2") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :pencil, id: "pencil-2", "aria-label": "Test pencil 2") %>
+  <% end %>
+  <% component.with_item(id: "pencil-3", icon: :pencil, label: "Test pencil 3") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :pencil, id: "pencil-3", "aria-label": "Test pencil 3") %>
+  <% end %>
+  <% component.with_item(id: "pencil-4", icon: :pencil, label: "Test pencil 4") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :pencil, id: "pencil-4", "aria-label": "Test pencil 4") %>
+  <% end %>
+  <% component.with_item(id: "pencil-5", icon: :pencil, label: "Test pencil 5") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :pencil, id: "pencil-5", "aria-label": "Test pencil 5") %>
+  <% end %>
+  <% component.with_item(is_divider: true) %>
+  <% component.with_item(id: "text-1", label: "Text field 1") do %>
+    <%= render(Primer::Alpha::TextField.new(id: "text-1", label: "Text field 1", name: :"text-1", visually_hide_label: true)) %>
+  <% end %>
+  <% component.with_item(id: "button-1", label: "button 1") do %>
+    <%= render Primer::Beta::Button.new(id: "button-1", "aria-label": "Button 1") do %>
+      Button 1
+    <% end %>
+  <% end %>
+  <% component.with_item(is_divider: true) %>
+  <% component.with_item(id: "globe-1", icon: :globe, label: "Test globe 1") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :globe, id: "globe-1", "aria-label": "Test globe 1") %>
+  <% end %>
+  <% component.with_item(id: "globe-2", icon: :globe, label: "Test globe 2") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :globe, id: "globe-2", "aria-label": "Test globe 2") %>
+  <% end %>
+  <% component.with_item(id: "globe-3", icon: :globe, label: "Test globe 3") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :globe, id: "globe-3", "aria-label": "Test globe 3") %>
+  <% end %>
+  <% component.with_item(id: "globe-4", icon: :globe, label: "Test globe 4") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :globe, id: "globe-4", "aria-label": "Test globe 4") %>
+  <% end %>
+  <% component.with_item(id: "globe-5", icon: :globe, label: "Test globe 5") do %>
+    <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :globe, id: "globe-5", "aria-label": "Test globe 5") %>
+  <% end %>
+<% end %>

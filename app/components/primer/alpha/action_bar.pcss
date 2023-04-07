@@ -1,0 +1,61 @@
+/* CSS for ActionBar  */
+.ActionBar {
+  position: relative;
+  display: flex !important;
+  min-width: 0;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: content-box;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+
+.ActionBar-item-container {
+  display: flex;
+  box-sizing: content-box;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.ActionBar-item {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ActionBar-more-menu {
+  flex-shrink: 0;
+}
+
+/* Divider */
+
+.ActionBar-divider {
+  height: calc(var(--primer-control-medium-size, 32px) / 2);
+  margin: 0 var(--primer-controlStack-medium-gap-condensed, 8px);
+  border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
+}
+
+.ActionBar--small .ActionBar-divider {
+  margin: 0 var(--primer-controlStack-small-gap-condensed, 8px);
+}
+
+.ActionBar--large .ActionBar-divider {
+  margin: 0 var(--primer-controlStack-large-gap-condensed, 8px);
+}
+
+/* Increase spacing so touch targets don't overlap */
+
+@media (pointer: coarse) {
+  .ActionBar .ActionBar-item-container {
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-medium-size, 32px)); /* 12px */
+  }
+
+  .ActionBar--small .ActionBar-item-container {
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-small-size, 28px));  /* 16px */
+  }
+
+  .ActionBar--large .ActionBar-item-container {
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-large-size, 40px));  /* 4px */
+  }
+}

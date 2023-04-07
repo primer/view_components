@@ -45,6 +45,9 @@
   "Truncate": [
     "Primer::Beta::Truncate"
   ],
+  "ActionBar": [
+    "Primer::Alpha::ActionBar"
+  ],
   "Box-title": [
     "Primer::Beta::BorderBox"
   ],
@@ -165,6 +168,9 @@
   "State--closed": [
     "Primer::Beta::State"
   ],
+  "ActionBar-item": [
+    "Primer::Alpha::ActionBar"
+  ],
   "ActionListWrap": [
     "Primer::Alpha::ActionList"
   ],
@@ -237,6 +243,12 @@
   "Subhead-actions": [
     "Primer::Beta::Subhead"
   ],
+  "ActionBar--small": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar--large": [
+    "Primer::Alpha::ActionBar"
+  ],
   "SegmentedControl": [
     "Primer::Alpha::SegmentedControl"
   ],
@@ -257,6 +269,9 @@
   ],
   "Label--attention": [
     "Primer::Beta::Label"
+  ],
+  "ActionBar-divider": [
+    "Primer::Alpha::ActionBar"
   ],
   "ActionListContent": [
     "Primer::Alpha::ActionList"
@@ -318,6 +333,9 @@
   "TimelineItem-break": [
     "Primer::Beta::TimelineItem"
   ],
+  "ActionBar-more-menu": [
+    "Primer::Alpha::ActionBar"
+  ],
   "Overlay-closeButton": [
     "Primer::Alpha::Dialog"
   ],
@@ -372,10 +390,10 @@
   "ActionListWrap--inset": [
     "Primer::Alpha::ActionList"
   ],
-  "ActionListItem-action": [
+  "ActionListItem-visual": [
     "Primer::Alpha::ActionList"
   ],
-  "ActionListItem-visual": [
+  "ActionListItem-action": [
     "Primer::Alpha::ActionList"
   ],
   "SegmentedControl-item": [
@@ -453,6 +471,9 @@
   "TimelineItem--condensed": [
     "Primer::Beta::TimelineItem"
   ],
+  "ActionBar-item-container": [
+    "Primer::Alpha::ActionBar"
+  ],
   "Overlay-backdrop--center": [
     "Primer::Alpha::Dialog"
   ],
@@ -510,10 +531,10 @@
   "FormControl-inlineValidation": [
     "Primer::Alpha::TextField"
   ],
-  "FormControl-check-group-wrap": [
+  "FormControl-radio-group-wrap": [
     "Primer::Alpha::TextField"
   ],
-  "FormControl-radio-group-wrap": [
+  "FormControl-check-group-wrap": [
     "Primer::Alpha::TextField"
   ],
   "Popover-message--bottom-left": [
