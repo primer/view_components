@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "capybara", "~> 3"
   spec.add_development_dependency "cuprite", "= 0.13"
   spec.add_development_dependency "erb_lint"
-  spec.add_development_dependency "erblint-github", "0.1.0"
+  spec.add_development_dependency "erblint-github", "~> 0.2.1"
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "matrix", "~> 0.4.2"
   spec.add_development_dependency "minitest", "~> 5.0"

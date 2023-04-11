@@ -2,7 +2,7 @@
 
 require "lib/erblint_test_case"
 
-class DisallowComponentCssCounterTest < ErblintTestCase
+class DisallowComponentCssTest < ErblintTestCase
   def test_no_warning_on_unrestricted_class
     @file = <<~HTML
       <div class="favorite">This is legal</div>
@@ -19,6 +19,16 @@ class DisallowComponentCssCounterTest < ErblintTestCase
     HTML
     @linter.run(processed_source)
     refute_empty offenses
+  end
+
+  def test_ignores_inline_disable
+    @file = <<~ERB
+      <div class="Box--danger"><%# erblint:disable Primer::DisallowComponentCss %>
+        Reserved for BorderBox
+      </div>
+    ERB
+    @linter.run(processed_source)
+    assert_empty offenses
   end
 
   def test_suggests_two_components
@@ -41,14 +51,9 @@ class DisallowComponentCssCounterTest < ErblintTestCase
     assert_empty offenses
   end
 
-  def test_adds_counter
-    @file = '<div class="Box--danger">Reserved for BorderBox</div>'
-    assert_equal "<%# erblint:counter DisallowComponentCssCounter 1 %>\n#{@file}", corrected_content
-  end
-
   private
 
   def linter_class
-    ERBLint::Linters::DisallowComponentCssCounter
+    ERBLint::Linters::Primer::DisallowComponentCss
   end
 end
