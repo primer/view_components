@@ -11,7 +11,14 @@ const overlayStack: ModalDialogElement[] = []
 
 function clickHandler(event: Event) {
   const target = event.target as HTMLElement
-  const button = target?.closest('button')
+  let button: HTMLButtonElement | null = null
+
+  if (target instanceof HTMLButtonElement) {
+    button = target
+  } else {
+    button = target?.querySelector('button')
+  }
+
   if (!button) return
 
   // If the user is clicking a valid dialog trigger
@@ -40,6 +47,21 @@ function clickHandler(event: Event) {
     overlayStack.pop()
     topLevelDialog.close(true)
   }
+}
+
+function keydownHandler(event: Event) {
+  if (
+    !(event instanceof KeyboardEvent) ||
+    event.type !== 'keydown' ||
+    event.key !== 'Enter' ||
+    event.ctrlKey ||
+    event.altKey ||
+    event.metaKey ||
+    event.shiftKey
+  )
+    return
+
+  clickHandler(event)
 }
 
 function mousedownHandler(event: Event) {
@@ -124,6 +146,7 @@ export class ModalDialogElement extends HTMLElement {
     if (!this.hasAttribute('role')) this.setAttribute('role', 'dialog')
 
     document.addEventListener('click', clickHandler)
+    document.addEventListener('keydown', keydownHandler)
     document.addEventListener('mousedown', mousedownHandler)
 
     this.addEventListener('keydown', e => this.#keydown(e))
