@@ -5,7 +5,7 @@ require_relative "../base_linter"
 # Load all the other linters so we can filter out their restricted
 # CLASSES—they will be responsible for complaining about the use of
 # those HTML classes.
-Dir[File.join(__dir__, "../**/*.rb")].sort.each do |file|
+Dir[File.join(__dir__, "../*.rb")].sort.each do |file|
   require file unless file == __FILE__
 end
 
@@ -57,11 +57,7 @@ module ERBLint
         private
 
         def format_message(class_name)
-          "[Primer::DisallowComponentCss]: HTML class \"#{class_name}\" is reserved for Primer ViewComponents. It might disappear or have different styles in the future. Instead use #{CLASSES[class_name].join(", ")} from Primer ViewComponents instead."
-        end
-
-        def ruby_classes_sentence_string(class_name)
-          CLASSES[class_name].join(", ")
+          "[Primer::DisallowComponentCss]: HTML class \"#{class_name}\" is reserved for Primer ViewComponents. It might disappear or have different styles in the future. Instead use #{CLASSES[class_name].join(', ')} from Primer ViewComponents instead."
         end
       end
     end
