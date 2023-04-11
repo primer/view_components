@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "benchmark-ips", "~> 2.8.4"
   spec.add_development_dependency "capybara", "~> 3"
   spec.add_development_dependency "cuprite", "= 0.13"
-  spec.add_development_dependency "erb_lint"
+  spec.add_development_dependency "erb_lint", "~> 0.4.0"
   spec.add_development_dependency "erblint-github", "~> 0.2.1"
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "matrix", "~> 0.4.2"
