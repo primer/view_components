@@ -107,6 +107,8 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
+
+        raise ArgumentError, "An aria-label must be provided" unless aria(:label, @system_arguments)
       end
     end
   end

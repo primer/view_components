@@ -20,7 +20,8 @@ module Primer
             @item_classes,
             system_arguments[:classes]
           )
-          system_arguments[:id] = "ActionList--showMoreItem"
+          system_arguments[:tag] = :div
+          system_arguments[:id] ||= self.class.generate_id(base_name: "item")
           system_arguments[:hidden] = true
           system_arguments[:href] = "#"
           system_arguments[:data] ||= {}
@@ -33,8 +34,20 @@ module Primer
             color: :accent
           }
 
+          system_arguments[:content_arguments] = {
+            **system_arguments[:content_arguments] || {},
+            tag: :button
+          }
+
           component_klass.new(list: self, src: src, **system_arguments)
         }
+
+        def render_in(view_context, &block)
+          super do
+            yield(self) if block_given?
+            show_more_item.to_s if show_more_item
+          end
+        end
 
         # @private
         def self.custom_element_name
@@ -57,13 +70,6 @@ module Primer
           @expanded = true
         end
         # :nocov:
-
-        # The items contained within this group.
-        #
-        # @return [Array<Primer::Alpha::ActionList::Item>]
-        def items
-          [*super, show_more_item].tap(&:compact!)
-        end
 
         # @!parse
         #   # Items.

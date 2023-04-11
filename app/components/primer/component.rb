@@ -32,8 +32,8 @@ module Primer
       status == :deprecated
     end
 
-    def self.generate_id
-      "#{name.demodulize.underscore.dasherize}-#{SecureRandom.uuid}"
+    def self.generate_id(base_name: name.demodulize.underscore.dasherize)
+      "#{base_name}-#{SecureRandom.uuid}"
     end
 
     private

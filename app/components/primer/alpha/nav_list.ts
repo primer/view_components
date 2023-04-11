@@ -158,7 +158,7 @@ export class NavListElement extends HTMLElement {
     }
     const fragment = this.#parseHTML(document, html)
     fragment?.querySelector('li > a')?.setAttribute('data-targets', 'nav-list.focusMarkers')
-    this.list.insertBefore(fragment, this.showMoreItem)
+    this.list.append(fragment)
     this.focusMarkers.pop()?.focus()
     this.showMoreDisabled = false
   }

@@ -53,7 +53,7 @@ module Primer
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Heading) %>.
       renders_one :heading, lambda { |**system_arguments|
-        Heading.new(list_id: @id, **system_arguments)
+        Heading.new(**system_arguments)
       }
 
       # Items.
