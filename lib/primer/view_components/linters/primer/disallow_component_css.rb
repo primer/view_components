@@ -57,7 +57,7 @@ module ERBLint
         private
 
         def format_message(class_name)
-          "[Primer::DisallowComponentCss]: HTML class \"#{class_name}\" is reserved for Primer ViewComponents. It might disappear or have different styles in the future. Instead use #{CLASSES[class_name].join(', ')} from Primer ViewComponents instead."
+          "HTML class \"#{class_name}\" is reserved for Primer ViewComponents. It might disappear or have different styles in the future. Instead use #{CLASSES[class_name].join(', ')} from Primer ViewComponents instead."
         end
       end
     end

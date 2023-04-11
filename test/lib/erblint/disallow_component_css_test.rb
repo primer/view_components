@@ -38,7 +38,7 @@ class DisallowComponentCssTest < ErblintTestCase
       </div>
     HTML
     @linter.run(processed_source)
-    assert_includes offenses.first.message, "Primer::Alpha::Dialog or Primer::Alpha::Overlay"
+    assert_includes offenses.first.message, "Primer::Alpha::Dialog, Primer::Alpha::Overlay"
   end
 
   def test_no_warning_on_class_covered_by_others
