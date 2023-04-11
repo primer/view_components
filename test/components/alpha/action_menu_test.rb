@@ -23,9 +23,7 @@ module Primer
         assert_selector("action-menu") do
           assert_selector("button[id='menu-1-button'][aria-haspopup='true']", text: "Menu")
           assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do
-            assert_selector("li", visible: false) do
-              assert_selector("span[role='menuitem']")
-            end
+            assert_selector("li[role='menuitem'] span", visible: false)
           end
         end
       end
@@ -70,14 +68,14 @@ module Primer
         assert_selector("action-menu") do
           assert_selector("button[aria-haspopup='true']", text: "Trigger")
           assert_selector("ul", visible: false) do
-            assert_selector("li", visible: false) do
-              assert_selector("button[role='menuitem']", text: "Does something", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("button", text: "Does something", visible: false)
             end
-            assert_selector("li", visible: false) do
-              assert_selector("a[role='menuitem'][href='/']", text: "Site", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("a[href='/']", text: "Site", visible: false)
             end
-            assert_selector("li", visible: false) do
-              assert_selector("clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
+            assert_selector("li[role='menuitem']", visible: false) do
+              assert_selector("clipboard-copy", text: "Copy text", visible: false)
             end
           end
         end
