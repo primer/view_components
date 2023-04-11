@@ -44,8 +44,8 @@ module Primer
 
         def render_in(view_context, &block)
           super do
-            yield(self) if block_given?
-            show_more_item.to_s if show_more_item
+            yield(self) if block
+            show_more_item&.to_s
           end
         end
 
