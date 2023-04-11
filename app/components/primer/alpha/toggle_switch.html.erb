@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: "toggle-switch", **@system_arguments)) do %>
-  <span class="ToggleSwitch-statusIcon"><%# erblint:disable Primer::DisallowComponentCss %>
+  <span class="ToggleSwitch-statusIcon">
     <%= render(Primer::Beta::Octicon.new(size: :small, color: :danger, icon: :alert, hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
     <%= render(Primer::Beta::Spinner.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
   </span>
