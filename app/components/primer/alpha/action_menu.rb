@@ -228,7 +228,7 @@ module Primer
       #     <% end %>
       #
       # @example With deferred menu content loaded with an `include-fragment`
-      #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3", src: "/") do |c| %>
+      #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-17", src: "/") do |c| %>
       #    <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #  <% end %>
       #
