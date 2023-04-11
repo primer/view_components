@@ -81,7 +81,7 @@ module Primer
       #    <% c.with_item(tag: :button, type: "button") do %>
       #      Quote Reply
       #    <% end %>
-      #    <% c.with_item(is_divider: true) %>
+      #    <% c.with_divider %>
       #    <% c.with_item(tag: :"clipboard-copy", value: "Text to copy") do %>
       #      Copy Text
       #    <% end %>
