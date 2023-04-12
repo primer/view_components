@@ -100,7 +100,6 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
-      event.preventDefault()
       this.popoverElement?.hidePopover()
     }
   }
