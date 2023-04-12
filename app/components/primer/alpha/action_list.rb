@@ -160,6 +160,14 @@ module Primer
 
       # @private
       def will_add_item(_item); end
+
+      private
+
+      def with_post_list_content(&block)
+        @post_list_content_block = block
+      end
+
+      attr_reader :post_list_content_block
     end
   end
 end

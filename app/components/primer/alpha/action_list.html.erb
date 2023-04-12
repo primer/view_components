@@ -11,5 +11,5 @@
       <%= item %>
     <% end %>
   <% end %>
-  <%= content %>
+  <%= capture(&post_list_content_block) %>
 <% end %>

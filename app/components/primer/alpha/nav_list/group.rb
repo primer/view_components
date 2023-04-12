@@ -42,13 +42,6 @@ module Primer
           component_klass.new(list: self, src: src, **system_arguments)
         }
 
-        def render_in(view_context, &block)
-          super do
-            yield(self) if block
-            show_more_item&.to_s
-          end
-        end
-
         # @private
         def self.custom_element_name
           Primer::Alpha::NavList.custom_element_name
