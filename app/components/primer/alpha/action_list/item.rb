@@ -230,14 +230,14 @@ module Primer
             )
           end
 
-          @system_arguments[:role] = role ||
-                                     if @list.allows_selection?
-                                       ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
-                                     elsif @list.acts_as_menu?
-                                       ActionList::DEFAULT_MENU_ITEM_ROLE
-                                     else
-                                       ActionList::DEFAULT_LIST_ITEM_ROLE
-                                     end
+          @content_arguments[:role] = role ||
+                                      if @list.allows_selection?
+                                        ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
+                                      elsif @list.acts_as_menu?
+                                        ActionList::DEFAULT_MENU_ITEM_ROLE
+                                      else
+                                        ActionList::DEFAULT_LIST_ITEM_ROLE
+                                      end
 
           @description_wrapper_arguments = {
             classes: class_names(

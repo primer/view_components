@@ -91,7 +91,7 @@ export class ActionMenuElement extends HTMLElement {
       const checked = ariaChecked !== 'true'
       item.setAttribute('aria-checked', `${checked}`)
       if (this.selectVariant === 'single') {
-        const selector = menuItemSelectors.map(s => `li[aria-checked]${s}`).join(',')
+        const selector = menuItemSelectors.map(s => `li[aria-checked] ${s}`).join(',')
         for (const checkedItemContent of this.querySelectorAll(selector)) {
           const checkedItem = checkedItemContent.closest('li')!
           if (checkedItem !== item) {
@@ -100,7 +100,9 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
-      event.preventDefault()
+      if (event instanceof KeyboardEvent) {
+        event.preventDefault()
+      }
       this.popoverElement?.hidePopover()
     }
   }

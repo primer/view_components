@@ -34,7 +34,7 @@ module Primer
           end
           # rubocop:enable Style/IfUnlessModifier
 
-          system_arguments[:tabindex] = -1
+          content_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]
 
           if system_arguments[:disabled]
