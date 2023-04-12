@@ -9,7 +9,6 @@ module Primer
       class List < Primer::Alpha::ActionList
         DEFAULT_ITEM_TAG = :span
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
-        ITEM_ACTION_OPTIONS = [:classes, :onclick, :href, :value].freeze
 
         # Adds a new item to the list.
         #
@@ -31,7 +30,7 @@ module Primer
 
           # rubocop:disable Style/IfUnlessModifier
           if content_arguments[:tag] == :a
-            content_arguments[:href] = system_arguments.delete(:href)
+            content_arguments[:href] ||= system_arguments.delete(:href)
           end
           # rubocop:enable Style/IfUnlessModifier
 

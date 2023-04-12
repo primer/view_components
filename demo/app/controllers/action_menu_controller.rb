@@ -4,6 +4,9 @@
 class ActionMenuController < ApplicationController
   layout false
 
+  def landing
+  end
+
   def deferred
     render "action_menu/deferred"
   end
