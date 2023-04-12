@@ -100,10 +100,19 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
-      if (event instanceof KeyboardEvent) {
+      if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
+        // prevent buttons from being clicked twice
         event.preventDefault()
       }
-      this.popoverElement?.hidePopover()
+      // Hide popover after current event loop to prevent changes in focus from
+      // altering the target of the event. Not doing this specifically affects
+      // <a> tags. It causes the event to be sent to the currently focused element
+      // instead of the anchor, which effectively prevents navigation, i.e. it
+      // appears as if hitting enter does nothing. Curiously, clicking instead
+      // works fine.
+      if (this.selectVariant !== 'multiple') {
+        setTimeout(() => this.popoverElement?.hidePopover())
+      }
     }
   }
 

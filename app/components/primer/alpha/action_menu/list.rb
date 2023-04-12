@@ -7,7 +7,7 @@ module Primer
       # This component is part of <%= link_to_component(Primer::Alpha::ActionMenu) %> and should not be
       # used as a standalone component.
       class List < Primer::Alpha::ActionList
-        DEFAULT_ITEM_TAG = :span
+        DEFAULT_ITEM_TAG = :button
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
 
         # Adds a new item to the list.
@@ -34,7 +34,7 @@ module Primer
           end
           # rubocop:enable Style/IfUnlessModifier
 
-          content_arguments[:tabindex] = -1
+          system_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]
 
           if system_arguments[:disabled]

@@ -156,7 +156,7 @@ module Primer
       def with_actions
         render(Primer::Alpha::ActionMenu.new) do |component|
           component.with_show_button { "Trigger" }
-          component.with_item(label: "Alert", tag: :button, content_arguments: { onclick: "alert('foo')" })
+          component.with_item(label: "Alert", tag: :button, content_arguments: { onclick: "alert('Foo')", onkeydown: "if (event.key === 'Enter') { alert('Foo') }" })
           component.with_item(label: "Navigate", tag: :a, content_arguments: { href: UrlHelpers.action_menu_landing_path })
           component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" })
         end
