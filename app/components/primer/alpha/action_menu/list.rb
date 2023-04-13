@@ -60,7 +60,7 @@ module Primer
             # source_location. Such blocks don't allow access to their receiver.
             if block&.source_location
               block.binding.receiver.capture(self, &block)
-            else
+            elsif block
               capture(self, &block)
             end
           end
