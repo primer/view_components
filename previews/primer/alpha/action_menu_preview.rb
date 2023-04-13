@@ -23,6 +23,11 @@ module Primer
         end
       end
 
+      # @label Content labels
+      #
+      def content_labels
+      end
+
       # @label Default
       #
       def default

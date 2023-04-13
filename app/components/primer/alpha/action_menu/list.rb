@@ -52,11 +52,18 @@ module Primer
             content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
-          super(
-            **system_arguments,
-            content_arguments: content_arguments,
-            &block
-          )
+          super(**system_arguments, content_arguments: content_arguments) do
+            # Prevent double renders by using the capture method on the component
+            # that originally received the block.
+            #
+            # Handle blocks that originate from C code such as `&:method` by checking
+            # source_location. Such blocks don't allow access to their receiver.
+            if block && block.source_location
+              block.binding.receiver.capture(self, &block)
+            else
+              capture(self, &block)
+            end
+          end
         end
 
         # @param menu_id [String] ID of the parent menu.
