@@ -1,6 +1,5 @@
 import {controller, targets, target} from '@github/catalyst'
 import {focusZone, FocusKeys} from '@primer/behaviors'
-import type {FocusZoneSettings} from '@primer/behaviors'
 
 const instersectionObserver = new IntersectionObserver(entries => {
   for (const entry of entries) {
@@ -153,7 +152,6 @@ class ActionBarElement extends HTMLElement {
   }
 
   #hideItem(index: number) {
-    console.log(this.items, this.menuItems)
     this.items[index]!.hidden = true
     this.menuItems[index]!.hidden = false
 
