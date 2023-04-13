@@ -15,7 +15,6 @@ module Primer
 
       MENU_ROLE = :menu
       DEFAULT_MENU_ITEM_ROLE = :menuitem
-      DEFAULT_LIST_ITEM_ROLE = :listitem
 
       DEFAULT_SCHEME = :full
       SCHEME_MAPPINGS = {
