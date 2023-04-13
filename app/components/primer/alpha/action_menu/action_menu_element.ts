@@ -11,7 +11,7 @@ const popoverSelector = (() => {
 
 type SelectVariant = 'single' | 'multiple' | null
 
-const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]', '[role="none"]']
+const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
@@ -74,17 +74,20 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
+    if (event.target === this.invokerElement && this.#isEnterKeydown(event)) {
+      if (this.#firstItem) {
+        event.preventDefault()
+        this.popoverElement?.showPopover()
+        this.#firstItem.focus()
+        return
+      }
+    }
+
     if (!this.popoverElement?.matches(popoverSelector)) return
 
     if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
       this.popoverElement?.hidePopover()
-    } else if (
-      (event instanceof KeyboardEvent &&
-        event.type === 'keydown' &&
-        !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-        event.key === 'Enter') ||
-      (event instanceof MouseEvent && event.type === 'click')
-    ) {
+    } else if (this.#isEnterKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
       const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
@@ -100,8 +103,19 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
-      event.preventDefault()
-      this.popoverElement?.hidePopover()
+      if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
+        // prevent buttons from being clicked twice
+        event.preventDefault()
+      }
+      // Hide popover after current event loop to prevent changes in focus from
+      // altering the target of the event. Not doing this specifically affects
+      // <a> tags. It causes the event to be sent to the currently focused element
+      // instead of the anchor, which effectively prevents navigation, i.e. it
+      // appears as if hitting enter does nothing. Curiously, clicking instead
+      // works fine.
+      if (this.selectVariant !== 'multiple') {
+        setTimeout(() => this.popoverElement?.hidePopover())
+      }
     }
   }
 
@@ -109,8 +123,7 @@ export class ActionMenuElement extends HTMLElement {
     if (!this.dynamicLabel) return
     const invoker = this.invokerElement
     if (!invoker) return
-    const selector = menuItemSelectors.map(s => `${s}[aria-checked=true]`).join(',')
-    const item = this.querySelector(selector)
+    const item = this.querySelector('[aria-checked=true]')
     if (item && this.dynamicLabel) {
       this.#originalLabel ||= invoker.textContent || ''
       const prefixSpan = document.createElement('span')
@@ -122,6 +135,19 @@ export class ActionMenuElement extends HTMLElement {
     } else {
       invoker.textContent = this.#originalLabel
     }
+  }
+
+  #isEnterKeydown(event: Event): boolean {
+    return (
+      event instanceof KeyboardEvent &&
+      event.type === 'keydown' &&
+      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+      event.key === 'Enter'
+    )
+  }
+
+  get #firstItem(): HTMLElement | null {
+    return this.querySelector(menuItemSelectors.join(','))
   }
 }
 
