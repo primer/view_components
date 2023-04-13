@@ -16,33 +16,30 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
 
-      renders_many :items, "Item"
-      renders_many :menu_items, "MenuItem"
+      renders_many :items, types: {
+        icon: lambda { |icon:, label:, **system_arguments|
+          item_id = self.class.generate_id
 
-      # renders_many :items, types: {
-      #   icon_button: lambda { |**system_arguments|
-      #     Primer::Experimental::ActionBar::Item.new(slot_type: :icon_button, size: @size, **system_arguments)
-      #   },
-      #   divider: lambda { |**system_arguments|
-      #     Primer::Experimental::ActionBar::Item.new(
-      #       slot_type: :divider,
-      #       tag: :hr,
-      #       classes: class_names(
-      #         system_arguments[:classes],
-      #         "ActionBar-divider"
-      #       ),
-      #       **system_arguments
-      #     )
-      #   }
-      # }
+          IconItem.new(id: item_id, icon: icon, "aria-label": label, **system_arguments).tap do
+            with_menu_item(id: item_id, label: label) do |c|
+              c.with_leading_visual_icon(icon: icon)
+            end
+          end
+        },
+
+        divider: lambda { |**system_arguments|
+          Item.new(tag: :hr, classes: "ActionBar-divider", **system_arguments).tap do
+            @action_menu.with_divider(data: { targets: "action-bar.menuItems" }, hidden: true)
+          end
+        }
+      }
 
       # @example Example goes here
       #
-      #   <%= render(Primer::Experimental::ActionBar.new) { "Example" } %>
+      #   <%= render(Primer::Alpha::ActionBar.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
-        @menu_id = "action-bar-overflow-menu-#{SecureRandom.hex(4)}"
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"action-bar"
 
@@ -54,6 +51,34 @@ module Primer
           SIZE_MAPPINGS[@size]
         )
         @system_arguments[:role] = "toolbar"
+
+        @action_menu = Primer::Alpha::ActionMenu.new(
+          menu_id: self.class.generate_id,
+          "data-target": "action-bar.moreMenu",
+          hidden: true,
+          classes: "ActionBar-more-menu",
+          anchor_align: :end
+        )
+      end
+
+      private
+
+      def with_menu_item(id:, **system_arguments, &block)
+        system_arguments = {
+          **system_arguments,
+          "data-targets": "action-bar.menuItems",
+          hidden: true,
+          tag: :button,
+          type: "button",
+          "data-for": id,
+          "data-action": "click:action-bar#menuItemClick"
+        }
+
+        @action_menu.with_item(
+          value: "",
+          **system_arguments,
+          &block
+        )
       end
 
       def render?
@@ -61,61 +86,7 @@ module Primer
       end
 
       def before_render
-        menu_items.clear
-        items.each do |item|
-          with_menu_item(id: item.id, is_divider: item.is_divider) do |c|
-            c.with_leading_visual_icon(icon: item.icon) if item.icon
-            item.label
-          end
-        end
-      end
-
-      class MenuItem < Primer::Alpha::ActionMenu::Item
-        def initialize(id:, is_divider: false, **system_arguments)
-          super(value: "", is_divider: is_divider, **system_arguments)
-          if @list_arguments
-            @list_arguments[:"data-targets"] = "action-bar.menuItems"
-            @list_arguments[:hidden] = true
-          end
-
-          if is_divider
-            @system_arguments[:hidden] = true
-            @system_arguments[:"data-targets"] = "action-bar.menuItems"
-            return
-          end
-
-          @system_arguments[:tag] = :button
-          @system_arguments[:type] = "button"
-          @system_arguments[:"data-for"] = id
-          @system_arguments[:"data-action"] = "click:action-bar#menuItemClick"
-        end
-      end
-
-      class Item < Primer::Component
-        attr_reader :id, :label, :icon, :is_divider
-        def initialize(id: nil, label: nil, icon: nil, is_divider: false, **system_arguments)
-          @is_divider = is_divider
-          @id = id
-          @label = label
-          @icon = icon
-          @system_arguments = system_arguments
-          @system_arguments[:tag] = :div
-          @system_arguments[:"data-targets"] = "action-bar.items"
-          @system_arguments[:classes] = class_names(
-            system_arguments[:classes],
-            "ActionBar-item",
-            "ActionBar-divider" => is_divider
-          )
-          if is_divider
-            @system_arguments[:tag] = :hr
-          end
-        end
-
-        def call
-          render Primer::BaseComponent.new(**@system_arguments) do
-            content
-          end
-        end
+        content
       end
     end
   end

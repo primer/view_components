@@ -5,12 +5,7 @@
     <% end %>
   <% end %>
 
-  <%= render Primer::Alpha::ActionMenu.new(menu_id: @menu_id, "data-target": "action-bar.moreMenu", hidden: true, classes: "ActionBar-more-menu", anchor_align: :end) do |menu| %>
-    <% menu.with_trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
-    <% menu.with_item(is_divider: true) %>
-    <% menu.items.clear %>
-    <% menu_items.each do |item| %>
-      <% menu.items << item %>
-    <% end %>
+  <%= render(@action_menu) do |menu| %>
+    <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
   <% end %>
 <% end %>

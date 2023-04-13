@@ -1,4 +1,6 @@
 import {controller, targets, target} from '@github/catalyst'
+import {focusZone, FocusKeys} from '@primer/behaviors'
+import type {FocusZoneSettings} from '@primer/behaviors'
 
 const instersectionObserver = new IntersectionObserver(entries => {
   for (const entry of entries) {
@@ -27,6 +29,7 @@ class ActionBarElement extends HTMLElement {
 
   #initialBarWidth: number
   #previousBarWidth: number
+  #focusZoneAbortController: AbortController | null = null
 
   connectedCallback() {
     this.#previousBarWidth = this.offsetWidth ?? Infinity
@@ -76,6 +79,16 @@ class ActionBarElement extends HTMLElement {
     } else {
       this.style.justifyContent = 'flex-end'
     }
+    if (this.#focusZoneAbortController) {
+      this.#focusZoneAbortController.abort()
+    }
+    this.#focusZoneAbortController = focusZone(this.itemContainer, {
+      bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
+      focusOutBehavior: 'wrap',
+      focusableElementFilter: element => {
+        return !element.closest('.ActionBar-item[hidden]')
+      }
+    })
   }
 
   #itemGap(): number {
@@ -140,6 +153,7 @@ class ActionBarElement extends HTMLElement {
   }
 
   #hideItem(index: number) {
+    console.log(this.items, this.menuItems)
     this.items[index]!.hidden = true
     this.menuItems[index]!.hidden = false
 
