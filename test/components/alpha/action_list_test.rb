@@ -118,7 +118,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=list]") do
-          assert_selector("li.ActionListItem[role=listitem]")
+          assert_selector("li.ActionListItem button[role=listitem]")
         end
       end
 
@@ -128,7 +128,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitemradio] button")
+          assert_selector("li.ActionListItem button[role=menuitemradio]")
         end
       end
 
@@ -138,7 +138,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitemcheckbox] button")
+          assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
         end
       end
 
@@ -148,7 +148,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem[role=menuitem] button")
+          assert_selector("li.ActionListItem button[role=menuitem]")
         end
       end
 

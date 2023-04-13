@@ -37,6 +37,19 @@ module Alpha
       end
     end
 
+    def test_action_keydown
+      visit_preview(:with_actions)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      accept_alert do
+        # open menu, "click" on first item
+        page.driver.browser.keyboard.type(:enter, :enter)
+      end
+    end
+
     def test_action_anchor
       visit_preview(:with_actions)
 
@@ -46,11 +59,20 @@ module Alpha
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
 
-    def test_action_clipboard_copy
+    def test_action_anchor_keydown
       visit_preview(:with_actions)
 
-      # Stub out the clipboard b/c configuring Cuprite with the right permissions stumped
-      # the hell out of me and ChatGPT.
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :enter)
+
+      assert_selector ".action-menu-landing-page", text: "Hello world!"
+    end
+
+    def stub_clipboard!
       page.evaluate_script(<<~JS)
         (() => {
           navigator.clipboard.writeText = async (text) => {
@@ -63,16 +85,39 @@ module Alpha
           };
         })()
       JS
+    end
+
+    def read_clipboard
+      page.evaluate_async_script(<<~JS)
+        const [done] = arguments;
+        navigator.clipboard.readText().then(done).catch((e) => done(e));
+      JS
+    end
+
+    def test_action_clipboard_copy
+      visit_preview(:with_actions)
+
+      stub_clipboard!
 
       find("action-menu button[aria-controls]").click
       find("action-menu ul li:nth-child(3)").click
 
-      clipboard_text = page.evaluate_async_script(<<~JS)
-        const [done] = arguments;
-        navigator.clipboard.readText().then(done).catch((e) => done(e));
+      assert_equal read_clipboard, "Text to copy"
+    end
+
+    def test_action_clipboard_copy_keydown
+      visit_preview(:with_actions)
+
+      stub_clipboard!
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
       JS
 
-      assert_equal clipboard_text, "Text to copy"
+      # open menu, arrow down to third item, "click" third item
+      page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+
+      assert_equal read_clipboard, "Text to copy"
     end
   end
 end

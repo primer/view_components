@@ -231,7 +231,9 @@ module Primer
           end
 
           @content_arguments[:role] = role ||
-                                      if @list.allows_selection?
+                                      if @content_arguments[:tag] == :a
+                                        nil
+                                      elsif @list.allows_selection?
                                         ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
                                       elsif @list.acts_as_menu?
                                         ActionList::DEFAULT_MENU_ITEM_ROLE

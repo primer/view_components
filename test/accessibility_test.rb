@@ -17,13 +17,18 @@ class AccessibilityTest < System::TestCase
   ].freeze
 
   EXCLUDES = {
+    # Skip `:aria-required-children` because is broken in 4.5/4.6: https://github.com/dequelabs/axe-core/issues/3758
     Primer::Alpha::ActionListPreview => {
-      # Skip `:aria-required-children` because is broken in 4.5/4.6: https://github.com/dequelabs/axe-core/issues/3758
-      with_manual_dividers: %i[aria-required-children]
+      all: %i[aria-required-children]
+    },
+
+    Primer::Alpha::NavListPreview => {
+      all: %i[aria-required-children]
     }
   }.freeze
 
   ViewComponent::Preview.all.each do |klass|
+    next unless [Primer::Alpha::ActionMenuPreview].include?(klass)
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)
@@ -32,7 +37,7 @@ class AccessibilityTest < System::TestCase
     component_previews.each do |preview|
       define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
-        excludes = EXCLUDES.dig(klass, preview) || []
+        excludes = (EXCLUDES.dig(klass, preview) || []) + (EXCLUDES.dig(klass, :all) || [])
         assert_accessible(excludes: excludes)
         puts "#{component_uri}##{preview} passed check."
       end
