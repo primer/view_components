@@ -119,5 +119,18 @@ module Alpha
 
       assert_equal read_clipboard, "Text to copy"
     end
+
+    def test_first_item_is_focused_on_invoker_keydown
+      visit_preview(:with_actions)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      # open menu
+      page.driver.browser.keyboard.type(:enter)
+
+      assert_equal page.evaluate_script("document.activeElement").text, "Alert"
+    end
   end
 end

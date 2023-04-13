@@ -1,6 +1,6 @@
 import '@oddbird/popover-polyfill'
 
-const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"],a'
+const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
 
 const popoverSelector = (() => {
   try {

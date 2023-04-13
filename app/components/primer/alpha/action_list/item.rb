@@ -191,8 +191,6 @@ module Primer
             "ActionListItem--disabled" => @disabled
           )
 
-          @system_arguments[:role] = :none
-
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
 
@@ -231,15 +229,13 @@ module Primer
           end
 
           @content_arguments[:role] = role ||
-                                      if @content_arguments[:tag] == :a
-                                        nil
-                                      elsif @list.allows_selection?
+                                      if @list.allows_selection?
                                         ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
                                       elsif @list.acts_as_menu?
                                         ActionList::DEFAULT_MENU_ITEM_ROLE
-                                      else
-                                        ActionList::DEFAULT_LIST_ITEM_ROLE
                                       end
+
+          @system_arguments[:role] = @list.acts_as_menu? ? :none : nil
 
           @description_wrapper_arguments = {
             classes: class_names(

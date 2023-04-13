@@ -16,19 +16,9 @@ class AccessibilityTest < System::TestCase
     Docs::NavigationTabComponentPreview
   ].freeze
 
-  EXCLUDES = {
-    # Skip `:aria-required-children` because is broken in 4.5/4.6: https://github.com/dequelabs/axe-core/issues/3758
-    Primer::Alpha::ActionListPreview => {
-      all: %i[aria-required-children]
-    },
-
-    Primer::Alpha::NavListPreview => {
-      all: %i[aria-required-children]
-    }
-  }.freeze
+  EXCLUDES = {}.freeze
 
   ViewComponent::Preview.all.each do |klass|
-    next unless [Primer::Alpha::ActionMenuPreview].include?(klass)
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)

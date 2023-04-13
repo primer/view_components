@@ -108,7 +108,7 @@ module Primer
           "ActionListWrap--divided" => @show_dividers
         )
 
-        @role = role || allows_selection? ? MENU_ROLE : DEFAULT_ROLE
+        @role = role || (allows_selection? ? MENU_ROLE : DEFAULT_ROLE)
         @system_arguments[:role] = @role
 
         @list_wrapper_arguments = {}
