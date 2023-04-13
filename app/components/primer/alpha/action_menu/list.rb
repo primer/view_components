@@ -58,7 +58,7 @@ module Primer
             #
             # Handle blocks that originate from C code such as `&:method` by checking
             # source_location. Such blocks don't allow access to their receiver.
-            if block && block.source_location
+            if block&.source_location
               block.binding.receiver.capture(self, &block)
             else
               capture(self, &block)
