@@ -118,7 +118,7 @@ module Primer
         end
 
         assert_selector("ul.ActionListWrap[role=list]") do
-          assert_selector("li.ActionListItem button[role=listitem]")
+          assert_selector("li.ActionListItem button")
         end
       end
 
