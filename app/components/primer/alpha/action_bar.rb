@@ -8,29 +8,29 @@ module Primer
     class ActionBar < Primer::Component
       status :alpha
 
-      SIZE_DEFAULT = :medium
+      DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
-        SIZE_DEFAULT => nil,
+        DEFAULT_SIZE => nil,
         :small => "ActionBar--small",
         :large => "ActionBar--large"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
 
       renders_many :items, types: {
-        icon: lambda { |icon:, label:, **system_arguments|
+        icon_button: lambda { |icon:, label:, **system_arguments|
           item_id = self.class.generate_id
 
-          IconItem.new(id: item_id, icon: icon, "aria-label": label, **system_arguments).tap do
-            with_menu_item(id: item_id, label: label) do |c|
-              c.with_leading_visual_icon(icon: icon)
-            end
+          with_menu_item(id: item_id, label: label) do |c|
+            c.with_leading_visual_icon(icon: icon)
+          end
+
+          render(Item.new) do
+            render(Primer::Beta::IconButton.new(id: item_id, icon: icon, "aria-label": label, size: @size, scheme: :invisible, **system_arguments))
           end
         },
-
-        divider: lambda { |**system_arguments|
-          Item.new(tag: :hr, classes: "ActionBar-divider", **system_arguments).tap do
-            @action_menu.with_divider(data: { targets: "action-bar.menuItems" }, hidden: true)
-          end
+        divider: lambda {
+          @action_menu.with_divider(data: { targets: "action-bar.menuItems" }, hidden: true) if @overflow_menu
+          Divider.new
         }
       }
 
@@ -38,19 +38,25 @@ module Primer
       #
       #   <%= render(Primer::Alpha::ActionBar.new) { "Example" } %>
       #
+      # @param size [Symbol] <%= one_of(Primer::Alpha::ActionBar::SIZE_OPTIONS) %>
+      # @param overflow_menu [Boolean] Whether to render the overflow menu.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
+      def initialize(size: Primer::Alpha::ActionBar::DEFAULT_SIZE, overflow_menu: true, **system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:tag] = :"action-bar"
+        @overflow_menu = overflow_menu
+        @system_arguments[:tag] = overflow_menu ? :"action-bar" : :div
 
-        @size = fetch_or_fallback(Primer::Beta::Button::SIZE_OPTIONS, size, Primer::Beta::Button::DEFAULT_SIZE)
+        @size = fetch_or_fallback(Primer::Alpha::ActionBar::SIZE_OPTIONS, size, Primer::Alpha::ActionBar::DEFAULT_SIZE)
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "ActionBar",
-          SIZE_MAPPINGS[@size]
+          SIZE_MAPPINGS[@size],
+          "overflow-visible": !overflow_menu
         )
         @system_arguments[:role] = "toolbar"
+
+        return unless overflow_menu
 
         @action_menu = Primer::Alpha::ActionMenu.new(
           menu_id: self.class.generate_id,
@@ -64,6 +70,8 @@ module Primer
       private
 
       def with_menu_item(id:, **system_arguments, &block)
+        return unless @overflow_menu
+
         system_arguments = {
           **system_arguments,
           "data-targets": "action-bar.menuItems",
