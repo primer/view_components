@@ -127,6 +127,13 @@ module Primer
         assert_selector("li a[href='/']", text: "Your repositories")
         assert_selector("li button[aria-disabled=true]", text: "Disabled")
       end
+
+      def test_content_labels_render_correctly
+        render_preview(:content_labels)
+
+        assert_selector "li span.copy-link"
+        assert_selector "li span.quote-reply"
+      end
     end
   end
 end

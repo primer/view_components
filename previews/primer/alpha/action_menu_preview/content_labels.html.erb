@@ -1,0 +1,9 @@
+<%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
+  <% menu.with_show_button { "Menu" } %>
+  <% menu.with_item(value: "") do %>
+    <span class="copy-link">Copy link</span>
+  <% end %>
+  <% menu.with_item(value: "") do %>
+    <span class="quote-reply">Quote reply</span>
+  <% end %>
+<% end %>
