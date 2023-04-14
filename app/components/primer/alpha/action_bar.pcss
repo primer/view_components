@@ -2,7 +2,7 @@
 .ActionBar {
   position: relative;
   display: flex !important;
-  min-width: 0;
+  min-width: calc(var(--primer-control-medium-size, 32px) * 3);
   align-items: center;
   flex-grow: 1;
   flex-shrink: 1;
@@ -26,6 +26,14 @@
 
 .ActionBar-more-menu {
   flex-shrink: 0;
+}
+
+.ActionBar--small {
+  min-width: calc(var(--primer-control-small-size, 28px) * 3);
+}
+
+.ActionBar--large {
+  min-width: calc(var(--primer-control-large-size, 40px) * 3);
 }
 
 /* Divider */

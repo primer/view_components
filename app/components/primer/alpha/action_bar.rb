@@ -44,15 +44,13 @@ module Primer
       def initialize(size: Primer::Alpha::ActionBar::DEFAULT_SIZE, overflow_menu: true, **system_arguments)
         @system_arguments = system_arguments
         @overflow_menu = overflow_menu
-        @system_arguments[:tag] = overflow_menu ? :"action-bar" : :div
 
         @size = fetch_or_fallback(Primer::Alpha::ActionBar::SIZE_OPTIONS, size, Primer::Alpha::ActionBar::DEFAULT_SIZE)
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "ActionBar",
-          SIZE_MAPPINGS[@size],
-          "overflow-visible": !overflow_menu
+          SIZE_MAPPINGS[@size]
         )
         @system_arguments[:role] = "toolbar"
 
@@ -93,7 +91,16 @@ module Primer
         items.any?
       end
 
+      def render_overflow_menu?
+        @overflow_menu && items.count > 3
+      end
+
       def before_render
+        @system_arguments[:tag] = render_overflow_menu? ? :"action-bar" : :div
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "overflow-visible": !render_overflow_menu?
+        )
         content
       end
     end
