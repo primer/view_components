@@ -132,5 +132,27 @@ module Alpha
 
       assert_equal page.evaluate_script("document.activeElement").text, "Alert"
     end
+
+    def test_opens_dialog
+      visit_preview(:opens_dialog)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+
+      assert_selector "modal-dialog#my-dialog"
+    end
+
+    def test_opens_dialog_on_keydown
+      visit_preview(:opens_dialog)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :enter)
+
+      assert_selector "modal-dialog#my-dialog"
+    end
   end
 end
