@@ -60,6 +60,11 @@ export class ActionMenuElement extends HTMLElement {
     return null
   }
 
+  get invokerLabel(): HTMLElement | null {
+    if (!this.invokerElement) return null
+    return this.invokerElement.querySelector('.Button-label')
+  }
+
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('keydown', this, {signal})
@@ -107,20 +112,20 @@ export class ActionMenuElement extends HTMLElement {
 
   #setDynamicLabel() {
     if (!this.dynamicLabel) return
-    const invoker = this.invokerElement
-    if (!invoker) return
-    const selector = menuItemSelectors.map(s => `${s}[aria-checked=true]`).join(',')
+    const invokerLabel = this.invokerLabel
+    if (!invokerLabel) return
+    const selector = menuItemSelectors.map(s => `${s}[aria-checked=true] .ActionListItem-label`).join(',')
     const item = this.querySelector(selector)
     if (item && this.dynamicLabel) {
-      this.#originalLabel ||= invoker.textContent || ''
+      this.#originalLabel ||= invokerLabel.textContent || ''
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
       prefixSpan.textContent = this.dynamicLabelPrefix
       contentSpan.textContent = item.textContent || ''
-      invoker.replaceChildren(prefixSpan, contentSpan)
+      invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
-      invoker.textContent = this.#originalLabel
+      invokerLabel.textContent = this.#originalLabel
     }
   }
 }

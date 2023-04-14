@@ -6,12 +6,12 @@ module Alpha
   class IntegrationActionMenuTest < System::TestCase
     def test_dynamic_labels
       visit_preview(:single_select_with_internal_label)
-      assert_selector("action-menu button[aria-controls]", text: "Menu:\nQuote reply")
+      assert_selector("action-menu button[aria-controls]", text: "Menu: Quote reply")
 
       find("action-menu button[aria-controls]").click
       find("action-menu ul li:first-child").click
 
-      assert_selector("action-menu button[aria-controls]", text: "Menu:\nCopy link")
+      assert_selector("action-menu button[aria-controls]", text: "Menu: Copy link")
 
       find("action-menu button[aria-controls]").click
       find("action-menu ul li:first-child").click
