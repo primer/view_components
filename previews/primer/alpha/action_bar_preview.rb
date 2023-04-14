@@ -23,6 +23,9 @@ module Primer
         end
       end
 
+      # @label Inline with other components
+      def inline; end
+
       # @label Playground
       # @param size [Symbol] select [[Small, small], [Medium, medium], [Large, large]]
       # @param overflow_menu [Boolean]
