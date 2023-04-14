@@ -9,7 +9,7 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 IGNORED_SELECTORS = {
   # these are all provided by primer/css
   :global => ["octicon", "btn-octicon", "btn", "btn-primary", "btn-danger", "btn-outline"],
-  Primer::Alpha::ActionMenu => ["ActionListItem-multiSelectIcon"], # this does actually exist
+  Primer::Alpha::ActionMenu => ["ActionListItem-multiSelectIcon", "copy-link", "quote-reply"],
   Primer::Alpha::AutoComplete => ["form-control", "ActionList"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
   Primer::Beta::ButtonGroup => ["BtnGroup", "BtnGroup-item"],
