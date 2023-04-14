@@ -696,6 +696,11 @@
         "name": "playground"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/content_labels",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/content_labels",
+        "name": "content_labels"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
         "name": "default"
