@@ -56,7 +56,7 @@ class Primer::Alpha::Dropdown::MenuTest < Minitest::Test
       component.with_item(divider: true)
     end
 
-    assert_selector(".dropdown-divider[role='separator']")
+    assert_selector(".dropdown-divider[role='presentation']")
   end
 
   def test_renders_as_list
@@ -71,7 +71,7 @@ class Primer::Alpha::Dropdown::MenuTest < Minitest::Test
         assert_selector("li") do
           assert_selector(".dropdown-item[role='menuitem']", text: "Item 1")
         end
-        assert_selector("li.dropdown-divider[role='separator']")
+        assert_selector("li.dropdown-divider[role='presentation']")
         assert_selector("li") do
           assert_selector(".dropdown-item[role='menuitem']", text: "Item 2")
         end

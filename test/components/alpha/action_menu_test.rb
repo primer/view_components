@@ -23,14 +23,12 @@ module Primer
         assert_selector("action-menu") do
           assert_selector("button[id='menu-1-button'][aria-haspopup='true']", text: "Menu")
           assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do
-            assert_selector("li", visible: false) do
-              assert_selector("span[role='menuitem']")
-            end
+            assert_selector("li button[role='menuitem']", visible: false)
           end
         end
       end
 
-      def test_falls_back_to_span_if_disallowed_tag_is_given
+      def test_falls_back_to_button_if_disallowed_tag_is_given
         without_fetch_or_fallback_raises do
           render_inline Primer::Alpha::ActionMenu.new(menu_id: "bad-menu") do |component|
             component.with_show_button { "Trigger" }
@@ -38,7 +36,7 @@ module Primer
           end
         end
 
-        assert_selector("span.ActionListContent", visible: false)
+        assert_selector("button.ActionListContent", visible: false)
       end
 
       def test_falls_back_to_default_anchor_align_and_anchor_side_if_non_allowed_option_is_set
@@ -71,10 +69,10 @@ module Primer
           assert_selector("button[aria-haspopup='true']", text: "Trigger")
           assert_selector("ul", visible: false) do
             assert_selector("li", visible: false) do
-              assert_selector("button[role='menuitem']", text: "Does something", visible: false)
+              assert_selector("button[role='menuitem']", text: "Alert", visible: false)
             end
             assert_selector("li", visible: false) do
-              assert_selector("a[role='menuitem'][href='/']", text: "Site", visible: false)
+              assert_selector("a", text: "Navigate", visible: false)
             end
             assert_selector("li", visible: false) do
               assert_selector("clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
@@ -127,7 +125,7 @@ module Primer
 
         assert_selector("li a[href='/']", text: "Settings")
         assert_selector("li a[href='/']", text: "Your repositories")
-        assert_selector("li span[aria-disabled=true]", text: "Disabled")
+        assert_selector("li button[aria-disabled=true]", text: "Disabled")
       end
     end
   end
