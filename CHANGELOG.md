@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.1.6
+
+### Patch Changes
+
+- [#1946](https://github.com/primer/view_components/pull/1946) [`62e60565`](https://github.com/primer/view_components/commit/62e605658abbbd59cefef18ebd4ad4acd68c2351) Thanks [@camertron](https://github.com/camertron)! - Address NavList Axe violation
+
+* [#1949](https://github.com/primer/view_components/pull/1949) [`f398971f`](https://github.com/primer/view_components/commit/f398971f4e2da71b37fe731e43ae47e39849e0d0) Thanks [@langermank](https://github.com/langermank)! - Use min-width for ActionMenu to fix visual regression with inline descriptions
+
+- [#1901](https://github.com/primer/view_components/pull/1901) [`dcab49f3`](https://github.com/primer/view_components/commit/dcab49f3ce542d62d1f819d18355ae8e1ed3ce79) Thanks [@radglob](https://github.com/radglob)! - Add width parameter to autocomplete.
+
+* [#1953](https://github.com/primer/view_components/pull/1953) [`e64edfc4`](https://github.com/primer/view_components/commit/e64edfc495591719f3e0ac9c9b2b8e2e429d2e4f) Thanks [@camertron](https://github.com/camertron)! - Fix opening a dialog from an ActionMenu item
+
+- [#1951](https://github.com/primer/view_components/pull/1951) [`90e32894`](https://github.com/primer/view_components/commit/90e32894c758bab65e22c8b0b1bfae86d66c2967) Thanks [@camertron](https://github.com/camertron)! - Fix ActionMenu's internal label
+
+* [#1933](https://github.com/primer/view_components/pull/1933) [`92bd7848`](https://github.com/primer/view_components/commit/92bd7848db11384ed08a0094e20c952d682ac777) Thanks [@simurai](https://github.com/simurai)! - Use inline for Buttons
+
 ## 0.1.5
 
 ### Patch Changes
