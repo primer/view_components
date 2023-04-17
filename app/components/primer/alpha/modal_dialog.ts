@@ -11,7 +11,13 @@ const overlayStack: ModalDialogElement[] = []
 
 function clickHandler(event: Event) {
   const target = event.target as HTMLElement
-  const button = target?.closest('button')
+  let button: HTMLButtonElement | null = null
+
+  if (target instanceof HTMLButtonElement) {
+    button = target
+  } else {
+    button = target?.querySelector('button')
+  }
 
   if (!button) return
 
