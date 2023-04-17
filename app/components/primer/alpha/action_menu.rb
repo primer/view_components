@@ -274,6 +274,7 @@ module Primer
       # @param menu_id [String] Id of the menu.
       # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>.
       # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>.
+      # @param size [Symbol] <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>.
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
       # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
@@ -284,6 +285,7 @@ module Primer
         menu_id: self.class.generate_id,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        size: Primer::Alpha::Overlay::DEFAULT_SIZE,
         src: nil,
         preload: DEFAULT_PRELOAD,
         dynamic_label: false,
@@ -310,7 +312,8 @@ module Primer
           title: "Menu",
           visually_hide_title: true,
           anchor_align: anchor_align,
-          anchor_side: anchor_side
+          anchor_side: anchor_side,
+          size: size
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(

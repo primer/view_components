@@ -9,10 +9,12 @@ module Primer
       # @param select_variant [Symbol] select [single, multiple, none]
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      # @param size [Symbol] select [auto, small, medium, large, xlarge]
       def playground(
-        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE
+        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        size: Primer::Alpha::Overlay::DEFAULT_SIZE
       )
-        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side)) do |menu|
+        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side, size: size)) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "Copy link")
           menu.with_item(label: "Quote reply")
@@ -42,6 +44,23 @@ module Primer
           end
           menu.with_item(label: "Delete", scheme: :danger) do |item|
             item.with_description.with_content("Sayonara")
+          end
+        end
+      end
+
+      # @label Wide
+      #
+      def wide
+        render(Primer::Alpha::ActionMenu.new(select_variant: :single, size: :medium)) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "A wider menu" }
+
+          menu.with_item(label: "Default", active: true, value: "default") do |item|
+            item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
+            item.with_description { "This is an example for wide ActionMenus" }
+          end
+
+          menu.with_item(label: "Extended", active: false, value: "extended") do |item|
+            item.with_description { "It allows for extended descriptions with extra afforance for additional visuals" }
           end
         end
       end
