@@ -209,6 +209,11 @@
         "name": "block_description"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/submitting_forms",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/submitting_forms",
+        "name": "submitting_forms"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/inline_description",
         "name": "inline_description"
