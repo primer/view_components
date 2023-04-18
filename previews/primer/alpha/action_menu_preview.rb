@@ -225,6 +225,12 @@ module Primer
         end
       end
 
+      # @label [Item] Submitting Forms
+      #
+      def submitting_forms
+        render_with_template(locals: {})
+      end
+
       # @label [Item] Inline description
       #
       def inline_description
