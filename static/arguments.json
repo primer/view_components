@@ -264,6 +264,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
+      },
+      {
         "name": "src",
         "type": "String",
         "default": "`nil`",

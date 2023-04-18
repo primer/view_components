@@ -584,6 +584,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
+      },
+      {
         "name": "src",
         "type": "String",
         "default": "`nil`",
@@ -704,6 +710,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/wide",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/wide",
+        "name": "wide"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",

@@ -134,6 +134,11 @@
         "name": "default"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/wide",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/wide",
+        "name": "wide"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_icon_button",
         "name": "with_icon_button"
