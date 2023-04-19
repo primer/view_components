@@ -225,6 +225,14 @@ module Primer
             end
           end
 
+          if @content_arguments[:tag] != :button && @form_wrapper.form_required?
+            raise ArgumentError, "items that submit forms must use a \"button\" tag instead of \"#{@content_arguments[:tag]}\""
+          end
+
+          if @content_arguments[:tag] != :button && @list.acts_as_form_input?
+            raise ArgumentError, "items within lists/menus that act as form inputs must use \"button\" tags instead of \"#{@content_arguments[:tag]}\""
+          end
+
           if @disabled
             @content_arguments[:aria] ||= merge_aria(
               @content_arguments,

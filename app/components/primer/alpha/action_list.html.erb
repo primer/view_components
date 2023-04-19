@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :div)) do %>
-  <% if @form_builder && @input_name && allows_selection? %>
+  <% if acts_as_form_input? %>
     <span data-list-inputs="true">
       <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true) %>
     </span>
