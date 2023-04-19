@@ -154,6 +154,7 @@ module Primer
           label_classes: nil,
           label_arguments: {},
           content_arguments: {},
+          form_arguments: {},
           parent: nil,
           truncate_label: false,
           href: nil,
@@ -170,13 +171,14 @@ module Primer
           @list = list
           @parent = parent
           @label = label
-          @href = href
+          @href = href || content_arguments[:href]
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
           @id = id
           @system_arguments = system_arguments
           @content_arguments = content_arguments
+          @form_wrapper = FormWrapper.new(list: @list, action: @href, **form_arguments)
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -212,11 +214,12 @@ module Primer
           )
 
           unless @content_arguments[:tag]
-            if @href && !@disabled
+            if @href && @form_wrapper.get? && !@disabled
               @content_arguments[:tag] = :a
               @content_arguments[:href] = @href
             else
               @content_arguments[:tag] = :button
+              @content_arguments[:type] = @form_wrapper.form_required? ? :submit : :button
               @content_arguments[:onclick] = on_click if on_click
             end
           end

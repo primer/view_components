@@ -16,14 +16,9 @@ module Primer
         def with_item(**system_arguments, &block)
           content_arguments = system_arguments.delete(:content_arguments) || {}
 
-          content_arguments[:tag] =
-            if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
-              system_arguments[:tag]
-            elsif system_arguments[:href] && !system_arguments[:disabled]
-              :a
-            else
-              DEFAULT_ITEM_TAG
-            end
+          if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
+            content_arguments[:tag] = system_arguments[:tag]
+          end
 
           # disallow setting item's tag
           system_arguments.delete(:tag)

@@ -82,6 +82,7 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %> `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
       # @param select_variant [Symbol] How items may be selected in the list. <%= one_of(Primer::Alpha::ActionList::SELECT_VARIANT_OPTIONS) %>
+      # @param form_arguments [Hash]
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         id: self.class.generate_id,
@@ -90,6 +91,7 @@ module Primer
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
         select_variant: DEFAULT_SELECT_VARIANT,
+        form_arguments: {},
         **system_arguments
       )
         @system_arguments = system_arguments
@@ -111,6 +113,9 @@ module Primer
         @system_arguments[:role] = @role
 
         @list_wrapper_arguments = {}
+
+        @form_builder = form_arguments[:builder]
+        @input_name = form_arguments[:name]
       end
 
       # @private

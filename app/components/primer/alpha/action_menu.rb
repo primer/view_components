@@ -289,6 +289,7 @@ module Primer
         dynamic_label: false,
         dynamic_label_prefix: nil,
         select_variant: DEFAULT_SELECT_VARIANT,
+        form_arguments: {},
         **system_arguments
       )
         @menu_id = menu_id
@@ -315,7 +316,8 @@ module Primer
 
         @list = Primer::Alpha::ActionMenu::List.new(
           menu_id: @menu_id,
-          select_variant: select_variant
+          select_variant: select_variant,
+          form_arguments: form_arguments
         )
       end
 
