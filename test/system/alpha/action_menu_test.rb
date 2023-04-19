@@ -214,5 +214,14 @@ module Alpha
       response = JSON.parse(find("pre").text)
       assert_equal response["value"], ["fast_forward", "Resolve"]
     end
+
+    def test_individual_items_can_submit_post_requests_via_forms
+      visit_preview(:with_actions)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:last-child").click
+
+      assert_equal page.text, 'You selected "bar"'
+    end
   end
 end
