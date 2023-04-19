@@ -117,7 +117,7 @@ module Primer
         @form_builder = form_arguments[:builder]
         @input_name = form_arguments[:name]
 
-        return unless required_form_arguments? && !allows_selection_given?
+        return unless required_form_arguments_given? && !allows_selection_given?
 
         raise ArgumentError, "lists/menus that act as form inputs must also allow item selection (please pass the `select_variant:` option)"
       end
@@ -172,7 +172,7 @@ module Primer
       end
 
       def acts_as_form_input?
-        required_form_arguments? && allows_selection_given?
+        required_form_arguments_given? && allows_selection_given?
       end
 
       # @private
