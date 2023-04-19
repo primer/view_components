@@ -17,9 +17,11 @@ module Primer
         def with_item(data: {}, **system_arguments, &block)
           content_arguments = system_arguments.delete(:content_arguments) || {}
 
+          # rubocop:disable Style/IfUnlessModifier
           if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
             content_arguments[:tag] = system_arguments[:tag]
           end
+          # rubocop:enable Style/IfUnlessModifier
 
           # disallow setting item's tag
           system_arguments.delete(:tag)

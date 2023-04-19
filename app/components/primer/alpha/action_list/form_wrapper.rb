@@ -30,7 +30,7 @@ module Primer
             name: name,
             value: value,
             data: { list_item_input: true },
-            **(@form_arguments.delete(:input_arguments) || {}),
+            **(@form_arguments.delete(:input_arguments) || {})
           }
         end
 
@@ -49,7 +49,7 @@ module Primer
         private
 
         def extract_http_method(args)
-          if http_method = args.delete(:method)
+          if (http_method = args.delete(:method))
             HTTP_METHOD_OPTIONS.include?(http_method) ? http_method : DEFAULT_HTTP_METHOD
           else
             DEFAULT_HTTP_METHOD

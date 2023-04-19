@@ -206,7 +206,7 @@ module Primer
           end
         end
 
-        assert_match /lists\/menus that act as form inputs must also allow item selection/, error.message
+        assert_match(%r{lists/menus that act as form inputs must also allow item selection}, error.message)
       end
     end
   end
