@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.1.5)
+    primer_view_components (0.1.6)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -73,7 +73,7 @@ GEM
       capybara (>= 2.1, < 4)
       ferrum (~> 0.11.0)
     docile (1.4.0)
-    erb_lint (0.3.1)
+    erb_lint (0.4.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -252,7 +252,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (~> 3)
   cuprite (= 0.13)
-  erb_lint
+  erb_lint (~> 0.4.0)
   erblint-github (= 0.1.0)
   listen (~> 3.0)
   lookbook (~> 1.5.2)

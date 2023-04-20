@@ -1,0 +1,15 @@
+<form method="get" action="?" id="my-form">
+  <input type="hidden" name="time" value="<%= Time.now.iso8601 %>">
+</form>
+<%= render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu| %>
+  <% menu.with_show_button { params["label"] || "Menu" } %>
+  <% menu.with_item(label: "Submit form", tag: "button", content_arguments: {
+    form: "my-form", type: "submit", name: "label", value: "Submitted!"
+  }) do |item| %>
+    <% if params["time"] %>
+      <% item.with_description.with_content("Last submitted at #{params["time"]}") %>
+    <% elsif %>
+      <% item.with_description.with_content("Not yet submitted") %>
+    <% end %>
+  <% end %>
+<% end %>

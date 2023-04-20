@@ -62,7 +62,7 @@ module ERBLint
       end
 
       def ruby_classes_sentence_string(class_name)
-        CLASSES[class_name].to_sentence(last_word_connector: ", or ", two_words_connector: " or ")
+        CLASSES[class_name].join(" / ")
       end
     end
   end

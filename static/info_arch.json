@@ -584,6 +584,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
+      },
+      {
         "name": "src",
         "type": "String",
         "default": "`nil`",
@@ -647,13 +653,13 @@
       },
       {
         "name": "with_show_button",
-        "description": "Button to activate the menu. This may be a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} or {{#link_to_component}}Primer::IconButton{{/link_to_component}}.",
+        "description": "Button to activate the menu.",
         "parameters": [
           {
-            "name": "icon",
-            "type": "Symbol",
+            "name": "system_arguments",
+            "type": "Hash",
             "default": "N/A",
-            "description": "Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
           }
         ]
       },
@@ -696,9 +702,19 @@
         "name": "playground"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/content_labels",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/content_labels",
+        "name": "content_labels"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/wide",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/wide",
+        "name": "wide"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
@@ -769,6 +785,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/block_description",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/block_description",
         "name": "block_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/submitting_forms",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/submitting_forms",
+        "name": "submitting_forms"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
@@ -3347,10 +3368,22 @@
         "description": "Optional button to open the Overlay.",
         "parameters": [
           {
-            "name": "system_arguments",
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "Name of {{link_to_octicons}} to use instead of text. If provided, a {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} will be rendered. Otherwise a {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} will be rendered."
+          },
+          {
+            "name": "controls",
+            "type": "String",
+            "default": "N/A",
+            "description": "The ID of the menu this button controls. Used internally."
+          },
+          {
+            "name": "button_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} depending on the presence of the `icon:` argument."
           }
         ]
       },
@@ -3363,6 +3396,12 @@
             "type": "Boolean",
             "default": "N/A",
             "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
           },
           {
             "name": "visually_hide_title",

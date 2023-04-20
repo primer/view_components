@@ -117,8 +117,9 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=list]")
-        assert page.find_css("button.ActionListContent").first["role"].nil?
+        assert_selector("ul.ActionListWrap[role=list]") do
+          assert_selector("li.ActionListItem button")
+        end
       end
 
       def test_uses_correct_menu_and_item_roles_when_single_select

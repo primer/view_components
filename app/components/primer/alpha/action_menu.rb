@@ -43,7 +43,10 @@ module Primer
       #
       # @example With caret
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-1") do |c| %>
-      #    <% c.with_show_button(with_caret: true) { "Menu" } %>
+      #    <% c.with_show_button do |button| %>
+      #      <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #      Menu
+      #    <% end %>
       #    <% c.with_item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design
       #    <% end %>
@@ -109,7 +112,10 @@ module Primer
       #     Align the menu to the center of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-5", anchor_align: :center, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside top
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -118,7 +124,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-6", anchor_align: :center, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside left
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -127,7 +136,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-7", anchor_align: :center, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside right
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -136,7 +148,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-8", anchor_align: :center, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside bottom
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -150,7 +165,10 @@ module Primer
       #     Align the menu to the start of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-9", anchor_align: :start, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside top
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -159,7 +177,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-10", anchor_align: :start, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside left
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -168,7 +189,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-11", anchor_align: :start, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside right
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -177,7 +201,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-12", anchor_align: :start, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside bottom
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -191,7 +218,10 @@ module Primer
       #     Align the menu to the end of the trigger button
       #   @code
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-13", anchor_align: :end, anchor_side: :outside_top) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside top" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside top
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -200,7 +230,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-14", anchor_align: :end, anchor_side: :outside_left) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside left" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside left
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -209,7 +242,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-15", anchor_align: :end, anchor_side: :outside_right) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside right" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside right
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -218,7 +254,10 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-16", anchor_align: :end, anchor_side: :outside_bottom) do |c| %>
-      #       <% c.with_show_button(with_caret: true) { "Outside bottom" } %>
+      #       <% c.with_show_button do |button| %>
+      #         <% button.with_trailing_action_icon(icon: "triangle-down") %>
+      #         Outside bottom
+      #       <% end %>
       #       <% c.with_item do %>
       #         Item 1 that does something
       #       <% end %>
@@ -228,13 +267,14 @@ module Primer
       #     <% end %>
       #
       # @example With deferred menu content loaded with an `include-fragment`
-      #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3", src: "/") do |c| %>
+      #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-17", src: "/") do |c| %>
       #    <% c.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
       # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>.
       # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>.
+      # @param size [Symbol] <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>.
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
       # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
@@ -245,6 +285,7 @@ module Primer
         menu_id: self.class.generate_id,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        size: Primer::Alpha::Overlay::DEFAULT_SIZE,
         src: nil,
         preload: DEFAULT_PRELOAD,
         dynamic_label: false,
@@ -271,7 +312,8 @@ module Primer
           title: "Menu",
           visually_hide_title: true,
           anchor_align: anchor_align,
-          anchor_side: anchor_side
+          anchor_side: anchor_side,
+          size: size
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(
@@ -280,9 +322,9 @@ module Primer
         )
       end
 
-      # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
+      # Button to activate the menu.
       #
-      # @param icon [Symbol] Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a <%= link_to_component(Primer::ButtonComponent) %>.
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Overlay) %>'s `show_button` slot.
       def with_show_button(**system_arguments, &block)
         @overlay.with_show_button(**system_arguments, id: "#{@menu_id}-button", controls: "#{@menu_id}-list", &block)
       end

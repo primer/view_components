@@ -102,18 +102,12 @@
     ]
   },
   "Primer::Alpha::ActionMenu::List": {
-    "DEFAULT_ITEM_TAG": "span",
-    "ITEM_ACTION_OPTIONS": [
-      "classes",
-      "onclick",
-      "href",
-      "value"
-    ],
+    "DEFAULT_ITEM_TAG": "button",
     "ITEM_TAG_OPTIONS": [
       "a",
       "button",
       "clipboard-copy",
-      "span"
+      "button"
     ]
   },
   "Primer::Alpha::AutoComplete": {

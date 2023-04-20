@@ -7,9 +7,8 @@ module Primer
       # This component is part of <%= link_to_component(Primer::Alpha::ActionMenu) %> and should not be
       # used as a standalone component.
       class List < Primer::Alpha::ActionList
-        DEFAULT_ITEM_TAG = :span
+        DEFAULT_ITEM_TAG = :button
         ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
-        ITEM_ACTION_OPTIONS = [:classes, :onclick, :href, :value].freeze
 
         # Adds a new item to the list.
         #
@@ -31,11 +30,11 @@ module Primer
 
           # rubocop:disable Style/IfUnlessModifier
           if content_arguments[:tag] == :a
-            content_arguments[:href] = system_arguments.delete(:href)
+            content_arguments[:href] ||= system_arguments.delete(:href)
           end
           # rubocop:enable Style/IfUnlessModifier
 
-          system_arguments[:tabindex] = -1
+          content_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]
 
           if system_arguments[:disabled]
@@ -52,11 +51,22 @@ module Primer
             content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
-          super(
-            **system_arguments,
-            content_arguments: content_arguments,
-            &block
-          )
+          super(**system_arguments, content_arguments: content_arguments) do |item|
+            # Prevent double renders by using the capture method on the component
+            # that originally received the block.
+            #
+            # Handle blocks that originate from C code such as `&:method` by checking
+            # source_location. Such blocks don't allow access to their receiver.
+            if block&.source_location
+              block_context = block.binding.receiver
+
+              if block_context.class < ActionView::Base
+                block_context.capture(item, &block)
+              else
+                capture(item, &block)
+              end
+            end
+          end
         end
 
         # @param menu_id [String] ID of the parent menu.
