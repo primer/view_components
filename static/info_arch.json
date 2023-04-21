@@ -5572,13 +5572,7 @@
           }
         ],
         "methods": [
-          {
-            "name": "description_variant_class",
-            "description": "Description variant class.",
-            "parameters": [
 
-            ]
-          }
         ],
         "previews": [
           {

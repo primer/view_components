@@ -623,7 +623,12 @@
     ]
   },
   "Primer::Beta::AutoComplete::Item": {
-    "ALLOWED_DESCRIPTION_VARIANTS": [
+    "DEFAULT_DESCRIPTION_VARIANT": "block",
+    "DESCRIPTION_VARIANT_MAPPINGS": {
+      "inline": "ActionListItem-descriptionWrap--inline",
+      "block": "ActionListItem-descriptionWrap"
+    },
+    "DESCRIPTION_VARIANT_OPTIONS": [
       "inline",
       "block"
     ]
