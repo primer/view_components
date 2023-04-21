@@ -1,6 +1,7 @@
 {
   "Primer::Alpha::ActionList": "",
   "Primer::Alpha::ActionList::Divider": "",
+  "Primer::Alpha::ActionList::FormWrapper": "",
   "Primer::Alpha::ActionList::Heading": "",
   "Primer::Alpha::ActionList::Item": "",
   "Primer::Alpha::ActionMenu": "",

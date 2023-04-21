@@ -185,7 +185,26 @@ module Primer
           component.with_item(label: "Alert", tag: :button, content_arguments: { onclick: "alert('Foo')", onkeydown: "if (event.key === 'Enter') { alert(event.key) }" })
           component.with_item(label: "Navigate", tag: :a, content_arguments: { href: UrlHelpers.action_menu_landing_path })
           component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" })
+          component.with_item(
+            label: "Submit form",
+            href: UrlHelpers.action_menu_form_action_path,
+            form_arguments: {
+              name: "foo", value: "bar", method: :post
+            }
+          )
         end
+      end
+
+      # @label Single select form
+      #
+      def single_select_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
+
+      # @label Multiple select form
+      #
+      def multiple_select_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
       end
 
       # @label With disabled items

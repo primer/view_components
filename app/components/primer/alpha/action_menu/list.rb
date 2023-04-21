@@ -12,18 +12,16 @@ module Primer
 
         # Adds a new item to the list.
         #
+        # @param data [Hash] When the menu is used as a form input (see the <%= link_to_component(Primer::Alpha::ActionMenu) %> docs), the label is submitted to the server by default. However, if the `data: { value: }` or `"data-value":` attribute is provided, it will be sent to the server instead.
         # @param system_arguments [Hash] The same arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-        def with_item(**system_arguments, &block)
+        def with_item(data: {}, **system_arguments, &block)
           content_arguments = system_arguments.delete(:content_arguments) || {}
 
-          content_arguments[:tag] =
-            if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
-              system_arguments[:tag]
-            elsif system_arguments[:href] && !system_arguments[:disabled]
-              :a
-            else
-              DEFAULT_ITEM_TAG
-            end
+          # rubocop:disable Style/IfUnlessModifier
+          if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
+            content_arguments[:tag] = system_arguments[:tag]
+          end
+          # rubocop:enable Style/IfUnlessModifier
 
           # disallow setting item's tag
           system_arguments.delete(:tag)
@@ -51,7 +49,7 @@ module Primer
             content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
-          super(**system_arguments, content_arguments: content_arguments) do |item|
+          super(data: data, **system_arguments, content_arguments: content_arguments) do |item|
             # Prevent double renders by using the capture method on the component
             # that originally received the block.
             #
@@ -70,7 +68,7 @@ module Primer
         end
 
         # @param menu_id [String] ID of the parent menu.
-        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>
         def initialize(menu_id:, **system_arguments, &block)
           @menu_id = menu_id
 

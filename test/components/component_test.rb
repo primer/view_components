@@ -129,6 +129,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::ActionList::FormWrapper",
       "Primer::Alpha::ActionMenu::List",
       "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Group",

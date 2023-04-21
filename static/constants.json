@@ -5,6 +5,7 @@
     "DEFAULT_SCHEME": "full",
     "DEFAULT_SELECT_VARIANT": "none",
     "Divider": "Primer::Alpha::ActionList::Divider",
+    "FormWrapper": "Primer::Alpha::ActionList::FormWrapper",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
     "MENU_ROLE": "menu",
@@ -37,6 +38,17 @@
     "SCHEME_OPTIONS": [
       "subtle",
       "filled"
+    ]
+  },
+  "Primer::Alpha::ActionList::FormWrapper": {
+    "DEFAULT_HTTP_METHOD": "get",
+    "HTTP_METHOD_OPTIONS": [
+      "get",
+      "post",
+      "patch",
+      "put",
+      "delete",
+      "head"
     ]
   },
   "Primer::Alpha::ActionList::Heading": {
@@ -623,7 +635,12 @@
     ]
   },
   "Primer::Beta::AutoComplete::Item": {
-    "ALLOWED_DESCRIPTION_VARIANTS": [
+    "DEFAULT_DESCRIPTION_VARIANT": "block",
+    "DESCRIPTION_VARIANT_MAPPINGS": {
+      "inline": "ActionListItem-descriptionWrap--inline",
+      "block": "ActionListItem-descriptionWrap"
+    },
+    "DESCRIPTION_VARIANT_OPTIONS": [
       "inline",
       "block"
     ]

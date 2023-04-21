@@ -154,5 +154,74 @@ module Alpha
 
       assert_selector "modal-dialog#my-dialog"
     end
+
+    def test_single_select_form_submission
+      visit_preview(:single_select_form, route_format: :json)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:first-child").click
+
+      find("input[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal response["value"], "fast_forward"
+    end
+
+    def test_single_select_form_uses_label_if_no_value_provided
+      visit_preview(:single_select_form, route_format: :json)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:last-child").click
+
+      find("input[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal response["value"], "Resolve"
+    end
+
+    def test_multiple_select_form_submission
+      visit_preview(:multiple_select_form, route_format: :json)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:first-child").click
+      find("action-menu ul li:nth-child(2)").click
+
+      # close the menu to reveal the submit button
+      page.driver.browser.keyboard.type(:escape)
+
+      find("input[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal response["value"], %w[fast_forward recursive]
+    end
+
+    def test_multiple_select_form_uses_label_if_no_value_provided
+      visit_preview(:multiple_select_form, route_format: :json)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:first-child").click
+      find("action-menu ul li:last-child").click
+
+      # close the menu to reveal the submit button
+      page.driver.browser.keyboard.type(:escape)
+
+      find("input[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal response["value"], %w[fast_forward Resolve]
+    end
+
+    def test_individual_items_can_submit_post_requests_via_forms
+      visit_preview(:with_actions)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:last-child").click
+
+      assert_equal page.text, 'You selected "bar"'
+    end
   end
 end

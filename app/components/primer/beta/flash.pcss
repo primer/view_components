@@ -3,10 +3,10 @@
 /* Default flash */
 .flash:not(.Banner) {
   position: relative;
-  padding: var(--base-size-20, 20px) var(--primer-control-medium-paddingInline-spacious, 16px);
+  padding: var(--base-size-20, 20px) var(--control-medium-paddingInline-spacious, 16px);
   border-style: solid;
-  border-width: var(--primer-borderWidth-thin, 1px);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-width: var(--borderWidth-thin, 1px);
+  border-radius: var(--borderRadius-medium, 6px);
 
   /* Default color */
   color: var(--color-fg-default);
@@ -25,14 +25,14 @@
 
 /* Contain the flash messages */
 .flash-messages {
-  margin-bottom: var(--primer-stack-gap-spacious, 24px);
+  margin-bottom: var(--stack-gap-spacious, 24px);
 }
 
 /* Close button */
 .flash-close:not(.Banner-close) {
   float: right;
-  padding: var(--primer-control-medium-paddingInline-spacious, 16px);
-  margin: calc(var(--primer-control-medium-paddingInline-spacious, 16px) * -1);
+  padding: var(--control-medium-paddingInline-spacious, 16px);
+  margin: calc(var(--control-medium-paddingInline-spacious, 16px) * -1);
   text-align: center;
   cursor: pointer;
 
@@ -58,11 +58,11 @@
 .flash-action:not(.Banner-actions) {
   float: right;
   margin-top: -3px;
-  margin-left: var(--primer-stack-gap-spacious, 24px);
+  margin-left: var(--stack-gap-spacious, 24px);
   background-clip: padding-box;
 
   &.btn .octicon {
-    margin-right: var(--primer-control-small-gap, 4px);
+    margin-right: var(--control-small-gap, 4px);
     color: var(--color-fg-muted);
   }
 
@@ -74,7 +74,6 @@
     }
   }
 }
-
 
 /* Color variations */
 
@@ -111,8 +110,8 @@
 /* Layout variations */
 
 .flash-full:not(.Banner) {
-  margin-top: calc(var(--primer-borderWidth-thin, 1px) * -1);
-  border-width: var(--primer-borderWidth-thin, 1px) 0;
+  margin-top: calc(var(--borderWidth-thin, 1px) * -1);
+  border-width: var(--borderWidth-thin, 1px) 0;
   border-radius: 0;
 }
 
