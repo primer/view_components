@@ -8,7 +8,7 @@
       <% end %>
       <% if list.select_variant == :single || list.select_variant == :multiple %>
         <span class="ActionListItem-visual ActionListItem-action--leading">
-          <%= render(Primer::Alpha::Octicon.new(icon: :check, classes: "ActionListItem-singleSelectCheckmark")) %>
+          <%= render(Primer::Beta::Octicon.new(icon: :check, classes: "ActionListItem-singleSelectCheckmark")) %>
         </span>
       <% elsif list.select_variant == :multiple_checkbox %>
         <span class="ActionListItem-visual ActionListItem-action--leading">
