@@ -5,13 +5,13 @@
             <%= leading_visual %>
         </span>
     <% end %>
-    <% if description %>
-        <span class="ActionListItem-descriptionWrap <%= description_variant_class %>">
-            <span class="ActionListItem-label"><%= content %></span>
-            <span class="ActionListItem-description"><%= description %></span>
+    <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
+      <span class="ActionListItem-label"><%= content %></span>
+      <% if description? %>
+        <span class="ActionListItem-description">
+          <%= description %>
         </span>
-    <% else %>
-        <span class="ActionListItem-label"><%= content %></span>
+      <% end %>
     <% end %>
    <% if trailing_visual %>
         <span class="ActionListItem-visual ActionListItem-visual--trailing">

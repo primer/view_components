@@ -8,7 +8,12 @@ module Primer
       class Item < Primer::Component
         status :beta
 
-        ALLOWED_DESCRIPTION_VARIANTS = [:inline, :block].freeze
+        DEFAULT_DESCRIPTION_VARIANT = :block
+        DESCRIPTION_VARIANT_MAPPINGS = {
+          :inline => "ActionListItem-descriptionWrap--inline",
+          DEFAULT_DESCRIPTION_VARIANT => "ActionListItem-descriptionWrap"
+        }.freeze
+        DESCRIPTION_VARIANT_OPTIONS = DESCRIPTION_VARIANT_MAPPINGS.keys.freeze
 
         # The leading visual rendered before the link.
         #
@@ -48,8 +53,10 @@ module Primer
         # @param description_variant [Hash] Changes the description style. Allowed values are :inline, :block
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(value:, selected: false, disabled: false, description_variant: :block, **system_arguments)
-          @description_variant = ALLOWED_DESCRIPTION_VARIANTS.include?(description_variant) ? description_variant : :block
+        def initialize(value:, selected: false, disabled: false, description_variant: DEFAULT_DESCRIPTION_VARIANT, **system_arguments)
+          @description_variant = fetch_or_fallback(
+            DESCRIPTION_VARIANT_OPTIONS, description_variant, DEFAULT_DESCRIPTION_VARIANT
+          )
 
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
@@ -63,16 +70,13 @@ module Primer
             "ActionListItem",
             system_arguments[:classes]
           )
-        end
 
-        # Description variant class.
-        def description_variant_class
-          case @description_variant
-          when :block
-            "ActionList-item-blockDescription"
-          when :inline
-            "ActionListContent--blockDescription"
-          end
+          @description_wrapper_arguments = {
+            classes: class_names(
+              "ActionListItem-descriptionWrap",
+              DESCRIPTION_VARIANT_MAPPINGS[@description_variant]
+            )
+          }
         end
       end
     end
