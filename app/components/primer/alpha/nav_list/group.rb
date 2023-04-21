@@ -41,7 +41,7 @@ module Primer
 
           system_arguments[:content_arguments][:data] = merge_data(
             system_arguments[:content_arguments],
-            data: { list_id: self.id }
+            data: { list_id: id }
           )
 
           component_klass.new(list: self, src: src, **system_arguments)

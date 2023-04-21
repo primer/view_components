@@ -115,10 +115,10 @@ module Primer
 
       # @private
       def before_render
-        if heading?
-          @system_arguments[:"aria-labelledby"] = heading.title_id
-          @system_arguments[:"aria-describedby"] = heading.subtitle_id if heading.subtitle?
-        end
+        return unless heading?
+
+        @system_arguments[:"aria-labelledby"] = heading.title_id
+        @system_arguments[:"aria-describedby"] = heading.subtitle_id if heading.subtitle?
       end
 
       # @private

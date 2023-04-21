@@ -91,8 +91,7 @@ module Primer
       end
 
       # @label Trailing action
-      def trailing_action
-      end
+      def trailing_action; end
     end
   end
 end
