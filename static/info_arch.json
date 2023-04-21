@@ -46,6 +46,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} instead of using this feature directly."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -259,6 +265,12 @@
             "type": "Hash",
             "default": "`{}`",
             "description": "{{link_to_system_arguments_docs}} used to construct the item's anchor or button tag."
+          },
+          {
+            "name": "form_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, One of `:delete`, `:get`, `:head`, `:patch`, `:post`, or `:put`. The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent."
           },
           {
             "name": "truncate_label",
@@ -518,6 +530,31 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
+        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
+        "component": "ActionList::FormWrapper",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListFormWrapper",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
         "description": "Group heading rendered above the group contents.",
         "component": "ActionList::Divider",
@@ -557,7 +594,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ActionMenu",
-    "description": "The ActionMenu should be used when a user can select a single option triggering an action from a list of items. Primer will automatically nest an `Item` within a presentational `<li>` tag.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. If one isn't selected, a fallback `:span` will be used. To add functionality, use a `.js` class to create the functionality, or an `onclick` handler.",
+    "description": "ActionMenu is used for actions, navigation, to display secondary options, or single/multi select lists. They appear when users interact with buttons, actions, or other controls.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. The default is `:button`.",
     "component": "ActionMenu",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -617,7 +654,13 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:none`",
-        "description": ". One of `:multiple`, `:none`, or `:single`.."
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "system_arguments",
@@ -627,7 +670,30 @@
       }
     ],
     "slots": [
-
+      {
+        "name": "show_button",
+        "description": "Button to activate the menu.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Adds a new item to the list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+          }
+        ]
+      }
     ],
     "methods": [
       {
@@ -673,13 +739,6 @@
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
-        ]
-      },
-      {
-        "name": "items",
-        "description": "Retrieves the list of items.",
-        "parameters": [
-
         ]
       },
       {
@@ -767,6 +826,16 @@
         "name": "with_actions"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_form",
+        "name": "single_select_form"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select_form",
+        "name": "multiple_select_form"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items"
@@ -828,7 +897,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}"
           }
         ],
         "slots": [
@@ -862,6 +931,12 @@
             "name": "with_item",
             "description": "Adds a new item to the list.",
             "parameters": [
+              {
+                "name": "data",
+                "type": "Hash",
+                "default": "`{}`",
+                "description": "When the menu is used as a form input (see the {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} docs), the label is submitted to the server by default. However, if the `data: { value: }` or `\"data-value\":` attribute is provided, it will be sent to the server instead."
+              },
               {
                 "name": "system_arguments",
                 "type": "Hash",

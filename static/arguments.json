@@ -44,6 +44,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an [ActionMenu](/components/alpha/actionmenu) instead of using this feature directly."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -71,6 +77,17 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ]
+  },
+  {
+    "component": "ActionList::FormWrapper",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionListFormWrapper",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+    "parameters": [
+
     ]
   },
   {
@@ -168,6 +185,12 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, One of `:delete`, `:get`, `:head`, `:patch`, `:post`, or `:put`. The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent."
       },
       {
         "name": "truncate_label",
@@ -297,7 +320,13 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:none`",
-        "description": ". One of `:multiple`, `:none`, or `:single`.."
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "system_arguments",
@@ -325,7 +354,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)"
       }
     ]
   },

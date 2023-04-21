@@ -189,6 +189,16 @@
         "name": "with_actions"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_form",
+        "name": "single_select_form"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select_form",
+        "name": "multiple_select_form"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items"
