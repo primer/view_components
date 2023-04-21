@@ -9,13 +9,19 @@ const popoverSelector = (() => {
   }
 })()
 
-type SelectVariant = 'single' | 'multiple' | null
+type SelectVariant = 'none' | 'single' | 'multiple' | null
+type SelectedItem = {
+  label: string | null | undefined
+  value: string | null | undefined
+  element: Element
+}
 
 const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
   #originalLabel = ''
+  #inputName = ''
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -65,6 +71,23 @@ export class ActionMenuElement extends HTMLElement {
     return this.invokerElement.querySelector('.Button-label')
   }
 
+  get selectedItems(): SelectedItem[] {
+    const selectedItems = this.querySelectorAll('[aria-checked=true]')
+    const results: SelectedItem[] = []
+
+    for (const selectedItem of selectedItems) {
+      const labelEl = selectedItem.querySelector('.ActionListItem-label')
+
+      results.push({
+        label: labelEl?.textContent,
+        value: selectedItem?.getAttribute('data-value'),
+        element: selectedItem
+      })
+    }
+
+    return results
+  }
+
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('keydown', this, {signal})
@@ -72,6 +95,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
     this.#setDynamicLabel()
+    this.#updateInput()
   }
 
   disconnectedCallback() {
@@ -108,6 +132,9 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
+
+      this.#updateInput()
+
       if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
         // prevent buttons from being clicked twice
         event.preventDefault()
@@ -128,9 +155,9 @@ export class ActionMenuElement extends HTMLElement {
     if (!this.dynamicLabel) return
     const invokerLabel = this.invokerLabel
     if (!invokerLabel) return
+    this.#originalLabel ||= invokerLabel.textContent || ''
     const itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')
     if (itemLabel && this.dynamicLabel) {
-      this.#originalLabel ||= invokerLabel.textContent || ''
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
@@ -139,6 +166,47 @@ export class ActionMenuElement extends HTMLElement {
       invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
       invokerLabel.textContent = this.#originalLabel
+    }
+  }
+
+  #updateInput() {
+    if (this.selectVariant === 'single') {
+      const input = this.querySelector(`[data-list-inputs=true] input`) as HTMLInputElement | null
+      if (!input) return
+
+      const selectedItem = this.selectedItems[0]
+
+      if (selectedItem) {
+        input.value = (selectedItem.value || selectedItem.label || '').trim()
+        input.removeAttribute('disabled')
+      } else {
+        input.setAttribute('disabled', 'disabled')
+      }
+    } else if (this.selectVariant !== 'none') {
+      // multiple select variant
+      const inputList = this.querySelector('[data-list-inputs=true]')
+      if (!inputList) return
+
+      const inputs = inputList.querySelectorAll('input')
+
+      if (inputs.length > 0) {
+        this.#inputName ||= (inputs[0] as HTMLInputElement).name
+      }
+
+      for (const selectedItem of this.selectedItems) {
+        const newInput = document.createElement('input')
+        newInput.setAttribute('data-list-input', 'true')
+        newInput.type = 'hidden'
+        newInput.autocomplete = 'off'
+        newInput.name = this.#inputName
+        newInput.value = (selectedItem.value || selectedItem.label || '').trim()
+
+        inputList.append(newInput)
+      }
+
+      for (const input of inputs) {
+        input.remove()
+      }
     }
   }
 
