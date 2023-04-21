@@ -9,9 +9,9 @@ module Beta
 
       assert_selector("auto-complete[for=\"list-id\"][src=\"/auto_complete\"]") do
         assert_selector("input.FormControl-input")
-        assert_selector("ul[id=\"list-id\"].ActionList", visible: false)
+        assert_selector("ul[id=\"list-id\"].ActionListWrap", visible: false)
       end
-      refute_selector(".ActionList-item")
+      refute_selector(".ActionListItem")
     end
 
     def test_search_items
@@ -21,8 +21,8 @@ module Beta
       fill_in "input-id", with: "a"
 
       # results are now visible
-      assert_selector("ul[id=\"list-id\"].ActionList", visible: true)
-      assert_selector(".ActionList-item")
+      assert_selector("ul[id=\"list-id\"].ActionListWrap", visible: true)
+      assert_selector(".ActionListItem")
     end
 
     def test_renders_non_visible_label
