@@ -18,7 +18,7 @@ module.exports = {
         'logical-properties-and-values': false,
         'custom-media-queries':  {
           importFrom: [
-            path.join(__dirname, './node_modules/@primer/primitives/tokens-next-private/css/tokens/functional/size/viewport.css')
+            path.join(__dirname, './node_modules/@primer/primitives/tokens-next-private/css/functional/size/viewport.css')
           ]
         },
       }
