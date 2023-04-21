@@ -60,7 +60,7 @@ module Primer
           @system_arguments[:"aria-disabled"] = true if disabled
 
           @system_arguments[:classes] = class_names(
-            "ActionList-item",
+            "ActionListItem",
             system_arguments[:classes]
           )
         end
@@ -71,7 +71,7 @@ module Primer
           when :block
             "ActionList-item-blockDescription"
           when :inline
-            "ActionList-item-descriptionWrap--inline"
+            "ActionListContent--blockDescription"
           end
         end
       end
