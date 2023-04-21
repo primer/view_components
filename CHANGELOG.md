@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.1.7
+
+### Patch Changes
+
+- [#1955](https://github.com/primer/view_components/pull/1955) [`ef9c7be2`](https://github.com/primer/view_components/commit/ef9c7be27fd718bec7006619f7a69d19a198fbe8) Thanks [@keithamus](https://github.com/keithamus)! - Add size argument to ActionMenu
+
+* [#1962](https://github.com/primer/view_components/pull/1962) [`25a7ce9d`](https://github.com/primer/view_components/commit/25a7ce9d92c6bb3537ef68022a519794b12b98a1) Thanks [@camertron](https://github.com/camertron)! - Action menu form input
+
+- [#1960](https://github.com/primer/view_components/pull/1960) [`55e0d2c6`](https://github.com/primer/view_components/commit/55e0d2c66ee87a0d99a12f65a6bff2074efcc1b8) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Don't use to_sentence in ERB linters so they can be run outside of Rails.
+
+* [#1964](https://github.com/primer/view_components/pull/1964) [`d6a46055`](https://github.com/primer/view_components/commit/d6a46055cd4e9c40352f0ca61a8b0b3e2967146d) Thanks [@langermank](https://github.com/langermank)! - Upgrade Primitives and PCSS, rename tokens to pre-v8 release
+
 ## 0.1.6
 
 ### Patch Changes
