@@ -3,37 +3,37 @@
 /* A menu on the side of a page, defaults to left side. e.g. github.com/about */
 
 .menu {
-  margin-bottom: var(--primer-stack-gap-normal, 16px);
+  margin-bottom: var(--stack-gap-normal, 16px);
   list-style: none;
   background-color: var(--color-canvas-default);
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  border-radius: var(--borderRadius-medium, 6px);
 }
 
 .menu-item {
   position: relative;
   display: block;
-  padding: var(--primer-control-medium-paddingInline-condensed, 8px) var(--primer-control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
   color: var(--color-fg-default);
-  border-bottom: var(--primer-borderWidth-thin, 1px) solid var(--color-border-muted);
+  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
 
   &:first-child {
     border-top: 0;
-    border-top-left-radius: var(--primer-borderRadius-medium, 6px);
-    border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium, 6px);
+    border-top-right-radius: var(--borderRadius-medium, 6px);
 
     &::before {
-      border-top-left-radius: var(--primer-borderRadius-medium, 6px);
+      border-top-left-radius: var(--borderRadius-medium, 6px);
     }
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--borderRadius-medium, 6px);
 
     &::before {
-      border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
+      border-bottom-left-radius: var(--borderRadius-medium, 6px);
     }
   }
 
@@ -65,14 +65,14 @@
 
   & .octicon {
     width: 16px;
-    margin-right: var(--primer-control-medium-gap, 8px);
+    margin-right: var(--control-medium-gap, 8px);
     color: var(--color-fg-muted);
     text-align: center;
   }
 
   & .Counter {
     float: right;
-    margin-left: var(--primer-control-small-gap, 4px);
+    margin-left: var(--control-small-gap, 4px);
   }
 
   & .menu-warning {
@@ -82,7 +82,7 @@
 
   & .avatar {
     float: left;
-    margin-right: var(--primer-control-small-gap, 4px);
+    margin-right: var(--control-small-gap, 4px);
   }
 
   &.alert {
@@ -94,26 +94,26 @@
 
 .menu-heading {
   display: block;
-  padding: var(--primer-control-medium-paddingInline-condensed, 8px) var(--primer-control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
   margin-top: 0;
   margin-bottom: 0;
   font-size: inherit;
   font-weight: var(--base-text-weight-semibold, 600);
   color: var(--color-fg-default);
-  border-bottom: var(--primer-borderWidth-thin, 1px) solid var(--color-border-muted);
+  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
 
   &:hover {
     text-decoration: none;
   }
 
   &:first-child {
-    border-top-left-radius: var(--primer-borderRadius-medium, 6px);
-    border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium, 6px);
+    border-top-right-radius: var(--borderRadius-medium, 6px);
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--borderRadius-medium, 6px);
   }
 }

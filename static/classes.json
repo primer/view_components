@@ -372,10 +372,10 @@
   "ActionListWrap--inset": [
     "Primer::Alpha::ActionList"
   ],
-  "ActionListItem-action": [
+  "ActionListItem-visual": [
     "Primer::Alpha::ActionList"
   ],
-  "ActionListItem-visual": [
+  "ActionListItem-action": [
     "Primer::Alpha::ActionList"
   ],
   "SegmentedControl-item": [
@@ -510,10 +510,10 @@
   "FormControl-inlineValidation": [
     "Primer::Alpha::TextField"
   ],
-  "FormControl-check-group-wrap": [
+  "FormControl-radio-group-wrap": [
     "Primer::Alpha::TextField"
   ],
-  "FormControl-radio-group-wrap": [
+  "FormControl-check-group-wrap": [
     "Primer::Alpha::TextField"
   ],
   "Popover-message--bottom-left": [
