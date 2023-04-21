@@ -63,9 +63,7 @@ module Primer
       # @example Items and headings
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
-      #     <% component.with_group(aria: { label: "General settings" }) do |group| %>
-      #       <% group.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
-      #     <% end %>
+      #     <% component.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "Account Settings") %>
       #       <% group.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") %>

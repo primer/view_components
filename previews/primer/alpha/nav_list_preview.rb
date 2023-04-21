@@ -58,6 +58,26 @@ module Primer
         end
       end
 
+      # @label Top-level items
+      #
+      def top_level_items
+        render(Primer::Alpha::NavList.new(aria: { label: "Account settings" })) do |list|
+          list.with_heading(title: "Account settings navigation")
+
+          list.with_item(label: "General", href: "/general") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+
+          list.with_item(label: "Billing", href: "/billing") do |item|
+            item.with_leading_visual_icon(icon: :"credit-card")
+          end
+
+          list.with_item(label: "Change password", href: "/change_password") do |item|
+            item.with_leading_visual_icon(icon: :key)
+          end
+        end
+      end
+
       # @label Show more item
       def show_more_item
         render(Primer::Alpha::NavList.new(aria: { label: "My favorite foods" })) do |list|

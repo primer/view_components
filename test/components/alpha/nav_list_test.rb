@@ -7,16 +7,60 @@ module Primer
     class NavListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
+      def test_top_level_items_structure
+        render_preview(:top_level_items)
+
+        assert_selector("nav nav-list ul.ActionListWrap") do |list|
+          list.assert_selector("li.ActionListItem", text: "General")
+          list.assert_selector("li.ActionListItem", text: "Billing")
+          list.assert_selector("li.ActionListItem", text: "Change password")
+        end
+      end
+
+      def test_mixed_top_level_items_and_groups_structure
+        render_preview(:default)
+
+        assert_selector("nav nav-list ul.ActionListWrap") do |top_level_list|
+          top_level_list.assert_selector("li.ActionListItem", text: "General")
+          top_level_list.assert_selector("li h3", text: "Access")
+
+          top_level_list.assert_selector("li ul.ActionListWrap") do |access_list|
+            access_list.assert_selector("li.ActionListItem", text: "Collaborators and teams")
+            access_list.assert_selector("li.ActionListItem", text: "Moderation options")
+            access_list.assert_selector("li.ActionListItem ul.ActionList--subGroup") do |mod_options_list|
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Code review limits")
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Reported content")
+            end
+          end
+        end
+      end
+
+      def test_top_level_heading
+        render_preview(:default)
+
+        assert_selector("h2", text: "Repository settings navigation")
+      end
+
+      def test_invalid_list
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::NavList.new)
+        end
+
+        assert_includes(error.message, "An aria-label must be provided")
+      end
+
       def test_sub_items
         render_preview(:default)
 
-        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='true']") do
-          assert_selector("svg.ActionListItem-collapseIcon")
-          assert_selector("ul.ActionList--subGroup[role=list]") do |sub_group|
-            sub_group.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
-            sub_group.assert_selector("li.ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
-            sub_group.assert_selector("li.ActionListItem--subItem", text: "Reported content")
-          end
+        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='true']") do |content|
+          content.assert_selector("svg.ActionListItem-collapseIcon")
+        end
+
+        assert_selector("ul.ActionList--subGroup[role=list]") do |sub_group|
+          sub_group.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
+          sub_group.assert_selector("li.ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
+          sub_group.assert_selector("li.ActionListItem--subItem", text: "Reported content")
         end
       end
 

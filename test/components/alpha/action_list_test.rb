@@ -109,8 +109,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=list]") do
-          assert_selector("li.ActionListItem button")
+        assert_selector("ul.ActionListWrap[role=list]") do |list|
+          list.assert_selector("li.ActionListItem button")
         end
       end
 
@@ -119,8 +119,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemradio]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemradio]")
         end
       end
 
@@ -129,8 +129,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
         end
       end
 
@@ -139,8 +139,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitem]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitem]")
         end
       end
 
