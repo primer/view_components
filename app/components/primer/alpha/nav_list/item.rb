@@ -110,6 +110,10 @@ module Primer
           )
         end
 
+        def group?
+          false
+        end
+
         private
 
         # Normally it would be easier to simply ask each item for its active status, eg.

@@ -27,8 +27,8 @@ module Primer
           system_arguments[:data] ||= {}
           system_arguments[:data][:target] = "nav-list.showMoreItem"
           system_arguments[:data][:action] = "click:nav-list#showMore"
-          system_arguments[:data][:"current-page"] = "1"
-          system_arguments[:data][:"total-pages"] = pages.to_s
+          system_arguments[:data][:current_page] = "1"
+          system_arguments[:data][:total_pages] = pages.to_s
           system_arguments[:label_arguments] = {
             **system_arguments[:label_arguments] || {},
             color: :accent
@@ -38,6 +38,11 @@ module Primer
             **system_arguments[:content_arguments] || {},
             tag: :button
           }
+
+          system_arguments[:content_arguments][:data] = merge_data(
+            system_arguments[:content_arguments],
+            data: { list_id: self.id }
+          )
 
           component_klass.new(list: self, src: src, **system_arguments)
         }
@@ -52,7 +57,6 @@ module Primer
         def initialize(selected_item_id: nil, **system_arguments)
           @system_arguments = system_arguments
           @selected_item_id = selected_item_id
-          @system_arguments[:"data-target"] = "nav-list.list"
 
           super(**@system_arguments)
         end
@@ -77,6 +81,16 @@ module Primer
             selected_item_id: @selected_item_id,
             list: self
           )
+        end
+
+        def group?
+          true
+        end
+
+        def before_render
+          super
+
+          raise ArgumentError, "NavList groups are required to have headings" unless heading?
         end
       end
     end

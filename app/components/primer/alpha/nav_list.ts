@@ -3,7 +3,6 @@ import {controller, target, targets} from '@github/catalyst'
 
 @controller
 export class NavListElement extends HTMLElement {
-  @target list: HTMLElement
   @targets items: HTMLElement[]
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]
@@ -158,7 +157,9 @@ export class NavListElement extends HTMLElement {
     }
     const fragment = this.#parseHTML(document, html)
     fragment?.querySelector('li > a')?.setAttribute('data-targets', 'nav-list.focusMarkers')
-    this.list.append(fragment)
+    const listId = (e.target as HTMLElement).closest('button')!.getAttribute('data-list-id')!
+    const list = document.getElementById(listId)!
+    list.append(fragment)
     this.focusMarkers.pop()?.focus()
     this.showMoreDisabled = false
   }

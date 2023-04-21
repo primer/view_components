@@ -74,7 +74,7 @@ module Primer
         set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
       end
 
-      attr_reader :select_variant, :role
+      attr_reader :id, :select_variant, :role
 
       # @param id [String] HTML ID value.
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
@@ -115,14 +115,9 @@ module Primer
 
       # @private
       def before_render
-        aria_label = aria(:label, @system_arguments)
-        aria_labelledby = aria(:labelledby, @system_arguments)
-
-        if heading.present?
-          @system_arguments[:"aria-labelledby"] = heading.id unless aria_labelledby
-          raise ArgumentError, "An aria-label should not be provided if a heading is present" if aria_label.present?
-        elsif aria_label.blank? && aria_labelledby.blank?
-          raise ArgumentError, "An aria-label, aria-labelledby, or heading must be provided"
+        if heading?
+          @system_arguments[:"aria-labelledby"] = heading.title_id
+          @system_arguments[:"aria-describedby"] = heading.subtitle_id if heading.subtitle?
         end
       end
 

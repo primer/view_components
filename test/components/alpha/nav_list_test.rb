@@ -33,6 +33,7 @@ module Primer
       def test_no_selected_item
         render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
           component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -44,6 +45,7 @@ module Primer
       def test_selected_item
         render_inline(Primer::Alpha::NavList.new(aria: { label: "List" }, selected_item_id: :item2)) do |component|
           component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -56,6 +58,7 @@ module Primer
       def test_item_can_be_selected_by_any_of_its_ids
         render_inline(Primer::Alpha::NavList.new(aria: { label: "List" }, selected_item_id: :other_item1_id)) do |component|
           component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -83,6 +86,7 @@ module Primer
 
         render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
           component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             # use CurrentPageItem instead of a mock since the API supports it
             group.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
             group.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
@@ -97,6 +101,7 @@ module Primer
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
             component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
               group.with_item(label: "Item at level 1") do |item|
                 item.with_item(label: "Item at level 2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
@@ -119,6 +124,7 @@ module Primer
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
             component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
               group.with_item(label: "Level 1", href: "/level1") do |item|
                 item.with_item(label: "Level 2", href: "/level2")
                 item.with_trailing_action(icon: :megaphone, aria: { label: "Action" })
@@ -130,23 +136,12 @@ module Primer
         assert_equal "Cannot render a trailing action for an item with subitems", error.message
       end
 
-      def test_disallows_aria_label_when_heading_provided
-        error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
-            component.with_group(aria: { label: "Group" }) do |group|
-              group.with_heading(title: "List")
-            end
-          end
-        end
-
-        assert_equal "An aria-label should not be provided if a heading is present", error.message
-      end
-
       def test_errors_when_passing_selected_by_ids_to_parent
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
-            component.with_group(aria: { label: "Group" }) do |section|
-              section.with_item(label: "Level 1", href: "/level1", selected_by_ids: :foo) do |item|
+            component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
+              group.with_item(label: "Level 1", href: "/level1", selected_by_ids: :foo) do |item|
                 item.with_item(label: "Level 2", href: "/level2")
               end
             end

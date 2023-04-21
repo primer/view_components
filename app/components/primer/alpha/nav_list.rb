@@ -22,11 +22,42 @@ module Primer
         "nav-list"
       end
 
+      renders_one :heading, lambda { |title:, heading_level: 2, **system_arguments|
+        Primer::BaseComponent.new(
+          tag: :"h#{heading_level}",
+          classes: "ActionListHeader",
+          **system_arguments
+        ).with_content(title)
+      }
+
       # Groups. Each group is a list of links and an optional heading.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
-      renders_many :groups, lambda { |**system_arguments|
-        Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id, **system_arguments)
+      def with_group(**system_arguments, &block)
+        # This is a giant hack that should be removed when groups/items can be combined and converted into a polymorphic slot.
+        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
+        set_slot(
+          :items,
+          { renderable: Primer::Alpha::NavList::Group, collection: true },
+          selected_item_id: @selected_item_id,
+          **system_arguments,
+          &block
+        )
+      end
+
+      # Items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+      renders_many :items, lambda { |**system_arguments, &block|
+        # dummy group just so we have something to pass as the list: argument below
+        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+
+        Primer::Alpha::NavList::Item.new(
+          list: @top_level_group,
+          selected_item_id: @selected_item_id,
+          **system_arguments,
+          &block
+        )
       }
 
       # @example Items and headings
@@ -109,6 +140,13 @@ module Primer
         @selected_item_id = selected_item_id
 
         raise ArgumentError, "An aria-label must be provided" unless aria(:label, @system_arguments)
+      end
+
+      private
+
+      # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
+      def render_outer_list?
+        items.any? { |item| !item.group? }
       end
     end
   end

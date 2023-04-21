@@ -7,14 +7,6 @@ module Primer
     class ActionListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
-      def test_invalid_list
-        error = assert_raises ArgumentError do
-          render_inline(Primer::Alpha::ActionList.new)
-        end
-
-        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
-      end
-
       def test_item_with_actions
         render_preview(:item, params: { trailing_action: "arrow-down" })
 
