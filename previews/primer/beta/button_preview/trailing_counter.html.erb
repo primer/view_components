@@ -1,0 +1,11 @@
+<%= render(Primer::Beta::Button.new(
+    scheme: :primary,
+    size: :medium,
+    block: block,
+    id: id,
+    align_content: align_content
+)) do |component| %>
+  <% component.with_leading_visual_icon(icon: :star) %>
+  <% component.with_trailing_visual_counter(count: 15) %>
+  Button
+<% end %>
