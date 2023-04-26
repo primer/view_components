@@ -145,7 +145,7 @@ class ToggleSwitchElement extends HTMLElement {
       body.append(this.csrfField, this.csrf)
     }
 
-    body.append('value', this.isOn() ? '0' : '1')
+    body.append('value', this.isOn() ? '1' : '0')
 
     if (!this.src) throw new Error('invalid src')
 

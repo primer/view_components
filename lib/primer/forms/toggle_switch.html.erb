@@ -1,6 +1,6 @@
 <%= content_tag("toggle-switch-input", class: "FormControl-toggleSwitchInput", hidden: @input.hidden?) do %>
   <span style="flex-grow: 1">
-    <%= render(Primer::BaseComponent.new(tag: :span, **@input.label_arguments)) do %>
+    <%= render(Primer::Forms::PrimerBaseComponentWrapper.new(tag: :span, **@input.label_arguments)) do %>
       <%= @input.label %>
     <% end %>
 

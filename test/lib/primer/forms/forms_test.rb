@@ -287,4 +287,23 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     assert_selector ".FormControl-radio-group-wrap + .FormControl"
   end
+
+  def test_toggle_switch_button_labelled_by_label
+    render_preview(:example_toggle_switch_form)
+
+    label_id = page.find_css(".FormControl-label")[0].attributes["id"].value
+    assert_selector("toggle-switch button[aria-labelledby='#{label_id}']")
+  end
+
+  def test_toggle_switch_button_described_by_caption_and_validation_message
+    render_preview(:example_toggle_switch_form)
+
+    caption_id = page.find_css(".FormControl-caption")[0].attributes["id"].value
+    validation_id = page.find_css(".FormControl-inlineValidation")[0].attributes["id"].value
+
+    ids = page.find_css("toggle-switch button")[0].attributes["aria-describedby"].value.split(" ")
+
+    assert_includes ids, caption_id
+    assert_includes ids, validation_id
+  end
 end
