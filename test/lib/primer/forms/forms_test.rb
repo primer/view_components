@@ -301,7 +301,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     caption_id = page.find_css(".FormControl-caption")[0].attributes["id"].value
     validation_id = page.find_css(".FormControl-inlineValidation")[0].attributes["id"].value
 
-    ids = page.find_css("toggle-switch button")[0].attributes["aria-describedby"].value.split(" ")
+    ids = page.find_css("toggle-switch button")[0].attributes["aria-describedby"].value.split
 
     assert_includes ids, caption_id
     assert_includes ids, validation_id

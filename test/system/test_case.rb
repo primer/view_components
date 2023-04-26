@@ -26,7 +26,7 @@ module System
       "Alpha::ToggleSwitch" => {
         all: %i[button-name]
       }
-    }
+    }.freeze
 
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")

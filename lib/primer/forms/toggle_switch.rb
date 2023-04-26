@@ -14,7 +14,7 @@ module Primer
       end
 
       def label_id
-        @id ||= "label-#{@input.base_id}"
+        @label_id ||= "label-#{@input.base_id}"
       end
     end
   end
