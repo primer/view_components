@@ -41,7 +41,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     end
   end
 
-  def test_includes_the_given_note
+  def test_includes_the_given_caption
     render_preview :single_text_field_form
 
     assert_selector ".FormControl-caption", text: "The answer to life, the universe, and everything"
@@ -51,7 +51,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     render_preview :single_text_field_form
 
     caption_id = page.find_all(".FormControl-caption").first["id"]
-    assert_selector "input[aria-describedby='#{caption_id}']"
+    assert_selector "input[aria-describedby*='#{caption_id}']"
   end
 
   def test_renders_the_caption_template_when_present
@@ -76,7 +76,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert caption_ids.size == num_inputs, "Expected #{num_inputs} unique caption IDs, got #{caption_ids.size}"
 
     assert_selector("input", count: num_inputs) do |input|
-      caption_id = input["aria-describedby"]
+      caption_id = input["aria-describedby"].split.find { |id| id.start_with?("caption-") }
       assert_includes caption_ids, caption_id
       caption_ids.delete(caption_id)
     end

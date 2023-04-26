@@ -28,6 +28,22 @@ module System
       }
     }.freeze
 
+    def axe_rules_to_skip(component_name: nil, preview_name: nil)
+      to_skip = Set.new(AXE_RULES_TO_SKIP)
+
+      if component_name
+        to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, :all) || [])
+
+        # rubocop:disable Style/IfUnlessModifier
+        if preview_name
+          to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, preview_name) || [])
+        end
+        # rubocop:enable Style/IfUnlessModifier
+      end
+
+      to_skip.to_a
+    end
+
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
       match = /^(Alpha|Beta)([A-Z])/.match(component_name)
@@ -42,10 +58,12 @@ module System
 
       visit(url)
 
-      excludes = AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, :all) || []
-      excludes += AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, preview_name) || []
-
-      assert_accessible(excludes: excludes)
+      assert_accessible(
+        excludes: axe_rules_to_skip(
+          component_name: component_name,
+          preview_name: preview_name
+        )
+      )
     end
 
     def format_accessibility_errors(violations)
