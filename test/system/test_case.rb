@@ -21,6 +21,13 @@ module System
       link-in-text-block
     ].freeze
 
+    AXE_RULES_TO_SKIP_PER_COMPONENT = {
+      # these previews test only the component, which does not come with any labels
+      "Alpha::ToggleSwitch" => {
+        all: %i[button-name]
+      }
+    }
+
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
       match = /^(Alpha|Beta)([A-Z])/.match(component_name)
@@ -35,7 +42,10 @@ module System
 
       visit(url)
 
-      assert_accessible
+      excludes = AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, :all) || []
+      excludes += AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, preview_name) || []
+
+      assert_accessible(excludes: excludes)
     end
 
     def format_accessibility_errors(violations)
