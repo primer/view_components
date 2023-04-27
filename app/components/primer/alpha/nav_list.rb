@@ -48,11 +48,11 @@ module Primer
       # Items.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
-      renders_many :items, lambda { |**system_arguments, &block|
+      renders_many :items, lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
         # dummy group just so we have something to pass as the list: argument below
         @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
 
-        Primer::Alpha::NavList::Item.new(
+        component_klass.new(
           list: @top_level_group,
           selected_item_id: @selected_item_id,
           **system_arguments,
@@ -145,6 +145,26 @@ module Primer
       # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
       def render_outer_list?
         items.any? { |item| !item.group? }
+      end
+
+      def render_divider_between?(item1, item2)
+        adjacent_groups?(item1, item2) || heterogeneous_items?(item1, item2)
+      end
+
+      def adjacent_groups?(item1, item2)
+        item1.group? && item2.group?
+      end
+
+      def heterogeneous_items?(item1, item2)
+        unwrap(item1).class != unwrap(item2).class
+      end
+
+      def unwrap(item)
+        if item.is_a?(ViewComponent::Slot)
+          item.instance_variable_get(:@__vc_component_instance)
+        else
+          item
+        end
       end
     end
   end

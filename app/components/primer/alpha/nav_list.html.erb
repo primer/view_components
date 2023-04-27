@@ -3,7 +3,7 @@
   <nav-list>
     <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list?, tag: :ul, classes: "ActionListWrap")) do %>
       <% items.each_with_index do |item, index| %>
-        <% if index > 0 %>
+        <% if index > 0 && render_divider_between?(item, items[index - 1]) %>
           <%= render(Primer::Alpha::ActionList::Divider.new) %>
         <% end %>
         <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list? && item.group?, tag: :li)) do %>
