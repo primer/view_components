@@ -7,7 +7,7 @@ module Primer
       # @label Playground
       def playground
         render(Primer::Alpha::NavList.new(aria: { label: "Repository settings" }, selected_item_id: :code_review_limits)) do |list|
-          list.with_heading(title: "Repository settings navigation")
+          list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|
             item.with_leading_visual_icon(icon: :gear)
