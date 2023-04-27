@@ -62,7 +62,7 @@ module Primer
       #
       def top_level_items
         render(Primer::Alpha::NavList.new(aria: { label: "Account settings" })) do |list|
-          list.with_heading(title: "Account settings navigation")
+          list.with_heading(title: "Account settings")
 
           list.with_item(label: "General", href: "/general") do |item|
             item.with_leading_visual_icon(icon: :gear)
