@@ -6526,6 +6526,11 @@
         "name": "trailing_action"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_counter",
+        "preview_path": "/lookbook/preview/primer/beta/button/trailing_counter",
+        "name": "trailing_counter"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/beta/button/with_tooltip",
         "preview_path": "/lookbook/preview/primer/beta/button/with_tooltip",
         "name": "with_tooltip"
