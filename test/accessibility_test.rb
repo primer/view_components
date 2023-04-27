@@ -26,7 +26,7 @@ class AccessibilityTest < System::TestCase
     component_previews.each do |preview|
       define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
-        excludes = axe_rules_to_skip(component_name: klass.name.sub(/\APrimer::/, "").chomp("Preview"), preview_name: preview)
+        excludes = axe_rules_to_skip(component_name: klass.name.delete_prefix("Primer::").chomp("Preview"), preview_name: preview)
         assert_accessible(excludes: excludes)
         puts "#{component_uri}##{preview} passed check."
       end
