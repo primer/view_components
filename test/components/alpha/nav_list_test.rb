@@ -39,7 +39,7 @@ module Primer
       def test_top_level_heading
         render_preview(:default)
 
-        assert_selector("h2", text: "Repository settings navigation")
+        assert_selector("h2", text: "Repository settings")
       end
 
       def test_invalid_list
