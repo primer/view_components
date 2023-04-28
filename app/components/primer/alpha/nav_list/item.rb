@@ -8,6 +8,18 @@ module Primer
       # `selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also
       # themselves contain sub items. Sub items are rendered collapsed by default.
       class Item < Primer::Alpha::ActionList::Item
+        module PredicateMethods
+          def group?
+            false
+          end
+
+          def divider?
+            false
+          end
+        end
+
+        include PredicateMethods
+
         attr_reader :selected_by_ids, :sub_item
 
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
@@ -108,14 +120,6 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--hasSubItem"
           )
-        end
-
-        def group?
-          false
-        end
-
-        def divider?
-          false
         end
 
         private
