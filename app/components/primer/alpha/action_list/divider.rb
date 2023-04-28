@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     class ActionList
-      # Group heading rendered above the group contents.
+      # Separator with optional text rendered above groups or between individual items.
       class Divider < Primer::Component
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {

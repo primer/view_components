@@ -114,6 +114,10 @@ module Primer
           false
         end
 
+        def divider?
+          false
+        end
+
         private
 
         # Normally it would be easier to simply ask each item for its active status, eg.

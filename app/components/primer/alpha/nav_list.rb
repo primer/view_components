@@ -30,7 +30,7 @@ module Primer
         ).with_content(title)
       }
 
-      # Groups. Each group is a list of links and an optional heading.
+      # Groups. Each group is a list of links and a (required) heading.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
       def with_group(**system_arguments, &block)
@@ -43,6 +43,15 @@ module Primer
           **system_arguments,
           &block
         )
+      end
+
+      # Adds a divider to the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      def with_divider(**system_arguments, &block)
+        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
+        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
+        set_slot(:items, { renderable: Primer::Alpha::NavList::Divider, collection: true }, **system_arguments, &block)
       end
 
       # Items.
@@ -148,6 +157,8 @@ module Primer
       end
 
       def render_divider_between?(item1, item2)
+        return false if either_is_divider?(item1, item2)
+
         adjacent_groups?(item1, item2) || heterogeneous_items?(item1, item2)
       end
 
@@ -157,6 +168,10 @@ module Primer
 
       def heterogeneous_items?(item1, item2)
         unwrap(item1).class != unwrap(item2).class
+      end
+
+      def either_is_divider?(item1, item2)
+        item1.divider? || item2.divider?
       end
 
       def unwrap(item)

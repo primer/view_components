@@ -87,6 +87,10 @@ module Primer
           true
         end
 
+        def divider?
+          false
+        end
+
         def before_render
           super
 
