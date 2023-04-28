@@ -9,18 +9,25 @@ module Primer
       # @param select_variant [Symbol] select [single, multiple, none]
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      # @param size [Symbol] select [auto, small, medium, large, xlarge]
       def playground(
-        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE
+        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        size: Primer::Alpha::Overlay::DEFAULT_SIZE
       )
-        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side)) do |menu|
+        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side, size: size)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "Copy link", value: "")
-          menu.with_item(label: "Quote reply", value: "")
-          menu.with_item(label: "Reference in new issue", value: "")
+          menu.with_item(label: "Copy link")
+          menu.with_item(label: "Quote reply")
+          menu.with_item(label: "Reference in new issue")
           menu.with_divider
-          menu.with_item(label: "Edit", value: "")
-          menu.with_item(label: "Delete", scheme: :danger, value: "")
+          menu.with_item(label: "Edit")
+          menu.with_item(label: "Delete", scheme: :danger)
         end
+      end
+
+      # @label Content labels
+      #
+      def content_labels
       end
 
       # @label Default
@@ -28,15 +35,32 @@ module Primer
       def default
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
-          menu.with_item(label: "Copy link", value: "")
-          menu.with_item(label: "Quote reply", value: "")
-          menu.with_item(label: "Reference in new issue", value: "")
+          menu.with_item(label: "Copy link")
+          menu.with_item(label: "Quote reply")
+          menu.with_item(label: "Reference in new issue")
           menu.with_divider
-          menu.with_item(label: "Edit", value: "") do |item|
+          menu.with_item(label: "Edit") do |item|
             item.with_description.with_content("Change settings")
           end
-          menu.with_item(label: "Delete", scheme: :danger, value: "") do |item|
+          menu.with_item(label: "Delete", scheme: :danger) do |item|
             item.with_description.with_content("Sayonara")
+          end
+        end
+      end
+
+      # @label Wide
+      #
+      def wide
+        render(Primer::Alpha::ActionMenu.new(select_variant: :single, size: :medium)) do |menu|
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "A wider menu" }
+
+          menu.with_item(label: "Default", active: true, value: "default") do |item|
+            item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
+            item.with_description { "This is an example for wide ActionMenus" }
+          end
+
+          menu.with_item(label: "Extended", active: false, value: "extended") do |item|
+            item.with_description { "It allows for extended descriptions with extra afforance for additional visuals" }
           end
         end
       end
@@ -46,7 +70,7 @@ module Primer
       def with_icon_button
         render(Primer::Alpha::ActionMenu.new) do |menu|
           menu.with_show_button(icon: :star, "aria-label": "Menu")
-          menu.with_item(label: "Does something", value: "")
+          menu.with_item(label: "Does something")
         end
       end
 
@@ -55,10 +79,10 @@ module Primer
       def single_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "Fast forward", value: "")
-          menu.with_item(label: "Recursive", value: "")
-          menu.with_item(label: "Ours", value: "")
-          menu.with_item(label: "Resolve", value: "")
+          menu.with_item(label: "Fast forward")
+          menu.with_item(label: "Recursive")
+          menu.with_item(label: "Ours")
+          menu.with_item(label: "Resolve")
         end
       end
 
@@ -67,15 +91,15 @@ module Primer
       def multiple_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "langermank", description_scheme: :inline, value: "") do |item|
+          menu.with_item(label: "langermank", description_scheme: :inline) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
             item.with_description.with_content("Katie Langerman")
           end
-          menu.with_item(label: "jonrohan", description_scheme: :inline, value: "") do |item|
+          menu.with_item(label: "jonrohan", description_scheme: :inline) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4", alt: "Jon Rohan")
             item.with_description.with_content("Jon Rohan")
           end
-          menu.with_item(label: "broccolinisoup", description_scheme: :inline, value: "") do |item|
+          menu.with_item(label: "broccolinisoup", description_scheme: :inline) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/1446503?v=4", alt: "Armağan Ersöz")
             item.with_description.with_content("Armağan Ersöz")
           end
@@ -98,9 +122,9 @@ module Primer
       def single_selected_item
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "Copy link", value: "")
-          menu.with_item(label: "Quote reply", active: true, value: "")
-          menu.with_item(label: "Reference in new issue", value: "")
+          menu.with_item(label: "Copy link")
+          menu.with_item(label: "Quote reply", active: true)
+          menu.with_item(label: "Reference in new issue")
         end
       end
 
@@ -108,10 +132,12 @@ module Primer
       #
       def single_select_with_internal_label
         render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
-          menu.with_show_button { "Menu" }
-          menu.with_item(label: "Copy link", value: "")
-          menu.with_item(label: "Quote reply", active: true, value: "")
-          menu.with_item(label: "Reference in new issue", value: "")
+          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_item(label: "Copy link") do |item|
+            item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
+          end
+          menu.with_item(label: "Quote reply", active: true)
+          menu.with_item(label: "Reference in new issue")
         end
       end
 
@@ -120,15 +146,15 @@ module Primer
       def multiple_selected_items
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "langermank", description_scheme: :inline, value: "", active: true) do |item|
+          menu.with_item(label: "langermank", description_scheme: :inline, active: true) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
             item.with_description.with_content("Katie Langerman")
           end
-          menu.with_item(label: "jonrohan", description_scheme: :inline, value: "") do |item|
+          menu.with_item(label: "jonrohan", description_scheme: :inline) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4", alt: "Jon Rohan")
             item.with_description.with_content("Jon Rohan")
           end
-          menu.with_item(label: "broccolinisoup", description_scheme: :inline, value: "", active: true) do |item|
+          menu.with_item(label: "broccolinisoup", description_scheme: :inline, active: true) do |item|
             item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/1446503?v=4", alt: "Armağan Ersöz")
             item.with_description.with_content("Armağan Ersöz")
           end
@@ -156,10 +182,29 @@ module Primer
       def with_actions
         render(Primer::Alpha::ActionMenu.new) do |component|
           component.with_show_button { "Trigger" }
-          component.with_item(label: "Does something", tag: :button, classes: "do-something-js")
-          component.with_item(label: "Site", tag: :a, href: "/")
-          component.with_item(label: "Copy text", tag: :"clipboard-copy", value: "Text to copy")
+          component.with_item(label: "Alert", tag: :button, content_arguments: { onclick: "alert('Foo')", onkeydown: "if (event.key === 'Enter') { alert(event.key) }" })
+          component.with_item(label: "Navigate", tag: :a, content_arguments: { href: UrlHelpers.action_menu_landing_path })
+          component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" })
+          component.with_item(
+            label: "Submit form",
+            href: UrlHelpers.action_menu_form_action_path,
+            form_arguments: {
+              name: "foo", value: "bar", method: :post
+            }
+          )
         end
+      end
+
+      # @label Single select form
+      #
+      def single_select_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
+
+      # @label Multiple select form
+      #
+      def multiple_select_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
       end
 
       # @label With disabled items
@@ -167,7 +212,7 @@ module Primer
       def with_disabled_items
         render(Primer::Alpha::ActionMenu.new) do |component|
           component.with_show_button { "Trigger" }
-          component.with_item(label: "Does something", tag: :button, value: "", disabled: true)
+          component.with_item(label: "Does something", tag: :button, disabled: true)
           component.with_item(label: "Site", tag: :a, href: "/", disabled: true)
         end
       end
@@ -193,10 +238,16 @@ module Primer
       def block_description
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
-          menu.with_item(label: "Item label", value: "") do |item|
+          menu.with_item(label: "Item label") do |item|
             item.with_description.with_content("Block description")
           end
         end
+      end
+
+      # @label [Item] Submitting Forms
+      #
+      def submitting_forms
+        render_with_template(locals: {})
       end
 
       # @label [Item] Inline description
@@ -204,7 +255,7 @@ module Primer
       def inline_description
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
-          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+          menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_description.with_content("Inline description")
           end
         end
@@ -215,7 +266,7 @@ module Primer
       def leading_visual
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
-          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+          menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_leading_visual_icon(icon: :gear)
             item.with_description.with_content("Inline description")
           end
@@ -227,7 +278,7 @@ module Primer
       def leading_visual_single_select
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1", select_variant: :single)) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
-          menu.with_item(label: "Item label", value: "", description_scheme: :inline) do |item|
+          menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_leading_visual_icon(icon: :gear)
             item.with_description.with_content("Inline description")
           end

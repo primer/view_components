@@ -14,9 +14,9 @@
 
 /* <label> */
 .FormControl-label {
-  font-size: var(--primer-text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-semibold, 600);
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
+  line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
   user-select: none;
 }
@@ -24,16 +24,16 @@
 /* optional caption */
 .FormControl-caption {
   margin-bottom: 0;
-  font-size: var(--primer-text-caption-size, 12px);
-  font-weight: var(--primer-text-caption-weight, 400);
-  line-height: var(--primer-text-caption-lineHeight, calc(16 / 12));
+  font-size: var(--text-caption-size, 12px);
+  font-weight: var(--text-caption-weight, 400);
+  line-height: var(--text-caption-lineHeight, calc(16 / 12));
   color: var(--color-fg-muted);
 }
 
 /* inline validation message */
 .FormControl-inlineValidation {
   display: flex;
-  font-size: var(--primer-text-caption-size, 12px);
+  font-size: var(--text-caption-size, 12px);
   font-weight: var(--base-text-weight-semibold, 600);
   color: var(--color-danger-fg);
   fill: var(--color-danger-fg);
@@ -61,7 +61,7 @@
 @define-mixin Field {
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
 
   &[disabled] {
     color: var(--color-primer-fg-disabled);
@@ -131,13 +131,13 @@
   @mixin Field;
 
   width: 100%;
-  font-size: var(--primer-text-body-size-medium, 14px);
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  font-size: var(--text-body-size-medium, 14px);
+  line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
+  border-radius: var(--borderRadius-medium, 6px);
   transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
   transition-property: color, background-color, box-shadow, border-color;
-  padding-inline: var(--primer-control-medium-paddingInline-condensed, 8px);
-  padding-block: calc(var(--primer-control-medium-paddingBlock, 6px) - var(--primer-borderWidth-thin, 1px));
+  padding-inline: var(--control-medium-paddingInline-condensed, 8px);
+  padding-block: calc(var(--control-medium-paddingBlock, 6px) - var(--borderWidth-thin, 1px));
 
   &[disabled] {
     &::placeholder {
@@ -157,20 +157,20 @@
   /* sizes */
 
   &.FormControl-small {
-    height: var(--primer-control-small-size, 28px);
-    padding-inline: var(--primer-control-small-paddingInline-normal, 8px);
-    padding-block: var(--primer-control-small-paddingBlock, 4px);
-    font-size: var(--primer-text-body-size-small, 12px);
+    height: var(--control-small-size, 28px);
+    padding-inline: var(--control-small-paddingInline-normal, 8px);
+    padding-block: var(--control-small-paddingBlock, 4px);
+    font-size: var(--text-body-size-small, 12px);
   }
 
   &.FormControl-medium {
-    height: var(--primer-control-medium-size, 32px);
+    height: var(--control-medium-size, 32px);
   }
 
   &.FormControl-large {
-    height: var(--primer-control-large-size, 40px);
-    padding-inline: var(--primer-control-large-paddingInline-normal, 12px);
-    padding-block: var(--primer-control-large-paddingBlock, 10px);
+    height: var(--control-large-size, 40px);
+    padding-inline: var(--control-large-paddingInline-normal, 12px);
+    padding-block: var(--control-large-paddingBlock, 10px);
   }
 
   /* variants */
@@ -185,11 +185,10 @@
   }
 
   &.FormControl-monospace {
-    font-family:
-      var(
-        --primer-fontStack-monospace,
-        'ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace'
-      );
+    font-family: var(
+      --fontStack-monospace,
+      'ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace'
+    );
   }
 
   /* validation states */
@@ -242,14 +241,14 @@
     right: var(--base-size-4, 4px);
     z-index: 4;
     display: grid;
-    width: var(--primer-control-xsmall-size, 24px);
-    height: var(--primer-control-xsmall-size, 24px);
+    width: var(--control-xsmall-size, 24px);
+    height: var(--control-xsmall-size, 24px);
     padding: 0;
     color: var(--color-fg-muted);
     cursor: pointer;
     background: transparent;
     border: 0;
-    border-radius: var(--primer-borderRadius-small);
+    border-radius: var(--borderRadius-small);
     transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     transition-property: color, background-color, border-color;
     align-items: center;
@@ -276,10 +275,10 @@
     &.FormControl-input-trailingAction--divider {
       &::before {
         position: absolute;
-        top: calc((var(--primer-control-xsmall-size) - var(--base-size-16)) / 2);
+        top: calc((var(--control-xsmall-size) - var(--base-size-16)) / 2);
         left: calc(var(--base-size-4, 4px) * -1);
         display: block;
-        width: var(--primer-borderWidth-thin);
+        width: var(--borderWidth-thin);
         height: var(--base-size-16);
         content: '';
         background: var(--color-border-default);
@@ -287,11 +286,11 @@
     }
 
     &::after {
-      @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
+      @mixin minTouchTarget var(--control-medium-size, 32px) var(--control-medium-size, 32px);
 
       @media (pointer: coarse) {
-        min-width: var(--primer-control-minTarget-coarse, 44px);
-        min-height: var(--primer-control-minTarget-coarse, 44px);
+        min-width: var(--control-minTarget-coarse, 44px);
+        min-height: var(--control-minTarget-coarse, 44px);
       }
     }
   }
@@ -308,11 +307,9 @@
 
   &.FormControl-input-wrap--leadingVisual {
     & .FormControl-input {
-      padding-inline-start:
-        calc(
-          var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
-          var(--primer-control-medium-gap, 8px)
-        ); /* 32px */
+      padding-inline-start: calc(
+        var(--control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) + var(--control-medium-gap, 8px)
+      ); /* 32px */
     }
   }
 
@@ -327,11 +324,9 @@
   /* if trailingAction is present */
   &.FormControl-input-wrap--trailingAction {
     & .FormControl-input {
-      padding-inline-end:
-        calc(
-          var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
-          var(--primer-control-medium-gap, 8px)
-        ); /* 32px */
+      padding-inline-end: calc(
+        var(--control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) + var(--control-medium-gap, 8px)
+      ); /* 32px */
     }
 
     /*
@@ -347,21 +342,20 @@
     ** can be refactored to has(.FormControl-input-trailingAction--divider) */
     &.FormControl-input-wrap-trailingAction--divider {
       & .FormControl-input {
-        padding-inline-end:
-          calc(
-            var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
-            var(--primer-control-medium-gap, 8px) + var(--primer-borderWidth-thin, 1px)
-          ); /* 33px */
+        padding-inline-end: calc(
+          var(--control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
+            var(--control-medium-gap, 8px) + var(--borderWidth-thin, 1px)
+        ); /* 33px */
       }
     }
   }
 
   /* size modifications can be refactored with :has() - FormControl-input-wrap:has(.FormControl-large)
   // sizes */
-  &.FormControl-small {
+  &.FormControl-input-wrap--small {
     & .FormControl-input-leadingVisualWrap {
-      top: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
-      left: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
+      top: calc(var(--control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
+      left: calc(var(--control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
     }
 
     /*
@@ -374,11 +368,9 @@
 
     &.FormControl-input-wrap--trailingAction {
       & .FormControl-input.FormControl-small {
-        padding-inline-end:
-          calc(
-            var(--primer-control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
-            var(--primer-control-small-gap, 8px)
-          ); /* 28px */
+        padding-inline-end: calc(
+          var(--control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) + var(--control-small-gap, 8px)
+        ); /* 28px */
       }
 
       /*
@@ -392,29 +384,28 @@
 
       &.FormControl-input-wrap-trailingAction--divider {
         & .FormControl-input.FormControl-small {
-          padding-inline-end:
-            calc(
-              var(--primer-control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
-              var(--primer-control-small-gap, 8px) + var(--primer-borderWidth-thin, 1px)
-            ); /* 29px */
+          padding-inline-end: calc(
+            var(--control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
+              var(--control-small-gap, 8px) + var(--borderWidth-thin, 1px)
+          ); /* 29px */
         }
       }
     }
 
     & .FormControl-input-trailingAction {
-      width: calc(var(--primer-control-small-size, 28px) - var(--base-size-8, 8px));
-      height: calc(var(--primer-control-small-size, 28px) - var(--base-size-8, 8px));
+      width: calc(var(--control-small-size, 28px) - var(--base-size-8, 8px));
+      height: calc(var(--control-small-size, 28px) - var(--base-size-8, 8px));
 
       &::before {
-        top: calc((var(--primer-control-xsmall-size) - var(--base-size-16)) / 4); /* 2px */
+        top: calc((var(--control-xsmall-size) - var(--base-size-16)) / 4); /* 2px */
       }
     }
   }
 
-  &.FormControl-large {
+  &.FormControl-input-wrap--large {
     & .FormControl-input-leadingVisualWrap {
-      top: var(--primer-control-medium-paddingInline-normal, 12px);
-      left: var(--primer-control-medium-paddingInline-normal, 12px);
+      top: var(--control-medium-paddingInline-normal, 12px);
+      left: var(--control-medium-paddingInline-normal, 12px);
     }
 
     /*
@@ -427,11 +418,9 @@
 
     &.FormControl-input-wrap--leadingVisual {
       & .FormControl-input.FormControl-large {
-        padding-inline-start:
-          calc(
-            var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
-            var(--primer-control-large-gap, 8px)
-          ); /* 36px */
+        padding-inline-start: calc(
+          var(--control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) + var(--control-large-gap, 8px)
+        ); /* 36px */
       }
     }
 
@@ -445,11 +434,9 @@
 
     &.FormControl-input-wrap--trailingAction {
       & .FormControl-input.FormControl-large {
-        padding-inline-end:
-          calc(
-            var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
-            var(--primer-control-large-gap, 8px)
-          ); /* 36px */
+        padding-inline-end: calc(
+          var(--control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) + var(--control-large-gap, 8px)
+        ); /* 36px */
       }
 
       /*
@@ -462,20 +449,19 @@
 
       &.FormControl-input-wrap-trailingAction--divider {
         & .FormControl-input.FormControl-large {
-          padding-inline-end:
-            calc(
-              var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
-              var(--primer-control-large-gap, 8px) + var(--primer-borderWidth-thin, 1px)
-            ); /* 37px */
+          padding-inline-end: calc(
+            var(--control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) + var(--control-large-gap, 8px) +
+              var(--borderWidth-thin, 1px)
+          ); /* 37px */
         }
       }
     }
 
     & .FormControl-input-trailingAction {
-      top: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
-      right: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
-      width: var(--primer-control-small-size, 28px);
-      height: var(--primer-control-small-size, 28px);
+      top: calc(var(--control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
+      right: calc(var(--control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
+      width: var(--control-small-size, 28px);
+      height: var(--control-small-size, 28px);
 
       &::before {
         top: unset;
@@ -572,7 +558,7 @@ input[type='checkbox'].FormControl-checkbox {
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--color-neutral-emphasis);
-  border-radius: var(--primer-borderRadius-small, 3px);
+  border-radius: var(--borderRadius-small, 3px);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
   place-content: center;
@@ -599,7 +585,7 @@ input[type='checkbox'].FormControl-checkbox {
 
   /* extend touch target */
   &::after {
-    @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
+    @mixin minTouchTarget var(--control-medium-size, 32px) var(--control-medium-size, 32px);
   }
 
   &[disabled] {
@@ -666,12 +652,12 @@ input[type='radio'].FormControl-radio {
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--color-neutral-emphasis);
-  border-radius: var(--primer-borderRadius-full, 100vh);
+  border-radius: var(--borderRadius-full, 100vh);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
 
   &::after {
-    @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
+    @mixin minTouchTarget var(--control-medium-size, 32px) var(--control-medium-size, 32px);
   }
 
   &:checked {

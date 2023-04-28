@@ -9,7 +9,7 @@
 .ToggleSwitch {
   align-items: center;
   display: inline-flex;
-  gap: var(--primer-controlStack-medium-gap-condensed, 8px);
+  gap: var(--controlStack-medium-gap-condensed, 8px);
 }
 
 .ToggleSwitch--checked {
@@ -28,15 +28,15 @@
   position: relative;
   display: block;
   width: var(--base-size-64, 64px);
-  height: var(--primer-control-medium-size, 32px);
+  height: var(--control-medium-size, 32px);
   padding: 0;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
   background-color: var(--color-switch-track-bg);
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-track-border);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--color-switch-track-border);
+  border-radius: var(--borderRadius-medium, 6px);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: background-color, border-color;
@@ -158,8 +158,8 @@
   z-index: 1;
   width: 50%;
   background-color: var(--color-switch-knob-bg);
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-knob-border);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--color-switch-knob-border);
+  border-radius: var(--borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-medium), var(--color-btn-inset-shadow);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
@@ -172,7 +172,7 @@
 
 .ToggleSwitch-status {
   position: relative;
-  font-size: var(--primer-text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium, 14px);
   line-height: 1.5;
   color: var(--color-fg-default);
   text-align: right;
@@ -186,12 +186,12 @@
 
 .ToggleSwitch--small {
   & .ToggleSwitch-status {
-    font-size: var(--primer-text-body-size-small, 12px);
+    font-size: var(--text-body-size-small, 12px);
   }
 
   & .ToggleSwitch-track {
     width: var(--base-size-48, 48px);
-    height: var(--primer-control-xsmall-size, 24px);
+    height: var(--control-xsmall-size, 24px);
   }
 }
 

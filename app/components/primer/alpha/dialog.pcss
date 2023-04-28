@@ -19,7 +19,7 @@
   white-space: normal;
   flex-direction: column;
   background-color: var(--color-canvas-overlay);
-  border-radius: var(--primer-borderRadius-large, 12px);
+  border-radius: var(--borderRadius-large, 12px);
   box-shadow: var(--color-overlay-shadow);
   opacity: 1;
 
@@ -154,25 +154,25 @@
   flex-direction: column;
 
   &.Overlay-header--divided {
-    padding-bottom: var(--primer-stack-padding-condensed, 8px);
-    box-shadow: inset 0 calc(var(--primer-borderWidth-thin, 1px) * -1) var(--color-border-default);
+    padding-bottom: var(--stack-padding-condensed, 8px);
+    box-shadow: inset 0 calc(var(--borderWidth-thin, 1px) * -1) var(--color-border-default);
 
     & + .Overlay-body {
-      padding-top: var(--primer-stack-padding-normal, 16px);
+      padding-top: var(--stack-padding-normal, 16px);
     }
   }
 
   &.Overlay-header--large {
     & .Overlay-headerContentWrap {
       & .Overlay-titleWrap {
-        gap: var(--primer-stack-gap-condensed, 8px);
+        gap: var(--stack-gap-condensed, 8px);
 
         & .Overlay-title {
-          font-size: var(--primer-text-title-size-medium, 20px);
+          font-size: var(--text-title-size-medium, 20px);
         }
 
         & .Overlay-description {
-          font-size: var(--primer-text-body-size-medium, 14px);
+          font-size: var(--text-body-size-medium, 14px);
         }
       }
     }
@@ -181,31 +181,32 @@
   & .Overlay-headerContentWrap {
     display: flex;
     align-items: flex-start;
-    gap: var(--primer-stack-gap-condensed, 8px);
-    padding: var(--primer-stack-gap-condensed, 8px) var(--primer-stack-gap-condensed, 8px) 0 var(--primer-stack-gap-condensed, 8px);
+    gap: var(--stack-gap-condensed, 8px);
+    padding: var(--stack-gap-condensed, 8px) var(--stack-gap-condensed, 8px) 0 var(--stack-gap-condensed, 8px);
 
     & .Overlay-actionWrap {
       display: flex;
       flex-direction: row;
-      gap: var(--primer-stack-gap-condensed, 8px);
+      gap: var(--stack-gap-condensed, 8px);
     }
 
     & .Overlay-titleWrap {
       display: flex;
-      padding: calc(var(--primer-stack-gap-condensed, 8px) * 0.75) 0 calc(var(--primer-stack-gap-condensed, 8px) * 0.75) var(--primer-stack-gap-condensed, 8px);
+      padding: calc(var(--stack-gap-condensed, 8px) * 0.75) 0 calc(var(--stack-gap-condensed, 8px) * 0.75)
+        var(--stack-gap-condensed, 8px);
       flex-direction: column;
       flex-grow: 1;
-      gap: var(--primer-control-small-gap, 4px);
+      gap: var(--control-small-gap, 4px);
 
       & .Overlay-title {
         margin: 0;
-        font-size: var(--primer-text-body-size-medium, 14px);
+        font-size: var(--text-body-size-medium, 14px);
         font-weight: var(--base-text-weight-semibold, 600);
       }
 
       & .Overlay-description {
         margin: 0;
-        font-size: var(--primer-text-body-size-small, 12px);
+        font-size: var(--text-body-size-small, 12px);
         font-weight: var(--base-text-weight-normal, 400);
         color: var(--color-fg-muted);
       }
@@ -215,15 +216,15 @@
 
 /* generic body content slot */
 .Overlay-body {
-  padding: var(--primer-stack-padding-normal, 16px);
+  padding: var(--stack-padding-normal, 16px);
   padding-top: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  font-size: var(--primer-text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium, 14px);
   flex-grow: 1;
 
   &.Overlay-body--paddingCondensed {
-    padding: var(--primer-stack-padding-condensed, 8px);
+    padding: var(--stack-padding-condensed, 8px);
     padding-top: 0;
   }
 
@@ -236,29 +237,29 @@
 .Overlay-footer {
   z-index: 1;
   display: flex;
-  padding: 0 var(--primer-stack-padding-normal, 16px) var(--primer-stack-padding-normal, 16px) var(--primer-stack-padding-normal, 16px);
+  padding: 0 var(--stack-padding-normal, 16px) var(--stack-padding-normal, 16px) var(--stack-padding-normal, 16px);
   flex-direction: row;
   flex-shrink: 0;
   flex-wrap: wrap;
 
   &.Overlay-footer--divided {
-    padding-top: var(--primer-stack-padding-normal, 16px);
-    box-shadow: inset 0 var(--primer-borderWidth-thin, 1px) var(--color-border-default);
+    padding-top: var(--stack-padding-normal, 16px);
+    box-shadow: inset 0 var(--borderWidth-thin, 1px) var(--color-border-default);
   }
 
   &.Overlay-footer--alignStart {
     justify-content: flex-start;
-    gap: var(--primer-stack-gap-condensed, 8px);
+    gap: var(--stack-gap-condensed, 8px);
   }
 
   &.Overlay-footer--alignCenter {
     justify-content: center;
-    gap: var(--primer-stack-gap-condensed, 8px);
+    gap: var(--stack-gap-condensed, 8px);
   }
 
   &.Overlay-footer--alignEnd {
     justify-content: flex-end;
-    gap: var(--primer-stack-gap-condensed, 8px);
+    gap: var(--stack-gap-condensed, 8px);
   }
 }
 
@@ -273,8 +274,8 @@
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  border: var(--primer-borderWidth-thin, 1px) solid transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid transparent;
+  border-radius: var(--borderRadius-medium, 6px);
   transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   transition-property: color, background-color, border-color;
   place-content: center;
@@ -284,12 +285,12 @@
   &:hover,
   &:focus {
     background-color: var(--color-btn-hover-bg);
-    border: var(--primer-borderWidth-thin, 1px) solid var(--color-btn-hover-bg);
+    border: var(--borderWidth-thin, 1px) solid var(--color-btn-hover-bg);
   }
 
   /* Override .close-button's `border: 0` that triggers a border-color transition on hover  */
   &.close-button {
-    border: var(--primer-borderWidth-thin, 1px) solid transparent;
+    border: var(--borderWidth-thin, 1px) solid transparent;
   }
 }
 
@@ -342,7 +343,7 @@
     & > .Overlay$(responsiveVariant) {
       height: 100vh;
       max-height: unset;
-      border-radius: var(--primer-borderRadius-large, 12px);
+      border-radius: var(--borderRadius-large, 12px);
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
 
@@ -359,7 +360,7 @@
     & > .Overlay$(responsiveVariant) {
       height: 100vh;
       max-height: unset;
-      border-radius: var(--primer-borderRadius-large, 12px);
+      border-radius: var(--borderRadius-large, 12px);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
 
@@ -377,7 +378,7 @@
       width: 100vw;
       height: auto;
       max-height: calc(100vh - 2rem);
-      border-radius: var(--primer-borderRadius-large, 12px);
+      border-radius: var(--borderRadius-large, 12px);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
 
@@ -392,7 +393,7 @@
     justify-content: center;
 
     & > .Overlay$(responsiveVariant) {
-      border-radius: var(--primer-borderRadius-large, 12px);
+      border-radius: var(--borderRadius-large, 12px);
       border-top-left-radius: 0;
       border-top-right-radius: 0;
 
@@ -436,7 +437,7 @@
 
 /* responsive variants */
 
-/* --primer-viewportRange-narrowLandscape */
+/* --viewportRange-narrowLandscape */
 @media (max-width: 767px) {
   .Overlay-backdrop--center-whenNarrow {
     @mixin Overlay-backdrop--center;

@@ -1,4 +1,9 @@
 <%= render(Primer::BaseComponent.new(tag: :div)) do %>
+  <% if acts_as_form_input? %>
+    <span data-list-inputs="true">
+      <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true) %>
+    </span>
+  <% end %>
   <% if heading %>
     <%= heading %>
   <% end %>

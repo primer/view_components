@@ -1,0 +1,13 @@
+<%= form_with(url: action_menu_form_action_path(format: route_format)) do |f| %>
+  <%= render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Strategy", form_arguments: { builder: f, name: "foo" })) do |menu| %>
+    <% menu.with_show_button { "Strategy" } %>
+    <% menu.with_item(label: "Fast forward", data: { value: "fast_forward" }) %>
+    <% menu.with_item(label: "Recursive", data: { value: "recursive" }) %>
+    <% menu.with_item(label: "Ours", data: { value: "ours" }) %>
+    <% menu.with_item(label: "Resolve") %>
+  <% end %>
+  <hr>
+  <div>
+    <%= f.submit(class: "Button--secondary Button--medium Button") %>
+  </div>
+<% end %>

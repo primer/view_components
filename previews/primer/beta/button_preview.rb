@@ -266,6 +266,21 @@ module Primer
                              })
       end
 
+      # @label Trailing Counter
+      # @param block toggle
+      # @param align_content select [center, start]
+      def trailing_counter(
+        block: false,
+        id: "button-preview",
+        align_content: :center
+      )
+        render_with_template(locals: {
+                               block: block,
+                               id: id,
+                               align_content: align_content
+                             })
+      end
+
       # @label With tooltip
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]

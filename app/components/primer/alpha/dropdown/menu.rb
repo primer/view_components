@@ -70,7 +70,7 @@ module Primer
             @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
             @system_arguments[:tag] = :li if list? && divider?
             @system_arguments[:role] ||= :menuitem
-            @system_arguments[:role] = :separator if divider
+            @system_arguments[:role] = :presentation if divider
             @system_arguments[:classes] = class_names(
               @system_arguments[:classes],
               "dropdown-item" => !divider,

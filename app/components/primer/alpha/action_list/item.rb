@@ -137,6 +137,7 @@ module Primer
         # @param label_classes [String] CSS classes that will be added to the label.
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
+        # @param form_arguments [Hash] Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, <%= one_of(Primer::Alpha::ActionList::FormWrapper::HTTP_METHOD_OPTIONS) %> The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
@@ -154,6 +155,7 @@ module Primer
           label_classes: nil,
           label_arguments: {},
           content_arguments: {},
+          form_arguments: {},
           parent: nil,
           truncate_label: false,
           href: nil,
@@ -170,13 +172,14 @@ module Primer
           @list = list
           @parent = parent
           @label = label
-          @href = href
+          @href = href || content_arguments[:href]
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
           @id = id
           @system_arguments = system_arguments
           @content_arguments = content_arguments
+          @form_wrapper = FormWrapper.new(list: @list, action: @href, **form_arguments)
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -190,8 +193,6 @@ module Primer
             "ActionListItem",
             "ActionListItem--disabled" => @disabled
           )
-
-          @system_arguments[:role] = :none
 
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
@@ -214,14 +215,25 @@ module Primer
           )
 
           unless @content_arguments[:tag]
-            if @href && !@disabled
+            if @href && @form_wrapper.get? && !@disabled
               @content_arguments[:tag] = :a
               @content_arguments[:href] = @href
             else
               @content_arguments[:tag] = :button
+              @content_arguments[:type] = @form_wrapper.form_required? ? :submit : :button
               @content_arguments[:onclick] = on_click if on_click
             end
           end
+
+          # rubocop:disable Style/IfUnlessModifier
+          if @content_arguments[:tag] != :button && @form_wrapper.form_required?
+            raise ArgumentError, "items that submit forms must use a \"button\" tag instead of \"#{@content_arguments[:tag]}\""
+          end
+
+          if @content_arguments[:tag] != :button && @list.acts_as_form_input?
+            raise ArgumentError, "items within lists/menus that act as form inputs must use \"button\" tags instead of \"#{@content_arguments[:tag]}\""
+          end
+          # rubocop:enable Style/IfUnlessModifier
 
           if @disabled
             @content_arguments[:aria] ||= merge_aria(
@@ -236,6 +248,8 @@ module Primer
                                       elsif @list.acts_as_menu?
                                         ActionList::DEFAULT_MENU_ITEM_ROLE
                                       end
+
+          @system_arguments[:role] = @list.acts_as_menu? ? :none : nil
 
           @description_wrapper_arguments = {
             classes: class_names(

@@ -6,6 +6,11 @@ module Primer
     class TextField < BaseComponent
       delegate :builder, :form, to: :@input
 
+      INPUT_WRAP_SIZE = {
+        small: "FormControl-input-wrap--small",
+        large: "FormControl-input-wrap--large"
+      }.freeze
+
       def initialize(input:)
         @input = input
 
@@ -17,6 +22,7 @@ module Primer
         @field_wrap_arguments = {
           class: class_names(
             "FormControl-input-wrap",
+            INPUT_WRAP_SIZE[input.size],
             "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
             "FormControl-input-wrap--leadingVisual": @input.leading_visual?
           ),

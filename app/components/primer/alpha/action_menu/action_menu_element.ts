@@ -9,13 +9,19 @@ const popoverSelector = (() => {
   }
 })()
 
-type SelectVariant = 'single' | 'multiple' | null
+type SelectVariant = 'none' | 'single' | 'multiple' | null
+type SelectedItem = {
+  label: string | null | undefined
+  value: string | null | undefined
+  element: Element
+}
 
-const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]', '[role="none"]']
+const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
 export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
   #originalLabel = ''
+  #inputName = ''
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -60,6 +66,28 @@ export class ActionMenuElement extends HTMLElement {
     return null
   }
 
+  get invokerLabel(): HTMLElement | null {
+    if (!this.invokerElement) return null
+    return this.invokerElement.querySelector('.Button-label')
+  }
+
+  get selectedItems(): SelectedItem[] {
+    const selectedItems = this.querySelectorAll('[aria-checked=true]')
+    const results: SelectedItem[] = []
+
+    for (const selectedItem of selectedItems) {
+      const labelEl = selectedItem.querySelector('.ActionListItem-label')
+
+      results.push({
+        label: labelEl?.textContent,
+        value: selectedItem?.getAttribute('data-value'),
+        element: selectedItem
+      })
+    }
+
+    return results
+  }
+
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('keydown', this, {signal})
@@ -67,6 +95,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
     this.#setDynamicLabel()
+    this.#updateInput()
   }
 
   disconnectedCallback() {
@@ -74,17 +103,20 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
+    if (event.target === this.invokerElement && this.#isEnterKeydown(event)) {
+      if (this.#firstItem) {
+        event.preventDefault()
+        this.popoverElement?.showPopover()
+        this.#firstItem.focus()
+        return
+      }
+    }
+
     if (!this.popoverElement?.matches(popoverSelector)) return
 
     if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
       this.popoverElement?.hidePopover()
-    } else if (
-      (event instanceof KeyboardEvent &&
-        event.type === 'keydown' &&
-        !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-        event.key === 'Enter') ||
-      (event instanceof MouseEvent && event.type === 'click')
-    ) {
+    } else if (this.#isEnterKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
       const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
@@ -100,28 +132,95 @@ export class ActionMenuElement extends HTMLElement {
         }
         this.#setDynamicLabel()
       }
-      event.preventDefault()
-      this.popoverElement?.hidePopover()
+
+      this.#updateInput()
+
+      if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
+        // prevent buttons from being clicked twice
+        event.preventDefault()
+      }
+      // Hide popover after current event loop to prevent changes in focus from
+      // altering the target of the event. Not doing this specifically affects
+      // <a> tags. It causes the event to be sent to the currently focused element
+      // instead of the anchor, which effectively prevents navigation, i.e. it
+      // appears as if hitting enter does nothing. Curiously, clicking instead
+      // works fine.
+      if (this.selectVariant !== 'multiple') {
+        setTimeout(() => this.popoverElement?.hidePopover())
+      }
     }
   }
 
   #setDynamicLabel() {
     if (!this.dynamicLabel) return
-    const invoker = this.invokerElement
-    if (!invoker) return
-    const selector = menuItemSelectors.map(s => `${s}[aria-checked=true]`).join(',')
-    const item = this.querySelector(selector)
-    if (item && this.dynamicLabel) {
-      this.#originalLabel ||= invoker.textContent || ''
+    const invokerLabel = this.invokerLabel
+    if (!invokerLabel) return
+    this.#originalLabel ||= invokerLabel.textContent || ''
+    const itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')
+    if (itemLabel && this.dynamicLabel) {
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
       prefixSpan.textContent = this.dynamicLabelPrefix
-      contentSpan.textContent = item.textContent || ''
-      invoker.replaceChildren(prefixSpan, contentSpan)
+      contentSpan.textContent = itemLabel.textContent || ''
+      invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
-      invoker.textContent = this.#originalLabel
+      invokerLabel.textContent = this.#originalLabel
     }
+  }
+
+  #updateInput() {
+    if (this.selectVariant === 'single') {
+      const input = this.querySelector(`[data-list-inputs=true] input`) as HTMLInputElement | null
+      if (!input) return
+
+      const selectedItem = this.selectedItems[0]
+
+      if (selectedItem) {
+        input.value = (selectedItem.value || selectedItem.label || '').trim()
+        input.removeAttribute('disabled')
+      } else {
+        input.setAttribute('disabled', 'disabled')
+      }
+    } else if (this.selectVariant !== 'none') {
+      // multiple select variant
+      const inputList = this.querySelector('[data-list-inputs=true]')
+      if (!inputList) return
+
+      const inputs = inputList.querySelectorAll('input')
+
+      if (inputs.length > 0) {
+        this.#inputName ||= (inputs[0] as HTMLInputElement).name
+      }
+
+      for (const selectedItem of this.selectedItems) {
+        const newInput = document.createElement('input')
+        newInput.setAttribute('data-list-input', 'true')
+        newInput.type = 'hidden'
+        newInput.autocomplete = 'off'
+        newInput.name = this.#inputName
+        newInput.value = (selectedItem.value || selectedItem.label || '').trim()
+
+        inputList.append(newInput)
+      }
+
+      for (const input of inputs) {
+        input.remove()
+      }
+    }
+  }
+
+  #isEnterKeydown(event: Event): boolean {
+    return (
+      event instanceof KeyboardEvent &&
+      event.type === 'keydown' &&
+      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+      event.key === 'Enter'
+    )
+  }
+
+  get #firstItem(): HTMLElement | null {
+    return this.querySelector(menuItemSelectors.join(','))
   }
 }
 

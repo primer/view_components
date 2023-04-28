@@ -124,9 +124,19 @@
         "name": "playground"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/content_labels",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/content_labels",
+        "name": "content_labels"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/wide",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/wide",
+        "name": "wide"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
@@ -179,6 +189,16 @@
         "name": "with_actions"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_form",
+        "name": "single_select_form"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select_form",
+        "name": "multiple_select_form"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items"
@@ -197,6 +217,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/block_description",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/block_description",
         "name": "block_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/submitting_forms",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/submitting_forms",
+        "name": "submitting_forms"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
@@ -650,6 +675,11 @@
         "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_action",
         "preview_path": "/lookbook/preview/primer/beta/button/trailing_action",
         "name": "trailing_action"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_counter",
+        "preview_path": "/lookbook/preview/primer/beta/button/trailing_counter",
+        "name": "trailing_counter"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button/with_tooltip",

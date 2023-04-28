@@ -13,13 +13,11 @@ module System
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    # Skip `:aria-required-children` is broken in 4.5: https://github.com/dequelabs/axe-core/issues/3758
     # Skip `:link-in-text-block` which is new and seems broken.
     AXE_RULES_TO_SKIP = %i[
       region
       color-contrast
       color-contrast-enhanced
-      aria-required-children
       link-in-text-block
     ].freeze
 
