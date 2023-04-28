@@ -6,7 +6,7 @@
         <% if index > 0 && render_divider_between?(item, items[index - 1]) %>
           <%= render(Primer::Alpha::ActionList::Divider.new) %>
         <% end %>
-        <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list? && item.group?, tag: :li)) do %>
+        <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list? && group?(item), tag: :li)) do %>
           <%= item %>
         <% end %>
       <% end %>

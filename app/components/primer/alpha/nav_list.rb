@@ -153,33 +153,37 @@ module Primer
 
       # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
       def render_outer_list?
-        items.any? { |item| !item.group? }
+        items.any? { |item| !group?(item) }
       end
 
       def render_divider_between?(item1, item2)
         return false if either_is_divider?(item1, item2)
 
-        adjacent_groups?(item1, item2) || heterogeneous_items?(item1, item2)
+        both_are_groups?(item1, item2) || heterogeneous?(item1, item2)
       end
 
-      def adjacent_groups?(item1, item2)
-        item1.group? && item2.group?
+      def both_are_groups?(item1, item2)
+        group?(item1) && group?(item2)
       end
 
-      def heterogeneous_items?(item1, item2)
-        unwrap(item1).class != unwrap(item2).class
+      def heterogeneous?(item1, item2)
+        kind(item1) != kind(item2)
       end
 
       def either_is_divider?(item1, item2)
-        item1.divider? || item2.divider?
+        divider?(item1) || divider?(item2)
       end
 
-      def unwrap(item)
-        if item.is_a?(ViewComponent::Slot)
-          item.instance_variable_get(:@__vc_component_instance)
-        else
-          item
-        end
+      def group?(item)
+        kind(item) == :group
+      end
+
+      def divider?(item)
+        kind(item) == :divider
+      end
+
+      def kind(item)
+        item.respond_to?(:kind) ? item.kind : :item
       end
     end
   end

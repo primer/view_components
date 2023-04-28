@@ -83,12 +83,8 @@ module Primer
           )
         end
 
-        def group?
-          true
-        end
-
-        def divider?
-          false
+        def kind
+          :group
         end
 
         def before_render

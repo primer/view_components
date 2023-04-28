@@ -5,12 +5,8 @@ module Primer
     class NavList
       # Separator with optional text rendered above groups or between individual items.
       class Divider < Primer::Alpha::ActionList::Divider
-        def group?
-          false
-        end
-
-        def divider?
-          true
+        def kind
+          :divider
         end
       end
     end
