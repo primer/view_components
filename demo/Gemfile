@@ -53,4 +53,7 @@ group :development do
   gem "stimulus-rails"
 
   gem "foreman"
+
+  gem "listen"
+  gem "actioncable"
 end
