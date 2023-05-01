@@ -23,7 +23,7 @@
 
 .AvatarStack-body {
   display: flex;
-  background: var(--color-canvas-default);
+  background: var(--bgColor-default, var(--color-canvas-default));
   border-radius: 100px;
 
   & .avatar {
@@ -34,7 +34,7 @@
     height: 20px;
     box-sizing: content-box;
     margin-right: -11px;
-    background-color: var(--color-canvas-default);
+    background-color: var(--bgColor-default, var(--color-canvas-default));
     border-right: var(--borderWidth-thin, 1px) solid var(--color-canvas-default);
     border-radius: var(--borderRadius-small, 4px);
     box-shadow: none;
@@ -79,7 +79,7 @@
 .avatar.avatar-more {
   z-index: 1;
   margin-right: 0;
-  background: var(--color-canvas-subtle);
+  background: var(--bgColor-muted, var(--color-canvas-subtle));
 
   &::before,
   &::after {
@@ -93,12 +93,12 @@
 
   &::before {
     width: 17px;
-    background: var(--color-avatar-stack-fade-more);
+    background: var(--avatarStack-fade-bgColor-muted, var(--color-avatar-stack-fade-more));
   }
 
   &::after {
     width: 14px;
-    background: var(--color-avatar-stack-fade);
+    background: var(--avatarStack-fade-bgColor-default, var(--color-avatar-stack-fade));
   }
 }
 
@@ -120,7 +120,7 @@
   }
 
   & .avatar.avatar-more {
-    background: var(--color-avatar-stack-fade);
+    background: var(--avatarStack-fade-bgColor-default, var(--color-avatar-stack-fade));
 
     &::before {
       width: 5px;
@@ -128,7 +128,7 @@
 
     &::after {
       width: 2px;
-      background: var(--color-canvas-subtle);
+      background: var(--bgColor-muted, var(--color-canvas-subtle));
     }
   }
 

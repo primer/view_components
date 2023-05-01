@@ -36,7 +36,7 @@
   align-items: center;
 
   &:focus-within {
-    border-color: var(--color-accent-fg);
+    border-color: var(--borderColor-accent-emphasis, var(--color-accent-fg));
 
     @mixin focusBoxShadowInset;
   }
@@ -68,10 +68,10 @@
   overflow-y: auto;
   font-size: 13px;
   list-style: none;
-  background: var(--color-canvas-overlay);
+  background: var(--overlay-bgColor, var(--color-canvas-overlay));
   border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
   border-radius: var(--borderRadius-medium, 6px);
-  box-shadow: var(--color-shadow-medium);
+  box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium));
 }
 
 /* One of the items that appears within an autocomplete group
@@ -83,19 +83,19 @@
   padding: 4px 8px;
   overflow: hidden;
   font-weight: var(--base-text-weight-semibold, 600);
-  color: var(--color-fg-default);
+  color: var(--fgColor-default, var(--color-fg-default));
   text-align: left;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   border: 0;
 
   &:hover {
-    color: var(--color-fg-on-emphasis);
+    color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
     text-decoration: none;
-    background-color: var(--color-accent-emphasis);
+    background-color: var(--bgColor-accent-emphasis, var(--color-accent-emphasis));
 
     /* Inherit color on all child elements to ensure enough contrast */
     & * {
@@ -106,9 +106,9 @@
   &.selected,
   &[aria-selected='true'],
   &.navigation-focus {
-    color: var(--color-fg-on-emphasis);
+    color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
     text-decoration: none;
-    background-color: var(--color-accent-emphasis);
+    background-color: var(--bgColor-accent-emphasis, var(--color-accent-emphasis));
 
     /* Inherit color on all child elements to ensure enough contrast */
     & * {

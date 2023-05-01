@@ -11,13 +11,13 @@
 
   & .Counter {
     margin-left: var(--control-medium-gap, 8px);
-    color: var(--color-fg-default);
-    background-color: var(--color-neutral-muted);
+    color: var(--fgColor-default, var(--color-fg-default));
+    background-color: var(--bgColor-neutral-muted, var(--color-neutral-muted));
   }
 
   & .Counter--primary {
-    color: var(--color-fg-on-emphasis);
-    background-color: var(--color-neutral-emphasis);
+    color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+    background-color: var(--bgColor-neutral-emphasis, var(--color-neutral-emphasis));
   }
 }
 
@@ -34,7 +34,7 @@
   padding: 0 var(--control-medium-paddingInline-condensed, 8px);
   font-size: var(--text-body-size-medium, 14px);
   line-height: 30px;
-  color: var(--color-fg-default);
+  color: var(--fgColor-default, var(--color-fg-default));
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
@@ -46,9 +46,9 @@
   &:hover,
   &:focus,
   &:focus-visible {
-    color: var(--color-fg-default);
+    color: var(--fgColor-default, var(--color-fg-default));
     text-decoration: none;
-    border-bottom-color: var(--color-neutral-muted);
+    border-bottom-color: var(--borderColor-neutral-muted, var(--color-neutral-muted));
     outline-offset: -2px;
     transition: border-bottom-color 0.12s ease-out;
   }
@@ -70,9 +70,9 @@
   /* hover state was "sticking" on mobile after click */
   @media (pointer: fine) {
     &:hover {
-      color: var(--color-fg-default);
+      color: var(--fgColor-default, var(--color-fg-default));
       text-decoration: none;
-      background: var(--color-action-list-item-default-hover-bg);
+      background: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
       transition: background 0.12s ease-out;
     }
   }
@@ -81,8 +81,8 @@
   &[role='tab'][aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
     font-weight: var(--base-text-weight-semibold, 600);
-    color: var(--color-fg-default);
-    border-bottom-color: var(--color-primer-border-active);
+    color: var(--fgColor-default, var(--color-fg-default));
+    border-bottom-color: var(--underlineNav-borderColor-active, var(--color-primer-border-active));
 
     /* current/selected underline */
     &::after {
@@ -93,7 +93,7 @@
       width: 100%;
       height: 2px;
       content: '';
-      background: var(--color-primer-border-active);
+      background: var(--underlineNav-borderColor-active, var(--color-primer-border-active));
       border-radius: var(--borderRadius-medium, 6px);
       transform: translate(50%, -50%);
     }
@@ -124,8 +124,8 @@
 .UnderlineNav-octicon {
   display: inline !important;
   margin-right: var(--control-medium-gap, 8px);
-  color: var(--color-fg-muted);
-  fill: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
+  fill: var(--fgColor-muted, var(--color-fg-muted));
 }
 
 .UnderlineNav-container {

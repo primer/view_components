@@ -10,7 +10,7 @@
   width: 232px;
   margin-right: auto;
   margin-left: auto;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
   border-radius: var(--borderRadius-medium, 6px);
 
@@ -27,7 +27,7 @@
     top: -16px;
     margin-left: -9px;
     border: 8px solid transparent;
-    border-bottom-color: var(--color-border-default);
+    border-bottom-color: var(--borderColor-default, var(--color-border-default));
   }
 
   &::after {
@@ -58,7 +58,7 @@
 
   &::before {
     bottom: -16px;
-    border-top-color: var(--color-border-default);
+    border-top-color: var(--borderColor-default, var(--color-border-default));
   }
 
   &::after {
@@ -135,7 +135,7 @@
 .Popover-message--right-bottom {
   &::before {
     right: -16px;
-    border-left-color: var(--color-border-default);
+    border-left-color: var(--borderColor-default, var(--color-border-default));
   }
 
   &::after {
@@ -150,7 +150,7 @@
 .Popover-message--left-bottom {
   &::before {
     left: -16px;
-    border-right-color: var(--color-border-default);
+    border-right-color: var(--borderColor-default, var(--color-border-default));
   }
 
   &::after {

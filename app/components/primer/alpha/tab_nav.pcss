@@ -19,7 +19,7 @@
   padding: var(--base-size-8, 8px) var(--control-medium-paddingInline-spacious, 16px);
   font-size: var(--text-body-size-medium, 14px);
   line-height: 23px;
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
   text-decoration: none;
   background-color: transparent;
   border: var(--borderWidth-thin, 1px) solid transparent;
@@ -29,9 +29,9 @@
   &.selected,
   &[aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
-    color: var(--color-fg-default);
-    background-color: var(--color-canvas-default); /* cover bottom border */
-    border-color: var(--color-border-default);
+    color: var(--fgColor-default, var(--color-fg-default));
+    background-color: var(--bgColor-default, var(--color-canvas-default)); /* cover bottom border */
+    border-color: var(--borderColor-default, var(--color-border-default));
     border-radius: var(--borderRadius-medium, 6px) var(--borderRadius-medium, 6px) 0 0;
 
     & .octicon {
@@ -40,7 +40,7 @@
   }
 
   &:hover {
-    color: var(--color-fg-default);
+    color: var(--fgColor-default, var(--color-fg-default));
     text-decoration: none;
     transition-duration: 0.1s;
   }
@@ -52,12 +52,12 @@
   }
 
   &:active {
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted, var(--color-fg-muted));
   }
 
   & .octicon {
     margin-right: var(--control-small-gap, 4px);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted, var(--color-fg-muted));
   }
 
   & .Counter {
@@ -76,7 +76,7 @@
   padding-top: 10px;
   margin-left: 10px;
   font-size: var(--text-body-size-small, 12px);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
 
   & > .octicon {
     margin-right: 2px;
@@ -86,7 +86,7 @@
 /* When tabnav-extra are anchors
 ** stylelint-disable-next-line selector-no-qualifying-type */
 a.tabnav-extra:hover {
-  color: var(--color-accent-fg);
+  color: var(--fgColor-accent, var(--color-accent-fg));
   text-decoration: none;
 }
 

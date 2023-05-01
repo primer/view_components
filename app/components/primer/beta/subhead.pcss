@@ -25,13 +25,13 @@
 /* Make the text bold and red for dangerous content */
 .Subhead-heading--danger {
   font-weight: var(--base-text-weight-semibold, 600);
-  color: var(--color-danger-fg);
+  color: var(--fgColor-danger, var(--color-danger-fg));
 }
 
 /* One-liner of supporting text */
 .Subhead-description {
   font-size: var(--text-body-size-medium, 14px);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
   flex: 1 100%;
   order: 2;
 }

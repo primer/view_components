@@ -2,8 +2,8 @@
 
 /* TODO: Rename to BorderBox to match PVC */
 .Box {
-  background-color: var(--color-canvas-default);
-  border-color: var(--color-border-default);
+  background-color: var(--bgColor-default, var(--color-canvas-default));
+  border-color: var(--borderColor-default, var(--color-border-default));
   border-style: solid;
   border-width: var(--borderWidth-thin, 1px);
   border-radius: var(--borderRadius-medium, 6px);
@@ -72,8 +72,8 @@
 .Box-header {
   padding: var(--stack-padding-normal, 16px);
   margin: calc(var(--borderWidth-thin, 1px) * -1) calc(var(--borderWidth-thin, 1px) * -1) 0;
-  background-color: var(--color-canvas-subtle);
-  border-color: var(--color-border-default);
+  background-color: var(--bgColor-muted, var(--color-canvas-subtle));
+  border-color: var(--borderColor-default, var(--color-border-default));
   border-style: solid;
   border-width: var(--borderWidth-thin, 1px);
   border-top-left-radius: var(--borderRadius-medium, 6px);
@@ -102,7 +102,7 @@
   padding: var(--stack-padding-normal, 16px);
   margin-top: calc(var(--borderWidth-thin, 1px) * -1);
   list-style-type: none; /* To account for applying Box component to a list */
-  border-top-color: var(--color-border-muted);
+  border-top-color: var(--borderColor-muted, var(--color-border-muted));
   border-top-style: solid;
   border-top-width: var(--borderWidth-thin, 1px);
 
@@ -127,7 +127,7 @@
   &.navigation-focus {
     /* Focus styles for when drag icon */
     & .Box-row--drag-button {
-      color: var(--color-accent-fg);
+      color: var(--fgColor-accent, var(--color-accent-fg));
       cursor: grab;
       opacity: 100;
     }
@@ -139,12 +139,12 @@
 
     /* Row dragging styles */
     &.sortable-chosen {
-      background-color: var(--color-canvas-subtle);
+      background-color: var(--bgColor-muted, var(--color-canvas-subtle));
     }
 
     /* Makes dragging row background gray */
     &.sortable-ghost {
-      background-color: var(--color-canvas-subtle);
+      background-color: var(--bgColor-muted, var(--color-canvas-subtle));
 
       /* Hides contents of row while dragging so row looks solid gray */
       & .Box-row--drag-hide {
@@ -156,25 +156,25 @@
 
 .Box-row--focus-gray {
   &.navigation-focus {
-    background-color: var(--color-canvas-subtle);
+    background-color: var(--bgColor-muted, var(--color-canvas-subtle));
   }
 }
 
 .Box-row--focus-blue {
   &.navigation-focus {
-    background-color: var(--color-accent-subtle);
+    background-color: var(--bgColor-accent-muted, var(--color-accent-subtle));
   }
 }
 
 .Box-row--hover-gray {
   &:hover {
-    background-color: var(--color-canvas-subtle);
+    background-color: var(--bgColor-muted, var(--color-canvas-subtle));
   }
 }
 
 .Box-row--hover-blue {
   &:hover {
-    background-color: var(--color-accent-subtle);
+    background-color: var(--bgColor-accent-muted, var(--color-accent-subtle));
   }
 }
 
@@ -183,11 +183,11 @@
 ** and links are dark-gray with blue hover on desktop. */
 .Box-row-link {
   @media (min-width: 768px) {
-    color: var(--color-fg-default);
+    color: var(--fgColor-default, var(--color-fg-default));
     text-decoration: none;
 
     &:hover {
-      color: var(--color-accent-fg);
+      color: var(--fgColor-accent, var(--color-accent-fg));
       text-decoration: none;
     }
   }
@@ -202,7 +202,7 @@
 .Box-footer {
   padding: var(--stack-padding-normal, 16px);
   margin-top: calc(var(--borderWidth-thin, 1px) * -1); /* prevents double border when used with .Box-body */
-  border-top-color: var(--color-border-default);
+  border-top-color: var(--borderColor-default, var(--color-border-default));
   border-top-style: solid;
   border-top-width: var(--borderWidth-thin, 1px);
   border-radius: 0 0 var(--borderRadius-medium, 6px) var(--borderRadius-medium, 6px);
@@ -217,61 +217,61 @@
 /* Box themes */
 
 .Box--blue {
-  border-color: var(--color-accent-muted);
+  border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
 
   & .Box-header {
-    background-color: var(--color-accent-subtle);
-    border-color: var(--color-accent-muted);
+    background-color: var(--bgColor-accent-muted, var(--color-accent-subtle));
+    border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
   }
 
   & .Box-body {
-    border-color: var(--color-accent-muted);
+    border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
   }
 
   & .Box-row {
-    border-color: var(--color-accent-muted);
+    border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
   }
 
   & .Box-footer {
-    border-color: var(--color-accent-muted);
+    border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
   }
 }
 
 /* Applies and red border to the outside of the box,
 ** but not to the border separating rows. */
 .Box--danger {
-  border-color: var(--color-danger-emphasis);
+  border-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis));
 
   & .Box-row {
     &:first-of-type {
-      border-color: var(--color-danger-emphasis);
+      border-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis));
     }
   }
 
   & .Box-body {
     &:last-of-type {
-      border-color: var(--color-danger-emphasis);
+      border-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis));
     }
   }
 }
 
 .Box-header--blue {
-  background-color: var(--color-accent-subtle);
-  border-color: var(--color-accent-muted);
+  background-color: var(--bgColor-accent-muted, var(--color-accent-subtle));
+  border-color: var(--borderColor-accent-muted, var(--color-accent-muted));
 }
 
 /* Box row highlight themes */
 
 .Box-row--yellow {
-  background-color: var(--color-attention-subtle);
+  background-color: var(--bgColor-attention-muted, var(--color-attention-subtle));
 }
 
 .Box-row--blue {
-  background-color: var(--color-accent-subtle);
+  background-color: var(--bgColor-accent-muted, var(--color-accent-subtle));
 }
 
 .Box-row--gray {
-  background-color: var(--color-canvas-subtle);
+  background-color: var(--bgColor-muted, var(--color-canvas-subtle));
 }
 
 /* Box with btn-octicon */

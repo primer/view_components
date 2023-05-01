@@ -3,7 +3,7 @@
 .SegmentedControl {
   display: inline-flex;
   list-style: none;
-  background-color: var(--color-segmented-control-bg);
+  background-color: var(--controlTrack-bgColor-rest, var(--color-segmented-control-bg));
   border-radius: var(--borderRadius-medium, 6px);
 }
 
@@ -16,8 +16,8 @@
 
   /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
-    background-color: var(--color-segmented-control-button-bg);
-    border-color: var(--color-segmented-control-button-selected-border);
+    background-color: var(--controlKnob-bgColor-rest, var(--color-segmented-control-button-bg));
+    border-color: var(--controlKnob-borderColor-rest, var(--color-segmented-control-button-selected-border));
 
     & .Button {
       font-weight: var(--base-text-weight-semibold, 600);

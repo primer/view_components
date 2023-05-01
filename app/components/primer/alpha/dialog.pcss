@@ -18,9 +18,9 @@
   max-height: min(calc(100vh - 2rem), var(--overlay-height));
   white-space: normal;
   flex-direction: column;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   border-radius: var(--borderRadius-large, 12px);
-  box-shadow: var(--color-overlay-shadow);
+  box-shadow: var(--shadow-floating-small, var(--color-overlay-shadow));
   opacity: 1;
 
   &.Overlay--size-auto {
@@ -208,7 +208,7 @@
         margin: 0;
         font-size: var(--text-body-size-small, 12px);
         font-weight: var(--base-text-weight-normal, 400);
-        color: var(--color-fg-muted);
+        color: var(--fgColor-muted, var(--color-fg-muted));
       }
     }
   }
@@ -270,7 +270,7 @@
   width: var(--base-size-32, 32px);
   height: var(--base-size-32, 32px);
   padding: 0;
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
   cursor: pointer;
   user-select: none;
   background-color: transparent;
@@ -284,7 +284,7 @@
 
   &:hover,
   &:focus {
-    background-color: var(--color-btn-hover-bg);
+    background-color: var(--button-default-bgColor-hover, var(--color-btn-hover-bg));
     border: var(--borderWidth-thin, 1px) solid var(--color-btn-hover-bg);
   }
 
@@ -302,7 +302,7 @@
   left: 0;
   z-index: 999;
   display: flex;
-  background-color: var(--color-neutral-muted);
+  background-color: var(--bgColor-neutral-muted, var(--color-neutral-muted));
 }
 
 @define-mixin Overlay-backdrop--transparent {

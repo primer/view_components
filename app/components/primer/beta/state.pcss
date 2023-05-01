@@ -17,24 +17,24 @@
 .state, /* TODO: Deprecate */
 .State,
 .State--draft {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-neutral-emphasis);
+  color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+  background-color: var(--bgColor-neutral-emphasis, var(--color-neutral-emphasis));
   border: var(--borderWidth-thin, 1px) solid transparent;
 }
 
 .State--open {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-open-emphasis);
+  color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+  background-color: var(--bgColor-open-emphasis, var(--color-open-emphasis));
 }
 
 .State--merged {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-done-emphasis);
+  color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+  background-color: var(--bgColor-done-emphasis, var(--color-done-emphasis));
 }
 
 .State--closed {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-closed-emphasis);
+  color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
+  background-color: var(--bgColor-closed-emphasis, var(--color-closed-emphasis));
 }
 
 /* Small 24px */

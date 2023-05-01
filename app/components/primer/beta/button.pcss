@@ -96,7 +96,7 @@ summary.Button {
 
   & .Counter {
     color: inherit;
-    background-color: var(--color-btn-counter-bg);
+    background-color: var(--buttonCounter-default-bgColor-rest, var(--color-btn-counter-bg));
   }
 }
 
@@ -161,15 +161,15 @@ summary.Button {
 
 /* primary */
 .Button--primary {
-  color: var(--color-btn-primary-text);
-  fill: var(--color-btn-primary-icon);
-  background-color: var(--color-btn-primary-bg);
-  border-color: var(--color-btn-primary-border);
-  box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
+  color: var(--button-primary-fgColor-rest, var(--color-btn-primary-text));
+  fill: var(--button-primary-iconColor-rest, var(--color-btn-primary-icon));
+  background-color: var(--button-primary-bgColor-rest, var(--color-btn-primary-bg));
+  border-color: var(--button-primary-borderColor-rest, var(--color-btn-primary-border));
+  box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)), var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
 
   &:hover:not(:disabled) {
-    background-color: var(--color-btn-primary-hover-bg);
-    border-color: var(--color-btn-primary-hover-border);
+    background-color: var(--button-primary-bgColor-hover, var(--color-btn-primary-hover-bg));
+    border-color: var(--button-primary-borderColor-hover, var(--color-btn-primary-hover-border));
   }
 
   /* fallback :focus state */
@@ -190,53 +190,53 @@ summary.Button {
 
   &:active:not(:disabled),
   &[aria-pressed='true'] {
-    background-color: var(--color-btn-primary-selected-bg);
-    box-shadow: var(--color-btn-primary-selected-shadow);
+    background-color: var(--button-primary-bgColor-active, var(--color-btn-primary-selected-bg));
+    box-shadow: var(--button-primary-shadow-selected, var(--color-btn-primary-selected-shadow));
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-btn-primary-disabled-text);
-    background-color: var(--color-btn-primary-disabled-bg);
-    border-color: var(--color-btn-primary-disabled-border);
-    fill: var(--color-btn-primary-disabled-text);
+    color: var(--button-primary-fgColor-disabled, var(--color-btn-primary-disabled-text));
+    background-color: var(--button-primary-bgColor-disabled, var(--color-btn-primary-disabled-bg));
+    border-color: var(--button-primary-borderColor-disabled, var(--color-btn-primary-disabled-border));
+    fill: var(--button-primary-fgColor-disabled, var(--color-btn-primary-disabled-text));
   }
 
   & .Counter {
     color: inherit;
-    background-color: var(--color-btn-primary-counter-bg);
+    background-color: var(--buttonCounter-primary-bgColor-rest, var(--color-btn-primary-counter-bg));
   }
 }
 
 /* default (secondary) */
 .Button--secondary {
   color: var(--color-btn-text);
-  fill: var(--color-fg-muted); /* help this */
-  background-color: var(--color-btn-bg);
-  border-color: var(--color-btn-border);
-  box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
+  fill: var(--fgColor-muted, var(--color-fg-muted)); /* help this */
+  background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
+  border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
+  box-shadow: var(--button-default-shadow-resting, var(--color-btn-shadow)), var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
 
   &:hover:not(:disabled) {
-    background-color: var(--color-btn-hover-bg);
-    border-color: var(--color-btn-hover-border);
+    background-color: var(--button-default-bgColor-hover, var(--color-btn-hover-bg));
+    border-color: var(--button-default-borderColor-hover, var(--color-btn-hover-border));
   }
 
   &:active:not(:disabled) {
-    background-color: var(--color-btn-active-bg);
-    border-color: var(--color-btn-active-border);
+    background-color: var(--button-default-bgColor-active, var(--color-btn-active-bg));
+    border-color: var(--button-default-borderColor-active, var(--color-btn-active-border));
   }
 
   &[aria-pressed='true'] {
-    background-color: var(--color-btn-selected-bg);
-    box-shadow: var(--color-primer-shadow-inset);
+    background-color: var(--button-default-bgColor-selected, var(--color-btn-selected-bg));
+    box-shadow: var(--shadow-inset, var(--color-primer-shadow-inset));
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-primer-fg-disabled);
-    background-color: var(--color-btn-bg);
-    border-color: var(--color-btn-border);
-    fill: var(--color-primer-fg-disabled);
+    color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
+    background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
+    border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
+    fill: var(--fgColor-disabled, var(--color-primer-fg-disabled));
   }
 }
 
@@ -244,39 +244,39 @@ summary.Button {
   color: var(--color-btn-text);
 
   &:hover:not(:disabled) {
-    background-color: var(--color-action-list-item-default-hover-bg);
+    background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
   }
 
   &[aria-pressed='true'],
   &:active:not(:disabled) {
-    background-color: var(--color-action-list-item-default-active-bg);
+    background-color: var(--control-transparent-bgColor-active, var(--color-action-list-item-default-active-bg));
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-primer-fg-disabled);
-    background-color: var(--color-btn-bg);
-    border-color: var(--color-btn-border);
-    fill: var(--color-primer-fg-disabled);
+    color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
+    background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
+    border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
+    fill: var(--fgColor-disabled, var(--color-primer-fg-disabled));
   }
 
   /* if button has no visuals, use link blue for text */
   &.Button--invisible-noVisuals .Button-label {
-    color: var(--color-accent-fg);
+    color: var(--fgColor-accent, var(--color-accent-fg));
   }
 
   & .Button-visual {
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted, var(--color-fg-muted));
 
     & .Counter {
-      color: var(--color-fg-default);
+      color: var(--fgColor-default, var(--color-fg-default));
     }
   }
 }
 
 .Button--link {
-  color: var(--color-accent-fg);
-  fill: var(--color-accent-fg);
+  color: var(--fgColor-accent, var(--color-accent-fg));
+  fill: var(--fgColor-accent, var(--color-accent-fg));
   display: inline-block;
   font-size: inherit;
   border: none;
@@ -294,44 +294,44 @@ summary.Button {
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-primer-fg-disabled);
+    color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
     background-color: transparent;
     border-color: transparent;
-    fill: var(--color-primer-fg-disabled);
+    fill: var(--fgColor-disabled, var(--color-primer-fg-disabled));
   }
 }
 
 /* danger */
 .Button--danger {
-  color: var(--color-btn-danger-text);
-  fill: var(--color-btn-danger-icon);
-  background-color: var(--color-btn-bg);
-  border-color: var(--color-btn-border);
-  box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
+  color: var(--button-danger-fgColor-rest, var(--color-btn-danger-text));
+  fill: var(--button-danger-iconColor-rest, var(--color-btn-danger-icon));
+  background-color: var(--button-default-bgColor-rest, var(--color-btn-bg));
+  border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
+  box-shadow: var(--button-default-shadow-resting, var(--color-btn-shadow)), var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
 
   &:hover:not(:disabled) {
-    color: var(--color-btn-danger-hover-text);
-    fill: var(--color-btn-danger-hover-text);
-    background-color: var(--color-btn-danger-hover-bg);
-    border-color: var(--color-btn-danger-hover-border);
-    box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
+    color: var(--button-danger-fgColor-hover, var(--color-btn-danger-hover-text));
+    fill: var(--button-danger-fgColor-hover, var(--color-btn-danger-hover-text));
+    background-color: var(--button-danger-bgColor-hover, var(--color-btn-danger-hover-bg));
+    border-color: var(--button-danger-borderColor-hover, var(--color-btn-danger-hover-border));
+    box-shadow: var(--shadow-resting-small, var(--color-btn-danger-hover-shadow)), var(--shadow-highlight, var(--color-btn-danger-hover-inset-shadow));
   }
 
   &:active:not(:disabled),
   &[aria-pressed='true'] {
-    color: var(--color-btn-danger-selected-text);
-    fill: var(--color-btn-danger-selected-text);
-    background-color: var(--color-btn-danger-selected-bg);
-    border-color: var(--color-btn-danger-selected-border);
-    box-shadow: var(--color-btn-danger-selected-shadow);
+    color: var(--button-danger-fgColor-active, var(--color-btn-danger-selected-text));
+    fill: var(--button-danger-fgColor-active, var(--color-btn-danger-selected-text));
+    background-color: var(--button-danger-bgColor-active, var(--color-btn-danger-selected-bg));
+    border-color: var(--button-danger-borderColor-active, var(--color-btn-danger-selected-border));
+    box-shadow: var(--button-danger-shadow-selected, var(--color-btn-danger-selected-shadow));
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-btn-danger-disabled-text);
-    fill: var(--color-btn-danger-disabled-text);
-    background-color: var(--color-btn-danger-disabled-bg);
-    border-color: var(--color-btn-border);
+    color: var(--button-danger-fgColor-disabled, var(--color-btn-danger-disabled-text));
+    fill: var(--button-danger-fgColor-disabled, var(--color-btn-danger-disabled-text));
+    background-color: var(--button-danger-bgColor-disabled, var(--color-btn-danger-disabled-bg));
+    border-color: var(--button-default-borderColor-rest, var(--color-btn-border));
   }
 }
 

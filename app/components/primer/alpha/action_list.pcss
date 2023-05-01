@@ -23,7 +23,7 @@
     width: 100%;
     height: 1px;
     content: '';
-    background: var(--color-action-list-item-inline-divider);
+    background: var(--borderColor-decorative, var(--color-action-list-item-inline-divider));
   }
 
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
@@ -35,7 +35,7 @@
       width: 100%;
       height: var(--borderWidth-thin, 1px);
       content: '';
-      background: var(--color-action-list-item-inline-divider);
+      background: var(--borderColor-decorative, var(--color-action-list-item-inline-divider));
     }
 
     /* unset the default label pseudo */
@@ -108,12 +108,12 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
+          background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
         }
       }
 
       &:active {
-        background-color: var(--color-action-list-item-default-active-bg);
+        background-color: var(--control-transparent-bgColor-active, var(--color-action-list-item-default-active-bg));
       }
     }
   }
@@ -125,7 +125,7 @@
     @media (hover: hover) {
       &:hover {
         cursor: pointer;
-        background-color: var(--color-action-list-item-default-hover-bg);
+        background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
 
         &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
@@ -137,7 +137,7 @@
     }
 
     &:active {
-      background: var(--color-action-list-item-default-active-bg);
+      background: var(--control-transparent-bgColor-active, var(--color-action-list-item-default-active-bg));
 
       &:not(.ActionListItem--navActive) {
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
@@ -187,13 +187,13 @@
     /* checkbox */
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-accent-fg);
+        fill: var(--fgColor-accent, var(--color-accent-fg));
         stroke: var(--color-accent-fg);
         stroke-width: var(--borderWidth-thin, 1px);
       }
 
       & .ActionListItem-multiSelectCheckmark {
-        fill: var(--color-fg-on-emphasis);
+        fill: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
       }
     }
   }
@@ -246,11 +246,11 @@
 
   &[aria-selected='true'] {
     font-weight: var(--base-text-weight-normal, 400);
-    background: var(--color-action-list-item-default-selected-bg);
+    background: var(--control-transparent-bgColor-selected, var(--color-action-list-item-default-selected-bg));
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-action-list-item-default-hover-bg);
+        background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
       }
     }
 
@@ -276,11 +276,11 @@
     }
 
     &:not(.ActionListItem--danger) {
-      background: var(--color-action-list-item-default-selected-bg);
+      background: var(--control-transparent-bgColor-selected, var(--color-action-list-item-default-selected-bg));
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
+          background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
         }
       }
 
@@ -303,11 +303,11 @@
     & .ActionListContent {
       & .ActionListItem-label,
       & .ActionListItem-description {
-        color: var(--color-primer-fg-disabled);
+        color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
       }
 
       & .ActionListItem-visual {
-        fill: var(--color-primer-fg-disabled);
+        fill: var(--fgColor-disabled, var(--color-primer-fg-disabled));
       }
     }
 
@@ -324,31 +324,31 @@
   /* danger */
   &.ActionListItem--danger {
     & .ActionListItem-label {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger, var(--color-danger-fg));
     }
 
     & .ActionListItem-visual {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger, var(--color-danger-fg));
     }
 
     @media (hover: hover) {
       &:hover {
-        background: var(--color-action-list-item-danger-hover-bg);
+        background: var(--control-danger-bgColor-hover, var(--color-action-list-item-danger-hover-bg));
 
         & .ActionListItem-label,
         & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
+          color: var(--control-danger-fgColor-hover, var(--color-action-list-item-danger-hover-text));
         }
       }
     }
 
     & .ActionListContent {
       &:active {
-        background: var(--color-action-list-item-danger-active-bg);
+        background: var(--control-danger-bgColor-active, var(--color-action-list-item-danger-active-bg));
 
         & .ActionListItem-label,
         & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
+          color: var(--control-danger-fgColor-hover, var(--color-action-list-item-danger-hover-text));
         }
       }
     }
@@ -362,7 +362,7 @@
   width: 100%;
   padding-block: var(--actionListContent-paddingBlock);
   padding-inline: var(--control-medium-paddingInline-condensed, 8px);
-  color: var(--color-fg-default);
+  color: var(--fgColor-default, var(--color-fg-default));
   text-align: left;
   user-select: none;
   background-color: transparent;
@@ -391,11 +391,11 @@
   &[aria-disabled='true'] {
     & .ActionListItem-label,
     & .ActionListItem-description {
-      color: var(--color-primer-fg-disabled);
+      color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
     }
 
     & .ActionListItem-visual {
-      fill: var(--color-primer-fg-disabled);
+      fill: var(--fgColor-disabled, var(--color-primer-fg-disabled));
     }
 
     @media (hover: hover) {
@@ -480,7 +480,7 @@
 
     /* show active indicator on parent collapse if child is active */
     &.ActionListContent--hasActiveSubItem {
-      background: var(--color-action-list-item-default-selected-bg);
+      background: var(--control-transparent-bgColor-selected, var(--color-action-list-item-default-selected-bg));
 
       & .ActionListItem-label {
         font-weight: var(--base-text-weight-semibold, 600);
@@ -565,7 +565,7 @@
   font-size: var(--text-body-size-small, 12px);
   font-weight: var(--base-text-weight-normal, 400);
   line-height: var(--text-body-lineHeight-small, calc(20 / 12));
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
 }
 
 /* helper for grid alignment with multi-line content
@@ -574,9 +574,9 @@
 .ActionListItem-action {
   display: flex;
   min-height: var(--control-medium-lineBoxHeight, 20px);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted, var(--color-fg-muted));
   pointer-events: none;
-  fill: var(--color-fg-muted);
+  fill: var(--fgColor-muted, var(--color-fg-muted));
   align-items: center;
 }
 
@@ -586,7 +586,7 @@
   font-size: var(--text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-normal, 400);
   line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
-  color: var(--color-fg-default);
+  color: var(--fgColor-default, var(--color-fg-default));
   grid-area: label;
 }
 
@@ -643,7 +643,7 @@
     font-size: var(--text-body-size-small, 12px);
     line-height: var(--text-body-lineHeight-small, calc(20 / 12));
     font-weight: var(--base-text-weight-semibold, 600);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted, var(--color-fg-muted));
     flex-direction: column;
   }
 
@@ -656,14 +656,14 @@
     margin-block-end: var(--base-size-8, 8px);
     margin-inline: calc(-1 * var(--base-size-8, 8px));
     list-style: none;
-    background: var(--color-action-list-item-inline-divider);
+    background: var(--borderColor-decorative, var(--color-action-list-item-inline-divider));
     border: 0;
   }
 
   & .ActionList-sectionDivider-title {
     font-size: var(--text-body-size-small, 12px);
     font-weight: var(--base-text-weight-semibold, 600);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted, var(--color-fg-muted));
   }
 }
 
@@ -671,7 +671,7 @@
   margin-block-start: calc(var(--base-size-8, 8px) - var(--borderWidth-thin, 1px));
   margin-block-end: var(--base-size-8, 8px);
   margin-inline: calc(-1 * var(--base-size-8, 8px));
-  background: var(--color-canvas-subtle);
+  background: var(--bgColor-muted, var(--color-canvas-subtle));
   border-top: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
   border-bottom: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
 
