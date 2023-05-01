@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier", "@primer/stylelint-config"],
   "ignoreFiles": ["app/**/*.css", "**/*.js", "**/*.ts"],
   "rules": {
     "custom-property-pattern": null,
@@ -14,6 +14,47 @@
       {
         "ignoreAtRules": ["mixin", "define-mixin"]
       }
-    ]
+    ],
+    "primer/borders": false,
+    "primer/box-shadow": false,
+    "primer/colors": false,
+    "primer/no-deprecated-colors": true,
+    "primer/no-experimental-vars": false,
+    "primer/no-override": false,
+    "primer/no-undefined-vars": false,
+    "primer/no-unused-vars": false,
+    "primer/responsive-widths": false,
+    "primer/spacing": false,
+    "primer/typography": false,
+    "primer/utilities": false,
+    "alpha-value-notation": null,
+    "block-no-empty": null,
+    "comment-no-empty": null,
+    "declaration-block-no-shorthand-property-overrides": null,
+    "declaration-block-semicolon-newline-after": null,
+    "function-calc-no-unspaced-operator": null,
+    "function-linear-gradient-no-nonstandard-direction": null,
+    "function-no-unknown": null,
+    "max-line-length": null,
+    "max-nesting-depth": null,
+    "media-feature-name-no-unknown": null,
+    "media-feature-name-no-vendor-prefix": null,
+    "no-duplicate-selectors": null,
+    "no-extra-semicolons": null,
+    "number-max-precision": null,
+    "order/properties-order": null,
+    "plugin/no-unsupported-browser-features": null,
+    "scss/selector-no-redundant-nesting-selector": null,
+    "selector-max-type": null,
+    "declaration-property-value-disallowed-list": null,
+    "declaration-colon-newline-after": null,
+    "scss/no-duplicate-mixins": null,
+    "selector-no-qualifying-type": null,
+    "selector-max-specificity": null,
+    "indentation": null,
+    "scss/at-rule-no-unknown": null,
+    "selector-max-compound-selectors": null,
+    "at-rule-empty-line-before": null,
+    "string-quotes": null
   }
 }
