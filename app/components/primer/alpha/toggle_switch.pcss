@@ -78,7 +78,7 @@
 
 .ToggleSwitch-track[aria-checked='true'] {
   background-color: var(--control-checked-bgColor-rest, var(--color-switch-track-checked-bg));
-  border-color: var(--color-switch-track-checked-border);
+  border-color: transparent;
 
   &:not([aria-disabled='true']) {
     &:hover {
@@ -160,7 +160,8 @@
   background-color: var(--controlKnob-bgColor-rest, var(--color-switch-knob-bg));
   border: var(--borderWidth-thin, 1px) solid var(--color-switch-knob-border);
   border-radius: var(--borderRadius-medium, 6px);
-  box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium)), var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
+  box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium)),
+    var(--button-default-shadow-inset, var(--color-btn-inset-shadow));
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: transform;

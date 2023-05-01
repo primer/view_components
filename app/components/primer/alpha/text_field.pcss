@@ -61,19 +61,19 @@
 @define-mixin Field {
   color: var(--fgColor-default, var(--color-fg-default));
   background-color: var(--bgColor-default, var(--color-canvas-default));
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  border: var(--borderWidth-thin, 1px) solid var(--control-borderColor-rest, var(--color-border-default));
 
   &[disabled] {
     color: var(--control-fgColor-disabled, var(--color-primer-fg-disabled));
     cursor: not-allowed;
     background-color: var(--control-bgColor-disabled, var(--color-input-disabled-bg));
-    border-color: var(--borderColor-default, var(--color-border-default));
+    border-color: var(--control-borderColor-disabled, var(--color-border-default));
     opacity: 1;
     -webkit-text-fill-color: var(--control-fgColor-disabled, var(--color-primer-fg-disabled));
   }
 
   &:not(:focus)[invalid] {
-    border-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis));
+    border-color: var(--control-borderColor-danger, var(--color-danger-emphasis));
   }
 
   &:not([type='checkbox'], [type='radio']):focus {
@@ -141,7 +141,7 @@
 
   &[disabled] {
     &::placeholder {
-      color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
+      color: var(--control-fgColor-disabled, var(--color-primer-fg-disabled));
     }
   }
 
@@ -194,15 +194,15 @@
   /* validation states */
 
   &.FormControl-error {
-    border-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis));
+    border-color: var(--control-borderColor-danger, var(--color-danger-emphasis));
   }
 
   &.FormControl-success {
-    border-color: var(--borderColor-success-emphasis, var(--color-success-emphasis));
+    border-color: var(--control-borderColor-success, var(--color-success-emphasis));
   }
 
   &.FormControl-warning {
-    border-color: var(--borderColor-attention-emphasis, var(--color-attention-emphasis));
+    border-color: var(--control-borderColor-warning, var(--color-attention-emphasis));
   }
 }
 
@@ -259,7 +259,7 @@
     }
 
     &[disabled] {
-      color: var(--fgColor-disabled, var(--color-primer-fg-disabled));
+      color: var(--control-fgColor-disabled, var(--color-primer-fg-disabled));
       pointer-events: none;
     }
 
@@ -557,7 +557,7 @@ input[type='checkbox'].FormControl-checkbox {
   margin: 0;
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
-  border-color: var(--borderColor-neutral-emphasis, var(--color-neutral-emphasis));
+  border-color: var(--control-borderColor-emphasis, var(--color-neutral-emphasis));
   border-radius: var(--borderRadius-small, 3px);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
@@ -614,8 +614,8 @@ input[type='checkbox'].FormControl-checkbox {
 
     &:disabled {
       cursor: not-allowed;
-      background-color: var(--color-primer-fg-disabled);
-      border-color: var(--color-primer-fg-disabled);
+      background-color: var(--control-checked-bgColor-disabled, var(--color-primer-fg-disabled));
+      border-color: var(--control-checked-borderColor-disabled, var(--color-primer-fg-disabled));
       opacity: 1;
 
       &::before {
@@ -651,7 +651,7 @@ input[type='radio'].FormControl-radio {
   margin: 0;
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
-  border-color: var(--borderColor-neutral-emphasis, var(--color-neutral-emphasis));
+  border-color: var(--control-borderColor-emphasis, var(--color-neutral-emphasis));
   border-radius: var(--borderRadius-full, 100vh);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
@@ -666,7 +666,7 @@ input[type='radio'].FormControl-radio {
 
     &:disabled {
       cursor: not-allowed;
-      border-color: var(--color-primer-fg-disabled);
+      border-color: var(--control-checked-borderColor-disabled, var(--color-primer-fg-disabled));
     }
   }
 
