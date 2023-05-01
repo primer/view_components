@@ -27,7 +27,7 @@ class ToolTipElement extends HTMLElement {
         padding: .5em .75em;
         font: normal normal 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         -webkit-font-smoothing: subpixel-antialiased;
-        color: var(--color-fg-on-emphasis);
+        color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis));
         text-align: center;
         text-decoration: none;
         text-shadow: none;
@@ -35,7 +35,7 @@ class ToolTipElement extends HTMLElement {
         letter-spacing: normal;
         word-wrap: break-word;
         white-space: pre;
-        background: var(--color-neutral-emphasis-plus);
+        background: var(--bgColor-emphasis, var(--color-fg-on-emphasis));
         border-radius: 6px;
         opacity: 0;
         max-width: 250px;
@@ -47,7 +47,7 @@ class ToolTipElement extends HTMLElement {
       :host:before{
         position: absolute;
         z-index: 1000001;
-        color: var(--color-neutral-emphasis-plus);
+        color: var(--bgColor-emphasis, var(--color-fg-on-emphasis));
         content: "";
         border: 6px solid transparent;
         opacity: 0
@@ -90,7 +90,7 @@ class ToolTipElement extends HTMLElement {
       :host(.tooltip-se):before,
       :host(.tooltip-sw):before {
         bottom: 100%;
-        border-bottom-color: var(--color-neutral-emphasis-plus)
+        border-bottom-color: var(--bgColor-emphasis, var(--color-fg-on-emphasis))
       }
 
       :host(.tooltip-s):after,
@@ -103,7 +103,7 @@ class ToolTipElement extends HTMLElement {
       :host(.tooltip-ne):before,
       :host(.tooltip-nw):before {
         top: 100%;
-        border-top-color: var(--color-neutral-emphasis-plus)
+        border-top-color: var(--bgColor-emphasis, var(--color-fg-on-emphasis))
       }
 
       :host(.tooltip-n):after,
@@ -129,7 +129,7 @@ class ToolTipElement extends HTMLElement {
         bottom: 50%;
         left: 100%;
         margin-top: -6px;
-        border-left-color: var(--color-neutral-emphasis-plus)
+        border-left-color: var(--bgColor-emphasis, var(--color-fg-on-emphasis))
       }
 
       :host(.tooltip-e):before {
@@ -137,7 +137,7 @@ class ToolTipElement extends HTMLElement {
         right: 100%;
         bottom: 50%;
         margin-top: -6px;
-        border-right-color: var(--color-neutral-emphasis-plus)
+        border-right-color: var(--bgColor-emphasis, var(--color-fg-on-emphasis))
       }
     `
   }

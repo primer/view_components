@@ -52,7 +52,8 @@
     margin-top: var(--control-medium-paddingBlock, 6px);
     margin-bottom: var(--control-medium-paddingBlock, 6px);
     content: '';
-    border-left: var(--borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-border-default);
+    border-left: var(--borderWidth-thin, max(1px, 0.0625rem)) solid
+      var(--borderColor-default, var(--color-border-default));
   }
 
   /* Button ----------------------------------------- */
@@ -60,7 +61,7 @@
     border: 0;
     font-weight: var(--base-text-weight-normal, 400);
     transition: none;
-    color: var(--color-btn-text);
+    color: var(--control-fgColor-rest, var(--color-btn-text));
 
     &:focus-visible {
       outline-offset: calc(var(--control-xsmall-paddingInline-condensed, 4px) - var(--borderWidth-thin, 1px));
@@ -133,7 +134,7 @@
   }
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
-    color: var(--color-btn-text);
+    color: var(--control-fgColor-rest, var(--color-btn-text));
   }
 }
 

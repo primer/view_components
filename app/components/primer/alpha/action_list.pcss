@@ -131,7 +131,8 @@
           /* Support for "Windows high contrast mode" */
           outline: solid var(--borderWidth-thin, 1px) transparent;
           outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
-          box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+          box-shadow: var(--borderInset-thin, 1px)
+            var(--control-transparent-borderColor-active, --color-action-list-item-default-active-border);
         }
       }
     }
@@ -143,7 +144,8 @@
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
         outline: solid var(--borderWidth-thin, 1px) transparent;
         outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
-        box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+        box-shadow: var(--borderInset-thin, 1px)
+          var(--control-transparent-borderColor-active, --color-action-list-item-default-active-border);
       }
 
       & .ActionListItem-label::before,
@@ -238,7 +240,7 @@
 
     & .ActionListItem-multiSelectIconRect {
       fill: var(--bgColor-default, var(--color-canvas-default));
-      border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+      border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
     }
   }
 
@@ -672,8 +674,9 @@
   margin-block-end: var(--base-size-8, 8px);
   margin-inline: calc(-1 * var(--base-size-8, 8px));
   background: var(--bgColor-muted, var(--color-canvas-subtle));
-  border-top: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
-  border-bottom: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-top: solid var(--borderWidth-thin, 1px) var(--borderColor-muted, var(--color-action-list-item-inline-divider));
+  border-bottom: solid var(--borderWidth-thin, 1px)
+    var(--borderColor-muted, var(--color-action-list-item-inline-divider));
 
   /* if no children, treat as divider */
   &:empty {

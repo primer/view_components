@@ -35,7 +35,7 @@
   color: var(--fgColor-muted, var(--color-fg-muted));
   align-items: center;
   background-color: var(--timelineBadge-bgColor, var(--color-timeline-badge-bg));
-  border: var(--borderWidth-thick, 2px) solid var(--color-canvas-default);
+  border: var(--borderWidth-thick, 2px) solid var(bgColor-default, var(--color-canvas-default));
   border-radius: 50%;
   justify-content: center;
   flex-shrink: 0;
@@ -70,7 +70,7 @@
   margin-left: -56px;
   background-color: var(--bgColor-default, var(--color-canvas-default));
   border: 0;
-  border-top: var(--borderWidth-thicker, 4px) solid var(--color-border-default);
+  border-top: var(--borderWidth-thicker, 4px) solid var(--borderColor-default, var(--color-border-default));
 }
 
 .TimelineItem--condensed {
