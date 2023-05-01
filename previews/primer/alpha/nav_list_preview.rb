@@ -40,6 +40,12 @@ module Primer
             item.with_leading_visual_icon(icon: :gear)
           end
 
+          list.with_divider
+
+          list.with_item(label: "Settings", href: "/settings") do |item|
+            item.with_leading_visual_icon(icon: :beaker)
+          end
+
           list.with_group do |group|
             group.with_heading(title: "Access")
 
