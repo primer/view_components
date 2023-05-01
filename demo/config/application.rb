@@ -53,8 +53,8 @@ module Demo
             end
           end
 
-          assets += data.examples.each_with_object([]) do |rendered_example, memo|
-            form_constants = rendered_example.source.match(/([\w:]+Form)\.new/)&.captures || []
+          assets += data.scenarios.each_with_object([]) do |rendered_scenario, memo|
+            form_constants = rendered_scenario.source.match(/([\w:]+Form)\.new/)&.captures || []
             form_constants.each do |form_constant|
               path, = Kernel.const_source_location(form_constant)
               memo << { path: Pathname(path), language: :ruby }
