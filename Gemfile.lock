@@ -134,10 +134,10 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (6.2.1)
+    puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-proxy (0.7.6)
@@ -261,7 +261,7 @@ DEPENDENCIES
   mocha
   primer_view_components!
   pry
-  puma (~> 6.2.1)
+  puma (~> 6.2.2)
   rack (~> 2.2)
   rack-cors
   railties (= 7.0.3)

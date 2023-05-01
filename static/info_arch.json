@@ -8405,7 +8405,26 @@
 
     ],
     "previews": [
-
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/playground",
+        "preview_path": "/lookbook/preview/primer/box/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/default",
+        "preview_path": "/lookbook/preview/primer/box/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border",
+        "preview_path": "/lookbook/preview/primer/box/border",
+        "name": "border"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border_bottom",
+        "preview_path": "/lookbook/preview/primer/box/border_bottom",
+        "name": "border_bottom"
+      }
     ],
     "subcomponents": [
 
