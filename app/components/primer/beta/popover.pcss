@@ -34,7 +34,7 @@
     top: -14px;
     margin-left: -8px;
     border: 7px solid transparent;
-    border-bottom-color: var(--color-canvas-overlay);
+    border-bottom-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   }
 }
 
@@ -63,7 +63,7 @@
 
   &::after {
     bottom: -14px;
-    border-top-color: var(--color-canvas-overlay);
+    border-top-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   }
 }
 
@@ -140,7 +140,7 @@
 
   &::after {
     right: -14px;
-    border-left-color: var(--color-canvas-overlay);
+    border-left-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   }
 }
 
@@ -155,7 +155,7 @@
 
   &::after {
     left: -14px;
-    border-right-color: var(--color-canvas-overlay);
+    border-right-color: var(--overlay-bgColor, var(--color-canvas-overlay));
   }
 }
 

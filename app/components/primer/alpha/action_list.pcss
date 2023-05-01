@@ -188,7 +188,7 @@
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
         fill: var(--fgColor-accent, var(--color-accent-fg));
-        stroke: var(--color-accent-fg);
+        stroke: var(--fgColor-accent, var(--color-accent-fg));
         stroke-width: var(--borderWidth-thin, 1px);
       }
 
@@ -230,14 +230,14 @@
     /* checkbox */
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-canvas-default);
-        stroke: var(--color-border-default);
+        fill: var(--bgColor-default, var(--color-canvas-default));
+        stroke: var(--borderColor-default, var(--color-border-default));
         stroke-width: var(--borderWidth-thin, 1px);
       }
     }
 
     & .ActionListItem-multiSelectIconRect {
-      fill: var(--color-canvas-default);
+      fill: var(--bgColor-default, var(--color-canvas-default));
       border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
     }
   }
