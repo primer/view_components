@@ -28,10 +28,10 @@ module Demo
     config.view_component.default_preview_layout = "component_preview"
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
-    config.view_component.preview_paths << Rails.root.join("../previews")
+    config.view_component.preview_paths << Rails.root.join("..", "previews")
 
-    config.autoload_paths << Rails.root.join("../test/forms")
-    config.autoload_paths << Rails.root.join("../test/test_helpers/components")
+    config.autoload_paths << Rails.root.join("..", "test", "forms")
+    config.autoload_paths << Rails.root.join("..", "test", "test_helpers", "components")
 
     config.action_dispatch.default_headers.clear
 
@@ -90,7 +90,7 @@ module Demo
         ]
       }
 
-      config.lookbook.page_paths = [Rails.root.join("../previews/pages")]
+      config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]
 
       ActiveSupport.on_load(:action_controller) do
         require "primer/yard/lookbook_docs_helper"
