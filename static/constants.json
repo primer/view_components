@@ -381,8 +381,11 @@
   "Primer::Alpha::MultiInput": {
   },
   "Primer::Alpha::NavList": {
+    "Divider": "Primer::Alpha::NavList::Divider",
     "Group": "Primer::Alpha::NavList::Group",
     "Item": "Primer::Alpha::NavList::Item"
+  },
+  "Primer::Alpha::NavList::Divider": {
   },
   "Primer::Alpha::NavList::Group": {
   },

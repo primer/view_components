@@ -31,6 +31,7 @@
   "Primer::Alpha::Menu": "alpha",
   "Primer::Alpha::MultiInput": "alpha",
   "Primer::Alpha::NavList": "alpha",
+  "Primer::Alpha::NavList::Divider": "alpha",
   "Primer::Alpha::NavList::Group": "alpha",
   "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::Navigation::Tab": "alpha",

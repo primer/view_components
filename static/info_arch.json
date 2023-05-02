@@ -98,6 +98,13 @@
         ]
       },
       {
+        "name": "id",
+        "description": "Returns the value of attribute id.",
+        "parameters": [
+
+        ]
+      },
+      {
         "name": "select_variant",
         "description": "Returns the value of attribute select_variant.",
         "parameters": [
@@ -107,6 +114,13 @@
       {
         "name": "role",
         "description": "Returns the value of attribute role.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "post_list_content_block",
+        "description": "Returns the value of attribute post_list_content_block.",
         "parameters": [
 
         ]
@@ -468,12 +482,6 @@
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
         "parameters": [
           {
-            "name": "id",
-            "type": "String",
-            "default": "`self.class.generate_id`",
-            "description": "The group's identifier (ID attribute in HTML)."
-          },
-          {
             "name": "title",
             "type": "String",
             "default": "N/A",
@@ -498,12 +506,6 @@
             "description": "Display a background color if scheme is `filled`."
           },
           {
-            "name": "tag",
-            "type": "Integer",
-            "default": "N/A",
-            "description": "Semantic tag for the heading."
-          },
-          {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
@@ -515,8 +517,15 @@
         ],
         "methods": [
           {
-            "name": "id",
-            "description": "Returns the value of attribute id.",
+            "name": "title_id",
+            "description": "Returns the value of attribute title_id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "subtitle_id",
+            "description": "Returns the value of attribute subtitle_id.",
             "parameters": [
 
             ]
@@ -556,7 +565,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
+        "description": "Separator with optional text rendered above groups or between individual items.",
         "component": "ActionList::Divider",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -1702,7 +1711,13 @@
       }
     ],
     "methods": [
+      {
+        "name": "id",
+        "description": "The dialog's ID value.",
+        "parameters": [
 
+        ]
+      }
     ],
     "previews": [
       {
@@ -2908,8 +2923,29 @@
     ],
     "slots": [
       {
-        "name": "groups",
-        "description": "Groups. Each group is a list of links and an optional heading.",
+        "name": "heading",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "with_group",
+        "description": "Groups. Each group is a list of links and a (required) heading.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -2918,10 +2954,26 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Group{{/link_to_component}}."
           }
         ]
-      }
-    ],
-    "methods": [
+      },
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list of items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "render_outer_list?",
+        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>",
+        "parameters": [
 
+        ]
+      }
     ],
     "previews": [
       {
@@ -2933,6 +2985,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/default",
         "preview_path": "/lookbook/preview/primer/alpha/nav_list/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/top_level_items",
+        "preview_path": "/lookbook/preview/primer/alpha/nav_list/top_level_items",
+        "name": "top_level_items"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/show_more_item",
@@ -3088,6 +3145,42 @@
 
             ]
           }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
+        "description": "Separator with optional text rendered above groups or between individual items.",
+        "component": "NavList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
         ],
         "previews": [
 

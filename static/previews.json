@@ -1352,6 +1352,11 @@
         "name": "default"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/top_level_items",
+        "preview_path": "/lookbook/preview/primer/alpha/nav_list/top_level_items",
+        "name": "top_level_items"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/show_more_item",
         "preview_path": "/lookbook/preview/primer/alpha/nav_list/show_more_item",
         "name": "show_more_item"
