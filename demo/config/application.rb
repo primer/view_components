@@ -91,6 +91,7 @@ module Demo
       }
 
       config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]
+      config.lookbook.component_paths << Primer::ViewComponents::Engine.root.join("app", "components")
 
       ActiveSupport.on_load(:action_controller) do
         require "primer/yard/lookbook_docs_helper"
