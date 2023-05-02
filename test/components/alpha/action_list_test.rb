@@ -7,14 +7,6 @@ module Primer
     class ActionListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
-      def test_invalid_list
-        error = assert_raises ArgumentError do
-          render_inline(Primer::Alpha::ActionList.new)
-        end
-
-        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
-      end
-
       def test_item_with_actions
         render_preview(:item, params: { trailing_action: "arrow-down" })
 
@@ -117,8 +109,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=list]") do
-          assert_selector("li.ActionListItem button")
+        assert_selector("ul.ActionListWrap[role=list]") do |list|
+          list.assert_selector("li.ActionListItem button")
         end
       end
 
@@ -127,8 +119,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemradio]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemradio]")
         end
       end
 
@@ -137,8 +129,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
         end
       end
 
@@ -147,8 +139,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitem]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitem]")
         end
       end
 

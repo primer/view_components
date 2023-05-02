@@ -15,19 +15,16 @@ module Primer
         HEADING_MAX = 6
         HEADING_LEVELS = (HEADING_MIN..HEADING_MAX).to_a.freeze
 
-        attr_reader :id
+        attr_reader :title_id, :subtitle_id
 
-        # @param id [String] The group's identifier (ID attribute in HTML).
         # @param title [String] Sub list title.
         # @param heading_level [Integer] Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc.
         # @param subtitle [String] Optional sub list description.
         # @param scheme [Symbol] Display a background color if scheme is `filled`.
-        # @param tag [Integer] Semantic tag for the heading.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(title:, id: self.class.generate_id, heading_level: 3, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
+        def initialize(title:, heading_level: 3, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           raise "Heading level must be between #{HEADING_MIN} and #{HEADING_MAX}" unless HEADING_LEVELS.include?(heading_level)
 
-          @id = id
           @heading_level = heading_level
           @tag = :"h#{heading_level}"
           @system_arguments = deny_tag_argument(**system_arguments)
@@ -39,6 +36,13 @@ module Primer
             SCHEME_MAPPINGS[@scheme],
             @system_arguments[:classes]
           )
+
+          @title_id = self.class.generate_id(base_name: "heading-title")
+          @subtitle_id = self.class.generate_id(base_name: "heading-subtitle")
+        end
+
+        def subtitle?
+          @subtitle.present?
         end
       end
     end

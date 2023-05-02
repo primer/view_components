@@ -53,7 +53,7 @@ module Primer
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Heading) %>.
       renders_one :heading, lambda { |**system_arguments|
-        Heading.new(list_id: @id, **system_arguments)
+        Heading.new(**system_arguments)
       }
 
       # Items.
@@ -74,7 +74,7 @@ module Primer
         set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
       end
 
-      attr_reader :select_variant, :role
+      attr_reader :id, :select_variant, :role
 
       # @param id [String] HTML ID value.
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
@@ -124,15 +124,10 @@ module Primer
 
       # @private
       def before_render
-        aria_label = aria(:label, @system_arguments)
-        aria_labelledby = aria(:labelledby, @system_arguments)
+        return unless heading?
 
-        if heading.present?
-          @system_arguments[:"aria-labelledby"] = heading.id unless aria_labelledby
-          raise ArgumentError, "An aria-label should not be provided if a heading is present" if aria_label.present?
-        elsif aria_label.blank? && aria_labelledby.blank?
-          raise ArgumentError, "An aria-label, aria-labelledby, or heading must be provided"
-        end
+        @system_arguments[:"aria-labelledby"] = heading.title_id
+        @system_arguments[:"aria-describedby"] = heading.subtitle_id if heading.subtitle?
       end
 
       # @private
@@ -177,6 +172,14 @@ module Primer
 
       # @private
       def will_add_item(_item); end
+
+      private
+
+      def with_post_list_content(&block)
+        @post_list_content_block = block
+      end
+
+      attr_reader :post_list_content_block
     end
   end
 end
