@@ -130,9 +130,11 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::ActionList::FormWrapper",
       "Primer::Alpha::ActionMenu::List",
       "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Group",
+      "Primer::Alpha::NavList::Divider",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",
@@ -215,35 +217,5 @@ class PrimerComponentTest < Minitest::Test
       end
       # rubocop:enable Rails/Inquiry
     end
-  end
-
-  def test_merge_aria
-    component = Primer::Component.new
-
-    hash1 = { "aria-disabled": "true", aria: { labelledby: "foo", describedby: "foo" }, foo: "foo" }
-    hash2 = { aria: { invalid: "true", labelledby: "bar" }, "aria-label": "bar", bar: "bar", "aria-labelledby": "baz", "aria-describedby": nil }
-
-    merged_arias = component.send(:merge_aria, hash1, hash2)
-
-    assert_equal merged_arias, { disabled: "true", invalid: "true", labelledby: "foo bar baz", label: "bar", describedby: "foo" }
-
-    # assert aria info removed from original hashes
-    assert_equal hash1, { foo: "foo" }
-    assert_equal hash2, { bar: "bar" }
-  end
-
-  def test_merge_data
-    component = Primer::Component.new
-
-    hash1 = { "data-foo": "true", data: { target: "foo" }, foo: "foo" }
-    hash2 = { data: { bar: "false", target: "bar" }, "data-baz": "baz", bar: "bar", "data-target": "baz" }
-
-    merged_data = component.send(:merge_data, hash1, hash2)
-
-    assert_equal merged_data, { foo: "true", bar: "false", target: "foo bar baz", baz: "baz" }
-
-    # assert aria info removed from original hashes
-    assert_equal hash1, { foo: "foo" }
-    assert_equal hash2, { bar: "bar" }
   end
 end

@@ -249,6 +249,9 @@
   "ActionBar--large": [
     "Primer::Alpha::ActionBar"
   ],
+  "ActionListHeader": [
+    "Primer::Alpha::ActionList"
+  ],
   "SegmentedControl": [
     "Primer::Alpha::SegmentedControl"
   ],

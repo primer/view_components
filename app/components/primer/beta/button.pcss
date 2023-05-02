@@ -2,27 +2,27 @@
 
 /* temporary, pre primitives release */
 :root {
-  --primer-duration-fast: 80ms;
-  --primer-easing-easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 80ms;
+  --easing-easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* base button */
 .Button {
   position: relative;
-  font-size: var(--primer-text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-medium, 500);
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  border: var(--primer-borderWidth-thin, 1px) solid;
+  border: var(--borderWidth-thin, 1px) solid;
   border-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--borderRadius-medium, 6px);
   color: var(--color-btn-text);
-  transition: var(--primer-duration-fast) var(--primer-easing-easeInOut);
+  transition: var(--duration-fast) var(--easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
   text-align: center;
-  height: var(--primer-control-medium-size, 32px);
-  padding: 0 var(--primer-control-medium-paddingInline-normal, 12px);
+  height: var(--control-medium-size, 32px);
+  padding: 0 var(--control-medium-paddingInline-normal, 12px);
   display: inline-flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,7 +40,7 @@
   /* base states */
 
   &:hover {
-    transition-duration: var(--primer-duration-fast);
+    transition-duration: var(--duration-fast);
   }
 
   &:active {
@@ -78,7 +78,7 @@ summary.Button {
   /* padding-bottom: 1px; optical alignment for firefox */
 
   & > :not(:last-child) {
-    margin-right: var(--primer-control-medium-gap, 8px);
+    margin-right: var(--control-medium-gap, 8px);
   }
 }
 
@@ -103,7 +103,7 @@ summary.Button {
 .Button-label {
   grid-area: text;
   white-space: nowrap;
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
+  line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
 }
 
 .Button-leadingVisual {
@@ -121,34 +121,34 @@ summary.Button {
 /* sizes */
 
 .Button--small {
-  font-size: var(--primer-text-body-size-small, 12px);
-  height: var(--primer-control-small-size, 28px);
-  padding: 0 var(--primer-control-small-paddingInline-condensed, 8px);
-  gap: var(--primer-control-small-gap, 4px);
+  font-size: var(--text-body-size-small, 12px);
+  height: var(--control-small-size, 28px);
+  padding: 0 var(--control-small-paddingInline-condensed, 8px);
+  gap: var(--control-small-gap, 4px);
 
   & .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
+    line-height: var(--text-body-lineHeight-small, calc(20 / 12));
   }
 
   & .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-small-gap, 4px);
+      margin-right: var(--control-small-gap, 4px);
     }
   }
 }
 
 .Button--large {
-  height: var(--primer-control-large-size, 40px);
-  padding: 0 var(--primer-control-large-paddingInline-spacious, 16px);
-  gap: var(--primer-control-large-gap, 8px);
+  height: var(--control-large-size, 40px);
+  padding: 0 var(--control-large-paddingInline-spacious, 16px);
+  gap: var(--control-large-gap, 8px);
 
   & .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large, calc(48 / 32));
+    line-height: var(--text-body-lineHeight-large, calc(48 / 32));
   }
 
   & .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-large-gap, 8px);
+      margin-right: var(--control-large-gap, 8px);
     }
   }
 }
@@ -200,6 +200,11 @@ summary.Button {
     background-color: var(--color-btn-primary-disabled-bg);
     border-color: var(--color-btn-primary-disabled-border);
     fill: var(--color-btn-primary-disabled-text);
+  }
+
+  & .Counter {
+    color: inherit;
+    background-color: var(--color-btn-primary-counter-bg);
   }
 }
 
@@ -262,6 +267,10 @@ summary.Button {
 
   & .Button-visual {
     color: var(--color-fg-muted);
+
+    & .Counter {
+      color: var(--color-fg-default);
+    }
   }
 }
 
@@ -330,13 +339,13 @@ summary.Button {
   display: inline-grid;
   place-content: center;
   padding: unset;
-  width: var(--primer-control-medium-size, 32px);
+  width: var(--control-medium-size, 32px);
 
   &.Button--small {
-    width: var(--primer-control-small-size, 28px);
+    width: var(--control-small-size, 28px);
   }
 
   &.Button--large {
-    width: var(--primer-control-large-size, 40px);
+    width: var(--control-large-size, 40px);
   }
 }

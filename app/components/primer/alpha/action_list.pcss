@@ -1,8 +1,13 @@
 :root {
-  --primer-actionListContent-paddingBlock: var(--primer-control-medium-paddingBlock, 6px);
+  --actionListContent-paddingBlock: var(--control-medium-paddingBlock, 6px);
 }
 
 /* ActionList */
+
+.ActionListHeader {
+  margin-left: var(--base-size-8, 8px);
+  margin-bottom: var(--base-size-16, 16px);
+}
 
 /* <ul> */
 .ActionListWrap {
@@ -18,7 +23,7 @@
 .ActionListWrap--divided {
   & .ActionListItem-label::before {
     position: absolute;
-    top: calc(-1 * var(--primer-actionListContent-paddingBlock));
+    top: calc(-1 * var(--actionListContent-paddingBlock));
     display: block;
     width: 100%;
     height: 1px;
@@ -30,10 +35,10 @@
   & .ActionListItem-descriptionWrap--inline {
     &::before {
       position: absolute;
-      top: calc(-1 * var(--primer-actionListContent-paddingBlock));
+      top: calc(-1 * var(--actionListContent-paddingBlock));
       display: block;
       width: 100%;
-      height: var(--primer-borderWidth-thin, 1px);
+      height: var(--borderWidth-thin, 1px);
       content: '';
       background: var(--color-action-list-item-inline-divider);
     }
@@ -71,7 +76,7 @@
   position: relative;
   list-style: none;
   background-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--borderRadius-medium, 6px);
 
   /* state */
 
@@ -129,9 +134,9 @@
 
         &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
-          outline: solid var(--primer-borderWidth-thin, 1px) transparent;
-          outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
-          box-shadow: var(--primer-borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+          outline: solid var(--borderWidth-thin, 1px) transparent;
+          outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
+          box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
         }
       }
     }
@@ -141,9 +146,9 @@
 
       &:not(.ActionListItem--navActive) {
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
-        outline: solid var(--primer-borderWidth-thin, 1px) transparent;
-        outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
-        box-shadow: var(--primer-borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+        outline: solid var(--borderWidth-thin, 1px) transparent;
+        outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
+        box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
       }
 
       & .ActionListItem-label::before,
@@ -189,7 +194,7 @@
       & .ActionListItem-multiSelectIconRect {
         fill: var(--color-accent-fg);
         stroke: var(--color-accent-fg);
-        stroke-width: var(--primer-borderWidth-thin, 1px);
+        stroke-width: var(--borderWidth-thin, 1px);
       }
 
       & .ActionListItem-multiSelectCheckmark {
@@ -232,13 +237,13 @@
       & .ActionListItem-multiSelectIconRect {
         fill: var(--color-canvas-default);
         stroke: var(--color-border-default);
-        stroke-width: var(--primer-borderWidth-thin, 1px);
+        stroke-width: var(--borderWidth-thin, 1px);
       }
     }
 
     & .ActionListItem-multiSelectIconRect {
       fill: var(--color-canvas-default);
-      border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+      border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
     }
   }
 
@@ -360,14 +365,14 @@
   position: relative;
   display: grid;
   width: 100%;
-  padding-block: var(--primer-actionListContent-paddingBlock);
-  padding-inline: var(--primer-control-medium-paddingInline-condensed, 8px);
+  padding-block: var(--actionListContent-paddingBlock);
+  padding-inline: var(--control-medium-paddingInline-condensed, 8px);
   color: var(--color-fg-default);
   text-align: left;
   user-select: none;
   background-color: transparent;
   border: none;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--borderRadius-medium, 6px);
   transition: background 33.333ms linear;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -378,7 +383,7 @@
 
   /* column-gap persists with empty grid-areas, margin applies only when children exist */
   & > :not(:last-child) {
-    margin-right: var(--primer-control-medium-gap, 8px);
+    margin-right: var(--control-medium-gap, 8px);
   }
 
   /* state */
@@ -501,16 +506,16 @@
   /* sizes */
 
   &.ActionListContent--sizeLarge {
-    --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
   }
 
   &.ActionListContent--sizeXLarge {
-    --primer-actionListContent-paddingBlock: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
   }
 
   /* On pointer:coarse (mobile), all list items are large */
   @media (pointer: coarse) {
-    --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
   }
 
   &.ActionListContent--blockDescription {
@@ -562,9 +567,9 @@
 
 /* description */
 .ActionListItem-description {
-  font-size: var(--primer-text-body-size-small, 12px);
+  font-size: var(--text-body-size-small, 12px);
   font-weight: var(--base-text-weight-normal, 400);
-  line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
+  line-height: var(--text-body-lineHeight-small, calc(20 / 12));
   color: var(--color-fg-muted);
 }
 
@@ -573,7 +578,7 @@
 .ActionListItem-visual,
 .ActionListItem-action {
   display: flex;
-  min-height: var(--primer-control-medium-lineBoxHeight, 20px);
+  min-height: var(--control-medium-lineBoxHeight, 20px);
   color: var(--color-fg-muted);
   pointer-events: none;
   fill: var(--color-fg-muted);
@@ -583,9 +588,9 @@
 /* text */
 .ActionListItem-label {
   position: relative;
-  font-size: var(--primer-text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-normal, 400);
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
+  line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
   grid-area: label;
 }
@@ -600,8 +605,8 @@
  target ActionListItem--subItem for padding-left to maintain :active :after state */
 
 .ActionListItem--subItem > .ActionListContent > .ActionListItem-label {
-  font-size: var(--primer-text-body-size-small, 12px);
-  line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
+  font-size: var(--text-body-size-small, 12px);
+  line-height: var(--text-body-lineHeight-small, calc(20 / 12));
 }
 
 /* trailing action icon button */
@@ -638,10 +643,10 @@
   /* with children */
   &:not(:empty) {
     display: flex;
-    padding-inline: var(--primer-actionListContent-paddingBlock);
+    padding-inline: var(--actionListContent-paddingBlock);
     padding-block: var(--base-size-8, 8px);
-    font-size: var(--primer-text-body-size-small, 12px);
-    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
+    font-size: var(--text-body-size-small, 12px);
+    line-height: var(--text-body-lineHeight-small, calc(20 / 12));
     font-weight: var(--base-text-weight-semibold, 600);
     color: var(--color-fg-muted);
     flex-direction: column;
@@ -650,9 +655,9 @@
   /* no children */
   &:empty {
     display: block;
-    height: var(--primer-borderWidth-thin, 1px);
+    height: var(--borderWidth-thin, 1px);
     padding: 0;
-    margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
+    margin-block-start: calc(var(--base-size-8, 8px) - var(--borderWidth-thin, 1px));
     margin-block-end: var(--base-size-8, 8px);
     margin-inline: calc(-1 * var(--base-size-8, 8px));
     list-style: none;
@@ -661,19 +666,19 @@
   }
 
   & .ActionList-sectionDivider-title {
-    font-size: var(--primer-text-body-size-small, 12px);
+    font-size: var(--text-body-size-small, 12px);
     font-weight: var(--base-text-weight-semibold, 600);
     color: var(--color-fg-muted);
   }
 }
 
 .ActionList-sectionDivider--filled {
-  margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
+  margin-block-start: calc(var(--base-size-8, 8px) - var(--borderWidth-thin, 1px));
   margin-block-end: var(--base-size-8, 8px);
   margin-inline: calc(-1 * var(--base-size-8, 8px));
   background: var(--color-canvas-subtle);
-  border-top: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
-  border-bottom: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-top: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-bottom: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
 
   /* if no children, treat as divider */
   &:empty {

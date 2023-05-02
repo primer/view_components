@@ -1,6 +1,7 @@
 {
   "Primer::Alpha::ActionList": "alpha",
   "Primer::Alpha::ActionList::Divider": "alpha",
+  "Primer::Alpha::ActionList::FormWrapper": "alpha",
   "Primer::Alpha::ActionList::Heading": "alpha",
   "Primer::Alpha::ActionList::Item": "alpha",
   "Primer::Alpha::ActionMenu": "alpha",
@@ -30,6 +31,7 @@
   "Primer::Alpha::Menu": "alpha",
   "Primer::Alpha::MultiInput": "alpha",
   "Primer::Alpha::NavList": "alpha",
+  "Primer::Alpha::NavList::Divider": "alpha",
   "Primer::Alpha::NavList::Group": "alpha",
   "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::Navigation::Tab": "alpha",

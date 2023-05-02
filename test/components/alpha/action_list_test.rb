@@ -7,14 +7,6 @@ module Primer
     class ActionListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
-      def test_invalid_list
-        error = assert_raises ArgumentError do
-          render_inline(Primer::Alpha::ActionList.new)
-        end
-
-        assert_includes(error.message, "aria-label, aria-labelledby, or heading must be provided")
-      end
-
       def test_item_with_actions
         render_preview(:item, params: { trailing_action: "arrow-down" })
 
@@ -117,8 +109,9 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=list]")
-        assert page.find_css("button.ActionListContent").first["role"].nil?
+        assert_selector("ul.ActionListWrap[role=list]") do |list|
+          list.assert_selector("li.ActionListItem button")
+        end
       end
 
       def test_uses_correct_menu_and_item_roles_when_single_select
@@ -126,8 +119,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemradio]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemradio]")
         end
       end
 
@@ -136,8 +129,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitemcheckbox]")
         end
       end
 
@@ -146,8 +139,8 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do
-          assert_selector("li.ActionListItem button[role=menuitem]")
+        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+          list.assert_selector("li.ActionListItem button[role=menuitem]")
         end
       end
 
@@ -160,6 +153,52 @@ module Primer
         end
 
         assert_match(/only a single item may be active/, error.message)
+      end
+
+      def test_raises_when_non_button_tag_passed_to_form_item
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+            component.with_item(label: "Item 1")
+            component.with_item(
+              label: "Item 2",
+              href: "/foo",
+              content_arguments: { tag: :span },
+              form_arguments: { method: :post, name: "foo" }
+            )
+          end
+        end
+
+        assert_equal 'items that submit forms must use a "button" tag instead of "span"', error.message
+      end
+
+      def test_raises_when_non_button_item_added_to_list_acting_as_form_input
+        error = assert_raises ArgumentError do
+          render_in_view_context do
+            form_with(url: "/foo") do |f|
+              render(Primer::Alpha::ActionList.new(aria: { label: "List" }, select_variant: :single, form_arguments: { builder: f, name: "foo" })) do |component|
+                component.with_item(label: "Item 1")
+                component.with_item(label: "Item 2", content_arguments: { tag: :span })
+              end
+            end
+          end
+        end
+
+        assert_equal 'items within lists/menus that act as form inputs must use "button" tags instead of "span"', error.message
+      end
+
+      def test_raises_when_list_acting_as_form_input_doesnt_allow_selection
+        error = assert_raises ArgumentError do
+          render_in_view_context do
+            form_with(url: "/foo") do |f|
+              render(Primer::Alpha::ActionList.new(aria: { label: "List" }, form_arguments: { builder: f, name: "foo" })) do |component|
+                component.with_item(label: "Item 1")
+                component.with_item(label: "Item 2", content_arguments: { tag: :span })
+              end
+            end
+          end
+        end
+
+        assert_match(%r{lists/menus that act as form inputs must also allow item selection}, error.message)
       end
     end
   end

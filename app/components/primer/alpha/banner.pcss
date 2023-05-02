@@ -6,11 +6,11 @@
   padding: var(--base-size-8, 8px);
   color: var(--color-fg-default);
   background-image: linear-gradient(var(--color-accent-subtle), var(--color-accent-subtle));
-  border: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-accent-muted);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-accent-muted);
+  border-radius: var(--borderRadius-medium, 6px);
   grid-auto-flow: column;
   grid-template-areas: 'visual message actions close';
-  grid-template-columns: min-content 1fr minmax(0,auto) min-content;
+  grid-template-columns: min-content 1fr minmax(0, auto) min-content;
   grid-template-rows: min-content;
 
   /* `sm` breakpoint variantion */
@@ -22,7 +22,7 @@
     grid-template-rows: min-content min-content;
 
     & .Banner-actions {
-        margin: var(--base-size-8, 8px) 0 0 var(--base-size-8, 8px);
+      margin: var(--base-size-8, 8px) 0 0 var(--base-size-8, 8px);
     }
   }
 
@@ -69,7 +69,7 @@
   /* is this used anywhere? could not find any use, but unsure */
   & .Banner-close {
     grid-area: close;
-    margin-left: var(--primer-controlStack-medium-gap-condensed, 8px);
+    margin-left: var(--controlStack-medium-gap-condensed, 8px);
   }
 
   & .Banner-visual .octicon {
@@ -109,7 +109,7 @@
   /* Full-width */
 
   &.Banner--full {
-    margin-top: calc(var(--primer-borderWidth-thin, max(1px, 0.0625rem)) * -1);
+    margin-top: calc(var(--borderWidth-thin, max(1px, 0.0625rem)) * -1);
     border-right: 0;
     border-left: 0;
     border-radius: 0;
@@ -117,7 +117,7 @@
 
   @media (max-width: 767.98px) {
     &.Banner--full-whenNarrow {
-      margin-top: calc(var(--primer-borderWidth-thin, max(1px, 0.0625rem)) * -1);
+      margin-top: calc(var(--borderWidth-thin, max(1px, 0.0625rem)) * -1);
       border-right: 0;
       border-left: 0;
       border-radius: 0;

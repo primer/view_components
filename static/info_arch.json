@@ -46,6 +46,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} instead of using this feature directly."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -92,6 +98,13 @@
         ]
       },
       {
+        "name": "id",
+        "description": "Returns the value of attribute id.",
+        "parameters": [
+
+        ]
+      },
+      {
         "name": "select_variant",
         "description": "Returns the value of attribute select_variant.",
         "parameters": [
@@ -101,6 +114,13 @@
       {
         "name": "role",
         "description": "Returns the value of attribute role.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "post_list_content_block",
+        "description": "Returns the value of attribute post_list_content_block.",
         "parameters": [
 
         ]
@@ -259,6 +279,12 @@
             "type": "Hash",
             "default": "`{}`",
             "description": "{{link_to_system_arguments_docs}} used to construct the item's anchor or button tag."
+          },
+          {
+            "name": "form_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, One of `:delete`, `:get`, `:head`, `:patch`, `:post`, or `:put`. The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent."
           },
           {
             "name": "truncate_label",
@@ -456,12 +482,6 @@
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
         "parameters": [
           {
-            "name": "id",
-            "type": "String",
-            "default": "`self.class.generate_id`",
-            "description": "The group's identifier (ID attribute in HTML)."
-          },
-          {
             "name": "title",
             "type": "String",
             "default": "N/A",
@@ -486,12 +506,6 @@
             "description": "Display a background color if scheme is `filled`."
           },
           {
-            "name": "tag",
-            "type": "Integer",
-            "default": "N/A",
-            "description": "Semantic tag for the heading."
-          },
-          {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
@@ -503,8 +517,15 @@
         ],
         "methods": [
           {
-            "name": "id",
-            "description": "Returns the value of attribute id.",
+            "name": "title_id",
+            "description": "Returns the value of attribute title_id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "subtitle_id",
+            "description": "Returns the value of attribute subtitle_id.",
             "parameters": [
 
             ]
@@ -518,8 +539,33 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
+        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
+        "component": "ActionList::FormWrapper",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListFormWrapper",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Group heading rendered above the group contents.",
+        "description": "Separator with optional text rendered above groups or between individual items.",
         "component": "ActionList::Divider",
         "status": "alpha",
         "a11y_reviewed": false,
@@ -557,7 +603,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ActionMenu",
-    "description": "The ActionMenu should be used when a user can select a single option triggering an action from a list of items. Primer will automatically nest an `Item` within a presentational `<li>` tag.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. If one isn't selected, a fallback `:span` will be used. To add functionality, use a `.js` class to create the functionality, or an `onclick` handler.",
+    "description": "ActionMenu is used for actions, navigation, to display secondary options, or single/multi select lists. They appear when users interact with buttons, actions, or other controls.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. The default is `:button`.",
     "component": "ActionMenu",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -582,6 +628,12 @@
         "type": "Symbol",
         "default": "`:outside_bottom`",
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
       },
       {
         "name": "src",
@@ -611,7 +663,13 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:none`",
-        "description": ". One of `:multiple`, `:none`, or `:single`.."
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "system_arguments",
@@ -621,7 +679,30 @@
       }
     ],
     "slots": [
-
+      {
+        "name": "show_button",
+        "description": "Button to activate the menu.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Adds a new item to the list.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+          }
+        ]
+      }
     ],
     "methods": [
       {
@@ -647,13 +728,13 @@
       },
       {
         "name": "with_show_button",
-        "description": "Button to activate the menu. This may be a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} or {{#link_to_component}}Primer::IconButton{{/link_to_component}}.",
+        "description": "Button to activate the menu.",
         "parameters": [
           {
-            "name": "icon",
-            "type": "Symbol",
+            "name": "system_arguments",
+            "type": "Hash",
             "default": "N/A",
-            "description": "Set this to an [Octicon name](https://primer.style/octicons/) when you want to render an `IconButton`. Otherwise, this renders as a {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
           }
         ]
       },
@@ -667,13 +748,6 @@
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
-        ]
-      },
-      {
-        "name": "items",
-        "description": "Retrieves the list of items.",
-        "parameters": [
-
         ]
       },
       {
@@ -696,9 +770,19 @@
         "name": "playground"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/content_labels",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/content_labels",
+        "name": "content_labels"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/default",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/wide",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/wide",
+        "name": "wide"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_icon_button",
@@ -751,6 +835,16 @@
         "name": "with_actions"
       },
       {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/single_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/single_select_form",
+        "name": "single_select_form"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/multiple_select_form",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/multiple_select_form",
+        "name": "multiple_select_form"
+      },
+      {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/with_disabled_items",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items"
@@ -769,6 +863,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/block_description",
         "preview_path": "/lookbook/preview/primer/alpha/action_menu/block_description",
         "name": "block_description"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/submitting_forms",
+        "preview_path": "/lookbook/preview/primer/alpha/action_menu/submitting_forms",
+        "name": "submitting_forms"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/inline_description",
@@ -807,7 +906,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}"
           }
         ],
         "slots": [
@@ -841,6 +940,12 @@
             "name": "with_item",
             "description": "Adds a new item to the list.",
             "parameters": [
+              {
+                "name": "data",
+                "type": "Hash",
+                "default": "`{}`",
+                "description": "When the menu is used as a form input (see the {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} docs), the label is submitted to the server by default. However, if the `data: { value: }` or `\"data-value\":` attribute is provided, it will be sent to the server instead."
+              },
               {
                 "name": "system_arguments",
                 "type": "Hash",
@@ -1606,7 +1711,13 @@
       }
     ],
     "methods": [
+      {
+        "name": "id",
+        "description": "The dialog's ID value.",
+        "parameters": [
 
+        ]
+      }
     ],
     "previews": [
       {
@@ -2812,8 +2923,29 @@
     ],
     "slots": [
       {
-        "name": "groups",
-        "description": "Groups. Each group is a list of links and an optional heading.",
+        "name": "heading",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "with_group",
+        "description": "Groups. Each group is a list of links and a (required) heading.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -2822,10 +2954,26 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Group{{/link_to_component}}."
           }
         ]
-      }
-    ],
-    "methods": [
+      },
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list of items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "render_outer_list?",
+        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>",
+        "parameters": [
 
+        ]
+      }
     ],
     "previews": [
       {
@@ -2837,6 +2985,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/default",
         "preview_path": "/lookbook/preview/primer/alpha/nav_list/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/top_level_items",
+        "preview_path": "/lookbook/preview/primer/alpha/nav_list/top_level_items",
+        "name": "top_level_items"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/show_more_item",
@@ -2992,6 +3145,42 @@
 
             ]
           }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
+        "description": "Separator with optional text rendered above groups or between individual items.",
+        "component": "NavList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
         ],
         "previews": [
 
@@ -3347,10 +3536,22 @@
         "description": "Optional button to open the Overlay.",
         "parameters": [
           {
-            "name": "system_arguments",
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "Name of {{link_to_octicons}} to use instead of text. If provided, a {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} will be rendered. Otherwise a {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} will be rendered."
+          },
+          {
+            "name": "controls",
+            "type": "String",
+            "default": "N/A",
+            "description": "The ID of the menu this button controls. Used internally."
+          },
+          {
+            "name": "button_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} depending on the presence of the `icon:` argument."
           }
         ]
       },
@@ -3363,6 +3564,12 @@
             "type": "Boolean",
             "default": "N/A",
             "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
           },
           {
             "name": "visually_hide_title",
@@ -5533,13 +5740,7 @@
           }
         ],
         "methods": [
-          {
-            "name": "description_variant_class",
-            "description": "Description variant class.",
-            "parameters": [
 
-            ]
-          }
         ],
         "previews": [
           {
@@ -6416,6 +6617,11 @@
         "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_action",
         "preview_path": "/lookbook/preview/primer/beta/button/trailing_action",
         "name": "trailing_action"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_counter",
+        "preview_path": "/lookbook/preview/primer/beta/button/trailing_counter",
+        "name": "trailing_counter"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button/with_tooltip",
@@ -8292,7 +8498,26 @@
 
     ],
     "previews": [
-
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/playground",
+        "preview_path": "/lookbook/preview/primer/box/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/default",
+        "preview_path": "/lookbook/preview/primer/box/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border",
+        "preview_path": "/lookbook/preview/primer/box/border",
+        "name": "border"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border_bottom",
+        "preview_path": "/lookbook/preview/primer/box/border_bottom",
+        "name": "border_bottom"
+      }
     ],
     "subcomponents": [
 

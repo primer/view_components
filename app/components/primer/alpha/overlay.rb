@@ -67,15 +67,18 @@ module Primer
 
       # Optional button to open the Overlay.
       #
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
+      # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
+      # @param controls [String] The ID of the menu this button controls. Used internally.
+      # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %> depending on the presence of the `icon:` argument.
       renders_one :show_button, lambda { |icon: nil, controls: nil, **button_arguments|
-        button_arguments[:classes] = class_names(
-          button_arguments[:classes]
-        )
         button_arguments[:id] ||= show_button_id
         @system_arguments[:anchor] = button_arguments[:id]
         button_arguments["popovertarget"] = @id
-        button_arguments[:aria] = (button_arguments[:aria] || {}).merge({ controls: controls, haspopup: "true" })
+        button_arguments[:aria] = merge_aria(
+          button_arguments,
+          { aria: { controls: controls, haspopup: "true" } }
+        )
+
         if icon.present?
           Primer::Beta::IconButton.new(icon: icon, **button_arguments)
         else
@@ -86,6 +89,7 @@ module Primer
       # Header content.
       #
       # @param divider [Boolean] Show a divider between the header and body.
+      # @param size [Symbol] One of <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>.
       # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |divider: false, size: :medium, visually_hide_title: @visually_hide_title, **system_arguments|

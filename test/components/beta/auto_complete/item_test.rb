@@ -8,19 +8,19 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
   def test_renders_item_with_correct_attributes
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo")) { "Item" }
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item")
   end
 
   def test_renders_selected_item
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", selected: true)) { "Item" }
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-selected=\"true\"].ActionList-item", text: "Item")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-selected=\"true\"].ActionListItem", text: "Item")
   end
 
   def test_renders_disabled_item
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: true)) { "Item" }
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-disabled=\"true\"].ActionList-item", text: "Item")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-disabled=\"true\"].ActionListItem", text: "Item")
   end
 
   def test_renders_with_leading_visual_icon
@@ -29,9 +29,9 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
       "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
-      assert_selector("span.ActionList-content") do
-        assert_selector("span.ActionList-item-visual.ActionList-item-visual--leading")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item text") do
+      assert_selector("span.ActionListContent") do
+        assert_selector("span.ActionListItem-visual.ActionListItem-visual--leading")
       end
     end
   end
@@ -42,9 +42,9 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
       "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
-      assert_selector("span.ActionList-content") do
-        assert_selector("span.ActionList-item-visual.ActionList-item-visual--leading")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item text") do
+      assert_selector("span.ActionListContent") do
+        assert_selector("span.ActionListItem-visual.ActionListItem-visual--leading")
       end
     end
   end
@@ -55,9 +55,9 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
       "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
-      assert_selector("span.ActionList-content") do
-        assert_selector("span.ActionList-item-visual.ActionList-item-visual--trailing")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item text") do
+      assert_selector("span.ActionListContent") do
+        assert_selector("span.ActionListItem-visual.ActionListItem-visual--trailing")
       end
     end
   end
@@ -68,10 +68,10 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
       "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
-      assert_selector("span.ActionList-content") do
-        assert_selector("span.ActionList-item-descriptionWrap") do
-          assert_selector("span.ActionList-item-description", text: "Item description")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item text") do
+      assert_selector("span.ActionListContent") do
+        assert_selector("span.ActionListItem-descriptionWrap") do
+          assert_selector("span.ActionListItem-description", text: "Item description")
         end
       end
     end
@@ -83,9 +83,9 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
       "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
-      assert_selector("span.ActionList-content") do
-        assert_selector("span.ActionList-item-descriptionWrap.ActionList-item-descriptionWrap--inline")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionListItem", text: "Item text") do
+      assert_selector("span.ActionListContent") do
+        assert_selector("span.ActionListItem-descriptionWrap.ActionListItem-descriptionWrap--inline")
       end
     end
   end

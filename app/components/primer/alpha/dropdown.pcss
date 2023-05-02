@@ -11,7 +11,7 @@
   vertical-align: middle;
   content: '';
   border-style: solid;
-  border-width: var(--primer-borderWidth-thicker, 4px) var(--primer-borderWidth-thicker, 4px) 0;
+  border-width: var(--borderWidth-thicker, 4px) var(--borderWidth-thicker, 4px) 0;
   border-right-color: transparent;
   border-bottom-color: transparent;
   border-left-color: transparent;
@@ -26,14 +26,14 @@
   left: 0;
   z-index: 100;
   width: 160px;
-  padding-top: var(--primer-control-small-paddingBlock, 4px);
-  padding-bottom: var(--primer-control-small-paddingBlock, 4px);
+  padding-top: var(--control-small-paddingBlock, 4px);
+  padding-bottom: var(--control-small-paddingBlock, 4px);
   margin-top: 2px;
   list-style: none;
   background-color: var(--color-canvas-overlay);
   background-clip: padding-box;
-  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  border-radius: var(--borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-large);
 
   &::before,
@@ -64,7 +64,7 @@
   width: auto;
 
   & .dropdown-item {
-    padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
+    padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
     overflow: visible;
     text-overflow: inherit;
   }
@@ -73,7 +73,8 @@
 /* Dropdown items (can be links or buttons) */
 .dropdown-item {
   display: block;
-  padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-condensed, 8px) var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-condensed, 8px)
+    var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
   overflow: hidden;
   color: var(--color-fg-default);
   text-overflow: ellipsis;
@@ -115,13 +116,13 @@
 .dropdown-divider {
   display: block;
   height: 0;
-  margin: var(--primer-stack-gap-condensed, 8px) 0;
-  border-top: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+  margin: var(--stack-gap-condensed, 8px) 0;
+  border-top: var(--borderWidth-thin, 1px) solid var(--color-border-default);
 }
 
 .dropdown-header {
-  padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
-  font-size: var(--primer-text-body-size-small, 12px);
+  padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
+  font-size: var(--text-body-size-small, 12px);
   color: var(--color-fg-muted);
 }
 

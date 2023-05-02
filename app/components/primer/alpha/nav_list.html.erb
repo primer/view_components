@@ -1,10 +1,15 @@
 <%= render(Primer::BaseComponent.new(tag: :nav, **@system_arguments)) do %>
+  <%= heading %>
   <nav-list>
-    <% groups.each_with_index do |group, index| %>
-      <% if index > 0 %>
-        <%= render(Primer::Alpha::ActionList::Divider.new) %>
+    <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list?, tag: :ul, classes: "ActionListWrap")) do %>
+      <% items.each_with_index do |item, index| %>
+        <% if index > 0 && render_divider_between?(item, items[index - 1]) %>
+          <%= render(Primer::Alpha::ActionList::Divider.new) %>
+        <% end %>
+        <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list? && group?(item), tag: :li)) do %>
+          <%= item %>
+        <% end %>
       <% end %>
-      <%= group %>
     <% end %>
   </nav-list>
 <% end %>

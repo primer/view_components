@@ -50,6 +50,10 @@ module Primer
       }.freeze
       POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
 
+      # The dialog's ID value.
+      #
+      attr_reader :id
+
       # Optional button to open the dialog.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>.

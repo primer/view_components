@@ -22,19 +22,57 @@ module Primer
         "nav-list"
       end
 
-      # Groups. Each group is a list of links and an optional heading.
+      renders_one :heading, lambda { |title:, heading_level: 2, **system_arguments|
+        Primer::BaseComponent.new(
+          tag: :"h#{heading_level}",
+          classes: "ActionListHeader",
+          **system_arguments
+        ).with_content(title)
+      }
+
+      # Groups. Each group is a list of links and a (required) heading.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
-      renders_many :groups, lambda { |**system_arguments|
-        Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id, **system_arguments)
+      def with_group(**system_arguments, &block)
+        # This is a giant hack that should be removed when groups/items can be combined and converted into a polymorphic slot.
+        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
+        set_slot(
+          :items,
+          { renderable: Primer::Alpha::NavList::Group, collection: true },
+          selected_item_id: @selected_item_id,
+          **system_arguments,
+          &block
+        )
+      end
+
+      # Adds a divider to the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      def with_divider(**system_arguments, &block)
+        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
+        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
+        set_slot(:items, { renderable: Primer::Alpha::NavList::Divider, collection: true }, **system_arguments, &block)
+      end
+
+      # Items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+      renders_many :items, lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
+        # dummy group just so we have something to pass as the list: argument below
+        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+
+        component_klass.new(
+          list: @top_level_group,
+          selected_item_id: @selected_item_id,
+          **system_arguments,
+          &block
+        )
       }
 
       # @example Items and headings
       #
-      #   <%= render(Primer::Alpha::NavList.new(selected_item_id: :personal_info)) do |component| %>
-      #     <% component.with_group(aria: { label: "Settings" }) do |group| %>
-      #       <% group.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
-      #     <% end %>
+      #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
+      #     <% component.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "Account Settings") %>
       #       <% group.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") %>
@@ -45,7 +83,7 @@ module Primer
       #
       # @example Leading and trailing visuals
       #
-      #   <%= render(Primer::Alpha::NavList.new(selected_item_id: :personal_info)) do |component| %>
+      #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "Account Settings") %>
       #       <% group.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") do |item| %>
@@ -64,7 +102,7 @@ module Primer
       #
       # @example Expandable sub items
       #
-      #   <%= render(Primer::Alpha::NavList.new(selected_item_id: :email_notifications)) do |component| %>
+      #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications)) do |component| %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "Account Settings") %>
       #       <% group.with_item(label: "Notification settings") do |item| %>
@@ -90,7 +128,7 @@ module Primer
       #
       # @example Trailing action
       #
-      #   <%= render(Primer::Alpha::NavList.new) do |component| %>
+      #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Foods" })) do |component| %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "My Favorite Foods") %>
       #       <% group.with_item(label: "Popplers", selected_by_ids: :popplers, href: "/foods/popplers") do |item| %>
@@ -107,6 +145,45 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
+
+        raise ArgumentError, "An aria-label must be provided" unless aria(:label, @system_arguments)
+      end
+
+      private
+
+      # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
+      def render_outer_list?
+        items.any? { |item| !group?(item) }
+      end
+
+      def render_divider_between?(item1, item2)
+        return false if either_is_divider?(item1, item2)
+
+        both_are_groups?(item1, item2) || heterogeneous?(item1, item2)
+      end
+
+      def both_are_groups?(item1, item2)
+        group?(item1) && group?(item2)
+      end
+
+      def heterogeneous?(item1, item2)
+        kind(item1) != kind(item2)
+      end
+
+      def either_is_divider?(item1, item2)
+        divider?(item1) || divider?(item2)
+      end
+
+      def group?(item)
+        kind(item) == :group
+      end
+
+      def divider?(item)
+        kind(item) == :divider
+      end
+
+      def kind(item)
+        item.respond_to?(:kind) ? item.kind : :item
       end
     end
   end

@@ -23,6 +23,7 @@ module Primer
         Primer::Beta::BaseButton => {},
         Primer::Alpha::Banner => { js: true },
         Primer::Beta::Blankslate => {},
+        Primer::BlankslateComponent => {},
         Primer::Beta::BorderBox => {},
         Primer::Beta::BorderBox::Header => {},
         Primer::Box => {},

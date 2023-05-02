@@ -44,6 +44,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an [ActionMenu](/components/alpha/actionmenu) instead of using this feature directly."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -74,6 +80,17 @@
     ]
   },
   {
+    "component": "ActionList::FormWrapper",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionListFormWrapper",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+    "parameters": [
+
+    ]
+  },
+  {
     "component": "ActionList::Heading",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -81,12 +98,6 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
     "parameters": [
-      {
-        "name": "id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "The group's identifier (ID attribute in HTML)."
-      },
       {
         "name": "title",
         "type": "String",
@@ -110,12 +121,6 @@
         "type": "Symbol",
         "default": "`:subtle`",
         "description": "Display a background color if scheme is `filled`."
-      },
-      {
-        "name": "tag",
-        "type": "Integer",
-        "default": "N/A",
-        "description": "Semantic tag for the heading."
       },
       {
         "name": "system_arguments",
@@ -168,6 +173,12 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, One of `:delete`, `:get`, `:head`, `:patch`, `:post`, or `:put`. The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent."
       },
       {
         "name": "truncate_label",
@@ -264,6 +275,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
+      },
+      {
         "name": "src",
         "type": "String",
         "default": "`nil`",
@@ -291,7 +308,13 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:none`",
-        "description": ". One of `:multiple`, `:none`, or `:single`.."
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "system_arguments",
@@ -319,7 +342,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
+        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)"
       }
     ]
   },
@@ -1352,6 +1375,28 @@
         "type": "Symbol",
         "default": "`nil`",
         "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Divider",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListDivider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+    "parameters": [
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:subtle`",
+        "description": "Display a background color if scheme is `filled`."
       },
       {
         "name": "system_arguments",
