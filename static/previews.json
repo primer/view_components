@@ -588,6 +588,34 @@
     ]
   },
   {
+    "name": "box",
+    "component": "Box",
+    "status": "stable",
+    "lookup_path": "primer/box",
+    "examples": [
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/playground",
+        "preview_path": "/lookbook/preview/primer/box/playground",
+        "name": "playground"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/default",
+        "preview_path": "/lookbook/preview/primer/box/default",
+        "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border",
+        "preview_path": "/lookbook/preview/primer/box/border",
+        "name": "border"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/box/border_bottom",
+        "preview_path": "/lookbook/preview/primer/box/border_bottom",
+        "name": "border_bottom"
+      }
+    ]
+  },
+  {
     "name": "breadcrumbs",
     "component": "Breadcrumbs",
     "status": "beta",
@@ -675,6 +703,11 @@
         "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_action",
         "preview_path": "/lookbook/preview/primer/beta/button/trailing_action",
         "name": "trailing_action"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/beta/button/trailing_counter",
+        "preview_path": "/lookbook/preview/primer/beta/button/trailing_counter",
+        "name": "trailing_counter"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button/with_tooltip",
@@ -1317,6 +1350,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/default",
         "preview_path": "/lookbook/preview/primer/alpha/nav_list/default",
         "name": "default"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/top_level_items",
+        "preview_path": "/lookbook/preview/primer/alpha/nav_list/top_level_items",
+        "name": "top_level_items"
       },
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/show_more_item",

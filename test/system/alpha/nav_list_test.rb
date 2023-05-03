@@ -15,13 +15,12 @@ module Alpha
     def test_shows_more_items
       visit_preview(:show_more_item)
 
-      # includes "Show more" item
-      assert_selector "li.ActionListItem", count: 3
+      assert_selector "li.ActionListItem", count: 2
       assert_selector "li", text: "Popplers"
       assert_selector "li", text: "Slurm"
 
       # use #find here to wait for the button to become enabled
-      find("a", text: "Show more").click
+      find("button", text: "Show more foods").click
 
       assert_selector "li.ActionListItem", count: 4
       assert_selector "li", text: "Popplers"

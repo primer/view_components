@@ -99,12 +99,6 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
     "parameters": [
       {
-        "name": "id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "The group's identifier (ID attribute in HTML)."
-      },
-      {
         "name": "title",
         "type": "String",
         "default": "N/A",
@@ -127,12 +121,6 @@
         "type": "Symbol",
         "default": "`:subtle`",
         "description": "Display a background color if scheme is `filled`."
-      },
-      {
-        "name": "tag",
-        "type": "Integer",
-        "default": "N/A",
-        "description": "Semantic tag for the heading."
       },
       {
         "name": "system_arguments",
@@ -1387,6 +1375,28 @@
         "type": "Symbol",
         "default": "`nil`",
         "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Divider",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListDivider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+    "parameters": [
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:subtle`",
+        "description": "Display a background color if scheme is `filled`."
       },
       {
         "name": "system_arguments",

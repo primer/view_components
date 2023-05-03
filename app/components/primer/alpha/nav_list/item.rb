@@ -110,6 +110,10 @@ module Primer
           )
         end
 
+        def kind
+          :item
+        end
+
         private
 
         # Normally it would be easier to simply ask each item for its active status, eg.

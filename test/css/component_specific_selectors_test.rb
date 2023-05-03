@@ -26,7 +26,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem--trailingActionHover .ActionListItem-trailingAction",
       ".ActionList-sectionDivider--filled",
       ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
-      ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label"
+      ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
+      ".ActionListHeader" # used exclusively by NavList
     ],
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"

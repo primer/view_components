@@ -7,16 +7,60 @@ module Primer
     class NavListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
+      def test_top_level_items_structure
+        render_preview(:top_level_items)
+
+        assert_selector("nav nav-list ul.ActionListWrap") do |list|
+          list.assert_selector("li.ActionListItem", text: "General")
+          list.assert_selector("li.ActionListItem", text: "Billing")
+          list.assert_selector("li.ActionListItem", text: "Change password")
+        end
+      end
+
+      def test_mixed_top_level_items_and_groups_structure
+        render_preview(:default)
+
+        assert_selector("nav nav-list ul.ActionListWrap") do |top_level_list|
+          top_level_list.assert_selector("li.ActionListItem", text: "General")
+          top_level_list.assert_selector("li h3", text: "Access")
+
+          top_level_list.assert_selector("li ul.ActionListWrap") do |access_list|
+            access_list.assert_selector("li.ActionListItem", text: "Collaborators and teams")
+            access_list.assert_selector("li.ActionListItem", text: "Moderation options")
+            access_list.assert_selector("li.ActionListItem ul.ActionList--subGroup") do |mod_options_list|
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Code review limits")
+              mod_options_list.assert_selector("li.ActionListItem--subItem", text: "Reported content")
+            end
+          end
+        end
+      end
+
+      def test_top_level_heading
+        render_preview(:default)
+
+        assert_selector("h2", text: "Repository settings")
+      end
+
+      def test_invalid_list
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::NavList.new)
+        end
+
+        assert_includes(error.message, "An aria-label must be provided")
+      end
+
       def test_sub_items
         render_preview(:default)
 
-        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='true']") do
-          assert_selector("svg.ActionListItem-collapseIcon")
-          assert_selector("ul.ActionList--subGroup[role=list]") do |sub_group|
-            sub_group.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
-            sub_group.assert_selector("li.ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
-            sub_group.assert_selector("li.ActionListItem--subItem", text: "Reported content")
-          end
+        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='true']") do |content|
+          content.assert_selector("svg.ActionListItem-collapseIcon")
+        end
+
+        assert_selector("ul.ActionList--subGroup[role=list]") do |sub_group|
+          sub_group.assert_selector("li.ActionListItem--subItem", text: "Interaction limits")
+          sub_group.assert_selector("li.ActionListItem--subItem.ActionListItem--navActive", text: "Code review limits")
+          sub_group.assert_selector("li.ActionListItem--subItem", text: "Reported content")
         end
       end
 
@@ -31,8 +75,9 @@ module Primer
       end
 
       def test_no_selected_item
-        render_inline(Primer::Alpha::NavList.new) do |component|
-          component.with_group(aria: { label: "Nav list" }) do |group|
+        render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
+          component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -42,8 +87,9 @@ module Primer
       end
 
       def test_selected_item
-        render_inline(Primer::Alpha::NavList.new(selected_item_id: :item2)) do |component|
-          component.with_group(aria: { label: "Nav list" }) do |group|
+        render_inline(Primer::Alpha::NavList.new(aria: { label: "List" }, selected_item_id: :item2)) do |component|
+          component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -54,8 +100,9 @@ module Primer
       end
 
       def test_item_can_be_selected_by_any_of_its_ids
-        render_inline(Primer::Alpha::NavList.new(selected_item_id: :other_item1_id)) do |component|
-          component.with_group(aria: { label: "Nav list" }) do |group|
+        render_inline(Primer::Alpha::NavList.new(aria: { label: "List" }, selected_item_id: :other_item1_id)) do |component|
+          component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             group.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
             group.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -81,8 +128,9 @@ module Primer
       def test_item_can_be_selected_by_current_page
         current_page_href = "/item2"
 
-        render_inline(Primer::Alpha::NavList.new) do |component|
-          component.with_group(aria: { label: "Nav list" }) do |group|
+        render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
+          component.with_group(aria: { label: "Group" }) do |group|
+            group.with_heading(title: "Heading")
             # use CurrentPageItem instead of a mock since the API supports it
             group.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
             group.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
@@ -95,8 +143,9 @@ module Primer
 
       def test_max_nesting_depth
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_group(aria: { label: "Nav list" }) do |group|
+          render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
+            component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
               group.with_item(label: "Item at level 1") do |item|
                 item.with_item(label: "Item at level 2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
@@ -112,13 +161,14 @@ module Primer
       def test_show_more_item
         render_preview(:show_more_item)
 
-        assert_selector("#ActionList--showMoreItem", visible: false, text: "Show more")
+        assert_selector("[data-target='nav-list.showMoreItem']", visible: false, text: "Show more")
       end
 
       def test_disallow_subitems_and_trailing_action
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_group(aria: { label: "List" }) do |group|
+          render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
+            component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
               group.with_item(label: "Level 1", href: "/level1") do |item|
                 item.with_item(label: "Level 2", href: "/level2")
                 item.with_trailing_action(icon: :megaphone, aria: { label: "Action" })
@@ -130,23 +180,12 @@ module Primer
         assert_equal "Cannot render a trailing action for an item with subitems", error.message
       end
 
-      def test_disallows_aria_label_when_heading_provided
-        error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_group(aria: { label: "List" }) do |group|
-              group.with_heading(title: "List")
-            end
-          end
-        end
-
-        assert_equal "An aria-label should not be provided if a heading is present", error.message
-      end
-
       def test_errors_when_passing_selected_by_ids_to_parent
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new) do |component|
-            component.with_group(aria: { label: "List" }) do |section|
-              section.with_item(label: "Level 1", href: "/level1", selected_by_ids: :foo) do |item|
+          render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
+            component.with_group(aria: { label: "Group" }) do |group|
+              group.with_heading(title: "Heading")
+              group.with_item(label: "Level 1", href: "/level1", selected_by_ids: :foo) do |item|
                 item.with_item(label: "Level 2", href: "/level2")
               end
             end
@@ -157,7 +196,7 @@ module Primer
       end
 
       def test_allows_customizing_heading_level
-        render_inline(Primer::Alpha::NavList.new) do |component|
+        render_inline(Primer::Alpha::NavList.new(aria: { label: "List" })) do |component|
           component.with_group do |group|
             group.with_heading(title: "List", heading_level: 2)
           end

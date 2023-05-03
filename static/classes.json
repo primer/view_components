@@ -237,6 +237,9 @@
   "Subhead-actions": [
     "Primer::Beta::Subhead"
   ],
+  "ActionListHeader": [
+    "Primer::Alpha::ActionList"
+  ],
   "SegmentedControl": [
     "Primer::Alpha::SegmentedControl"
   ],

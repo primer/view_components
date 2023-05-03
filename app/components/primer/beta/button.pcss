@@ -201,6 +201,11 @@ summary.Button {
     border-color: var(--color-btn-primary-disabled-border);
     fill: var(--color-btn-primary-disabled-text);
   }
+
+  & .Counter {
+    color: inherit;
+    background-color: var(--color-btn-primary-counter-bg);
+  }
 }
 
 /* default (secondary) */
@@ -262,6 +267,10 @@ summary.Button {
 
   & .Button-visual {
     color: var(--color-fg-muted);
+
+    & .Counter {
+      color: var(--color-fg-default);
+    }
   }
 }
 
