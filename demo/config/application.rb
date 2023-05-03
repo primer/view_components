@@ -28,10 +28,10 @@ module Demo
     config.view_component.default_preview_layout = "component_preview"
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
-    config.view_component.preview_paths << Rails.root.join("../previews")
+    config.view_component.preview_paths << Rails.root.join("..", "previews")
 
-    config.autoload_paths << Rails.root.join("../test/forms")
-    config.autoload_paths << Rails.root.join("../test/test_helpers/components")
+    config.autoload_paths << Rails.root.join("..", "test", "forms")
+    config.autoload_paths << Rails.root.join("..", "test", "test_helpers", "components")
 
     config.action_dispatch.default_headers.clear
 
@@ -53,8 +53,8 @@ module Demo
             end
           end
 
-          assets += data.examples.each_with_object([]) do |rendered_example, memo|
-            form_constants = rendered_example.source.match(/([\w:]+Form)\.new/)&.captures || []
+          assets += data.scenarios.each_with_object([]) do |rendered_scenario, memo|
+            form_constants = rendered_scenario.source.match(/([\w:]+Form)\.new/)&.captures || []
             form_constants.each do |form_constant|
               path, = Kernel.const_source_location(form_constant)
               memo << { path: Pathname(path), language: :ruby }
@@ -90,7 +90,8 @@ module Demo
         ]
       }
 
-      config.lookbook.page_paths = [Rails.root.join("../previews/pages")]
+      config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]
+      config.lookbook.component_paths = [Primer::ViewComponents::Engine.root.join("app", "components")]
 
       ActiveSupport.on_load(:action_controller) do
         require "primer/yard/lookbook_docs_helper"

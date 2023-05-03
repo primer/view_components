@@ -6,3 +6,4 @@ pkg/
 test/
 !test/previews/
 docs/
+vendor/bundle
