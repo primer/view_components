@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.8
+
+### Patch Changes
+
+- [#1969](https://github.com/primer/view_components/pull/1969) [`37174d1b`](https://github.com/primer/view_components/commit/37174d1b97b20ffaa4b00080962a56726c6f6bed) Thanks [@jhunschejones](https://github.com/jhunschejones)! - Don't show segmented control item separator on first item
+
+* [#1943](https://github.com/primer/view_components/pull/1943) [`40912f6a`](https://github.com/primer/view_components/commit/40912f6a173a67a4fbd8aaab54962ea25821ba51) Thanks [@camertron](https://github.com/camertron)! - Additional accessibility fixes for NavList and ActionList
+
+- [#1965](https://github.com/primer/view_components/pull/1965) [`cd6d5ed4`](https://github.com/primer/view_components/commit/cd6d5ed48f3773e8532886422bc4b8b5e0e38321) Thanks [@langermank](https://github.com/langermank)! - Adjust background color for Button with Counter, fix small and large TextField visual alignment bugs
+
 ## 0.1.7
 
 ### Patch Changes
