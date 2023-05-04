@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   end
 
   scope path: Rails.env.production? ? "/view-components/rails-app/" : "/" do
+    # Lookbook requires that a root route be defined for the host app, so we define
+    # one here and point it at a dummy controller. Please don't remove this, it will
+    # break production.
+    root "home#index"
+
     get "/auto_complete", to: "auto_complete_test#index", as: :autocomplete_index
 
     resources :toggle_switch, only: [:create]
