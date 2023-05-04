@@ -9,6 +9,14 @@ module.exports = {
     require('postcss-mixins')({
         mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
     }),
+    require('postcss-custom-properties-fallback')({
+      importFrom: {
+        customProperties: {
+          // "newvar": "oldfallback"
+          '--text-body-size-medium': 'var(--old-var)'
+        }
+      },
+    }),
     require('postcss-preset-env')({
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
