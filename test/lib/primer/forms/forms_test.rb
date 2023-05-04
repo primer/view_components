@@ -41,7 +41,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     end
   end
 
-  def test_includes_the_given_note
+  def test_includes_the_given_caption
     render_preview :single_text_field_form
 
     assert_selector ".FormControl-caption", text: "The answer to life, the universe, and everything"
@@ -51,7 +51,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     render_preview :single_text_field_form
 
     caption_id = page.find_all(".FormControl-caption").first["id"]
-    assert_selector "input[aria-describedby='#{caption_id}']"
+    assert_selector "input[aria-describedby*='#{caption_id}']"
   end
 
   def test_renders_the_caption_template_when_present
@@ -76,7 +76,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert caption_ids.size == num_inputs, "Expected #{num_inputs} unique caption IDs, got #{caption_ids.size}"
 
     assert_selector("input", count: num_inputs) do |input|
-      caption_id = input["aria-describedby"]
+      caption_id = input["aria-describedby"].split.find { |id| id.start_with?("caption-") }
       assert_includes caption_ids, caption_id
       caption_ids.delete(caption_id)
     end
@@ -286,5 +286,24 @@ class Primer::Forms::FormsTest < Minitest::Test
     render_preview :multi_input_form
 
     assert_selector ".FormControl-radio-group-wrap + .FormControl"
+  end
+
+  def test_toggle_switch_button_labelled_by_label
+    render_preview(:example_toggle_switch_form)
+
+    label_id = page.find_css(".FormControl-label")[0].attributes["id"].value
+    assert_selector("toggle-switch button[aria-labelledby='#{label_id}']")
+  end
+
+  def test_toggle_switch_button_described_by_caption_and_validation_message
+    render_preview(:example_toggle_switch_form)
+
+    caption_id = page.find_css(".FormControl-caption")[0].attributes["id"].value
+    validation_id = page.find_css(".FormControl-inlineValidation")[0].attributes["id"].value
+
+    ids = page.find_css("toggle-switch button")[0].attributes["aria-describedby"].value.split
+
+    assert_includes ids, caption_id
+    assert_includes ids, validation_id
   end
 end
