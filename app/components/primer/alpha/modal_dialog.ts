@@ -96,6 +96,7 @@ export class ModalDialogElement extends HTMLElement {
     if (value) {
       if (this.open) return
       this.setAttribute('open', '')
+      this.setAttribute('aria-disabled', 'false')
       this.#overlayBackdrop?.classList.remove('Overlay--hidden')
       document.body.style.paddingRight = `${window.innerWidth - document.body.clientWidth}px`
       document.body.style.overflow = 'hidden'
@@ -107,6 +108,7 @@ export class ModalDialogElement extends HTMLElement {
     } else {
       if (!this.open) return
       this.removeAttribute('open')
+      this.setAttribute('aria-disabled', 'true')
       this.#overlayBackdrop?.classList.add('Overlay--hidden')
       document.body.style.paddingRight = '0'
       document.body.style.overflow = 'initial'
