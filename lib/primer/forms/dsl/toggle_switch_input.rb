@@ -29,6 +29,10 @@ module Primer
         def type
           :toggle_switch
         end
+
+        def validation_arguments
+          super.merge(role: "alert")
+        end
       end
     end
   end

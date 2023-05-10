@@ -31,17 +31,35 @@ class ToggleSwitchElement extends HTMLElement {
     return this.src != null
   }
 
-  toggle() {
+  @debounce(300)
+  async toggle() {
     if (this.isDisabled()) {
       return
     }
 
-    if (this.isRemote()) {
-      this.setLoadingState()
-      this.submitForm()
-    } else {
+    if (!this.isRemote()) {
       this.performToggle()
+      return
     }
+
+    // toggle immediately to tell screen readers the switch was clicked
+    this.performToggle()
+    this.setLoadingState()
+
+    try {
+      await this.submitForm()
+    } catch (error) {
+      if (error instanceof Error) {
+        // because we toggle immediately when the switch is clicked, toggle back to the
+        // old state on failure
+        this.setErrorState(error.message || 'An error occurred, please try again.')
+        this.performToggle()
+      }
+
+      return
+    }
+
+    this.setSuccessState()
   }
 
   turnOn(): void {
@@ -49,7 +67,7 @@ class ToggleSwitchElement extends HTMLElement {
       return
     }
 
-    this.switch.setAttribute('aria-checked', 'true')
+    this.switch.setAttribute('aria-pressed', 'true')
     this.classList.add('ToggleSwitch--checked')
   }
 
@@ -58,12 +76,12 @@ class ToggleSwitchElement extends HTMLElement {
       return
     }
 
-    this.switch.setAttribute('aria-checked', 'false')
+    this.switch.setAttribute('aria-pressed', 'false')
     this.classList.remove('ToggleSwitch--checked')
   }
 
   isOn(): boolean {
-    return this.switch.getAttribute('aria-checked') === 'true'
+    return this.switch.getAttribute('aria-pressed') === 'true'
   }
 
   isOff(): boolean {
@@ -71,15 +89,15 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   isDisabled(): boolean {
-    return this.switch.getAttribute('aria-disabled') === 'true'
+    return this.switch.getAttribute('disabled') != null
   }
 
   disable(): void {
-    this.switch.setAttribute('aria-disabled', 'true')
+    this.switch.setAttribute('disabled', 'disabled')
   }
 
   enable(): void {
-    this.switch.setAttribute('aria-disabled', 'false')
+    this.switch.removeAttribute('disabled')
   }
 
   private performToggle(): void {
@@ -91,9 +109,11 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   private setLoadingState(): void {
-    this.disable()
     this.errorIcon.setAttribute('hidden', 'hidden')
     this.loadingSpinner.removeAttribute('hidden')
+
+    const event = new CustomEvent('toggleSwitchLoading', {bubbles: true})
+    this.dispatchEvent(event)
   }
 
   private setSuccessState(): void {
@@ -116,10 +136,8 @@ class ToggleSwitchElement extends HTMLElement {
     }
 
     this.loadingSpinner.setAttribute('hidden', 'hidden')
-    this.enable()
   }
 
-  @debounce(300)
   private async submitForm() {
     const body = new FormData()
 
@@ -127,36 +145,27 @@ class ToggleSwitchElement extends HTMLElement {
       body.append(this.csrfField, this.csrf)
     }
 
-    body.append('value', this.isOn() ? '0' : '1')
+    body.append('value', this.isOn() ? '1' : '0')
+
+    if (!this.src) throw new Error('invalid src')
+
+    let response
 
     try {
-      if (!this.src) throw new Error('invalid src')
-
-      let response
-
-      try {
-        response = await fetch(this.src, {
-          credentials: 'same-origin',
-          method: 'POST',
-          headers: {
-            'Requested-With': 'XMLHttpRequest'
-          },
-          body
-        })
-      } catch (error) {
-        throw new Error('A network error occurred, please try again.')
-      }
-
-      if (response.ok) {
-        this.setSuccessState()
-        this.performToggle()
-      } else {
-        throw new Error(await response.text())
-      }
+      response = await fetch(this.src, {
+        credentials: 'same-origin',
+        method: 'POST',
+        headers: {
+          'Requested-With': 'XMLHttpRequest'
+        },
+        body
+      })
     } catch (error) {
-      if (error instanceof Error) {
-        this.setErrorState(error.message || 'An error occurred, please try again.')
-      }
+      throw new Error('A network error occurred, please try again.')
+    }
+
+    if (!response.ok) {
+      throw new Error(await response.text())
     }
   }
 }

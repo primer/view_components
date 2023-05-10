@@ -43,19 +43,19 @@ module Forms
     def test_toggle_switch_form_errors
       visit_preview(:example_toggle_switch_form)
 
-      find("#error-toggle toggle-switch").click
+      find("#error-toggle").click
       wait_for_toggle_switch_spinner
 
       assert_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
-      assert_selector("#error-toggle", text: "Bad CSRF token")
+      assert_selector(".FormControl-inlineValidation", text: "Bad CSRF token")
 
       page.evaluate_script(<<~JAVASCRIPT)
         document
-          .querySelector('#error-toggle toggle-switch')
+          .querySelector('toggle-switch#error-toggle')
           .setAttribute('csrf', 'let_me_in');
       JAVASCRIPT
 
-      find("#error-toggle toggle-switch").click
+      find("#error-toggle").click
       wait_for_toggle_switch_spinner
 
       refute_selector("#error-toggle [data-target='toggle-switch.errorIcon']")

@@ -3645,6 +3645,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
         "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page_with_relative_container",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page_with_relative_container",
+        "name": "middle_of_page_with_relative_container"
       }
     ],
     "subcomponents": [
@@ -3668,7 +3673,13 @@
             "name": "subtitle",
             "type": "String",
             "default": "`nil`",
-            "description": "Provides dditional context for the Overlay, also setting the `aria-describedby` attribute."
+            "description": "Provides additional context for the Overlay, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "overlay_id",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides the id of the overlay element so the close button can close it"
           },
           {
             "name": "size",

@@ -1,0 +1,19 @@
+<div style="width:100%; height: 400px; display: flex; justify-content: center; align-items: center;">
+  <div style="position:relative;">
+    <%= render(Primer::Alpha::Overlay.new(
+      title: title,
+      subtitle: subtitle,
+      role: role,
+      size: size,
+      placement: placement,
+      anchor_align: anchor_align,
+      anchor_side: anchor_side,
+      allow_out_of_bounds: allow_out_of_bounds,
+      visually_hide_title: visually_hide_title,
+    )) do |d| %>
+      <% d.with_header(title: title, size: header_size) %>
+      <% d.with_show_button { button_text } %>
+      <% d.with_body { body_text } %>
+    <% end %>
+  </div>
+</div>

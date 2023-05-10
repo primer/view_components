@@ -9,11 +9,9 @@
       <% end %>
     <% end %>
     <%= content %>
-    <% if @input.need_validation_element? %>
-      <%= content_tag(:div, **@input.validation_arguments) do %>
-        <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
-        <%= content_tag(:span, @input.validation_messages.first, **@input.validation_message_arguments) %>
-      <% end %>
+    <%= content_tag(:div, **@input.validation_arguments) do %>
+      <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+      <%= content_tag(:span, @input.invalid? ? @input.validation_messages.first : "", **@input.validation_message_arguments) %>
     <% end %>
     <%= render(Caption.new(input: @input)) %>
   <% end %>

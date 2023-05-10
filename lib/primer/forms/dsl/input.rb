@@ -47,7 +47,7 @@ module Primer
 
         include Primer::ClassNameHelper
 
-        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control
+        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control, :base_id
 
         alias form_control? form_control
 
@@ -107,11 +107,11 @@ module Primer
 
           @input_arguments[:invalid] = "true" if invalid?
 
-          base_id = SecureRandom.uuid
+          @base_id = SecureRandom.uuid
 
           @ids = {}.tap do |id_map|
-            id_map[:validation] = "validation-#{base_id}" if invalid?
-            id_map[:caption] = "caption-#{base_id}" if caption? || caption_template?
+            id_map[:validation] = "validation-#{@base_id}"
+            id_map[:caption] = "caption-#{@base_id}" if caption? || caption_template?
           end
 
           add_input_aria(:required, true) if required?
@@ -262,10 +262,6 @@ module Primer
 
         def input?
           true
-        end
-
-        def need_validation_element?
-          invalid?
         end
 
         def validation_arguments

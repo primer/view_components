@@ -70,17 +70,17 @@
   }
 }
 
-.ToggleSwitch-track[aria-checked='true'][aria-disabled='true'] {
+.ToggleSwitch-track[aria-pressed='true'][disabled] {
   background-color: var(--color-switch-track-disabled-bg);
   color: var(--color-switch-track-checked-disabled-fg);
   border-color: transparent;
 }
 
-.ToggleSwitch-track[aria-checked='true'] {
+.ToggleSwitch-track[aria-pressed='true'] {
   background-color: var(--color-switch-track-checked-bg);
   border-color: var(--color-switch-track-checked-border);
 
-  &:not([aria-disabled='true']) {
+  &:not([disabled]) {
     &:hover {
       background-color: var(--color-switch-track-checked-hover-bg);
     }
@@ -105,7 +105,7 @@
   }
 }
 
-.ToggleSwitch-track[aria-disabled='true'] {
+.ToggleSwitch-track[disabled] {
   cursor: not-allowed;
   background-color: var(--color-switch-track-disabled-bg);
   border-color: transparent;

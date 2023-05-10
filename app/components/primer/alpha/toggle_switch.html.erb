@@ -1,6 +1,6 @@
 <%= render(Primer::BaseComponent.new(tag: "toggle-switch", **@system_arguments)) do %>
   <span class="ToggleSwitch-statusIcon">
-    <%= render(Primer::Beta::Octicon.new(size: :small, color: :danger, icon: :alert, hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
+    <%= render(Primer::Beta::Octicon.new(size: :small, color: :danger, icon: :"alert-fill", hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
     <%= render(Primer::Beta::Spinner.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
   </span>
   <%= render(Primer::Beta::Text.new(aria: { hidden: true }, classes: "ToggleSwitch-status")) do %>
@@ -8,7 +8,7 @@
     <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content("Off")) %>
   <% end %>
 
-  <%= render(Primer::BaseComponent.new(tag: :button, classes: "ToggleSwitch-track", role: "switch", data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, aria: { checked: on?, disabled: disabled?, label: "Switch" })) do %>
+  <%= render(Primer::BaseComponent.new(tag: :button, classes: "ToggleSwitch-track", disabled: disabled?, data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, **@aria_arguments)) do %>
     <%= render(Primer::Box.new(classes: "ToggleSwitch-icons", aria: { hidden: true })) do %>
       <%= render(Primer::Box.new(classes: "ToggleSwitch-lineIcon")) do %>
         <%= render(Primer::BaseComponent.new(
