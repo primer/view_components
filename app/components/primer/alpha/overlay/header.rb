@@ -14,15 +14,16 @@ module Primer
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
         # @param title [String] Describes the content of the Overlay.
-        # @param subtitle [String] Provides dditional context for the Overlay, also setting the `aria-describedby` attribute.
+        # @param subtitle [String] Provides additional context for the Overlay, also setting the `aria-describedby` attribute.
+        # @param overlay_id [String] Provides the id of the overlay element so the close button can close it
         # @param size [Symbol] The size of the Header. <%= one_of(Primer::Alpha::Overlay::Header::SIZE_OPTIONS) %>
         # @param divider [Boolean] Show a divider between the header and body.
         # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
-          overlay_id:,
           id:,
           title:,
+          overlay_id: nil,
           subtitle: nil,
           size: DEFAULT_SIZE,
           divider: false,
