@@ -29,7 +29,7 @@ module Primer
           visually_hide_title: false,
           **system_arguments
         )
-          @overlay_id = id
+          @overlay_id = overlay_id
           @id = id
           @title = title
           @subtitle = subtitle
