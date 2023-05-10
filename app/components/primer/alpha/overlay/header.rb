@@ -20,6 +20,7 @@ module Primer
         # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
+          overlay_id:,
           id:,
           title:,
           subtitle: nil,
@@ -28,6 +29,7 @@ module Primer
           visually_hide_title: false,
           **system_arguments
         )
+          @overlay_id = id
           @id = id
           @title = title
           @subtitle = subtitle
