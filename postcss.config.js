@@ -1,4 +1,5 @@
 const path = require('path')
+const importedJSONFromPrimitives = require('./node_modules/@primer/primitives/tokens-next-private/fallbacks/color-fallbacks.json')
 
 module.exports = {
   map: {
@@ -8,6 +9,11 @@ module.exports = {
     require('postcss-import'),
     require('postcss-mixins')({
         mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
+    }),
+    require('postcss-custom-properties-fallback')({
+      importFrom: {
+        customProperties: importedJSONFromPrimitives
+      },
     }),
     require('postcss-preset-env')({
       stage: 2,
