@@ -8,8 +8,10 @@
         <h2 class="Overlay-description"><%= @subtitle %></h2>
       <% end %>
     </div>
-    <div class="Overlay-actionWrap">
-      <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "popovertarget": @overlay_id, "popovertargetaction": "hide") %>
-    </div>
+    <% if @overlay_id %>
+      <div class="Overlay-actionWrap">
+        <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "popovertarget": @overlay_id, "popovertargetaction": "hide") %>
+      </div>
+    <% end %>
   </div>
 <% end %>
