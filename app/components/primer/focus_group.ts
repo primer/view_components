@@ -115,9 +115,8 @@ export default class FocusGroupElement extends HTMLElement {
           el = el.closest(`[popover]:not(${popoverSelector})`)
           if (el?.popover === 'auto') {
             el.showPopover()
-          } else {
-            el = el?.parentElement || null
           }
+          el = el?.parentElement || null
         } while (el)
       }
       focusEl?.focus()
