@@ -1411,6 +1411,11 @@
         "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page",
         "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page"
+      },
+      {
+        "inspect_path": "/lookbook/inspect/primer/alpha/overlay/middle_of_page_with_relative_container",
+        "preview_path": "/lookbook/preview/primer/alpha/overlay/middle_of_page_with_relative_container",
+        "name": "middle_of_page_with_relative_container"
       }
     ]
   },
