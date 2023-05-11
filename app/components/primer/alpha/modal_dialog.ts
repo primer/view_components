@@ -23,6 +23,10 @@ function clickHandler(event: Event) {
     if (dialog instanceof ModalDialogElement) {
       dialog.openButton = button
       dialog.show()
+      // A buttons default behaviour in some browsers it to send a pointer event
+      // If the behaviour is allowed through the dialog will be shown but then
+      // quickly hidden- as if it were never shown. This prevents that.
+      event.preventDefault()
       return
     }
   }
