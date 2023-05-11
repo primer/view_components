@@ -4,10 +4,10 @@ const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="men
 
 const popoverSelector = (() => {
   try {
-    document.querySelector(':open')
-    return ':open'
+    document.querySelector(':popover-open')
+    return ':popover-open'
   } catch {
-    return '.\\:open'
+    return '.\\:popover-open'
   }
 })()
 
@@ -121,9 +121,8 @@ export default class FocusGroupElement extends HTMLElement {
           el = el.closest(`[popover]:not(${popoverSelector})`)
           if (el?.popover === 'auto') {
             el.showPopover()
-          } else {
-            el = el?.parentElement || null
           }
+          el = el?.parentElement || null
         } while (el)
       }
       focusEl?.focus()
