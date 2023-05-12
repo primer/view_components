@@ -106,8 +106,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--iconOnly.Button--large"
     ],
     Primer::Beta::ButtonGroup => [
-      ".BtnGroup-item.btn.selected",
-      ".BtnGroup-parent"
+      ".ButtonGroup"
     ],
     Primer::Beta::Avatar => [
       ".avatar-link",
