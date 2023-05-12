@@ -49,9 +49,11 @@ module Primer
 
         preview_methods = PREVIEW_MAP[component]
         preview_erbs = preview_methods.map do |preview_method|
-          if !Primer::Forms::FormsPreview.instance_methods.include?(preview_method)
+          # rubocop:disable Style/IfUnlessModifier
+          if Primer::Forms::FormsPreview.instance_methods.exclude?(preview_method)
             raise "Preview '#{preview_method}' does not exist in Primer::Forms::FormsPreview"
           end
+          # rubocop:enable Style/IfUnlessModifier
 
           "<%= embed Primer::Forms::FormsPreview, #{preview_method.inspect} %>"
         end
