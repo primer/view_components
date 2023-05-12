@@ -47,6 +47,11 @@ module Primer
           component.with_button(icon: "triangle-down", "aria-label": "button 3")
         end
       end
+
+      # @label Split button action menu
+      def action_menus
+        render_with_template(locals: {})
+      end
     end
   end
 end

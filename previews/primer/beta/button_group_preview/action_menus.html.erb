@@ -1,0 +1,8 @@
+<%= render(Primer::Beta::ButtonGroup.new()) do |component| %>
+  <% component.with_button() { "Main menu" } %>
+  <% component.with_button(icon: "triangle-down", "aria-label": "secondary menu", data: { "menu-id": "my-id" }) %>
+<% end %>
+
+<%= render(Primer::Alpha::ActionMenu.new(anchor_align: :end, menu_id: "my-id")) do |component| %>
+  <% component.with_item(label: "Item", tag: :button, value: "") %>
+<% end %>
