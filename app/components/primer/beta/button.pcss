@@ -333,6 +333,21 @@ summary.Button {
     background-color: var(--color-btn-danger-disabled-bg);
     border-color: var(--color-btn-border);
   }
+
+  & .Counter {
+    color: var(--color-btn-danger-counter-fg);
+    background-color: var(--color-btn-danger-counter-bg);
+
+    &:hover:not(:disabled) {
+      color: var(--color-btn-danger-hover-counter-fg);
+      background-color: var(--color-btn-danger-hover-counter-bg);
+    }
+
+    &:disabled {
+      color: var(--color-btn-danger-disabled-counter-fg);
+      background-color: var(--color-btn-danger-disabled-counter-bg);
+    }
+  }
 }
 
 .Button--iconOnly {
