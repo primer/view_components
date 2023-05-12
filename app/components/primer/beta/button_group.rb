@@ -8,45 +8,45 @@ module Primer
 
       # Required list of buttons to be rendered.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>
       renders_many :buttons, lambda { |**kwargs|
-        kwargs[:group_item] = true
-        kwargs[:size] = @size
+                               kwargs[:size] = @size
+                               kwargs[:scheme] = @scheme
 
-        # rubocop:disable Primer/ComponentNameMigration
-        Primer::ButtonComponent.new(**kwargs)
-        # rubocop:enable Primer/ComponentNameMigration
-      }
+                               if kwargs[:icon]
+                                 Primer::Beta::IconButton.new(**kwargs)
+                               else
+                                 Primer::Beta::Button.new(**kwargs)
+                               end
+                             }
 
       # @example Default
       #
       #   <%= render(Primer::Beta::ButtonGroup.new) do |component| %>
-      #     <% component.with_button { "Default" } %>
-      #     <% component.with_button(scheme: :primary) { "Primary" } %>
-      #     <% component.with_button(scheme: :danger) { "Danger" } %>
-      #     <% component.with_button(scheme: :outline) { "Outline" } %>
-      #     <% component.with_button(classes: "custom-class") { "Custom class" } %>
+      #     <% component.with_button { "Button 1" } %>
+      #     <% component.with_button { "Button 2" } %>
+      #     <% component.with_button { "Button 3" } %>
       #   <% end %>
       #
       # @example Sizes
       #
       #   <%= render(Primer::Beta::ButtonGroup.new(size: :small)) do |component| %>
-      #     <% component.with_button { "Default" } %>
-      #     <% component.with_button(scheme: :primary) { "Primary" } %>
-      #     <% component.with_button(scheme: :danger) { "Danger" } %>
-      #     <% component.with_button(scheme: :outline) { "Outline" } %>
+      #     <% component.with_button { "Button 1" } %>
+      #     <% component.with_button { "Button 2" } %>
+      #     <% component.with_button { "Button 3" } %>
       #   <% end %>
       #
-      # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
-      # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+      # @param scheme [Symbol] DEPRECATED. <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
+      # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(variant: nil, size: Primer::ButtonComponent::DEFAULT_SIZE, **system_arguments)
-        @size = variant || size
+      def initialize(scheme: Primer::Beta::Button::DEFAULT_SCHEME, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
+        @size = size
+        @scheme = scheme
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
 
         @system_arguments[:classes] = class_names(
-          "BtnGroup",
+          "ButtonGroup",
           system_arguments[:classes]
         )
       end

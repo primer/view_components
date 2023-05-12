@@ -6,13 +6,13 @@ module Primer
     class ButtonGroupPreview < ViewComponent::Preview
       # @label Playground
       #
-      # @param size [Symbol] select [medium, small]
-      def playground(size: :medium)
-        render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
-          component.with_button { "Button" }
-          component.with_button(scheme: :primary) { "Primary" }
-          component.with_button(scheme: :danger) { "Danger" }
-          component.with_button(scheme: :outline) { "Outline" }
+      # @param size [Symbol] select [small, medium, large]
+      # @param scheme [Symbol] select [default, primary, secondary, danger, invisible]
+      def playground(size: :medium, scheme: :default)
+        render(Primer::Beta::ButtonGroup.new(size: size, scheme: scheme)) do |component|
+          component.with_button { "Button 1" }
+          component.with_button { "Button 2" }
+          component.with_button { "Button 3" }
         end
       end
 
@@ -21,10 +21,30 @@ module Primer
       # @param size [Symbol] select [medium, small]
       def default(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
-          component.with_button { "Button" }
-          component.with_button(scheme: :primary) { "Primary" }
-          component.with_button(scheme: :danger) { "Danger" }
-          component.with_button(scheme: :outline) { "Outline" }
+          component.with_button { "Button 1" }
+          component.with_button { "Button 2" }
+          component.with_button { "Button 3" }
+        end
+      end
+
+      # @label Split button
+      #
+      # @param size [Symbol] select [medium, small]
+      def split_button(size: :medium)
+        render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
+          component.with_button { "Button 1" }
+          component.with_button(icon: "triangle-down", "aria-label": "menu")
+        end
+      end
+
+      # @label Icon buttons
+      #
+      # @param size [Symbol] select [medium, small]
+      def icon_buttons(size: :medium)
+        render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
+          component.with_button(icon: "triangle-down", "aria-label": "button 1")
+          component.with_button(icon: "triangle-down", "aria-label": "button 2")
+          component.with_button(icon: "triangle-down", "aria-label": "button 3")
         end
       end
     end

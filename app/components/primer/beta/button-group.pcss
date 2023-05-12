@@ -1,0 +1,28 @@
+.ButtonGroup {
+  display: inline-flex;
+
+  & button {
+    margin-inline-end: -1px;
+    position: relative;
+    border-radius: 0;
+
+    & :focus,
+    & :active,
+    & :hover {
+      z-index: 1;
+    }
+  }
+
+  & > :first-child,
+  & > :first-child.Button-withTooltip button {
+    border-top-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+  }
+
+  & > :last-child,
+  & > :last-child.Button-withTooltip button {
+    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium, 6px);
+  }
+
+}
