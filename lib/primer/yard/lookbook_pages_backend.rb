@@ -10,7 +10,7 @@ module Primer
       PREVIEW_MAP = {
         Primer::Alpha::TextField => [:single_text_field_form, :multi_text_field_form],
         Primer::Alpha::TextArea => [],
-        Primer::Alpha::Select => [:select_field_form],
+        Primer::Alpha::Select => [:select_form],
         Primer::Alpha::MultiInput => [:multi_input_form],
         Primer::Alpha::RadioButton => [:radio_button_with_nested_form],
         Primer::Alpha::RadioButtonGroup => [:radio_button_group_form],
