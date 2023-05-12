@@ -42,15 +42,10 @@ module Primer
       # @param size [Symbol] select [medium, small]
       def icon_buttons(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
-          component.with_button(icon: "triangle-down", "aria-label": "button 1")
-          component.with_button(icon: "triangle-down", "aria-label": "button 2")
-          component.with_button(icon: "triangle-down", "aria-label": "button 3")
+          component.with_button(icon: :note, "aria-label": "button 1")
+          component.with_button(icon: :rows, "aria-label": "button 2")
+          component.with_button(icon: "sort-desc", "aria-label": "button 3")
         end
-      end
-
-      # @label Split button action menu
-      def action_menus
-        render_with_template(locals: {})
       end
     end
   end
