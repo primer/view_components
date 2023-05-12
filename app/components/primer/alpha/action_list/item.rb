@@ -42,9 +42,7 @@ module Primer
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: lambda { |**system_arguments|
-            Primer::Beta::Octicon.new(classes: "ActionListItem-visual ActionListItem-visual--leading", **system_arguments)
-          },
+          icon: Primer::Beta::Octicon,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
