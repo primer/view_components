@@ -70,6 +70,7 @@
     "Primer::Beta::BorderBox"
   ],
   "ButtonGroup": [
+    "Primer::Beta::ButtonGroup",
     "Primer::Beta::Button-group"
   ],
   "Label--info": [
