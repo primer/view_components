@@ -238,143 +238,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
-        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::FormWrapper",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListFormWrapper",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Separator with optional text rendered above groups or between individual items.",
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
-        "description": "Heading used to describe each sub list within an action list.",
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::Heading",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListHeading",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Sub list title."
-          },
-          {
-            "name": "heading_level",
-            "type": "Integer",
-            "default": "`3`",
-            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Optional sub list description."
-          },
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-          {
-            "name": "title_id",
-            "description": "Returns the value of attribute title_id.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "subtitle_id",
-            "description": "Returns the value of attribute subtitle_id.",
-            "parameters": [
-
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item",
         "description": "An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters.",
         "is_form_component": false,
@@ -606,6 +469,143 @@
 
             ]
           }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
+        "description": "Heading used to describe each sub list within an action list.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::Heading",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Sub list title."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`3`",
+            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional sub list description."
+          },
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "title_id",
+            "description": "Returns the value of attribute title_id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "subtitle_id",
+            "description": "Returns the value of attribute subtitle_id.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
+        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::FormWrapper",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListFormWrapper",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Separator with optional text rendered above groups or between individual items.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
         ],
         "previews": [
 
@@ -1810,6 +1810,63 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Header",
+        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Dialog::Header",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the dialog."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
         "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "is_form_component": false,
@@ -1861,63 +1918,6 @@
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
         "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Header",
-        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Dialog::Header",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the dialog."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -3768,18 +3768,54 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
+        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "is_form_component": false,
         "is_published": true,
         "requires_js": false,
-        "component": "Overlay::Body",
+        "component": "Overlay::Header",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+        "short_name": "OverlayHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
         "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the Overlay."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides additional context for the Overlay, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "overlay_id",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides the id of the overlay element so the close button can close it"
+          },
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "`:medium`",
+            "description": "The size of the Header. One of `:large` or `:medium`."
+          },
+          {
+            "name": "divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -3846,54 +3882,18 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Header",
-        "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "is_form_component": false,
         "is_published": true,
         "requires_js": false,
-        "component": "Overlay::Header",
+        "component": "Overlay::Body",
         "status": "alpha",
         "a11y_reviewed": false,
-        "short_name": "OverlayHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/header/default/",
+        "short_name": "OverlayBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
         "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the Overlay."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides additional context for the Overlay, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "overlay_id",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides the id of the overlay element so the close button can close it"
-          },
-          {
-            "name": "size",
-            "type": "Symbol",
-            "default": "`:medium`",
-            "description": "The size of the Header. One of `:large` or `:medium`."
-          },
-          {
-            "name": "divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
           {
             "name": "system_arguments",
             "type": "Hash",
