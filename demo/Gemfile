@@ -10,6 +10,7 @@ gem "sprockets"
 gem "sprockets-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 if rails_version != "main"
+  gem "actioncable", rails_version
   gem "actionview", rails_version
   gem "activemodel", rails_version
   gem "activesupport", rails_version
@@ -17,6 +18,7 @@ if rails_version != "main"
 else
   git "https://github.com/rails/rails", ref: "main" do
     # rubocop:disable Bundler/DuplicatedGem
+    gem "actioncable"
     gem "actionview"
     gem "activemodel"
     gem "activerecord"
@@ -36,7 +38,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
 gem "view_component", '>= 3.0.0.rc5'
-gem "lookbook", "~> 1.5.3" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.0.0" unless rails_version.to_f < 7
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -53,4 +55,6 @@ group :development do
   gem "stimulus-rails"
 
   gem "foreman"
+
+  gem "listen"
 end

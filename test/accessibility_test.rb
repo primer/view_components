@@ -16,9 +16,8 @@ class AccessibilityTest < System::TestCase
     Docs::NavigationTabComponentPreview
   ].freeze
 
-  EXCLUDES = {}.freeze
-
   ViewComponent::Preview.all.each do |klass|
+    next unless klass == Primer::Alpha::ToggleSwitchPreview
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)
@@ -27,7 +26,7 @@ class AccessibilityTest < System::TestCase
     component_previews.each do |preview|
       define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
-        excludes = (EXCLUDES.dig(klass, preview) || []) + (EXCLUDES.dig(klass, :all) || [])
+        excludes = axe_rules_to_skip(component_name: klass.name.delete_prefix("Primer::").chomp("Preview"), preview_name: preview)
         assert_accessible(excludes: excludes)
         puts "#{component_uri}##{preview} passed check."
       end

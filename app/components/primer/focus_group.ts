@@ -4,10 +4,10 @@ const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="men
 
 const popoverSelector = (() => {
   try {
-    document.querySelector(':open')
-    return ':open'
+    document.querySelector(':popover-open')
+    return ':popover-open'
   } catch {
-    return '.\\:open'
+    return '.\\:popover-open'
   }
 })()
 
@@ -79,23 +79,29 @@ export default class FocusGroupElement extends HTMLElement {
       if (key === 'Up' || key === 'ArrowUp') {
         if (direction === 'vertical' || direction === 'both') {
           index -= index < 0 ? 0 : 1
+          event.preventDefault()
         }
       } else if (key === 'Down' || key === 'ArrowDown') {
         if (direction === 'vertical' || direction === 'both') {
           index += 1
+          event.preventDefault()
         }
       } else if (event.key === 'Left' || event.key === 'ArrowLeft') {
         if (direction === 'horizontal' || direction === 'both') {
           index -= 1
+          event.preventDefault()
         }
       } else if (event.key === 'Right' || event.key === 'ArrowRight') {
         if (direction === 'horizontal' || direction === 'both') {
           index += 1
+          event.preventDefault()
         }
       } else if (event.key === 'Home' || event.key === 'PageUp') {
         index = 0
+        event.preventDefault()
       } else if (event.key === 'End' || event.key === 'PageDown') {
         index = items.length - 1
+        event.preventDefault()
       } else if (this.mnemonics && printable.test(key)) {
         const mnemonic = key.toLowerCase()
         const offset = index > 0 && getMnemonicFor(event.target as Element) === mnemonic ? index : 0
@@ -115,9 +121,8 @@ export default class FocusGroupElement extends HTMLElement {
           el = el.closest(`[popover]:not(${popoverSelector})`)
           if (el?.popover === 'auto') {
             el.showPopover()
-          } else {
-            el = el?.parentElement || null
           }
+          el = el?.parentElement || null
         } while (el)
       }
       focusEl?.focus()

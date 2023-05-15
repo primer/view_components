@@ -66,6 +66,13 @@ module Primer
           SIZE_MAPPINGS[@size]
         )
 
+        @aria_arguments = {
+          aria: merge_aria(
+            @system_arguments,
+            aria: { pressed: on? }
+          )
+        }
+
         @system_arguments[:src] = @src if @src
 
         return unless @src && @csrf_token

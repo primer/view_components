@@ -94,6 +94,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |divider: false, size: :medium, visually_hide_title: @visually_hide_title, **system_arguments|
         Primer::Alpha::Overlay::Header.new(
+          overlay_id: @id,
           id: title_id,
           title: @title,
           subtitle: @subtitle,

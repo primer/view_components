@@ -57,10 +57,6 @@ module Primer
           !!@leading_visual
         end
 
-        def need_validation_element?
-          super || auto_check_src.present?
-        end
-
         def validation_arguments
           if auto_check_src.present?
             super.merge(
