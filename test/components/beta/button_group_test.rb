@@ -15,7 +15,7 @@ class PrimerBetaButtonGroupTest < Minitest::Test
     render_inline(Primer::Beta::ButtonGroup.new) { |component| component.with_button { "Button" } }
 
     assert_selector("div.ButtonGroup") do
-      assert_selector("button.Button", text: "Button")
+      assert_selector("button.Button--secondary.Button", text: "Button")
     end
   end
 
@@ -28,10 +28,10 @@ class PrimerBetaButtonGroupTest < Minitest::Test
     end
 
     assert_selector("div.ButtonGroup") do
-      assert_selector("button.Button", text: "Button")
-      assert_selector("button.Button.Button--primary", text: "Primary")
-      assert_selector("button.Button.Button--danger", text: "Danger")
-      assert_selector("button.Button.custom-class", text: "Custom class")
+      assert_selector("button.Button--secondary.Button", text: "Button")
+      assert_selector("button.Button--primary.Button", text: "Primary")
+      assert_selector("button.Button--danger.Button", text: "Danger")
+      assert_selector("button.custom-class", text: "Custom class")
     end
   end
 
@@ -48,8 +48,8 @@ class PrimerBetaButtonGroupTest < Minitest::Test
     end
 
     assert_selector("div.ButtonGroup") do
-      assert_selector("button.Button.Button-small", text: "Medium")
-      assert_selector("button.Button.Button-small", text: "Large")
+      assert_selector("button.Button-small.Button", text: "Medium")
+      assert_selector("button.Button-small.Button", text: "Large")
     end
   end
 
@@ -60,8 +60,8 @@ class PrimerBetaButtonGroupTest < Minitest::Test
     end
 
     assert_selector("div.ButtonGroup") do
-      assert_selector("button.Button.Button--primary", text: "Primary")
-      assert_selector("button.Button.Button--primary", text: "Danger")
+      assert_selector("button.Button--primary.Button", text: "Primary")
+      assert_selector("button.Button--primary.Button", text: "Danger")
     end
   end
 end
