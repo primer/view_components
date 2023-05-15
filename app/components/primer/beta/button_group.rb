@@ -40,8 +40,8 @@ module Primer
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(scheme: Primer::Beta::Button::DEFAULT_SCHEME, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
-        @size = fetch_or_fallback(SIZE_OPTIONS, scheme, DEFAULT_SIZE)
-        @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
+        @size = size
+        @scheme = scheme
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
 
