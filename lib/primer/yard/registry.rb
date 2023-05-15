@@ -89,6 +89,10 @@ module Primer
       def a11y_reviewed?
         metadata[:a11y_reviewed]
       end
+
+      def manifest_entry
+        @manifest_entry ||= ComponentManifest.ref_for(component)
+      end
     end
 
     # Wrapper around an instance of YARD::Registry that provides easy access to component
