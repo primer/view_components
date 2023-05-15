@@ -10,15 +10,15 @@ module Primer
       #
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>
       renders_many :buttons, lambda { |**kwargs|
-                               kwargs[:size] = @size
-                               kwargs[:scheme] = @scheme
+        kwargs[:size] = @size
+        kwargs[:scheme] = @scheme
 
-                               if kwargs[:icon]
-                                 Primer::Beta::IconButton.new(**kwargs)
-                               else
-                                 Primer::Beta::Button.new(**kwargs)
-                               end
-                             }
+        if kwargs[:icon]
+          Primer::Beta::IconButton.new(**kwargs)
+        else
+          Primer::Beta::Button.new(**kwargs)
+        end
+      }
 
       # @example Default
       #
