@@ -60,4 +60,18 @@ class PrimerBetaButtonGroupTest < Minitest::Test
       assert_selector("button.Button--primary.Button", text: "Danger")
     end
   end
+
+  def test_button_with_icon_button
+    render_inline(Primer::Beta::ButtonGroup.new) do |component|
+      component.with_button { "Button" }
+      component.with_button(icon: :star, "aria-label": "Icon button")
+    end
+
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button", text: "Button")
+      assert_selector("Button-withTooltip") do
+        assert_selector(".octicon.octicon-star")
+      end
+    end
+  end
 end
