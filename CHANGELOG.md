@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 0.1.9
+
+### Patch Changes
+
+- [#1967](https://github.com/primer/view_components/pull/1967) [`20890415`](https://github.com/primer/view_components/commit/2089041551f0682b7c4cfa27a8656e148eec69ff) Thanks [@camertron](https://github.com/camertron)! - Toggle switch accessibility fixes
+
+* [#2009](https://github.com/primer/view_components/pull/2009) [`65745bf4`](https://github.com/primer/view_components/commit/65745bf4c8044806a23e741eac0daf8e1fe65d53) Thanks [@camertron](https://github.com/camertron)! - Fix embedded example in SelectInput docs
+
+- [#2011](https://github.com/primer/view_components/pull/2011) [`a1ca6fd0`](https://github.com/primer/view_components/commit/a1ca6fd0de5789f2b80fbc03257487dbe255b6f5) Thanks [@camertron](https://github.com/camertron)! - Make ActionList leading visual icons the same color as the item text.
+
+* [#1998](https://github.com/primer/view_components/pull/1998) [`a23d5533`](https://github.com/primer/view_components/commit/a23d553372e08dbd57a0d4ad890b38c26d08674f) Thanks [@keithamus](https://github.com/keithamus)! - Fix style bug in popovers using native popover
+
+- [#1996](https://github.com/primer/view_components/pull/1996) [`aeb9d2aa`](https://github.com/primer/view_components/commit/aeb9d2aa50238ade6b018b53a816d2c8b11e6457) Thanks [@keithamus](https://github.com/keithamus)! - Fix Dialogs aria-disabled attribute
+
+* [#2003](https://github.com/primer/view_components/pull/2003) [`52ba2505`](https://github.com/primer/view_components/commit/52ba2505ca9897708357c5ed22a7bee0de4657c5) Thanks [@keithamus](https://github.com/keithamus)! - Fix positioning for native popovers
+
+- [#1994](https://github.com/primer/view_components/pull/1994) [`064b0dea`](https://github.com/primer/view_components/commit/064b0dea7267a00ed5321ac9e1fe020f672ee085) Thanks [@keithamus](https://github.com/keithamus)! - Fix Overlay close buttons
+
+* [#1995](https://github.com/primer/view_components/pull/1995) [`546df103`](https://github.com/primer/view_components/commit/546df103b50309ee8f9b6398707cd28eb99dcd98) Thanks [@keithamus](https://github.com/keithamus)! - Prevent page scrolling when using arrow keys in an ActionMenu
+
+- [#1990](https://github.com/primer/view_components/pull/1990) [`15553fa9`](https://github.com/primer/view_components/commit/15553fa9d8f01a200053ddc45d1fc62e4da02738) Thanks [@jonrohan](https://github.com/jonrohan)! - Add custom properties fallback plugin to fallback primitives v8 colors
+
+* [#1987](https://github.com/primer/view_components/pull/1987) [`01ad9325`](https://github.com/primer/view_components/commit/01ad932570295d03dd927646483c2f10b6fe6760) Thanks [@langermank](https://github.com/langermank)! - add padding back to autocomplete
+
+- [#2002](https://github.com/primer/view_components/pull/2002) [`ef2540a1`](https://github.com/primer/view_components/commit/ef2540a1408c37e8d67fefcad62adcb1d99d938c) Thanks [@keithamus](https://github.com/keithamus)! - Fix focus groups when using native `popover`
+
+* [#2004](https://github.com/primer/view_components/pull/2004) [`0cc69107`](https://github.com/primer/view_components/commit/0cc691072892f194f58796bef87eb832ea92a6d4) Thanks [@keithamus](https://github.com/keithamus)! - Fix bug where dialogs aren't shown due to keydown and pointer events firing
+
 ## 0.1.8
 
 ### Patch Changes
