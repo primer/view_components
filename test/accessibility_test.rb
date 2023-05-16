@@ -17,7 +17,6 @@ class AccessibilityTest < System::TestCase
   ].freeze
 
   ViewComponent::Preview.all.each do |klass|
-    next unless klass == Primer::Alpha::ToggleSwitchPreview
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)
