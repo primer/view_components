@@ -1,19 +1,19 @@
 /*
  *= require_tree .
  *= require_self
- *= require ../node_modules/@primer/css/dist/color-modes.css
- *= require ../node_modules/@primer/css/dist/base.css
- *= require ../node_modules/@primer/css/dist/buttons.css
- *= require ../node_modules/@primer/css/dist/layout.css
- *= require ../node_modules/@primer/css/dist/utilities.css
- *= require ../node_modules/@primer/css/dist/markdown.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/base/size/size.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/base/typography/typography.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/border.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/breakpoints.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size-coarse.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size-fine.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/size/viewport.css
- *= require ../node_modules/@primer/primitives/tokens-next-private/css/functional/typography/typography.css
+ *= require ../../../../node_modules/@primer/css/dist/color-modes.css
+ *= require ../../../../node_modules/@primer/css/dist/base.css
+ *= require ../../../../node_modules/@primer/css/dist/buttons.css
+ *= require ../../../../node_modules/@primer/css/dist/layout.css
+ *= require ../../../../node_modules/@primer/css/dist/utilities.css
+ *= require ../../../../node_modules/@primer/css/dist/markdown.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/base/size/size.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/base/typography/typography.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/border.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/breakpoints.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size-coarse.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size-fine.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/size.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/size/viewport.css
+ *= require ../../../../node_modules/@primer/primitives/tokens-next-private/css/functional/typography/typography.css
 */
