@@ -103,6 +103,7 @@ module System
       results = driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];
         #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
+        #{File.read('node_modules/@github/axe-github/dist/configure-browser/configure-browser.js') unless axe_exists}
         // Remove cyclic references
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value#examples
         const getCircularReplacer = () => {
