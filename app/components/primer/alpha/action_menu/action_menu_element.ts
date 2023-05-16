@@ -1,14 +1,5 @@
 import '@github/include-fragment-element'
 
-const popoverSelector = (() => {
-  try {
-    document.querySelector(':popover-open')
-    return ':popover-open'
-  } catch {
-    return '.\\:popover-open'
-  }
-})()
-
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
   label: string | null | undefined
@@ -112,7 +103,7 @@ export class ActionMenuElement extends HTMLElement {
       }
     }
 
-    if (!this.popoverElement?.matches(popoverSelector)) return
+    if (!this.popoverElement?.matches(':popover-open')) return
 
     if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
       this.popoverElement?.hidePopover()
