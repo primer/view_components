@@ -129,7 +129,7 @@ module Primer
         end
 
         def ref_for(klass)
-          ref_cache[klass] ||= ComponentRef.new(klass, COMPONENTS[klass])
+          ref_cache[klass] ||= ComponentRef.new(klass, COMPONENTS.fetch(klass, {}))
         end
 
         private
