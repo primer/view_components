@@ -2,12 +2,12 @@ import { withPrefix } from "gatsby"
 import React from 'react'
 import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
-import '@primer/css/dist/primitives.css'
-import '@primer/css/dist/color-modes.css'
-import '@primer/css/dist/base.css'
-import '@primer/css/dist/buttons.css' // still needed for ButtonGroup, CloseButton, Details, etc.
-import '@primer/css/dist/utilities.css'
-import '@primer/css/dist/markdown.css'
+import '../node_modules/@primer/css/dist/primitives.css'
+import '../node_modules/@primer/css/dist/color-modes.css'
+import '../node_modules/@primer/css/dist/base.css'
+import '../node_modules/@primer/css/dist/buttons.css' // still needed for ButtonGroup, CloseButton, Details, etc.
+import '../node_modules/@primer/css/dist/utilities.css'
+import '../node_modules/@primer/css/dist/markdown.css'
 import '../../../../static/primer_view_components.css'
 
 // Reset PrimerCSS changing body font-size to 14px

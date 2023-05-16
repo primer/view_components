@@ -1,5 +1,5 @@
 const path = require('path')
-const importedJSONFromPrimitives = require('./node_modules/@primer/primitives/tokens-next-private/fallbacks/color-fallbacks.json')
+const importedJSONFromPrimitives = require('@primer/primitives/tokens-next-private/fallbacks/color-fallbacks.json')
 
 module.exports = {
   map: {
