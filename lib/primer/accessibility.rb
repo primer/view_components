@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module Accessibility
     # Skip axe checks for components that should be tested as part of a larger component.
@@ -10,3 +11,4 @@ module Primer
     ].freeze
   end
 end
+# :nocov:
