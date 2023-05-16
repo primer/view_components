@@ -13,6 +13,7 @@ module Primer
           Lookbook.previews.filter_map do |preview|
             next if preview.preview_class.name.start_with?("Docs::")
             next if preview.preview_class == Primer::Forms::FormsPreview
+            next if Primer::Accessibility::IGNORED_PREVIEWS.include?(preview.preview_class.name)
 
             component = preview.components.first&.component_class
 

@@ -5,18 +5,10 @@ require "system/test_case"
 class AccessibilityTest < System::TestCase
   parallelize workers: 4
 
-  # Skip components that should be tested as part of a larger component.
-  # Do not add to this list for any other reason!
-  IGNORED_PREVIEWS = %w[
-    Primer::Beta::MarkdownPreview
-    Primer::Beta::AutoCompleteItemPreview
-    Docs::AutoCompleteItemPreview
-    Docs::BetaAutoCompleteItemPreview
-    Docs::NavigationTabPreview
-    Docs::NavigationTabComponentPreview
-  ].freeze
+  IGNORED_PREVIEWS = Primer::Accessibility::IGNORED_PREVIEWS
 
   ViewComponent::Preview.all.each do |klass|
+    next if klass.name.start_with?("Docs::")
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)

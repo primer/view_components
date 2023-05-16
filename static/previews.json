@@ -352,29 +352,6 @@
     ]
   },
   {
-    "name": "auto_complete_item",
-    "component": "AutoComplete::Item",
-    "status": "beta",
-    "lookup_path": "primer/beta/auto_complete_item",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/auto_complete_item/playground",
-        "preview_path": "/lookbook/preview/primer/beta/auto_complete_item/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/auto_complete_item/default",
-        "preview_path": "/lookbook/preview/primer/beta/auto_complete_item/default",
-        "name": "default"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/auto_complete_item/with_description",
-        "preview_path": "/lookbook/preview/primer/beta/auto_complete_item/with_description",
-        "name": "with_description"
-      }
-    ]
-  },
-  {
     "name": "avatar",
     "component": "Avatar",
     "status": "beta",
@@ -1263,24 +1240,6 @@
         "inspect_path": "/lookbook/inspect/primer/beta/link/color_scheme",
         "preview_path": "/lookbook/preview/primer/beta/link/color_scheme",
         "name": "color_scheme"
-      }
-    ]
-  },
-  {
-    "name": "markdown",
-    "component": "Markdown",
-    "status": "beta",
-    "lookup_path": "primer/beta/markdown",
-    "examples": [
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/markdown/playground",
-        "preview_path": "/lookbook/preview/primer/beta/markdown/playground",
-        "name": "playground"
-      },
-      {
-        "inspect_path": "/lookbook/inspect/primer/beta/markdown/default",
-        "preview_path": "/lookbook/preview/primer/beta/markdown/default",
-        "name": "default"
       }
     ]
   },
