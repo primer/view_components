@@ -2,15 +2,6 @@ import '@oddbird/popover-polyfill'
 
 const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
 
-const popoverSelector = (() => {
-  try {
-    document.querySelector(':popover-open')
-    return ':popover-open'
-  } catch {
-    return '.\\:popover-open'
-  }
-})()
-
 const getMnemonicFor = (item: Element) => item.textContent?.trim()[0].toLowerCase()
 
 const printable = /^\S$/
@@ -118,7 +109,7 @@ export default class FocusGroupElement extends HTMLElement {
       {
         let el: HTMLElement | null = focusEl
         do {
-          el = el.closest(`[popover]:not(${popoverSelector})`)
+          el = el.closest(`[popover]:not(:popover-open)`)
           if (el?.popover === 'auto') {
             el.showPopover()
           }
