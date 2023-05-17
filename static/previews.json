@@ -4,6 +4,12 @@
     "component": "ActionList",
     "status": "alpha",
     "lookup_path": "primer/alpha/action_list",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_list/playground",
@@ -117,6 +123,12 @@
     "component": "ActionMenu",
     "status": "alpha",
     "lookup_path": "primer/alpha/action_menu",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/action_menu/playground",
@@ -245,6 +257,12 @@
     "component": "AutoComplete",
     "status": "deprecated",
     "lookup_path": "primer/alpha/auto_complete",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/auto_complete/playground",
@@ -268,6 +286,12 @@
     "component": "AutoComplete",
     "status": "beta",
     "lookup_path": "primer/beta/auto_complete",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/auto_complete/playground",
@@ -356,6 +380,12 @@
     "component": "Avatar",
     "status": "beta",
     "lookup_path": "primer/beta/avatar",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/avatar/playground",
@@ -389,6 +419,12 @@
     "component": "AvatarStack",
     "status": "beta",
     "lookup_path": "primer/beta/avatar_stack",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/avatar_stack/playground",
@@ -417,6 +453,12 @@
     "component": "Banner",
     "status": "alpha",
     "lookup_path": "primer/alpha/banner",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/banner/playground",
@@ -460,6 +502,12 @@
     "component": "BaseButton",
     "status": "beta",
     "lookup_path": "primer/beta/base_button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/base_button/playground",
@@ -478,6 +526,12 @@
     "component": "Blankslate",
     "status": "beta",
     "lookup_path": "primer/beta/blankslate",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/blankslate/playground",
@@ -536,6 +590,12 @@
     "component": "BorderBox",
     "status": "beta",
     "lookup_path": "primer/beta/border_box",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/border_box/playground",
@@ -569,6 +629,12 @@
     "component": "Box",
     "status": "stable",
     "lookup_path": "primer/box",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/box/playground",
@@ -597,6 +663,12 @@
     "component": "Breadcrumbs",
     "status": "beta",
     "lookup_path": "primer/beta/breadcrumbs",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/breadcrumbs/playground",
@@ -615,6 +687,12 @@
     "component": "Button",
     "status": "beta",
     "lookup_path": "primer/beta/button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button/playground",
@@ -698,6 +776,12 @@
     "component": "ButtonGroup",
     "status": "beta",
     "lookup_path": "primer/beta/button_group",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/button_group/playground",
@@ -716,6 +800,12 @@
     "component": "ButtonMarketing",
     "status": "alpha",
     "lookup_path": "primer/alpha/button_marketing",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/button_marketing/playground",
@@ -744,6 +834,12 @@
     "component": "CheckBox",
     "status": "alpha",
     "lookup_path": "primer/alpha/check_box",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/check_box/playground",
@@ -767,6 +863,12 @@
     "component": "CheckBoxGroup",
     "status": "alpha",
     "lookup_path": "primer/alpha/check_box_group",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/check_box_group/playground",
@@ -790,6 +892,12 @@
     "component": "ClipboardCopy",
     "status": "beta",
     "lookup_path": "primer/beta/clipboard_copy",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/clipboard_copy/playground",
@@ -818,6 +926,12 @@
     "component": "CloseButton",
     "status": "beta",
     "lookup_path": "primer/beta/close_button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/close_button/playground",
@@ -836,6 +950,12 @@
     "component": "Counter",
     "status": "beta",
     "lookup_path": "primer/beta/counter",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/counter/playground",
@@ -869,6 +989,12 @@
     "component": "Details",
     "status": "beta",
     "lookup_path": "primer/beta/details",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/details/playground",
@@ -897,6 +1023,12 @@
     "component": "Dialog",
     "status": "alpha",
     "lookup_path": "primer/alpha/dialog",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/dialog/playground",
@@ -950,6 +1082,12 @@
     "component": "Dropdown",
     "status": "alpha",
     "lookup_path": "primer/alpha/dropdown",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/dropdown/playground",
@@ -983,6 +1121,12 @@
     "component": "Flash",
     "status": "beta",
     "lookup_path": "primer/beta/flash",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/flash/playground",
@@ -1011,6 +1155,12 @@
     "component": "FormControl",
     "status": "alpha",
     "lookup_path": "primer/alpha/form_control",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/form_control/playground",
@@ -1034,6 +1184,12 @@
     "component": "Heading",
     "status": "beta",
     "lookup_path": "primer/beta/heading",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/heading/playground",
@@ -1052,6 +1208,12 @@
     "component": "HellipButton",
     "status": "alpha",
     "lookup_path": "primer/alpha/hellip_button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/hellip_button/default",
@@ -1070,6 +1232,12 @@
     "component": "HiddenTextExpander",
     "status": "alpha",
     "lookup_path": "primer/alpha/hidden_text_expander",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/hidden_text_expander/playground",
@@ -1088,6 +1256,12 @@
     "component": "IconButton",
     "status": "beta",
     "lookup_path": "primer/beta/icon_button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/icon_button/playground",
@@ -1116,6 +1290,12 @@
     "component": "ImageCrop",
     "status": "alpha",
     "lookup_path": "primer/alpha/image_crop",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/image_crop/playground",
@@ -1139,6 +1319,12 @@
     "component": "Label",
     "status": "beta",
     "lookup_path": "primer/beta/label",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/label/playground",
@@ -1172,6 +1358,12 @@
     "component": "Layout",
     "status": "alpha",
     "lookup_path": "primer/alpha/layout",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/layout/playground",
@@ -1220,6 +1412,12 @@
     "component": "Link",
     "status": "beta",
     "lookup_path": "primer/beta/link",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/link/playground",
@@ -1248,6 +1446,12 @@
     "component": "Menu",
     "status": "alpha",
     "lookup_path": "primer/alpha/menu",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/menu/playground",
@@ -1266,6 +1470,12 @@
     "component": "MultiInput",
     "status": "alpha",
     "lookup_path": "primer/alpha/multi_input",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/multi_input/playground",
@@ -1299,6 +1509,12 @@
     "component": "NavList",
     "status": "alpha",
     "lookup_path": "primer/alpha/nav_list",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/nav_list/playground",
@@ -1332,6 +1548,12 @@
     "component": "Octicon",
     "status": "beta",
     "lookup_path": "primer/beta/octicon",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/octicon/playground",
@@ -1350,6 +1572,12 @@
     "component": "Overlay",
     "status": "alpha",
     "lookup_path": "primer/alpha/overlay",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/overlay/playground",
@@ -1383,6 +1611,12 @@
     "component": "Popover",
     "status": "beta",
     "lookup_path": "primer/beta/popover",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/popover/playground",
@@ -1411,6 +1645,12 @@
     "component": "ProgressBar",
     "status": "beta",
     "lookup_path": "primer/beta/progress_bar",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/progress_bar/playground",
@@ -1434,6 +1674,12 @@
     "component": "RadioButton",
     "status": "alpha",
     "lookup_path": "primer/alpha/radio_button",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/radio_button/playground",
@@ -1457,6 +1703,12 @@
     "component": "RadioButtonGroup",
     "status": "alpha",
     "lookup_path": "primer/alpha/radio_button_group",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/radio_button_group/playground",
@@ -1480,6 +1732,12 @@
     "component": "RelativeTime",
     "status": "beta",
     "lookup_path": "primer/beta/relative_time",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/relative_time/playground",
@@ -1513,6 +1771,12 @@
     "component": "SegmentedControl",
     "status": "alpha",
     "lookup_path": "primer/alpha/segmented_control",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/segmented_control/playground",
@@ -1556,6 +1820,12 @@
     "component": "Select",
     "status": "alpha",
     "lookup_path": "primer/alpha/select",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/select/playground",
@@ -1579,6 +1849,12 @@
     "component": "Spinner",
     "status": "beta",
     "lookup_path": "primer/beta/spinner",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/spinner/playground",
@@ -1597,6 +1873,12 @@
     "component": "State",
     "status": "beta",
     "lookup_path": "primer/beta/state",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/state/playground",
@@ -1625,6 +1907,12 @@
     "component": "Subhead",
     "status": "beta",
     "lookup_path": "primer/beta/subhead",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/subhead/playground",
@@ -1658,6 +1946,12 @@
     "component": "TabNav",
     "status": "alpha",
     "lookup_path": "primer/alpha/tab_nav",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_nav/playground",
@@ -1686,6 +1980,12 @@
     "component": "TabPanels",
     "status": "alpha",
     "lookup_path": "primer/alpha/tab_panels",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/tab_panels/playground",
@@ -1709,6 +2009,12 @@
     "component": "Text",
     "status": "beta",
     "lookup_path": "primer/beta/text",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/text/playground",
@@ -1727,6 +2033,12 @@
     "component": "TextArea",
     "status": "alpha",
     "lookup_path": "primer/alpha/text_area",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_area/playground",
@@ -1750,6 +2062,12 @@
     "component": "TextField",
     "status": "alpha",
     "lookup_path": "primer/alpha/text_field",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/text_field/playground",
@@ -1788,6 +2106,12 @@
     "component": "TimelineItem",
     "status": "beta",
     "lookup_path": "primer/beta/timeline_item",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/timeline_item/playground",
@@ -1806,6 +2130,13 @@
     "component": "ToggleSwitch",
     "status": "alpha",
     "lookup_path": "primer/alpha/toggle_switch",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block",
+      "button-name"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/toggle_switch/playground",
@@ -1869,6 +2200,12 @@
     "component": "Tooltip",
     "status": "alpha",
     "lookup_path": "primer/alpha/tooltip",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/tooltip/playground",
@@ -1912,6 +2249,12 @@
     "component": "Truncate",
     "status": "beta",
     "lookup_path": "primer/beta/truncate",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/beta/truncate/playground",
@@ -1945,6 +2288,12 @@
     "component": "UnderlineNav",
     "status": "alpha",
     "lookup_path": "primer/alpha/underline_nav",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/underline_nav/playground",
@@ -1968,6 +2317,12 @@
     "component": "UnderlinePanels",
     "status": "alpha",
     "lookup_path": "primer/alpha/underline_panels",
+    "skip_rules": [
+      "region",
+      "color-contrast",
+      "color-contrast-enhanced",
+      "link-in-text-block"
+    ],
     "examples": [
       {
         "inspect_path": "/lookbook/inspect/primer/alpha/underline_panels/playground",

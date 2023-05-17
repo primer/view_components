@@ -11,41 +11,9 @@ module System
   class TestCase < ActionDispatch::SystemTestCase
     driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
-    # Skip `:region` which relates to preview page structure rather than individual component.
-    # Skip `:color-contrast` which requires primer design-level change.
-    # Skip `:link-in-text-block` which is new and seems broken.
-    AXE_RULES_TO_SKIP = %i[
-      region
-      color-contrast
-      color-contrast-enhanced
-      link-in-text-block
-    ].freeze
-
-    AXE_RULES_TO_SKIP_PER_COMPONENT = {
-      # these previews test only the component, which does not come with any labels
-      "Alpha::ToggleSwitch" => {
-        all: %i[button-name]
-      }
-    }.freeze
-
-    def axe_rules_to_skip(component_name: nil, preview_name: nil)
-      to_skip = Set.new(AXE_RULES_TO_SKIP)
-
-      if component_name
-        to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, :all) || [])
-
-        # rubocop:disable Style/IfUnlessModifier
-        if preview_name
-          to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component_name, preview_name) || [])
-        end
-        # rubocop:enable Style/IfUnlessModifier
-      end
-
-      to_skip.to_a
-    end
-
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
+      component = Kernel.const_get(component_name)
       match = /^(Alpha|Beta)([A-Z])/.match(component_name)
       status = match ? match[1] : ""
       status_path = match ? "#{status.downcase}/" : ""
@@ -59,8 +27,8 @@ module System
       visit(url)
 
       assert_accessible(
-        excludes: axe_rules_to_skip(
-          component_name: component_name,
+        excludes: Accessibility.axe_rules_to_skip(
+          component: component,
           preview_name: preview_name
         )
       )
@@ -93,7 +61,7 @@ module System
     end
 
     def assert_accessible(excludes: [])
-      excludes = Set.new(AXE_RULES_TO_SKIP) + excludes
+      excludes = Set.new(Primer::Accessibility::AXE_RULES_TO_SKIP + excludes)
 
       axe_exists = driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];

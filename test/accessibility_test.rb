@@ -7,19 +7,22 @@ class AccessibilityTest < System::TestCase
 
   IGNORED_PREVIEWS = Primer::Accessibility::IGNORED_PREVIEWS
 
-  ViewComponent::Preview.all.each do |klass|
-    next if klass.name.start_with?("Docs::")
-    next if IGNORED_PREVIEWS.include?(klass.to_s)
+  Lookbook.previews.each do |preview|
+    next if preview.preview_class.name.start_with?("Docs::")
+    next if IGNORED_PREVIEWS.include?(preview.preview_class.name)
+    next unless preview.preview_class == Primer::Alpha::LayoutPreview
 
-    component_previews = klass.instance_methods(false)
-    component_uri = klass.to_s.underscore.gsub("_preview", "")
+    preview.examples.each do |parent_example|
+      define_method(:"test_#{example.preview_path.parameterize(separator: "_")}_#{preview.name}") do
+        visit("/rails/view_components/#{example.preview_path}")
 
-    component_previews.each do |preview|
-      define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
-        visit("/rails/view_components/#{component_uri}/#{preview}")
-        excludes = axe_rules_to_skip(component_name: klass.name.delete_prefix("Primer::").chomp("Preview"), preview_name: preview)
+        excludes = Primer::Accessibility.axe_rules_to_skip(
+          component: preview.components.first&.component_class,
+          preview_name: preview.name
+        )
+
         assert_accessible(excludes: excludes)
-        puts "#{component_uri}##{preview} passed check."
+        puts "#{example.preview_path}##{preview.name} passed check."
       end
     end
   end

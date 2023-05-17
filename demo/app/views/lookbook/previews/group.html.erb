@@ -1,0 +1,17 @@
+<%# see: https://lookbook.build/guide/previews/groups#customising %>
+<% if scenarios.many? %>
+  <!-- Render a group of scenarios -->
+  <% scenarios.each_with_index do |scenario, idx| %>
+    <div style="margin-bottom: 30px !important; display: block !important;">
+      <h6 style="all: unset; display: block; color: #999; font-family: sans-serif; font-size: 14px; margin-top: 0; margin-bottom: 10px;">
+        <%= scenario.label %>
+      </h6>
+      <div data-scenario-id="<%= idx %>">
+        <%= scenario.output %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <!-- Render a single scenario -->
+  <%= scenarios.first.output %>
+<% end %>

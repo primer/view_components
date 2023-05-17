@@ -24,12 +24,14 @@ module Primer
             # rubocop:enable Style/IfUnlessModifier
 
             _, _, class_name = Primer::Yard::DocsHelper.status_module_and_short_name(component)
+            skip_rules = Primer::Accessibility.axe_rules_to_skip(component: component, preview_name: preview.name)
 
             {
               name: preview.name,
               component: class_name,
               status: component.status.to_s,
               lookup_path: preview.lookup_path,
+              skip_rules: skip_rules,
               examples: preview.examples.map do |example|
                 {
                   inspect_path: example.url_path,
