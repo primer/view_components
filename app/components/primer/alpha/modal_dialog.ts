@@ -13,7 +13,7 @@ function clickHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
 
-  if (!button) return
+  if (!button || button.hasAttribute('disabled') || button.getAttribute('aria-disabled') === 'true') return
 
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
