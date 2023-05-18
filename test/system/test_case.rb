@@ -15,7 +15,7 @@ module System
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
 
       component = begin
-        Kernel.const_get(component_name)
+        Kernel.const_get("Primer::#{component_name}")
       rescue NameError
         nil
       end
