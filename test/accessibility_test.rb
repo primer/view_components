@@ -10,19 +10,22 @@ class AccessibilityTest < System::TestCase
   Lookbook.previews.each do |preview|
     next if preview.preview_class.name.start_with?("Docs::")
     next if IGNORED_PREVIEWS.include?(preview.preview_class.name)
-    next unless preview.preview_class == Primer::Alpha::LayoutPreview
 
-    preview.examples.each do |parent_example|
-      define_method(:"test_#{example.preview_path.parameterize(separator: "_")}_#{preview.name}") do
-        visit("/rails/view_components/#{example.preview_path}")
+    preview.scenarios.each do |parent_scenario|
+      scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
 
-        excludes = Primer::Accessibility.axe_rules_to_skip(
-          component: preview.components.first&.component_class,
-          preview_name: preview.name
-        )
+      scenarios.each do |scenario|
+        define_method(:"test_#{scenario.preview_path.parameterize(separator: "_")}") do
+          visit scenario.preview_path
 
-        assert_accessible(excludes: excludes)
-        puts "#{example.preview_path}##{preview.name} passed check."
+          excludes = Primer::Accessibility.axe_rules_to_skip(
+            component: preview.components.first&.component_class,
+            scenario_name: scenario.name
+          )
+
+          assert_accessible(excludes: excludes)
+          puts "#{scenario.preview_path} passed check."
+        end
       end
     end
   end

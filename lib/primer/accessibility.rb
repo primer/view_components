@@ -28,15 +28,15 @@ module Primer
     }.freeze
 
     class << self
-      def axe_rules_to_skip(component: nil, preview_name: nil)
+      def axe_rules_to_skip(component: nil, scenario_name: nil)
         to_skip = Set.new(AXE_RULES_TO_SKIP)
 
         if component
           to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component, :all) || [])
 
           # rubocop:disable Style/IfUnlessModifier
-          if preview_name
-            to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component, preview_name) || [])
+          if scenario_name
+            to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component, scenario_name) || [])
           end
           # rubocop:enable Style/IfUnlessModifier
         end

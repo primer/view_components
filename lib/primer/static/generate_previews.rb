@@ -24,20 +24,26 @@ module Primer
             # rubocop:enable Style/IfUnlessModifier
 
             _, _, class_name = Primer::Yard::DocsHelper.status_module_and_short_name(component)
-            skip_rules = Primer::Accessibility.axe_rules_to_skip(component: component, preview_name: preview.name)
 
             {
               name: preview.name,
               component: class_name,
               status: component.status.to_s,
               lookup_path: preview.lookup_path,
-              skip_rules: skip_rules,
-              examples: preview.examples.map do |example|
-                {
-                  inspect_path: example.url_path,
-                  preview_path: example.url_path.sub("/inspect/", "/preview/"),
-                  name: example.name
-                }
+              examples: preview.scenarios.flat_map do |parent_scenario|
+                scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
+
+                scenarios.map do |scenario|
+                  {
+                    preview_path: "/view-components/rails-app/previews/#{scenario.lookup_path}",
+                    # preview_path: "/rails/view_components/#{scenario.lookup_path}",
+                    name: scenario.name,
+                    skip_rules: Primer::Accessibility.axe_rules_to_skip(
+                      component: component,
+                      scenario_name: scenario.name
+                    )
+                  }
+                end
               end
             }
           end
