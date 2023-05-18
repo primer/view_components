@@ -11,25 +11,31 @@ module System
   class TestCase < ActionDispatch::SystemTestCase
     driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
-    def visit_preview(preview_name, params = {})
+    def visit_preview(scenario_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
-      component = Kernel.const_get(component_name)
+
+      component = begin
+        Kernel.const_get(component_name)
+      rescue NameError
+        nil
+      end
+
       match = /^(Alpha|Beta)([A-Z])/.match(component_name)
       status = match ? match[1] : ""
       status_path = match ? "#{status.downcase}/" : ""
       component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
       component_uri = component_name.underscore
 
-      url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
+      url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{scenario_name}"
       query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
       url << "?#{query_string}" if query_string.present?
 
       visit(url)
 
       assert_accessible(
-        excludes: Accessibility.axe_rules_to_skip(
+        excludes: Primer::Accessibility.axe_rules_to_skip(
           component: component,
-          preview_name: preview_name
+          scenario_name: scenario_name
         )
       )
     end

@@ -10,9 +10,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -20,9 +18,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -30,9 +26,7 @@
         "name": "leading_visuals",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -40,9 +34,7 @@
         "name": "with_manual_dividers",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -50,9 +42,7 @@
         "name": "divider",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -60,9 +50,7 @@
         "name": "heading",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -70,9 +58,7 @@
         "name": "item",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -80,9 +66,7 @@
         "name": "item_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -90,9 +74,7 @@
         "name": "item_size_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -100,9 +82,7 @@
         "name": "item_size_xlarge",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -110,9 +90,7 @@
         "name": "item_leading_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -120,9 +98,7 @@
         "name": "item_trailing_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -130,9 +106,7 @@
         "name": "item_leading_trailing_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -140,9 +114,7 @@
         "name": "item_with_description",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -150,9 +122,7 @@
         "name": "item_with_description_inline",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -160,9 +130,7 @@
         "name": "item_trailing_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -170,9 +138,7 @@
         "name": "item_danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -180,9 +146,7 @@
         "name": "item_disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -190,9 +154,7 @@
         "name": "item_wrap_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -200,9 +162,7 @@
         "name": "item_truncate_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -210,9 +170,7 @@
         "name": "item_active",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -228,9 +186,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -238,9 +194,7 @@
         "name": "content_labels",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -248,9 +202,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -258,9 +210,7 @@
         "name": "wide",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -268,9 +218,7 @@
         "name": "with_icon_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -278,9 +226,7 @@
         "name": "single_select",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -288,9 +234,7 @@
         "name": "multiple_select",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -298,9 +242,7 @@
         "name": "links",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -308,9 +250,7 @@
         "name": "single_selected_item",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -318,9 +258,7 @@
         "name": "single_select_with_internal_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -328,9 +266,7 @@
         "name": "multiple_selected_items",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -338,9 +274,7 @@
         "name": "with_deferred_content",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -348,9 +282,7 @@
         "name": "with_deferred_preloaded_content",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -358,9 +290,7 @@
         "name": "with_actions",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -368,9 +298,7 @@
         "name": "single_select_form",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -378,9 +306,7 @@
         "name": "multiple_select_form",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -388,9 +314,7 @@
         "name": "with_disabled_items",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -398,9 +322,7 @@
         "name": "opens_dialog",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -408,9 +330,7 @@
         "name": "align_end",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -418,9 +338,7 @@
         "name": "block_description",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -428,9 +346,7 @@
         "name": "submitting_forms",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -438,9 +354,7 @@
         "name": "inline_description",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -448,9 +362,7 @@
         "name": "leading_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -458,9 +370,7 @@
         "name": "leading_visual_single_select",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -476,9 +386,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -486,9 +394,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -496,9 +402,7 @@
         "name": "with_non_visible_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -506,9 +410,7 @@
         "name": "with_inline_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -516,9 +418,7 @@
         "name": "with_icon",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -526,9 +426,7 @@
         "name": "with_clear_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -544,9 +442,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -554,9 +450,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -564,9 +458,7 @@
         "name": "with_submit_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -574,9 +466,7 @@
         "name": "leading_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -584,9 +474,7 @@
         "name": "trailing_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -594,9 +482,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -604,9 +490,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -614,9 +498,7 @@
         "name": "small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -624,9 +506,7 @@
         "name": "medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -634,9 +514,7 @@
         "name": "large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -644,9 +522,7 @@
         "name": "leading_visual_in_results",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -654,9 +530,7 @@
         "name": "trailing_visual_in_results",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -664,9 +538,7 @@
         "name": "with_non_visible_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -674,9 +546,7 @@
         "name": "with_icon",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -684,9 +554,7 @@
         "name": "show_clear_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -694,9 +562,7 @@
         "name": "size_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -704,9 +570,7 @@
         "name": "monospace",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -714,9 +578,7 @@
         "name": "inset",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -732,9 +594,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -742,9 +602,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -752,9 +610,7 @@
         "name": "as_link",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -762,9 +618,7 @@
         "name": "size_16",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -772,9 +626,7 @@
         "name": "size_20",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -782,9 +634,7 @@
         "name": "size_24",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -792,9 +642,7 @@
         "name": "size_32",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -802,9 +650,7 @@
         "name": "size_40",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -812,9 +658,7 @@
         "name": "size_48",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -822,9 +666,7 @@
         "name": "size_80",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -832,9 +674,7 @@
         "name": "shape_circle",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -842,9 +682,7 @@
         "name": "shape_square",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -860,9 +698,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -870,9 +706,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -880,9 +714,7 @@
         "name": "avatar_1",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -890,9 +722,7 @@
         "name": "avatar_2",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -900,9 +730,7 @@
         "name": "avatar_3",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -910,9 +738,7 @@
         "name": "avatar_4",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -920,9 +746,7 @@
         "name": "avatar_5",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -930,9 +754,7 @@
         "name": "align_right",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -940,9 +762,7 @@
         "name": "with_tooltip",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -958,9 +778,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -968,9 +786,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -978,9 +794,7 @@
         "name": "scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -988,9 +802,7 @@
         "name": "scheme_danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -998,9 +810,7 @@
         "name": "scheme_success",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1008,9 +818,7 @@
         "name": "scheme_warning",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1018,9 +826,7 @@
         "name": "dismissable",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1028,9 +834,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1038,9 +842,7 @@
         "name": "full_width_in_narrow_viewport",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1048,9 +850,7 @@
         "name": "with_action_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1058,9 +858,7 @@
         "name": "with_action_content",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1076,9 +874,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1086,9 +882,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1104,9 +898,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1114,9 +906,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1124,9 +914,7 @@
         "name": "option_narrow",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1134,9 +922,7 @@
         "name": "option_spacious",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1144,9 +930,7 @@
         "name": "option_border",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1154,9 +938,7 @@
         "name": "with_icon",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1164,9 +946,7 @@
         "name": "with_image",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1174,9 +954,7 @@
         "name": "loading",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1184,9 +962,7 @@
         "name": "description",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1194,9 +970,7 @@
         "name": "primary_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1204,9 +978,7 @@
         "name": "secondary_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1214,9 +986,7 @@
         "name": "full",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1232,9 +1002,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1242,9 +1010,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1252,9 +1018,7 @@
         "name": "header_with_title",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1262,9 +1026,7 @@
         "name": "row_colors",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1272,9 +1034,7 @@
         "name": "padding_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1282,9 +1042,7 @@
         "name": "padding_condensed",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1292,9 +1050,7 @@
         "name": "padding_spacious",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1310,9 +1066,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1320,9 +1074,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1330,9 +1082,7 @@
         "name": "border",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1340,9 +1090,7 @@
         "name": "border_bottom",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1358,9 +1106,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1368,9 +1114,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1386,9 +1130,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1396,9 +1138,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1406,9 +1146,7 @@
         "name": "primary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1416,9 +1154,7 @@
         "name": "danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1426,9 +1162,7 @@
         "name": "invisible",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1436,9 +1170,7 @@
         "name": "invisible_all_visuals",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1446,9 +1178,7 @@
         "name": "link",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1456,9 +1186,7 @@
         "name": "all_schemes",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1466,9 +1194,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1476,9 +1202,7 @@
         "name": "link_as_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1486,9 +1210,7 @@
         "name": "trailing_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1496,9 +1218,7 @@
         "name": "leading_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1506,9 +1226,7 @@
         "name": "trailing_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1516,9 +1234,7 @@
         "name": "trailing_counter",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1526,9 +1242,7 @@
         "name": "with_tooltip",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1544,9 +1258,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1554,9 +1266,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1572,9 +1282,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1582,9 +1290,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1592,9 +1298,7 @@
         "name": "sizes_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1602,9 +1306,7 @@
         "name": "sizes_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1612,9 +1314,7 @@
         "name": "scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1622,9 +1322,7 @@
         "name": "scheme_primary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1632,9 +1330,7 @@
         "name": "scheme_outline",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1642,9 +1338,7 @@
         "name": "scheme_transparent",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1660,9 +1354,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1670,9 +1362,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1680,9 +1370,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1690,9 +1378,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1700,9 +1386,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1718,9 +1402,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1728,9 +1410,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1738,9 +1418,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1748,9 +1426,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1758,9 +1434,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1768,9 +1442,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1786,9 +1458,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1796,9 +1466,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1806,9 +1474,7 @@
         "name": "text",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1816,9 +1482,7 @@
         "name": "element",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1834,9 +1498,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1844,9 +1506,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1862,9 +1522,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1872,9 +1530,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1882,9 +1538,7 @@
         "name": "with_text",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1892,9 +1546,7 @@
         "name": "color_scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1902,9 +1554,7 @@
         "name": "color_scheme_primary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1912,9 +1562,7 @@
         "name": "color_scheme_secondary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1922,9 +1570,7 @@
         "name": "rounding_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1932,9 +1578,7 @@
         "name": "rounding_above_1000",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1942,9 +1586,7 @@
         "name": "rounding_below_1000",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1952,9 +1594,7 @@
         "name": "rounding_large_number",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1962,9 +1602,7 @@
         "name": "rounding_large_number_less_than_custom_limit",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -1972,9 +1610,7 @@
         "name": "rounding_large_number_greater_than_custom_limit",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -1990,9 +1626,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2000,9 +1634,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2010,9 +1642,7 @@
         "name": "custom_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2020,9 +1650,7 @@
         "name": "without_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2038,9 +1666,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2048,9 +1674,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2058,9 +1682,7 @@
         "name": "long_text",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2068,9 +1690,7 @@
         "name": "with_footer",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2078,9 +1698,7 @@
         "name": "with_form",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2088,9 +1706,7 @@
         "name": "custom_header",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2098,9 +1714,7 @@
         "name": "nested_dialog",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2108,9 +1722,7 @@
         "name": "with_text_input",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2118,9 +1730,7 @@
         "name": "body_has_scrollbar_overflow",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2136,9 +1746,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2146,9 +1754,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2156,9 +1762,7 @@
         "name": "menu",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2166,9 +1770,7 @@
         "name": "direction_e",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2176,9 +1778,7 @@
         "name": "direction_ne",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2186,9 +1786,7 @@
         "name": "direction_s",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2196,9 +1794,7 @@
         "name": "direction_se",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2206,9 +1802,7 @@
         "name": "direction_sw",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2216,9 +1810,7 @@
         "name": "direction_w",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2226,9 +1818,7 @@
         "name": "options_with_caret",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2236,9 +1826,7 @@
         "name": "options_with_header",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2246,9 +1834,7 @@
         "name": "options_with_dividers",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2256,9 +1842,7 @@
         "name": "options_as_list",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2266,9 +1850,7 @@
         "name": "options_overlay_none",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2276,9 +1858,7 @@
         "name": "options_overlay_dark",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2294,9 +1874,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2304,9 +1882,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2314,9 +1890,7 @@
         "name": "color_scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2324,9 +1898,7 @@
         "name": "color_scheme_warning",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2334,9 +1906,7 @@
         "name": "color_scheme_danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2344,9 +1914,7 @@
         "name": "color_scheme_success",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2354,9 +1922,7 @@
         "name": "options_full",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2364,9 +1930,7 @@
         "name": "options_dismissible",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2374,9 +1938,7 @@
         "name": "options_with_icon",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2392,9 +1954,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2402,9 +1962,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2412,9 +1970,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2422,9 +1978,7 @@
         "name": "with_validation_message",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2432,9 +1986,7 @@
         "name": "required",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2442,9 +1994,7 @@
         "name": "with_visually_hidden_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2460,9 +2010,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2470,9 +2018,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2488,9 +2034,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2498,9 +2042,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2516,9 +2058,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2526,9 +2066,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2544,9 +2082,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2554,9 +2090,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2564,9 +2098,7 @@
         "name": "invisible",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2574,9 +2106,7 @@
         "name": "danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2592,9 +2122,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2602,9 +2130,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2612,9 +2138,7 @@
         "name": "loading",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2630,9 +2154,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2640,9 +2162,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2650,9 +2170,7 @@
         "name": "color_scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2660,9 +2178,7 @@
         "name": "color_scheme_primary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2670,9 +2186,7 @@
         "name": "color_scheme_secondary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2680,9 +2194,7 @@
         "name": "color_scheme_accent",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2690,9 +2202,7 @@
         "name": "color_scheme_success",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2700,9 +2210,7 @@
         "name": "color_scheme_attention",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2710,9 +2218,7 @@
         "name": "color_scheme_danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2720,9 +2226,7 @@
         "name": "color_scheme_severe",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2730,9 +2234,7 @@
         "name": "color_scheme_done",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2740,9 +2242,7 @@
         "name": "color_scheme_sponsors",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2750,9 +2250,7 @@
         "name": "size_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2760,9 +2258,7 @@
         "name": "size_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2770,9 +2266,7 @@
         "name": "inline_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2780,9 +2274,7 @@
         "name": "inline_inline",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -2798,9 +2290,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2808,9 +2298,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2818,9 +2306,7 @@
         "name": "gutter_none",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2828,9 +2314,7 @@
         "name": "gutter_condensed",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2838,9 +2322,7 @@
         "name": "gutter_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2848,9 +2330,7 @@
         "name": "gutter_spacious",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2858,9 +2338,7 @@
         "name": "main_width_md",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2868,9 +2346,7 @@
         "name": "main_width_lg",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2878,9 +2354,7 @@
         "name": "main_width_xl",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2888,9 +2362,7 @@
         "name": "main_width_full",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2898,9 +2370,7 @@
         "name": "sidebar_width_narrow",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2908,9 +2378,7 @@
         "name": "sidebar_width_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2918,9 +2386,7 @@
         "name": "sidebar_width_wide",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2928,9 +2394,7 @@
         "name": "sidebar_col_placement_start",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2938,9 +2402,7 @@
         "name": "sidebar_col_placement_end",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2948,9 +2410,7 @@
         "name": "sidebar_row_placement_start",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2958,9 +2418,7 @@
         "name": "sidebar_row_placement_end",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2968,9 +2426,7 @@
         "name": "sidebar_row_placement_none",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2978,9 +2434,7 @@
         "name": "stacking_breakpoint_sm",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2988,9 +2442,7 @@
         "name": "stacking_breakpoint_md",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -2998,9 +2450,7 @@
         "name": "stacking_breakpoint_lg",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3016,9 +2466,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3026,9 +2474,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3036,9 +2482,7 @@
         "name": "tooltip",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3046,9 +2490,7 @@
         "name": "color_scheme_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3056,9 +2498,7 @@
         "name": "color_scheme_primary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3066,9 +2506,7 @@
         "name": "color_scheme_primary_muted",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3076,9 +2514,7 @@
         "name": "color_scheme_secondary",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3086,9 +2522,7 @@
         "name": "color_scheme_secondary_muted",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3104,9 +2538,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3114,9 +2546,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3132,9 +2562,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3142,9 +2570,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3152,9 +2578,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3162,9 +2586,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3172,9 +2594,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3190,9 +2610,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3200,9 +2618,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3210,9 +2626,7 @@
         "name": "top_level_items",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3220,9 +2634,7 @@
         "name": "show_more_item",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3230,9 +2642,7 @@
         "name": "trailing_action",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3248,9 +2658,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3258,9 +2666,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3276,9 +2682,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3286,9 +2690,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3296,9 +2698,7 @@
         "name": "menu_no_header",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3306,9 +2706,7 @@
         "name": "middle_of_page",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3316,9 +2714,7 @@
         "name": "middle_of_page_with_relative_container",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3334,9 +2730,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3344,9 +2738,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3354,9 +2746,7 @@
         "name": "large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3364,9 +2754,7 @@
         "name": "bottom_right",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3374,9 +2762,7 @@
         "name": "top_right",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3384,9 +2770,7 @@
         "name": "bottom_left",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3394,9 +2778,7 @@
         "name": "top_left",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3412,9 +2794,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3422,9 +2802,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3432,9 +2810,7 @@
         "name": "size_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3442,9 +2818,7 @@
         "name": "size_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3452,9 +2826,7 @@
         "name": "size_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3470,9 +2842,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3480,9 +2850,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3490,9 +2858,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3500,9 +2866,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3510,9 +2874,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3528,9 +2890,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3538,9 +2898,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3548,9 +2906,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3558,9 +2914,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3568,9 +2922,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3578,9 +2930,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3596,9 +2946,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3606,9 +2954,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3616,9 +2962,7 @@
         "name": "micro_format",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3626,9 +2970,7 @@
         "name": "recent_time",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3636,9 +2978,7 @@
         "name": "count_down_timer",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3654,9 +2994,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3664,9 +3002,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3674,9 +3010,7 @@
         "name": "full_width_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3684,9 +3018,7 @@
         "name": "full_width_medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3694,9 +3026,7 @@
         "name": "full_width_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3704,9 +3034,7 @@
         "name": "icons_and_text_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3714,9 +3042,7 @@
         "name": "icons_and_text_medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3724,9 +3050,7 @@
         "name": "icons_and_text_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3734,9 +3058,7 @@
         "name": "icon_only_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3744,9 +3066,7 @@
         "name": "icon_only_medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3754,9 +3074,7 @@
         "name": "icon_only_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3764,9 +3082,7 @@
         "name": "icon_only_full_width_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3774,9 +3090,7 @@
         "name": "icon_only_full_width_medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3784,9 +3098,7 @@
         "name": "icon_only_full_width_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3794,9 +3106,7 @@
         "name": "with_link_as_tag",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3804,9 +3114,7 @@
         "name": "with_subhead_actions",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3814,9 +3122,7 @@
         "name": "with_label_and_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3832,9 +3138,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3842,9 +3146,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3852,9 +3154,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3862,9 +3162,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3872,9 +3170,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3882,9 +3178,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3892,9 +3186,7 @@
         "name": "invalid",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3902,9 +3194,7 @@
         "name": "with_validation_message",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3920,9 +3210,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3930,9 +3218,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -3948,9 +3234,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3958,9 +3242,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3968,9 +3250,7 @@
         "name": "states_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3978,9 +3258,7 @@
         "name": "states_open",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3988,9 +3266,7 @@
         "name": "states_closed",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -3998,9 +3274,7 @@
         "name": "states_merged",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4008,9 +3282,7 @@
         "name": "sizes_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4018,9 +3290,7 @@
         "name": "sizes_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4036,9 +3306,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4046,9 +3314,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4056,9 +3322,7 @@
         "name": "danger",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4066,9 +3330,7 @@
         "name": "actions",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4076,9 +3338,7 @@
         "name": "spacing_default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4086,9 +3346,7 @@
         "name": "spacing_spacious",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4096,9 +3354,7 @@
         "name": "spacing_dangerous",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4114,9 +3370,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4124,9 +3378,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4134,9 +3386,7 @@
         "name": "with_icons_and_counters",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4144,9 +3394,7 @@
         "name": "with_extra",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4162,9 +3410,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4172,9 +3418,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4182,9 +3426,7 @@
         "name": "with_extra",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4200,9 +3442,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4210,9 +3450,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4228,9 +3466,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4238,9 +3474,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4248,9 +3482,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4258,9 +3490,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4268,9 +3498,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4278,9 +3506,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4288,9 +3514,7 @@
         "name": "invalid",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4298,9 +3522,7 @@
         "name": "with_validation_message",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4316,9 +3538,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4326,9 +3546,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4336,9 +3554,7 @@
         "name": "size_small",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4346,9 +3562,7 @@
         "name": "size_medium",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4356,9 +3570,7 @@
         "name": "size_large",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4366,9 +3578,7 @@
         "name": "with_caption",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4376,9 +3586,7 @@
         "name": "visually_hide_label",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4386,9 +3594,7 @@
         "name": "show_clear_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4396,9 +3602,7 @@
         "name": "full_width",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4406,9 +3610,7 @@
         "name": "disabled",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4416,9 +3618,7 @@
         "name": "invalid",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4426,9 +3626,7 @@
         "name": "with_placeholder",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4436,9 +3634,7 @@
         "name": "inset",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4446,9 +3642,7 @@
         "name": "monospace",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4456,9 +3650,7 @@
         "name": "with_leading_visual",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4466,9 +3658,7 @@
         "name": "with_validation_message",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4476,9 +3666,7 @@
         "name": "with_auto_check_ok",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4486,9 +3674,7 @@
         "name": "with_auto_check_error",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4496,9 +3682,7 @@
         "name": "with_data_target",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4514,9 +3698,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4524,9 +3706,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4543,8 +3723,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4554,8 +3732,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4565,8 +3741,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4576,8 +3750,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4587,8 +3759,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4598,8 +3768,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4609,8 +3777,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4620,8 +3786,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4631,8 +3795,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4642,8 +3804,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       },
@@ -4653,8 +3813,6 @@
         "skip_rules": [
           "region",
           "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block",
           "button-name"
         ]
       }
@@ -4671,9 +3829,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4681,9 +3837,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4691,9 +3845,7 @@
         "name": "label_tooltip_on_button_with_existing_labelledby",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4701,9 +3853,7 @@
         "name": "description_tooltip_on_button_with_existing_describedby",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4711,9 +3861,7 @@
         "name": "with_right_most_position",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4721,9 +3869,7 @@
         "name": "with_multiple_on_a_page",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4731,9 +3877,7 @@
         "name": "tooltip_with_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4741,9 +3885,7 @@
         "name": "tooltip_with_link",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4751,9 +3893,7 @@
         "name": "tooltip_with_icon_button",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4769,9 +3909,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4779,9 +3917,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4789,9 +3925,7 @@
         "name": "multiple_items",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4799,9 +3933,7 @@
         "name": "advanced_multiple_items",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4809,9 +3941,7 @@
         "name": "max_widths",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4827,9 +3957,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4837,9 +3965,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4847,9 +3973,7 @@
         "name": "with_icons_and_counters",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]
@@ -4865,9 +3989,7 @@
         "name": "playground",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       },
       {
@@ -4875,9 +3997,7 @@
         "name": "default",
         "skip_rules": [
           "region",
-          "color-contrast",
-          "color-contrast-enhanced",
-          "link-in-text-block"
+          "color-contrast"
         ]
       }
     ]

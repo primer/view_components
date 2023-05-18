@@ -2,6 +2,7 @@
 
 # :nocov:
 module Primer
+  # :nodoc:
   module Accessibility
     # Skip axe checks for components that should be tested as part of a larger component.
     # Do not add to this list for any other reason!
