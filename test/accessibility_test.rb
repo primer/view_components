@@ -5,11 +5,8 @@ require "system/test_case"
 class AccessibilityTest < System::TestCase
   parallelize workers: 4
 
-  IGNORED_PREVIEWS = Primer::Accessibility::IGNORED_PREVIEWS
-
   Lookbook.previews.each do |preview|
-    next if preview.preview_class.name.start_with?("Docs::")
-    next if IGNORED_PREVIEWS.include?(preview.preview_class.name)
+    next if Primer::Accessibility.ignore_preview?(preview.preview_class)
 
     preview.scenarios.each do |parent_scenario|
       scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
@@ -24,6 +21,7 @@ class AccessibilityTest < System::TestCase
           )
 
           assert_accessible(excludes: excludes)
+
           puts "#{scenario.preview_path} passed check."
         end
       end

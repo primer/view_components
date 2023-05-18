@@ -11,9 +11,7 @@ module Primer
       class << self
         def call
           Lookbook.previews.filter_map do |preview|
-            next if preview.preview_class.name.start_with?("Docs::")
-            next if preview.preview_class == Primer::Forms::FormsPreview
-            next if Primer::Accessibility::IGNORED_PREVIEWS.include?(preview.preview_class.name)
+            next if Primer::Accessibility.ignore_preview?(preview.preview_class)
 
             component = preview.components.first&.component_class
 
