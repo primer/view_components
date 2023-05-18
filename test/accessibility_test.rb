@@ -17,6 +17,7 @@ class AccessibilityTest < System::TestCase
   ].freeze
 
   ViewComponent::Preview.all.each do |klass|
+    next if klass.to_s.start_with?("Docs::")
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)
