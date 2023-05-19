@@ -38,7 +38,8 @@ module Primer
                     name: scenario.name,
                     skip_rules: Primer::Accessibility.axe_rules_to_skip(
                       component: component,
-                      scenario_name: scenario.name
+                      scenario_name: scenario.name,
+                      skip_will_fix: false
                     )
                   }
                 end

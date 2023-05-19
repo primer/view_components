@@ -13,15 +13,27 @@ module Primer
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    AXE_RULES_TO_SKIP = %i[
-      region
-      color-contrast
-    ].freeze
+    AXE_RULES_TO_SKIP = {
+      # these will be skipped in CI but will still be tracked in Datadog
+      will_fix: {
+        global: %i[
+          color-contrast
+        ],
 
-    AXE_RULES_TO_SKIP_PER_COMPONENT = {
-      # these previews test only the component, which does not come with any labels
-      Primer::Alpha::ToggleSwitch => {
-        __all__: %i[button-name]
+        per_component: {}
+      },
+
+      # these will always be skipped
+      wont_fix: {
+        global: %i[
+          region
+        ],
+
+        per_component: {
+          Primer::Alpha::ToggleSwitch => {
+            all_scenarios: %i[button-name]
+          }
+        }
       }
     }.freeze
 
@@ -30,17 +42,18 @@ module Primer
         preview_class.name.start_with?("Docs::") || IGNORED_PREVIEWS.include?(preview_class)
       end
 
-      def axe_rules_to_skip(component: nil, scenario_name: nil)
-        to_skip = Set.new(AXE_RULES_TO_SKIP)
+      def axe_rules_to_skip(component: nil, scenario_name: nil, skip_will_fix: true)
+        to_skip = Set.new(AXE_RULES_TO_SKIP.dig(:wont_fix, :global) || [])
+        to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :global) || []) if skip_will_fix
 
         if component
-          to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component, :__all__) || [])
+          to_skip.merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, :all_scenarios) || [])
+          to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, :all_scenarios) || []) if skip_will_fix
 
-          # rubocop:disable Style/IfUnlessModifier
           if scenario_name
-            to_skip.merge(AXE_RULES_TO_SKIP_PER_COMPONENT.dig(component, scenario_name) || [])
+            to_skip.merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, scenario_name) || [])
+            to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, scenario_name) || []) if skip_will_fix
           end
-          # rubocop:enable Style/IfUnlessModifier
         end
 
         to_skip.to_a
