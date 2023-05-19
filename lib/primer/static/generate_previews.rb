@@ -34,8 +34,7 @@ module Primer
 
                 scenarios.map do |scenario|
                   {
-                    preview_path: "/view-components/rails-app/previews/#{scenario.lookup_path}",
-                    # preview_path: "/rails/view_components/#{scenario.lookup_path}",
+                    preview_path: scenario.lookup_path,
                     name: scenario.name,
                     skip_rules: Primer::Accessibility.axe_rules_to_skip(
                       component: component,
