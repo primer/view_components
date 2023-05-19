@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "lib/test_helper"
-require_relative "form_test_component"
+require_relative "forms/form_test_component"
 
-class Primer::Forms::FormsTest < Minitest::Test
+class Primer::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_correct_form_structure
