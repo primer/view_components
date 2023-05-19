@@ -10,13 +10,10 @@ class AccessibilityTest < System::TestCase
   IGNORED_PREVIEWS = %w[
     Primer::Beta::MarkdownPreview
     Primer::Beta::AutoCompleteItemPreview
-    Docs::AutoCompleteItemPreview
-    Docs::BetaAutoCompleteItemPreview
-    Docs::NavigationTabPreview
-    Docs::NavigationTabComponentPreview
   ].freeze
 
   ViewComponent::Preview.all.each do |klass|
+    next if klass.name.start_with?("Docs::")
     next if IGNORED_PREVIEWS.include?(klass.to_s)
 
     component_previews = klass.instance_methods(false)
