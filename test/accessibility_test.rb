@@ -12,8 +12,8 @@ class AccessibilityTest < System::TestCase
       scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
 
       scenarios.each do |scenario|
-        define_method(:"test_#{scenario.preview_path.parameterize(separator: "_")}") do
-          visit scenario.preview_path
+        define_method(:"test_#{scenario.lookup_path.parameterize(separator: "_")}") do
+          visit "/rails/view_components/#{scenario.lookup_path}"
 
           excludes = Primer::Accessibility.axe_rules_to_skip(
             component: preview.components.first&.component_class,
@@ -22,7 +22,7 @@ class AccessibilityTest < System::TestCase
 
           assert_accessible(excludes: excludes)
 
-          puts "#{scenario.preview_path} passed check."
+          puts "#{scenario.lookup_path} passed check."
         end
       end
     end
