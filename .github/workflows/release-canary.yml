@@ -49,7 +49,7 @@ jobs:
       - name: Publish canary release
         run: |
           echo -e "---\n$( jq .name package.json ): patch\n---\n\nFake entry to force publishing" > .changeset/force-snapshot-release.md
-          yarn changeset version --snapshot
+          yarn changeset version
           cat package.json
           # yarn changeset publish --tag canary
         env:
