@@ -45,7 +45,7 @@ jobs:
           node_version: ${{ inputs.node_version }}
 
       - name: Install dependencies
-        run: ${{ inputs.install }}
+        run: npm i
 
       - name: Build
         run: npm run build --if-present
