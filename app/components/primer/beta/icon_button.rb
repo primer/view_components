@@ -78,25 +78,25 @@ module Primer
         @aria_label = aria("label", @system_arguments)
         @aria_description = aria("description", @system_arguments)
 
+        return unless @show_tooltip
+
         @tooltip_arguments = {
           for_id: @system_arguments[:id],
           direction: tooltip_direction
         }
 
-        if @show_tooltip
-          # If we have both an `aria-label` and a `aria-description`, we create a `Tooltip` with the description type and keep the `aria-label` in the button.
-          # Otherwise, the `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
-          if @aria_label.present? && @aria_description.present?
-            @system_arguments.delete(:"aria-description")
-            @system_arguments[:aria].delete(:description) if @system_arguments.include?(:aria)
-            @tooltip_arguments[:text] = @aria_description
-            @tooltip_arguments[:type] = :description
-          else
-            @system_arguments.delete(:"aria-label")
-            @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
-            @tooltip_arguments[:text] = @aria_label
-            @tooltip_arguments[:type] = :label
-          end
+        # If we have both an `aria-label` and a `aria-description`, we create a `Tooltip` with the description type and keep the `aria-label` in the button.
+        # Otherwise, the `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
+        if @aria_label.present? && @aria_description.present?
+          @system_arguments.delete(:"aria-description")
+          @system_arguments[:aria].delete(:description) if @system_arguments.include?(:aria)
+          @tooltip_arguments[:text] = @aria_description
+          @tooltip_arguments[:type] = :description
+        else
+          @system_arguments.delete(:"aria-label")
+          @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
+          @tooltip_arguments[:text] = @aria_label
+          @tooltip_arguments[:type] = :label
         end
       end
 
