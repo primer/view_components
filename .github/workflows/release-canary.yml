@@ -5,6 +5,19 @@ on:
       - 'main'
       - 'dependabot/**'
       - 'changeset-release/**'
+    inputs:
+      install:
+        type: string
+        required: false
+        default: npm ci
+      node_version:
+        type: number
+        required: false
+        default: 16
+      use_gpr:
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   # release-canary:
