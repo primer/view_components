@@ -7,12 +7,55 @@ on:
       - 'changeset-release/**'
 
 jobs:
+  # release-canary:
+  #   name: npm
+  #   if: ${{ github.repository == 'primer/view_components' }}
+  #   uses: primer/.github/.github/workflows/release_canary.yml@main
+  #   with:
+  #     install: npm i
+  #   secrets:
+  #     gh_token: ${{ secrets.GITHUB_TOKEN }}
+  #     npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
   release-canary:
-    name: npm
-    if: ${{ github.repository == 'primer/view_components' }}
-    uses: primer/.github/.github/workflows/release_canary.yml@main
-    with:
-      install: npm i
-    secrets:
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
-      npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+    name: Canary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node_version: ${{ inputs.node_version }}
+
+      - name: Install dependencies
+        run: ${{ inputs.install }}
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Create .npmrc
+        run: |
+          if [ "$use_gpr" = "true" ]; then
+            registry="//npm.pkg.github.com/"
+          else
+            registry="//registry.npmjs.org/"
+          fi
+          cat << EOF > "$HOME/.npmrc"
+            $registry:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          use_gpr: ${{ inputs.use_gpr }}
+          NPM_TOKEN: ${{ secrets.npm_token }}
+
+      - name: Publish canary release
+        run: |
+          echo -e "---\n$( jq .name package.json ): patch\n---\n\nFake entry to force publishing" > .changeset/force-snapshot-release.md
+          yarn changeset version --snapshot
+          cat package.json
+          # yarn changeset publish --tag canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
