@@ -5,19 +5,6 @@ on:
       - 'main'
       - 'dependabot/**'
       - 'changeset-release/**'
-    inputs:
-      install:
-        type: string
-        required: false
-        default: npm ci
-      node_version:
-        type: number
-        required: false
-        default: 16
-      use_gpr:
-        type: boolean
-        required: false
-        default: false
 
 jobs:
   # release-canary:
@@ -42,7 +29,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
-          node_version: ${{ inputs.node_version }}
+          node_version: 16
 
       - name: Install dependencies
         run: npm i
@@ -52,17 +39,12 @@ jobs:
 
       - name: Create .npmrc
         run: |
-          if [ "$use_gpr" = "true" ]; then
-            registry="//npm.pkg.github.com/"
-          else
-            registry="//registry.npmjs.org/"
-          fi
+          registry="//registry.npmjs.org/"
           cat << EOF > "$HOME/.npmrc"
             $registry:_authToken=$NPM_TOKEN
           EOF
         env:
-          use_gpr: ${{ inputs.use_gpr }}
-          NPM_TOKEN: ${{ secrets.npm_token }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
 
       - name: Publish canary release
         run: |
