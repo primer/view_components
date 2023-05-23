@@ -66,9 +66,7 @@ module Primer
           return flattened.to_a
         end
 
-        to_skip.transform_values do |rule_set|
-          rule_set.to_a
-        end
+        to_skip.transform_values(&:to_a)
       end
     end
   end
