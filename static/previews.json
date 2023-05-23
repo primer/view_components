@@ -8,149 +8,254 @@
       {
         "preview_path": "primer/alpha/action_list/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/leading_visuals",
         "name": "leading_visuals",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/with_manual_dividers",
         "name": "with_manual_dividers",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/divider",
         "name": "divider",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/heading",
         "name": "heading",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item",
         "name": "item",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_default",
         "name": "item_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_size_large",
         "name": "item_size_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_size_xlarge",
         "name": "item_size_xlarge",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_leading_visual",
         "name": "item_leading_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_trailing_visual",
         "name": "item_trailing_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_leading_trailing_visual",
         "name": "item_leading_trailing_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_with_description",
         "name": "item_with_description",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_with_description_inline",
         "name": "item_with_description_inline",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_trailing_action",
         "name": "item_trailing_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_danger",
         "name": "item_danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_disabled",
         "name": "item_disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_wrap_label",
         "name": "item_wrap_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_truncate_label",
         "name": "item_truncate_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_list/item_active",
         "name": "item_active",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -163,170 +268,290 @@
       {
         "preview_path": "primer/alpha/action_menu/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/content_labels",
         "name": "content_labels",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/wide",
         "name": "wide",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/with_icon_button",
         "name": "with_icon_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/single_select",
         "name": "single_select",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/multiple_select",
         "name": "multiple_select",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/links",
         "name": "links",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/single_selected_item",
         "name": "single_selected_item",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/single_select_with_internal_label",
         "name": "single_select_with_internal_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/multiple_selected_items",
         "name": "multiple_selected_items",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/with_deferred_content",
         "name": "with_deferred_content",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/with_deferred_preloaded_content",
         "name": "with_deferred_preloaded_content",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/with_actions",
         "name": "with_actions",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/single_select_form",
         "name": "single_select_form",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/multiple_select_form",
         "name": "multiple_select_form",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/opens_dialog",
         "name": "opens_dialog",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/align_end",
         "name": "align_end",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/block_description",
         "name": "block_description",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/submitting_forms",
         "name": "submitting_forms",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/inline_description",
         "name": "inline_description",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/leading_visual",
         "name": "leading_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/action_menu/leading_visual_single_select",
         "name": "leading_visual_single_select",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -339,44 +564,74 @@
       {
         "preview_path": "primer/alpha/auto_complete/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/auto_complete/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/auto_complete/with_non_visible_label",
         "name": "with_non_visible_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/auto_complete/with_inline_label",
         "name": "with_inline_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/auto_complete/with_icon",
         "name": "with_icon",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/auto_complete/with_clear_button",
         "name": "with_clear_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -389,128 +644,218 @@
       {
         "preview_path": "primer/beta/auto_complete/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/with_submit_button",
         "name": "with_submit_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/leading_visual",
         "name": "leading_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/trailing_action",
         "name": "trailing_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/small",
         "name": "small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/medium",
         "name": "medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/large",
         "name": "large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/leading_visual_in_results",
         "name": "leading_visual_in_results",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/trailing_visual_in_results",
         "name": "trailing_visual_in_results",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/with_non_visible_label",
         "name": "with_non_visible_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/with_icon",
         "name": "with_icon",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/show_clear_button",
         "name": "show_clear_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/size_small",
         "name": "size_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/monospace",
         "name": "monospace",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/auto_complete/inset",
         "name": "inset",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -523,86 +868,146 @@
       {
         "preview_path": "primer/beta/avatar/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/as_link",
         "name": "as_link",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_16",
         "name": "size_16",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_20",
         "name": "size_20",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_24",
         "name": "size_24",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_32",
         "name": "size_32",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_40",
         "name": "size_40",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_48",
         "name": "size_48",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/size_80",
         "name": "size_80",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/shape_circle",
         "name": "shape_circle",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar/shape_square",
         "name": "shape_square",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -615,65 +1020,110 @@
       {
         "preview_path": "primer/beta/avatar_stack/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/avatar_1",
         "name": "avatar_1",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/avatar_2",
         "name": "avatar_2",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/avatar_3",
         "name": "avatar_3",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/avatar_4",
         "name": "avatar_4",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/avatar_5",
         "name": "avatar_5",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/align_right",
         "name": "align_right",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/avatar_stack/with_tooltip",
         "name": "with_tooltip",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -686,79 +1136,134 @@
       {
         "preview_path": "primer/alpha/banner/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/scheme_default",
         "name": "scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/scheme_danger",
         "name": "scheme_danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/scheme_success",
         "name": "scheme_success",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/scheme_warning",
         "name": "scheme_warning",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/dismissable",
         "name": "dismissable",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/full_width_in_narrow_viewport",
         "name": "full_width_in_narrow_viewport",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/with_action_button",
         "name": "with_action_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/banner/with_action_content",
         "name": "with_action_content",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -771,16 +1276,26 @@
       {
         "preview_path": "primer/beta/base_button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/base_button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -793,86 +1308,146 @@
       {
         "preview_path": "primer/beta/blankslate/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/option_narrow",
         "name": "option_narrow",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/option_spacious",
         "name": "option_spacious",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/option_border",
         "name": "option_border",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/with_icon",
         "name": "with_icon",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/with_image",
         "name": "with_image",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/loading",
         "name": "loading",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/description",
         "name": "description",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/primary_action",
         "name": "primary_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/secondary_action",
         "name": "secondary_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/blankslate/full",
         "name": "full",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -885,51 +1460,86 @@
       {
         "preview_path": "primer/beta/border_box/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/header_with_title",
         "name": "header_with_title",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/row_colors",
         "name": "row_colors",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/padding_default",
         "name": "padding_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/padding_condensed",
         "name": "padding_condensed",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/border_box/padding_spacious",
         "name": "padding_spacious",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -942,30 +1552,50 @@
       {
         "preview_path": "primer/box/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/box/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/box/border",
         "name": "border",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/box/border_bottom",
         "name": "border_bottom",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -978,16 +1608,26 @@
       {
         "preview_path": "primer/beta/breadcrumbs/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/breadcrumbs/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1000,107 +1640,182 @@
       {
         "preview_path": "primer/beta/button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/primary",
         "name": "primary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/danger",
         "name": "danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/invisible",
         "name": "invisible",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/invisible_all_visuals",
         "name": "invisible_all_visuals",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/link",
         "name": "link",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/all_schemes",
         "name": "all_schemes",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/link_as_button",
         "name": "link_as_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/trailing_visual",
         "name": "trailing_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/leading_visual",
         "name": "leading_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/trailing_action",
         "name": "trailing_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/trailing_counter",
         "name": "trailing_counter",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button/with_tooltip",
         "name": "with_tooltip",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1113,16 +1828,26 @@
       {
         "preview_path": "primer/beta/button_group/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/button_group/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1135,58 +1860,98 @@
       {
         "preview_path": "primer/alpha/button_marketing/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/sizes_default",
         "name": "sizes_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/sizes_large",
         "name": "sizes_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/scheme_default",
         "name": "scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/scheme_primary",
         "name": "scheme_primary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/scheme_outline",
         "name": "scheme_outline",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/button_marketing/scheme_transparent",
         "name": "scheme_transparent",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1199,37 +1964,62 @@
       {
         "preview_path": "primer/alpha/check_box/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1242,44 +2032,74 @@
       {
         "preview_path": "primer/alpha/check_box_group/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box_group/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box_group/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box_group/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box_group/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/check_box_group/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1292,30 +2112,50 @@
       {
         "preview_path": "primer/beta/clipboard_copy/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/clipboard_copy/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/clipboard_copy/text",
         "name": "text",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/clipboard_copy/element",
         "name": "element",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1328,16 +2168,26 @@
       {
         "preview_path": "primer/beta/close_button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/close_button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1350,86 +2200,146 @@
       {
         "preview_path": "primer/beta/counter/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/with_text",
         "name": "with_text",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/color_scheme_default",
         "name": "color_scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/color_scheme_primary",
         "name": "color_scheme_primary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_default",
         "name": "rounding_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_above_1000",
         "name": "rounding_above_1000",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_below_1000",
         "name": "rounding_below_1000",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_large_number",
         "name": "rounding_large_number",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_large_number_less_than_custom_limit",
         "name": "rounding_large_number_less_than_custom_limit",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/counter/rounding_large_number_greater_than_custom_limit",
         "name": "rounding_large_number_greater_than_custom_limit",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1442,30 +2352,50 @@
       {
         "preview_path": "primer/beta/details/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/details/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/details/custom_button",
         "name": "custom_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/details/without_button",
         "name": "without_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1478,65 +2408,110 @@
       {
         "preview_path": "primer/alpha/dialog/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/long_text",
         "name": "long_text",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/with_footer",
         "name": "with_footer",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/with_form",
         "name": "with_form",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/custom_header",
         "name": "custom_header",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/nested_dialog",
         "name": "nested_dialog",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/with_text_input",
         "name": "with_text_input",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dialog/body_has_scrollbar_overflow",
         "name": "body_has_scrollbar_overflow",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1549,107 +2524,182 @@
       {
         "preview_path": "primer/alpha/dropdown/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/menu",
         "name": "menu",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_e",
         "name": "direction_e",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_ne",
         "name": "direction_ne",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_s",
         "name": "direction_s",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_se",
         "name": "direction_se",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_sw",
         "name": "direction_sw",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/direction_w",
         "name": "direction_w",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_with_caret",
         "name": "options_with_caret",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_with_header",
         "name": "options_with_header",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_with_dividers",
         "name": "options_with_dividers",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_as_list",
         "name": "options_as_list",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_overlay_none",
         "name": "options_overlay_none",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/dropdown/options_overlay_dark",
         "name": "options_overlay_dark",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1662,65 +2712,110 @@
       {
         "preview_path": "primer/beta/flash/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/color_scheme_default",
         "name": "color_scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/color_scheme_warning",
         "name": "color_scheme_warning",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/color_scheme_danger",
         "name": "color_scheme_danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/color_scheme_success",
         "name": "color_scheme_success",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/options_full",
         "name": "options_full",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/options_dismissible",
         "name": "options_dismissible",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/flash/options_with_icon",
         "name": "options_with_icon",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1733,44 +2828,74 @@
       {
         "preview_path": "primer/alpha/form_control/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/form_control/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/form_control/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/form_control/with_validation_message",
         "name": "with_validation_message",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/form_control/required",
         "name": "required",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/form_control/with_visually_hidden_label",
         "name": "with_visually_hidden_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1783,16 +2908,26 @@
       {
         "preview_path": "primer/beta/heading/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/heading/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1805,16 +2940,26 @@
       {
         "preview_path": "primer/alpha/hellip_button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/hellip_button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1827,16 +2972,26 @@
       {
         "preview_path": "primer/alpha/hidden_text_expander/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/hidden_text_expander/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1849,30 +3004,50 @@
       {
         "preview_path": "primer/beta/icon_button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/icon_button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/icon_button/danger",
         "name": "danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1885,23 +3060,38 @@
       {
         "preview_path": "primer/alpha/image_crop/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/image_crop/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/image_crop/loading",
         "name": "loading",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1914,114 +3104,194 @@
       {
         "preview_path": "primer/beta/label/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_default",
         "name": "color_scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_primary",
         "name": "color_scheme_primary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_accent",
         "name": "color_scheme_accent",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_success",
         "name": "color_scheme_success",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_attention",
         "name": "color_scheme_attention",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_danger",
         "name": "color_scheme_danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_severe",
         "name": "color_scheme_severe",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_done",
         "name": "color_scheme_done",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/color_scheme_sponsors",
         "name": "color_scheme_sponsors",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/size_default",
         "name": "size_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/size_large",
         "name": "size_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/inline_default",
         "name": "inline_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/label/inline_inline",
         "name": "inline_inline",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2034,149 +3304,254 @@
       {
         "preview_path": "primer/alpha/layout/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/gutter_none",
         "name": "gutter_none",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/gutter_condensed",
         "name": "gutter_condensed",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/gutter_default",
         "name": "gutter_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/gutter_spacious",
         "name": "gutter_spacious",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/main_width_md",
         "name": "main_width_md",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/main_width_lg",
         "name": "main_width_lg",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/main_width_xl",
         "name": "main_width_xl",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/main_width_full",
         "name": "main_width_full",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_width_narrow",
         "name": "sidebar_width_narrow",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_width_default",
         "name": "sidebar_width_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_width_wide",
         "name": "sidebar_width_wide",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_col_placement_start",
         "name": "sidebar_col_placement_start",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_col_placement_end",
         "name": "sidebar_col_placement_end",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_start",
         "name": "sidebar_row_placement_start",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_end",
         "name": "sidebar_row_placement_end",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_none",
         "name": "sidebar_row_placement_none",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_sm",
         "name": "stacking_breakpoint_sm",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_md",
         "name": "stacking_breakpoint_md",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_lg",
         "name": "stacking_breakpoint_lg",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2189,58 +3564,98 @@
       {
         "preview_path": "primer/beta/link/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/tooltip",
         "name": "tooltip",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/color_scheme_default",
         "name": "color_scheme_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/color_scheme_primary",
         "name": "color_scheme_primary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/color_scheme_primary_muted",
         "name": "color_scheme_primary_muted",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/link/color_scheme_secondary_muted",
         "name": "color_scheme_secondary_muted",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2253,16 +3668,26 @@
       {
         "preview_path": "primer/alpha/menu/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/menu/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2275,37 +3700,62 @@
       {
         "preview_path": "primer/alpha/multi_input/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/multi_input/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/multi_input/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/multi_input/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/multi_input/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2318,37 +3768,62 @@
       {
         "preview_path": "primer/alpha/nav_list/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/nav_list/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/nav_list/top_level_items",
         "name": "top_level_items",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/nav_list/show_more_item",
         "name": "show_more_item",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/nav_list/trailing_action",
         "name": "trailing_action",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2361,16 +3836,26 @@
       {
         "preview_path": "primer/beta/octicon/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/octicon/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2383,37 +3868,62 @@
       {
         "preview_path": "primer/alpha/overlay/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/overlay/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/overlay/menu_no_header",
         "name": "menu_no_header",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/overlay/middle_of_page_with_relative_container",
         "name": "middle_of_page_with_relative_container",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2426,51 +3936,86 @@
       {
         "preview_path": "primer/beta/popover/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/large",
         "name": "large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/bottom_right",
         "name": "bottom_right",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/top_right",
         "name": "top_right",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/bottom_left",
         "name": "bottom_left",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/popover/top_left",
         "name": "top_left",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2483,37 +4028,62 @@
       {
         "preview_path": "primer/beta/progress_bar/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/progress_bar/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/progress_bar/size_small",
         "name": "size_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/progress_bar/size_default",
         "name": "size_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/progress_bar/size_large",
         "name": "size_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2526,37 +4096,62 @@
       {
         "preview_path": "primer/alpha/radio_button/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2569,44 +4164,74 @@
       {
         "preview_path": "primer/alpha/radio_button_group/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button_group/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button_group/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button_group/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/radio_button_group/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2619,37 +4244,62 @@
       {
         "preview_path": "primer/beta/relative_time/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/relative_time/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/relative_time/micro_format",
         "name": "micro_format",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/relative_time/recent_time",
         "name": "recent_time",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/relative_time/count_down_timer",
         "name": "count_down_timer",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2662,121 +4312,206 @@
       {
         "preview_path": "primer/alpha/segmented_control/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/full_width_small",
         "name": "full_width_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/full_width_medium",
         "name": "full_width_medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/full_width_large",
         "name": "full_width_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_small",
         "name": "icons_and_text_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_medium",
         "name": "icons_and_text_medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
         "name": "icons_and_text_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_medium",
         "name": "icon_only_medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_large",
         "name": "icon_only_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_small",
         "name": "icon_only_full_width_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_medium",
         "name": "icon_only_full_width_medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_large",
         "name": "icon_only_full_width_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/with_link_as_tag",
         "name": "with_link_as_tag",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/with_subhead_actions",
         "name": "with_subhead_actions",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/segmented_control/with_label_and_caption",
         "name": "with_label_and_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2789,58 +4524,98 @@
       {
         "preview_path": "primer/alpha/select/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/invalid",
         "name": "invalid",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/select/with_validation_message",
         "name": "with_validation_message",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2853,16 +4628,26 @@
       {
         "preview_path": "primer/beta/spinner/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/spinner/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2875,58 +4660,98 @@
       {
         "preview_path": "primer/beta/state/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/states_default",
         "name": "states_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/states_open",
         "name": "states_open",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/states_closed",
         "name": "states_closed",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/states_merged",
         "name": "states_merged",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/sizes_default",
         "name": "sizes_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/state/sizes_small",
         "name": "sizes_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2939,51 +4764,86 @@
       {
         "preview_path": "primer/beta/subhead/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/danger",
         "name": "danger",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/actions",
         "name": "actions",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/spacing_default",
         "name": "spacing_default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/spacing_spacious",
         "name": "spacing_spacious",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/subhead/spacing_dangerous",
         "name": "spacing_dangerous",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2996,30 +4856,50 @@
       {
         "preview_path": "primer/alpha/tab_nav/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tab_nav/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tab_nav/with_extra",
         "name": "with_extra",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3032,23 +4912,38 @@
       {
         "preview_path": "primer/alpha/tab_panels/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tab_panels/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tab_panels/with_extra",
         "name": "with_extra",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3061,16 +4956,26 @@
       {
         "preview_path": "primer/beta/text/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/text/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3083,58 +4988,98 @@
       {
         "preview_path": "primer/alpha/text_area/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/invalid",
         "name": "invalid",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_area/with_validation_message",
         "name": "with_validation_message",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3147,135 +5092,230 @@
       {
         "preview_path": "primer/alpha/text_field/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/size_small",
         "name": "size_small",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/size_medium",
         "name": "size_medium",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/size_large",
         "name": "size_large",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_caption",
         "name": "with_caption",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/visually_hide_label",
         "name": "visually_hide_label",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/show_clear_button",
         "name": "show_clear_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/invalid",
         "name": "invalid",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_placeholder",
         "name": "with_placeholder",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/inset",
         "name": "inset",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/monospace",
         "name": "monospace",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_leading_visual",
         "name": "with_leading_visual",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_validation_message",
         "name": "with_validation_message",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_auto_check_ok",
         "name": "with_auto_check_ok",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_auto_check_error",
         "name": "with_auto_check_error",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/text_field/with_data_target",
         "name": "with_data_target",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3288,16 +5328,26 @@
       {
         "preview_path": "primer/beta/timeline_item/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/timeline_item/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3310,90 +5360,145 @@
       {
         "preview_path": "primer/alpha/toggle_switch/playground",
         "name": "playground",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/default",
         "name": "default",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/checked",
         "name": "checked",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/disabled",
         "name": "disabled",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/checked_disabled",
         "name": "checked_disabled",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/small",
         "name": "small",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/with_status_label_position_end",
         "name": "with_status_label_position_end",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/with_a_bad_src",
         "name": "with_a_bad_src",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/with_no_src",
         "name": "with_no_src",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/with_csrf_token",
         "name": "with_csrf_token",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/toggle_switch/with_bad_csrf_token",
         "name": "with_bad_csrf_token",
-        "skip_rules": [
-          "region",
-          "button-name"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3406,65 +5511,110 @@
       {
         "preview_path": "primer/alpha/tooltip/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/label_tooltip_on_button_with_existing_labelledby",
         "name": "label_tooltip_on_button_with_existing_labelledby",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/description_tooltip_on_button_with_existing_describedby",
         "name": "description_tooltip_on_button_with_existing_describedby",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/with_right_most_position",
         "name": "with_right_most_position",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/with_multiple_on_a_page",
         "name": "with_multiple_on_a_page",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_button",
         "name": "tooltip_with_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_link",
         "name": "tooltip_with_link",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_icon_button",
         "name": "tooltip_with_icon_button",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3477,37 +5627,62 @@
       {
         "preview_path": "primer/beta/truncate/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/truncate/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/truncate/multiple_items",
         "name": "multiple_items",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/truncate/advanced_multiple_items",
         "name": "advanced_multiple_items",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/beta/truncate/max_widths",
         "name": "max_widths",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3520,23 +5695,38 @@
       {
         "preview_path": "primer/alpha/underline_nav/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/underline_nav/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/underline_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3549,16 +5739,26 @@
       {
         "preview_path": "primer/alpha/underline_panels/playground",
         "name": "playground",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       },
       {
         "preview_path": "primer/alpha/underline_panels/default",
         "name": "default",
-        "skip_rules": [
-          "region"
-        ]
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   }

@@ -17,7 +17,8 @@ class AccessibilityTest < System::TestCase
 
           excludes = Primer::Accessibility.axe_rules_to_skip(
             component: preview.components.first&.component_class,
-            scenario_name: scenario.name
+            scenario_name: scenario.name,
+            flatten: true
           )
 
           assert_accessible(excludes: excludes)

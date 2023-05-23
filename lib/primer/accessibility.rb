@@ -42,21 +42,33 @@ module Primer
         preview_class.name.start_with?("Docs::") || IGNORED_PREVIEWS.include?(preview_class)
       end
 
-      def axe_rules_to_skip(component: nil, scenario_name: nil, skip_will_fix: true)
-        to_skip = Set.new(AXE_RULES_TO_SKIP.dig(:wont_fix, :global) || [])
-        to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :global) || []) if skip_will_fix
+      def axe_rules_to_skip(component: nil, scenario_name: nil, flatten: false)
+        to_skip = {
+          wont_fix: Set.new(AXE_RULES_TO_SKIP.dig(:wont_fix, :global) || []),
+          will_fix: Set.new(AXE_RULES_TO_SKIP.dig(:will_fix, :global) || [])
+        }
 
         if component
-          to_skip.merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, :all_scenarios) || [])
-          to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, :all_scenarios) || []) if skip_will_fix
+          to_skip[:wont_fix].merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, :all_scenarios) || [])
+          to_skip[:will_fix].merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, :all_scenarios) || [])
 
           if scenario_name
-            to_skip.merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, scenario_name) || [])
-            to_skip.merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, scenario_name) || []) if skip_will_fix
+            to_skip[:wont_fix].merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, scenario_name) || [])
+            to_skip[:will_fix].merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, scenario_name) || [])
           end
         end
 
-        to_skip.to_a
+        if flatten
+          flattened = to_skip.each_with_object(Set.new) do |(_, rule_set), memo|
+            memo.merge(rule_set)
+          end
+
+          return flattened.to_a
+        end
+
+        to_skip.each_with_object({}) do |(k, rule_set), memo|
+          memo[k] = rule_set.to_a
+        end
       end
     end
   end

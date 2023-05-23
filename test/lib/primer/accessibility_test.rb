@@ -3,19 +3,25 @@
 require "lib/test_helper"
 
 class Primer::AccessibilityTest < Minitest::Test
-  def test_axe_rules_to_skip_includes_global_rules
-    assert_equal Primer::Accessibility.axe_rules_to_skip.to_a.sort, %i[color-contrast region]
+  def test_skips_global_rules
+    rules = Primer::Accessibility.axe_rules_to_skip
+    assert_equal rules[:will_fix].sort, %i[color-contrast]
+    assert_equal rules[:wont_fix].sort, %i[region]
   end
 
-  def test_axe_rules_to_skip_excludes_will_fix_rules
-    assert_equal Primer::Accessibility.axe_rules_to_skip(skip_will_fix: false).to_a.sort, %i[region]
+  def test_skips_global_rules_and_returns_flattened_list
+    rules = Primer::Accessibility.axe_rules_to_skip(flatten: true)
+    assert_equal rules.sort, %i[color-contrast region]
   end
 
-  def test_axe_rules_to_skip_includes_per_component_rules
-    assert_equal Primer::Accessibility.axe_rules_to_skip(component: Primer::Alpha::ToggleSwitch).to_a.sort, %i[button-name color-contrast region]
+  def test_skips_per_component_rules
+    rules = Primer::Accessibility.axe_rules_to_skip(component: Primer::Alpha::ToggleSwitch)
+    assert_equal rules[:will_fix].sort, %i[color-contrast]
+    assert_equal rules[:wont_fix].sort, %i[button-name region]
   end
 
-  def test_axe_rules_to_skip_includes_per_component_rules_and_excludes_will_fix_rules
-    assert_equal Primer::Accessibility.axe_rules_to_skip(component: Primer::Alpha::ToggleSwitch, skip_will_fix: false).to_a.sort, %i[button-name region]
+  def test_skips_per_component_rules_and_returns_flattened_list
+    rules = Primer::Accessibility.axe_rules_to_skip(component: Primer::Alpha::ToggleSwitch, flatten: true)
+    assert_equal rules.sort, %i[button-name color-contrast region]
   end
 end
