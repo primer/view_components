@@ -66,8 +66,8 @@ module Primer
           return flattened.to_a
         end
 
-        to_skip.each_with_object({}) do |(k, rule_set), memo|
-          memo[k] = rule_set.to_a
+        to_skip.transform_values do |rule_set|
+          rule_set.to_a
         end
       end
     end
