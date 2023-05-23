@@ -35,7 +35,8 @@ module System
       assert_accessible(
         excludes: Primer::Accessibility.axe_rules_to_skip(
           component: component,
-          scenario_name: scenario_name
+          scenario_name: scenario_name,
+          flatten: true
         )
       )
     end
