@@ -68,7 +68,7 @@ module System
     end
 
     def assert_accessible(excludes: nil)
-      excludes ||= Set.new(Primer::Accessibility.axe_rules_to_skip)
+      excludes ||= Set.new(Primer::Accessibility.axe_rules_to_skip(flatten: true))
 
       axe_exists = driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];
