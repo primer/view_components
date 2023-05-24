@@ -5,26 +5,26 @@ require "system/test_case"
 class AccessibilityTest < System::TestCase
   parallelize workers: 4
 
-  # Skip components that should be tested as part of a larger component.
-  # Do not add to this list for any other reason!
-  IGNORED_PREVIEWS = %w[
-    Primer::Beta::MarkdownPreview
-    Primer::Beta::AutoCompleteItemPreview
-  ].freeze
+  Lookbook.previews.each do |preview|
+    next if Primer::Accessibility.ignore_preview?(preview.preview_class)
 
-  ViewComponent::Preview.all.each do |klass|
-    next if klass.name.start_with?("Docs::")
-    next if IGNORED_PREVIEWS.include?(klass.to_s)
+    preview.scenarios.each do |parent_scenario|
+      scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
 
-    component_previews = klass.instance_methods(false)
-    component_uri = klass.to_s.underscore.gsub("_preview", "")
+      scenarios.each do |scenario|
+        define_method(:"test_#{scenario.lookup_path.parameterize(separator: "_")}") do
+          visit "/rails/view_components/#{scenario.lookup_path}"
 
-    component_previews.each do |preview|
-      define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
-        visit("/rails/view_components/#{component_uri}/#{preview}")
-        excludes = axe_rules_to_skip(component_name: klass.name.delete_prefix("Primer::").chomp("Preview"), preview_name: preview)
-        assert_accessible(excludes: excludes)
-        puts "#{component_uri}##{preview} passed check."
+          excludes = Primer::Accessibility.axe_rules_to_skip(
+            component: preview.components.first&.component_class,
+            scenario_name: scenario.name,
+            flatten: true
+          )
+
+          assert_accessible(excludes: excludes)
+
+          puts "#{scenario.lookup_path} passed check."
+        end
       end
     end
   end
