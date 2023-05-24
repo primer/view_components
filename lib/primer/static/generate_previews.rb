@@ -11,8 +11,8 @@ module Primer
       class << self
         def call
           Lookbook.previews.filter_map do |preview|
-            next if preview.preview_class.name.start_with?("Docs::")
-            next if preview.preview_class == Primer::Forms::FormsPreview
+            next if preview.preview_class == Primer::FormsPreview
+            next if Primer::Accessibility.ignore_preview?(preview.preview_class)
 
             component = preview.components.first&.component_class
 
@@ -29,12 +29,19 @@ module Primer
               component: class_name,
               status: component.status.to_s,
               lookup_path: preview.lookup_path,
-              examples: preview.examples.map do |example|
-                {
-                  inspect_path: example.url_path,
-                  preview_path: example.url_path.sub("/inspect/", "/preview/"),
-                  name: example.name
-                }
+              examples: preview.scenarios.flat_map do |parent_scenario|
+                scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
+
+                scenarios.map do |scenario|
+                  {
+                    preview_path: scenario.lookup_path,
+                    name: scenario.name,
+                    skip_rules: Primer::Accessibility.axe_rules_to_skip(
+                      component: component,
+                      scenario_name: scenario.name
+                    )
+                  }
+                end
               end
             }
           end
