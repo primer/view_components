@@ -64,10 +64,9 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
-        working-directory: ./primer_view_components
         with:
           name: github-pages
-          path: artifact.tar
+          path: ./primer_view_components/artifact.tar
 
   deploy:
     name: Deploy
