@@ -7,7 +7,7 @@ exports.createPages = async ({ _graphql, actions }) => {
   const env = process.env.NODE_ENV
   if (env === 'development') {
     console.log(`NODE_ENV is ${env}, skipping redirects`)
-    return
+    // return
   } else {
     console.log(`NODE_ENV is ${env}, computing redirects`)
   }
@@ -19,9 +19,9 @@ exports.createPages = async ({ _graphql, actions }) => {
   const iaComponentPath = path.join(primerDesignRepoPath, 'content', 'components')
   console.log(`IA component path is: ${iaComponentPath}`)
   const mdxFiles = await glob(path.join(iaComponentPath, '*.mdx'))
-  console.log(`Found mdx files: ${mdxFiles.join(', ')}`)
-  const infoArchFile = path.join(path.basename(__filename), '..', 'static', 'info_arch.json')
-  console.log(`Info arch file: ${infoArchFile}`)
+  console.log(`Found mdx files:\n${mdxFiles.join("\n")}`)
+  const infoArchFile = path.join(__dirname, '..', 'static', 'info_arch.json')
+  console.log(`Info arch manifest: ${infoArchFile}`)
   const infoArch = JSON.parse(fs.readFileSync(infoArchFile), {encoding: 'utf8'})
 
   const findComponentInInfoArch = (railsId) => {
