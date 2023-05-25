@@ -42,8 +42,9 @@ jobs:
             primer_view_components/docs/package-lock.json
             primer_design/package-lock.json
 
-      - name: Install dependencies
-        run: cd primer_view_components && npm ci && cd docs && npm ci && cd ../primer_design && npm ci && cd ..
+      - name: Install primer/view_components dependencies
+        working-directory: ./primer_view_components
+        run: npm ci && cd docs && npm ci
 
       - name: Generate static files
         working-directory: ./primer_view_components
