@@ -50,7 +50,7 @@ exports.createPages = async ({ _graphql, actions }) => {
     const mdxPath = path.parse(path.relative(path.join(primerDesignRepoPath, 'content'), mdxFile))
     const newDocsiteUrl = joinUrls('https://primer.style/design', mdxPath.dir, mdxPath.name)
     const component = findComponentInInfoArch(railsId)
-    const legacyDocsiteUrl = joinUrls('/view-components', component.legacy_docsite_path)
+    const legacyDocsiteUrl = joinUrls('/', component.legacy_docsite_path)
 
     console.log(`Creating redirect from ${legacyDocsiteUrl} to ${newDocsiteUrl}`)
 
