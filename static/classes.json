@@ -72,6 +72,9 @@
   "Box--danger": [
     "Primer::Beta::BorderBox"
   ],
+  "ButtonGroup": [
+    "Primer::Beta::ButtonGroup"
+  ],
   "Label--info": [
     "Primer::Beta::Label"
   ],
