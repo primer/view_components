@@ -69,12 +69,15 @@ module Primer
                 view_context.render(inline: docs.base_docstring)
               end
 
+            status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
+
             memo[component] = {
               "fully_qualified_name" => component.name,
               "description" => description,
               "is_form_component" => docs.manifest_entry.form_component?,
               "is_published" => docs.manifest_entry.published?,
               "requires_js" => docs.manifest_entry.requires_js?,
+              "legacy_docsite_path": "components/#{status_path}#{docs.short_name.downcase}",
               **arg_data,
               "slots" => slot_docs,
               "methods" => method_docs,

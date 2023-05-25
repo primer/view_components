@@ -6,6 +6,10 @@
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths"
   },
+  "devDependencies": {
+    "glob": "^10.2.6",
+    "js-yaml": "^4.1.0"
+  },
   "dependencies": {
     "@primer/behaviors": "^1.3.3",
     "@primer/css": "^21.0.1",
