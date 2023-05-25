@@ -42,6 +42,8 @@ exports.createPages = async ({ _graphql, actions }) => {
     const component = findComponentInInfoArch(railsId)
     const legacyDocsiteUrl = joinUrls('/view-components', component.legacy_docsite_path)
 
+    console.log(`Creating redirect from ${legacyDocsiteUrl} to ${newDocsiteUrl}`)
+
     createRedirect({
       fromPath: legacyDocsiteUrl,
       toPath: newDocsiteUrl,
