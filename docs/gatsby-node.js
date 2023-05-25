@@ -4,6 +4,8 @@ const path = require('path')
 const yaml = require('js-yaml')
 
 exports.createPages = async ({ _graphql, actions }) => {
+  return
+
   const env = process.env.NODE_ENV
   if (env === 'development') {
     console.log(`NODE_ENV is ${env}, skipping redirects`)
@@ -50,7 +52,7 @@ exports.createPages = async ({ _graphql, actions }) => {
     const mdxPath = path.parse(path.relative(path.join(primerDesignRepoPath, 'content'), mdxFile))
     const newDocsiteUrl = joinUrls('https://primer.style/design', mdxPath.dir, mdxPath.name)
     const component = findComponentInInfoArch(railsId)
-    const legacyDocsiteUrl = component.legacy_docsite_path
+    const legacyDocsiteUrl = joinUrls('/', component.legacy_docsite_path)
 
     console.log(`Creating redirect from ${legacyDocsiteUrl} to ${newDocsiteUrl}`)
 
