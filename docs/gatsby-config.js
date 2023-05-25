@@ -12,8 +12,7 @@ module.exports = {
         defaultBranch: 'main',
         repoRootPath: './docs',
       },
-    },
-    'gatsby-plugin-meta-redirect'
+    }
   ],
   pathPrefix: '/view-components',
 }

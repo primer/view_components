@@ -48,7 +48,7 @@ exports.createPages = async ({ _graphql, actions }) => {
     if (!railsId) return
 
     const mdxPath = path.parse(path.relative(path.join(primerDesignRepoPath, 'content'), mdxFile))
-    const newDocsiteUrl = joinUrls('/design', mdxPath.dir, mdxPath.name)
+    const newDocsiteUrl = joinUrls('https://primer.style/design', mdxPath.dir, mdxPath.name)
     const component = findComponentInInfoArch(railsId)
     const legacyDocsiteUrl = joinUrls('/view-components', component.legacy_docsite_path)
 
