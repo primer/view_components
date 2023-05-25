@@ -20,7 +20,9 @@ exports.createPages = async ({ _graphql, actions }) => {
   console.log(`IA component path is: ${iaComponentPath}`)
   const mdxFiles = await glob(path.join(iaComponentPath, '*.mdx'))
   console.log(`Found mdx files: ${mdxFiles.join(', ')}`)
-  const infoArch = JSON.parse(fs.readFileSync('static/info_arch.json'), {encoding: 'utf8'})
+  const infoArchFile = path.join(path.basename(__filename), '..', 'static', 'info_arch.json')
+  console.log(`Info arch file: ${infoArchFile}`)
+  const infoArch = JSON.parse(fs.readFileSync(infoArchFile), {encoding: 'utf8'})
 
   const findComponentInInfoArch = (railsId) => {
     for (const component of infoArch) {
@@ -37,6 +39,7 @@ exports.createPages = async ({ _graphql, actions }) => {
   }
 
   mdxFiles.forEach((mdxFile) => {
+    console.log(`Processing ${mdxFile}`)
     const content = fs.readFileSync(mdxFile, {encoding: 'utf8'})
     const frontMatterBeginIdx = content.indexOf('---')
     const frontMatterEndIdx = content.indexOf('---', frontMatterBeginIdx + 3)

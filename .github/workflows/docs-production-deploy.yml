@@ -71,7 +71,7 @@ jobs:
         working-directory: ./primer_view_components
         run: npm run build:docs
         env:
-          PRIMER_DESIGN_REPO_PATH: ../primer_design
+          PRIMER_DESIGN_REPO_PATH: "${{ github.workspace }}/primer_design"
           NODE_ENV: production
 
       - name: Archive build output
