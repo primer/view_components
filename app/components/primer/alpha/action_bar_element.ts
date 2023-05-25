@@ -45,8 +45,10 @@ class ActionBarElement extends HTMLElement {
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
-    this.style.overflow = 'visible'
-    this.update()
+    setTimeout(() => {
+      this.style.overflow = 'visible'
+      this.update()
+    }, 20) // Wait for the items to be rendered, making this really short to avoid a flash of unstyled content
   }
 
   disconnectedCallback() {
@@ -66,7 +68,7 @@ class ActionBarElement extends HTMLElement {
 
   update(rect: DOMRect = this.getBoundingClientRect()) {
     // Only recalculate if the bar width changed
-    if (rect.width <= this.#previousBarWidth) {
+    if (rect.width <= this.#previousBarWidth || this.#previousBarWidth === 0) {
       this.#shrink()
     } else if (rect.width > this.#previousBarWidth) {
       this.#grow()
