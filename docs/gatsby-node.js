@@ -7,7 +7,7 @@ exports.createPages = async ({ _graphql, actions }) => {
   const env = process.env.NODE_ENV
   if (env === 'development') {
     console.log(`NODE_ENV is ${env}, skipping redirects`)
-    // return
+    return
   } else {
     console.log(`NODE_ENV is ${env}, computing redirects`)
   }
