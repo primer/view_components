@@ -94,7 +94,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
-    if (event.target === this.invokerElement && this.#isEnterKeydown(event)) {
+    if (event.target === this.invokerElement && this.#isActivationKeydown(event)) {
       if (this.#firstItem) {
         event.preventDefault()
         this.popoverElement?.showPopover()
@@ -107,7 +107,7 @@ export class ActionMenuElement extends HTMLElement {
 
     if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
       this.popoverElement?.hidePopover()
-    } else if (this.#isEnterKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
+    } else if (this.#isActivationKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
       const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
@@ -201,12 +201,12 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  #isEnterKeydown(event: Event): boolean {
+  #isActivationKeydown(event: Event): boolean {
     return (
       event instanceof KeyboardEvent &&
       event.type === 'keydown' &&
       !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-      event.key === 'Enter'
+      (event.key === 'Enter' || event.key === ' ')
     )
   }
 
