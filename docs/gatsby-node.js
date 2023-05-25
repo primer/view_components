@@ -6,10 +6,10 @@ const yaml = require('js-yaml')
 exports.createPages = async ({ _graphql, actions }) => {
   const env = process.env.NODE_ENV
   if (env === 'development') {
-    console.log(`NODE_ENV is ${NODE_ENV}, skipping redirects`)
+    console.log(`NODE_ENV is ${env}, skipping redirects`)
     return
   } else {
-    console.log(`NODE_ENV is ${NODE_ENV}, computing redirects`)
+    console.log(`NODE_ENV is ${env}, computing redirects`)
   }
 
   const { createRedirect } = actions
@@ -17,8 +17,10 @@ exports.createPages = async ({ _graphql, actions }) => {
   if (!primerDesignRepoPath) throw new Error('Missing PRIMER_DESIGN_REPO_PATH environment variable')
 
   const iaComponentPath = path.join(primerDesignRepoPath, 'content', 'components')
+  console.log(`IA component path is: ${iaComponentPath}`)
   const mdxFiles = await glob(path.join(iaComponentPath, '*.mdx'))
-  const infoArch = JSON.parse(fs.readFileSync('../static/info_arch.json'), {encoding: 'utf8'})
+  console.log(`Found mdx files: ${mdxFiles.join(', ')}`)
+  const infoArch = JSON.parse(fs.readFileSync('static/info_arch.json'), {encoding: 'utf8'})
 
   const findComponentInInfoArch = (railsId) => {
     for (const component of infoArch) {

@@ -58,7 +58,7 @@ jobs:
 
       - name: Install JavaScript dependencies
         working-directory: ./primer_view_components
-        run: npm ci && cd docs && npm ci
+        run: npm i && cd docs && npm i
 
       - name: Generate static files
         working-directory: ./primer_view_components
