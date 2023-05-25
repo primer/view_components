@@ -42,9 +42,23 @@ jobs:
             primer_view_components/docs/package-lock.json
             primer_design/package-lock.json
 
-      - name: Install primer/view_components dependencies
+      - name: Install Ruby dependencies
+        working-directory: ./primer_view_components
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 3 --retry 3
+
+      - name: Install JavaScript dependencies
         working-directory: ./primer_view_components
         run: npm ci && cd docs && npm ci
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            primer_view_components/node_modules
+            primer_view_components/docs/node_modules
+            primer_view_components/vendor/bundle
+          key: gems-build-pvc-${{ hashFiles('**/Gemfile.lock') }}-${{ hashFiles('**/package-json.lock') }}
 
       - name: Generate static files
         working-directory: ./primer_view_components
