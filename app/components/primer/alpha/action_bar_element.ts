@@ -22,7 +22,6 @@ const resizeObserver = new ResizeObserver(entries => {
 @controller
 class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
-  @targets menuItems: HTMLElement[]
   @target itemContainer: HTMLElement
   @target moreMenu: HTMLElement
 
@@ -150,16 +149,20 @@ class ActionBarElement extends HTMLElement {
 
   #showItem(index: number) {
     this.items[index]!.hidden = false
-    this.menuItems[index]!.hidden = true
+    this.#menuItems[index]!.hidden = true
   }
 
   #hideItem(index: number) {
     this.items[index]!.hidden = true
-    this.menuItems[index]!.hidden = false
+    this.#menuItems[index]!.hidden = false
 
     if (this.moreMenu.hidden) {
       this.moreMenu.hidden = false
     }
+  }
+
+  get #menuItems(): NodeListOf<HTMLElement> {
+    return this.moreMenu.querySelectorAll('[role="menu"] > li')
   }
 }
 

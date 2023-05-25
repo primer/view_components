@@ -29,7 +29,7 @@ module Primer
           end
         },
         divider: lambda {
-          @action_menu.with_divider(data: { targets: "action-bar.menuItems" }, hidden: true) if @overflow_menu
+          @action_menu.with_divider(hidden: true) if @overflow_menu
           Divider.new
         }
       }
@@ -72,7 +72,6 @@ module Primer
 
         system_arguments = {
           **system_arguments,
-          "data-targets": "action-bar.menuItems",
           hidden: true,
           tag: :button,
           type: "button",
