@@ -5,7 +5,12 @@ const yaml = require('js-yaml')
 
 exports.createPages = async ({ _graphql, actions }) => {
   const env = process.env.NODE_ENV
-  if (env == 'development') return
+  if (env === 'development') {
+    console.log(`NODE_ENV is ${NODE_ENV}, skipping redirects`)
+    return
+  } else {
+    console.log(`NODE_ENV is ${NODE_ENV}, computing redirects`)
+  }
 
   const { createRedirect } = actions
   const primerDesignRepoPath = process.env.PRIMER_DESIGN_REPO_PATH
