@@ -16,7 +16,7 @@
 - title: Components
   children:
   - title: ActionMenu
-    url: "https://primer.style/design/components/action-menu"
+    url: "/components/alpha/actionmenu"
   - title: AutoComplete
     url: "/components/beta/autocomplete"
   - title: AutoCompleteItem

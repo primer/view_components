@@ -62,17 +62,13 @@ jobs:
 
       - name: Generate static files
         working-directory: ./primer_view_components
-        run: |
-          bundle exec rake utilities:build
-          bundle exec rake docs:build
-          bundle exec rake static:dump
+        run: bundle exec rake utilities:build docs:build docs:generate_nav_redirects static:dump
+        env:
+          PRIMER_DESIGN_REPO_PATH: "${{ github.workspace }}/primer_design"
 
       - name: Build
         working-directory: ./primer_view_components
         run: npm run build:docs
-        env:
-          PRIMER_DESIGN_REPO_PATH: "${{ github.workspace }}/primer_design"
-          NODE_ENV: production
 
       - name: Archive build output
         working-directory: ./primer_view_components
