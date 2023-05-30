@@ -15,7 +15,7 @@ _Please read this description carefully. If you feel there is anything unclear o
 #### List the issues that this change affects.
 <!--Every code change must address _at least 1_ issue. Fixes a bug, completes a task, every change
       should have a corresponding issue listed here. If one does not already exist, create one. -->
-      
+ 
 Closes # (type the GitHub issue number after #)
 
 #### Risk Assessment
@@ -41,9 +41,9 @@ Closes # (type the GitHub issue number after #)
   You may remove this section and the "Accessibility" heading above _only_ if the changes in this pull request do not impact UI. Delete all those that don't apply.
   If there are any accessibility-related updates, please describe them here.
 -->
-* **Fixes axe scan violation** - This change fixes an existing [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violation.
-* **No new axe scan violation** - This change does not introduce any new [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violations.
-* **New axe violation** - This change introduces a new [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violation. Please describe why the violation cannot be resolved below.
+- **Fixes axe scan violation** - This change fixes an existing [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violation.
+- **No new axe scan violation** - This change does not introduce any new [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violations.
+- **New axe violation** - This change introduces a new [axe scan](https://thehub.github.com/epd/engineering/dev-practicals/frontend/accessibility/readiness-routine/development/#axe-scans) violation. Please describe why the violation cannot be resolved below.
 
 ### Merge checklist
 
