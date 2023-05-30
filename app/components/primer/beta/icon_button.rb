@@ -78,6 +78,8 @@ module Primer
         @aria_label = aria("label", @system_arguments)
         @aria_description = aria("description", @system_arguments)
 
+        return unless @show_tooltip
+
         @tooltip_arguments = {
           for_id: @system_arguments[:id],
           direction: tooltip_direction

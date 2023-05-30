@@ -32,4 +32,9 @@ class PrimerBetaIconButtonTest < Minitest::Test
     refute_selector(".Button-withTooltip")
     refute_selector("tool-tip")
   end
+
+  def test_aria_label_is_set_when_tooltips_are_hidden
+    render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", show_tooltip: false))
+    assert_selector("[aria-label='Star']")
+  end
 end
