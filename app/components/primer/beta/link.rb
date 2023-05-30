@@ -67,6 +67,7 @@ module Primer
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)],
+          "Link",
           "Link--muted" => muted,
           "no-underline" => !underline
         )
