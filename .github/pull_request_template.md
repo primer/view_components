@@ -15,7 +15,7 @@ _Please read this description carefully. If you feel there is anything unclear o
 #### List the issues that this change affects.
 <!--Every code change must address _at least 1_ issue. Fixes a bug, completes a task, every change
       should have a corresponding issue listed here. If one does not already exist, create one. -->
- 
+
 Closes # (type the GitHub issue number after #)
 
 #### Risk Assessment
