@@ -40,7 +40,7 @@ class BenchClassify < Minitest::Benchmark
   end
 
   def bench_allocations
-    assert_allocations "3.1" => 6, "3.0" => 6, "2.7" => 4 do
+    assert_allocations "3.2" => 6, "3.1" => 6, "3.0" => 6, "2.7" => 4 do
       Primer::Classify.call(**@values)
     end
   end

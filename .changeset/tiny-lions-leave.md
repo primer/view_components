@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Toggle switch accessibility fixes
+Bump popover-polyfill to latest version

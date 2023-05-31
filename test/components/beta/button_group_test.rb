@@ -8,32 +8,26 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   def test_does_not_render_without_buttons
     render_inline(Primer::Beta::ButtonGroup.new)
 
-    refute_selector("div.BtnGroup")
+    refute_selector("div.ButtonGroup")
   end
 
   def test_renders_button_items
-    render_inline(Primer::Beta::ButtonGroup.new) { |component| component.with_button { "Button" } }
+    render_inline(Primer::Beta::ButtonGroup.new(scheme: :default)) { |component| component.with_button { "Button" } }
 
-    assert_selector("div.BtnGroup") do
-      assert_selector("button.btn.BtnGroup-item", text: "Button")
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button--secondary.Button", text: "Button")
     end
   end
 
   def test_renders_button_with_props
-    render_inline(Primer::Beta::ButtonGroup.new) do |component|
+    render_inline(Primer::Beta::ButtonGroup.new(scheme: :default)) do |component|
       component.with_button { "Button" }
-      component.with_button(scheme: :primary) { "Primary" }
-      component.with_button(scheme: :danger) { "Danger" }
-      component.with_button(scheme: :outline) { "Outline" }
       component.with_button(classes: "custom-class") { "Custom class" }
     end
 
-    assert_selector("div.BtnGroup") do
-      assert_selector("button.btn.BtnGroup-item", text: "Button")
-      assert_selector("button.btn.BtnGroup-item.btn-primary", text: "Primary")
-      assert_selector("button.btn.BtnGroup-item.btn-danger", text: "Danger")
-      assert_selector("button.btn.BtnGroup-item.btn-outline", text: "Outline")
-      assert_selector("button.btn.BtnGroup-item.custom-class", text: "Custom class")
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button--secondary.Button", text: "Button")
+      assert_selector("button.custom-class", text: "Custom class")
     end
   end
 
@@ -46,20 +40,38 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   def test_all_buttons_with_same_size
     render_inline(Primer::Beta::ButtonGroup.new(size: :small)) do |component|
       component.with_button(size: :medium) { "Medium" }
+      component.with_button(size: :large) { "Large" }
     end
 
-    assert_selector("div.BtnGroup") do
-      assert_selector("button.btn.BtnGroup-item.btn-sm", text: "Medium")
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button--small.Button", text: "Medium")
+      assert_selector("button.Button--small.Button", text: "Large")
     end
   end
 
-  def test_all_buttons_with_same_variant
-    render_inline(Primer::Beta::ButtonGroup.new(variant: :small)) do |component|
-      component.with_button(size: :medium) { "Medium" }
+  def test_all_buttons_with_same_scheme
+    render_inline(Primer::Beta::ButtonGroup.new(scheme: :primary)) do |component|
+      component.with_button(scheme: :primary) { "Primary" }
+      component.with_button(scheme: :danger) { "Danger" }
     end
 
-    assert_selector("div.BtnGroup") do
-      assert_selector("button.btn.BtnGroup-item.btn-sm", text: "Medium")
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button--primary.Button", text: "Primary")
+      assert_selector("button.Button--primary.Button", text: "Danger")
+    end
+  end
+
+  def test_button_with_icon_button
+    render_inline(Primer::Beta::ButtonGroup.new) do |component|
+      component.with_button { "Button" }
+      component.with_button(icon: :star, "aria-label": "Icon button")
+    end
+
+    assert_selector("div.ButtonGroup") do
+      assert_selector("button.Button", text: "Button")
+      assert_selector("div.Button-withTooltip") do
+        assert_selector(".octicon.octicon-star")
+      end
     end
   end
 end

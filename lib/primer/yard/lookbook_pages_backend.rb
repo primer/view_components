@@ -10,7 +10,7 @@ module Primer
       PREVIEW_MAP = {
         Primer::Alpha::TextField => [:single_text_field_form, :multi_text_field_form],
         Primer::Alpha::TextArea => [],
-        Primer::Alpha::Select => [:select_list_form],
+        Primer::Alpha::Select => [:select_form],
         Primer::Alpha::MultiInput => [:multi_input_form],
         Primer::Alpha::RadioButton => [:radio_button_with_nested_form],
         Primer::Alpha::RadioButtonGroup => [:radio_button_group_form],
@@ -49,7 +49,13 @@ module Primer
 
         preview_methods = PREVIEW_MAP[component]
         preview_erbs = preview_methods.map do |preview_method|
-          "<%= embed Primer::Forms::FormsPreview, #{preview_method.inspect} %>"
+          # rubocop:disable Style/IfUnlessModifier
+          if Primer::FormsPreview.instance_methods.exclude?(preview_method)
+            raise "Preview '#{preview_method}' does not exist in Primer::FormsPreview"
+          end
+          # rubocop:enable Style/IfUnlessModifier
+
+          "<%= embed Primer::FormsPreview, #{preview_method.inspect} %>"
         end
         # rubocop:enable Lint/UselessAssignment
 

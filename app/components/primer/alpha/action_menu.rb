@@ -105,7 +105,7 @@ module Primer
       #    <% c.with_item(tag: :"clipboard-copy", value: "Text to copy") do %>
       #      Copy Text
       #    <% end %>
-      #    <% c.with_item(tag: :button, type: "button", is_dangerous: true) do %>
+      #    <% c.with_item(tag: :button, type: "button", scheme: :danger) do %>
       #      Delete
       #    <% end %>
       #  <% end %>
