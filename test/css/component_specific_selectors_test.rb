@@ -103,7 +103,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--large .Button-label",
       ".Button--iconOnly",
       ".Button--iconOnly.Button--small",
-      ".Button--iconOnly.Button--large"
+      ".Button--iconOnly.Button--large",
+      ".Button--danger .Counter"
     ],
     Primer::Beta::ButtonGroup => [
       ".ButtonGroup"
