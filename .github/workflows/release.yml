@@ -33,6 +33,9 @@ jobs:
           npm ci
           bundle install
 
+      # `changesets/action` depends on @changesets/cli being installed ...
+      - run: npm install @changesets/cli@2.26.1
+
       - name: Create release pull request or publish to npm
         id: changesets
         uses: changesets/action@v1
