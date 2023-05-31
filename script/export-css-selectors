@@ -91,7 +91,10 @@ exportSelectors('app/components/primer')
         Object.fromEntries(
           Object
             .entries(htmlClassToRubyClasses)
-            .map(([key, set]) => [key, [...set.values()]])
+            .sort()
+            .map(([key, set]) => {
+              return [key, [...Array.from(set.values()).sort()]]
+            })
         ),
         null,
         2

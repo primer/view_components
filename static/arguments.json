@@ -3153,16 +3153,16 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/default/",
     "parameters": [
       {
-        "name": "variant",
+        "name": "scheme",
         "type": "Symbol",
-        "default": "`nil`",
-        "description": "DEPRECATED. One of `:medium` or `:small`."
+        "default": "`:default`",
+        "description": "DEPRECATED. One of `:danger`, `:default`, `:invisible`, `:link`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "One of `:medium` or `:small`."
+        "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
         "name": "system_arguments",

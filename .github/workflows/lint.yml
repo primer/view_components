@@ -48,7 +48,7 @@ jobs:
     - uses: ruby/setup-ruby@v1
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.2'
         bundler-cache: true
     - name: Lint with Rubocop
       if: steps.changed-files.outputs.any_changed == 'true'
@@ -68,7 +68,7 @@ jobs:
     - uses: ruby/setup-ruby@v1
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.2'
         bundler-cache: true
     - name: Lint with ERB Lint
       if: steps.changed-files.outputs.any_changed == 'true'
