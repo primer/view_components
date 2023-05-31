@@ -8,4 +8,13 @@
  *= require @primer/css/dist/layout.css
  *= require @primer/css/dist/utilities.css
  *= require @primer/css/dist/markdown.css
+ *= require @primer/primitives/tokens-next-private/css/base/size/size.css
+ *= require @primer/primitives/tokens-next-private/css/base/typography/typography.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/border.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/breakpoints.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/size-coarse.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/size-fine.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/size.css
+ *= require @primer/primitives/tokens-next-private/css/functional/size/viewport.css
+ *= require @primer/primitives/tokens-next-private/css/functional/typography/typography.css
 */

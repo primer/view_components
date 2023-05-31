@@ -11,7 +11,7 @@
     "@primer/css": "^21.0.1",
     "@primer/gatsby-theme-doctocat": "^4.4.2",
     "@primer/octicons-react": "^18.3.0",
-    "@primer/primitives": "^7.11.10",
+    "@primer/primitives": "^7.11.11",
     "@primer/react": "^35.25.1",
     "gatsby": "^2.24.63",
     "react": "^16.13.1",
