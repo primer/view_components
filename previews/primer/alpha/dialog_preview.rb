@@ -12,15 +12,16 @@ module Primer
       # @param position [Symbol] select [center, left, right]
       # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
       # @param visually_hide_title [Boolean] toggle
+      # @param disable_button [Boolean] toggle
       # @param button_text [String] text
       # @param body_text [String] text
       # @param icon [Symbol] octicon
-      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil)
+      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false)
         render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
           if icon.present? && (icon != :none)
-            d.with_show_button(icon: icon, "aria-label": icon.to_s)
+            d.with_show_button(icon: icon, "aria-label": icon.to_s, disabled: disable_button)
           else
-            d.with_show_button { button_text }
+            d.with_show_button(disabled: disable_button) { button_text }
           end
           d.with_body { body_text }
         end
