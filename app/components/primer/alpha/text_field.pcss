@@ -34,16 +34,23 @@
 .FormControl-inlineValidation {
   display: flex;
   font-size: var(--text-caption-size, 12px);
+  line-height: var(--text-caption-lineHeight, calc(16 / 12));
   font-weight: var(--base-text-weight-semibold, 600);
   color: var(--color-danger-fg);
   fill: var(--color-danger-fg);
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   gap: var(--base-size-4, 4px);
 
   & p {
     margin-bottom: 0;
   }
+}
+
+.FormControl-inlineValidation--visual {
+  align-items: center;
+  display: flex;
+  height: var(--base-size-16, 16px);
 }
 
 .FormControl-spacingWrapper {
