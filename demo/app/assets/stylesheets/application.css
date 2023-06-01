@@ -1,12 +1,6 @@
 /*
  *= require_tree .
  *= require_self
- *= require @primer/css/dist/color-modes.css
- *= require @primer/css/dist/base.css
- *= require @primer/css/dist/buttons.css
- *= require @primer/css/dist/layout.css
- *= require @primer/css/dist/utilities.css
- *= require @primer/css/dist/markdown.css
  *= require @primer/primitives/tokens-next-private/css/base/size/size.css
  *= require @primer/primitives/tokens-next-private/css/base/typography/typography.css
  *= require @primer/primitives/tokens-next-private/css/functional/size/border.css
@@ -25,4 +19,10 @@
  *= require @primer/primitives/tokens-next-private/css/functional/themes/light-high-contrast.css
  *= require @primer/primitives/tokens-next-private/css/functional/themes/light-tritanopia.css
  *= require @primer/primitives/tokens-next-private/css/functional/themes/light.css
+ *= require @primer/css/dist/color-modes.css
+ *= require @primer/css/dist/base.css
+ *= require @primer/css/dist/buttons.css
+ *= require @primer/css/dist/layout.css
+ *= require @primer/css/dist/utilities.css
+ *= require @primer/css/dist/markdown.css
 */
