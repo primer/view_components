@@ -269,15 +269,18 @@ module Primer
       # @label Trailing Counter
       # @param block toggle
       # @param align_content select [center, start]
+      # @param scheme select [default, primary, danger, invisible]
       def trailing_counter(
         block: false,
         id: "button-preview",
-        align_content: :center
+        align_content: :center,
+        scheme: :primary
       )
         render_with_template(locals: {
                                block: block,
                                id: id,
-                               align_content: align_content
+                               align_content: align_content,
+                               scheme: scheme
                              })
       end
 
