@@ -8,15 +8,14 @@
 
   /* stylelint-disable-next-line primer/typography */
   font-size: 1rem;
-  font-weight: var(--base-text-weight-semibold, 600);
+  font-weight: var(--base-text-weight-semibold);
   line-height: 1;
   color: var(--color-canvas-default);
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 15%) 0%, rgba(255, 255, 255, 0%) 100%),
+  background: linear-gradient(180deg, rgba(255, 255, 255, 15%) 0%, rgba(255, 255, 255, 0%) 100%),
     var(--color-mktg-btn-bg) !important;
   border: 0;
 
@@ -69,7 +68,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--color-accent-fg) ;
+    @mixin focusOutline 2px, var(--color-accent-fg);
   }
 
   &:active {
@@ -100,13 +99,11 @@
   }
 
   &:active {
-
     /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: var(--color-fg-default) 0 0 0 3px inset !important;
   }
 
   &:disabled {
-
     /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: var(--color-fg-subtle) 0 0 0 1px inset !important;
   }
@@ -127,7 +124,6 @@
 }
 
 .btn-signup-mktg {
-
   /* stylelint-disable-next-line primer/colors */
   color: #fff;
 
@@ -135,14 +131,13 @@
   background: linear-gradient(180deg, rgba(52, 183, 89, 15%) 0%, rgba(46, 164, 79, 0%) 100%), rgb(46, 164, 79) !important;
 
   &::before {
-
     /* stylelint-disable-next-line primer/colors */
     background: linear-gradient(180deg, rgba(52, 183, 89, 15%) 0%, rgba(46, 164, 79, 0%) 100%) !important;
   }
 
   /* fallback :focus state */
   &:focus {
-    @mixin focusOutline 2px, var(--color-accent-fg) ;
+    @mixin focusOutline 2px, var(--color-accent-fg);
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -153,20 +148,18 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--color-accent-fg) ;
+    @mixin focusOutline 2px, var(--color-accent-fg);
   }
 }
 
 /* Size modifiers */
 
 .btn-small-mktg {
-
   /* stylelint-disable-next-line primer/spacing */
   padding: 0.625rem 1rem 0.8125rem;
 }
 
 .btn-large-mktg {
-
   /* stylelint-disable-next-line primer/spacing */
   padding: 16px 30px 20px !important;
 
