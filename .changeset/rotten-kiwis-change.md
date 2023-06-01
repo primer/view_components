@@ -2,4 +2,5 @@
 "@primer/view-components": patch
 ---
 
-Fixing fallback plugin imports for multi files.
+- Remove manual fallbacks for CSS vars
+- Update PostCSS plugin to add fallbacks at build time
