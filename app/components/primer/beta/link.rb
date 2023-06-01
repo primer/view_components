@@ -58,7 +58,7 @@ module Primer
       # @param underline [Boolean] Whether or not to underline the link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(href: nil, scheme: DEFAULT_SCHEME, muted: false, underline: true, **system_arguments)
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
 
         @id = @system_arguments[:id]
 
