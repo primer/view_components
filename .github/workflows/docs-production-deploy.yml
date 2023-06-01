@@ -18,6 +18,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           version: 14
+          path: 'primer_view_components'
+      - name: Checkout primer/design
+        uses: actions/checkout@v3
+        with:
+          version: 14
+          repository: 'primer/design'
+          path: 'primer_design'
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -31,29 +38,47 @@ jobs:
           node-version: 16
           cache: 'npm'
           cache-dependency-path: |
-            package-lock.json
-            docs/package-lock.json
+            primer_view_components/package-lock.json
+            primer_view_components/docs/package-lock.json
+            primer_design/package-lock.json
 
-      - name: Install dependencies
-        run: npm ci && cd docs && npm ci && cd ..
+      - uses: actions/cache@v3
+        with:
+          path: |
+            primer_view_components/node_modules
+            primer_view_components/docs/node_modules
+            primer_view_components/vendor/bundle
+          key: gems-build-pvc-${{ hashFiles('**/Gemfile.lock') }}-${{ hashFiles('**/package-json.lock') }}
+
+      - name: Install Ruby dependencies
+        working-directory: ./primer_view_components
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 3 --retry 3
+
+      - name: Install JavaScript dependencies
+        working-directory: ./primer_view_components
+        run: npm i && cd docs && npm i
 
       - name: Generate static files
-        run: |
-          bundle exec rake utilities:build
-          bundle exec rake docs:build
-          bundle exec rake static:dump
+        working-directory: ./primer_view_components
+        run: bundle exec rake utilities:build docs:build docs:generate_nav_redirects static:dump
+        env:
+          PRIMER_DESIGN_REPO_PATH: "${{ github.workspace }}/primer_design"
 
       - name: Build
+        working-directory: ./primer_view_components
         run: npm run build:docs
 
       - name: Archive build output
+        working-directory: ./primer_view_components
         run: 'tar --dereference --directory docs/public -cvf artifact.tar .'
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: artifact.tar
+          path: ./primer_view_components/artifact.tar
 
   deploy:
     name: Deploy
