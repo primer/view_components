@@ -3,13 +3,21 @@
   padding: 0;
   position: absolute;
   min-width: 192px;
+  inset: auto;
 }
 
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-.Overlay[popover]:not(:popover-open) {
+.Overlay[popover]:not(.\:popover-open) {
   display: none;
 }
 
-anchored-position {
-  display: block;
+@supports selector(:popover-open) {
+  .Overlay[popover]:not(.\:popover-open) {
+    display: revert;
+  }
+}
+
+@supports selector(:open) {
+  .Overlay[popover]:not(.\:popover-open) {
+      display: revert;
+  }
 }
