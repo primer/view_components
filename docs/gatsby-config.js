@@ -12,7 +12,7 @@ module.exports = {
         defaultBranch: 'main',
         repoRootPath: './docs',
       },
-    },
+    }
   ],
   pathPrefix: '/view-components',
 }
