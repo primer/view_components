@@ -56,23 +56,38 @@ module Primer
         Heading.new(**system_arguments)
       }
 
-      # Items.
-      #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      renders_many :items, lambda { |**system_arguments|
-        build_item(**system_arguments).tap do |item|
-          will_add_item(item)
-        end
-      }
+      # @!parse
+      #   # Adds an item to the list.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
+      #   def with_item(**system_arguments, &block)
+      #   end
 
-      # Adds a divider to the list of items.
+      # @!parse
+      #   # Adds a divider to the list. Dividers visually separate items.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      #   def with_divider(**system_arguments, &block)
+      #   end
+
+      # Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.
       #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
-      def with_divider(**system_arguments, &block)
-        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
-        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
-        set_slot(:items, { renderable: Divider, collection: true }, **system_arguments, &block)
-      end
+      renders_many :items, types: {
+        item: {
+          renders: lambda { |**system_arguments|
+            build_item(**system_arguments).tap do |item|
+              will_add_item(item)
+            end
+          },
+
+          as: :item
+        },
+
+        divider: {
+          renders: Divider,
+          as: :divider
+        }
+      }
 
       attr_reader :id, :select_variant, :role
 
