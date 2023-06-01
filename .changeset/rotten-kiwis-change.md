@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Fixing fallback plugin imports for multi files
+Fixing fallback plugin imports for multi files.
