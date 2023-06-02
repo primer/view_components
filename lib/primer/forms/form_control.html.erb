@@ -10,7 +10,7 @@
     <% end %>
     <%= content %>
     <%= content_tag(:div, **@input.validation_arguments) do %>
-      <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+      <span class="FormControl-inlineValidation--visual"><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
       <%= content_tag(:span, @input.invalid? ? @input.validation_messages.first : "", **@input.validation_message_arguments) %>
     <% end %>
     <%= render(Caption.new(input: @input)) %>
