@@ -223,5 +223,31 @@ module Alpha
 
       assert_equal page.text, 'You selected "bar"'
     end
+
+    def test_deferred_loading
+      visit_preview(:with_deferred_content)
+
+      find("action-menu button[aria-controls]").click
+
+      assert_selector "action-menu ul li", text: "Copy link"
+      assert_selector "action-menu ul li", text: "Quote reply"
+      assert_selector "action-menu ul li", text: "Reference in new issue"
+
+      assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
+    end
+
+    def test_deferred_loading_on_keydown
+      visit_preview(:with_deferred_content)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      page.driver.browser.keyboard.type(:enter)
+
+      # wait for menu to load
+      assert_selector "action-menu ul li", text: "Copy link"
+      assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
+    end
   end
 end

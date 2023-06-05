@@ -1,4 +1,5 @@
-import '@github/include-fragment-element'
+import {controller, target} from '@github/catalyst'
+import IncludeFragmentElement from '@github/include-fragment-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -9,7 +10,10 @@ type SelectedItem = {
 
 const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
+@controller
 export class ActionMenuElement extends HTMLElement {
+  @target includeFragment: IncludeFragmentElement
+
   #abortController: AbortController
   #originalLabel = ''
   #inputName = ''
@@ -87,6 +91,10 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('focusout', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
+
+    if (this.includeFragment) {
+      this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
+    }
   }
 
   disconnectedCallback() {
@@ -105,8 +113,8 @@ export class ActionMenuElement extends HTMLElement {
 
     if (!this.popoverElement?.matches(':popover-open')) return
 
-    if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
-      this.popoverElement?.hidePopover()
+    if (event.type === 'include-fragment-replaced') {
+      if (this.#firstItem) this.#firstItem.focus()
     } else if (this.#isActivationKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
       const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
       if (!item) return
