@@ -199,7 +199,7 @@ namespace :docs do
 
       content_path = File.join(primer_design_repo_path, "content")
       mdx_path = Pathname(mdx_file).relative_path_from(content_path).to_s.chomp(".mdx")
-      new_docsite_url = join_urls("https://primer.style", "design", mdx_path)
+      new_docsite_url = join_urls("https://primer.style", "design", mdx_path, "rails")
       docs = registry.find(Kernel.const_get(rails_id))
       status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
       legacy_docsite_url = "/components/#{status_path}#{docs.short_name.downcase}"
