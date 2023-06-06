@@ -9652,16 +9652,16 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/default/",
     "parameters": [
       {
-        "name": "variant",
+        "name": "scheme",
         "type": "Symbol",
-        "default": "`nil`",
-        "description": "DEPRECATED. One of `:medium` or `:small`."
+        "default": "`:default`",
+        "description": "DEPRECATED. One of `:danger`, `:default`, `:invisible`, `:link`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "One of `:medium` or `:small`."
+        "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
         "name": "system_arguments",
@@ -9679,7 +9679,7 @@
             "name": "kwargs",
             "type": "Hash",
             "default": "N/A",
-            "description": "The same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} except for `size` and `group_item`."
+            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}"
           }
         ]
       }
@@ -9703,6 +9703,30 @@
       {
         "preview_path": "primer/beta/button_group/default",
         "name": "default",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button_group/split_button",
+        "name": "split_button",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button_group/icon_buttons",
+        "name": "icon_buttons",
         "skip_rules": {
           "wont_fix": [
             "region"

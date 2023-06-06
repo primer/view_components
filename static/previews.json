@@ -1848,6 +1848,30 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/button_group/split_button",
+        "name": "split_button",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button_group/icon_buttons",
+        "name": "icon_buttons",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
