@@ -117,16 +117,10 @@ jobs:
       - name: Install dependencies
         run: npm ci && cd docs && npm ci && cd ..
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
-
       - name: Generate static files
         run: |
-          bundle exec rake utilities:build
-          bundle exec rake docs:build
-          bundle exec rake static:dump
+          bundle exec rake utilities:build docs:build static:dump
+          echo -e "/* autoprefixer: off */\n$(cat docs/static/primer_view_components.css)" > docs/static/primer_view_components.css
 
       - name: Build
         run: npm run build:docs:preview
