@@ -117,6 +117,11 @@ jobs:
       - name: Install dependencies
         run: npm ci && cd docs && npm ci && cd ..
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
+
       - name: Generate static files
         run: |
           bundle exec rake utilities:build
