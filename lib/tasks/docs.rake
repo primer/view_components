@@ -63,6 +63,15 @@ namespace :docs do
 
     puts "Markdown compiled."
 
+    # Disable autoprefixer. The legacy Gatsby docsite uses an old version that doesn't support the
+    # @supports rule. Fortunately the build script that produces primer_view_components.css runs
+    # a modern version of autoprefixer, so prefixing is already handled and is safe to skip during
+    # the Gatsby build.
+    css = File.read("docs/static/primer_view_components.css")
+    css = "/* autoprefixer: off */\n#{css}"
+    File.write("docs/static/primer_view_components.css", css)
+    puts "Patched docs/static/primer_view_components.css"
+
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - Primer::Yard::ComponentManifest::COMPONENTS.keys
 
