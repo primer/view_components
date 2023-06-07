@@ -249,5 +249,19 @@ module Alpha
       assert_selector "action-menu ul li", text: "Copy link"
       assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
     end
+
+    def test_opening_second_menu_closes_first_menu
+      visit_preview(:two_menus)
+
+      find("#menu-1-button").click
+
+      assert_selector "action-menu ul li", text: "Eat a dot"
+      refute_selector "action-menu ul li", text: "Stomp a turtle"
+
+      find("#menu-2-button").click
+
+      refute_selector "action-menu ul li", text: "Eat a dot"
+      assert_selector "action-menu ul li", text: "Stomp a turtle"
+    end
   end
 end
