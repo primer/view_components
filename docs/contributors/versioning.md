@@ -20,4 +20,4 @@ When deciding to version your pull request, consider the list. In addition to wh
 
 These are changes that we typically do not label.
 
-- Changing previews/docs/tests or any other scaffolding type files in this repository.
+- Changing previews/docs/tests/build tooling or any other scaffolding type files in this repository.
