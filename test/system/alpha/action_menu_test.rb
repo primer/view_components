@@ -140,6 +140,9 @@ module Alpha
       find("action-menu ul li:nth-child(2)").click
 
       assert_selector "modal-dialog#my-dialog"
+
+      # opening the dialog should close the menu
+      refute_selector "action-menu ul li"
     end
 
     def test_opens_dialog_on_keydown
