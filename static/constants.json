@@ -117,7 +117,6 @@
     "DEFAULT_ITEM_TAG": "button",
     "ITEM_TAG_OPTIONS": [
       "a",
-      "button",
       "clipboard-copy",
       "button"
     ]
