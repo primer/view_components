@@ -4,7 +4,7 @@ When deciding to version your pull request, consider the list. In addition to wh
 
 ## Major
 
-- Removing/renaming component names, arguments, or slots.
+- Removing/renaming component names, arguments, or slots. This applies to both Ruby and JavaScript code.
 - Removing dependencies from the `primer_view_components.gemspec` or the `package.json`.
 
 ## Minor
