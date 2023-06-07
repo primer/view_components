@@ -261,8 +261,8 @@ module Primer
 
         def before_render
           if @list.allows_selection?
-            @system_arguments[:aria] = merge_aria(
-              @system_arguments,
+            @content_arguments[:aria] = merge_aria(
+              @content_arguments,
               { aria: { checked: active? } }
             )
           end
