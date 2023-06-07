@@ -119,9 +119,8 @@ jobs:
 
       - name: Generate static files
         run: |
-          bundle exec rake utilities:build
-          bundle exec rake docs:build
-          bundle exec rake static:dump
+          bundle exec rake utilities:build docs:build static:dump
+          echo -e "/* autoprefixer: off */\n$(cat docs/static/primer_view_components.css)" > docs/static/primer_view_components.css
 
       - name: Build
         run: npm run build:docs:preview
