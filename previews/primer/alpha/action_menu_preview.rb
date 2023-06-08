@@ -284,6 +284,11 @@ module Primer
           end
         end
       end
+
+      # @label Two menus
+      #
+      def two_menus
+      end
     end
   end
 end

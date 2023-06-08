@@ -1,0 +1,13 @@
+<%= render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu| %>
+  <% menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Pac-Man" } %>
+  <% menu.with_item(label: "Eat a dot") %>
+  <% menu.with_item(label: "Avoid a ghost") %>
+  <% menu.with_item(label: "Eat a stunned ghost") %>
+<% end %>
+
+<%= render(Primer::Alpha::ActionMenu.new(menu_id: "menu-2")) do |menu| %>
+  <% menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Mario Bros" } %>
+  <% menu.with_item(label: "Stomp a turtle") %>
+  <% menu.with_item(label: "Collect a gold coin") %>
+  <% menu.with_item(label: "Save the princess") %>
+<% end %>

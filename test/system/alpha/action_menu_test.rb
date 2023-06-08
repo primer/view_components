@@ -140,6 +140,9 @@ module Alpha
       find("action-menu ul li:nth-child(2)").click
 
       assert_selector "modal-dialog#my-dialog"
+
+      # opening the dialog should close the menu
+      refute_selector "action-menu ul li"
     end
 
     def test_opens_dialog_on_keydown
@@ -222,6 +225,46 @@ module Alpha
       find("action-menu ul li:last-child").click
 
       assert_equal page.text, 'You selected "bar"'
+    end
+
+    def test_deferred_loading
+      visit_preview(:with_deferred_content)
+
+      find("action-menu button[aria-controls]").click
+
+      assert_selector "action-menu ul li", text: "Copy link"
+      assert_selector "action-menu ul li", text: "Quote reply"
+      assert_selector "action-menu ul li", text: "Reference in new issue"
+
+      assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
+    end
+
+    def test_deferred_loading_on_keydown
+      visit_preview(:with_deferred_content)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      page.driver.browser.keyboard.type(:enter)
+
+      # wait for menu to load
+      assert_selector "action-menu ul li", text: "Copy link"
+      assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
+    end
+
+    def test_opening_second_menu_closes_first_menu
+      visit_preview(:two_menus)
+
+      find("#menu-1-button").click
+
+      assert_selector "action-menu ul li", text: "Eat a dot"
+      refute_selector "action-menu ul li", text: "Stomp a turtle"
+
+      find("#menu-2-button").click
+
+      refute_selector "action-menu ul li", text: "Eat a dot"
+      assert_selector "action-menu ul li", text: "Stomp a turtle"
     end
   end
 end
