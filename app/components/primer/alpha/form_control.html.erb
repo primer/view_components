@@ -10,7 +10,7 @@
   <% end %>
   <% if @validation_message %>
     <%= render(Primer::BaseComponent.new(tag: :div, **@validation_arguments)) do %>
-      <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+      <span class="FormControl-inlineValidation--visual"><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
       <span><%= @validation_message %></span>
     <% end %>
   <% end %>

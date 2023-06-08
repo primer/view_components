@@ -63,6 +63,15 @@ namespace :docs do
 
     puts "Markdown compiled."
 
+    # Disable autoprefixer. The legacy Gatsby docsite uses an old version that doesn't support the
+    # @supports rule. Fortunately the build script that produces primer_view_components.css runs
+    # a modern version of autoprefixer, so prefixing is already handled and is safe to skip during
+    # the Gatsby build.
+    css = File.read("docs/static/primer_view_components.css")
+    css = "/* autoprefixer: off */\n#{css}"
+    File.write("docs/static/primer_view_components.css", css)
+    puts "Patched docs/static/primer_view_components.css"
+
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - Primer::Yard::ComponentManifest::COMPONENTS.keys
 
@@ -164,6 +173,63 @@ namespace :docs do
         f.puts("end")
       end
     end
+  end
+
+  task generate_nav_redirects: :build_yard_registry do
+    def join_urls(*args)
+      args.map { |arg| arg.delete_prefix("/").delete_suffix("/") }.join("/")
+    end
+
+    # add to this as more pages are migrated
+    INTRO_URL_MAP = {
+      "/system-arguments" => "https://primer.style/design/foundations/system-arguments",
+      "/status" => "https://primer.style/design/guides/status"
+    }.freeze
+
+    primer_design_repo_path = ENV["PRIMER_DESIGN_REPO_PATH"]
+    raise "Missing PRIMER_DESIGN_REPO_PATH environment variable" unless primer_design_repo_path
+
+    ia_component_path = File.join(primer_design_repo_path, "content", "components")
+    mdx_files = Dir.glob(File.join(ia_component_path, "*.mdx"))
+
+    nav_path = File.expand_path(File.join(*%w[.. .. docs src @primer gatsby-theme-doctocat nav.yml]), __dir__)
+    nav = YAML.load_file(nav_path)
+    nav_components = nav.find { |entry| entry["title"] == "Components" }["children"]
+
+    registry = Primer::Yard::Registry.make
+
+    results = mdx_files.filter_map do |mdx_file|
+      content = File.read(mdx_file)
+      front_matter_begin_idx = content.index("---")
+      front_matter_end_idx = content.index("---", front_matter_begin_idx + 3)
+      front_matter = YAML.load(content[0...front_matter_end_idx])
+      rails_id = front_matter["railsId"]
+      next unless rails_id
+
+      content_path = File.join(primer_design_repo_path, "content")
+      mdx_path = Pathname(mdx_file).relative_path_from(content_path).to_s.chomp(".mdx")
+      new_docsite_url = join_urls("https://primer.style", "design", mdx_path, "rails")
+      docs = registry.find(Kernel.const_get(rails_id))
+      status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
+      legacy_docsite_url = "/components/#{status_path}#{docs.short_name.downcase}"
+
+      nav_component = nav_components.find do |c|
+        c["url"] == legacy_docsite_url
+      end
+
+      next unless nav_component
+
+      nav_component["url"] = new_docsite_url
+    end
+
+    intro_nav = nav.find { |entry| entry["title"] == "Introduction" }["children"]
+
+    INTRO_URL_MAP.each_pair do |legacy_docsite_url, new_docsite_url|
+      intro_nav_entry = intro_nav.find { |n| n["url"] == legacy_docsite_url }
+      intro_nav_entry["url"] = new_docsite_url
+    end
+
+    File.write(nav_path, YAML.dump(nav))
   end
 
   task build_yard_registry: :init_pvc do

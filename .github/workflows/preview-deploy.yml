@@ -118,10 +118,7 @@ jobs:
         run: npm ci && cd docs && npm ci && cd ..
 
       - name: Generate static files
-        run: |
-          bundle exec rake utilities:build
-          bundle exec rake docs:build
-          bundle exec rake static:dump
+        run: bundle exec rake utilities:build docs:build static:dump
 
       - name: Build
         run: npm run build:docs:preview

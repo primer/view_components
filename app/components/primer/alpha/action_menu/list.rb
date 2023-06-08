@@ -8,7 +8,7 @@ module Primer
       # used as a standalone component.
       class List < Primer::Alpha::ActionList
         DEFAULT_ITEM_TAG = :button
-        ITEM_TAG_OPTIONS = [:a, :button, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
+        ITEM_TAG_OPTIONS = [:a, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
 
         # Adds a new item to the list.
         #
@@ -34,6 +34,11 @@ module Primer
 
           content_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]
+
+          content_arguments[:data] = merge_data(
+            content_arguments,
+            { data: { value: data.delete(:value) || system_arguments.delete(:"data-value") } }
+          )
 
           if system_arguments[:disabled]
             content_arguments[:aria] = merge_aria(
