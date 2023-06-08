@@ -42,12 +42,14 @@ module Primer
       # @param variant [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::VARIANT_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::TYPE_OPTIONS) %>
+      # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
         variant: DEFAULT_VARIANT,
         tag: DEFAULT_TAG,
         type: DEFAULT_TYPE,
+        disabled: false,
         **system_arguments
       )
         @system_arguments = system_arguments
@@ -60,6 +62,7 @@ module Primer
           VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
           system_arguments[:classes]
         )
+        @system_arguments[:disabled] = disabled
       end
 
       def call

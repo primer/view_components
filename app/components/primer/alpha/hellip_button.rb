@@ -19,8 +19,9 @@ module Primer
       #   <%= render(Primer::Alpha::HellipButton.new(p: 1, classes: "custom-class", "aria-label": "No effect")) %>
       #
       # @param inline [Boolean] Whether or not the button is inline.
+      # @param disabled [Boolean] Whether or not the button is disabled.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(inline: false, **system_arguments)
+      def initialize(inline: false, disabled: false, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
 
         validate_aria_label
@@ -31,6 +32,7 @@ module Primer
           @system_arguments[:classes],
           "inline" => inline
         )
+        @system_arguments[:disabled] = disabled
       end
 
       def call

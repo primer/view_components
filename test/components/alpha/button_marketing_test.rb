@@ -41,4 +41,10 @@ class PrimerAlphaButtonMarketingTest < Minitest::Test
 
     assert_selector(".btn-mktg.btn-large-mktg")
   end
+
+  def test_forces_button_tag_when_disabled
+    render_inline(Primer::Alpha::ButtonMarketing.new(tag: :a, disabled: true)) { "content" }
+
+    assert_selector("button.btn-mktg[disabled][aria-disabled=true]")
+  end
 end
