@@ -11,8 +11,8 @@
   margin-right: auto;
   margin-left: auto;
   background-color: var(--color-canvas-overlay);
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin) solid var(--color-border-default);
+  border-radius: var(--borderRadius-medium);
 
   /* Carets */
   &::before,
@@ -209,12 +209,12 @@
     bottom: auto;
     left: auto;
     width: auto !important;
-    margin: var(--stack-gap-condensed, 8px);
+    margin: var(--stack-gap-condensed);
   }
 
   /* Increase tap area for touch input */
   .Popover-message > .btn-octicon {
-    padding: var(--control-medium-paddingInline-normal, 12px) !important;
+    padding: var(--control-medium-paddingInline-normal) !important;
   }
 
   /* Remove caret */

@@ -3,11 +3,11 @@
 .Banner {
   position: relative;
   display: grid;
-  padding: var(--base-size-8, 8px);
+  padding: var(--base-size-8);
   color: var(--color-fg-default);
   background-image: linear-gradient(var(--color-accent-subtle), var(--color-accent-subtle));
-  border: var(--borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-accent-muted);
-  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin) solid var(--color-accent-muted);
+  border-radius: var(--borderRadius-medium);
   grid-auto-flow: column;
   grid-template-areas: 'visual message actions close';
   grid-template-columns: min-content 1fr minmax(0, auto) min-content;
@@ -22,7 +22,7 @@
     grid-template-rows: min-content min-content;
 
     & .Banner-actions {
-      margin: var(--base-size-8, 8px) 0 0 var(--base-size-8, 8px);
+      margin: var(--base-size-8) 0 0 var(--base-size-8);
     }
   }
 
@@ -30,12 +30,12 @@
 
   & .Banner-visual {
     display: grid;
-    padding: var(--base-size-6, 6px) var(--base-size-8, 8px);
+    padding: 0.375rem var(--base-size-8);
     grid-area: visual;
     align-self: start;
 
     & > .octicon {
-      margin-block: calc(var(--base-size-4, 4px) / 2);
+      margin-block: calc(var(--base-size-4) / 2);
     }
 
     & > * {
@@ -44,7 +44,7 @@
   }
 
   & .Banner-message {
-    padding: var(--base-size-6, 6px) var(--base-size-8, 8px);
+    padding: 0.375rem var(--base-size-8);
     grid-area: message;
     align-self: center;
 
@@ -54,7 +54,7 @@
 
     & .Banner-title:not(:only-child) {
       margin-bottom: 0;
-      font-weight: var(--base-text-weight-semibold, 600);
+      font-weight: var(--base-text-weight-semibold);
     }
   }
 
@@ -69,7 +69,7 @@
   /* is this used anywhere? could not find any use, but unsure */
   & .Banner-close {
     grid-area: close;
-    margin-left: var(--controlStack-medium-gap-condensed, 8px);
+    margin-left: var(--controlStack-medium-gap-condensed);
   }
 
   & .Banner-visual .octicon {
@@ -109,7 +109,7 @@
   /* Full-width */
 
   &.Banner--full {
-    margin-top: calc(var(--borderWidth-thin, max(1px, 0.0625rem)) * -1);
+    margin-top: calc(var(--borderWidth-thin) * -1);
     border-right: 0;
     border-left: 0;
     border-radius: 0;
@@ -117,7 +117,7 @@
 
   @media (max-width: 767.98px) {
     &.Banner--full-whenNarrow {
-      margin-top: calc(var(--borderWidth-thin, max(1px, 0.0625rem)) * -1);
+      margin-top: calc(var(--borderWidth-thin) * -1);
       border-right: 0;
       border-left: 0;
       border-radius: 0;

@@ -5,8 +5,8 @@
   background-color: var(--color-canvas-default);
   border-color: var(--color-border-default);
   border-style: solid;
-  border-width: var(--borderWidth-thin, 1px);
-  border-radius: var(--borderRadius-medium, 6px);
+  border-width: var(--borderWidth-thin);
+  border-radius: var(--borderRadius-medium);
 }
 
 /* Box padding density options */
@@ -14,106 +14,105 @@
   line-height: 1.25;
 
   & .Box-header {
-    padding: var(--stack-padding-condensed, 8px) var(--stack-padding-normal, 16px);
+    padding: var(--stack-padding-condensed) var(--stack-padding-normal);
   }
 
   & .Box-body {
-    padding: var(--stack-padding-condensed, 8px) var(--stack-padding-normal, 16px);
+    padding: var(--stack-padding-condensed) var(--stack-padding-normal);
   }
 
   & .Box-footer {
-    padding: var(--stack-padding-condensed, 8px) var(--stack-padding-normal, 16px);
+    padding: var(--stack-padding-condensed) var(--stack-padding-normal);
   }
 
   & .Box-btn-octicon {
     &.btn-octicon {
-      padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
-      margin: calc(var(--controlStack-medium-gap-condensed, 8px) * -1)
-        calc(var(--controlStack-small-gap-spacious, 16px) * -1);
+      padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
+      margin: calc(var(--controlStack-medium-gap-condensed) * -1) calc(var(--controlStack-small-gap-spacious) * -1);
       line-height: 1.25;
     }
   }
 
   & .Box-row {
-    padding: var(--stack-padding-condensed, 8px) var(--stack-padding-normal, 16px);
+    padding: var(--stack-padding-condensed) var(--stack-padding-normal);
   }
 }
 
 .Box--spacious {
   & .Box-header {
-    padding: var(--stack-padding-spacious, 24px);
+    padding: var(--stack-padding-spacious);
     line-height: 1.25;
   }
 
   & .Box-title {
-    font-size: var(--text-title-size-medium, 20px);
+    font-size: var(--text-title-size-medium);
   }
 
   & .Box-body {
-    padding: var(--stack-padding-spacious, 24px);
+    padding: var(--stack-padding-spacious);
   }
 
   & .Box-footer {
-    padding: var(--stack-padding-spacious, 24px);
+    padding: var(--stack-padding-spacious);
   }
 
   & .Box-btn-octicon {
     &.btn-octicon {
-      padding: var(--stack-padding-spacious, 24px);
-      margin: calc(var(--stack-gap-spacious, 24px) * -1) calc(var(--stack-gap-spacious, 24px) * -1);
+      padding: var(--stack-padding-spacious);
+      margin: calc(var(--stack-gap-spacious) * -1) calc(var(--stack-gap-spacious) * -1);
     }
   }
 
   & .Box-row {
-    padding: var(--stack-padding-spacious, 24px);
+    padding: var(--stack-padding-spacious);
   }
 }
 
 .Box-header {
-  padding: var(--stack-padding-normal, 16px);
-  margin: calc(var(--borderWidth-thin, 1px) * -1) calc(var(--borderWidth-thin, 1px) * -1) 0;
+  padding: var(--stack-padding-normal);
+  margin: calc(var(--borderWidth-thin) * -1) calc(var(--borderWidth-thin) * -1) 0;
   background-color: var(--color-canvas-subtle);
   border-color: var(--color-border-default);
   border-style: solid;
-  border-width: var(--borderWidth-thin, 1px);
-  border-top-left-radius: var(--borderRadius-medium, 6px);
-  border-top-right-radius: var(--borderRadius-medium, 6px);
+  border-width: var(--borderWidth-thin);
+  border-top-left-radius: var(--borderRadius-medium);
+  border-top-right-radius: var(--borderRadius-medium);
 }
 
 .Box-title {
-  font-size: var(--text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-semibold, 600);
+  font-size: var(--text-body-size-medium);
+  font-weight: var(--base-text-weight-semibold);
 }
 
 .Box-body {
-  padding: var(--stack-padding-normal, 16px);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  padding: var(--stack-padding-normal);
+  border-bottom: var(--borderWidth-thin) solid var(--color-border-default);
 
   /* Ensures bottom-border doesn't poke out when .Box-body used without box-footer */
   &:last-of-type {
-    margin-bottom: calc(var(--borderWidth-thin, 1px) * -1);
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    margin-bottom: calc(var(--borderWidth-thin) * -1);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
   }
 }
 
 /* Box rows */
 .Box-row {
-  padding: var(--stack-padding-normal, 16px);
-  margin-top: calc(var(--borderWidth-thin, 1px) * -1);
+  padding: var(--stack-padding-normal);
+  margin-top: calc(var(--borderWidth-thin) * -1);
   list-style-type: none; /* To account for applying Box component to a list */
   border-top-color: var(--color-border-muted);
   border-top-style: solid;
-  border-top-width: var(--borderWidth-thin, 1px);
+  border-top-width: var(--borderWidth-thin);
 
   &:first-of-type {
-    border-top-left-radius: var(--borderRadius-medium, 6px);
-    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
   }
 
   &:last-of-type {
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
   }
 
   /* Adds a blue vertical line to the left of the row
@@ -200,12 +199,12 @@
 }
 
 .Box-footer {
-  padding: var(--stack-padding-normal, 16px);
-  margin-top: calc(var(--borderWidth-thin, 1px) * -1); /* prevents double border when used with .Box-body */
+  padding: var(--stack-padding-normal);
+  margin-top: calc(var(--borderWidth-thin) * -1); /* prevents double border when used with .Box-body */
   border-top-color: var(--color-border-default);
   border-top-style: solid;
-  border-top-width: var(--borderWidth-thin, 1px);
-  border-radius: 0 0 var(--borderRadius-medium, 6px) var(--borderRadius-medium, 6px);
+  border-top-width: var(--borderWidth-thin);
+  border-radius: 0 0 var(--borderRadius-medium) var(--borderRadius-medium);
 }
 
 /* Option for a box with scrolling content */
@@ -278,9 +277,8 @@
 .Box-btn-octicon {
   /* Increase specificity when btn-octicon is used because comes after .Box in the cascade */
   &.btn-octicon {
-    padding: var(--control-medium-paddingInline-spacious, 16px) var(--control-medium-paddingInline-spacious, 16px);
-    margin: calc(var(--controlStack-small-gap-spacious, 16px) * -1)
-      calc(var(--controlStack-small-gap-spacious, 16px) * -1);
+    padding: var(--control-medium-paddingInline-spacious) var(--control-medium-paddingInline-spacious);
+    margin: calc(var(--controlStack-small-gap-spacious) * -1) calc(var(--controlStack-small-gap-spacious) * -1);
     line-height: 1.5; /* override btn-octicon line-height */
   }
 }
