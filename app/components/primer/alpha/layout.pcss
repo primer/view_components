@@ -73,7 +73,7 @@
       background: var(--color-canvas-inset);
       border-color: var(--color-border-default);
       border-style: solid;
-      border-width: var(--borderWidth-thin, 1px) 0;
+      border-width: var(--borderWidth-thin) 0;
     }
   }
 }
@@ -255,14 +255,14 @@
   }
 
   & .Layout-main-centered-md {
-    max-width: calc(var(--breakpoint-medium, 768px) + var(--Layout-sidebar-width) + var(--Layout-gutter));
+    max-width: calc(var(--breakpoint-medium) + var(--Layout-sidebar-width) + var(--Layout-gutter));
   }
 
   & .Layout-main-centered-lg {
-    max-width: calc(var(--breakpoint-large, 1012px) + var(--Layout-sidebar-width) + var(--Layout-gutter));
+    max-width: calc(var(--breakpoint-large) + var(--Layout-sidebar-width) + var(--Layout-gutter));
   }
 
   & .Layout-main-centered-xl {
-    max-width: calc(var(--breakpoint-xlarge, 1280px) + var(--Layout-sidebar-width) + var(--Layout-gutter));
+    max-width: calc(var(--breakpoint-xlarge) + var(--Layout-sidebar-width) + var(--Layout-gutter));
   }
 }

@@ -2,7 +2,7 @@
 
 .UnderlineNav {
   display: flex;
-  min-height: var(--base-size-48, 48px);
+  min-height: var(--base-size-48);
   overflow-x: auto;
   overflow-y: hidden;
   box-shadow: inset 0 -1px 0 var(--color-border-muted);
@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   & .Counter {
-    margin-left: var(--control-medium-gap, 8px);
+    margin-left: var(--control-medium-gap);
     color: var(--color-fg-default);
     background-color: var(--color-neutral-muted);
   }
@@ -24,15 +24,15 @@
 .UnderlineNav-body {
   display: flex;
   align-items: center;
-  gap: var(--control-medium-gap, 8px);
+  gap: var(--control-medium-gap);
   list-style: none;
 }
 
 .UnderlineNav-item {
   position: relative;
   display: flex;
-  padding: 0 var(--control-medium-paddingInline-condensed, 8px);
-  font-size: var(--text-body-size-medium, 14px);
+  padding: 0 var(--control-medium-paddingInline-condensed);
+  font-size: var(--text-body-size-medium);
   line-height: 30px;
   color: var(--color-fg-default);
   text-align: center;
@@ -40,7 +40,7 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  border-radius: var(--borderRadius-medium, 6px);
+  border-radius: var(--borderRadius-medium);
   align-items: center;
 
   &:hover,
@@ -57,7 +57,7 @@
   & [data-content]::before {
     display: block;
     height: 0;
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
     visibility: hidden;
     content: attr(data-content);
   }
@@ -80,7 +80,7 @@
   &.selected,
   &[role='tab'][aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
     color: var(--color-fg-default);
     border-bottom-color: var(--color-primer-border-active);
 
@@ -94,7 +94,7 @@
       height: 2px;
       content: '';
       background: var(--color-primer-border-active);
-      border-radius: var(--borderRadius-medium, 6px);
+      border-radius: var(--borderRadius-medium);
       transform: translate(50%, -50%);
     }
   }
@@ -117,13 +117,13 @@
 
   /* required for underline to align with additional wrapper element */
   & .UnderlineNav-body {
-    min-height: var(--base-size-48, 48px);
+    min-height: var(--base-size-48);
   }
 }
 
 .UnderlineNav-octicon {
   display: inline !important;
-  margin-right: var(--control-medium-gap, 8px);
+  margin-right: var(--control-medium-gap);
   color: var(--color-fg-muted);
   fill: var(--color-fg-muted);
 }

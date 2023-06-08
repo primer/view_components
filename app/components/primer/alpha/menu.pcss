@@ -3,37 +3,37 @@
 /* A menu on the side of a page, defaults to left side. e.g. github.com/about */
 
 .menu {
-  margin-bottom: var(--stack-gap-normal, 16px);
+  margin-bottom: var(--stack-gap-normal);
   list-style: none;
   background-color: var(--color-canvas-default);
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin) solid var(--color-border-default);
+  border-radius: var(--borderRadius-medium);
 }
 
 .menu-item {
   position: relative;
   display: block;
-  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
   color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
+  border-bottom: var(--borderWidth-thin) solid var(--color-border-muted);
 
   &:first-child {
     border-top: 0;
-    border-top-left-radius: var(--borderRadius-medium, 6px);
-    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
 
     &::before {
-      border-top-left-radius: var(--borderRadius-medium, 6px);
+      border-top-left-radius: var(--borderRadius-medium);
     }
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
 
     &::before {
-      border-bottom-left-radius: var(--borderRadius-medium, 6px);
+      border-bottom-left-radius: var(--borderRadius-medium);
     }
   }
 
@@ -65,14 +65,14 @@
 
   & .octicon {
     width: 16px;
-    margin-right: var(--control-medium-gap, 8px);
+    margin-right: var(--control-medium-gap);
     color: var(--color-fg-muted);
     text-align: center;
   }
 
   & .Counter {
     float: right;
-    margin-left: var(--control-small-gap, 4px);
+    margin-left: var(--control-small-gap);
   }
 
   & .menu-warning {
@@ -82,7 +82,7 @@
 
   & .avatar {
     float: left;
-    margin-right: var(--control-small-gap, 4px);
+    margin-right: var(--control-small-gap);
   }
 
   &.alert {
@@ -94,26 +94,26 @@
 
 .menu-heading {
   display: block;
-  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
   margin-top: 0;
   margin-bottom: 0;
   font-size: inherit;
-  font-weight: var(--base-text-weight-semibold, 600);
+  font-weight: var(--base-text-weight-semibold);
   color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
+  border-bottom: var(--borderWidth-thin) solid var(--color-border-muted);
 
   &:hover {
     text-decoration: none;
   }
 
   &:first-child {
-    border-top-left-radius: var(--borderRadius-medium, 6px);
-    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
   }
 }

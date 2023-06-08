@@ -5,10 +5,10 @@
 .state, /* TODO: Deprecate */
 .State {
   display: inline-block;
-  padding: 5px var(--control-medium-paddingInline-normal, 12px);
-  font-size: var(--text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-medium, 500);
-  line-height: var(--control-medium-lineBoxHeight, 20px);
+  padding: 5px var(--control-medium-paddingInline-normal);
+  font-size: var(--text-body-size-medium);
+  font-weight: var(--base-text-weight-medium);
+  line-height: var(--control-medium-lineBoxHeight);
   text-align: center;
   white-space: nowrap;
   border-radius: 2em;
@@ -19,7 +19,7 @@
 .State--draft {
   color: var(--color-fg-on-emphasis);
   background-color: var(--color-neutral-emphasis);
-  border: var(--borderWidth-thin, 1px) solid transparent;
+  border: var(--borderWidth-thin) solid transparent;
 }
 
 .State--open {
@@ -41,8 +41,8 @@
 
 .State--small {
   padding: 0 10px;
-  font-size: var(--text-body-size-small, 12px);
-  line-height: var(--base-size-24, 24px);
+  font-size: var(--text-body-size-small);
+  line-height: var(--base-size-24);
 
   & .octicon {
     width: 1em; /* Ensures different icons don't change State indicator width */

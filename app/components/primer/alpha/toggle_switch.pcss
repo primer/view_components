@@ -9,7 +9,7 @@
 .ToggleSwitch {
   align-items: center;
   display: inline-flex;
-  gap: var(--controlStack-medium-gap-condensed, 8px);
+  gap: var(--controlStack-medium-gap-condensed);
 }
 
 .ToggleSwitch--checked {
@@ -27,16 +27,16 @@
 .ToggleSwitch-track {
   position: relative;
   display: block;
-  width: var(--base-size-64, 64px);
-  height: var(--control-medium-size, 32px);
+  width: var(--base-size-64);
+  height: var(--control-medium-size);
   padding: 0;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
   background-color: var(--color-switch-track-bg);
-  border: var(--borderWidth-thin, 1px) solid var(--color-switch-track-border);
-  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin) solid var(--color-switch-track-border);
+  border-radius: var(--borderRadius-medium);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: background-color, border-color;
@@ -158,8 +158,8 @@
   z-index: 1;
   width: 50%;
   background-color: var(--color-switch-knob-bg);
-  border: var(--borderWidth-thin, 1px) solid var(--color-switch-knob-border);
-  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin) solid var(--color-switch-knob-border);
+  border-radius: var(--borderRadius-medium);
   box-shadow: var(--color-shadow-medium), var(--color-btn-inset-shadow);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
@@ -172,26 +172,26 @@
 
 .ToggleSwitch-status {
   position: relative;
-  font-size: var(--text-body-size-medium, 14px);
+  font-size: var(--text-body-size-medium);
   line-height: 1.5;
   color: var(--color-fg-default);
   text-align: right;
 }
 
 .ToggleSwitch-statusIcon {
-  width: var(--base-size-16, 16px);
+  width: var(--base-size-16);
   display: flex;
   margin-top: 0.063rem;
 }
 
 .ToggleSwitch--small {
   & .ToggleSwitch-status {
-    font-size: var(--text-body-size-small, 12px);
+    font-size: var(--text-body-size-small);
   }
 
   & .ToggleSwitch-track {
-    width: var(--base-size-48, 48px);
-    height: var(--control-xsmall-size, 24px);
+    width: var(--base-size-48);
+    height: var(--control-xsmall-size);
   }
 }
 
