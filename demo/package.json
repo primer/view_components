@@ -8,6 +8,6 @@
     "@rails/actioncable": "^7.0.5",
     "@rails/ujs": "^7.0.4",
     "turbolinks": "^5.2.0",
-    "webpack-dev-server": "^4.13.3"
+    "webpack-dev-server": "^4.15.0"
   }
 }
