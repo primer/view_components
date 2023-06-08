@@ -158,95 +158,6 @@
     }
   }
 
-  /*
-  * checkbox item [aria-checked]
-  * listbox [aria-selected]
-  */
-  &[aria-checked='true'],
-  &[aria-selected='true'] {
-    /* multiselect checkmark */
-    & .ActionListItem-multiSelectCheckmark {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 0 linear 0, opacity 50ms;
-    }
-
-    /* singleselect checkmark */
-    & .ActionListItem-singleSelectCheckmark {
-      visibility: visible;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkIn 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
-        @keyframes checkmarkIn {
-          from {
-            clip-path: inset(16px 0 0 0);
-          }
-
-          to {
-            clip-path: inset(0 0 0 0);
-          }
-        }
-      }
-    }
-
-    /* checkbox */
-    & .ActionListItem-multiSelectIcon {
-      & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-accent-fg);
-        stroke: var(--color-accent-fg);
-        stroke-width: var(--borderWidth-thin);
-      }
-
-      & .ActionListItem-multiSelectCheckmark {
-        fill: var(--color-fg-on-emphasis);
-      }
-    }
-  }
-
-  &[aria-checked='false'],
-  &[aria-selected='false'] {
-    /* multiselect checkmark */
-    & .ActionListItem-multiSelectCheckmark {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0 linear 50ms, opacity 50ms;
-    }
-
-    /* singleselect checkmark */
-    & .ActionListItem-singleSelectCheckmark {
-      visibility: hidden;
-      transition: visibility 0s linear 200ms;
-      clip-path: inset(16px 0 0 0);
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkOut 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
-        @keyframes checkmarkOut {
-          from {
-            clip-path: inset(0 0 0 0);
-          }
-
-          to {
-            clip-path: inset(16px 0 0 0);
-          }
-        }
-      }
-    }
-
-    /* checkbox */
-    & .ActionListItem-multiSelectIcon {
-      & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-canvas-default);
-        stroke: var(--color-border-default);
-        stroke-width: var(--borderWidth-thin);
-      }
-    }
-
-    & .ActionListItem-multiSelectIconRect {
-      fill: var(--color-canvas-default);
-      border: var(--borderWidth-thin) solid var(--color-border-default);
-    }
-  }
-
   /* Autocomplete [aria-selected] items */
 
   &[aria-selected='true'] {
@@ -500,6 +411,95 @@
       &::after {
         @mixin activeIndicatorLine;
       }
+    }
+  }
+
+  /*
+  * checkbox item [aria-checked]
+  * listbox [aria-selected]
+  */
+  &[aria-checked='true'],
+  &[aria-selected='true'] {
+    /* multiselect checkmark */
+    & .ActionListItem-multiSelectCheckmark {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0 linear 0, opacity 50ms;
+    }
+
+    /* singleselect checkmark */
+    & .ActionListItem-singleSelectCheckmark {
+      visibility: visible;
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        animation: checkmarkIn 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
+        @keyframes checkmarkIn {
+          from {
+            clip-path: inset(16px 0 0 0);
+          }
+
+          to {
+            clip-path: inset(0 0 0 0);
+          }
+        }
+      }
+    }
+
+    /* checkbox */
+    & .ActionListItem-multiSelectIcon {
+      & .ActionListItem-multiSelectIconRect {
+        fill: var(--color-accent-fg);
+        stroke: var(--color-accent-fg);
+        stroke-width: var(--borderWidth-thin, 1px);
+      }
+
+      & .ActionListItem-multiSelectCheckmark {
+        fill: var(--color-fg-on-emphasis);
+      }
+    }
+  }
+
+  &[aria-checked='false'],
+  &[aria-selected='false'] {
+    /* multiselect checkmark */
+    & .ActionListItem-multiSelectCheckmark {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0 linear 50ms, opacity 50ms;
+    }
+
+    /* singleselect checkmark */
+    & .ActionListItem-singleSelectCheckmark {
+      visibility: hidden;
+      transition: visibility 0s linear 200ms;
+      clip-path: inset(16px 0 0 0);
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        animation: checkmarkOut 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
+        @keyframes checkmarkOut {
+          from {
+            clip-path: inset(0 0 0 0);
+          }
+
+          to {
+            clip-path: inset(16px 0 0 0);
+          }
+        }
+      }
+    }
+
+    /* checkbox */
+    & .ActionListItem-multiSelectIcon {
+      & .ActionListItem-multiSelectIconRect {
+        fill: var(--color-canvas-default);
+        stroke: var(--color-border-default);
+        stroke-width: var(--borderWidth-thin, 1px);
+      }
+    }
+
+    & .ActionListItem-multiSelectIconRect {
+      fill: var(--color-canvas-default);
+      border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
     }
   }
 

@@ -165,7 +165,7 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal response["value"], "fast_forward"
+      assert_equal "fast_forward", response["value"]
     end
 
     def test_single_select_form_uses_label_if_no_value_provided
@@ -178,7 +178,7 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal response["value"], "Resolve"
+      assert_equal "Resolve", response["value"]
     end
 
     def test_multiple_select_form_submission
@@ -195,7 +195,7 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal response["value"], %w[fast_forward recursive]
+      assert_equal %w[fast_forward recursive], response["value"]
     end
 
     def test_multiple_select_form_uses_label_if_no_value_provided
@@ -212,7 +212,7 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal response["value"], %w[fast_forward Resolve]
+      assert_equal %w[fast_forward Resolve], response["value"]
     end
 
     def test_individual_items_can_submit_post_requests_via_forms
