@@ -32,8 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SKIP_LABEL: "skip changelog"
-    if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
     steps:
+      - if: "contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+        run: echo "passed"; exit 0;
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
