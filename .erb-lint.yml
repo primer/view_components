@@ -9,27 +9,35 @@ linters:
     enabled: true
   LabelComponentMigrationCounter:
     enabled: true
+  GitHub::Accessibility::AriaLabelIsWellFormatted:
+    enabled: true
   GitHub::Accessibility::AvoidBothDisabledAndAriaDisabled:
     enabled: true
-  GitHub::Accessibility::AvoidGenericLinkTextCounter:
+  GitHub::Accessibility::AvoidGenericLinkText:
     enabled: true
-  GitHub::Accessibility::DisabledAttributeCounter:
+  GitHub::Accessibility::DisabledAttribute:
     enabled: true
   GitHub::Accessibility::IframeHasTitle:
     enabled: true
   GitHub::Accessibility::ImageHasAlt:
     enabled: true
-  GitHub::Accessibility::LinkHasHrefCounter:
+  GitHub::Accessibility::NavigationHasLabel:
     enabled: true
-  GitHub::Accessibility::NoAriaLabelMisuseCounter:
+  GitHub::Accessibility::LinkHasHref:
+    enabled: true
+  GitHub::Accessibility::NestedInteractiveElements:
+    enabled: true
+  GitHub::Accessibility::NoAriaHiddenOnFocusable:
+    enabled: true
+  GitHub::Accessibility::NoAriaLabelMisuse:
     enabled: true
   GitHub::Accessibility::NoPositiveTabIndex:
     enabled: true
   GitHub::Accessibility::NoRedundantImageAlt:
     enabled: true
-  GitHub::Accessibility::NoTitleAttributeCounter:
+  GitHub::Accessibility::NoTitleAttribute:
     enabled: true
-  GitHub::Accessibility::SvgHasAccessibleTextCounter:
+  GitHub::Accessibility::SvgHasAccessibleText:
     enabled: true
   Rubocop:
     enabled: true
