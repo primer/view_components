@@ -35,10 +35,12 @@ jobs:
     steps:
       - if: "contains(github.event.pull_request.labels.*.name, 'skip changelog')"
         run: echo "passed"; exit 0;
-      - uses: actions/checkout@v3
+      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: "Check for changeset"
+      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+        name: "Check for changeset"
         run: script/check-for-changeset
 
   semver-label:
