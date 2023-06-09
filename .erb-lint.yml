@@ -1,5 +1,8 @@
 ---
 EnableDefaultLinters: true
+inherit_gem:
+  erblint-github:
+    - config/accessibility.yml
 linters:
   DeprecatedComponentsCounter:
     enabled: true
@@ -8,36 +11,6 @@ linters:
   FlashMigrationCounter:
     enabled: true
   LabelComponentMigrationCounter:
-    enabled: true
-  GitHub::Accessibility::AriaLabelIsWellFormatted:
-    enabled: true
-  GitHub::Accessibility::AvoidBothDisabledAndAriaDisabled:
-    enabled: true
-  GitHub::Accessibility::AvoidGenericLinkText:
-    enabled: true
-  GitHub::Accessibility::DisabledAttribute:
-    enabled: true
-  GitHub::Accessibility::IframeHasTitle:
-    enabled: true
-  GitHub::Accessibility::ImageHasAlt:
-    enabled: true
-  GitHub::Accessibility::NavigationHasLabel:
-    enabled: true
-  GitHub::Accessibility::LinkHasHref:
-    enabled: true
-  GitHub::Accessibility::NestedInteractiveElements:
-    enabled: true
-  GitHub::Accessibility::NoAriaHiddenOnFocusable:
-    enabled: true
-  GitHub::Accessibility::NoAriaLabelMisuse:
-    enabled: true
-  GitHub::Accessibility::NoPositiveTabIndex:
-    enabled: true
-  GitHub::Accessibility::NoRedundantImageAlt:
-    enabled: true
-  GitHub::Accessibility::NoTitleAttribute:
-    enabled: true
-  GitHub::Accessibility::SvgHasAccessibleText:
     enabled: true
   Rubocop:
     enabled: true
