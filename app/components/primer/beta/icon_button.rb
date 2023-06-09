@@ -52,14 +52,13 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
-      # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
       # @param show_tooltip [Boolean] Whether or not to show a tooltip when this button is hovered. Tooltips should only be hidden if the aria label is redundant, i.e. if the icon has a widely understood definition.
       # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon:, tag: BaseButton::DEFAULT_TAG, scheme: DEFAULT_SCHEME, wrapper_arguments: {}, show_tooltip: true, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, disabled: false, **system_arguments)
+      def initialize(icon:, scheme: DEFAULT_SCHEME, wrapper_arguments: {}, show_tooltip: true, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, disabled: false, **system_arguments)
         @icon = icon
 
         @wrapper_arguments = wrapper_arguments

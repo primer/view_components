@@ -7,8 +7,9 @@ module Primer
       # @label Playground
       #
       # @param type [Symbol] select [button, submit]
-      def playground(type: :button)
-        render(Primer::Beta::CloseButton.new(type: type))
+      # @param disabled toggle
+      def playground(type: :button, disabled: false)
+        render(Primer::Beta::CloseButton.new(type: type, disabled: disabled))
       end
 
       # @label Default options

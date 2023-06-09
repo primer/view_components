@@ -42,16 +42,15 @@ module Primer
         )
 
         @disabled = disabled
+        return unless @disabled
 
-        if @disabled
-          @system_arguments[:tag] = :button
-          @system_arguments[:disabled] = ""
-          @system_arguments[:aria] = merge_aria(
-            @system_arguments, {
-              aria: { disabled: true }
-            }
-          )
-        end
+        @system_arguments[:tag] = :button
+        @system_arguments[:disabled] = ""
+        @system_arguments[:aria] = merge_aria(
+          @system_arguments, {
+            aria: { disabled: true }
+          }
+        )
       end
 
       def call
