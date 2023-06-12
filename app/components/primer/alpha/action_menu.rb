@@ -383,6 +383,15 @@ module Primer
         @list.with_divider(**system_arguments, &block)
       end
 
+      # @param src [String] The source url of the avatar image.
+      # @param username [String] The username associated with the avatar.
+      # @param full_name [String] Optional. The user's full name.
+      # @param full_name_scheme [Symbol] Optional. How to display the user's full name.
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
+      def with_avatar_item(**system_arguments, &block)
+        @list.with_avatar_item(**system_arguments, &block)
+      end
+
       private
 
       def before_render

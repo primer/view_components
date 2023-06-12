@@ -91,18 +91,27 @@ module Primer
       def multiple_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "langermank", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
-            item.with_description.with_content("Katie Langerman")
-          end
-          menu.with_item(label: "jonrohan", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4", alt: "Jon Rohan")
-            item.with_description.with_content("Jon Rohan")
-          end
-          menu.with_item(label: "broccolinisoup", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/1446503?v=4", alt: "Armağan Ersöz")
-            item.with_description.with_content("Armağan Ersöz")
-          end
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/18661030?v=4",
+            username: "langermank",
+            full_name: "Katie Langerman",
+            full_name_scheme: :inline
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4",
+            username: "jonrohan",
+            full_name: "Jon Rohan",
+            full_name_scheme: :inline
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/1446503?v=4",
+            username: "broccolinisoup",
+            full_name: "Armağan Ersöz",
+            full_name_scheme: :inline
+          )
         end
       end
 

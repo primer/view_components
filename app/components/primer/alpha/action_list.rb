@@ -70,7 +70,18 @@ module Primer
       #   def with_divider(**system_arguments, &block)
       #   end
 
-      # Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.
+      # @!parse
+      #   # Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.
+      #   #
+      #   # @param src [String] The source url of the avatar image.
+      #   # @param username [String] The username associated with the avatar.
+      #   # @param full_name [String] Optional. The user's full name.
+      #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name.
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: nil, **system_arguments, &block)
+      #   end
+
+      # Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.
       #
       renders_many :items, types: {
         item: {
@@ -81,6 +92,18 @@ module Primer
           },
 
           as: :item
+        },
+
+        avatar_item: {
+          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: nil, **system_arguments|
+            build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
+              item.with_leading_visual_avatar(src: src) # no alt text necessary
+              item.with_description_content(full_name) if full_name
+              will_add_item(item)
+            end
+          },
+
+          as: :avatar_item
         },
 
         divider: {

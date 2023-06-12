@@ -51,7 +51,7 @@ module Primer
       # @param shape [Symbol] Shape of the avatar. <%= one_of(Primer::Beta::Avatar::SHAPE_OPTIONS) %>
       # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src:, alt:, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
+      def initialize(src:, alt: nil, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
         @href = href
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :img
