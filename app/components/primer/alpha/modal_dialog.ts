@@ -175,13 +175,14 @@ export class ModalDialogElement extends HTMLElement {
         event.preventDefault()
         event.stopPropagation()
         break
-      case 'Enter':
+      case 'Enter': {
         const target = event.target as HTMLElement
 
         if (target.getAttribute('data-close-dialog-id') === this.id) {
           event.stopPropagation()
         }
         break
+      }
     }
   }
 }
