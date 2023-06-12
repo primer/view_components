@@ -51,13 +51,16 @@ module Primer
       # @label Button group with all tags
       def all_tags
         render(Primer::Beta::ButtonGroup.new) do |component|
-          component.with_button(tag: :button) do
+          component.with_button(id: "button-1", tag: :button) do |component|
+            component.with_tooltip(text: "Button Tooltip")
             "Button 1"
           end
-          component.with_button(tag: :a) do
+          component.with_button(id: "button-2", tag: :a) do |component|
+            component.with_tooltip(text: "Button Tooltip")
             "Button 2"
           end
-          component.with_button(tag: :summary) do
+          component.with_button(id: "button-3", tag: :summary) do |component|
+            component.with_tooltip(text: "Button Tooltip")
             "Button 3"
           end
         end
