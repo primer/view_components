@@ -47,6 +47,21 @@ module Primer
           component.with_button(icon: "sort-desc", "aria-label": "button 3")
         end
       end
+
+      # @label Button group with all tags
+      def all_tags
+        render(Primer::Beta::ButtonGroup.new) do |component|
+          component.with_button(tag: :button) do
+            "Button 1"
+          end
+          component.with_button(tag: :a) do
+            "Button 2"
+          end
+          component.with_button(tag: :summary) do
+            "Button 3"
+          end
+        end
+      end
     end
   end
 end
