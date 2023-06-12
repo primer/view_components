@@ -48,4 +48,10 @@ class PrimerAlphaHellipButtonTest < Minitest::Test
 
     refute_text("content")
   end
+
+  def test_disabled
+    render_inline(Primer::Alpha::HellipButton.new(aria: { label: "Custom aria label" }, disabled: true))
+
+    assert_selector("button[disabled][aria-disabled=true]", text: "…")
+  end
 end

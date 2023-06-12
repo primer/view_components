@@ -9,8 +9,9 @@ module Primer
       # @param type [Symbol] select [button, submit]
       # @param tag [Symbol] select [button, a, summary]
       # @param block [Boolean] toggle
-      def playground(tag: :button, block: false, type: :button)
-        render(Primer::Beta::BaseButton.new(tag: tag, block: block, type: type)) { "Button" }
+      # @param disabled [Boolean]
+      def playground(tag: :button, block: false, type: :button, disabled: false)
+        render(Primer::Beta::BaseButton.new(tag: tag, block: block, type: type, disabled: disabled)) { "Button" }
       end
 
       # @label Default options

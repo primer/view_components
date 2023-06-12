@@ -18,8 +18,9 @@ module Primer
       #   <%= render(Primer::Beta::CloseButton.new) %>
       #
       # @param type [Symbol] <%= one_of(Primer::Beta::CloseButton::TYPE_OPTIONS) %>
+      # @param disabled [Boolean] Whether or not the button is disabled.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(type: DEFAULT_TYPE, **system_arguments)
+      def initialize(type: DEFAULT_TYPE, disabled: false, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :button
         @system_arguments[:block] = false
@@ -29,6 +30,7 @@ module Primer
           system_arguments[:classes]
         )
         @system_arguments[:"aria-label"] = aria("label", system_arguments) || "Close"
+        @system_arguments[:disabled] = disabled
       end
 
       def call
