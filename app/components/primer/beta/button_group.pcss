@@ -1,7 +1,7 @@
 .ButtonGroup {
   display: inline-flex;
 
-  & button {
+  & .Button {
     margin-inline-end: -1px;
     position: relative;
     border-radius: 0;
@@ -14,13 +14,13 @@
   }
 
   & > :first-child,
-  & > :first-child.Button-withTooltip button {
+  & > :first-child.Button-withTooltip .Button {
     border-top-left-radius: var(--borderRadius-medium);
     border-bottom-left-radius: var(--borderRadius-medium);
   }
 
   & > :last-child,
-  & > :last-child.Button-withTooltip button {
+  & > :last-child.Button-withTooltip .Button {
     border-top-right-radius: var(--borderRadius-medium);
     border-bottom-right-radius: var(--borderRadius-medium);
   }
