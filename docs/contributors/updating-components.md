@@ -8,7 +8,7 @@ If the change requires a lot of updates or you’re unsure of the consequences o
 
 1. Make the changes without effecting existing functionality
 
-   For significant changes consider the [component lifecycle](https://primer.style/contribute/component-lifecycle) criteria; if the changes qualify the component for the next maturity level it’s much easier to introduce, for example, a new Beta component and deprecate the Alpha component than maintaining both APIs in a single component. This also makes it easier to identify which cases have been migrated.
+   For significant changes consider the [component lifecycle](https://primer.style/design/guides/component-lifecycle) criteria; if the changes qualify the component for the next maturity level it’s much easier to introduce, for example, a new Beta component and deprecate the Alpha component than maintaining both APIs in a single component. This also makes it easier to identify which cases have been migrated.
 
 2. Mark old functionality as deprecated
 
@@ -16,7 +16,7 @@ If the change requires a lot of updates or you’re unsure of the consequences o
 
 3. Write an ERB linter to detect and fix uses of old functionality
 
-   This will make it easier to find uses of the old functionality in github.com. Our ERB linters also have autocorrection logic so we can automate migrations where possible. [See our linting guide for details on how to write linters](https://primer.style/view-components/linting).
+   This will make it easier to find uses of the old functionality in github.com. Our ERB linters also have autocorrection logic so we can automate migrations where possible. [See our linting guide for details on how to write linters](./linting.md).
 
 4. Make a release and upgrade the Primer ViewComponents library in github.com
 5. Migrate uses in github.com to new functionality

@@ -30,43 +30,62 @@ module Primer
         ).with_content(title)
       }
 
-      # Groups. Each group is a list of links and a (required) heading.
-      #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
-      def with_group(**system_arguments, &block)
-        # This is a giant hack that should be removed when groups/items can be combined and converted into a polymorphic slot.
-        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
-        set_slot(
-          :items,
-          { renderable: Primer::Alpha::NavList::Group, collection: true },
-          selected_item_id: @selected_item_id,
-          **system_arguments,
-          &block
-        )
-      end
+      # @!parse
+      #   # Adds an item to the list.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+      #   def with_group(**system_arguments, &block)
+      #   end
 
-      # Adds a divider to the list of items.
-      #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
-      def with_divider(**system_arguments, &block)
-        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
-        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
-        set_slot(:items, { renderable: Primer::Alpha::NavList::Divider, collection: true }, **system_arguments, &block)
-      end
+      # @!parse
+      #   # Adds a group to the list. A group is a list of links and a (required) heading.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
+      #   def with_group(**system_arguments, &block)
+      #   end
 
-      # Items.
-      #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
-      renders_many :items, lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
-        # dummy group just so we have something to pass as the list: argument below
-        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+      # @!parse
+      #   # Adds a divider to the list. Dividers visually separate items and groups.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      #   def with_divider(**system_arguments, &block)
+      #   end
 
-        component_klass.new(
-          list: @top_level_group,
-          selected_item_id: @selected_item_id,
-          **system_arguments,
-          &block
-        )
+      # Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.
+      #
+      renders_many :items, types: {
+        item: {
+          renders: lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
+            # dummy group just so we have something to pass as the list: argument below
+            @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+
+            component_klass.new(
+              list: @top_level_group,
+              selected_item_id: @selected_item_id,
+              **system_arguments,
+              &block
+            )
+          },
+
+          as: :item
+        },
+
+        divider: {
+          renders: Primer::Alpha::NavList::Divider,
+          as: :divider
+        },
+
+        group: {
+          renders: lambda { |**system_arguments, &block|
+            Primer::Alpha::NavList::Group.new(
+              selected_item_id: @selected_item_id,
+              **system_arguments,
+              &block
+            )
+          },
+
+          as: :group
+        }
       }
 
       # @example Items and headings

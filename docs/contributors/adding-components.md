@@ -2,17 +2,17 @@
 
 ## Criteria for adding a component
 
-New components can be added to Primer ViewComponents when they fulfil all these criteria:
+New components can be added to Primer ViewComponents when they fulfill all these criteria:
 
 - The Design Infrastructure team has approved the component for inclusion in Primer
-- The CSS for the component has been added in a release of Primer CSS
+- The CSS for the component has been added in a release of Primer CSS. CSS can also live next to the component in a .pcss file.
 - The component is used in production, using all proposed APIs and their permutations
-- The component is compatible with [System arguments](https://primer.style/view-components/system-arguments) as appropriate
+- The component is compatible with [System arguments](https://primer.style/design/foundations/system-arguments) as appropriate
 - The API is consistent with existing components
 
 ### Component status
 
-We classify our components into alpha, beta and stable statuses. You can read more about these milestones in the [Primer’s component lifecycle](https://primer.style/contribute/component-lifecycle). In addition to the criteria listed there, to promote a Primer ViewComponent from alpha to beta it must not use any deprecated [view_component](https://viewcomponent.org/CHANGELOG.html) framework features, such as Slots v1.
+We classify our components into alpha, beta and stable statuses. You can read more about these milestones in the [Primer’s component lifecycle](https://primer.style/design/guides/component-lifecycle). In addition to the criteria listed there, to promote a Primer ViewComponent from alpha to beta it must not use any deprecated [view_component](https://viewcomponent.org/CHANGELOG.html) framework features, such as Slots v1.
 
 ### Experimental lifecycle
 
@@ -28,7 +28,7 @@ All components added to Primer ViewComponents must already be validated in a pro
 
 3. Open your Primer ViewComponents pull request
 
-    Once the component is validated in a production application and fulfils the other criteria it can be added to Primer ViewComponents and released. Instances of the experimental component in your production application can then be replaced by the Primer ViewComponent.
+    Once the component is validated in a production application and fulfills the other criteria it can be added to Primer ViewComponents and released. Instances of the experimental component in your production application can then be replaced by the Primer ViewComponent.
 
 ## Process for adding a component
 
@@ -49,10 +49,10 @@ The generator script has several flags:
 Running the component generator script creates several files across the codebase:
 
 - `app/components/<status>/<component_name>.rb` is where the component logic is defined, and where you’ll write the component’s [documentation] in the form of YARD comments
-  - [Read about writing documents with YARD comments](./documentation.md#yard-setup)
+  - [Read about writing documents with YARD comments](./README.md#writing-documentation)
 - `app/components/<status>/<component_name>.html.erb` is the component’s template file (omitted if the `inline` flag is passed to the generator)
 - `test/components/primer/<status>/<component_name>.rb` contains the component’s unit tests
-  - [Read about writing component tests](./component-tests.md)
+  - [Read about writing component tests](./README.md#system-tests)
 
 If the `js` flag is passed in it will create some extra files:
 

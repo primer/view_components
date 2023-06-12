@@ -37,7 +37,7 @@ gem "puma", "~> 6.3.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
-gem "view_component", '>= 3.0.0.rc5'
+gem "view_component", '>= 3.1.0'
 gem "lookbook", "~> 2.0.4" unless rails_version.to_f < 7
 
 group :development do
