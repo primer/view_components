@@ -23,13 +23,15 @@ module Primer
         system_arguments[:role] = "button"
 
         if disabled?
+          # rubocop:disable Primer/ComponentNameMigration
           Primer::ButtonComponent.new(**system_arguments, disabled: true)
+          # rubocop:enable Primer/ComponentNameMigration
+        elsif button
+          # rubocop:disable Primer/ComponentNameMigration
+          Primer::ButtonComponent.new(**system_arguments)
+          # rubocop:enable Primer/ComponentNameMigration
         else
-          if button
-            Primer::ButtonComponent.new(**system_arguments)
-          else
-            Primer::BaseComponent.new(**system_arguments)
-          end
+          Primer::BaseComponent.new(**system_arguments)
         end
       }
 
