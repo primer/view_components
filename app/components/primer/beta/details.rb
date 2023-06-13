@@ -58,6 +58,7 @@ module Primer
       #
       # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::Beta::Details::OVERLAY_MAPPINGS.keys) %>
       # @param reset [Boolean] Defaults to false. If set to true, it will remove the default caret and remove style from the summary element
+      # @param disabled [Boolean] Whether or not to disable the summary button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(overlay: NO_OVERLAY, reset: false, disabled: false, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
