@@ -15,19 +15,22 @@ module Primer
         :dark => "details-overlay details-overlay-dark"
       }.freeze
 
-      # Use the Summary slot as a trigger to reveal the content.
-      #
-      # @param button [Boolean] (true) Whether to render the Summary as a button or not.
-      # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+      attr_reader :disabled
+      alias disabled? disabled
+
       renders_one :summary, lambda { |button: true, **system_arguments|
         system_arguments[:tag] = :summary
         system_arguments[:role] = "button"
 
-        return Primer::BaseComponent.new(**system_arguments) unless button
-
-        # rubocop:disable Primer/ComponentNameMigration
-        Primer::ButtonComponent.new(**system_arguments)
-        # rubocop:enable Primer/ComponentNameMigration
+        if disabled?
+          Primer::ButtonComponent.new(**system_arguments, disabled: true)
+        else
+          if button
+            Primer::ButtonComponent.new(**system_arguments)
+          else
+            Primer::BaseComponent.new(**system_arguments)
+          end
+        end
       }
 
       # Use the Body slot as the main content to be shown when triggered by the Summary.
@@ -54,7 +57,7 @@ module Primer
       # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::Beta::Details::OVERLAY_MAPPINGS.keys) %>
       # @param reset [Boolean] Defaults to false. If set to true, it will remove the default caret and remove style from the summary element
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(overlay: NO_OVERLAY, reset: false, **system_arguments)
+      def initialize(overlay: NO_OVERLAY, reset: false, disabled: false, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :details
         @system_arguments[:classes] = class_names(
@@ -62,6 +65,8 @@ module Primer
           OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, NO_OVERLAY)],
           "details-reset" => reset
         )
+        @disabled = disabled
+        @summary_info = nil
       end
 
       def render?
