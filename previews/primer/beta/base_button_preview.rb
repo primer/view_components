@@ -22,6 +22,12 @@ module Primer
       def default(tag: :button, block: false, type: :button)
         render(Primer::Beta::BaseButton.new(tag: tag, block: block, type: type)) { "Button" }
       end
+
+      # @label Disabled
+      #
+      def disabled
+        render(Primer::Beta::BaseButton.new(disabled: true)) { "Button" }
+      end
     end
   end
 end
