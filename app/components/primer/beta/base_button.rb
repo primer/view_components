@@ -46,11 +46,6 @@ module Primer
 
         @system_arguments[:tag] = :button
         @system_arguments[:disabled] = ""
-        @system_arguments[:aria] = merge_aria(
-          @system_arguments, {
-            aria: { disabled: true }
-          }
-        )
       end
 
       def call
