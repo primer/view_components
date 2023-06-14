@@ -219,7 +219,10 @@ export class NavListElement extends HTMLElement {
     if (currentlySelectedItem) this.#deselect(currentlySelectedItem)
 
     navItem.classList.add('ActionListItem--navActive')
-    navItem.children[0].setAttribute('aria-current', 'page')
+
+    if (navItem.children.length > 0) {
+      navItem.children[0].setAttribute('aria-current', 'page')
+    }
 
     const parentMenu = this.#findParentMenu(navItem)
 
@@ -231,7 +234,10 @@ export class NavListElement extends HTMLElement {
 
   #deselect(navItem: HTMLElement) {
     navItem.classList.remove('ActionListItem--navActive')
-    navItem.children[0].removeAttribute('aria-current')
+
+    if (navItem.children.length > 0) {
+      navItem.children[0].removeAttribute('aria-current')
+    }
 
     const parentMenu = this.#findParentMenu(navItem)
 
