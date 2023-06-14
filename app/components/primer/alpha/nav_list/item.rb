@@ -80,7 +80,7 @@ module Primer
             )
           end
 
-          @content_arguments[:"aria-current"] = "true" if active?
+          @content_arguments[:"aria-current"] = "page" if active?
 
           super
 

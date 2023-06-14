@@ -219,7 +219,7 @@ export class NavListElement extends HTMLElement {
     if (currentlySelectedItem) this.#deselect(currentlySelectedItem)
 
     navItem.classList.add('ActionListItem--navActive')
-    navItem.children[0].setAttribute('aria-current', 'true')
+    navItem.children[0].setAttribute('aria-current', 'page')
 
     const parentMenu = this.#findParentMenu(navItem)
 
