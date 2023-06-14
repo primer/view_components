@@ -96,7 +96,7 @@ module Primer
         end
 
         refute_selector ".ActionListItem--navActive", text: "Item 1"
-        assert_selector ".ActionListItem--navActive", text: "Item 2"
+        assert_selector ".ActionListItem--navActive [aria-current=page]", text: "Item 2"
       end
 
       def test_item_can_be_selected_by_any_of_its_ids
@@ -108,7 +108,7 @@ module Primer
           end
         end
 
-        assert_selector ".ActionListItem--navActive", text: "Item 1"
+        assert_selector ".ActionListItem--navActive [aria-current=page]", text: "Item 1"
         refute_selector ".ActionListItem--navActive", text: "Item 2"
       end
 
@@ -138,7 +138,7 @@ module Primer
         end
 
         refute_selector ".ActionListItem--navActive", text: "Item 1"
-        assert_selector ".ActionListItem--navActive", text: "Item 2"
+        assert_selector ".ActionListItem--navActive [aria-current=page]", text: "Item 2"
       end
 
       def test_max_nesting_depth
