@@ -34,8 +34,8 @@
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  background-color: var(--color-switch-track-bg);
-  border: var(--borderWidth-thin) solid var(--color-switch-track-border);
+  background-color: var(--controlTrack-bgColor-rest);
+  border: var(--borderWidth-thin) solid var(--controlTrack-borderColor-rest);
   border-radius: var(--borderRadius-medium);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
@@ -48,11 +48,11 @@
   }
 
   &:hover {
-    background-color: var(--color-switch-track-hover-bg);
+    background-color: var(--controlTrack-bgColor-hover);
   }
 
   &:active {
-    background-color: var(--color-switch-track-active-bg);
+    background-color: var(--controlTrack-bgColor-active);
   }
 
   @media (pointer: coarse) {
@@ -71,28 +71,28 @@
 }
 
 .ToggleSwitch-track[aria-pressed='true'][disabled] {
-  background-color: var(--color-switch-track-disabled-bg);
-  color: var(--color-switch-track-checked-disabled-fg);
+  background-color: var(--controlTrack-bgColor-disabled);
+  color: var(--control-checked-fgColor-disabled);
   border-color: transparent;
 }
 
 .ToggleSwitch-track[aria-pressed='true'] {
-  background-color: var(--color-switch-track-checked-bg);
-  border-color: var(--color-switch-track-checked-border);
+  background-color: var(--control-checked-bgColor-rest);
+  border-color: var(--borderColor-transparent);
 
   &:not([disabled]) {
     &:hover {
-      background-color: var(--color-switch-track-checked-hover-bg);
+      background-color: var(--control-checked-bgColor-hover);
     }
 
     &:active {
-      background-color: var(--color-switch-track-checked-active-bg);
+      background-color: var(--control-checked-bgColor-active);
     }
   }
 
   & .ToggleSwitch-knob {
-    background-color: var(--color-switch-knob-checked-bg);
-    border-color: var(--color-switch-knob-checked-border);
+    background-color: var(--controlKnob-bgColor-checked);
+    border-color: var(--controlKnob-borderColor-checked);
     transform: translateX(100%);
   }
 
@@ -107,21 +107,21 @@
 
 .ToggleSwitch-track[disabled] {
   cursor: not-allowed;
-  background-color: var(--color-switch-track-disabled-bg);
+  background-color: var(--controlTrack-bgColor-disabled);
   border-color: transparent;
   transition-property: none;
 
   & .ToggleSwitch-knob {
-    border-color: var(--color-border-default);
+    border-color: var(--borderColor-default);
     box-shadow: none;
   }
 
   & .ToggleSwitch-lineIcon {
-    color: var(--color-switch-track-disabled-fg);
+    color: var(--controlTrack-fgColor-disabled);
   }
 
   & .ToggleSwitch-circleIcon {
-    color: var(--color-switch-track-disabled-fg);
+    color: var(--controlTrack-fgColor-disabled);
   }
 }
 
@@ -135,7 +135,7 @@
 
 .ToggleSwitch-lineIcon {
   line-height: 0;
-  color: var(--color-switch-track-checked-fg);
+  color: var(--control-checked-fgColor-rest);
   transition-duration: 80ms;
   transition-property: transform;
   transform: translateX(-100%);
@@ -144,7 +144,7 @@
 
 .ToggleSwitch-circleIcon {
   line-height: 0;
-  color: var(--color-switch-track-fg);
+  color: var(--controlTrack-fgColor-rest);
   transition-duration: 80ms;
   transition-property: transform;
   transform: translateX(0);
@@ -157,10 +157,10 @@
   bottom: 0;
   z-index: 1;
   width: 50%;
-  background-color: var(--color-switch-knob-bg);
-  border: var(--borderWidth-thin) solid var(--color-switch-knob-border);
+  background-color: var(--controlKnob-bgColor-rest);
+  border: var(--borderWidth-thin) solid var(--controlKnob-borderColor-rest);
   border-radius: var(--borderRadius-medium);
-  box-shadow: var(--color-shadow-medium), var(--color-btn-inset-shadow);
+  box-shadow: var(--shadow-resting-medium), var(--button-default-shadow-inset);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: transform;
@@ -174,7 +174,7 @@
   position: relative;
   font-size: var(--text-body-size-medium);
   line-height: 1.5;
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   text-align: right;
 }
 
@@ -197,7 +197,7 @@
 
 .ToggleSwitch--disabled {
   & .ToggleSwitch-status {
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
   }
 }
 
