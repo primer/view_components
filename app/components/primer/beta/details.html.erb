@@ -1,4 +1,8 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+<% if disabled? %>
   <%= summary %>
-  <%= body %>
+<% else %>
+  <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+    <%= summary %>
+    <%= body %>
+  <% end %>
 <% end %>
