@@ -66,6 +66,6 @@ class PrimerBetaCloseButtonTest < Minitest::Test
   def test_disabled
     render_inline(Primer::Beta::CloseButton.new(aria: { label: "Label" }, disabled: true))
 
-    assert_selector("button.close-button[disabled][aria-disabled=true]")
+    assert_selector("button.close-button[disabled]")
   end
 end

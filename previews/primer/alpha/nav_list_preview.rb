@@ -6,7 +6,7 @@ module Primer
     class NavListPreview < ViewComponent::Preview
       # @label Playground
       def playground
-        render(Primer::Alpha::NavList.new(aria: { label: "Repository settings" }, selected_item_id: :code_review_limits)) do |list|
+        render(Primer::Alpha::NavList.new(aria: { label: "Repository settings" }, selected_item_id: :collaborators)) do |list|
           list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|

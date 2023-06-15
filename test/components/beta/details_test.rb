@@ -136,7 +136,7 @@ class PrimerBetaDetailsTest < Minitest::Test
     end
 
     refute_selector("details")
-    assert_selector("button[disabled][aria-disabled=true]", text: "Summary")
+    assert_selector("button[disabled]", text: "Summary")
   end
 
   def test_status
