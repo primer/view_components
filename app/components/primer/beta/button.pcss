@@ -17,7 +17,7 @@
   border: var(--borderWidth-thin) solid;
   border-color: transparent;
   border-radius: var(--borderRadius-medium);
-  color: var(--color-btn-text);
+  color: var(--button-default-fgColor-rest);
   transition: var(--duration-fast) var(--easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
   text-align: center;
@@ -210,7 +210,7 @@ summary.Button {
 
 /* default (secondary) */
 .Button--secondary {
-  color: var(--color-btn-text);
+  color: var(--button-default-fgColor-rest);
   fill: var(--fgColor-muted); /* help this */
   background-color: var(--button-default-bgColor-rest);
   border-color: var(--button-default-borderColor-rest);
@@ -241,28 +241,28 @@ summary.Button {
 }
 
 .Button--invisible {
-  color: var(--color-btn-text);
+  color: var(--button-invisible-fgColor-rest);
 
   &:hover:not(:disabled) {
-    background-color: var(--control-transparent-bgColor-hover);
+    background-color: var(--button-invisible-bgColor-hover);
   }
 
   &[aria-pressed='true'],
   &:active:not(:disabled) {
-    background-color: var(--control-transparent-bgColor-active);
+    background-color: var(--button-invisible-bgColor-active);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--fgColor-disabled);
-    background-color: var(--button-default-bgColor-rest);
-    border-color: var(--button-default-borderColor-rest);
-    fill: var(--fgColor-disabled);
+    color: var(--button-invisible-fgColor-disabled);
+    background-color: var(--button-invisible-bgColor-disabled);
+    border-color: transparent;
+    fill: var(--button-invisible-fgColor-disabled);
   }
 
   /* if button has no visuals, use link blue for text */
   &.Button--invisible-noVisuals .Button-label {
-    color: var(--fgColor-accent);
+    color: var(--fgColor-link-rest);
   }
 
   & .Button-visual {
@@ -275,8 +275,8 @@ summary.Button {
 }
 
 .Button--link {
-  color: var(--fgColor-accent);
-  fill: var(--fgColor-accent);
+  color: var(--fgColor-link-rest);
+  fill: var(--fgColor-link-rest);
   display: inline-block;
   font-size: inherit;
   border: none;
@@ -305,8 +305,8 @@ summary.Button {
 .Button--danger {
   color: var(--button-danger-fgColor-rest);
   fill: var(--button-danger-iconColor-rest);
-  background-color: var(--button-default-bgColor-rest);
-  border-color: var(--button-default-borderColor-rest);
+  background-color: var(--button-danger-bgColor-rest);
+  border-color: var(--button-danger-borderColor-rest);
   box-shadow: var(--button-default-shadow-resting), var(--button-default-shadow-inset);
 
   &:hover:not(:disabled) {
@@ -317,7 +317,7 @@ summary.Button {
     box-shadow: var(--shadow-resting-small), var(--shadow-highlight);
 
     & .Counter {
-      color: var(--color-btn-danger-hover-counter-fg);
+      color: var(--buttonCounter-danger-fgColor-hover);
       background-color: var(--buttonCounter-danger-bgColor-hover);
     }
   }
@@ -339,13 +339,13 @@ summary.Button {
     border-color: var(--button-default-borderColor-rest);
 
     & .Counter {
-      color: var(--color-btn-danger-disabled-counter-fg);
+      color: var(--buttonCounter-danger-fgColor-disabled);
       background-color: var(--buttonCounter-danger-bgColor-disabled);
     }
   }
 
   & .Counter {
-    color: var(--color-btn-danger-counter-fg);
+    color: var(--buttonCounter-danger-fgColor-rest);
     background-color: var(--buttonCounter-danger-bgColor-rest);
   }
 }
