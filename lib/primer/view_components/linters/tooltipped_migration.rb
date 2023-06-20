@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require_relative "helpers/rule_helpers"
 
+require_relative "helpers/rule_helpers"
 module ERBLint
   module Linters
     module Primer
