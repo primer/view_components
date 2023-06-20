@@ -75,7 +75,7 @@
 .ActionListItem {
   position: relative;
   list-style: none;
-  background-color: transparent;
+  background-color: var(--control-transparent-bgColor-rest);
   border-radius: var(--borderRadius-medium);
 
   /* state */
@@ -219,11 +219,11 @@
     & .ActionListContent {
       & .ActionListItem-label,
       & .ActionListItem-description {
-        color: var(--fgColor-disabled);
+        color: var(--control-fgColor-disabled);
       }
 
       & .ActionListItem-visual {
-        fill: var(--fgColor-disabled);
+        fill: var(--control-fgColor-disabled);
       }
     }
 
@@ -240,11 +240,11 @@
   /* danger */
   &.ActionListItem--danger {
     & .ActionListItem-label {
-      color: var(--fgColor-danger);
+      color: var(--control-danger-fgColor-rest);
     }
 
     & .ActionListItem-visual {
-      color: var(--fgColor-danger);
+      color: var(--control-danger-fgColor-rest);
     }
 
     @media (hover: hover) {
@@ -278,7 +278,7 @@
   width: 100%;
   padding-block: var(--actionListContent-paddingBlock);
   padding-inline: var(--control-medium-paddingInline-condensed);
-  color: var(--fgColor-default);
+  color: var(--control-fgColor-rest);
   text-align: left;
   user-select: none;
   background-color: transparent;
@@ -307,11 +307,11 @@
   &[aria-disabled='true'] {
     & .ActionListItem-label,
     & .ActionListItem-description {
-      color: var(--fgColor-disabled);
+      color: var(--control-fgColor-disabled);
     }
 
     & .ActionListItem-visual {
-      fill: var(--fgColor-disabled);
+      fill: var(--control-fgColor-disabled);
     }
 
     @media (hover: hover) {
@@ -448,8 +448,8 @@
     /* checkbox */
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
-        fill: var(--fgColor-accent);
-        stroke: var(--fgColor-accent);
+        fill: var(--control-checked-bgColor-rest);
+        stroke: var(--control-checked-bgColor-rest);
         stroke-width: var(--borderWidth-thin, 1px);
       }
 
@@ -492,14 +492,14 @@
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
         fill: var(--bgColor-default);
-        stroke: var(--borderColor-default);
+        stroke: var(--control-borderColor-rest);
         stroke-width: var(--borderWidth-thin, 1px);
       }
     }
 
     & .ActionListItem-multiSelectIconRect {
       fill: var(--bgColor-default);
-      border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+      border: var(--borderWidth-thin, 1px) solid var(--control-borderColor-rest);
     }
   }
 

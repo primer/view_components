@@ -57,7 +57,7 @@
 
   /* fallback :focus state */
   &:focus {
-    @mixin focusOutline 2px, var(--color-accent-fg);
+    @mixin focusOutline 2px, var(--focus-outlineColor);
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -68,7 +68,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--color-accent-fg);
+    @mixin focusOutline 2px, var(--focus-outlineColor);
   }
 
   &:active {
@@ -137,7 +137,7 @@
 
   /* fallback :focus state */
   &:focus {
-    @mixin focusOutline 2px, var(--color-accent-fg);
+    @mixin focusOutline 2px, var(--focus-outlineColor);
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -148,7 +148,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--color-accent-fg);
+    @mixin focusOutline 2px, var(--focus-outlineColor);
   }
 }
 
