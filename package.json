@@ -93,7 +93,7 @@
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^28.0.0",
-    "@primer/stylelint-config": "0.0.0-20230614024636",
+    "@primer/stylelint-config": "^12.7.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
