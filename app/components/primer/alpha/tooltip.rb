@@ -10,7 +10,7 @@ module Primer
     # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::Beta::Link)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
     # - Tooltip text must be brief and concise whether it is a label or a description.
     # - Tooltip can only hold string content.
-    # - Tooltip are not allowed on `disabled` elements due to keyboard inaccessibility. If you must set a tooltip on a disabled element, use `aria-disabled="true"` and programatically disable the element to ensure the control can be focused.
+    # - Tooltip are not allowed on `disabled` elements due to how `disabled` elements are not keyboard accessible. If you must set a tooltip on a disabled element, use `aria-disabled="true"` and programatically disable the element to ensure the control can be focused.
     # - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only users
     # and screen reader users. Use of tooltip through <%= link_to_component(Primer::ButtonComponent) %>, <%= link_to_component(Primer::Beta::Link) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
     # - If you must use `Tooltip` as a standalone component, place it adjacent after the trigger element in the DOM. This allows screen reader users to navigate to and copy the tooltip
