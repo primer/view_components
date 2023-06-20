@@ -1,4 +1,4 @@
-# Accessibility-focused lint rule configurations.
+# Accessibility-focused lint rule configurations, tracked by accessibility scorecard.
 ---
 linters:
   Primer::Accessibility::TooltippedMigration:
