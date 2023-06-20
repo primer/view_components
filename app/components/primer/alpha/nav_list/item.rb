@@ -80,6 +80,8 @@ module Primer
             )
           end
 
+          @content_arguments[:"aria-current"] = "page" if active?
+
           super
 
           raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?

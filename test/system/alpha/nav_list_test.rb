@@ -120,11 +120,11 @@ module Alpha
     end
 
     def assert_item_id_selected(item_id)
-      assert_selector("li[data-item-id='#{item_id}'].ActionListItem--navActive")
+      assert_selector("li[data-item-id='#{item_id}'].ActionListItem--navActive [aria-current=page]")
     end
 
     def assert_item_href_selected(item_href)
-      assert_selector("li.ActionListItem--navActive a[href='#{item_href}']")
+      assert_selector("li.ActionListItem--navActive a[href='#{item_href}'][aria-current=page]")
     end
   end
 end

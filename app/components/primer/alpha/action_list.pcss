@@ -185,6 +185,9 @@
   /* active state [aria-current] */
 
   &.ActionListItem--navActive {
+    /* provides a visual indication of the current item for Windows high-contrast mode */
+    outline: 2px solid transparent;
+
     &:not(.ActionListItem--subItem) {
       & .ActionListItem-label {
         font-weight: var(--base-text-weight-semibold);
