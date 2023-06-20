@@ -42,12 +42,22 @@ module Primer
         assert_selector("h2", text: "Repository settings")
       end
 
-      def test_invalid_list
+      def test_list_without_heading_requires_aria_label
         error = assert_raises ArgumentError do
           render_inline(Primer::Alpha::NavList.new)
         end
 
-        assert_includes(error.message, "An aria-label must be provided")
+        assert_equal("When no heading is provided, an aria-label must be given", error.message)
+      end
+
+      def test_list_with_heading_rejects_aria_label
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::NavList.new(aria: { label: "foo" })) do |list|
+            list.with_heading(title: "Foo")
+          end
+        end
+
+        assert_equal("Please don't set an aria-label if a heading is provided", error.message)
       end
 
       def test_sub_items
