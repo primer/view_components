@@ -1,0 +1,5 @@
+# Accessibility-focused lint rule configurations.
+---
+linters:
+  Primer::Accessibility::TooltippedMigration:
+    enabled: true
