@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency     "actionview", ">= 5.0.0"
   spec.add_runtime_dependency     "activesupport", ">= 5.0.0"
   spec.add_runtime_dependency     "octicons", ">= 18.0.0"
-  spec.add_runtime_dependency     "view_component", ["> 2.0", "< 4.0"]
+  spec.add_runtime_dependency     "view_component", [">= 3.1", "< 4.0"]
 
   spec.add_development_dependency "allocation_stats", "~> 0.1"
   spec.add_development_dependency "allocation_tracer", "~> 0.6.3"
@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "capybara", "~> 3"
   spec.add_development_dependency "cuprite", "= 0.13"
   spec.add_development_dependency "erb_lint", "~> 0.4.0"
-  spec.add_development_dependency "erblint-github", "0.1.0"
+  spec.add_development_dependency "erblint-github", "0.4.0"
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "matrix", "~> 0.4.2"
   spec.add_development_dependency "minitest", "~> 5.0"

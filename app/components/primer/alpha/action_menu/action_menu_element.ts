@@ -1,4 +1,5 @@
-import '@github/include-fragment-element'
+import {controller, target} from '@github/catalyst'
+import IncludeFragmentElement from '@github/include-fragment-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -9,7 +10,10 @@ type SelectedItem = {
 
 const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 
+@controller
 export class ActionMenuElement extends HTMLElement {
+  @target includeFragment: IncludeFragmentElement
+
   #abortController: AbortController
   #originalLabel = ''
   #inputName = ''
@@ -87,6 +91,10 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('focusout', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
+
+    if (this.includeFragment) {
+      this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
+    }
   }
 
   disconnectedCallback() {
@@ -105,18 +113,30 @@ export class ActionMenuElement extends HTMLElement {
 
     if (!this.popoverElement?.matches(':popover-open')) return
 
-    if (event.type === 'focusout' && !this.contains((event as FocusEvent).relatedTarget as Node)) {
-      this.popoverElement?.hidePopover()
+    if (event.type === 'include-fragment-replaced') {
+      if (this.#firstItem) this.#firstItem.focus()
     } else if (this.#isActivationKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
-      const item = (event.target as Element).closest(menuItemSelectors.join(','))?.closest('li')
+      // Hide popover after current event loop to prevent changes in focus from
+      // altering the target of the event. Not doing this specifically affects
+      // <a> tags. It causes the event to be sent to the currently focused element
+      // instead of the anchor, which effectively prevents navigation, i.e. it
+      // appears as if hitting enter does nothing. Curiously, clicking instead
+      // works fine.
+      if (this.selectVariant !== 'multiple') {
+        setTimeout(() => this.popoverElement?.hidePopover())
+      }
+
+      // The rest of the code below deals with single/multiple selection behavior, and should not
+      // interfere with events fired by menu items whose behavior is specified outside the library.
+      if (this.selectVariant !== 'multiple' && this.selectVariant !== 'single') return
+
+      const item = (event.target as Element).closest(menuItemSelectors.join(','))
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
       const checked = ariaChecked !== 'true'
       item.setAttribute('aria-checked', `${checked}`)
       if (this.selectVariant === 'single') {
-        const selector = menuItemSelectors.map(s => `li[aria-checked] ${s}`).join(',')
-        for (const checkedItemContent of this.querySelectorAll(selector)) {
-          const checkedItem = checkedItemContent.closest('li')!
+        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
           if (checkedItem !== item) {
             checkedItem.setAttribute('aria-checked', 'false')
           }
@@ -129,15 +149,6 @@ export class ActionMenuElement extends HTMLElement {
       if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
         // prevent buttons from being clicked twice
         event.preventDefault()
-      }
-      // Hide popover after current event loop to prevent changes in focus from
-      // altering the target of the event. Not doing this specifically affects
-      // <a> tags. It causes the event to be sent to the currently focused element
-      // instead of the anchor, which effectively prevents navigation, i.e. it
-      // appears as if hitting enter does nothing. Curiously, clicking instead
-      // works fine.
-      if (this.selectVariant !== 'multiple') {
-        setTimeout(() => this.popoverElement?.hidePopover())
       }
     }
   }

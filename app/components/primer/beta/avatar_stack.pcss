@@ -35,8 +35,8 @@
     box-sizing: content-box;
     margin-right: -11px;
     background-color: var(--color-canvas-default);
-    border-right: var(--borderWidth-thin, 1px) solid var(--color-canvas-default);
-    border-radius: var(--borderRadius-small, 4px);
+    border-right: var(--borderWidth-thin) solid var(--color-canvas-default);
+    border-radius: var(--borderRadius-small);
     box-shadow: none;
     transition: margin 0.1s ease-in-out;
 
@@ -50,7 +50,7 @@
     }
 
     & img {
-      border-radius: var(--borderRadius-small, 4px);
+      border-radius: var(--borderRadius-small);
     }
 
     /* Account for 4+ avatars */
@@ -88,7 +88,7 @@
     height: 20px;
     content: '';
     border-radius: 2px;
-    outline: var(--borderWidth-thin, 1px) solid var(--color-canvas-default);
+    outline: var(--borderWidth-thin) solid var(--color-canvas-default);
   }
 
   &::before {
@@ -136,6 +136,6 @@
     margin-right: 0;
     margin-left: -11px;
     border-right: 0;
-    border-left: var(--borderWidth-thin, 1px) solid var(--color-canvas-default);
+    border-left: var(--borderWidth-thin) solid var(--color-canvas-default);
   }
 }

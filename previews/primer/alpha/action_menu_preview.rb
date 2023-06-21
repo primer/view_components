@@ -180,19 +180,6 @@ module Primer
       # @label With actions
       #
       def with_actions
-        render(Primer::Alpha::ActionMenu.new) do |component|
-          component.with_show_button { "Trigger" }
-          component.with_item(label: "Alert", tag: :button, content_arguments: { onclick: "alert('Foo')", onkeydown: "if (event.key === 'Enter') { alert(event.key) }" })
-          component.with_item(label: "Navigate", tag: :a, content_arguments: { href: UrlHelpers.action_menu_landing_path })
-          component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" })
-          component.with_item(
-            label: "Submit form",
-            href: UrlHelpers.action_menu_form_action_path,
-            form_arguments: {
-              name: "foo", value: "bar", method: :post
-            }
-          )
-        end
       end
 
       # @label Single select form
@@ -283,6 +270,11 @@ module Primer
             item.with_description.with_content("Inline description")
           end
         end
+      end
+
+      # @label Two menus
+      #
+      def two_menus
       end
     end
   end

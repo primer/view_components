@@ -11,7 +11,7 @@ The easiest way to get started contributing to Primer ViewComponents is with [Co
 
 ### Lookbook
 
-[Lookbook](https://github.com/allmarkedup/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc.
+[Lookbook](https://github.com/ViewComponent/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc.
 
 #### How to run
 

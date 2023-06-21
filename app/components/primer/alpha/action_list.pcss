@@ -1,12 +1,12 @@
 :root {
-  --actionListContent-paddingBlock: var(--control-medium-paddingBlock, 6px);
+  --actionListContent-paddingBlock: var(--control-medium-paddingBlock);
 }
 
 /* ActionList */
 
 .ActionListHeader {
-  margin-left: var(--base-size-8, 8px);
-  margin-bottom: var(--base-size-16, 16px);
+  margin-left: var(--base-size-8);
+  margin-bottom: var(--base-size-16);
 }
 
 /* <ul> */
@@ -15,7 +15,7 @@
 }
 
 .ActionListWrap--inset {
-  padding: var(--base-size-8, 8px);
+  padding: var(--base-size-8);
 }
 
 /* list dividers */
@@ -38,7 +38,7 @@
       top: calc(-1 * var(--actionListContent-paddingBlock));
       display: block;
       width: 100%;
-      height: var(--borderWidth-thin, 1px);
+      height: var(--borderWidth-thin);
       content: '';
       background: var(--color-action-list-item-inline-divider);
     }
@@ -76,7 +76,7 @@
   position: relative;
   list-style: none;
   background-color: transparent;
-  border-radius: var(--borderRadius-medium, 6px);
+  border-radius: var(--borderRadius-medium);
 
   /* state */
 
@@ -134,9 +134,9 @@
 
         &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
-          outline: solid var(--borderWidth-thin, 1px) transparent;
-          outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
-          box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+          outline: solid var(--borderWidth-thin) transparent;
+          outline-offset: calc(-1 * var(--borderWidth-thin));
+          box-shadow: var(--boxShadow-thin) var(--color-action-list-item-default-active-border);
         }
       }
     }
@@ -146,14 +146,273 @@
 
       &:not(.ActionListItem--navActive) {
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
-        outline: solid var(--borderWidth-thin, 1px) transparent;
-        outline-offset: calc(-1 * var(--borderWidth-thin, 1px));
-        box-shadow: var(--borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+        outline: solid var(--borderWidth-thin) transparent;
+        outline-offset: calc(-1 * var(--borderWidth-thin));
+        box-shadow: var(--boxShadow-thin) var(--color-action-list-item-default-active-border);
       }
 
       & .ActionListItem-label::before,
       & + .ActionListItem .ActionListItem-label::before {
         visibility: hidden;
+      }
+    }
+  }
+
+  /* Autocomplete [aria-selected] items */
+
+  &[aria-selected='true'] {
+    font-weight: var(--base-text-weight-normal);
+    background: var(--color-action-list-item-default-selected-bg);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-action-list-item-default-hover-bg);
+      }
+    }
+
+    &::before,
+    & + .ActionListItem::before {
+      visibility: hidden;
+    }
+
+    /* blue accent line */
+
+    &::after {
+      @mixin activeIndicatorLine calc(-1 * var(--base-size-4));
+    }
+  }
+
+  /* active state [aria-current] */
+
+  &.ActionListItem--navActive {
+    /* provides a visual indication of the current item for Windows high-contrast mode */
+    outline: 2px solid transparent;
+
+    &:not(.ActionListItem--subItem) {
+      & .ActionListItem-label {
+        font-weight: var(--base-text-weight-semibold);
+      }
+    }
+
+    &:not(.ActionListItem--danger) {
+      background: var(--color-action-list-item-default-selected-bg);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--color-action-list-item-default-hover-bg);
+        }
+      }
+
+      &::before,
+      & + .ActionListItem::before {
+        visibility: hidden;
+      }
+
+      /* blue accent line  */
+      &::after {
+        @mixin activeIndicatorLine;
+      }
+    }
+  }
+
+  /* disabled */
+
+  &.ActionListItem--disabled,
+  &[aria-disabled='true'] {
+    & .ActionListContent {
+      & .ActionListItem-label,
+      & .ActionListItem-description {
+        color: var(--color-primer-fg-disabled);
+      }
+
+      & .ActionListItem-visual {
+        fill: var(--color-primer-fg-disabled);
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: not-allowed;
+        background-color: transparent;
+      }
+    }
+  }
+
+  /* variants */
+
+  /* danger */
+  &.ActionListItem--danger {
+    & .ActionListItem-label {
+      color: var(--color-danger-fg);
+    }
+
+    & .ActionListItem-visual {
+      color: var(--color-danger-fg);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-action-list-item-danger-hover-bg);
+
+        & .ActionListItem-label,
+        & .ActionListItem-visual {
+          color: var(--color-action-list-item-danger-hover-text);
+        }
+      }
+    }
+
+    & .ActionListContent {
+      &:active {
+        background: var(--color-action-list-item-danger-active-bg);
+
+        & .ActionListItem-label,
+        & .ActionListItem-visual {
+          color: var(--color-action-list-item-danger-hover-text);
+        }
+      }
+    }
+  }
+}
+
+/* button or a href */
+.ActionListContent {
+  position: relative;
+  display: grid;
+  width: 100%;
+  padding-block: var(--actionListContent-paddingBlock);
+  padding-inline: var(--control-medium-paddingInline-condensed);
+  color: var(--color-fg-default);
+  text-align: left;
+  user-select: none;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--borderRadius-medium);
+  transition: background 33.333ms linear;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  grid-template-rows: min-content;
+  grid-template-areas: 'leadingAction leadingVisual label trailingVisual trailingAction';
+  grid-template-columns: min-content min-content minmax(0, auto) min-content min-content;
+  align-items: start;
+
+  /* column-gap persists with empty grid-areas, margin applies only when children exist */
+  & > :not(:last-child) {
+    margin-right: var(--control-medium-gap);
+  }
+
+  /* state */
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  /* disabled */
+  &[aria-disabled='true'] {
+    & .ActionListItem-label,
+    & .ActionListItem-description {
+      color: var(--color-primer-fg-disabled);
+    }
+
+    & .ActionListItem-visual {
+      fill: var(--color-primer-fg-disabled);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: not-allowed;
+        background-color: transparent;
+      }
+    }
+  }
+
+  /* collapsible item [aria-expanded] */
+
+  /* nesting (single level)
+   target items inside expanded subgroups */
+  &[aria-expanded] {
+    & + .ActionList--subGroup {
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition: opacity 160ms cubic-bezier(0.25, 1, 0.5, 1), transform 160ms cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      & .ActionListContent {
+        padding-left: var(--base-size-24);
+      }
+    }
+
+    /* has 16px leading visual */
+    &.ActionListContent--visual16 + .ActionList--subGroup {
+      & .ActionListContent {
+        padding-left: var(--base-size-32);
+      }
+    }
+
+    /* has 20px leading visual */
+    &.ActionListContent--visual20 + .ActionList--subGroup {
+      & .ActionListContent {
+        padding-left: var(--base-size-36);
+      }
+    }
+
+    /* has 24px leading visual */
+    &.ActionListContent--visual24 + .ActionList--subGroup {
+      & .ActionListContent {
+        padding-left: var(--base-size-40);
+      }
+    }
+  }
+
+  &[aria-expanded='true'] {
+    & .ActionListItem-collapseIcon {
+      transition: transform 120ms linear;
+      transform: scaleY(-1);
+    }
+
+    & + .ActionList--subGroup {
+      height: auto;
+      overflow: visible;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &.ActionListContent--hasActiveSubItem {
+      & > .ActionListItem-label {
+        font-weight: var(--base-text-weight-semibold);
+      }
+    }
+  }
+
+  &[aria-expanded='false'] {
+    & .ActionListItem-collapseIcon {
+      transition: transform 120ms linear;
+      transform: scaleY(1);
+    }
+
+    & + .ActionList--subGroup {
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(calc(-1 * var(--base-size-16)));
+    }
+
+    /* show active indicator on parent collapse if child is active */
+    &.ActionListContent--hasActiveSubItem {
+      background: var(--color-action-list-item-default-selected-bg);
+
+      & .ActionListItem-label {
+        font-weight: var(--base-text-weight-semibold);
+      }
+
+      &::before,
+      & + .ActionListItem::before {
+        visibility: hidden;
+      }
+
+      /* blue accent line */
+      &::after {
+        @mixin activeIndicatorLine;
       }
     }
   }
@@ -247,275 +506,19 @@
     }
   }
 
-  /* Autocomplete [aria-selected] items */
-
-  &[aria-selected='true'] {
-    font-weight: var(--base-text-weight-normal, 400);
-    background: var(--color-action-list-item-default-selected-bg);
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: var(--color-action-list-item-default-hover-bg);
-      }
-    }
-
-    &::before,
-    & + .ActionListItem::before {
-      visibility: hidden;
-    }
-
-    /* blue accent line */
-
-    &::after {
-      @mixin activeIndicatorLine calc(-1 * var(--base-size-4, 4px));
-    }
-  }
-
-  /* active state [aria-current] */
-
-  &.ActionListItem--navActive {
-    &:not(.ActionListItem--subItem) {
-      & .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
-      }
-    }
-
-    &:not(.ActionListItem--danger) {
-      background: var(--color-action-list-item-default-selected-bg);
-
-      @media (hover: hover) {
-        &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
-        }
-      }
-
-      &::before,
-      & + .ActionListItem::before {
-        visibility: hidden;
-      }
-
-      /* blue accent line  */
-      &::after {
-        @mixin activeIndicatorLine;
-      }
-    }
-  }
-
-  /* disabled */
-
-  &.ActionListItem--disabled,
-  &[aria-disabled='true'] {
-    & .ActionListContent {
-      & .ActionListItem-label,
-      & .ActionListItem-description {
-        color: var(--color-primer-fg-disabled);
-      }
-
-      & .ActionListItem-visual {
-        fill: var(--color-primer-fg-disabled);
-      }
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        cursor: not-allowed;
-        background-color: transparent;
-      }
-    }
-  }
-
-  /* variants */
-
-  /* danger */
-  &.ActionListItem--danger {
-    & .ActionListItem-label {
-      color: var(--color-danger-fg);
-    }
-
-    & .ActionListItem-visual {
-      color: var(--color-danger-fg);
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        background: var(--color-action-list-item-danger-hover-bg);
-
-        & .ActionListItem-label,
-        & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
-        }
-      }
-    }
-
-    & .ActionListContent {
-      &:active {
-        background: var(--color-action-list-item-danger-active-bg);
-
-        & .ActionListItem-label,
-        & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
-        }
-      }
-    }
-  }
-}
-
-/* button or a href */
-.ActionListContent {
-  position: relative;
-  display: grid;
-  width: 100%;
-  padding-block: var(--actionListContent-paddingBlock);
-  padding-inline: var(--control-medium-paddingInline-condensed, 8px);
-  color: var(--color-fg-default);
-  text-align: left;
-  user-select: none;
-  background-color: transparent;
-  border: none;
-  border-radius: var(--borderRadius-medium, 6px);
-  transition: background 33.333ms linear;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  grid-template-rows: min-content;
-  grid-template-areas: 'leadingAction leadingVisual label trailingVisual trailingAction';
-  grid-template-columns: min-content min-content minmax(0, auto) min-content min-content;
-  align-items: start;
-
-  /* column-gap persists with empty grid-areas, margin applies only when children exist */
-  & > :not(:last-child) {
-    margin-right: var(--control-medium-gap, 8px);
-  }
-
-  /* state */
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  /* disabled */
-  &[aria-disabled='true'] {
-    & .ActionListItem-label,
-    & .ActionListItem-description {
-      color: var(--color-primer-fg-disabled);
-    }
-
-    & .ActionListItem-visual {
-      fill: var(--color-primer-fg-disabled);
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        cursor: not-allowed;
-        background-color: transparent;
-      }
-    }
-  }
-
-  /* collapsible item [aria-expanded] */
-
-  /* nesting (single level)
-   target items inside expanded subgroups */
-  &[aria-expanded] {
-    & + .ActionList--subGroup {
-      @media screen and (prefers-reduced-motion: no-preference) {
-        transition: opacity 160ms cubic-bezier(0.25, 1, 0.5, 1), transform 160ms cubic-bezier(0.25, 1, 0.5, 1);
-      }
-
-      & .ActionListContent {
-        padding-left: var(--base-size-24, 24px);
-      }
-    }
-
-    /* has 16px leading visual */
-    &.ActionListContent--visual16 + .ActionList--subGroup {
-      & .ActionListContent {
-        padding-left: var(--base-size-32, 32px);
-      }
-    }
-
-    /* has 20px leading visual */
-    &.ActionListContent--visual20 + .ActionList--subGroup {
-      & .ActionListContent {
-        padding-left: var(--base-size-36, 36px);
-      }
-    }
-
-    /* has 24px leading visual */
-    &.ActionListContent--visual24 + .ActionList--subGroup {
-      & .ActionListContent {
-        padding-left: var(--base-size-40, 40px);
-      }
-    }
-  }
-
-  &[aria-expanded='true'] {
-    & .ActionListItem-collapseIcon {
-      transition: transform 120ms linear;
-      transform: scaleY(-1);
-    }
-
-    & + .ActionList--subGroup {
-      height: auto;
-      overflow: visible;
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &.ActionListContent--hasActiveSubItem {
-      & > .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
-      }
-    }
-  }
-
-  &[aria-expanded='false'] {
-    & .ActionListItem-collapseIcon {
-      transition: transform 120ms linear;
-      transform: scaleY(1);
-    }
-
-    & + .ActionList--subGroup {
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
-      opacity: 0;
-      transform: translateY(calc(-1 * var(--base-size-16, 16px)));
-    }
-
-    /* show active indicator on parent collapse if child is active */
-    &.ActionListContent--hasActiveSubItem {
-      background: var(--color-action-list-item-default-selected-bg);
-
-      & .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
-      }
-
-      &::before,
-      & + .ActionListItem::before {
-        visibility: hidden;
-      }
-
-      /* blue accent line */
-      &::after {
-        @mixin activeIndicatorLine;
-      }
-    }
-  }
-
   /* sizes */
 
   &.ActionListContent--sizeLarge {
-    --actionListContent-paddingBlock: var(--control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-large-paddingBlock);
   }
 
   &.ActionListContent--sizeXLarge {
-    --actionListContent-paddingBlock: var(--control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-xlarge-paddingBlock);
   }
 
   /* On pointer:coarse (mobile), all list items are large */
   @media (pointer: coarse) {
-    --actionListContent-paddingBlock: var(--control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    --actionListContent-paddingBlock: var(--control-large-paddingBlock);
   }
 
   &.ActionListContent--blockDescription {
@@ -550,10 +553,10 @@
   grid-area: label;
   display: flex;
   flex-direction: column;
-  gap: var(--base-size-4, 4px);
+  gap: var(--base-size-4);
 
   & .ActionListItem-label {
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
   }
 }
 
@@ -562,14 +565,14 @@
   position: relative;
   flex-direction: row;
   align-items: baseline;
-  gap: var(--base-size-8, 8px);
+  gap: var(--base-size-8);
 }
 
 /* description */
 .ActionListItem-description {
-  font-size: var(--text-body-size-small, 12px);
-  font-weight: var(--base-text-weight-normal, 400);
-  line-height: var(--text-body-lineHeight-small, calc(20 / 12));
+  font-size: var(--text-body-size-small);
+  font-weight: var(--base-text-weight-normal);
+  line-height: var(--text-body-lineHeight-small);
   color: var(--color-fg-muted);
 }
 
@@ -578,7 +581,7 @@
 .ActionListItem-visual,
 .ActionListItem-action {
   display: flex;
-  min-height: var(--control-medium-lineBoxHeight, 20px);
+  min-height: var(--control-medium-lineBoxHeight);
   color: var(--color-fg-muted);
   pointer-events: none;
   fill: var(--color-fg-muted);
@@ -588,9 +591,9 @@
 /* text */
 .ActionListItem-label {
   position: relative;
-  font-size: var(--text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-normal, 400);
-  line-height: var(--text-body-lineHeight-medium, calc(20 / 14));
+  font-size: var(--text-body-size-medium);
+  font-weight: var(--base-text-weight-normal);
+  line-height: var(--text-body-lineHeight-medium);
   color: var(--color-fg-default);
   grid-area: label;
 }
@@ -605,8 +608,8 @@
  target ActionListItem--subItem for padding-left to maintain :active :after state */
 
 .ActionListItem--subItem > .ActionListContent > .ActionListItem-label {
-  font-size: var(--text-body-size-small, 12px);
-  line-height: var(--text-body-lineHeight-small, calc(20 / 12));
+  font-size: var(--text-body-size-small);
+  line-height: var(--text-body-lineHeight-small);
 }
 
 /* trailing action icon button */
@@ -644,10 +647,10 @@
   &:not(:empty) {
     display: flex;
     padding-inline: var(--actionListContent-paddingBlock);
-    padding-block: var(--base-size-8, 8px);
-    font-size: var(--text-body-size-small, 12px);
-    line-height: var(--text-body-lineHeight-small, calc(20 / 12));
-    font-weight: var(--base-text-weight-semibold, 600);
+    padding-block: var(--base-size-8);
+    font-size: var(--text-body-size-small);
+    line-height: var(--text-body-lineHeight-small);
+    font-weight: var(--base-text-weight-semibold);
     color: var(--color-fg-muted);
     flex-direction: column;
   }
@@ -655,34 +658,34 @@
   /* no children */
   &:empty {
     display: block;
-    height: var(--borderWidth-thin, 1px);
+    height: var(--borderWidth-thin);
     padding: 0;
-    margin-block-start: calc(var(--base-size-8, 8px) - var(--borderWidth-thin, 1px));
-    margin-block-end: var(--base-size-8, 8px);
-    margin-inline: calc(-1 * var(--base-size-8, 8px));
+    margin-block-start: calc(var(--base-size-8) - var(--borderWidth-thin));
+    margin-block-end: var(--base-size-8);
+    margin-inline: calc(-1 * var(--base-size-8));
     list-style: none;
     background: var(--color-action-list-item-inline-divider);
     border: 0;
   }
 
   & .ActionList-sectionDivider-title {
-    font-size: var(--text-body-size-small, 12px);
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-size: var(--text-body-size-small);
+    font-weight: var(--base-text-weight-semibold);
     color: var(--color-fg-muted);
   }
 }
 
 .ActionList-sectionDivider--filled {
-  margin-block-start: calc(var(--base-size-8, 8px) - var(--borderWidth-thin, 1px));
-  margin-block-end: var(--base-size-8, 8px);
-  margin-inline: calc(-1 * var(--base-size-8, 8px));
+  margin-block-start: calc(var(--base-size-8) - var(--borderWidth-thin));
+  margin-block-end: var(--base-size-8);
+  margin-inline: calc(-1 * var(--base-size-8));
   background: var(--color-canvas-subtle);
-  border-top: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
-  border-bottom: solid var(--borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-top: solid var(--borderWidth-thin) var(--color-action-list-item-inline-divider);
+  border-bottom: solid var(--borderWidth-thin) var(--color-action-list-item-inline-divider);
 
   /* if no children, treat as divider */
   &:empty {
-    height: var(--base-size-8, 8px);
+    height: var(--base-size-8);
     box-sizing: border-box;
   }
 

@@ -12,6 +12,9 @@ module Primer
       DEFAULT_TYPE = :button
       TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
+      attr_reader :disabled
+      alias disabled? disabled
+
       # @example Block
       #   <%= render(Primer::Beta::BaseButton.new(block: :true)) { "Block" } %>
       #   <%= render(Primer::Beta::BaseButton.new(block: :true, scheme: :primary)) { "Primary block" } %>
@@ -19,11 +22,13 @@ module Primer
       # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.
+      # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         tag: DEFAULT_TAG,
         type: DEFAULT_TYPE,
         block: false,
+        disabled: false,
         **system_arguments
       )
         @system_arguments = system_arguments
@@ -35,6 +40,12 @@ module Primer
           system_arguments[:classes],
           "btn-block" => block
         )
+
+        @disabled = disabled
+        return unless @disabled
+
+        @system_arguments[:tag] = :button
+        @system_arguments[:disabled] = ""
       end
 
       def call

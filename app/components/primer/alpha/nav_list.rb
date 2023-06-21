@@ -22,51 +22,66 @@ module Primer
         "nav-list"
       end
 
-      renders_one :heading, lambda { |title:, heading_level: 2, **system_arguments|
-        Primer::BaseComponent.new(
-          tag: :"h#{heading_level}",
-          classes: "ActionListHeader",
-          **system_arguments
-        ).with_content(title)
-      }
-
-      # Groups. Each group is a list of links and a (required) heading.
+      # The heading for the list at large. Accepts the arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Heading) %>.
       #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
-      def with_group(**system_arguments, &block)
-        # This is a giant hack that should be removed when groups/items can be combined and converted into a polymorphic slot.
-        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
-        set_slot(
-          :items,
-          { renderable: Primer::Alpha::NavList::Group, collection: true },
-          selected_item_id: @selected_item_id,
-          **system_arguments,
-          &block
-        )
-      end
+      renders_one :heading, Primer::Alpha::NavList::Heading
 
-      # Adds a divider to the list of items.
+      # @!parse
+      #   # Adds an item to the list.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+      #   def with_group(**system_arguments, &block)
+      #   end
+
+      # @!parse
+      #   # Adds a group to the list. A group is a list of links and a (required) heading.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
+      #   def with_group(**system_arguments, &block)
+      #   end
+
+      # @!parse
+      #   # Adds a divider to the list. Dividers visually separate items and groups.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      #   def with_divider(**system_arguments, &block)
+      #   end
+
+      # Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.
       #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
-      def with_divider(**system_arguments, &block)
-        # This is a giant hack that should be removed when :items can be converted into a polymorphic slot.
-        # This feature needs to land in view_component first: https://github.com/ViewComponent/view_component/pull/1652
-        set_slot(:items, { renderable: Primer::Alpha::NavList::Divider, collection: true }, **system_arguments, &block)
-      end
+      renders_many :items, types: {
+        item: {
+          renders: lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
+            # dummy group just so we have something to pass as the list: argument below
+            @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
 
-      # Items.
-      #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
-      renders_many :items, lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
-        # dummy group just so we have something to pass as the list: argument below
-        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+            component_klass.new(
+              list: @top_level_group,
+              selected_item_id: @selected_item_id,
+              **system_arguments,
+              &block
+            )
+          },
 
-        component_klass.new(
-          list: @top_level_group,
-          selected_item_id: @selected_item_id,
-          **system_arguments,
-          &block
-        )
+          as: :item
+        },
+
+        divider: {
+          renders: Primer::Alpha::NavList::Divider,
+          as: :divider
+        },
+
+        group: {
+          renders: lambda { |**system_arguments, &block|
+            Primer::Alpha::NavList::Group.new(
+              selected_item_id: @selected_item_id,
+              **system_arguments,
+              &block
+            )
+          },
+
+          as: :group
+        }
       }
 
       # @example Items and headings
@@ -145,11 +160,22 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
-
-        raise ArgumentError, "An aria-label must be provided" unless aria(:label, @system_arguments)
       end
 
       private
+
+      def before_render
+        if heading?
+          raise ArgumentError, "Please don't set an aria-label if a heading is provided" if aria(:label, @system_arguments)
+
+          @system_arguments[:aria] = merge_aria(
+            @system_arguments,
+            { aria: { labelledby: heading.id } }
+          )
+        else
+          raise ArgumentError, "When no heading is provided, an aria-label must be given" unless aria(:label, @system_arguments)
+        end
+      end
 
       # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
       def render_outer_list?

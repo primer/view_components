@@ -1,11 +1,12 @@
 import {controller, target} from '@github/catalyst'
-import {debounce} from '@github/mini-throttle/decorators'
 
 @controller
 class ToggleSwitchElement extends HTMLElement {
   @target switch: HTMLElement
   @target loadingSpinner: HTMLElement
   @target errorIcon: HTMLElement
+
+  private toggling = false
 
   get src(): string | null {
     const src = this.getAttribute('src')
@@ -31,14 +32,18 @@ class ToggleSwitchElement extends HTMLElement {
     return this.src != null
   }
 
-  @debounce(300)
   async toggle() {
+    if (this.toggling) return
+
+    this.toggling = true
+
     if (this.isDisabled()) {
       return
     }
 
     if (!this.isRemote()) {
       this.performToggle()
+      this.toggling = false
       return
     }
 
@@ -57,6 +62,8 @@ class ToggleSwitchElement extends HTMLElement {
       }
 
       return
+    } finally {
+      this.toggling = false
     }
 
     this.setSuccessState()

@@ -105,6 +105,7 @@ A list of arguments that are required for a component. Each item in the list can
 
 E.g.: `/for|value/, "aria-label"` for `ClipboardCopy`.
 
+<!-- markdownlint-disable-next-line MD024 -->
 #### Autocorrectable
 
 To enable autocorrection in a linter, make sure to include the `Autocorrectable` module and set the following constants:

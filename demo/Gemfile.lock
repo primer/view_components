@@ -1,11 +1,11 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.1.9)
+    primer_view_components (0.2.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
-      view_component (> 2.0, < 4.0)
+      view_component (>= 3.1, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -75,7 +75,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     azure_mgmt_container_service (0.22.0)
       ms_rest_azure (~> 0.12.0)
@@ -218,10 +218,10 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.19.1)
+    loofah (2.21.3)
       crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
-    lookbook (2.0.0)
+      nokogiri (>= 1.12.0)
+    lookbook (2.0.4)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -265,13 +265,13 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
-    nokogiri (1.14.3-arm64-darwin)
+    nokogiri (1.15.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.3-x86_64-darwin)
+    nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.3-x86_64-linux)
+    nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
-    octicons (19.1.0)
+    octicons (19.2.0)
     oj (3.14.0)
     os (1.1.4)
     pry (0.14.1)
@@ -281,13 +281,13 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
-    rack-test (2.0.2)
+    rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.3)
       actioncable (= 7.0.3)
@@ -306,8 +306,9 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.5.0)
-      loofah (~> 2.19, >= 2.19.1)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     railties (7.0.3)
       actionpack (= 7.0.3)
       activesupport (= 7.0.3)
@@ -347,7 +348,7 @@ GEM
     statsd-instrument (3.5.3)
     stimulus-rails (1.1.1)
       railties (>= 6.0.0)
-    thor (1.2.1)
+    thor (1.2.2)
     timeliness (0.3.10)
     timeout (0.3.0)
     turbo-rails (1.3.2)
@@ -359,7 +360,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (3.0.0)
+    view_component (3.1.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -367,7 +368,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.34)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   arm64-darwin-21
@@ -390,10 +391,10 @@ DEPENDENCIES
   kuby-core (~> 0.19)
   kuby-kind (~> 0.1)
   listen
-  lookbook (~> 2.0.0)
+  lookbook (~> 2.0.4)
   primer_view_components!
   pry-byebug
-  puma (~> 6.2.2)
+  puma (~> 6.3.0)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
@@ -403,7 +404,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (>= 3.0.0.rc5)
+  view_component (>= 3.1.0)
 
 BUNDLED WITH
    2.2.33

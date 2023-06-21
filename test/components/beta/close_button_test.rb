@@ -62,4 +62,10 @@ class PrimerBetaCloseButtonTest < Minitest::Test
     assert_selector("button[type='button'][aria-label='Label'].close-button")
     refute_includes rendered_content, 'aria-label="Close"'
   end
+
+  def test_disabled
+    render_inline(Primer::Beta::CloseButton.new(aria: { label: "Label" }, disabled: true))
+
+    assert_selector("button.close-button[disabled]")
+  end
 end

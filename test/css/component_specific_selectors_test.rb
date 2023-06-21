@@ -27,7 +27,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionList-sectionDivider--filled",
       ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
-      ".ActionListHeader" # used exclusively by NavList
+      ".ActionListHeader", # used exclusively by NavList
+      ".ActionListItem.ActionListItem--navActive" # used exclusively by NavList
     ],
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"
@@ -103,7 +104,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--large .Button-label",
       ".Button--iconOnly",
       ".Button--iconOnly.Button--small",
-      ".Button--iconOnly.Button--large"
+      ".Button--iconOnly.Button--large",
+      ".Button--danger .Counter"
     ],
     Primer::Beta::ButtonGroup => [
       ".ButtonGroup"
@@ -200,7 +202,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       end
 
       remaining_selectors = (selectors - matched_selectors.flatten.uniq) || []
-      assert remaining_selectors.empty?, no_preview_for_selectors_message(preview_class, remaining_selectors)
+      assert remaining_selectors.empty?, no_preview_for_selectors_message(preview_class, remaining_selectors) + component_class.name
     end
   end
 

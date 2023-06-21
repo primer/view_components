@@ -13,7 +13,7 @@ function clickHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
 
-  if (!button) return
+  if (!button || button.hasAttribute('disabled') || button.getAttribute('aria-disabled') === 'true') return
 
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
@@ -167,15 +167,22 @@ export class ModalDialogElement extends HTMLElement {
   #keydown(event: Event) {
     if (!(event instanceof KeyboardEvent)) return
     if (event.isComposing) return
+    if (!this.open) return
 
     switch (event.key) {
       case 'Escape':
-        if (this.open) {
-          this.close()
-          event.preventDefault()
+        this.close()
+        event.preventDefault()
+        event.stopPropagation()
+        break
+      case 'Enter': {
+        const target = event.target as HTMLElement
+
+        if (target.getAttribute('data-close-dialog-id') === this.id) {
           event.stopPropagation()
         }
         break
+      }
     }
   }
 }
