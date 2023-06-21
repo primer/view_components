@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "dependencies": {
     "@primer/css": "^21.0.2",
-    "@primer/primitives": "7.11.11",
+    "@primer/primitives": "7.11.13",
     "@rails/actioncable": "^7.0.5",
     "@rails/ujs": "^7.0.5",
     "turbolinks": "^5.2.0",

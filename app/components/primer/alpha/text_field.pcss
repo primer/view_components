@@ -17,7 +17,7 @@
   font-size: var(--text-body-size-medium);
   font-weight: var(--base-text-weight-semibold);
   line-height: var(--text-body-lineHeight-medium);
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   user-select: none;
 }
 
@@ -27,7 +27,7 @@
   font-size: var(--text-caption-size);
   font-weight: var(--text-caption-weight);
   line-height: var(--text-caption-lineHeight);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
 }
 
 /* inline validation message */
@@ -36,8 +36,8 @@
   font-size: var(--text-caption-size);
   line-height: var(--text-caption-lineHeight);
   font-weight: var(--base-text-weight-semibold);
-  color: var(--color-danger-fg);
-  fill: var(--color-danger-fg);
+  color: var(--control-borderColor-danger);
+  fill: var(--control-borderColor-danger);
   flex-direction: row;
   align-items: flex-start;
   gap: var(--base-size-4);
@@ -66,21 +66,21 @@
 
 /* shared among all form control components (input, select, textarea, checkbox, radio) */
 @define-mixin Field {
-  color: var(--color-fg-default);
-  background-color: var(--color-canvas-default);
-  border: var(--borderWidth-thin) solid var(--color-border-default);
+  color: var(--fgColor-default);
+  background-color: var(--bgColor-default);
+  border: var(--borderWidth-thin) solid var(--control-borderColor-rest);
 
   &[disabled] {
-    color: var(--color-primer-fg-disabled);
+    color: var(--control-fgColor-disabled);
     cursor: not-allowed;
-    background-color: var(--color-input-disabled-bg);
-    border-color: var(--color-border-default);
+    background-color: var(--control-bgColor-disabled);
+    border-color: var(--control-borderColor-disabled);
     opacity: 1;
-    -webkit-text-fill-color: var(--color-primer-fg-disabled);
+    -webkit-text-fill-color: var(--control-fgColor-disabled);
   }
 
   &:not(:focus)[invalid] {
-    border-color: var(--color-danger-emphasis);
+    border-color: var(--control-borderColor-danger);
   }
 
   &:not([type='checkbox'], [type='radio']):focus {
@@ -148,16 +148,16 @@
 
   &[disabled] {
     &::placeholder {
-      color: var(--color-primer-fg-disabled);
+      color: var(--fgColor-disabled);
     }
   }
 
   &[readonly] {
-    background-color: var(--color-input-disabled-bg);
+    background-color: var(--control-bgColor-disabled);
   }
 
   &::placeholder {
-    color: var(--color-fg-subtle);
+    color: var(--fgColor-muted);
     opacity: 1;
   }
 
@@ -183,11 +183,11 @@
   /* variants */
 
   &.FormControl-inset {
-    background-color: var(--color-canvas-inset);
+    background-color: var(--bgColor-muted);
 
     &:focus-visible,
     &:focus {
-      background-color: var(--color-canvas-default);
+      background-color: var(--bgColor-default);
     }
   }
 
@@ -198,15 +198,15 @@
   /* validation states */
 
   &.FormControl-error {
-    border-color: var(--color-danger-emphasis);
+    border-color: var(--control-borderColor-danger);
   }
 
   &.FormControl-success {
-    border-color: var(--color-success-emphasis);
+    border-color: var(--control-borderColor-success);
   }
 
   &.FormControl-warning {
-    border-color: var(--color-attention-emphasis);
+    border-color: var(--control-borderColor-warning);
   }
 }
 
@@ -228,7 +228,7 @@
     display: block;
     width: var(--base-size-16);
     height: var(--base-size-16);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
     pointer-events: none;
 
     /* octicon */
@@ -248,7 +248,7 @@
     width: var(--control-xsmall-size);
     height: var(--control-xsmall-size);
     padding: 0;
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -263,16 +263,16 @@
     }
 
     &[disabled] {
-      color: var(--color-primer-fg-disabled);
+      color: var(--fgColor-disabled);
       pointer-events: none;
     }
 
     &:hover {
-      background: var(--color-action-list-item-default-hover-bg);
+      background: var(--control-transparent-bgColor-hover);
     }
 
     &:active {
-      background: var(--color-action-list-item-default-active-bg);
+      background: var(--control-transparent-bgColor-active);
     }
 
     /* show vertical divider line between field and button */
@@ -285,7 +285,7 @@
         width: var(--borderWidth-thin);
         height: var(--base-size-16);
         content: '';
-        background: var(--color-border-default);
+        background: var(--borderColor-default);
       }
     }
 
@@ -486,7 +486,7 @@
     padding-right: var(--base-size-4);
     pointer-events: none;
     content: '';
-    background-color: var(--color-fg-muted);
+    background-color: var(--bgColor-neutral-emphasis);
     mask: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iIzU4NjA2OSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNC40MjcgOS40MjdsMy4zOTYgMy4zOTZhLjI1MS4yNTEgMCAwMC4zNTQgMGwzLjM5Ni0zLjM5NkEuMjUuMjUgMCAwMDExLjM5NiA5SDQuNjA0YS4yNS4yNSAwIDAwLS4xNzcuNDI3ek00LjQyMyA2LjQ3TDcuODIgMy4wNzJhLjI1LjI1IDAgMDEuMzU0IDBMMTEuNTcgNi40N2EuMjUuMjUgMCAwMS0uMTc3LjQyN0g0LjZhLjI1LjI1IDAgMDEtLjE3Ny0uNDI3eiIgLz48L3N2Zz4=');
     mask-size: contain;
     mask-repeat: no-repeat;
@@ -561,7 +561,7 @@ input[type='checkbox'].FormControl-checkbox {
   margin: 0;
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
-  border-color: var(--color-neutral-emphasis);
+  border-color: var(--control-borderColor-emphasis);
   border-radius: var(--borderRadius-small);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
@@ -572,7 +572,7 @@ input[type='checkbox'].FormControl-checkbox {
     height: var(--base-size-16);
     visibility: hidden;
     content: '';
-    background-color: var(--color-fg-on-emphasis);
+    background-color: var(--fgColor-onEmphasis);
     transition: visibility 0s linear 230ms;
     clip-path: inset(var(--base-size-16) 0 0 0);
 
@@ -596,15 +596,15 @@ input[type='checkbox'].FormControl-checkbox {
     & ~ .FormControl-checkbox-labelWrap,
     & ~ .FormControl-radio-labelWrap {
       & .FormControl-label {
-        color: var(--color-primer-fg-disabled);
+        color: var(--control-fgColor-disabled);
         cursor: not-allowed;
       }
     }
   }
 
   &:checked {
-    background: var(--color-accent-fg);
-    border-color: var(--color-accent-fg);
+    background: var(--control-checked-bgColor-rest);
+    border-color: var(--control-checked-borderColor-rest);
     transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
 
     &::before {
@@ -618,12 +618,12 @@ input[type='checkbox'].FormControl-checkbox {
 
     &:disabled {
       cursor: not-allowed;
-      background-color: var(--color-primer-fg-disabled);
-      border-color: var(--color-primer-fg-disabled);
+      background-color: var(--control-fgColor-disabled);
+      border-color: var(--control-fgColor-disabled);
       opacity: 1;
 
       &::before {
-        background-color: var(--color-fg-on-emphasis);
+        background-color: var(--fgColor-onEmphasis);
       }
     }
 
@@ -655,7 +655,7 @@ input[type='radio'].FormControl-radio {
   margin: 0;
   margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
-  border-color: var(--color-neutral-emphasis);
+  border-color: var(--control-borderColor-emphasis);
   border-radius: var(--borderRadius-full);
   transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
@@ -665,12 +665,12 @@ input[type='radio'].FormControl-radio {
   }
 
   &:checked {
-    border-color: var(--color-accent-fg);
+    border-color: var(--control-checked-borderColor-rest);
     border-width: var(--base-size-4);
 
     &:disabled {
       cursor: not-allowed;
-      border-color: var(--color-primer-fg-disabled);
+      border-color: var(--control-fgColor-disabled);
     }
   }
 
