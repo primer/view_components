@@ -43,5 +43,4 @@ gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PA
 
 group :test do
   gem "webmock"
-  gem "sourcemap"
 end

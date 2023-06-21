@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "components/test_helper"
-require "sourcemap"
 
 class Primer::CssVariableTest < Minitest::Test
   class CssFile
