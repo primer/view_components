@@ -28,7 +28,8 @@ class Primer::CssVariableTest < Minitest::Test
 
       return unless line_idx
 
-      [line_idx + 1, pos - line_idx.first]
+      line_range = line_ranges[line_idx]
+      [line_idx + 1, pos - line_range.first]
     end
 
     private
@@ -61,8 +62,8 @@ class Primer::CssVariableTest < Minitest::Test
       css_file.contents.scan(regex) do |match|
         start_pos, = Regexp.last_match.offset(0)
         line, col = css_file.find_offset(start_pos)
-        source_file = css_file.path.relative_path_from(Rails.root.join(".."))
-        missing << "#{source_file}:#{line}#{col}"
+        source_file = Pathname(css_file.path).relative_path_from(Rails.root.join(".."))
+        missing << "#{source_file}:#{line}:#{col}"
       end
     end
 
