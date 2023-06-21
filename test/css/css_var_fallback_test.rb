@@ -7,11 +7,12 @@ class Primer::CssVariableTest < Minitest::Test
     # 1. Find compiled CSS file
     css_file = Rails.root.join(*%w[.. app assets styles primer_view_components.css]).read
 
-    # 2. Load file and run regex on it
-    regex = /var\(--(shadow|borderColor)[^),]*\)\s*(,|;|\s)/
+    # 2. Load file and run regex on it which checks for any CSS var containing new color terms
+    regex = /var\(--(shadow|borderColor|bgColor|fgColor|iconColor)[^),]*\)\s*(,|;|\s)/
     matches = css_file.scan(regex)
 
     # 3. Use assert method (and friends) to verify it works
-    assert_equal 0, matches.length, "Some CSS rules do not contain fallbacks"
+    missing_vars = matches.map { |match| match[0] }
+    assert_equal 0, matches.length, "CSS variables are missing fallbacks: #{missing_vars.join(', ')}"
   end
 end
