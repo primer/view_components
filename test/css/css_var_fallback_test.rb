@@ -57,12 +57,12 @@ class Primer::CssVariableTest < Minitest::Test
     # 2. Load file and run regex on it which checks for any CSS var containing new color terms
     regex = /var\(--(shadow|borderColor|bgColor|fgColor|iconColor)[^),]*\)\s*(,|;|\s)/
 
-    missing = [].tap do |missing|
-      css_file.contents.scan(regex) do |match|
+    missing = [].tap do |results|
+      css_file.contents.scan(regex) do
         start_pos, = Regexp.last_match.offset(0)
         line, col = css_file.find_offset(start_pos)
         source_file = Pathname(css_file.path).relative_path_from(Rails.root.join(".."))
-        missing << "#{source_file}:#{line}:#{col}"
+        results << "#{source_file}:#{line}:#{col}"
       end
     end
 
