@@ -5,7 +5,7 @@ require "openssl"
 require "primer/view_components/constants"
 
 require_relative "tag_tree_helpers"
-
+require_relative "helpers/rule_helpers"
 # :nocov:
 
 module ERBLint
@@ -17,6 +17,7 @@ module ERBLint
     # * `REQUIRED_ARGUMENTS` - optional - A list of HTML attributes that are required by the component.
     class BaseLinter < Linter
       include TagTreeHelpers
+      include Helpers::RuleHelpers
 
       DUMP_FILE = ".erblint-counter-ignore.json"
       DISALLOWED_CLASSES = [].freeze
@@ -134,10 +135,6 @@ module ERBLint
         end
       end
 
-      def tags(processed_source)
-        processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
-      end
-
       def counter_correct?(processed_source)
         comment_node = nil
         expected_count = 0
@@ -176,13 +173,6 @@ module ERBLint
         elsif expected_count == @offenses_not_corrected && @offenses.size == @offenses_not_corrected
           clear_offenses
         end
-      end
-
-      def generate_offense(klass, processed_source, tag, message = nil, replacement = nil)
-        message ||= klass::MESSAGE
-        klass_name = klass.name.demodulize
-        offense = ["#{klass_name}:#{message}", tag.node.loc.source].join("\n")
-        add_offense(processed_source.to_source_range(tag.loc), offense, replacement)
       end
 
       def dump_data(processed_source)
