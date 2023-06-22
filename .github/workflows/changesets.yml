@@ -2,8 +2,7 @@ name: Changesets
 'on': pull_request
 
 jobs:
-  validate-changesets:
-    name: Validate
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
