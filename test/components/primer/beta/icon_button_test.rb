@@ -37,4 +37,9 @@ class PrimerBetaIconButtonTest < Minitest::Test
     render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", show_tooltip: false))
     assert_selector("[aria-label='Star']")
   end
+
+  def test_forces_button_tag_when_disabled
+    render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", disabled: true, tag: :a))
+    assert_selector(".Button-withTooltip button[disabled]")
+  end
 end

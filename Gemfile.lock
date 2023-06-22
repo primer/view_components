@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.1.9)
+    primer_view_components (0.2.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
-      view_component (> 2.0, < 4.0)
+      view_component (>= 3.1, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -75,7 +75,7 @@ GEM
       rainbow
       rubocop
       smart_properties
-    erblint-github (0.1.0)
+    erblint-github (0.4.0)
     erubi (1.12.0)
     ferrum (0.11)
       addressable (~> 2.5)
@@ -121,7 +121,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
-    octicons (19.1.0)
+    octicons (19.2.0)
     parallel (1.22.1)
     parser (3.2.0.0)
       ast (~> 2.4.1)
@@ -129,7 +129,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
@@ -210,7 +210,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
-    view_component (3.0.0.rc2)
+    view_component (3.1.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -248,7 +248,7 @@ DEPENDENCIES
   capybara (~> 3)
   cuprite (= 0.13)
   erb_lint (~> 0.4.0)
-  erblint-github (= 0.1.0)
+  erblint-github (= 0.4.0)
   listen (~> 3.0)
   lookbook (~> 2.0.0)
   matrix (~> 0.4.2)
@@ -256,7 +256,7 @@ DEPENDENCIES
   mocha
   primer_view_components!
   pry
-  puma (~> 6.2.2)
+  puma (~> 6.3.0)
   rack (~> 2.2)
   rack-cors
   railties (= 7.0.3)

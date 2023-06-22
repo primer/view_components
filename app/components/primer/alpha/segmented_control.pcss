@@ -3,24 +3,24 @@
 .SegmentedControl {
   display: inline-flex;
   list-style: none;
-  background-color: var(--color-segmented-control-bg);
-  border-radius: var(--borderRadius-medium, 6px);
+  background-color: var(--controlTrack-bgColor-rest);
+  border-radius: var(--borderRadius-medium);
 }
 
 .SegmentedControl-item {
   position: relative;
   display: inline-flex;
-  border: var(--borderWidth-thin, max(1px, 0.0625rem)) solid transparent;
-  border-radius: var(--borderRadius-medium, 6px);
-  padding: var(--control-xsmall-paddingInline-condensed, 4px);
+  border: var(--borderWidth-thin) solid transparent;
+  border-radius: var(--borderRadius-medium);
+  padding: var(--control-xsmall-paddingInline-condensed);
 
   /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
-    background-color: var(--color-segmented-control-button-bg);
-    border-color: var(--color-segmented-control-button-selected-border);
+    background-color: var(--controlKnob-bgColor-rest);
+    border-color: var(--controlKnob-borderColor-rest);
 
     & .Button {
-      font-weight: var(--base-text-weight-semibold, 600);
+      font-weight: var(--base-text-weight-semibold);
 
       &:hover {
         background-color: transparent;
@@ -40,7 +40,7 @@
   & .Button-label[data-content]::before {
     display: block;
     height: 0;
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
     visibility: hidden;
     content: attr(data-content);
   }
@@ -50,82 +50,73 @@
     &::before {
       position: absolute;
       inset: 0 0 0 -1px;
-      margin-top: var(--control-medium-paddingBlock, 6px);
-      margin-bottom: var(--control-medium-paddingBlock, 6px);
+      margin-top: var(--control-medium-paddingBlock);
+      margin-bottom: var(--control-medium-paddingBlock);
       content: '';
-      border-left: var(--borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-border-default);
+      border-left: var(--borderWidth-thin) solid var(--borderColor-default);
     }
   }
 
   /* Button ----------------------------------------- */
   & .Button {
     border: 0;
-    font-weight: var(--base-text-weight-normal, 400);
+    font-weight: var(--base-text-weight-normal);
     transition: none;
-    color: var(--color-btn-text);
+    color: var(--control-fgColor-rest);
 
     &:focus-visible {
-      outline-offset: calc(var(--control-xsmall-paddingInline-condensed, 4px) - var(--borderWidth-thin, 1px));
-      border-radius: calc(var(--borderRadius-medium, 6px) - 5px);
+      outline-offset: calc(var(--control-xsmall-paddingInline-condensed) - var(--borderWidth-thin));
+      border-radius: calc(var(--borderRadius-medium) - 5px);
     }
   }
 
   & .Button--small {
     height: calc(
-      var(--control-small-size, 28px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-        var(--borderWidth-thin, 1px) * 2
+      var(--control-small-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
     );
-    padding: 0
-      calc(var(--control-small-paddingInline-condensed, 8px) - var(--control-xsmall-paddingInline-condensed, 4px));
+    padding: 0 calc(var(--control-small-paddingInline-condensed) - var(--control-xsmall-paddingInline-condensed));
 
     &.Button--iconOnly {
       width: calc(
-        var(--control-medium-size, 32px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-          var(--borderWidth-thin, 1px) * 2
+        var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
       );
 
       &::before {
-        @mixin minTouchTarget var(--control-medium-size, 32px), var(--control-medium-size, 32px);
+        @mixin minTouchTarget var(--control-medium-size), var(--control-medium-size);
       }
     }
   }
 
   & .Button--medium {
     height: calc(
-      var(--control-medium-size, 32px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-        var(--borderWidth-thin, 1px) * 2
+      var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
     );
-    padding: 0
-      calc(var(--control-medium-paddingInline-normal, 12px) - var(--control-xsmall-paddingInline-condensed, 4px));
+    padding: 0 calc(var(--control-medium-paddingInline-normal) - var(--control-xsmall-paddingInline-condensed));
 
     &.Button--iconOnly {
       width: calc(
-        var(--control-medium-size, 32px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-          var(--borderWidth-thin, 1px) * 2
+        var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
       );
 
       &::before {
-        @mixin minTouchTarget var(--control-medium-size, 32px), var(--control-medium-size, 32px);
+        @mixin minTouchTarget var(--control-medium-size), var(--control-medium-size);
       }
     }
   }
 
   & .Button--large {
     height: calc(
-      var(--control-large-size, 40px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-        var(--borderWidth-thin, 1px) * 2
+      var(--control-large-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
     );
-    padding: 0
-      calc(var(--control-large-paddingInline-spacious, 16px) - var(--control-xsmall-paddingInline-condensed, 4px));
+    padding: 0 calc(var(--control-large-paddingInline-spacious) - var(--control-xsmall-paddingInline-condensed));
 
     &.Button--iconOnly {
       width: calc(
-        var(--control-large-size, 40px) - var(--control-xsmall-paddingInline-condensed, 4px) * 2 -
-          var(--borderWidth-thin, 1px) * 2
+        var(--control-large-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
       );
 
       &::before {
-        @mixin minTouchTarget var(--control-large-size, 40px), var(--control-large-size, 40px);
+        @mixin minTouchTarget var(--control-large-size), var(--control-large-size);
       }
     }
   }
@@ -135,7 +126,7 @@
   }
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
-    color: var(--color-btn-text);
+    color: var(--control-fgColor-rest);
   }
 }
 

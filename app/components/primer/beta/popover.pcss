@@ -10,9 +10,9 @@
   width: 232px;
   margin-right: auto;
   margin-left: auto;
-  background-color: var(--color-canvas-overlay);
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--borderRadius-medium, 6px);
+  background-color: var(--overlay-bgColor);
+  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  border-radius: var(--borderRadius-medium);
 
   /* Carets */
   &::before,
@@ -27,14 +27,14 @@
     top: -16px;
     margin-left: -9px;
     border: 8px solid transparent;
-    border-bottom-color: var(--color-border-default);
+    border-bottom-color: var(--borderColor-default);
   }
 
   &::after {
     top: -14px;
     margin-left: -8px;
     border: 7px solid transparent;
-    border-bottom-color: var(--color-canvas-overlay);
+    border-bottom-color: var(--overlay-bgColor);
   }
 }
 
@@ -58,12 +58,12 @@
 
   &::before {
     bottom: -16px;
-    border-top-color: var(--color-border-default);
+    border-top-color: var(--borderColor-default);
   }
 
   &::after {
     bottom: -14px;
-    border-top-color: var(--color-canvas-overlay);
+    border-top-color: var(--overlay-bgColor);
   }
 }
 
@@ -135,12 +135,12 @@
 .Popover-message--right-bottom {
   &::before {
     right: -16px;
-    border-left-color: var(--color-border-default);
+    border-left-color: var(--borderColor-default);
   }
 
   &::after {
     right: -14px;
-    border-left-color: var(--color-canvas-overlay);
+    border-left-color: var(--overlay-bgColor);
   }
 }
 
@@ -150,12 +150,12 @@
 .Popover-message--left-bottom {
   &::before {
     left: -16px;
-    border-right-color: var(--color-border-default);
+    border-right-color: var(--borderColor-default);
   }
 
   &::after {
     left: -14px;
-    border-right-color: var(--color-canvas-overlay);
+    border-right-color: var(--overlay-bgColor);
   }
 }
 
@@ -209,12 +209,12 @@
     bottom: auto;
     left: auto;
     width: auto !important;
-    margin: var(--stack-gap-condensed, 8px);
+    margin: var(--stack-gap-condensed);
   }
 
   /* Increase tap area for touch input */
   .Popover-message > .btn-octicon {
-    padding: var(--control-medium-paddingInline-normal, 12px) !important;
+    padding: var(--control-medium-paddingInline-normal) !important;
   }
 
   /* Remove caret */

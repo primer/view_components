@@ -3,8 +3,8 @@
 .TimelineItem {
   position: relative;
   display: flex;
-  padding: var(--stack-padding-normal, 16px) 0;
-  margin-left: var(--stack-gap-normal, 16px);
+  padding: var(--stack-padding-normal) 0;
+  margin-left: var(--stack-gap-normal);
 
   /* The Timeline */
   &::before {
@@ -13,14 +13,14 @@
     bottom: 0;
     left: 0;
     display: block;
-    width: var(--borderWidth-thick, 2px);
+    width: var(--borderWidth-thick);
     content: '';
-    background-color: var(--color-border-muted);
+    background-color: var(--borderColor-muted);
   }
 
   &:target .TimelineItem-badge {
-    border-color: var(--color-accent-emphasis);
-    box-shadow: 0 0 0.2em var(--color-accent-muted);
+    border-color: var(--borderColor-accent-emphasis);
+    box-shadow: 0 0 0.2em var(--borderColor-accent-muted);
   }
 }
 
@@ -28,30 +28,30 @@
   position: relative;
   z-index: 1;
   display: flex;
-  width: var(--control-medium-size, 32px);
-  height: var(--control-medium-size, 32px);
-  margin-right: var(--controlStack-medium-gap-condensed, 8px);
-  margin-left: calc(var(--control-medium-size, 32px) / -2 + 1px);
-  color: var(--color-fg-muted);
+  width: var(--control-medium-size);
+  height: var(--control-medium-size);
+  margin-right: var(--controlStack-medium-gap-condensed);
+  margin-left: calc(var(--control-medium-size) / -2 + 1px);
+  color: var(--fgColor-muted);
   align-items: center;
-  background-color: var(--color-timeline-badge-bg);
-  border: var(--borderWidth-thick, 2px) solid var(--color-canvas-default);
+  background-color: var(--timelineBadge-bgColor);
+  border: var(--borderWidth-thick) solid var(--bgColor-default);
   border-radius: 50%;
   justify-content: center;
   flex-shrink: 0;
 }
 
 .TimelineItem-badge--success {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-success-emphasis);
-  border: var(--borderWidth-thin, 1px) solid transparent;
+  color: var(--fgColor-onEmphasis);
+  background-color: var(--bgColor-success-emphasis);
+  border: var(--borderWidth-thin) solid transparent;
 }
 
 .TimelineItem-body {
   min-width: 0;
   max-width: 100%;
-  margin-top: var(--base-size-4, 4px);
-  color: var(--color-fg-muted);
+  margin-top: var(--base-size-4);
+  color: var(--fgColor-muted);
   flex: auto;
 }
 
@@ -64,30 +64,30 @@
 .TimelineItem-break {
   position: relative;
   z-index: 1;
-  height: var(--stack-gap-spacious, 24px);
+  height: var(--stack-gap-spacious);
   margin: 0;
-  margin-bottom: calc(var(--stack-gap-normal, 16px) * -1);
+  margin-bottom: calc(var(--stack-gap-normal) * -1);
   margin-left: -56px;
-  background-color: var(--color-canvas-default);
+  background-color: var(--bgColor-default);
   border: 0;
-  border-top: var(--borderWidth-thicker, 4px) solid var(--color-border-default);
+  border-top: var(--borderWidth-thicker) solid var(--borderColor-default);
 }
 
 .TimelineItem--condensed {
-  padding-top: var(--base-size-4, 4px);
+  padding-top: var(--base-size-4);
   padding-bottom: 0;
 
   /* TimelineItem--condensed is often grouped. (commits) */
   &:last-child {
-    padding-bottom: var(--stack-gap-normal, 16px);
+    padding-bottom: var(--stack-gap-normal);
   }
 
   & .TimelineItem-badge {
-    height: var(--base-size-16, 16px);
-    margin-top: var(--base-size-8, 8px);
-    margin-bottom: var(--base-size-8, 8px);
-    color: var(--color-fg-muted);
-    background-color: var(--color-canvas-default);
+    height: var(--base-size-16);
+    margin-top: var(--base-size-8);
+    margin-bottom: var(--base-size-8);
+    color: var(--fgColor-muted);
+    background-color: var(--bgColor-default);
     border: 0;
   }
 }

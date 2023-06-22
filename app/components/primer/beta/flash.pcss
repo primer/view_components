@@ -3,19 +3,19 @@
 /* Default flash */
 .flash:not(.Banner) {
   position: relative;
-  padding: var(--base-size-20, 20px) var(--control-medium-paddingInline-spacious, 16px);
+  padding: var(--base-size-20) var(--control-medium-paddingInline-spacious);
   border-style: solid;
-  border-width: var(--borderWidth-thin, 1px);
-  border-radius: var(--borderRadius-medium, 6px);
+  border-width: var(--borderWidth-thin);
+  border-radius: var(--borderRadius-medium);
 
   /* Default color */
-  color: var(--color-fg-default);
-  background-image: linear-gradient(var(--color-accent-subtle), var(--color-accent-subtle));
-  border-color: var(--color-accent-muted);
+  color: var(--fgColor-default);
+  background-image: linear-gradient(var(--bgColor-accent-muted), var(--bgColor-accent-muted));
+  border-color: var(--borderColor-accent-muted);
 
   & .octicon {
-    color: var(--color-accent-fg);
-    margin-right: var(--base-size-12, 12px);
+    color: var(--fgColor-accent);
+    margin-right: var(--base-size-12);
   }
 
   & p:last-child {
@@ -25,14 +25,14 @@
 
 /* Contain the flash messages */
 .flash-messages {
-  margin-bottom: var(--stack-gap-spacious, 24px);
+  margin-bottom: var(--stack-gap-spacious);
 }
 
 /* Close button */
 .flash-close:not(.Banner-close) {
   float: right;
-  padding: var(--control-medium-paddingInline-spacious, 16px);
-  margin: calc(var(--control-medium-paddingInline-spacious, 16px) * -1);
+  padding: var(--control-medium-paddingInline-spacious);
+  margin: calc(var(--control-medium-paddingInline-spacious) * -1);
   text-align: center;
   cursor: pointer;
 
@@ -58,12 +58,12 @@
 .flash-action:not(.Banner-actions) {
   float: right;
   margin-top: -3px;
-  margin-left: var(--stack-gap-spacious, 24px);
+  margin-left: var(--stack-gap-spacious);
   background-clip: padding-box;
 
   &.btn .octicon {
-    margin-right: var(--control-small-gap, 4px);
-    color: var(--color-fg-muted);
+    margin-right: var(--control-small-gap);
+    color: var(--fgColor-muted);
   }
 
   &.btn-primary {
@@ -78,40 +78,40 @@
 /* Color variations */
 
 .flash-warn:not(.Banner) {
-  color: var(--color-fg-default);
-  background-image: linear-gradient(var(--color-attention-subtle), var(--color-attention-subtle));
-  border-color: var(--color-attention-muted);
+  color: var(--fgColor-default);
+  background-image: linear-gradient(var(--bgColor-attention-muted), var(--bgColor-attention-muted));
+  border-color: var(--borderColor-attention-muted);
 
   & .octicon {
-    color: var(--color-attention-fg);
+    color: var(--fgColor-attention);
   }
 }
 
 .flash-error:not(.Banner) {
-  color: var(--color-fg-default);
-  background-image: linear-gradient(var(--color-danger-subtle), var(--color-danger-subtle));
-  border-color: var(--color-danger-muted);
+  color: var(--fgColor-default);
+  background-image: linear-gradient(var(--bgColor-danger-muted), var(--bgColor-danger-muted));
+  border-color: var(--borderColor-danger-muted);
 
   & .octicon {
-    color: var(--color-danger-fg);
+    color: var(--fgColor-danger);
   }
 }
 
 .flash-success:not(.Banner) {
-  color: var(--color-fg-default);
-  background-image: linear-gradient(var(--color-success-subtle), var(--color-success-subtle));
-  border-color: var(--color-success-muted);
+  color: var(--fgColor-default);
+  background-image: linear-gradient(var(--bgColor-success-muted), var(--bgColor-success-muted));
+  border-color: var(--borderColor-success-muted);
 
   & .octicon {
-    color: var(--color-success-fg);
+    color: var(--fgColor-success);
   }
 }
 
 /* Layout variations */
 
 .flash-full:not(.Banner) {
-  margin-top: calc(var(--borderWidth-thin, 1px) * -1);
-  border-width: var(--borderWidth-thin, 1px) 0;
+  margin-top: calc(var(--borderWidth-thin) * -1);
+  border-width: var(--borderWidth-thin) 0;
   border-radius: 0;
 }
 
@@ -130,13 +130,13 @@
 /* Makes sure the background is opaque to cover any content underneath */
 .flash-full,
 .flash-banner {
-  background-color: var(--color-canvas-default);
+  background-color: var(--bgColor-default);
 }
 
 /* FIXME deprecate this */
 .warning {
   padding: 0.5em;
   margin-bottom: 0.8em;
-  font-weight: var(--base-text-weight-semibold, 600);
-  background-color: var(--color-attention-subtle);
+  font-weight: var(--base-text-weight-semibold);
+  background-color: var(--bgColor-attention-muted);
 }

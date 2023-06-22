@@ -1,5 +1,56 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- [#2060](https://github.com/primer/view_components/pull/2060) [`bc40f586`](https://github.com/primer/view_components/commit/bc40f586293a26e977a9b96e538aa5fe92ac5bb1) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: Move aria-checked to button
+
+* [#2042](https://github.com/primer/view_components/pull/2042) [`9c53f8e0`](https://github.com/primer/view_components/commit/9c53f8e0c158e2f1c6618bf1a2635e4a41021fbb) Thanks [@camertron](https://github.com/camertron)! - Use polymorphic slots in ActionList and NavList
+
+- [#2070](https://github.com/primer/view_components/pull/2070) [`04fc4f1b`](https://github.com/primer/view_components/commit/04fc4f1baec39993df468d0c9ca4a03803462186) Thanks [@camertron](https://github.com/camertron)! - Fix disabled button behavior
+
+* [#2074](https://github.com/primer/view_components/pull/2074) [`b39eae8c`](https://github.com/primer/view_components/commit/b39eae8cd033089d3782c4552f9001a71eeceddf) Thanks [@camertron](https://github.com/camertron)! - Allow Beta::Details to be disabled
+
+### Patch Changes
+
+- [#2055](https://github.com/primer/view_components/pull/2055) [`5911ff9c`](https://github.com/primer/view_components/commit/5911ff9c3e22e3b52e435a0b7ed54ea97358621c) Thanks [@keithamus](https://github.com/keithamus)! - Tweak Overlay CSS to account for cases where the browser supports :open, :popover-open, both, or neither.
+
+* [#2008](https://github.com/primer/view_components/pull/2008) [`53190440`](https://github.com/primer/view_components/commit/531904404a962620cca734f1582f0771bd47a125) Thanks [@langermank](https://github.com/langermank)! - Update color vars for `Button` with counter
+
+- [#2021](https://github.com/primer/view_components/pull/2021) [`7abf0965`](https://github.com/primer/view_components/commit/7abf09658d28640efe278bd00a3d1d03dab3e3e5) Thanks [@keithamus](https://github.com/keithamus)! - dont open dialog if button is aria-disabled
+
+* [#2006](https://github.com/primer/view_components/pull/2006) [`7282911b`](https://github.com/primer/view_components/commit/7282911ba38b2f11681e2a558e189cf2e6174bd4) Thanks [@keithamus](https://github.com/keithamus)! - Fix ActionMenu staying open when focus moved, in browsers with native popover
+
+- [#2075](https://github.com/primer/view_components/pull/2075) [`2eb286f2`](https://github.com/primer/view_components/commit/2eb286f2c3f5171b52c6e64b70e1602230fc6e75) Thanks [@camertron](https://github.com/camertron)! - NavList: Add aria-current to active nav item
+
+* [#2077](https://github.com/primer/view_components/pull/2077) [`fe578c16`](https://github.com/primer/view_components/commit/fe578c166da02173680e4825113ede4c94b9be43) Thanks [@camertron](https://github.com/camertron)! - Don't use aria-disabled for buttons
+
+- [#2013](https://github.com/primer/view_components/pull/2013) [`b7207d27`](https://github.com/primer/view_components/commit/b7207d27b23c77ea7280cc4175c6d665897e8e40) Thanks [@langermank](https://github.com/langermank)! - Update `ButtonGroup` to use `Beta::Button`
+
+* [#2073](https://github.com/primer/view_components/pull/2073) [`c4ada3b1`](https://github.com/primer/view_components/commit/c4ada3b1d567f6e819f8321e71d977c16f3215eb) Thanks [@camertron](https://github.com/camertron)! - Fix text_field.pcss to use flex-start instead of start
+
+- [#2032](https://github.com/primer/view_components/pull/2032) [`607889bc`](https://github.com/primer/view_components/commit/607889bc18c4a4ec98dd966940bb361d272f5f60) Thanks [@langermank](https://github.com/langermank)! - Bug fix: Text field validation wrap styles
+
+* [#2069](https://github.com/primer/view_components/pull/2069) [`532095e9`](https://github.com/primer/view_components/commit/532095e957b072337ed1707ebc5289990b6d8d56) Thanks [@jalafel](https://github.com/jalafel)! - Add event.stopPropogation to enter event
+
+- [#2071](https://github.com/primer/view_components/pull/2071) [`c0fa71ec`](https://github.com/primer/view_components/commit/c0fa71ecf718a184b73bdfae5c799efb755ece3d) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: don't swallow events attached via addEventListener
+
+* [#2059](https://github.com/primer/view_components/pull/2059) [`bf60d7d7`](https://github.com/primer/view_components/commit/bf60d7d703752b9a6c096c8d1b1bd2fd0558a607) Thanks [@camertron](https://github.com/camertron)! - Fix keyboard functionality with deferred loading in ActionMenu
+
+- [#2027](https://github.com/primer/view_components/pull/2027) [`f6d9fe97`](https://github.com/primer/view_components/commit/f6d9fe9741b66751a3c89cdfb5637a111ec4170b) Thanks [@keithamus](https://github.com/keithamus)! - ActionMenu: enable focussing first element on space activation
+
+* [#2058](https://github.com/primer/view_components/pull/2058) [`3e50e06c`](https://github.com/primer/view_components/commit/3e50e06c308487b97aa5bf12bdc0c8eef66ba086) Thanks [@jonrohan](https://github.com/jonrohan)! - - Remove manual fallbacks for CSS vars
+  - Update PostCSS plugin to add fallbacks at build time
+
+- [#2072](https://github.com/primer/view_components/pull/2072) [`70086f5e`](https://github.com/primer/view_components/commit/70086f5e3cbdd360cf85a34de34df83d063652d3) Thanks [@jonrohan](https://github.com/jonrohan)! - ButtonGroup: Change reset selector to use .Button class
+
+* [#2025](https://github.com/primer/view_components/pull/2025) [`2d1f5074`](https://github.com/primer/view_components/commit/2d1f50747714706f93b8bc64495a56fb72b3e24e) Thanks [@strackoverflow](https://github.com/strackoverflow)! - Preserve aria-label when `Primer::Beta::IconButton` `show_tooltip` is false
+
+- [#2023](https://github.com/primer/view_components/pull/2023) [`b47a3781`](https://github.com/primer/view_components/commit/b47a37811147af663358cb055fe9ac79701caf43) Thanks [@camertron](https://github.com/camertron)! - Bump popover-polyfill to latest version
+
+* [#2033](https://github.com/primer/view_components/pull/2033) [`54ed872b`](https://github.com/primer/view_components/commit/54ed872bfb08b8fb07fb9fc9c057627419c601ca) Thanks [@langermank](https://github.com/langermank)! - Add `@primer/primitives` dependency to docs
+
 ## 0.1.9
 
 ### Patch Changes

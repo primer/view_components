@@ -5,10 +5,10 @@
 .state, /* TODO: Deprecate */
 .State {
   display: inline-block;
-  padding: 5px var(--control-medium-paddingInline-normal, 12px);
-  font-size: var(--text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-medium, 500);
-  line-height: var(--control-medium-lineBoxHeight, 20px);
+  padding: 5px var(--control-medium-paddingInline-normal);
+  font-size: var(--text-body-size-medium);
+  font-weight: var(--base-text-weight-medium);
+  line-height: var(--control-medium-lineBoxHeight);
   text-align: center;
   white-space: nowrap;
   border-radius: 2em;
@@ -17,32 +17,32 @@
 .state, /* TODO: Deprecate */
 .State,
 .State--draft {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-neutral-emphasis);
-  border: var(--borderWidth-thin, 1px) solid transparent;
+  color: var(--fgColor-onEmphasis);
+  background-color: var(--bgColor-neutral-emphasis);
+  border: var(--borderWidth-thin) solid transparent;
 }
 
 .State--open {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-open-emphasis);
+  color: var(--fgColor-onEmphasis);
+  background-color: var(--bgColor-open-emphasis);
 }
 
 .State--merged {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-done-emphasis);
+  color: var(--fgColor-onEmphasis);
+  background-color: var(--bgColor-done-emphasis);
 }
 
 .State--closed {
-  color: var(--color-fg-on-emphasis);
-  background-color: var(--color-closed-emphasis);
+  color: var(--fgColor-onEmphasis);
+  background-color: var(--bgColor-closed-emphasis);
 }
 
 /* Small 24px */
 
 .State--small {
   padding: 0 10px;
-  font-size: var(--text-body-size-small, 12px);
-  line-height: var(--base-size-24, 24px);
+  font-size: var(--text-body-size-small);
+  line-height: var(--base-size-24);
 
   & .octicon {
     width: 1em; /* Ensures different icons don't change State indicator width */

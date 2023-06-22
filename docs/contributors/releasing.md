@@ -28,13 +28,9 @@ When creating the changeset always commit into the working branch (pull request 
 
 When a pull request is approved merge it into the `main` branch. The changeset action will then create a Release pull request that includes this new pull request.
 
-Once maintainers have agreed and are satisfied with the release. Merge the Release pull request. Changesets will then publish a new GitHub release to the repository with the changelog and new version number.
+Once maintainers have agreed and are satisfied with the release, they will merge the Release pull request. Changesets will then publish a new GitHub release to the repository with the changelog and new version number, as well as a new version of the Rubygem and NPM package.
 
-### Publishing a release
-
-When the release pull request is merged into `main`, pull the changes and run `script/publish` to publish the library on rubygems and npm.
-
-🎉 Congratulations! The new release has been published.
+For more information, Hubbers can refer to [these internal docs](https://github.com/github/primer/blob/main/how-we-work/releasing-primer-view-components.md).
 
 ## Revert plan
 

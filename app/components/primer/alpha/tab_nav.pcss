@@ -3,36 +3,36 @@
 /* Outer wrapper */
 .tabnav {
   margin-top: 0;
-  margin-bottom: var(--stack-gap-normal, 16px);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  margin-bottom: var(--stack-gap-normal);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .tabnav-tabs {
   display: flex;
-  margin-bottom: calc(var(--borderWidth-thin, 1px) * -1);
+  margin-bottom: calc(var(--borderWidth-thin) * -1);
   overflow: auto;
 }
 
 .tabnav-tab {
   display: inline-block;
   flex-shrink: 0;
-  padding: var(--base-size-8, 8px) var(--control-medium-paddingInline-spacious, 16px);
-  font-size: var(--text-body-size-medium, 14px);
+  padding: var(--base-size-8) var(--control-medium-paddingInline-spacious);
+  font-size: var(--text-body-size-medium);
   line-height: 23px;
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
   text-decoration: none;
   background-color: transparent;
-  border: var(--borderWidth-thin, 1px) solid transparent;
+  border: var(--borderWidth-thin) solid transparent;
   border-bottom: 0;
   transition: color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
 
   &.selected,
   &[aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
-    color: var(--color-fg-default);
-    background-color: var(--color-canvas-default); /* cover bottom border */
-    border-color: var(--color-border-default);
-    border-radius: var(--borderRadius-medium, 6px) var(--borderRadius-medium, 6px) 0 0;
+    color: var(--fgColor-default);
+    background-color: var(--bgColor-default); /* cover bottom border */
+    border-color: var(--borderColor-default);
+    border-radius: var(--borderRadius-medium) var(--borderRadius-medium) 0 0;
 
     & .octicon {
       color: inherit;
@@ -40,28 +40,28 @@
   }
 
   &:hover {
-    color: var(--color-fg-default);
+    color: var(--fgColor-default);
     text-decoration: none;
     transition-duration: 0.1s;
   }
 
   &:focus,
   &:focus-visible {
-    border-radius: var(--borderRadius-medium, 6px) var(--borderRadius-medium, 6px) 0 0 !important;
+    border-radius: var(--borderRadius-medium) var(--borderRadius-medium) 0 0 !important;
     outline-offset: -6px;
   }
 
   &:active {
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
   }
 
   & .octicon {
-    margin-right: var(--control-small-gap, 4px);
-    color: var(--color-fg-muted);
+    margin-right: var(--control-small-gap);
+    color: var(--fgColor-muted);
   }
 
   & .Counter {
-    margin-left: var(--control-small-gap, 4px);
+    margin-left: var(--control-small-gap);
     color: inherit;
   }
 }
@@ -75,8 +75,8 @@
   display: inline-block;
   padding-top: 10px;
   margin-left: 10px;
-  font-size: var(--text-body-size-small, 12px);
-  color: var(--color-fg-muted);
+  font-size: var(--text-body-size-small);
+  color: var(--fgColor-muted);
 
   & > .octicon {
     margin-right: 2px;
@@ -86,7 +86,7 @@
 /* When tabnav-extra are anchors
 ** stylelint-disable-next-line selector-no-qualifying-type */
 a.tabnav-extra:hover {
-  color: var(--color-accent-fg);
+  color: var(--fgColor-accent);
   text-decoration: none;
 }
 
@@ -96,5 +96,5 @@ a.tabnav-extra:hover {
 ** the buttons to be floated or inline-block. */
 
 .tabnav-btn {
-  margin-left: var(--controlStack-medium-gap-condensed, 8px);
+  margin-left: var(--controlStack-medium-gap-condensed);
 }

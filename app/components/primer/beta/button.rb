@@ -135,18 +135,21 @@ module Primer
       # @param align_content [Symbol] <%= one_of(Primer::Beta::Button::ALIGN_CONTENT_OPTIONS) %>
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
+      # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
         size: DEFAULT_SIZE,
         block: false,
         align_content: DEFAULT_ALIGN_CONTENT,
+        disabled: false,
         **system_arguments
       )
         @scheme = scheme
         @block = block
 
         @system_arguments = system_arguments
+        @system_arguments[:disabled] = disabled
 
         @id = @system_arguments[:id]
 

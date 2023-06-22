@@ -3,54 +3,54 @@
 /* A menu on the side of a page, defaults to left side. e.g. github.com/about */
 
 .menu {
-  margin-bottom: var(--stack-gap-normal, 16px);
+  margin-bottom: var(--stack-gap-normal);
   list-style: none;
-  background-color: var(--color-canvas-default);
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--borderRadius-medium, 6px);
+  background-color: var(--bgColor-default);
+  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  border-radius: var(--borderRadius-medium);
 }
 
 .menu-item {
   position: relative;
   display: block;
-  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
-  color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
+  padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
+  color: var(--fgColor-default);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
 
   &:first-child {
     border-top: 0;
-    border-top-left-radius: var(--borderRadius-medium, 6px);
-    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
 
     &::before {
-      border-top-left-radius: var(--borderRadius-medium, 6px);
+      border-top-left-radius: var(--borderRadius-medium);
     }
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
 
     &::before {
-      border-bottom-left-radius: var(--borderRadius-medium, 6px);
+      border-bottom-left-radius: var(--borderRadius-medium);
     }
   }
 
   &:hover {
     text-decoration: none;
-    background-color: var(--color-neutral-subtle);
+    background-color: var(--bgColor-neutral-muted);
   }
 
   &:active {
-    background-color: var(--color-canvas-subtle);
+    background-color: var(--bgColor-muted);
   }
 
   &.selected,
   &[aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
     cursor: default;
-    background-color: var(--color-menu-bg-active);
+    background-color: var(--menu-bgColor-active);
 
     &::before {
       position: absolute;
@@ -59,61 +59,61 @@
       left: 0;
       width: 2px;
       content: '';
-      background-color: var(--color-primer-border-active);
+      background-color: var(--underlineNav-borderColor-active);
     }
   }
 
   & .octicon {
     width: 16px;
-    margin-right: var(--control-medium-gap, 8px);
-    color: var(--color-fg-muted);
+    margin-right: var(--control-medium-gap);
+    color: var(--fgColor-muted);
     text-align: center;
   }
 
   & .Counter {
     float: right;
-    margin-left: var(--control-small-gap, 4px);
+    margin-left: var(--control-small-gap);
   }
 
   & .menu-warning {
     float: right;
-    color: var(--color-attention-fg);
+    color: var(--fgColor-attention);
   }
 
   & .avatar {
     float: left;
-    margin-right: var(--control-small-gap, 4px);
+    margin-right: var(--control-small-gap);
   }
 
   &.alert {
     & .Counter {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger);
     }
   }
 }
 
 .menu-heading {
   display: block;
-  padding: var(--control-medium-paddingInline-condensed, 8px) var(--control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
   margin-top: 0;
   margin-bottom: 0;
   font-size: inherit;
-  font-weight: var(--base-text-weight-semibold, 600);
-  color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin, 1px) solid var(--color-border-muted);
+  font-weight: var(--base-text-weight-semibold);
+  color: var(--fgColor-default);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
 
   &:hover {
     text-decoration: none;
   }
 
   &:first-child {
-    border-top-left-radius: var(--borderRadius-medium, 6px);
-    border-top-right-radius: var(--borderRadius-medium, 6px);
+    border-top-left-radius: var(--borderRadius-medium);
+    border-top-right-radius: var(--borderRadius-medium);
   }
 
   &:last-child {
     border-bottom: 0;
-    border-bottom-right-radius: var(--borderRadius-medium, 6px);
-    border-bottom-left-radius: var(--borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--borderRadius-medium);
+    border-bottom-left-radius: var(--borderRadius-medium);
   }
 }

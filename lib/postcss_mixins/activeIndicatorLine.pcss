@@ -1,11 +1,11 @@
 /* active indicator line for navlist items */
-@define-mixin activeIndicatorLine $padding-left: calc(-1 * var(--base-size-8, 8px)) {
+@define-mixin activeIndicatorLine $padding-left: calc(-1 * var(--base-size-8)) {
   position: absolute;
   top: calc(50% - 12px);
   left: $padding-left;
-  width: var(--base-size-4, 4px);
-  height: var(--base-size-24, 24px);
+  width: var(--base-size-4);
+  height: var(--base-size-24);
   content: '';
-  background: var(--color-accent-fg);
-  border-radius: var(--borderRadius-medium, 6px);
+  background: var(--borderColor-accent-emphasis);
+  border-radius: var(--borderRadius-medium);
 }

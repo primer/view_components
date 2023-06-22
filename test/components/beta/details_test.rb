@@ -110,15 +110,33 @@ class PrimerBetaDetailsTest < Minitest::Test
 
   def test_prevents_rendering_without_slots
     render_inline(Primer::Beta::Details.new)
+
+    refute_selector("details")
+    refute_selector("summary")
+
     render_inline(Primer::Beta::Details.new) do |component|
       component.with_body { "Body" }
     end
+
+    refute_selector("details")
+    refute_selector("summary")
+
     render_inline(Primer::Beta::Details.new) do |component|
       component.with_summary { "Summary" }
     end
 
     refute_selector("details")
     refute_selector("summary")
+  end
+
+  def test_disabled
+    render_inline(Primer::Beta::Details.new(disabled: true)) do |component|
+      component.with_summary { "Summary" }
+      component.with_body { "Body" }
+    end
+
+    refute_selector("details")
+    assert_selector("button[disabled]", text: "Summary")
   end
 
   def test_status

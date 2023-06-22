@@ -11,7 +11,7 @@
   vertical-align: middle;
   content: '';
   border-style: solid;
-  border-width: var(--borderWidth-thicker, 4px) var(--borderWidth-thicker, 4px) 0;
+  border-width: var(--borderWidth-thicker) var(--borderWidth-thicker) 0;
   border-right-color: transparent;
   border-bottom-color: transparent;
   border-left-color: transparent;
@@ -26,15 +26,15 @@
   left: 0;
   z-index: 100;
   width: 160px;
-  padding-top: var(--control-small-paddingBlock, 4px);
-  padding-bottom: var(--control-small-paddingBlock, 4px);
+  padding-top: var(--control-small-paddingBlock);
+  padding-bottom: var(--control-small-paddingBlock);
   margin-top: 2px;
   list-style: none;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor);
   background-clip: padding-box;
-  border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
-  border-radius: var(--borderRadius-medium, 6px);
-  box-shadow: var(--color-shadow-large);
+  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  border-radius: var(--borderRadius-medium);
+  box-shadow: var(--shadow-floating-large);
 
   &::before,
   &::after {
@@ -46,13 +46,13 @@
   /* caret border */
   &::before {
     border: 8px solid transparent;
-    border-bottom-color: var(--color-border-default);
+    border-bottom-color: var(--borderColor-default);
   }
 
   /* caret background (should match dropdown background) */
   &::after {
     border: 7px solid transparent;
-    border-bottom-color: var(--color-canvas-overlay);
+    border-bottom-color: var(--overlay-bgColor);
   }
 
   & > ul {
@@ -64,7 +64,7 @@
   width: auto;
 
   & .dropdown-item {
-    padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
+    padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
     overflow: visible;
     text-overflow: inherit;
   }
@@ -73,17 +73,17 @@
 /* Dropdown items (can be links or buttons) */
 .dropdown-item {
   display: block;
-  padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-condensed, 8px)
-    var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
+  padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed)
+    var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   overflow: hidden;
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   text-overflow: ellipsis;
   white-space: nowrap;
 
   &:hover {
-    color: var(--color-fg-on-emphasis);
+    color: var(--fgColor-onEmphasis);
     text-decoration: none;
-    background-color: var(--color-accent-emphasis);
+    background-color: var(--bgColor-accent-emphasis);
 
     & > .octicon {
       color: inherit;
@@ -116,14 +116,14 @@
 .dropdown-divider {
   display: block;
   height: 0;
-  margin: var(--stack-gap-condensed, 8px) 0;
-  border-top: var(--borderWidth-thin, 1px) solid var(--color-border-default);
+  margin: var(--stack-gap-condensed) 0;
+  border-top: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .dropdown-header {
-  padding: var(--control-small-paddingBlock, 4px) var(--control-medium-paddingInline-spacious, 16px);
-  font-size: var(--text-body-size-small, 12px);
-  color: var(--color-fg-muted);
+  padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
+  font-size: var(--text-body-size-small);
+  color: var(--fgColor-muted);
 }
 
 .dropdown-item[aria-checked='false'] .octicon-check {
@@ -148,7 +148,7 @@
     right: -16px;
     left: auto;
     border-color: transparent;
-    border-left-color: var(--color-border-default);
+    border-left-color: var(--borderColor-default);
   }
 
   &::after {
@@ -156,7 +156,7 @@
     right: -14px;
     left: auto;
     border-color: transparent;
-    border-left-color: var(--color-canvas-overlay);
+    border-left-color: var(--overlay-bgColor);
   }
 }
 
@@ -171,14 +171,14 @@
     top: 10px;
     left: -16px;
     border-color: transparent;
-    border-right-color: var(--color-border-default);
+    border-right-color: var(--borderColor-default);
   }
 
   &::after {
     top: 11px;
     left: -14px;
     border-color: transparent;
-    border-right-color: var(--color-canvas-overlay);
+    border-right-color: var(--overlay-bgColor);
   }
 }
 
@@ -197,7 +197,7 @@
   &::before {
     bottom: -8px;
     left: 9px;
-    border-top: 8px solid var(--color-border-default);
+    border-top: 8px solid var(--borderColor-default);
     border-right: 8px solid transparent;
     border-bottom: 0;
     border-left: 8px solid transparent;
@@ -206,7 +206,7 @@
   &::after {
     bottom: -7px;
     left: 10px;
-    border-top: 7px solid var(--color-canvas-overlay);
+    border-top: 7px solid var(--overlay-bgColor);
     border-right: 7px solid transparent;
     border-bottom: 0;
     border-left: 7px solid transparent;
