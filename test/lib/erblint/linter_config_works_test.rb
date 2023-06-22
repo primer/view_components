@@ -2,7 +2,7 @@
 
 require "lib/erblint_test_case"
 
-class RecommendedSetupWorksTest < ErblintTestCase
+class LinterConfigWorksTest < ErblintTestCase
   # The ability to share rules and configs from other gems in erb_lint is not well-documented.
   # This test validates that our recommended setup works.
   def test_asserts_recommended_setup_works
