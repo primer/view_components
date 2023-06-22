@@ -10,8 +10,8 @@ module ERBLint
           include LinterRegistry
           include Helpers::RuleHelpers
 
-          MIGRATE_TO_NEWER_TOOLTIP = ".tooltipped has been deprecated. Tooltip should never be set on a non-interactive element (e.g. <span>, <div>, <li>) " \
-            "Find alternatives in https://primer.style/design/guides/accessibility/tooltip-alternatives/." \
+          MIGRATE_TO_NEWER_TOOLTIP = ".tooltipped has been deprecated. Tooltip should never be set on a non-interactive element (e.g. <span>, <div>, <li>). " \
+            "Find alternatives in https://primer.style/design/guides/accessibility/tooltip-alternatives/. " \
             "If you're setting a tooltip on an interactive element, use the latest tooltip in https://primer.style/view-components."
           TOOLTIPPED_RUBY_PATTERN = /classes:.*tooltipped|class:.*tooltipped/.freeze
 
