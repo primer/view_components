@@ -13,8 +13,8 @@ class RecommendedSetupWorksTest < ErblintTestCase
       rules_enabled_in_accessibility_config += 1 if linter[0].include?("Primer::Accessibility") && linter[1]["enabled"] == true
     end
     known_linter_names ||= ERBLint::LinterRegistry.linters.map(&:simple_name)
-
+    known_linter_names_count = known_linter_names.count { |linter| linter.include?("Primer::Accessibility") }
     assert_equal 1, rules_enabled_in_accessibility_config
-    assert_equal 1, known_linter_names.count { |linter| linter.include?("Primer::Accessibility") }
+    assert_equal 1, known_linter_names_count
   end
 end
