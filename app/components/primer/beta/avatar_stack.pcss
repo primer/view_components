@@ -23,7 +23,7 @@
 
 .AvatarStack-body {
   display: flex;
-  background: var(--color-canvas-default);
+  background: var(--bgColor-default);
   border-radius: 100px;
 
   & .avatar {
@@ -34,8 +34,8 @@
     height: 20px;
     box-sizing: content-box;
     margin-right: -11px;
-    background-color: var(--color-canvas-default);
-    border-right: var(--borderWidth-thin) solid var(--color-canvas-default);
+    background-color: var(--bgColor-default);
+    border-right: var(--borderWidth-thin) solid var(--bgColor-default);
     border-radius: var(--borderRadius-small);
     box-shadow: none;
     transition: margin 0.1s ease-in-out;
@@ -79,7 +79,7 @@
 .avatar.avatar-more {
   z-index: 1;
   margin-right: 0;
-  background: var(--color-canvas-subtle);
+  background: var(--bgColor-muted);
 
   &::before,
   &::after {
@@ -88,17 +88,17 @@
     height: 20px;
     content: '';
     border-radius: 2px;
-    outline: var(--borderWidth-thin) solid var(--color-canvas-default);
+    outline: var(--borderWidth-thin) solid var(--bgColor-default);
   }
 
   &::before {
     width: 17px;
-    background: var(--color-avatar-stack-fade-more);
+    background: var(--avatarStack-fade-bgColor-muted);
   }
 
   &::after {
     width: 14px;
-    background: var(--color-avatar-stack-fade);
+    background: var(--avatarStack-fade-bgColor-default);
   }
 }
 
@@ -120,7 +120,7 @@
   }
 
   & .avatar.avatar-more {
-    background: var(--color-avatar-stack-fade);
+    background: var(--avatarStack-fade-bgColor-default);
 
     &::before {
       width: 5px;
@@ -128,7 +128,7 @@
 
     &::after {
       width: 2px;
-      background: var(--color-canvas-subtle);
+      background: var(--bgColor-muted);
     }
   }
 
@@ -136,6 +136,6 @@
     margin-right: 0;
     margin-left: -11px;
     border-right: 0;
-    border-left: var(--borderWidth-thin) solid var(--color-canvas-default);
+    border-left: var(--borderWidth-thin) solid var(--bgColor-default);
   }
 }
