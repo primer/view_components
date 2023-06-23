@@ -134,23 +134,9 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.#animationFrame = requestAnimationFrame(() => {
       const anchor = this.anchorElement
       if (!anchor) return
-      const {left, top, anchorSide, anchorAlign} = getAnchoredPosition(this, anchor, this)
+      const {left, top} = getAnchoredPosition(this, anchor, this)
       this.style.top = `${top}px`
       this.style.left = `${left}px`
-      this.classList.remove(
-        'Overlay--anchorAlign-start',
-        'Overlay--anchorAlign-center',
-        'Overlay--anchorAlign-end',
-        'Overlay--anchorSide-insideTop',
-        'Overlay--anchorSide-insideBottom',
-        'Overlay--anchorSide-insideLeft',
-        'Overlay--anchorSide-insideRight',
-        'Overlay--anchorSide-insideCenter',
-        'Overlay--anchorSide-outsideTop',
-        'Overlay--anchorSide-outsideLeft',
-        'Overlay--anchorSide-outsideRight'
-      )
-      this.classList.add(`Overlay--anchorAlign-${anchorAlign}`, `Overlay--anchorSide-${anchorSide}`)
     })
   }
 }
