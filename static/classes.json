@@ -342,7 +342,8 @@
     "Primer::Beta::Link"
   ],
   "Overlay": [
-    "Primer::Alpha::Dialog"
+    "Primer::Alpha::Dialog",
+    "Primer::Alpha::Overlay"
   ],
   "Overlay--hidden": [
     "Primer::Alpha::Dialog"
