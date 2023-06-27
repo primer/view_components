@@ -33,6 +33,7 @@
   "Primer::Alpha::NavList": "alpha",
   "Primer::Alpha::NavList::Divider": "alpha",
   "Primer::Alpha::NavList::Group": "alpha",
+  "Primer::Alpha::NavList::Heading": "alpha",
   "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::Navigation::Tab": "alpha",
   "Primer::Alpha::OcticonSymbols": "alpha",

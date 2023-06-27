@@ -552,6 +552,18 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/two_menus",
+        "name": "two_menus",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1296,6 +1308,18 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/base_button/disabled",
+        "name": "disabled",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -1864,6 +1888,18 @@
       {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button_group/all_tags",
+        "name": "all_tags",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3940,6 +3976,18 @@
       {
         "preview_path": "primer/alpha/overlay/middle_of_page_with_relative_container",
         "name": "middle_of_page_with_relative_container",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/overlay/dialog_with_header_footer",
+        "name": "dialog_with_header_footer",
         "skip_rules": {
           "wont_fix": [
             "region"
