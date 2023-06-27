@@ -182,9 +182,13 @@ namespace :docs do
 
     # add to this as more pages are migrated
     INTRO_URL_MAP = {
+      "/" => "https://primer.style/design/guides/development/rails",
       "/system-arguments" => "https://primer.style/design/foundations/system-arguments",
-      "/status" => "https://primer.style/design/guides/status"
+      "/status" => "https://primer.style/design/guides/status",
+      "/migration" => "https://primer.style/design/guides/development/rails#migration-and-upgrade-guides"
     }.freeze
+
+    STATUS_ORDER = %i[deprecated experimental alpha beta stable].freeze
 
     primer_design_repo_path = ENV["PRIMER_DESIGN_REPO_PATH"]
     raise "Missing PRIMER_DESIGN_REPO_PATH environment variable" unless primer_design_repo_path
@@ -203,13 +207,20 @@ namespace :docs do
       front_matter_begin_idx = content.index("---")
       front_matter_end_idx = content.index("---", front_matter_begin_idx + 3)
       front_matter = YAML.load(content[0...front_matter_end_idx])
-      rails_id = front_matter["railsId"]
-      next unless rails_id
+      rails_ids = front_matter["railsIds"] || []
+      next if rails_ids.empty?
 
+      # get latest status
+      rails_ids.sort_by! do |id|
+        status = Kernel.const_get(id).status
+        STATUS_ORDER.index(status)
+      end
+
+      rails_id = rails_ids.last
+      docs = registry.find(Kernel.const_get(rails_id))
       content_path = File.join(primer_design_repo_path, "content")
       mdx_path = Pathname(mdx_file).relative_path_from(content_path).to_s.chomp(".mdx")
-      new_docsite_url = join_urls("https://primer.style", "design", mdx_path, "rails")
-      docs = registry.find(Kernel.const_get(rails_id))
+      new_docsite_url = join_urls("https://primer.style", "design", mdx_path, "rails", docs.status_module || "stable")
       status_path = docs.status_module.nil? ? "" : "#{docs.status_module}/"
       legacy_docsite_url = "/components/#{status_path}#{docs.short_name.downcase}"
 
