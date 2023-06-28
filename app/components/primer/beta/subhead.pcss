@@ -4,7 +4,7 @@
   display: flex;
   padding-bottom: var(--stack-padding-condensed);
   margin-bottom: var(--stack-gap-normal);
-  border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
+  border-bottom: var(--borderWidth-thin) solid var(--color-border-muted);
   flex-flow: row wrap;
   justify-content: flex-end; /* Keep actions right aligned. */
 }
@@ -25,13 +25,13 @@
 /* Make the text bold and red for dangerous content */
 .Subhead-heading--danger {
   font-weight: var(--base-text-weight-semibold);
-  color: var(--fgColor-danger);
+  color: var(--color-danger-fg);
 }
 
 /* One-liner of supporting text */
 .Subhead-description {
   font-size: var(--text-body-size-medium);
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
   flex: 1 100%;
   order: 2;
 }

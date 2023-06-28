@@ -10,8 +10,8 @@
   width: 232px;
   margin-right: auto;
   margin-left: auto;
-  background-color: var(--overlay-bgColor);
-  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  background-color: var(--color-canvas-overlay);
+  border: var(--borderWidth-thin) solid var(--color-border-default);
   border-radius: var(--borderRadius-medium);
 
   /* Carets */
@@ -27,14 +27,14 @@
     top: -16px;
     margin-left: -9px;
     border: 8px solid transparent;
-    border-bottom-color: var(--borderColor-default);
+    border-bottom-color: var(--color-border-default);
   }
 
   &::after {
     top: -14px;
     margin-left: -8px;
     border: 7px solid transparent;
-    border-bottom-color: var(--overlay-bgColor);
+    border-bottom-color: var(--color-canvas-overlay);
   }
 }
 
@@ -58,12 +58,12 @@
 
   &::before {
     bottom: -16px;
-    border-top-color: var(--borderColor-default);
+    border-top-color: var(--color-border-default);
   }
 
   &::after {
     bottom: -14px;
-    border-top-color: var(--overlay-bgColor);
+    border-top-color: var(--color-canvas-overlay);
   }
 }
 
@@ -135,12 +135,12 @@
 .Popover-message--right-bottom {
   &::before {
     right: -16px;
-    border-left-color: var(--borderColor-default);
+    border-left-color: var(--color-border-default);
   }
 
   &::after {
     right: -14px;
-    border-left-color: var(--overlay-bgColor);
+    border-left-color: var(--color-canvas-overlay);
   }
 }
 
@@ -150,12 +150,12 @@
 .Popover-message--left-bottom {
   &::before {
     left: -16px;
-    border-right-color: var(--borderColor-default);
+    border-right-color: var(--color-border-default);
   }
 
   &::after {
     left: -14px;
-    border-right-color: var(--overlay-bgColor);
+    border-right-color: var(--color-canvas-overlay);
   }
 }
 
