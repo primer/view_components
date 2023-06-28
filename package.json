@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -64,7 +64,7 @@
     "@github/prettier-config": "0.0.4",
     "@playwright/test": "^1.27.1",
     "@primer/css": "21.0.2",
-    "@primer/primitives": "^7.11.13",
+    "@primer/primitives": "^7.11.11",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
@@ -92,7 +92,6 @@
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^28.0.0",
-    "@primer/stylelint-config": "^12.7.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },

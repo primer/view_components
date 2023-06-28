@@ -7,10 +7,10 @@
   font-size: var(--text-body-size-small);
   font-weight: var(--base-text-weight-medium);
   line-height: calc(var(--base-size-20) - var(--borderWidth-thin) * 2); /* 20px - 2px for the borders */
-  color: var(--fgColor-default);
+  color: var(--color-fg-default);
   text-align: center;
-  background-color: var(--bgColor-neutral-muted);
-  border: var(--borderWidth-thin) solid var(--counter-borderColor);
+  background-color: var(--color-neutral-muted);
+  border: var(--borderWidth-thin) solid var(--color-counter-border);
   border-radius: 2em;
 
   &:empty {
@@ -25,11 +25,11 @@
 }
 
 .Counter--primary {
-  color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-neutral-emphasis);
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-neutral-emphasis);
 }
 
 .Counter--secondary {
-  color: var(--fgColor-muted);
-  background-color: var(--bgColor-neutral-muted);
+  color: var(--color-fg-muted);
+  background-color: var(--color-neutral-subtle);
 }
