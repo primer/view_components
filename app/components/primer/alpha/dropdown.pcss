@@ -30,11 +30,11 @@
   padding-bottom: var(--control-small-paddingBlock);
   margin-top: 2px;
   list-style: none;
-  background-color: var(--overlay-bgColor);
+  background-color: var(--color-canvas-overlay);
   background-clip: padding-box;
-  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  border: var(--borderWidth-thin) solid var(--color-border-default);
   border-radius: var(--borderRadius-medium);
-  box-shadow: var(--shadow-floating-large);
+  box-shadow: var(--color-shadow-large);
 
   &::before,
   &::after {
@@ -46,13 +46,13 @@
   /* caret border */
   &::before {
     border: 8px solid transparent;
-    border-bottom-color: var(--borderColor-default);
+    border-bottom-color: var(--color-border-default);
   }
 
   /* caret background (should match dropdown background) */
   &::after {
     border: 7px solid transparent;
-    border-bottom-color: var(--overlay-bgColor);
+    border-bottom-color: var(--color-canvas-overlay);
   }
 
   & > ul {
@@ -76,14 +76,14 @@
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed)
     var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   overflow: hidden;
-  color: var(--fgColor-default);
+  color: var(--color-fg-default);
   text-overflow: ellipsis;
   white-space: nowrap;
 
   &:hover {
-    color: var(--fgColor-onEmphasis);
+    color: var(--color-fg-on-emphasis);
     text-decoration: none;
-    background-color: var(--bgColor-accent-emphasis);
+    background-color: var(--color-accent-emphasis);
 
     & > .octicon {
       color: inherit;
@@ -117,13 +117,13 @@
   display: block;
   height: 0;
   margin: var(--stack-gap-condensed) 0;
-  border-top: var(--borderWidth-thin) solid var(--borderColor-default);
+  border-top: var(--borderWidth-thin) solid var(--color-border-default);
 }
 
 .dropdown-header {
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   font-size: var(--text-body-size-small);
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
 }
 
 .dropdown-item[aria-checked='false'] .octicon-check {
@@ -148,7 +148,7 @@
     right: -16px;
     left: auto;
     border-color: transparent;
-    border-left-color: var(--borderColor-default);
+    border-left-color: var(--color-border-default);
   }
 
   &::after {
@@ -156,7 +156,7 @@
     right: -14px;
     left: auto;
     border-color: transparent;
-    border-left-color: var(--overlay-bgColor);
+    border-left-color: var(--color-canvas-overlay);
   }
 }
 
@@ -171,14 +171,14 @@
     top: 10px;
     left: -16px;
     border-color: transparent;
-    border-right-color: var(--borderColor-default);
+    border-right-color: var(--color-border-default);
   }
 
   &::after {
     top: 11px;
     left: -14px;
     border-color: transparent;
-    border-right-color: var(--overlay-bgColor);
+    border-right-color: var(--color-canvas-overlay);
   }
 }
 
@@ -197,7 +197,7 @@
   &::before {
     bottom: -8px;
     left: 9px;
-    border-top: 8px solid var(--borderColor-default);
+    border-top: 8px solid var(--color-border-default);
     border-right: 8px solid transparent;
     border-bottom: 0;
     border-left: 8px solid transparent;
@@ -206,7 +206,7 @@
   &::after {
     bottom: -7px;
     left: 10px;
-    border-top: 7px solid var(--overlay-bgColor);
+    border-top: 7px solid var(--color-canvas-overlay);
     border-right: 7px solid transparent;
     border-bottom: 0;
     border-left: 7px solid transparent;

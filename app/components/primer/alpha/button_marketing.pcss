@@ -10,7 +10,7 @@
   font-size: 1rem;
   font-weight: var(--base-text-weight-semibold);
   line-height: 1;
-  color: var(--bgColor-default);
+  color: var(--color-canvas-default);
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -57,7 +57,7 @@
 
   /* fallback :focus state */
   &:focus {
-    @mixin focusOutline 2px, var(--focus-outlineColor);
+    @mixin focusOutline 2px, var(--color-accent-fg);
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -68,7 +68,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--focus-outlineColor);
+    @mixin focusOutline 2px, var(--color-accent-fg);
   }
 
   &:active {
@@ -86,7 +86,7 @@
 }
 
 .btn-muted-mktg {
-  color: var(--fgColor-default) !important;
+  color: var(--color-fg-default) !important;
   background: none !important;
   box-shadow: var(--color-mktg-btn-shadow-outline);
 
@@ -100,17 +100,17 @@
 
   &:active {
     /* stylelint-disable-next-line primer/box-shadow */
-    box-shadow: var(--fgColor-default) 0 0 0 3px inset !important;
+    box-shadow: var(--color-fg-default) 0 0 0 3px inset !important;
   }
 
   &:disabled {
     /* stylelint-disable-next-line primer/box-shadow */
-    box-shadow: var(--fgColor-default) 0 0 0 1px inset !important;
+    box-shadow: var(--color-fg-subtle) 0 0 0 1px inset !important;
   }
 }
 
 .btn-subtle-mktg {
-  color: var(--fgColor-default) !important;
+  color: var(--color-fg-default) !important;
   background: none !important;
   box-shadow: none !important;
 
@@ -137,7 +137,7 @@
 
   /* fallback :focus state */
   &:focus {
-    @mixin focusOutline 2px, var(--focus-outlineColor);
+    @mixin focusOutline 2px, var(--color-accent-fg);
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -148,7 +148,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @mixin focusOutline 2px, var(--focus-outlineColor);
+    @mixin focusOutline 2px, var(--color-accent-fg);
   }
 }
 
