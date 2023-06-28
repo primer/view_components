@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.1
+
+### Patch Changes
+
+- [#2113](https://github.com/primer/view_components/pull/2113) [`f4736349`](https://github.com/primer/view_components/commit/f4736349bc7b04a8696960b821377b1237ec660c) Thanks [@camertron](https://github.com/camertron)! - Revert v8 color var fallbacks (#2083)
+
 ## 0.3.0
 
 ### Minor Changes
