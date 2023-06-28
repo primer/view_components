@@ -1,7 +1,6 @@
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
-const TOOLTIP_OPEN_CLASS = 'tooltip-open'
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
 
@@ -18,16 +17,17 @@ const DIRECTION_CLASSES = [
   'tooltip-sw'
 ]
 
+const tooltips = new Set<ToolTipElement>()
 class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
         position: absolute;
         z-index: 1000000;
-        padding: .5em .75em;
+        padding: .5em .75em !important;
         font: normal normal 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         -webkit-font-smoothing: subpixel-antialiased;
-        color: var(--color-fg-on-emphasis);
+        color: var(--color-fg-on-emphasis) !important;
         text-align: center;
         text-decoration: none;
         text-shadow: none;
@@ -35,13 +35,16 @@ class ToolTipElement extends HTMLElement {
         letter-spacing: normal;
         word-wrap: break-word;
         white-space: pre;
-        background: var(--color-neutral-emphasis-plus);
+        background: var(--color-neutral-emphasis-plus) !important;
         border-radius: 6px;
-        opacity: 0;
+        border: 0 !important;
+        opacity: 0.00000001;
         max-width: 250px;
         word-wrap: break-word;
         white-space: normal;
-        width: max-content;
+        width: max-content !important;
+        inset: var(--tool-tip-position-top, 0) auto auto var(--tool-tip-position-left, 0) !important;
+        overflow: visible !important;
       }
 
       :host:before{
@@ -55,7 +58,7 @@ class ToolTipElement extends HTMLElement {
 
       @keyframes tooltip-appear {
         from {
-          opacity: 0
+          opacity: 0.0001;
         }
         to {
           opacity: 1
@@ -71,8 +74,17 @@ class ToolTipElement extends HTMLElement {
         content: ""
       }
 
-      :host(.${TOOLTIP_OPEN_CLASS}),
-      :host(.${TOOLTIP_OPEN_CLASS}):before {
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+        animation-delay: .4s
+      }
+
+      :host(.\\:popover-open),
+      :host(.\\:popover-open):before {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
@@ -176,16 +188,22 @@ class ToolTipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
+  /* @deprecated */
   set hiddenFromView(value: true | false) {
-    this.classList.toggle(TOOLTIP_SR_ONLY_CLASS, value)
-    if (this.isConnected) this.#update()
+    if (value) {
+      this.hidePopover()
+    } else {
+      this.showPopover()
+    }
   }
 
+  /* @deprecated */
   get hiddenFromView() {
-    return this.classList.contains(TOOLTIP_SR_ONLY_CLASS)
+    return !this.matches(':popover-open')
   }
 
   connectedCallback() {
+    tooltips.add(this)
     this.#updateControlReference()
     this.#updateDirection()
     if (!this.shadowRoot) {
@@ -194,7 +212,7 @@ class ToolTipElement extends HTMLElement {
       style.textContent = this.styles()
       shadow.appendChild(document.createElement('slot'))
     }
-    this.hiddenFromView = true
+    this.#update(false)
     this.#allowUpdatePosition = true
 
     if (!this.control) return
@@ -206,49 +224,54 @@ class ToolTipElement extends HTMLElement {
     const {signal} = this.#abortController
 
     this.addEventListener('mouseleave', this, {signal})
+    this.addEventListener('toggle', this, {signal})
     this.control.addEventListener('mouseenter', this, {signal})
     this.control.addEventListener('mouseleave', this, {signal})
     this.control.addEventListener('focus', this, {signal})
     this.control.addEventListener('blur', this, {signal})
     this.ownerDocument.addEventListener('keydown', this, {signal})
-    this.#update()
   }
 
   disconnectedCallback() {
+    tooltips.delete(this)
     this.#abortController?.abort()
   }
 
   handleEvent(event: Event) {
     if (!this.control) return
+    const showing = this.matches(':popover-open')
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hiddenFromView) {
-      this.hiddenFromView = false
-    } else if (event.type === 'blur') {
-      this.hiddenFromView = true
+    if ((event.type === 'mouseenter' || event.type === 'focus') && !showing) {
+      this.showPopover()
+    } else if (event.type === 'blur' && !showing) {
+      this.hidePopover()
     } else if (
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
       (event as MouseEvent).relatedTarget !== this
     ) {
-      this.hiddenFromView = true
+      this.hidePopover()
     } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hiddenFromView) {
-      this.hiddenFromView = true
+      this.hidePopover
+    } else if (event.type === 'toggle') {
+      this.#update((event as ToggleEvent).newState === 'open')
     }
   }
 
   static observedAttributes = ['data-type', 'data-direction', 'id']
 
-  #update() {
-    if (this.hiddenFromView) {
-      this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
-    } else {
-      this.classList.add(TOOLTIP_OPEN_CLASS)
-      for (const tooltip of this.ownerDocument.querySelectorAll<ToolTipElement>(this.tagName)) {
-        if (tooltip !== this) tooltip.hiddenFromView = true
+  #update(isOpen: boolean) {
+    if (isOpen) {
+      this.classList.remove(TOOLTIP_SR_ONLY_CLASS)
+      for (const tooltip of tooltips) {
+        if (tooltip !== this) tooltip.hidePopover()
       }
       this.#updatePosition()
+    } else {
+      this.classList.remove(...DIRECTION_CLASSES)
+      this.classList.add(TOOLTIP_SR_ONLY_CLASS)
     }
   }
 
@@ -326,11 +349,9 @@ class ToolTipElement extends HTMLElement {
 
   #updatePosition() {
     if (!this.control) return
-    if (!this.#allowUpdatePosition || this.hiddenFromView) return
+    if (!this.#allowUpdatePosition || !this.matches(':popover-open')) return
 
-    const TOOLTIP_OFFSET = 10
-
-    this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition`
+    const TOOLTIP_OFFSET = 4
 
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
@@ -340,8 +361,8 @@ class ToolTipElement extends HTMLElement {
     const anchorSide = position.anchorSide
     const align = position.anchorAlign
 
-    this.style.top = `${position.top}px`
-    this.style.left = `${position.left}px`
+    this.style.setProperty('--tool-tip-position-top', `${position.top}px`)
+    this.style.setProperty('--tool-tip-position-left', `${position.left}px`)
 
     let direction: Direction = 's'
 
