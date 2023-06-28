@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.2.0)
+    primer_view_components (0.3.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -121,7 +121,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
-    octicons (19.2.0)
+    octicons (19.4.0)
     parallel (1.22.1)
     parser (3.2.0.0)
       ast (~> 2.4.1)

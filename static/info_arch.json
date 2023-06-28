@@ -76,7 +76,16 @@
       },
       {
         "name": "items",
-        "description": "Items.",
+        "description": "Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "with_item",
+        "description": "Adds an item to the list.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -85,12 +94,10 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
         ]
-      }
-    ],
-    "methods": [
+      },
       {
         "name": "with_divider",
-        "description": "Adds a divider to the list of items.",
+        "description": "Adds a divider to the list. Dividers visually separate items.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -1216,6 +1223,18 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/two_menus",
+        "name": "two_menus",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -1260,14 +1279,9 @@
           },
           {
             "name": "items",
-            "description": "Items.",
+            "description": "Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.",
             "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
-              }
+
             ]
           }
         ],
@@ -1790,6 +1804,12 @@
         "type": "Symbol",
         "default": "`:button`",
         "description": "One of `:button` or `:submit`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
         "name": "system_arguments",
@@ -3265,6 +3285,12 @@
         "description": "Whether or not the button is inline."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -4252,28 +4278,23 @@
     "slots": [
       {
         "name": "heading",
-        "description": null,
+        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Heading{{/link_to_component}}.",
         "parameters": [
 
         ]
       },
       {
         "name": "items",
-        "description": "Items.",
+        "description": "Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.",
         "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
-          }
+
         ]
       }
     ],
     "methods": [
       {
         "name": "with_group",
-        "description": "Groups. Each group is a list of links and a (required) heading.",
+        "description": "Adds a group to the list. A group is a list of links and a (required) heading.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -4285,7 +4306,7 @@
       },
       {
         "name": "with_divider",
-        "description": "Adds a divider to the list of items.",
+        "description": "Adds a divider to the list. Dividers visually separate items and groups.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -4366,6 +4387,84 @@
       }
     ],
     "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Heading",
+        "description": "The heading placed above a `NavList`'s items.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Heading",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/heading/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "The text content of the heading."
+          },
+          {
+            "name": "id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "The value of the ID HTML attribute. Auto-generated by default."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`2`",
+            "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "title",
+            "description": "Returns the value of attribute title.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "id",
+            "description": "Returns the value of attribute id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "heading_level",
+            "description": "Returns the value of attribute heading_level.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "system_arguments",
+            "description": "Returns the value of attribute system_arguments.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
         "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
@@ -5058,6 +5157,18 @@
       {
         "preview_path": "primer/alpha/overlay/middle_of_page_with_relative_container",
         "name": "middle_of_page_with_relative_container",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/overlay/dialog_with_header_footer",
+        "name": "dialog_with_header_footer",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7370,7 +7481,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::Tooltip",
-    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}, or {{#link_to_component}}Primer::IconButton{{/link_to_component}}. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).",
+    "description": "`Tooltip` only appears on mouse hover or keyboard focus and contain a label or description text. Use tooltips sparingly and as a last resort.\nUse tooltips as a last resort. Please consider [Tooltips alternatives](https://primer.style/design/accessibility/tooltip-alternatives).\n\nWhen using a tooltip, follow the provided guidelines to avoid accessibility issues:\n- Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.\n- `Tooltip` should be rendered through the API of {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}, or {{#link_to_component}}Primer::IconButton{{/link_to_component}}. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).\n- Tooltip text must be brief and concise even when used to display a description.\n- Tooltips can only hold string content.\n- Tooltips are not allowed on `disabled` elements because such elements are not keyboard-accessible. If you must set a tooltip on a disabled element, use `aria-disabled=\"true\"` instead and programmatically disable the element.\n- **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only\nand screen reader users. Use of tooltips through {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}, or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} will guarantee this.\n- If you must use `Tooltip` as a standalone component, place it immediately after the trigger element in the DOM. This allows screen reader users to navigate to the tooltip and copy its contents if desired.\n  content.\n\nSemantically, a tooltip will either act an accessible name or an accessible description for the element that it is associated with resulting in either a\n`aria-labelledby` or an `aria-describedby` association. The `type` drastically changes semantics and screen reader behavior so follow these guidelines carefully:\n- When there is already a visible label text on the trigger element, the tooltip is likely intended be supplementary, so set `type: :description`.\nThe majority of tooltips will fall under this category.\n- When there is no visible text on the trigger element and the tooltip content is appropriate as a label for the element, set `type: :label`.\n`label` type is usually only appropriate for an icon-only control.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
@@ -8663,6 +8774,12 @@
         "description": "Whether button is full-width with `display: block`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -8673,7 +8790,20 @@
 
     ],
     "methods": [
+      {
+        "name": "disabled",
+        "description": "Returns the value of attribute disabled.",
+        "parameters": [
 
+        ]
+      },
+      {
+        "name": "disabled?",
+        "description": "Returns the value of attribute disabled.",
+        "parameters": [
+
+        ]
+      }
     ],
     "previews": [
       {
@@ -8691,6 +8821,18 @@
       {
         "preview_path": "primer/beta/base_button/default",
         "name": "default",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/base_button/disabled",
+        "name": "disabled",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9387,6 +9529,12 @@
         "description": "One of `:button`, `:reset`, or `:submit`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -9735,6 +9883,18 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/button_group/all_tags",
+        "name": "all_tags",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -9857,6 +10017,12 @@
         "type": "Symbol",
         "default": "`:button`",
         "description": "One of `:button` or `:submit`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled."
       },
       {
         "name": "system_arguments",
@@ -10139,6 +10305,12 @@
         "description": "Defaults to false. If set to true, it will remove the default caret and remove style from the summary element"
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to disable the summary button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -10148,20 +10320,9 @@
     "slots": [
       {
         "name": "summary",
-        "description": "Use the Summary slot as a trigger to reveal the content.",
+        "description": null,
         "parameters": [
-          {
-            "name": "button",
-            "type": "Boolean",
-            "default": "`true`",
-            "description": "Whether to render the Summary as a button or not."
-          },
-          {
-            "name": "kwargs",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The same arguments as {{link_to_system_arguments_docs}}."
-          }
+
         ]
       },
       {
@@ -10184,7 +10345,20 @@
       }
     ],
     "methods": [
+      {
+        "name": "disabled",
+        "description": "Returns the value of attribute disabled.",
+        "parameters": [
 
+        ]
+      },
+      {
+        "name": "disabled?",
+        "description": "Returns the value of attribute disabled.",
+        "parameters": [
+
+        ]
+      }
     ],
     "previews": [
       {
@@ -10485,7 +10659,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::IconButton",
-    "description": "Use `IconButton` to render Icon-only buttons without the default button styles.\n\n`IconButton` will always render with a tooltip unless the tag is `:summary`.\n`IconButton` will always render with a tooltip unless the tag is `:summary`.",
+    "description": "Use `IconButton` to render Icon-only buttons without the default button styles.\n\n`IconButton` will always render with a tooltip unless the tag is `:summary`.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -10501,6 +10675,12 @@
         "type": "String",
         "default": "N/A",
         "description": "Name of {{link_to_octicons}} to use."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "One of `:a`, `:button`, or `:summary`."
       },
       {
         "name": "wrapper_arguments",
@@ -10521,10 +10701,10 @@
         "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
         "name": "type",

@@ -1,25 +1,30 @@
-.Overlay[popover] {
+anchored-position[popover] {
   border-width: 0;
   padding: 0;
   position: absolute;
   min-width: 192px;
   inset: auto;
+  overflow: visible;
 }
 
-.Overlay[popover]:not(.\:popover-open) {
+.Overlay {
+  display: flex;
+}
+
+anchored-position[popover]:not(.\:popover-open) {
   display: none;
 }
 
 /* This reverts the declaration above for native popover, where `:popover-open` is supported */
 @supports selector(:popover-open) {
-  .Overlay[popover]:not(.\:popover-open) {
+  anchored-position[popover]:not(.\:popover-open) {
     display: revert;
   }
 }
 
 /* This reverts the declaration above for native popover, where `:open` is supported (Chrome 113, Safari TP) */
 @supports selector(:open) {
-  .Overlay[popover]:not(.\:popover-open) {
+  anchored-position[popover]:not(.\:popover-open) {
       display: revert;
   }
 }

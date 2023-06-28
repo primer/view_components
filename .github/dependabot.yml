@@ -7,7 +7,7 @@ updates:
     directory: "/"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "actions"
     schedule:
       interval: "monthly"
@@ -19,7 +19,7 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "npm"
     allow:
       - dependency-type: "production"
@@ -29,7 +29,7 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "npm"
     allow:
       - dependency-type: "production"
@@ -43,7 +43,7 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "npm"
     allow:
       - dependency-type: "production"
@@ -55,7 +55,7 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "bundler"
     allow:
       - dependency-type: "production"
@@ -65,7 +65,7 @@ updates:
       interval: "monthly"
     labels:
       - "dependencies"
-      - "skip changelog"
+      - "skip changeset"
       - "bundler"
     allow:
       - dependency-type: "production"
