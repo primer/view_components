@@ -22,15 +22,15 @@ test.describe('generate snapshots', () => {
       if (!example.snapshot) {
         continue
       }
-      test(preview.lookup_path, async ({page}) => {
+      test(example.preview_path, async ({page}) => {
         await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
         const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-        expect(defaultScreenshot).toMatchSnapshot([preview.lookup_path, example.name, `default.png`])
+        expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
 
         // Focus state
         await page.keyboard.press('Tab')
         const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-        expect(focusedScreenshot).toMatchSnapshot([preview.lookup_path, example.name, 'focused.png'])
+        expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
       })
     }
   }
