@@ -93,6 +93,7 @@ module Demo
           ["Default", "default"],
           ["Next Major v8", "next_major_v8"]
         ]
+        # rubocop:enable Style/WordArray
       }
 
       config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]
