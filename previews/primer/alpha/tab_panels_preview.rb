@@ -23,6 +23,7 @@ module Primer
       #
       # @param number_of_panels [Integer] number
       # @param align [Symbol] select [left, right]
+      # @snapshot
       def default(number_of_panels: 3, align: :left)
         render(Primer::Alpha::TabPanels.new(label: "label", align: align)) do |component|
           Array.new(number_of_panels || 3) do |i|
