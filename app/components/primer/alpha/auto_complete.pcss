@@ -36,7 +36,7 @@
   align-items: center;
 
   &:focus-within {
-    border-color: var(--borderColor-accent-emphasis);
+    border-color: var(--color-accent-fg);
 
     @mixin focusBoxShadowInset;
   }
@@ -68,10 +68,10 @@
   overflow-y: auto;
   font-size: 13px;
   list-style: none;
-  background: var(--overlay-bgColor);
-  border: var(--borderWidth-thin) solid var(--borderColor-default);
+  background: var(--color-canvas-overlay);
+  border: var(--borderWidth-thin) solid var(--color-border-default);
   border-radius: var(--borderRadius-medium);
-  box-shadow: var(--shadow-resting-medium);
+  box-shadow: var(--color-shadow-medium);
 }
 
 /* One of the items that appears within an autocomplete group
@@ -83,19 +83,19 @@
   padding: 4px 8px;
   overflow: hidden;
   font-weight: var(--base-text-weight-semibold);
-  color: var(--fgColor-default);
+  color: var(--color-fg-default);
   text-align: left;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
-  background-color: var(--overlay-bgColor);
+  background-color: var(--color-canvas-overlay);
   border: 0;
 
   &:hover {
-    color: var(--fgColor-onEmphasis);
+    color: var(--color-fg-on-emphasis);
     text-decoration: none;
-    background-color: var(--bgColor-accent-emphasis);
+    background-color: var(--color-accent-emphasis);
 
     /* Inherit color on all child elements to ensure enough contrast */
     & * {
@@ -106,9 +106,9 @@
   &.selected,
   &[aria-selected='true'],
   &.navigation-focus {
-    color: var(--fgColor-onEmphasis);
+    color: var(--color-fg-on-emphasis);
     text-decoration: none;
-    background-color: var(--bgColor-accent-emphasis);
+    background-color: var(--color-accent-emphasis);
 
     /* Inherit color on all child elements to ensure enough contrast */
     & * {

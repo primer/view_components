@@ -5,19 +5,19 @@
   min-height: var(--base-size-48);
   overflow-x: auto;
   overflow-y: hidden;
-  box-shadow: inset 0 -1px 0 var(--borderColor-muted);
+  box-shadow: inset 0 -1px 0 var(--color-border-muted);
   -webkit-overflow-scrolling: auto;
   justify-content: space-between;
 
   & .Counter {
     margin-left: var(--control-medium-gap);
-    color: var(--fgColor-default);
-    background-color: var(--bgColor-neutral-muted);
+    color: var(--color-fg-default);
+    background-color: var(--color-neutral-muted);
   }
 
   & .Counter--primary {
-    color: var(--fgColor-onEmphasis);
-    background-color: var(--bgColor-neutral-emphasis);
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-neutral-emphasis);
   }
 }
 
@@ -34,7 +34,7 @@
   padding: 0 var(--control-medium-paddingInline-condensed);
   font-size: var(--text-body-size-medium);
   line-height: 30px;
-  color: var(--fgColor-default);
+  color: var(--color-fg-default);
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
@@ -46,9 +46,9 @@
   &:hover,
   &:focus,
   &:focus-visible {
-    color: var(--fgColor-default);
+    color: var(--color-fg-default);
     text-decoration: none;
-    border-bottom-color: var(--borderColor-neutral-muted);
+    border-bottom-color: var(--color-neutral-muted);
     outline-offset: -2px;
     transition: border-bottom-color 0.12s ease-out;
   }
@@ -70,9 +70,9 @@
   /* hover state was "sticking" on mobile after click */
   @media (pointer: fine) {
     &:hover {
-      color: var(--fgColor-default);
+      color: var(--color-fg-default);
       text-decoration: none;
-      background: var(--control-transparent-bgColor-hover);
+      background: var(--color-action-list-item-default-hover-bg);
       transition: background 0.12s ease-out;
     }
   }
@@ -81,8 +81,8 @@
   &[role='tab'][aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
     font-weight: var(--base-text-weight-semibold);
-    color: var(--fgColor-default);
-    border-bottom-color: var(--underlineNav-borderColor-active);
+    color: var(--color-fg-default);
+    border-bottom-color: var(--color-primer-border-active);
 
     /* current/selected underline */
     &::after {
@@ -93,7 +93,7 @@
       width: 100%;
       height: 2px;
       content: '';
-      background: var(--underlineNav-borderColor-active);
+      background: var(--color-primer-border-active);
       border-radius: var(--borderRadius-medium);
       transform: translate(50%, -50%);
     }
@@ -124,8 +124,8 @@
 .UnderlineNav-octicon {
   display: inline !important;
   margin-right: var(--control-medium-gap);
-  color: var(--fgColor-muted);
-  fill: var(--fgColor-muted);
+  color: var(--color-fg-muted);
+  fill: var(--color-fg-muted);
 }
 
 .UnderlineNav-container {
