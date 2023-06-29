@@ -15,7 +15,7 @@
 
   <body>
     <div id="component-preview">
-      <% if params.dig(:lookbook, :display, :theme) == "all" || params.dig(:theme) == "all" %>
+      <% if params.dig(:lookbook, :display, :theme) == "all" || params.dig(:theme) == "all" %> 
         <div class="theme-wrap">
           <% color_themes.each do |theme| %>
             <div class="preview-wrap" <%= color_theme_attributes(theme) %>>
