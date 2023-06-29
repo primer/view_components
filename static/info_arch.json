@@ -140,6 +140,7 @@
       {
         "preview_path": "primer/alpha/action_list/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -152,6 +153,7 @@
       {
         "preview_path": "primer/alpha/action_list/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -164,6 +166,7 @@
       {
         "preview_path": "primer/alpha/action_list/leading_visuals",
         "name": "leading_visuals",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -176,6 +179,7 @@
       {
         "preview_path": "primer/alpha/action_list/with_manual_dividers",
         "name": "with_manual_dividers",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -188,6 +192,7 @@
       {
         "preview_path": "primer/alpha/action_list/divider",
         "name": "divider",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -200,6 +205,7 @@
       {
         "preview_path": "primer/alpha/action_list/heading",
         "name": "heading",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -212,6 +218,7 @@
       {
         "preview_path": "primer/alpha/action_list/item",
         "name": "item",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -224,6 +231,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_default",
         "name": "item_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -236,6 +244,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_size_large",
         "name": "item_size_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -248,6 +257,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_size_xlarge",
         "name": "item_size_xlarge",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -260,6 +270,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_leading_visual",
         "name": "item_leading_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -272,6 +283,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_trailing_visual",
         "name": "item_trailing_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -284,6 +296,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_leading_trailing_visual",
         "name": "item_leading_trailing_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -296,6 +309,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_with_description",
         "name": "item_with_description",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -308,6 +322,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_with_description_inline",
         "name": "item_with_description_inline",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -320,6 +335,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_trailing_action",
         "name": "item_trailing_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -332,6 +348,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_danger",
         "name": "item_danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -344,6 +361,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_disabled",
         "name": "item_disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -356,6 +374,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_wrap_label",
         "name": "item_wrap_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -368,6 +387,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_truncate_label",
         "name": "item_truncate_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -380,6 +400,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_active",
         "name": "item_active",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -939,6 +960,7 @@
       {
         "preview_path": "primer/alpha/action_menu/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -951,6 +973,7 @@
       {
         "preview_path": "primer/alpha/action_menu/content_labels",
         "name": "content_labels",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -963,6 +986,7 @@
       {
         "preview_path": "primer/alpha/action_menu/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -975,6 +999,7 @@
       {
         "preview_path": "primer/alpha/action_menu/wide",
         "name": "wide",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -987,6 +1012,7 @@
       {
         "preview_path": "primer/alpha/action_menu/with_icon_button",
         "name": "with_icon_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -999,6 +1025,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_select",
         "name": "single_select",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1011,6 +1038,7 @@
       {
         "preview_path": "primer/alpha/action_menu/multiple_select",
         "name": "multiple_select",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1023,6 +1051,7 @@
       {
         "preview_path": "primer/alpha/action_menu/links",
         "name": "links",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1035,6 +1064,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_selected_item",
         "name": "single_selected_item",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1047,6 +1077,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_select_with_internal_label",
         "name": "single_select_with_internal_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1059,6 +1090,7 @@
       {
         "preview_path": "primer/alpha/action_menu/multiple_selected_items",
         "name": "multiple_selected_items",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1071,6 +1103,7 @@
       {
         "preview_path": "primer/alpha/action_menu/with_deferred_content",
         "name": "with_deferred_content",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1083,6 +1116,7 @@
       {
         "preview_path": "primer/alpha/action_menu/with_deferred_preloaded_content",
         "name": "with_deferred_preloaded_content",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1095,6 +1129,7 @@
       {
         "preview_path": "primer/alpha/action_menu/with_actions",
         "name": "with_actions",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1107,6 +1142,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_select_form",
         "name": "single_select_form",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1119,6 +1155,7 @@
       {
         "preview_path": "primer/alpha/action_menu/multiple_select_form",
         "name": "multiple_select_form",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1131,6 +1168,7 @@
       {
         "preview_path": "primer/alpha/action_menu/with_disabled_items",
         "name": "with_disabled_items",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1143,6 +1181,7 @@
       {
         "preview_path": "primer/alpha/action_menu/opens_dialog",
         "name": "opens_dialog",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1155,6 +1194,7 @@
       {
         "preview_path": "primer/alpha/action_menu/align_end",
         "name": "align_end",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1167,6 +1207,7 @@
       {
         "preview_path": "primer/alpha/action_menu/block_description",
         "name": "block_description",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1179,6 +1220,7 @@
       {
         "preview_path": "primer/alpha/action_menu/submitting_forms",
         "name": "submitting_forms",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1191,6 +1233,7 @@
       {
         "preview_path": "primer/alpha/action_menu/inline_description",
         "name": "inline_description",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1203,6 +1246,7 @@
       {
         "preview_path": "primer/alpha/action_menu/leading_visual",
         "name": "leading_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1215,6 +1259,7 @@
       {
         "preview_path": "primer/alpha/action_menu/leading_visual_single_select",
         "name": "leading_visual_single_select",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1227,6 +1272,7 @@
       {
         "preview_path": "primer/alpha/action_menu/two_menus",
         "name": "two_menus",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1432,6 +1478,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1444,6 +1491,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1456,6 +1504,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/with_non_visible_label",
         "name": "with_non_visible_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1468,6 +1517,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/with_inline_label",
         "name": "with_inline_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1480,6 +1530,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/with_icon",
         "name": "with_icon",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1492,6 +1543,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/with_clear_button",
         "name": "with_clear_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1634,6 +1686,7 @@
       {
         "preview_path": "primer/alpha/banner/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1646,6 +1699,7 @@
       {
         "preview_path": "primer/alpha/banner/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1658,6 +1712,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_default",
         "name": "scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1670,6 +1725,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_danger",
         "name": "scheme_danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1682,6 +1738,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_success",
         "name": "scheme_success",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1694,6 +1751,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_warning",
         "name": "scheme_warning",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1706,6 +1764,7 @@
       {
         "preview_path": "primer/alpha/banner/dismissable",
         "name": "dismissable",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1718,6 +1777,7 @@
       {
         "preview_path": "primer/alpha/banner/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1730,6 +1790,7 @@
       {
         "preview_path": "primer/alpha/banner/full_width_in_narrow_viewport",
         "name": "full_width_in_narrow_viewport",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1742,6 +1803,7 @@
       {
         "preview_path": "primer/alpha/banner/with_action_button",
         "name": "with_action_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1754,6 +1816,7 @@
       {
         "preview_path": "primer/alpha/banner/with_action_content",
         "name": "with_action_content",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1828,6 +1891,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1840,6 +1904,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1852,6 +1917,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/sizes_default",
         "name": "sizes_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1864,6 +1930,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/sizes_large",
         "name": "sizes_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1876,6 +1943,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_default",
         "name": "scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1888,6 +1956,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_primary",
         "name": "scheme_primary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1900,6 +1969,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_outline",
         "name": "scheme_outline",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1912,6 +1982,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_transparent",
         "name": "scheme_transparent",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2082,6 +2153,7 @@
       {
         "preview_path": "primer/alpha/check_box/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2094,6 +2166,7 @@
       {
         "preview_path": "primer/alpha/check_box/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2106,6 +2179,7 @@
       {
         "preview_path": "primer/alpha/check_box/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2118,6 +2192,7 @@
       {
         "preview_path": "primer/alpha/check_box/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2130,6 +2205,7 @@
       {
         "preview_path": "primer/alpha/check_box/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2215,6 +2291,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2227,6 +2304,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2239,6 +2317,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2251,6 +2330,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2263,6 +2343,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2275,6 +2356,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2432,6 +2514,7 @@
       {
         "preview_path": "primer/alpha/dialog/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2444,6 +2527,7 @@
       {
         "preview_path": "primer/alpha/dialog/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2456,6 +2540,7 @@
       {
         "preview_path": "primer/alpha/dialog/long_text",
         "name": "long_text",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2468,6 +2553,7 @@
       {
         "preview_path": "primer/alpha/dialog/with_footer",
         "name": "with_footer",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2480,6 +2566,7 @@
       {
         "preview_path": "primer/alpha/dialog/with_form",
         "name": "with_form",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2492,6 +2579,7 @@
       {
         "preview_path": "primer/alpha/dialog/custom_header",
         "name": "custom_header",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2504,6 +2592,7 @@
       {
         "preview_path": "primer/alpha/dialog/nested_dialog",
         "name": "nested_dialog",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2516,6 +2605,7 @@
       {
         "preview_path": "primer/alpha/dialog/with_text_input",
         "name": "with_text_input",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2528,6 +2618,7 @@
       {
         "preview_path": "primer/alpha/dialog/body_has_scrollbar_overflow",
         "name": "body_has_scrollbar_overflow",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2754,6 +2845,7 @@
       {
         "preview_path": "primer/alpha/dropdown/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2766,6 +2858,7 @@
       {
         "preview_path": "primer/alpha/dropdown/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2778,6 +2871,7 @@
       {
         "preview_path": "primer/alpha/dropdown/menu",
         "name": "menu",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2790,6 +2884,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_e",
         "name": "direction_e",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2802,6 +2897,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_ne",
         "name": "direction_ne",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2814,6 +2910,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_s",
         "name": "direction_s",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2826,6 +2923,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_se",
         "name": "direction_se",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2838,6 +2936,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_sw",
         "name": "direction_sw",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2850,6 +2949,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_w",
         "name": "direction_w",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2862,6 +2962,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_with_caret",
         "name": "options_with_caret",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2874,6 +2975,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_with_header",
         "name": "options_with_header",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2886,6 +2988,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_with_dividers",
         "name": "options_with_dividers",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2898,6 +3001,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_as_list",
         "name": "options_as_list",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2910,6 +3014,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_overlay_none",
         "name": "options_overlay_none",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2922,6 +3027,7 @@
       {
         "preview_path": "primer/alpha/dropdown/options_overlay_dark",
         "name": "options_overlay_dark",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3191,6 +3297,7 @@
       {
         "preview_path": "primer/alpha/form_control/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3203,6 +3310,7 @@
       {
         "preview_path": "primer/alpha/form_control/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3215,6 +3323,7 @@
       {
         "preview_path": "primer/alpha/form_control/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3227,6 +3336,7 @@
       {
         "preview_path": "primer/alpha/form_control/with_validation_message",
         "name": "with_validation_message",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3239,6 +3349,7 @@
       {
         "preview_path": "primer/alpha/form_control/required",
         "name": "required",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3251,6 +3362,7 @@
       {
         "preview_path": "primer/alpha/form_control/with_visually_hidden_label",
         "name": "with_visually_hidden_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3307,6 +3419,7 @@
       {
         "preview_path": "primer/alpha/hellip_button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3319,6 +3432,7 @@
       {
         "preview_path": "primer/alpha/hellip_button/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3375,6 +3489,7 @@
       {
         "preview_path": "primer/alpha/hidden_text_expander/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3387,6 +3502,7 @@
       {
         "preview_path": "primer/alpha/hidden_text_expander/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3505,6 +3621,7 @@
       {
         "preview_path": "primer/alpha/image_crop/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3517,6 +3634,7 @@
       {
         "preview_path": "primer/alpha/image_crop/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3529,6 +3647,7 @@
       {
         "preview_path": "primer/alpha/image_crop/loading",
         "name": "loading",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3638,6 +3757,7 @@
       {
         "preview_path": "primer/alpha/layout/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3650,6 +3770,7 @@
       {
         "preview_path": "primer/alpha/layout/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3662,6 +3783,7 @@
       {
         "preview_path": "primer/alpha/layout/gutter_none",
         "name": "gutter_none",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3674,6 +3796,7 @@
       {
         "preview_path": "primer/alpha/layout/gutter_condensed",
         "name": "gutter_condensed",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3686,6 +3809,7 @@
       {
         "preview_path": "primer/alpha/layout/gutter_default",
         "name": "gutter_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3698,6 +3822,7 @@
       {
         "preview_path": "primer/alpha/layout/gutter_spacious",
         "name": "gutter_spacious",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3710,6 +3835,7 @@
       {
         "preview_path": "primer/alpha/layout/main_width_md",
         "name": "main_width_md",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3722,6 +3848,7 @@
       {
         "preview_path": "primer/alpha/layout/main_width_lg",
         "name": "main_width_lg",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3734,6 +3861,7 @@
       {
         "preview_path": "primer/alpha/layout/main_width_xl",
         "name": "main_width_xl",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3746,6 +3874,7 @@
       {
         "preview_path": "primer/alpha/layout/main_width_full",
         "name": "main_width_full",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3758,6 +3887,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_width_narrow",
         "name": "sidebar_width_narrow",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3770,6 +3900,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_width_default",
         "name": "sidebar_width_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3782,6 +3913,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_width_wide",
         "name": "sidebar_width_wide",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3794,6 +3926,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_col_placement_start",
         "name": "sidebar_col_placement_start",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3806,6 +3939,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_col_placement_end",
         "name": "sidebar_col_placement_end",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3818,6 +3952,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_start",
         "name": "sidebar_row_placement_start",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3830,6 +3965,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_end",
         "name": "sidebar_row_placement_end",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3842,6 +3978,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_row_placement_none",
         "name": "sidebar_row_placement_none",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3854,6 +3991,7 @@
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_sm",
         "name": "stacking_breakpoint_sm",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3866,6 +4004,7 @@
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_md",
         "name": "stacking_breakpoint_md",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3878,6 +4017,7 @@
       {
         "preview_path": "primer/alpha/layout/stacking_breakpoint_lg",
         "name": "stacking_breakpoint_lg",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4029,6 +4169,7 @@
       {
         "preview_path": "primer/alpha/menu/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4041,6 +4182,7 @@
       {
         "preview_path": "primer/alpha/menu/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4187,6 +4329,7 @@
       {
         "preview_path": "primer/alpha/multi_input/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4199,6 +4342,7 @@
       {
         "preview_path": "primer/alpha/multi_input/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4211,6 +4355,7 @@
       {
         "preview_path": "primer/alpha/multi_input/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4223,6 +4368,7 @@
       {
         "preview_path": "primer/alpha/multi_input/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4235,6 +4381,7 @@
       {
         "preview_path": "primer/alpha/multi_input/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4328,6 +4475,7 @@
       {
         "preview_path": "primer/alpha/nav_list/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4340,6 +4488,7 @@
       {
         "preview_path": "primer/alpha/nav_list/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4352,6 +4501,7 @@
       {
         "preview_path": "primer/alpha/nav_list/top_level_items",
         "name": "top_level_items",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4364,6 +4514,7 @@
       {
         "preview_path": "primer/alpha/nav_list/show_more_item",
         "name": "show_more_item",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4376,6 +4527,7 @@
       {
         "preview_path": "primer/alpha/nav_list/trailing_action",
         "name": "trailing_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5109,6 +5261,7 @@
       {
         "preview_path": "primer/alpha/overlay/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5121,6 +5274,7 @@
       {
         "preview_path": "primer/alpha/overlay/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5133,6 +5287,7 @@
       {
         "preview_path": "primer/alpha/overlay/menu_no_header",
         "name": "menu_no_header",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5145,6 +5300,7 @@
       {
         "preview_path": "primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5157,6 +5313,7 @@
       {
         "preview_path": "primer/alpha/overlay/middle_of_page_with_relative_container",
         "name": "middle_of_page_with_relative_container",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5169,6 +5326,7 @@
       {
         "preview_path": "primer/alpha/overlay/dialog_with_header_footer",
         "name": "dialog_with_header_footer",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5461,6 +5619,7 @@
       {
         "preview_path": "primer/alpha/radio_button/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5473,6 +5632,7 @@
       {
         "preview_path": "primer/alpha/radio_button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5485,6 +5645,7 @@
       {
         "preview_path": "primer/alpha/radio_button/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5497,6 +5658,7 @@
       {
         "preview_path": "primer/alpha/radio_button/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5509,6 +5671,7 @@
       {
         "preview_path": "primer/alpha/radio_button/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5594,6 +5757,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5606,6 +5770,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5618,6 +5783,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5630,6 +5796,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5642,6 +5809,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5654,6 +5822,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5727,6 +5896,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5739,6 +5909,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5751,6 +5922,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_small",
         "name": "full_width_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5763,6 +5935,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_medium",
         "name": "full_width_medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5775,6 +5948,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_large",
         "name": "full_width_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5787,6 +5961,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_small",
         "name": "icons_and_text_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5799,6 +5974,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_medium",
         "name": "icons_and_text_medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5811,6 +5987,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
         "name": "icons_and_text_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5823,6 +6000,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5835,6 +6013,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_medium",
         "name": "icon_only_medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5847,6 +6026,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_large",
         "name": "icon_only_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5859,6 +6039,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_small",
         "name": "icon_only_full_width_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5871,6 +6052,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_medium",
         "name": "icon_only_full_width_medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5883,6 +6065,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_large",
         "name": "icon_only_full_width_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5895,6 +6078,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_link_as_tag",
         "name": "with_link_as_tag",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5907,6 +6091,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_subhead_actions",
         "name": "with_subhead_actions",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5919,6 +6104,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_label_and_caption",
         "name": "with_label_and_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6156,6 +6342,7 @@
       {
         "preview_path": "primer/alpha/select/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6168,6 +6355,7 @@
       {
         "preview_path": "primer/alpha/select/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6180,6 +6368,7 @@
       {
         "preview_path": "primer/alpha/select/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6192,6 +6381,7 @@
       {
         "preview_path": "primer/alpha/select/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6204,6 +6394,7 @@
       {
         "preview_path": "primer/alpha/select/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6216,6 +6407,7 @@
       {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6228,6 +6420,7 @@
       {
         "preview_path": "primer/alpha/select/invalid",
         "name": "invalid",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6240,6 +6433,7 @@
       {
         "preview_path": "primer/alpha/select/with_validation_message",
         "name": "with_validation_message",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6439,6 +6633,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6451,6 +6646,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6463,6 +6659,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6475,6 +6672,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/with_extra",
         "name": "with_extra",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6578,6 +6776,7 @@
       {
         "preview_path": "primer/alpha/tab_panels/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6590,6 +6789,7 @@
       {
         "preview_path": "primer/alpha/tab_panels/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6602,6 +6802,7 @@
       {
         "preview_path": "primer/alpha/tab_panels/with_extra",
         "name": "with_extra",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6754,6 +6955,7 @@
       {
         "preview_path": "primer/alpha/text_area/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6766,6 +6968,7 @@
       {
         "preview_path": "primer/alpha/text_area/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6778,6 +6981,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6790,6 +6994,7 @@
       {
         "preview_path": "primer/alpha/text_area/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6802,6 +7007,7 @@
       {
         "preview_path": "primer/alpha/text_area/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6814,6 +7020,7 @@
       {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6826,6 +7033,7 @@
       {
         "preview_path": "primer/alpha/text_area/invalid",
         "name": "invalid",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6838,6 +7046,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_validation_message",
         "name": "with_validation_message",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7038,6 +7247,7 @@
       {
         "preview_path": "primer/alpha/text_field/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7050,6 +7260,7 @@
       {
         "preview_path": "primer/alpha/text_field/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7062,6 +7273,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_small",
         "name": "size_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7074,6 +7286,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_medium",
         "name": "size_medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7086,6 +7299,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_large",
         "name": "size_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7098,6 +7312,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_caption",
         "name": "with_caption",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7110,6 +7325,7 @@
       {
         "preview_path": "primer/alpha/text_field/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7122,6 +7338,7 @@
       {
         "preview_path": "primer/alpha/text_field/show_clear_button",
         "name": "show_clear_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7134,6 +7351,7 @@
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7146,6 +7364,7 @@
       {
         "preview_path": "primer/alpha/text_field/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7158,6 +7377,7 @@
       {
         "preview_path": "primer/alpha/text_field/invalid",
         "name": "invalid",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7170,6 +7390,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_placeholder",
         "name": "with_placeholder",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7182,6 +7403,7 @@
       {
         "preview_path": "primer/alpha/text_field/inset",
         "name": "inset",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7194,6 +7416,7 @@
       {
         "preview_path": "primer/alpha/text_field/monospace",
         "name": "monospace",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7206,6 +7429,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_leading_visual",
         "name": "with_leading_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7218,6 +7442,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_validation_message",
         "name": "with_validation_message",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7230,6 +7455,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_auto_check_ok",
         "name": "with_auto_check_ok",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7242,6 +7468,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_auto_check_error",
         "name": "with_auto_check_error",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7254,6 +7481,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_data_target",
         "name": "with_data_target",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7334,6 +7562,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7347,6 +7576,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7360,6 +7590,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/checked",
         "name": "checked",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7373,6 +7604,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7386,6 +7618,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/checked_disabled",
         "name": "checked_disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7399,6 +7632,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/small",
         "name": "small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7412,6 +7646,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_status_label_position_end",
         "name": "with_status_label_position_end",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7425,6 +7660,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_a_bad_src",
         "name": "with_a_bad_src",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7438,6 +7674,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_no_src",
         "name": "with_no_src",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7451,6 +7688,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_csrf_token",
         "name": "with_csrf_token",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7464,6 +7702,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_bad_csrf_token",
         "name": "with_bad_csrf_token",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -7533,6 +7772,7 @@
       {
         "preview_path": "primer/alpha/tooltip/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7545,6 +7785,7 @@
       {
         "preview_path": "primer/alpha/tooltip/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7557,6 +7798,7 @@
       {
         "preview_path": "primer/alpha/tooltip/label_tooltip_on_button_with_existing_labelledby",
         "name": "label_tooltip_on_button_with_existing_labelledby",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7569,6 +7811,7 @@
       {
         "preview_path": "primer/alpha/tooltip/description_tooltip_on_button_with_existing_describedby",
         "name": "description_tooltip_on_button_with_existing_describedby",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7581,6 +7824,7 @@
       {
         "preview_path": "primer/alpha/tooltip/with_right_most_position",
         "name": "with_right_most_position",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7593,6 +7837,7 @@
       {
         "preview_path": "primer/alpha/tooltip/with_multiple_on_a_page",
         "name": "with_multiple_on_a_page",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7605,6 +7850,7 @@
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_button",
         "name": "tooltip_with_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7617,6 +7863,7 @@
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_link",
         "name": "tooltip_with_link",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7629,6 +7876,7 @@
       {
         "preview_path": "primer/alpha/tooltip/tooltip_with_icon_button",
         "name": "tooltip_with_icon_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7732,6 +7980,7 @@
       {
         "preview_path": "primer/alpha/underline_nav/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7744,6 +7993,7 @@
       {
         "preview_path": "primer/alpha/underline_nav/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7756,6 +8006,7 @@
       {
         "preview_path": "primer/alpha/underline_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7865,6 +8116,7 @@
       {
         "preview_path": "primer/alpha/underline_panels/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7877,6 +8129,7 @@
       {
         "preview_path": "primer/alpha/underline_panels/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8046,6 +8299,7 @@
       {
         "preview_path": "primer/beta/auto_complete/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8058,6 +8312,7 @@
       {
         "preview_path": "primer/beta/auto_complete/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8070,6 +8325,7 @@
       {
         "preview_path": "primer/beta/auto_complete/with_submit_button",
         "name": "with_submit_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8082,6 +8338,7 @@
       {
         "preview_path": "primer/beta/auto_complete/leading_visual",
         "name": "leading_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8094,6 +8351,7 @@
       {
         "preview_path": "primer/beta/auto_complete/trailing_action",
         "name": "trailing_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8106,6 +8364,7 @@
       {
         "preview_path": "primer/beta/auto_complete/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8118,6 +8377,7 @@
       {
         "preview_path": "primer/beta/auto_complete/visually_hide_label",
         "name": "visually_hide_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8130,6 +8390,7 @@
       {
         "preview_path": "primer/beta/auto_complete/small",
         "name": "small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8142,6 +8403,7 @@
       {
         "preview_path": "primer/beta/auto_complete/medium",
         "name": "medium",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8154,6 +8416,7 @@
       {
         "preview_path": "primer/beta/auto_complete/large",
         "name": "large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8166,6 +8429,7 @@
       {
         "preview_path": "primer/beta/auto_complete/leading_visual_in_results",
         "name": "leading_visual_in_results",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8178,6 +8442,7 @@
       {
         "preview_path": "primer/beta/auto_complete/trailing_visual_in_results",
         "name": "trailing_visual_in_results",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8190,6 +8455,7 @@
       {
         "preview_path": "primer/beta/auto_complete/with_non_visible_label",
         "name": "with_non_visible_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8202,6 +8468,7 @@
       {
         "preview_path": "primer/beta/auto_complete/with_icon",
         "name": "with_icon",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8214,6 +8481,7 @@
       {
         "preview_path": "primer/beta/auto_complete/show_clear_button",
         "name": "show_clear_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8226,6 +8494,7 @@
       {
         "preview_path": "primer/beta/auto_complete/size_small",
         "name": "size_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8238,6 +8507,7 @@
       {
         "preview_path": "primer/beta/auto_complete/monospace",
         "name": "monospace",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8250,6 +8520,7 @@
       {
         "preview_path": "primer/beta/auto_complete/inset",
         "name": "inset",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8421,6 +8692,7 @@
       {
         "preview_path": "primer/beta/avatar/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8433,6 +8705,7 @@
       {
         "preview_path": "primer/beta/avatar/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8445,6 +8718,7 @@
       {
         "preview_path": "primer/beta/avatar/as_link",
         "name": "as_link",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8457,6 +8731,7 @@
       {
         "preview_path": "primer/beta/avatar/size_16",
         "name": "size_16",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8469,6 +8744,7 @@
       {
         "preview_path": "primer/beta/avatar/size_20",
         "name": "size_20",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8481,6 +8757,7 @@
       {
         "preview_path": "primer/beta/avatar/size_24",
         "name": "size_24",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8493,6 +8770,7 @@
       {
         "preview_path": "primer/beta/avatar/size_32",
         "name": "size_32",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8505,6 +8783,7 @@
       {
         "preview_path": "primer/beta/avatar/size_40",
         "name": "size_40",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8517,6 +8796,7 @@
       {
         "preview_path": "primer/beta/avatar/size_48",
         "name": "size_48",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8529,6 +8809,7 @@
       {
         "preview_path": "primer/beta/avatar/size_80",
         "name": "size_80",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8541,6 +8822,7 @@
       {
         "preview_path": "primer/beta/avatar/shape_circle",
         "name": "shape_circle",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8553,6 +8835,7 @@
       {
         "preview_path": "primer/beta/avatar/shape_square",
         "name": "shape_square",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8632,6 +8915,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8644,6 +8928,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8656,6 +8941,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_1",
         "name": "avatar_1",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8668,6 +8954,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_2",
         "name": "avatar_2",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8680,6 +8967,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_3",
         "name": "avatar_3",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8692,6 +8980,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_4",
         "name": "avatar_4",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8704,6 +8993,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_5",
         "name": "avatar_5",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8716,6 +9006,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/align_right",
         "name": "align_right",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8728,6 +9019,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/with_tooltip",
         "name": "with_tooltip",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8809,6 +9101,7 @@
       {
         "preview_path": "primer/beta/base_button/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8821,6 +9114,7 @@
       {
         "preview_path": "primer/beta/base_button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8833,6 +9127,7 @@
       {
         "preview_path": "primer/beta/base_button/disabled",
         "name": "disabled",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8972,6 +9267,7 @@
       {
         "preview_path": "primer/beta/blankslate/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8984,6 +9280,7 @@
       {
         "preview_path": "primer/beta/blankslate/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8996,6 +9293,7 @@
       {
         "preview_path": "primer/beta/blankslate/option_narrow",
         "name": "option_narrow",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9008,6 +9306,7 @@
       {
         "preview_path": "primer/beta/blankslate/option_spacious",
         "name": "option_spacious",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9020,6 +9319,7 @@
       {
         "preview_path": "primer/beta/blankslate/option_border",
         "name": "option_border",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9032,6 +9332,7 @@
       {
         "preview_path": "primer/beta/blankslate/with_icon",
         "name": "with_icon",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9044,6 +9345,7 @@
       {
         "preview_path": "primer/beta/blankslate/with_image",
         "name": "with_image",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9056,6 +9358,7 @@
       {
         "preview_path": "primer/beta/blankslate/loading",
         "name": "loading",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9068,6 +9371,7 @@
       {
         "preview_path": "primer/beta/blankslate/description",
         "name": "description",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9080,6 +9384,7 @@
       {
         "preview_path": "primer/beta/blankslate/primary_action",
         "name": "primary_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9092,6 +9397,7 @@
       {
         "preview_path": "primer/beta/blankslate/secondary_action",
         "name": "secondary_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9104,6 +9410,7 @@
       {
         "preview_path": "primer/beta/blankslate/full",
         "name": "full",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9207,6 +9514,7 @@
       {
         "preview_path": "primer/beta/border_box/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9219,6 +9527,7 @@
       {
         "preview_path": "primer/beta/border_box/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9231,6 +9540,7 @@
       {
         "preview_path": "primer/beta/border_box/header_with_title",
         "name": "header_with_title",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9243,6 +9553,7 @@
       {
         "preview_path": "primer/beta/border_box/row_colors",
         "name": "row_colors",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9255,6 +9566,7 @@
       {
         "preview_path": "primer/beta/border_box/padding_default",
         "name": "padding_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9267,6 +9579,7 @@
       {
         "preview_path": "primer/beta/border_box/padding_condensed",
         "name": "padding_condensed",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9279,6 +9592,7 @@
       {
         "preview_path": "primer/beta/border_box/padding_spacious",
         "name": "padding_spacious",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9389,6 +9703,7 @@
       {
         "preview_path": "primer/beta/breadcrumbs/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9401,6 +9716,7 @@
       {
         "preview_path": "primer/beta/breadcrumbs/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9604,6 +9920,7 @@
       {
         "preview_path": "primer/beta/button/playground",
         "name": "playground",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9616,6 +9933,7 @@
       {
         "preview_path": "primer/beta/button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9628,6 +9946,7 @@
       {
         "preview_path": "primer/beta/button/primary",
         "name": "primary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9640,6 +9959,7 @@
       {
         "preview_path": "primer/beta/button/danger",
         "name": "danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9652,6 +9972,7 @@
       {
         "preview_path": "primer/beta/button/invisible",
         "name": "invisible",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9664,6 +9985,7 @@
       {
         "preview_path": "primer/beta/button/invisible_all_visuals",
         "name": "invisible_all_visuals",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9676,6 +9998,7 @@
       {
         "preview_path": "primer/beta/button/link",
         "name": "link",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9688,6 +10011,7 @@
       {
         "preview_path": "primer/beta/button/all_schemes",
         "name": "all_schemes",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9700,6 +10024,7 @@
       {
         "preview_path": "primer/beta/button/full_width",
         "name": "full_width",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9712,6 +10037,7 @@
       {
         "preview_path": "primer/beta/button/link_as_button",
         "name": "link_as_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9724,6 +10050,7 @@
       {
         "preview_path": "primer/beta/button/trailing_visual",
         "name": "trailing_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9736,6 +10063,7 @@
       {
         "preview_path": "primer/beta/button/leading_visual",
         "name": "leading_visual",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9748,6 +10076,7 @@
       {
         "preview_path": "primer/beta/button/trailing_action",
         "name": "trailing_action",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9760,6 +10089,7 @@
       {
         "preview_path": "primer/beta/button/trailing_counter",
         "name": "trailing_counter",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9772,6 +10102,7 @@
       {
         "preview_path": "primer/beta/button/with_tooltip",
         "name": "with_tooltip",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9839,6 +10170,7 @@
       {
         "preview_path": "primer/beta/button_group/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9851,6 +10183,7 @@
       {
         "preview_path": "primer/beta/button_group/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9863,6 +10196,7 @@
       {
         "preview_path": "primer/beta/button_group/split_button",
         "name": "split_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9875,6 +10209,7 @@
       {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9887,6 +10222,7 @@
       {
         "preview_path": "primer/beta/button_group/all_tags",
         "name": "all_tags",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9949,6 +10285,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9961,6 +10298,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9973,6 +10311,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/text",
         "name": "text",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -9985,6 +10324,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/element",
         "name": "element",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10041,6 +10381,7 @@
       {
         "preview_path": "primer/beta/close_button/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10053,6 +10394,7 @@
       {
         "preview_path": "primer/beta/close_button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10133,6 +10475,7 @@
       {
         "preview_path": "primer/beta/counter/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10145,6 +10488,7 @@
       {
         "preview_path": "primer/beta/counter/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10157,6 +10501,7 @@
       {
         "preview_path": "primer/beta/counter/with_text",
         "name": "with_text",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10169,6 +10514,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_default",
         "name": "color_scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10181,6 +10527,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_primary",
         "name": "color_scheme_primary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10193,6 +10540,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_secondary",
         "name": "color_scheme_secondary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10205,6 +10553,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_default",
         "name": "rounding_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10217,6 +10566,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_above_1000",
         "name": "rounding_above_1000",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10229,6 +10579,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_below_1000",
         "name": "rounding_below_1000",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10241,6 +10592,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number",
         "name": "rounding_large_number",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10253,6 +10605,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number_less_than_custom_limit",
         "name": "rounding_large_number_less_than_custom_limit",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10265,6 +10618,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number_greater_than_custom_limit",
         "name": "rounding_large_number_greater_than_custom_limit",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10364,6 +10718,7 @@
       {
         "preview_path": "primer/beta/details/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10376,6 +10731,7 @@
       {
         "preview_path": "primer/beta/details/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10388,6 +10744,7 @@
       {
         "preview_path": "primer/beta/details/custom_button",
         "name": "custom_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10400,6 +10757,7 @@
       {
         "preview_path": "primer/beta/details/without_button",
         "name": "without_button",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10485,6 +10843,7 @@
       {
         "preview_path": "primer/beta/flash/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10497,6 +10856,7 @@
       {
         "preview_path": "primer/beta/flash/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10509,6 +10869,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_default",
         "name": "color_scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10521,6 +10882,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_warning",
         "name": "color_scheme_warning",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10533,6 +10895,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_danger",
         "name": "color_scheme_danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10545,6 +10908,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_success",
         "name": "color_scheme_success",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10557,6 +10921,7 @@
       {
         "preview_path": "primer/beta/flash/options_full",
         "name": "options_full",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10569,6 +10934,7 @@
       {
         "preview_path": "primer/beta/flash/options_dismissible",
         "name": "options_dismissible",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10581,6 +10947,7 @@
       {
         "preview_path": "primer/beta/flash/options_with_icon",
         "name": "options_with_icon",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10631,6 +10998,7 @@
       {
         "preview_path": "primer/beta/heading/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10643,6 +11011,7 @@
       {
         "preview_path": "primer/beta/heading/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10753,6 +11122,7 @@
       {
         "preview_path": "primer/beta/icon_button/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10765,6 +11135,7 @@
       {
         "preview_path": "primer/beta/icon_button/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10777,6 +11148,7 @@
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10789,6 +11161,7 @@
       {
         "preview_path": "primer/beta/icon_button/danger",
         "name": "danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10863,6 +11236,7 @@
       {
         "preview_path": "primer/beta/label/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10875,6 +11249,7 @@
       {
         "preview_path": "primer/beta/label/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10887,6 +11262,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_default",
         "name": "color_scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10899,6 +11275,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_primary",
         "name": "color_scheme_primary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10911,6 +11288,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_secondary",
         "name": "color_scheme_secondary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10923,6 +11301,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_accent",
         "name": "color_scheme_accent",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10935,6 +11314,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_success",
         "name": "color_scheme_success",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10947,6 +11327,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_attention",
         "name": "color_scheme_attention",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10959,6 +11340,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_danger",
         "name": "color_scheme_danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10971,6 +11353,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_severe",
         "name": "color_scheme_severe",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10983,6 +11366,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_done",
         "name": "color_scheme_done",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -10995,6 +11379,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_sponsors",
         "name": "color_scheme_sponsors",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11007,6 +11392,7 @@
       {
         "preview_path": "primer/beta/label/size_default",
         "name": "size_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11019,6 +11405,7 @@
       {
         "preview_path": "primer/beta/label/size_large",
         "name": "size_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11031,6 +11418,7 @@
       {
         "preview_path": "primer/beta/label/inline_default",
         "name": "inline_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11043,6 +11431,7 @@
       {
         "preview_path": "primer/beta/label/inline_inline",
         "name": "inline_inline",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11134,6 +11523,7 @@
       {
         "preview_path": "primer/beta/link/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11146,6 +11536,7 @@
       {
         "preview_path": "primer/beta/link/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11158,6 +11549,7 @@
       {
         "preview_path": "primer/beta/link/tooltip",
         "name": "tooltip",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11170,6 +11562,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_default",
         "name": "color_scheme_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11182,6 +11575,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_primary",
         "name": "color_scheme_primary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11194,6 +11588,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_primary_muted",
         "name": "color_scheme_primary_muted",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11206,6 +11601,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_secondary",
         "name": "color_scheme_secondary",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11218,6 +11614,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_secondary_muted",
         "name": "color_scheme_secondary_muted",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11325,6 +11722,7 @@
       {
         "preview_path": "primer/beta/octicon/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11337,6 +11735,7 @@
       {
         "preview_path": "primer/beta/octicon/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11422,6 +11821,7 @@
       {
         "preview_path": "primer/beta/popover/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11434,6 +11834,7 @@
       {
         "preview_path": "primer/beta/popover/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11446,6 +11847,7 @@
       {
         "preview_path": "primer/beta/popover/large",
         "name": "large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11458,6 +11860,7 @@
       {
         "preview_path": "primer/beta/popover/bottom_right",
         "name": "bottom_right",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11470,6 +11873,7 @@
       {
         "preview_path": "primer/beta/popover/top_right",
         "name": "top_right",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11482,6 +11886,7 @@
       {
         "preview_path": "primer/beta/popover/bottom_left",
         "name": "bottom_left",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11494,6 +11899,7 @@
       {
         "preview_path": "primer/beta/popover/top_left",
         "name": "top_left",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11567,6 +11973,7 @@
       {
         "preview_path": "primer/beta/progress_bar/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11579,6 +11986,7 @@
       {
         "preview_path": "primer/beta/progress_bar/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11591,6 +11999,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_small",
         "name": "size_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11603,6 +12012,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_default",
         "name": "size_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11615,6 +12025,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_large",
         "name": "size_large",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11761,6 +12172,7 @@
       {
         "preview_path": "primer/beta/relative_time/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11773,6 +12185,7 @@
       {
         "preview_path": "primer/beta/relative_time/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11785,6 +12198,7 @@
       {
         "preview_path": "primer/beta/relative_time/micro_format",
         "name": "micro_format",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11797,6 +12211,7 @@
       {
         "preview_path": "primer/beta/relative_time/recent_time",
         "name": "recent_time",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11809,6 +12224,7 @@
       {
         "preview_path": "primer/beta/relative_time/count_down_timer",
         "name": "count_down_timer",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11865,6 +12281,7 @@
       {
         "preview_path": "primer/beta/spinner/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11877,6 +12294,7 @@
       {
         "preview_path": "primer/beta/spinner/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11945,6 +12363,7 @@
       {
         "preview_path": "primer/beta/state/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11957,6 +12376,7 @@
       {
         "preview_path": "primer/beta/state/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11969,6 +12389,7 @@
       {
         "preview_path": "primer/beta/state/states_default",
         "name": "states_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11981,6 +12402,7 @@
       {
         "preview_path": "primer/beta/state/states_open",
         "name": "states_open",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11993,6 +12415,7 @@
       {
         "preview_path": "primer/beta/state/states_closed",
         "name": "states_closed",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12005,6 +12428,7 @@
       {
         "preview_path": "primer/beta/state/states_merged",
         "name": "states_merged",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12017,6 +12441,7 @@
       {
         "preview_path": "primer/beta/state/sizes_default",
         "name": "sizes_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12029,6 +12454,7 @@
       {
         "preview_path": "primer/beta/state/sizes_small",
         "name": "sizes_small",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12132,6 +12558,7 @@
       {
         "preview_path": "primer/beta/subhead/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12144,6 +12571,7 @@
       {
         "preview_path": "primer/beta/subhead/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12156,6 +12584,7 @@
       {
         "preview_path": "primer/beta/subhead/danger",
         "name": "danger",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12168,6 +12597,7 @@
       {
         "preview_path": "primer/beta/subhead/actions",
         "name": "actions",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12180,6 +12610,7 @@
       {
         "preview_path": "primer/beta/subhead/spacing_default",
         "name": "spacing_default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12192,6 +12623,7 @@
       {
         "preview_path": "primer/beta/subhead/spacing_spacious",
         "name": "spacing_spacious",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12204,6 +12636,7 @@
       {
         "preview_path": "primer/beta/subhead/spacing_dangerous",
         "name": "spacing_dangerous",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12254,6 +12687,7 @@
       {
         "preview_path": "primer/beta/text/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12266,6 +12700,7 @@
       {
         "preview_path": "primer/beta/text/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12357,6 +12792,7 @@
       {
         "preview_path": "primer/beta/timeline_item/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12369,6 +12805,7 @@
       {
         "preview_path": "primer/beta/timeline_item/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12469,6 +12906,7 @@
       {
         "preview_path": "primer/beta/truncate/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12481,6 +12919,7 @@
       {
         "preview_path": "primer/beta/truncate/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12493,6 +12932,7 @@
       {
         "preview_path": "primer/beta/truncate/multiple_items",
         "name": "multiple_items",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12505,6 +12945,7 @@
       {
         "preview_path": "primer/beta/truncate/advanced_multiple_items",
         "name": "advanced_multiple_items",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12517,6 +12958,7 @@
       {
         "preview_path": "primer/beta/truncate/max_widths",
         "name": "max_widths",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12722,6 +13164,7 @@
       {
         "preview_path": "primer/box/playground",
         "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12734,6 +13177,7 @@
       {
         "preview_path": "primer/box/default",
         "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12746,6 +13190,7 @@
       {
         "preview_path": "primer/box/border",
         "name": "border",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12758,6 +13203,7 @@
       {
         "preview_path": "primer/box/border_bottom",
         "name": "border_bottom",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
