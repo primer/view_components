@@ -3,6 +3,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
+const TOOLTIP_OFFSET = 4
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -360,8 +361,6 @@ class ToolTipElement extends HTMLElement {
   #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || !this.matches(':popover-open')) return
-
-    const TOOLTIP_OFFSET = 4
 
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
