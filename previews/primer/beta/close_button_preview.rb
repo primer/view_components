@@ -15,6 +15,7 @@ module Primer
       # @label Default options
       #
       # @param type [Symbol] select [button, submit]
+      # @snapshot
       def default(type: :button)
         render(Primer::Beta::CloseButton.new(type: type))
       end

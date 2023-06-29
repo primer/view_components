@@ -8,13 +8,6 @@ module Primer
     class ToggleSwitchPreview < ViewComponent::Preview
       include ActionView::Helpers::FormTagHelper
 
-      # @param size select [small, medium, large]
-      # @param disabled toggle
-      # @param checked toggle
-      def playground
-        render(ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, checked: checked, disabled: disabled, size: size))
-      end
-
       # @snapshot
       def default
         render(ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path))

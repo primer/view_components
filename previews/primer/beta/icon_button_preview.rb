@@ -39,6 +39,7 @@ module Primer
       # @param aria_label text
       # @param disabled toggle
       # @param tag select [a, summary, button]
+      # @snapshot
       def default(
         size: :medium,
         id: "button-preview",
@@ -63,6 +64,7 @@ module Primer
       # @param aria_label text
       # @param disabled toggle
       # @param tag select [a, summary, button]
+      # @snapshot
       def invisible(
         size: :medium,
         id: "button-preview",
@@ -87,6 +89,7 @@ module Primer
       # @param aria_label text
       # @param disabled toggle
       # @param tag select [a, summary, button]
+      # @snapshot
       def danger(
         size: :medium,
         id: "button-preview",

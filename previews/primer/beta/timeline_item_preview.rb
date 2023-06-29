@@ -18,6 +18,7 @@ module Primer
       # @label Default
       #
       # @param condensed [Boolean]
+      # @snapshot
       def default(condensed: false)
         render(Primer::Beta::TimelineItem.new(condensed: condensed)) do |component|
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "octocat")
