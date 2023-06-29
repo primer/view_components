@@ -235,7 +235,6 @@ class ToolTipElement extends HTMLElement {
     this.control.addEventListener('mouseenter', this, {signal})
     this.control.addEventListener('mouseleave', this, {signal})
     this.control.addEventListener('focus', this, {signal})
-    this.control.addEventListener('blur', this, {signal})
     this.ownerDocument.addEventListener('focusout', focusOutListener)
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
@@ -254,8 +253,6 @@ class ToolTipElement extends HTMLElement {
     // WCAG Success Criterion 1.4.13 Hoverable
     if ((event.type === 'mouseenter' || event.type === 'focus') && !showing) {
       this.showPopover()
-    } else if (event.type === 'blur' && !showing) {
-      this.hidePopover()
     } else if (
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
