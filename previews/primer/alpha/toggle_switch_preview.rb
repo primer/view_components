@@ -8,6 +8,10 @@ module Primer
     class ToggleSwitchPreview < ViewComponent::Preview
       include ActionView::Helpers::FormTagHelper
 
+      def playground
+        render(ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path))
+      end
+
       # @snapshot
       def default
         render(ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path))
