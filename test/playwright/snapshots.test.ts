@@ -19,19 +19,18 @@ test('Preview Json exists', () => {
 test.describe('generate snapshots', () => {
   for (const preview of previewsJson) {
     for (const example of preview.examples) {
-      if (!example.snapshot) {
-        continue
-      }
-      test(example.preview_path, async ({page}) => {
-        await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
-        const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-        expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
+      if (example.snapshot) {
+        test(example.preview_path, async ({page}) => {
+          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
 
-        // Focus state
-        await page.keyboard.press('Tab')
-        const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-        expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
-      })
+          // Focus state
+          await page.keyboard.press('Tab')
+          const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+          expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
+        })
+      }
     }
   }
 })
