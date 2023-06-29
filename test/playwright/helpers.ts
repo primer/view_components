@@ -7,6 +7,7 @@ export interface ComponentPreviews {
   lookup_path: string
   examples: Array<{
     name: string
+    snapshot: boolean
     inspect_path: string
     preview_path: string
   }>
