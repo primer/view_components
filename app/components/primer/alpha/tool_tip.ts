@@ -4,7 +4,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
-const TOOLTIP_OFFSET = 4
+const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -31,8 +31,6 @@ class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
-        position: absolute;
-        z-index: 1000000;
         padding: .5em .75em !important;
         font: normal normal 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         -webkit-font-smoothing: subpixel-antialiased;
