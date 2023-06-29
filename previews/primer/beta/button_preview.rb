@@ -12,7 +12,7 @@ module Primer
       # | :outline | :default or :invisible | option for :scheme |
       # | dropdown | trailing action icon slot | see trailing action preview for markup |
       #
-      # @snapshot
+
       # @label Playground
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium, large]

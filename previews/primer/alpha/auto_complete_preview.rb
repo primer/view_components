@@ -35,6 +35,7 @@ module Primer
       # @param is_label_inline toggle
       # @param with_icon toggle
       # @param is_clearable toggle
+      # @snapshot
       def default(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false)
         # rubocop:disable Primer/ComponentNameMigration
         render(
