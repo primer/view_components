@@ -17,7 +17,14 @@ const DIRECTION_CLASSES = [
   'tooltip-sw'
 ]
 
+function focusOutListener() {
+  for (const tooltip of openTooltips) {
+    tooltip.hidePopover()
+  }
+}
+
 const tooltips = new Set<ToolTipElement>()
+const openTooltips = new Set<ToolTipElement>()
 class ToolTipElement extends HTMLElement {
   styles() {
     return `
@@ -229,11 +236,13 @@ class ToolTipElement extends HTMLElement {
     this.control.addEventListener('mouseleave', this, {signal})
     this.control.addEventListener('focus', this, {signal})
     this.control.addEventListener('blur', this, {signal})
+    this.ownerDocument.addEventListener('focusout', focusOutListener)
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
   disconnectedCallback() {
     tooltips.delete(this)
+    openTooltips.delete(this)
     this.#abortController?.abort()
   }
 
@@ -254,9 +263,11 @@ class ToolTipElement extends HTMLElement {
     ) {
       this.hidePopover()
     } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hiddenFromView) {
-      this.hidePopover
+      this.hidePopover()
     } else if (event.type === 'toggle') {
       this.#update((event as ToggleEvent).newState === 'open')
+    } else if (event.type === 'beforetoggle' && event.target !== this) {
+      this.hidePopover()
     }
   }
 
@@ -264,12 +275,14 @@ class ToolTipElement extends HTMLElement {
 
   #update(isOpen: boolean) {
     if (isOpen) {
+      openTooltips.add(this)
       this.classList.remove(TOOLTIP_SR_ONLY_CLASS)
       for (const tooltip of tooltips) {
         if (tooltip !== this) tooltip.hidePopover()
       }
       this.#updatePosition()
     } else {
+      openTooltips.delete(this)
       this.classList.remove(...DIRECTION_CLASSES)
       this.classList.add(TOOLTIP_SR_ONLY_CLASS)
     }
