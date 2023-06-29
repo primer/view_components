@@ -1,6 +1,4 @@
 /*
- *= require_tree .
- *= require_self
  *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-colorblind.css
  *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-dimmed.css
  *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-high-contrast.css

@@ -1,5 +1,5 @@
 /*
- *= require_tree .
+ *= require component_preview.css
  *= require_self
  *= require @primer/primitives/tokens-next-private/css/base/size/size.css
  *= require @primer/primitives/tokens-next-private/css/base/typography/typography.css
