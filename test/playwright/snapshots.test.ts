@@ -19,7 +19,7 @@ test('Preview Json exists', () => {
 test.describe('generate snapshots', () => {
   for (const preview of previewsJson) {
     for (const example of preview.examples) {
-      if (example.snapshot) {
+      if (example.snapshot === "true") {
         test(example.preview_path, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
           const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
