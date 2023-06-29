@@ -87,6 +87,10 @@ module Demo
           ["Dark high contrast", "dark_high_contrast"],
           ["Dark colorblind", "dark_colorblind"],
           ["All themes", "all"]
+        ],
+        primitives: [
+          ["Default", "default"],
+          ["Next Major v8", "next_major_v8"],
         ]
       }
 
