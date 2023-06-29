@@ -25,24 +25,27 @@ module Primer
       end
 
       # @!group Schemes
-      # @snapshot
       #
       # @label Default scheme
+      # @snapshot
       def scheme_default
         render(Primer::Alpha::Banner.new) { "This is a default banner." }
       end
 
       # @label Danger
+      # @snapshot
       def scheme_danger
         render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" }
       end
 
       # @label Success
+      # @snapshot
       def scheme_success
         render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" }
       end
 
       # @label Warning
+      # @snapshot
       def scheme_warning
         render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
       end
