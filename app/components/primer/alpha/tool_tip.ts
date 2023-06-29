@@ -1,4 +1,5 @@
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
+import '@oddbird/popover-polyfill'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
@@ -236,6 +237,12 @@ class ToolTipElement extends HTMLElement {
     this.control.addEventListener('mouseenter', this, {signal})
     this.control.addEventListener('mouseleave', this, {signal})
     this.control.addEventListener('focus', this, {signal})
+    this.control.addEventListener('mousedown', this, {signal})
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore popoverTargetElement is not in the type definition
+    this.control.popoverTargetElement?.addEventListener('beforetoggle', this, {
+      signal
+    })
     this.ownerDocument.addEventListener('focusout', focusOutListener)
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
@@ -252,20 +259,24 @@ class ToolTipElement extends HTMLElement {
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && !showing) {
-      this.showPopover()
-    } else if (
+    const shouldShow = event.type === 'mouseenter' || event.type === 'focus'
+    const isMouseLeaveFromButton =
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
-      (event as MouseEvent).relatedTarget !== this
-    ) {
-      this.hidePopover()
-    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hiddenFromView) {
-      this.hidePopover()
-    } else if (event.type === 'toggle') {
+      event.target !== this.control
+    const isEscapeKeydown = event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape'
+    const isMouseDownOnButton = event.type === 'mousedown' && event.currentTarget === this.control
+    const isOpeningOtherPopover = event.type === 'beforetoggle' && event.currentTarget !== this
+    const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
+
+    if (!showing && shouldShow) {
+      requestAnimationFrame(() => this.showPopover())
+    } else if (showing && shouldHide) {
+      requestAnimationFrame(() => this.hidePopover())
+    }
+
+    if (event.type === 'toggle') {
       this.#update((event as ToggleEvent).newState === 'open')
-    } else if (event.type === 'beforetoggle' && event.target !== this) {
-      this.hidePopover()
     }
   }
 
