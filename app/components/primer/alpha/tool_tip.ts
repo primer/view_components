@@ -45,7 +45,7 @@ class ToolTipElement extends HTMLElement {
         background: var(--color-neutral-emphasis-plus) !important;
         border-radius: 6px;
         border: 0 !important;
-        opacity: 0.00000001;
+        opacity: 0;
         max-width: 250px;
         word-wrap: break-word;
         white-space: normal;
@@ -65,7 +65,7 @@ class ToolTipElement extends HTMLElement {
 
       @keyframes tooltip-appear {
         from {
-          opacity: 0.0001;
+          opacity: 0;
         }
         to {
           opacity: 1
