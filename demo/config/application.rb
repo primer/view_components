@@ -90,7 +90,7 @@ module Demo
         ],
         primitives: [
           ["Default", "default"],
-          ["Next Major v8", "next_major_v8"],
+          ["Next Major v8", "next_major_v8"]
         ]
       }
 
