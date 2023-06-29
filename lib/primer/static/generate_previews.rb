@@ -36,6 +36,7 @@ module Primer
                   {
                     preview_path: scenario.lookup_path,
                     name: scenario.name,
+                    snapshot: scenario.tags.any? { |e| e.tag_name == "snapshot" }.to_s,
                     skip_rules: Primer::Accessibility.axe_rules_to_skip(
                       component: component,
                       scenario_name: scenario.name
