@@ -26,6 +26,7 @@ class PrimerAlphaActionBarTest < Minitest::Test
     render_inline(Primer::Alpha::ActionBar.new(size: :small)) do |component|
       component.with_item_icon_button(icon: :pencil, label: "Button 1")
       component.with_item_icon_button(icon: :pencil, label: "Button 2")
+      component.with_item_divider
       component.with_item_icon_button(icon: :pencil, label: "Button 3")
       component.with_item_icon_button(icon: :pencil, label: "Button 4")
     end
