@@ -68,7 +68,7 @@
 @define-mixin Field {
   color: var(--fgColor-default);
   background-color: var(--bgColor-default);
-  border: var(--borderWidth-thin) solid var(--control-borderColor-rest);
+  border: var(--borderWidth-thin) solid var(--control-borderColor-rest, var(--color-border-default));
 
   &[disabled] {
     color: var(--control-fgColor-disabled);
@@ -148,7 +148,7 @@
 
   &[disabled] {
     &::placeholder {
-      color: var(--fgColor-disabled);
+      color: var(--control-fgColor-disabled);
     }
   }
 
@@ -157,7 +157,7 @@
   }
 
   &::placeholder {
-    color: var(--fgColor-muted);
+    color: var(--control-fgColor-placeholder);
     opacity: 1;
   }
 
@@ -263,7 +263,7 @@
     }
 
     &[disabled] {
-      color: var(--fgColor-disabled);
+      color: var(--control-fgColor-disabled);
       pointer-events: none;
     }
 
@@ -572,7 +572,7 @@ input[type='checkbox'].FormControl-checkbox {
     height: var(--base-size-16);
     visibility: hidden;
     content: '';
-    background-color: var(--fgColor-onEmphasis);
+    background-color: var(--control-checked-fgColor-rest);
     transition: visibility 0s linear 230ms;
     clip-path: inset(var(--base-size-16) 0 0 0);
 
@@ -623,7 +623,7 @@ input[type='checkbox'].FormControl-checkbox {
       opacity: 1;
 
       &::before {
-        background-color: var(--fgColor-onEmphasis);
+        background-color: var(--control-checked-fgColor-rest);
       }
     }
 
