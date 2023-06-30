@@ -251,7 +251,7 @@ class ToolTipElement extends HTMLElement {
     this.#abortController?.abort()
   }
 
-  handleEvent(event: Event) {
+  async handleEvent(event: Event) {
     if (!this.control) return
     const showing = this.matches(':popover-open')
 
@@ -261,16 +261,17 @@ class ToolTipElement extends HTMLElement {
     const isMouseLeaveFromButton =
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
-      event.target !== this.control
+      (event as MouseEvent).relatedTarget !== this
     const isEscapeKeydown = event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape'
     const isMouseDownOnButton = event.type === 'mousedown' && event.currentTarget === this.control
     const isOpeningOtherPopover = event.type === 'beforetoggle' && event.currentTarget !== this
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
 
+    await Promise.resolve()
     if (!showing && shouldShow) {
-      requestAnimationFrame(() => this.showPopover())
+      this.showPopover()
     } else if (showing && shouldHide) {
-      requestAnimationFrame(() => this.hidePopover())
+      this.hidePopover()
     }
 
     if (event.type === 'toggle') {
