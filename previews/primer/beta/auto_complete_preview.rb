@@ -79,6 +79,7 @@ module Primer
       end
 
       # @label Leading visual
+      # @snapshot
       # @param label_text text
       # @param show_clear_button toggle
       # @param visually_hide_label toggle
@@ -98,6 +99,7 @@ module Primer
       end
 
       # @label Trailing action
+      # @snapshot
       # @param label_text text
       # @param show_clear_button toggle
       # @param visually_hide_label toggle
@@ -115,6 +117,7 @@ module Primer
       end
 
       # @label Full width
+      # @snapshot
       # @param label_text text
       # @param show_clear_button toggle
       # @param visually_hide_label toggle
@@ -134,6 +137,7 @@ module Primer
       end
 
       # @label Visually hide label
+      # @snapshot
       # @param label_text text
       # @param show_clear_button toggle
       # @param visually_hide_label toggle
@@ -166,6 +170,7 @@ module Primer
       # @param input_id text
       # @param list_id text
       # @param input_name text
+      # @snapshot
       def small(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :small, full_width: false, width: :auto, disabled: false, invalid: false, input_id: "input-id-1", list_id: "list-id-1", input_name: "input-id-1")
         render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: UrlHelpers.autocomplete_index_path, show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, width: width, disabled: disabled, invalid: invalid, input_name: input_name)) do |component|
           component.with_leading_visual_icon(icon: :search)
@@ -184,6 +189,7 @@ module Primer
       # @param input_id text
       # @param list_id text
       # @param input_name text
+      # @snapshot
       def medium(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, width: :auto, disabled: false, invalid: false, input_id: "input-id-2", list_id: "list-id-2", input_name: "input-id-2")
         render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: UrlHelpers.autocomplete_index_path, show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, width: width, disabled: disabled, invalid: invalid, input_name: input_name)) do |component|
           component.with_leading_visual_icon(icon: :search)
@@ -202,6 +208,7 @@ module Primer
       # @param input_id text
       # @param list_id text
       # @param input_name text
+      # @snapshot
       def large(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :large, full_width: false, width: :auto, disabled: false, invalid: false, input_id: "input-id-3", list_id: "list-id-3", input_name: "input-id-3")
         render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: UrlHelpers.autocomplete_index_path, show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, width: width, disabled: disabled, invalid: invalid, input_name: input_name)) do |component|
           component.with_leading_visual_icon(icon: :search)

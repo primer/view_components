@@ -16,6 +16,7 @@ module Primer
       #
       # @param tag [Symbol] select [div, p, span]
       # @param content [String] text
+      # @snapshot
       def default(tag: :span, content: "Text")
         render(Primer::Beta::Text.new(tag: tag)) { content }
       end

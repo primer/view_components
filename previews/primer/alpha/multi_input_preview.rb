@@ -26,6 +26,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render_with_template(
           template: "primer/alpha/multi_input_preview/playground",
@@ -38,6 +39,7 @@ module Primer
       end
 
       # @label With caption
+      # @snapshot
       def with_caption
         render_with_template(
           template: "primer/alpha/multi_input_preview/playground",
@@ -51,6 +53,7 @@ module Primer
       end
 
       # @label Visually hidden label
+      # @snapshot
       def visually_hide_label
         render_with_template(
           template: "primer/alpha/multi_input_preview/playground",
@@ -64,6 +67,7 @@ module Primer
       end
 
       # @label Disabled
+      # @snapshot
       def disabled
         render_with_template(
           template: "primer/alpha/multi_input_preview/playground",

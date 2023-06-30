@@ -16,11 +16,13 @@ module Primer
     end
 
     # @label Border
+    # @snapshot
     def border(content: "Box with border")
       render(Primer::Box.new(border: true, p: 3)) { content }
     end
 
     # @label Border Bottom
+    # @snapshot
     def border_bottom(content: "Box with bottom border")
       render(Primer::Box.new(border: :bottom, p: 3)) { content }
     end

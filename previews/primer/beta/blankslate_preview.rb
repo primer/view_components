@@ -17,6 +17,7 @@ module Primer
       end
 
       # @label Default options
+      # @snapshot
       def default
         render Primer::Beta::Blankslate.new do |component|
           component.with_heading(tag: :h2).with_content("Title")
@@ -43,6 +44,7 @@ module Primer
       end
 
       # @label Border
+      # @snapshot
       def option_border
         render Primer::Beta::Blankslate.new(border: true) do |component|
           component.with_heading(tag: :h2).with_content("Title")
@@ -55,6 +57,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def with_icon(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_visual_icon(icon: :shield)
@@ -65,6 +68,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def with_image(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
@@ -75,6 +79,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def loading(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("Mirroring your repository")
@@ -86,6 +91,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def description(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
@@ -96,6 +102,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def primary_action(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
@@ -106,6 +113,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def secondary_action(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
@@ -116,6 +124,7 @@ module Primer
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
+      # @snapshot
       def full(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_visual_icon(icon: :shield)
