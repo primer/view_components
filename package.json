@@ -64,7 +64,7 @@
     "@github/prettier-config": "0.0.4",
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.0.2",
-    "@primer/primitives": "^7.11.11",
+    "@primer/primitives": "^7.11.14-rc.1ecd973",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
