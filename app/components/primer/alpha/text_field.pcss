@@ -603,8 +603,8 @@ input[type='checkbox'].FormControl-checkbox {
   }
 
   &:checked {
-    background: var(--control-checked-bgColor-rest, var(--color-accent-emphasis));
-    border-color: var(--control-checked-borderColor-rest, var(--color-accent-emphasis));
+    background: var(--control-checked-bgColor-rest, var(--color-accent-fg));
+    border-color: var(--control-checked-borderColor-rest, var(--color-accent-fg));
     transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
 
     &::before {
@@ -665,7 +665,7 @@ input[type='radio'].FormControl-radio {
   }
 
   &:checked {
-    border-color: var(--control-checked-borderColor-rest, var(--color-accent-emphasis));
+    border-color: var(--control-checked-borderColor-rest, var(--color-accent-fg));
     border-width: var(--base-size-4);
 
     &:disabled {
