@@ -9,6 +9,7 @@ module Primer
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::ActionBar.new) do |component|
           component.with_item_icon_button(icon: :search, label: "Search")
