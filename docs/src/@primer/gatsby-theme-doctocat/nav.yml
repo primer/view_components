@@ -15,7 +15,7 @@
     url: "/status"
 - title: Components
   children:
-  - title: ActionBar - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
+  - title: ActionBar
     url: "/components/alpha/actionbar"
   - title: ActionMenu
     url: "/components/alpha/actionmenu"
