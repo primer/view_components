@@ -43,6 +43,35 @@ module Primer
           component.with_item_icon_button(icon: :paperclip, label: "Attach")
         end
       end
+
+      # @!group sizes
+      def small
+        render(Primer::Alpha::ActionBar.new(size: :small)) do |component|
+          component.with_item_icon_button(icon: :search, label: "Search")
+          component.with_item_icon_button(icon: :pencil, label: "Edit")
+          component.with_item_icon_button(icon: :archive, label: "Archive")
+          component.with_item_divider
+        end
+      end
+
+      def medium
+        render(Primer::Alpha::ActionBar.new(size: :medium)) do |component|
+          component.with_item_icon_button(icon: :search, label: "Search")
+          component.with_item_icon_button(icon: :pencil, label: "Edit")
+          component.with_item_icon_button(icon: :archive, label: "Archive")
+          component.with_item_divider
+        end
+      end
+
+      def large
+        render(Primer::Alpha::ActionBar.new(size: :large)) do |component|
+          component.with_item_icon_button(icon: :search, label: "Search")
+          component.with_item_icon_button(icon: :pencil, label: "Edit")
+          component.with_item_icon_button(icon: :archive, label: "Archive")
+          component.with_item_divider
+        end
+      end
+      # @!endgroup
     end
   end
 end
