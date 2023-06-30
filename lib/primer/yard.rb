@@ -13,6 +13,6 @@ module Primer
     autoload :RendersManyHandler,   "primer/yard/renders_many_handler"
     autoload :RendersOneHandler,    "primer/yard/renders_one_handler"
 
-    YARD::Tags::Library.define_tag("Snapshot preview", :snapshot)
+    ::YARD::Tags::Library.define_tag("Snapshot preview", :snapshot)
   end
 end
