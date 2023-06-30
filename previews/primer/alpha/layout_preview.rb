@@ -20,6 +20,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::Layout.new) do |component|
           component.with_main(bg: :attention, p: 6) do
@@ -32,6 +33,7 @@ module Primer
       end
 
       # @!group Gutter
+      # @snapshot
       #
       # @label None
       def gutter_none
@@ -104,6 +106,7 @@ module Primer
       # @!endgroup
 
       # @!group Sidebar width
+      # @snapshot
       #
       # @label Narrow
       def sidebar_width_narrow
@@ -132,6 +135,7 @@ module Primer
       # @!endgroup
 
       # @!group Sidebar column placement
+      # @snapshot
       #
       # @label Start
       def sidebar_col_placement_start

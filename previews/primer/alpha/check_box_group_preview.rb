@@ -42,6 +42,7 @@ module Primer
       end
 
       # @!group Options
+      # @snapshot
       #
       # @label With caption
       def with_caption

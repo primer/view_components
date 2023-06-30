@@ -22,6 +22,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::TabNav.new(label: "Default")) do |component|
           component.with_tab(selected: true, href: "#") { "Tab 1" }
@@ -31,6 +32,7 @@ module Primer
       end
 
       # @label With icons and counters
+      # @snapshot
       def with_icons_and_counters
         render(Primer::Alpha::TabNav.new(label: "With icons and counters")) do |component|
           component.with_tab(href: "#1", selected: true) do |tab|
@@ -52,6 +54,7 @@ module Primer
       end
 
       # @param align [Symbol] select [left, right]
+      # @snapshot
       def with_extra(align: :right)
         render_with_template(locals: { align: align })
       end
