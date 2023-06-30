@@ -1,0 +1,7 @@
+# Accessibility-focused lint rule configurations, tracked by accessibility scorecard.
+---
+linters:
+  NoUnusedDisable:
+    enabled: true
+  Primer::Accessibility::TooltippedMigration:
+    enabled: true

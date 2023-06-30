@@ -14,6 +14,7 @@ module Primer
       # @label Default options
       # @param label [String] text
       # @param inline [Boolean] toggle
+      # @snapshot
       def default(label: "No effect", inline: false)
         render(Primer::Alpha::HiddenTextExpander.new(inline: inline, "aria-label": label))
       end

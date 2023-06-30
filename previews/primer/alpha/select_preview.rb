@@ -65,6 +65,7 @@ module Primer
       # @!group Options
       #
       # @label With caption
+      # @snapshot
       def with_caption
         render(Primer::Alpha::Select.new(caption: "With a caption", name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
@@ -75,6 +76,7 @@ module Primer
       end
 
       # @label Visually hidden label
+      # @snapshot
       def visually_hide_label
         render(Primer::Alpha::Select.new(visually_hide_label: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
@@ -85,6 +87,7 @@ module Primer
       end
 
       # @label Full width
+      # @snapshot
       def full_width
         render(Primer::Alpha::Select.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
@@ -95,6 +98,7 @@ module Primer
       end
 
       # @label Disabled
+      # @snapshot
       def disabled
         render(Primer::Alpha::Select.new(disabled: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
@@ -105,6 +109,7 @@ module Primer
       end
 
       # @label Invalid
+      # @snapshot
       def invalid
         render(Primer::Alpha::Select.new(invalid: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
@@ -115,6 +120,7 @@ module Primer
       end
 
       # @label With validation message
+      # @snapshot
       def with_validation_message
         render(Primer::Alpha::Select.new(validation_message: "An error occurred!", name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")

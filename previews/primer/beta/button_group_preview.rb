@@ -19,6 +19,7 @@ module Primer
       # @label Default options
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def default(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button { "Button 1" }
@@ -30,6 +31,7 @@ module Primer
       # @label Split button
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def split_button(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button { "Button 1" }
@@ -40,6 +42,7 @@ module Primer
       # @label Icon buttons
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def icon_buttons(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button(icon: :note, "aria-label": "button 1")
@@ -49,6 +52,7 @@ module Primer
       end
 
       # @label Button group with all tags
+      # @snapshot
       def all_tags
         render(Primer::Beta::ButtonGroup.new) do |component|
           component.with_button(id: "button-1", tag: :button) do |component|

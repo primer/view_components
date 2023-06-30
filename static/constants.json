@@ -382,11 +382,14 @@
   "Primer::Alpha::NavList": {
     "Divider": "Primer::Alpha::NavList::Divider",
     "Group": "Primer::Alpha::NavList::Group",
+    "Heading": "Primer::Alpha::NavList::Heading",
     "Item": "Primer::Alpha::NavList::Item"
   },
   "Primer::Alpha::NavList::Divider": {
   },
   "Primer::Alpha::NavList::Group": {
+  },
+  "Primer::Alpha::NavList::Heading": {
   },
   "Primer::Alpha::NavList::Item": {
   },

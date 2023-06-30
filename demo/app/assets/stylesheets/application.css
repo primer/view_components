@@ -1,5 +1,5 @@
 /*
- *= require_tree .
+ *= require component_preview.css
  *= require_self
  *= require @primer/primitives/tokens-next-private/css/base/size/size.css
  *= require @primer/primitives/tokens-next-private/css/base/typography/typography.css
@@ -10,15 +10,6 @@
  *= require @primer/primitives/tokens-next-private/css/functional/size/size.css
  *= require @primer/primitives/tokens-next-private/css/functional/size/viewport.css
  *= require @primer/primitives/tokens-next-private/css/functional/typography/typography.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-colorblind.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-dimmed.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-high-contrast.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/dark-tritanopia.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/dark.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/light-colorblind.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/light-high-contrast.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/light-tritanopia.css
- *= require @primer/primitives/tokens-next-private/css/functional/themes/light.css
  *= require @primer/css/dist/color-modes.css
  *= require @primer/css/dist/base.css
  *= require @primer/css/dist/buttons.css

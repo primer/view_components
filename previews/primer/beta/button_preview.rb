@@ -12,6 +12,7 @@ module Primer
       # | :outline | :default or :invisible | option for :scheme |
       # | dropdown | trailing action icon slot | see trailing action preview for markup |
       #
+
       # @label Playground
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium, large]
@@ -130,6 +131,7 @@ module Primer
       end
 
       # @label Invisible all visuals
+      # @snapshot
       def invisible_all_visuals
         render_with_template(locals: {})
       end
@@ -138,6 +140,7 @@ module Primer
       # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
+      # @snapshot
       def link(
         id: "button-preview",
         block: false,
@@ -157,6 +160,7 @@ module Primer
       end
 
       # @label All schemes
+      # @snapshot
       def all_schemes
         render_with_template(locals: {})
       end
@@ -164,6 +168,7 @@ module Primer
       # @label Full width
       # @param disabled toggle
       # @param tag select [a, summary, button]
+      # @snapshot
       def full_width(
         id: "button-preview",
         tag: :button,
@@ -186,6 +191,7 @@ module Primer
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
+      # @snapshot
       def link_as_button(
         scheme: :default,
         size: :medium,
@@ -212,6 +218,7 @@ module Primer
       # @param block toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
+      # @snapshot
       def trailing_visual(
         scheme: :default,
         size: :medium,
@@ -235,6 +242,7 @@ module Primer
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
+      # @snapshot
       def leading_visual(
         scheme: :invisible,
         size: :medium,
@@ -254,6 +262,7 @@ module Primer
       # @label Trailing action
       # @param block toggle
       # @param align_content select [center, start]
+      # @snapshot
       def trailing_action(
         block: false,
         id: "button-preview",
@@ -270,6 +279,7 @@ module Primer
       # @param block toggle
       # @param align_content select [center, start]
       # @param scheme select [default, primary, danger, invisible]
+      # @snapshot
       def trailing_counter(
         block: false,
         id: "button-preview",
