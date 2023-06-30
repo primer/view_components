@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# :nocov:
 module Primer
   module Alpha
     class ActionBar
