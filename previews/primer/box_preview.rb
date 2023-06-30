@@ -11,7 +11,6 @@ module Primer
     end
 
     # @label Default
-    # @snapshot
     def default(content: "Default")
       render(Primer::Box.new) { content }
     end
