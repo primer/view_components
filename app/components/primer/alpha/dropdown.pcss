@@ -30,11 +30,11 @@
   padding-bottom: var(--control-small-paddingBlock);
   margin-top: 2px;
   list-style: none;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor);
   background-clip: padding-box;
-  border: var(--borderWidth-thin) solid var(--color-border-default);
+  border: var(--borderWidth-thin) solid var(--borderColor-default);
   border-radius: var(--borderRadius-medium);
-  box-shadow: var(--color-shadow-large);
+  box-shadow: var(--shadow-floating-large);
 
   &::before,
   &::after {
@@ -46,7 +46,7 @@
   /* caret border */
   &::before {
     border: 8px solid transparent;
-    border-bottom-color: var(--color-border-default);
+    border-bottom-color: var(--borderColor-default);
   }
 
   /* caret background (should match dropdown background) */
@@ -76,14 +76,14 @@
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed)
     var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   overflow: hidden;
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   text-overflow: ellipsis;
   white-space: nowrap;
 
   &:hover {
-    color: var(--color-fg-on-emphasis);
+    color: var(--fgColor-onEmphasis);
     text-decoration: none;
-    background-color: var(--color-accent-emphasis);
+    background-color: var(--bgColor-accent-emphasis);
 
     & > .octicon {
       color: inherit;
@@ -117,13 +117,13 @@
   display: block;
   height: 0;
   margin: var(--stack-gap-condensed) 0;
-  border-top: var(--borderWidth-thin) solid var(--color-border-default);
+  border-top: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .dropdown-header {
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   font-size: var(--text-body-size-small);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
 }
 
 .dropdown-item[aria-checked='false'] .octicon-check {
@@ -148,7 +148,7 @@
     right: -16px;
     left: auto;
     border-color: transparent;
-    border-left-color: var(--color-border-default);
+    border-left-color: var(--borderColor-default);
   }
 
   &::after {
@@ -171,7 +171,7 @@
     top: 10px;
     left: -16px;
     border-color: transparent;
-    border-right-color: var(--color-border-default);
+    border-right-color: var(--borderColor-default);
   }
 
   &::after {
@@ -197,7 +197,7 @@
   &::before {
     bottom: -8px;
     left: 9px;
-    border-top: 8px solid var(--color-border-default);
+    border-top: 8px solid var(--borderColor-default);
     border-right: 8px solid transparent;
     border-bottom: 0;
     border-left: 8px solid transparent;

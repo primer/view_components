@@ -28,7 +28,7 @@
     width: 100%;
     height: 1px;
     content: '';
-    background: var(--color-action-list-item-inline-divider);
+    background: var(--borderColor-muted);
   }
 
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
@@ -40,7 +40,7 @@
       width: 100%;
       height: var(--borderWidth-thin);
       content: '';
-      background: var(--color-action-list-item-inline-divider);
+      background: var(--borderColor-muted);
     }
 
     /* unset the default label pseudo */
@@ -113,12 +113,12 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
+          background-color: var(--control-transparent-bgColor-hover);
         }
       }
 
       &:active {
-        background-color: var(--color-action-list-item-default-active-bg);
+        background-color: var(--control-transparent-bgColor-active);
       }
     }
   }
@@ -130,7 +130,7 @@
     @media (hover: hover) {
       &:hover {
         cursor: pointer;
-        background-color: var(--color-action-list-item-default-hover-bg);
+        background-color: var(--control-transparent-bgColor-hover);
 
         &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
@@ -142,7 +142,7 @@
     }
 
     &:active {
-      background: var(--color-action-list-item-default-active-bg);
+      background: var(--control-transparent-bgColor-active);
 
       &:not(.ActionListItem--navActive) {
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
@@ -162,11 +162,11 @@
 
   &[aria-selected='true'] {
     font-weight: var(--base-text-weight-normal);
-    background: var(--color-action-list-item-default-selected-bg);
+    background: var(--control-transparent-bgColor-selected);
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-action-list-item-default-hover-bg);
+        background-color: var(--control-transparent-bgColor-hover);
       }
     }
 
@@ -195,11 +195,11 @@
     }
 
     &:not(.ActionListItem--danger) {
-      background: var(--color-action-list-item-default-selected-bg);
+      background: var(--control-transparent-bgColor-selected);
 
       @media (hover: hover) {
         &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
+          background-color: var(--control-transparent-bgColor-hover);
         }
       }
 
@@ -222,11 +222,11 @@
     & .ActionListContent {
       & .ActionListItem-label,
       & .ActionListItem-description {
-        color: var(--color-primer-fg-disabled);
+        color: var(--fgColor-disabled);
       }
 
       & .ActionListItem-visual {
-        fill: var(--color-primer-fg-disabled);
+        fill: var(--fgColor-disabled);
       }
     }
 
@@ -243,31 +243,31 @@
   /* danger */
   &.ActionListItem--danger {
     & .ActionListItem-label {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger);
     }
 
     & .ActionListItem-visual {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger);
     }
 
     @media (hover: hover) {
       &:hover {
-        background: var(--color-action-list-item-danger-hover-bg);
+        background: var(--control-danger-bgColor-hover);
 
         & .ActionListItem-label,
         & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
+          color: var(--control-danger-fgColor-hover);
         }
       }
     }
 
     & .ActionListContent {
       &:active {
-        background: var(--color-action-list-item-danger-active-bg);
+        background: var(--control-danger-bgColor-active);
 
         & .ActionListItem-label,
         & .ActionListItem-visual {
-          color: var(--color-action-list-item-danger-hover-text);
+          color: var(--control-danger-fgColor-hover);
         }
       }
     }
@@ -281,7 +281,7 @@
   width: 100%;
   padding-block: var(--actionListContent-paddingBlock);
   padding-inline: var(--control-medium-paddingInline-condensed);
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   text-align: left;
   user-select: none;
   background-color: transparent;
@@ -310,11 +310,11 @@
   &[aria-disabled='true'] {
     & .ActionListItem-label,
     & .ActionListItem-description {
-      color: var(--color-primer-fg-disabled);
+      color: var(--fgColor-disabled);
     }
 
     & .ActionListItem-visual {
-      fill: var(--color-primer-fg-disabled);
+      fill: var(--fgColor-disabled);
     }
 
     @media (hover: hover) {
@@ -399,7 +399,7 @@
 
     /* show active indicator on parent collapse if child is active */
     &.ActionListContent--hasActiveSubItem {
-      background: var(--color-action-list-item-default-selected-bg);
+      background: var(--control-transparent-bgColor-selected);
 
       & .ActionListItem-label {
         font-weight: var(--base-text-weight-semibold);
@@ -451,13 +451,13 @@
     /* checkbox */
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-accent-fg);
-        stroke: var(--color-accent-fg);
+        fill: var(--fgColor-accent);
+        stroke: var(--fgColor-accent);
         stroke-width: var(--borderWidth-thin, 1px);
       }
 
       & .ActionListItem-multiSelectCheckmark {
-        fill: var(--color-fg-on-emphasis);
+        fill: var(--fgColor-onEmphasis);
       }
     }
   }
@@ -494,14 +494,14 @@
     /* checkbox */
     & .ActionListItem-multiSelectIcon {
       & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-canvas-default);
-        stroke: var(--color-border-default);
+        fill: var(--bgColor-default);
+        stroke: var(--borderColor-default);
         stroke-width: var(--borderWidth-thin, 1px);
       }
     }
 
     & .ActionListItem-multiSelectIconRect {
-      fill: var(--color-canvas-default);
+      fill: var(--bgColor-default);
       border: var(--borderWidth-thin, 1px) solid var(--color-border-default);
     }
   }
@@ -573,7 +573,7 @@
   font-size: var(--text-body-size-small);
   font-weight: var(--base-text-weight-normal);
   line-height: var(--text-body-lineHeight-small);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
 }
 
 /* helper for grid alignment with multi-line content
@@ -582,9 +582,9 @@
 .ActionListItem-action {
   display: flex;
   min-height: var(--control-medium-lineBoxHeight);
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
   pointer-events: none;
-  fill: var(--color-fg-muted);
+  fill: var(--fgColor-muted);
   align-items: center;
 }
 
@@ -594,7 +594,7 @@
   font-size: var(--text-body-size-medium);
   font-weight: var(--base-text-weight-normal);
   line-height: var(--text-body-lineHeight-medium);
-  color: var(--color-fg-default);
+  color: var(--fgColor-default);
   grid-area: label;
 }
 
@@ -651,7 +651,7 @@
     font-size: var(--text-body-size-small);
     line-height: var(--text-body-lineHeight-small);
     font-weight: var(--base-text-weight-semibold);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
     flex-direction: column;
   }
 
@@ -664,14 +664,14 @@
     margin-block-end: var(--base-size-8);
     margin-inline: calc(-1 * var(--base-size-8));
     list-style: none;
-    background: var(--color-action-list-item-inline-divider);
+    background: var(--borderColor-muted);
     border: 0;
   }
 
   & .ActionList-sectionDivider-title {
     font-size: var(--text-body-size-small);
     font-weight: var(--base-text-weight-semibold);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
   }
 }
 
@@ -679,9 +679,9 @@
   margin-block-start: calc(var(--base-size-8) - var(--borderWidth-thin));
   margin-block-end: var(--base-size-8);
   margin-inline: calc(-1 * var(--base-size-8));
-  background: var(--color-canvas-subtle);
-  border-top: solid var(--borderWidth-thin) var(--color-action-list-item-inline-divider);
-  border-bottom: solid var(--borderWidth-thin) var(--color-action-list-item-inline-divider);
+  background: var(--bgColor-muted);
+  border-top: solid var(--borderWidth-thin) var(--borderColor-muted);
+  border-bottom: solid var(--borderWidth-thin) var(--borderColor-muted);
 
   /* if no children, treat as divider */
   &:empty {

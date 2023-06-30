@@ -18,9 +18,9 @@
   max-height: min(calc(100vh - 2rem), var(--overlay-height));
   white-space: normal;
   flex-direction: column;
-  background-color: var(--color-canvas-overlay);
+  background-color: var(--overlay-bgColor);
   border-radius: var(--borderRadius-large);
-  box-shadow: var(--color-overlay-shadow);
+  box-shadow: var(--shadow-floating-small);
   opacity: 1;
 
   &.Overlay--size-auto {
@@ -155,7 +155,7 @@
 
   &.Overlay-header--divided {
     padding-bottom: var(--stack-padding-condensed);
-    box-shadow: inset 0 calc(var(--borderWidth-thin) * -1) var(--color-border-default);
+    box-shadow: inset 0 calc(var(--borderWidth-thin) * -1) var(--borderColor-default);
 
     & + .Overlay-body {
       padding-top: var(--stack-padding-normal);
@@ -208,7 +208,7 @@
         margin: 0;
         font-size: var(--text-body-size-small);
         font-weight: var(--base-text-weight-normal);
-        color: var(--color-fg-muted);
+        color: var(--fgColor-muted);
       }
     }
   }
@@ -244,7 +244,7 @@
 
   &.Overlay-footer--divided {
     padding-top: var(--stack-padding-normal);
-    box-shadow: inset 0 var(--borderWidth-thin) var(--color-border-default);
+    box-shadow: inset 0 var(--borderWidth-thin) var(--borderColor-default);
   }
 
   &.Overlay-footer--alignStart {
@@ -270,7 +270,7 @@
   width: var(--base-size-32);
   height: var(--base-size-32);
   padding: 0;
-  color: var(--color-fg-muted);
+  color: var(--fgColor-muted);
   cursor: pointer;
   user-select: none;
   background-color: transparent;
@@ -284,7 +284,7 @@
 
   &:hover,
   &:focus {
-    background-color: var(--color-btn-hover-bg);
+    background-color: var(--button-default-bgColor-hover);
     border: var(--borderWidth-thin) solid var(--color-btn-hover-bg);
   }
 
@@ -302,7 +302,7 @@
   left: 0;
   z-index: 999;
   display: flex;
-  background-color: var(--color-neutral-muted);
+  background-color: var(--bgColor-neutral-muted);
 }
 
 @define-mixin Overlay-backdrop--transparent {
