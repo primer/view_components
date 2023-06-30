@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "yard"
+
 module Primer
   # :nodoc:
   module Yard
