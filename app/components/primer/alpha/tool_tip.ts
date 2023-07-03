@@ -21,7 +21,11 @@ const DIRECTION_CLASSES = [
 
 function focusOutListener() {
   for (const tooltip of openTooltips) {
-    tooltip.hidePopover()
+    if (tooltip.matches(':popover-open')) {
+      tooltip.hidePopover()
+    } else {
+      openTooltips.delete(tooltip)
+    }
   }
 }
 
