@@ -19,10 +19,19 @@ const DIRECTION_CLASSES = [
   'tooltip-sw'
 ]
 
-function focusOutListener() {
+function closeOpenTooltips(except?: Element) {
   for (const tooltip of openTooltips) {
-    tooltip.hidePopover()
+    if (tooltip === except) continue
+    if (tooltip.matches(':popover-open')) {
+      tooltip.hidePopover()
+    } else {
+      openTooltips.delete(tooltip)
+    }
   }
+}
+
+function focusOutListener() {
+  closeOpenTooltips()
 }
 
 const tooltips = new Set<ToolTipElement>()
@@ -197,9 +206,9 @@ class ToolTipElement extends HTMLElement {
 
   /* @deprecated */
   set hiddenFromView(value: true | false) {
-    if (value) {
+    if (value && this.matches(':popover-open')) {
       this.hidePopover()
-    } else {
+    } else if (!value && !this.matches(':popover-open')) {
       this.showPopover()
     }
   }
@@ -285,9 +294,7 @@ class ToolTipElement extends HTMLElement {
     if (isOpen) {
       openTooltips.add(this)
       this.classList.remove(TOOLTIP_SR_ONLY_CLASS)
-      for (const tooltip of tooltips) {
-        if (tooltip !== this) tooltip.hidePopover()
-      }
+      closeOpenTooltips(this)
       this.#updatePosition()
     } else {
       openTooltips.delete(this)
