@@ -24,6 +24,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
           component.with_item(label: "Preview", selected: true)
@@ -35,6 +36,7 @@ module Primer
       # @!group Full width
       # @label Size small
       # @param hide_labels [Boolean] toggle
+      # @snapshot
       def full_width_small(hide_labels: false)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :small)) do |component|
           component.with_item(label: "Preview", selected: true)
@@ -45,6 +47,7 @@ module Primer
 
       # @label Size medium
       # @param hide_labels [Boolean] toggle
+      # @snapshot
       def full_width_medium(hide_labels: false)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :medium)) do |component|
           component.with_item(label: "Preview", selected: true)
@@ -55,6 +58,7 @@ module Primer
 
       # @label Size large
       # @param hide_labels [Boolean] toggle
+      # @snapshot
       def full_width_large(hide_labels: false)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :large)) do |component|
           component.with_item(label: "Preview", selected: true)
@@ -66,6 +70,7 @@ module Primer
 
       # @!group Icons and text
       # @label Size small
+      # @snapshot
       def icons_and_text_small
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :small)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -75,6 +80,7 @@ module Primer
       end
 
       # @label Size medium
+      # @snapshot
       def icons_and_text_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :medium)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -84,6 +90,7 @@ module Primer
       end
 
       # @label Size large
+      # @snapshot
       def icons_and_text_large
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :large)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -95,6 +102,7 @@ module Primer
 
       # @!group Icons only
       # @label Size small
+      # @snapshot
       def icon_only_small
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :small)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -104,6 +112,7 @@ module Primer
       end
 
       # @label Size medium
+      # @snapshot
       def icon_only_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :medium)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -113,6 +122,7 @@ module Primer
       end
 
       # @label Size large
+      # @snapshot
       def icon_only_large
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :large)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
@@ -151,6 +161,7 @@ module Primer
 
       # NOTE: this preview uses a group to force it's display below the other groups
       # @!group With link as tag
+      # @snapshot
       def with_link_as_tag
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
           component.with_item(tag: :a, href: "#", label: "Preview", icon: :eye, selected: true)
@@ -161,8 +172,10 @@ module Primer
       # @!endgroup
 
       # @!group With aria labeled headings
+      # @snapshot
       def with_subhead_actions; end
 
+      # @snapshot
       def with_label_and_caption; end
       # @!endgroup
     end

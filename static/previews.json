@@ -21,7 +21,7 @@
       {
         "preview_path": "primer/alpha/action_list/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -73,7 +73,7 @@
       {
         "preview_path": "primer/alpha/action_list/heading",
         "name": "heading",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -99,7 +99,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_default",
         "name": "item_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -164,7 +164,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_leading_trailing_visual",
         "name": "item_leading_trailing_visual",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -177,7 +177,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_with_description",
         "name": "item_with_description",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -190,7 +190,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_with_description_inline",
         "name": "item_with_description_inline",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -203,7 +203,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_trailing_action",
         "name": "item_trailing_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -216,7 +216,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_danger",
         "name": "item_danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -229,7 +229,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_disabled",
         "name": "item_disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -268,7 +268,7 @@
       {
         "preview_path": "primer/alpha/action_list/item_active",
         "name": "item_active",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -635,7 +635,7 @@
       {
         "preview_path": "primer/alpha/auto_complete/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -747,7 +747,7 @@
       {
         "preview_path": "primer/beta/auto_complete/leading_visual",
         "name": "leading_visual",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -760,7 +760,7 @@
       {
         "preview_path": "primer/beta/auto_complete/trailing_action",
         "name": "trailing_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -773,7 +773,7 @@
       {
         "preview_path": "primer/beta/auto_complete/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -786,7 +786,7 @@
       {
         "preview_path": "primer/beta/auto_complete/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -799,7 +799,7 @@
       {
         "preview_path": "primer/beta/auto_complete/small",
         "name": "small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -812,7 +812,7 @@
       {
         "preview_path": "primer/beta/auto_complete/medium",
         "name": "medium",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -825,7 +825,7 @@
       {
         "preview_path": "primer/beta/auto_complete/large",
         "name": "large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -963,7 +963,7 @@
       {
         "preview_path": "primer/beta/avatar/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -989,7 +989,7 @@
       {
         "preview_path": "primer/beta/avatar/size_16",
         "name": "size_16",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1002,7 +1002,7 @@
       {
         "preview_path": "primer/beta/avatar/size_20",
         "name": "size_20",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1015,7 +1015,7 @@
       {
         "preview_path": "primer/beta/avatar/size_24",
         "name": "size_24",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1028,7 +1028,7 @@
       {
         "preview_path": "primer/beta/avatar/size_32",
         "name": "size_32",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1041,7 +1041,7 @@
       {
         "preview_path": "primer/beta/avatar/size_40",
         "name": "size_40",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1054,7 +1054,7 @@
       {
         "preview_path": "primer/beta/avatar/size_48",
         "name": "size_48",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1067,7 +1067,7 @@
       {
         "preview_path": "primer/beta/avatar/size_80",
         "name": "size_80",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1080,7 +1080,7 @@
       {
         "preview_path": "primer/beta/avatar/shape_circle",
         "name": "shape_circle",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1093,7 +1093,7 @@
       {
         "preview_path": "primer/beta/avatar/shape_square",
         "name": "shape_square",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1127,7 +1127,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1153,7 +1153,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_2",
         "name": "avatar_2",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1166,7 +1166,7 @@
       {
         "preview_path": "primer/beta/avatar_stack/avatar_3",
         "name": "avatar_3",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1265,7 +1265,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_default",
         "name": "scheme_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1278,7 +1278,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_danger",
         "name": "scheme_danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1291,7 +1291,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_success",
         "name": "scheme_success",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1304,7 +1304,7 @@
       {
         "preview_path": "primer/alpha/banner/scheme_warning",
         "name": "scheme_warning",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1317,7 +1317,7 @@
       {
         "preview_path": "primer/alpha/banner/dismissable",
         "name": "dismissable",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1330,7 +1330,7 @@
       {
         "preview_path": "primer/alpha/banner/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1356,7 +1356,7 @@
       {
         "preview_path": "primer/alpha/banner/with_action_button",
         "name": "with_action_button",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1369,7 +1369,7 @@
       {
         "preview_path": "primer/alpha/banner/with_action_content",
         "name": "with_action_content",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1450,7 +1450,7 @@
       {
         "preview_path": "primer/beta/blankslate/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1489,7 +1489,7 @@
       {
         "preview_path": "primer/beta/blankslate/option_border",
         "name": "option_border",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1502,7 +1502,7 @@
       {
         "preview_path": "primer/beta/blankslate/with_icon",
         "name": "with_icon",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1515,7 +1515,7 @@
       {
         "preview_path": "primer/beta/blankslate/with_image",
         "name": "with_image",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1528,7 +1528,7 @@
       {
         "preview_path": "primer/beta/blankslate/loading",
         "name": "loading",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1541,7 +1541,7 @@
       {
         "preview_path": "primer/beta/blankslate/description",
         "name": "description",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1554,7 +1554,7 @@
       {
         "preview_path": "primer/beta/blankslate/primary_action",
         "name": "primary_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1567,7 +1567,7 @@
       {
         "preview_path": "primer/beta/blankslate/secondary_action",
         "name": "secondary_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1580,7 +1580,7 @@
       {
         "preview_path": "primer/beta/blankslate/full",
         "name": "full",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1614,7 +1614,7 @@
       {
         "preview_path": "primer/beta/border_box/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1640,7 +1640,7 @@
       {
         "preview_path": "primer/beta/border_box/row_colors",
         "name": "row_colors",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1666,7 +1666,7 @@
       {
         "preview_path": "primer/beta/border_box/padding_condensed",
         "name": "padding_condensed",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1679,7 +1679,7 @@
       {
         "preview_path": "primer/beta/border_box/padding_spacious",
         "name": "padding_spacious",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1726,7 +1726,7 @@
       {
         "preview_path": "primer/box/border",
         "name": "border",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1739,7 +1739,7 @@
       {
         "preview_path": "primer/box/border_bottom",
         "name": "border_bottom",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1773,7 +1773,7 @@
       {
         "preview_path": "primer/beta/breadcrumbs/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1794,7 +1794,7 @@
       {
         "preview_path": "primer/beta/button/playground",
         "name": "playground",
-        "snapshot": "true",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1859,7 +1859,7 @@
       {
         "preview_path": "primer/beta/button/invisible_all_visuals",
         "name": "invisible_all_visuals",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1872,7 +1872,7 @@
       {
         "preview_path": "primer/beta/button/link",
         "name": "link",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1885,7 +1885,7 @@
       {
         "preview_path": "primer/beta/button/all_schemes",
         "name": "all_schemes",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1898,7 +1898,7 @@
       {
         "preview_path": "primer/beta/button/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1911,7 +1911,7 @@
       {
         "preview_path": "primer/beta/button/link_as_button",
         "name": "link_as_button",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1924,7 +1924,7 @@
       {
         "preview_path": "primer/beta/button/trailing_visual",
         "name": "trailing_visual",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1937,7 +1937,7 @@
       {
         "preview_path": "primer/beta/button/leading_visual",
         "name": "leading_visual",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1950,7 +1950,7 @@
       {
         "preview_path": "primer/beta/button/trailing_action",
         "name": "trailing_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -1963,7 +1963,7 @@
       {
         "preview_path": "primer/beta/button/trailing_counter",
         "name": "trailing_counter",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2010,7 +2010,7 @@
       {
         "preview_path": "primer/beta/button_group/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2023,7 +2023,7 @@
       {
         "preview_path": "primer/beta/button_group/split_button",
         "name": "split_button",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2036,7 +2036,7 @@
       {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2049,7 +2049,7 @@
       {
         "preview_path": "primer/beta/button_group/all_tags",
         "name": "all_tags",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2096,7 +2096,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/sizes_default",
         "name": "sizes_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2122,7 +2122,7 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_default",
         "name": "scheme_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2208,6 +2208,19 @@
       {
         "preview_path": "primer/alpha/check_box/with_caption",
         "name": "with_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/check_box/checked",
+        "name": "checked",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -2281,7 +2294,7 @@
       {
         "preview_path": "primer/alpha/check_box_group/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2354,7 +2367,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2367,7 +2380,7 @@
       {
         "preview_path": "primer/beta/clipboard_copy/text",
         "name": "text",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2414,7 +2427,7 @@
       {
         "preview_path": "primer/beta/close_button/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2448,7 +2461,7 @@
       {
         "preview_path": "primer/beta/counter/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2461,7 +2474,7 @@
       {
         "preview_path": "primer/beta/counter/with_text",
         "name": "with_text",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2474,7 +2487,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_default",
         "name": "color_scheme_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2487,7 +2500,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_primary",
         "name": "color_scheme_primary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2500,7 +2513,7 @@
       {
         "preview_path": "primer/beta/counter/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2513,7 +2526,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_default",
         "name": "rounding_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2526,7 +2539,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_above_1000",
         "name": "rounding_above_1000",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2539,7 +2552,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_below_1000",
         "name": "rounding_below_1000",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2552,7 +2565,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number",
         "name": "rounding_large_number",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2565,7 +2578,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number_less_than_custom_limit",
         "name": "rounding_large_number_less_than_custom_limit",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2578,7 +2591,7 @@
       {
         "preview_path": "primer/beta/counter/rounding_large_number_greater_than_custom_limit",
         "name": "rounding_large_number_greater_than_custom_limit",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3000,7 +3013,7 @@
       {
         "preview_path": "primer/beta/flash/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3013,7 +3026,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_default",
         "name": "color_scheme_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3026,7 +3039,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_warning",
         "name": "color_scheme_warning",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3039,7 +3052,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_danger",
         "name": "color_scheme_danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3052,7 +3065,7 @@
       {
         "preview_path": "primer/beta/flash/color_scheme_success",
         "name": "color_scheme_success",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3065,7 +3078,7 @@
       {
         "preview_path": "primer/beta/flash/options_full",
         "name": "options_full",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3078,7 +3091,7 @@
       {
         "preview_path": "primer/beta/flash/options_dismissible",
         "name": "options_dismissible",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3091,7 +3104,7 @@
       {
         "preview_path": "primer/beta/flash/options_with_icon",
         "name": "options_with_icon",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3211,7 +3224,7 @@
       {
         "preview_path": "primer/beta/heading/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3232,7 +3245,7 @@
       {
         "preview_path": "primer/alpha/hellip_button/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3279,7 +3292,7 @@
       {
         "preview_path": "primer/alpha/hidden_text_expander/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3313,7 +3326,7 @@
       {
         "preview_path": "primer/beta/icon_button/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3326,7 +3339,7 @@
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3339,7 +3352,7 @@
       {
         "preview_path": "primer/beta/icon_button/danger",
         "name": "danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3420,7 +3433,7 @@
       {
         "preview_path": "primer/beta/label/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3446,7 +3459,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_primary",
         "name": "color_scheme_primary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3459,7 +3472,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3472,7 +3485,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_accent",
         "name": "color_scheme_accent",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3485,7 +3498,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_success",
         "name": "color_scheme_success",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3498,7 +3511,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_attention",
         "name": "color_scheme_attention",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3511,7 +3524,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_danger",
         "name": "color_scheme_danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3524,7 +3537,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_severe",
         "name": "color_scheme_severe",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3537,7 +3550,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_done",
         "name": "color_scheme_done",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3550,7 +3563,7 @@
       {
         "preview_path": "primer/beta/label/color_scheme_sponsors",
         "name": "color_scheme_sponsors",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3563,7 +3576,7 @@
       {
         "preview_path": "primer/beta/label/size_default",
         "name": "size_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3576,7 +3589,7 @@
       {
         "preview_path": "primer/beta/label/size_large",
         "name": "size_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3602,7 +3615,7 @@
       {
         "preview_path": "primer/beta/label/inline_inline",
         "name": "inline_inline",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3636,7 +3649,7 @@
       {
         "preview_path": "primer/alpha/layout/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3649,7 +3662,7 @@
       {
         "preview_path": "primer/alpha/layout/gutter_none",
         "name": "gutter_none",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3753,7 +3766,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_width_narrow",
         "name": "sidebar_width_narrow",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3792,7 +3805,7 @@
       {
         "preview_path": "primer/alpha/layout/sidebar_col_placement_start",
         "name": "sidebar_col_placement_start",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3917,7 +3930,7 @@
       {
         "preview_path": "primer/beta/link/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3956,7 +3969,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_primary",
         "name": "color_scheme_primary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3969,7 +3982,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_primary_muted",
         "name": "color_scheme_primary_muted",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3982,7 +3995,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_secondary",
         "name": "color_scheme_secondary",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3995,7 +4008,7 @@
       {
         "preview_path": "primer/beta/link/color_scheme_secondary_muted",
         "name": "color_scheme_secondary_muted",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4029,7 +4042,7 @@
       {
         "preview_path": "primer/alpha/menu/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4063,7 +4076,7 @@
       {
         "preview_path": "primer/alpha/multi_input/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4076,7 +4089,7 @@
       {
         "preview_path": "primer/alpha/multi_input/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4089,7 +4102,7 @@
       {
         "preview_path": "primer/alpha/multi_input/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4102,7 +4115,7 @@
       {
         "preview_path": "primer/alpha/multi_input/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4136,7 +4149,7 @@
       {
         "preview_path": "primer/alpha/nav_list/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4162,7 +4175,7 @@
       {
         "preview_path": "primer/alpha/nav_list/show_more_item",
         "name": "show_more_item",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4175,7 +4188,7 @@
       {
         "preview_path": "primer/alpha/nav_list/trailing_action",
         "name": "trailing_action",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4209,7 +4222,7 @@
       {
         "preview_path": "primer/beta/octicon/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4329,7 +4342,7 @@
       {
         "preview_path": "primer/beta/popover/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4342,7 +4355,7 @@
       {
         "preview_path": "primer/beta/popover/large",
         "name": "large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4355,7 +4368,7 @@
       {
         "preview_path": "primer/beta/popover/bottom_right",
         "name": "bottom_right",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4368,7 +4381,7 @@
       {
         "preview_path": "primer/beta/popover/top_right",
         "name": "top_right",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4381,7 +4394,7 @@
       {
         "preview_path": "primer/beta/popover/bottom_left",
         "name": "bottom_left",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4394,7 +4407,7 @@
       {
         "preview_path": "primer/beta/popover/top_left",
         "name": "top_left",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4428,7 +4441,7 @@
       {
         "preview_path": "primer/beta/progress_bar/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4441,7 +4454,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_small",
         "name": "size_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4454,7 +4467,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_default",
         "name": "size_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4467,7 +4480,7 @@
       {
         "preview_path": "primer/beta/progress_bar/size_large",
         "name": "size_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4501,7 +4514,7 @@
       {
         "preview_path": "primer/alpha/radio_button/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4514,7 +4527,20 @@
       {
         "preview_path": "primer/alpha/radio_button/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/radio_button/checked",
+        "name": "checked",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4527,7 +4553,7 @@
       {
         "preview_path": "primer/alpha/radio_button/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4540,7 +4566,7 @@
       {
         "preview_path": "primer/alpha/radio_button/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4574,7 +4600,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4587,7 +4613,7 @@
       {
         "preview_path": "primer/alpha/radio_button_group/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4733,7 +4759,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4746,7 +4772,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_small",
         "name": "full_width_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4759,7 +4785,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_medium",
         "name": "full_width_medium",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4772,7 +4798,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/full_width_large",
         "name": "full_width_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4785,7 +4811,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_small",
         "name": "icons_and_text_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4798,7 +4824,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_medium",
         "name": "icons_and_text_medium",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4811,7 +4837,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
         "name": "icons_and_text_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4824,7 +4850,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4837,7 +4863,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_medium",
         "name": "icon_only_medium",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4850,7 +4876,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_large",
         "name": "icon_only_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4902,7 +4928,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_link_as_tag",
         "name": "with_link_as_tag",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4915,7 +4941,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_subhead_actions",
         "name": "with_subhead_actions",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4928,7 +4954,7 @@
       {
         "preview_path": "primer/alpha/segmented_control/with_label_and_caption",
         "name": "with_label_and_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4975,7 +5001,7 @@
       {
         "preview_path": "primer/alpha/select/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4988,7 +5014,7 @@
       {
         "preview_path": "primer/alpha/select/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5001,7 +5027,7 @@
       {
         "preview_path": "primer/alpha/select/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5014,7 +5040,7 @@
       {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5027,7 +5053,7 @@
       {
         "preview_path": "primer/alpha/select/invalid",
         "name": "invalid",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5040,7 +5066,7 @@
       {
         "preview_path": "primer/alpha/select/with_validation_message",
         "name": "with_validation_message",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5074,7 +5100,7 @@
       {
         "preview_path": "primer/beta/spinner/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5108,7 +5134,7 @@
       {
         "preview_path": "primer/beta/state/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5134,7 +5160,7 @@
       {
         "preview_path": "primer/beta/state/states_open",
         "name": "states_open",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5147,7 +5173,7 @@
       {
         "preview_path": "primer/beta/state/states_closed",
         "name": "states_closed",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5160,7 +5186,7 @@
       {
         "preview_path": "primer/beta/state/states_merged",
         "name": "states_merged",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5173,7 +5199,7 @@
       {
         "preview_path": "primer/beta/state/sizes_default",
         "name": "sizes_default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5186,7 +5212,7 @@
       {
         "preview_path": "primer/beta/state/sizes_small",
         "name": "sizes_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5220,7 +5246,7 @@
       {
         "preview_path": "primer/beta/subhead/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5233,7 +5259,7 @@
       {
         "preview_path": "primer/beta/subhead/danger",
         "name": "danger",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5246,7 +5272,7 @@
       {
         "preview_path": "primer/beta/subhead/actions",
         "name": "actions",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5272,7 +5298,7 @@
       {
         "preview_path": "primer/beta/subhead/spacing_spacious",
         "name": "spacing_spacious",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5319,7 +5345,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5332,7 +5358,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5345,7 +5371,7 @@
       {
         "preview_path": "primer/alpha/tab_nav/with_extra",
         "name": "with_extra",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5379,7 +5405,7 @@
       {
         "preview_path": "primer/alpha/tab_panels/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5426,7 +5452,7 @@
       {
         "preview_path": "primer/beta/text/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5460,7 +5486,7 @@
       {
         "preview_path": "primer/alpha/text_area/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5473,7 +5499,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5486,7 +5512,7 @@
       {
         "preview_path": "primer/alpha/text_area/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5499,7 +5525,7 @@
       {
         "preview_path": "primer/alpha/text_area/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5512,7 +5538,7 @@
       {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5525,7 +5551,7 @@
       {
         "preview_path": "primer/alpha/text_area/invalid",
         "name": "invalid",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5538,7 +5564,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_validation_message",
         "name": "with_validation_message",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5572,7 +5598,7 @@
       {
         "preview_path": "primer/alpha/text_field/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5585,7 +5611,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_small",
         "name": "size_small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5598,7 +5624,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_medium",
         "name": "size_medium",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5611,7 +5637,7 @@
       {
         "preview_path": "primer/alpha/text_field/size_large",
         "name": "size_large",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5624,7 +5650,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_caption",
         "name": "with_caption",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5637,7 +5663,7 @@
       {
         "preview_path": "primer/alpha/text_field/visually_hide_label",
         "name": "visually_hide_label",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5650,7 +5676,7 @@
       {
         "preview_path": "primer/alpha/text_field/show_clear_button",
         "name": "show_clear_button",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5663,7 +5689,7 @@
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5676,7 +5702,7 @@
       {
         "preview_path": "primer/alpha/text_field/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5689,7 +5715,7 @@
       {
         "preview_path": "primer/alpha/text_field/invalid",
         "name": "invalid",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5702,7 +5728,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_placeholder",
         "name": "with_placeholder",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5715,7 +5741,7 @@
       {
         "preview_path": "primer/alpha/text_field/inset",
         "name": "inset",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5728,7 +5754,7 @@
       {
         "preview_path": "primer/alpha/text_field/monospace",
         "name": "monospace",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5741,7 +5767,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_leading_visual",
         "name": "with_leading_visual",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5754,7 +5780,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_validation_message",
         "name": "with_validation_message",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5827,7 +5853,7 @@
       {
         "preview_path": "primer/beta/timeline_item/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -5862,7 +5888,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5876,7 +5902,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/checked",
         "name": "checked",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5890,7 +5916,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/disabled",
         "name": "disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5904,7 +5930,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/checked_disabled",
         "name": "checked_disabled",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5918,7 +5944,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/small",
         "name": "small",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5932,7 +5958,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_status_label_position_end",
         "name": "with_status_label_position_end",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -5946,7 +5972,7 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_a_bad_src",
         "name": "with_a_bad_src",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region",
@@ -6123,6 +6149,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_inside_primer_overlay",
+        "name": "tooltip_inside_primer_overlay",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6187,7 +6226,7 @@
       {
         "preview_path": "primer/beta/truncate/max_widths",
         "name": "max_widths",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6221,7 +6260,7 @@
       {
         "preview_path": "primer/alpha/underline_nav/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6234,7 +6273,7 @@
       {
         "preview_path": "primer/alpha/underline_nav/with_icons_and_counters",
         "name": "with_icons_and_counters",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"

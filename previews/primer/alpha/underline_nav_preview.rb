@@ -20,6 +20,7 @@ module Primer
       end
 
       # @label Default options
+      # @snapshot
       #
       # @param label [String] text
       # @param tag [Symbol] select [div, nav]
@@ -35,6 +36,7 @@ module Primer
       end
 
       # @label With icons and counters
+      # @snapshot
       #
       # @param label [String] text
       # @param tag [Symbol] select [div, nav]

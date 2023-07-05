@@ -32,6 +32,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::NavList.new(selected_item_id: :code_review_limits)) do |list|
           list.with_heading(title: "Repository settings")
@@ -85,6 +86,7 @@ module Primer
       end
 
       # @label Show more item
+      # @snapshot
       def show_more_item
         render(Primer::Alpha::NavList.new(aria: { label: "My favorite foods" })) do |list|
           list.with_group do |group|
@@ -99,6 +101,7 @@ module Primer
       end
 
       # @label Trailing action
+      # @snapshot
       def trailing_action; end
     end
   end

@@ -37,6 +37,7 @@ module Primer
       # @param role text
       # @param scheme [Symbol] select [full, inset]
       # @param show_dividers toggle
+      # @snapshot
       def default(
         role: Primer::Alpha::ActionList::DEFAULT_ROLE,
         scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
@@ -137,6 +138,7 @@ module Primer
       # @param title text
       # @param subtitle text
       # @param list_id text
+      # @snapshot
       def heading(
         scheme: Primer::Alpha::ActionList::Heading::DEFAULT_SCHEME,
         title: "This is a title",
@@ -237,6 +239,7 @@ module Primer
       end
 
       # @label Item [default]
+      # @snapshot
       def item_default
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -286,6 +289,7 @@ module Primer
       end
 
       # @label Item [leading and trailing visual]
+      # @snapshot
       def item_leading_trailing_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -298,6 +302,7 @@ module Primer
       end
 
       # @label Item [description]
+      # @snapshot
       def item_with_description
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -309,6 +314,7 @@ module Primer
       end
 
       # @label Item [inline description]
+      # @snapshot
       def item_with_description_inline
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -320,6 +326,7 @@ module Primer
       end
 
       # @label Item [trailing action]
+      # @snapshot
       def item_trailing_action
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -331,6 +338,7 @@ module Primer
       end
 
       # @label Item [danger]
+      # @snapshot
       def item_danger
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -340,6 +348,7 @@ module Primer
       end
 
       # @label Item [disabled]
+      # @snapshot
       def item_disabled
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
@@ -370,6 +379,7 @@ module Primer
       end
 
       # @label Item [active]
+      # @snapshot
       def item_active
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }

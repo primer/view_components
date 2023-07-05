@@ -24,6 +24,7 @@ module Primer
       end
 
       # @!group Size Variants
+      # @snapshot
       #
       # @label Default
       def sizes_default
@@ -37,6 +38,7 @@ module Primer
       # @!endgroup
 
       # @!group Schemes
+      # @snapshot
       #
       # @label Default
       def scheme_default

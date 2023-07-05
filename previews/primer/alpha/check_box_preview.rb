@@ -40,10 +40,16 @@ module Primer
       end
 
       # @!group Options
+      # @snapshot
       #
       # @label With caption
       def with_caption
         render(Primer::Alpha::CheckBox.new(caption: "With a caption", name: "my-check-box1", label: "Jean-Luc Picard"))
+      end
+
+      # @label Checked
+      def checked
+        render(Primer::Alpha::CheckBox.new(checked: true, name: "my-check-box1", label: "Jean-Luc Picard"))
       end
 
       # @label Visually hidden label

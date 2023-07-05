@@ -8,6 +8,7 @@ module Primer
       #
       # @param aria_label [String]
       # @param inline [Boolean]
+      # @snapshot
       def default(inline: false, aria_label: "No effect")
         render(Primer::Alpha::HellipButton.new(inline: inline, "aria-label": aria_label))
       end

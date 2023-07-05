@@ -27,6 +27,7 @@ module Primer
       # @param hide_border [Boolean]
       # @param heading_danger [Boolean]
       # @param heading_tag [Symbol] select [div, h1, h2, h3, h4, h5, h6]
+      # @snapshot
       def default(spacious: false, hide_border: false, heading_tag: :div, heading_danger: false)
         render(Primer::Beta::Subhead.new(spacious: spacious, hide_border: hide_border)) do |component|
           component.with_heading(tag: heading_tag, danger: heading_danger) do
@@ -39,6 +40,7 @@ module Primer
       end
 
       # @label Danger
+      # @snapshot
       def danger
         render(Primer::Beta::Subhead.new) do |component|
           component.with_heading(danger: true) do
@@ -51,6 +53,7 @@ module Primer
       end
 
       # @label Actions
+      # @snapshot
       def actions
         render_with_template(locals: {})
       end
@@ -70,6 +73,7 @@ module Primer
       end
 
       # @label Spacious
+      # @snapshot
       def spacing_spacious
         render(Primer::Beta::Subhead.new(spacious: true)) do |component|
           component.with_heading do
