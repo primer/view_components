@@ -17,6 +17,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       #
       def default
         render(Primer::Beta::Flash.new) { "This is a flash message!" }
@@ -25,21 +26,25 @@ module Primer
       # @!group Color Schemes
       #
       # @label Default
+      # @snapshot
       def color_scheme_default
         render(Primer::Beta::Flash.new) { "This is a flash message!" }
       end
 
       # @label Warning
+      # @snapshot
       def color_scheme_warning
         render(Primer::Beta::Flash.new(scheme: :warning)) { "This is a warning flash message!" }
       end
 
       # @label Danger
+      # @snapshot
       def color_scheme_danger
         render(Primer::Beta::Flash.new(scheme: :danger)) { "This is a danger flash message!" }
       end
 
       # @label Success
+      # @snapshot
       def color_scheme_success
         render(Primer::Beta::Flash.new(scheme: :success)) { "This is a success flash message!" }
       end
@@ -49,16 +54,19 @@ module Primer
       # @!group More options
       #
       # @label Full width
+      # @snapshot
       def options_full
         render(Primer::Beta::Flash.new(full: true)) { "This is a full width flash message!" }
       end
 
       # @label Dismissible
+      # @snapshot
       def options_dismissible
         render(Primer::Beta::Flash.new(dismissible: true)) { "This is a dismissible flash message!" }
       end
 
       # @label With icon
+      # @snapshot
       def options_with_icon
         render(Primer::Beta::Flash.new(icon: :info)) { "This is a flash message with an icon!" }
       end

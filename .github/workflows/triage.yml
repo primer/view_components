@@ -31,15 +31,15 @@ jobs:
     name: Check for changeset
     runs-on: ubuntu-latest
     env:
-      SKIP_LABEL: "skip changelog"
+      SKIP_LABEL: "skip changeset"
     steps:
-      - if: "contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+      - if: "contains(github.event.pull_request.labels.*.name, 'skip changeset')"
         run: echo "passed"; exit 0;
-      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changeset')"
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
+      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changeset')"
         name: "Check for changeset"
         run: script/check-for-changeset
 

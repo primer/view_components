@@ -18,7 +18,7 @@ module Alpha
       assert_selector("tool-tip.position-absolute.sr-only", visible: :hidden)
       assert_nil(find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
 
-      find("button").send_keys("") # sends focus to button
+      find("button").send_keys("tab") # sends focus to button
 
       assert_selector("tool-tip.position-absolute", visible: true)
       refute_selector("tool-tip.position-absolute.sr-only", visible: true)
@@ -45,7 +45,7 @@ module Alpha
     def test_hides_tooltip_on_escape
       visit_preview(:default)
 
-      find("button").send_keys("") # focus
+      find("button").send_keys("tab") # focus
       assert_selector("tool-tip", visible: true)
 
       find("button").send_keys(:escape)
@@ -106,7 +106,7 @@ module Alpha
       visit_preview(:label_tooltip_on_button_with_existing_labelledby)
 
       assert_selector("tool-tip[aria-hidden='true']", visible: :hidden)
-      find("button").send_keys("") # focus
+      find("button").send_keys("tab") # focus
       assert_selector("tool-tip[aria-hidden='true']", visible: :visible)
     end
 
@@ -116,7 +116,7 @@ module Alpha
       assert_selector("tool-tip.sr-only", visible: :hidden)
       refute_selector("tool-tip.sr-only[aria-hidden]", visible: :hidden)
 
-      find("button").send_keys("") # focus
+      find("button").send_keys("tab") # focus
 
       refute_selector("tool-tip.sr-only", visible: :hidden)
       assert_selector("tool-tip", visible: :visible)
@@ -141,7 +141,7 @@ module Alpha
       assert_selector("tool-tip.sr-only[for='button-2']", visible: :hidden)
       assert_selector("tool-tip.sr-only[for='button-3']", visible: :hidden)
 
-      find("button#button-1").send_keys("") # focus
+      find("button#button-1").send_keys("tab") # focus
 
       assert_selector("tool-tip[for='button-1']", visible: :visible)
       assert_selector("tool-tip.sr-only[for='button-2']", visible: :hidden)

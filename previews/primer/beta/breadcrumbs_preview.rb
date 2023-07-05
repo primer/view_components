@@ -18,6 +18,7 @@ module Primer
       # @label Default options
       #
       # @param number_of_links [Integer] number
+      # @snapshot
       def default(number_of_links: 2)
         render(Primer::Beta::Breadcrumbs.new) do |component|
           Array.new(number_of_links || 3) do |i|

@@ -20,6 +20,7 @@ module Primer
       # @param tag [Symbol] select [span, div]
       # @param size [Symbol] select [default, small]
       # @param scheme [Symbol] select [default, open, closed, merged]
+      # @snapshot
       def default(title: "State", scheme: :default, size: :default, tag: :span)
         render(Primer::Beta::State.new(title: title, scheme: scheme, size: size, tag: tag)) { "State" }
       end
@@ -32,16 +33,19 @@ module Primer
       end
 
       # @label Open
+      # @snapshot
       def states_open
         render(Primer::Beta::State.new(title: "Open", scheme: :open)) { "Open state" }
       end
 
       # @label Closed
+      # @snapshot
       def states_closed
         render(Primer::Beta::State.new(title: "Closed", scheme: :closed)) { "Closed state" }
       end
 
       # @label Merged
+      # @snapshot
       def states_merged
         render(Primer::Beta::State.new(title: "Merged", scheme: :merged)) { "Merged state" }
       end
@@ -51,11 +55,13 @@ module Primer
       # @!group Sizes
       #
       # @label Default
+      # @snapshot
       def sizes_default
         render(Primer::Beta::State.new(title: "Default")) { "Default size" }
       end
 
       # @label Small
+      # @snapshot
       def sizes_small
         render(Primer::Beta::State.new(title: "Default", size: :small)) { "Small size" }
       end

@@ -283,6 +283,7 @@ module Primer
       end
 
       # @label Default Options
+      # @snapshot
       def default
         render(Primer::Beta::Markdown.new) do
           MD_FIXTURE

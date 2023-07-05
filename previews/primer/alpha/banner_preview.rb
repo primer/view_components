@@ -27,21 +27,25 @@ module Primer
       # @!group Schemes
       #
       # @label Default scheme
+      # @snapshot
       def scheme_default
         render(Primer::Alpha::Banner.new) { "This is a default banner." }
       end
 
       # @label Danger
+      # @snapshot
       def scheme_danger
         render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" }
       end
 
       # @label Success
+      # @snapshot
       def scheme_success
         render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" }
       end
 
       # @label Warning
+      # @snapshot
       def scheme_warning
         render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
       end
@@ -49,11 +53,13 @@ module Primer
       # @!endgroup
 
       # @label Dismissable
+      # @snapshot
       def dismissable
-        render(Primer::Alpha::Banner.new(dismissable: true, reappear: true)) { "This is a dismissable banner." }
+        render(Primer::Alpha::Banner.new(dismissible: true, reappear: true)) { "This is a dismissable banner." }
       end
 
       # @!group Full Width
+      # @snapshot
       #
       # @label Full width
       def full_width
@@ -75,6 +81,7 @@ module Primer
       # @param scheme [Symbol] select [default, warning, danger, success]
       # @param content text
       # @param reappear [Boolean]
+      # @snapshot
       def with_action_button(full: false, dismissible: false, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, reappear: true, content: "This is a banner with an action!")
         icon = nil if icon == :none
         render_with_template(locals: { full: full, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, content: content, reappear: reappear })
@@ -88,6 +95,7 @@ module Primer
       # @param scheme [Symbol] select [default, warning, danger, success]
       # @param content text
       # @param reappear [Boolean]
+      # @snapshot
       def with_action_content(full: false, dismissible: false, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, reappear: true, content: "Did you know? Comments can be edited.")
         icon = nil if icon == :none
         render_with_template(locals: { full: full, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, content: content, reappear: reappear })

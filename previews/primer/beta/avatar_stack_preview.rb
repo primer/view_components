@@ -20,6 +20,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Beta::AvatarStack.new) do |component|
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
@@ -36,6 +37,7 @@ module Primer
       end
 
       # @label 2 avatars
+      # @snapshot
       def avatar_2
         render(Primer::Beta::AvatarStack.new) do |component|
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
@@ -44,6 +46,7 @@ module Primer
       end
 
       # @label 3 avatars
+      # @snapshot
       def avatar_3
         render(Primer::Beta::AvatarStack.new) do |component|
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")

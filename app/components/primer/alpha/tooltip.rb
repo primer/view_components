@@ -110,6 +110,7 @@ module Primer
         @system_arguments[:id] ||= self.class.generate_id
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:for] = for_id
+        @system_arguments[:popover] = "manual"
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "sr-only"

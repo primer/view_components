@@ -16,6 +16,7 @@ module Primer
       #
       # @param aria_label [String]
       # @param size [Symbol] select [xsmall, small, medium]
+      # @snapshot
       def default(size: :small, aria_label: nil)
         render(Primer::Beta::Octicon.new(icon: :people, size: size, "aria-label": aria_label))
       end

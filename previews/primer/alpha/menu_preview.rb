@@ -8,6 +8,7 @@ module Primer
       def playground; end
 
       # @label Default
+      # @snapshot
       def default; end
     end
   end

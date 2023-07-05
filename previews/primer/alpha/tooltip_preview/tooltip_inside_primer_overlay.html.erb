@@ -1,0 +1,20 @@
+<%= render(Primer::Alpha::Overlay.new(
+         title: "Menu",
+         role: :dialog,
+)) do |d| %>
+  <% d.with_show_button do |b| %>
+    Open Overlay
+    <% b.with_tooltip(text: "Opens an overlay") %>
+  <% end %>
+  <% d.with_header do  %>
+    An overlay
+  <% end %>
+  <% d.with_body do  %>
+
+    <%= render(Primer::Beta::Button.new(id: "overlay-button")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip in an Overlay") %>
+      A button
+    <% end %>
+
+  <% end %>
+<% end %>

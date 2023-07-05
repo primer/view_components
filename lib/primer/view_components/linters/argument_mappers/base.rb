@@ -53,7 +53,7 @@ module ERBLint
           system_arguments = system_arguments_to_args(classes_node.value)
           args = classes_to_args(system_arguments[:classes]&.split || [])
 
-          invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
+          invalid_classes = args[:classes].select { |class_name| ::Primer::Classify::Validation.invalid?(class_name) }
 
           raise ConversionError, "Cannot convert #{'class'.pluralize(invalid_classes.size)} #{invalid_classes.join(',')}" if invalid_classes.present?
 
@@ -81,7 +81,7 @@ module ERBLint
         end
 
         def system_arguments_to_args(classes)
-          system_arguments = Primer::Classify::Utilities.classes_to_hash(classes)
+          system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes)
 
           # need to transform symbols to strings with leading `:`
           system_arguments.transform_values do |v|
