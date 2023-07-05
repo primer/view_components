@@ -2,7 +2,7 @@
 .ActionBar {
   position: relative;
   display: flex !important;
-  min-width: calc(var(--primer-control-medium-size, 32px) * 3);
+  min-width: calc(var(--control-medium-size) * 3); 
   align-items: center;
   flex-grow: 1;
   flex-shrink: 1;
@@ -29,41 +29,41 @@
 }
 
 .ActionBar--small {
-  min-width: calc(var(--primer-control-small-size, 28px) * 3);
+  min-width: calc(var(--control-small-size) * 3);
 }
 
 .ActionBar--large {
-  min-width: calc(var(--primer-control-large-size, 40px) * 3);
+  min-width: calc(var(--control-large-size) * 3);
 }
 
 /* Divider */
 
 .ActionBar-divider {
-  height: calc(var(--primer-control-medium-size, 32px) / 2);
-  margin: 0 var(--primer-controlStack-medium-gap-condensed, 8px);
-  border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
+  height: calc(var(--control-medium-size) / 2);
+  margin: 0 var(--controlStack-medium-gap-condensed);
+  border-left: var(--borderWidth-thin) solid var(--color-border-subtle);
 }
 
 .ActionBar--small .ActionBar-divider {
-  margin: 0 var(--primer-controlStack-small-gap-condensed, 8px);
+  margin: 0 var(--controlStack-small-gap-condensed);
 }
 
 .ActionBar--large .ActionBar-divider {
-  margin: 0 var(--primer-controlStack-large-gap-condensed, 8px);
+  margin: 0 var(--controlStack-large-gap-condensed);
 }
 
 /* Increase spacing so touch targets don't overlap */
 
 @media (pointer: coarse) {
   .ActionBar .ActionBar-item-container {
-    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-medium-size, 32px)); /* 12px */
+    gap: calc(var(--control-minTarget-coarse) - var(--control-medium-size)); /* 12px */
   }
 
   .ActionBar--small .ActionBar-item-container {
-    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-small-size, 28px));  /* 16px */
+    gap: calc(var(--control-minTarget-coarse) - var(--control-small-size));  /* 16px */
   }
 
   .ActionBar--large .ActionBar-item-container {
-    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-large-size, 40px));  /* 4px */
+    gap: calc(var(--control-minTarget-coarse) - var(--control-large-size));  /* 4px */
   }
 }
