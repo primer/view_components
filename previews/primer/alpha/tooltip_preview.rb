@@ -88,6 +88,13 @@ module Primer
         render(Primer::Beta::IconButton.new(icon: :search, "aria-label": tooltip_text, tooltip_direction: direction))
       end
       # @!endgroup
+
+      # @label Tooltip inside Primer::Alpha::Overlay
+      def tooltip_inside_primer_overlay(direction: :s, tooltip_text: "You can press a button")
+        render_with_template(
+          locals: {}
+        )
+      end
     end
   end
 end
