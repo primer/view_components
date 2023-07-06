@@ -1,4 +1,23 @@
 {
+  "Primer::Alpha::ActionBar": {
+    "DEFAULT_SIZE": "medium",
+    "Divider": "Primer::Alpha::ActionBar::Divider",
+    "Item": "Primer::Alpha::ActionBar::Item",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "small": "ActionBar--small",
+      "large": "ActionBar--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "small",
+      "large"
+    ]
+  },
+  "Primer::Alpha::ActionBar::Divider": {
+  },
+  "Primer::Alpha::ActionBar::Item": {
+  },
   "Primer::Alpha::ActionList": {
     "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
