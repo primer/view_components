@@ -22,13 +22,14 @@ If your tooltip is appropriately set on an interactive element, you can migrate 
 
 ### Scenario 1
 
+Flagged code:
 ```html
 <span aria-label="Mona Lisa" class="tooltipped tooltipped-s">
   Mona Lisa
 </span>
 ```
 
-Solution: We can get rid of the tooltip because it redundantly repeats the text content, like the following
+In this above example, we can get rid of the tooltip because it redundantly repeats the text content, like the following
 
 ```html
 <span>Mona Lisa</span>
@@ -36,6 +37,7 @@ Solution: We can get rid of the tooltip because it redundantly repeats the text 
 
 ### Scenario 2
 
+Flagged code:
 ```html
 <button aria-label="This action is irreversible" class="tooltipped tooltipped-n">
   Submit
@@ -45,6 +47,8 @@ Solution: We can get rid of the tooltip because it redundantly repeats the text 
 In this above example, the information that is conveyed using the tooltip is critical so we should not be using a tooltip to convey it. Update the design to always persist the text.
 
 ### Scenario 3
+
+Flagged code:
 
 ```html
 <a aria-label="A set of guidelines, principles, and patterns for designing and building UI at GitHub." class="tooltipped tooltipped-s" href="primer.style">
@@ -64,8 +68,8 @@ In this above example, the information conveyed in this tooltip isn't necessaril
 A tooltip is also a viable option in this scenario. We can render an accessible tooltip by using the slot of the Link component and setting the tooltip type to `:description`:
 
 ```.rb
-render(Primer::Beta::Link.new(href: "https://primer.style/design/", id: "A set of guidelines, principles, and patterns for designing and building UI at GitHub.")) do |component|
-  component.with_tooltip(type: :description, text: "Tooltip text")
+render(Primer::Beta::Link.new(href: "https://primer.style/design/", id: "primer-link")) do |component|
+  component.with_tooltip(type: :description, text: "A set of guidelines, principles, and patterns for designing and building UI at GitHub.")
   "Primer"
 end
 ```
