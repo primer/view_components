@@ -23,6 +23,7 @@ If your tooltip is appropriately set on an interactive element, you can migrate 
 ### Scenario 1
 
 Flagged code:
+
 ```html
 <span aria-label="Mona Lisa" class="tooltipped tooltipped-s">
   Mona Lisa
@@ -38,6 +39,7 @@ In this above example, we can get rid of the tooltip because it redundantly repe
 ### Scenario 2
 
 Flagged code:
+
 ```html
 <button aria-label="This action is irreversible" class="tooltipped tooltipped-n">
   Submit
