@@ -31,6 +31,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::RadioButtonGroup.new(name: "my-radio-group", label: "Question: what kind of bear is best?")) do |component|
           component.radio_button(label: "Bears", value: "bears")
@@ -42,6 +43,7 @@ module Primer
       # @!group Options
       #
       # @label With caption
+      # @snapshot
       def with_caption
         render(Primer::Alpha::RadioButtonGroup.new(caption: "With a caption", name: "my-radio-group", label: "Question: what kind of bear is best?")) do |component|
           component.radio_button(label: "Bears", value: "bears1")

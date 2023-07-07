@@ -72,6 +72,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::TextField.new(name: "my-text-field", label: "My text field"))
       end
@@ -79,16 +80,19 @@ module Primer
       # @!group Sizes
       #
       # @label Small
+      # @snapshot
       def size_small
         render(Primer::Alpha::TextField.new(size: :small, visually_hide_label: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Medium
+      # @snapshot
       def size_medium
         render(Primer::Alpha::TextField.new(size: :medium, visually_hide_label: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Large
+      # @snapshot
       def size_large
         render(Primer::Alpha::TextField.new(size: :large, visually_hide_label: true, name: "my-text-field", label: "My text field"))
       end
@@ -98,56 +102,67 @@ module Primer
       # @!group Options
       #
       # @label With caption
+      # @snapshot
       def with_caption
         render(Primer::Alpha::TextField.new(caption: "With a caption", name: "my-text-field", label: "My text field"))
       end
 
       # @label Visually hidden label
+      # @snapshot
       def visually_hide_label
         render(Primer::Alpha::TextField.new(visually_hide_label: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Show clear button
+      # @snapshot
       def show_clear_button
         render(Primer::Alpha::TextField.new(show_clear_button: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Full width
+      # @snapshot
       def full_width
         render(Primer::Alpha::TextField.new(full_width: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Disabled
+      # @snapshot
       def disabled
         render(Primer::Alpha::TextField.new(disabled: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Invalid
+      # @snapshot
       def invalid
         render(Primer::Alpha::TextField.new(invalid: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label With placeholder
+      # @snapshot
       def with_placeholder
         render(Primer::Alpha::TextField.new(placeholder: "with a placeholder", name: "my-text-field", label: "My text field"))
       end
 
       # @label Inset
+      # @snapshot
       def inset
         render(Primer::Alpha::TextField.new(inset: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label Monospace
+      # @snapshot
       def monospace
         render(Primer::Alpha::TextField.new(monospace: true, name: "my-text-field", label: "My text field"))
       end
 
       # @label With leading visual
+      # @snapshot
       def with_leading_visual
         render(Primer::Alpha::TextField.new(leading_visual: { icon: :search }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With validation message
+      # @snapshot
       def with_validation_message
         render(Primer::Alpha::TextField.new(validation_message: "An error occurred!", name: "my-text-field", label: "My text field"))
       end

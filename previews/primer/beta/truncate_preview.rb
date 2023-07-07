@@ -42,6 +42,7 @@ module Primer
       end
 
       # @label Max widths
+      # @snapshot
       def max_widths
         render(Primer::Beta::Truncate.new) do |component|
           component.with_item(max_width: 300) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }

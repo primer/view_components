@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.2.0)
+    primer_view_components (0.3.1)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -47,7 +47,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    capybara (3.38.0)
+    capybara (3.39.2)
       addressable
       matrix
       mini_mime (>= 0.1.3)
@@ -56,7 +56,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cliver (0.3.2)
     coderay (1.1.3)
     concurrent-ruby (1.2.0)
     crack (0.4.5)
@@ -64,9 +63,9 @@ GEM
     crass (1.0.6)
     css_parser (1.14.0)
       addressable
-    cuprite (0.13)
-      capybara (>= 2.1, < 4)
-      ferrum (~> 0.11.0)
+    cuprite (0.14.3)
+      capybara (~> 3.0)
+      ferrum (~> 0.13.0)
     docile (1.4.0)
     erb_lint (0.4.0)
       activesupport
@@ -77,10 +76,10 @@ GEM
       smart_properties
     erblint-github (0.4.0)
     erubi (1.12.0)
-    ferrum (0.11)
+    ferrum (0.13)
       addressable (~> 2.5)
-      cliver (~> 0.3)
       concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.15.5)
     hashdiff (1.0.1)
@@ -245,8 +244,8 @@ DEPENDENCIES
   allocation_tracer (~> 0.6.3)
   benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)
-  capybara (~> 3)
-  cuprite (= 0.13)
+  capybara (~> 3.39.2)
+  cuprite (~> 0.14.3)
   erb_lint (~> 0.4.0)
   erblint-github (= 0.4.0)
   listen (~> 3.0)

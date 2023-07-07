@@ -6,6 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <% if params.dig(:lookbook, :display, :primitives) == "next_major_v8" %>
+      <%= stylesheet_link_tag "primitives_v8", "data-turbo-track": "reload" %>
+    <% end %>
     <%= stylesheet_link_tag "primer_view_components", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "primer_view_components", type: "module", "data-turbo-track": "reload" %>
     <% if Rails.env.development? %>
@@ -15,7 +18,7 @@
 
   <body>
     <div id="component-preview">
-      <% if params.dig(:lookbook, :display, :theme) == "all" %>
+      <% if params.dig(:lookbook, :display, :theme) == "all" || params.dig(:theme) == "all" %> 
         <div class="theme-wrap">
           <% color_themes.each do |theme| %>
             <div class="preview-wrap" <%= color_theme_attributes(theme) %>>

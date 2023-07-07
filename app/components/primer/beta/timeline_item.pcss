@@ -15,12 +15,12 @@
     display: block;
     width: var(--borderWidth-thick);
     content: '';
-    background-color: var(--borderColor-muted);
+    background-color: var(--color-border-muted);
   }
 
   &:target .TimelineItem-badge {
-    border-color: var(--borderColor-accent-emphasis);
-    box-shadow: 0 0 0.2em var(--borderColor-accent-muted);
+    border-color: var(--color-accent-emphasis);
+    box-shadow: 0 0 0.2em var(--color-accent-muted);
   }
 }
 
@@ -32,18 +32,18 @@
   height: var(--control-medium-size);
   margin-right: var(--controlStack-medium-gap-condensed);
   margin-left: calc(var(--control-medium-size) / -2 + 1px);
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
   align-items: center;
-  background-color: var(--timelineBadge-bgColor);
-  border: var(--borderWidth-thick) solid var(--bgColor-default);
+  background-color: var(--color-timeline-badge-bg);
+  border: var(--borderWidth-thick) solid var(--color-canvas-default);
   border-radius: 50%;
   justify-content: center;
   flex-shrink: 0;
 }
 
 .TimelineItem-badge--success {
-  color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-success-emphasis);
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-success-emphasis);
   border: var(--borderWidth-thin) solid transparent;
 }
 
@@ -51,7 +51,7 @@
   min-width: 0;
   max-width: 100%;
   margin-top: var(--base-size-4);
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
   flex: auto;
 }
 
@@ -68,9 +68,9 @@
   margin: 0;
   margin-bottom: calc(var(--stack-gap-normal) * -1);
   margin-left: -56px;
-  background-color: var(--bgColor-default);
+  background-color: var(--color-canvas-default);
   border: 0;
-  border-top: var(--borderWidth-thicker) solid var(--borderColor-default);
+  border-top: var(--borderWidth-thicker) solid var(--color-border-default);
 }
 
 .TimelineItem--condensed {
@@ -86,8 +86,8 @@
     height: var(--base-size-16);
     margin-top: var(--base-size-8);
     margin-bottom: var(--base-size-8);
-    color: var(--fgColor-muted);
-    background-color: var(--bgColor-default);
+    color: var(--color-fg-muted);
+    background-color: var(--color-canvas-default);
     border: 0;
   }
 }

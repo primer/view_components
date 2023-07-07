@@ -20,6 +20,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Beta::BorderBox.new) do |component|
           component.with_header { "Header" }
@@ -45,6 +46,7 @@ module Primer
       end
 
       # @label Row colors
+      # @snapshot
       def row_colors
         render(Primer::Beta::BorderBox.new) do |component|
           component.with_row(scheme: :default) { "Default" }
@@ -69,6 +71,7 @@ module Primer
       end
 
       # @label Condensed
+      # @snapshot
       def padding_condensed
         render(Primer::Beta::BorderBox.new(padding: :condensed)) do |component|
           component.with_header { "Header" }
@@ -81,6 +84,7 @@ module Primer
       end
 
       # @label Spacious
+      # @snapshot
       def padding_spacious
         render(Primer::Beta::BorderBox.new(padding: :spacious)) do |component|
           component.with_header { "Header" }

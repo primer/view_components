@@ -16,11 +16,13 @@ module Primer
       end
 
       # @label Default Options
+      # @snapshot
       def default
         render(Primer::Beta::Counter.new(count: 1_000))
       end
 
       # @label With Text
+      # @snapshot
       def with_text
         render(Primer::Beta::Counter.new(text: "∞"))
       end
@@ -28,16 +30,19 @@ module Primer
       # @!group Color Schemes
       #
       # @label Default
+      # @snapshot
       def color_scheme_default
         render(Primer::Beta::Counter.new(count: 1_000))
       end
 
       # @label Primary
+      # @snapshot
       def color_scheme_primary
         render(Primer::Beta::Counter.new(count: 1_000, scheme: :primary))
       end
 
       # @label Secondary
+      # @snapshot
       def color_scheme_secondary
         render(Primer::Beta::Counter.new(count: 1_000, scheme: :secondary))
       end
@@ -47,31 +52,37 @@ module Primer
       # @!group Rounded Number
       #
       # @label Default (No Rounding)
+      # @snapshot
       def rounding_default
         render(Primer::Beta::Counter.new(count: 1_234))
       end
 
       # @label Rounded Above 1,000
+      # @snapshot
       def rounding_above_1000
         render(Primer::Beta::Counter.new(count: 1_234, round: true))
       end
 
       # @label Rounded Below 1,000
+      # @snapshot
       def rounding_below_1000
         render(Primer::Beta::Counter.new(count: 999, round: true))
       end
 
       # @label Rounded Large Numbers w/ Default Limit
+      # @snapshot
       def rounding_large_number
         render(Primer::Beta::Counter.new(count: 4_567_890, round: true))
       end
 
       # @label Rounded Large Numbers, Less Than Custom Limit
+      # @snapshot
       def rounding_large_number_less_than_custom_limit
         render(Primer::Beta::Counter.new(count: 4_567_890, limit: 1_000_000_000, round: true))
       end
 
       # @label Rounded Large Numbers, Greater Than Custom Limit
+      # @snapshot
       def rounding_large_number_greater_than_custom_limit
         render(Primer::Beta::Counter.new(count: 4_567_890, limit: 1_000_000, round: true))
       end
