@@ -1,5 +1,55 @@
 [
   {
+    "component": "ActionBar",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBar",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/default/",
+    "parameters": [
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
+        "name": "overflow_menu",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether to render the overflow menu."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionBar::Divider",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBarDivider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
+    "parameters": [
+
+    ]
+  },
+  {
+    "component": "ActionBar::Item",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBarItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/item/default/",
+    "parameters": [
+
+    ]
+  },
+  {
     "component": "ActionList",
     "status": "alpha",
     "a11y_reviewed": false,
