@@ -948,16 +948,11 @@
   },
   "Primer::Beta::Link": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_TAG": "a",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Link--primary",
       "secondary": "Link--secondary"
-    },
-    "TAG_OPTIONS": [
-      "a",
-      "span"
-    ]
+    }
   },
   "Primer::Beta::Markdown": {
     "DEFAULT_TAG": "div",

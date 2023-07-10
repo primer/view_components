@@ -3633,16 +3633,10 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
     "parameters": [
       {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
         "name": "href",
         "type": "String",
         "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
+        "description": "URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
       },
       {
         "name": "scheme",
