@@ -161,8 +161,13 @@ module Primer
 
       # @label All schemes
       # @snapshot
-      def all_schemes
-        render_with_template(locals: {})
+      # @param disabled toggle
+      def all_schemes(
+        disabled: false
+      )
+        render_with_template(locals: {
+                               disabled: disabled,
+                             })
       end
 
       # @label Full width
