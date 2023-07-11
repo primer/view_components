@@ -8,6 +8,11 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::ActionBar, {}, proc { |component|
+      component.with_item_icon_button(icon: :search, label: "Search")
+      component.with_item_icon_button(icon: :pencil, label: "Edit")
+      component.with_item_icon_button(icon: :archive, label: "Archive")
+    }],
     [Primer::Beta::RelativeTime, { datetime: Time.now.utc }],
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
@@ -126,6 +131,8 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::ActionBar::Divider",
+      "Primer::Alpha::ActionBar::Item",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",

@@ -1,5 +1,188 @@
 [
   {
+    "fully_qualified_name": "Primer::Alpha::ActionBar",
+    "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "ActionBar",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBar",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/default/",
+    "parameters": [
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
+        "name": "overflow_menu",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether to render the overflow menu."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/alpha/action_bar/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_bar/inline",
+        "name": "inline",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_bar/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_bar/small",
+        "name": "small",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_bar/medium",
+        "name": "medium",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_bar/large",
+        "name": "large",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionBar::Item",
+        "description": "ActionBar::Item is an internal component that wraps the items in a div with the `ActionBar-item` class.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionBar::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionBarItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionBar::Divider",
+        "description": "ActionBar::Item is an internal component that wraps the items in a div with the `ActionBar-item` class.",
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionBar::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionBarDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      }
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::Alpha::ActionList",
     "description": "An ActionList is a styled list of links. It acts as the base component for many\nother menu-type components, including `ActionMenu` and `SelectPanel`, as well as\nthe navigational component `NavList`.\n\nEach item in an action list can be augmented by specifying corresponding leading\nand/or trailing visuals.",
     "is_form_component": false,
@@ -11499,16 +11682,10 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
     "parameters": [
       {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
         "name": "href",
         "type": "String",
         "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
+        "description": "URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
       },
       {
         "name": "scheme",
