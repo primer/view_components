@@ -241,7 +241,7 @@ summary.Button {
 }
 
 .Button--invisible {
-  color: var(--button-invisible-fgColor-rest);
+  color: var(--button-default-fgColor-rest);
 
   &:hover:not(:disabled) {
     background-color: var(--button-invisible-bgColor-hover);
@@ -262,7 +262,7 @@ summary.Button {
 
   /* if button has no visuals, use link blue for text */
   &.Button--invisible-noVisuals .Button-label {
-    color: var(--fgColor-accent);
+    color: var(--button-default-fgColor-rest);
   }
 
   & .Button-visual {
@@ -275,7 +275,7 @@ summary.Button {
 }
 
 .Button--link {
-  color: var(--fgColor-link-res);
+  color: var(--fgColor-link-rest);
   fill: var(--fgColor-link-rest);
   display: inline-block;
   font-size: inherit;
