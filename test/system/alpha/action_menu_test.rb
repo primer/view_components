@@ -170,6 +170,23 @@ module Alpha
       assert_selector "modal-dialog#my-dialog"
     end
 
+    def test_shifting_focus_closes_menu
+      visit_preview(:two_menus)
+
+      page.evaluate_script(<<~JS)
+        document.querySelectorAll('action-menu button[aria-controls]')[0].focus()
+      JS
+
+      page.driver.browser.keyboard.type(:enter)
+      assert_selector "menu-1-overlay:popover-open"
+
+      page.evaluate_script(<<~JS)
+        document.querySelectorAll('action-menu button[aria-controls]')[1].focus()
+      JS
+      assert_selector "menu-1-overlay:not(:popover-open)"
+      refuse_selector "menu-1-overlay:popover-open"
+    end
+
     def test_single_select_form_submission
       visit_preview(:single_select_form, route_format: :json)
 

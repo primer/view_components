@@ -146,6 +146,19 @@ export class ActionMenuElement extends HTMLElement {
       }
     }
 
+    if (
+      this.popoverElement?.matches(':popover-open') &&
+      event.type === 'focusout' &&
+      !this.contains((event as FocusEvent).relatedTarget as Node)
+    ) {
+      requestAnimationFrame(() => {
+        const active = document.activeElement as HTMLElement | null
+        this.popoverElement?.hidePopover()
+        active?.focus()
+      })
+      return
+    }
+
     if (!this.popoverElement?.matches(':popover-open')) return
 
     if (event.type === 'include-fragment-replaced') {
