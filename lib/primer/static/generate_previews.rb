@@ -33,15 +33,14 @@ module Primer
                 scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
 
                 scenarios.map do |scenario|
-                  snapshot = scenario.tags.find { |e| e.tag_name == "snapshot" }
-                  if snapshot.nil?
-                    snapshot = "false"
-                  elsif snapshot.text.blank?
-                    snapshot = "true"
-                  else
-                    snapshot = snapshot.text
-                  end
-
+                  snapshot_tag = scenario.tags.find { |tag| tag.tag_name == "snapshot" }
+                  snapshot = if snapshot_tag.nil?
+                               "false"
+                             elsif snapshot_tag.text.blank?
+                               "true"
+                             else
+                               snapshot_tag.text
+                             end
                   {
                     preview_path: scenario.lookup_path,
                     name: scenario.name,
