@@ -32,7 +32,7 @@ module Primer
 
       # @label Default
       #
-      # @snapshot
+      # @snapshot interactive
       def default
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
@@ -51,6 +51,7 @@ module Primer
 
       # @label Wide
       #
+      # @snapshot interactive
       def wide
         render(Primer::Alpha::ActionMenu.new(select_variant: :single, size: :medium)) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "A wider menu" }
@@ -120,6 +121,7 @@ module Primer
 
       # @label Single item selected
       #
+      # @snapshot interactive
       def single_selected_item
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
@@ -131,6 +133,7 @@ module Primer
 
       # @label Single Select with Internal Label
       #
+      # @snapshot interactive
       def single_select_with_internal_label
         render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
@@ -144,6 +147,7 @@ module Primer
 
       # @label Multiple items selected
       #
+      # @snapshot interactive
       def multiple_selected_items
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
