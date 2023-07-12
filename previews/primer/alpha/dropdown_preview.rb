@@ -24,6 +24,7 @@ module Primer
 
       # @label Default
       #
+      # @snapshot interactive
       def default
         render(Primer::Alpha::Dropdown.new) do |component|
           component.with_button { "Dropdown" }

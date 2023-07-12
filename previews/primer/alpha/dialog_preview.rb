@@ -37,6 +37,7 @@ module Primer
       # @param visually_hide_title [Boolean] toggle
       # @param button_text [String] text
       # @param body_text [String] text
+      # @snapshot interactive
       def default(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false)
         render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
           d.with_show_button { button_text }
