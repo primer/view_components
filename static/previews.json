@@ -401,7 +401,7 @@
       {
         "preview_path": "primer/alpha/action_menu/default",
         "name": "default",
-        "snapshot": "true",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -414,7 +414,7 @@
       {
         "preview_path": "primer/alpha/action_menu/wide",
         "name": "wide",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -479,7 +479,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_selected_item",
         "name": "single_selected_item",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -492,7 +492,7 @@
       {
         "preview_path": "primer/alpha/action_menu/single_select_with_internal_label",
         "name": "single_select_with_internal_label",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -505,7 +505,7 @@
       {
         "preview_path": "primer/alpha/action_menu/multiple_selected_items",
         "name": "multiple_selected_items",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2896,7 +2896,7 @@
       {
         "preview_path": "primer/alpha/dropdown/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
