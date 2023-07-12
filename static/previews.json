@@ -401,7 +401,7 @@
       {
         "preview_path": "primer/alpha/action_menu/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -2771,7 +2771,7 @@
       {
         "preview_path": "primer/alpha/dialog/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
