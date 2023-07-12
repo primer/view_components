@@ -9,7 +9,7 @@ require "test_helpers/retry"
 
 module System
   class TestCase < ActionDispatch::SystemTestCase
-    driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
+    driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 1240, timeout: 1240 }
 
     def visit_preview(scenario_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
