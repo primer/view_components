@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- [#2111](https://github.com/primer/view_components/pull/2111) [`6ee6d774`](https://github.com/primer/view_components/commit/6ee6d774b463753c7b2b944dcf57dd4ff40c9589) Thanks [@keithamus](https://github.com/keithamus)! - refactor Primer::Alpha::Tooltip to use popover
+
+  Changed components: Primer::Alpha::Tooltip
+
+- [#2034](https://github.com/primer/view_components/pull/2034) [`707a1fa3`](https://github.com/primer/view_components/commit/707a1fa31dd23cae8316fa9d8a6c122bc4edc354) Thanks [@radglob](https://github.com/radglob)! - Partially address a11y issues in Link component.
+
+  Links can no longer be rendered as `<span>`s.
+
+- [#1941](https://github.com/primer/view_components/pull/1941) [`a8cc5ba2`](https://github.com/primer/view_components/commit/a8cc5ba2061207d9ca65c42f3d355eb8b7f03bb8) Thanks [@jonrohan](https://github.com/jonrohan)! - 🆕 New component!
+
+  The `Primer::Alpha::ActionBar` component is used to create a toolbar of buttons that will fold into an ActionMenu when the space is smaller. [Design details](https://primer.style/design/components/action-bar/)
+
 ## 0.3.1
 
 ### Patch Changes
