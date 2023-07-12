@@ -33,10 +33,19 @@ module Primer
                 scenarios = parent_scenario.type == :scenario_group ? parent_scenario.scenarios : [parent_scenario]
 
                 scenarios.map do |scenario|
+                  snapshot = scenario.tags.find { |e| e.tag_name == "snapshot" }
+                  if snapshot.nil?
+                    snapshot = "false"
+                  elsif snapshot.text.blank?
+                    snapshot = "true"
+                  else
+                    snapshot = snapshot.text
+                  end
+
                   {
                     preview_path: scenario.lookup_path,
                     name: scenario.name,
-                    snapshot: scenario.tags.any? { |e| e.tag_name == "snapshot" }.to_s,
+                    snapshot: snapshot,
                     skip_rules: Primer::Accessibility.axe_rules_to_skip(
                       component: component,
                       scenario_name: scenario.name

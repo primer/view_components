@@ -32,6 +32,7 @@ module Primer
 
       # @label Default
       #
+      # @snapshot
       def default
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
           menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
