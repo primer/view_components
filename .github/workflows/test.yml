@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FERRUM_PROCESS_TIMEOUT: 20
+  FERRUM_PROCESS_TIMEOUT: 30
 
 jobs:
   accessibility:
