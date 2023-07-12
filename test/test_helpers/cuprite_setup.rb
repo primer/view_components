@@ -13,7 +13,8 @@ Capybara.register_driver(:primer_cuprite) do |app|
       inspector: true,
       # Allow running Chrome in a headful mode by setting HEADLESS env
       # var to a falsey value
-      headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
+      headless: !ENV["HEADLESS"].in?(%w[n 0 no false]),
+      options: { process_timeout: 240, timeout: 240 }
     }
   )
 end
