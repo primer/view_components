@@ -40,7 +40,7 @@ Optionally, to add the JavaScript behaviours, in your `application.html.erb` in 
 Or alternatively, you can install the `@primer/view-components` npm package and in your JavaScript code add:
 
 ```js
-import '@primer/view-components'
+import '@primer/view-components/app/assets/javascripts/primer_view_components.js'
 ```
 
 You can also import only the components you need:
