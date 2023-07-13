@@ -10,6 +10,7 @@ module Primer
     # and/or trailing visuals.
     class ActionList < Primer::Component
       status :alpha
+      audited_at "2023-07-10"
 
       DEFAULT_ROLE = :list
 
