@@ -16,6 +16,7 @@ module Primer
     # `selected_item_id` argument to select the appropriate item.
     class NavList < Primer::Component
       status :alpha
+      audited_at "2023-07-10"
 
       # @private
       def self.custom_element_name
