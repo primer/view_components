@@ -52,7 +52,7 @@
   {
     "component": "ActionList",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "ActionList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
@@ -377,7 +377,7 @@
   {
     "component": "ActionMenu::List",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "ActionMenuList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
@@ -1427,7 +1427,7 @@
   {
     "component": "NavList",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/default/",
@@ -1471,7 +1471,7 @@
   {
     "component": "NavList::Group",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "NavListGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
