@@ -39,7 +39,7 @@ jobs:
       # This will succeed even if the app doesn't exist / has already been deleted
       - name: 'Delete App Service App (which will also delete the App Service plan)'
         run: |
-          az container delete -n ${{ env.APP_NAME }} -g primer -y
+          az container delete -n ${{ env.APP_NAME }} -g primer -y > output.log
       # Untag all images under this PR's container registry repo - the container registry will automatically remove untagged images.
       # This will fail if the IMAGE_REPO doesn't exist, but we don't care
       - name: 'Untag all docker images for this PR'
