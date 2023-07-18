@@ -7,24 +7,24 @@ module ERBLint
     module ArgumentMappers
       # Maps classes in a label element to arguments for the Label component.
       class Label < Base
-        SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
+        SCHEME_MAPPINGS = ::Primer::ViewComponents::Constants.get(
           component: "Primer::Beta::Label",
           constant: "SCHEME_MAPPINGS",
           symbolize: true
         ).freeze
 
-        SIZE_MAPPINGS = Primer::ViewComponents::Constants.get(
+        SIZE_MAPPINGS = ::Primer::ViewComponents::Constants.get(
           component: "Primer::Beta::Label",
           constant: "SIZE_MAPPINGS",
           symbolize: true
         ).freeze
 
-        DEFAULT_TAG = Primer::ViewComponents::Constants.get(
+        DEFAULT_TAG = ::Primer::ViewComponents::Constants.get(
           component: "Primer::Beta::Label",
           constant: "DEFAULT_TAG"
         ).freeze
 
-        INLINE_CLASS = Primer::ViewComponents::Constants.get(
+        INLINE_CLASS = ::Primer::ViewComponents::Constants.get(
           component: "Primer::Beta::Label",
           constant: "INLINE_CLASS"
         ).freeze
