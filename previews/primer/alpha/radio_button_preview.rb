@@ -35,6 +35,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::RadioButton.new(name: "my-radio-button", label: "Battlestar Galactica", value: "bsg"))
       end
@@ -42,16 +43,25 @@ module Primer
       # @!group Options
       #
       # @label With caption
+      # @snapshot
       def with_caption
         render(Primer::Alpha::RadioButton.new(caption: "With a caption", name: "my-radio-button", label: "Battlestar Galactica", value: "bsg1"))
       end
 
+      # @label Checked
+      # @snapshot
+      def checked
+        render(Primer::Alpha::RadioButton.new(name: "my-radio-button", label: "Battlestar Galactica", value: "bsg2", checked: true ))
+      end
+
       # @label Visually hidden label
+      # @snapshot
       def visually_hide_label
         render(Primer::Alpha::RadioButton.new(visually_hide_label: true, name: "my-radio-button", label: "Battlestar Galactica", value: "bsg2"))
       end
 
       # @label Disabled
+      # @snapshot
       def disabled
         render(Primer::Alpha::RadioButton.new(disabled: true, name: "my-radio-button", label: "Battlestar Galactica", value: "bsg4"))
       end

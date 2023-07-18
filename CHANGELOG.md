@@ -1,5 +1,45 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- [#2111](https://github.com/primer/view_components/pull/2111) [`6ee6d774`](https://github.com/primer/view_components/commit/6ee6d774b463753c7b2b944dcf57dd4ff40c9589) Thanks [@keithamus](https://github.com/keithamus)! - refactor Primer::Alpha::Tooltip to use popover
+
+  Changed components: Primer::Alpha::Tooltip
+
+- [#2034](https://github.com/primer/view_components/pull/2034) [`707a1fa3`](https://github.com/primer/view_components/commit/707a1fa31dd23cae8316fa9d8a6c122bc4edc354) Thanks [@radglob](https://github.com/radglob)! - Partially address a11y issues in Link component.
+
+  Links can no longer be rendered as `<span>`s.
+
+- [#1941](https://github.com/primer/view_components/pull/1941) [`a8cc5ba2`](https://github.com/primer/view_components/commit/a8cc5ba2061207d9ca65c42f3d355eb8b7f03bb8) Thanks [@jonrohan](https://github.com/jonrohan)! - 🆕 New component!
+
+  The `Primer::Alpha::ActionBar` component is used to create a toolbar of buttons that will fold into an ActionMenu when the space is smaller. [Design details](https://primer.style/design/components/action-bar/)
+
+## 0.3.1
+
+### Patch Changes
+
+- [#2113](https://github.com/primer/view_components/pull/2113) [`f4736349`](https://github.com/primer/view_components/commit/f4736349bc7b04a8696960b821377b1237ec660c) Thanks [@camertron](https://github.com/camertron)! - Revert v8 color var fallbacks (#2083)
+
+## 0.3.0
+
+### Minor Changes
+
+- [#2079](https://github.com/primer/view_components/pull/2079) [`f36ecc39`](https://github.com/primer/view_components/commit/f36ecc3969d339e43693d2fd81eee02e817e29db) Thanks [@camertron](https://github.com/camertron)! - Additional NavList accessibility improvements
+
+* [#2086](https://github.com/primer/view_components/pull/2086) [`10abe7a0`](https://github.com/primer/view_components/commit/10abe7a0b068f2d7c6e8efe0d4f905b32e35253d) Thanks [@khiga8](https://github.com/khiga8)! - Add lint rule against .tooltipped and introduce accessibility.yml config
+
+- [#2088](https://github.com/primer/view_components/pull/2088) [`b79fec8e`](https://github.com/primer/view_components/commit/b79fec8e134bd784658d2000a7ff4440e0cc34fb) Thanks [@jonrohan](https://github.com/jonrohan)! - Separating `<anchored-position>` web component and the .Overlay class into separate markup.
+
+### Patch Changes
+
+- [#2083](https://github.com/primer/view_components/pull/2083) [`e38ae1ec`](https://github.com/primer/view_components/commit/e38ae1ec7c5f0704b42f8978c03e4338dcd2c5e7) Thanks [@langermank](https://github.com/langermank)! - Update colors to use Primitive v8 CSS vars
+
+* [#2078](https://github.com/primer/view_components/pull/2078) [`6bd439da`](https://github.com/primer/view_components/commit/6bd439da54b88a7aeb2900075405339415e9cc43) Thanks [@camertron](https://github.com/camertron)! - ToggleSwitch: Remove @debounce annotation in favor of a boolean flag to prevent confusing screen reader output
+
+- [#2089](https://github.com/primer/view_components/pull/2089) [`4acf85d0`](https://github.com/primer/view_components/commit/4acf85d0cd8a6ce213ed8bc0313f07d947ebabbe) Thanks [@camertron](https://github.com/camertron)! - Change the 'skip changelog' label to 'skip changeset'
+
 ## 0.2.0
 
 ### Minor Changes

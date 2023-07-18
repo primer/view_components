@@ -1,4 +1,7 @@
 {
+  "Primer::Alpha::ActionBar": "alpha",
+  "Primer::Alpha::ActionBar::Divider": "alpha",
+  "Primer::Alpha::ActionBar::Item": "alpha",
   "Primer::Alpha::ActionList": "alpha",
   "Primer::Alpha::ActionList::Divider": "alpha",
   "Primer::Alpha::ActionList::FormWrapper": "alpha",
@@ -33,6 +36,7 @@
   "Primer::Alpha::NavList": "alpha",
   "Primer::Alpha::NavList::Divider": "alpha",
   "Primer::Alpha::NavList::Group": "alpha",
+  "Primer::Alpha::NavList::Heading": "alpha",
   "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::Navigation::Tab": "alpha",
   "Primer::Alpha::OcticonSymbols": "alpha",

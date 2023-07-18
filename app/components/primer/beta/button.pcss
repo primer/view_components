@@ -233,15 +233,15 @@ summary.Button {
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--fgColor-disabled);
-    background-color: var(--button-default-bgColor-rest);
-    border-color: var(--button-default-borderColor-rest);
-    fill: var(--fgColor-disabled);
+    color: var(--control-fgColor-disabled);
+    background-color: var(--button-default-bgColor-disabled);
+    border-color: var(--button-default-borderColor-disabled);
+    fill: var(--control-fgColor-disabled);
   }
 }
 
 .Button--invisible {
-  color: var(--button-invisible-fgColor-rest);
+  color: var(--button-default-fgColor-rest);
 
   &:hover:not(:disabled) {
     background-color: var(--button-invisible-bgColor-hover);
@@ -256,13 +256,13 @@ summary.Button {
   &[aria-disabled='true'] {
     color: var(--button-invisible-fgColor-disabled);
     background-color: var(--button-invisible-bgColor-disabled);
-    border-color: transparent;
+    border-color: var(--button-invisible-borderColor-disabled);
     fill: var(--button-invisible-fgColor-disabled);
   }
 
   /* if button has no visuals, use link blue for text */
   &.Button--invisible-noVisuals .Button-label {
-    color: var(--fgColor-link-rest);
+    color: var(--button-invisible-fgColor-rest);
   }
 
   & .Button-visual {
@@ -294,10 +294,10 @@ summary.Button {
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--fgColor-disabled);
+    color: var(--control-fgColor-disabled);
     background-color: transparent;
     border-color: transparent;
-    fill: var(--fgColor-disabled);
+    fill: var(--control-fgColor-disabled);
   }
 }
 
@@ -336,7 +336,7 @@ summary.Button {
     color: var(--button-danger-fgColor-disabled);
     fill: var(--button-danger-fgColor-disabled);
     background-color: var(--button-danger-bgColor-disabled);
-    border-color: var(--button-default-borderColor-rest);
+    border-color: var(--button-default-borderColor-disabled);
 
     & .Counter {
       color: var(--buttonCounter-danger-fgColor-disabled);

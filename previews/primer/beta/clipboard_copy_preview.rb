@@ -16,6 +16,7 @@ module Primer
       #
       # @param aria_label [String]
       # @param value [String]
+      # @snapshot
       def default(value: "Text to copy", aria_label: "Copy text to the system clipboard")
         render(Primer::Beta::ClipboardCopy.new(value: value, "aria-label": aria_label))
       end
@@ -24,6 +25,7 @@ module Primer
       #
       # @param aria_label [String]
       # @param value [String]
+      # @snapshot
       def text(value: "Text to copy", aria_label: "Click to copy!")
         render(Primer::Beta::ClipboardCopy.new(value: value, "aria-label": aria_label)) { "Click to copy!" }
       end

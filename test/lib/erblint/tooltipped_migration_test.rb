@@ -42,7 +42,7 @@ class TooltippedMigrationTest < ErblintTestCase
       <%= render SomeComponent.new(classes: "tooltipped") do %><%# erblint:disable Primer::Accessibility::TooltippedMigration %>
     HTML
     @linter.run_and_update_offense_status(processed_source)
-    offenses = @linter.offenses.reject(&:disabled?) # Reject offenses marked as disabled. (This happens at the runner level so we repliace it here)
+    offenses = @linter.offenses.reject(&:disabled?) # Reject offenses marked as disabled. (This happens at the ERB Lint runner level so we replace it here, just for testing)
     assert_equal 0, offenses.count
   end
 end

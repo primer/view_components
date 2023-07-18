@@ -18,6 +18,7 @@ module Primer
       # @label Default
       #
       # @param size [Symbol] select [default, small, large]
+      # @snapshot
       def default(size: :default)
         render(Primer::Beta::ProgressBar.new(size: size)) do |component|
           component.with_item(percentage: 10)
@@ -29,6 +30,7 @@ module Primer
       # @!group Sizes
       #
       # @label Size small
+      # @snapshot
       def size_small
         render(Primer::Beta::ProgressBar.new(size: :small)) do |component|
           component.with_item(percentage: 10)
@@ -38,6 +40,7 @@ module Primer
       end
 
       # @label Size default
+      # @snapshot
       def size_default
         render(Primer::Beta::ProgressBar.new(size: :default)) do |component|
           component.with_item(percentage: 10)
@@ -47,6 +50,7 @@ module Primer
       end
 
       # @label Size large
+      # @snapshot
       def size_large
         render(Primer::Beta::ProgressBar.new(size: :large)) do |component|
           component.with_item(percentage: 10)
