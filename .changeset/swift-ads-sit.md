@@ -4,4 +4,4 @@
 
 Add color declaration for Dialog `tite`
 
-<!-- Changed components: Primer::Alpha::Dialog -→
+<!-- Changed components: _none_ -→
