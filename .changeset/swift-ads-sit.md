@@ -4,4 +4,4 @@
 
 Add color declaration for Dialog `tite`
 
-<!-- Changed components: _none_ -→
+<!-- Changed components: _none_ -->
