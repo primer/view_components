@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.5.1
+
+### Patch Changes
+
+- [#2156](https://github.com/primer/view_components/pull/2156) [`5f809724`](https://github.com/primer/view_components/commit/5f8097241df130e5b54cd5a1bcfda0ca11258cda) Thanks [@langermank](https://github.com/langermank)! - Add correct fallbacks to `State` label
+
+  <!-- Changed components: _none_ -->
+
+- [#2151](https://github.com/primer/view_components/pull/2151) [`78e0d175`](https://github.com/primer/view_components/commit/78e0d175d266534ab9042b671057bed3e6dfb7c5) Thanks [@jdrush89](https://github.com/jdrush89)! - Checking document scrollbar width before making dialog backdrop visible to fix issue with document padding on mobile screens.
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+- [#2154](https://github.com/primer/view_components/pull/2154) [`9005b5cd`](https://github.com/primer/view_components/commit/9005b5cdb00a628f4f9efe93066dab5413b181e5) Thanks [@langermank](https://github.com/langermank)! - Add color declaration for Dialog `title`
+
+  <!-- Changed components: _none_ -->
+
 ## 0.5.0
 
 ### Minor Changes
