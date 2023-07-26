@@ -43,4 +43,9 @@ gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PA
 
 group :test do
   gem "webmock"
+
+  # Disallow v5.19 for now since it breaks mocha.
+  # See: https://github.com/freerange/mocha/issues/614
+  # Remove this line when mocha has fixed the issue
+  gem "minitest", "< 5.19"
 end
