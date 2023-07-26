@@ -196,7 +196,7 @@ module Primer
         manifest.each(&block)
       end
 
-      def generate_system_args_docs()
+      def generate_system_args_docs
         docs = registry.find(Primer::BaseComponent)
 
         path = File.expand_path(
@@ -216,7 +216,14 @@ module Primer
           "data" => data
         }
 
-        File.write(path, YAML.dump(frontmatter) + "\n---\n<%= @page.data[:description_md] %>\n<%= @page.data[:args_md] %>")
+        File.write(
+          path, <<~ERB
+            #{YAML.dump(frontmatter)}
+            ---
+            <%= @page.data[:description_md] %>
+            <%= @page.data[:args_md] %>
+          ERB
+        )
       end
     end
   end
