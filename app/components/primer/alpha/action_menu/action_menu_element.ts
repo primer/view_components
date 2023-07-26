@@ -1,5 +1,7 @@
 import {controller, target} from '@github/catalyst'
-import IncludeFragmentElement from '@github/include-fragment-element'
+import '@oddbird/popover-polyfill'
+// eslint-disable-next-line import/no-named-as-default
+import type IncludeFragmentElement from '@github/include-fragment-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -49,7 +51,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   get popoverElement(): HTMLElement | null {
-    return this.querySelector<HTMLElement>('[popover]')
+    return this.invokerElement?.popoverTargetElement
   }
 
   get invokerElement(): HTMLElement | null {
