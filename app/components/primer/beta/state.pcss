@@ -24,17 +24,17 @@
 
 .State--open {
   color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-open-emphasis);
+  background-color: var(--bgColor-open-emphasis, var(--color-open-emphasis));
 }
 
 .State--merged {
   color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-done-emphasis);
+  background-color: var(--bgColor-done-emphasis, var(--color-done-emphasis));
 }
 
 .State--closed {
   color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-closed-emphasis);
+  background-color: var(--bgColor-closed-emphasis, var(--color-closed-emphasis));
 }
 
 /* Small 24px */
