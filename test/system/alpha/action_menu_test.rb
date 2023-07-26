@@ -57,10 +57,9 @@ module Alpha
         document.querySelector('action-menu button[aria-controls]').focus()
       JS
 
-      accept_alert do
-        # open menu, "click" on first item
-        page.driver.browser.keyboard.type(:enter, :enter)
-      end
+      page.driver.browser.keyboard.type(:enter)
+
+      assert_selector "anchored-position"
     end
 
     def test_action_anchor
