@@ -1,6 +1,5 @@
 import {controller, target} from '@github/catalyst'
 import '@oddbird/popover-polyfill'
-// eslint-disable-next-line import/no-named-as-default
 import type {IncludeFragmentElement} from '@github/include-fragment-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
