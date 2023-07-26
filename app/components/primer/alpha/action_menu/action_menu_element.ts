@@ -1,5 +1,6 @@
 import {controller, target} from '@github/catalyst'
-import IncludeFragmentElement from '@github/include-fragment-element'
+import '@oddbird/popover-polyfill'
+import type {IncludeFragmentElement} from '@github/include-fragment-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -49,14 +50,14 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   get popoverElement(): HTMLElement | null {
-    return this.querySelector<HTMLElement>('[popover]')
+    return this.invokerElement?.popoverTargetElement || null
   }
 
-  get invokerElement(): HTMLElement | null {
+  get invokerElement(): HTMLButtonElement | null {
     const id = this.querySelector('[role=menu]')?.id
     if (!id) return null
     for (const el of this.querySelectorAll(`[aria-controls]`)) {
-      if (el.getAttribute('aria-controls') === id) return el as HTMLElement
+      if (el.getAttribute('aria-controls') === id) return el as HTMLButtonElement
     }
     return null
   }
