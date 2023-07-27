@@ -28,6 +28,9 @@ const config: PlaywrightTestConfig = {
   expect: {
     toHaveScreenshot: {
       animations: 'disabled'
+    },
+    toMatchSnapshot: {
+      threshold: 0
     }
   },
   /* Retry on CI only */
