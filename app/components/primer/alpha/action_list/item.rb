@@ -40,7 +40,15 @@ module Primer
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: Primer::Beta::Octicon,
+          icon: lambda { |**system_arguments, &block|
+            deny_aria_key(
+              :label,
+              "Avoid using `aria-label` on leading visual icons, as they are purely decorative.",
+              **system_arguments
+            )
+
+            Primer::Beta::Octicon.new(**system_arguments, &block)
+          },
           avatar: lambda {
             return unless should_raise_error?
 

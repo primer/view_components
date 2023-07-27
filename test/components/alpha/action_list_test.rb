@@ -62,9 +62,23 @@ module Primer
         assert_selector(".ActionListItem-visual--leading", count: 2)
       end
 
+      def test_denies_aria_label_on_leading_visual_icons
+        error = assert_raises ArgumentError do
+          with_raise_on_invalid_aria(true) do
+            render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+              component.with_item(label: "Foo") do |item|
+                item.with_leading_visual_icon(icon: :star, aria: { label: "Star" })
+              end
+            end
+          end
+        end
+
+        assert_match(/Avoid using `aria-label` on leading visual icons/, error.message)
+      end
+
       def test_heading_denies_tag_argument
         error = assert_raises ArgumentError do
-          render_inline(Primer::Alpha::ActionList.new(aria: { lable: "List" })) do |component|
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
             component.with_heading(title: "Foo", tag: :foo)
           end
         end
