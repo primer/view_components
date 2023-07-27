@@ -23,6 +23,7 @@ module Primer
       # @param selected toggle
       # @param disabled toggle
       # @param value text
+      # @snapshot
       def default(value: "", selected: false, disabled: false)
         render_with_template(
           locals: {
@@ -38,6 +39,7 @@ module Primer
       # @param selected toggle
       # @param disabled toggle
       # @param value text
+      # @snapshot
       def with_description(description_variant: "block", value: "", selected: false, disabled: false)
         description_variant = description_variant.to_sym
 

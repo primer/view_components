@@ -5,8 +5,8 @@
 .menu {
   margin-bottom: var(--stack-gap-normal);
   list-style: none;
-  background-color: var(--color-canvas-default);
-  border: var(--borderWidth-thin) solid var(--color-border-default);
+  background-color: var(--bgColor-default);
+  border: var(--borderWidth-thin) solid var(--borderColor-default);
   border-radius: var(--borderRadius-medium);
 }
 
@@ -14,8 +14,8 @@
   position: relative;
   display: block;
   padding: var(--control-medium-paddingInline-condensed) var(--control-medium-paddingInline-spacious);
-  color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin) solid var(--color-border-muted);
+  color: var(--fgColor-default);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 
   &:first-child {
     border-top: 0;
@@ -39,18 +39,18 @@
 
   &:hover {
     text-decoration: none;
-    background-color: var(--color-neutral-subtle);
+    background-color: var(--bgColor-neutral-muted);
   }
 
   &:active {
-    background-color: var(--color-canvas-subtle);
+    background-color: var(--bgColor-muted);
   }
 
   &.selected,
   &[aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
     cursor: default;
-    background-color: var(--color-menu-bg-active);
+    background-color: var(--menu-bgColor-active);
 
     &::before {
       position: absolute;
@@ -59,14 +59,14 @@
       left: 0;
       width: 2px;
       content: '';
-      background-color: var(--color-primer-border-active);
+      background-color: var(--underlineNav-borderColor-active);
     }
   }
 
   & .octicon {
     width: 16px;
     margin-right: var(--control-medium-gap);
-    color: var(--color-fg-muted);
+    color: var(--fgColor-muted);
     text-align: center;
   }
 
@@ -77,7 +77,7 @@
 
   & .menu-warning {
     float: right;
-    color: var(--color-attention-fg);
+    color: var(--fgColor-attention);
   }
 
   & .avatar {
@@ -87,7 +87,7 @@
 
   &.alert {
     & .Counter {
-      color: var(--color-danger-fg);
+      color: var(--fgColor-danger);
     }
   }
 }
@@ -99,8 +99,8 @@
   margin-bottom: 0;
   font-size: inherit;
   font-weight: var(--base-text-weight-semibold);
-  color: var(--color-fg-default);
-  border-bottom: var(--borderWidth-thin) solid var(--color-border-muted);
+  color: var(--fgColor-default);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 
   &:hover {
     text-decoration: none;

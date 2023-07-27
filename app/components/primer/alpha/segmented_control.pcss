@@ -3,7 +3,7 @@
 .SegmentedControl {
   display: inline-flex;
   list-style: none;
-  background-color: var(--color-segmented-control-bg);
+  background-color: var(--controlTrack-bgColor-rest, var(--color-segmented-control-bg));
   border-radius: var(--borderRadius-medium);
 }
 
@@ -14,10 +14,20 @@
   border-radius: var(--borderRadius-medium);
   padding: var(--control-xsmall-paddingInline-condensed);
 
+  & .Button--invisible {
+    &:hover:not(:disabled) {
+      background-color: var(--controlTrack-bgColor-hover, var(--color-action-list-item-default-hover-bg));
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--controlTrack-bgColor-active, var(--color-action-list-item-default-active-bg));
+    }
+  }
+
   /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
-    background-color: var(--color-segmented-control-button-bg);
-    border-color: var(--color-segmented-control-button-selected-border);
+    background-color: var(--controlKnob-bgColor-rest, var(--color-segmented-control-button-bg));
+    border-color: var(--controlKnob-borderColor-rest, var(--color-segmented-control-button-selected-border));
 
     & .Button {
       font-weight: var(--base-text-weight-semibold);
@@ -53,7 +63,7 @@
       margin-top: var(--control-medium-paddingBlock);
       margin-bottom: var(--control-medium-paddingBlock);
       content: '';
-      border-left: var(--borderWidth-thin) solid var(--color-border-default);
+      border-left: var(--borderWidth-thin) solid var(--borderColor-default);
     }
   }
 
@@ -62,7 +72,7 @@
     border: 0;
     font-weight: var(--base-text-weight-normal);
     transition: none;
-    color: var(--color-btn-text);
+    color: var(--button-default-fgColor-rest);
 
     &:focus-visible {
       outline-offset: calc(var(--control-xsmall-paddingInline-condensed) - var(--borderWidth-thin));
@@ -126,7 +136,7 @@
   }
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
-    color: var(--color-btn-text);
+    color: var(--button-default-fgColor-rest);
   }
 }
 

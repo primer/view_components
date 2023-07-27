@@ -101,9 +101,9 @@ export class ModalDialogElement extends HTMLElement {
       if (this.open) return
       this.setAttribute('open', '')
       this.setAttribute('aria-disabled', 'false')
-      this.#overlayBackdrop?.classList.remove('Overlay--hidden')
       document.body.style.paddingRight = `${window.innerWidth - document.body.clientWidth}px`
       document.body.style.overflow = 'hidden'
+      this.#overlayBackdrop?.classList.remove('Overlay--hidden')
       if (this.#focusAbortController.signal.aborted) {
         this.#focusAbortController = new AbortController()
       }
@@ -167,15 +167,22 @@ export class ModalDialogElement extends HTMLElement {
   #keydown(event: Event) {
     if (!(event instanceof KeyboardEvent)) return
     if (event.isComposing) return
+    if (!this.open) return
 
     switch (event.key) {
       case 'Escape':
-        if (this.open) {
-          this.close()
-          event.preventDefault()
+        this.close()
+        event.preventDefault()
+        event.stopPropagation()
+        break
+      case 'Enter': {
+        const target = event.target as HTMLElement
+
+        if (target.getAttribute('data-close-dialog-id') === this.id) {
           event.stopPropagation()
         }
         break
+      }
     }
   }
 }

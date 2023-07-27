@@ -4,17 +4,19 @@
   - title: Getting started
     url: "/"
   - title: Contributing
-    url: "https://github.com/primer/view_components/blob/main/docs/contributors/README.md"
+    url: https://github.com/primer/view_components/blob/main/docs/contributors/README.md
   - title: System arguments
     url: "/system-arguments"
   - title: Linting
-    url: "https://github.com/primer/view_components/blob/main/docs/contributors/linting.md"
+    url: https://github.com/primer/view_components/blob/main/docs/contributors/linting.md
   - title: Migration
     url: "/migration"
   - title: Component status
     url: "/status"
 - title: Components
   children:
+  - title: ActionBar
+    url: "/components/alpha/actionbar"
   - title: ActionMenu
     url: "/components/alpha/actionmenu"
   - title: AutoComplete

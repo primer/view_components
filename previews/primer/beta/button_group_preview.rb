@@ -19,6 +19,7 @@ module Primer
       # @label Default options
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def default(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button { "Button 1" }
@@ -30,6 +31,7 @@ module Primer
       # @label Split button
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def split_button(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button { "Button 1" }
@@ -40,11 +42,31 @@ module Primer
       # @label Icon buttons
       #
       # @param size [Symbol] select [medium, small]
+      # @snapshot
       def icon_buttons(size: :medium)
         render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
           component.with_button(icon: :note, "aria-label": "button 1")
           component.with_button(icon: :rows, "aria-label": "button 2")
           component.with_button(icon: "sort-desc", "aria-label": "button 3")
+        end
+      end
+
+      # @label Button group with all tags
+      # @snapshot
+      def all_tags
+        render(Primer::Beta::ButtonGroup.new) do |component|
+          component.with_button(id: "button-1", tag: :button) do |component|
+            component.with_tooltip(text: "Button Tooltip")
+            "Button 1"
+          end
+          component.with_button(id: "button-2", tag: :a) do |component|
+            component.with_tooltip(text: "Button Tooltip")
+            "Button 2"
+          end
+          component.with_button(id: "button-3", tag: :summary) do |component|
+            component.with_tooltip(text: "Button Tooltip")
+            "Button 3"
+          end
         end
       end
     end

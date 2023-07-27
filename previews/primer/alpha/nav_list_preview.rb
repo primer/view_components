@@ -6,7 +6,7 @@ module Primer
     class NavListPreview < ViewComponent::Preview
       # @label Playground
       def playground
-        render(Primer::Alpha::NavList.new(aria: { label: "Repository settings" }, selected_item_id: :code_review_limits)) do |list|
+        render(Primer::Alpha::NavList.new(selected_item_id: :collaborators)) do |list|
           list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -32,8 +32,9 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
-        render(Primer::Alpha::NavList.new(aria: { label: "Repository settings" }, selected_item_id: :code_review_limits)) do |list|
+        render(Primer::Alpha::NavList.new(selected_item_id: :code_review_limits)) do |list|
           list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -67,7 +68,7 @@ module Primer
       # @label Top-level items
       #
       def top_level_items
-        render(Primer::Alpha::NavList.new(aria: { label: "Account settings" })) do |list|
+        render(Primer::Alpha::NavList.new) do |list|
           list.with_heading(title: "Account settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -85,18 +86,22 @@ module Primer
       end
 
       # @label Show more item
+      # @snapshot
       def show_more_item
         render(Primer::Alpha::NavList.new(aria: { label: "My favorite foods" })) do |list|
           list.with_group do |group|
             group.with_heading(title: "My favorite foods")
             group.with_item(label: "Popplers", href: "/foods/popplers")
             group.with_item(label: "Slurm", href: "/foods/slurm")
-            group.with_show_more_item(label: "Show more foods", src: UrlHelpers.nav_list_items_path, pages: 2)
+            group.with_show_more_item(label: "Show more foods", src: UrlHelpers.nav_list_items_path, pages: 2) do |item|
+              item.with_trailing_visual_icon(icon: :plus)
+            end
           end
         end
       end
 
       # @label Trailing action
+      # @snapshot
       def trailing_action; end
     end
   end

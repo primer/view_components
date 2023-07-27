@@ -1,8 +1,58 @@
 [
   {
-    "component": "ActionList",
+    "component": "ActionBar",
     "status": "alpha",
     "a11y_reviewed": false,
+    "short_name": "ActionBar",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/default/",
+    "parameters": [
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
+        "name": "overflow_menu",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether to render the overflow menu."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionBar::Divider",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBarDivider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
+    "parameters": [
+
+    ]
+  },
+  {
+    "component": "ActionBar::Item",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionBarItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/item/default/",
+    "parameters": [
+
+    ]
+  },
+  {
+    "component": "ActionList",
+    "status": "alpha",
+    "a11y_reviewed": true,
     "short_name": "ActionList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
@@ -327,7 +377,7 @@
   {
     "component": "ActionMenu::List",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "ActionMenuList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
@@ -539,6 +589,12 @@
         "type": "Symbol",
         "default": "`:button`",
         "description": "One of `:button` or `:submit`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
         "name": "system_arguments",
@@ -1064,6 +1120,12 @@
         "description": "Whether or not the button is inline."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -1365,7 +1427,7 @@
   {
     "component": "NavList",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/default/",
@@ -1409,7 +1471,7 @@
   {
     "component": "NavList::Group",
     "status": "alpha",
-    "a11y_reviewed": false,
+    "a11y_reviewed": true,
     "short_name": "NavListGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
@@ -1419,6 +1481,40 @@
         "type": "Symbol",
         "default": "`nil`",
         "description": "The ID of the currently selected item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Heading",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListHeading",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/heading/default/",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "The text content of the heading."
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The value of the ID HTML attribute. Auto-generated by default."
+      },
+      {
+        "name": "heading_level",
+        "type": "Integer",
+        "default": "`2`",
+        "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
       },
       {
         "name": "system_arguments",
@@ -2986,6 +3082,12 @@
         "description": "Whether button is full-width with `display: block`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -3137,6 +3239,12 @@
         "description": "One of `:button`, `:reset`, or `:submit`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -3221,6 +3329,12 @@
         "description": "One of `:button` or `:submit`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -3299,6 +3413,12 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Defaults to false. If set to true, it will remove the default caret and remove style from the summary element"
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to disable the summary button."
       },
       {
         "name": "system_arguments",
@@ -3391,6 +3511,12 @@
         "description": "Name of [Octicon](https://primer.style/octicons/) to use."
       },
       {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "One of `:a`, `:button`, or `:summary`."
+      },
+      {
         "name": "wrapper_arguments",
         "type": "Hash",
         "default": "`{}`",
@@ -3409,10 +3535,10 @@
         "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
         "name": "type",
@@ -3507,16 +3633,10 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
     "parameters": [
       {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
         "name": "href",
         "type": "String",
         "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
+        "description": "URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
       },
       {
         "name": "scheme",

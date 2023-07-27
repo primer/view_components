@@ -1,11 +1,15 @@
 /* Links */
 
 .Link {
-  color: var(--color-accent-fg);
+  color: var(--fgColor-accent);
 
   &:hover {
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  &:focus {
+    text-decoration: underline;
   }
 
   &:focus,
@@ -15,26 +19,26 @@
 }
 
 .Link--primary {
-  color: var(--color-fg-default) !important;
+  color: var(--fgColor-default) !important;
 
   &:hover {
-    color: var(--color-accent-fg) !important;
+    color: var(--fgColor-accent) !important;
   }
 }
 
 .Link--secondary {
-  color: var(--color-fg-muted) !important;
+  color: var(--fgColor-muted) !important;
 
   &:hover {
-    color: var(--color-accent-fg) !important;
+    color: var(--fgColor-accent) !important;
   }
 }
 
 .Link--muted {
-  color: var(--color-fg-muted) !important;
+  color: var(--fgColor-muted) !important;
 
   &:hover {
-    color: var(--color-accent-fg) !important;
+    color: var(--fgColor-accent) !important;
     text-decoration: none;
   }
 }
@@ -43,7 +47,7 @@
    Useful when you want only part of a link to turn blue on hover */
 .Link--onHover {
   &:hover {
-    color: var(--color-accent-fg) !important;
+    color: var(--fgColor-accent) !important;
     text-decoration: underline;
     cursor: pointer;
   }

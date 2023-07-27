@@ -8,20 +8,20 @@ module Primer
     # When using a tooltip, follow the provided guidelines to avoid accessibility issues:
     # - Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.
     # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::Beta::Link)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
-    # @accessibility
-    #   - Tooltip text must be brief and concise whether it is a label or a description.
-    #   - Tooltip can only hold string content.
-    #   - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only users
-    #   and screen reader users. Use of tooltip through <%= link_to_component(Primer::ButtonComponent) %>, <%= link_to_component(Primer::Beta::Link) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
-    #   - If you must use `Tooltip` as a standalone component, place it adjacent after the trigger element in the DOM. This allows screen reader users to navigate to and copy the tooltip
+    # - Tooltip text must be brief and concise even when used to display a description.
+    # - Tooltips can only hold string content.
+    # - Tooltips are not allowed on `disabled` elements because such elements are not keyboard-accessible. If you must set a tooltip on a disabled element, use `aria-disabled="true"` instead and programmatically disable the element.
+    # - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only
+    # and screen reader users. Use of tooltips through <%= link_to_component(Primer::Beta::Button) %>, <%= link_to_component(Primer::Beta::Link) %>, or <%= link_to_component(Primer::Beta::IconButton) %> will guarantee this.
+    # - If you must use `Tooltip` as a standalone component, place it immediately after the trigger element in the DOM. This allows screen reader users to navigate to the tooltip and copy its contents if desired.
     #   content.
-    #   ### Which type should I set?
-    #   Semantically, a tooltip will either act an accessible name or an accessible description for the element that it is associated with resulting in either a
-    #   `aria-labelledby` or an `aria-describedby` association. The `type` drastically changes semantics and screen reader behavior so follow these guidelines carefully:
-    #   - When there is already a visible label text on the trigger element, the tooltip is likely intended be supplementary, so set `type: :description`.
-    #   The majority of tooltips will fall under this category.
-    #   - When there is no visible text on the trigger element and the tooltip content is appropriate as a label for the element, set `type: :label`.
-    #   `label` type is usually only appropriate for an icon-only control.
+    #
+    # Semantically, a tooltip will either act an accessible name or an accessible description for the element that it is associated with resulting in either a
+    # `aria-labelledby` or an `aria-describedby` association. The `type` drastically changes semantics and screen reader behavior so follow these guidelines carefully:
+    # - When there is already a visible label text on the trigger element, the tooltip is likely intended be supplementary, so set `type: :description`.
+    # The majority of tooltips will fall under this category.
+    # - When there is no visible text on the trigger element and the tooltip content is appropriate as a label for the element, set `type: :label`.
+    # `label` type is usually only appropriate for an icon-only control.
     class Tooltip < Primer::Component
       DIRECTION_DEFAULT = :s
       DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :n, :e, :w, :ne, :nw, :se, :sw].freeze
@@ -110,6 +110,7 @@ module Primer
         @system_arguments[:id] ||= self.class.generate_id
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:for] = for_id
+        @system_arguments[:popover] = "manual"
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "sr-only"

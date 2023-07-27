@@ -171,10 +171,9 @@ module Primer
         @system_arguments[:role] = fetch_or_fallback(ROLE_OPTIONS, role) if role.present?
 
         @system_arguments[:id] = id.to_s
-        @system_arguments[:classes] = class_names(
+        @wrapper_classes = class_names(
           "Overlay",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
-          system_arguments[:classes]
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
         )
         @system_arguments[:tag] = "anchored-position"
         @system_arguments[:anchor] = anchor || "overlay-show-#{@system_arguments[:id]}"

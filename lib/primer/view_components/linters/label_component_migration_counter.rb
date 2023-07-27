@@ -10,7 +10,7 @@ module ERBLint
     class LabelComponentMigrationCounter < BaseLinter
       include Autocorrectable
 
-      TAGS = Primer::ViewComponents::Constants.get(
+      TAGS = ::Primer::ViewComponents::Constants.get(
         component: "Primer::Beta::Label",
         constant: "TAG_OPTIONS"
       ).freeze

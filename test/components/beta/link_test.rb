@@ -66,18 +66,12 @@ class PrimerBetaLinkTest < Minitest::Test
     assert_selector(".Link--secondary")
   end
 
-  def test_span_as_a_link
-    render_inline(Primer::Beta::Link.new(tag: :span)) { "content" }
-
-    assert_selector(".Link")
-  end
-
-  def test_raises_if_a_tag_and_href_nil
+  def test_raises_if_href_nil
     err = assert_raises ArgumentError do
-      render_inline(Primer::Beta::Link.new(tag: :a)) { "content" }
+      render_inline(Primer::Beta::Link.new) { "content" }
     end
 
-    assert_equal("href is required when using <a> tag", err.message)
+    assert_equal("href is required", err.message)
   end
 
   def test_status

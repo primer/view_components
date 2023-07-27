@@ -14,6 +14,7 @@ module Primer
       # @label Default Options
       #
       # @param size [Symbol] select [small, medium, large]
+      # @snapshot
       def default(size: :medium)
         render(Primer::Beta::Spinner.new(size: size))
       end

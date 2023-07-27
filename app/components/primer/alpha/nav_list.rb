@@ -16,19 +16,16 @@ module Primer
     # `selected_item_id` argument to select the appropriate item.
     class NavList < Primer::Component
       status :alpha
+      audited_at "2023-07-10"
 
       # @private
       def self.custom_element_name
         "nav-list"
       end
 
-      renders_one :heading, lambda { |title:, heading_level: 2, **system_arguments|
-        Primer::BaseComponent.new(
-          tag: :"h#{heading_level}",
-          classes: "ActionListHeader",
-          **system_arguments
-        ).with_content(title)
-      }
+      # The heading for the list at large. Accepts the arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Heading) %>.
+      #
+      renders_one :heading, Primer::Alpha::NavList::Heading
 
       # @!parse
       #   # Adds an item to the list.
@@ -164,11 +161,22 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
-
-        raise ArgumentError, "An aria-label must be provided" unless aria(:label, @system_arguments)
       end
 
       private
+
+      def before_render
+        if heading?
+          raise ArgumentError, "Please don't set an aria-label if a heading is provided" if aria(:label, @system_arguments)
+
+          @system_arguments[:aria] = merge_aria(
+            @system_arguments,
+            { aria: { labelledby: heading.id } }
+          )
+        else
+          raise ArgumentError, "When no heading is provided, an aria-label must be given" unless aria(:label, @system_arguments)
+        end
+      end
 
       # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
       def render_outer_list?

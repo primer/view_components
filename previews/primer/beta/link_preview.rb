@@ -8,30 +8,28 @@ module Primer
       #
       # @param underline [Boolean]
       # @param muted [Boolean]
-      # @param tag [Symbol] select [a, span]
       # @param scheme [Symbol] select [default, primary, secondary]
-      def playground(tag: :a, scheme: :default, muted: false, underline: true)
-        render(Primer::Beta::Link.new(href: "#", tag: tag, scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
+      def playground(scheme: :default, muted: false, underline: true)
+        render(Primer::Beta::Link.new(href: "#", scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
       end
 
       # @label Default Options
       #
       # @param underline [Boolean]
       # @param muted [Boolean]
-      # @param tag [Symbol] select [a, span]
       # @param scheme [Symbol] select [default, primary, secondary]
-      def default(tag: :a, scheme: :default, muted: false, underline: true)
-        render(Primer::Beta::Link.new(href: "#", tag: tag, scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
+      # @snapshot
+      def default(scheme: :default, muted: false, underline: true)
+        render(Primer::Beta::Link.new(href: "#", scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
       end
 
       # @label With Tooltip
       #
       # @param underline [Boolean]
       # @param muted [Boolean]
-      # @param tag [Symbol] select [a, span]
       # @param scheme [Symbol] select [default, primary, secondary]
-      def tooltip(tag: :a, scheme: :default, muted: false, underline: true)
-        render(Primer::Beta::Link.new(href: "#", id: "tooltip-link", tag: tag, scheme: scheme, muted: muted, underline: underline)) do |component|
+      def tooltip(scheme: :default, muted: false, underline: true)
+        render(Primer::Beta::Link.new(href: "#", id: "tooltip-link", scheme: scheme, muted: muted, underline: underline)) do |component|
           component.with_tooltip(text: "Tooltip text")
           "Link with tooltip"
         end
@@ -45,21 +43,25 @@ module Primer
       end
 
       # @label Primary
+      # @snapshot
       def color_scheme_primary
         render(Primer::Beta::Link.new(href: "#", scheme: :primary)) { "This is a primary link color." }
       end
 
       # @label Primary, Muted
+      # @snapshot
       def color_scheme_primary_muted
         render(Primer::Beta::Link.new(href: "#", scheme: :primary, muted: true)) { "This is a muted primary link color." }
       end
 
       # @label Secondary
+      # @snapshot
       def color_scheme_secondary
         render(Primer::Beta::Link.new(href: "#", scheme: :secondary)) { "This is a secondary link color." }
       end
 
       # @label Secondary, Muted
+      # @snapshot
       def color_scheme_secondary_muted
         render(Primer::Beta::Link.new(href: "#", scheme: :secondary, muted: true)) { "This is a muted secondary link color." }
       end
