@@ -19,10 +19,12 @@ module Primer
         assert_selector(".ActionListItem > tool-tip")
       end
 
-      def test_item_leading_visual_avatar
-        render_preview(:item, params: { leading_visual_avatar_src: "/" })
+      def test_avatar_item
+        render_preview(:avatar_item)
 
         assert_selector(".avatar-small")
+        assert_selector(".ActionListItem-label", text: "hulk_smash")
+        assert_selector(".ActionListItem-description", text: "Bruce Banner")
       end
 
       def test_item_trailing_visual_text
