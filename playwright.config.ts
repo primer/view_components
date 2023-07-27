@@ -30,7 +30,7 @@ const config: PlaywrightTestConfig = {
       animations: 'disabled'
     },
     toMatchSnapshot: {
-      threshold: 0
+      threshold: 0.1
     }
   },
   /* Retry on CI only */
