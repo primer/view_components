@@ -132,11 +132,11 @@ class Primer::FormsTest < Minitest::Test
     end
   end
 
-  def test_renders_a_submit_button_without_data_disable_with
+  def test_disallows_disabled_buttons
     render_preview :submit_button_form
 
     button = page.find_all("button[type=submit]").first
-    assert_nil button["data-disable-with"]
+    assert_nil button["disabled"]
   end
 
   def test_renders_buttons_with_primer_utility_margins
