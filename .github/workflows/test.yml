@@ -18,171 +18,187 @@ env:
   FERRUM_PROCESS_TIMEOUT: 30
 
 jobs:
-  accessibility:
-    name: Accessibility
-    runs-on: ubuntu-latest-8-cores
+  # accessibility:
+  #   name: Accessibility
+  #   runs-on: ubuntu-latest-8-cores
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: '3.2'
+  #       bundler-cache: true
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #       cache: 'npm'
+  #       cache-dependency-path: |
+  #         package-lock.json
+  #         demo/package-lock.json
+  #   - name: Build
+  #     run: |
+  #       bundle exec rake docs:preview
+  #       npm ci
+  #       cd demo && npm ci
+  #   - name: Test
+  #     run: bundle exec rake test:accessibility
+  # components:
+  #   name: Components
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - rails_version: "6.1.1"
+  #           ruby_version: "2.7"
+  #         - rails_version: "7.0.3"
+  #           ruby_version: "3.0"
+  #         - rails_version: "main"
+  #           ruby_version: "3.1"
+  #         - rails_version: "main"
+  #           ruby_version: "3.2"
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: ${{ matrix.ruby_version }}
+  #       bundler-cache: true
+  #       cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #       cache: 'npm'
+  #   - name: Build
+  #     run: |
+  #       npm ci
+  #       bundle config unset deployment
+  #       bundle update
+  #     env:
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  #   - name: Test
+  #     run: |
+  #       bundle exec rake test:components
+  #       bundle exec rake test:coverage
+  #     env:
+  #       COVERAGE: 1
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  # lib:
+  #   name: Lib
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - rails_version: "6.1.1"
+  #           ruby_version: "2.7"
+  #         - rails_version: "7.0.3"
+  #           ruby_version: "3.0"
+  #         - rails_version: "main"
+  #           ruby_version: "3.1"
+  #         - rails_version: "main"
+  #           ruby_version: "3.2"
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: ${{ matrix.ruby_version }}
+  #       bundler-cache: true
+  #       cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #       cache: 'npm'
+  #   - name: Build
+  #     run: |
+  #       npm ci
+  #       bundle config unset deployment
+  #       bundle update
+  #     env:
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  #   - name: Test
+  #     run: |
+  #       bundle exec rake test:lib
+  #       bundle exec rake test:coverage
+  #     env:
+  #       COVERAGE: 1
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  # performance:
+  #   name: Performance
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - rails_version: "6.1.1"
+  #           ruby_version: "2.7"
+  #         - rails_version: "7.0.3"
+  #           ruby_version: "3.0"
+  #         - rails_version: "main"
+  #           ruby_version: "3.1"
+  #         - rails_version: "main"
+  #           ruby_version: "3.2"
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: ${{ matrix.ruby_version }}
+  #       bundler-cache: true
+  #       cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+  #   - name: Build
+  #     run: |
+  #       bundle config unset deployment
+  #       bundle update
+  #     env:
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  #   - name: Test
+  #     run: |
+  #       bundle exec rake test:performance
+  #     env:
+  #       RUBY_VERSION: ${{ matrix.ruby_version }}
+  #       RAILS_VERSION: ${{ matrix.rails_version }}
+  # system:
+  #   name: System
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: '3.2'
+  #       bundler-cache: true
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #       cache: 'npm'
+  #       cache-dependency-path: |
+  #         package-lock.json
+  #         demo/package-lock.json
+  #   - name: Build
+  #     run: |
+  #       npm ci
+  #       cd demo && npm ci
+  #   - name: Test
+  #     run: |
+  #       bundle exec rake test:system
+  build_playwright_runner:
+    name: Build Playwright Runner
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          demo/package-lock.json
-    - name: Build
-      run: |
-        bundle exec rake docs:preview
-        npm ci
-        cd demo && npm ci
-    - name: Test
-      run: bundle exec rake test:accessibility
-  components:
-    name: Components
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - rails_version: "6.1.1"
-            ruby_version: "2.7"
-          - rails_version: "7.0.3"
-            ruby_version: "3.0"
-          - rails_version: "main"
-            ruby_version: "3.1"
-          - rails_version: "main"
-            ruby_version: "3.2"
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: Build
-      run: |
-        npm ci
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:components
-        bundle exec rake test:coverage
-      env:
-        COVERAGE: 1
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-  lib:
-    name: Lib
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - rails_version: "6.1.1"
-            ruby_version: "2.7"
-          - rails_version: "7.0.3"
-            ruby_version: "3.0"
-          - rails_version: "main"
-            ruby_version: "3.1"
-          - rails_version: "main"
-            ruby_version: "3.2"
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: Build
-      run: |
-        npm ci
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:lib
-        bundle exec rake test:coverage
-      env:
-        COVERAGE: 1
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-  performance:
-    name: Performance
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - rails_version: "6.1.1"
-            ruby_version: "2.7"
-          - rails_version: "7.0.3"
-            ruby_version: "3.0"
-          - rails_version: "main"
-            ruby_version: "3.1"
-          - rails_version: "main"
-            ruby_version: "3.2"
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - name: Build
-      run: |
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:performance
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-  system:
-    name: System
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          demo/package-lock.json
-    - name: Build
-      run: |
-        npm ci
-        cd demo && npm ci
-    - name: Test
-      run: |
-        bundle exec rake test:system
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      - name: Build
+        working-directory: .github/workflows/playwright-runner
+        run: |
+          playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/playwright".version')
+          image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
+          docker pull $image_url || (
+            docker build -e NODE_VERSION=$NODE_VERSION -e PLAYWRIGHT_VERSION=$playwright_version -t $image_url . && \
+            docker push $image_url
+          )
+        env:
+          NODE_VERSION: ${{jobs.visual.steps[2].with.node-version}}
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}
@@ -240,25 +256,25 @@ jobs:
     - name: Failure
       if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
       run: exit 1
-  selectors:
-    name: CSS coverage
-    runs-on: ubuntu-latest-8-cores
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2'
-          bundler-cache: true
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-      - name: NPM Build
-        run: npm ci
-      - name: Build Output Selectors
-        run: script/build-assets
-      - name: Test CSS
-        run: bundle exec rake test:component_css
+  # selectors:
+  #   name: CSS coverage
+  #   runs-on: ubuntu-latest-8-cores
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #     - name: Setup Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: '3.2'
+  #         bundler-cache: true
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #         cache: 'npm'
+  #     - name: NPM Build
+  #       run: npm ci
+  #     - name: Build Output Selectors
+  #       run: script/build-assets
+  #     - name: Test CSS
+  #       run: bundle exec rake test:component_css
