@@ -99,7 +99,7 @@ module Primer
         avatar_item: {
           renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments|
             build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
-              item.with_leading_visual_content do
+              item.with_leading_visual_raw_content do
                 # no alt text necessary for presentational item
                 render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
               end

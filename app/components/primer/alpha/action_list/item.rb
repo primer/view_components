@@ -59,7 +59,8 @@ module Primer
           },
           content: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :span, **system_arguments)
-          }
+          },
+          raw_content: nil
         }
 
         # Used internally.

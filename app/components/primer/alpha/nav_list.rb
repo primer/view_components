@@ -88,7 +88,7 @@ module Primer
               **system_arguments
             )
 
-            item.with_leading_visual_content do
+            item.with_leading_visual_raw_content do
               # no alt text necessary
               render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
             end
