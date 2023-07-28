@@ -187,6 +187,8 @@ jobs:
     name: Build Playwright Runner
     runs-on: ubuntu-latest
     steps:
+      steps:
+      - uses: actions/checkout@v3
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Build
