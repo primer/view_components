@@ -20,9 +20,11 @@ module Primer
       end
 
       def test_avatar_item
-        render_preview(:avatar_item)
+        render_preview(:avatar_item, params: { shape: :square })
 
         assert_selector(".avatar-small")
+        refute_selector(".avatar.circle")
+
         assert_selector(".ActionListItem-label", text: "hulk_smash")
         assert_selector(".ActionListItem-description", text: "Bruce Banner")
       end

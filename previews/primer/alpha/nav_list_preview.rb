@@ -50,6 +50,15 @@ module Primer
           list.with_group do |group|
             group.with_heading(title: "Access")
 
+            group.with_avatar_item(
+              src: "https://avatars.githubusercontent.com/u/103004183?v=4",
+              username: "hulk_smash",
+              full_name: "Bruce Banner",
+              full_name_scheme: :inline,
+              href: "/profile",
+              avatar_arguments: { shape: :square }
+            )
+
             group.with_item(label: "Collaborators and teams", href: "/collaborators", selected_by_ids: :collaborators) do |item|
               item.with_leading_visual_icon(icon: :people)
             end
@@ -82,6 +91,14 @@ module Primer
           list.with_item(label: "Change password", href: "/change_password") do |item|
             item.with_leading_visual_icon(icon: :key)
           end
+
+          list.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/103004183?v=4",
+            username: "hulk_smash",
+            full_name: "Bruce Banner",
+            full_name_scheme: :inline,
+            href: "/profile"
+          )
         end
       end
 

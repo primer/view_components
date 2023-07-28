@@ -241,6 +241,7 @@ module Primer
       # @param username text
       # @param truncate_label toggle
       # @param src text
+      # @param shape [Symbol] select [circle, square]
       # @param size [Symbol] select [medium, large, xlarge]
       # @param scheme [Symbol] select [default, danger]
       # @param disabled toggle
@@ -258,6 +259,7 @@ module Primer
         username: "hulk_smash",
         truncate_label: false,
         src: "https://avatars.githubusercontent.com/u/103004183?v=4",
+        shape: Primer::Beta::Avatar::DEFAULT_SHAPE,
         size: Primer::Alpha::ActionList::Item::DEFAULT_SIZE,
         scheme: Primer::Alpha::ActionList::Item::DEFAULT_SCHEME,
         disabled: false,
@@ -285,7 +287,8 @@ module Primer
           full_name_scheme: full_name_scheme,
           active: active,
           expanded: expanded,
-          id: "tooltip-test"
+          id: "tooltip-test",
+          avatar_arguments: { shape: shape }
         ) do |item|
           if trailing_visual_icon && trailing_visual_icon != :none
             item.with_trailing_visual_icon(icon: trailing_visual_icon)

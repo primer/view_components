@@ -78,8 +78,9 @@ module Primer
       #   # @param username [String] The username associated with the avatar.
       #   # @param full_name [String] Optional. The user's full name.
       #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::DESCRIPTION_SCHEME_OPTIONS) %>
+      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
       #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: nil, **system_arguments, &block)
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments, &block)
       #   end
 
       # Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.
@@ -96,11 +97,11 @@ module Primer
         },
 
         avatar_item: {
-          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: nil, **system_arguments|
+          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments|
             build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
               item.with_leading_visual_content do
                 # no alt text necessary
-                render(Primer::Beta::Avatar.new(src: src, size: 16))
+                render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, size: 16))
               end
 
               item.with_description_content(full_name) if full_name
@@ -113,7 +114,7 @@ module Primer
         },
 
         divider: {
-          renders: Divider,
+          renders: ActionList::Divider,
           as: :divider
         }
       }
