@@ -22,19 +22,19 @@ module Primer
           end
         end
 
-        # Adds an avatar item to the list, which includes the avatar itself, the username, and optionally the user's full name.
+        # Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.
         #
         # @param src [String] The source url of the avatar image.
         # @param username [String] The username associated with the avatar.
         # @param full_name [String] Optional. The user's full name.
-        # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::DESCRIPTION_SCHEME_OPTIONS) %>
+        # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
         # @param data [Hash] When the menu is used as a form input (see the <%= link_to_component(Primer::Alpha::ActionMenu) %> docs), the label is submitted to the server by default. However, if the `data: { value: }` or `"data-value":` attribute is provided, it will be sent to the server instead.
         # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
         # @param system_arguments [Hash] The same arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
         def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, data: {}, avatar_arguments: {}, **system_arguments, &block)
           system_arguments = organize_arguments(data: data, **system_arguments)
 
-          super(src: src, username: username, full_name: full_name, full_name_scheme: full_name_scheme, **system_arguments) do |item|
+          super(src: src, username: username, full_name: full_name, full_name_scheme: full_name_scheme, avatar_arguments: avatar_arguments, **system_arguments) do |item|
             evaluate_block(item, &block)
           end
         end

@@ -104,21 +104,24 @@ module Primer
             src: "https://avatars.githubusercontent.com/u/18661030?v=4",
             username: "langermank",
             full_name: "Katie Langerman",
-            full_name_scheme: :inline
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
           )
 
           menu.with_avatar_item(
             src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4",
             username: "jonrohan",
             full_name: "Jon Rohan",
-            full_name_scheme: :inline
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
           )
 
           menu.with_avatar_item(
             src: "https://avatars.githubusercontent.com/u/1446503?v=4",
             username: "broccolinisoup",
             full_name: "Armağan Ersöz",
-            full_name_scheme: :inline
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
           )
         end
       end

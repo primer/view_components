@@ -49,7 +49,7 @@ module Primer
 
             Primer::Beta::Octicon.new(**system_arguments, &block)
           },
-          avatar: lambda {
+          avatar: lambda { |*|
             return unless should_raise_error?
 
             raise "Leading visual avatars are no longer supported. Please use the #with_avatar_item slot instead."
@@ -152,7 +152,7 @@ module Primer
         # @param size [Symbol] Controls block sizing of the item.
         # @param scheme [Symbol] Controls color/style based on behavior.
         # @param disabled [Boolean] Disabled items are not clickable and visually dim.
-        # @param description_scheme [Symbol] Display description inline with label, or block on the next line. <%= one_of(DESCRIPTION_SCHEME_OPTIONS) %>
+        # @param description_scheme [Symbol] Display description inline with label, or block on the next line. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
         # @param active [Boolean] If the parent list's `select_variant` is set to `:single` or `:multiple`, causes this item to render checked.
         # @param on_click [String] JavaScript to execute when the item is clicked.
         # @param id [String] Used internally.

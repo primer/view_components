@@ -78,6 +78,18 @@ module Primer
         assert_match(/Avoid using `aria-label` on leading visual icons/, error.message)
       end
 
+      def test_raises_on_leading_avatar_visual
+        error = assert_raises RuntimeError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+            component.with_item(label: "Foo") do |item|
+              item.with_leading_visual_avatar(src: "http://foo.com/avatar.jpg")
+            end
+          end
+        end
+
+        assert_match(/Leading visual avatars are no longer supported/, error.message)
+      end
+
       def test_heading_denies_tag_argument
         error = assert_raises ArgumentError do
           render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|

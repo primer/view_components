@@ -134,6 +134,13 @@ module Primer
         assert_selector "li span.copy-link"
         assert_selector "li span.quote-reply"
       end
+
+      def test_avatar_options_are_passed_through
+        render_preview(:multiple_select)
+
+        assert_selector ".ActionListItem .avatar"
+        refute_selector ".ActionListItem .avatar.circle"
+      end
     end
   end
 end

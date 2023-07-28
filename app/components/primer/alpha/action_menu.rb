@@ -383,6 +383,8 @@ module Primer
         @list.with_divider(**system_arguments, &block)
       end
 
+      # Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.
+      #
       # @param src [String] The source url of the avatar image.
       # @param username [String] The username associated with the avatar.
       # @param full_name [String] Optional. The user's full name.
