@@ -185,6 +185,7 @@ jobs:
   #       bundle exec rake test:system
   build_playwright_runner:
     name: Build Playwright Runner
+    runs-on: ubuntu-latest
     steps:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
