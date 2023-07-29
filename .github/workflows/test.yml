@@ -190,8 +190,6 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
       - name: Build
         run: |
           playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
@@ -209,66 +207,63 @@ jobs:
             docker push $image_url;
           }
         env:
-          NODE_VERSION: 16
+          NODE_VERSION: ${{ jobs.visual.steps[2].with.node-version}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # visual:
-  #   name: Visual Regressions
-  #   if: ${{ github.event_name == 'pull_request' }}
-  #   timeout-minutes: 20
-  #   runs-on: ubuntu-latest-8-cores
-  #   needs: build-playwright-runner
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - uses: ruby/setup-ruby@v1
-  #     with:
-  #       ruby-version: '3.2'
-  #       bundler-cache: true
-  #   - uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 16
-  #       cache: 'npm'
-  #       cache-dependency-path: |
-  #         package-lock.json
-  #         demo/package-lock.json
-  #   - name: Build
-  #     run: |
-  #       npm ci
-  #       bundle install
-  #       bundle exec rake static:dump
-  #       cd demo
-  #       npm ci
-  #       bundle install
-  #   - name: Install Playwright Browsers
-  #     run: npx playwright install --with-deps
-  #   - name: Run Playwright tests
-  #     id: playwright-run
-  #     continue-on-error: true
-  #     run: npx playwright test --workers 6
-  #   - id: auto-commit
-  #     uses: stefanzweifel/git-auto-commit-action@v4
-  #     with:
-  #       commit_message: Generating component snapshots
-  #       file_pattern: .playwright/screenshots/**/*.png
-  #   - name: "Changes detected"
-  #     if: steps.auto-commit.outputs.changes_detected == 'true'
-  #     uses: phulsechinmay/rewritable-pr-comment@v0.3.0
-  #     with:
-  #       message: |
-  #         ### ⚠️ Visual differences found
+  visual:
+    name: Visual Regressions
+    if: ${{ github.event_name == 'pull_request' }}
+    timeout-minutes: 20
+    runs-on: ubuntu-latest-8-cores
+    needs: build-playwright-runner
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - name: Build static files
+      run: bundle exec rake static:dump
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
+        image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
+        docker run --rm -w /usr/src/app -v $(pwd):/usr/src/app $image_url \
+          npm ci && \
+          npx playwright test --workers 6
+      env:
+        NODE_VERSION: 16
+    - id: auto-commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Generating component snapshots
+        file_pattern: .playwright/screenshots/**/*.png
+    - name: "Changes detected"
+      if: steps.auto-commit.outputs.changes_detected == 'true'
+      uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+      with:
+        message: |
+          ### ⚠️ Visual differences found
 
-  #         Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+          Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
 
-  #         [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
-  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       COMMENT_IDENTIFIER: 'visual-comparison-diff'
-  #   - uses: actions/upload-artifact@v3
-  #     with:
-  #       name: playwright-report
-  #       path: .playwright/report/
-  #       retention-days: 30
-  #   - name: Failure
-  #     if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
-  #     run: exit 1
+          [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COMMENT_IDENTIFIER: 'visual-comparison-diff'
+    - uses: actions/upload-artifact@v3
+      with:
+        name: playwright-report
+        path: .playwright/report/
+        retention-days: 30
+    - name: Failure
+      if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
+      run: exit 1
   # selectors:
   #   name: CSS coverage
   #   runs-on: ubuntu-latest-8-cores
