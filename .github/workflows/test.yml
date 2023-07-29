@@ -207,7 +207,7 @@ jobs:
             docker push $image_url;
           }
         env:
-          NODE_VERSION: ${{ jobs.visual.steps[2].with.node-version}}
+          NODE_VERSION: 16
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   visual:
     name: Visual Regressions
