@@ -42,10 +42,10 @@ const config: PlaywrightTestConfig = {
     ['json', {outputFile: path.join(__dirname, '.playwright', 'results.json')}]
   ],
 
-  webServer: {
-    command: 'cd demo; bin/rails s -p 4000',
-    port: 4000
-  }
+  // webServer: {
+  //   command: 'cd demo; bin/rails s -p 4000',
+  //   port: 4000
+  // }
 }
 
 export default config
