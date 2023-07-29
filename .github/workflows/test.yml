@@ -186,10 +186,12 @@ jobs:
   build_playwright_runner:
     name: Build Playwright Runner
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: Build
         run: |
           playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
