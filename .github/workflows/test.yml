@@ -183,7 +183,7 @@ jobs:
   #   - name: Test
   #     run: |
   #       bundle exec rake test:system
-  build_playwright_runner:
+  build-playwright-runner:
     name: Build Playwright Runner
     runs-on: ubuntu-latest
     permissions:
@@ -205,16 +205,18 @@ jobs:
               -t $image_url \
               .github/workflows/playwright-runner;
 
+            echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             docker push $image_url;
           }
         env:
           NODE_VERSION: 16
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # visual:
   #   name: Visual Regressions
   #   if: ${{ github.event_name == 'pull_request' }}
   #   timeout-minutes: 20
   #   runs-on: ubuntu-latest-8-cores
-  #   needs: build_playwright_runner
+  #   needs: build-playwright-runner
   #   steps:
   #   - uses: actions/checkout@v3
   #   - uses: ruby/setup-ruby@v1
