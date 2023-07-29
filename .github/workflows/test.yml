@@ -191,7 +191,6 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Build
-        working-directory: .github/workflows/playwright-runner
         run: |
           playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
           image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
