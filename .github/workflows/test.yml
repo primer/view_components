@@ -195,7 +195,9 @@ jobs:
           playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
           image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
 
-          docker pull $image_url || {
+          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+          docker manifest inspect $image_url || {
             docker build \
               --file .github/workflows/playwright-runner/Dockerfile \
               --build-arg "NODE_VERSION=$NODE_VERSION" \
@@ -203,7 +205,6 @@ jobs:
               -t $image_url \
               .github/workflows/playwright-runner;
 
-            echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             docker push $image_url;
           }
         env:
@@ -230,6 +231,8 @@ jobs:
         cache-dependency-path: |
           package-lock.json
           demo/package-lock.json
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name: Build
       run: |
         playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
