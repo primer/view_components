@@ -248,7 +248,7 @@ jobs:
         (cd demo && bin/rails s -b 0.0.0.0 -p 4000 -d)
 
         cat <<"EOF" > run-playwright.sh
-          npm ci
+          npm ci --ignore-scripts
           RAILS_APP_URL="http://172.17.0.1:4000" npx playwright test --workers 6
         EOF
 
