@@ -195,10 +195,17 @@ jobs:
         run: |
           playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
           image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
-          docker pull $image_url || (
-            docker build --build-arg "NODE_VERSION=$NODE_VERSION" --build-arg "PLAYWRIGHT_VERSION=$playwright_version" -t $image_url . && \
-            docker push $image_url
-          )
+
+          docker pull $image_url || {
+            docker build \
+              --file .github/workflows/playwright-runner/Dockerfile \
+              --build-arg "NODE_VERSION=$NODE_VERSION" \
+              --build-arg "PLAYWRIGHT_VERSION=$playwright_version" \
+              -t $image_url \
+              .github/workflows/playwright-runner;
+
+            docker push $image_url;
+          }
         env:
           NODE_VERSION: 16
   # visual:
