@@ -20,7 +20,7 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 4 : undefined,
   updateSnapshots: 'all',
   use: {
-    baseURL: 'http://127.0.0.1:4000',
+    baseURL: process.env.RAILS_APP_URL ? process.env.RAILS_APP_URL : 'http://127.0.0.1:4000',
     browserName: 'chromium',
     headless: true,
     screenshot: 'only-on-failure'

@@ -245,11 +245,22 @@ jobs:
       run: |
         playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
         image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
+
         npm ci
         (cd demo && bin/rails s -p 4000 -d)
-        docker run --rm -w /usr/src/app -v $(pwd):/usr/src/app $image_url \
-          npm ci && \
+
+        cat <<"EOF" > run-playwright.sh
+          export RAILS_APP_URL="http://$(getent hosts host.docker.internal | cut -d' ' -f 1):4000"
+          npm ci
           npx playwright test --workers 6
+        EOF
+
+        docker run \
+          --rm \
+          -w /usr/src/app \
+          -v $(pwd):/usr/src/app \
+          $image_url \
+          /bin/bash run-playwright.sh
       env:
         NODE_VERSION: 16
     - id: auto-commit
