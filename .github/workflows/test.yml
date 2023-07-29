@@ -245,6 +245,7 @@ jobs:
       run: |
         playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
         image_url="ghcr.io/primer/pvc-playwright-runner:$playwright_version-node$NODE_VERSION"
+        npm ci
         (cd demo && bin/rails s -p 4000 -d)
         docker run --rm -w /usr/src/app -v $(pwd):/usr/src/app $image_url \
           npm ci && \

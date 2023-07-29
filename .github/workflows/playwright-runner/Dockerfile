@@ -1,5 +1,9 @@
 FROM ubuntu:latest
 
+RUN useradd -d /home/runner -ms /bin/bash -g root -G sudo -p runner runner
+RUN mkdir /usr/src/app && chown runner /usr/src/app
+VOLUME /usr/src/app
+
 ARG NODE_VERSION
 ARG PLAYWRIGHT_VERSION
 
