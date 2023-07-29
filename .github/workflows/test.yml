@@ -239,8 +239,6 @@ jobs:
         cache-dependency-path: |
           package-lock.json
           demo/package-lock.json
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
     - name: Build
       run: |
         playwright_version=$(cat package-lock.json | jq -j '.packages."node_modules/@playwright/test".version')
