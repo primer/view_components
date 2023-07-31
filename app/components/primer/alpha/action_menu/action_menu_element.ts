@@ -124,7 +124,11 @@ export class ActionMenuElement extends HTMLElement {
       // appears as if hitting enter does nothing. Curiously, clicking instead
       // works fine.
       if (this.selectVariant !== 'multiple') {
-        setTimeout(() => this.popoverElement?.hidePopover())
+        setTimeout(() => {
+          if (this.popoverElement?.matches(':popover-open')) {
+            this.popoverElement?.hidePopover()
+          }
+        })
       }
 
       // The rest of the code below deals with single/multiple selection behavior, and should not
