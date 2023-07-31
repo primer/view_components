@@ -259,7 +259,7 @@
       },
       {
         "name": "items",
-        "description": "Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.",
+        "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
         "parameters": [
 
         ]
@@ -287,6 +287,48 @@
             "type": "Hash",
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "with_avatar_item",
+        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The source url of the avatar image."
+          },
+          {
+            "name": "username",
+            "type": "String",
+            "default": "N/A",
+            "description": "The username associated with the avatar."
+          },
+          {
+            "name": "full_name",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional. The user's full name."
+          },
+          {
+            "name": "full_name_scheme",
+            "type": "Symbol",
+            "default": "`:block`",
+            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
+          },
+          {
+            "name": "avatar_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
         ]
       },
@@ -401,6 +443,19 @@
       {
         "preview_path": "primer/alpha/action_list/item",
         "name": "item",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/avatar_item",
+        "name": "avatar_item",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -690,7 +745,7 @@
             "name": "description_scheme",
             "type": "Symbol",
             "default": "`:block`",
-            "description": "Display description inline with label, or block on the next line."
+            "description": "Display description inline with label, or block on the next line. One of `:block` or `:inline`."
           },
           {
             "name": "active",
@@ -727,7 +782,7 @@
           },
           {
             "name": "leading_visual",
-            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
             "parameters": [
 
             ]
@@ -1137,6 +1192,48 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `divider` slot."
           }
         ]
+      },
+      {
+        "name": "with_avatar_item",
+        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The source url of the avatar image."
+          },
+          {
+            "name": "username",
+            "type": "String",
+            "default": "N/A",
+            "description": "The username associated with the avatar."
+          },
+          {
+            "name": "full_name",
+            "type": "String",
+            "default": "N/A",
+            "description": "Optional. The user's full name."
+          },
+          {
+            "name": "full_name_scheme",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Optional. How to display the user's full name."
+          },
+          {
+            "name": "avatar_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+          }
+        ]
       }
     ],
     "previews": [
@@ -1508,7 +1605,7 @@
           },
           {
             "name": "items",
-            "description": "Items. Items can be individual items or dividers. See the documentation for `#with_item` and `#with_divider` respectively for more information.",
+            "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
             "parameters": [
 
             ]
@@ -1524,6 +1621,54 @@
                 "type": "Hash",
                 "default": "`{}`",
                 "description": "When the menu is used as a form input (see the {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} docs), the label is submitted to the server by default. However, if the `data: { value: }` or `\"data-value\":` attribute is provided, it will be sent to the server instead."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The same arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "with_avatar_item",
+            "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The source url of the avatar image."
+              },
+              {
+                "name": "username",
+                "type": "String",
+                "default": "N/A",
+                "description": "The username associated with the avatar."
+              },
+              {
+                "name": "full_name",
+                "type": "String",
+                "default": "`nil`",
+                "description": "Optional. The user's full name."
+              },
+              {
+                "name": "full_name_scheme",
+                "type": "Symbol",
+                "default": "`:block`",
+                "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
+              },
+              {
+                "name": "data",
+                "type": "Hash",
+                "default": "`{}`",
+                "description": "When the menu is used as a form input (see the {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} docs), the label is submitted to the server by default. However, if the `data: { value: }` or `\"data-value\":` attribute is provided, it will be sent to the server instead."
+              },
+              {
+                "name": "avatar_arguments",
+                "type": "Hash",
+                "default": "`{}`",
+                "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
               },
               {
                 "name": "system_arguments",
@@ -4636,6 +4781,72 @@
     ],
     "methods": [
       {
+        "name": "with_item",
+        "description": "Adds an item to the list.",
+        "parameters": [
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "N/A",
+            "description": "The component class to use. Defaults to `Primer::Alpha::NavList::Item`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by the `component_klass` class."
+          }
+        ]
+      },
+      {
+        "name": "with_avatar_item",
+        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The source url of the avatar image."
+          },
+          {
+            "name": "username",
+            "type": "String",
+            "default": "N/A",
+            "description": "The username associated with the avatar."
+          },
+          {
+            "name": "full_name",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional. The user's full name."
+          },
+          {
+            "name": "full_name_scheme",
+            "type": "Symbol",
+            "default": "`:block`",
+            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
+          },
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "N/A",
+            "description": "The component class to use. Defaults to `Primer::Alpha::NavList::Item`."
+          },
+          {
+            "name": "avatar_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by the `component_klass` class."
+          }
+        ]
+      },
+      {
         "name": "with_group",
         "description": "Adds a group to the list. A group is a list of links and a (required) heading.",
         "parameters": [
@@ -4655,7 +4866,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Divider{{/link_to_component}}."
           }
         ]
       },
@@ -4879,7 +5090,7 @@
           },
           {
             "name": "leading_visual",
-            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
             "parameters": [
 
             ]
@@ -8876,7 +9087,7 @@
       {
         "name": "alt",
         "type": "String",
-        "default": "N/A",
+        "default": "`nil`",
         "description": "Passed through to alt on img tag."
       },
       {
