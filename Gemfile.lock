@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.4.0)
+    primer_view_components (0.5.1)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -110,8 +110,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
-    mocha (2.0.2)
+    minitest (5.18.1)
+    mocha (2.0.4)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.7.0)
     nio4r (2.5.9)
@@ -251,7 +251,7 @@ DEPENDENCIES
   listen (~> 3.0)
   lookbook (~> 2.0.0)
   matrix (~> 0.4.2)
-  minitest (~> 5.0)
+  minitest (< 5.19)
   mocha
   primer_view_components!
   pry

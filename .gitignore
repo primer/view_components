@@ -22,6 +22,7 @@ previews/docs/
 test/snapshots/
 test/snapshots/docs/
 demo/test/snapshots/
+previews/pages/*.md.erb
 previews/pages/forms/inputs/*.md.erb
 docs/content/adr/
 docs/content/components/

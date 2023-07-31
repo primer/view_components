@@ -185,7 +185,7 @@ namespace :docs do
     # add to this as more pages are migrated
     INTRO_URL_MAP = {
       "/" => "https://primer.style/design/guides/development/rails",
-      "/system-arguments" => "https://primer.style/design/foundations/system-arguments",
+      "/system-arguments" => "https://primer.style/view-components/lookbook/pages/system_arguments",
       "/status" => "https://primer.style/design/guides/status",
       "/migration" => "https://primer.style/design/guides/development/rails#migration-and-upgrade-guides"
     }.freeze

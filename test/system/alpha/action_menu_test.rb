@@ -50,6 +50,18 @@ module Alpha
       end
     end
 
+    def test_action_keydown_on_icon_button
+      visit_preview(:with_icon_button)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      page.driver.browser.keyboard.type(:enter)
+
+      assert_selector "anchored-position"
+    end
+
     def test_action_anchor
       visit_preview(:with_actions)
 

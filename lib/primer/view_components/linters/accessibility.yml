@@ -5,3 +5,5 @@ linters:
     enabled: true
   Primer::Accessibility::TooltippedMigration:
     enabled: true
+  Primer::Accessibility::DetailsMenuMigration:
+    enabled: true

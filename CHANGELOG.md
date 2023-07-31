@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 0.5.1
+
+### Patch Changes
+
+- [#2156](https://github.com/primer/view_components/pull/2156) [`5f809724`](https://github.com/primer/view_components/commit/5f8097241df130e5b54cd5a1bcfda0ca11258cda) Thanks [@langermank](https://github.com/langermank)! - Add correct fallbacks to `State` label
+
+  <!-- Changed components: _none_ -->
+
+- [#2151](https://github.com/primer/view_components/pull/2151) [`78e0d175`](https://github.com/primer/view_components/commit/78e0d175d266534ab9042b671057bed3e6dfb7c5) Thanks [@jdrush89](https://github.com/jdrush89)! - Checking document scrollbar width before making dialog backdrop visible to fix issue with document padding on mobile screens.
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+- [#2154](https://github.com/primer/view_components/pull/2154) [`9005b5cd`](https://github.com/primer/view_components/commit/9005b5cdb00a628f4f9efe93066dab5413b181e5) Thanks [@langermank](https://github.com/langermank)! - Add color declaration for Dialog `title`
+
+  <!-- Changed components: _none_ -->
+
+## 0.5.0
+
+### Minor Changes
+
+- [#2148](https://github.com/primer/view_components/pull/2148) [`cbd5c84d`](https://github.com/primer/view_components/commit/cbd5c84d8d290b0d018f15c5ee84cd94afcd4b0b) Thanks [@keithamus](https://github.com/keithamus)! - Add a linter discouraging use of <details-menu> in favor of Primer::Alpha::ActionMenu
+
+  <!-- Changed components: _none_ -->
+
+- [#2123](https://github.com/primer/view_components/pull/2123) [`f9119d95`](https://github.com/primer/view_components/commit/f9119d95f281d528f3c0086ebc521afd33bd4295) Thanks [@langermank](https://github.com/langermank)! - - Use Primitive v8 color tokens
+  - Add tests for compiled CSS to ensure CSS color variables have a fallback
+
+### Patch Changes
+
+- [#2153](https://github.com/primer/view_components/pull/2153) [`b9871598`](https://github.com/primer/view_components/commit/b98715986852c5f0f51aaf9f9af0463d2eda727c) Thanks [@langermank](https://github.com/langermank)! - Update color fallback for `UnderlineNav` counter
+
 ## 0.4.0
 
 ### Minor Changes

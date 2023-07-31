@@ -176,6 +176,7 @@ module Primer
         each_component do |component_ref|
           page_for(component_ref).generate
         end
+        generate_system_args_docs
       end
 
       def page_for(component_ref)
@@ -193,6 +194,36 @@ module Primer
 
       def each_component(&block)
         manifest.each(&block)
+      end
+
+      def generate_system_args_docs
+        docs = registry.find(Primer::BaseComponent)
+
+        path = File.expand_path(
+          File.join(
+            *%w[.. .. .. previews pages system-arguments.md.erb]
+          ), __dir__
+        )
+
+        data = {
+          "description_md" => docs.base_docstring.to_s,
+          "args_md" => view_context.render(inline: docs.constructor.base_docstring)
+        }
+
+        frontmatter = {
+          "title" => "System arguments",
+          "id" => "system_arguments",
+          "data" => data
+        }
+
+        File.write(
+          path, <<~ERB
+            #{YAML.dump(frontmatter)}
+            ---
+            <%= @page.data[:description_md] %>
+            <%= @page.data[:args_md] %>
+          ERB
+        )
       end
     end
   end

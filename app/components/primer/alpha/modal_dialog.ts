@@ -101,9 +101,9 @@ export class ModalDialogElement extends HTMLElement {
       if (this.open) return
       this.setAttribute('open', '')
       this.setAttribute('aria-disabled', 'false')
-      this.#overlayBackdrop?.classList.remove('Overlay--hidden')
       document.body.style.paddingRight = `${window.innerWidth - document.body.clientWidth}px`
       document.body.style.overflow = 'hidden'
+      this.#overlayBackdrop?.classList.remove('Overlay--hidden')
       if (this.#focusAbortController.signal.aborted) {
         this.#focusAbortController = new AbortController()
       }
