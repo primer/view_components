@@ -3,3 +3,5 @@
 ---
 
 Add support for capitalize to text-transform
+
+<!-- Changed components: Primer::BaseComponent -->
