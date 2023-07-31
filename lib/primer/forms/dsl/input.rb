@@ -147,9 +147,11 @@ module Primer
           input_data[key] = value
         end
 
+        # :nocov:
         def remove_input_data(key)
           input_data.delete(key)
         end
+        # :nocov:
 
         def merge_input_arguments!(arguments)
           arguments.each do |k, v|
