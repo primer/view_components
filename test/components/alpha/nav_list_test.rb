@@ -14,6 +14,8 @@ module Primer
           list.assert_selector("li.ActionListItem", text: "General")
           list.assert_selector("li.ActionListItem", text: "Billing")
           list.assert_selector("li.ActionListItem", text: "Change password")
+          list.assert_selector("li.ActionListItem", text: "hulk_smash")
+          list.assert_selector(".ActionListItem-visual .avatar")
         end
       end
 
@@ -25,6 +27,12 @@ module Primer
           top_level_list.assert_selector("li h3", text: "Access")
 
           top_level_list.assert_selector("li ul.ActionListWrap") do |access_list|
+            access_list.assert_selector("li.ActionListItem", text: "hulk_smash")
+            access_list.assert_selector("li.ActionListItem .ActionListItem-visual .avatar")
+
+            # tests that avatar_arguments get passed to the avatar component
+            access_list.assert_no_selector("li.ActionListItem .ActionListItem-visual .avatar.circle")
+
             access_list.assert_selector("li.ActionListItem", text: "Collaborators and teams")
             access_list.assert_selector("li.ActionListItem", text: "Moderation options")
             access_list.assert_selector("li.ActionListItem ul.ActionList--subGroup") do |mod_options_list|

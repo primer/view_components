@@ -30,8 +30,22 @@ module Primer
       # @!parse
       #   # Adds an item to the list.
       #   #
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
-      #   def with_group(**system_arguments, &block)
+      #   # @param component_klass [Class] The component class to use. Defaults to `Primer::Alpha::NavList::Item`.
+      #   # @param system_arguments [Hash] The arguments accepted by the `component_klass` class.
+      #   def with_item(**system_arguments, &block)
+      #   end
+
+      # @!parse
+      #   # Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.
+      #   #
+      #   # @param src [String] The source url of the avatar image.
+      #   # @param username [String] The username associated with the avatar.
+      #   # @param full_name [String] Optional. The user's full name.
+      #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
+      #   # @param component_klass [Class] The component class to use. Defaults to `Primer::Alpha::NavList::Item`.
+      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
+      #   # @param system_arguments [Hash] The arguments accepted by the `component_klass` class.
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments, &block)
       #   end
 
       # @!parse
@@ -44,7 +58,7 @@ module Primer
       # @!parse
       #   # Adds a divider to the list. Dividers visually separate items and groups.
       #   #
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Divider) %>.
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Divider) %>.
       #   def with_divider(**system_arguments, &block)
       #   end
 
@@ -53,11 +67,8 @@ module Primer
       renders_many :items, types: {
         item: {
           renders: lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
-            # dummy group just so we have something to pass as the list: argument below
-            @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
-
             component_klass.new(
-              list: @top_level_group,
+              list: top_level_group,
               selected_item_id: @selected_item_id,
               **system_arguments,
               &block
@@ -65,6 +76,29 @@ module Primer
           },
 
           as: :item
+        },
+
+        avatar_item: {
+          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments|
+            item = component_klass.new(
+              list: top_level_group,
+              selected_item_id: @selected_item_id,
+              label: username,
+              description_scheme: full_name_scheme,
+              **system_arguments
+            )
+
+            item.with_leading_visual_raw_content do
+              # no alt text necessary
+              render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+            end
+
+            item.with_description_content(full_name) if full_name
+
+            item
+          },
+
+          as: :avatar_item
         },
 
         divider: {
@@ -102,9 +136,7 @@ module Primer
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
       #     <% component.with_group do |group| %>
       #       <% group.with_heading(title: "Account Settings") %>
-      #       <% group.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") do |item| %>
-      #         <% item.with_leading_visual_avatar(src: "https://github.com/github.png", alt: "GitHub") %>
-      #       <% end %>
+      #       <% group.with_avatar_item(src: "https://github.com/github.png", username: "person", selected_by_ids: :personal_info, href: "/account/info") %>
       #       <% group.with_item(label: "Notifications", selected_by_ids: :notifications, href: "/account/notifications") do |item| %>
       #         <% item.with_leading_visual_icon(icon: :bell) %>
       #         <% item.with_trailing_visual_counter(count: 15) %>
@@ -211,6 +243,11 @@ module Primer
 
       def kind(item)
         item.respond_to?(:kind) ? item.kind : :item
+      end
+
+      def top_level_group
+        # dummy group for the list: argument in the item slot above
+        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
       end
     end
   end

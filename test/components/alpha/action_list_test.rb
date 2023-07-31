@@ -19,10 +19,14 @@ module Primer
         assert_selector(".ActionListItem > tool-tip")
       end
 
-      def test_item_leading_visual_avatar
-        render_preview(:item, params: { leading_visual_avatar_src: "/" })
+      def test_avatar_item
+        render_preview(:avatar_item, params: { shape: :square })
 
         assert_selector(".avatar-small")
+        refute_selector(".avatar.circle")
+
+        assert_selector(".ActionListItem-label", text: "hulk_smash")
+        assert_selector(".ActionListItem-description", text: "Bruce Banner")
       end
 
       def test_item_trailing_visual_text
@@ -60,9 +64,35 @@ module Primer
         assert_selector(".ActionListItem-visual--leading", count: 2)
       end
 
+      def test_denies_aria_label_on_leading_visual_icons
+        error = assert_raises ArgumentError do
+          with_raise_on_invalid_aria(true) do
+            render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+              component.with_item(label: "Foo") do |item|
+                item.with_leading_visual_icon(icon: :star, aria: { label: "Star" })
+              end
+            end
+          end
+        end
+
+        assert_match(/Avoid using `aria-label` on leading visual icons/, error.message)
+      end
+
+      def test_raises_on_leading_avatar_visual
+        error = assert_raises RuntimeError do
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+            component.with_item(label: "Foo") do |item|
+              item.with_leading_visual_avatar(src: "http://foo.com/avatar.jpg")
+            end
+          end
+        end
+
+        assert_match(/Leading visual avatars are no longer supported/, error.message)
+      end
+
       def test_heading_denies_tag_argument
         error = assert_raises ArgumentError do
-          render_inline(Primer::Alpha::ActionList.new(aria: { lable: "List" })) do |component|
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
             component.with_heading(title: "Foo", tag: :foo)
           end
         end
