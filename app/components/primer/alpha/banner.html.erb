@@ -16,7 +16,7 @@
         <%= action %>
       </div>
     <% end %>
-    <% if @dismissible %>
+    <% if @dismiss_scheme != :none %>
       <div class="flash-close Banner-close">
         <%= render(
           Primer::Beta::IconButton.new(
