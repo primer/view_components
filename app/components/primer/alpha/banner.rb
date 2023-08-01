@@ -67,7 +67,7 @@ module Primer
       #   <%= render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner!" } %>
       #
       # @example Dismissible
-      #   <%= render(Primer::Alpha::Banner.new(dismissible: true)) { "This is a dismissible banner!" } %>
+      #   <%= render(Primer::Alpha::Banner.new(dismissible: :remove)) { "This is a dismissible banner!" } %>
       #
       # @example Custom icon
       #   <%= render(Primer::Alpha::Banner.new(icon: :people)) { "This is a banner with a custom icon!" } %>
