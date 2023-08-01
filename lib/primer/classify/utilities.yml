@@ -1558,6 +1558,8 @@
 :text_transform:
   :uppercase:
   - text-uppercase
+  :capitalize:
+  - text-capitalize
 :text_align:
   :right:
   - text-right
