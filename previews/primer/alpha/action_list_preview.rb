@@ -228,7 +228,7 @@ module Primer
 
           item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
-          item.description { description } if description
+          item.with_description { description } if description
 
           item.with_tooltip(text: "Tooltip text", for_id: "tooltip-test", type: :description) if tooltip
         end
