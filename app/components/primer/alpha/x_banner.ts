@@ -16,11 +16,11 @@ class XBannerElement extends HTMLElement {
   }
 
   show() {
-    this.style.setProperty('visibility', 'visible')
+    this.style.setProperty('display', 'initial')
   }
 
   hide() {
-    this.style.setProperty('visibility', 'hidden')
+    this.style.setProperty('display', 'none')
   }
 
   get #dismissScheme(): string {
