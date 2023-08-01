@@ -33,18 +33,27 @@ jobs:
       url: ${{ env.APP_URL }}
     steps:
     - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
+    - name: Install lib deps
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
         bundler-cache: true
       env:
         BUNDLE_GEMFILE: Gemfile
-    - uses: ruby/setup-ruby@v1
+    - name: Install demo app deps
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
         bundler-cache: true
       env:
         BUNDLE_GEMFILE: demo/Gemfile
+    - name: Install Kuby deps
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+      env:
+        BUNDLE_GEMFILE: demo/gemfiles/kuby.gemfile
     - name: Docker login
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
