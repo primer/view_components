@@ -33,11 +33,18 @@ jobs:
       url: ${{ env.APP_URL }}
     steps:
     - uses: actions/checkout@v3
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
         bundler-cache: true
+      env:
+        BUNDLE_GEMFILE: Gemfile
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+      env:
+        BUNDLE_GEMFILE: demo/Gemfile
     - name: Docker login
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
