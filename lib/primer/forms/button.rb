@@ -39,10 +39,6 @@ module Primer
 
         # rails uses a string for this, but PVC wants a symbol
         @input.merge_input_arguments!(type: type.to_sym)
-
-        # Never allow buttons to be disabled. Disabling buttons is not accessible.
-        # See: https://primer.style/design/ui-patterns/saving#state
-        @input.input_arguments.delete(:disabled)
       end
 
       def input_arguments
