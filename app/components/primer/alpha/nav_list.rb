@@ -196,7 +196,7 @@ module Primer
         ).tap do |item|
           item.with_leading_visual_raw_content do
             # no alt text necessary
-            render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+            item.render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
           end
 
           item.with_description_content(full_name) if full_name

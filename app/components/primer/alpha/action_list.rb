@@ -189,7 +189,7 @@ module Primer
         build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
           item.with_leading_visual_raw_content do
             # no alt text necessary for presentational item
-            render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+            item.render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
           end
 
           item.with_description_content(full_name) if full_name
