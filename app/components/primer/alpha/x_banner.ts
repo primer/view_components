@@ -5,24 +5,26 @@ class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 
   dismiss() {
-    if (this.shouldReappear()) {
-      this.style.setProperty('visibility', 'hidden')
-
-      setTimeout(() => {
-        this.style.setProperty('visibility', 'visible')
-      }, 2000)
-
-      return
-    }
-
     const parentElement = this.parentElement
     if (!parentElement) return
 
-    parentElement.removeChild(this)
+    if (this.#dismissScheme === 'remove') {
+      parentElement.removeChild(this)
+    } else {
+      this.hide()
+    }
   }
 
-  private shouldReappear(): boolean {
-    return this.getAttribute('data-reappear') === 'true'
+  show() {
+    this.style.setProperty('display', 'initial')
+  }
+
+  hide() {
+    this.style.setProperty('display', 'none')
+  }
+
+  get #dismissScheme(): string {
+    return this.getAttribute('data-dismiss-scheme')!
   }
 }
 

@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Banner.new(full: full, dismissible: dismissible, icon: icon, scheme: scheme, reappear: reappear)) do |component| %>
+<%= render(Primer::Alpha::Banner.new(full: full, dismiss_scheme: dismiss_scheme, icon: icon, scheme: scheme)) do |component| %>
   <% component.with_action_content do %>
     <%= render(Primer::Beta::IconButton.new(icon: :pencil, mr: 1, "aria-label": "Edit")) %>
   <% end %>
