@@ -1,5 +1,55 @@
 # CHANGELOG
 
+## 0.6.0
+
+### Minor Changes
+
+- [#2187](https://github.com/primer/view_components/pull/2187) [`ce2011e6`](https://github.com/primer/view_components/commit/ce2011e615325b2e18d0974b5a08831ef442681f) Thanks [@camertron](https://github.com/camertron)! - Expose ActionList's #build_item and #build_avatar_item externally to facilitate parent-less item construction
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu, Primer::Alpha::NavList -->
+
+- [#2188](https://github.com/primer/view_components/pull/2188) [`5950afea`](https://github.com/primer/view_components/commit/5950afea48dca275df11603ffab6f8689777e08d) Thanks [@camertron](https://github.com/camertron)! - Allow disabling submit buttons
+
+  <!-- Changed components: Primer::Alpha::FormButton, Primer::Alpha::SubmitButton -->
+
+- [#2165](https://github.com/primer/view_components/pull/2165) [`1b8ff1b7`](https://github.com/primer/view_components/commit/1b8ff1b7883b9870dfc09c6b59f26d17b8d2be92) Thanks [@camertron](https://github.com/camertron)! - Add an accessible avatar item to ActionList, NavList, and ActionMenu
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu, Primer::Alpha::NavList -->
+
+- [#2186](https://github.com/primer/view_components/pull/2186) [`eab82c07`](https://github.com/primer/view_components/commit/eab82c0780b219f1d3a118cc912561f33ac49e7e) Thanks [@camertron](https://github.com/camertron)! - On dismiss, allow banners to be hidden instead of removed from DOM
+
+  <!-- Changed components: Primer::Alpha::Banner -->
+
+### Patch Changes
+
+- [#2164](https://github.com/primer/view_components/pull/2164) [`93344455`](https://github.com/primer/view_components/commit/93344455a3fc7666dd459eeb06843e2a9c7a7806) Thanks [@camertron](https://github.com/camertron)! - Allow form buttons to be disabled on click with data-disable-with
+
+  <!-- Changed components: Primer::Alpha::FormButton -->
+
+- [#2158](https://github.com/primer/view_components/pull/2158) [`0afaecc6`](https://github.com/primer/view_components/commit/0afaecc6051ff5f85f804db3ac3494d208ed4999) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix bug in ActionMenu button where return doesn't trigger menu
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2168](https://github.com/primer/view_components/pull/2168) [`45822328`](https://github.com/primer/view_components/commit/4582232870286d9cc2d6ae8bea6c6fd9da9659a6) Thanks [@keithamus](https://github.com/keithamus)! - Guard tooltip popover calls from `Failed to execute 'showPopover' on 'HTMLElement': Not supported on elements that do not have a valid value for the 'popover' attribute.`
+
+  <!-- Changed components: Primer::Alpha::Tooltip -->
+
+- [#2160](https://github.com/primer/view_components/pull/2160) [`8464823b`](https://github.com/primer/view_components/commit/8464823b7cb1d27cea9e4ead25014f1518e6bd26) Thanks [@langermank](https://github.com/langermank)! - Fix Dialog backdrop color fallback
+
+  <!-- Changed components: _none_ -->
+
+- [#2163](https://github.com/primer/view_components/pull/2163) [`e3aeda1f`](https://github.com/primer/view_components/commit/e3aeda1f567f3a8d08a252ab98e0aeae880d1eaf) Thanks [@langermank](https://github.com/langermank)! - Add fallbacks for primary Button
+
+  <!-- Changed components: _none_ -->
+
+- [#2170](https://github.com/primer/view_components/pull/2170) [`4391873d`](https://github.com/primer/view_components/commit/4391873d9970ef981e22d1b7360343037683c1d1) Thanks [@Tonkpils](https://github.com/Tonkpils)! - Add support for capitalize to text-transform
+
+  <!-- Changed components: Primer::BaseComponent -->
+
+- [#2169](https://github.com/primer/view_components/pull/2169) [`4f11f5e3`](https://github.com/primer/view_components/commit/4f11f5e32d0d108bce6fb688156b21704a75785f) Thanks [@camertron](https://github.com/camertron)! - Fix color contrast issues for action list hover state (danger style)
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu -->
+
 ## 0.5.1
 
 ### Patch Changes
