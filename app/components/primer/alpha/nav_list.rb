@@ -30,9 +30,9 @@ module Primer
       # @!parse
       #   # Adds an item to the list.
       #   #
-      #   # @param component_klass [Class] The component class to use. Defaults to `Primer::Alpha::NavList::Item`.
-      #   # @param system_arguments [Hash] The arguments accepted by the `component_klass` class.
-      #   def with_item(**system_arguments, &block)
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      #   def with_item(component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block)
       #   end
 
       # @!parse
@@ -42,10 +42,10 @@ module Primer
       #   # @param username [String] The username associated with the avatar.
       #   # @param full_name [String] Optional. The user's full name.
       #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
-      #   # @param component_klass [Class] The component class to use. Defaults to `Primer::Alpha::NavList::Item`.
-      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
-      #   # @param system_arguments [Hash] The arguments accepted by the `component_klass` class.
-      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments, &block)
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments, &block)
       #   end
 
       # @!parse
@@ -66,36 +66,16 @@ module Primer
       #
       renders_many :items, types: {
         item: {
-          renders: lambda { |component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block|
-            component_klass.new(
-              list: top_level_group,
-              selected_item_id: @selected_item_id,
-              **system_arguments,
-              &block
-            )
+          renders: lambda { |**system_arguments, &block|
+            build_item(**system_arguments, &block)
           },
 
           as: :item
         },
 
         avatar_item: {
-          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments|
-            item = component_klass.new(
-              list: top_level_group,
-              selected_item_id: @selected_item_id,
-              label: username,
-              description_scheme: full_name_scheme,
-              **system_arguments
-            )
-
-            item.with_leading_visual_raw_content do
-              # no alt text necessary
-              render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
-            end
-
-            item.with_description_content(full_name) if full_name
-
-            item
+          renders: lambda { |**system_arguments|
+            build_avatar_item(**system_arguments)
           },
 
           as: :avatar_item
@@ -193,6 +173,53 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
+      end
+
+      # Builds a new item but does not add it to the list. Use this method
+      # instead of the `#with_item` slot if you need to render an item outside
+      # the context of a list, eg. if rendering additional items to append to
+      # an existing list, perhaps via a separate HTTP request.
+      #
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_item(component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block)
+        component_klass.new(
+          list: top_level_group,
+          selected_item_id: @selected_item_id,
+          **system_arguments,
+          &block
+        )
+      end
+
+      # Builds a new avatar item but does not add it to the list. Avatar items
+      # are a convenient way to accessibly add an item with a leading avatar
+      # image. Use this method instead of the `#with_avatar_item` slot if you
+      # need to render an avatar item outside the context of a list, eg. if
+      # rendering additional items to append to an existing list, perhaps via
+      # a separate HTTP request.
+      #
+      # @param src [String] The source url of the avatar image.
+      # @param username [String] The username associated with the avatar.
+      # @param full_name [String] Optional. The user's full name.
+      # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments)
+        component_klass.new(
+          list: top_level_group,
+          selected_item_id: @selected_item_id,
+          label: username,
+          description_scheme: full_name_scheme,
+          **system_arguments
+        ).tap do |item|
+          item.with_leading_visual_raw_content do
+            # no alt text necessary
+            item.render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+          end
+
+          item.with_description_content(full_name) if full_name
+        end
       end
 
       private

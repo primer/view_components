@@ -60,7 +60,8 @@ module Primer
       # @!parse
       #   # Adds an item to the list.
       #   #
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
       #   def with_item(**system_arguments, &block)
       #   end
 
@@ -78,9 +79,10 @@ module Primer
       #   # @param username [String] The username associated with the avatar.
       #   # @param full_name [String] Optional. The user's full name.
       #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
-      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments, &block)
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: ActionList::Item, avatar_arguments: {}, **system_arguments, &block)
       #   end
 
       # Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.
@@ -97,15 +99,8 @@ module Primer
         },
 
         avatar_item: {
-          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments|
-            build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
-              item.with_leading_visual_raw_content do
-                # no alt text necessary for presentational item
-                render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
-              end
-
-              item.with_description_content(full_name) if full_name
-
+          renders: lambda { |**system_arguments|
+            build_avatar_item(**system_arguments).tap do |item|
               will_add_item(item)
             end
           },
@@ -175,8 +170,14 @@ module Primer
         @system_arguments[:"aria-describedby"] = heading.subtitle_id if heading.subtitle?
       end
 
-      # @private
-      def build_item(**system_arguments)
+      # Builds a new item but does not add it to the list. Use this method
+      # instead of the `#with_item` slot if you need to render an item outside
+      # the context of a list, eg. if rendering additional items to append to
+      # an existing list, perhaps via a separate HTTP request.
+      #
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_item(component_klass: ActionList::Item, **system_arguments)
         # rubocop:disable Style/IfUnlessModifier
         if single_select? && system_arguments[:active] && items.count(&:active?).positive?
           raise ArgumentError, "only a single item may be active when select_variant is set to :single"
@@ -188,7 +189,32 @@ module Primer
           system_arguments[:classes]
         )
 
-        ActionList::Item.new(list: self, **system_arguments)
+        component_klass.new(list: self, **system_arguments)
+      end
+
+      # Builds a new avatar item but does not add it to the list. Avatar items
+      # are a convenient way to accessibly add an item with a leading avatar
+      # image. Use this method instead of the `#with_avatar_item` slot if you
+      # need to render an avatar item outside the context of a list, eg. if
+      # rendering additional items to append to an existing list, perhaps via
+      # a separate HTTP request.
+      #
+      # @param src [String] The source url of the avatar image.
+      # @param username [String] The username associated with the avatar.
+      # @param full_name [String] Optional. The user's full name.
+      # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Item) %>
+      # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: ActionList::Item, avatar_arguments: {}, **system_arguments)
+        build_item(label: username, description_scheme: full_name_scheme, component_klass: component_klass, **system_arguments).tap do |item|
+          item.with_leading_visual_raw_content do
+            # no alt text necessary for presentational item
+            item.render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+          end
+
+          item.with_description_content(full_name) if full_name
+        end
       end
 
       def single_select?
