@@ -271,7 +271,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
-    octicons (19.4.0)
+    octicons (19.5.0)
     oj (3.14.0)
     os (1.1.4)
     pry (0.14.1)
