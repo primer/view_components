@@ -1414,8 +1414,8 @@
         }
       },
       {
-        "preview_path": "primer/alpha/banner/dismissable",
-        "name": "dismissable",
+        "preview_path": "primer/alpha/banner/dismissible",
+        "name": "dismissible",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

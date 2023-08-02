@@ -146,6 +146,7 @@
   "Primer::Alpha::AutoComplete::Item": {
   },
   "Primer::Alpha::Banner": {
+    "DEFAULT_DISMISS_SCHEME": "none",
     "DEFAULT_ICONS": {
       "default": "bell",
       "warning": "alert",
@@ -153,6 +154,11 @@
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "DISMISS_SCHEMES": [
+      "none",
+      "remove",
+      "hide"
+    ],
     "LEGACY_SCHEME_MAPPINGS": {
       "default": "",
       "warning": "flash-warn",
