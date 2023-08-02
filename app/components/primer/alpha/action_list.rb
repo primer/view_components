@@ -97,15 +97,8 @@ module Primer
         },
 
         avatar_item: {
-          renders: lambda { |src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments|
-            build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
-              item.with_leading_visual_raw_content do
-                # no alt text necessary for presentational item
-                render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
-              end
-
-              item.with_description_content(full_name) if full_name
-
+          renders: lambda { |**system_arguments|
+            build_avatar_item(**system_arguments).tap do |item|
               will_add_item(item)
             end
           },
@@ -176,7 +169,7 @@ module Primer
       end
 
       # @private
-      def build_item(**system_arguments)
+      def build_item(component_klass: ActionList::Item, **system_arguments)
         # rubocop:disable Style/IfUnlessModifier
         if single_select? && system_arguments[:active] && items.count(&:active?).positive?
           raise ArgumentError, "only a single item may be active when select_variant is set to :single"
@@ -188,7 +181,19 @@ module Primer
           system_arguments[:classes]
         )
 
-        ActionList::Item.new(list: self, **system_arguments)
+        component_klass.new(list: self, **system_arguments)
+      end
+
+      # @private
+      def build_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, avatar_arguments: {}, **system_arguments)
+        build_item(label: username, description_scheme: full_name_scheme, **system_arguments).tap do |item|
+          item.with_leading_visual_raw_content do
+            # no alt text necessary for presentational item
+            render(Primer::Beta::Avatar.new(src: src, **avatar_arguments, role: :presentation, size: 16))
+          end
+
+          item.with_description_content(full_name) if full_name
+        end
       end
 
       def single_select?
