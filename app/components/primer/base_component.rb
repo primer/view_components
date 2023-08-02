@@ -139,7 +139,7 @@ module Primer
     # | `font_style` | Symbol | Font style. <%= one_of([:italic]) %> |
     # | `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold, :emphasized]) %> |
     # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
-    # | `text_transform` | Symbol | Text transformation. <%= one_of([:uppercase]) %> |
+    # | `text_transform` | Symbol | Text transformation. <%= one_of([:uppercase, :capitalize]) %> |
     # | `underline` | Boolean | Whether text should be underlined. |
     # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #

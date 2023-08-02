@@ -270,7 +270,7 @@
         "name": "description_scheme",
         "type": "Symbol",
         "default": "`:block`",
-        "description": "Display description inline with label, or block on the next line."
+        "description": "Display description inline with label, or block on the next line. One of `:block` or `:inline`."
       },
       {
         "name": "active",
@@ -2986,7 +2986,7 @@
       {
         "name": "alt",
         "type": "String",
-        "default": "N/A",
+        "default": "`nil`",
         "description": "Passed through to alt on img tag."
       },
       {

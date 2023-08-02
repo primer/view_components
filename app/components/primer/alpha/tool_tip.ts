@@ -208,7 +208,7 @@ class ToolTipElement extends HTMLElement {
   set hiddenFromView(value: true | false) {
     if (value && this.matches(':popover-open')) {
       this.hidePopover()
-    } else if (!value && !this.matches(':popover-open')) {
+    } else if (!value && this.matches(':not(:popover-open)')) {
       this.showPopover()
     }
   }
@@ -277,9 +277,9 @@ class ToolTipElement extends HTMLElement {
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
 
     await Promise.resolve()
-    if (!showing && shouldShow) {
+    if (!showing && shouldShow && this.matches(':not(:popover-open)')) {
       this.showPopover()
-    } else if (showing && shouldHide) {
+    } else if (showing && shouldHide && this.matches(':popover-open')) {
       this.hidePopover()
     }
 

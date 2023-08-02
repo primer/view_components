@@ -100,11 +100,13 @@ module Primer
         scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
         show_dividers: false
       )
-        render(Primer::Alpha::ActionList.new(
-          role: role,
-          scheme: scheme,
-          show_dividers: show_dividers
-        )) do |component|
+        render(
+          Primer::Alpha::ActionList.new(
+            role: role,
+            scheme: scheme,
+            show_dividers: show_dividers
+          )
+        ) do |component|
           component.with_heading(title: "Action List")
           component.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
@@ -145,9 +147,11 @@ module Primer
         list_id: "unique-id",
         subtitle: "This is a subtitle"
       )
-        render(Primer::Alpha::ActionList::Heading.new(
-          scheme: scheme, list_id: list_id, title: title, subtitle: subtitle
-        ))
+        render(
+          Primer::Alpha::ActionList::Heading.new(
+            scheme: scheme, list_id: list_id, title: title, subtitle: subtitle
+          )
+        )
       end
 
       # @label Item [playground]
@@ -162,7 +166,6 @@ module Primer
       # @param description_scheme [Symbol] select [inline, block]
       # @param active toggle
       # @param leading_visual_icon [Symbol] octicon
-      # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
@@ -183,7 +186,6 @@ module Primer
         active: false,
         expanded: false,
         leading_visual_icon: nil,
-        leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
@@ -206,11 +208,7 @@ module Primer
           expanded: expanded,
           id: "tooltip-test"
         ) do |item|
-          if leading_visual_icon && leading_visual_icon != :none
-            item.with_leading_visual_icon(icon: leading_visual_icon)
-          elsif leading_visual_avatar_src
-            item.with_leading_visual_avatar(src: leading_visual_avatar_src, alt: "An avatar")
-          end
+          item.with_leading_visual_icon(icon: leading_visual_icon) if leading_visual_icon && leading_visual_icon != :none
 
           if trailing_visual_icon && trailing_visual_icon != :none
             item.with_trailing_visual_icon(icon: trailing_visual_icon)
@@ -224,13 +222,87 @@ module Primer
 
           if private_leading_action_icon && private_leading_action_icon != :none
             item.with_private_leading_action_icon(icon: private_leading_action_icon)
-          elsif private_trailing_action_icon
+          elsif private_trailing_action_icon && private_trailing_action_icon != :none
             item.with_private_trailing_action_icon(icon: private_trailing_action_icon)
           end
 
           item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
-          item.description { description } if description
+          item.with_description { description } if description
+
+          item.with_tooltip(text: "Tooltip text", for_id: "tooltip-test", type: :description) if tooltip
+        end
+
+        render(list)
+      end
+
+      # @label Avatar item [playground]
+      #
+      # @param username text
+      # @param truncate_label toggle
+      # @param src text
+      # @param shape [Symbol] select [circle, square]
+      # @param size [Symbol] select [medium, large, xlarge]
+      # @param scheme [Symbol] select [default, danger]
+      # @param disabled toggle
+      # @param full_name text
+      # @param full_name_scheme [Symbol] select [inline, block]
+      # @param active toggle
+      # @param trailing_visual_icon [Symbol] octicon
+      # @param trailing_visual_label text
+      # @param trailing_visual_counter number
+      # @param trailing_visual_text text
+      # @param private_trailing_action_icon [Symbol] octicon
+      # @param trailing_action toggle
+      # @param tooltip toggle
+      def avatar_item(
+        username: "hulk_smash",
+        truncate_label: false,
+        src: "https://avatars.githubusercontent.com/u/103004183?v=4",
+        shape: Primer::Beta::Avatar::DEFAULT_SHAPE,
+        size: Primer::Alpha::ActionList::Item::DEFAULT_SIZE,
+        scheme: Primer::Alpha::ActionList::Item::DEFAULT_SCHEME,
+        disabled: false,
+        full_name: "Bruce Banner",
+        full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
+        active: false,
+        expanded: false,
+        trailing_visual_icon: nil,
+        trailing_visual_label: nil,
+        trailing_visual_counter: nil,
+        trailing_visual_text: nil,
+        private_trailing_action_icon: nil,
+        trailing_action: false,
+        tooltip: false
+      )
+        list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
+        list.with_avatar_item(
+          username: username,
+          truncate_label: truncate_label,
+          src: src,
+          size: size,
+          scheme: scheme,
+          disabled: disabled,
+          full_name: full_name,
+          full_name_scheme: full_name_scheme,
+          active: active,
+          expanded: expanded,
+          id: "tooltip-test",
+          avatar_arguments: { shape: shape }
+        ) do |item|
+          if trailing_visual_icon && trailing_visual_icon != :none
+            item.with_trailing_visual_icon(icon: trailing_visual_icon)
+          elsif trailing_visual_label
+            item.with_trailing_visual_label { trailing_visual_label }
+          elsif trailing_visual_counter
+            item.with_trailing_visual_counter(count: trailing_visual_counter)
+          elsif trailing_visual_text
+            item.with_trailing_visual_text(trailing_visual_text)
+          end
+
+          item.with_private_trailing_action_icon(icon: private_trailing_action_icon) if private_trailing_action_icon && private_trailing_action_icon != :none
+
+          item.with_trailing_action(icon: "plus", "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.with_tooltip(text: "Tooltip text", for_id: "tooltip-test", type: :description) if tooltip
         end

@@ -14,7 +14,7 @@ class SubmitButtonForm < ApplicationForm
     )
 
     my_form.group(layout: :horizontal) do |button_group|
-      button_group.submit(name: :submit, label: "Submit", scheme: :primary, mb: 3) do |component|
+      button_group.submit(name: :submit, label: "Submit", scheme: :primary, mb: 3, disabled: true) do |component|
         component.with_leading_visual_icon(icon: :"check-circle")
       end
 
