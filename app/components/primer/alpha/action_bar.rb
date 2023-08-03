@@ -4,7 +4,6 @@ module Primer
   module Alpha
     # Add a general description of component here
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
     class ActionBar < Primer::Component
       status :alpha
 
