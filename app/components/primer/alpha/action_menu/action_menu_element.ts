@@ -139,14 +139,23 @@ export class ActionMenuElement extends HTMLElement {
       if (!item) return
       const ariaChecked = item.getAttribute('aria-checked')
       const checked = ariaChecked !== 'true'
-      item.setAttribute('aria-checked', `${checked}`)
+
       if (this.selectVariant === 'single') {
+        // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
+        if (checked) {
+          item.setAttribute('aria-checked', 'true')
+        }
+
         for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
           if (checkedItem !== item) {
             checkedItem.setAttribute('aria-checked', 'false')
           }
         }
+
         this.#setDynamicLabel()
+      } else {
+        // multi-select mode allows unchecking a checked item
+        item.setAttribute('aria-checked', `${checked}`)
       }
 
       this.#updateInput()
