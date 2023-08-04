@@ -1,7 +1,9 @@
 name: Test token action
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - '*'
 
 jobs:
   get-token:
