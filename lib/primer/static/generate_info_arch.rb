@@ -72,6 +72,7 @@ module Primer
             memo[component] = {
               "fully_qualified_name" => component.name,
               "description" => description,
+              "accessibility_docs" => docs.tags(:accessibility)&.first&.text,
               "is_form_component" => docs.manifest_entry.form_component?,
               "is_published" => docs.manifest_entry.published?,
               "requires_js" => docs.manifest_entry.requires_js?,
