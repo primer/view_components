@@ -8,10 +8,6 @@ module Primer
 
       DEFAULT_TAG = :span
 
-      # @example Default
-      #   <%= render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
-      #   <%= render(Primer::Beta::Text.new(tag: :p, color: :danger)) { "Danger Text" } %>
-      #
       # @param tag [Symbol]
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(tag: DEFAULT_TAG, **system_arguments)

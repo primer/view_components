@@ -20,16 +20,6 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-      # @example Default
-      #   <%= render(Primer::Beta::Octicon.new(:check)) %>
-      #   <%= render(Primer::Beta::Octicon.new(icon: :check)) %>
-      #
-      # @example Medium
-      #   <%= render(Primer::Beta::Octicon.new(:people, size: :medium)) %>
-      #
-      # @example Helper
-      #   <%= primer_octicon(:check) %>
-      #
       # @param icon_name [Symbol, String] Name of <%= link_to_octicons %> to use.
       # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
       # @param size [Symbol] <%= one_of(Primer::Beta::Octicon::SIZE_MAPPINGS, sort: false) %>

@@ -12,7 +12,6 @@ AllCops:
     - "demo/**/*"
     - "**/vendor/**/*"
     - "**/node_modules/**/*"
-    - "test/previews/docs/**/*"
   TargetRubyVersion: 2.6
 
 Style/ClassAndModuleChildren:

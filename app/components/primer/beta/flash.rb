@@ -24,29 +24,7 @@ module Primer
         :danger => "flash-error",
         :success => "flash-success"
       }.freeze
-      # @example Schemes
-      #   <%= render(Primer::Beta::Flash.new) { "This is a flash message!" } %>
-      #   <%= render(Primer::Beta::Flash.new(scheme: :warning)) { "This is a warning flash message!" } %>
-      #   <%= render(Primer::Beta::Flash.new(scheme: :danger)) { "This is a danger flash message!" } %>
-      #   <%= render(Primer::Beta::Flash.new(scheme: :success)) { "This is a success flash message!" } %>
-      #
-      # @example Full width
-      #   <%= render(Primer::Beta::Flash.new(full: true)) { "This is a full width flash message!" } %>
-      #
-      # @example Dismissible
-      #   <%= render(Primer::Beta::Flash.new(dismissible: true)) { "This is a dismissible flash message!" } %>
-      #
-      # @example Icon
-      #   <%= render(Primer::Beta::Flash.new(icon: :people)) { "This is a flash message with an icon!" } %>
-      #
-      # @example With actions
-      #   <%= render(Primer::Beta::Flash.new) do |component| %>
-      #     This is a flash message with actions!
-      #     <% component.with_action do %>
-      #       <%= render(Primer::ButtonComponent.new(size: :small)) { "Take action" } %>
-      #     <% end %>
-      #   <% end %>
-      #
+
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param spacious [Boolean] Whether to add margin to the bottom of the component.
       # @param dismissible [Boolean] Whether the component can be dismissed with an X button.

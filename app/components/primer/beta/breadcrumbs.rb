@@ -31,13 +31,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, "Item"
 
-      # @example Basic
-      #   <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
-      #     <% component.with_item(href: "/") do %>Home<% end %>
-      #     <% component.with_item(href: "/about") do %>About<% end %>
-      #     <% component.with_item(href: "/about/team") do %>Team<% end %>
-      #   <% end %>
-      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)

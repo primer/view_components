@@ -23,14 +23,6 @@ module Primer
       TAG_FALLBACK = :h2
       TAG_OPTIONS = [:h1, TAG_FALLBACK, :h3, :h4, :h5, :h6].freeze
 
-      # @example Default
-      #   <%= render(Primer::Beta::Heading.new(tag: :h1)) { "H1 Text" } %>
-      #   <%= render(Primer::Beta::Heading.new(tag: :h2)) { "H2 Text" } %>
-      #   <%= render(Primer::Beta::Heading.new(tag: :h3)) { "H3 Text" } %>
-      #   <%= render(Primer::Beta::Heading.new(tag: :h4)) { "H4 Text" } %>
-      #   <%= render(Primer::Beta::Heading.new(tag: :h5)) { "H5 Text" } %>
-      #   <%= render(Primer::Beta::Heading.new(tag: :h6)) { "H6 Text" } %>
-      #
       # @param tag [String]  <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(tag:, **system_arguments)

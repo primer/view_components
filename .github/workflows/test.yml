@@ -36,7 +36,6 @@ jobs:
           demo/package-lock.json
     - name: Build
       run: |
-        bundle exec rake docs:preview
         npm ci
         cd demo && npm ci
     - name: Test

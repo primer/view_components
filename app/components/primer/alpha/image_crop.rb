@@ -14,17 +14,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Simple cropper
-      #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC)) %>
-      #
-      # @example Square cropper
-      #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) %>
-      #
-      # @example Cropper with a custom loader
-      #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) do |cropper| %>
-      #     <% cropper.with_loading(style: "width: 120px").with_content("Loading...") %>
-      #   <% end %>
-      #
       # @param src [String] The path of the image to crop.
       # @param rounded [Boolean] If the crop mask should be a circle. Defaults to true.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

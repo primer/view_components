@@ -6,12 +6,6 @@ module Primer
   module Alpha
     # OcticonSymbols renders a symbol dictionary using a list of <%= link_to_octicons %>.
     class OcticonSymbols < Primer::Component
-      # @example Symbol dictionary
-      #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :success)) %>
-      #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :danger)) %>
-      #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, size: :medium)) %>
-      #   <%= render(Primer::Alpha::OcticonSymbols.new(icons: [{ symbol: :check }, { symbol: :check, size: :medium }])) %>
-      #
       # @param icons [Array<Hash>] List of icons to render, in the format { symbol: :icon_name, size: :small }
       def initialize(icons: [])
         @icons = {}

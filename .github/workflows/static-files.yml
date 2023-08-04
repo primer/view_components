@@ -27,7 +27,6 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-          bundle exec rake docs:build_lookbook_pages
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Generating static files

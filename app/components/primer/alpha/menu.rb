@@ -39,25 +39,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Primer::Alpha::Menu.new) do |component| %>
-      #     <% component.with_heading(tag: :h2) do %>
-      #       Heading
-      #     <% end %>
-      #     <% component.with_item(selected: true, href: "#url") do %>
-      #       Item 1
-      #     <% end %>
-      #     <% component.with_item(href: "#url") do %>
-      #       <%= render(Primer::Beta::Octicon.new("check")) %>
-      #       With Icon
-      #     <% end %>
-      #     <% component.with_item(href: "#url") do %>
-      #       <%= render(Primer::Beta::Octicon.new("check")) %>
-      #       With Icon and Counter
-      #       <%= render(Primer::Beta::Counter.new(count: 25)) %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)

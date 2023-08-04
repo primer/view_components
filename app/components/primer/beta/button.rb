@@ -87,48 +87,6 @@ module Primer
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
-      # @example Schemes
-      #   <%= render(Primer::Beta::Button.new) { "Default" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Danger" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :invisible)) { "Invisible" } %>
-      #
-      # @example Sizes
-      #   <%= render(Primer::Beta::Button.new(size: :small)) { "Small" } %>
-      #   <%= render(Primer::Beta::Button.new(size: :medium)) { "Medium" } %>
-      #
-      # @example Full width
-      #   <%= render(Primer::Beta::Button.new(block: :true)) { "Full width" } %>
-      #   <%= render(Primer::Beta::Button.new(block: :true, scheme: :primary)) { "Primary full width" } %>
-      #
-      # @example With leading visual
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_leading_visual_icon(icon: :star) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With trailing visual
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_trailing_visual_counter(count: 15) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With leading and trailing visuals
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_leading_visual_icon(icon: :star) %>
-      #     <% component.with_trailing_visual_counter(count: 15) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With tooltip
-      #   @description
-      #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-      #   @code
-      #     <%= render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |component| %>
-      #       <% component.with_tooltip(text: "Tooltip text") %>
-      #       Button
-      #     <% end %>
-      #
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.

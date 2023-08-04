@@ -62,53 +62,6 @@ module Primer
         Primer::BaseComponent.new(**sanitized_args)
       }
 
-      # @example Default
-      #   @description
-      #     Labels are stacked by default.
-      #   @code
-      #     <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--default", list_id: "fruits-popup--default")) %>
-      #
-      # @example With inline label
-      #   @description
-      #     Labels can be inline by setting `is_label_inline: true`. However, labels will always become stacked on smaller screen sizes.
-      #   @code
-      #     <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", is_label_inline: true, input_id: "fruits-input--inline-label", list_id: "fruits-popup--inline-label")) %>
-      #
-      # @example With non-visible label
-      #   @description
-      #     A non-visible label may be rendered with `is_label_visible: false`, but it is highly discouraged. See <%= link_to_accessibility %>.
-      #   @code
-      #     <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--non-visible-label", list_id: "fruits-popup--non-visible-label", is_label_visible: false)) %>
-      #
-      # @example With icon
-      #   @description
-      #     To display a search icon, set `with_icon` to `true`.
-      #   @code
-      #     <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", list_id: "fruits-popup--icon", input_id: "fruits-input--icon", with_icon: true)) %>
-      #
-      # @example With icon and non-visible label
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", list_id: "fruits-popup--icon-no-label", input_id: "fruits-input--icon-no-label", with_icon: true, is_label_visible: false)) %>
-      #
-      # @example With clear button
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--clear", list_id: "fruits-popup--clear", is_clearable: true)) %>
-      #
-      # @example With custom classes for the input
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |component| %>
-      #     <% component.with_input(classes: "custom-class") %>
-      #   <% end %>
-      #
-      # @example With custom classes for the results
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |component| %>
-      #     <% component.with_results(classes: "custom-class") do %>
-      #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do %>
-      #         Apple
-      #       <% end %>
-      #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do %>
-      #         Orange
-      #       <% end %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param label_text [String] The label of the input.
       # @param src [String] The route to query.
       # @param input_id [String] Id of the input element.

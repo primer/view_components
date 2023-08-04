@@ -97,23 +97,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, "Footer"
 
-      # @example Dialog with Cancel and Submit buttons
-      #   @description
-      #     An ID is provided which enables wiring of the open and close buttons to the dialog.
-      #   @code
-      #     <%= render(Primer::Alpha::Dialog.new(
-      #       title: "Dialog Example",
-      #       id: "my-dialog",
-      #     )) do |d| %>
-      #       <% d.with_show_button { "Show Dialog" } %>
-      #       <% d.with_body do %>
-      #         <p>Some content</p>
-      #       <% end %>
-      #       <% d.with_footer do %>
-      #         <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
-      #         <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
-      #       <% end %>
-      #     <% end %>
       # @param id [String] The id of the dialog.
       # @param title [String] Describes the content of the dialog.
       # @param subtitle [String] Provides additional context for the dialog, also setting the `aria-describedby` attribute.

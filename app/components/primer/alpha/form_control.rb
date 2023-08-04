@@ -10,17 +10,6 @@ module Primer
       # Note that this slot takes precedence over the `caption:` argument in the constructor.
       renders_one :caption
 
-      # @example Default
-      #   <%= render(Primer::Alpha::FormControl.new(label: "Best character")) do |component| %>
-      #     <% component.with_input do |input_arguments| %>
-      #       <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "Best character", **input_arguments)) do |seg| %>
-      #         <% seg.with_item(label: "Han Solo") %>
-      #         <% seg.with_item(label: "Luke Skywalker") %>
-      #         <% seg.with_item(label: "Leia Organa") %>
-      #       <% end %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param label [String] Label text displayed above the input.
       # @param caption [String] Describes the field and what sort of input it expects. Displayed below the input. Note that the `caption` slot is also available and takes precedence over this argument when provided.
       # @param validation_message [String] A string displayed in red between the caption and the input indicating the input's contents are invalid.
