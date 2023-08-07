@@ -239,6 +239,8 @@ namespace :docs do
 
     INTRO_URL_MAP.each_pair do |legacy_docsite_url, new_docsite_url|
       intro_nav_entry = intro_nav.find { |n| n["url"] == legacy_docsite_url }
+      next unless intro_nav_entry
+
       intro_nav_entry["url"] = new_docsite_url
     end
 
