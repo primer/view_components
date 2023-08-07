@@ -33,7 +33,7 @@ module Primer
 
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def with_right_most_position(direction: :s, tooltip_text: "A tooltip with very very very very long description that is not very concise...")
+      def with_right_most_position(type: :description, direction: :s, tooltip_text: "A tooltip with very very very very long description that is not very concise...")
         render_with_template(
           locals: {
             direction: direction,

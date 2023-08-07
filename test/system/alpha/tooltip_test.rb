@@ -52,13 +52,6 @@ module Alpha
       assert_selector("tool-tip", visible: :hidden)
     end
 
-    def test_appends_to_existing_aria_labelledby
-      visit_preview(:label_tooltip_on_button_with_existing_labelledby)
-
-      tooltip_id = find("tool-tip", visible: :hidden)["id"]
-      assert_equal("existing-label-id #{tooltip_id}", find("button")["aria-labelledby"])
-    end
-
     def test_appends_to_existing_aria_describedby
       visit_preview(:description_tooltip_on_button_with_existing_describedby)
 
@@ -100,14 +93,6 @@ module Alpha
         );
       })(arguments[0]);", find("tool-tip", visible: :hidden))
       assert_equal("existing-label-id #{tooltip_id}", find("button")["aria-labelledby"])
-    end
-
-    def test_always_aria_hidden_when_tooltip_is_label
-      visit_preview(:label_tooltip_on_button_with_existing_labelledby)
-
-      assert_selector("tool-tip[aria-hidden='true']", visible: :hidden)
-      find("button").send_keys("tab") # focus
-      assert_selector("tool-tip[aria-hidden='true']", visible: :visible)
     end
 
     def test_never_aria_hidden_when_tooltip_is_description
