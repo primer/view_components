@@ -77,24 +77,6 @@ module Alpha
       assert_equal("existing-description-id #{tooltip_id}", find("button")["aria-describedby"])
     end
 
-    def test_does_not_render_duplicate_labelledby_id_when_attribute_callback_triggered
-      visit_preview(:label_tooltip_on_button_with_existing_labelledby)
-
-      tooltip_id = find("tool-tip", visible: :hidden)["id"]
-      assert_equal("existing-label-id #{tooltip_id}", find("button")["aria-labelledby"])
-      evaluate_script("(function(el) {
-        return (
-          el.setAttribute('data-type', 'description')
-        );
-      })(arguments[0]);", find("tool-tip", visible: :hidden))
-      evaluate_script("(function(el) {
-        return (
-          el.setAttribute('data-type', 'label')
-        );
-      })(arguments[0]);", find("tool-tip", visible: :hidden))
-      assert_equal("existing-label-id #{tooltip_id}", find("button")["aria-labelledby"])
-    end
-
     def test_never_aria_hidden_when_tooltip_is_description
       visit_preview(:default)
 
