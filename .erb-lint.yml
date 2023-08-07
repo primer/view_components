@@ -27,3 +27,5 @@ linters:
         Enabled: false
         Exclude:
           - app/components/primer/layout_component.html.erb
+      Primer/Migrations/ButtonComponent:
+        Enabled: true
