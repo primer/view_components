@@ -76,10 +76,19 @@ module Primer
 
         # @private
         def build_item(component_klass: NavList::Item, **system_arguments)
-          component_klass.new(
-            **system_arguments,
+          super(
+            component_klass: component_klass,
             selected_item_id: @selected_item_id,
-            list: self
+            **system_arguments
+          )
+        end
+
+        # @private
+        def build_avatar_item(component_klass: NavList::Item, **system_arguments)
+          super(
+            component_klass: component_klass,
+            selected_item_id: @selected_item_id,
+            **system_arguments
           )
         end
 

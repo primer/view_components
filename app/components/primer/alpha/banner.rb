@@ -48,6 +48,13 @@ module Primer
         success: :"check-circle"
       }.freeze
 
+      DEFAULT_DISMISS_SCHEME = :none
+      DISMISS_SCHEMES = [
+        DEFAULT_DISMISS_SCHEME,
+        :remove,
+        :hide
+      ].freeze
+
       # @example Schemes
       #   <div style="display: grid; row-gap: 15px">
       #     <%= render(Primer::Alpha::Banner.new) { "This is a banner message!" } %>
@@ -60,7 +67,7 @@ module Primer
       #   <%= render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner!" } %>
       #
       # @example Dismissible
-      #   <%= render(Primer::Alpha::Banner.new(dismissible: true, reappear: true)) { "This is a dismissible banner!" } %>
+      #   <%= render(Primer::Alpha::Banner.new(dismissible: :remove)) { "This is a dismissible banner!" } %>
       #
       # @example Custom icon
       #   <%= render(Primer::Alpha::Banner.new(icon: :people)) { "This is a banner with a custom icon!" } %>
@@ -81,18 +88,16 @@ module Primer
       #
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
-      # @param dismissible [Boolean] Whether the component can be dismissed with an "x" button.
+      # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
       # @param description [String] Description text rendered underneath the message.
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
-      # @param reappear [Boolean] Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(full: false, full_when_narrow: false, dismissible: false, description: nil, icon: nil, scheme: DEFAULT_SCHEME, reappear: false, **system_arguments)
+      def initialize(full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
-        @dismissible = dismissible
+        @dismiss_scheme = dismiss_scheme
         @description = description
-        @reappear = reappear
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
@@ -113,10 +118,9 @@ module Primer
         }
 
         @wrapper_arguments = {
-          tag: custom_element_name
+          tag: custom_element_name,
+          data: { dismiss_scheme: @dismiss_scheme }
         }
-
-        @wrapper_arguments[:data] = { reappear: @reappear } if @reappear
       end
 
       private

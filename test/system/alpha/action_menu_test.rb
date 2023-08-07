@@ -278,5 +278,73 @@ module Alpha
       refute_selector "action-menu ul li", text: "Eat a dot"
       assert_selector "action-menu ul li", text: "Stomp a turtle"
     end
+
+    def test_single_select_item_checked
+      visit_preview(:single_select)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+    end
+
+    def test_single_select_item_unchecks_previously_checked_item
+      visit_preview(:single_select)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(3)").click
+
+      # clicking item closes menu, so checked item is hidden
+      refute_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+    end
+
+    def test_single_selected_item_cannot_be_unchecked
+      visit_preview(:single_select)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+    end
+
+    def test_multi_select_items_checked
+      visit_preview(:multiple_select)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+      find("action-menu ul li:nth-child(3)").click
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "jonrohan"
+      assert_selector "[aria-checked=true]", text: "broccolinisoup"
+    end
+
+    def test_multi_select_items_can_be_unchecked
+      visit_preview(:multiple_select)
+
+      find("action-menu button[aria-controls]").click
+      find("action-menu ul li:nth-child(2)").click
+      find("action-menu ul li:nth-child(3)").click
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "jonrohan"
+      assert_selector "[aria-checked=true]", text: "broccolinisoup"
+
+      find("action-menu ul li:nth-child(2)").click
+      find("action-menu ul li:nth-child(3)").click
+
+      refute_selector "[aria-checked=true]"
+    end
   end
 end
