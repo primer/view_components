@@ -36,6 +36,7 @@ module Primer
       def with_right_most_position(type: :description, direction: :s, tooltip_text: "A tooltip with very very very very long description that is not very concise...")
         render_with_template(
           locals: {
+            type: type,
             direction: direction,
             tooltip_text: tooltip_text
           }
