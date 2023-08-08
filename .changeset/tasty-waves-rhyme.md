@@ -1,5 +1,5 @@
 ---
-'@opf/primer-view-components': patch
+'@openproject/primer-view-components': patch
 ---
 
 Updates Primer::Beta::Button.with_tooltip to not accept `:label` type.
