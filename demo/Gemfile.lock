@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.6.1)
+    openproject_primer_view_components (0.6.1)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.6.7)
@@ -392,7 +392,7 @@ DEPENDENCIES
   kuby-kind (~> 0.1)
   listen
   lookbook (~> 2.0.5)
-  primer_view_components!
+  openproject_primer_view_components!
   pry-byebug
   puma (~> 6.3.0)
   rack-cors

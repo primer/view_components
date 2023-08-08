@@ -1,8 +1,8 @@
 name: Release notification
 on:
-  release:
-    types:
-      - published
+  pull_request:
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
 
 jobs:
   notify:
