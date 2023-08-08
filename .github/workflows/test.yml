@@ -229,7 +229,7 @@ jobs:
 
           Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
 
-          [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+          [Review visual differences](https://github.com/opf/primer_view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         COMMENT_IDENTIFIER: 'visual-comparison-diff'
     - uses: actions/upload-artifact@v3

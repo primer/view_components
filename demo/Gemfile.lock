@@ -392,7 +392,7 @@ DEPENDENCIES
   kuby-kind (~> 0.1)
   listen
   lookbook (~> 2.0.5)
-  primer_view_components!
+  openproject_primer_view_components!
   pry-byebug
   puma (~> 6.3.0)
   rack-cors
