@@ -6,7 +6,7 @@ on:
 jobs:
   release:
     name: Final
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'opf/primer_view_components' }}
 
     runs-on: ubuntu-latest
     steps:
