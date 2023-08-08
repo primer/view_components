@@ -26,17 +26,6 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
-        # @example Default
-        #
-        #   <%= render(Primer::Beta::BorderBox::Header.new) do %>
-        #     Header
-        #   <% end %>
-        #
-        # @example with title
-        #   <%= render(Primer::Beta::BorderBox::Header.new) do |h| %>
-        #     <% h.with_title(tag: :h3) do %>I am a title<% end %>
-        #   <% end %>
-        #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(**system_arguments)
           @system_arguments = system_arguments

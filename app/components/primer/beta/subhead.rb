@@ -55,61 +55,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading(tag: :h3) do %>
-      #       My Heading
-      #     <% end %>
-      #     <% component.with_description do %>
-      #       My Description
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With dangerous heading
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading(tag: :h3, danger: true) do %>
-      #       My Heading
-      #     <% end %>
-      #     <% component.with_description do %>
-      #       My Description
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With long description
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading(tag: :h3) do %>
-      #       My Heading
-      #     <% end %>
-      #   <% end %>
-      #   <p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>
-      #
-      # @example Without border
-      #   <%= render(Primer::Beta::Subhead.new(hide_border: true)) do |component| %>
-      #     <% component.with_heading do %>
-      #       My Heading
-      #     <% end %>
-      #     <% component.with_description do %>
-      #       My Description
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With actions
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading do %>
-      #       My Heading
-      #     <% end %>
-      #     <% component.with_description do %>
-      #       My Description
-      #     <% end %>
-      #     <% component.with_actions do %>
-      #       <%= render(
-      #         Primer::ButtonComponent.new(
-      #           tag: :a, href: "http://www.google.com", scheme: :danger
-      #         )
-      #       ) { "Action" } %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param spacious [Boolean] Whether to add spacing to the Subhead.
       # @param hide_border [Boolean] Whether to hide the border under the heading.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

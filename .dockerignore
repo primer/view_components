@@ -5,5 +5,4 @@ node_modules/
 pkg/
 test/
 !test/previews/
-docs/
 vendor/bundle

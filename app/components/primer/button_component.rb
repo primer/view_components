@@ -71,55 +71,6 @@ module Primer
       Primer::Alpha::Tooltip.new(**system_arguments)
     }
 
-    # @example Schemes
-    #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
-    #
-    # @example Sizes
-    #   <%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
-    #   <%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
-    #
-    # @example Block
-    #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
-    #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
-    #
-    # @example With leading visual
-    #   <%= render(Primer::ButtonComponent.new) do |component| %>
-    #     <% component.with_leading_visual_icon(icon: :star) %>
-    #     Button
-    #   <% end %>
-    #
-    # @example With trailing visual
-    #   <%= render(Primer::ButtonComponent.new) do |component| %>
-    #     <% component.with_trailing_visual_counter(count: 15) %>
-    #     Button
-    #   <% end %>
-    #
-    # @example With leading and trailing visuals
-    #   <%= render(Primer::ButtonComponent.new) do |component| %>
-    #     <% component.with_leading_visual_icon(icon: :star) %>
-    #     <% component.with_trailing_visual_counter(count: 15) %>
-    #     Button
-    #   <% end %>
-    #
-    # @example With dropdown caret
-    #   <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
-    #     Button
-    #   <% end %>
-    #
-    # @example With tooltip
-    #   @description
-    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-    #   @code
-    #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |component| %>
-    #       <% component.with_tooltip(text: "Tooltip text") %>
-    #       Button
-    #     <% end %>
-    #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>

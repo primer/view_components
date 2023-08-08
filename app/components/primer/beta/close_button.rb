@@ -14,9 +14,6 @@ module Primer
       DEFAULT_TYPE = :button
       TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
 
-      # @example Default
-      #   <%= render(Primer::Beta::CloseButton.new) %>
-      #
       # @param type [Symbol] <%= one_of(Primer::Beta::CloseButton::TYPE_OPTIONS) %>
       # @param disabled [Boolean] Whether or not the button is disabled.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

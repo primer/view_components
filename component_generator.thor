@@ -51,21 +51,8 @@ class ComponentGenerator < Thor::Group
     insert_into_file("app/components/primer/primer.pcss", "@import \"./#{status_path}#{underscore_name}.pcss\";\n")
   end
 
-  def add_to_docs_rakefile
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{status_module}#{class_name},\n", after: "    components = [\n")
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{status_module}#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
-  end
-
   def add_to_component_test
     insert_into_file("test/components/component_test.rb", "    [Primer::#{status_module}#{class_name}, {}],\n", after: "COMPONENTS_WITH_ARGS = [\n")
-  end
-
-  def add_to_nav
-    insert_into_file(
-      "docs/src/@primer/gatsby-theme-doctocat/nav.yml",
-      component_nav,
-      after: "- title: Components\n  children:\n"
-    )
   end
 
   def create_ts_file
@@ -81,13 +68,6 @@ class ComponentGenerator < Thor::Group
   end
 
   private
-
-  def component_nav
-    <<-HEREDOC
-  - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-    url: "/components/#{status_path}#{short_name}"
-    HEREDOC
-  end
 
   def status_path
     return if status == "stable"

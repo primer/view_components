@@ -30,28 +30,6 @@ module Primer
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Primer::Beta::Link.new(href: "#")) { "Link" } %>
-      #
-      # @example Muted
-      #   <%= render(Primer::Beta::Link.new(href: "#", muted: true)) { "Link" } %>
-      #
-      # @example Schemes
-      #   <%= render(Primer::Beta::Link.new(href: "#", scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::Beta::Link.new(href: "#", scheme: :secondary)) { "Secondary" } %>
-      #
-      # @example Without underline
-      #   <%= render(Primer::Beta::Link.new(href: "#", underline: false)) { "Link" } %>
-      #
-      # @example With tooltip
-      #   @description
-      #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-      #   @code
-      #     <%= render(Primer::Beta::Link.new(href: "#", id: "link-with-tooltip")) do |component| %>
-      #       <% component.with_tooltip(text: "Tooltip text") %>
-      #       Link
-      #     <% end %>
-      #
       # @param href [String] URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Link::SCHEME_MAPPINGS.keys) %>
       # @param muted [Boolean] Uses light gray for Link color, and blue on hover.

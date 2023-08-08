@@ -38,18 +38,6 @@ module Primer
     DEFAULT_SIDEBAR_COL = 3
     ALLOWED_SIDEBAR_COLS = (1..(MAX_COL - 1)).to_a.freeze
 
-    # @example Default
-    #   <%= render(Primer::LayoutComponent.new) do |component| %>
-    #     <% component.with_sidebar { "Sidebar" } %>
-    #     <% component.with_main { "Main" } %>
-    #   <% end %>
-    #
-    # @example Left sidebar
-    #   <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
-    #     <% component.with_sidebar { "Sidebar" } %>
-    #     <% component.with_main { "Main" } %>
-    #   <% end %>
-    #
     # @param responsive [Boolean] Whether to collapse layout to a single column at smaller widths.
     # @param side [Symbol] Which side to display the sidebar on. <%= one_of(Primer::LayoutComponent::ALLOWED_SIDES) %>
     # @param sidebar_col [Integer] Sidebar column width.

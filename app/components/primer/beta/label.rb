@@ -46,26 +46,6 @@ module Primer
 
       INLINE_CLASS = "Label--inline"
 
-      # @example Schemes
-      #   <%= render(Primer::Beta::Label.new) { "Default" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :secondary)) { "Secondary" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :accent)) { "Accent" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :success)) { "Success" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :attention)) { "Attention" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :danger)) { "Danger" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :severe)) { "Severe" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :done)) { "Done" } %>
-      #   <%= render(Primer::Beta::Label.new(scheme: :sponsors)) { "Sponsors" } %>
-      #
-      # @example Sizes
-      #   <%= render(Primer::Beta::Label.new) { "Medium" } %>
-      #   <%= render(Primer::Beta::Label.new(size: :large)) { "Large" } %>
-      #
-      # @example Inline
-      #   <%= render(Primer::Beta::Label.new) { "Default" } %>
-      #   <%= render(Primer::Beta::Label.new(inline: true)) { "Inline" } %>
-      #
       # @param tag [Symbol] <%= one_of(Primer::Beta::Label::TAG_OPTIONS) %>
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Label::SCHEME_MAPPINGS.keys) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Label::SIZE_OPTIONS) %>

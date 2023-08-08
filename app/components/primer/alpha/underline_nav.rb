@@ -48,67 +48,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Default with `<nav>`
-      #   @description
-      #     `<nav>` is a landmark and should be reserved for main navigation links. See <%= link_to_accessibility %>.
-      #   @code
-      #     <%= render(Primer::Alpha::UnderlineNav.new(label: "Default with nav element")) do |component| %>
-      #       <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
-      #       <% component.with_tab(href: "#") { "Item 2" } %>
-      #       <% component.with_actions do %>
-      #         <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-      #       <% end %>
-      #     <% end %>
-      #
-      # @example With `<div>`
-      #   <%= render(Primer::Alpha::UnderlineNav.new(tag: :div, label: "With div element")) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
-      #     <% component.with_tab(href: "#") { "Item 2" } %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With icons and counters
-      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "With icons and counters")) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) do |tab| %>
-      #       <% tab.with_icon(icon: :star) %>
-      #       <% tab.with_text { "Item 1" } %>
-      #     <% end %>
-      #     <% component.with_tab(href: "#") do |tab| %>
-      #       <% tab.with_icon(icon: :star) %>
-      #       <% tab.with_text { "Item 2" } %>
-      #       <% tab.with_counter(count: 10) %>
-      #     <% end %>
-      #     <% component.with_tab(href: "#") do |tab| %>
-      #       <% tab.with_text { "Item 3" } %>
-      #       <% tab.with_counter(count: 10) %>
-      #     <% end %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Align right
-      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Align right", align: :right)) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) do |tab| %>
-      #       <% tab.with_text { "Item 1" } %>
-      #     <% end %>
-      #     <% component.with_tab(href: "#") do |tab| %>
-      #       <% tab.with_text { "Item 2" } %>
-      #     <% end %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Customizing the body
-      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |component| %>
-      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% component.with_tab(href: "#") { "Tab 2" } %>
-      #     <% component.with_tab(href: "#") { "Tab 3" } %>
-      #   <% end %>
-      #
       # @param tag [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::TAG_OPTIONS) %>
       # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements.
       # @param align [Symbol] <%= one_of(Primer::UnderlineNavHelper::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavHelper::ALIGN_DEFAULT %>

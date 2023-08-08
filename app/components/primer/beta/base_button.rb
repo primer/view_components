@@ -15,10 +15,6 @@ module Primer
       attr_reader :disabled
       alias disabled? disabled
 
-      # @example Block
-      #   <%= render(Primer::Beta::BaseButton.new(block: :true)) { "Block" } %>
-      #   <%= render(Primer::Beta::BaseButton.new(block: :true, scheme: :primary)) { "Primary block" } %>
-      #
       # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.

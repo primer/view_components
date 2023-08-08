@@ -12,15 +12,6 @@ module Primer
     class HiddenTextExpander < Primer::Component
       status :alpha
 
-      # @example Default
-      #   <%= render(Primer::Alpha::HiddenTextExpander.new("aria-label": "No effect")) %>
-      #
-      # @example Inline
-      #   <%= render(Primer::Alpha::HiddenTextExpander.new(inline: true, "aria-label": "No effect")) %>
-      #
-      # @example Styling the button
-      #   <%= render(Primer::Alpha::HiddenTextExpander.new("aria-label": "No effect", button_arguments: { p: 1, classes: "custom-class" })) %>
-      #
       # @param inline [Boolean] Whether or not the expander is inline.
       # @param button_arguments [Hash] <%= link_to_system_arguments_docs %> for the button element.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

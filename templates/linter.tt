@@ -13,7 +13,7 @@ module ERBLint
       <% if @autocorrectable %>
       include Autocorrectable
       <% end %>
-      MESSAGE = "We are migrating <%= component_short_name %> to use [<%= component_full_name %>](<%= component_docs_path %>), please try to use that instead of raw HTML."
+      MESSAGE = "We are migrating <%= component_short_name %> to use <%= component_full_name %>, please try to use that instead of raw HTML."
       <%- if @classes && @classes != "" -%>
       CLASSES = %w[<%= @classes %>].freeze
       <%- end -%>

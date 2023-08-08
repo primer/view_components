@@ -12,21 +12,13 @@ module Primer
         DEFAULT_SIZE => 32,
         :large => 64
       }.freeze
+
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
       # Setting `box-sizing: content-box` allows consumers to add padding
       # to the spinner without shrinking the icon
       DEFAULT_STYLE = "box-sizing: content-box; color: var(--color-icon-primary);"
 
-      #
-      # @example Default
-      #   <%= render(Primer::Beta::Spinner.new) %>
-      #
-      # @example Small
-      #   <%= render(Primer::Beta::Spinner.new(size: :small)) %>
-      #
-      # @example Large
-      #   <%= render(Primer::Beta::Spinner.new(size: :large)) %>
-      #
       # @param size [Symbol] <%= one_of(Primer::Beta::Spinner::SIZE_MAPPINGS) %>
       # @param style [String] Custom element styles.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
