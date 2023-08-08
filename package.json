@@ -1,7 +1,7 @@
 {
-  "name": "@primer/view-components",
+  "name": "@opf/primer-view-components",
   "version": "0.6.0",
-  "description": "ViewComponents for the Primer Design System",
+  "description": "ViewComponents of the Primer Design System for OpenProject",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
   "types": "app/components/primer/primer.d.ts",
@@ -15,9 +15,9 @@
   ],
   "author": "GitHub, Inc.",
   "license": "MIT",
-  "homepage": "https://github.com/primer/view_components#readme",
+  "homepage": "https://github.com/opf/primer_view_components#readme",
   "bugs": {
-    "url": "https://github.com/primer/view_components/issues"
+    "url": "https://github.com/opf/primer_view_components/issues"
   },
   "files": [
     "static/*.json",

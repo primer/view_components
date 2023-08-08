@@ -8,10 +8,8 @@ Gem::Specification.new do |spec|
   spec.name          = "primer_view_components"
   spec.version       = Primer::ViewComponents::VERSION::STRING
   spec.authors       = ["GitHub Open Source"]
-  spec.email         = ["opensource+primer_view_components@github.com"]
 
-  spec.summary       = "ViewComponents for the Primer Design System"
-  spec.homepage      = "https://github.com/primer/view_components"
+  spec.summary       = "ViewComponents of the Primer Design System for OpenProject"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
 
@@ -29,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency     "actionview", ">= 5.0.0"
   spec.add_runtime_dependency     "activesupport", ">= 5.0.0"
-  spec.add_runtime_dependency     "octicons", ">= 18.0.0"
+  spec.add_runtime_dependency     "openproject-octicons", ">= 19.6.7"
   spec.add_runtime_dependency     "view_component", [">= 3.1", "< 4.0"]
 
   spec.add_development_dependency "allocation_stats", "~> 0.1"
