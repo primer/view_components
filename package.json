@@ -5,7 +5,7 @@
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
   "types": "app/components/primer/primer.d.ts",
-  "repository": "primer/view_components",
+  "repository": "opf/primer_view_components",
   "keywords": [
     "rails",
     "view_components",
@@ -13,7 +13,7 @@
     "library",
     "design-system"
   ],
-  "author": "GitHub, Inc.",
+  "author": "GitHub, Inc. && OpenProject GmbH",
   "license": "MIT",
   "homepage": "https://github.com/opf/primer_view_components#readme",
   "bugs": {
