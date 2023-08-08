@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.6.1
+
+### Patch Changes
+
+- [#2192](https://github.com/primer/view_components/pull/2192) [`73fc40bb`](https://github.com/primer/view_components/commit/73fc40bb83ac2b14936e38ad2706cfdd68abc34f) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: Don't allow items to be unchecked in single-select mode
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2190](https://github.com/primer/view_components/pull/2190) [`0a9bcda2`](https://github.com/primer/view_components/commit/0a9bcda29eedd5b4854ce71a413b22f275283729) Thanks [@radglob](https://github.com/radglob)! - Updates Primer::Beta::Button.with_tooltip to not accept `:label` type.
+
+  <!-- Changed components: Primer::Beta::Button -->
+
 ## 0.6.0
 
 ### Minor Changes
