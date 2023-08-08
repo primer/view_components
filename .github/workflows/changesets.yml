@@ -1,13 +1,14 @@
-#name: Changesets
-#'on':
-#  pull_request:
-#    types: [opened, synchronize, reopened, labeled, unlabeled]
-#
-#jobs:
-#  validate:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#        with:
-#          fetch-depth: 0
-#      - uses: gr2m/primer-release-changesets-validator-action@v1
+name: Changesets
+'on':
+  pull_request:
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gr2m/primer-release-changesets-validator-action@v1
