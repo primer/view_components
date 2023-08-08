@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.6.2
+
+### Patch Changes
+
+- [`97f7fb24`](https://github.com/primer/view_components/commit/97f7fb24561927c649f31757db028ffd451b27e6) Thanks [@HDinger](https://github.com/HDinger)! - Preparation for the gem creation
+
 ## 0.6.1
 
 ### Patch Changes
