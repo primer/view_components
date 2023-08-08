@@ -1,5 +1,5 @@
 {
-  "name": "@opf/primer-view-components",
+  "name": "@openproject/primer-view-components",
   "version": "0.6.0",
   "description": "ViewComponents of the Primer Design System for OpenProject",
   "main": "app/assets/javascripts/primer_view_components.js",
