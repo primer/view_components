@@ -3,9 +3,9 @@
 name: Demo Production
 
 on:
-  workflow_dispatch:
-  release:
-    types: [published]
+  pull_request:
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
 
 permissions:
   id-token: write # This is required for requesting the OIDC JWT for authing with Azure

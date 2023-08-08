@@ -3,6 +3,8 @@
 name: Preview
 on:
   pull_request:
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
 
 permissions:
   contents: read

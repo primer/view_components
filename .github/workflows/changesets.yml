@@ -1,7 +1,8 @@
 name: Changesets
 'on':
   pull_request:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
 
 jobs:
   validate:

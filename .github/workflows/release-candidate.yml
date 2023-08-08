@@ -8,7 +8,7 @@ on:
 jobs:
   release-candidate:
     name: npm
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'opf/primer_view_components' }}
     uses: primer/.github/.github/workflows/release_candidate.yml@main
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}

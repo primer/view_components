@@ -44,7 +44,7 @@ jobs:
         run: script/check-for-changeset
 
   semver-label:
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'opf/primer_view_components' }}
     name: semver label
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +56,7 @@ jobs:
           script: |
             const diff_url = context.payload.pull_request.diff_url
             const result = await github.request(diff_url)
-            const match = [...result.data.matchAll(/^\+['"]@primer\/view-components['"]:\s(patch|minor|major)/mg)]
+            const match = [...result.data.matchAll(/^\+['"]@openproject\/primer-view-components['"]:\s(patch|minor|major)/mg)]
             if (match && match[0]) {
               return match[0][1]
             }

@@ -8,7 +8,7 @@ on:
 jobs:
   release-checklist:
     # Only run on Release Tracking branch
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'opf/primer_view_components' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

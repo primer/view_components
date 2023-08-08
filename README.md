@@ -4,13 +4,17 @@
 
 <h1 align="center">Primer ViewComponents</h1>
 
-<p align="center">ViewComponents for the Primer Design System.</p>
+<p align="center">Fork of ViewComponents for the Primer Design System used for OpenProject.</p>
 
 _Note: This library is under active pre-1.0 development. Breaking changes are likely in patch releases._
 
+## Contribution
+
+Please have a look at our [Contribution docs](./docs/contributors/README.md) to learn about adding or changing a ViewComponent.
+
 ## Documentation
 
-Visit [https://primer.style/view_components/](https://primer.style/design/components/) to view documentation.
+Visit [https://primer.style/view_components/](https://primer.style/design/components/) to view the documentation of the Primer ViewComponents.
 
 ## License
 

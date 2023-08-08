@@ -2,9 +2,8 @@ name: Demo Preview Destroy
 
 on:
   pull_request:
-    types:
-      - closed
-      - locked
+    branches:
+      - DO_NOT_EXECUTE_THIS_WORKFLOW
 
 # This allows one deploy workflow to interrupt another
 concurrency:
