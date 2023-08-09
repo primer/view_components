@@ -29,7 +29,7 @@ class ButtonMigrationTest < CopTestCase
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert cop.offenses.first.corrector.present? 
+    assert cop.offenses.first.corrector.present?
 
     assert_equal "Primer::Beta::Truncate.new(0)", cop.offenses.first.corrector.rewrite.strip
   end
