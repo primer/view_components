@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.6.3
+
+### Patch Changes
+
+- [`1343dfea`](https://github.com/primer/view_components/commit/1343dfea0ed4cc4295cf0a8a659adb31c142c229) Thanks [@HDinger](https://github.com/HDinger)! - Rename ruby gem
+
 ## 0.6.2
 
 ### Patch Changes
