@@ -57,7 +57,9 @@ export class ActionMenuElement extends HTMLElement {
     const id = this.querySelector('[role=menu]')?.id
     if (!id) return null
     for (const el of this.querySelectorAll(`[aria-controls]`)) {
-      if (el.getAttribute('aria-controls') === id) return el as HTMLButtonElement
+      if (el.getAttribute('aria-controls') === id) {
+        return el as HTMLButtonElement
+      }
     }
     return null
   }
@@ -94,7 +96,9 @@ export class ActionMenuElement extends HTMLElement {
     this.#updateInput()
 
     if (this.includeFragment) {
-      this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
+      this.includeFragment.addEventListener('include-fragment-replaced', this, {
+        signal
+      })
     }
   }
 
@@ -129,6 +133,16 @@ export class ActionMenuElement extends HTMLElement {
             this.popoverElement?.hidePopover()
           }
         })
+      }
+
+      if (this.selectVariant === 'none') {
+        if (event instanceof KeyboardEvent && event.key === ' ' && event.target instanceof HTMLAnchorElement) {
+          // Simulate clicks for links if Space is pressed
+          const cancelled = event.target.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+          if (!cancelled && event.target.hasAttribute('href')) {
+            location.href = new URL(event.target.getAttribute('href') || '', location.href).toString()
+          }
+        }
       }
 
       // The rest of the code below deals with single/multiple selection behavior, and should not
