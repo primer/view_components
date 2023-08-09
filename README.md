@@ -1,8 +1,4 @@
-<p align="center">
-  <img width="300px" alt="Primer ViewComponents Logo" src="/static/assets/view-components.svg">
-</p>
-
-<h1 align="center">Primer ViewComponents</h1>
+<h1 align="center">OpenProject's Primer ViewComponents</h1>
 
 <p align="center">Fork of ViewComponents for the Primer Design System used for OpenProject.</p>
 

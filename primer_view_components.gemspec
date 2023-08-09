@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "primer/view_components/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "openproject_primer_view_components"
+  spec.name          = "openproject-primer_view_components"
   spec.version       = Primer::ViewComponents::VERSION::STRING
   spec.authors       = ["GitHub Open Source", "OpenProject GmbH"]
 
