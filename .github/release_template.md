@@ -5,19 +5,19 @@ Please ensure these items are checked before merging.
 ### 🔎 Smoke test
 
 - [ ] All CI checks pass
-- [ ] Docs and Lookbook open in a browser
-- [ ] Successful integration test with GitHub.com as a primary consumer of Primer View Components
-  - [ ] Install the npm release candidate in `npm-workspaces/primer/`
-  - [ ] Use `bin/vendor-gem` to update `primer_view_components` gem
+- [ ] Successful integration test with OpenProject as a primary consumer
+  - [ ] Install the npm package locally
+  - [ ] Install the `primer_view_components` gem locally
   - [ ] Verify no new build errors appear
   - [ ] Verify no new linting errors appear
   - [ ] Manually test critical paths
   - [ ] Manually test release-specific bugfixes and/or features work as described
+  - [ ] Lookbook opens in a browser
 
 ### 🤔 Sanity test
 
 - [ ] All bugfixes in this release have resolved their corresponding issues
-- [ ] All new features in this release have been tested and verified as compatible with GitHub.com
+- [ ] All new features in this release have been tested and verified as compatible with OpenProject
 - [ ] No noticeable regressions have been introduced as a result of changes in this release
 - [ ] Release notes accurately describe the changes made
 
