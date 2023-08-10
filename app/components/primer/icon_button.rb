@@ -21,36 +21,6 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-    # @example Default
-    #
-    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button")) %>
-    #
-    # @example Schemes
-    #
-    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
-    #   <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
-    #
-    # @example In a BorderBox
-    #
-    #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-    #     <% component.with_body do %>
-    #       <%= render(Primer::Beta::Text.new(pr: 2)) { "Body" } %>
-    #       <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit")) %>
-    #     <% end %>
-    #   <% end %>
-    #
-    # @example With an `aria-description`
-    #   @description
-    #     If you need to have a longer description for the icon button, use both the `aria-label` and `aria-description`
-    #     attributes. A label should be short and concise, while the description can be longer as it is intended to provide
-    #     more context and information. See the accessibility section for more information.
-    #   @code
-    #     <%= render(Primer::IconButton.new(icon: :bold, "aria-label": "Bold", "aria-description": "Add bold text, Cmd+b")) %>
-    #
-    # @example Custom tooltip direction
-    #
-    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
-    #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>

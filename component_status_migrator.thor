@@ -305,25 +305,6 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
-  def rename_nav_entry
-    nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
-
-    gsub_file(
-      nav_file,
-      "title: #{old_version.name}",
-      "title: #{new_version.name}"
-    )
-
-    old_path = File.join("/", "components", old_version.status_directory, new_version.name.downcase)
-    new_path = File.join("/", "components", new_version.status_directory, new_version.name.downcase)
-
-    gsub_file(
-      nav_file,
-      "url: \"#{old_path}\"",
-      "url: \"#{new_path}\""
-    )
-  end
-
   def update_primer_js_imports
     gsub_file(
       "app/components/primer/primer.ts",

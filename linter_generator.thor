@@ -95,13 +95,6 @@ class LinterGenerator < Thor::Group
     @component_short_name
   end
 
-  def component_docs_path
-    (status_module, short_name) = status_module_and_short_name
-    status_path = status_module.nil? ? "" : "#{status_module}/"
-
-    "https://primer.style/view-components/components/#{status_path}#{short_name.downcase}"
-  end
-
   def component_full_name
     return name if name.start_with?("Primer::")
 

@@ -10,10 +10,5 @@ bundle install --path vendor/bundle
 npm install
 popd
 
-# Set up docs
-pushd docs
-npm install
-popd
-
 # Initial build of docs content
 bundle exec rake docs:build

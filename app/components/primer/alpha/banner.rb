@@ -55,37 +55,6 @@ module Primer
         :hide
       ].freeze
 
-      # @example Schemes
-      #   <div style="display: grid; row-gap: 15px">
-      #     <%= render(Primer::Alpha::Banner.new) { "This is a banner message!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" } %>
-      #   </div>
-      #
-      # @example Full width
-      #   <%= render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner!" } %>
-      #
-      # @example Dismissible
-      #   <%= render(Primer::Alpha::Banner.new(dismissible: :remove)) { "This is a dismissible banner!" } %>
-      #
-      # @example Custom icon
-      #   <%= render(Primer::Alpha::Banner.new(icon: :people)) { "This is a banner with a custom icon!" } %>
-      #
-      # @example With action button
-      #   <%= render(Primer::Alpha::Banner.new) do |component| %>
-      #     This is a banner with an action button!
-      #     <% component.with_action_button(size: :small) { "Take action" } %>
-      #   <% end %>
-      #
-      # @example With custom action
-      #   <%= render(Primer::Alpha::Banner.new) do |component| %>
-      #     Comment saved!
-      #     <% component.with_action_content do %>
-      #       <%= render(Primer::IconButton.new(icon: :pencil, mr: 1, "aria-label": "Edit")) %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
       # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>

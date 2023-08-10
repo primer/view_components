@@ -20,22 +20,6 @@ module Primer
         end
       }
 
-      # @example Default
-      #
-      #   <%= render(Primer::Beta::ButtonGroup.new) do |component| %>
-      #     <% component.with_button { "Button 1" } %>
-      #     <% component.with_button { "Button 2" } %>
-      #     <% component.with_button { "Button 3" } %>
-      #   <% end %>
-      #
-      # @example Sizes
-      #
-      #   <%= render(Primer::Beta::ButtonGroup.new(size: :small)) do |component| %>
-      #     <% component.with_button { "Button 1" } %>
-      #     <% component.with_button { "Button 2" } %>
-      #     <% component.with_button { "Button 3" } %>
-      #   <% end %>
-      #
       # @param scheme [Symbol] DEPRECATED. <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

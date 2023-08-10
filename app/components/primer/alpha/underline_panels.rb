@@ -36,25 +36,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Primer::Alpha::UnderlinePanels.new(label: "With panels")) do |component| %>
-      #     <% component.with_tab(id: "tab-1", selected: true) do |tab| %>
-      #       <% tab.with_text { "Tab 1" } %>
-      #       <% tab.with_panel do %>
-      #         Panel 1
-      #       <% end %>
-      #     <% end %>
-      #     <% component.with_tab(id: "tab-2") do |tab| %>
-      #       <% tab.with_text { "Tab 2" } %>
-      #       <% tab.with_panel do %>
-      #         Panel 2
-      #       <% end %>
-      #     <% end %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the tabs.
       # @param align [Symbol] <%= one_of(Primer::UnderlineNavHelper::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavHelper::ALIGN_DEFAULT %>
       # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.

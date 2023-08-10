@@ -33,13 +33,6 @@ module Primer
         }
       }
 
-      # @example Default
-      #
-      #   <%= render(Primer::Alpha::ActionBar.new) do |component| %>
-      #     <% component.with_item_icon_button(icon: :search, label: "Search")
-      #     <% component.with_item_icon_button(icon: :pencil, label: "Edit") %>
-      #   <% end %>
-      #
       # @param size [Symbol] <%= one_of(Primer::Alpha::ActionBar::SIZE_OPTIONS) %>
       # @param overflow_menu [Boolean] Whether to render the overflow menu.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

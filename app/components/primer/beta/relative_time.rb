@@ -84,15 +84,6 @@ module Primer
       PRECISION_DEFAULT = nil
       PRECISION_OPTIONS = [PRECISION_DEFAULT, :second, :minute, :hour, :day, :month, :year].freeze
 
-      # @example Default
-      #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400))) %>
-      #
-      # @example Past Time
-      #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), tense: :past)) %>
-      #
-      # @example Elapsed Time
-      #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), format: :elapsed)) %>
-      #
       # @param datetime [Time] The time to be formatted.
       # @param tense [Symbol] Which tense to use. <%= one_of(Primer::Beta::RelativeTime::TENSE_OPTIONS) %>
       # @param prefix [sring] What to prefix the relative ime display with.

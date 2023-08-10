@@ -7,24 +7,6 @@ module Primer
     #
     # This component requires javascript.
     class TabContainer < Primer::Component
-      # @example Default
-      #   <%= render(Primer::Alpha::TabContainer.new)  do %>
-      #     <div role="tablist">
-      #       <button type="button" role="tab" aria-selected="true">Tab one</button>
-      #       <button type="button" role="tab" tabindex="-1">Tab two</button>
-      #       <button type="button" role="tab" tabindex="-1">Tab three</button>
-      #     </div>
-      #     <div role="tabpanel">
-      #       Panel 1
-      #     </div>
-      #     <div role="tabpanel" hidden>
-      #       Panel 2
-      #     </div>
-      #     <div role="tabpanel" hidden>
-      #       Panel 3
-      #     </div>
-      #   <% end %>
-      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)

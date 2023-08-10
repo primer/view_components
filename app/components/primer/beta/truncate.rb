@@ -14,56 +14,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, "TruncateText"
 
-      # @example Default
-      #   <%= render(Primer::Beta::Truncate.new) { "branch-name-that-is-really-long" } %>
-      #
-      # @example Multiple items
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item do %>really-long-repository-owner-name<% end %>
-      #     <% component.with_item(font_weight: :bold) do %>
-      #       <%= render(Primer::BaseComponent.new(tag: :span, font_weight: :normal)) { "/" } %> really-long-repository-name
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Advanced multiple items
-      #   <%= render(Primer::Beta::Truncate.new(tag: :ol)) do |component| %>
-      #     <% component.with_item(tag: :li) do %>primer<% end %>
-      #     <% component.with_item(tag: :li, priority: true) do %>/ css<% end %>
-      #     <% component.with_item(tag: :li) do %>/ Issues<% end %>
-      #     <% component.with_item(tag: :li) do %>/ #123 —<% end %>
-      #     <% component.with_item(tag: :li, priority: true) do %>
-      #       Visual bug on primer.style found in lists
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Expand on hover or focus
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item(tag: :a, href: "#", expandable: true) do %>really-long-repository-owner-name<% end %>
-      #     <% component.with_item(tag: :a, href: "#", expandable: true) do %>really-long-repository-owner-name<% end %>
-      #     <% component.with_item(tag: :a, href: "#", expandable: true) do %>really-long-repository-owner-name<% end %>
-      #     <% component.with_item(tag: :a, href: "#", expandable: true) do %>really-long-repository-owner-name<% end %>
-      #   <% end %>
-      #
-      # @example Max widths
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item(max_width: 300, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #     <% component.with_item(max_width: 200, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #     <% component.with_item(max_width: 100, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #   <% end %>
-      #
-      # @example Max widths on new lines
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item(max_width: 300, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #   <% end %>
-      #   <br/>
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item(max_width: 200, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #   <% end %>
-      #   <br/>
-      #   <%= render(Primer::Beta::Truncate.new) do |component| %>
-      #     <% component.with_item(max_width: 100, expandable: true) do %>branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long<% end %>
-      #   <% end %>
-      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments

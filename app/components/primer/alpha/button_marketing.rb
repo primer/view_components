@@ -26,18 +26,6 @@ module Primer
       DEFAULT_TYPE = :button
       TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
 
-      # @example Schemes
-      #   <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :primary, mr: 2)) { "Primary" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" } %>
-      #   <div class="color-bg-emphasis">
-      #     <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" } %>
-      #   </div>
-      #
-      # @example Sizes
-      #   <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" } %>
-      #
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::SCHEME_OPTIONS) %>
       # @param variant [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::VARIANT_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::TAG_OPTIONS) %>

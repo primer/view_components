@@ -44,69 +44,6 @@ module Primer
         view_context.capture { block&.call }
       }
 
-      # @example Default with `<nav>`
-      #   @description
-      #     `<nav>` is a landmark and should be reserved for main navigation links. See <%= link_to_accessibility %>.
-      #   @code
-      #     <%= render(Primer::Alpha::TabNav.new(label: "Default")) do |component| %>
-      #       <% component.with_tab(selected: true, href: "#") { "Tab 1" } %>
-      #       <% component.with_tab(href: "#") { "Tab 2" } %>
-      #       <% component.with_tab(href: "#") { "Tab 3" } %>
-      #     <% end %>
-      #
-      # @example Default with `<div>`
-      #   <%= render(Primer::Alpha::TabNav.new(label: "Default")) do |component| %>
-      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" } %>
-      #     <% component.with_tab(href: "#") { "Tab 2" } %>
-      #     <% component.with_tab(href: "#") { "Tab 3" } %>
-      #   <% end %>
-      #
-      # @example With icons and counters
-      #   <%= render(Primer::Alpha::TabNav.new(label: "With icons and counters")) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) do |tab| %>
-      #       <% tab.with_icon(icon: :star) %>
-      #       <% tab.with_text { "Item 1" } %>
-      #     <% end %>
-      #     <% component.with_tab(href: "#") do |tab| %>
-      #       <% tab.with_icon(icon: :star) %>
-      #       <% tab.with_text { "Item 2" } %>
-      #       <% tab.with_counter(count: 10) %>
-      #     <% end %>
-      #     <% component.with_tab(href: "#") do |tab| %>
-      #       <% tab.with_text { "Item 3" } %>
-      #       <% tab.with_counter(count: 10) %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With extra content
-      #   <%= render(Primer::Alpha::TabNav.new(label: "With extra content")) do |component| %>
-      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% component.with_tab(href: "#") { "Tab 2" } %>
-      #     <% component.with_tab(href: "#") { "Tab 3" } %>
-      #     <% component.with_extra do %>
-      #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Adding extra content after the tabs
-      #   <%= render(Primer::Alpha::TabNav.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |component| %>
-      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% component.with_tab(href: "#") { "Tab 2" } %>
-      #     <% component.with_tab(href: "#") { "Tab 3" } %>
-      #     <% component.with_extra(align: :right) do %>
-      #       <div>
-      #         <%= render(Primer::ButtonComponent.new) { "Button" } %>
-      #       </div>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Customizing the body
-      #   <%= render(Primer::Alpha::TabNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |component| %>
-      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% component.with_tab(href: "#") { "Tab 2" } %>
-      #     <% component.with_tab(href: "#") { "Tab 3" } %>
-      #   <% end %>
-      #
       # @param tag [Symbol] <%= one_of(Primer::Alpha::TabNav::TAG_OPTIONS) %>
       # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements.
       # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
