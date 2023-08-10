@@ -28,6 +28,8 @@ class Primer::Forms::FormControlTest < Minitest::Test
       end
     end
 
+    # the input field is marked as invalid
+    assert_selector("input[name=deep_thought\\[ultimate_answer\\]][invalid][aria-invalid]")
     # there are validation-related elements
     assert_selector(".FormControl-inlineValidation", visible: :visible)
     # the validation elements don't have the data attributes that primer-text-field needs
@@ -35,7 +37,7 @@ class Primer::Forms::FormControlTest < Minitest::Test
     refute_selector("[data-target='primer-text-field.validationMessageElement']", visible: :all)
   end
 
-  def test_auto_check_generates_validtion_elements
+  def test_auto_check_generates_validation_elements
     model = DeepThought.new(42)
 
     render_in_view_context do
