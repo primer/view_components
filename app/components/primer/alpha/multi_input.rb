@@ -42,39 +42,6 @@ module Primer
 
       # @!method initialize
       #
-      # @example Default
-      #   <%= render(Primer::Alpha::Select.new(name: :dietary_pref, label: "Dietary preference")) do |c| %>
-      #     <% c.option(label: "Meatatarian", value: "meatatarian") %>
-      #     <% c.option(label: "Vegetarian", value: "vegetarian") %>
-      #   <% end %>
-      #
-      #   <%= render(Primer::Alpha::MultiInput.new(name: :dish, label: "Select dish")) do |c| %>
-      #     <% c.select_list(name: :meatatarian) do |list| %>
-      #       <% list.option(label: "Steak", value: "steak") %>
-      #       <% list.option(label: "Salmon", value: "salmon") %>
-      #     <% end %>
-      #     <% c.select_list(name: :vegetarian, hidden: true) do |list| %>
-      #       <% list.option(label: "Portobello mushroom", value: "portobello") %>
-      #       <% list.option(label: "Tofu curry", value: "tofu") %>
-      #     <% end %>
-      #   <% end %>
-      #
-      #   <script type="text/javascript" data-eval="true">
-      #     const dietaryPrefList = document.querySelector("[name=dietary_pref]");
-      #     const dishMulti = document.querySelector("[data-name=dish]");
-      #
-      #     dietaryPrefList.onchange = (evt) => {
-      #       switch (evt.target.value) {
-      #         case 'meatatarian':
-      #           dishMulti.activateField('meatatarian');
-      #           break;
-      #         case 'vegetarian':
-      #           dishMulti.activateField('vegetarian');
-      #           break;
-      #       }
-      #     };
-      #   </script>
-      #
       # @macro form_input_arguments
     end
   end

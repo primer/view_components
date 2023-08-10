@@ -28,75 +28,7 @@ module Primer
 
       TYPE_FALLBACK = :description
       TYPE_OPTIONS = [:label, :description].freeze
-      # @example As a supplementary description for a button
-      #   @description
-      #     In this example, the button has a visible label text, "Save". `type: :description` is set because the tooltip content is supplementary.
-      #     A screen reader user who encounters this button will hear the accessible name, "Save" followed by the accessible description, "This will immediately impact all organization members".
-      #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "save-button")) do |component| %>
-      #       <% component.with_tooltip(text: "This will immediately impact all organization members", type: :description, direction: :ne) %>
-      #       Save
-      #     <% end %>
-      # @example As a label for an `IconButton`
-      #   @description
-      #     An `IconButton` of `tag: :button` and `tag: :a` will render a tooltip using the `aria-label` content by default. While tooltips should generally be avoided, a tooltip on an `IconButton`
-      #     has usability benefits because it provides a textual label for sighted users.
-      #     A screen reader user who encounters the following button will hear the accessible name, "Bold".
-      #   @code
-      #     <%= render(Primer::IconButton.new(id: "bold-button-0", icon: :bold, "aria-label": "Bold")) %>
-      # @example As a supplementary description for an `IconButton`
-      #   @description
-      #     If you want to provide a description for the `IconButton`, set both `aria-label` and `aria-description` text. The tooltip will use the `aria-description` text.
-      #     A screen reader user who encounters the following button will hear the accessible name "Search", followed by the accessible description "Use keywords like 'repo:' and 'org:' in your query".
-      #   @code
-      #     <%= render(Primer::IconButton.new(id: "search-button", icon: :search, "aria-label": "Search", "aria-description": "Use keywords like 'repo:' and 'org:' in your query")) %>
-      #
-      # @example With direction
-      #   @description
-      #     Set direction of tooltip with `direction`. The tooltip is responsive and will automatically adjust direction to avoid cutting off.
-      #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a North-facing tooltip, and is responsive.", type: :description, direction: :n) %>
-      #       North
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a South-facing tooltip, and is responsive.", type: :description, direction: :s) %>
-      #       South
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a East-facing tooltip, and is responsive.", type: :description, direction: :e) %>
-      #       East
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a West-facing tooltip, and is responsive.", type: :description, direction: :w) %>
-      #       West
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a Northwest-facing tooltip, and is responsive.", type: :description, direction: :nw) %>
-      #       Northwest
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a Southwest-facing tooltip, and is responsive.", type: :description, direction: :sw) %>
-      #       Southwest
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a Northeast-facing tooltip, and is responsive.", type: :description, direction: :ne) %>
-      #       Northeast
-      #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) do |component| %>
-      #       <% component.with_tooltip(text: "This is a Southeast-facing tooltip, and is responsive.", type: :description, direction: :se) %>
-      #       Southeast
-      #     <% end %>
-      # @example Directly using `Tooltip`
-      #   @description
-      #     When you have a valid tooltip usecase for an interactive element that is not one of the supported components, you may need to use the `Tooltip` component directly.
-      #     The tooltip should be placed directly adjacent after the element you are associating it with.
-      #     The tooltip is absolutely positioned so ensure there is a wrapper with `position: relative` to avoid positioning issues.
-      #   @code
-      #     <div style="position: relative;">
-      #       <button type="button" id="test-button">Test</button>
-      #       <%= render(Primer::Alpha::Tooltip.new(for_id: "test-button", type: :description, text: "This tooltip should take up the full width", direction: :ne)) %>
-      #     </div>
+
       # @param for_id [String] The ID of the element that the tooltip should be attached to.
       # @param type [Symbol] <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
       # @param direction [Symbol] <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>

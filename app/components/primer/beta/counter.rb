@@ -23,14 +23,6 @@ module Primer
       DEPRECATED_SCHEME_OPTIONS = [:gray, :light_gray].freeze
       SCHEME_OPTIONS = (SCHEME_MAPPINGS.keys - DEPRECATED_SCHEME_OPTIONS).freeze
 
-      #
-      # @example Default
-      #   <%= render(Primer::Beta::Counter.new(count: 25)) %>
-      #
-      # @example Schemes
-      #   <%= render(Primer::Beta::Counter.new(count: 25, scheme: :primary)) %>
-      #   <%= render(Primer::Beta::Counter.new(count: 25, scheme: :secondary)) %>
-      #
       # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
       # @param scheme [Symbol] Color scheme. <%= one_of(Primer::Beta::Counter::SCHEME_OPTIONS) %>
       # @param limit [Integer, nil] Maximum value to display. Pass `nil` for no limit. (e.x. if `count` == 6,000 and `limit` == 5000, counter will display "5,000+")

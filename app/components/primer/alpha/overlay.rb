@@ -122,20 +122,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, "Footer"
 
-      # @example Overlay with Cancel and Submit buttons
-      #   @description
-      #     An ID is provided which enables wiring of the open and close buttons to the Overlay.
-      #   @code
-      #     <%= render(Primer::Alpha::Overlay.new(
-      #       title: "Overlay Example",
-      #       id: "my-Overlay",
-      #       role: :dialog,
-      #     )) do |d| %>
-      #       <% d.with_show_button { "Show Overlay" } %>
-      #       <% d.with_body do %>
-      #         <p>Some content</p>
-      #       <% end %>
-      #     <% end %>
       # @param id [String] The id of the Overlay.
       # @param title [String] Describes the content of the Overlay.
       # @param subtitle [String] Provides dditional context for the Overlay, also setting the `aria-describedby` attribute.

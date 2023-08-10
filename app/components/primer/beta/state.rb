@@ -32,19 +32,6 @@ module Primer
       TAG_DEFAULT = :span
       TAG_OPTIONS = [TAG_DEFAULT, :div].freeze
 
-      # @example Default
-      #   <%= render(Primer::Beta::State.new(title: "title")) { "State" } %>
-      #
-      # @example Schemes
-      #   <%= render(Primer::Beta::State.new(title: "title")) { "Default" } %>
-      #   <%= render(Primer::Beta::State.new(title: "title", scheme: :open)) { "Open" } %>
-      #   <%= render(Primer::Beta::State.new(title: "title", scheme: :closed)) { "Closed" } %>
-      #   <%= render(Primer::Beta::State.new(title: "title", scheme: :merged)) { "Merged" } %>
-      #
-      # @example Sizes
-      #   <%= render(Primer::Beta::State.new(title: "title")) { "Default" } %>
-      #   <%= render(Primer::Beta::State.new(title: "title", size: :small)) { "Small" } %>
-      #
       # @param title [String] `title` HTML attribute.
       # @param scheme [Symbol] Background color. <%= one_of(Primer::Beta::State::SCHEME_OPTIONS) %>
       # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::Beta::State::TAG_OPTIONS) %>

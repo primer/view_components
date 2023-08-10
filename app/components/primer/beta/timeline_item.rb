@@ -38,15 +38,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Default
-      #   <div style="padding-left: 60px">
-      #     <%= render(Primer::Beta::TimelineItem.new) do |component| %>
-      #       <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "github") %>
-      #       <% component.with_badge(bg: :success_emphasis, color: :on_emphasis, icon: :check) %>
-      #       <% component.with_body { "Success!" } %>
-      #     <% end %>
-      #   </div>
-      #
       # @param condensed [Boolean] Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(condensed: false, **system_arguments)

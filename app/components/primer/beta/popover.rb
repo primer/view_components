@@ -59,49 +59,6 @@ module Primer
         Primer::Content.new
       }
 
-      # @example Default
-      #   <%= render Primer::Beta::Popover.new do |component| %>
-      #     <% component.with_heading do %>
-      #       Activity feed
-      #     <% end %>
-      #     <% component.with_body do %>
-      #       This is the Popover body.
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Large
-      #   <%= render Primer::Beta::Popover.new do |component| %>
-      #     <% component.with_heading do %>
-      #       Activity feed
-      #     <% end %>
-      #     <% component.with_body(large: true) do %>
-      #       This is the large Popover body.
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Caret position
-      #   <%= render Primer::Beta::Popover.new do |component| %>
-      #     <% component.with_heading do %>
-      #       Activity feed
-      #     <% end %>
-      #     <% component.with_body(caret: :left) do %>
-      #       This is the Popover body.
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With multiple elements in the body
-      #   <%= render Primer::Beta::Popover.new do |component| %>
-      #     <% component.with_heading do %>
-      #       Activity feed
-      #     <% end %>
-      #     <% component.with_body(caret: :left) do %>
-      #       <p>This is the Popover body.</p>
-      #       <%= render Primer::ButtonComponent.new(type: :submit) do %>
-      #         Got it!
-      #       <% end %>
-      #     <% end %>
-      #   <% end %>
-      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)

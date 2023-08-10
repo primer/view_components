@@ -28,67 +28,6 @@ module Primer
         )
       }
 
-      # @example With a label above and caption below
-      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
-      #     <%= render(Primer::BaseComponent.new(tag: "span", id: "scLabel-horiz")) { "File view" } %>
-      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
-      #       <% component.with_item(label: "Preview", selected: true) %>
-      #       <% component.with_item(label: "Raw") %>
-      #       <% component.with_item(label: "Blame") %>
-      #     <% end %>
-      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
-      #   <% end %>
-      #
-      # @example With a label and caption on the left
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading(id: "scLabel-vert") { "File view" } %>
-      #     <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-vert", "aria-describedby": "scCaption-vert")) do |component| %>
-      #         <% component.with_item(label: "Preview", selected: true) %>
-      #         <% component.with_item(label: "Raw") %>
-      #         <% component.with_item(label: "Blame") %>
-      #       <% end %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Basic usage
-      #
-      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component| %>
-      #     <%= component.with_item(label: "Preview", selected: true) %>
-      #     <%= component.with_item(label: "Raw") %>
-      #     <%= component.with_item(label: "Blame") %>
-      #   <% end %>
-      #
-      # @example Small
-      #
-      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :small)) do |component| %>
-      #     <%= component.with_item(label: "Preview", selected: true) %>
-      #     <%= component.with_item(label: "Raw") %>
-      #     <%= component.with_item(label: "Blame") %>
-      #   <% end %>
-      #
-      # @example With icons
-      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component| %>
-      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= component.with_item(label: "Blame", icon: :people) %>
-      #   <% end %>
-      #
-      # @example With icons only
-      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true)) do |component| %>
-      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= component.with_item(label: "Blame", icon: :people) %>
-      #   <% end %>
-      #
-      # @example Fill width of parent
-      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true)) do |component| %>
-      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= component.with_item(label: "Blame", icon: :people) %>
-      #   <% end %>
-      #
       # @param hide_labels [Boolean] Whether to hide the labels and only show the icons
       # @param full_width [Boolean] If the component should be full width
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>

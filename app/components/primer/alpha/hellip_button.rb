@@ -9,15 +9,6 @@ module Primer
     #   * This button is displaying a hellip as its content (The three dots character). Therefore a label is needed for screen readers.
     #   * Set the attribute `aria-label` on the system arguments. E.g. `Primer::Alpha::HellipButton.new("aria-label": "Expand next part")`
     class HellipButton < Primer::Component
-      # @example Default
-      #   <%= render(Primer::Alpha::HellipButton.new("aria-label": "No effect")) %>
-      #
-      # @example Inline
-      #   <%= render(Primer::Alpha::HellipButton.new(inline: true, "aria-label": "No effect")) %>
-      #
-      # @example Styling the button
-      #   <%= render(Primer::Alpha::HellipButton.new(p: 1, classes: "custom-class", "aria-label": "No effect")) %>
-      #
       # @param inline [Boolean] Whether or not the button is inline.
       # @param disabled [Boolean] Whether or not the button is disabled.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
