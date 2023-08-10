@@ -29,7 +29,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
       component.with_row { "Row" }
     end
 
-    id = page.find_css('.Box-header').first[:id]
+    id = page.find_css(".Box-header").first[:id]
     assert_selector "ul[aria-labelledby='#{id}']"
   end
 
