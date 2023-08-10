@@ -4248,7 +4248,18 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/conditional_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/conditional_wrapper/default/",
     "parameters": [
-
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether or not to wrap the content in a `Primer::BaseComponent`."
+      },
+      {
+        "name": "base_component_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments to pass to `Primer::BaseComponent`."
+      }
     ]
   },
   {
