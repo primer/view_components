@@ -46,7 +46,7 @@ linters:
     enabled: true
     rubocop_config:
       inherit_gem:
-        primer_view_components: lib/rubocop/config/default.yml
+        openproject-primer_view_components: lib/rubocop/config/default.yml
 ```
 
 ## Building linters

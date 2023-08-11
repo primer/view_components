@@ -1,31 +1,48 @@
 # Setup
 
-The easiest way to get started contributing to Primer ViewComponents is with [Codespaces](https://github.com/features/codespaces), Codespace environments come fully set up for development.
-
 ## Setup for local development
 
 1. Clone `git@github.com:opf/primer_view_components.git`
-2. Install [Overmind](https://github.com/DarthSim/overmind)
-3. Run `script/setup` to install dependencies
-4. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Lookbook on [localhost:4000](localhost:5000)
+1. Run `script/setup` to install dependencies
 
-### Lookbook
+## Use local packages
 
-[Lookbook](https://github.com/ViewComponent/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc.
+In your `Gemfile`, change:
 
-#### How to run
+```ruby
+gem "oppenproject-primer_view_components"
+```
 
-Starting from view_components root directory
+to
 
-1. `script/setup` - Setups up the whole project, but also bundle installs dependencies for the demo app.
-2. Change directory to `/demo/` and run `bin/dev` - Runs the rails server for lookbook.
-3. Visit [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
+```ruby
+gem "openproject-primer_view_components", path: "path_to_the_gem" # e.g. path: "~/openproject/primer_view_components"
+```
 
-## Running tests
+Then, `bundle install` in the core to update references. You'll now be able to see changes from the gem without having to build it.
+**Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.**
 
-Before running tests make sure you run `bundle exec rake docs:preview`, this will build all the code examples used for accessibility and system tests.
+In your `package.json`, change:
 
-- `script/test` runs the full test suite
-- `script/test <file>` runs all the tests in one file
-- `script/test <file>:<line>` runs the test defined on the specified line of a file
-- `script/test '<glob>'` runs tests in all the files matching the glob
+```json
+"dependencies": {
+  "@openproject/primer-view-components": "^0.X.Y"
+}
+
+"overrides": {
+  "@primer/view-components": "npm:@openproject/primer-view-components^0.X.Y"
+}
+```
+
+to
+
+```json
+"dependencies": {
+  "@openproject/primer-view-components": "file:path_to_file"
+}
+
+"overrides": {
+  "@primer/view-components": "file:path_to_file"
+}
+
+```
