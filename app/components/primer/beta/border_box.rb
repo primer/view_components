@@ -82,10 +82,21 @@ module Primer
         )
 
         @system_arguments[:system_arguments_denylist] = { [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION }
+        @list_arguments = { tag: :ul }
       end
 
       def render?
         rows.any? || header.present? || body.present? || footer.present?
+      end
+
+      private
+
+      def before_render
+        return unless header
+
+        @list_arguments[:aria] = {
+          labelledby: header.id
+        }
       end
     end
   end
