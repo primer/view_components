@@ -9,19 +9,11 @@ jobs:
   static:
     runs-on: ubuntu-latest
     steps:
-      # Use the primer GitHub App for authentication.
-      # See: https://github.com/organizations/primer/settings/apps/primer
-      - id: get-access-token
-        uses: camertron/github-app-installation-auth-action@v1
-        with:
-          app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
-          private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
-          client-id: ${{ vars.PRIMER_APP_CLIENT_ID_SHARED }}
-          client-secret: ${{ secrets.PRIMER_APP_CLIENT_SECRET_SHARED }}
-          installation-id: ${{ vars.PRIMER_APP_INSTALLATION_ID_SHARED }}
+      # Unfortunately we can't use the primer GitHub App and camertron/github-app-installation-auth-action
+      # because branch protection rules cannot be bypassed by Apps.
       - uses: actions/checkout@v3
         with:
-          token: ${{ steps.get-access-token.outputs.access-token }}
+          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
