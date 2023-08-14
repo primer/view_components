@@ -17,6 +17,10 @@ module RuboCop
           (hash ... (pair (sym :inline) (...)) ... )
         PATTERN
 
+        def_node_matcher :truncate_with_tag?, <<~PATTERN
+          (hash ... (pair (sym :tag) (...)) ... )
+        PATTERN
+
         def on_send(node)
           return unless truncate_component(node)
 
@@ -27,10 +31,15 @@ module RuboCop
           return if hash_with_inline_value?(node.arguments.first)
 
           lambda do |corrector|
-            corrector.replace(node.children.first, "Primer::Beta::Truncate")
+            if node.arguments.first.nil? == false
+              corrector.replace(node.children.first, "Primer::Beta::Truncate")
+              corrector.insert_after(node.arguments.first, ", tag: :div") unless truncate_with_tag?(node.arguments.first)
+            else
+              corrector.replace(node.loc.expression, "Primer::Beta::Truncate.new(tag: :div)")
+            end
           end
         end
       end
     end
   end
-  end
+end

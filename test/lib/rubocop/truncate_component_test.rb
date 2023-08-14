@@ -21,6 +21,7 @@ class ButtonMigrationTest < CopTestCase
     RUBY
 
     assert_equal 1, cop.offenses.count
+    assert_equal "Primer::Beta::Truncate.new(tag: :div)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_warn_on_truncate_simple_arg
@@ -31,7 +32,7 @@ class ButtonMigrationTest < CopTestCase
     assert_equal 1, cop.offenses.count
     assert cop.offenses.first.corrector.present?
 
-    assert_equal "Primer::Beta::Truncate.new(0)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Truncate.new(0, tag: :div)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_warn_no_fix_truncate_inline
@@ -41,5 +42,16 @@ class ButtonMigrationTest < CopTestCase
 
     assert_equal 1, cop.offenses.count
     refute cop.offenses.first.corrector.present?
+  end
+
+  def test_do_not_add_tag_if_tag_is_present
+    investigate(cop, <<~RUBY)
+      Primer::Truncate.new(tag: :span)
+    RUBY
+
+    assert_equal 1, cop.offenses.count
+    assert cop.offenses.first.corrector.present?
+
+    assert_equal "Primer::Beta::Truncate.new(tag: :span)", cop.offenses.first.corrector.rewrite.strip
   end
 end
