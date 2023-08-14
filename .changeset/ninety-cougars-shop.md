@@ -4,4 +4,4 @@
 
 Bump Primitives v7.12.0
 
-<!-- Changed components: none -->
+<!-- Changed components: _none_ -->
