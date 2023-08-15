@@ -13,12 +13,12 @@ module Alpha
       assert_equal(find("modal-dialog")["aria-labelledby"], find("h1")["id"])
     end
 
-    def test_autofocuses_close_button
+    def test_focuses_close_button
       visit_preview(:default)
 
       click_button("Show Dialog")
 
-      assert_selector("button[aria-label='Close'][autofocus]")
+      assert_equal page.evaluate_script("document.activeElement")['aria-label'], "Close"
     end
   end
 end
