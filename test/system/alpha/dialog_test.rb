@@ -18,7 +18,7 @@ module Alpha
 
       click_button("Show Dialog")
 
-      assert_equal page.evaluate_script("document.activeElement")['aria-label'], "Close"
+      assert_equal page.evaluate_script("document.activeElement")["aria-label"], "Close"
     end
   end
 end
