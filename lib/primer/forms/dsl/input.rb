@@ -115,6 +115,7 @@ module Primer
           end
 
           add_input_aria(:required, true) if required?
+          add_input_aria(:invalid, true) if invalid?
           add_input_aria(:describedby, ids.values) if ids.any?
 
           # avoid browser-native validation, which doesn't match Primer's style

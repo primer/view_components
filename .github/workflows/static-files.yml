@@ -9,6 +9,8 @@ jobs:
   static:
     runs-on: ubuntu-latest
     steps:
+      # Unfortunately we can't use the primer GitHub App and camertron/github-app-installation-auth-action
+      # because branch protection rules cannot be bypassed by Apps.
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}

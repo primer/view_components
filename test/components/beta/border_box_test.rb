@@ -23,6 +23,16 @@ class PrimerBetaBorderBoxTest < Minitest::Test
     assert_selector("div.Box-header", text: "Header")
   end
 
+  def test_labels_list_with_header
+    render_inline(Primer::Beta::BorderBox.new) do |component|
+      component.with_header { "Header" }
+      component.with_row { "Row" }
+    end
+
+    id = page.find_css(".Box-header").first[:id]
+    assert_selector "ul[aria-labelledby='#{id}']"
+  end
+
   def test_renders_body
     render_inline(Primer::Beta::BorderBox.new) do |component|
       component.with_body { "Body" }

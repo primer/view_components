@@ -145,6 +145,12 @@ class Primer::FormsTest < Minitest::Test
     assert_selector "input.color-fg-success[type=text]"
   end
 
+  def test_the_input_is_marked_as_invalid
+    render_preview :invalid_form
+
+    assert_selector "input[type=text][name=last_name][invalid][aria-invalid]"
+  end
+
   def test_autofocuses_the_first_invalid_input
     render_preview :invalid_form
 
