@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 0.7.0
+
+### Minor Changes
+
+- [#2200](https://github.com/primer/view_components/pull/2200) [`1b770f90`](https://github.com/opf/primer_view_components/commit/1b770f9000faa119eb2ece3035be2eaa476ca1a1) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Add rubocop linter for `Truncate` component
+
+  <!-- Changed components: _none_ -->
+
+- [#2207](https://github.com/primer/view_components/pull/2207) [`ba01f4e9`](https://github.com/opf/primer_view_components/commit/ba01f4e9f7d287c01fb3dab1b04b58c49c1d71fb) Thanks [@langermank](https://github.com/langermank)! - Bump Primitives v7.12.0
+
+  <!-- Changed components: _none_ -->
+
+### Patch Changes
+
+- [#2203](https://github.com/primer/view_components/pull/2203) [`3f504021`](https://github.com/opf/primer_view_components/commit/3f504021e26cb92c99b16b63fe3e9b45fd5ede3b) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix guide URLs (in lib/primer/deprecations.yml)
+
+  <!-- Changed components: _none_ -->
+
+- [#2202](https://github.com/primer/view_components/pull/2202) [`d7da4012`](https://github.com/opf/primer_view_components/commit/d7da4012cb0a1d268cb0557cce171137dc766890) Thanks [@camertron](https://github.com/camertron)! - Label BorderBox lists with their header
+
+  <!-- Changed components: Primer::Beta::BorderBox -->
+
+- [#2201](https://github.com/primer/view_components/pull/2201) [`ba90a43d`](https://github.com/opf/primer_view_components/commit/ba90a43d9904bb088e1ce3988c3b94211155e722) Thanks [@kintner](https://github.com/kintner)! - add aria-invalid when fields are invalid
+
+  <!-- Changed components: Primer::Alpha::CheckBox, Primer::Alpha::CheckBoxGroup, Primer::Alpha::FormButton, Primer::Alpha::MultiInput, Primer::Alpha::RadioButton, Primer::Alpha::RadioButtonGroup, Primer::Alpha::Select, Primer::Alpha::SubmitButton, Primer::Alpha::TextArea, Primer::Alpha::TextField, Primer::Alpha::ToggleSwitch -->
+
+- [#14](https://github.com/opf/primer_view_components/pull/14) [`45a84b57`](https://github.com/opf/primer_view_components/commit/45a84b57b7bf5876c943a1383b7e385b9603b259) Thanks [@HDinger](https://github.com/HDinger)! - Update from base repo
+
 ## 0.6.3
 
 ### Patch Changes
