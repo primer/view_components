@@ -2,66 +2,29 @@
 
 Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 
-If you have any substantial changes that you would like to make, please [open an issue](http://github.com/primer/view_components/issues/new) first to discuss them with us.
+If you have any substantial changes that you would like to make, please [open an issue](http://github.com/opf/primer_view_components/issues/new) first to discuss them with us.
 
-Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](https://github.com/primer/view_components/blob/main/LICENSE.txt).
+Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](https://github.com/opf/primer_view_components/blob/main/LICENSE.txt).
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/primer/view_components/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/opf/primer_view_components/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+## Developing locally
+
+Checkout [this guide](./setup.md) on how to develop locally.
 
 ## Adding a new component
 
-Use the provided generator to create a component:
-
-```sh
-bundle exec thor component_generator my_component_name
-```
-
-To declare a dependency on an `npm` package, pass `js` to the generator:
-
-```sh
-bundle exec thor component_generator my_component_name --js=some-npm-package-name
-```
-
-### Tag considerations
-
-Components and slots should restrict which HTML tags they will render. For example, an `Image` component should never be rendered as an `<h1>`.
-
-Consider which HTML tags make sense. Components typically fall under one of the following patterns:
-
-1) Fixed tag that cannot be updated by the consumer:
-
-```rb
-system_arguments[:tag] = :h1
-```
-
-2) Allowed list of tags that are set with the `tag:` argument using the `fetch_or_fallback` helper.
-
-```rb
-system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
-```
+Check out our guide for [adding new components](./adding-components.md).
 
 ## Testing
 
-Before running the whole test suite with: `script/test`, you must run `bundle exec rake docs:preview`.
-
-Run a subset of tests by supplying arguments to `script/test`:
-
-1. `script/test FILE` runs all tests in the file.
-1. `script/test FILE:LINE` runs test in specific line of the file.
-1. `script/test 'GLOB'` runs all tests for matching glob.
-    * make sure to wrap the `GLOB` in single quotes `''`.
-
-### System tests
-
-Primer ViewComponents utilizes Cuprite for system testing components that rely on JavaScript functionality.
-
-By default, the system tests run in a headless Chrome browser. Prefix the test command with `HEADLESS=false` to run the system tests in a normal browser.
+We have an advanced test setup described in our [test guide](./playwright-testing.md)., including visual regression tests.
 
 ## Writing documentation
 
 Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `bundle exec rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-### Documentation / Demo Rails App
+### Documentation / Demo Rails App - TODO: NEEDED?
 
 * **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
   * Typically runs on port 5400
@@ -87,34 +50,16 @@ If you are running into issues or not seeing your updates, a few things you can 
 
 _Note: Overmind is required to run script/dev._
 
-## Developing with another app
-
-In your `Gemfile`, change:
-
-```ruby
-gem "primer_view_components"
-```
-
-to
-
-```ruby
-gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/view_components"
-```
-
-Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
-Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.
-
-To minimize the number of restarts, we recommend checking the component in Lookbook first, and then when it's in a good state, you can check it in your app.
-
 ## Submitting a pull request
 
-1. [Fork](https://github.com/primer/view_components/fork) and clone the repository
+1. Checkout the repository
 1. Configure and install the dependencies: `./script/setup`
 1. Make sure the tests pass on your machine
 1. Create a new branch: `git checkout -b my-branch-name`
 1. Make your change, add tests, and make sure all the tests still pass
 1. Add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) for your changes if needed
-1. Push to your fork and [submit a pull request](https://github.com/primer/view_components/compare)
+   1. We have a bot as well as a Github workflow enabled in order to remind you about the changeset as it is an essential part for the release process.
+1. Push to your branch and [submit a pull request](https://github.com/opf/primer_view_components/compare)
 1. Pat yourself on the back and wait for your pull request to be reviewed and merged. After merging it will be included in the next release.
 
 ### PR tips
@@ -126,13 +71,3 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Write comprehensive [documentation](#writing-documentation) and make sure the generated documentation is committed.
 * Add new components to the `components` list in the `docs:build` task, so that Markdown documentation is generated for them within docs/content/components/.
 * Keep your change as focused as possible; if there are multiple changes you would like to make that are not dependent on one other consider submitting them as separate pull requests.
-
-## Deploying the Rails Lookbook
-
-The Rails lookbook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The Lookbook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
-
-## Publishing a Release
-
-To publish a release, you must have an account on [rubygems](https://rubygems.org/) and [npmjs](https://www.npmjs.com/). Additionally, you must have been added as a maintainer to the project. Please verify that you have 2FA enabled on both accounts.
-
-If you're a Hubber, refer to these more detailed [release docs](https://github.com/github/primer/blob/main/how-we-work/releasing-primer-view-components.md).

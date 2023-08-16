@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
-  "changelog": ["@changesets/changelog-github", {"repo": "primer/view_components"}],
+  "changelog": ["@changesets/changelog-github", {"repo": "opf/primer_view_components"}],
   "commit": false,
   "fixed": [],
   "linked": [],

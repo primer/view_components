@@ -1,13 +1,10 @@
 # Setup
 
-The easiest way to get started contributing to Primer ViewComponents is with [Codespaces](https://github.com/features/codespaces), Codespace environments come fully set up for development.
-
 ## Setup for local development
 
 1. Clone `git@github.com:opf/primer_view_components.git`
-2. Install [Overmind](https://github.com/DarthSim/overmind)
-3. Run `script/setup` to install dependencies
-4. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Lookbook on [localhost:4000](localhost:5000)
+1. Run `script/setup` to install dependencies
+1. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Lookbook on [localhost:4000](localhost:5000)
 
 ### Lookbook
 
@@ -21,11 +18,50 @@ Starting from view_components root directory
 2. Change directory to `/demo/` and run `bin/dev` - Runs the rails server for lookbook.
 3. Visit [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
 
-## Running tests
+## Developing within OpenProject
 
-Before running tests make sure you run `bundle exec rake docs:preview`, this will build all the code examples used for accessibility and system tests.
+**IMPORTANT!**
 
-- `script/test` runs the full test suite
-- `script/test <file>` runs all the tests in one file
-- `script/test <file>:<line>` runs the test defined on the specified line of a file
-- `script/test '<glob>'` runs tests in all the files matching the glob
+At the moment, you have to restart the rails server, as well as the npm server (including a fresh install) after every change to see changes, as the gem and the npm package are loaded at boot time.
+To minimize the number of restarts, we recommend checking the component in Lookbook first, and then when it's in a good state, you can check it in OpenProject.
+
+In your `Gemfile`, change:
+
+```ruby
+gem "oppenproject-primer_view_components"
+```
+
+to
+
+```ruby
+gem "openproject-primer_view_components", path: "path_to_the_gem" # e.g. path: "~/openproject/primer_view_components"
+```
+
+Then, `bundle install` in the core to update references. You'll now be able to see changes from the gem without having to build it.
+
+In your `frontend/package.json`, change:
+
+```json
+"dependencies": {
+  "@openproject/primer-view-components": "^0.X.Y"
+}
+
+"overrides": {
+  "@primer/view-components": "npm:@openproject/primer-view-components^0.X.Y"
+}
+```
+
+to
+
+```json
+"dependencies": {
+  "@openproject/primer-view-components": "file:path_to_file"  // e.g. path: "file:~/path/to/local/primer_view_component"
+}
+
+"overrides": {
+  "@primer/view-components": "file:path_to_file"
+}
+
+```
+
+Then, `npm install` in the `frontend` folder and the reference should be updated. If that does not work out, try to remove the `node_modules` folder as well as the `package-lock.json`.
