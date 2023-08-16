@@ -64,6 +64,7 @@ class PrimerAlphaTextFieldTest < MiniTest::Test
     render_inline(Primer::Alpha::TextField.new(**@default_params, invalid: true))
 
     assert_selector "input[invalid]"
+    assert_selector "input[aria-invalid]"
   end
 
   def test_renders_the_component_with_an_inset_style
