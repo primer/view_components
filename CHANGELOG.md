@@ -1,5 +1,45 @@
 # CHANGELOG
 
+## 0.7.0
+
+### Minor Changes
+
+- [#2200](https://github.com/primer/view_components/pull/2200) [`1b770f90`](https://github.com/primer/view_components/commit/1b770f9000faa119eb2ece3035be2eaa476ca1a1) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Add rubocop linter for `Truncate` component
+
+  <!-- Changed components: _none_ -->
+
+- [#2207](https://github.com/primer/view_components/pull/2207) [`ba01f4e9`](https://github.com/primer/view_components/commit/ba01f4e9f7d287c01fb3dab1b04b58c49c1d71fb) Thanks [@langermank](https://github.com/langermank)! - Bump Primitives v7.12.0
+
+  <!-- Changed components: _none_ -->
+
+- [#2210](https://github.com/primer/view_components/pull/2210) [`aded2aa4`](https://github.com/primer/view_components/commit/aded2aa45261b13d870f474889d6bc6a803c484a) Thanks [@khiga8](https://github.com/khiga8)! - Fix accessibility bug of missing accessible name on `Primer::Alpha::Dialog`
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+### Patch Changes
+
+- [#2203](https://github.com/primer/view_components/pull/2203) [`3f504021`](https://github.com/primer/view_components/commit/3f504021e26cb92c99b16b63fe3e9b45fd5ede3b) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix guide URLs (in lib/primer/deprecations.yml)
+
+  <!-- Changed components: _none_ -->
+
+- [#2192](https://github.com/primer/view_components/pull/2192) [`73fc40bb`](https://github.com/primer/view_components/commit/73fc40bb83ac2b14936e38ad2706cfdd68abc34f) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: Don't allow items to be unchecked in single-select mode
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2211](https://github.com/primer/view_components/pull/2211) [`9623ab63`](https://github.com/primer/view_components/commit/9623ab63dfb6a658d416376291d28ade9bf2b1fd) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating tooltip migration linter link to correct url
+
+- [#2202](https://github.com/primer/view_components/pull/2202) [`d7da4012`](https://github.com/primer/view_components/commit/d7da4012cb0a1d268cb0557cce171137dc766890) Thanks [@camertron](https://github.com/camertron)! - Label BorderBox lists with their header
+
+  <!-- Changed components: Primer::Beta::BorderBox -->
+
+- [#2190](https://github.com/primer/view_components/pull/2190) [`0a9bcda2`](https://github.com/primer/view_components/commit/0a9bcda29eedd5b4854ce71a413b22f275283729) Thanks [@radglob](https://github.com/radglob)! - Updates Primer::Beta::Button.with_tooltip to not accept `:label` type.
+
+  <!-- Changed components: Primer::Beta::Button -->
+
+- [#2201](https://github.com/primer/view_components/pull/2201) [`ba90a43d`](https://github.com/primer/view_components/commit/ba90a43d9904bb088e1ce3988c3b94211155e722) Thanks [@kintner](https://github.com/kintner)! - add aria-invalid when fields are invalid
+
+  <!-- Changed components: Primer::Alpha::CheckBox, Primer::Alpha::CheckBoxGroup, Primer::Alpha::FormButton, Primer::Alpha::MultiInput, Primer::Alpha::RadioButton, Primer::Alpha::RadioButtonGroup, Primer::Alpha::Select, Primer::Alpha::SubmitButton, Primer::Alpha::TextArea, Primer::Alpha::TextField, Primer::Alpha::ToggleSwitch -->
+
 ## 0.6.0
 
 ### Minor Changes
