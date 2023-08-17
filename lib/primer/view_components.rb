@@ -14,8 +14,12 @@ module Primer
       Pathname(File.expand_path(File.join("..", ".."), __dir__))
     end
 
+    # Skip coverage here because only one branch will execute depending on what
+    # Rails version you're running.
+
+    # :nocov:
     def self.deprecation
-      @deprecator ||=
+      @deprecation ||=
         if Rails.application.respond_to?(:deprecators)
           Rails.application.deprecators[:primer_view_components] ||= ActiveSupport::Deprecation.new(
             DEPRECATION_HORIZON, "primer_view_components"
@@ -24,5 +28,6 @@ module Primer
           ActiveSupport::Deprecation.instance
         end
     end
+    # :nocov:
   end
 end
