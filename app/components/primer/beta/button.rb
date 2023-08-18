@@ -41,10 +41,15 @@ module Primer
       #
       # - `leading_visual_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
+      # - `leading_visual_svg` to render a SVG.
+      #
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
           Primer::Beta::Octicon.new(**system_arguments)
+        },
+        svg: lambda { |**system_arguments|
+          Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
         }
       }
 
