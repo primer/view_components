@@ -15,7 +15,7 @@ jobs:
     needs: get-access-token
     steps:
       - name: List codespaces
-        run: gh codespace list
+        run: ruby -e 'puts ENV["GH_TOKEN"]&.size.inspect'
         env:
           # GH_TOKEN: ${{ github.token }}
           GH_TOKEN: ${{ needs.get-access-token.outputs.access-token }}
