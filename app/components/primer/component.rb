@@ -52,7 +52,7 @@ module Primer
       message += " and will be removed in v#{version}." if version
       message += " Use #{new_class.name} instead." if new_class
 
-      deprecation.warn(message)
+      ::Primer::ViewComponents.deprecation.warn(message)
     end
 
     def validate_aria_label
@@ -140,10 +140,6 @@ module Primer
 
     def should_raise_aria_error?
       !Rails.env.production? && raise_on_invalid_aria? && !ENV["PRIMER_WARNINGS_DISABLED"]
-    end
-
-    def deprecation
-      ::Primer::ViewComponents.deprecation
     end
   end
 end
