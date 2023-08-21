@@ -8,7 +8,6 @@ on:
 jobs:
   get-access-token:
     name: Get access token
-    runs-on: ubuntu-latest
     uses: primer/.github/.github/workflows/get_access_token.yml@main
   list:
     runs-on: ubuntu-latest
