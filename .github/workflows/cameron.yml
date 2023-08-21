@@ -1,0 +1,16 @@
+name: Cameron
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cameron:
+    runs-on: ubuntu-latest
+    steps:
+      # - id: get-access-token
+      #   uses: primer/.github/.github/workflows/get_access_token.yml@main
+
+      - name: List codespaces
+        run: gh codespace list
+        # env:
+        #   GITHUB_TOKEN: ${{ steps.get-access-token.outputs.access-token }}
