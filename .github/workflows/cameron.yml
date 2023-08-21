@@ -14,5 +14,6 @@ jobs:
 
       - name: List codespaces
         run: gh codespace list
-        # env:
-        #   GITHUB_TOKEN: ${{ steps.get-access-token.outputs.access-token }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # GITHUB_TOKEN: ${{ steps.get-access-token.outputs.access-token }}
