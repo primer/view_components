@@ -14,8 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-access-token
     steps:
+      - name: Decrypt access token
+        id: decrypt-access-token
+        run: echo "access-token=$(echo '${{ needs.get-access-token.outputs.access-token }}' | openssl enc -a -d -aes256 -pbkdf2 -k '${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}')" >> "$GITHUB_OUTPUT"
       - name: List codespaces
-        run: ruby -e 'puts ENV["GH_TOKEN"]&.size.inspect'
+        run: gh codespace list
         env:
-          # GH_TOKEN: ${{ github.token }}
-          GH_TOKEN: ${{ needs.get-access-token.outputs.access-token }}
+          GH_TOKEN: ${{ steps.decrypt-access-token.outputs.access-token }}
