@@ -6,6 +6,10 @@ on:
       - closed
       - locked
 
+permissions:
+  id-token: write # This is required for requesting the OIDC JWT for authing with Azure
+  contents: read  # This is required for actions/checkout
+
 # This allows one deploy workflow to interrupt another
 concurrency:
   group: 'preview-env @ ${{ github.head_ref || github.run_id }} for ${{ github.event.number || github.event.inputs.PR_NUMBER }}'
