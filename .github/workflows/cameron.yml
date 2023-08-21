@@ -3,7 +3,7 @@ name: Cameron
 on:
   pull_request:
     branches:
-      - test_access_token
+      - '*'
 
 jobs:
   cameron:
