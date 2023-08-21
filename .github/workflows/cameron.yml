@@ -1,7 +1,9 @@
 name: Cameron
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - test_access_token
 
 jobs:
   cameron:
