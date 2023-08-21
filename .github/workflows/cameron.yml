@@ -6,15 +6,16 @@ on:
       - '*'
 
 jobs:
-  cameron:
+  get-access-token:
     name: Get access token
     runs-on: ubuntu-latest
     uses: primer/.github/.github/workflows/get_access_token.yml@main
   list:
     runs-on: ubuntu-latest
+    needs: get-access-token
     steps:
       - name: List codespaces
         run: gh codespace list
         env:
           # GH_TOKEN: ${{ github.token }}
-          GH_TOKEN: ${{ jobs.cameron.outputs.access-token }}
+          GH_TOKEN: ${{ needs.get-access-token.outputs.access-token }}
