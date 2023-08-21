@@ -9,11 +9,11 @@ jobs:
   cameron:
     runs-on: ubuntu-latest
     steps:
-      # - id: get-access-token
-      #   uses: primer/.github/.github/workflows/get_access_token.yml@main
+      - id: get-access-token
+        uses: primer/.github/.github/workflows/get_access_token.yml@main
 
       - name: List codespaces
         run: gh codespace list
         env:
-          GH_TOKEN: ${{ github.token }}
-          # GITHUB_TOKEN: ${{ steps.get-access-token.outputs.access-token }}
+          # GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.get-access-token.outputs.access-token }}
