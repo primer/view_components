@@ -10495,7 +10495,7 @@
     "slots": [
       {
         "name": "leading_visual",
-        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\n- `leading_visual_svg` to render a SVG.",
         "parameters": [
           {
             "name": "system_arguments",
