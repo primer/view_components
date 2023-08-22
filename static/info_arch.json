@@ -10709,6 +10709,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/button/leading_visual_svg",
+        "name": "leading_visual_svg",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/button/trailing_action",
         "name": "trailing_action",
         "snapshot": "true",
