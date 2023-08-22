@@ -31,9 +31,7 @@
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
-    "build:docs": "npm run --prefix ./docs/ build",
-    "build:docs:preview": "cd docs && npx gatsby build",
-    "prepare": "rm -rf docs/static && mkdir -p docs/static && script/build-assets && cp app/assets/**/primer_view_components.* docs/static/",
+    "prepare": "script/build-assets",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
     "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
