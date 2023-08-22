@@ -264,6 +264,28 @@ module Primer
                              })
       end
 
+      # @label Leading visual SVG
+      # @param scheme select [default, primary, danger, invisible, link]
+      # @param size select [small, medium]
+      # @param block toggle
+      # @param align_content select [center, start]
+      # @snapshot
+      def leading_visual_svg(
+        scheme: :invisible,
+        size: :medium,
+        block: false,
+        id: "button-preview",
+        align_content: :center
+      )
+        render_with_template(locals: {
+                               scheme: scheme,
+                               size: size,
+                               block: block,
+                               id: id,
+                               align_content: align_content
+                             })
+      end
+
       # @label Trailing action
       # @param block toggle
       # @param align_content select [center, start]
