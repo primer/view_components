@@ -23,15 +23,15 @@ class IconButtonMigrationTest < CopTestCase
     assert_equal 1, cop.offenses.count
   end
 
-  def test_warn_on_icon_button_simple_arg
+  def test_warn_on_icon_button_with_simple_arg
     investigate(cop, <<~RUBY)
-      Primer::IconButton.new(0)
+      Primer::IconButton.new(icon: :star)
     RUBY
 
     assert_equal 1, cop.offenses.count
     assert cop.offenses.first.corrector.present?
 
-    assert_equal "Primer::Beta::IconButton.new(0)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::IconButton.new(icon: :star)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_warn_no_fix_icon_button_with_box
