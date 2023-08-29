@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -31,9 +31,7 @@
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
-    "build:docs": "npm run --prefix ./docs/ build",
-    "build:docs:preview": "cd docs && npx gatsby build",
-    "prepare": "rm -rf docs/static && mkdir -p docs/static && script/build-assets && cp app/assets/**/primer_view_components.* docs/static/",
+    "prepare": "script/build-assets",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
     "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
@@ -64,7 +62,7 @@
     "@github/prettier-config": "0.0.4",
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.0.2",
-    "@primer/primitives": "7.11.14",
+    "@primer/primitives": "7.12.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",

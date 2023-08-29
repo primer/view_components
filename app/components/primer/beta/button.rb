@@ -41,10 +41,15 @@ module Primer
       #
       # - `leading_visual_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
+      # - `leading_visual_svg` to render a SVG.
+      #
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
           Primer::Beta::Octicon.new(**system_arguments)
+        },
+        svg: lambda { |**system_arguments|
+          Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
         }
       }
 
@@ -81,7 +86,7 @@ module Primer
       renders_one :tooltip, lambda { |**system_arguments|
         raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
 
-        ActiveSupport::Deprecation.warn("Buttons with visible text should not use a `label` tooltip. Consider using Primer::Beta::IconButton instead.") if system_arguments[:type] == :label
+        ::Primer::ViewComponents.deprecation.warn("Buttons with visible text should not use a `label` tooltip. Consider using Primer::Beta::IconButton instead.") if system_arguments[:type] == :label
         system_arguments[:for_id] = @id
         system_arguments[:type] = :description
 

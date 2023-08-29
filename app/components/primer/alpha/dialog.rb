@@ -133,7 +133,8 @@ module Primer
           @system_arguments, {
             aria: {
               disabled: true,
-              describedby: "#{@id}-title #{@id}-description"
+              labelledby: "#{@id}-title",
+              describedby: "#{@id}-description"
             }
           }
         )
