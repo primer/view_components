@@ -12,6 +12,10 @@
 
   <!-- Changed components: Primer::Beta::Flash -->
 
+- [#2210](https://github.com/primer/view_components/pull/2210) [`aded2aa4`](https://github.com/primer/view_components/commit/aded2aa45261b13d870f474889d6bc6a803c484a) Thanks [@khiga8](https://github.com/khiga8)! - Fix accessibility bug of missing accessible name on `Primer::Alpha::Dialog`
+
+  <!-- Changed components: Primer::Alpha::Dialog -->  
+
 ### Patch Changes
 
 - [#2213](https://github.com/primer/view_components/pull/2213) [`bc4b3340`](https://github.com/opf/primer_view_components/commit/bc4b33402a7cae813a77bafa7de9e1c7f2fc5419) Thanks [@camertron](https://github.com/camertron)! - Support Rails edge's custom deprecators
@@ -21,6 +25,9 @@
 - [#2212](https://github.com/primer/view_components/pull/2212) [`3d0036ae`](https://github.com/opf/primer_view_components/commit/3d0036ae50b611942347d065f5be55822ec17748) Thanks [@keithamus](https://github.com/keithamus)! - Fix dialog invocation within deferred ActionMenus
 
   <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2211](https://github.com/primer/view_components/pull/2211) [`9623ab63`](https://github.com/primer/view_components/commit/9623ab63dfb6a658d416376291d28ade9bf2b1fd) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating tooltip migration linter link to correct url
+
 
 ## 0.7.0
 
