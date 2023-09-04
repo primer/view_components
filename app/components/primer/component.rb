@@ -52,7 +52,7 @@ module Primer
       message += " and will be removed in v#{version}." if version
       message += " Use #{new_class.name} instead." if new_class
 
-      ActiveSupport::Deprecation.warn(message)
+      ::Primer::ViewComponents.deprecation.warn(message)
     end
 
     def validate_aria_label

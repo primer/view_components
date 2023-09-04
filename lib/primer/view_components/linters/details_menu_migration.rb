@@ -11,7 +11,7 @@ module ERBLint
           include Helpers::RuleHelpers
 
           MIGRATE_FROM_DETAILS_MENU = "<details-menu> has been deprecated. Please instead use Primer::Alpha::ActionMenu" \
-            "https://primer.style/design/components/action-menu/rails/alpha"
+            " https://primer.style/design/components/action-menu/rails/alpha"
           DETAILS_MENU_RUBY_PATTERN = /tag:?\s+:"details-menu"/.freeze
 
           def run(processed_source)

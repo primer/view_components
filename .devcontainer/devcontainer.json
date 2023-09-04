@@ -37,9 +37,6 @@
   "portsAttributes": {
     "4000": {
       "label": "demo"
-    },
-    "5400": {
-      "label": "doctocat"
     }
   },
   "hostRequirements": {

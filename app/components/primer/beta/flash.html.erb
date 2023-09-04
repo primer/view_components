@@ -1,9 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= primer_octicon @icon if @icon %><%= content %>
   <% if @dismissible %>
-    <button class="flash-close js-flash-close" type="button" aria-label="Close">
-      <%= primer_octicon "x" %>
-    </button>
+    <%= render Primer::Beta::IconButton.new(icon: :x, scheme: :invisible, wrapper_arguments: { classes: "flash-close" }, classes: "js-flash-close", "aria-label": "Dismiss alert") %>
   <% end %>
 
   <%= action %>
