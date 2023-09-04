@@ -27,7 +27,7 @@ class Primer::FetchOrFallbackHelperTest < Minitest::Test
 
   def test_warns_of_deprecation_if_not_silenced
     with_silence_deprecations(false) do
-      ActiveSupport::Deprecation.expects(:warn).with("3 is deprecated and will be removed in a future version.").once
+      ::Primer::ViewComponents.deprecation.expects(:warn).with("3 is deprecated and will be removed in a future version.").once
       assert_equal(fetch_or_fallback([1, 2], 3, deprecated_values: [3]), 3)
     end
   end

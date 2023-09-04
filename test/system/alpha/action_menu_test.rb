@@ -265,6 +265,16 @@ module Alpha
       assert_equal page.evaluate_script("document.activeElement").text, "Copy link"
     end
 
+    def test_deferred_dialog_opens
+      visit_preview(:with_deferred_content)
+
+      find("action-menu button[aria-controls]").click
+
+      find("action-menu ul li:nth-child(4)").click
+
+      assert_selector "modal-dialog[open]"
+    end
+
     def test_opening_second_menu_closes_first_menu
       visit_preview(:two_menus)
 

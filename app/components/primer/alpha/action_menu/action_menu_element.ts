@@ -13,7 +13,8 @@ const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[r
 
 @controller
 export class ActionMenuElement extends HTMLElement {
-  @target includeFragment: IncludeFragmentElement
+  @target
+  includeFragment: IncludeFragmentElement
 
   #abortController: AbortController
   #originalLabel = ''
@@ -57,7 +58,9 @@ export class ActionMenuElement extends HTMLElement {
     const id = this.querySelector('[role=menu]')?.id
     if (!id) return null
     for (const el of this.querySelectorAll(`[aria-controls]`)) {
-      if (el.getAttribute('aria-controls') === id) return el as HTMLButtonElement
+      if (el.getAttribute('aria-controls') === id) {
+        return el as HTMLButtonElement
+      }
     }
     return null
   }
@@ -94,7 +97,9 @@ export class ActionMenuElement extends HTMLElement {
     this.#updateInput()
 
     if (this.includeFragment) {
-      this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
+      this.includeFragment.addEventListener('include-fragment-replaced', this, {
+        signal
+      })
     }
   }
 
@@ -103,7 +108,8 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
-    if (event.target === this.invokerElement && this.#isActivationKeydown(event)) {
+    const activation = this.#isActivationKeydown(event)
+    if (event.target === this.invokerElement && activation) {
       if (this.#firstItem) {
         event.preventDefault()
         this.popoverElement?.showPopover()
@@ -112,11 +118,39 @@ export class ActionMenuElement extends HTMLElement {
       }
     }
 
+    // Ignore events within dialogs within menus
+    if ((event.target as Element)?.closest('dialog') || (event.target as Element)?.closest('modal-dialog')) {
+      return
+    }
+
+    // If a dialog has been rendered within the menu, we do not want to hide
+    // the entire menu, as that will also hide the Dialog. Instead we want to
+    // show the Dialog while hiding just the visible part of the menu.
+    if ((activation || event.type === 'click') && (event.target as HTMLElement)?.closest('[data-show-dialog-id]')) {
+      const dialogInvoker = (event.target as HTMLElement)!.closest('[data-show-dialog-id]')
+      const dialog = this.ownerDocument.getElementById(dialogInvoker?.getAttribute('data-show-dialog-id') || '')
+      if (dialogInvoker && dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
+        this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
+        const dialog_controller = new AbortController()
+        const {signal} = dialog_controller
+        const handleDialogClose = () => {
+          dialog_controller.abort()
+          this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
+          if (this.popoverElement?.matches(':popover-open')) {
+            this.popoverElement?.hidePopover()
+          }
+        }
+        dialog.addEventListener('close', handleDialogClose, {signal})
+        dialog.addEventListener('cancel', handleDialogClose, {signal})
+        return
+      }
+    }
+
     if (!this.popoverElement?.matches(':popover-open')) return
 
     if (event.type === 'include-fragment-replaced') {
       if (this.#firstItem) this.#firstItem.focus()
-    } else if (this.#isActivationKeydown(event) || (event instanceof MouseEvent && event.type === 'click')) {
+    } else if (activation || (event instanceof MouseEvent && event.type === 'click')) {
       // Hide popover after current event loop to prevent changes in focus from
       // altering the target of the event. Not doing this specifically affects
       // <a> tags. It causes the event to be sent to the currently focused element
