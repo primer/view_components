@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.8.0
+
+### Minor Changes
+
+- [#2215](https://github.com/primer/view_components/pull/2215) [`827634e9`](https://github.com/opf/primer_view_components/commit/827634e9a442fc6a6508235bdd38a1739e88cf5e) Thanks [@mjimenez98](https://github.com/mjimenez98)! - Support SVGs as leading visuals in `Button` component
+
+  <!-- Changed components: Primer::Beta::Button -->
+
+- [#2222](https://github.com/primer/view_components/pull/2222) [`e196af7b`](https://github.com/opf/primer_view_components/commit/e196af7bed7f862f758f5edfd51107579128e0ee) Thanks [@jonrohan](https://github.com/jonrohan)! - Replace dismiss button in Flash with IconButton
+
+  <!-- Changed components: Primer::Beta::Flash -->
+
+### Patch Changes
+
+- [#2213](https://github.com/primer/view_components/pull/2213) [`bc4b3340`](https://github.com/opf/primer_view_components/commit/bc4b33402a7cae813a77bafa7de9e1c7f2fc5419) Thanks [@camertron](https://github.com/camertron)! - Support Rails edge's custom deprecators
+
+  <!-- Changed components: _none_ -->
+
+- [#2212](https://github.com/primer/view_components/pull/2212) [`3d0036ae`](https://github.com/opf/primer_view_components/commit/3d0036ae50b611942347d065f5be55822ec17748) Thanks [@keithamus](https://github.com/keithamus)! - Fix dialog invocation within deferred ActionMenus
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
 ## 0.7.0
 
 ### Minor Changes
