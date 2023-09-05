@@ -10,6 +10,7 @@ require "view_component"
 require "primer/view_components"
 require "primer/view_components/engine"
 require "octicons"
+require_relative "../../lib/primer/yard"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
