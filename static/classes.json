@@ -411,6 +411,18 @@
   "Overlay-header": [
     "Primer::Alpha::Dialog"
   ],
+  "PageHeader": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-actions": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-description": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-title": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "Popover": [
     "Primer::Beta::Popover"
   ],

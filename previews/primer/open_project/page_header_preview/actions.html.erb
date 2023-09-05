@@ -1,0 +1,14 @@
+<%= render(Primer::OpenProject::PageHeader.new) do |component| %>
+  <% component.with_title do %>
+    A title
+  <% end %>
+  <% component.with_description do %>
+    A description with actions
+  <% end %>
+  <% component.with_actions do %>
+    <% render(Primer::Beta::Button.new(scheme: :primary)) do %>
+      An action
+    <% end %>
+  <% end %>
+<% end %>
+
