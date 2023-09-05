@@ -40,6 +40,6 @@ module OpenProject
   end
 end
 
-if Object.const_defined?(:Lookbook)
-  Lookbook::TreeNode.prepend OpenProject::Patches::LookbookTreeNodeInflector
-end
+# if Object.const_defined?(:Lookbook)
+#   Lookbook::TreeNode.prepend OpenProject::Patches::LookbookTreeNodeInflector
+# end
