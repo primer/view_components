@@ -15,6 +15,16 @@ module Primer
         end
       end
 
+
+      # @label Playground
+      #
+      def playground
+        render(Primer::OpenProject::PageHeader.new(tag: :h1)) do |header|
+          header.with_title { 'Hello' }
+          header.with_description { "Last updated 5 minutes ago by XYZ." }
+        end
+      end
+
       # @label With actions
       def actions
         render_with_template(locals: {})

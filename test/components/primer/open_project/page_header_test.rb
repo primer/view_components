@@ -6,8 +6,8 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline(Primer::PageHeader.new)
+    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title { 'Hello' } }
 
-    assert_text("Add a test here")
+    assert_text("Hello")
   end
 end
