@@ -26,13 +26,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+# frozen_string_literal: true
+
 module OpenProject
   module Patches
     ##
     # Allow directory labels in lookbook to be inflected
     module LookbookTreeNodeInflector
       def label
-        return name if name == 'OpenProject'
+        return name if name == "OpenProject"
 
         super
       end
