@@ -50,7 +50,9 @@ module Primer
           )
       end
 
-      # ::Primer::OpenProject::PageHeader
+      def render?
+        title?
+      end
     end
   end
 end
