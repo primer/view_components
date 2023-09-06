@@ -29,10 +29,11 @@ test.describe('generate snapshots', () => {
   for (const preview of previewsJson) {
     for (const example of preview.examples) {
       if (example.snapshot !== 'false') {
+        const previewPath = example.preview_path.replace('OpenProject', 'open_project')
         if (example.snapshot === 'interactive') {
           for (const theme of themes) {
             test(`${example.preview_path}-${theme}`, async ({page}) => {
-              await page.goto(`/rails/view_components/${example.preview_path}?theme=${theme}`)
+              await page.goto(`/rails/view_components/${previewPath}?theme=${theme}`)
 
               // Focus state
               await page.keyboard.press('Tab')
@@ -44,15 +45,16 @@ test.describe('generate snapshots', () => {
               await new Promise(resolve => setTimeout(resolve, 100))
 
               const focusedScreenshot = await page.screenshot({animations: 'disabled'})
-              expect(focusedScreenshot).toMatchSnapshot([example.preview_path, `${theme}.png`])
+              expect(focusedScreenshot).toMatchSnapshot([previewPath, `${theme}.png`])
             })
           }
         }
 
         test(example.preview_path, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          await page.goto(`/rails/view_components/${previewPath}?theme=all`)
+
           const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
+          expect(defaultScreenshot).toMatchSnapshot([previewPath, 'default.png'])
 
           // Focus state
           await page.keyboard.press('Tab')
@@ -61,7 +63,7 @@ test.describe('generate snapshots', () => {
           await new Promise(resolve => setTimeout(resolve, 100))
 
           const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-          expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
+          expect(focusedScreenshot).toMatchSnapshot([previewPath, 'focused.png'])
         })
       }
     }

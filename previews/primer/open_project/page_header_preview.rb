@@ -3,7 +3,7 @@
 module Primer
   module OpenProject
     # @logical_path primer/OpenProject
-    # @component Primer::Beta::AutoComplete::Item
+    # @component Primer::OpenProject::PageHeader
     # @label Page Header
     class PageHeaderPreview < ViewComponent::Preview
       # @label Default
