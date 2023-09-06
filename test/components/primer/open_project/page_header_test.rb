@@ -15,6 +15,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title { "Hello" } }
 
     assert_text("Hello")
+    assert_selector(".PageHeader-title")
   end
 
   def test_renders_description
@@ -24,20 +25,20 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     end
 
     assert_text("Hello")
+    assert_selector(".PageHeader-title")
     assert_text("My new description")
+    assert_selector(".PageHeader-description")
   end
+
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_actions do
-        render(Primer::Beta::Button.new(scheme: :primary)) do
-          "An action"
-        end
-      end
+      header.with_actions { "An action" }
     end
 
     assert_text("Hello")
+    assert_selector(".PageHeader-title")
     assert_text("An action")
-    assert_selector(".Button")
+    assert_selector(".PageHeader-actions")
   end
 end
