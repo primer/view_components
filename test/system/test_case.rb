@@ -20,10 +20,10 @@ module System
         nil
       end
 
-      match = /^(Alpha|Beta)([A-Z])/.match(component_name)
+      match = /^(Alpha|Beta|OpenProject)([A-Z])/.match(component_name)
       status = match ? match[1] : ""
-      status_path = match ? "#{status.downcase}/" : ""
-      component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
+      status_path = match ? "#{status.underscore}/" : ""
+      component_name = component_name.gsub(/^Beta|^Alpha|^OpenProject/, "") if match
       component_uri = component_name.underscore
 
       url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{scenario_name}"
