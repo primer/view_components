@@ -9,7 +9,7 @@ module Primer
       # @label Default
       # @snapshot
       def default
-        render(Primer::OpenProject::PageHeader.new(tag: :h1)) do |header|
+        render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "Hello" }
           header.with_description { "Last updated 5 minutes ago by XYZ." }
         end
@@ -19,7 +19,7 @@ module Primer
       # @label Playground
       #
       def playground
-        render(Primer::OpenProject::PageHeader.new(tag: :h1)) do |header|
+        render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "Hello" }
           header.with_description { "Last updated 5 minutes ago by XYZ." }
         end

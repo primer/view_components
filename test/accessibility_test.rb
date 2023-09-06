@@ -13,7 +13,7 @@ class AccessibilityTest < System::TestCase
 
       scenarios.each do |scenario|
         define_method(:"test_#{scenario.lookup_path.parameterize(separator: "_")}") do
-          visit "/rails/view_components/#{scenario.lookup_path}"
+          visit "/rails/view_components/#{scenario.lookup_path.underscore}"
 
           excludes = Primer::Accessibility.axe_rules_to_skip(
             component: preview.components.first&.component_class,

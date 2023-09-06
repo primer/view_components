@@ -11,7 +11,8 @@ module Primer
 
       # The title of the page header
       #
-      # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::Beta::Octicon) %>
+      # @param tag [Symbol] <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :title, lambda { |tag: :h1, **system_arguments|
         system_arguments[:tag] = fetch_or_fallback(HEADING_TAG_OPTIONS, tag, HEADING_TAG_FALLBACK)
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-title")
