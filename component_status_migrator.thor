@@ -5,7 +5,7 @@ require "thor"
 # :nodoc:
 class ComponentVersion
   COMPONENT_PATH = File.join("app", "components", "primer")
-  STATUSES = [:stable, :beta, :alpha, :deprecated, :experimental].freeze
+  STATUSES = [:stable, :beta, :alpha, :deprecated, :experimental, :open_project].freeze
 
   attr_reader :name, :status
 
