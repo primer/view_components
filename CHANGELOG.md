@@ -4,8 +4,9 @@
 
 ### Minor Changes
 
-- [#22](https://github.com/opf/primer_view_components/pull/22) [`ebbe8d5e`](https://github.com/opf/primer_view_components/commit/ebbe8d5e8a616799b9c8b54c0f263a2f43720d1f) Thanks [@oliverguenther](https://github.com/oliverguenther)! - - Add OpenProject status for custom components
-
+- [#22](https://github.com/opf/primer_view_components/pull/22) [`ebbe8d5e`](https://github.com/opf/primer_view_components/commit/ebbe8d5e8a616799b9c8b54c0f263a2f43720d1f) Thanks [@oliverguenther](https://github.com/oliverguenther)! -
+ 
+  - Add OpenProject status for custom components
   - Add PageHeader component
 
   <!-- Changed components: Primer::OpenProject::PageHeader -->
