@@ -2,7 +2,6 @@
 
 module Primer
   module OpenProject
-    # @logical_path primer/OpenProject
     # @component Primer::OpenProject::PageHeader
     # @label Page Header
     class PageHeaderPreview < ViewComponent::Preview

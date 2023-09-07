@@ -34,7 +34,7 @@ module OpenProject
     # Allow directory labels in lookbook to be inflected
     module LookbookTreeNodeInflector
       def label
-        return name if name == "OpenProject"
+        return "OpenProject" if %w[OpenProject open_project].include?(name.to_s)
 
         super
       end
@@ -42,6 +42,4 @@ module OpenProject
   end
 end
 
-# if Object.const_defined?(:Lookbook)
-#   Lookbook::TreeNode.prepend OpenProject::Patches::LookbookTreeNodeInflector
-# end
+Lookbook::TreeNode.prepend OpenProject::Patches::LookbookTreeNodeInflector if Object.const_defined?(:Lookbook)
