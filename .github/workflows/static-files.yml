@@ -32,7 +32,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Generating static files
-          commit_user_name: GitHub Design Engineering Bot
-          commit_user_email: primer-css@users.noreply.github.com
-          commit_author: primer-css <primer-css@users.noreply.github.com>
+          commit_user_name: OpenProject CI
+          commit_user_email: openprojectci@users.noreply.github.com
+          commit_author: OpenProject CI <openprojectci@users.noreply.github.com>
           file_pattern: lib/primer/classify/utilities.yml static/*.json
