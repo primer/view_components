@@ -1300,6 +1300,17 @@
   },
   "Primer::Navigation::TabComponent": {
   },
+  "Primer::OpenProject::PageHeader": {
+    "HEADING_TAG_FALLBACK": "h1",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
     "ALIGN_MAPPING": {

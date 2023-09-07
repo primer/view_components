@@ -14365,6 +14365,109 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::PageHeader",
+    "description": "A ViewComponent PageHeader inspired by the primer react variant",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::PageHeader",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/default/",
+    "parameters": [
+
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "description": "The title of the page header",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "description": "Optional description below the title row",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "actions",
+        "description": "Actions",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/page_header/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/actions",
+        "name": "actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::Tooltip",
     "description": "`Tooltip` is a wrapper component that will apply a tooltip to the provided content.",
     "accessibility_docs": null,

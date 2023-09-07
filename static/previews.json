@@ -4434,23 +4434,10 @@
   },
   {
     "name": "page_header",
-    "component": "PageHeader",
-    "status": "openproject",
+    "component": "OpenProject::PageHeader",
+    "status": "open_project",
     "lookup_path": "primer/open_project/page_header",
     "examples": [
-      {
-        "preview_path": "primer/open_project/page_header/playground",
-        "name": "playground",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
       {
         "preview_path": "primer/open_project/page_header/default",
         "name": "default",
@@ -4465,9 +4452,22 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/actions",
         "name": "actions",
-        "snapshot": "true",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
