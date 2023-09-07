@@ -2,10 +2,10 @@
 
 require "system/test_case"
 
-class Integration<%= module_name %><%= class_name %>Test < System::TestCase
+class IntegrationOpenProjectPageHeaderTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".<%= custom_element_name %>")
+    assert_selector(".PageHeader")
   end
 end

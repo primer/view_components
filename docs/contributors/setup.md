@@ -8,7 +8,7 @@
 
 ### Lookbook
 
-[Lookbook](https://github.com/ViewComponent/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc.
+[Lookbook](https://github.com/ViewComponent/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent previews and yarddoc.
 
 #### How to run
 

@@ -15,7 +15,7 @@ class ComponentGenerator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. One of alpha, beta or stable"
+  class_option :status, default: "open_project", desc: "Status of the component. One of alpha, beta, open_project or stable"
   class_option :js, default: nil, desc: "Name of the package to import for this component."
   class_option :inline, type: :boolean, desc: "Use this option to create a #call method instead of generating an ERB template for the component."
 

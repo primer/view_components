@@ -21,7 +21,8 @@ module Primer
         beta: :beta,
         stable: :stable,
         deprecated: :deprecated,
-        experimental: :experimental
+        experimental: :experimental,
+        open_project: :open_project
       }.freeze
 
       class UnknownStatusError < StandardError; end
