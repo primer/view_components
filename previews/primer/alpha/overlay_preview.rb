@@ -164,6 +164,11 @@ module Primer
                              })
       end
 
+      # @label In an ActionMenu
+      def in_an_action_menu()
+        render_with_template(locals: {})
+      end
+
       # @label Dialog with header and footer
       #
       def dialog_with_header_footer
