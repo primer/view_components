@@ -4,7 +4,7 @@ PATH
     openproject-primer_view_components (0.8.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-      openproject-octicons (>= 19.6.7)
+      openproject-octicons (>= 19.7.0)
       view_component (>= 3.1, < 4.0)
 
 GEM
@@ -272,7 +272,7 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     oj (3.14.0)
-    openproject-octicons (19.6.7)
+    openproject-octicons (19.7.0)
     os (1.1.4)
     pry (0.14.1)
       coderay (~> 1.1)
