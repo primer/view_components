@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.9.0
+
+### Minor Changes
+
+- [#22](https://github.com/opf/primer_view_components/pull/22) [`ebbe8d5e`](https://github.com/opf/primer_view_components/commit/ebbe8d5e8a616799b9c8b54c0f263a2f43720d1f) Thanks [@oliverguenther](https://github.com/oliverguenther)! -
+ 
+  - Add OpenProject status for custom components
+  - Add PageHeader component
+
+  <!-- Changed components: Primer::OpenProject::PageHeader -->
+
+### Patch Changes
+
+- [#24](https://github.com/opf/primer_view_components/pull/24) [`4029a36e`](https://github.com/opf/primer_view_components/commit/4029a36ed801839e734c207543f33623c99f65b2) Thanks [@HDinger](https://github.com/HDinger)! - Bump openprojects-octicons to 19.7.0
+
 ## 0.8.0
 
 ### Minor Changes
@@ -14,7 +29,7 @@
 
 - [#2210](https://github.com/primer/view_components/pull/2210) [`aded2aa4`](https://github.com/primer/view_components/commit/aded2aa45261b13d870f474889d6bc6a803c484a) Thanks [@khiga8](https://github.com/khiga8)! - Fix accessibility bug of missing accessible name on `Primer::Alpha::Dialog`
 
-  <!-- Changed components: Primer::Alpha::Dialog -->  
+  <!-- Changed components: Primer::Alpha::Dialog -->
 
 ### Patch Changes
 
@@ -27,7 +42,6 @@
   <!-- Changed components: Primer::Alpha::ActionMenu -->
 
 - [#2211](https://github.com/primer/view_components/pull/2211) [`9623ab63`](https://github.com/primer/view_components/commit/9623ab63dfb6a658d416376291d28ade9bf2b1fd) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating tooltip migration linter link to correct url
-
 
 ## 0.7.0
 
