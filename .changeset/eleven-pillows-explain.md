@@ -4,4 +4,4 @@
 
 Fixing ActionBar more menu items including buttons with no type
 
-<!-- Changed components: _none_ -->
+<!-- Changed components: Primer::Alpha::ActionBar -->
