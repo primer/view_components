@@ -1,11 +1,19 @@
 # CHANGELOG
 
+## 0.9.1
+
+### Patch Changes
+
+- [#26](https://github.com/opf/primer_view_components/pull/26) [`8bed2897`](https://github.com/opf/primer_view_components/commit/8bed2897edc381c3d943cb724854a103b8c84fe4) Thanks [@HDinger](https://github.com/HDinger)! - Add large variant for PageHeaderComponent
+
+  <!-- Changed components: Primer::OpenProject::PageHeader -->
+
 ## 0.9.0
 
 ### Minor Changes
 
 - [#22](https://github.com/opf/primer_view_components/pull/22) [`ebbe8d5e`](https://github.com/opf/primer_view_components/commit/ebbe8d5e8a616799b9c8b54c0f263a2f43720d1f) Thanks [@oliverguenther](https://github.com/oliverguenther)! -
- 
+
   - Add OpenProject status for custom components
   - Add PageHeader component
 
