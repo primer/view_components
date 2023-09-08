@@ -423,6 +423,9 @@
   "PageHeader-title": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader-title--large": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "Popover": [
     "Primer::Beta::Popover"
   ],
