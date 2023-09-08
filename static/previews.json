@@ -4465,9 +4465,9 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/actions",
-        "name": "actions",
-        "snapshot": "true",
+        "preview_path": "primer/open_project/page_header/large_title",
+        "name": "large_title",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4478,9 +4478,9 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/large",
-        "name": "large",
-        "snapshot": "true",
+        "preview_path": "primer/open_project/page_header/actions",
+        "name": "actions",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
