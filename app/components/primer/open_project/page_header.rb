@@ -19,13 +19,13 @@ module Primer
       #
       # @param tag [Symbol] <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :title, lambda { |tag: HEADING_TAG_FALLBACK, variant: DEFAULT_HEADER_VARIANT,  **system_arguments|
+      renders_one :title, lambda { |tag: HEADING_TAG_FALLBACK, variant: DEFAULT_HEADER_VARIANT, **system_arguments|
         system_arguments[:tag] = fetch_or_fallback(HEADING_TAG_OPTIONS, tag, HEADING_TAG_FALLBACK)
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "PageHeader-title",
           "PageHeader-title--#{variant}"
-          )
+        )
 
         Primer::BaseComponent.new(**system_arguments)
       }

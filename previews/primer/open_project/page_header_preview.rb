@@ -14,7 +14,6 @@ module Primer
         end
       end
 
-
       # @label Playground
       # @param variant [Symbol] select [medium, large]
       # @param title [String] text
