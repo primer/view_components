@@ -6,25 +6,15 @@ require_relative "models/deep_thought"
 class Primer::Forms::FormControlTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class PlainTextFieldForm < ApplicationForm
-    form do |test_form|
-      test_form.text_field(name: :ultimate_answer, label: "Ultimate answer")
-    end
-  end
-
-  class AutoCheckTextFieldForm < ApplicationForm
-    form do |test_form|
-      test_form.text_field(name: :ultimate_answer, label: "Ultimate answer", auto_check_src: "/foo")
-    end
-  end
-
-  def test_plain_supports_server_errors
+  def test_supports_model_errors
     model = DeepThought.new(41)
     model.valid? # perform validations
 
     render_in_view_context do
       primer_form_with(url: "/foo", model: model) do |f|
-        render(PlainTextFieldForm.new(f))
+        render_inline_form(f) do |test_form|
+          test_form.text_field(name: :ultimate_answer, label: "Ultimate answer")
+        end
       end
     end
 
@@ -42,7 +32,9 @@ class Primer::Forms::FormControlTest < Minitest::Test
 
     render_in_view_context do
       primer_form_with(url: "/foo", model: model) do |f|
-        render(AutoCheckTextFieldForm.new(f))
+        render_inline_form(f) do |test_form|
+          test_form.text_field(name: :ultimate_answer, label: "Ultimate answer", auto_check_src: "/foo")
+        end
       end
     end
 

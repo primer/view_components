@@ -19,5 +19,13 @@ module Primer
         &block
       )
     end
+
+    def inline_form(*args, &block)
+      Primer::Forms.inline_form(*args, &block)
+    end
+
+    def render_inline_form(*args, &block)
+      render(inline_form(*args, &block))
+    end
   end
 end
