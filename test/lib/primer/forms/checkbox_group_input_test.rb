@@ -66,7 +66,7 @@ class Primer::Forms::CheckboxGroupInputTest < Minitest::Test
     trip.valid? # populate validation messages
 
     render_in_view_context do
-      primer_form_with(model: trip) do |f|
+      primer_form_with(model: trip, url: "/trips") do |f|
         render(ArrayCheckBoxGroupForm.new(f))
       end
     end

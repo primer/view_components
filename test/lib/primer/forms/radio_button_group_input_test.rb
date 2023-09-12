@@ -66,7 +66,7 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
     survey.valid? # populate validation messages
 
     render_in_view_context do
-      primer_form_with(model: survey) do |f|
+      primer_form_with(model: survey, url: "/surveys") do |f|
         render(RadioButtonGroupForm.new(f))
       end
     end
