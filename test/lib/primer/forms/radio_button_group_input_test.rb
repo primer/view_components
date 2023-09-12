@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "lib/test_helper"
+require_relative "models/survey"
 
 class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -58,5 +59,23 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
     end
 
     assert_selector ".FormControl-radio-wrap input[disabled]"
+  end
+
+  def test_validations
+    survey = Survey.new
+    survey.valid?  # populate validation messages
+
+    render_in_view_context do
+      primer_form_with(model: survey) do |f|
+        render(RadioButtonGroupForm.new(f))
+      end
+    end
+
+    # the wrapper should be marked invalid, but not individual check boxes
+    assert_selector ".FormControl-radio-group-wrap[invalid=true][aria-invalid=true]"
+    refute_selector "input[type=radio][invalid]"
+
+    # should have a validation message
+    assert_selector ".FormControl-inlineValidation", text: "Channel can't be blank"
   end
 end

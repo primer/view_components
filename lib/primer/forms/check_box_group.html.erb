@@ -12,6 +12,9 @@
     <% end %>
   </fieldset>
   <div class="mt-2">
+    <%= render(ValidationMessage.new(input: @input)) %>
+  </div>
+  <div class="mt-2">
     <%= render(Caption.new(input: @input)) %>
   </div>
 <% end %>

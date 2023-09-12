@@ -26,6 +26,16 @@ module Primer
           yield(self) if block_given?
         end
 
+        # check boxes cannot be invalid, as both checked and unchecked are valid states
+        def valid?
+          true
+        end
+
+        # check boxes cannot have validation messages, as they can never be invalid
+        def validation_messages
+          []
+        end
+
         def to_component
           CheckBox.new(input: self)
         end
