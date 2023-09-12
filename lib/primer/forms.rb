@@ -4,11 +4,7 @@ module Primer
   # :nodoc:
   module Forms
     def self.inline_form(builder, base = nil, &block)
-      base ||= if defined?(ApplicationForm)
-        ApplicationForm
-      else
-        Primer::Forms::Base
-      end
+      base ||= defined?(ApplicationForm) ? ApplicationForm : Primer::Forms::Base
 
       klass = Class.new(base) do
         form(&block)
