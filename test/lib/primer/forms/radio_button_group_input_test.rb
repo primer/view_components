@@ -63,7 +63,7 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
 
   def test_validations
     survey = Survey.new
-    survey.valid?  # populate validation messages
+    survey.valid? # populate validation messages
 
     render_in_view_context do
       primer_form_with(model: survey) do |f|

@@ -63,7 +63,7 @@ class Primer::Forms::CheckboxGroupInputTest < Minitest::Test
 
   def test_validations
     trip = Trip.new(places: ["lopez"])
-    trip.valid?  # populate validation messages
+    trip.valid? # populate validation messages
 
     render_in_view_context do
       primer_form_with(model: trip) do |f|
