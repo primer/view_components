@@ -66,8 +66,6 @@ module Primer
         system_arguments = {
           **system_arguments,
           hidden: true,
-          tag: :button,
-          type: "button",
           "data-for": id,
           "data-action": "click:action-bar#menuItemClick"
         }
