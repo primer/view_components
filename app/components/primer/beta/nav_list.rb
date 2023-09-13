@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
-    # **This component is deprecated.** Please use <%= link_to_component(Primer::Beta::NavList) %> instead.
-    #
+  module Beta
     # `NavList` provides a simple way to render side navigation, i.e. navigation
     # that appears to the left or right side of some main content. Each group in a
     # nav list is a list of links.
@@ -17,24 +15,24 @@ module Primer
     # or more ID values that determine which item will appear selected. Use the
     # `selected_item_id` argument to select the appropriate item.
     class NavList < Primer::Component
-      status :deprecated
+      status :beta
       audited_at "2023-07-10"
 
       # @private
       def self.custom_element_name
-        "nav-list-alpha"
+        "nav-list"
       end
 
-      # The heading for the list at large. Accepts the arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Heading) %>.
+      # The heading for the list at large. Accepts the arguments accepted by <%= link_to_component(Primer::Beta::NavList::Heading) %>.
       #
-      renders_one :heading, Primer::Alpha::NavList::Heading
+      renders_one :heading, Primer::Beta::NavList::Heading
 
       # @!parse
       #   # Adds an item to the list.
       #   #
-      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
-      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
-      #   def with_item(component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block)
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Beta::NavList::Item) %>
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Beta::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      #   def with_item(component_klass: Primer::Beta::NavList::Item, **system_arguments, &block)
       #   end
 
       # @!parse
@@ -44,23 +42,23 @@ module Primer
       #   # @param username [String] The username associated with the avatar.
       #   # @param full_name [String] Optional. The user's full name.
       #   # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
-      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Beta::NavList::Item) %>
       #   # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
-      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
-      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments, &block)
+      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Beta::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      #   def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Beta::NavList::Item, avatar_arguments: {}, **system_arguments, &block)
       #   end
 
       # @!parse
       #   # Adds a group to the list. A group is a list of links and a (required) heading.
       #   #
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Group) %>.
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::NavList::Group) %>.
       #   def with_group(**system_arguments, &block)
       #   end
 
       # @!parse
       #   # Adds a divider to the list. Dividers visually separate items and groups.
       #   #
-      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Divider) %>.
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::NavList::Divider) %>.
       #   def with_divider(**system_arguments, &block)
       #   end
 
@@ -84,13 +82,13 @@ module Primer
         },
 
         divider: {
-          renders: Primer::Alpha::NavList::Divider,
+          renders: Primer::Beta::NavList::Divider,
           as: :divider
         },
 
         group: {
           renders: lambda { |**system_arguments, &block|
-            Primer::Alpha::NavList::Group.new(
+            Primer::Beta::NavList::Group.new(
               selected_item_id: @selected_item_id,
               **system_arguments,
               &block
@@ -113,9 +111,9 @@ module Primer
       # the context of a list, eg. if rendering additional items to append to
       # an existing list, perhaps via a separate HTTP request.
       #
-      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
-      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
-      def build_item(component_klass: Primer::Alpha::NavList::Item, **system_arguments, &block)
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Beta::NavList::Item) %>
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Beta::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_item(component_klass: Primer::Beta::NavList::Item, **system_arguments, &block)
         component_klass.new(
           list: top_level_group,
           selected_item_id: @selected_item_id,
@@ -135,10 +133,10 @@ module Primer
       # @param username [String] The username associated with the avatar.
       # @param full_name [String] Optional. The user's full name.
       # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
-      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::NavList::Item) %>
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Beta::NavList::Item) %>
       # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>
-      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
-      def build_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Alpha::NavList::Item, avatar_arguments: {}, **system_arguments)
+      # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Beta::NavList::Item) %>, or whatever class is passed as the `component_klass` argument.
+      def build_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, component_klass: Primer::Beta::NavList::Item, avatar_arguments: {}, **system_arguments)
         component_klass.new(
           list: top_level_group,
           selected_item_id: @selected_item_id,
@@ -207,7 +205,7 @@ module Primer
 
       def top_level_group
         # dummy group for the list: argument in the item slot above
-        @top_level_group ||= Primer::Alpha::NavList::Group.new(selected_item_id: @selected_item_id)
+        @top_level_group ||= Primer::Beta::NavList::Group.new(selected_item_id: @selected_item_id)
       end
     end
   end

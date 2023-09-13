@@ -1,0 +1,13 @@
+<% with_private_content do %>
+  <% unless items.empty? %>
+    <% capture do %>
+      <%= render(Primer::BaseComponent.new(tag: :ul, role: :list, **@sub_list_arguments)) do %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render_parent %>

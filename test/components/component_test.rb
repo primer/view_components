@@ -124,6 +124,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
+    [Primer::Beta::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
     [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }]
@@ -142,7 +143,11 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::NavList::Group",
       "Primer::Alpha::NavList::Divider",
       "Primer::Alpha::NavList::Header",
-      "Primer::Alpha::OcticonSymbols",
+      "Primer::Beta::NavList::Item",
+      "Primer::Beta::NavList::Group",
+      "Primer::Beta::NavList::Divider",
+      "Primer::Beta::NavList::Header",
+      "Primer::Beta::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",
       "Primer::Navigation::TabComponent"

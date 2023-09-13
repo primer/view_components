@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
+  module Beta
     class NavList
       # A logical grouping of navigation links with an optional heading.
       #
-      # See <%= link_to_component(Primer::Alpha::NavList) %> for usage examples.
+      # See <%= link_to_component(Primer::Beta::NavList) %> for usage examples.
       class Group < Primer::Alpha::ActionList
         # A special "show more" list item that appears at the bottom of the group. Clicking
         # the item will fetch the next page of results from the URL passed in the `src` argument
@@ -13,8 +13,8 @@ module Primer
         #
         # @param src [String] The URL to query for additional pages of list items.
         # @param pages [Integer] The total number of pages in the result set.
-        # @param component_klass [Class] A component class to use instead of the default `Primer::Alpha::NavList::Item` class.
-        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+        # @param component_klass [Class] A component class to use instead of the default `Primer::Beta::NavList::Item` class.
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::NavList::Item) %>.
         renders_one :show_more_item, lambda { |src:, pages:, component_klass: NavList::Item, **system_arguments|
           system_arguments[:classes] = class_names(
             @item_classes,
@@ -49,7 +49,7 @@ module Primer
 
         # @private
         def self.custom_element_name
-          Primer::Alpha::NavList.custom_element_name
+          Primer::Beta::NavList.custom_element_name
         end
 
         # @param selected_item_id [Symbol] The ID of the currently selected item. Used internally.
@@ -71,7 +71,7 @@ module Primer
         # @!parse
         #   # Items.
         #   #
-        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::NavList::Item) %>.
         #   renders_many :items
 
         # @private
