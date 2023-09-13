@@ -1,14 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
-    class NavList
-      # Separator with optional text rendered above groups or between individual items.
-      class Divider < Primer::Alpha::ActionList::Divider
-        def kind
-          :divider
-        end
-      end
-    end
+  class Alpha::NavList::Divider < Beta::NavList::Divider
+    status :deprecated
   end
 end

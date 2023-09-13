@@ -4844,7 +4844,7 @@
     ]
   },
   {
-    "fully_qualified_name": "Primer::Alpha::NavList",
+    "fully_qualified_name": "Primer::Beta::NavList",
     "description": "`NavList` provides a simple way to render side navigation, i.e. navigation\nthat appears to the left or right side of some main content. Each group in a\nnav list is a list of links.\n\nNav list groups can contain sub items. Rather than navigating to a URL, groups\nwith sub items expand and collapse on click. To indicate this functionality, the\ngroup will automatically render with a trailing chevron icon that changes direction\nwhen the group expands and collapses.\n\nNav list items appear visually active when selected. Each nav item must have one\nor more ID values that determine which item will appear selected. Use the\n`selected_item_id` argument to select the appropriate item.",
     "accessibility_docs": null,
     "is_form_component": false,
@@ -4873,7 +4873,7 @@
     "slots": [
       {
         "name": "heading",
-        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Heading{{/link_to_component}}.",
+        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Heading{{/link_to_component}}.",
         "parameters": [
 
         ]
@@ -4894,14 +4894,14 @@
           {
             "name": "component_klass",
             "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
           },
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ]
       },
@@ -4936,8 +4936,8 @@
           {
             "name": "component_klass",
             "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
           },
           {
             "name": "avatar_arguments",
@@ -4949,7 +4949,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ]
       },
@@ -4961,7 +4961,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Group{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Group{{/link_to_component}}."
           }
         ]
       },
@@ -4973,7 +4973,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Divider{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Divider{{/link_to_component}}."
           }
         ]
       },
@@ -4984,14 +4984,14 @@
           {
             "name": "component_klass",
             "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
           },
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ]
       },
@@ -5026,8 +5026,8 @@
           {
             "name": "component_klass",
             "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
           },
           {
             "name": "avatar_arguments",
@@ -5039,7 +5039,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ]
       },
@@ -5120,8 +5120,8 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::NavList::Heading",
-        "description": "The heading placed above a `NavList`'s items.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
+        "fully_qualified_name": "Primer::Beta::NavList::Heading",
+        "description": "The heading placed above a `NavList`'s items.\n\nSee {{#link_to_component}}Primer::Beta::NavList{{/link_to_component}} for usage examples.",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5199,7 +5199,7 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::NavList::Item",
+        "fully_qualified_name": "Primer::Beta::NavList::Item",
         "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
         "accessibility_docs": null,
         "is_form_component": false,
@@ -5353,7 +5353,7 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
+        "fully_qualified_name": "Primer::Beta::NavList::Divider",
         "description": "Separator with optional text rendered above groups or between individual items.",
         "accessibility_docs": null,
         "is_form_component": false,
@@ -5393,8 +5393,8 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
+        "fully_qualified_name": "Primer::Beta::NavList::Group",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Beta::NavList{{/link_to_component}} for usage examples.",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5440,13 +5440,13 @@
                 "name": "component_klass",
                 "type": "Class",
                 "default": "N/A",
-                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
+                "description": "A component class to use instead of the default `Primer::Beta::NavList::Item` class."
               },
               {
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
               }
             ]
           },
@@ -5458,7 +5458,7 @@
                 "name": "system_arguments",
                 "type": "Hash",
                 "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
               }
             ]
           },

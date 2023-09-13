@@ -5,6 +5,16 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
+  - component: "Primer::Alpha::NavList::Divider"
+    replacement: "Primer::Beta::NavList::Divider"
+  - component: "Primer::Alpha::NavList::Item"
+    replacement: "Primer::Beta::NavList::Item"
+  - component: "Primer::Alpha::NavList::Heading"
+    replacement: "Primer::Beta::NavList::Heading"
+  - component: "Primer::Alpha::NavList::Group"
+    replacement: "Primer::Beta::NavList::Group"
+  - component: "Primer::Alpha::NavList"
+    replacement: "Primer::Beta::NavList"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"

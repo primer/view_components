@@ -165,7 +165,7 @@ module Primer
       end
 
       # @label In an ActionMenu
-      def in_an_action_menu()
+      def in_an_action_menu
         render_with_template(locals: {})
       end
 
