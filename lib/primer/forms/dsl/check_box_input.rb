@@ -31,11 +31,6 @@ module Primer
           true
         end
 
-        # check boxes cannot have validation messages, as they can never be invalid
-        def validation_messages
-          []
-        end
-
         def to_component
           CheckBox.new(input: self)
         end
