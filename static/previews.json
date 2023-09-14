@@ -4418,6 +4418,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/overlay/in_an_action_menu",
+        "name": "in_an_action_menu",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/overlay/dialog_with_header_footer",
         "name": "dialog_with_header_footer",
         "snapshot": "false",

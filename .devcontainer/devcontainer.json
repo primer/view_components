@@ -32,8 +32,8 @@
     "vunguyentuan.vscode-postcss",
     "DavidAnson.vscode-markdownlint"
   ],
-  "forwardPorts": [4000, 5400],
-  "appPort": [4000, 5400],
+  "forwardPorts": [4000],
+  "appPort": [4000],
   "portsAttributes": {
     "4000": {
       "label": "demo"

@@ -3,8 +3,9 @@
 ## Setup for local development
 
 1. Clone `git@github.com:opf/primer_view_components.git`
-1. Run `script/setup` to install dependencies
-1. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Lookbook on [localhost:4000](localhost:5000)
+2. Install [Overmind](https://github.com/DarthSim/overmind)
+3. Run `script/setup` to install dependencies
+4. Run `script/dev`, this will run the Lookbook on [localhost:4000](localhost:4000)
 
 ### Lookbook
 

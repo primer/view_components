@@ -23,9 +23,7 @@ module Primer
             c.with_leading_visual_icon(icon: icon)
           end
 
-          render(Item.new) do
-            render(Primer::Beta::IconButton.new(id: item_id, icon: icon, "aria-label": label, size: @size, scheme: :invisible, **system_arguments))
-          end
+          Item.new(Primer::Beta::IconButton.new(id: item_id, icon: icon, "aria-label": label, size: @size, scheme: :invisible, **system_arguments))
         },
         divider: lambda {
           @action_menu.with_divider(hidden: true) if @overflow_menu
@@ -68,8 +66,6 @@ module Primer
         system_arguments = {
           **system_arguments,
           hidden: true,
-          tag: :button,
-          type: "button",
           "data-for": id,
           "data-action": "click:action-bar#menuItemClick"
         }

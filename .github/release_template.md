@@ -5,6 +5,7 @@ Please ensure these items are checked before merging.
 ### 🔎 Smoke test
 
 - [ ] All CI checks pass
+- [ ] Lookbook opens in a browser
 - [ ] Successful integration test with OpenProject as a primary consumer
   - [ ] Install the npm package locally
   - [ ] Install the `primer_view_components` gem locally
@@ -12,7 +13,6 @@ Please ensure these items are checked before merging.
   - [ ] Verify no new linting errors appear
   - [ ] Manually test critical paths
   - [ ] Manually test release-specific bugfixes and/or features work as described
-  - [ ] Lookbook opens in a browser
 
 ### 🤔 Sanity test
 
