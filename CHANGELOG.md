@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 0.10.0
+
+### Minor Changes
+
+- [#2205](https://github.com/primer/view_components/pull/2205) [`88ac3095`](https://github.com/opf/primer_view_components/commit/88ac309577b5b735af5067ee6ab2c8c30f48aefc) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Add rubocop linter for `IconButton` component
+
+  <!-- Changed components: Primer::IconButton -->
+
+- [#2223](https://github.com/primer/view_components/pull/2223) [`00b7d5d7`](https://github.com/opf/primer_view_components/commit/00b7d5d78e2f52dc6bc6c54689e50da976289203) Thanks [@jonrohan](https://github.com/jonrohan)! - Moving the render for the ActionBar::Item from the slot initializer to the call method.
+
+  <!-- Changed components: _none_ -->
+
+### Patch Changes
+
+- [#2227](https://github.com/primer/view_components/pull/2227) [`bb336bb6`](https://github.com/opf/primer_view_components/commit/bb336bb6f034e20778b4834edae3540c365b9d9f) Thanks [@jonrohan](https://github.com/jonrohan)! - [Bug] Don't fill in the spinner circle svg path
+
+- [#2237](https://github.com/primer/view_components/pull/2237) [`70a8336f`](https://github.com/opf/primer_view_components/commit/70a8336fda45b144f81c1ece54b17a26037126e4) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing ActionBar more menu items including buttons with no type
+
+  <!-- Changed components: Primer::Alpha::ActionBar -->
+
+- [#2204](https://github.com/primer/view_components/pull/2204) [`ed1644a2`](https://github.com/opf/primer_view_components/commit/ed1644a2fa5b701611a13513cb903774f3f74152) Thanks [@keithamus](https://github.com/keithamus)! - Fix errors in older browsers with :popover-open
+
+  <!-- Changed components: Primer::Alpha::Tooltip -->
+
+- [#2236](https://github.com/primer/view_components/pull/2236) [`d663e450`](https://github.com/opf/primer_view_components/commit/d663e4508341f5b9ef1788b8a2231782ce3ed44d) Thanks [@keithamus](https://github.com/keithamus)! - Centre anchored-position elements when their anchor is not present
+
+  <!-- Changed components: Primer::Alpha::Overlay -->
+
 ## 0.9.1
 
 ### Patch Changes
