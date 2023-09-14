@@ -2404,6 +2404,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/check_box_group/invalid",
+        "name": "invalid",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/check_box_group/with_caption",
         "name": "with_caption",
         "snapshot": "true",
@@ -4725,6 +4738,19 @@
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/radio_button_group/invalid",
+        "name": "invalid",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
