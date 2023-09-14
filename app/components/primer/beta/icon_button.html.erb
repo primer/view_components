@@ -2,5 +2,5 @@
   <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
     <%= render Primer::Beta::Octicon.new(icon: @icon, classes: "Button-visual") %>
   <% end -%>
-  <%= render Primer::Alpha::Tooltip.new(**@tooltip_arguments) if render_tooltip? %>
+  <%= render @tooltip if render_tooltip? %>
 <% end %>
