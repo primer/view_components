@@ -5,7 +5,7 @@ module Primer
     module Dsl
       # :nodoc:
       class CheckBoxGroupInput < Input
-        attr_reader :label, :check_boxes
+        attr_reader :name, :label, :check_boxes
 
         def initialize(name: nil, label: nil, **system_arguments)
           @name = name
@@ -19,10 +19,6 @@ module Primer
 
         def to_component
           CheckBoxGroup.new(input: self)
-        end
-
-        def name
-          nil
         end
 
         def type
