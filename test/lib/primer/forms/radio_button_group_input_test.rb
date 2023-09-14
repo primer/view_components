@@ -64,6 +64,6 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
     refute_selector "input[type=radio][invalid]"
 
     # should have a validation message
-    assert_selector ".FormControl-inlineValidation", text: "Channel can't be blank"
+    assert_selector ".FormControl-inlineValidation", text: /Channel can['’]t be blank/
   end
 end
