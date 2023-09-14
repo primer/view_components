@@ -1,0 +1,13 @@
+<%= render(Primer::Alpha::ActionMenu.new()) do |menu| %>
+  <% menu.with_show_button { "Menu" } %>
+  <% menu.with_item(label: "Open Overlay", content_arguments: { id: "overlay-show-my-overlay", popovertarget: "my-overlay" }) %>
+<% end %>
+<%= render(Primer::Alpha::Overlay.new(
+  id: "my-overlay",
+  title: "An overlay",
+  role: :dialog,
+  popover: "manual",
+)) do |d| %>
+  <% d.with_header(title: "An overlay") %>
+  <% d.with_body { "This is an overlay" } %>
+<% end %>

@@ -2,6 +2,25 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import '@oddbird/popover-polyfill'
 import {getAnchoredPosition} from '@primer/behaviors'
 
+const isPopoverOpen = (() => {
+  let selector: string
+  function setSelector(el: Element) {
+    try {
+      selector = ':popover-open'
+      return el.matches(selector)
+    } catch {
+      try {
+        selector = ':open'
+        return el.matches(':open')
+      } catch {
+        selector = '.\\:popover-open'
+        return el.matches('.\\:popover-open')
+      }
+    }
+  }
+  return (el: Element) => (selector ? el.matches(selector) : setSelector(el))
+})()
+
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
 const TOOLTIP_OFFSET = 10
@@ -22,7 +41,7 @@ const DIRECTION_CLASSES = [
 function closeOpenTooltips(except?: Element) {
   for (const tooltip of openTooltips) {
     if (tooltip === except) continue
-    if (tooltip.matches(':popover-open')) {
+    if (isPopoverOpen(tooltip)) {
       tooltip.hidePopover()
     } else {
       openTooltips.delete(tooltip)
@@ -206,16 +225,16 @@ class ToolTipElement extends HTMLElement {
 
   /* @deprecated */
   set hiddenFromView(value: true | false) {
-    if (value && this.matches(':popover-open')) {
+    if (value && isPopoverOpen(this)) {
       this.hidePopover()
-    } else if (!value && this.matches(':not(:popover-open)')) {
+    } else if (!value && !isPopoverOpen(this)) {
       this.showPopover()
     }
   }
 
   /* @deprecated */
   get hiddenFromView() {
-    return !this.matches(':popover-open')
+    return !isPopoverOpen(this)
   }
 
   connectedCallback() {
@@ -262,7 +281,7 @@ class ToolTipElement extends HTMLElement {
 
   async handleEvent(event: Event) {
     if (!this.control) return
-    const showing = this.matches(':popover-open')
+    const showing = isPopoverOpen(this)
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
@@ -277,9 +296,9 @@ class ToolTipElement extends HTMLElement {
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
 
     await Promise.resolve()
-    if (!showing && shouldShow && this.matches(':not(:popover-open)')) {
+    if (!showing && shouldShow && !isPopoverOpen(this)) {
       this.showPopover()
-    } else if (showing && shouldHide && this.matches(':popover-open')) {
+    } else if (showing && shouldHide && isPopoverOpen(this)) {
       this.hidePopover()
     }
 
@@ -377,7 +396,7 @@ class ToolTipElement extends HTMLElement {
 
   #updatePosition() {
     if (!this.control) return
-    if (!this.#allowUpdatePosition || !this.matches(':popover-open')) return
+    if (!this.#allowUpdatePosition || !isPopoverOpen(this)) return
 
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,

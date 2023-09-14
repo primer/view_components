@@ -4,6 +4,6 @@
 👢 Your environment is all set up and bootstrapped.
 
 🚀 To begin, start the server with the VS code task (⇧⌘B) or run
-   script/dev, which will start the Rails server at http://localhost:4000 and documentation at http://localhost:5400.
+   script/dev, which will start the Rails server at http://localhost:4000.
 
 ❔ Having other problems? Open an issue in the repo for support!
