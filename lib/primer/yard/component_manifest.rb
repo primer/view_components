@@ -69,6 +69,10 @@ module Primer
         Primer::Alpha::ActionMenu => { js: true },
 
         # Examples can be seen in the NavList docs
+        Primer::Alpha::NavList => { js: true },
+        Primer::Alpha::NavList::Item => { js: true, examples: false },
+        Primer::Alpha::NavList::Group => { js: true, examples: false },
+
         Primer::Beta::NavList => { js: true },
         Primer::Beta::NavList::Item => { js: true, examples: false },
         Primer::Beta::NavList::Group => { js: true, examples: false },

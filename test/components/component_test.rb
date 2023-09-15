@@ -123,6 +123,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
+    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
     [Primer::Beta::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
