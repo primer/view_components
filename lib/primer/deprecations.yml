@@ -6,15 +6,25 @@
 
 deprecations:
   - component: "Primer::Alpha::NavList::Divider"
+    autocorrect: true
     replacement: "Primer::Beta::NavList::Divider"
+
   - component: "Primer::Alpha::NavList::Item"
+    autocorrect: true
     replacement: "Primer::Beta::NavList::Item"
+
   - component: "Primer::Alpha::NavList::Heading"
+    autocorrect: true
     replacement: "Primer::Beta::NavList::Heading"
+
   - component: "Primer::Alpha::NavList::Group"
+    autocorrect: true
     replacement: "Primer::Beta::NavList::Group"
+
   - component: "Primer::Alpha::NavList"
+    autocorrect: true
     replacement: "Primer::Beta::NavList"
+
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
