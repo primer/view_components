@@ -2,7 +2,7 @@
 
 require "system/test_case"
 
-module Alpha
+module Beta
   class NavListTest < System::TestCase
     def test_collapses_group
       visit_preview(:default)
