@@ -733,6 +733,146 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
+        "description": "Separator with optional text rendered above groups or between individual items.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
+        "description": "Heading used to describe each sub list within an action list.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::Heading",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Sub list title."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`3`",
+            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional sub list description."
+          },
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "title_id",
+            "description": "Returns the value of attribute title_id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "subtitle_id",
+            "description": "Returns the value of attribute subtitle_id.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
+        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::FormWrapper",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListFormWrapper",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Item",
         "description": "An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters.",
         "accessibility_docs": null,
@@ -965,146 +1105,6 @@
 
             ]
           }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
-        "description": "Heading used to describe each sub list within an action list.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::Heading",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListHeading",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Sub list title."
-          },
-          {
-            "name": "heading_level",
-            "type": "Integer",
-            "default": "`3`",
-            "description": "Heading level. Level 2 results in an `<h2>` tag, level 3 an `<h3>` tag, etc."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Optional sub list description."
-          },
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-          {
-            "name": "title_id",
-            "description": "Returns the value of attribute title_id.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "subtitle_id",
-            "description": "Returns the value of attribute subtitle_id.",
-            "parameters": [
-
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
-        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::FormWrapper",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListFormWrapper",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
-        "description": "Separator with optional text rendered above groups or between individual items.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
         ],
         "previews": [
 
@@ -3086,64 +3086,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Header",
-        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Dialog::Header",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogHeader",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/header.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "Describes the content of the dialog."
-          },
-          {
-            "name": "subtitle",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
-          },
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the header and body."
-          },
-          {
-            "name": "visually_hide_title",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
         "description": "A `Dialog::Footer` is a compositional component, used to render the\nFooter of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "accessibility_docs": null,
@@ -3197,6 +3139,64 @@
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
         "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Header",
+        "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Dialog::Header",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogHeader",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/header.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "Describes the content of the dialog."
+          },
+          {
+            "name": "subtitle",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+          },
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the header and body."
+          },
+          {
+            "name": "visually_hide_title",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -4870,13 +4870,13 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::NavList",
-    "description": "`NavList` provides a simple way to render side navigation, i.e. navigation\nthat appears to the left or right side of some main content. Each group in a\nnav list is a list of links.\n\nNav list groups can contain sub items. Rather than navigating to a URL, groups\nwith sub items expand and collapse on click. To indicate this functionality, the\ngroup will automatically render with a trailing chevron icon that changes direction\nwhen the group expands and collapses.\n\nNav list items appear visually active when selected. Each nav item must have one\nor more ID values that determine which item will appear selected. Use the\n`selected_item_id` argument to select the appropriate item.",
+    "description": "",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
     "component": "NavList",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": true,
     "short_name": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -4898,7 +4898,7 @@
     "slots": [
       {
         "name": "heading",
-        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Heading{{/link_to_component}}.",
+        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Heading{{/link_to_component}}.",
         "parameters": [
 
         ]
@@ -4912,247 +4912,154 @@
       }
     ],
     "methods": [
-      {
-        "name": "with_item",
-        "description": "Adds an item to the list.",
-        "parameters": [
-          {
-            "name": "component_klass",
-            "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
-          }
-        ]
-      },
-      {
-        "name": "with_avatar_item",
-        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
-        "parameters": [
-          {
-            "name": "src",
-            "type": "String",
-            "default": "N/A",
-            "description": "The source url of the avatar image."
-          },
-          {
-            "name": "username",
-            "type": "String",
-            "default": "N/A",
-            "description": "The username associated with the avatar."
-          },
-          {
-            "name": "full_name",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Optional. The user's full name."
-          },
-          {
-            "name": "full_name_scheme",
-            "type": "Symbol",
-            "default": "`:block`",
-            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
-          },
-          {
-            "name": "component_klass",
-            "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
-          },
-          {
-            "name": "avatar_arguments",
-            "type": "Hash",
-            "default": "`{}`",
-            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}"
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
-          }
-        ]
-      },
-      {
-        "name": "with_group",
-        "description": "Adds a group to the list. A group is a list of links and a (required) heading.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Group{{/link_to_component}}."
-          }
-        ]
-      },
-      {
-        "name": "with_divider",
-        "description": "Adds a divider to the list. Dividers visually separate items and groups.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Divider{{/link_to_component}}."
-          }
-        ]
-      },
-      {
-        "name": "build_item",
-        "description": "Builds a new item but does not add it to the list. Use this method\ninstead of the `#with_item` slot if you need to render an item outside\nthe context of a list, eg. if rendering additional items to append to\nan existing list, perhaps via a separate HTTP request.",
-        "parameters": [
-          {
-            "name": "component_klass",
-            "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
-          }
-        ]
-      },
-      {
-        "name": "build_avatar_item",
-        "description": "Builds a new avatar item but does not add it to the list. Avatar items\nare a convenient way to accessibly add an item with a leading avatar\nimage. Use this method instead of the `#with_avatar_item` slot if you\nneed to render an avatar item outside the context of a list, eg. if\nrendering additional items to append to an existing list, perhaps via\na separate HTTP request.",
-        "parameters": [
-          {
-            "name": "src",
-            "type": "String",
-            "default": "N/A",
-            "description": "The source url of the avatar image."
-          },
-          {
-            "name": "username",
-            "type": "String",
-            "default": "N/A",
-            "description": "The username associated with the avatar."
-          },
-          {
-            "name": "full_name",
-            "type": "String",
-            "default": "`nil`",
-            "description": "Optional. The user's full name."
-          },
-          {
-            "name": "full_name_scheme",
-            "type": "Symbol",
-            "default": "`:block`",
-            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
-          },
-          {
-            "name": "component_klass",
-            "type": "Class",
-            "default": "`Primer::Alpha::NavList::Item`",
-            "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}"
-          },
-          {
-            "name": "avatar_arguments",
-            "type": "Hash",
-            "default": "`{}`",
-            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}"
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
-          }
-        ]
-      },
-      {
-        "name": "render_outer_list?",
-        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>",
-        "parameters": [
 
-        ]
-      }
     ],
     "previews": [
-      {
-        "preview_path": "primer/alpha/nav_list/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/nav_list/default",
-        "name": "default",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/nav_list/top_level_items",
-        "name": "top_level_items",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/nav_list/show_more_item",
-        "name": "show_more_item",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/nav_list/trailing_action",
-        "name": "trailing_action",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
+
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
+        "description": "",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Divider",
+        "status": "deprecated",
+        "a11y_reviewed": false,
+        "short_name": "NavListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Group",
+        "description": "",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": true,
+        "component": "NavList::Group",
+        "status": "deprecated",
+        "a11y_reviewed": true,
+        "short_name": "NavListGroup",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+          {
+            "name": "show_more_item",
+            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The URL to query for additional pages of list items."
+              },
+              {
+                "name": "pages",
+                "type": "Integer",
+                "default": "N/A",
+                "description": "The total number of pages in the result set."
+              },
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "A component class to use instead of the default `Primer::Beta::NavList::Item` class."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              }
+            ]
+          }
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::NavList::Heading",
-        "description": "The heading placed above a `NavList`'s items.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
+        "description": "",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
         "requires_js": false,
         "component": "NavList::Heading",
-        "status": "alpha",
+        "status": "deprecated",
         "a11y_reviewed": false,
         "short_name": "NavListHeading",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
@@ -5187,34 +5094,7 @@
 
         ],
         "methods": [
-          {
-            "name": "title",
-            "description": "Returns the value of attribute title.",
-            "parameters": [
 
-            ]
-          },
-          {
-            "name": "id",
-            "description": "Returns the value of attribute id.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "heading_level",
-            "description": "Returns the value of attribute heading_level.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "system_arguments",
-            "description": "Returns the value of attribute system_arguments.",
-            "parameters": [
-
-            ]
-          }
         ],
         "previews": [
 
@@ -5225,13 +5105,13 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
-        "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
+        "description": "",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
         "requires_js": true,
         "component": "NavList::Item",
-        "status": "alpha",
+        "status": "deprecated",
         "a11y_reviewed": false,
         "short_name": "NavListItem",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/item.rb",
@@ -5334,180 +5214,7 @@
           }
         ],
         "methods": [
-          {
-            "name": "selected_by_ids",
-            "description": "Returns the value of attribute selected_by_ids.",
-            "parameters": [
 
-            ]
-          },
-          {
-            "name": "sub_item",
-            "description": "Returns the value of attribute sub_item.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "sub_item?",
-            "description": "Returns the value of attribute sub_item.\nWhether or not this item is nested under a parent item.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "expand!",
-            "description": "Cause this item to show its list of sub items when rendered.",
-            "parameters": [
-
-            ]
-          },
-          {
-            "name": "item_active?",
-            "description": "Normally it would be easier to simply ask each item for its active status, eg.\nitems.any?(&:active?), but unfortunately the view context is not set on each\nitem until _after_ the parent's before_render, etc methods have been called.\nThis means helper methods like current_page? will blow up with an error, since\n`helpers` is simply an alias for the view context (i.e. an instance of\nActionView::Base). Since we know the view context for the parent object must\nbe set before `before_render` is invoked, we can call helper methods here in\nthe parent and bypass the problem entirely. Maybe not the most OO approach,\nbut it works.",
-            "parameters": [
-
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
-        "description": "Separator with optional text rendered above groups or between individual items.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "NavList::Divider",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "NavListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Alpha::NavList{{/link_to_component}} for usage examples.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": true,
-        "component": "NavList::Group",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "NavListGroup",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
-        "parameters": [
-          {
-            "name": "selected_item_id",
-            "type": "Symbol",
-            "default": "`nil`",
-            "description": "The ID of the currently selected item. Used internally."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-          {
-            "name": "show_more_item",
-            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
-            "parameters": [
-              {
-                "name": "src",
-                "type": "String",
-                "default": "N/A",
-                "description": "The URL to query for additional pages of list items."
-              },
-              {
-                "name": "pages",
-                "type": "Integer",
-                "default": "N/A",
-                "description": "The total number of pages in the result set."
-              },
-              {
-                "name": "component_klass",
-                "type": "Class",
-                "default": "N/A",
-                "description": "A component class to use instead of the default `Primer::Alpha::NavList::Item` class."
-              },
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "items",
-            "description": "Items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "heading",
-            "description": "Heading text rendered above the list of items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
-              }
-            ]
-          }
-        ],
-        "methods": [
-          {
-            "name": "expand!",
-            "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
-            "parameters": [
-
-            ]
-          }
         ],
         "previews": [
 
@@ -5964,6 +5671,52 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
+        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Overlay::Footer",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayFooter",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
+        "parameters": [
+          {
+            "name": "show_divider",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Show a divider between the footer and body."
+          },
+          {
+            "name": "align_content",
+            "type": "Symbol",
+            "default": "`DEFAULT_ALIGN_CONTENT`",
+            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
         "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "accessibility_docs": null,
@@ -6012,52 +5765,6 @@
             "type": "Boolean",
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
-        "description": "A `Overlay::Footer` is a compositional component, used to render the\nFooter of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Overlay::Footer",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayFooter",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/footer.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/footer/default/",
-        "parameters": [
-          {
-            "name": "show_divider",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Show a divider between the footer and body."
-          },
-          {
-            "name": "align_content",
-            "type": "Symbol",
-            "default": "`DEFAULT_ALIGN_CONTENT`",
-            "description": "The alginment of contents. One of `:center`, `:end`, or `:start`."
           },
           {
             "name": "system_arguments",
@@ -12388,6 +12095,656 @@
     ],
     "subcomponents": [
 
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::Beta::NavList",
+    "description": "`NavList` provides a simple way to render side navigation, i.e. navigation\nthat appears to the left or right side of some main content. Each group in a\nnav list is a list of links.\n\nNav list groups can contain sub items. Rather than navigating to a URL, groups\nwith sub items expand and collapse on click. To indicate this functionality, the\ngroup will automatically render with a trailing chevron icon that changes direction\nwhen the group expands and collapses.\n\nNav list items appear visually active when selected. Each nav item must have one\nor more ID values that determine which item will appear selected. Use the\n`selected_item_id` argument to select the appropriate item.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": true,
+    "component": "NavList",
+    "status": "beta",
+    "a11y_reviewed": true,
+    "short_name": "NavList",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/default/",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "heading",
+        "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Heading{{/link_to_component}}.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "items",
+        "description": "Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "with_item",
+        "description": "Adds an item to the list.",
+        "parameters": [
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+          }
+        ]
+      },
+      {
+        "name": "with_avatar_item",
+        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The source url of the avatar image."
+          },
+          {
+            "name": "username",
+            "type": "String",
+            "default": "N/A",
+            "description": "The username associated with the avatar."
+          },
+          {
+            "name": "full_name",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional. The user's full name."
+          },
+          {
+            "name": "full_name_scheme",
+            "type": "Symbol",
+            "default": "`:block`",
+            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
+          },
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
+          },
+          {
+            "name": "avatar_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+          }
+        ]
+      },
+      {
+        "name": "with_group",
+        "description": "Adds a group to the list. A group is a list of links and a (required) heading.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Group{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list. Dividers visually separate items and groups.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Divider{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "build_item",
+        "description": "Builds a new item but does not add it to the list. Use this method\ninstead of the `#with_item` slot if you need to render an item outside\nthe context of a list, eg. if rendering additional items to append to\nan existing list, perhaps via a separate HTTP request.",
+        "parameters": [
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+          }
+        ]
+      },
+      {
+        "name": "build_avatar_item",
+        "description": "Builds a new avatar item but does not add it to the list. Avatar items\nare a convenient way to accessibly add an item with a leading avatar\nimage. Use this method instead of the `#with_avatar_item` slot if you\nneed to render an avatar item outside the context of a list, eg. if\nrendering additional items to append to an existing list, perhaps via\na separate HTTP request.",
+        "parameters": [
+          {
+            "name": "src",
+            "type": "String",
+            "default": "N/A",
+            "description": "The source url of the avatar image."
+          },
+          {
+            "name": "username",
+            "type": "String",
+            "default": "N/A",
+            "description": "The username associated with the avatar."
+          },
+          {
+            "name": "full_name",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Optional. The user's full name."
+          },
+          {
+            "name": "full_name_scheme",
+            "type": "Symbol",
+            "default": "`:block`",
+            "description": "Optional. How to display the user's full name. One of `:block` or `:inline`."
+          },
+          {
+            "name": "component_klass",
+            "type": "Class",
+            "default": "`Primer::Beta::NavList::Item`",
+            "description": "The class to use instead of the default {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}"
+          },
+          {
+            "name": "avatar_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
+          }
+        ]
+      },
+      {
+        "name": "render_outer_list?",
+        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/beta/nav_list/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/top_level_items",
+        "name": "top_level_items",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/show_more_item",
+        "name": "show_more_item",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/trailing_action",
+        "name": "trailing_action",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Beta::NavList::Divider",
+        "description": "Separator with optional text rendered above groups or between individual items.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Divider",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Beta::NavList::Heading",
+        "description": "The heading placed above a `NavList`'s items.\n\nSee {{#link_to_component}}Primer::Beta::NavList{{/link_to_component}} for usage examples.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Heading",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/heading/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "The text content of the heading."
+          },
+          {
+            "name": "id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "The value of the ID HTML attribute. Auto-generated by default."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`2`",
+            "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "title",
+            "description": "Returns the value of attribute title.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "id",
+            "description": "Returns the value of attribute id.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "heading_level",
+            "description": "Returns the value of attribute heading_level.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "system_arguments",
+            "description": "Returns the value of attribute system_arguments.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Beta::NavList::Group",
+        "description": "A logical grouping of navigation links with an optional heading.\n\nSee {{#link_to_component}}Primer::Beta::NavList{{/link_to_component}} for usage examples.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": true,
+        "component": "NavList::Group",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "NavListGroup",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/group.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/group/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+          {
+            "name": "show_more_item",
+            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The URL to query for additional pages of list items."
+              },
+              {
+                "name": "pages",
+                "type": "Integer",
+                "default": "N/A",
+                "description": "The total number of pages in the result set."
+              },
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "A component class to use instead of the default `Primer::Beta::NavList::Item` class."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              }
+            ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "expand!",
+            "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Beta::NavList::Item",
+        "description": "Items are rendered as styled links. They can optionally include leading and/or trailing visuals,\nsuch as icons, avatars, and counters. Items are selected by ID. IDs can be specified via the\n`selected_item_ids` argument, which accepts a list of valid IDs for the item. Items can also\nthemselves contain sub items. Sub items are rendered collapsed by default.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": true,
+        "component": "NavList::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "NavListItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/item/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected list item. Used internally."
+          },
+          {
+            "name": "selected_by_ids",
+            "type": "Array<Symbol>",
+            "default": "`[]`",
+            "description": "The list of IDs that select this item. In other words, if the `selected_item_id` attribute on the parent `NavList` is set to one of these IDs, the item will appear selected."
+          },
+          {
+            "name": "expanded",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Whether this item shows (expands) or hides (collapses) its list of sub items."
+          },
+          {
+            "name": "sub_item",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Whether or not this item is nested under a parent item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+          {
+            "name": "items",
+            "description": null,
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "leading_visual",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "trailing_visual",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "trailing_action",
+            "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "tooltip",
+            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
+            "parameters": [
+              {
+                "name": "type",
+                "type": "Symbol",
+                "default": "`:description`",
+                "description": "One of `:description` or `:label`."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
+              }
+            ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "selected_by_ids",
+            "description": "Returns the value of attribute selected_by_ids.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "sub_item",
+            "description": "Returns the value of attribute sub_item.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "sub_item?",
+            "description": "Returns the value of attribute sub_item.\nWhether or not this item is nested under a parent item.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "expand!",
+            "description": "Cause this item to show its list of sub items when rendered.",
+            "parameters": [
+
+            ]
+          },
+          {
+            "name": "item_active?",
+            "description": "Normally it would be easier to simply ask each item for its active status, eg.\nitems.any?(&:active?), but unfortunately the view context is not set on each\nitem until _after_ the parent's before_render, etc methods have been called.\nThis means helper methods like current_page? will blow up with an error, since\n`helpers` is simply an alias for the view context (i.e. an instance of\nActionView::Base). Since we know the view context for the parent object must\nbe set before `before_render` is invoked, we can call helper methods here in\nthe parent and bypass the problem entirely. Maybe not the most OO approach,\nbut it works.",
+            "parameters": [
+
+            ]
+          }
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      }
     ]
   },
   {

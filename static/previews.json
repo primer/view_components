@@ -4255,11 +4255,11 @@
   {
     "name": "nav_list",
     "component": "NavList",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/nav_list",
+    "status": "beta",
+    "lookup_path": "primer/beta/nav_list",
     "examples": [
       {
-        "preview_path": "primer/alpha/nav_list/playground",
+        "preview_path": "primer/beta/nav_list/playground",
         "name": "playground",
         "snapshot": "false",
         "skip_rules": {
@@ -4272,7 +4272,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/default",
+        "preview_path": "primer/beta/nav_list/default",
         "name": "default",
         "snapshot": "true",
         "skip_rules": {
@@ -4285,7 +4285,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/top_level_items",
+        "preview_path": "primer/beta/nav_list/top_level_items",
         "name": "top_level_items",
         "snapshot": "false",
         "skip_rules": {
@@ -4298,7 +4298,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/show_more_item",
+        "preview_path": "primer/beta/nav_list/show_more_item",
         "name": "show_more_item",
         "snapshot": "true",
         "skip_rules": {
@@ -4311,7 +4311,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/trailing_action",
+        "preview_path": "primer/beta/nav_list/trailing_action",
         "name": "trailing_action",
         "snapshot": "true",
         "skip_rules": {

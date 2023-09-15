@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::NavList.new(aria: { label: "Workflow results" })) do |list| %>
+<%= render(Primer::Beta::NavList.new(aria: { label: "Workflow results" })) do |list| %>
   <% list.with_group do |group| %>
     <% group.with_heading(title: "Workflows") %>
     <% group.with_item(label: "Build and Test", href: "/workflows/1") do |item| %>

@@ -51,7 +51,7 @@ module Primer
       # @label Checked
       # @snapshot
       def checked
-        render(Primer::Alpha::RadioButton.new(name: "my-radio-button", label: "Battlestar Galactica", value: "bsg2", checked: true ))
+        render(Primer::Alpha::RadioButton.new(name: "my-radio-button", label: "Battlestar Galactica", value: "bsg2", checked: true))
       end
 
       # @label Visually hidden label
