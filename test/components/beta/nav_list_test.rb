@@ -3,8 +3,8 @@
 require "components/test_helper"
 
 module Primer
-  module Alpha
-    class PrimerBetaNavListTest < Minitest::Test
+  module Beta
+    class NavListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
       def test_top_level_items_structure
