@@ -19,5 +19,15 @@ module Primer
         &block
       )
     end
+
+    def inline_form(*args, &block)
+      Primer::Forms.inline_form(*args, &block)
+    end
+
+    def render_inline_form(*args, &block)
+      # rubocop:disable GitHub/RailsViewRenderLiteral
+      render(inline_form(*args, &block))
+      # rubocop:enable GitHub/RailsViewRenderLiteral
+    end
   end
 end

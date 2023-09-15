@@ -2687,6 +2687,18 @@
         "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
       },
       {
+        "name": "invalid",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If set to `true`, the input will be marked as invalid. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
+      },
+      {
+        "name": "validation_message",
+        "type": "String",
+        "default": "N/A",
+        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
+      },
+      {
         "name": "label_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -2733,6 +2745,19 @@
       {
         "preview_path": "primer/alpha/check_box_group/default",
         "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/check_box_group/invalid",
+        "name": "invalid",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -6049,6 +6074,18 @@
         "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
       },
       {
+        "name": "invalid",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If set to `true`, the input will be marked as invalid. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
+      },
+      {
+        "name": "validation_message",
+        "type": "String",
+        "default": "N/A",
+        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
+      },
+      {
         "name": "label_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -6095,6 +6132,19 @@
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/radio_button_group/invalid",
+        "name": "invalid",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -8102,7 +8152,13 @@
 
     ],
     "methods": [
+      {
+        "name": "id",
+        "description": "Returns the value of attribute id.",
+        "parameters": [
 
+        ]
+      }
     ],
     "previews": [
       {

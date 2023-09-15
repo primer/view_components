@@ -9,17 +9,20 @@ module Primer
       # @param name text
       # @param label text
       # @param caption text
+      # @param validation_message text
       # @param disabled toggle
       def playground(
         name: "my-radio-group",
         label: "Question: what kind of bear is best?",
         caption: "There are basically two schools of thought",
+        validation_message: nil,
         disabled: false
       )
         system_arguments = {
           name: name,
           label: label,
           caption: caption,
+          validation_message: validation_message,
           disabled: disabled
         }
 
@@ -34,6 +37,16 @@ module Primer
       # @snapshot
       def default
         render(Primer::Alpha::RadioButtonGroup.new(name: "my-radio-group", label: "Question: what kind of bear is best?")) do |component|
+          component.radio_button(label: "Bears", value: "bears")
+          component.radio_button(label: "Beets", value: "beets")
+          component.radio_button(label: "Battlestar Galactica", value: "bsg")
+        end
+      end
+
+      # @label Invalid
+      # @snapshot
+      def invalid
+        render(Primer::Alpha::RadioButtonGroup.new(validation_message: "Please select an option", name: "my-radio-group", label: "Question: what kind of bear is best?")) do |component|
           component.radio_button(label: "Bears", value: "bears")
           component.radio_button(label: "Beets", value: "beets")
           component.radio_button(label: "Battlestar Galactica", value: "bsg")

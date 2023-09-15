@@ -9,7 +9,8 @@ type SelectedItem = {
   element: Element
 }
 
-const menuItemSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
+const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
+const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
 @controller
 export class ActionMenuElement extends HTMLElement {
