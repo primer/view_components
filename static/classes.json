@@ -233,6 +233,9 @@
   "Counter--secondary": [
     "Primer::Beta::Counter"
   ],
+  "DragHandle": [
+    "Primer::OpenProject::DragHandle"
+  ],
   "FormControl": [
     "Primer::Alpha::TextField"
   ],

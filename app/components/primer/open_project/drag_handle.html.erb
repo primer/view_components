@@ -1,0 +1,6 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render(Primer::Beta::Octicon.new(
+    icon: :grabber,
+    size: @size
+    )) %>
+<% end %>

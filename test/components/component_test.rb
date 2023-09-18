@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::DragHandle, {}],
     [Primer::OpenProject::PageHeader, {}, proc { |component|
       component.with_title { "Foo" }
     }],
