@@ -47,7 +47,7 @@ module Primer
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)],
           "Link",
           "Link--muted" => muted,
-          "no-underline" => !underline
+          "Link--underline" => underline
         )
       end
 
