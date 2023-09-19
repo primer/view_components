@@ -169,7 +169,8 @@ summary.Button {
   fill: var(--button-primary-iconColor-rest);
   background-color: var(--button-primary-bgColor-rest);
   border-color: var(--button-primary-borderColor-rest);
-  box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)), var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
+  box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)),
+    var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
 
   &:hover:not(:disabled) {
     background-color: var(--button-primary-bgColor-hover);
@@ -249,6 +250,10 @@ summary.Button {
 
   &:hover:not(:disabled) {
     background-color: var(--button-invisible-bgColor-hover);
+
+    & .Button-visual {
+      color: var(--button-invisible-iconColor-hover);
+    }
   }
 
   &[aria-pressed='true'],
@@ -270,7 +275,7 @@ summary.Button {
   }
 
   & .Button-visual {
-    color: var(--fgColor-muted);
+    color: var(--button-invisible-iconColor-rest);
 
     & .Counter {
       color: var(--fgColor-default);
