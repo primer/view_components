@@ -12,10 +12,11 @@ module Primer
         DEFAULT_VARIANT = :medium
         VARIANT_MAPPINGS = {
           DEFAULT_VARIANT => "",
-          :large => "Overlay-header--large",
+          :large => "Overlay-header--large"
         }.freeze
         VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
+        # @param id [String] The HTML element's ID value.
         # @param title [String] Describes the content of the dialog.
         # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
         # @param show_divider [Boolean] Show a divider between the header and body.
