@@ -3671,7 +3671,7 @@
       {
         "name": "underline",
         "type": "Boolean",
-        "default": "`true`",
+        "default": "`false`",
         "description": "Whether or not to underline the link."
       },
       {
