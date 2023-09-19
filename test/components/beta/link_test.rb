@@ -51,13 +51,13 @@ class PrimerBetaLinkTest < Minitest::Test
   end
 
   def test_renders_underline
-    render_inline(Primer::Beta::Link.new(href: "http://google.com")) { "content" }
+    render_inline(Primer::Beta::Link.new(href: "http://google.com", underline: true)) { "content" }
 
     assert_selector(".Link--underline")
   end
 
   def test_renders_no_underline
-    render_inline(Primer::Beta::Link.new(href: "http://google.com", underline: false)) { "content" }
+    render_inline(Primer::Beta::Link.new(href: "http://google.com")) { "content" }
 
     refute_selector(".Link--underline")
   end

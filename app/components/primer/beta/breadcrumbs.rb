@@ -58,10 +58,7 @@ module Primer
         end
 
         def call
-          link_arguments = {
-            href: @href,
-            underline: false
-          }
+          link_arguments = { href: @href }
 
           if selected
             link_arguments[:"aria-current"] = "page"
