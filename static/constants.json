@@ -1300,6 +1300,14 @@
   },
   "Primer::Navigation::TabComponent": {
   },
+  "Primer::OpenProject::DragHandle": {
+    "DEFAULT_SIZE": "small",
+    "SIZE_OPTIONS": [
+      "xsmall",
+      "small",
+      "medium"
+    ]
+  },
   "Primer::OpenProject::PageHeader": {
     "DEFAULT_HEADER_VARIANT": "medium",
     "HEADER_VARIANT_OPTIONS": [

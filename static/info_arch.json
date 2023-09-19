@@ -14378,6 +14378,65 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::DragHandle",
+    "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
+    "accessibility_docs": "Add any accessibility considerations",
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::DragHandle",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectDragHandle",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/drag_handle.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/drag_handle/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/drag_handle/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/drag_handle/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::PageHeader",
     "description": "A ViewComponent PageHeader inspired by the primer react variant",
     "accessibility_docs": null,

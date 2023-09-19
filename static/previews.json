@@ -2901,6 +2901,40 @@
     ]
   },
   {
+    "name": "drag_handle",
+    "component": "OpenProject::DragHandle",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/drag_handle",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/drag_handle/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/drag_handle/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "dropdown",
     "component": "Dropdown",
     "status": "alpha",

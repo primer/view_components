@@ -102,6 +102,7 @@
   "Primer::IconButton": "",
   "Primer::LayoutComponent": "",
   "Primer::Navigation::TabComponent": "",
+  "Primer::OpenProject::DragHandle": "",
   "Primer::OpenProject::PageHeader": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""

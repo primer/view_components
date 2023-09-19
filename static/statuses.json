@@ -102,6 +102,7 @@
   "Primer::IconButton": "deprecated",
   "Primer::LayoutComponent": "deprecated",
   "Primer::Navigation::TabComponent": "deprecated",
+  "Primer::OpenProject::DragHandle": "open_project",
   "Primer::OpenProject::PageHeader": "open_project",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "deprecated"
