@@ -50,10 +50,16 @@ class PrimerBetaLinkTest < Minitest::Test
     assert_selector(".foo.Link--muted")
   end
 
-  def test_renders_no_underline
-    render_inline(Primer::Beta::Link.new(href: "http://google.com", underline: false)) { "content" }
+  def test_renders_underline
+    render_inline(Primer::Beta::Link.new(href: "http://google.com", underline: true)) { "content" }
 
-    assert_selector(".no-underline")
+    assert_selector(".Link--underline")
+  end
+
+  def test_renders_no_underline
+    render_inline(Primer::Beta::Link.new(href: "http://google.com")) { "content" }
+
+    refute_selector(".Link--underline")
   end
 
   def test_schemes
