@@ -6,30 +6,18 @@ require_relative "models/deep_thought"
 class Primer::Forms::SelectInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class HiddenSelectForm < ApplicationForm
-    form do |select_form|
-      select_form.select_list(name: :foo, label: "Foo", hidden: true) do |list|
-        list.option(label: "Foo", value: "foo")
-      end
-    end
-  end
-
   def test_hidden_select_list
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render(HiddenSelectForm.new(f))
+        render_inline_form(f) do |select_form|
+          select_form.select_list(name: :foo, label: "Foo", hidden: true) do |list|
+            list.option(label: "Foo", value: "foo")
+          end
+        end
       end
     end
 
     assert_selector "select#foo", visible: :hidden
-  end
-
-  class SelectDeepThoughtForm < ApplicationForm
-    form do |select_form|
-      select_form.select_list(name: :ultimate_answer, label: "Ultimate answer") do |list|
-        list.option(label: "Foo", value: "foo")
-      end
-    end
   end
 
   def test_no_error_markup
@@ -38,7 +26,11 @@ class Primer::Forms::SelectInputTest < Minitest::Test
 
     render_in_view_context do
       primer_form_with(model: model, url: "/foo") do |f|
-        render(SelectDeepThoughtForm.new(f))
+        render_inline_form(f) do |select_form|
+          select_form.select_list(name: :ultimate_answer, label: "Ultimate answer") do |list|
+            list.option(label: "Foo", value: "foo")
+          end
+        end
       end
     end
 

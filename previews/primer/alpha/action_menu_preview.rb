@@ -27,14 +27,18 @@ module Primer
 
       # @label Content labels
       #
-      def content_labels
-      end
+      def content_labels; end
 
       # @label Default
       #
+      # @snapshot interactive
       def default
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
+
           menu.with_item(label: "Copy link")
           menu.with_item(label: "Quote reply")
           menu.with_item(label: "Reference in new issue")
@@ -50,9 +54,13 @@ module Primer
 
       # @label Wide
       #
+      # @snapshot interactive
       def wide
         render(Primer::Alpha::ActionMenu.new(select_variant: :single, size: :medium)) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "A wider menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "A wider menu"
+          end
 
           menu.with_item(label: "Default", active: true, value: "default") do |item|
             item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
@@ -91,18 +99,30 @@ module Primer
       def multiple_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "langermank", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
-            item.with_description.with_content("Katie Langerman")
-          end
-          menu.with_item(label: "jonrohan", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4", alt: "Jon Rohan")
-            item.with_description.with_content("Jon Rohan")
-          end
-          menu.with_item(label: "broccolinisoup", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/1446503?v=4", alt: "Armağan Ersöz")
-            item.with_description.with_content("Armağan Ersöz")
-          end
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/18661030?v=4",
+            username: "langermank",
+            full_name: "Katie Langerman",
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4",
+            username: "jonrohan",
+            full_name: "Jon Rohan",
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/1446503?v=4",
+            username: "broccolinisoup",
+            full_name: "Armağan Ersöz",
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square }
+          )
         end
       end
 
@@ -119,6 +139,7 @@ module Primer
 
       # @label Single item selected
       #
+      # @snapshot interactive
       def single_selected_item
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
@@ -130,9 +151,13 @@ module Primer
 
       # @label Single Select with Internal Label
       #
+      # @snapshot interactive
       def single_select_with_internal_label
         render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
           menu.with_item(label: "Copy link") do |item|
             item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
           end
@@ -143,21 +168,33 @@ module Primer
 
       # @label Multiple items selected
       #
+      # @snapshot interactive
       def multiple_selected_items
         render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "langermank", description_scheme: :inline, active: true) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/18661030?v=4", alt: "Katie Langerman")
-            item.with_description.with_content("Katie Langerman")
-          end
-          menu.with_item(label: "jonrohan", description_scheme: :inline) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4", alt: "Jon Rohan")
-            item.with_description.with_content("Jon Rohan")
-          end
-          menu.with_item(label: "broccolinisoup", description_scheme: :inline, active: true) do |item|
-            item.with_leading_visual_avatar(src: "https://avatars.githubusercontent.com/u/1446503?v=4", alt: "Armağan Ersöz")
-            item.with_description.with_content("Armağan Ersöz")
-          end
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/18661030?v=4",
+            username: "langermank",
+            full_name: "Katie Langerman",
+            full_name_scheme: :inline,
+            active: true
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4",
+            username: "jonrohan",
+            full_name: "Jon Rohan",
+            full_name_scheme: :inline
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/1446503?v=4",
+            username: "broccolinisoup",
+            full_name: "Armağan Ersöz",
+            full_name_scheme: :inline,
+            active: true
+          )
         end
       end
 
@@ -179,8 +216,7 @@ module Primer
 
       # @label With actions
       #
-      def with_actions
-      end
+      def with_actions; end
 
       # @label Single select form
       #
@@ -224,7 +260,10 @@ module Primer
       #
       def block_description
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
           menu.with_item(label: "Item label") do |item|
             item.with_description.with_content("Block description")
           end
@@ -241,7 +280,10 @@ module Primer
       #
       def inline_description
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
           menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_description.with_content("Inline description")
           end
@@ -252,7 +294,10 @@ module Primer
       #
       def leading_visual
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
           menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_leading_visual_icon(icon: :gear)
             item.with_description.with_content("Inline description")
@@ -264,7 +309,10 @@ module Primer
       #
       def leading_visual_single_select
         render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1", select_variant: :single)) do |menu|
-          menu.with_show_button { |button| button.with_trailing_action_icon(icon: :"triangle-down"); "Menu" }
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
           menu.with_item(label: "Item label", description_scheme: :inline) do |item|
             item.with_leading_visual_icon(icon: :gear)
             item.with_description.with_content("Inline description")
@@ -274,8 +322,7 @@ module Primer
 
       # @label Two menus
       #
-      def two_menus
-      end
+      def two_menus; end
     end
   end
 end

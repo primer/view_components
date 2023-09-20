@@ -25,27 +25,6 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-      # @example Default
-      #
-      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button")) %>
-      #
-      # @example Schemes
-      #
-      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search")) %>
-      #   <%= render(Primer::Beta::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
-      #
-      # @example With an `aria-description`
-      #   @description
-      #     If you need to have a longer description for the icon button, use both the `aria-label` and `aria-description`
-      #     attributes. A label should be short and concise, while the description can be longer as it is intended to provide
-      #     more context and information. See the accessibility section for more information.
-      #   @code
-      #     <%= render(Primer::Beta::IconButton.new(icon: :bold, "aria-label": "Bold", "aria-description": "Add bold text, Cmd+b")) %>
-      #
-      # @example Custom tooltip direction
-      #
-      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
-      #
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param wrapper_arguments [Hash] Optional keyword arguments to be passed to the wrapper `<div>` tag.
@@ -80,7 +59,7 @@ module Primer
         @aria_label = aria("label", @system_arguments)
         @aria_description = aria("description", @system_arguments)
 
-        return unless @show_tooltip
+        return unless render_tooltip?
 
         @tooltip_arguments = {
           for_id: @system_arguments[:id],
@@ -100,6 +79,13 @@ module Primer
           @tooltip_arguments[:text] = @aria_label
           @tooltip_arguments[:type] = :label
         end
+
+        @tooltip = Primer::Alpha::Tooltip.new(**@tooltip_arguments)
+        aria_key = @tooltip_arguments[:type] == :label ? :labelledby : :describedby
+
+        @system_arguments[:aria] = merge_aria(
+          @system_arguments, { aria: { aria_key => @tooltip.id } }
+        )
       end
 
       private

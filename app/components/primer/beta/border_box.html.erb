@@ -2,11 +2,11 @@
   <%= header %>
   <%= body %>
   <% if rows.any? %>
-    <ul>
+    <%= render Primer::BaseComponent.new(**@list_arguments) do %>
       <% rows.each do |row| %>
         <%= row %>
       <% end %>
-    </ul>
+    <% end %>
   <% end %>
   <%= footer %>
 <% end %>

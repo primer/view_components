@@ -28,33 +28,6 @@ module Primer
       se
     ]
 
-    # @example Default
-    #   <div class="pt-5">
-    #     <%= render(Primer::Tooltip.new(label: "Even bolder")) { "Default Bold Text" } %>
-    #   </div>
-    #
-    # @example Wrapping another component
-    #   <div class="pt-5">
-    #     <%= render(Primer::Tooltip.new(label: "Even bolder")) do %>
-    #       <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
-    #     <% end %>
-    #   </div>
-    #
-    # @example With a direction
-    #   <div class="pt-5">
-    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
-    #   </div>
-    #
-    # @example With an alignment
-    #   <div class="pt-5">
-    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
-    #   </div>
-    #
-    # @example Without a delay
-    #   <div class="pt-5">
-    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
-    #   </div>
-    #
     # @param label [String] the text to appear in the tooltip
     # @param direction [String] Direction of the tooltip. <%= one_of(Primer::Tooltip::DIRECTION_OPTIONS) %>
     # @param align [String] Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. <%= one_of(Primer::Tooltip::ALIGN_MAPPING.keys) %>

@@ -6,24 +6,34 @@ on:
       - closed
       - locked
 
+permissions:
+  id-token: write # This is required for requesting the OIDC JWT for authing with Azure
+  contents: read  # This is required for actions/checkout
+
 # This allows one deploy workflow to interrupt another
 concurrency:
   group: 'preview-env @ ${{ github.head_ref || github.run_id }} for ${{ github.event.number || github.event.inputs.PR_NUMBER }}'
   cancel-in-progress: true
 
 jobs:
-  destory:
+  destroy:
     if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
     name: Destroy
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment:
+      name: preview
     env:
       PR_NUMBER: ${{ github.event.number || github.event.inputs.PR_NUMBER }}
 
     steps:
       - uses: Azure/login@v1
         with:
-          creds: '{"clientId":"5ad1a188-b944-40eb-a2f8-cc683a6a65a0","clientSecret":"${{ secrets.AZURE_SPN_CLIENT_SECRET }}","subscriptionId":"550eb99d-d0c7-4651-a337-f53fa6520c4f","tenantId":"398a6654-997b-47e9-b12b-9515b896b4de"}'
+          # excluding a client secret here will cause a login via OpenID Connect (OIDC),
+          # which prevents us from having to rotate client credentials, etc
+          client-id: "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+          tenant-id: "398a6654-997b-47e9-b12b-9515b896b4de"
+          subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
 
       - name: Check out repo
         uses: actions/checkout@v3
@@ -39,7 +49,7 @@ jobs:
       # This will succeed even if the app doesn't exist / has already been deleted
       - name: 'Delete App Service App (which will also delete the App Service plan)'
         run: |
-          az container delete -n ${{ env.APP_NAME }} -g primer -y
+          az container delete -n ${{ env.APP_NAME }} -g primer -y &> /dev/null
       # Untag all images under this PR's container registry repo - the container registry will automatically remove untagged images.
       # This will fail if the IMAGE_REPO doesn't exist, but we don't care
       - name: 'Untag all docker images for this PR'

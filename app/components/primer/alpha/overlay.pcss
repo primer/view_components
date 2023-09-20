@@ -5,6 +5,7 @@ anchored-position[popover] {
   min-width: 192px;
   inset: auto;
   overflow: visible;
+  background: none;
 }
 
 .Overlay {
@@ -15,16 +16,13 @@ anchored-position[popover]:not(.\:popover-open) {
   display: none;
 }
 
+anchored-position.not-anchored::backdrop {
+  background-color: var(--overlay-backdrop-bgColor, var(--color-neutral-muted));
+}
+
 /* This reverts the declaration above for native popover, where `:popover-open` is supported */
 @supports selector(:popover-open) {
   anchored-position[popover]:not(.\:popover-open) {
     display: revert;
-  }
-}
-
-/* This reverts the declaration above for native popover, where `:open` is supported (Chrome 113, Safari TP) */
-@supports selector(:open) {
-  anchored-position[popover]:not(.\:popover-open) {
-      display: revert;
   }
 }

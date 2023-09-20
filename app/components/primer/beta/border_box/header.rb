@@ -7,6 +7,8 @@ module Primer
       #
       # @accessibility When using `header.with_title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
       class Header < Primer::Component
+        attr_reader :id
+
         status :beta
 
         TITLE_TAG_FALLBACK = :h2
@@ -26,25 +28,16 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
-        # @example Default
-        #
-        #   <%= render(Primer::Beta::BorderBox::Header.new) do %>
-        #     Header
-        #   <% end %>
-        #
-        # @example with title
-        #   <%= render(Primer::Beta::BorderBox::Header.new) do |h| %>
-        #     <% h.with_title(tag: :h3) do %>I am a title<% end %>
-        #   <% end %>
-        #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(**system_arguments)
           @system_arguments = system_arguments
+          @system_arguments[:id] ||= self.class.generate_id
           @system_arguments[:tag] = :div
           @system_arguments[:classes] = class_names(
             "Box-header",
             system_arguments[:classes]
           )
+          @id = @system_arguments[:id]
         end
       end
     end

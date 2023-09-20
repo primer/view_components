@@ -14,6 +14,9 @@ concurrency:
   group: test-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+env:
+  FERRUM_PROCESS_TIMEOUT: 30
+
 jobs:
   accessibility:
     name: Accessibility
@@ -33,7 +36,6 @@ jobs:
           demo/package-lock.json
     - name: Build
       run: |
-        bundle exec rake docs:preview
         npm ci
         cd demo && npm ci
     - name: Test
@@ -255,7 +257,5 @@ jobs:
           cache: 'npm'
       - name: NPM Build
         run: npm ci
-      - name: Build Output Selectors
-        run: script/build-assets
       - name: Test CSS
         run: bundle exec rake test:component_css

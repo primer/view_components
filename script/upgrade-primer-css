@@ -22,10 +22,6 @@ class UpgradePrimerCSSCLI < Thor::Group
     run("cd demo && #{install_command}")
   end
 
-  def upgrade_docs
-    run("cd docs && #{install_command}")
-  end
-
   private
 
   def version

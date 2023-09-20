@@ -36,20 +36,31 @@ module Primer
         #
         # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
         #
-        # To render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
-        #
         # To render an SVG, call the `with_leading_visual_svg` method.
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: Primer::Beta::Octicon,
-          avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
+          icon: lambda { |**system_arguments, &block|
+            deny_aria_key(
+              :label,
+              "Avoid using `aria-label` on leading visual icons, as they are purely decorative.",
+              **system_arguments
+            )
+
+            Primer::Beta::Octicon.new(**system_arguments, &block)
+          },
+          avatar: lambda { |*|
+            return unless should_raise_error?
+
+            raise "Leading visual avatars are no longer supported. Please use the #with_avatar_item slot instead."
+          },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
           },
           content: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :span, **system_arguments)
-          }
+          },
+          raw_content: nil
         }
 
         # Used internally.
@@ -142,7 +153,7 @@ module Primer
         # @param size [Symbol] Controls block sizing of the item.
         # @param scheme [Symbol] Controls color/style based on behavior.
         # @param disabled [Boolean] Disabled items are not clickable and visually dim.
-        # @param description_scheme [Symbol] Display description inline with label, or block on the next line.
+        # @param description_scheme [Symbol] Display description inline with label, or block on the next line. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
         # @param active [Boolean] If the parent list's `select_variant` is set to `:single` or `:multiple`, causes this item to render checked.
         # @param on_click [String] JavaScript to execute when the item is clicked.
         # @param id [String] Used internally.

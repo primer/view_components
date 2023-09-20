@@ -41,10 +41,15 @@ module Primer
       #
       # - `leading_visual_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
+      # - `leading_visual_svg` to render a SVG.
+      #
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
           Primer::Beta::Octicon.new(**system_arguments)
+        },
+        svg: lambda { |**system_arguments|
+          Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
         }
       }
 
@@ -81,54 +86,13 @@ module Primer
       renders_one :tooltip, lambda { |**system_arguments|
         raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
 
+        ::Primer::ViewComponents.deprecation.warn("Buttons with visible text should not use a `label` tooltip. Consider using Primer::Beta::IconButton instead.") if system_arguments[:type] == :label
         system_arguments[:for_id] = @id
-        system_arguments[:type] ||= :description
+        system_arguments[:type] = :description
 
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
-      # @example Schemes
-      #   <%= render(Primer::Beta::Button.new) { "Default" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Danger" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :invisible)) { "Invisible" } %>
-      #
-      # @example Sizes
-      #   <%= render(Primer::Beta::Button.new(size: :small)) { "Small" } %>
-      #   <%= render(Primer::Beta::Button.new(size: :medium)) { "Medium" } %>
-      #
-      # @example Full width
-      #   <%= render(Primer::Beta::Button.new(block: :true)) { "Full width" } %>
-      #   <%= render(Primer::Beta::Button.new(block: :true, scheme: :primary)) { "Primary full width" } %>
-      #
-      # @example With leading visual
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_leading_visual_icon(icon: :star) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With trailing visual
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_trailing_visual_counter(count: 15) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With leading and trailing visuals
-      #   <%= render(Primer::Beta::Button.new) do |component| %>
-      #     <% component.with_leading_visual_icon(icon: :star) %>
-      #     <% component.with_trailing_visual_counter(count: 15) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With tooltip
-      #   @description
-      #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-      #   @code
-      #     <%= render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |component| %>
-      #       <% component.with_tooltip(text: "Tooltip text") %>
-      #       Button
-      #     <% end %>
-      #
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.

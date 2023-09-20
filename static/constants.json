@@ -1,4 +1,23 @@
 {
+  "Primer::Alpha::ActionBar": {
+    "DEFAULT_SIZE": "medium",
+    "Divider": "Primer::Alpha::ActionBar::Divider",
+    "Item": "Primer::Alpha::ActionBar::Item",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "small": "ActionBar--small",
+      "large": "ActionBar--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "small",
+      "large"
+    ]
+  },
+  "Primer::Alpha::ActionBar::Divider": {
+  },
+  "Primer::Alpha::ActionBar::Item": {
+  },
   "Primer::Alpha::ActionList": {
     "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
@@ -127,6 +146,7 @@
   "Primer::Alpha::AutoComplete::Item": {
   },
   "Primer::Alpha::Banner": {
+    "DEFAULT_DISMISS_SCHEME": "none",
     "DEFAULT_ICONS": {
       "default": "bell",
       "warning": "alert",
@@ -134,6 +154,11 @@
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "DISMISS_SCHEMES": [
+      "none",
+      "remove",
+      "hide"
+    ],
     "LEGACY_SCHEME_MAPPINGS": {
       "default": "",
       "warning": "flash-warn",
@@ -929,16 +954,11 @@
   },
   "Primer::Beta::Link": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_TAG": "a",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Link--primary",
       "secondary": "Link--secondary"
-    },
-    "TAG_OPTIONS": [
-      "a",
-      "span"
-    ]
+    }
   },
   "Primer::Beta::Markdown": {
     "DEFAULT_TAG": "div",
@@ -947,6 +967,20 @@
       "article",
       "td"
     ]
+  },
+  "Primer::Beta::NavList": {
+    "Divider": "Primer::Beta::NavList::Divider",
+    "Group": "Primer::Beta::NavList::Group",
+    "Heading": "Primer::Beta::NavList::Heading",
+    "Item": "Primer::Beta::NavList::Item"
+  },
+  "Primer::Beta::NavList::Divider": {
+  },
+  "Primer::Beta::NavList::Group": {
+  },
+  "Primer::Beta::NavList::Heading": {
+  },
+  "Primer::Beta::NavList::Item": {
   },
   "Primer::Beta::Octicon": {
     "SIZE_DEFAULT": "small",

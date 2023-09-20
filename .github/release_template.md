@@ -5,10 +5,10 @@ Please ensure these items are checked before merging.
 ### 🔎 Smoke test
 
 - [ ] All CI checks pass
-- [ ] Docs and Lookbook open in a browser
+- [ ] Lookbook opens in a browser
 - [ ] Successful integration test with GitHub.com as a primary consumer of Primer View Components
-  - [ ] Install the npm release candidate in `npm-workspaces/primer/`
-  - [ ] Use `bin/vendor-gem` to update `primer_view_components` gem
+  - [ ] Install the npm release candidate: `npm i -w ./npm-workspaces/primer/ @primer/view-components@next`
+  - [ ] Update `primer_view_components` gem: `script/vendor-gem https://github.com/primer/view_components.git -r changeset-release/main`
   - [ ] Verify no new build errors appear
   - [ ] Verify no new linting errors appear
   - [ ] Manually test critical paths

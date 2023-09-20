@@ -1,5 +1,198 @@
 # CHANGELOG
 
+## 0.9.0
+
+### Minor Changes
+
+- [#2205](https://github.com/primer/view_components/pull/2205) [`88ac3095`](https://github.com/primer/view_components/commit/88ac309577b5b735af5067ee6ab2c8c30f48aefc) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Add rubocop linter for `IconButton` component
+
+  <!-- Changed components: Primer::IconButton -->
+
+- [#2223](https://github.com/primer/view_components/pull/2223) [`00b7d5d7`](https://github.com/primer/view_components/commit/00b7d5d78e2f52dc6bc6c54689e50da976289203) Thanks [@jonrohan](https://github.com/jonrohan)! - Moving the render for the ActionBar::Item from the slot initializer to the call method.
+
+  <!-- Changed components: _none_ -->
+
+### Patch Changes
+
+- [#2227](https://github.com/primer/view_components/pull/2227) [`bb336bb6`](https://github.com/primer/view_components/commit/bb336bb6f034e20778b4834edae3540c365b9d9f) Thanks [@jonrohan](https://github.com/jonrohan)! - [Bug] Don't fill in the spinner circle svg path
+
+- [#2237](https://github.com/primer/view_components/pull/2237) [`70a8336f`](https://github.com/primer/view_components/commit/70a8336fda45b144f81c1ece54b17a26037126e4) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing ActionBar more menu items including buttons with no type
+
+  <!-- Changed components: Primer::Alpha::ActionBar -->
+
+- [#2204](https://github.com/primer/view_components/pull/2204) [`ed1644a2`](https://github.com/primer/view_components/commit/ed1644a2fa5b701611a13513cb903774f3f74152) Thanks [@keithamus](https://github.com/keithamus)! - Fix errors in older browsers with :popover-open
+
+  <!-- Changed components: Primer::Alpha::Tooltip -->
+
+- [#2236](https://github.com/primer/view_components/pull/2236) [`d663e450`](https://github.com/primer/view_components/commit/d663e4508341f5b9ef1788b8a2231782ce3ed44d) Thanks [@keithamus](https://github.com/keithamus)! - Centre anchored-position elements when their anchor is not present
+
+  <!-- Changed components: Primer::Alpha::Overlay -->
+
+## 0.8.0
+
+### Minor Changes
+
+- [#2215](https://github.com/primer/view_components/pull/2215) [`827634e9`](https://github.com/primer/view_components/commit/827634e9a442fc6a6508235bdd38a1739e88cf5e) Thanks [@mjimenez98](https://github.com/mjimenez98)! - Support SVGs as leading visuals in `Button` component
+
+  <!-- Changed components: Primer::Beta::Button -->
+
+- [#2222](https://github.com/primer/view_components/pull/2222) [`e196af7b`](https://github.com/primer/view_components/commit/e196af7bed7f862f758f5edfd51107579128e0ee) Thanks [@jonrohan](https://github.com/jonrohan)! - Replace dismiss button in Flash with IconButton
+
+  <!-- Changed components: Primer::Beta::Flash -->
+
+### Patch Changes
+
+- [#2213](https://github.com/primer/view_components/pull/2213) [`bc4b3340`](https://github.com/primer/view_components/commit/bc4b33402a7cae813a77bafa7de9e1c7f2fc5419) Thanks [@camertron](https://github.com/camertron)! - Support Rails edge's custom deprecators
+
+  <!-- Changed components: _none_ -->
+
+- [#2212](https://github.com/primer/view_components/pull/2212) [`3d0036ae`](https://github.com/primer/view_components/commit/3d0036ae50b611942347d065f5be55822ec17748) Thanks [@keithamus](https://github.com/keithamus)! - Fix dialog invocation within deferred ActionMenus
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+## 0.7.0
+
+### Minor Changes
+
+- [#2200](https://github.com/primer/view_components/pull/2200) [`1b770f90`](https://github.com/primer/view_components/commit/1b770f9000faa119eb2ece3035be2eaa476ca1a1) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Add rubocop linter for `Truncate` component
+
+  <!-- Changed components: _none_ -->
+
+- [#2207](https://github.com/primer/view_components/pull/2207) [`ba01f4e9`](https://github.com/primer/view_components/commit/ba01f4e9f7d287c01fb3dab1b04b58c49c1d71fb) Thanks [@langermank](https://github.com/langermank)! - Bump Primitives v7.12.0
+
+  <!-- Changed components: _none_ -->
+
+- [#2210](https://github.com/primer/view_components/pull/2210) [`aded2aa4`](https://github.com/primer/view_components/commit/aded2aa45261b13d870f474889d6bc6a803c484a) Thanks [@khiga8](https://github.com/khiga8)! - Fix accessibility bug of missing accessible name on `Primer::Alpha::Dialog`
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+### Patch Changes
+
+- [#2203](https://github.com/primer/view_components/pull/2203) [`3f504021`](https://github.com/primer/view_components/commit/3f504021e26cb92c99b16b63fe3e9b45fd5ede3b) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix guide URLs (in lib/primer/deprecations.yml)
+
+  <!-- Changed components: _none_ -->
+
+- [#2192](https://github.com/primer/view_components/pull/2192) [`73fc40bb`](https://github.com/primer/view_components/commit/73fc40bb83ac2b14936e38ad2706cfdd68abc34f) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: Don't allow items to be unchecked in single-select mode
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2211](https://github.com/primer/view_components/pull/2211) [`9623ab63`](https://github.com/primer/view_components/commit/9623ab63dfb6a658d416376291d28ade9bf2b1fd) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating tooltip migration linter link to correct url
+
+- [#2202](https://github.com/primer/view_components/pull/2202) [`d7da4012`](https://github.com/primer/view_components/commit/d7da4012cb0a1d268cb0557cce171137dc766890) Thanks [@camertron](https://github.com/camertron)! - Label BorderBox lists with their header
+
+  <!-- Changed components: Primer::Beta::BorderBox -->
+
+- [#2190](https://github.com/primer/view_components/pull/2190) [`0a9bcda2`](https://github.com/primer/view_components/commit/0a9bcda29eedd5b4854ce71a413b22f275283729) Thanks [@radglob](https://github.com/radglob)! - Updates Primer::Beta::Button.with_tooltip to not accept `:label` type.
+
+  <!-- Changed components: Primer::Beta::Button -->
+
+- [#2201](https://github.com/primer/view_components/pull/2201) [`ba90a43d`](https://github.com/primer/view_components/commit/ba90a43d9904bb088e1ce3988c3b94211155e722) Thanks [@kintner](https://github.com/kintner)! - add aria-invalid when fields are invalid
+
+  <!-- Changed components: Primer::Alpha::CheckBox, Primer::Alpha::CheckBoxGroup, Primer::Alpha::FormButton, Primer::Alpha::MultiInput, Primer::Alpha::RadioButton, Primer::Alpha::RadioButtonGroup, Primer::Alpha::Select, Primer::Alpha::SubmitButton, Primer::Alpha::TextArea, Primer::Alpha::TextField, Primer::Alpha::ToggleSwitch -->
+
+## 0.6.0
+
+### Minor Changes
+
+- [#2187](https://github.com/primer/view_components/pull/2187) [`ce2011e6`](https://github.com/primer/view_components/commit/ce2011e615325b2e18d0974b5a08831ef442681f) Thanks [@camertron](https://github.com/camertron)! - Expose ActionList's #build_item and #build_avatar_item externally to facilitate parent-less item construction
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu, Primer::Alpha::NavList -->
+
+- [#2188](https://github.com/primer/view_components/pull/2188) [`5950afea`](https://github.com/primer/view_components/commit/5950afea48dca275df11603ffab6f8689777e08d) Thanks [@camertron](https://github.com/camertron)! - Allow disabling submit buttons
+
+  <!-- Changed components: Primer::Alpha::FormButton, Primer::Alpha::SubmitButton -->
+
+- [#2165](https://github.com/primer/view_components/pull/2165) [`1b8ff1b7`](https://github.com/primer/view_components/commit/1b8ff1b7883b9870dfc09c6b59f26d17b8d2be92) Thanks [@camertron](https://github.com/camertron)! - Add an accessible avatar item to ActionList, NavList, and ActionMenu
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu, Primer::Alpha::NavList -->
+
+- [#2186](https://github.com/primer/view_components/pull/2186) [`eab82c07`](https://github.com/primer/view_components/commit/eab82c0780b219f1d3a118cc912561f33ac49e7e) Thanks [@camertron](https://github.com/camertron)! - On dismiss, allow banners to be hidden instead of removed from DOM
+
+  <!-- Changed components: Primer::Alpha::Banner -->
+
+### Patch Changes
+
+- [#2164](https://github.com/primer/view_components/pull/2164) [`93344455`](https://github.com/primer/view_components/commit/93344455a3fc7666dd459eeb06843e2a9c7a7806) Thanks [@camertron](https://github.com/camertron)! - Allow form buttons to be disabled on click with data-disable-with
+
+  <!-- Changed components: Primer::Alpha::FormButton -->
+
+- [#2158](https://github.com/primer/view_components/pull/2158) [`0afaecc6`](https://github.com/primer/view_components/commit/0afaecc6051ff5f85f804db3ac3494d208ed4999) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix bug in ActionMenu button where return doesn't trigger menu
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2168](https://github.com/primer/view_components/pull/2168) [`45822328`](https://github.com/primer/view_components/commit/4582232870286d9cc2d6ae8bea6c6fd9da9659a6) Thanks [@keithamus](https://github.com/keithamus)! - Guard tooltip popover calls from `Failed to execute 'showPopover' on 'HTMLElement': Not supported on elements that do not have a valid value for the 'popover' attribute.`
+
+  <!-- Changed components: Primer::Alpha::Tooltip -->
+
+- [#2160](https://github.com/primer/view_components/pull/2160) [`8464823b`](https://github.com/primer/view_components/commit/8464823b7cb1d27cea9e4ead25014f1518e6bd26) Thanks [@langermank](https://github.com/langermank)! - Fix Dialog backdrop color fallback
+
+  <!-- Changed components: _none_ -->
+
+- [#2163](https://github.com/primer/view_components/pull/2163) [`e3aeda1f`](https://github.com/primer/view_components/commit/e3aeda1f567f3a8d08a252ab98e0aeae880d1eaf) Thanks [@langermank](https://github.com/langermank)! - Add fallbacks for primary Button
+
+  <!-- Changed components: _none_ -->
+
+- [#2170](https://github.com/primer/view_components/pull/2170) [`4391873d`](https://github.com/primer/view_components/commit/4391873d9970ef981e22d1b7360343037683c1d1) Thanks [@Tonkpils](https://github.com/Tonkpils)! - Add support for capitalize to text-transform
+
+  <!-- Changed components: Primer::BaseComponent -->
+
+- [#2169](https://github.com/primer/view_components/pull/2169) [`4f11f5e3`](https://github.com/primer/view_components/commit/4f11f5e32d0d108bce6fb688156b21704a75785f) Thanks [@camertron](https://github.com/camertron)! - Fix color contrast issues for action list hover state (danger style)
+
+  <!-- Changed components: Primer::Alpha::ActionList, Primer::Alpha::ActionMenu -->
+
+## 0.5.1
+
+### Patch Changes
+
+- [#2156](https://github.com/primer/view_components/pull/2156) [`5f809724`](https://github.com/primer/view_components/commit/5f8097241df130e5b54cd5a1bcfda0ca11258cda) Thanks [@langermank](https://github.com/langermank)! - Add correct fallbacks to `State` label
+
+  <!-- Changed components: _none_ -->
+
+- [#2151](https://github.com/primer/view_components/pull/2151) [`78e0d175`](https://github.com/primer/view_components/commit/78e0d175d266534ab9042b671057bed3e6dfb7c5) Thanks [@jdrush89](https://github.com/jdrush89)! - Checking document scrollbar width before making dialog backdrop visible to fix issue with document padding on mobile screens.
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+- [#2154](https://github.com/primer/view_components/pull/2154) [`9005b5cd`](https://github.com/primer/view_components/commit/9005b5cdb00a628f4f9efe93066dab5413b181e5) Thanks [@langermank](https://github.com/langermank)! - Add color declaration for Dialog `title`
+
+  <!-- Changed components: _none_ -->
+
+## 0.5.0
+
+### Minor Changes
+
+- [#2148](https://github.com/primer/view_components/pull/2148) [`cbd5c84d`](https://github.com/primer/view_components/commit/cbd5c84d8d290b0d018f15c5ee84cd94afcd4b0b) Thanks [@keithamus](https://github.com/keithamus)! - Add a linter discouraging use of <details-menu> in favor of Primer::Alpha::ActionMenu
+
+  <!-- Changed components: _none_ -->
+
+- [#2123](https://github.com/primer/view_components/pull/2123) [`f9119d95`](https://github.com/primer/view_components/commit/f9119d95f281d528f3c0086ebc521afd33bd4295) Thanks [@langermank](https://github.com/langermank)! - - Use Primitive v8 color tokens
+  - Add tests for compiled CSS to ensure CSS color variables have a fallback
+
+### Patch Changes
+
+- [#2153](https://github.com/primer/view_components/pull/2153) [`b9871598`](https://github.com/primer/view_components/commit/b98715986852c5f0f51aaf9f9af0463d2eda727c) Thanks [@langermank](https://github.com/langermank)! - Update color fallback for `UnderlineNav` counter
+
+## 0.4.0
+
+### Minor Changes
+
+- [#2111](https://github.com/primer/view_components/pull/2111) [`6ee6d774`](https://github.com/primer/view_components/commit/6ee6d774b463753c7b2b944dcf57dd4ff40c9589) Thanks [@keithamus](https://github.com/keithamus)! - refactor Primer::Alpha::Tooltip to use popover
+
+  Changed components: Primer::Alpha::Tooltip
+
+- [#2034](https://github.com/primer/view_components/pull/2034) [`707a1fa3`](https://github.com/primer/view_components/commit/707a1fa31dd23cae8316fa9d8a6c122bc4edc354) Thanks [@radglob](https://github.com/radglob)! - Partially address a11y issues in Link component.
+
+  Links can no longer be rendered as `<span>`s.
+
+- [#1941](https://github.com/primer/view_components/pull/1941) [`a8cc5ba2`](https://github.com/primer/view_components/commit/a8cc5ba2061207d9ca65c42f3d355eb8b7f03bb8) Thanks [@jonrohan](https://github.com/jonrohan)! - 🆕 New component!
+
+  The `Primer::Alpha::ActionBar` component is used to create a toolbar of buttons that will fold into an ActionMenu when the space is smaller. [Design details](https://primer.style/design/components/action-bar/)
+
+## 0.3.1
+
+### Patch Changes
+
+- [#2113](https://github.com/primer/view_components/pull/2113) [`f4736349`](https://github.com/primer/view_components/commit/f4736349bc7b04a8696960b821377b1237ec660c) Thanks [@camertron](https://github.com/camertron)! - Revert v8 color var fallbacks (#2083)
+
 ## 0.3.0
 
 ### Minor Changes

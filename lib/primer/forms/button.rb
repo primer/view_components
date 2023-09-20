@@ -39,11 +39,6 @@ module Primer
 
         # rails uses a string for this, but PVC wants a symbol
         @input.merge_input_arguments!(type: type.to_sym)
-
-        # Never disable buttons. This overrides the global
-        # ActionView::Base.automatically_disable_submit_tag setting.
-        # Disabling buttons is not accessible.
-        @input.remove_input_data(:disable_with)
       end
 
       def input_arguments

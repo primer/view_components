@@ -24,20 +24,6 @@ updates:
     allow:
       - dependency-type: "production"
   - package-ecosystem: "npm"
-    directory: "/docs"
-    schedule:
-      interval: "monthly"
-    labels:
-      - "dependencies"
-      - "skip changeset"
-      - "npm"
-    allow:
-      - dependency-type: "production"
-    ignore:
-      - dependency-name: "gatsby"
-      - dependency-name: "react"
-      - dependency-name: "react-dom"
-  - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
       interval: "monthly"

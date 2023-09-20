@@ -6,29 +6,16 @@ require_relative "models/deep_thought"
 class Primer::Forms::MultiInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class MultipleFieldsVisibleForm < ApplicationForm
-    form do |test_form|
-      test_form.multi(name: :foo, label: "Thing") do |multi|
-        multi.text_field(name: :bar, label: "Text field")
-        multi.text_field(name: :baz, label: "Text field")
-      end
-    end
-  end
-
-  class FieldsWithDifferentNamesForm < ApplicationForm
-    form do |test_form|
-      test_form.multi(name: :foo, label: "Thing") do |multi|
-        multi.text_field(name: :bar, label: "Text field")
-        multi.text_field(name: :baz, label: "Text field", hidden: true)
-      end
-    end
-  end
-
   def test_disallows_two_visible_inputs
     error = assert_raises(ArgumentError) do
       render_in_view_context do
         primer_form_with(url: "/foo") do |f|
-          render(MultipleFieldsVisibleForm.new(f))
+          render_inline_form(f) do |test_form|
+            test_form.multi(name: :foo, label: "Thing") do |multi|
+              multi.text_field(name: :bar, label: "Text field")
+              multi.text_field(name: :baz, label: "Text field")
+            end
+          end
         end
       end
     end
@@ -39,21 +26,17 @@ class Primer::Forms::MultiInputTest < Minitest::Test
   def test_inputs_have_data_name
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render(FieldsWithDifferentNamesForm.new(f))
+        render_inline_form(f) do |test_form|
+          test_form.multi(name: :foo, label: "Thing") do |multi|
+            multi.text_field(name: :bar, label: "Text field")
+            multi.text_field(name: :baz, label: "Text field", hidden: true)
+          end
+        end
       end
     end
 
     assert_selector "input[data-name=bar]"
     assert_selector "input[data-name=baz]", visible: :hidden
-  end
-
-  class MultiDeepThoughtForm < ApplicationForm
-    form do |text_area_form|
-      text_area_form.multi(name: :ultimate_answer, label: "Ultimate answer") do |ultimate_answer_multi|
-        ultimate_answer_multi.text_field(name: :foo)
-        ultimate_answer_multi.text_field(name: :bar, hidden: true)
-      end
-    end
   end
 
   def test_no_error_markup
@@ -62,7 +45,12 @@ class Primer::Forms::MultiInputTest < Minitest::Test
 
     render_in_view_context do
       primer_form_with(model: model, url: "/foo") do |f|
-        render(MultiDeepThoughtForm.new(f))
+        render_inline_form(f) do |test_form|
+          test_form.multi(name: :ultimate_answer, label: "Ultimate answer") do |ultimate_answer_multi|
+            ultimate_answer_multi.text_field(name: :foo)
+            ultimate_answer_multi.text_field(name: :bar, hidden: true)
+          end
+        end
       end
     end
 

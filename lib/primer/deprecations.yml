@@ -5,6 +5,26 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
+  - component: "Primer::Alpha::NavList::Divider"
+    autocorrect: true
+    replacement: "Primer::Beta::NavList::Divider"
+
+  - component: "Primer::Alpha::NavList::Item"
+    autocorrect: true
+    replacement: "Primer::Beta::NavList::Item"
+
+  - component: "Primer::Alpha::NavList::Heading"
+    autocorrect: true
+    replacement: "Primer::Beta::NavList::Heading"
+
+  - component: "Primer::Alpha::NavList::Group"
+    autocorrect: true
+    replacement: "Primer::Beta::NavList::Group"
+
+  - component: "Primer::Alpha::NavList"
+    autocorrect: true
+    replacement: "Primer::Beta::NavList"
+
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -20,7 +40,7 @@ deprecations:
   - component: "Primer::ButtonComponent"
     autocorrect: false
     replacement: "Primer::Beta::Button"
-    guide: "https://primer.style/view-components/guides/primer_button_component"
+    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-button-component"
 
   - component: "Primer::IconButton"
     autocorrect: true
@@ -29,7 +49,7 @@ deprecations:
   - component: "Primer::LayoutComponent"
     autocorrect: false
     replacement: "Primer::Alpha::Layout"
-    guide: "https://primer.style/view-components/guides/primer_layout_component"
+    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-layout-component"
 
   - component: "Primer::Navigation::TabComponent"
     autocorrect: true
@@ -42,4 +62,4 @@ deprecations:
   - component: "Primer::Truncate"
     autocorrect: false
     replacement: "Primer::Beta::Truncate"
-    guide: "https://primer.style/view-components/guides/primer_truncate"
+    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-truncate"

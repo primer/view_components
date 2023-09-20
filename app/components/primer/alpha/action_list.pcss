@@ -28,7 +28,7 @@
     width: 100%;
     height: 1px;
     content: '';
-    background: var(--borderColor-muted);
+    background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
   }
 
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
@@ -40,7 +40,7 @@
       width: 100%;
       height: var(--borderWidth-thin);
       content: '';
-      background: var(--borderColor-muted);
+      background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
     }
 
     /* unset the default label pseudo */
@@ -255,7 +255,8 @@
         background: var(--control-danger-bgColor-hover);
 
         & .ActionListItem-label,
-        & .ActionListItem-visual {
+        & .ActionListItem-visual,
+        & .ActionListItem-description {
           color: var(--control-danger-fgColor-hover);
         }
       }
@@ -266,7 +267,8 @@
         background: var(--control-danger-bgColor-active);
 
         & .ActionListItem-label,
-        & .ActionListItem-visual {
+        & .ActionListItem-visual,
+        & .ActionListItem-description {
           color: var(--control-danger-fgColor-hover);
         }
       }
@@ -547,6 +549,12 @@
   grid-area: trailingAction;
 }
 
+/* have leading visual svg filled with chosen color */
+
+.ActionListItem-visual--leading svg {
+  fill: currentcolor;
+}
+
 /* wrapper span
  default block */
 .ActionListItem-descriptionWrap {
@@ -664,7 +672,7 @@
     margin-block-end: var(--base-size-8);
     margin-inline: calc(-1 * var(--base-size-8));
     list-style: none;
-    background: var(--borderColor-muted);
+    background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
     border: 0;
   }
 
@@ -680,8 +688,8 @@
   margin-block-end: var(--base-size-8);
   margin-inline: calc(-1 * var(--base-size-8));
   background: var(--bgColor-muted);
-  border-top: solid var(--borderWidth-thin) var(--borderColor-muted);
-  border-bottom: solid var(--borderWidth-thin) var(--borderColor-muted);
+  border-top: solid var(--borderWidth-thin) var(--borderColor-muted, var(--color-action-list-item-inline-divider));
+  border-bottom: solid var(--borderWidth-thin) var(--borderColor-muted, var(--color-action-list-item-inline-divider));
 
   /* if no children, treat as divider */
   &:empty {

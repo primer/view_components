@@ -13,9 +13,6 @@ module Primer
         :secondary => "Link--secondary"
       }.freeze
 
-      DEFAULT_TAG = :a
-      TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
-
       # `Tooltip` that appears on mouse hover or keyboard focus over the link. Use tooltips sparingly and as a last resort.
       # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
       # The tooltip will appear adjacent to the anchor element. Both the tooltip and the anchor will be nested
@@ -33,52 +30,29 @@ module Primer
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Primer::Beta::Link.new(href: "#")) { "Link" } %>
-      #
-      # @example Muted
-      #   <%= render(Primer::Beta::Link.new(href: "#", muted: true)) { "Link" } %>
-      #
-      # @example Schemes
-      #   <%= render(Primer::Beta::Link.new(href: "#", scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::Beta::Link.new(href: "#", scheme: :secondary)) { "Secondary" } %>
-      #
-      # @example Without underline
-      #   <%= render(Primer::Beta::Link.new(href: "#", underline: false)) { "Link" } %>
-      #
-      # @example With tooltip
-      #   @description
-      #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-      #   @code
-      #     <%= render(Primer::Beta::Link.new(href: "#", id: "link-with-tooltip")) do |component| %>
-      #       <% component.with_tooltip(text: "Tooltip text") %>
-      #       Link
-      #     <% end %>
-      #
-      # @param tag [String]  <%= one_of(Primer::Beta::Link::TAG_OPTIONS) %>
-      # @param href [String] URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered.
+      # @param href [String] URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Link::SCHEME_MAPPINGS.keys) %>
       # @param muted [Boolean] Uses light gray for Link color, and blue on hover.
       # @param underline [Boolean] Whether or not to underline the link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(href: nil, tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, muted: false, underline: true, **system_arguments)
-        @system_arguments = system_arguments
+      def initialize(href: nil, scheme: DEFAULT_SCHEME, muted: false, underline: false, **system_arguments)
+        @system_arguments = deny_tag_argument(**system_arguments)
 
         @id = @system_arguments[:id]
 
-        @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+        @system_arguments[:tag] = :a
         @system_arguments[:href] = href
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)],
-          "Link" => tag == :span,
+          "Link",
           "Link--muted" => muted,
-          "no-underline" => !underline
+          "Link--underline" => underline
         )
       end
 
       def before_render
-        raise ArgumentError, "href is required when using <a> tag" if @system_arguments[:tag] == :a && @system_arguments[:href].nil? && !Rails.env.production?
+        raise ArgumentError, "href is required" if @system_arguments[:href].nil? && !Rails.env.production?
       end
 
       def call

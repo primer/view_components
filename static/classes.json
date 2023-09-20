@@ -1,4 +1,25 @@
 {
+  "ActionBar": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar--large": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar--small": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar-divider": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar-item": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar-item-container": [
+    "Primer::Alpha::ActionBar"
+  ],
+  "ActionBar-more-menu": [
+    "Primer::Alpha::ActionBar"
+  ],
   "ActionList-sectionDivider": [
     "Primer::Alpha::ActionList"
   ],
@@ -339,6 +360,9 @@
     "Primer::Beta::Link"
   ],
   "Link--secondary": [
+    "Primer::Beta::Link"
+  ],
+  "Link--underline": [
     "Primer::Beta::Link"
   ],
   "Overlay": [

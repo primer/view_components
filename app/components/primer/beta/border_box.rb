@@ -70,61 +70,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Header with title, body, rows, and footer
-      #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-      #     <% component.with_header do |header| %>
-      #       <% header.with_title(tag: :h2) do %>
-      #         Header
-      #       <% end %>
-      #     <% end %>
-      #     <% component.with_body do %>
-      #       Body
-      #     <% end %>
-      #     <% component.with_row do %>
-      #       <% if true %>
-      #         Row one
-      #       <% end %>
-      #     <% end %>
-      #     <% component.with_row do %>
-      #       Row two
-      #     <% end %>
-      #     <% component.with_footer do %>
-      #       Footer
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Padding density
-      #   <%= render(Primer::Beta::BorderBox.new(padding: :condensed)) do |component| %>
-      #     <% component.with_header do %>
-      #       Header
-      #     <% end %>
-      #     <% component.with_body do %>
-      #       Body
-      #     <% end %>
-      #     <% component.with_row do %>
-      #       Row two
-      #     <% end %>
-      #     <% component.with_footer do %>
-      #       Footer
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example Row colors
-      #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-      #     <% component.with_row do %>
-      #       Default
-      #     <% end %>
-      #     <% component.with_row(scheme: :neutral) do %>
-      #       Neutral
-      #     <% end %>
-      #     <% component.with_row(scheme: :info) do %>
-      #       Info
-      #     <% end %>
-      #     <% component.with_row(scheme: :warning) do %>
-      #       Warning
-      #     <% end %>
-      #   <% end %>
-      #
       # @param padding [Symbol] <%= one_of(Primer::Beta::BorderBox::PADDING_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(padding: DEFAULT_PADDING, **system_arguments)
@@ -137,10 +82,21 @@ module Primer
         )
 
         @system_arguments[:system_arguments_denylist] = { [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION }
+        @list_arguments = { tag: :ul }
       end
 
       def render?
         rows.any? || header.present? || body.present? || footer.present?
+      end
+
+      private
+
+      def before_render
+        return unless header
+
+        @list_arguments[:aria] = {
+          labelledby: header.id
+        }
       end
     end
   end

@@ -9,17 +9,20 @@ module Primer
       # @param name text
       # @param label text
       # @param caption text
+      # @param validation_message text
       # @param disabled toggle
       def playground(
         name: "my-check-group",
         label: "I would go into battle with:",
         caption: "Qa'pla!",
+        validation_message: nil,
         disabled: false
       )
         system_arguments = {
           name: name,
           label: label,
           caption: caption,
+          validation_message: validation_message,
           disabled: disabled
         }
 
@@ -41,7 +44,18 @@ module Primer
         end
       end
 
+      # @label Invalid
+      def invalid
+        render(Primer::Alpha::CheckBoxGroup.new(validation_message: "Please choose at least one", name: "my-check-group", label: "I would go into battle with:")) do |component|
+          component.check_box(label: "Jean-Luc Picard", value: "picard4")
+          component.check_box(label: "Hikaru Sulu", value: "sulu4")
+          component.check_box(label: "Kathryn Janeway", value: "janeway4")
+          component.check_box(label: "Benjamin Sisko", value: "sisko4")
+        end
+      end
+
       # @!group Options
+      # @snapshot
       #
       # @label With caption
       def with_caption

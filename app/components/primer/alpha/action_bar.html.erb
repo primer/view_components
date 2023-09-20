@@ -1,0 +1,12 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render Primer::BaseComponent.new(tag: :div, classes: "ActionBar-item-container", "data-target": "action-bar.itemContainer") do %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  <% end %>
+  <% if render_overflow_menu? %>
+    <%= render(@action_menu) do |menu| %>
+      <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu", size: @size, scheme: :invisible) %>
+    <% end %>
+  <% end %>
+<% end %>

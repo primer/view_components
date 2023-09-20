@@ -63,7 +63,7 @@ module Primer
           component.with_body { "content" }
         end
 
-        assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-title my-dialog-description']") do
+        assert_selector("modal-dialog[id='my-dialog'][aria-labelledby='my-dialog-title'][aria-describedby='my-dialog-description']") do
           assert_selector("h1[id='my-dialog-title']", text: "Title")
           assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
         end

@@ -10,6 +10,7 @@ require "view_component"
 require "primer/view_components"
 require "primer/view_components/engine"
 require "octicons"
+require_relative "../../lib/primer/yard"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -87,7 +88,13 @@ module Demo
           ["Dark high contrast", "dark_high_contrast"],
           ["Dark colorblind", "dark_colorblind"],
           ["All themes", "all"]
+        ],
+        # rubocop:disable Style/WordArray
+        primitives: [
+          ["Default", "default"],
+          ["Next Major v8", "next_major_v8"]
         ]
+        # rubocop:enable Style/WordArray
       }
 
       config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]

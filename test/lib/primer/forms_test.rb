@@ -132,13 +132,6 @@ class Primer::FormsTest < Minitest::Test
     end
   end
 
-  def test_renders_a_submit_button_without_data_disable_with
-    render_preview :submit_button_form
-
-    button = page.find_all("button[type=submit]").first
-    assert_nil button["data-disable-with"]
-  end
-
   def test_renders_buttons_with_primer_utility_margins
     render_preview :submit_button_form
 
@@ -150,6 +143,12 @@ class Primer::FormsTest < Minitest::Test
     render_preview :submit_button_form
 
     assert_selector "input.color-fg-success[type=text]"
+  end
+
+  def test_the_input_is_marked_as_invalid
+    render_preview :invalid_form
+
+    assert_selector "input[type=text][name=last_name][invalid][aria-invalid]"
   end
 
   def test_autofocuses_the_first_invalid_input

@@ -30,28 +30,7 @@ module Primer
       }.freeze
 
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
-      # @example Default
-      #   <%= render(Primer::Beta::ProgressBar.new) do |component| %>
-      #     <% component.with_item(percentage: 25) %>
-      #   <% end %>
-      #
-      # @example Small
-      #   <%= render(Primer::Beta::ProgressBar.new(size: :small)) do |component| %>
-      #     <% component.with_item(bg: :accent_emphasis, percentage: 50) %>
-      #   <% end %>
-      #
-      # @example Large
-      #   <%= render(Primer::Beta::ProgressBar.new(size: :large)) do |component| %>
-      #     <% component.with_item(bg: :danger_emphasis, percentage: 75) %>
-      #   <% end %>
-      #
-      # @example Multiple items
-      #   <%= render(Primer::Beta::ProgressBar.new) do |component| %>
-      #     <% component.with_item(percentage: 10) %>
-      #     <% component.with_item(bg: :accent_emphasis, percentage: 20) %>
-      #     <% component.with_item(bg: :danger_emphasis, percentage: 30) %>
-      #   <% end %>
-      #
+
       # @param size [Symbol] <%= one_of(Primer::Beta::ProgressBar::SIZE_OPTIONS) %> Increases height.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(size: SIZE_DEFAULT, **system_arguments)

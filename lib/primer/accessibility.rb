@@ -39,7 +39,7 @@ module Primer
 
     class << self
       def ignore_preview?(preview_class)
-        preview_class.name.start_with?("Docs::") || IGNORED_PREVIEWS.include?(preview_class)
+        IGNORED_PREVIEWS.include?(preview_class)
       end
 
       def axe_rules_to_skip(component: nil, scenario_name: nil, flatten: false)

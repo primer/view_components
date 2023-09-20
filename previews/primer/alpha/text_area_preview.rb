@@ -45,6 +45,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
         render(Primer::Alpha::TextArea.new(name: "my-text-area", label: "Tell me about yourself"))
       end
@@ -52,31 +53,37 @@ module Primer
       # @!group Options
       #
       # @label With caption
+      # @snapshot
       def with_caption
         render(Primer::Alpha::TextArea.new(caption: "With a caption", name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label Visually hidden label
+      # @snapshot
       def visually_hide_label
         render(Primer::Alpha::TextArea.new(visually_hide_label: true, name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label Full width
+      # @snapshot
       def full_width
         render(Primer::Alpha::TextArea.new(full_width: true, name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label Disabled
+      # @snapshot
       def disabled
         render(Primer::Alpha::TextArea.new(disabled: true, name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label Invalid
+      # @snapshot
       def invalid
         render(Primer::Alpha::TextArea.new(invalid: true, name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label With validation message
+      # @snapshot
       def with_validation_message
         render(Primer::Alpha::TextArea.new(validation_message: "An error occurred!", name: "my-text-area", label: "Tell me about yourself"))
       end

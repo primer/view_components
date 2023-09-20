@@ -8,6 +8,11 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::ActionBar, {}, proc { |component|
+      component.with_item_icon_button(icon: :search, label: "Search")
+      component.with_item_icon_button(icon: :pencil, label: "Edit")
+      component.with_item_icon_button(icon: :archive, label: "Archive")
+    }],
     [Primer::Beta::RelativeTime, { datetime: Time.now.utc }],
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
@@ -119,6 +124,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
+    [Primer::Beta::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
     [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }]
@@ -126,15 +132,21 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::NavList::Divider",
+      "Primer::Alpha::NavList::Item",
+      "Primer::Alpha::NavList::Heading",
+      "Primer::Alpha::NavList::Group",
+      "Primer::Alpha::ActionBar::Divider",
+      "Primer::Alpha::ActionBar::Item",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
       "Primer::Alpha::ActionList::FormWrapper",
       "Primer::Alpha::ActionMenu::List",
-      "Primer::Alpha::NavList::Item",
-      "Primer::Alpha::NavList::Group",
-      "Primer::Alpha::NavList::Divider",
-      "Primer::Alpha::NavList::Header",
+      "Primer::Beta::NavList::Item",
+      "Primer::Beta::NavList::Group",
+      "Primer::Beta::NavList::Divider",
+      "Primer::Beta::NavList::Header",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",

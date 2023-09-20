@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.3.0)
+    primer_view_components (0.9.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -75,7 +75,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.4)
+    addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     azure_mgmt_container_service (0.22.0)
       ms_rest_azure (~> 0.12.0)
@@ -93,7 +93,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dry-inflector (0.3.0)
-    ejson (1.3.1)
+    ejson (1.4.1)
     erubi (1.12.0)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -126,10 +126,10 @@ GEM
       ffi (>= 1.0.0)
       rake
     foreman (0.87.2)
-    gli (2.21.0)
+    gli (2.21.1)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    googleauth (1.3.0)
+    googleauth (1.7.0)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
@@ -160,9 +160,9 @@ GEM
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    jsonpath (1.1.2)
+    jsonpath (1.1.3)
       multi_json
-    jwt (2.6.0)
+    jwt (2.7.1)
     kind-rb (0.1.0-arm64-darwin)
     kind-rb (0.1.0-x86_64-darwin)
     kind-rb (0.1.0-x86_64-linux)
@@ -177,7 +177,7 @@ GEM
       oj (~> 3.0)
       statsd-instrument (>= 2.8, < 4)
       thor (>= 1.0, < 2.0)
-    kube-dsl (0.7.4)
+    kube-dsl (0.7.5)
       dry-inflector (~> 0.2)
     kubeclient (4.11.0)
       http (>= 3.0, < 6.0)
@@ -187,14 +187,14 @@ GEM
     kubectl-rb (0.2.1-arm64-darwin)
     kubectl-rb (0.2.1-x86_64-darwin)
     kubectl-rb (0.2.1-x86_64-linux)
-    kubernetes-cli (0.4.0)
+    kubernetes-cli (0.5.0)
       kubectl-rb (~> 0.2)
     kuby-azure (0.4.0)
       azure_mgmt_container_service (~> 0.20)
       kube-dsl (~> 0.1)
     kuby-cert-manager (0.4.0)
       kube-dsl (~> 0.1)
-    kuby-core (0.19.0)
+    kuby-core (0.20.1)
       colorize (~> 0.8)
       docker-remote (~> 0.8)
       gli (~> 2.21)
@@ -207,7 +207,7 @@ GEM
       railties (>= 5.1)
       rake
       rouge (~> 3.0)
-    kuby-crdb (0.2.0)
+    kuby-crdb (0.3.0)
       kube-dsl (~> 0.7)
     kuby-kind (0.2.1)
       kind-rb (~> 0.1)
@@ -238,11 +238,11 @@ GEM
     marcel (1.0.2)
     memoist (0.16.2)
     method_source (1.0.0)
-    mime-types (3.4.1)
+    mime-types (3.5.0)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2022.0105)
+    mime-types-data (3.2023.0808)
     mini_mime (1.1.2)
-    minitest (5.18.1)
+    minitest (5.19.0)
     ms_rest (0.7.6)
       concurrent-ruby (~> 1.0)
       faraday (>= 0.9, < 2.0.0)
@@ -265,14 +265,14 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
-    nokogiri (1.15.2-arm64-darwin)
+    nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.2-x86_64-darwin)
+    nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.2-x86_64-linux)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
-    octicons (19.4.0)
-    oj (3.14.0)
+    octicons (19.7.0)
+    oj (3.16.0)
     os (1.1.4)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -280,11 +280,11 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
-    public_suffix (5.0.1)
-    puma (6.3.0)
+    public_suffix (5.0.3)
+    puma (6.3.1)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.7)
+    rack (2.2.8)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-test (2.1.0)
@@ -303,8 +303,9 @@ GEM
       activesupport (= 7.0.3)
       bundler (>= 1.15.0)
       railties (= 7.0.3)
-    rails-dom-testing (2.0.3)
-      activesupport (>= 4.2.0)
+    rails-dom-testing (2.2.0)
+      activesupport (>= 5.0.0)
+      minitest
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
@@ -345,7 +346,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    statsd-instrument (3.5.3)
+    statsd-instrument (3.5.11)
     stimulus-rails (1.1.1)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -360,7 +361,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (3.2.0)
+    view_component (3.5.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -368,13 +369,14 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.34)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -388,13 +390,13 @@ DEPENDENCIES
   importmap-rails
   kind-rb (~> 0.1)
   kuby-azure (~> 0.4.0)
-  kuby-core (~> 0.19)
+  kuby-core (~> 0.20)
   kuby-kind (~> 0.1)
   listen
   lookbook (~> 2.0.5)
   primer_view_components!
   pry-byebug
-  puma (~> 6.3.0)
+  puma (~> 6.3.1)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
@@ -407,4 +409,4 @@ DEPENDENCIES
   view_component (>= 3.1.0)
 
 BUNDLED WITH
-   2.2.33
+   2.4.1

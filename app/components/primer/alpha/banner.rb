@@ -48,51 +48,25 @@ module Primer
         success: :"check-circle"
       }.freeze
 
-      # @example Schemes
-      #   <div style="display: grid; row-gap: 15px">
-      #     <%= render(Primer::Alpha::Banner.new) { "This is a banner message!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" } %>
-      #     <%= render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" } %>
-      #   </div>
-      #
-      # @example Full width
-      #   <%= render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner!" } %>
-      #
-      # @example Dismissible
-      #   <%= render(Primer::Alpha::Banner.new(dismissible: true, reappear: true)) { "This is a dismissible banner!" } %>
-      #
-      # @example Custom icon
-      #   <%= render(Primer::Alpha::Banner.new(icon: :people)) { "This is a banner with a custom icon!" } %>
-      #
-      # @example With action button
-      #   <%= render(Primer::Alpha::Banner.new) do |component| %>
-      #     This is a banner with an action button!
-      #     <% component.with_action_button(size: :small) { "Take action" } %>
-      #   <% end %>
-      #
-      # @example With custom action
-      #   <%= render(Primer::Alpha::Banner.new) do |component| %>
-      #     Comment saved!
-      #     <% component.with_action_content do %>
-      #       <%= render(Primer::IconButton.new(icon: :pencil, mr: 1, "aria-label": "Edit")) %>
-      #     <% end %>
-      #   <% end %>
-      #
+      DEFAULT_DISMISS_SCHEME = :none
+      DISMISS_SCHEMES = [
+        DEFAULT_DISMISS_SCHEME,
+        :remove,
+        :hide
+      ].freeze
+
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
-      # @param dismissible [Boolean] Whether the component can be dismissed with an "x" button.
+      # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
       # @param description [String] Description text rendered underneath the message.
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
-      # @param reappear [Boolean] Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(full: false, full_when_narrow: false, dismissible: false, description: nil, icon: nil, scheme: DEFAULT_SCHEME, reappear: false, **system_arguments)
+      def initialize(full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
-        @dismissible = dismissible
+        @dismiss_scheme = dismiss_scheme
         @description = description
-        @reappear = reappear
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
@@ -113,10 +87,9 @@ module Primer
         }
 
         @wrapper_arguments = {
-          tag: custom_element_name
+          tag: custom_element_name,
+          data: { dismiss_scheme: @dismiss_scheme }
         }
-
-        @wrapper_arguments[:data] = { reappear: @reappear } if @reappear
       end
 
       private

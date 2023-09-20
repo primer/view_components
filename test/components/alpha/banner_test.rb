@@ -101,9 +101,15 @@ class PrimerBannerTest < Minitest::Test
   end
 
   def test_renders_dismiss_button
-    render_inline(Primer::Alpha::Banner.new(dismissible: true)) { "foo" }
+    render_inline(Primer::Alpha::Banner.new(dismiss_scheme: :remove)) { "foo" }
 
     assert_selector(".Banner .Banner-close")
+  end
+
+  def test_does_not_render_dismiss_button
+    render_inline(Primer::Alpha::Banner.new(dismiss_scheme: :none)) { "foo" }
+
+    refute_selector(".Banner-close")
   end
 
   def test_renders_action_button_slot

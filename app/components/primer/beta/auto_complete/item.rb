@@ -39,14 +39,6 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :description
 
-        # @example Default
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do %>
-        #     Selected
-        #   <% end %>
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do %>
-        #     Not selected
-        #   <% end %>
-        #
         # @param value [String] Value of the item.
         # @param selected [Boolean] Whether the item is selected.
         # @param disabled [Boolean] Whether the item is disabled.

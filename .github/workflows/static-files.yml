@@ -9,6 +9,8 @@ jobs:
   static:
     runs-on: ubuntu-latest
     steps:
+      # Unfortunately we can't use the primer GitHub App and camertron/github-app-installation-auth-action
+      # because branch protection rules cannot be bypassed by Apps.
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
@@ -27,7 +29,6 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-          bundle exec rake docs:build_lookbook_pages
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Generating static files

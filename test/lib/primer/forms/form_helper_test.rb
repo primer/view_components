@@ -36,6 +36,19 @@ class Primer::Forms::FormHelperTest < Minitest::Test
     assert_equal text_field["name"], "deep_thought[ultimate_answer]"
   end
 
+  def test_the_input_is_marked_as_invalid
+    model = DeepThought.new(41)
+    model.valid? # populate validation error messages
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo") do |f|
+        render(SingleTextFieldForm.new(f))
+      end
+    end
+
+    assert_selector("input[name=deep_thought\\[ultimate_answer\\]][invalid][aria-invalid]")
+  end
+
   def test_the_input_is_described_by_the_validation_message
     model = DeepThought.new(41)
     model.valid? # populate validation error messages

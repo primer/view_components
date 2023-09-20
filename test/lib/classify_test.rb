@@ -213,6 +213,7 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_text_transform
     assert_generated_class("text-uppercase", { text_transform: :uppercase })
+    assert_generated_class("text-capitalize", { text_transform: :capitalize })
   end
 
   def test_font_weight

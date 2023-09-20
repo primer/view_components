@@ -17,6 +17,11 @@ module Primer
           yield(self) if block_given?
         end
 
+        # radio buttons cannot be invalid, as both selected and unselected are valid states
+        def valid?
+          true
+        end
+
         def to_component
           RadioButton.new(input: self)
         end
