@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.11.0
+
+### Minor Changes
+
+- [#32](https://github.com/opf/primer_view_components/pull/32) [`12ff42e3`](https://github.com/opf/primer_view_components/commit/12ff42e354da1e165de8ec13b0829693a612b556) Thanks [@HDinger](https://github.com/HDinger)! - Add BorderGrid Component
+
+  <!-- Changed components: Primer::OpenProject::BorderGrid -->
+
+- [#30](https://github.com/opf/primer_view_components/pull/30) [`398eeaf7`](https://github.com/opf/primer_view_components/commit/398eeaf78ae6d8f9a24d6ba7c211e05a30ed7973) Thanks [@HDinger](https://github.com/HDinger)! - Add DragHandle component
+
+  <!-- Changed components: Primer::OpenProject::DragHandle -->
+
 ## 0.10.0
 
 ### Minor Changes
