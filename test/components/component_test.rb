@@ -9,6 +9,9 @@ class PrimerComponentTest < Minitest::Test
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
     [Primer::OpenProject::DragHandle, {}],
+    [Primer::OpenProject::BorderGrid, {}, proc { |component|
+      component.with_row { "Foo" }
+    }],
     [Primer::OpenProject::PageHeader, {}, proc { |component|
       component.with_title { "Foo" }
     }],
@@ -149,7 +152,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",
-      "Primer::Navigation::TabComponent"
+      "Primer::Navigation::TabComponent",
+      "Primer::OpenProject::BorderGrid::Cell"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

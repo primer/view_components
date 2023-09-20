@@ -101,6 +101,18 @@
   "Banner": [
     "Primer::Alpha::Banner"
   ],
+  "BorderGrid": [
+    "Primer::OpenProject::BorderGrid"
+  ],
+  "BorderGrid--spacious": [
+    "Primer::OpenProject::BorderGrid"
+  ],
+  "BorderGrid-cell": [
+    "Primer::OpenProject::BorderGrid"
+  ],
+  "BorderGrid-row": [
+    "Primer::OpenProject::BorderGrid"
+  ],
   "Box": [
     "Primer::Beta::BorderBox"
   ],

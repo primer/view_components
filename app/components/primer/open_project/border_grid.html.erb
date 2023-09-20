@@ -1,0 +1,7 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% rows.each do |row| %>
+    <%= render Primer::BaseComponent.new(tag: :div, classes: "BorderGrid-row") do %>
+      <%= row %>
+    <% end %>
+  <% end %>
+<% end %>
