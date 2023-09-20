@@ -1,0 +1,35 @@
+/* CSS for BorderGrid  */
+
+.BorderGrid {
+    display: table;
+    width: 100%;
+    margin-top: -16px;
+    margin-bottom: -16px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-style: hidden
+}
+
+.BorderGrid .BorderGrid-cell {
+    padding-top: 16px;
+    padding-bottom: 16px
+}
+
+.BorderGrid--spacious {
+    margin-top: -24px;
+    margin-bottom: -24px
+}
+
+.BorderGrid--spacious .BorderGrid-cell {
+    padding-top: 24px;
+    padding-bottom: 24px
+}
+
+.BorderGrid-row {
+    display: table-row
+}
+
+.BorderGrid-cell {
+    display: table-cell;
+    border: 1px solid var(--borderColor-muted)
+}
