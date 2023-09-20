@@ -263,6 +263,15 @@
   "Primer::Alpha::Dialog::Footer": {
   },
   "Primer::Alpha::Dialog::Header": {
+    "DEFAULT_VARIANT": "medium",
+    "VARIANT_MAPPINGS": {
+      "medium": "",
+      "large": "Overlay-header--large"
+    },
+    "VARIANT_OPTIONS": [
+      "medium",
+      "large"
+    ]
   },
   "Primer::Alpha::Dropdown": {
     "Menu": "Primer::Alpha::Dropdown::Menu"

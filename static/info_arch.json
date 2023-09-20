@@ -2921,7 +2921,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Dialog::Header{{/link_to_component}}."
           }
         ]
       },
@@ -2995,6 +2995,19 @@
       {
         "preview_path": "primer/alpha/dialog/long_text",
         "name": "long_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header",
+        "name": "with_header",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -3100,6 +3113,12 @@
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
         "parameters": [
           {
+            "name": "id",
+            "type": "String",
+            "default": "N/A",
+            "description": "The HTML element's ID value."
+          },
+          {
             "name": "title",
             "type": "String",
             "default": "N/A",
@@ -3122,6 +3141,12 @@
             "type": "Boolean",
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+          },
+          {
+            "name": "variant",
+            "type": "Symbol",
+            "default": "`:medium`",
+            "description": "One of `:large` or `:medium`."
           },
           {
             "name": "system_arguments",
