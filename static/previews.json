@@ -1791,6 +1791,53 @@
     ]
   },
   {
+    "name": "border_grid",
+    "component": "OpenProject::BorderGrid",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/border_grid",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/border_grid/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_grid/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_grid/spacious",
+        "name": "spacious",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "box",
     "component": "Box",
     "status": "stable",

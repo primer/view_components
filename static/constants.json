@@ -1300,6 +1300,11 @@
   },
   "Primer::Navigation::TabComponent": {
   },
+  "Primer::OpenProject::BorderGrid": {
+    "Cell": "Primer::OpenProject::BorderGrid::Cell"
+  },
+  "Primer::OpenProject::BorderGrid::Cell": {
+  },
   "Primer::OpenProject::DragHandle": {
     "DEFAULT_SIZE": "small",
     "SIZE_OPTIONS": [

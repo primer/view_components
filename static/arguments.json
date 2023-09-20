@@ -4424,6 +4424,44 @@
     ]
   },
   {
+    "component": "OpenProject::BorderGrid",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectBorderGrid",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/border_grid.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_grid/default/",
+    "parameters": [
+      {
+        "name": "spacious",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to add margin to the bottom of the component."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::BorderGrid::Cell",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectBorderGridCell",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/border_grid/cell.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_grid/cell/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::DragHandle",
     "status": "open_project",
     "a11y_reviewed": false,

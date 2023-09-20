@@ -14378,6 +14378,129 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::BorderGrid",
+    "description": "A set of blocks that are shown below each other with separator lines in between",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::BorderGrid",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectBorderGrid",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/border_grid.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_grid/default/",
+    "parameters": [
+      {
+        "name": "spacious",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to add margin to the bottom of the component."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "rows",
+        "description": "Use to render a block inside the grid",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/border_grid/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_grid/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_grid/spacious",
+        "name": "spacious",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::BorderGrid::Cell",
+    "description": "A single cell inside the BorderGrid\nA cell can contain for example an action list or a status badge",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::BorderGrid::Cell",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectBorderGridCell",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/border_grid/cell.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_grid/cell/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::DragHandle",
     "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
     "accessibility_docs": "Add any accessibility considerations",
