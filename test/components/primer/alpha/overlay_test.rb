@@ -46,7 +46,6 @@ class PrimerAlphaOverlayTest < Minitest::Test
     refute_selector("anchored-position[aria-label]")
   end
 
-
   def test_renders_show_button
     render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
       component.with_body { "Hello" }
