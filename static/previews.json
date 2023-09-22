@@ -5992,6 +5992,45 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_leading_button",
+        "name": "input_group_leading_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_trailing_button",
+        "name": "input_group_trailing_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_leading_action_menu",
+        "name": "input_group_leading_action_menu",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
