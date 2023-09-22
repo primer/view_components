@@ -1,0 +1,18 @@
+
+<%= render(Primer::BaseComponent.new(tag: :div, flex_items: :center, display: :flex)) do %>
+  <%= render(Primer::Beta::IconButton.new(
+    classes: "rounded-right-0 border-right-0",
+    icon: :smiley,
+    aria: { label: "Emoji" }
+    )
+  ) %>
+  <%= render(Primer::Alpha::TextField.new(
+    name: "message",
+    placeholder: "What's happening?",
+    label: "What is your current status?",
+    classes: "rounded-left-0",
+    visually_hide_label: true,
+    value: "Some value",
+    inset: true,
+    )) %>
+<% end %>
