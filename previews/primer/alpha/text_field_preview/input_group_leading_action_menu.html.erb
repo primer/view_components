@@ -1,4 +1,4 @@
-
+ 
 <%= render(Primer::BaseComponent.new(tag: :div, flex_items: :center, display: :flex)) do %>
   <%= form_with(url: action_menu_form_action_path(format: route_format)) do |f| %>
     <%= render(Primer::Alpha::ActionMenu.new(select_variant: :single, form_arguments: { builder: f, name: "foo" })) do |menu| %>
