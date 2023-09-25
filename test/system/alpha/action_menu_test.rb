@@ -145,6 +145,14 @@ module Alpha
       assert_equal page.evaluate_script("document.activeElement").text, "Alert"
     end
 
+    def test_first_item_is_focused_on_invoker_click
+      visit_preview(:with_actions)
+
+      find("action-menu button[aria-controls]").click
+
+      assert_equal page.evaluate_script("document.activeElement").text, "Alert"
+    end
+
     def test_opens_dialog
       visit_preview(:opens_dialog)
 
@@ -355,6 +363,22 @@ module Alpha
       find("action-menu ul li:nth-child(3)").click
 
       refute_selector "[aria-checked=true]"
+    end
+
+    def test_closes_menu_on_focus_out
+      visit_preview(:default)
+
+      # open menu
+      find("action-menu button[aria-controls]").click
+      assert_selector "action-menu ul li"
+
+      # focus on invoker element
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+
+      # list items should no longer be visible
+      refute_selector "action-menu ul li"
     end
   end
 end

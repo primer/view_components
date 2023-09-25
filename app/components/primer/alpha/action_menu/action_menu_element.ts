@@ -52,7 +52,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   get popoverElement(): HTMLElement | null {
-    return this.invokerElement?.popoverTargetElement || null
+    return (this.invokerElement?.popoverTargetElement as HTMLElement) || null
   }
 
   get invokerElement(): HTMLButtonElement | null {
@@ -110,7 +110,10 @@ export class ActionMenuElement extends HTMLElement {
 
   handleEvent(event: Event) {
     const activation = this.#isActivationKeydown(event)
-    if (event.target === this.invokerElement && activation) {
+    if (
+      this.invokerElement?.contains(event.target as HTMLElement) &&
+      (activation || (event instanceof MouseEvent && event.type === 'click'))
+    ) {
       if (this.#firstItem) {
         event.preventDefault()
         this.popoverElement?.showPopover()
@@ -122,6 +125,16 @@ export class ActionMenuElement extends HTMLElement {
     // Ignore events within dialogs within menus
     if ((event.target as Element)?.closest('dialog') || (event.target as Element)?.closest('modal-dialog')) {
       return
+    }
+
+    // Close when focus leaves menu
+    if (event.type === 'focusout') {
+      // Give the browser time to focus the next element
+      requestAnimationFrame(() => {
+        if (!this.contains(document.activeElement) || document.activeElement === this.invokerElement) {
+          this.popoverElement?.hidePopover()
+        }
+      })
     }
 
     // If a dialog has been rendered within the menu, we do not want to hide
