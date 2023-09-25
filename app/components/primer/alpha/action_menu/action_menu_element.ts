@@ -109,17 +109,18 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
-    const activation = this.#isActivationKeydown(event)
-    if (
-      this.invokerElement?.contains(event.target as HTMLElement) &&
-      (activation || (event instanceof MouseEvent && event.type === 'click'))
-    ) {
-      if (this.#firstItem) {
-        event.preventDefault()
-        this.popoverElement?.showPopover()
-        this.#firstItem.focus()
-        return
-      }
+    const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
+    const eventIsMouseActivation = event instanceof MouseEvent && event.type === 'click'
+    const eventIsKeyboardActivation =
+      event instanceof KeyboardEvent &&
+      event.type === 'keydown' &&
+      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+      (event.key === 'Enter' || event.key === ' ')
+    const eventIsActivation = eventIsMouseActivation || eventIsKeyboardActivation
+
+    if (targetIsInvoker && eventIsActivation) {
+      this.#handleInvokerActivated(event)
+      return
     }
 
     // Ignore events within dialogs within menus
@@ -127,92 +128,120 @@ export class ActionMenuElement extends HTMLElement {
       return
     }
 
-    // Close when focus leaves menu
     if (event.type === 'focusout') {
       // Give the browser time to focus the next element
       requestAnimationFrame(() => {
         if (!this.contains(document.activeElement) || document.activeElement === this.invokerElement) {
+          this.#handleFocusOut()
+        }
+      })
+
+      return
+    }
+
+    const item = (event.target as Element).closest(menuItemSelectors.join(','))
+    const targetIsItem = item !== null
+
+    if (targetIsItem && eventIsActivation) {
+      const dialogInvoker = item.closest('[data-show-dialog-id]')
+
+      if (dialogInvoker) {
+        const dialog = this.ownerDocument.getElementById(dialogInvoker.getAttribute('data-show-dialog-id') || '')
+
+        if (dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
+          this.#handleDialogItemActivated(event, dialog)
+          return
+        }
+      }
+
+      this.#handleItemActivated(event, item)
+      return
+    }
+
+    if (event.type === 'include-fragment-replaced') {
+      this.#handleIncludeFragmentReplaced()
+    }
+  }
+
+  #handleInvokerActivated(event: Event) {
+    if (this.#firstItem) {
+      event.preventDefault()
+      this.popoverElement?.showPopover()
+      this.#firstItem.focus()
+      return
+    }
+  }
+
+  #handleDialogItemActivated(event: Event, dialog: HTMLElement) {
+    this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
+    const dialog_controller = new AbortController()
+    const {signal} = dialog_controller
+    const handleDialogClose = () => {
+      dialog_controller.abort()
+      this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
+      if (this.popoverElement?.matches(':popover-open')) {
+        this.popoverElement?.hidePopover()
+      }
+    }
+    dialog.addEventListener('close', handleDialogClose, {signal})
+    dialog.addEventListener('cancel', handleDialogClose, {signal})
+  }
+
+  #handleItemActivated(event: Event, item: Element) {
+    // Hide popover after current event loop to prevent changes in focus from
+    // altering the target of the event. Not doing this specifically affects
+    // <a> tags. It causes the event to be sent to the currently focused element
+    // instead of the anchor, which effectively prevents navigation, i.e. it
+    // appears as if hitting enter does nothing. Curiously, clicking instead
+    // works fine.
+    if (this.selectVariant !== 'multiple') {
+      setTimeout(() => {
+        if (this.popoverElement?.matches(':popover-open')) {
           this.popoverElement?.hidePopover()
         }
       })
     }
 
-    // If a dialog has been rendered within the menu, we do not want to hide
-    // the entire menu, as that will also hide the Dialog. Instead we want to
-    // show the Dialog while hiding just the visible part of the menu.
-    if ((activation || event.type === 'click') && (event.target as HTMLElement)?.closest('[data-show-dialog-id]')) {
-      const dialogInvoker = (event.target as HTMLElement)!.closest('[data-show-dialog-id]')
-      const dialog = this.ownerDocument.getElementById(dialogInvoker?.getAttribute('data-show-dialog-id') || '')
-      if (dialogInvoker && dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
-        this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
-        const dialog_controller = new AbortController()
-        const {signal} = dialog_controller
-        const handleDialogClose = () => {
-          dialog_controller.abort()
-          this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
-          if (this.popoverElement?.matches(':popover-open')) {
-            this.popoverElement?.hidePopover()
-          }
-        }
-        dialog.addEventListener('close', handleDialogClose, {signal})
-        dialog.addEventListener('cancel', handleDialogClose, {signal})
-        return
+    // The rest of the code below deals with single/multiple selection behavior, and should not
+    // interfere with events fired by menu items whose behavior is specified outside the library.
+    if (this.selectVariant !== 'multiple' && this.selectVariant !== 'single') return
+
+    const ariaChecked = item.getAttribute('aria-checked')
+    const checked = ariaChecked !== 'true'
+
+    if (this.selectVariant === 'single') {
+      // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
+      if (checked) {
+        item.setAttribute('aria-checked', 'true')
       }
+
+      for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+        if (checkedItem !== item) {
+          checkedItem.setAttribute('aria-checked', 'false')
+        }
+      }
+
+      this.#setDynamicLabel()
+    } else {
+      // multi-select mode allows unchecking a checked item
+      item.setAttribute('aria-checked', `${checked}`)
     }
 
-    if (!this.popoverElement?.matches(':popover-open')) return
+    this.#updateInput()
 
-    if (event.type === 'include-fragment-replaced') {
-      if (this.#firstItem) this.#firstItem.focus()
-    } else if (activation || (event instanceof MouseEvent && event.type === 'click')) {
-      // Hide popover after current event loop to prevent changes in focus from
-      // altering the target of the event. Not doing this specifically affects
-      // <a> tags. It causes the event to be sent to the currently focused element
-      // instead of the anchor, which effectively prevents navigation, i.e. it
-      // appears as if hitting enter does nothing. Curiously, clicking instead
-      // works fine.
-      if (this.selectVariant !== 'multiple') {
-        setTimeout(() => {
-          if (this.popoverElement?.matches(':popover-open')) {
-            this.popoverElement?.hidePopover()
-          }
-        })
-      }
-
-      // The rest of the code below deals with single/multiple selection behavior, and should not
-      // interfere with events fired by menu items whose behavior is specified outside the library.
-      if (this.selectVariant !== 'multiple' && this.selectVariant !== 'single') return
-
-      const item = (event.target as Element).closest(menuItemSelectors.join(','))
-      if (!item) return
-      const ariaChecked = item.getAttribute('aria-checked')
-      const checked = ariaChecked !== 'true'
-
-      if (this.selectVariant === 'single') {
-        // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
-        if (checked) {
-          item.setAttribute('aria-checked', 'true')
-        }
-
-        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
-          if (checkedItem !== item) {
-            checkedItem.setAttribute('aria-checked', 'false')
-          }
-        }
-
-        this.#setDynamicLabel()
-      } else {
-        // multi-select mode allows unchecking a checked item
-        item.setAttribute('aria-checked', `${checked}`)
-      }
-
-      this.#updateInput()
-
-      if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
-        // prevent buttons from being clicked twice
-        event.preventDefault()
-      }
+    if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
+      // prevent buttons from being clicked twice
+      event.preventDefault()
     }
+  }
+
+  #handleIncludeFragmentReplaced() {
+    if (this.#firstItem) this.#firstItem.focus()
+  }
+
+  // Close when focus leaves menu
+  #handleFocusOut() {
+    this.popoverElement?.hidePopover()
   }
 
   #setDynamicLabel() {
