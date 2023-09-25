@@ -6,5 +6,4 @@
 - Fix disabled button styles (v8 colors)
 - Bump Primitives to latest
 
-
 <!-- Changed components: Primer::Beta::Button -->
