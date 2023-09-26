@@ -76,7 +76,7 @@ class Primer::CssVariableTest < Minitest::Test
       css_file.contents.scan(regex) do
         start_pos, = Regexp.last_match.offset(0)
         mapping = css_file.find_offset(start_pos)
-        source_file = File.join('app', *mapping.source.split(File::SEPARATOR)[2..-1])
+        source_file = File.join("app", *mapping.source.split(File::SEPARATOR)[2..])
         results << "#{source_file}:#{mapping.original.line}:#{mapping.original.column}"
       end
     end
