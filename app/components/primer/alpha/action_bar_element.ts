@@ -82,11 +82,19 @@ class ActionBarElement extends HTMLElement {
     if (this.#focusZoneAbortController) {
       this.#focusZoneAbortController.abort()
     }
-    this.#focusZoneAbortController = focusZone(this.itemContainer, {
+    this.#focusZoneAbortController = focusZone(this.itemContainer.parentElement as HTMLElement, {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
-        return !element.closest('.ActionBar-item[hidden]')
+        return !element.closest('.ActionBar-item[hidden]') && !element.closest('li.ActionListItem')
+      },
+      getNextFocusable: (direction, element) => {
+        if (
+          (direction === 'next' && element === this.items[this.items.length - 1]) ||
+          element?.closest('li.ActionListItem')
+        ) {
+          return this.moreMenu
+        }
       }
     })
   }

@@ -8,6 +8,8 @@ const getMnemonicFor = (item: Element) => item.textContent?.trim()[0].toLowerCas
 const printable = /^\S$/
 
 export default class FocusGroupElement extends HTMLElement {
+  #retainSignal: AbortController | null = null
+
   get nowrap(): boolean {
     return this.hasAttribute('nowrap')
   }
@@ -60,8 +62,34 @@ export default class FocusGroupElement extends HTMLElement {
     const {direction, nowrap} = this
     if (event.type === 'focusin') {
       if (this.retain && event.target instanceof Element && event.target.matches(menuItemSelector)) {
+        this.#retainSignal?.abort()
+        const {signal} = (this.#retainSignal = new AbortController())
         for (const item of this.#items) {
+          // tree walk, if there's a popover, add event listener before toggle - reset focus to invoker when closed
+          // relatedTarget
           item.setAttribute('tabindex', item === event.target ? '0' : '-1')
+          const popover = event.target.closest<HTMLElement>('[popover]')
+          if (item === event.target && popover?.popover === 'auto' && popover.closest('focus-group') === this) {
+            popover.addEventListener(
+              'toggle',
+              (toggleEvent: Event) => {
+                if (!(toggleEvent.target instanceof Element)) return
+                if ((toggleEvent as ToggleEvent).newState === 'closed') {
+                  this.#retainSignal?.abort()
+                  item.setAttribute('tabindex', '-1')
+                  if (popover.id) {
+                    const invoker = this.querySelector(`[popovertarget="${popover.id}"]`)
+                    if (invoker) {
+                      invoker.setAttribute('tabindex', '0')
+                    } else {
+                      this.#items[0]?.setAttribute('tabindex', '0')
+                    }
+                  }
+                }
+              },
+              {signal}
+            )
+          }
         }
       }
     } else if (event instanceof KeyboardEvent) {
@@ -111,7 +139,7 @@ export default class FocusGroupElement extends HTMLElement {
         let el: HTMLElement | null = focusEl
         do {
           el = el.closest(`[popover]:not(:popover-open)`)
-          if (el?.popover === 'auto') {
+          if (el?.popover === 'auto' && ['Enter', ' ', 'Space', 'ArrowDown'].includes(event.key)) {
             el.showPopover()
           }
           el = el?.parentElement || null
