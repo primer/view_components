@@ -257,5 +257,7 @@ jobs:
           cache: 'npm'
       - name: NPM Build
         run: npm ci
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Test CSS
         run: bundle exec rake test:component_css
