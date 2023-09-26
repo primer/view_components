@@ -257,7 +257,8 @@ jobs:
           cache: 'npm'
       - name: NPM Build
         run: npm ci
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+        env:
+          # Disable CSS minification for tests
+          CI: 'false'
       - name: Test CSS
         run: bundle exec rake test:component_css
