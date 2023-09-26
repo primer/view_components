@@ -154,6 +154,7 @@ export class ActionMenuElement extends HTMLElement {
         }
       }
 
+      this.#activateItem(event, item)
       this.#handleItemActivated(event, item)
       return
     }
@@ -232,7 +233,27 @@ export class ActionMenuElement extends HTMLElement {
     if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
       // prevent buttons from being clicked twice
       event.preventDefault()
+      return
     }
+  }
+
+  #activateItem(event: Event, item: Element) {
+    const eventWillActivateByDefault =
+      (event instanceof MouseEvent && event.type === 'click') ||
+      (event instanceof KeyboardEvent &&
+        event.type === 'keydown' &&
+        !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+        event.key === 'Enter')
+
+    // if the event will result in activating the current item by default, i.e. is a
+    // mouse click or keyboard enter, bail out
+    if (eventWillActivateByDefault) return
+
+    // otherwise, event will not result in activation by default, so we stop it and
+    // simulate a click
+    event.stopPropagation()
+    const elem = item as HTMLElement
+    elem.click()
   }
 
   #handleIncludeFragmentReplaced() {
@@ -313,15 +334,6 @@ export class ActionMenuElement extends HTMLElement {
         input.remove()
       }
     }
-  }
-
-  #isActivationKeydown(event: Event): boolean {
-    return (
-      event instanceof KeyboardEvent &&
-      event.type === 'keydown' &&
-      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-      (event.key === 'Enter' || event.key === ' ')
-    )
   }
 
   get #firstItem(): HTMLElement | null {

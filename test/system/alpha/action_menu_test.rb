@@ -4,6 +4,38 @@ require "system/test_case"
 
 module Alpha
   class IntegrationActionMenuTest < System::TestCase
+    ###### HELPER METHODS ######
+
+    def focus_on_invoker_button
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu button[aria-controls]').focus()
+      JS
+    end
+
+    def stub_clipboard!
+      page.evaluate_script(<<~JS)
+        (() => {
+          navigator.clipboard.writeText = async (text) => {
+            this.text = text;
+            return Promise.resolve(null);
+          };
+
+          navigator.clipboard.readText = async () => {
+            return Promise.resolve(this.text);
+          };
+        })()
+      JS
+    end
+
+    def read_clipboard
+      page.evaluate_async_script(<<~JS)
+        const [done] = arguments;
+        navigator.clipboard.readText().then(done).catch((e) => done(e));
+      JS
+    end
+
+    ########## TESTS ############
+
     def test_dynamic_labels
       visit_preview(:single_select_with_internal_label)
       assert_selector("action-menu button[aria-controls]", text: "Menu: Quote reply")
@@ -37,12 +69,10 @@ module Alpha
       end
     end
 
-    def test_action_keydown
+    def test_action_js_keydown
       visit_preview(:with_actions)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       accept_alert do
         # open menu, "click" on first item
@@ -50,12 +80,21 @@ module Alpha
       end
     end
 
+    def test_action_js_keydown_space
+      visit_preview(:with_actions)
+
+      focus_on_invoker_button
+
+      accept_alert do
+        # open menu, "click" on first item
+        page.driver.browser.keyboard.type(:enter, :space)
+      end
+    end
+
     def test_action_keydown_on_icon_button
       visit_preview(:with_icon_button)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       page.driver.browser.keyboard.type(:enter)
 
@@ -74,9 +113,7 @@ module Alpha
     def test_action_anchor_keydown
       visit_preview(:with_actions)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
       page.driver.browser.keyboard.type(:enter, :down, :enter)
@@ -84,26 +121,15 @@ module Alpha
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
 
-    def stub_clipboard!
-      page.evaluate_script(<<~JS)
-        (() => {
-          navigator.clipboard.writeText = async (text) => {
-            this.text = text;
-            return Promise.resolve(null);
-          };
+    def test_action_anchor_keydown_space
+      visit_preview(:with_actions)
 
-          navigator.clipboard.readText = async () => {
-            return Promise.resolve(this.text);
-          };
-        })()
-      JS
-    end
+      focus_on_invoker_button
 
-    def read_clipboard
-      page.evaluate_async_script(<<~JS)
-        const [done] = arguments;
-        navigator.clipboard.readText().then(done).catch((e) => done(e));
-      JS
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :space)
+
+      assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
 
     def test_action_clipboard_copy
@@ -122,9 +148,7 @@ module Alpha
 
       stub_clipboard!
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       # open menu, arrow down to third item, "click" third item
       page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
@@ -132,12 +156,23 @@ module Alpha
       assert_equal read_clipboard, "Text to copy"
     end
 
+    def test_action_clipboard_copy_keydown_space
+      visit_preview(:with_actions)
+
+      stub_clipboard!
+
+      focus_on_invoker_button
+
+      # open menu, arrow down to third item, "click" third item
+      page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+
+      assert_equal read_clipboard, "Text to copy"
+    end
+
     def test_first_item_is_focused_on_invoker_keydown
       visit_preview(:with_actions)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       # open menu
       page.driver.browser.keyboard.type(:enter)
@@ -168,12 +203,21 @@ module Alpha
     def test_opens_dialog_on_keydown
       visit_preview(:opens_dialog)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
       page.driver.browser.keyboard.type(:enter, :down, :enter)
+
+      assert_selector "modal-dialog#my-dialog"
+    end
+
+    def test_opens_dialog_on_keydown_space
+      visit_preview(:opens_dialog)
+
+      focus_on_invoker_button
+
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :space)
 
       assert_selector "modal-dialog#my-dialog"
     end
@@ -262,9 +306,7 @@ module Alpha
     def test_deferred_loading_on_keydown
       visit_preview(:with_deferred_content)
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       page.driver.browser.keyboard.type(:enter)
 
@@ -373,9 +415,7 @@ module Alpha
       assert_selector "action-menu ul li"
 
       # focus on invoker element
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu button[aria-controls]').focus()
-      JS
+      focus_on_invoker_button
 
       # list items should no longer be visible
       refute_selector "action-menu ul li"
