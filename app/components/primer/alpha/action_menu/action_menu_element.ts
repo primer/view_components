@@ -166,7 +166,7 @@ export class ActionMenuElement extends HTMLElement {
   #handleInvokerActivated(event: Event) {
     if (this.#firstItem) {
       event.preventDefault()
-      this.popoverElement?.showPopover()
+      this.#show()
       this.#firstItem.focus()
       return
     }
@@ -179,8 +179,8 @@ export class ActionMenuElement extends HTMLElement {
     const handleDialogClose = () => {
       dialog_controller.abort()
       this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
-      if (this.popoverElement?.matches(':popover-open')) {
-        this.popoverElement?.hidePopover()
+      if (this.#isOpen()) {
+        this.#hide()
       }
     }
     dialog.addEventListener('close', handleDialogClose, {signal})
@@ -196,8 +196,8 @@ export class ActionMenuElement extends HTMLElement {
     // works fine.
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
-        if (this.popoverElement?.matches(':popover-open')) {
-          this.popoverElement?.hidePopover()
+        if (this.#isOpen()) {
+          this.#hide()
         }
       })
     }
@@ -241,7 +241,19 @@ export class ActionMenuElement extends HTMLElement {
 
   // Close when focus leaves menu
   #handleFocusOut() {
+    this.#hide()
+  }
+
+  #show() {
+    this.popoverElement?.showPopover()
+  }
+
+  #hide() {
     this.popoverElement?.hidePopover()
+  }
+
+  #isOpen() {
+    return this.popoverElement?.matches(':popover-open')
   }
 
   #setDynamicLabel() {
