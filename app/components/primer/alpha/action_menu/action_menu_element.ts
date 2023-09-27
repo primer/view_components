@@ -20,6 +20,7 @@ export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
   #originalLabel = ''
   #inputName = ''
+  #invokerBeingClicked = false
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -94,6 +95,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('click', this, {signal})
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
+    this.addEventListener('mousedown', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
     this.#softDisableItems()
@@ -152,8 +154,14 @@ export class ActionMenuElement extends HTMLElement {
     const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
     const eventIsActivation = this.#isActivation(event)
 
+    if (targetIsInvoker && event.type === 'mousedown') {
+      this.#invokerBeingClicked = true
+      return
+    }
+
     if (targetIsInvoker && eventIsActivation) {
       this.#handleInvokerActivated(event)
+      this.#invokerBeingClicked = false
       return
     }
 
@@ -163,6 +171,8 @@ export class ActionMenuElement extends HTMLElement {
     }
 
     if (event.type === 'focusout') {
+      if (this.#invokerBeingClicked) return
+
       // Give the browser time to focus the next element
       requestAnimationFrame(() => {
         if (!this.contains(document.activeElement) || document.activeElement === this.invokerElement) {
@@ -199,11 +209,14 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #handleInvokerActivated(event: Event) {
-    if (this.#firstItem) {
-      event.preventDefault()
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (this.#isOpen()) {
+      this.#hide()
+    } else {
       this.#show()
-      this.#firstItem.focus()
-      return
+      this.#firstItem?.focus()
     }
   }
 

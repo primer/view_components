@@ -573,5 +573,16 @@ module Alpha
       # list items should no longer be visible
       refute_selector "action-menu ul li"
     end
+
+    def test_closes_menu_when_open_on_invoker_click
+      visit_preview(:default)
+
+      click_on_invoker_button
+      assert_selector "action-menu ul li"
+
+      # clicking the invoker a second time should close the menu
+      click_on_invoker_button
+      refute_selector "action-menu ul li"
+    end
   end
 end
