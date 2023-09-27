@@ -6,6 +6,30 @@ module Alpha
   class IntegrationActionMenuTest < System::TestCase
     ###### HELPER METHODS ######
 
+    def click_on_invoker_button
+      find("action-menu button[aria-controls]").click
+    end
+
+    def click_on_item(idx)
+      find("action-menu ul li:nth-child(#{idx})").click
+    end
+
+    def click_on_first_item
+      click_on_item(1)
+    end
+
+    def click_on_second_item
+      click_on_item(2)
+    end
+
+    def click_on_third_item
+      click_on_item(3)
+    end
+
+    def click_on_fourth_item
+      click_on_item(4)
+    end
+
     def focus_on_invoker_button
       page.evaluate_script(<<~JS)
         document.querySelector('action-menu button[aria-controls]').focus()
@@ -25,6 +49,8 @@ module Alpha
           };
         })()
       JS
+
+      @clipboard_stubbed = true
     end
 
     def read_clipboard
@@ -34,19 +60,42 @@ module Alpha
       JS
     end
 
+    def assert_no_alert(message = nil, &block)
+      begin
+        accept_alert(&block)
+        assert false, message || "Unexpected alert dialog"
+      rescue Capybara::ModalNotFound
+        # expected behavior
+      end
+    end
+
+    def capture_clipboard(&block)
+      stub_clipboard! unless clipboard_stubbed?
+      block.call
+      read_clipboard
+    end
+
     ########## TESTS ############
+
+    def setup
+      @clipboard_stubbed = false
+    end
+
+    def clipboard_stubbed?
+      @clipboard_stubbed
+    end
 
     def test_dynamic_labels
       visit_preview(:single_select_with_internal_label)
       assert_selector("action-menu button[aria-controls]", text: "Menu: Quote reply")
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:first-child").click
+      click_on_invoker_button
+      click_on_first_item
 
       assert_selector("action-menu button[aria-controls]", text: "Menu: Copy link")
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:first-child").click
+      click_on_invoker_button
+      click_on_first_item
 
       assert_selector("action-menu button[aria-controls]", text: "Menu")
     end
@@ -54,18 +103,18 @@ module Alpha
     def test_anchor_align
       visit_preview(:align_end)
 
-      find("action-menu button[aria-controls]").click
+      click_on_invoker_button
 
       assert_selector("anchored-position[align=end]")
     end
 
-    def test_action_onclick
+    def test_action_js_onclick
       visit_preview(:with_actions)
 
-      find("action-menu button[aria-controls]").click
+      click_on_invoker_button
 
       accept_alert do
-        find("action-menu ul li:first-child").click
+        click_on_first_item
       end
     end
 
@@ -91,6 +140,38 @@ module Alpha
       end
     end
 
+    def test_action_js_disabled
+      visit_preview(:with_actions, disable_items: true)
+
+      click_on_invoker_button
+
+      assert_no_alert do
+        click_on_first_item
+      end
+    end
+
+    def test_action_js_disabled_keydown
+      visit_preview(:with_actions, disable_items: true)
+
+      focus_on_invoker_button
+
+      assert_no_alert do
+        # open menu, "click" on first item
+        page.driver.browser.keyboard.type(:enter, :enter)
+      end
+    end
+
+    def test_action_js_disabled_keydown_space
+      visit_preview(:with_actions, disable_items: true)
+
+      focus_on_invoker_button
+
+      assert_no_alert do
+        # open menu, "click" on first item
+        page.driver.browser.keyboard.type(:enter, :space)
+      end
+    end
+
     def test_action_keydown_on_icon_button
       visit_preview(:with_icon_button)
 
@@ -104,8 +185,8 @@ module Alpha
     def test_action_anchor
       visit_preview(:with_actions)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
@@ -132,41 +213,114 @@ module Alpha
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
 
+    def test_action_anchor_disabled
+      visit_preview(:with_actions, disable_items: true)
+
+      click_on_invoker_button
+      click_on_second_item
+
+      # assert no navigation took place
+      refute_selector ".action-menu-landing-page", text: "Hello world!"
+    end
+
+    def test_action_anchor_disabled_keydown
+      visit_preview(:with_actions, disable_items: true)
+
+      focus_on_invoker_button
+
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :enter)
+
+      # assert no navigation took place
+      refute_selector ".action-menu-landing-page", text: "Hello world!"
+    end
+
+    def test_action_anchor_disabled_keydown_space
+      visit_preview(:with_actions, disable_items: true)
+
+      focus_on_invoker_button
+
+      # open menu, arrow down to second item, "click" second item
+      page.driver.browser.keyboard.type(:enter, :down, :space)
+
+      # assert no navigation took place
+      refute_selector ".action-menu-landing-page", text: "Hello world!"
+    end
+
     def test_action_clipboard_copy
       visit_preview(:with_actions)
 
-      stub_clipboard!
+      click_on_invoker_button
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(3)").click
+      clipboard_text = capture_clipboard do
+        click_on_third_item
+      end
 
-      assert_equal read_clipboard, "Text to copy"
+      assert_equal clipboard_text, "Text to copy"
     end
 
     def test_action_clipboard_copy_keydown
       visit_preview(:with_actions)
 
-      stub_clipboard!
-
       focus_on_invoker_button
 
-      # open menu, arrow down to third item, "click" third item
-      page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+      clipboard_text = capture_clipboard do
+        # open menu, arrow down to third item, "click" third item
+        page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+      end
 
-      assert_equal read_clipboard, "Text to copy"
+      assert_equal clipboard_text, "Text to copy"
     end
 
     def test_action_clipboard_copy_keydown_space
       visit_preview(:with_actions)
 
-      stub_clipboard!
+      focus_on_invoker_button
+
+      clipboard_text = capture_clipboard do
+        # open menu, arrow down to third item, "click" third item
+        page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+      end
+
+      assert_equal clipboard_text, "Text to copy"
+    end
+
+    def test_action_clipboard_copy_disabled
+      visit_preview(:with_actions, disable_items: true)
+
+      click_on_invoker_button
+
+      clipboard_text = capture_clipboard do
+        click_on_third_item
+      end
+
+      assert_nil clipboard_text
+    end
+
+    def test_action_clipboard_copy_disabled_keydown
+      visit_preview(:with_actions, disable_items: true)
 
       focus_on_invoker_button
 
-      # open menu, arrow down to third item, "click" third item
-      page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+      clipboard_text = capture_clipboard do
+        # open menu, arrow down to third item, "click" third item
+        page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+      end
 
-      assert_equal read_clipboard, "Text to copy"
+      assert_nil clipboard_text
+    end
+
+    def test_action_clipboard_copy_disabled_keydown_space
+      visit_preview(:with_actions, disable_items: true)
+
+      focus_on_invoker_button
+
+      clipboard_text = capture_clipboard do
+        # open menu, arrow down to third item, "click" third item
+        page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+      end
+
+      assert_nil clipboard_text
     end
 
     def test_first_item_is_focused_on_invoker_keydown
@@ -183,7 +337,7 @@ module Alpha
     def test_first_item_is_focused_on_invoker_click
       visit_preview(:with_actions)
 
-      find("action-menu button[aria-controls]").click
+      click_on_invoker_button
 
       assert_equal page.evaluate_script("document.activeElement").text, "Alert"
     end
@@ -191,8 +345,8 @@ module Alpha
     def test_opens_dialog
       visit_preview(:opens_dialog)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
       assert_selector "modal-dialog#my-dialog"
 
@@ -225,8 +379,8 @@ module Alpha
     def test_single_select_form_submission
       visit_preview(:single_select_form, route_format: :json)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:first-child").click
+      click_on_invoker_button
+      click_on_first_item
 
       find("input[type=submit]").click
 
@@ -238,8 +392,8 @@ module Alpha
     def test_single_select_form_uses_label_if_no_value_provided
       visit_preview(:single_select_form, route_format: :json)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:last-child").click
+      click_on_invoker_button
+      click_on_fourth_item
 
       find("input[type=submit]").click
 
@@ -251,9 +405,9 @@ module Alpha
     def test_multiple_select_form_submission
       visit_preview(:multiple_select_form, route_format: :json)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:first-child").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_first_item
+      click_on_second_item
 
       # close the menu to reveal the submit button
       page.driver.browser.keyboard.type(:escape)
@@ -268,9 +422,9 @@ module Alpha
     def test_multiple_select_form_uses_label_if_no_value_provided
       visit_preview(:multiple_select_form, route_format: :json)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:first-child").click
-      find("action-menu ul li:last-child").click
+      click_on_invoker_button
+      click_on_first_item
+      click_on_fourth_item
 
       # close the menu to reveal the submit button
       page.driver.browser.keyboard.type(:escape)
@@ -285,8 +439,8 @@ module Alpha
     def test_individual_items_can_submit_post_requests_via_forms
       visit_preview(:with_actions)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:last-child").click
+      click_on_invoker_button
+      click_on_fourth_item
 
       assert_equal page.text, 'You selected "bar"'
     end
@@ -294,7 +448,7 @@ module Alpha
     def test_deferred_loading
       visit_preview(:with_deferred_content)
 
-      find("action-menu button[aria-controls]").click
+      click_on_invoker_button
 
       assert_selector "action-menu ul li", text: "Copy link"
       assert_selector "action-menu ul li", text: "Quote reply"
@@ -318,9 +472,8 @@ module Alpha
     def test_deferred_dialog_opens
       visit_preview(:with_deferred_content)
 
-      find("action-menu button[aria-controls]").click
-
-      find("action-menu ul li:nth-child(4)").click
+      click_on_invoker_button
+      click_on_fourth_item
 
       assert_selector "modal-dialog[open]"
     end
@@ -342,8 +495,8 @@ module Alpha
     def test_single_select_item_checked
       visit_preview(:single_select)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
       # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
@@ -352,14 +505,14 @@ module Alpha
     def test_single_select_item_unchecks_previously_checked_item
       visit_preview(:single_select)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(3)").click
+      click_on_invoker_button
+      click_on_third_item
 
       # clicking item closes menu, so checked item is hidden
       refute_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
       # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
@@ -368,11 +521,11 @@ module Alpha
     def test_single_selected_item_cannot_be_unchecked
       visit_preview(:single_select)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
+      click_on_invoker_button
+      click_on_second_item
 
       # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
@@ -381,9 +534,9 @@ module Alpha
     def test_multi_select_items_checked
       visit_preview(:multiple_select)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
-      find("action-menu ul li:nth-child(3)").click
+      click_on_invoker_button
+      click_on_second_item
+      click_on_third_item
 
       # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "jonrohan"
@@ -393,16 +546,16 @@ module Alpha
     def test_multi_select_items_can_be_unchecked
       visit_preview(:multiple_select)
 
-      find("action-menu button[aria-controls]").click
-      find("action-menu ul li:nth-child(2)").click
-      find("action-menu ul li:nth-child(3)").click
+      click_on_invoker_button
+      click_on_second_item
+      click_on_third_item
 
       # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "jonrohan"
       assert_selector "[aria-checked=true]", text: "broccolinisoup"
 
-      find("action-menu ul li:nth-child(2)").click
-      find("action-menu ul li:nth-child(3)").click
+      click_on_second_item
+      click_on_third_item
 
       refute_selector "[aria-checked=true]"
     end
@@ -411,7 +564,7 @@ module Alpha
       visit_preview(:default)
 
       # open menu
-      find("action-menu button[aria-controls]").click
+      click_on_invoker_button
       assert_selector "action-menu ul li"
 
       # focus on invoker element

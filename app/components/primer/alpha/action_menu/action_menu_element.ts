@@ -96,6 +96,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('focusout', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
+    this.#softDisableItems()
 
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {
@@ -104,19 +105,52 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
+  #softDisableItems() {
+    const {signal} = this.#abortController
+
+    for (const item of this.#items) {
+      item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
+      item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
+    }
+  }
+
+  #potentiallyDisallowActivation(event: Event) {
+    if (!this.#isActivation(event)) return
+
+    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
+    if (!item) return
+
+    if (item.getAttribute('aria-disabled')) {
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+    }
+  }
+
   disconnectedCallback() {
     this.#abortController.abort()
   }
 
-  handleEvent(event: Event) {
-    const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
-    const eventIsMouseActivation = event instanceof MouseEvent && event.type === 'click'
-    const eventIsKeyboardActivation =
+  #isKeyboardActivation(event: Event): boolean {
+    return (
       event instanceof KeyboardEvent &&
       event.type === 'keydown' &&
       !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
       (event.key === 'Enter' || event.key === ' ')
-    const eventIsActivation = eventIsMouseActivation || eventIsKeyboardActivation
+    )
+  }
+
+  #isMouseActivation(event: Event): boolean {
+    return event instanceof MouseEvent && event.type === 'click'
+  }
+
+  #isActivation(event: Event): boolean {
+    return this.#isMouseActivation(event) || this.#isKeyboardActivation(event)
+  }
+
+  handleEvent(event: Event) {
+    const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
+    const eventIsActivation = this.#isActivation(event)
 
     if (targetIsInvoker && eventIsActivation) {
       this.#handleInvokerActivated(event)
@@ -258,6 +292,7 @@ export class ActionMenuElement extends HTMLElement {
 
   #handleIncludeFragmentReplaced() {
     if (this.#firstItem) this.#firstItem.focus()
+    this.#softDisableItems()
   }
 
   // Close when focus leaves menu
@@ -338,6 +373,10 @@ export class ActionMenuElement extends HTMLElement {
 
   get #firstItem(): HTMLElement | null {
     return this.querySelector(menuItemSelectors.join(','))
+  }
+
+  get #items(): HTMLElement[] {
+    return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
   }
 }
 
