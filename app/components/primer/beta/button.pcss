@@ -169,7 +169,7 @@ summary.Button {
   fill: var(--button-primary-iconColor-rest);
   background-color: var(--button-primary-bgColor-rest);
   border-color: var(--button-primary-borderColor-rest);
-  box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow)), var(--shadow-highlight, var(--color-btn-primary-inset-shadow));
+  box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow));
 
   &:hover:not(:disabled) {
     background-color: var(--button-primary-bgColor-hover);
@@ -247,8 +247,16 @@ summary.Button {
 .Button--invisible {
   color: var(--button-default-fgColor-rest);
 
+  &.Button--iconOnly {
+    color: var(--button-invisible-iconColor-rest, var(--color-fg-muted));
+  }
+
   &:hover:not(:disabled) {
     background-color: var(--button-invisible-bgColor-hover);
+
+    & .Button-visual {
+      color: var(--button-invisible-iconColor-hover, var(--color-fg-default));
+    }
   }
 
   &[aria-pressed='true'],
@@ -270,7 +278,7 @@ summary.Button {
   }
 
   & .Button-visual {
-    color: var(--fgColor-muted);
+    color: var(--button-invisible-iconColor-rest, var(--color-fg-muted));
 
     & .Counter {
       color: var(--fgColor-default);
@@ -318,7 +326,7 @@ summary.Button {
     fill: var(--button-danger-fgColor-hover);
     background-color: var(--button-danger-bgColor-hover);
     border-color: var(--button-danger-borderColor-hover);
-    box-shadow: var(--shadow-resting-small), var(--shadow-highlight);
+    box-shadow: var(--shadow-resting-small);
 
     & .Counter {
       color: var(--buttonCounter-danger-fgColor-hover);

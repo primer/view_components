@@ -41,6 +41,8 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "lookbook", "~> 2.1.1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
+gem "sourcemap"
+
 group :test do
   gem "webmock"
 
