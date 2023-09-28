@@ -137,7 +137,7 @@ export default class FocusGroupElement extends HTMLElement {
         let el: HTMLElement | null = focusEl
         do {
           el = el.closest(`[popover]:not(:popover-open)`)
-          if (el?.popover === 'auto' && ['Enter', ' ', 'Space', 'ArrowDown'].includes(event.key)) {
+          if (el?.popover === 'auto' && !['ArrowRight', 'ArrowLeft'].includes(event.key)) {
             el.showPopover()
           }
           el = el?.parentElement || null
