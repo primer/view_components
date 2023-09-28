@@ -65,8 +65,6 @@ export default class FocusGroupElement extends HTMLElement {
         this.#retainSignal?.abort()
         const {signal} = (this.#retainSignal = new AbortController())
         for (const item of this.#items) {
-          // tree walk, if there's a popover, add event listener before toggle - reset focus to invoker when closed
-          // relatedTarget
           item.setAttribute('tabindex', item === event.target ? '0' : '-1')
           const popover = event.target.closest<HTMLElement>('[popover]')
           if (item === event.target && popover?.popover === 'auto' && popover.closest('focus-group') === this) {
