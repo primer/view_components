@@ -60,6 +60,23 @@ module Primer
         end
       end
 
+      # @label With Header
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param header_variant [Symbol] select [medium, large]
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      def with_header(title: "Test Dialog", subtitle: nil, header_variant: :medium, button_text: "Show Dialog", show_divider: true)
+        render_with_template(locals: {
+                               title: title,
+                               subtitle: subtitle,
+                               header_variant: header_variant,
+                               button_text: button_text,
+                               show_divider: show_divider
+                             })
+      end
+
       # @label With Footer
       #
       # @param title [String] text

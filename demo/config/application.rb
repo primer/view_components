@@ -97,6 +97,7 @@ module Demo
         # rubocop:enable Style/WordArray
       }
 
+      config.lookbook.preview_embeds.policy = "ALLOWALL"
       config.lookbook.page_paths = [Rails.root.join("..", "previews", "pages")]
       config.lookbook.component_paths = [Primer::ViewComponents::Engine.root.join("app", "components")]
 

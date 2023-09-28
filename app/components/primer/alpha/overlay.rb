@@ -178,10 +178,12 @@ module Primer
       end
 
       def before_render
-        if header?
-          @system_arguments[:aria][:labelledby] ||= title_id
-        else
-          @system_arguments[:aria][:label] = @title
+        if @system_arguments[:role].present?
+          if header?
+            @system_arguments[:aria][:labelledby] ||= title_id
+          else
+            @system_arguments[:aria][:label] = @title
+          end
         end
         with_body unless body?
       end
