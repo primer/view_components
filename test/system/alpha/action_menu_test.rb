@@ -61,17 +61,15 @@ module Alpha
     end
 
     def assert_no_alert(message = nil, &block)
-      begin
-        accept_alert(&block)
-        assert false, message || "Unexpected alert dialog"
-      rescue Capybara::ModalNotFound
-        # expected behavior
-      end
+      accept_alert(&block)
+      assert false, message || "Unexpected alert dialog"
+    rescue Capybara::ModalNotFound
+      # expected behavior
     end
 
-    def capture_clipboard(&block)
+    def capture_clipboard
       stub_clipboard! unless clipboard_stubbed?
-      block.call
+      yield
       read_clipboard
     end
 
