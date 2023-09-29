@@ -216,7 +216,10 @@ module Primer
 
       # @label With actions
       #
-      def with_actions; end
+      # @param disable_items toggle
+      def with_actions(disable_items: false)
+        render_with_template(locals: { disable_items: disable_items })
+      end
 
       # @label Single select form
       #
