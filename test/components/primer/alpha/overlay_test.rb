@@ -36,6 +36,16 @@ class PrimerAlphaOverlayTest < Minitest::Test
     assert_selector("anchored-position[role='menu']")
   end
 
+  def test_renders_with_no_role
+    render_inline(Primer::Alpha::Overlay.new(title: "Title")) do |component|
+      component.with_body { "Hello" }
+    end
+
+    assert_selector("anchored-position")
+    refute_selector("anchored-position[role]")
+    refute_selector("anchored-position[aria-label]")
+  end
+
   def test_renders_show_button
     render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
       component.with_body { "Hello" }

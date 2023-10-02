@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
+  module Beta
     # @label NavList
     class NavListPreview < ViewComponent::Preview
       # @label Playground
       def playground
-        render(Primer::Alpha::NavList.new(selected_item_id: :collaborators)) do |list|
+        render(Primer::Beta::NavList.new(selected_item_id: :collaborators)) do |list|
           list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -34,7 +34,7 @@ module Primer
       # @label Default
       # @snapshot
       def default
-        render(Primer::Alpha::NavList.new(selected_item_id: :code_review_limits)) do |list|
+        render(Primer::Beta::NavList.new(selected_item_id: :code_review_limits)) do |list|
           list.with_heading(title: "Repository settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -77,7 +77,7 @@ module Primer
       # @label Top-level items
       #
       def top_level_items
-        render(Primer::Alpha::NavList.new) do |list|
+        render(Primer::Beta::NavList.new) do |list|
           list.with_heading(title: "Account settings")
 
           list.with_item(label: "General", href: "/general") do |item|
@@ -105,7 +105,7 @@ module Primer
       # @label Show more item
       # @snapshot
       def show_more_item
-        render(Primer::Alpha::NavList.new(aria: { label: "My favorite foods" })) do |list|
+        render(Primer::Beta::NavList.new(aria: { label: "My favorite foods" })) do |list|
           list.with_group do |group|
             group.with_heading(title: "My favorite foods")
             group.with_item(label: "Popplers", href: "/foods/popplers")

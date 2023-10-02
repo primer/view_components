@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "components/test_helper"
+require "sourcemap"
 
 class Primer::CssVariableTest < Minitest::Test
   class CssFile
@@ -12,6 +13,14 @@ class Primer::CssVariableTest < Minitest::Test
 
     def contents
       @contents ||= File.read(path)
+    end
+
+    def sourcemap
+      @sourcemap ||= SourceMap::Map.from_json(File.read(sourcemap_path))
+    end
+
+    def sourcemap_path
+      @sourcemap_path ||= "#{path}.map"
     end
 
     def find_offset(pos)
@@ -28,7 +37,13 @@ class Primer::CssVariableTest < Minitest::Test
       return unless line_idx
 
       line_range = line_ranges[line_idx]
-      [line_idx + 1, pos - line_range.first]
+
+      offset = SourceMap::Offset.new(
+        line_idx + 1,
+        pos - line_range.first
+      )
+
+      sourcemap.bsearch(offset)
     end
 
     private
@@ -60,9 +75,9 @@ class Primer::CssVariableTest < Minitest::Test
     missing = [].tap do |results|
       css_file.contents.scan(regex) do
         start_pos, = Regexp.last_match.offset(0)
-        line, col = css_file.find_offset(start_pos)
-        source_file = Pathname(css_file.path).relative_path_from(Rails.root.join(".."))
-        results << "#{source_file}:#{line}:#{col}"
+        mapping = css_file.find_offset(start_pos)
+        source_file = File.join("app", *mapping.source.split(File::SEPARATOR)[2..])
+        results << "#{source_file}:#{mapping.original.line}:#{mapping.original.column}"
       end
     end
 

@@ -377,6 +377,9 @@
   "Link--secondary": [
     "Primer::Beta::Link"
   ],
+  "Link--underline": [
+    "Primer::Beta::Link"
+  ],
   "Overlay": [
     "Primer::Alpha::Dialog",
     "Primer::Alpha::Overlay"

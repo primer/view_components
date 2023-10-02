@@ -59,7 +59,7 @@ module Primer
         @aria_label = aria("label", @system_arguments)
         @aria_description = aria("description", @system_arguments)
 
-        return unless @show_tooltip
+        return unless render_tooltip?
 
         @tooltip_arguments = {
           for_id: @system_arguments[:id],
@@ -79,6 +79,13 @@ module Primer
           @tooltip_arguments[:text] = @aria_label
           @tooltip_arguments[:type] = :label
         end
+
+        @tooltip = Primer::Alpha::Tooltip.new(**@tooltip_arguments)
+        aria_key = @tooltip_arguments[:type] == :label ? :labelledby : :describedby
+
+        @system_arguments[:aria] = merge_aria(
+          @system_arguments, { aria: { aria_key => @tooltip.id } }
+        )
       end
 
       private

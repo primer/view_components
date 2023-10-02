@@ -38,8 +38,10 @@ gem "webpacker", "~> 5.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.0.0" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.1.1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
+
+gem "sourcemap"
 
 group :test do
   gem "webmock"

@@ -1,4 +1,4 @@
 <% @data.each do |item_arguments| %>
   <% list = OpenStruct.new(allows_selection?: false) %>
-  <%= render(Primer::Alpha::NavList::Item.new(list: list, **item_arguments)) %>
+  <%= render(Primer::Beta::NavList::Item.new(list: list, **item_arguments)) %>
 <% end %>

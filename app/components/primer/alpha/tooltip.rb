@@ -29,6 +29,8 @@ module Primer
       TYPE_FALLBACK = :description
       TYPE_OPTIONS = [:label, :description].freeze
 
+      attr_reader :id
+
       # @param for_id [String] The ID of the element that the tooltip should be attached to.
       # @param type [Symbol] <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
       # @param direction [Symbol] <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
@@ -39,7 +41,7 @@ module Primer
 
         @text = text
         @system_arguments = system_arguments
-        @system_arguments[:id] ||= self.class.generate_id
+        @id = @system_arguments[:id] ||= self.class.generate_id
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:for] = for_id
         @system_arguments[:popover] = "manual"

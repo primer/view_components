@@ -6,16 +6,12 @@ require_relative "models/deep_thought"
 class Primer::Forms::TextFieldInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class HiddenTextFieldForm < ApplicationForm
-    form do |text_field_form|
-      text_field_form.text_field(name: :foo, label: "Foo", hidden: true)
-    end
-  end
-
   def test_hidden_text_field
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render(HiddenTextFieldForm.new(f))
+        render_inline_form(f) do |text_field_form|
+          text_field_form.text_field(name: :foo, label: "Foo", hidden: true)
+        end
       end
     end
 
@@ -35,16 +31,12 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
     refute_selector ".field_with_errors", visible: :all
   end
 
-  class LeadingVisualTextFieldForm < ApplicationForm
-    form do |text_field_form|
-      text_field_form.text_field(name: :foo, label: "Foo", leading_visual: { icon: :search })
-    end
-  end
-
   def test_leading_visual
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render(LeadingVisualTextFieldForm.new(f))
+        render_inline_form(f) do |text_field_form|
+          text_field_form.text_field(name: :foo, label: "Foo", leading_visual: { icon: :search })
+        end
       end
     end
 
