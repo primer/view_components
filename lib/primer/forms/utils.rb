@@ -15,6 +15,8 @@ module Primer
       # conventions, so it should work ok. Zeitwerk also has this information but lacks a
       # public API to map constants to source files.
       def const_source_location(class_name)
+        return nil unless class_name
+
         # NOTE: underscore respects namespacing, i.e. will convert Foo::Bar to foo/bar.
         class_path = "#{class_name.underscore}.rb"
 

@@ -1,6 +1,7 @@
 import '@oddbird/popover-polyfill'
 
-const menuItemSelector = '[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'
+const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
+const menuItemSelector = validSelectors.map(selector => `:not([hidden]) > ${selector}`).join(', ')
 
 const getMnemonicFor = (item: Element) => item.textContent?.trim()[0].toLowerCase()
 

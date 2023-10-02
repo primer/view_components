@@ -166,7 +166,7 @@ module Primer
         disabled: false
       )
         render_with_template(locals: {
-                               disabled: disabled,
+                               disabled: disabled
                              })
       end
 

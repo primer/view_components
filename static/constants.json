@@ -263,6 +263,15 @@
   "Primer::Alpha::Dialog::Footer": {
   },
   "Primer::Alpha::Dialog::Header": {
+    "DEFAULT_VARIANT": "medium",
+    "VARIANT_MAPPINGS": {
+      "medium": "",
+      "large": "Overlay-header--large"
+    },
+    "VARIANT_OPTIONS": [
+      "medium",
+      "large"
+    ]
   },
   "Primer::Alpha::Dropdown": {
     "Menu": "Primer::Alpha::Dropdown::Menu"
@@ -967,6 +976,20 @@
       "article",
       "td"
     ]
+  },
+  "Primer::Beta::NavList": {
+    "Divider": "Primer::Beta::NavList::Divider",
+    "Group": "Primer::Beta::NavList::Group",
+    "Heading": "Primer::Beta::NavList::Heading",
+    "Item": "Primer::Beta::NavList::Item"
+  },
+  "Primer::Beta::NavList::Divider": {
+  },
+  "Primer::Beta::NavList::Group": {
+  },
+  "Primer::Beta::NavList::Heading": {
+  },
+  "Primer::Beta::NavList::Item": {
   },
   "Primer::Beta::Octicon": {
     "SIZE_DEFAULT": "small",

@@ -2451,6 +2451,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/check_box_group/invalid",
+        "name": "invalid",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/check_box_group/with_caption",
         "name": "with_caption",
         "snapshot": "true",
@@ -2857,6 +2870,19 @@
       {
         "preview_path": "primer/alpha/dialog/long_text",
         "name": "long_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header",
+        "name": "with_header",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -4323,11 +4349,11 @@
   {
     "name": "nav_list",
     "component": "NavList",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/nav_list",
+    "status": "beta",
+    "lookup_path": "primer/beta/nav_list",
     "examples": [
       {
-        "preview_path": "primer/alpha/nav_list/playground",
+        "preview_path": "primer/beta/nav_list/playground",
         "name": "playground",
         "snapshot": "false",
         "skip_rules": {
@@ -4340,7 +4366,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/default",
+        "preview_path": "primer/beta/nav_list/default",
         "name": "default",
         "snapshot": "true",
         "skip_rules": {
@@ -4353,7 +4379,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/top_level_items",
+        "preview_path": "primer/beta/nav_list/top_level_items",
         "name": "top_level_items",
         "snapshot": "false",
         "skip_rules": {
@@ -4366,7 +4392,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/show_more_item",
+        "preview_path": "primer/beta/nav_list/show_more_item",
         "name": "show_more_item",
         "snapshot": "true",
         "skip_rules": {
@@ -4379,7 +4405,7 @@
         }
       },
       {
-        "preview_path": "primer/alpha/nav_list/trailing_action",
+        "preview_path": "primer/beta/nav_list/trailing_action",
         "name": "trailing_action",
         "snapshot": "true",
         "skip_rules": {
@@ -4866,6 +4892,19 @@
       {
         "preview_path": "primer/alpha/radio_button_group/default",
         "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/radio_button_group/invalid",
+        "name": "invalid",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -6086,6 +6125,45 @@
         "preview_path": "primer/alpha/text_field/with_data_target",
         "name": "with_data_target",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_leading_button",
+        "name": "input_group_leading_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_trailing_button",
+        "name": "input_group_trailing_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/input_group_leading_action_menu",
+        "name": "input_group_leading_action_menu",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"

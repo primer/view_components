@@ -131,6 +131,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
+    [Primer::Beta::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
     [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }]
@@ -138,6 +139,10 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::NavList::Divider",
+      "Primer::Alpha::NavList::Item",
+      "Primer::Alpha::NavList::Heading",
+      "Primer::Alpha::NavList::Group",
       "Primer::Alpha::ActionBar::Divider",
       "Primer::Alpha::ActionBar::Item",
       "Primer::Alpha::ActionList::Heading",
@@ -145,10 +150,10 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Divider",
       "Primer::Alpha::ActionList::FormWrapper",
       "Primer::Alpha::ActionMenu::List",
-      "Primer::Alpha::NavList::Item",
-      "Primer::Alpha::NavList::Group",
-      "Primer::Alpha::NavList::Divider",
-      "Primer::Alpha::NavList::Header",
+      "Primer::Beta::NavList::Item",
+      "Primer::Beta::NavList::Group",
+      "Primer::Beta::NavList::Divider",
+      "Primer::Beta::NavList::Header",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",

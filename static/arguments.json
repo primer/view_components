@@ -773,6 +773,18 @@
         "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
       },
       {
+        "name": "invalid",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If set to `true`, the input will be marked as invalid. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
+      },
+      {
+        "name": "validation_message",
+        "type": "String",
+        "default": "N/A",
+        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
+      },
+      {
         "name": "label_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -885,6 +897,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
     "parameters": [
       {
+        "name": "id",
+        "type": "String",
+        "default": "N/A",
+        "description": "The HTML element's ID value."
+      },
+      {
         "name": "title",
         "type": "String",
         "default": "N/A",
@@ -907,6 +925,12 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+      },
+      {
+        "name": "variant",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large` or `:medium`."
       },
       {
         "name": "system_arguments",
@@ -1420,7 +1444,7 @@
   },
   {
     "component": "NavList",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": true,
     "short_name": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -1442,7 +1466,7 @@
   },
   {
     "component": "NavList::Divider",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "NavListDivider",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
@@ -1464,7 +1488,7 @@
   },
   {
     "component": "NavList::Group",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": true,
     "short_name": "NavListGroup",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
@@ -1486,7 +1510,7 @@
   },
   {
     "component": "NavList::Heading",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "NavListHeading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
@@ -1520,7 +1544,7 @@
   },
   {
     "component": "NavList::Item",
-    "status": "alpha",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "NavListItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/item.rb",
@@ -1965,6 +1989,18 @@
         "type": "String",
         "default": "N/A",
         "description": "A string describing the field and what sorts of input it expects. Displayed below the group."
+      },
+      {
+        "name": "invalid",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If set to `true`, the input will be marked as invalid. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect."
+      },
+      {
+        "name": "validation_message",
+        "type": "String",
+        "default": "N/A",
+        "description": "A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object."
       },
       {
         "name": "label_arguments",
@@ -3647,7 +3683,7 @@
       {
         "name": "underline",
         "type": "Boolean",
-        "default": "`true`",
+        "default": "`false`",
         "description": "Whether or not to underline the link."
       },
       {
@@ -3671,6 +3707,146 @@
         "type": "Symbol",
         "default": "`:div`",
         "description": "One of `:article`, `:div`, or `:td`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList",
+    "status": "beta",
+    "a11y_reviewed": true,
+    "short_name": "NavList",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/default/",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Divider",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListDivider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/divider.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/divider/default/",
+    "parameters": [
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:subtle`",
+        "description": "Display a background color if scheme is `filled`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Group",
+    "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "NavListGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/group/default/",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Heading",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListHeading",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/heading.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/heading/default/",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "The text content of the heading."
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The value of the ID HTML attribute. Auto-generated by default."
+      },
+      {
+        "name": "heading_level",
+        "type": "Integer",
+        "default": "`2`",
+        "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Item",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "NavListItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/nav_list/item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/nav_list/item/default/",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected list item. Used internally."
+      },
+      {
+        "name": "selected_by_ids",
+        "type": "Array<Symbol>",
+        "default": "`[]`",
+        "description": "The list of IDs that select this item. In other words, if the `selected_item_id` attribute on the parent `NavList` is set to one of these IDs, the item will appear selected."
+      },
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether this item shows (expands) or hides (collapses) its list of sub items."
+      },
+      {
+        "name": "sub_item",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this item is nested under a parent item. Used internally."
       },
       {
         "name": "system_arguments",

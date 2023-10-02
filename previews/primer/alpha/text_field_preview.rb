@@ -189,6 +189,27 @@ module Primer
       end
       #
       # @!endgroup
+
+      # @label Input group with leading button
+      #
+      # @snapshot
+      def input_group_leading_button
+        render_with_template
+      end
+
+      # @label Input group with trailing button
+      #
+      # @snapshot
+      def input_group_trailing_button
+        render_with_template
+      end
+
+      # @label Input group with ActionMenu
+      #
+      # @snapshot
+      def input_group_leading_action_menu(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
     end
   end
 end
