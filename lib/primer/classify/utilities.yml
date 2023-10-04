@@ -1744,25 +1744,6 @@
   - flex-md-justify-around
   - flex-lg-justify-around
   - flex-xl-justify-around
-:justify_self:
-  :flex_start:
-  - flex-justify-self-start
-  - flex-sm-justify-self-start
-  - flex-md-justify-self-start
-  - flex-lg-justify-self-start
-  - flex-xl-justify-self-start
-  :flex_end:
-  - flex-justify-self-end
-  - flex-sm-justify-self-end
-  - flex-md-justify-self-end
-  - flex-lg-justify-self-end
-  - flex-xl-justify-self-end
-  :center:
-  - flex-justify-self-center
-  - flex-sm-justify-self-center
-  - flex-md-justify-self-center
-  - flex-lg-justify-self-center
-  - flex-xl-justify-self-center
 :align_items:
   :flex_start:
   - flex-items-start
@@ -1839,12 +1820,6 @@
   - flex-lg-row-reverse
   - flex-xl-row-reverse
 :flex:
-  0:
-  - flex-0
-  - flex-sm-0
-  - flex-md-0
-  - flex-lg-0
-  - flex-xl-0
   1:
   - flex-1
   - flex-sm-1
@@ -1901,12 +1876,6 @@
   - flex-md-grow-0
   - flex-lg-grow-0
   - flex-xl-grow-0
-  1:
-  - flex-grow-1
-  - flex-sm-grow-1
-  - flex-md-grow-1
-  - flex-lg-grow-1
-  - flex-xl-grow-1
 :flex_shrink:
   0:
   - flex-shrink-0
@@ -1914,9 +1883,3 @@
   - flex-md-shrink-0
   - flex-lg-shrink-0
   - flex-xl-shrink-0
-  1:
-  - flex-shrink-1
-  - flex-sm-shrink-1
-  - flex-md-shrink-1
-  - flex-lg-shrink-1
-  - flex-xl-shrink-1
