@@ -897,6 +897,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/header/default/",
     "parameters": [
       {
+        "name": "id",
+        "type": "String",
+        "default": "N/A",
+        "description": "The HTML element's ID value."
+      },
+      {
         "name": "title",
         "type": "String",
         "default": "N/A",
@@ -919,6 +925,12 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Visually hide the `title` while maintaining a label for assistive technologies."
+      },
+      {
+        "name": "variant",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large` or `:medium`."
       },
       {
         "name": "system_arguments",
@@ -3671,7 +3683,7 @@
       {
         "name": "underline",
         "type": "Boolean",
-        "default": "`true`",
+        "default": "`false`",
         "description": "Whether or not to underline the link."
       },
       {

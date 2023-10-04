@@ -8,14 +8,15 @@
 
 <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
   <% component.with_show_button { "Trigger" } %>
-  <% component.with_item(label: "Alert", tag: :button, id: "alert-item") %>
-  <% component.with_item(label: "Navigate", tag: :a, content_arguments: { href: action_menu_landing_path }) %>
-  <% component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" }) %>
+  <% component.with_item(label: "Alert", tag: :button, id: "alert-item", disabled: disable_items) %>
+  <% component.with_item(label: "Navigate", tag: :a, content_arguments: { href: action_menu_landing_path }, disabled: disable_items) %>
+  <% component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" }, disabled: disable_items) %>
   <% component.with_item(
     label: "Submit form",
     href: action_menu_form_action_path,
     form_arguments: {
       name: "foo", value: "bar", method: :post
-    }
+    },
+    disabled: disable_items
   ) %>
 <% end %>

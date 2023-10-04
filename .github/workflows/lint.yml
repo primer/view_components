@@ -9,10 +9,10 @@ jobs:
   markdown:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@v38.2.0
+      uses: tj-actions/changed-files@v39.2.0
       with:
         files: |
           **/*.md
@@ -35,10 +35,10 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@v38.2.0
+      uses: tj-actions/changed-files@v39.2.0
       with:
         files: |
           app/**/*.rb
@@ -58,10 +58,10 @@ jobs:
   erblint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v38.2.0
+      uses: tj-actions/changed-files@v39.2.0
       with:
         files: |
           app/components/**/*.erb
@@ -78,10 +78,10 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v38.2.0
+      uses: tj-actions/changed-files@v39.2.0
       with:
         files: |
           app/components/**/*.ts
@@ -99,10 +99,10 @@ jobs:
   stylelint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v38.2.0
+      uses: tj-actions/changed-files@v39.2.0
       with:
         files: |
           app/components/**/*.pcss
