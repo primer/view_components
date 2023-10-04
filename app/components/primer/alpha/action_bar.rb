@@ -16,14 +16,14 @@ module Primer
       SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
 
       renders_many :items, types: {
-        icon_button: lambda { |icon:, label:, **system_arguments|
+        icon_button: lambda { |icon:, label:, item_arguments: {}, **system_arguments|
           item_id = self.class.generate_id
 
           with_menu_item(id: item_id, label: label) do |c|
             c.with_leading_visual_icon(icon: icon)
           end
 
-          Item.new(Primer::Beta::IconButton.new(id: item_id, icon: icon, "aria-label": label, size: @size, scheme: :invisible, **system_arguments))
+          Item.new(Primer::Beta::IconButton.new(id: item_id, icon: icon, "aria-label": label, size: @size, scheme: :invisible, **system_arguments), **item_arguments)
         },
         divider: lambda {
           @action_menu.with_divider(hidden: true) if @overflow_menu
