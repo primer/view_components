@@ -8,6 +8,9 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::FlexLayout, {}, proc { |component|
+      component.with_row { "Foo" }
+    }],
     [Primer::OpenProject::DragHandle, {}],
     [Primer::OpenProject::BorderGrid, {}, proc { |component|
       component.with_row { "Foo" }
