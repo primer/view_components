@@ -33,4 +33,12 @@ class PrimerAlphaActionBarTest < Minitest::Test
 
     assert_selector("[data-targets=\"action-bar.items\"] .Button--small", count: 4)
   end
+
+  def test_item_merges_item_arguments
+    render_inline(Primer::Alpha::ActionBar.new(size: :small)) do |component|
+      component.with_item_icon_button(icon: :pencil, label: "Button 1", item_arguments: { classes: "foo", tag: :span })
+    end
+
+    assert_selector("span.foo.ActionBar-item")
+  end
 end
