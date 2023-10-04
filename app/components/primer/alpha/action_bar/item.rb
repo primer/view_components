@@ -7,7 +7,6 @@ module Primer
     class ActionBar
       # ActionBar::Item is an internal component that wraps the items in a div with the `ActionBar-item` class.
       class Item < Primer::Component
-
         # @param item_content [String] The content to render inside the item.
         # @param item_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(item_content, **item_arguments)
