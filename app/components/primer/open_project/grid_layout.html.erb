@@ -1,0 +1,11 @@
+<% if @system_arguments[:tag] %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <% areas.each do |row| %>
+      <%= row %>
+    <% end %>
+  <% end %>
+<% else %>
+  <% areas.each do |row| %>
+    <%= row %>
+  <% end %>
+<% end %>
