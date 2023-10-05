@@ -281,7 +281,7 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.3)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -396,7 +396,7 @@ DEPENDENCIES
   lookbook (~> 2.1.1)
   primer_view_components!
   pry-byebug
-  puma (~> 6.3.1)
+  puma (~> 6.4.0)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
