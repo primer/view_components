@@ -4654,6 +4654,84 @@
     ]
   },
   {
+    "component": "OpenProject::FlexLayout",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFlexLayout",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/flex_layout.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/flex_layout/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::GridLayout",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectGridLayout",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/grid_layout.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/grid_layout/default/",
+    "parameters": [
+      {
+        "name": "css_class",
+        "type": "String",
+        "default": "N/A",
+        "description": "The basic css class applied on the grid-container"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::GridLayout::Area",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectGridLayoutArea",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/grid_layout/area.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/grid_layout/area/default/",
+    "parameters": [
+      {
+        "name": "css_class",
+        "type": "String",
+        "default": "N/A",
+        "description": "The basic css class applied on the grid-container"
+      },
+      {
+        "name": "area_name",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The specific area name, used for creating the element class and the \"grid-area\" style"
+      },
+      {
+        "name": "component",
+        "type": "ViewComponent::Base",
+        "default": "`Primer::BaseComponent`",
+        "description": "The instance of the component to be rendered."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:span`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::PageHeader",
     "status": "open_project",
     "a11y_reviewed": false,

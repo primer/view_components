@@ -15037,6 +15037,259 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::FlexLayout",
+    "description": "A layouting component used to arrange multiple components next / below each other",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::FlexLayout",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFlexLayout",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/flex_layout.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/flex_layout/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "rows",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "columns",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "boxes",
+        "description": "boxes are used when direction is set to row or column based on responsive breakpoints",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/flex_layout/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/row_layout",
+        "name": "row_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/column_layout",
+        "name": "column_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/nested_layout",
+        "name": "nested_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::GridLayout",
+    "description": "A layouting component used to arrange multiple components in a CSS Grid\nNote that this component only provides helpers (as the class names and grid-area styles).\nHowever, it does not define the actual Grid which should be done in a separate CSS-file.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::GridLayout",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectGridLayout",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/grid_layout.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/grid_layout/default/",
+    "parameters": [
+      {
+        "name": "css_class",
+        "type": "String",
+        "default": "N/A",
+        "description": "The basic css class applied on the grid-container"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "areas",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "css_class",
+        "description": "Returns the value of attribute css_class.",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/grid_layout/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/grid_layout/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::GridLayout::Area",
+    "description": "GridLayout::Area is an internal component that wraps the items in a div with the given new class and responding \"grid-area\"",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::GridLayout::Area",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectGridLayoutArea",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/grid_layout/area.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/grid_layout/area/default/",
+    "parameters": [
+      {
+        "name": "css_class",
+        "type": "String",
+        "default": "N/A",
+        "description": "The basic css class applied on the grid-container"
+      },
+      {
+        "name": "area_name",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The specific area name, used for creating the element class and the \"grid-area\" style"
+      },
+      {
+        "name": "component",
+        "type": "ViewComponent::Base",
+        "default": "`Primer::BaseComponent`",
+        "description": "The instance of the component to be rendered."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:span`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::PageHeader",
     "description": "A ViewComponent PageHeader inspired by the primer react variant",
     "accessibility_docs": null,

@@ -3336,6 +3336,79 @@
     ]
   },
   {
+    "name": "flex_layout",
+    "component": "OpenProject::FlexLayout",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/flex_layout",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/flex_layout/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/row_layout",
+        "name": "row_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/column_layout",
+        "name": "column_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/flex_layout/nested_layout",
+        "name": "nested_layout",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "form_control",
     "component": "FormControl",
     "status": "alpha",
@@ -3409,6 +3482,40 @@
       {
         "preview_path": "primer/alpha/form_control/with_visually_hidden_label",
         "name": "with_visually_hidden_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "grid_layout",
+    "component": "OpenProject::GridLayout",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/grid_layout",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/grid_layout/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/grid_layout/default",
+        "name": "default",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

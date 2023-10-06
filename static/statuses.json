@@ -110,6 +110,9 @@
   "Primer::OpenProject::BorderGrid": "open_project",
   "Primer::OpenProject::BorderGrid::Cell": "open_project",
   "Primer::OpenProject::DragHandle": "open_project",
+  "Primer::OpenProject::FlexLayout": "open_project",
+  "Primer::OpenProject::GridLayout": "open_project",
+  "Primer::OpenProject::GridLayout::Area": "open_project",
   "Primer::OpenProject::PageHeader": "open_project",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "deprecated"

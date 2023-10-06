@@ -1336,6 +1336,18 @@
       "medium"
     ]
   },
+  "Primer::OpenProject::FlexLayout": {
+  },
+  "Primer::OpenProject::GridLayout": {
+    "Area": "Primer::OpenProject::GridLayout::Area"
+  },
+  "Primer::OpenProject::GridLayout::Area": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "span"
+    ]
+  },
   "Primer::OpenProject::PageHeader": {
     "DEFAULT_HEADER_VARIANT": "medium",
     "HEADER_VARIANT_OPTIONS": [
