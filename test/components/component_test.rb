@@ -8,6 +8,14 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::GridLayout, { css_class: "grid-layout", tag: :div }, proc { |component|
+      component.with_area(:area) do
+        "Foo"
+      end
+    }],
+    [Primer::OpenProject::FlexLayout, {}, proc { |component|
+      component.with_row { "Foo" }
+    }],
     [Primer::OpenProject::DragHandle, {}],
     [Primer::OpenProject::BorderGrid, {}, proc { |component|
       component.with_row { "Foo" }
@@ -158,7 +166,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::Content",
       "Primer::Navigation::TabComponent",
-      "Primer::OpenProject::BorderGrid::Cell"
+      "Primer::OpenProject::BorderGrid::Cell",
+      "Primer::OpenProject::GridLayout::Area"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

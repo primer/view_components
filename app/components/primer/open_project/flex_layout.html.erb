@@ -1,0 +1,23 @@
+<% if rows.any? %>
+  <%= render(Primer::Box.new(**@system_arguments.merge(direction: :column))) do %>
+    <% rows.each do |row| %>
+      <%= row %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if columns.any? %>
+  <%= render(Primer::Box.new(**@system_arguments.merge(direction: :row))) do %>
+    <% columns.each do |column| %>
+      <%= column %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if boxes.any? %>
+  <%= render(Primer::Box.new(**@system_arguments)) do %>
+    <% boxes.each do |box| %>
+      <%= box %>
+    <% end %>
+  <% end %>
+<% end %>
