@@ -1367,12 +1367,6 @@
   - d-md-flex
   - d-lg-flex
   - d-xl-flex
-  :grid:
-  - d-grid
-  - d-sm-grid
-  - d-md-grid
-  - d-lg-grid
-  - d-xl-grid
   :inline:
   - d-inline
   - d-sm-inline
