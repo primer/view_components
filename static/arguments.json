@@ -46,7 +46,18 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/item/default/",
     "parameters": [
-
+      {
+        "name": "item_content",
+        "type": "String",
+        "default": "N/A",
+        "description": "The content to render inside the item."
+      },
+      {
+        "name": "item_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
     ]
   },
   {
