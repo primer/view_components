@@ -48,29 +48,37 @@ class IntegrationAlphaActionBarTest < System::TestCase
     visit_preview(:default)
 
     page.driver.browser.resize(width: 145, height: 350)
+    assert_selector("[data-targets=\"action-bar.items\"]", count: 2)
+
     page.driver.browser.keyboard.type(:tab, :left)
 
-    page.driver.browser.keyboard.type(:enter)
+    assert_equal page.evaluate_script("!!document.activeElement.closest('action-menu')"), true
+
+    page.driver.browser.keyboard.down(:enter)
     assert_equal page.evaluate_script("document.activeElement.classList.contains('ActionListContent')"), true
 
-    page.driver.browser.keyboard.type(:escape)
+    page.driver.browser.keyboard.down(:escape)
+
     assert_equal page.evaluate_script("document.activeElement.classList.contains('Button--iconOnly')"), true
+    assert_equal page.evaluate_script("!!document.activeElement.closest('action-menu')"), true
   end
 
   def test_click_outside_of_menu_sets_tabindex_back
     visit_preview(:default)
 
     page.driver.browser.resize(width: 145, height: 350)
+    assert_selector("[data-targets=\"action-bar.items\"]", count: 2)
+
     page.driver.browser.keyboard.type(:tab, :left)
 
-    page.driver.browser.keyboard.type(:enter)
+    page.driver.browser.keyboard.down(:enter)
     assert_equal page.evaluate_script("document.activeElement.classList.contains('ActionListContent')"), true
 
     page.driver.browser.mouse.click(x: 0, y: 0)
-    page.driver.browser.keyboard.type(:tab, :left)
-    assert_equal page.evaluate_script("document.activeElement.classList.contains('Button--iconOnly')"), true
+    page.driver.browser.keyboard.type(:tab)
 
     # Ensures that ActionMenu trigger is still focusable
-    assert_equal page.evaluate_script("document.activeElement.closest('action-menu')"), true
+    assert_equal page.evaluate_script("document.activeElement.classList.contains('Button--iconOnly')"), true
+    assert_equal page.evaluate_script("!!document.activeElement.closest('action-menu')"), true
   end
 end
