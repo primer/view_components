@@ -16,8 +16,7 @@
 Starting from view_components root directory
 
 1. `script/setup` - Setups up the whole project, but also bundle installs dependencies for the demo app.
-2. Change directory to `/demo/` and run `bin/dev` - Runs the rails server for lookbook.
-3. Visit [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
+3. Visit [localhost:4000/](localhost:4000/).
 
 ## Developing within OpenProject
 
