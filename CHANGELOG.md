@@ -1,5 +1,72 @@
 # CHANGELOG
 
+## 0.12.0
+
+### Minor Changes
+
+- [#36](https://github.com/opf/primer_view_components/pull/36) [`cfa8b633`](https://github.com/opf/primer_view_components/commit/cfa8b633d7718abdb6ca5a54389fff542951c4d4) Thanks [@HDinger](https://github.com/HDinger)! - - Add FlexLayout Component
+
+  - Add GridLayout Component
+
+    <!-- Changed components: Primer::OpenProject::FlexLayout, Primer::OpenProject::GridLayout -->
+
+- [#2240](https://github.com/primer/view_components/pull/2240) [`512fc39e`](https://github.com/opf/primer_view_components/commit/512fc39eef56321e2f2001604b4c4c89ca656c63) Thanks [@camertron](https://github.com/camertron)! - Allow anonymous forms, mostly useful for tests
+
+  <!-- Changed components: _none_ -->
+
+- [#2241](https://github.com/primer/view_components/pull/2241) [`3f7e6198`](https://github.com/opf/primer_view_components/commit/3f7e61989c31a19fafc07b01ca48d5554ab269de) Thanks [@camertron](https://github.com/camertron)! - Enable validation messages on radio button and check box groups
+
+  <!-- Changed components: Primer::Alpha::CheckBoxGroup, Primer::Alpha::RadioButtonGroup -->
+
+- [#2247](https://github.com/primer/view_components/pull/2247) [`09648632`](https://github.com/opf/primer_view_components/commit/09648632c5b083b87f03e006e38f303bd75bc9cc) Thanks [@jonrohan](https://github.com/jonrohan)! - Graduate NavList to beta status
+
+  <!-- Changed components: Primer::Alpha::NavList, Primer::Beta::NavList -->
+
+- [#2251](https://github.com/primer/view_components/pull/2251) [`4a51102d`](https://github.com/opf/primer_view_components/commit/4a51102d49c57ac0caaafa54e1c422afc66dd8ca) Thanks [@camertron](https://github.com/camertron)! - Add header variant to Dialog
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+### Patch Changes
+
+- [#2256](https://github.com/primer/view_components/pull/2256) [`fd17adfd`](https://github.com/opf/primer_view_components/commit/fd17adfd1cca6d034d3063b3ac7ab107b1725a8d) Thanks [@langermank](https://github.com/langermank)! - Fix disabled styles for radio
+
+  <!-- Changed components: _none_ -->
+
+- [#2250](https://github.com/primer/view_components/pull/2250) [`66c4dd69`](https://github.com/opf/primer_view_components/commit/66c4dd6936b386caa42868beef9ea1b33f84b11b) Thanks [@langermank](https://github.com/langermank)! - - Improve contrast for icons in `invisible` button on hover in dark mode (within v8 colors)
+
+  - Fix disabled button styles (v8 colors)
+  - Bump Primitives to latest
+
+  <!-- Changed components: Primer::Beta::Button -->
+
+- [#2242](https://github.com/primer/view_components/pull/2242) [`bc254f13`](https://github.com/opf/primer_view_components/commit/bc254f135eeb57b9872665d5e8ce1c30a8208f33) Thanks [@keithamus](https://github.com/keithamus)! - Remove background from anchored-position
+
+  <!-- Changed components: Primer::Alpha::ActionMenu, Primer::Alpha::Overlay -->
+
+- [#2249](https://github.com/primer/view_components/pull/2249) [`1209d241`](https://github.com/opf/primer_view_components/commit/1209d2415c944796741c57150b8a41679d634fe5) Thanks [@camertron](https://github.com/camertron)! - Fix underline behavior in Link component
+
+  <!-- Changed components: Primer::Beta::Link -->
+
+- [#2254](https://github.com/primer/view_components/pull/2254) [`cdb9fe4d`](https://github.com/opf/primer_view_components/commit/cdb9fe4d2e5d4c49c0aa4c76567709d9ac58ac7a) Thanks [@keithamus](https://github.com/keithamus)! - Only supply aria-label on Overlays with a role assigned
+
+  <!-- Changed components: Primer::Alpha::ActionMenu, Primer::Alpha::Overlay -->
+
+- [#37](https://github.com/opf/primer_view_components/pull/37) [`a5979b8b`](https://github.com/opf/primer_view_components/commit/a5979b8b1a9d44b5902ad2492cdfe39f0e0b2fbd) Thanks [@HDinger](https://github.com/HDinger)! - Don't show a border for PageHeaders on mobile
+
+  <!-- Changed components: Primer::OpenProject::PageHeader -->
+
+- [#2245](https://github.com/primer/view_components/pull/2245) [`495f911c`](https://github.com/opf/primer_view_components/commit/495f911c5c4be2d8722dbb811eacc23a35e7d36a) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Fix bug in ActionMenu keyboard navigation, where items aren't skipped when they're functionally `[hidden]`.
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2244](https://github.com/primer/view_components/pull/2244) [`3c5fb3a7`](https://github.com/opf/primer_view_components/commit/3c5fb3a70df51e10e720b97422678aa0b19a256e) Thanks [@camertron](https://github.com/camertron)! - Fix race condition causing dotcom axe check failures for icon button tooltips
+
+  <!-- Changed components: Primer::Alpha::Tooltip, Primer::Beta::IconButton -->
+
+- [#2248](https://github.com/primer/view_components/pull/2248) [`9885a5d8`](https://github.com/opf/primer_view_components/commit/9885a5d8566df6c6b0dc165986c7cf60f051299a) Thanks [@keithamus](https://github.com/keithamus)! - Update popover support in older browsers.
+
+  <!-- Changed components: Primer::Alpha::ActionMenu, Primer::Alpha::Overlay -->
+
 ## 0.11.0
 
 ### Minor Changes
