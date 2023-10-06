@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.12.1
+
+### Patch Changes
+
+- [#39](https://github.com/opf/primer_view_components/pull/39) [`95b40c0e`](https://github.com/opf/primer_view_components/commit/95b40c0e31658a3331b04f14618c75129fff4d08) Thanks [@HDinger](https://github.com/HDinger)! - Update docs for setup instructions
+
+  <!-- Changed components: _none_ -->
+
 ## 0.12.0
 
 ### Minor Changes
