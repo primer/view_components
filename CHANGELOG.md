@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.11.0
+
+### Minor Changes
+
+- [#2276](https://github.com/primer/view_components/pull/2276) [`7184d76e`](https://github.com/primer/view_components/commit/7184d76edbe94b008158940d15909b1778c9ed8c) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding option item_arguments hash argument to ActionBar::Item that will control the item system arguments
+
+  <!-- Changed components: Primer::Alpha::ActionBar -->
+
+- [#2259](https://github.com/primer/view_components/pull/2259) [`a2fe6134`](https://github.com/primer/view_components/commit/a2fe61342b2f3527533902d845f5a9d500d6910c) Thanks [@TylerJDev](https://github.com/TylerJDev)! - \* Includes ActionMenu in ActionBar focus trap when present.
+
+  - Adjusts `focus_group.ts` to set `tabindex="0"` back to invoker if it is non-focusable.
+  - Prevents popover invokers from being triggered with 'left' and 'right' arrow keys.
+
+  <!-- Changed components: Primer::Alpha::ActionBar, Primer::Alpha::ActionMenu -->
+
+### Patch Changes
+
+- [#2260](https://github.com/primer/view_components/pull/2260) [`b584a6b5`](https://github.com/primer/view_components/commit/b584a6b57e07b4def45bd30e90bf31203e7b7010) Thanks [@camertron](https://github.com/camertron)! - ActionMenu: hide the menu when focus leaves the component; focus the first list item when the menu is activated with the mouse; allow disabling list items while still permitting them to be focused with the keyboard
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
 ## 0.10.0
 
 ### Minor Changes
