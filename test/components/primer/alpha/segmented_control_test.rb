@@ -32,6 +32,16 @@ module Primer
         end
       end
 
+      def test_renders_trailing_label
+        render_preview(:trailing_label_width_medium)
+
+        assert_selector("segmented-control ul.SegmentedControl") do
+          assert_selector("button.Button", count: 2) do
+            assert_selector(".Label", text: "-8%")
+          end
+        end
+      end
+
       def test_renders_icons_only
         render_preview(:icon_only_medium)
 

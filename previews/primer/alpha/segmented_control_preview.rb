@@ -100,6 +100,41 @@ module Primer
       end
       # @!endgroup
 
+      # @!group Trailing Label
+      # @label Size small
+      # @snapshot
+      def trailing_label_width_small
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :small)) do |component|
+          component.with_item(label: "Monthly")
+          component.with_item(label: "Yearly", selected: true) do |item|
+            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
+          end
+        end
+      end
+
+      # @label Size medium
+      # @snapshot
+      def trailing_label_width_medium
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :medium)) do |component|
+          component.with_item(label: "Monthly")
+          component.with_item(label: "Yearly", selected: true) do |item|
+            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
+          end
+        end
+      end
+
+      # @label Size large
+      # @snapshot
+      def trailing_label_width_large
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :large)) do |component|
+          component.with_item(label: "Monthly")
+          component.with_item(label: "Yearly", selected: true) do |item|
+            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
+          end
+        end
+      end
+      # @!endgroup
+
       # @!group Icons only
       # @label Size small
       # @snapshot

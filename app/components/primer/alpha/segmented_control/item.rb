@@ -24,6 +24,13 @@ module Primer
           @system_arguments[:"aria-current"] = selected
           @system_arguments[:scheme] = :invisible
         end
+
+        # Trailing visual that appears to the right of the item text, when unselected.
+        #
+        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Label) %>
+        renders_one :trailing_visual, types: {
+          label: Primer::Beta::Label
+        }
       end
     end
   end
