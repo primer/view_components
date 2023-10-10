@@ -14,7 +14,7 @@ module Primer
         # @param icon [Symbol] The icon to use
         # @param hide_labels [Symbol] Whether to only show the icon
         # @param trailing_visual_label [String] A trailing visual label that appears to the right of the item
-        # @param trailing_visual_label_options [Hash] <% Same arguments as <%= link_to_component(Primer::Beta::Label) %>
+        # @param trailing_visual_label_options [Hash] Same arguments as <%= link_to_component(Primer::Beta::Label) %>
         def initialize(
           label:,
           selected: false,
