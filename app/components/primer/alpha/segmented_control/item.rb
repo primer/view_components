@@ -47,6 +47,12 @@ module Primer
         def with_trailing_visual_label(**system_arguments, &block)
           @button.with_trailing_visual_label(**system_arguments, &block)
         end
+
+        private
+
+        def before_render
+          content
+        end
       end
     end
   end
