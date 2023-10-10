@@ -37,7 +37,9 @@ module Primer
 
         assert_selector("segmented-control ul.SegmentedControl") do
           assert_selector("button.Button", count: 2) do
-            assert_selector(".Label", text: "-8%")
+            assert_selector(".Button-visual.Button-trailingVisual") do
+              assert_selector(".Label", text: "-8%")
+            end
           end
         end
       end

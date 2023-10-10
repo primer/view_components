@@ -106,9 +106,7 @@ module Primer
       def trailing_label_width_small
         render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :small)) do |component|
           component.with_item(label: "Monthly")
-          component.with_item(label: "Yearly", selected: true) do |item|
-            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
-          end
+          component.with_item(label: "Yearly", selected: true, trailing_visual_label: "-8%", trailing_visual_label_options: { scheme: :accent })
         end
       end
 
@@ -117,9 +115,7 @@ module Primer
       def trailing_label_width_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :medium)) do |component|
           component.with_item(label: "Monthly")
-          component.with_item(label: "Yearly", selected: true) do |item|
-            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
-          end
+          component.with_item(label: "Yearly", selected: true, trailing_visual_label: "-8%", trailing_visual_label_options: { scheme: :accent })
         end
       end
 
@@ -128,9 +124,7 @@ module Primer
       def trailing_label_width_large
         render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :large)) do |component|
           component.with_item(label: "Monthly")
-          component.with_item(label: "Yearly", selected: true) do |item|
-            item.with_trailing_visual_label(color: :accent, bg: :accent, border: false) { "-8%" }
-          end
+          component.with_item(label: "Yearly", selected: true, trailing_visual_label: "-8%", trailing_visual_label_options: { scheme: :accent })
         end
       end
       # @!endgroup

@@ -8,8 +8,8 @@
     <%= render Primer::Beta::Button.new(**@system_arguments) do |button| %>
       <% button.with_leading_visual_icon(icon: @icon) unless @icon.nil? %>
       <%= @label %>
-      <% if trailing_visual? %>
-        <%= trailing_visual %>
+      <% if @trailing_visual_label %>
+        <% button.with_trailing_visual_label(**@trailing_visual_label_options) { @trailing_visual_label } %>
       <% end %>
     <% end %>
   <% end %>
