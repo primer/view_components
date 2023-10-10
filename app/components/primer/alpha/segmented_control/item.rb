@@ -20,9 +20,6 @@ module Primer
           hide_labels: false,
           **system_arguments
         )
-          @icon = icon
-          @hide_labels = hide_labels
-          @label = label
           @selected = selected
 
           @system_arguments = system_arguments
@@ -30,9 +27,17 @@ module Primer
           @system_arguments[:"aria-current"] = selected
           @system_arguments[:scheme] = :invisible
 
-          @button = Primer::Beta::Button.new(**@system_arguments)
-          @button.with_leading_visual_icon(icon: @icon) if @icon
-          @button.with_content(@label) if @label
+          if hide_labels
+            @button = Primer::Beta::IconButton.new(
+              icon: icon,
+              "aria-label": label,
+              **@system_arguments
+            )
+          else
+            @button = Primer::Beta::Button.new(**@system_arguments)
+            @button.with_leading_visual_icon(icon: icon) if icon
+            @button.with_content(label)
+          end
         end
 
         # @!parse

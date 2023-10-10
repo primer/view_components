@@ -2,9 +2,5 @@
   "SegmentedControl-item",
   "SegmentedControl-item--selected": @selected
   ) %>" role="listitem" data-targets="segmented-control.items">
-  <% if @hide_labels %>
-    <%= render Primer::Beta::IconButton.new(icon: @icon, "aria-label": @label, **@system_arguments) %>
-  <% else %>
-    <%= render @button %>
-  <% end %>
+  <%= render @button %>
 </li>
