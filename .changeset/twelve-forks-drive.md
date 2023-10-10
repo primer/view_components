@@ -2,6 +2,5 @@
 "@primer/view-components": minor
 ---
 
-Add optional trailing_visual slot to SegmentedControl::Item. We will be able to add a label by calling `item.with_trailing_visual_label`.
-
+Add optional trailing_visual_label option to SegmentedControl::Item. Setting this value will add a text Label to the right of the item.
 <!-- Changed components: Primer::Alpha::SegmentedControl -->
