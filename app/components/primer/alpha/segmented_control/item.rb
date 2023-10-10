@@ -43,7 +43,7 @@ module Primer
 
         # Optional trailing label.
         #
-        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component((Primer::Beta::Button) %>'s `with_trailing_visual_label` slot.
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>'s `with_trailing_visual_label` slot.
         def with_trailing_visual_label(**system_arguments, &block)
           @button.with_trailing_visual_label(**system_arguments, &block)
         end
