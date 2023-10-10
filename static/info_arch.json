@@ -6410,6 +6410,45 @@
         }
       },
       {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_small",
+        "name": "trailing_label_width_small",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_medium",
+        "name": "trailing_label_width_medium",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
+        "name": "trailing_label_width_large",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
         "snapshot": "true",
@@ -6568,10 +6607,32 @@
           }
         ],
         "slots": [
-
+          {
+            "name": "trailing_visual_label",
+            "description": "Optional trailing Label",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}'s `with_trailing_visual_label` slot."
+              }
+            ]
+          }
         ],
         "methods": [
-
+          {
+            "name": "with_trailing_visual_label",
+            "description": "Optional trailing label.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}'s `with_trailing_visual_label` slot."
+              }
+            ]
+          }
         ],
         "previews": [
 

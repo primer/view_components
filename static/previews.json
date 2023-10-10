@@ -5012,6 +5012,45 @@
         }
       },
       {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_small",
+        "name": "trailing_label_width_small",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_medium",
+        "name": "trailing_label_width_medium",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
+        "name": "trailing_label_width_large",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
         "snapshot": "true",
