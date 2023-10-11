@@ -120,5 +120,21 @@ module Alpha
       assert_selector("tool-tip[for='button-2']", visible: :visible)
       assert_selector("tool-tip.sr-only[for='button-3']", visible: :hidden)
     end
+
+    def test_tooltip_hidden_after_focus_change
+      visit_preview(:tooltip_with_dialog_moving_focus_to_input)
+
+      assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :hidden)
+
+      find("button#dialog-show-my-dialog").send_keys("tab") # focus
+
+      assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :visible)
+
+      find("button#dialog-show-my-dialog").click()
+
+      find("modal-dialog#my-dialog button[data-close-dialog-id='my-dialog']").click()
+
+      assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :hidden)
+    end
   end
 end
