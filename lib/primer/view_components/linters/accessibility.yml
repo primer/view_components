@@ -7,3 +7,5 @@ linters:
     enabled: true
   Primer::Accessibility::DetailsMenuMigration:
     enabled: true
+  Primer::Accessibility::ExperimentalDialogMigration:
+    enabled: true

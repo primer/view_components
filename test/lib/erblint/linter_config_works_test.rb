@@ -14,7 +14,7 @@ class LinterConfigWorksTest < ErblintTestCase
     end
     known_linter_names ||= ERBLint::LinterRegistry.linters.map(&:simple_name)
     known_linter_names_count = known_linter_names.count { |linter| linter.include?("Primer::Accessibility") }
-    assert_equal 2, rules_enabled_in_accessibility_config
-    assert_equal 2, known_linter_names_count
+    assert_equal 3, rules_enabled_in_accessibility_config
+    assert_equal 3, known_linter_names_count
   end
 end
