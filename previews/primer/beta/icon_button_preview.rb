@@ -9,6 +9,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
+      # @param inactive toggle
       # @param tag select [a, summary, button]
       # @param icon [Symbol] octicon
       # @param show_tooltip toggle
@@ -18,6 +19,7 @@ module Primer
         id: "button-preview",
         tag: :button,
         disabled: false,
+        inactive: false,
         icon: :plus,
         aria_label: "Button",
         show_tooltip: true
@@ -28,6 +30,7 @@ module Primer
                  id: id,
                  tag: tag,
                  disabled: disabled,
+                 inactive: inactive,
                  icon: icon,
                  "aria-label": aria_label,
                  show_tooltip: show_tooltip

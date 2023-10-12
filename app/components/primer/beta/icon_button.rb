@@ -31,6 +31,7 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
+      # @param inactive [Boolean] Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button.
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
@@ -45,6 +46,7 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:id] ||= self.class.generate_id
         @system_arguments[:disabled] = disabled
+        @system_arguments[:inactive] = inactive
 
         @system_arguments[:classes] = class_names(
           "Button",
