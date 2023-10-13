@@ -344,6 +344,21 @@ module Primer
                                align_content: align_content
                              })
       end
+
+      # @label Inactive
+      # @param inactive toggle
+      # @snapshot
+      def inactive(
+        id: "button-preview",
+        inactive: true
+      )
+        render(Primer::Beta::Button.new(
+                 id: id,
+                 inactive: inactive
+               )) do |_c|
+          "Button"
+        end
+      end
     end
   end
 end

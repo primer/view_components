@@ -100,7 +100,6 @@ module Primer
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
-      # @param inactive [Boolean] Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
@@ -108,7 +107,6 @@ module Primer
         block: false,
         align_content: DEFAULT_ALIGN_CONTENT,
         disabled: false,
-        inactive: false,
         **system_arguments
       )
         @scheme = scheme
@@ -116,7 +114,6 @@ module Primer
 
         @system_arguments = system_arguments
         @system_arguments[:disabled] = disabled
-        @system_arguments[:inactive] = inactive
 
         @id = @system_arguments[:id]
 
