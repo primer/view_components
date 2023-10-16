@@ -1,19 +1,78 @@
 /* SegmentedControl */
 
 .SegmentedControl {
+  --segmentedControl-item-padding: var(--control-small-paddingBlock);
+
   display: inline-flex;
   list-style: none;
   background-color: var(--controlTrack-bgColor-rest, var(--color-segmented-control-bg));
   border-radius: var(--borderRadius-medium);
 }
 
+.SegmentedControl--iconOnly {
+  & .Button--iconOnly.Button--small,
+  & .Button--iconOnly.Button--medium,
+  & .Button--iconOnly.Button--large {
+    width: 100%;
+  }
+}
+
+/* sizes */
+
+.SegmentedControl--small {
+  --segmentedControl-item-padding: var(--control-xsmall-paddingBlock);
+
+  & .SegmentedControl-item {
+    height: var(--control-small-size);
+  }
+
+  &.SegmentedControl--iconOnly {
+    & .SegmentedControl-item {
+      width: var(--control-small-size);
+    }
+  }
+}
+
+.SegmentedControl--medium {
+  & .SegmentedControl-item {
+    height: var(--control-medium-size);
+  }
+
+  &.SegmentedControl--iconOnly {
+    & .SegmentedControl-item {
+      width: var(--control-medium-size);
+    }
+  }
+}
+
+.SegmentedControl--large {
+  & .SegmentedControl-item {
+    height: var(--control-large-size);
+  }
+
+  &.SegmentedControl--iconOnly {
+    & .SegmentedControl-item {
+      width: var(--control-large-size);
+    }
+  }
+}
+
+/* item */
+
 .SegmentedControl-item {
   position: relative;
   display: inline-flex;
+  justify-content: center;
   border: var(--borderWidth-thin) solid transparent;
   border-radius: var(--borderRadius-medium);
-  padding: var(--control-xsmall-paddingInline-condensed);
+  height: var(--control-medium-size);
+  padding: var(--segmentedControl-item-padding);
 
+  & .Button-withTooltip {
+    width: 100%;
+  }
+
+  /* button color overrides */
   & .Button--invisible {
     &:hover:not(:disabled) {
       background-color: var(--controlTrack-bgColor-hover, var(--color-action-list-item-default-hover-bg));
@@ -69,70 +128,16 @@
 
   /* Button ----------------------------------------- */
   & .Button {
+    height: 100%;
+    width: 100%;
     border: 0;
     font-weight: var(--base-text-weight-normal);
-    transition: none;
-    color: var(--button-default-fgColor-rest);
+    border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
 
     &:focus-visible {
-      outline-offset: calc(var(--control-xsmall-paddingInline-condensed) - var(--borderWidth-thin));
-      border-radius: calc(var(--borderRadius-medium) - 5px);
+      outline-offset: calc(var(--segmentedControl-item-padding) - var(--borderWidth-thin));
+      border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 1);
     }
-  }
-
-  & .Button--small {
-    height: calc(
-      var(--control-small-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-    );
-    padding: 0 calc(var(--control-small-paddingInline-condensed) - var(--control-xsmall-paddingInline-condensed));
-
-    &.Button--iconOnly {
-      width: calc(
-        var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-      );
-
-      &::before {
-        @mixin minTouchTarget var(--control-medium-size), var(--control-medium-size);
-      }
-    }
-  }
-
-  & .Button--medium {
-    height: calc(
-      var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-    );
-    padding: 0 calc(var(--control-medium-paddingInline-normal) - var(--control-xsmall-paddingInline-condensed));
-
-    &.Button--iconOnly {
-      width: calc(
-        var(--control-medium-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-      );
-
-      &::before {
-        @mixin minTouchTarget var(--control-medium-size), var(--control-medium-size);
-      }
-    }
-  }
-
-  & .Button--large {
-    height: calc(
-      var(--control-large-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-    );
-    padding: 0 calc(var(--control-large-paddingInline-spacious) - var(--control-xsmall-paddingInline-condensed));
-
-    &.Button--iconOnly {
-      width: calc(
-        var(--control-large-size) - var(--control-xsmall-paddingInline-condensed) * 2 - var(--borderWidth-thin) * 2
-      );
-
-      &::before {
-        @mixin minTouchTarget var(--control-large-size), var(--control-large-size);
-      }
-    }
-  }
-
-  & .Button--iconOnly {
-    padding: initial;
   }
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
@@ -146,14 +151,6 @@
 
   & .SegmentedControl-item {
     flex: 1;
-    justify-content: center;
-  }
-
-  /* is .Button-withTooltip used anywhere? can't find use of it */
-  & .Button--iconOnly,
-  & .Button-withTooltip {
-    width: 100% !important;
-    display: flex;
     justify-content: center;
   }
 }
