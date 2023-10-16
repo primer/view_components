@@ -25,6 +25,10 @@
 
   & .SegmentedControl-item {
     height: var(--control-small-size);
+
+    & .Button {
+      padding-inline: calc(var(--control-xsmall-paddingInline-normal) - var(--segmentedControl-item-padding));
+    }
   }
 
   &.SegmentedControl--iconOnly {
@@ -49,6 +53,10 @@
 .SegmentedControl--large {
   & .SegmentedControl-item {
     height: var(--control-large-size);
+
+    & .Button {
+      padding-inline: calc(var(--control-large-paddingInline-normal) - var(--segmentedControl-item-padding));
+    }
   }
 
   &.SegmentedControl--iconOnly {
