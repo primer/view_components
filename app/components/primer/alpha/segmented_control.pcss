@@ -14,6 +14,7 @@
   & .Button--iconOnly.Button--medium,
   & .Button--iconOnly.Button--large {
     width: 100%;
+    padding-inline: 0;
   }
 }
 
@@ -133,6 +134,7 @@
     border: 0;
     font-weight: var(--base-text-weight-normal);
     border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
+    padding-inline: calc(var(--control-medium-paddingInline-normal) - var(--segmentedControl-item-padding));
 
     &:focus-visible {
       outline-offset: calc(var(--segmentedControl-item-padding) - var(--borderWidth-thin));
