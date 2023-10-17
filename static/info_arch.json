@@ -9607,6 +9607,12 @@
         "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
+        "name": "inactive",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -10663,6 +10669,19 @@
         "preview_path": "primer/beta/button/with_tooltip",
         "name": "with_tooltip",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button/inactive",
+        "name": "inactive",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
