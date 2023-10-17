@@ -130,9 +130,9 @@ module Alpha
 
       assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :visible)
 
-      find("button#dialog-show-my-dialog").click()
+      find("button#dialog-show-my-dialog").click
 
-      find("modal-dialog#my-dialog button[data-close-dialog-id='my-dialog']").click()
+      find("modal-dialog#my-dialog button[data-close-dialog-id='my-dialog']").click
 
       assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :hidden)
     end
