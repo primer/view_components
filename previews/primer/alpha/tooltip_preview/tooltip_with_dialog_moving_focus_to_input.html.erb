@@ -3,7 +3,7 @@
     Are you sure you want to focus the input?
   <% end %>
   <%= render(Primer::Alpha::Dialog::Footer.new()) do %>
-    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Yes" } %>
+    <%= render(Primer::Beta::Button.new(id: "yes-button", data: { "close-dialog-id": "my-dialog" })) { "Yes" } %>
     <%= render(Primer::Beta::Button.new(scheme: :primary, data: { "close-dialog-id": "my-dialog" })) { "Yes but in green" } %>
   <% end %>
   <% d.with_show_button do |b| %>
