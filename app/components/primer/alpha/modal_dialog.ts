@@ -39,7 +39,7 @@ function clickHandler(event: Event) {
     if (dialog instanceof ModalDialogElement) {
       const dialogIndex = overlayStack.findIndex(ele => ele.id === dialogId)
       overlayStack.splice(dialogIndex, 1)
-      dialog.close()
+      dialog.close(button.hasAttribute('data-submit-dialog-id'))
     }
   }
 }
