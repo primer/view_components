@@ -68,6 +68,8 @@ group :development do
   gem "rubocop", "= 1.13.0"
   gem "rubocop-github", "~> 0.16.0"
   gem "rubocop-performance", "~> 1.7"
+  gem "rubocop-rails-accessibility", "~> 0.2.0"
+  gem "rubocop-rails", require: false
   gem "simplecov", "~> 0.21.2"
   gem "simplecov-console", "~> 0.9.1"
   gem "sprockets"
