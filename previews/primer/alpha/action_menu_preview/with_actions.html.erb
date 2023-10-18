@@ -13,7 +13,7 @@
   <% component.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" }, disabled: disable_items) %>
   <% component.with_item(
     label: "Submit form",
-    href: action_menu_form_action_path,
+    href: action_menu_form_action_path(format: route_format),
     form_arguments: {
       name: "foo", value: "bar", method: :post
     },

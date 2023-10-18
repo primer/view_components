@@ -581,6 +581,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/action_menu/single_select_form_items",
+        "name": "single_select_form_items",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/action_menu/multiple_select_form",
         "name": "multiple_select_form",
         "snapshot": "false",
@@ -2927,6 +2940,19 @@
       {
         "preview_path": "primer/alpha/dialog/body_has_scrollbar_overflow",
         "name": "body_has_scrollbar_overflow",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/autofocus_element",
+        "name": "autofocus_element",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

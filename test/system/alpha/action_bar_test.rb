@@ -81,4 +81,14 @@ class IntegrationAlphaActionBarTest < System::TestCase
     assert_equal page.evaluate_script("document.activeElement.classList.contains('Button--iconOnly')"), true
     assert_equal page.evaluate_script("!!document.activeElement.closest('action-menu')"), true
   end
+
+  def test_arrow_left_loops_to_last_item
+    visit_preview(:default)
+
+    # Tab to first item and press left arrow
+    page.driver.browser.keyboard.type(:tab, :left)
+
+    # The last item "Attach" should be focused
+    assert page.evaluate_script("document.activeElement.querySelector('svg.octicon-paperclip')")
+  end
 end

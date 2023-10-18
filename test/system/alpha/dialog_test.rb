@@ -33,6 +33,14 @@ module Alpha
       assert_equal page.evaluate_script("document.activeElement")["aria-label"], "Close"
     end
 
+    def test_focuses_autofocus_elements_inside_dialog
+      visit_preview(:autofocus_element)
+
+      click_button("Show Dialog")
+
+      assert_equal page.evaluate_script("document.activeElement")["placeholder"], "This element is focused on open"
+    end
+
     def test_closes_top_level_dialog
       visit_preview(:nested_dialog)
 
