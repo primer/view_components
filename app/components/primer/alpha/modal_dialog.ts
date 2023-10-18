@@ -30,20 +30,17 @@ function clickHandler(event: Event) {
       return
     }
   }
-  // Find the top level dialog that is open.
-  const topLevelDialog = overlayStack[overlayStack.length - 1]
-  if (!topLevelDialog) return
 
-  dialogId = button.getAttribute('data-close-dialog-id')
-  if (dialogId === topLevelDialog.id) {
-    overlayStack.pop()
-    topLevelDialog.close()
-  }
+  if (!overlayStack.length) return
 
-  dialogId = button.getAttribute('data-submit-dialog-id')
-  if (dialogId === topLevelDialog.id) {
-    overlayStack.pop()
-    topLevelDialog.close(true)
+  dialogId = button.getAttribute('data-close-dialog-id') || button.getAttribute('data-submit-dialog-id')
+  if (dialogId) {
+    const dialog = document.getElementById(dialogId)
+    if (dialog instanceof ModalDialogElement) {
+      const dialogIndex = overlayStack.findIndex(ele => ele.id === dialogId)
+      overlayStack.splice(dialogIndex, 1)
+      dialog.close(button.hasAttribute('data-submit-dialog-id'))
+    }
   }
 }
 
