@@ -2936,6 +2936,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/autofocus_element",
+        "name": "autofocus_element",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6395,6 +6408,19 @@
       {
         "preview_path": "primer/alpha/tooltip/tooltip_inside_primer_overlay",
         "name": "tooltip_inside_primer_overlay",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_with_dialog_moving_focus_to_input",
+        "name": "tooltip_with_dialog_moving_focus_to_input",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

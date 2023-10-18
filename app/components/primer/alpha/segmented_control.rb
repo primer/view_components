@@ -13,6 +13,15 @@ module Primer
       FULL_WIDTH_DEFAULT = false
       HIDE_LABELS_DEFAULT = false
 
+      DEFAULT_SIZE = :medium
+      SIZE_MAPPINGS = {
+        :small => "SegmentedControl--small",
+        :medium => "SegmentedControl--medium",
+        :large => "SegmentedControl--large",
+        DEFAULT_SIZE => "SegmentedControl--medium"
+      }.freeze
+      SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
       # Use to render an item in the segmented control
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -42,6 +51,7 @@ module Primer
         @system_arguments[:role] = "list"
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "SegmentedControl",
           "SegmentedControl--iconOnly": hide_labels,
           "SegmentedControl--fullWidth": full_width
