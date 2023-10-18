@@ -86,9 +86,16 @@ class ActionBarElement extends HTMLElement {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
-        return !element.closest('.ActionBar-item[hidden]') && !element.closest('li.ActionListItem')
+        return this.#isVisible(element)
       }
     })
+  }
+
+  #isVisible(element: HTMLElement): boolean {
+    // Safari doesn't support `checkVisibility` yet.
+    if (typeof element.checkVisibility === 'function') return element.checkVisibility()
+
+    return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
   }
 
   #itemGap(): number {
