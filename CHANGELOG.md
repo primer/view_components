@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.12.0
+
+### Minor Changes
+
+- [#2283](https://github.com/primer/view_components/pull/2283) [`da3bdb26`](https://github.com/primer/view_components/commit/da3bdb267e5753942d24e578a8aa2c6d339e5c83) Thanks [@mperrotti](https://github.com/mperrotti)! - Adds an 'inactive' state to buttons. An inactive button looks disabled and has aria-disabled, but it can still be clicked and focused. This was added to support buttons that are broken due to availability issues, but can't be removed from the page.
+
+  <!-- Changed components: Primer::Beta::Button, Primer::Beta::BaseButton, Primer::Beta::IconButton -->
+
+- [#2278](https://github.com/primer/view_components/pull/2278) [`83b70dd7`](https://github.com/primer/view_components/commit/83b70dd73ad970388a3fa6b107d4ca8e4c94a986) Thanks [@gwwar](https://github.com/gwwar)! - Add optional with_trailing_visual_label slot to Primer::Alpha::SegmentedControl::Item. Filling the slot will add a Primer::Beta::Label to the right of the item.
+  <!-- Changed components: Primer::Alpha::SegmentedControl -->
+
+### Patch Changes
+
+- [#2281](https://github.com/primer/view_components/pull/2281) [`46d5d9cb`](https://github.com/primer/view_components/commit/46d5d9cb5b624eee147f67cabcfa8034c7e1668c) Thanks [@keithamus](https://github.com/keithamus)! - Fix tooltips opening when focus is removed while displaying
+
 ## 0.11.0
 
 ### Minor Changes

@@ -52,6 +52,16 @@ function focusOutListener() {
   closeOpenTooltips()
 }
 
+function focusInListener(event: Event) {
+  setTimeout(() => {
+    for (const tooltip of openTooltips) {
+      if (isPopoverOpen(tooltip) && tooltip.showReason === 'focus' && tooltip.control !== event.target) {
+        tooltip.hidePopover()
+      }
+    }
+  }, 0)
+}
+
 const tooltips = new Set<ToolTipElement>()
 const openTooltips = new Set<ToolTipElement>()
 class ToolTipElement extends HTMLElement {
@@ -111,6 +121,10 @@ class ToolTipElement extends HTMLElement {
   #align: AnchorAlignment = 'center'
   #side: AnchorSide = 'outside-bottom'
   #allowUpdatePosition = false
+  #showReason: 'focus' | 'mouse' = 'mouse'
+  get showReason() {
+    return this.#showReason
+  }
 
   get htmlFor(): string {
     return this.getAttribute('for') || ''
@@ -188,6 +202,7 @@ class ToolTipElement extends HTMLElement {
       signal
     })
     this.ownerDocument.addEventListener('focusout', focusOutListener)
+    this.ownerDocument.addEventListener('focusin', focusInListener)
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
@@ -215,6 +230,7 @@ class ToolTipElement extends HTMLElement {
 
     await Promise.resolve()
     if (!showing && shouldShow && !isPopoverOpen(this)) {
+      this.#showReason = event.type === 'mouseenter' ? 'mouse' : 'focus'
       this.showPopover()
     } else if (showing && shouldHide && isPopoverOpen(this)) {
       this.hidePopover()
