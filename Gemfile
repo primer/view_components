@@ -60,7 +60,7 @@ group :development do
   gem "capybara", "~> 3.39.2"
   gem "cuprite", "~> 0.14.3"
   gem "erb_lint", "~> 0.4.0"
-  gem "erblint-github", "0.4.0"
+  gem "erblint-github", "~> 0.4.1"
   gem "listen", "~> 3.0"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
@@ -68,8 +68,8 @@ group :development do
   gem "rubocop", "= 1.13.0"
   gem "rubocop-github", "~> 0.16.0"
   gem "rubocop-performance", "~> 1.7"
+  gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 0.2.0"
-  gem "rubocop-rails", require: false
   gem "simplecov", "~> 0.21.2"
   gem "simplecov-console", "~> 0.9.1"
   gem "sprockets"
