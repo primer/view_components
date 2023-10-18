@@ -544,9 +544,20 @@
   "Primer::Alpha::RadioButtonGroup": {
   },
   "Primer::Alpha::SegmentedControl": {
+    "DEFAULT_SIZE": "medium",
     "FULL_WIDTH_DEFAULT": false,
     "HIDE_LABELS_DEFAULT": false,
-    "Item": "Primer::Alpha::SegmentedControl::Item"
+    "Item": "Primer::Alpha::SegmentedControl::Item",
+    "SIZE_MAPPINGS": {
+      "small": "SegmentedControl--small",
+      "medium": "SegmentedControl--medium",
+      "large": "SegmentedControl--large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
   },
   "Primer::Alpha::SegmentedControl::Item": {
   },
