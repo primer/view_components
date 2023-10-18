@@ -3,6 +3,7 @@
 # :nocov:
 
 require "json"
+require "kramdown"
 
 module Primer
   module Static
@@ -35,7 +36,7 @@ module Primer
                 # rubocop:disable Style/IfUnlessModifier
                 "description" =>
                   if slot_method.base_docstring.to_s.present?
-                    view_context.render(inline: slot_method.base_docstring)
+                    render_erb_ignoring_markdown_code_fences(slot_method.base_docstring)
                   end,
                 # rubocop:enable Style/IfUnlessModifier
                 "parameters" => serialize_params(param_tags, component)
@@ -57,7 +58,7 @@ module Primer
 
               {
                 "name" => mtd.name,
-                "description" => view_context.render(inline: mtd.base_docstring),
+                "description" => render_erb_ignoring_markdown_code_fences(mtd.base_docstring),
                 "parameters" => serialize_params(param_tags, component)
               }
             end
@@ -66,7 +67,7 @@ module Primer
               if component == Primer::BaseComponent
                 docs.base_docstring
               else
-                view_context.render(inline: docs.base_docstring)
+                render_erb_ignoring_markdown_code_fences(docs.base_docstring)
               end
 
             memo[component] = {
@@ -119,7 +120,7 @@ module Primer
             component: "BaseComponent",
             fully_qualified_name: "Primer::BaseComponent",
             description_md: docs.base_docstring,
-            args_md: view_context.render(inline: docs.constructor.base_docstring)
+            args_md: render_erb_ignoring_markdown_code_fences(docs.constructor.base_docstring)
           }
         end
 
@@ -131,7 +132,7 @@ module Primer
               "name" => tag.name,
               "type" => tag.types&.join(", ") || "",
               "default" => default_value,
-              "description" => view_context.render(inline: tag.text.squish)
+              "description" => render_erb_ignoring_markdown_code_fences(tag.text.squish)
             }
           end
         end
@@ -148,6 +149,88 @@ module Primer
           @view_context ||= ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context.tap do |vc|
             vc.singleton_class.include(Primer::Yard::InfoArchDocsHelper)
             vc.singleton_class.include(Primer::ViewHelper)
+          end
+        end
+
+        # Renders ERB code to a string, ignoring markdown code fences. For example, consider the
+        # following ERB code inside a markdown document:
+        #
+        # ### Heading
+        # ```erb
+        # <%= render(SomeComponent.new) %>
+        # ```
+        #
+        # <%= some_func(a, b) %>
+        #
+        # The ERB renderer does not understand that the fenced code, i.e. the part inside the triple
+        # backticks, should not be rendered. It sees the ERB tags both inside and outside the fence
+        # and renders them both.
+        #
+        # This method renders ERB tags in a markdown string, ignoring any fenced code blocks, so as
+        # to prevent rendering fenced ERB code.
+        #
+        def render_erb_ignoring_markdown_code_fences(markdown_str)
+          unless markdown_str.include?('```')
+            return view_context.render(inline: markdown_str)
+          end
+
+          # identify all fenced code blocks in markdown string
+          code_ranges = find_fenced_code_ranges_in(markdown_str)
+
+          # replace code fences with placeholders
+          de_fenced_markdown_str = markdown_str.dup.tap do |memo|
+            code_ranges.reverse_each.with_index do |code_range, idx|
+              memo[code_range] = "<!--codefence#{idx}-->"
+            end
+          end
+
+          # Render ERB tags. The only ones left will explicitly exist _outside_ markdown code fences.
+          rendered_str = view_context.render(inline: de_fenced_markdown_str)
+
+          # replace placeholders with original code fences
+          code_ranges.reverse_each.with_index do |code_range, idx|
+            rendered_str.sub!("<!--codefence#{idx}-->", markdown_str[code_range])
+          end
+
+          rendered_str
+        end
+
+        def find_fenced_code_ranges_in(str)
+          doc = Kramdown::Document.new(str)
+          line_starts = find_line_starts_in(str)
+
+          [].tap do |code_ranges|
+            each_codespan_in(doc.root) do |node|
+              options = node.options
+              delimiter = options[:codespan_delimiter]
+              next unless delimiter.start_with?("```")
+
+              start_pos = line_starts[options[:location]]
+              end_pos = start_pos + node.value.size + delimiter.size
+              end_pos = str.index("```", end_pos) + 3
+
+              code_ranges << (start_pos...end_pos)
+            end
+          end
+        end
+
+        def find_line_starts_in(str)
+          line_counter = 2
+
+          { 1 => 0 }.tap do |memo|
+            str.scan(/\r?\n/) do
+              memo[line_counter] = Regexp.last_match.end(0)
+              line_counter += 1
+            end
+          end
+        end
+
+        def each_codespan_in(node, &block)
+          return unless node.respond_to?(:children)
+
+          node.children.each do |child|
+            yield child if child.type == :codespan
+            each_codespan_in(child, &block)
           end
         end
 
