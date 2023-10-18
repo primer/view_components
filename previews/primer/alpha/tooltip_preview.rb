@@ -78,14 +78,14 @@ module Primer
       # @!endgroup
 
       # @label Tooltip inside Primer::Alpha::Overlay
-      def tooltip_inside_primer_overlay(direction: :s, tooltip_text: "You can press a button")
+      def tooltip_inside_primer_overlay
         render_with_template(
           locals: {}
         )
       end
 
       # @label Tooltip with button moving focus to input
-      def tooltip_with_dialog_moving_focus_to_input()
+      def tooltip_with_dialog_moving_focus_to_input
         render_with_template(locals: {})
       end
     end

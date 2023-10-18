@@ -55,16 +55,16 @@ module Primer
       # @snapshot
       def all_tags
         render(Primer::Beta::ButtonGroup.new) do |component|
-          component.with_button(id: "button-1", tag: :button) do |component|
-            component.with_tooltip(text: "Button Tooltip")
+          component.with_button(id: "button-1", tag: :button) do |button|
+            button.with_tooltip(text: "Button Tooltip")
             "Button 1"
           end
-          component.with_button(id: "button-2", tag: :a) do |component|
-            component.with_tooltip(text: "Button Tooltip")
+          component.with_button(id: "button-2", tag: :a) do |button|
+            button.with_tooltip(text: "Button Tooltip")
             "Button 2"
           end
-          component.with_button(id: "button-3", tag: :summary) do |component|
-            component.with_tooltip(text: "Button Tooltip")
+          component.with_button(id: "button-3", tag: :summary) do |button|
+            button.with_tooltip(text: "Button Tooltip")
             "Button 3"
           end
         end
