@@ -85,7 +85,7 @@ module Primer
       end
 
       # @label Tooltip with button moving focus to input
-      def tooltip_with_dialog_moving_focus_to_input()
+      def tooltip_with_dialog_moving_focus_to_input
         render_with_template(locals: {})
       end
     end

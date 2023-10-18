@@ -104,7 +104,7 @@ export class ModalDialogElement extends HTMLElement {
       if (this.#focusAbortController.signal.aborted) {
         this.#focusAbortController = new AbortController()
       }
-      focusTrap(this, undefined, this.#focusAbortController.signal)
+      focusTrap(this, this.querySelector('[autofocus]') as HTMLElement, this.#focusAbortController.signal)
       overlayStack.push(this)
     } else {
       if (!this.open) return

@@ -166,6 +166,11 @@ module Primer
                                show_divider: show_divider
                              })
       end
+
+      # @label Autofocus element with autofocus attribute
+      def autofocus_element
+        render_with_template(locals: {})
+      end
     end
   end
 end

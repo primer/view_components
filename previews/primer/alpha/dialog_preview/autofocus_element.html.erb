@@ -1,0 +1,8 @@
+<%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: "Dialog")) do |d| %>
+  <% d.with_show_button { "Show Dialog" } %>
+  <% d.with_body do %>
+    <form>
+      <input type="text" placeholder="This element is focused on open" autofocus>
+    </form>
+  <% end %>
+<% end %>
