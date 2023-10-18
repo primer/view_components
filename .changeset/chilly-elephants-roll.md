@@ -4,4 +4,4 @@
 
 fix SegmentedControl alignment issues
 
-<!-- Changed components: _none_ -->
+<!-- Changed components: SegmentedControl -->
