@@ -435,12 +435,61 @@ module Alpha
     end
 
     def test_individual_items_can_submit_post_requests_via_forms
-      visit_preview(:with_actions)
+      visit_preview(:with_actions, route_format: :json)
 
       click_on_invoker_button
       click_on_fourth_item
 
-      assert_equal page.text, 'You selected "bar"'
+      response = JSON.parse(find("pre").text)
+      assert_equal "bar", response["value"]
+    end
+
+    def test_single_select_items_can_submit_forms
+      visit_preview(:single_select_form_items, route_format: :json)
+
+      click_on_invoker_button
+      click_on_first_item
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "group-by-repository", response["value"]
+    end
+
+    def test_single_select_items_can_submit_forms_on_enter
+      visit_preview(:single_select_form_items, route_format: :json)
+
+      focus_on_invoker_button
+
+      # open menu, "click" first item
+      page.driver.browser.keyboard.type(:enter, :enter)
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "group-by-repository", response["value"]
+    end
+
+    def test_single_select_items_can_submit_forms_on_keydown_space
+      visit_preview(:single_select_form_items, route_format: :json)
+
+      focus_on_invoker_button
+
+      # open menu, "click" first item
+      page.driver.browser.keyboard.type(:enter, :space)
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "group-by-repository", response["value"]
+    end
+
+    def test_single_select_items_can_submit_forms_with_multiple_fields
+      visit_preview(:single_select_form_items, route_format: :json)
+
+      click_on_invoker_button
+      click_on_first_item
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "query", response.dig("other_params", "query")
     end
 
     def test_deferred_loading

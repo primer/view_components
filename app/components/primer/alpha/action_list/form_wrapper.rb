@@ -24,14 +24,25 @@ module Primer
 
           name = @form_arguments.delete(:name)
           value = @form_arguments.delete(:value) || name
+          inputs = @form_arguments.delete(:inputs) || []
 
-          @input_arguments = {
-            type: :hidden,
-            name: name,
-            value: value,
-            data: { list_item_input: true },
-            **(@form_arguments.delete(:input_arguments) || {})
-          }
+          # For the older version of this component that only allowed you to
+          # specify a single input
+          if inputs.empty?
+            inputs << {
+              name: name,
+              value: value,
+              **(@form_arguments.delete(:input_arguments) || {})
+            }
+          end
+
+          @inputs = inputs.map do |input_data|
+            input_data = input_data.dup
+            input_data[:type] ||= :hidden
+            input_data[:data] ||= {}
+            input_data[:data][:list_item_input] = true
+            input_data
+          end
         end
 
         def get?
@@ -42,8 +53,8 @@ module Primer
           @action && !get?
         end
 
-        def render_input?
-          @input_arguments[:name].present?
+        def render_inputs?
+          @inputs.present?
         end
 
         private

@@ -217,13 +217,19 @@ module Primer
       # @label With actions
       #
       # @param disable_items toggle
-      def with_actions(disable_items: false)
-        render_with_template(locals: { disable_items: disable_items })
+      def with_actions(disable_items: false, route_format: :html)
+        render_with_template(locals: { disable_items: disable_items, route_format: route_format })
       end
 
       # @label Single select form
       #
       def single_select_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
+
+      # @label Single select form items
+      #
+      def single_select_form_items(route_format: :html)
         render_with_template(locals: { route_format: route_format })
       end
 

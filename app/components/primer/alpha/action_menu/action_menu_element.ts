@@ -278,12 +278,6 @@ export class ActionMenuElement extends HTMLElement {
     }
 
     this.#updateInput()
-
-    if (event instanceof KeyboardEvent && event.target instanceof HTMLButtonElement) {
-      // prevent buttons from being clicked twice
-      event.preventDefault()
-      return
-    }
   }
 
   #activateItem(event: Event, item: Element) {
