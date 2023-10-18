@@ -170,9 +170,7 @@ module Primer
         # to prevent rendering fenced ERB code.
         #
         def render_erb_ignoring_markdown_code_fences(markdown_str)
-          unless markdown_str.include?('```')
-            return view_context.render(inline: markdown_str)
-          end
+          return view_context.render(inline: markdown_str) unless markdown_str.include?("```")
 
           # identify all fenced code blocks in markdown string
           code_ranges = find_fenced_code_ranges_in(markdown_str)
