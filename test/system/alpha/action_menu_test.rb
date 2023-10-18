@@ -346,7 +346,7 @@ module Alpha
       click_on_invoker_button
       click_on_second_item
 
-      assert_selector "modal-dialog#my-dialog"
+      assert_selector "modal-dialog[open]"
 
       # opening the dialog should close the menu
       refute_selector "action-menu ul li"
@@ -523,6 +523,9 @@ module Alpha
       click_on_fourth_item
 
       assert_selector "modal-dialog[open]"
+
+      # menu should close
+      refute_selector "action-menu ul li"
     end
 
     def test_opening_second_menu_closes_first_menu

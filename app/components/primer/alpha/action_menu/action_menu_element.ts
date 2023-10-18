@@ -172,11 +172,6 @@ export class ActionMenuElement extends HTMLElement {
       return
     }
 
-    // Ignore events within dialogs within menus
-    if ((event.target as Element)?.closest('dialog') || (event.target as Element)?.closest('modal-dialog')) {
-      return
-    }
-
     if (event.type === 'focusout') {
       if (this.#invokerBeingClicked) return
 
