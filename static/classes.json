@@ -218,9 +218,6 @@
   "Button-visual": [
     "Primer::Beta::Button"
   ],
-  "Button-withTooltip": [
-    "Primer::Beta::Button"
-  ],
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
   ],
