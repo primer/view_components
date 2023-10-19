@@ -86,16 +86,27 @@ class ActionBarElement extends HTMLElement {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
-        return this.#isVisible(element)
+        return this.#checkVisibility(element)
       }
     })
   }
 
-  #isVisible(element: HTMLElement): boolean {
-    // Safari doesn't support `checkVisibility` yet.
-    if (typeof element.checkVisibility === 'function') return element.checkVisibility()
-
-    return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
+  #checkVisibility(el: HTMLElement, {checkOpacity = false, checkVisibilityCSS = false} = {}): boolean {
+    if (!el) return false
+    if (typeof el.checkVisibility === 'function') {
+      return el.checkVisibility({checkOpacity, checkVisibilityCSS})
+    }
+    const rect = el.getBoundingClientRect()
+    if (!rect.width || !rect.height) return false
+    let node: HTMLElement | null = el
+    while (node) {
+      const computed = getComputedStyle(node)
+      if (computed.getPropertyValue('content-visibility') === 'hidden') return false
+      if (checkOpacity && computed.getPropertyValue('opacity') === '0') return false
+      if (node.parentElement) node = node.parentElement as HTMLElement
+    }
+    if (checkVisibilityCSS) return getComputedStyle(el).getPropertyValue('visibility') !== 'hidden'
+    return true
   }
 
   #itemGap(): number {
