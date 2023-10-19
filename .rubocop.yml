@@ -3,6 +3,7 @@ inherit_gem:
     - config/default_edge.yml
     - config/rails_edge.yml
 require:
+  - rubocop-rails-accessibility
   - rubocop/cop/primer
 
 AllCops:

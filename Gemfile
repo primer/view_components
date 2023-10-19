@@ -52,3 +52,30 @@ group :test do
   # Remove this line when mocha has fixed the issue
   gem "minitest", "< 5.19"
 end
+
+# development dependencies
+group :development do
+  gem "allocation_stats", "~> 0.1"
+  gem "allocation_tracer", "~> 0.6.3"
+  gem "benchmark-ips", "~> 2.8.4"
+  gem "capybara", "~> 3.39.2"
+  gem "cuprite", "~> 0.14.3"
+  gem "erb_lint", "~> 0.4.0"
+  gem "erblint-github", "~> 0.4.1"
+  gem "listen", "~> 3.0"
+  gem "matrix", "~> 0.4.2"
+  gem "mocha"
+  gem "pry"
+  gem "rubocop", "= 1.13.0"
+  gem "rubocop-github", "~> 0.16.0"
+  gem "rubocop-performance", "~> 1.7"
+  gem "rubocop-rails"
+  gem "rubocop-rails-accessibility", "~> 0.2.0"
+  gem "simplecov", "~> 0.21.2"
+  gem "simplecov-console", "~> 0.9.1"
+  gem "sprockets"
+  gem "sprockets-rails"
+  gem "thor"
+  gem "timecop"
+  gem "yard", "~> 0.9.25"
+end

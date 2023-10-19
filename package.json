@@ -74,7 +74,7 @@
     "cssnano": "^5.1.13",
     "eslint": "^8.23.1",
     "eslint-plugin-custom-elements": "^0.0.6",
-    "eslint-plugin-github": "^4.4.0",
+    "eslint-plugin-github": "^4.9.2",
     "eslint-plugin-prettier": "^4.2.1",
     "markdownlint-cli2": "^0.5.1",
     "mocha": "^10.0.0",
