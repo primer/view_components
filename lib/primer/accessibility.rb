@@ -8,7 +8,9 @@ module Primer
     # Do not add to this list for any other reason!
     IGNORED_PREVIEWS = [
       Primer::Beta::MarkdownPreview,
-      Primer::Beta::AutoCompleteItemPreview
+      Primer::Beta::AutoCompleteItemPreview,
+      Primer::Alpha::RadioButtonPreview,
+      Primer::Alpha::CheckBoxPreview,
     ].freeze
 
     # Skip `:region` which relates to preview page structure rather than individual component.
