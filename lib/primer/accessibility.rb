@@ -10,7 +10,7 @@ module Primer
       Primer::Beta::MarkdownPreview,
       Primer::Beta::AutoCompleteItemPreview,
       Primer::Alpha::RadioButtonPreview,
-      Primer::Alpha::CheckBoxPreview,
+      Primer::Alpha::CheckBoxPreview
     ].freeze
 
     # Skip `:region` which relates to preview page structure rather than individual component.
