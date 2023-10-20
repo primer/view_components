@@ -1,0 +1,23 @@
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: "Confirm focus")) do |d| %>
+  <%= render(Primer::Alpha::Dialog::Body.new()) do %>
+    Are you sure you want to focus the input?
+  <% end %>
+  <%= render(Primer::Alpha::Dialog::Footer.new()) do %>
+    <%= render(Primer::Beta::Button.new(id: "yes-button", data: { "close-dialog-id": "my-dialog" })) { "Yes" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :primary, data: { "close-dialog-id": "my-dialog" })) { "Yes but in green" } %>
+  <% end %>
+  <% d.with_show_button do |b| %>
+    Focus input
+    <% b.with_tooltip(text: "This is a tooltip in an Overlay") %>
+  <% end %>
+<% end %>
+<label>
+  An input
+  <input type="text" id="input">
+</label>
+<script>
+  document.querySelector('#my-dialog').addEventListener('cancel', function () {
+    console.log('!!')
+    setTimeout(() => document.querySelector('#input').focus(), 0);
+  });
+</script>

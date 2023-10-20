@@ -82,13 +82,20 @@ class ActionBarElement extends HTMLElement {
     if (this.#focusZoneAbortController) {
       this.#focusZoneAbortController.abort()
     }
-    this.#focusZoneAbortController = focusZone(this.itemContainer, {
+    this.#focusZoneAbortController = focusZone(this, {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
-        return !element.closest('.ActionBar-item[hidden]')
+        return this.#isVisible(element)
       }
     })
+  }
+
+  #isVisible(element: HTMLElement): boolean {
+    // Safari doesn't support `checkVisibility` yet.
+    if (typeof element.checkVisibility === 'function') return element.checkVisibility()
+
+    return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
   }
 
   #itemGap(): number {

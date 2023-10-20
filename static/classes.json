@@ -507,6 +507,18 @@
   "SegmentedControl--fullWidth": [
     "Primer::Alpha::SegmentedControl"
   ],
+  "SegmentedControl--iconOnly": [
+    "Primer::Alpha::SegmentedControl"
+  ],
+  "SegmentedControl--large": [
+    "Primer::Alpha::SegmentedControl"
+  ],
+  "SegmentedControl--medium": [
+    "Primer::Alpha::SegmentedControl"
+  ],
+  "SegmentedControl--small": [
+    "Primer::Alpha::SegmentedControl"
+  ],
   "SegmentedControl-item": [
     "Primer::Alpha::SegmentedControl"
   ],

@@ -111,8 +111,6 @@ module Primer
               system_arguments,
               { aria: { disabled: true } }
             )
-
-            content_arguments[:disabled] = "" if content_arguments[:tag] == :button
           end
 
           { data: data, **system_arguments, content_arguments: content_arguments }

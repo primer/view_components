@@ -1,7 +1,9 @@
 <% if form_required? %>
   <%= form_with(url: @action, method: @http_method, **@form_arguments) do %>
-    <% if render_input? %>
-      <%= render(Primer::BaseComponent.new(tag: :input, **@input_arguments)) %>
+    <% if render_inputs? %>
+      <% @inputs.each do |input_arguments| %>
+        <%= render(Primer::BaseComponent.new(tag: :input, **input_arguments)) %>
+      <% end %>
     <% end %>
     <%= content %>
   <% end %>

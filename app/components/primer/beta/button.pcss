@@ -47,9 +47,13 @@
     transition: none;
   }
 
-  &:disabled,
-  &[aria-disabled='true'] {
+  &:disabled {
     cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &[aria-disabled='true'] {
+    cursor: default;
     box-shadow: none;
   }
 }

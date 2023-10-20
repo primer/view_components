@@ -139,7 +139,18 @@
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/item.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/item/default/",
         "parameters": [
-
+          {
+            "name": "item_content",
+            "type": "String",
+            "default": "N/A",
+            "description": "The content to render inside the item."
+          },
+          {
+            "name": "item_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
         ],
         "slots": [
 
@@ -1117,8 +1128,8 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::ActionMenu",
-    "description": "ActionMenu is used for actions, navigation, to display secondary options, or single/multi select lists. They appear when users interact with buttons, actions, or other controls.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. The default is `:button`.",
-    "accessibility_docs": "The action for the menu item needs to be on the element with `role=\"menuitem\"`. Semantics are removed for everything nested inside of it. When a menu item is selected, the menu will close immediately.\n\nAdditional information around the keyboard functionality and implementation can be found on the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#menu).",
+    "description": "ActionMenu is used for actions, navigation, to display secondary options, or single/multi select lists. They appear when\nusers interact with buttons, actions, or other controls.\n\nThe only allowed elements for the `Item` components are: `:a`, `:button`, and `:clipboard-copy`. The default is `:button`.\n\n### Select variants\n\nWhile `ActionMenu`s default to a list of buttons that can link to other pages, copy text to the clipboard, etc, they also support\n`single` and `multiple` select variants. The single select variant allows a single item to be \"selected\" (i.e. marked \"active\")\nwhen clicked, which will cause a check mark to appear to the left of the item text. When the `multiple` select variant is chosen,\nmultiple items may be selected and check marks will appear next to each selected item.\n\nUse the `select_variant:` option to control which variant the `ActionMenu` uses. For more information, see the documentation on\nsupported arguments below.\n\n### Dynamic labels\n\nWhen using the `single` select variant, an optional label indicating the selected item can be displayed inside the menu button.\nDynamic labels can also be prefixed with custom text.\n\nPass `dynamic_label: true` to enable dynamic label behavior, and pass `dynamic_label_prefix: \"<string>\"` to set a custom prefix.\nFor more information, see the documentation on supported arguments below.\n\n### `ActionMenu`s as form inputs\n\nWhen using either the `single` or `multiple` select variants, `ActionMenu`s can be used as form inputs. They behave very\nsimilarly to how HTML `<select>` boxes behave, and play nicely with Rails' built-in form mechanisms. Pass arguments via the\n`form_arguments:` argument, including the Rails form builder object and the name of the field:\n\n```erb\n<% form_with(url: update_merge_strategy_path) do |f| %>\n  <%= render(Primer::Alpha::ActionMenu.new(form_arguments: { builder: f, name: \"merge_strategy\" })) do |menu| %>\n    <% menu.with_item(label: \"Fast forward\", data: { value: \"fast_forward\" }) %>\n    <% menu.with_item(label: \"Recursive\", data: { value: \"recursive\" }) %>\n    <% menu.with_item(label: \"Ours\", data: { value: \"ours\" }) %>\n    <% menu.with_item(label: \"Theirs\", data: { value: \"theirs\" }) %>\n  <% end %>\n<% end %>\n```\n\nThe value of the `data: { value: ... }` argument is sent to the server on submit, keyed using the name provided above\n(eg. `\"merge_strategy\"`). If no value is provided for an item, the value of that item is the item's label.  Here's the\ncorresponding `MergeStrategyController` that might be written to handle the form above:\n\n```ruby\nclass MergeStrategyController < ApplicationController\n  def update\n    puts \"You chose #{merge_strategy_params[:merge_strategy]}\"\n  end\n\n  private\n\n  def merge_strategy_params\n    params.permit(:merge_strategy)\n  end\nend\n```\n\n### `ActionMenu` items that submit forms\n\nWhereas `ActionMenu` items normally permit navigation via `<a>` tags which make HTTP `get` requests, `ActionMenu` items\nalso permit navigation via `POST` requests. To enable this behavior, include the `href:` argument as normal, but also pass\nthe `form_arguments:` argument to the appropriate item:\n\n```erb\n<%= render(Primer::Alpha::ActionMenu.new) do |menu| %>\n  <% menu.with_item(\n    label: \"Repository\",\n    href: update_repo_grouping_path,\n    form_arguments: {\n      method: :post,\n      name: \"group_by\",\n      value: \"repository\"\n    }\n  ) %>\n<% end %>\n```\n\nMake sure to specify `method: :post`, as the default is `:get`. When clicked, the list item will submit a POST request to\nthe URL passed in the `href:` argument, including a parameter named `\"group_by\"` with a value of `\"repository\"`. If no value\nis given, the name, eg. `\"group_by\"`, will be used as the value.\n\nIt is possible to include multiple fields on submit. Instead of passing the `name:` and `value:` arguments, pass an array via\nthe `inputs:` argument:\n\n```erb\n<%= render(Primer::Alpha::ActionMenu.new) do |menu| %>\n  <% menu.with_show_button { \"Group By\" } %>\n  <% menu.with_item(\n    label: \"Repository\",\n    href: update_repo_grouping_path,\n    form_arguments: {\n      method: :post,\n      inputs: [{\n        name: \"group_by\",\n        value: \"repository\"\n      }, {\n        name: \"some_other_field\",\n        value: \"some value\",\n      }],\n    }\n  ) %>\n<% end %>\n```\n\n### Form arguments\n\nThe following table summarizes the arguments allowed in the `form_arguments:` hash mentioned above.\n\n|Name             |Type          |Default|Description|\n|:----------------|:-------------|:------|:----------|\n|`method`         |`Symbol`      |`:get` |The HTTP request method to use to submit the form. One of `:get`, `:post`, `:patch`, `:put`, `:delete`, or `:head`|\n|`name`           |`String`      |`nil`  |The name of the field that will be sent to the server on submit.|\n|`value`          |`String`      |`nil`  |The value of the field that will be sent to the server on submit.|\n|`input_arguments`|`Hash`        |`{}`   |Additional key/value pairs to emit as HTML attributes on the `<input type=\"hidden\">` element.|\n|`inputs`         |`Array<Hash>` |`[]`   |An array of hashes representing HTML `<input type=\"hidden\">` elements. Must contain at least `name:` and `value:` keys. If additional key/value pairs are provided, they are emitted as HTML attributes on the `<input>` element. This argument supercedes the `name:`, `value:`, and `:input_arguments` arguments listed above.|\n\nThe elements of the `inputs:` array will be emitted as HTML `<input type=\"hidden\">` elements.",
+    "accessibility_docs": "The action for the menu item needs to be on the element with `role=\"menuitem\"`. Semantics are removed for everything\nnested inside of it. When a menu item is selected, the menu will close immediately.\n\nAdditional information around the keyboard functionality and implementation can be found on the\n[WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#menu).",
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
@@ -1509,6 +1520,19 @@
       {
         "preview_path": "primer/alpha/action_menu/single_select_form",
         "name": "single_select_form",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/single_select_form_items",
+        "name": "single_select_form_items",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -2565,84 +2589,7 @@
 
     ],
     "previews": [
-      {
-        "preview_path": "primer/alpha/check_box/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/with_caption",
-        "name": "with_caption",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/checked",
-        "name": "checked",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/visually_hide_label",
-        "name": "visually_hide_label",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/disabled",
-        "name": "disabled",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
+
     ],
     "subcomponents": [
 
@@ -3086,6 +3033,19 @@
       {
         "preview_path": "primer/alpha/dialog/body_has_scrollbar_overflow",
         "name": "body_has_scrollbar_overflow",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/autofocus_element",
+        "name": "autofocus_element",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -5977,84 +5937,7 @@
 
     ],
     "previews": [
-      {
-        "preview_path": "primer/alpha/radio_button/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/default",
-        "name": "default",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/with_caption",
-        "name": "with_caption",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/checked",
-        "name": "checked",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/visually_hide_label",
-        "name": "visually_hide_label",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/disabled",
-        "name": "disabled",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
+
     ],
     "subcomponents": [
 
@@ -6399,6 +6282,45 @@
         }
       },
       {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_small",
+        "name": "trailing_label_width_small",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_medium",
+        "name": "trailing_label_width_medium",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
+        "name": "trailing_label_width_large",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
         "snapshot": "true",
@@ -6557,10 +6479,32 @@
           }
         ],
         "slots": [
-
+          {
+            "name": "trailing_visual_label",
+            "description": "Optional trailing Label",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}'s `with_trailing_visual_label` slot."
+              }
+            ]
+          }
         ],
         "methods": [
-
+          {
+            "name": "with_trailing_visual_label",
+            "description": "Optional trailing label.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}'s `with_trailing_visual_label` slot."
+              }
+            ]
+          }
         ],
         "previews": [
 
@@ -8341,6 +8285,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_with_dialog_moving_focus_to_input",
+        "name": "tooltip_with_dialog_moving_focus_to_input",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -9535,6 +9492,12 @@
         "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
+        "name": "inactive",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -10591,6 +10554,19 @@
         "preview_path": "primer/beta/button/with_tooltip",
         "name": "with_tooltip",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button/inactive",
+        "name": "inactive",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"

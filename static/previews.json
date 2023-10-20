@@ -581,6 +581,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/action_menu/single_select_form_items",
+        "name": "single_select_form_items",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/action_menu/multiple_select_form",
         "name": "multiple_select_form",
         "snapshot": "false",
@@ -2144,6 +2157,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/button/inactive",
+        "name": "inactive",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2320,92 +2346,6 @@
       {
         "preview_path": "primer/alpha/button_marketing/scheme_transparent",
         "name": "scheme_transparent",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "name": "check_box",
-    "component": "CheckBox",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/check_box",
-    "examples": [
-      {
-        "preview_path": "primer/alpha/check_box/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/with_caption",
-        "name": "with_caption",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/checked",
-        "name": "checked",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/visually_hide_label",
-        "name": "visually_hide_label",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/check_box/disabled",
-        "name": "disabled",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -2961,6 +2901,19 @@
       {
         "preview_path": "primer/alpha/dialog/body_has_scrollbar_overflow",
         "name": "body_has_scrollbar_overflow",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/autofocus_element",
+        "name": "autofocus_element",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -4892,92 +4845,6 @@
     ]
   },
   {
-    "name": "radio_button",
-    "component": "RadioButton",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/radio_button",
-    "examples": [
-      {
-        "preview_path": "primer/alpha/radio_button/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/default",
-        "name": "default",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/with_caption",
-        "name": "with_caption",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/checked",
-        "name": "checked",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/visually_hide_label",
-        "name": "visually_hide_label",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/radio_button/disabled",
-        "name": "disabled",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
     "name": "radio_button_group",
     "component": "RadioButtonGroup",
     "status": "alpha",
@@ -5249,6 +5116,45 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
         "name": "icons_and_text_large",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_small",
+        "name": "trailing_label_width_small",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_medium",
+        "name": "trailing_label_width_medium",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
+        "name": "trailing_label_width_large",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -6591,6 +6497,19 @@
       {
         "preview_path": "primer/alpha/tooltip/tooltip_inside_primer_overlay",
         "name": "tooltip_inside_primer_overlay",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_with_dialog_moving_focus_to_input",
+        "name": "tooltip_with_dialog_moving_focus_to_input",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

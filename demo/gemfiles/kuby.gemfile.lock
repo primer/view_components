@@ -245,7 +245,7 @@ DEPENDENCIES
   kind-rb (~> 0.1)
   kuby-azure (~> 0.4.0)
   kuby-core (~> 0.20)
-  kuby-kind (~> 0.1)
+  kuby-kind (~> 0.2)
   pry-byebug
 
 BUNDLED WITH

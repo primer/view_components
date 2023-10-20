@@ -18,6 +18,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param block toggle
       # @param disabled toggle
+      # @param inactive toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
       def playground(
@@ -27,7 +28,8 @@ module Primer
         id: "button-preview",
         align_content: :center,
         tag: :button,
-        disabled: false
+        disabled: false,
+        inactive: false
       )
         render(Primer::Beta::Button.new(
                  scheme: scheme,
@@ -36,7 +38,8 @@ module Primer
                  id: id,
                  align_content: align_content,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 inactive: inactive
                )) do |_c|
           "Button"
         end
@@ -340,6 +343,21 @@ module Primer
                                id: id,
                                align_content: align_content
                              })
+      end
+
+      # @label Inactive
+      # @param inactive toggle
+      # @snapshot
+      def inactive(
+        id: "button-preview",
+        inactive: true
+      )
+        render(Primer::Beta::Button.new(
+                 id: id,
+                 inactive: inactive
+               )) do |_c|
+          "Button"
+        end
       end
     end
   end
