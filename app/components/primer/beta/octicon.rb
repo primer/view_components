@@ -68,6 +68,7 @@ module Primer
         end
 
         @system_arguments[:classes] = class_names(
+          "Octicon",
           @icon.options[:class],
           @system_arguments[:classes]
         )
