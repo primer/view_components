@@ -1,5 +1,5 @@
 {
   "explorer.fileNesting.patterns": {
-    "*.rb": "${basename}.rb, ${basename}.html.erb, ${basename}.ts, ${basename}_element.ts, ${basename}.pcss, ${basename}.css*"
+    "*.rb": "${basename}.rb, ${basename}.html.erb, ${basename}.ts, ${basename}_element.ts, ${basename}.pcss*, ${basename}.css*"
   }
 }

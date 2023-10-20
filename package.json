@@ -84,6 +84,7 @@
     "postcss-custom-properties-fallback": "^1.0.2",
     "postcss-import": "^14.1.0",
     "postcss-mixins": "^9.0.3",
+    "postcss-modules": "^6.0.0",
     "postcss-preset-env": "^7.8.0",
     "prettier": "2.7.1",
     "rollup": "^2.77.1",

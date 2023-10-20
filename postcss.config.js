@@ -52,6 +52,9 @@ module.exports = {
         }
       }
     }),
+    require("postcss-modules")({
+      generateScopedName: "[contenthash:base64:8]",
+    }),
     process.env.CI === 'true' ? require('cssnano') : null
   ]
 }
