@@ -7,7 +7,6 @@ module Primer
       # @label Playground
       #
       # @param name text
-      # @param id text
       # @param value text
       # @param label text
       # @param caption text
@@ -15,7 +14,6 @@ module Primer
       # @param disabled toggle
       def playground(
         name: "my-check-box",
-        id: nil,
         value: "picard",
         label: "Jean-Luc Picard",
         caption: "Make it so",
@@ -24,7 +22,6 @@ module Primer
       )
         system_arguments = {
           name: name,
-          id: id,
           value: value,
           label: label,
           caption: caption,
