@@ -4,10 +4,16 @@ export INPUT_TYPE=$1
 
 build_css() {
   # Get a list of all the CSS files in the src directory
-  CSS_FILES=$(find app/components/primer -name '*.pcss' ! -path '*/primer.pcss')
-  npx postcss $CSS_FILES --dir app/components --base app/components --ext css
+  PCSS_FILES=$(find app/components/primer -name '*.pcss' ! -path '*/primer.pcss')
+  npx postcss $PCSS_FILES --dir app/components --base app/components --ext css
   # Build main CSS bundle
   npx postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss
+
+  CSS_FILES=$(find app/components/primer -name '*.css')
+
+  for css_file in $CSS_FILES; do
+    cp $css_file app/assets/styles/primer_view_components/
+  done
 
   # Export CSS selectors as json
   script/export-css-selectors

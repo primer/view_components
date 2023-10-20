@@ -14,6 +14,7 @@
     <% if Rails.env.development? %>
       <%= javascript_include_tag "hotwire-livereload", defer: true %>
     <% end %>
+    <%= pvc_stylesheet_link_tags %>
   </head>
 
   <body>

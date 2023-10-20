@@ -2,6 +2,7 @@
 
 require "rails/engine"
 require "primer/classify/utilities"
+require "primer/view_components/asset_injection_middleware"
 
 module Primer
   module ViewComponents
@@ -28,7 +29,21 @@ module Primer
       config.primer_view_components.raise_on_invalid_aria = false
 
       initializer "primer_view_components.assets" do |app|
-        app.config.assets.precompile += %w[primer_view_components] if app.config.respond_to?(:assets)
+        if app.config.respond_to?(:assets)
+          app.config.assets.precompile += %w[primer_view_components]
+
+          css_root = root.join("app", "assets", "styles")
+          css_files = Dir.chdir(css_root) { Dir.glob(File.join("primer_view_components", "*.css")) }
+                         .map { |path| path.chomp(".css") }
+          app.config.assets.precompile += css_files
+
+          ActiveSupport.on_load :action_controller_base do
+            require "primer/asset_helper"
+            helper Primer::AssetHelper
+          end
+
+          app.config.middleware.use(Primer::ViewComponents::AssetInjectionMiddleware)
+        end
       end
 
       initializer "primer.eager_load_actions" do
@@ -63,6 +78,23 @@ module Primer
 
       config.after_initialize do |app|
         ::Primer::Classify::Utilities.validate_class_names = app.config.primer_view_components.delete(:validate_class_names)
+
+        ViewComponent::Base.prepend(Module.new do
+          def render_in(view_context)
+            if self.class.name.start_with?("Primer::")
+              view_context.request.env["rendered_view_component_classes"] << self.class
+            end
+
+            super
+          end
+        end)
+
+        # Primer::Forms::ActsAsComponent::InstanceMethods.prepend(Module.new do
+        #   def render_in(view_context)
+        #     view_context.request.env["rendered_view_component_classes"] << self.class
+        #     super
+        #   end
+        # end)
       end
     end
   end
