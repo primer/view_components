@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= render Primer::BaseComponent.new(tag: :div, classes: "ActionBar-item-container", "data-target": "action-bar.itemContainer") do %>
+  <%= render Primer::BaseComponent.new(tag: :div, classes: class_names("ActionBar-item-container"), "data-target": "action-bar.itemContainer") do %>
     <% items.each do |item| %>
       <%= item %>
     <% end %>

@@ -53,7 +53,7 @@ module Primer
           menu_id: self.class.generate_id,
           "data-target": "action-bar.moreMenu",
           hidden: true,
-          classes: "ActionBar-more-menu",
+          classes: class_names("ActionBar-more-menu"),
           anchor_align: :end
         )
       end

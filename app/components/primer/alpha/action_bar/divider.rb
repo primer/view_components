@@ -17,7 +17,7 @@ module Primer
             data: {
               targets: "action-bar.items"
             },
-            classes: "ActionBar-item ActionBar-divider"
+            classes: class_names("ActionBar-item ActionBar-divider")
           }
         end
 
