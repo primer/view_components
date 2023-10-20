@@ -35,7 +35,7 @@ jobs:
           subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
 
       - name: Check out repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get preview app info
         run: ./.github/workflows/demo-preview-app-info.sh

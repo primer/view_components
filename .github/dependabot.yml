@@ -21,8 +21,6 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "npm"
-    allow:
-      - dependency-type: "production"
   - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
@@ -31,8 +29,6 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "npm"
-    allow:
-      - dependency-type: "production"
 
   # Bundler
   - package-ecosystem: "bundler"
@@ -43,8 +39,6 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "bundler"
-    allow:
-      - dependency-type: "production"
   - package-ecosystem: "bundler"
     directory: "/demo"
     schedule:
@@ -53,5 +47,3 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "bundler"
-    allow:
-      - dependency-type: "production"

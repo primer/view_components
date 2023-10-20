@@ -24,6 +24,7 @@ module Primer
       )
         system_arguments = {
           name: name,
+          id: id,
           value: value,
           label: label,
           caption: caption,

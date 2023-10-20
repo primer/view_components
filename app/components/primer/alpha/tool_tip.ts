@@ -21,9 +21,8 @@ const isPopoverOpen = (() => {
   return (el: Element) => (selector ? el.matches(selector) : setSelector(el))
 })()
 
-const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
-const TOOLTIP_OFFSET = 10
+const TOOLTIP_OFFSET = 4
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -53,16 +52,25 @@ function focusOutListener() {
   closeOpenTooltips()
 }
 
+function focusInListener(event: Event) {
+  setTimeout(() => {
+    for (const tooltip of openTooltips) {
+      if (isPopoverOpen(tooltip) && tooltip.showReason === 'focus' && tooltip.control !== event.target) {
+        tooltip.hidePopover()
+      }
+    }
+  }, 0)
+}
+
 const tooltips = new Set<ToolTipElement>()
 const openTooltips = new Set<ToolTipElement>()
 class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
-        padding: .5em .75em !important;
-        font: normal normal 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-        -webkit-font-smoothing: subpixel-antialiased;
-        color: var(--color-fg-on-emphasis) !important;
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis)) !important;
         text-align: center;
         text-decoration: none;
         text-shadow: none;
@@ -70,25 +78,17 @@ class ToolTipElement extends HTMLElement {
         letter-spacing: normal;
         word-wrap: break-word;
         white-space: pre;
-        background: var(--color-neutral-emphasis-plus) !important;
-        border-radius: 6px;
+        background: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus)) !important;
+        border-radius: var(--borderRadius-medium);
         border: 0 !important;
         opacity: 0;
-        max-width: 250px;
+        max-width: var(--overlay-width-small);
         word-wrap: break-word;
         white-space: normal;
         width: max-content !important;
         inset: var(--tool-tip-position-top, 0) auto auto var(--tool-tip-position-left, 0) !important;
         overflow: visible !important;
-      }
-
-      :host:before{
-        position: absolute;
-        z-index: 1000001;
-        color: var(--color-neutral-emphasis-plus);
-        content: "";
-        border: 6px solid transparent;
-        opacity: 0
+        text-wrap: balance;
       }
 
       @keyframes tooltip-appear {
@@ -100,91 +100,19 @@ class ToolTipElement extends HTMLElement {
         }
       }
 
-      :host:after{
-        position: absolute;
-        display: block;
-        right: 0;
-        left: 0;
-        height: 12px;
-        content: ""
-      }
-
       :host(:popover-open),
       :host(:popover-open):before {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
         animation-timing-function: ease-in;
-        animation-delay: .4s
       }
 
-      :host(.\\:popover-open),
-      :host(.\\:popover-open):before {
+      :host(.\\:popover-open) {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
         animation-timing-function: ease-in;
-        animation-delay: .4s
-      }
-
-      :host(.tooltip-s):before,
-      :host(.tooltip-n):before {
-        right: 50%;
-        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-
-      :host(.tooltip-s):before,
-      :host(.tooltip-se):before,
-      :host(.tooltip-sw):before {
-        bottom: 100%;
-        border-bottom-color: var(--color-neutral-emphasis-plus)
-      }
-
-      :host(.tooltip-s):after,
-      :host(.tooltip-se):after,
-      :host(.tooltip-sw):after {
-        bottom: 100%
-      }
-
-      :host(.tooltip-n):before,
-      :host(.tooltip-ne):before,
-      :host(.tooltip-nw):before {
-        top: 100%;
-        border-top-color: var(--color-neutral-emphasis-plus)
-      }
-
-      :host(.tooltip-n):after,
-      :host(.tooltip-ne):after,
-      :host(.tooltip-nw):after {
-        top: 100%
-      }
-
-      :host(.tooltip-se):before,
-      :host(.tooltip-ne):before {
-        left: 0;
-        margin-left: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-
-      :host(.tooltip-sw):before,
-      :host(.tooltip-nw):before {
-        right: 0;
-        margin-right: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-
-      :host(.tooltip-w):before {
-        top: 50%;
-        bottom: 50%;
-        left: 100%;
-        margin-top: -6px;
-        border-left-color: var(--color-neutral-emphasis-plus)
-      }
-
-      :host(.tooltip-e):before {
-        top: 50%;
-        right: 100%;
-        bottom: 50%;
-        margin-top: -6px;
-        border-right-color: var(--color-neutral-emphasis-plus)
       }
     `
   }
@@ -193,6 +121,10 @@ class ToolTipElement extends HTMLElement {
   #align: AnchorAlignment = 'center'
   #side: AnchorSide = 'outside-bottom'
   #allowUpdatePosition = false
+  #showReason: 'focus' | 'mouse' = 'mouse'
+  get showReason() {
+    return this.#showReason
+  }
 
   get htmlFor(): string {
     return this.getAttribute('for') || ''
@@ -270,6 +202,7 @@ class ToolTipElement extends HTMLElement {
       signal
     })
     this.ownerDocument.addEventListener('focusout', focusOutListener)
+    this.ownerDocument.addEventListener('focusin', focusInListener)
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
@@ -297,6 +230,7 @@ class ToolTipElement extends HTMLElement {
 
     await Promise.resolve()
     if (!showing && shouldShow && !isPopoverOpen(this)) {
+      this.#showReason = event.type === 'mouseenter' ? 'mouse' : 'focus'
       this.showPopover()
     } else if (showing && shouldHide && isPopoverOpen(this)) {
       this.hidePopover()

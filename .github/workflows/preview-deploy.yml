@@ -34,7 +34,7 @@ jobs:
       # to link a PR to a list of environments later.
       url: ${{ env.APP_URL }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install lib deps
       uses: ruby/setup-ruby@v1
       with:

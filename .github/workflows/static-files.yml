@@ -11,7 +11,7 @@ jobs:
     steps:
       # Unfortunately we can't use the primer GitHub App and camertron/github-app-installation-auth-action
       # because branch protection rules cannot be bypassed by Apps.
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
       - uses: ruby/setup-ruby@v1
@@ -29,7 +29,7 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Generating static files
           commit_user_name: OpenProject CI

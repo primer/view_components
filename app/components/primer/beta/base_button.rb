@@ -19,12 +19,14 @@ module Primer
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
+      # @param inactive [Boolean] Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         tag: DEFAULT_TAG,
         type: DEFAULT_TYPE,
         block: false,
         disabled: false,
+        inactive: false,
         **system_arguments
       )
         @system_arguments = system_arguments
@@ -36,6 +38,8 @@ module Primer
           system_arguments[:classes],
           "btn-block" => block
         )
+
+        @system_arguments[:"aria-disabled"] = true if inactive
 
         @disabled = disabled
         return unless @disabled
