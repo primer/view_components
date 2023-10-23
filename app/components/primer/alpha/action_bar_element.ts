@@ -93,6 +93,8 @@ class ActionBarElement extends HTMLElement {
 
   #isVisible(element: HTMLElement): boolean {
     // Safari doesn't support `checkVisibility` yet.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (typeof element.checkVisibility === 'function') return element.checkVisibility()
 
     return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
