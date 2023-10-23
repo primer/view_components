@@ -98,7 +98,7 @@ class ToolTipElement extends HTMLElement {
         color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
         content: "";
         border: 6px solid transparent;
-        opacity: 0
+        opacity: 0;
       }
 
       @keyframes tooltip-appear {
@@ -106,7 +106,7 @@ class ToolTipElement extends HTMLElement {
           opacity: 0;
         }
         to {
-          opacity: 1
+          opacity: 1;
         }
       }
 
@@ -116,7 +116,7 @@ class ToolTipElement extends HTMLElement {
         right: 0;
         left: 0;
         height: 12px;
-        content: ""
+        content: "";
       }
 
       :host(:popover-open),
@@ -133,7 +133,7 @@ class ToolTipElement extends HTMLElement {
         animation-duration: .1s;
         animation-fill-mode: forwards;
         animation-timing-function: ease-in;
-        animation-delay: .4s
+        animation-delay: .4s;
       }
 
       :host(.tooltip-s):before,
@@ -145,7 +145,7 @@ class ToolTipElement extends HTMLElement {
       :host(.tooltip-se):before,
       :host(.tooltip-sw):before {
         bottom: 100%;
-        border-bottom-color: var(--color-neutral-emphasis-plus)
+        border-bottom-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
       :host(.tooltip-s):after,
       :host(.tooltip-se):after,
@@ -156,12 +156,12 @@ class ToolTipElement extends HTMLElement {
       :host(.tooltip-ne):before,
       :host(.tooltip-nw):before {
         top: 100%;
-        border-top-color: var(--color-neutral-emphasis-plus)
+        border-top-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
       :host(.tooltip-n):after,
       :host(.tooltip-ne):after,
       :host(.tooltip-nw):after {
-        top: 100%
+        top: 100%;
       }
       :host(.tooltip-se):before,
       :host(.tooltip-ne):before {
@@ -178,14 +178,14 @@ class ToolTipElement extends HTMLElement {
         bottom: 50%;
         left: 100%;
         margin-top: -6px;
-        border-left-color: var(--color-neutral-emphasis-plus)
+        border-left-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
       :host(.tooltip-e):before {
         top: 50%;
         right: 100%;
         bottom: 50%;
         margin-top: -6px;
-        border-right-color: var(--color-neutral-emphasis-plus)
+        border-right-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
     `
   }
