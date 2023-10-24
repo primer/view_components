@@ -162,10 +162,14 @@ module Primer
     end
 
     def call
-      if SELF_CLOSING_TAGS.include?(@tag)
-        tag(@tag, @content_tag_args.merge(@result))
-      else
-        content_tag(@tag, content, @content_tag_args.merge(@result))
+      content_tag(:"primer-component") do
+        content_tag(:template, shadowrootmode: "open") do
+          if SELF_CLOSING_TAGS.include?(@tag)
+            tag(@tag, @content_tag_args.merge(@result))
+          else
+            content_tag(@tag, content, @content_tag_args.merge(@result))
+          end.concat(content_tag(:link, "", rel: "stylesheet", href: "https://unpkg.com/@primer/view-components@0.13.1/app/assets/styles/primer_view_components.css"))
+        end
       end
     end
   end
