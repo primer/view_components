@@ -100,6 +100,32 @@ module Primer
       end
       #
       # @!endgroup
+
+      # @!group Header size
+      #
+      # @label Large
+      def large_header
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading(size: :large) do
+            "Large Header"
+          end
+          component.with_description do
+            "Description"
+          end
+        end
+      end
+
+      # @label Medium
+      def medium_header
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading(size: :medium) do
+            "Medium Header"
+          end
+          component.with_description do
+            "Description"
+          end
+        end
+      end
     end
   end
 end
