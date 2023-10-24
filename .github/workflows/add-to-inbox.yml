@@ -16,7 +16,7 @@ jobs:
         with:
           app-id: ${{ vars.PRIMER_ISSUE_TRIAGE_APP_ID }}
           private-key: ${{ secrets.PRIMER_ISSUE_TRIAGE_APP_PRIVATE_KEY }}
-      - name: Add react label to issue
+      - name: Add rails label to issue
         run: |
           gh issue edit $ISSUE_URL --add-label rails
         env:
