@@ -1,5 +1,4 @@
 import '@github/include-fragment-element'
-import '@oddbird/popover-polyfill'
 import './alpha/action_bar_element'
 import './alpha/dropdown'
 import './anchored_position'
