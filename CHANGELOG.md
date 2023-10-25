@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.13.1
+
+### Patch Changes
+
+- [#2326](https://github.com/primer/view_components/pull/2326) [`4e05b7ec`](https://github.com/opf/primer_view_components/commit/4e05b7ecb764b104a0afa35c478eff5c79f9270e) Thanks [@camertron](https://github.com/camertron)! - Prevent scrolling when activating ActionMenu items via space
+
+- [#2324](https://github.com/primer/view_components/pull/2324) [`cc44952c`](https://github.com/opf/primer_view_components/commit/cc44952c1c84e4fcd3ad6dc786db7211cdb82d36) Thanks [@langermank](https://github.com/langermank)! - Revert Tooltip caret removal
+
+  <!-- Changed components: Tooltip -->
+
 ## 0.13.0
 
 ### Minor Changes
