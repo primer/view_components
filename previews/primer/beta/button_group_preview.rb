@@ -13,7 +13,9 @@ module Primer
           component.with_button { "Button 1" }
           component.with_button { "Button 2" }
           component.with_button { "Button 3" }
-          component.with_clipboard_copy_button(value: "foobar123", aria: { label: "Copy foo" }) { "Button 4" }
+          component.with_clipboard_copy_button(id: "button-1", value: "foobar123", aria: { label: "Copy foo" }) do |button|
+            button.with_tooltip(text: "Copy foo")
+          end
         end
       end
 

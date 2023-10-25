@@ -3,13 +3,9 @@
 module Primer
   module Beta
     # `ClipboardCopyButton` uses `ClipboardCopy` to copy text to the clipboard, styled as a Primer button.
-    class ClipboardCopyButton < Primer::Component
+    class ClipboardCopyButton < Primer::Beta::Button
       def initialize(**system_arguments)
-        @system_arguments = system_arguments
-      end
-
-      def call
-        render(Primer::Beta::Button.new(base_button_class: ClipboardCopyBaseButton, **@system_arguments))
+        super(**system_arguments, base_button_class: ClipboardCopyBaseButton)
       end
     end
 
