@@ -3,7 +3,7 @@
 require "lib/test_helper"
 require "rubocop/cop/primer"
 
-class CopTestCase < MiniTest::Test
+class CopTestCase < Minitest::Test
   def cop_class
     # :nocov:
     raise NotImplementedError

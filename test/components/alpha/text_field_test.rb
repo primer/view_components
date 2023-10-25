@@ -2,7 +2,7 @@
 
 require "components/test_helper"
 
-class PrimerAlphaTextFieldTest < MiniTest::Test
+class PrimerAlphaTextFieldTest < Minitest::Test
   include ViewComponent::TestHelpers
 
   def setup
