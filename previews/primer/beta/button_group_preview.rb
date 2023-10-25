@@ -13,6 +13,7 @@ module Primer
           component.with_button { "Button 1" }
           component.with_button { "Button 2" }
           component.with_button { "Button 3" }
+          component.with_clipboard_copy_button(value: "foobar123", aria: { label: "Copy foo" }) { "Button 4" }
         end
       end
 

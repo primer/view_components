@@ -7,7 +7,7 @@ module Primer
       status :beta
 
       DEFAULT_TAG = :button
-      TAG_OPTIONS = [DEFAULT_TAG, :a, :summary].freeze
+      TAG_OPTIONS = [DEFAULT_TAG, :a, :summary, :"clipboard-copy"].freeze
 
       DEFAULT_TYPE = :button
       TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze

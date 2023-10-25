@@ -9,15 +9,31 @@ module Primer
       # Required list of buttons to be rendered.
       #
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>
-      renders_many :buttons, lambda { |**kwargs|
-        kwargs[:size] = @size
-        kwargs[:scheme] = @scheme
+      renders_many :buttons, types: {
+        button: {
+          renders: lambda { |**kwargs|
+            kwargs[:size] = @size
+            kwargs[:scheme] = @scheme
 
-        if kwargs[:icon]
-          Primer::Beta::IconButton.new(**kwargs)
-        else
-          Primer::Beta::Button.new(**kwargs)
-        end
+            if kwargs[:icon]
+              Primer::Beta::IconButton.new(**kwargs)
+            else
+              Primer::Beta::Button.new(**kwargs)
+            end
+          },
+
+          as: :button
+        },
+
+        clipboard_copy_button: {
+          renders: lambda { |**kwargs|
+            kwargs[:size] = @size
+            kwargs[:scheme] = @scheme
+            Primer::Beta::ClipboardCopyButton.new(**kwargs)
+          },
+
+          as: :clipboard_copy_button
+        }
       }
 
       # @param scheme [Symbol] DEPRECATED. <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
