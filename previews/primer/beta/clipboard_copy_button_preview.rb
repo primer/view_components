@@ -11,6 +11,12 @@ module Primer
         render(Primer::Beta::ClipboardCopyButton.new(id: "clipboard-button", aria: { label: "Copy" }, value: text))
       end
 
+      # @label Playground
+      # @snapshot
+      def default
+        render(Primer::Beta::ClipboardCopyButton.new(id: "clipboard-button", aria: { label: "Copy" }, value: "Text to copy"))
+      end
+
       # @label With tooltip
       # @snapshot
       def with_tooltip
