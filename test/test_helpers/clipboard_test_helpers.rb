@@ -2,7 +2,6 @@
 
 module Primer
   module ClipboardTestHelpers
-
     module MethodOverrides
       def setup
         @clipboard_stubbed = false
