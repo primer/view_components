@@ -13,9 +13,6 @@ module Primer
           component.with_button { "Button 1" }
           component.with_button { "Button 2" }
           component.with_button { "Button 3" }
-          component.with_clipboard_copy_button(id: "button-1", value: "foobar123", aria: { label: "Copy foo" }) do |button|
-            button.with_tooltip(text: "Copy foo")
-          end
         end
       end
 
@@ -69,6 +66,17 @@ module Primer
           component.with_button(id: "button-3", tag: :summary) do |button|
             button.with_tooltip(text: "Button Tooltip")
             "Button 3"
+          end
+        end
+      end
+
+      # @label With clipboard copy button
+      # @snapshot
+      def with_clipboard_copy_button(size: :medium, scheme: :default)
+        render(Primer::Beta::ButtonGroup.new(size: size, scheme: scheme)) do |component|
+          component.with_button { "Button 1" }
+          component.with_clipboard_copy_button(id: "button-2", value: "Copyable value", aria: { label: "Copy some text" }) do |button|
+            button.with_tooltip(text: "Copy some text")
           end
         end
       end
