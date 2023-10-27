@@ -6,7 +6,7 @@ module Primer
     # styled as a Primer button. It can be used wherever a button is desired, and works well
     # with components like `ButtonGroup`.
     class ClipboardCopyButton < Primer::Beta::Button
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> and <%= link_to_component(Primer::Beta::ClipboardCopy) %>.
       def initialize(**system_arguments)
         super(**system_arguments, base_button_class: ClipboardCopyBaseButton)
       end

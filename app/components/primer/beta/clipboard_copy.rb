@@ -4,6 +4,10 @@ module Primer
   module Beta
     # Use `ClipboardCopy` to copy element text content or input values to the clipboard.
     #
+    # This component by itself is not styled as a button, and can therefore only be used in limited circumstances.
+    # If you're looking for a button, consider using <%= link_to_component(Primer::Beta::ClipboardCopyButton) %>
+    # instead.
+    #
     # @accessibility
     #   Always set an accessible label to help the user interact with the component.
     class ClipboardCopy < Primer::Component
