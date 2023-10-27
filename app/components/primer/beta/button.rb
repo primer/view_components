@@ -93,6 +93,7 @@ module Primer
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
+      # @param base_button_class [Class] The button class to render.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.
@@ -102,6 +103,7 @@ module Primer
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
+        base_button_class: Primer::Beta::BaseButton,
         scheme: DEFAULT_SCHEME,
         size: DEFAULT_SIZE,
         block: false,
@@ -109,6 +111,7 @@ module Primer
         disabled: false,
         **system_arguments
       )
+        @base_button_class = base_button_class
         @scheme = scheme
         @block = block
 

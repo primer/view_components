@@ -69,6 +69,17 @@ module Primer
           end
         end
       end
+
+      # @label With clipboard copy button
+      # @snapshot
+      def with_clipboard_copy_button(size: :medium, scheme: :default)
+        render(Primer::Beta::ButtonGroup.new(size: size, scheme: scheme)) do |component|
+          component.with_button { "Button 1" }
+          component.with_clipboard_copy_button(id: "button-2", value: "Copyable value", aria: { label: "Copy some text" }) do |button|
+            button.with_tooltip(text: "Copy some text")
+          end
+        end
+      end
     end
   end
 end

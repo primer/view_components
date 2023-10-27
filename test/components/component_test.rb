@@ -60,6 +60,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::ButtonGroup, {}, proc { |component| component.with_button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::Beta::ClipboardCopyButton, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
