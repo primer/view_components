@@ -10901,7 +10901,7 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopy",
-    "description": "Use `ClipboardCopy` to copy element text content or input values to the clipboard.",
+    "description": "Use `ClipboardCopy` to copy element text content or input values to the clipboard.\n\nThis component by itself is not styled as a button, and can therefore only be used in limited circumstances.\nIf you're looking for a button, consider using {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}\ninstead.",
     "accessibility_docs": "Always set an accessible label to help the user interact with the component.",
     "is_form_component": false,
     "is_published": true,
@@ -11084,7 +11084,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}."
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} and {{#link_to_component}}Primer::Beta::ClipboardCopy{{/link_to_component}}."
       }
     ],
     "slots": [
