@@ -736,7 +736,8 @@
     "TAG_OPTIONS": [
       "button",
       "a",
-      "summary"
+      "summary",
+      "clipboard-copy"
     ],
     "TYPE_OPTIONS": [
       "button",
@@ -835,6 +836,10 @@
   "Primer::Beta::ButtonGroup": {
   },
   "Primer::Beta::ClipboardCopy": {
+  },
+  "Primer::Beta::ClipboardCopyBaseButton": {
+  },
+  "Primer::Beta::ClipboardCopyButton": {
   },
   "Primer::Beta::CloseButton": {
     "DEFAULT_TYPE": "button",

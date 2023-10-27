@@ -9625,7 +9625,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -10401,6 +10401,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/default/",
     "parameters": [
       {
+        "name": "base_button_class",
+        "type": "Class",
+        "default": "`Primer::Beta::BaseButton`",
+        "description": "The button class to render."
+      },
+      {
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
@@ -10428,7 +10434,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -10771,19 +10777,43 @@
     "slots": [
       {
         "name": "buttons",
-        "description": "Required list of buttons to be rendered.",
+        "description": "List of buttons to be rendered. Add buttons via the `#with_button` and `#with_clipboard_copy_button` methods (see below).",
         "parameters": [
-          {
-            "name": "kwargs",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The same arguments as {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}"
-          }
+
         ]
       }
     ],
     "methods": [
-
+      {
+        "name": "with_button",
+        "description": "Adds a button.",
+        "parameters": [
+          {
+            "name": "icon",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "If included, adds a {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} with the given {{link_to_octicons}}. Otherwise, a {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} is added instead."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+          }
+        ]
+      },
+      {
+        "name": "with_clipboard_copy_button",
+        "description": "Adds a {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}."
+          }
+        ]
+      }
     ],
     "previews": [
       {
@@ -10841,6 +10871,19 @@
       {
         "preview_path": "primer/beta/button_group/all_tags",
         "name": "all_tags",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button_group/with_clipboard_copy_button",
+        "name": "with_clipboard_copy_button",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -10945,6 +10988,195 @@
         "preview_path": "primer/beta/clipboard_copy/element",
         "name": "element",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::Beta::ClipboardCopyBaseButton",
+    "description": "Internal\n\n:nodoc:",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "ClipboardCopyBaseButton",
+    "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ClipboardCopyBaseButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy_base_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy_base_button/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:button`",
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
+      },
+      {
+        "name": "type",
+        "type": "Symbol",
+        "default": "`:button`",
+        "description": "One of `:button`, `:reset`, or `:submit`."
+      },
+      {
+        "name": "block",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether button is full-width with `display: block`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
+        "name": "inactive",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::Beta::ClipboardCopyButton",
+    "description": "`ClipboardCopyButton` uses the `ClipboardCopy` component to copy text to the clipboard,\nstyled as a Primer button. It can be used wherever a button is desired, and works well\nwith components like `ButtonGroup`.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "ClipboardCopyButton",
+    "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ClipboardCopyButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy_button/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}."
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading_visual",
+        "description": "Leading visuals appear to the left of the button text.\n\nUse:\n\n- `leading_visual_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\n- `leading_visual_svg` to render a SVG.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "trailing_visual",
+        "description": "Trailing visuals appear to the right of the button text.\n\nUse:\n\n- `trailing_visual_counter` for a {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "trailing_action",
+        "description": "Trailing action appears to the right of the trailing visual.\n\nUse:\n\n- `trailing_action_icon` for a {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}."
+          }
+        ]
+      },
+      {
+        "name": "tooltip",
+        "description": "`Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.\n**Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.\nConsult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "Symbol",
+            "default": "`:description`",
+            "description": "One of `:description` or `:label`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "Same arguments as {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/with_tooltip",
+        "name": "with_tooltip",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -11675,7 +11907,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "wrapper_arguments",
@@ -14541,7 +14773,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -14740,7 +14972,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
