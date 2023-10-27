@@ -20,7 +20,7 @@ module Demo
   # :nocov:
   class Application < Rails::Application
     if Rails.version.to_i >= 7
-      config.load_defaults 7.0
+      config.load_defaults 7.1
     elsif Rails.version.to_i >= 6
       config.load_defaults 6.0
     end
