@@ -1,12 +1,20 @@
 /* blankslate */
 
+.blankslate-container {
+  container-type: inline-size;
+}
+
 .blankslate {
+  --blankslate-outer-padding-block: var(--base-size-32);
+  --blankslate-outer-padding-inline: var(--base-size-32);
+
   position: relative;
-  padding: var(--base-size-32);
+  padding: --blankslate-outer-padding-block --blankslate-outer-padding-inline;
   text-align: center;
 
   & p {
     color: var(--fgColor-muted);
+    font-size: var(--text-body-size-large);
   }
 
   & code {
@@ -35,6 +43,8 @@
 }
 
 .blankslate-heading {
+  font-size: var(--text-title-size-medium);
+  font-weight: var(--text-title-weight-medium);
   margin-bottom: var(--base-size-4);
 }
 
@@ -55,7 +65,8 @@
 }
 
 .blankslate-spacious {
-  padding: var(--base-size-80) var(--base-size-40);
+  --blankslate-outer-padding-block: var(--base-size-80);
+  --blankslate-outer-padding-inline: var(--base-size-40);
 }
 
 .blankslate-narrow {
@@ -88,3 +99,50 @@
 .blankslate-clean-background {
   border: 0;
 }
+
+/* At the time these styles were written,
+   `34rem` was our "small" breakpoint width */
+@container (max-width: 34rem) {
+  .blankslate {
+    --blankslate-outer-padding-block: var(--base-size-20);
+    --blankslate-outer-padding-inline: var(--base-size-20);
+  }
+
+  .blankslate-spacious {
+    --blankslate-outer-padding-block: var(--base-size-44);
+    --blankslate-outer-padding-inline: var(--base-size-28);
+  }
+
+  /* Blankslate.Heading */
+  /* ------------------------------ */
+  .blankslate-icon {
+    margin-bottom: var(--stack-gap-condensed);
+  }
+
+  /* Blankslate.Heading */
+  /* ------------------------------ */
+  .blankslate-heading {
+    font-size: var(--text-title-size-small);
+  }
+
+  /* Blankslate.Description */
+  /* ------------------------------ */
+  .blankslate p {
+    font-size: var(--text-body-size-medium);
+  }
+
+  /* Blankslate.Action */
+  /* ------------------------------ */
+  .blankslate-action {
+    margin-top: var(--stack-gap-condensed);
+    
+    &:first-of-type {
+      margin-top: var(--stack-gap-normal);
+    }
+  
+    &:last-of-type {
+      margin-bottom: calc(var(--stack-gap-condensed) / 2);
+    }
+  }
+}
+  
