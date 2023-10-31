@@ -79,6 +79,22 @@ class PrimerBetaSubheadTest < Minitest::Test
     assert_selector(".Subhead .Subhead-description", text: "My Description")
   end
 
+  def test_renders_medium_heading
+    render_inline(Primer::Beta::Subhead.new(heading: "Hello world")) do |component|
+      component.with_heading(size: :medium) { "Hello World" }
+    end
+
+    assert_selector(".Subhead .Subhead-heading--medium", text: "Hello World")
+  end
+
+  def test_renders_large_heading_by_default
+    render_inline(Primer::Beta::Subhead.new(heading: "Hello world")) do |component|
+      component.with_heading { "Hello World" }
+    end
+
+    assert_selector(".Subhead .Subhead-heading--large", text: "Hello World")
+  end
+
   def test_status
     assert_component_state(Primer::Beta::Subhead, :beta)
   end
