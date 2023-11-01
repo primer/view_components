@@ -67,7 +67,7 @@ group :development do
   gem "mocha"
   gem "pry"
   gem "rubocop", "= 1.13.0"
-  gem "rubocop-github", "~> 0.16.0"
+  gem "rubocop-github", "~> 0.19.0"
   gem "rubocop-performance", "~> 1.7"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 0.2.0"
