@@ -21,7 +21,7 @@ jobs:
           CHANGELOG.md
     - uses: xt0rted/markdownlint-problem-matcher@v2
       if: steps.changed-files.outputs.any_changed == 'true'
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         node-version: 16
@@ -85,7 +85,7 @@ jobs:
       with:
         files: |
           app/components/**/*.ts
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         node-version: 16
@@ -107,7 +107,7 @@ jobs:
         files: |
           app/components/**/*.pcss
           lib/postcss_mixins/*.pcss
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         node-version: 16
