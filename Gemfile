@@ -57,7 +57,7 @@ end
 group :development do
   gem "allocation_stats", "~> 0.1"
   gem "allocation_tracer", "~> 0.6.3"
-  gem "benchmark-ips", "~> 2.8.4"
+  gem "benchmark-ips", "~> 2.12.0"
   gem "capybara", "~> 3.39.2"
   gem "cuprite", "~> 0.14.3"
   gem "erb_lint", "~> 0.4.0"
