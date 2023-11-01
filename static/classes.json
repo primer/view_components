@@ -528,6 +528,12 @@
   "Subhead-heading--danger": [
     "Primer::Beta::Subhead"
   ],
+  "Subhead-heading--large": [
+    "Primer::Beta::Subhead"
+  ],
+  "Subhead-heading--medium": [
+    "Primer::Beta::Subhead"
+  ],
   "TimelineItem": [
     "Primer::Beta::TimelineItem"
   ],

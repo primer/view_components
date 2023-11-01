@@ -4,6 +4,8 @@ require "system/test_case"
 
 module Alpha
   class IntegrationActionMenuTest < System::TestCase
+    include Primer::ClipboardTestHelpers
+
     ###### HELPER METHODS ######
 
     def click_on_invoker_button
@@ -36,30 +38,6 @@ module Alpha
       JS
     end
 
-    def stub_clipboard!
-      page.evaluate_script(<<~JS)
-        (() => {
-          navigator.clipboard.writeText = async (text) => {
-            this.text = text;
-            return Promise.resolve(null);
-          };
-
-          navigator.clipboard.readText = async () => {
-            return Promise.resolve(this.text);
-          };
-        })()
-      JS
-
-      @clipboard_stubbed = true
-    end
-
-    def read_clipboard
-      page.evaluate_async_script(<<~JS)
-        const [done] = arguments;
-        navigator.clipboard.readText().then(done).catch((e) => done(e));
-      JS
-    end
-
     def assert_no_alert(message = nil, &block)
       accept_alert(&block)
       assert false, message || "Unexpected alert dialog"
@@ -67,21 +45,7 @@ module Alpha
       # expected behavior
     end
 
-    def capture_clipboard
-      stub_clipboard! unless clipboard_stubbed?
-      yield
-      read_clipboard
-    end
-
     ########## TESTS ############
-
-    def setup
-      @clipboard_stubbed = false
-    end
-
-    def clipboard_stubbed?
-      @clipboard_stubbed
-    end
 
     def test_dynamic_labels
       visit_preview(:single_select_with_internal_label)

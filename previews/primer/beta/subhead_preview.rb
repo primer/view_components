@@ -9,10 +9,11 @@ module Primer
       # @param spacious [Boolean]
       # @param hide_border [Boolean]
       # @param heading_danger [Boolean]
+      # @param heading_size [Symbol] select [medium, large]
       # @param heading_tag [Symbol] select [div, h1, h2, h3, h4, h5, h6]
-      def playground(spacious: false, hide_border: false, heading_tag: :div, heading_danger: false)
+      def playground(spacious: false, hide_border: false, heading_tag: :div, heading_size: Primer::Beta::Subhead::DEFAULT_HEADING_SIZE, heading_danger: false)
         render(Primer::Beta::Subhead.new(spacious: spacious, hide_border: hide_border)) do |component|
-          component.with_heading(tag: heading_tag, danger: heading_danger) do
+          component.with_heading(tag: heading_tag, size: heading_size, danger: heading_danger) do
             "My Heading"
           end
           component.with_description do
@@ -26,11 +27,12 @@ module Primer
       # @param spacious [Boolean]
       # @param hide_border [Boolean]
       # @param heading_danger [Boolean]
+      # @param heading_size [Symbol] select [medium, large]
       # @param heading_tag [Symbol] select [div, h1, h2, h3, h4, h5, h6]
       # @snapshot
-      def default(spacious: false, hide_border: false, heading_tag: :div, heading_danger: false)
+      def default(spacious: false, hide_border: false, heading_tag: :div, heading_size: Primer::Beta::Subhead::DEFAULT_HEADING_SIZE, heading_danger: false)
         render(Primer::Beta::Subhead.new(spacious: spacious, hide_border: hide_border)) do |component|
-          component.with_heading(tag: heading_tag, danger: heading_danger) do
+          component.with_heading(tag: heading_tag, size: heading_size, danger: heading_danger) do
             "My Heading"
           end
           component.with_description do
@@ -98,6 +100,32 @@ module Primer
       end
       #
       # @!endgroup
+
+      # @!group Header size
+      #
+      # @label Large
+      def large_header
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading(size: :large) do
+            "Large Header"
+          end
+          component.with_description do
+            "Description"
+          end
+        end
+      end
+
+      # @label Medium
+      def medium_header
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading(size: :medium) do
+            "Medium Header"
+          end
+          component.with_description do
+            "Description"
+          end
+        end
+      end
     end
   end
 end
