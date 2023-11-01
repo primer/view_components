@@ -60,7 +60,7 @@
     "@github/axe-github": "^0.5.0",
     "@github/browserslist-config": "^1.0.0",
     "@github/markdownlint-github": "^0.2.2",
-    "@github/prettier-config": "0.0.4",
+    "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.0.2",
     "@primer/primitives": "^7.14.0",
