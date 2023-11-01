@@ -9,7 +9,7 @@ rails_version = (ENV["RAILS_VERSION"] || "7.1.1").to_s
 gem "rack", "~> 2.2"
 
 gem "rack-cors"
-gem "rake", "~> 13.0"
+gem "rake", "~> 13.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -67,7 +67,7 @@ group :development do
   gem "mocha"
   gem "pry"
   gem "rubocop", "= 1.13.0"
-  gem "rubocop-github", "~> 0.16.0"
+  gem "rubocop-github", "~> 0.19.0"
   gem "rubocop-performance", "~> 1.7"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 0.2.0"

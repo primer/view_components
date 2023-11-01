@@ -53,7 +53,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.1.4)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.39.2)
@@ -77,8 +77,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
     docile (1.4.0)
-    drb (2.1.1)
-      ruby2_keywords
+    drb (2.0.5)
     erb_lint (0.4.0)
       activesupport
       better_html (>= 2.0.1)
@@ -152,7 +151,7 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
@@ -181,7 +180,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -204,10 +203,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-github (0.16.2)
-      rubocop (<= 1.13.0)
-      rubocop-performance (<= 1.11.0)
-      rubocop-rails (<= 2.7.1)
+    rubocop-github (0.19.0)
+      rubocop (>= 1.0.0)
+      rubocop-performance
+      rubocop-rails
     rubocop-performance (1.11.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
@@ -297,9 +296,9 @@ DEPENDENCIES
   rack (~> 2.2)
   rack-cors
   railties (= 7.1.1)
-  rake (~> 13.0)
+  rake (~> 13.1)
   rubocop (= 1.13.0)
-  rubocop-github (~> 0.16.0)
+  rubocop-github (~> 0.19.0)
   rubocop-performance (~> 1.7)
   rubocop-rails
   rubocop-rails-accessibility (~> 0.2.0)
