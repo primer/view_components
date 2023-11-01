@@ -175,7 +175,7 @@ module Primer
 
         @system_arguments[:preload] = true if @src.present? && preload?
 
-        select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
+        @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
 
         @system_arguments[:tag] = :"action-menu"
         @system_arguments[:"data-select-variant"] = select_variant
@@ -241,6 +241,10 @@ module Primer
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
       def with_avatar_item(**system_arguments, &block)
         @list.with_avatar_item(**system_arguments, &block)
+      end
+
+      def with_group(**system_arguments, &block)
+        @list.with_group(**system_arguments, &block)
       end
 
       private

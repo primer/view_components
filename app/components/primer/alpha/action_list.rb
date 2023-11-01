@@ -230,7 +230,7 @@ module Primer
       end
 
       def acts_as_menu?
-        @system_arguments[:role] == :menu
+        @system_arguments[:role] == :menu || @system_arguments[:role] == :group
       end
 
       def required_form_arguments_given?
