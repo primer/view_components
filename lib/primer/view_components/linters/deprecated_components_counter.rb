@@ -63,7 +63,7 @@ module ERBLint
         if offenses_count.zero?
           # have to adjust to get `\n` so we delete the whole line
           add_offense_with_severity(processed_source.to_source_range(comment_node.loc.adjust(end_pos: 1)), "Unused erblint:counter comment for #{rule_name}", "") if comment_node
-          return
+          return false
         end
 
         first_offense = @offenses[0]

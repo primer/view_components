@@ -32,7 +32,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_octicon_with_title
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, title: "hello")
     RUBY
 
@@ -40,7 +40,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_octicon_with_title_interpolation
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, title: "hello <%= interpolation %>")
     RUBY
 
@@ -48,7 +48,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_octicon_with_title_method
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, title: some_method)
     RUBY
 
@@ -187,7 +187,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_octicon_with_class_that_cant_be_converted
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, class: "mr-1 text-fuzzy-waffle")
     RUBY
 
@@ -195,7 +195,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_autocorrects_unknown_color_to_class
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, class: "mr-1 color-unknown-color")
     RUBY
 
@@ -203,7 +203,7 @@ class RubocopPrimerOcticonTest < CopTestCase
   end
 
   def test_corrects_without_color
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       octicon(:icon, class: "mr-1")
     RUBY
 

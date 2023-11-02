@@ -36,7 +36,6 @@ module Primer
         def before_render; end
 
         # :nocov:
-        # rubocop:disable Naming/AccessorMethodName
         def set_original_view_context(view_context)
           @view_context = view_context
         end
@@ -98,8 +97,6 @@ module Primer
       end
 
       def define_template_method(template_path, method_name)
-        # rubocop:disable Style/DocumentDynamicEvalDefinition
-        # rubocop:disable Style/EvalWithLocation
         class_eval <<-RUBY, template_path, 0
         private def #{method_name}
           capture { #{compile_template(template_path)} }

@@ -24,7 +24,7 @@ class RubocopDeprecatedLabelVariantsTest < CopTestCase
   end
 
   def test_argument_not_a_string_or_symbol
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       Primer::Beta::Label.new(variant: variant)
     RUBY
 

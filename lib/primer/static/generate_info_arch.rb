@@ -33,7 +33,6 @@ module Primer
 
               {
                 "name" => slot_method.name,
-                # rubocop:disable Style/IfUnlessModifier
                 "description" =>
                   if slot_method.base_docstring.to_s.present?
                     render_erb_ignoring_markdown_code_fences(slot_method.base_docstring)
@@ -90,7 +89,7 @@ module Primer
             }
           end
 
-          statuses = Primer::Status::Dsl::STATUSES.keys.map(&:to_s).map(&:capitalize)
+          statuses = Primer::Status::Dsl::STATUSES.keys.map { |k| k.to_s.capitalize }
 
           Primer::Component.descendants.each do |component|
             fq_class = component.name.to_s.split("::")

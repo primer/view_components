@@ -11,7 +11,6 @@ class BenchDeny < Minitest::Benchmark
   def bench_deny_single_argument
     non_prod_results = measure_ips { Primer::DenyComponent.new }
 
-    # rubocop:disable Rails/Inquiry
     prod_results = Rails.stub(:env, "production".inquiry) do
       measure_ips { Primer::DenyComponent.new }
     end
