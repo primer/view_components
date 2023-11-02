@@ -4932,7 +4932,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::NavList",
-    "description": "",
+    "description": ":nodoc:",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -4982,7 +4982,7 @@
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
-        "description": "",
+        "description": ":nodoc:",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5102,7 +5102,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Heading",
-        "description": "",
+        "description": ":nodoc:",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5154,7 +5154,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Divider",
-        "description": "",
+        "description": ":nodoc:",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5194,7 +5194,7 @@
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "",
+        "description": ":nodoc:",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
