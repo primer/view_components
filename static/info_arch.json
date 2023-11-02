@@ -3165,7 +3165,7 @@
             "name": "subtitle",
             "type": "String",
             "default": "`nil`",
-            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+            "description": "Provides additional context for the dialog, also setting the `aria-describedby` attribute."
           },
           {
             "name": "show_divider",
