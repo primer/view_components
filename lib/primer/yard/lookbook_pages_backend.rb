@@ -42,14 +42,12 @@ module Primer
           ), __dir__
         )
 
-        # rubocop:disable Lint/UselessAssignment
         documented_methods = docs.non_slot_methods.select do |mtd|
           [component.name, "Primer::Forms::Dsl::InputMethods"].include?(mtd.parent.title)
         end
 
         preview_methods = PREVIEW_MAP[component]
         preview_erbs = preview_methods.map do |preview_method|
-          # rubocop:disable Style/IfUnlessModifier
           if Primer::FormsPreview.instance_methods.exclude?(preview_method)
             raise "Preview '#{preview_method}' does not exist in Primer::FormsPreview"
           end

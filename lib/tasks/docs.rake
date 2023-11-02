@@ -45,15 +45,15 @@ namespace :docs do
   task build_yard_registry: :init_pvc do
     require "primer/yard"
 
-    ::YARD::Rake::YardocTask.new do |task|
+    YARD::Rake::YardocTask.new do |task|
       task.options << "--no-output"
     end
 
     # Custom tags for yard
-    ::YARD::Tags::Library.define_tag("Accessibility", :accessibility)
-    ::YARD::Tags::Library.define_tag("Deprecation", :deprecation)
-    ::YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
-    ::YARD::Tags::Library.define_tag("Form Usage", :form_usage)
+    YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+    YARD::Tags::Library.define_tag("Deprecation", :deprecation)
+    YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
+    YARD::Tags::Library.define_tag("Form Usage", :form_usage)
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute

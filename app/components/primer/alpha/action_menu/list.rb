@@ -78,20 +78,16 @@ module Primer
         def organize_arguments(data: {}, **system_arguments)
           content_arguments = system_arguments.delete(:content_arguments) || {}
 
-          # rubocop:disable Style/IfUnlessModifier
           if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
             content_arguments[:tag] = system_arguments[:tag]
           end
-          # rubocop:enable Style/IfUnlessModifier
 
           # disallow setting item's tag
           system_arguments.delete(:tag)
 
-          # rubocop:disable Style/IfUnlessModifier
           if content_arguments[:tag] == :a
             content_arguments[:href] ||= system_arguments.delete(:href)
           end
-          # rubocop:enable Style/IfUnlessModifier
 
           content_arguments[:tabindex] = -1
           system_arguments[:autofocus] = "" if system_arguments[:autofocus]

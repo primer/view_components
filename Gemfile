@@ -41,8 +41,8 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "lookbook", "~> 2.1.1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
-gem "sourcemap", "~> 0.1"
 gem "kramdown", "~> 2.4"
+gem "sourcemap", "~> 0.1"
 
 group :test do
   gem "webmock"
@@ -66,9 +66,9 @@ group :development do
   gem "matrix", "~> 0.4.2"
   gem "mocha"
   gem "pry"
-  gem "rubocop", "= 1.13.0"
-  gem "rubocop-github", "~> 0.19.0"
-  gem "rubocop-performance", "~> 1.7"
+  gem "rubocop"
+  gem "rubocop-github", "~> 0.20.0"
+  gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 0.2.0"
   gem "simplecov", "~> 0.22.0"
