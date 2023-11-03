@@ -1,0 +1,13 @@
+<p style="max-width: 500px">
+  Below is an SVG image containing the chosen octicon surrounded by a green circle. The octicon has been emitted
+  onto the page as an SVG &lt;symbol&gt; element and included into the SVG you see below with the &lt;use&gt; element.
+  See the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol" target="_blank">MDN docs</a> for
+  more information.
+</p>
+
+<%= render(Primer::Alpha::OcticonSymbols.new(icons: [{ symbol: octicon, size: :medium }])) %>
+
+<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" aria-label="Circled <%= octicon %> icon" tabindex="0">
+  <circle cx="20" cy="20" r="18" stroke="green" stroke-width="3px" fill="white" />
+  <use href="#octicon_<%= octicon %>_24" x="8" y="8" />
+</svg>
