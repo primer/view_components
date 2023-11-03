@@ -102,11 +102,6 @@ module Primer
               content_arguments,
               { aria: { disabled: true } }
             )
-
-            system_arguments[:aria] = merge_aria(
-              system_arguments,
-              { aria: { disabled: true } }
-            )
           end
 
           { data: data, **system_arguments, content_arguments: content_arguments }
