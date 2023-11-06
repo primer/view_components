@@ -10,6 +10,13 @@ module Primer
         DEFAULT_ITEM_TAG = :button
         ITEM_TAG_OPTIONS = [:a, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
 
+        # Heading text rendered above the list of items.
+        #
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu::Heading) %>.
+        def with_heading(**system_arguments, &block)
+          super(component_klass: Primer::Alpha::ActionMenu::Heading, **system_arguments, &block)
+        end
+
         # Adds a new item to the list.
         #
         # @param data [Hash] When the menu is used as a form input (see the <%= link_to_component(Primer::Alpha::ActionMenu) %> docs), the label is submitted to the server by default. However, if the `data: { value: }` or `"data-value":` attribute is provided, it will be sent to the server instead.
