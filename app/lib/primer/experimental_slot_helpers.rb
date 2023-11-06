@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc:
   module ExperimentalSlotHelpers
     def self.included(base)
       base.extend(ClassMethods)
     end
 
+    # :nodoc:
     module ClassMethods
       def add_polymorphic_slot_type(slot_name:, type:, callable:)
         slot_def = registered_slots[slot_name]
