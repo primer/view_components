@@ -3,6 +3,7 @@
 module Primer
   module Alpha
     class NavList
+      # :nodoc:
       class Group < Beta::NavList::Group
         status :deprecated
       end

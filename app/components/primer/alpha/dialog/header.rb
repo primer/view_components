@@ -18,7 +18,7 @@ module Primer
 
         # @param id [String] The HTML element's ID value.
         # @param title [String] Describes the content of the dialog.
-        # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
+        # @param subtitle [String] Provides additional context for the dialog, also setting the `aria-describedby` attribute.
         # @param show_divider [Boolean] Show a divider between the header and body.
         # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
         # @param variant [Symbol] <%= one_of(Primer::Alpha::Dialog::Header::VARIANT_OPTIONS) %>

@@ -2,6 +2,7 @@
 
 module Primer
   module Alpha
+    # :nodoc:
     class NavList < Beta::NavList
       status :deprecated
     end

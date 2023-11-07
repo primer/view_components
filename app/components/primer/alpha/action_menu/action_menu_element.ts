@@ -134,11 +134,24 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #isKeyboardActivation(event: Event): boolean {
+    return this.#isKeyboardActivationViaEnter(event) || this.#isKeyboardActivationViaSpace(event)
+  }
+
+  #isKeyboardActivationViaEnter(event: Event): boolean {
     return (
       event instanceof KeyboardEvent &&
       event.type === 'keydown' &&
       !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-      (event.key === 'Enter' || event.key === ' ')
+      event.key === 'Enter'
+    )
+  }
+
+  #isKeyboardActivationViaSpace(event: Event): boolean {
+    return (
+      event instanceof KeyboardEvent &&
+      event.type === 'keydown' &&
+      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+      event.key === ' '
     )
   }
 
@@ -202,6 +215,19 @@ export class ActionMenuElement extends HTMLElement {
 
       this.#activateItem(event, item)
       this.#handleItemActivated(event, item)
+
+      // Pressing the space key on a button or link will cause the page to scroll unless preventDefault()
+      // is called. While calling preventDefault() appears to have no effect on link navigation, it skips
+      // form submission. The code below therefore only calls preventDefault() if the button has been
+      // activated by the space key, and manually submits the form if the button is a submit button.
+      if (this.#isKeyboardActivationViaSpace(event)) {
+        event.preventDefault()
+
+        if (item.getAttribute('type') === 'submit') {
+          item.closest('form')?.submit()
+        }
+      }
+
       return
     }
 

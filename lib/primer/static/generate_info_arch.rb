@@ -33,7 +33,6 @@ module Primer
 
               {
                 "name" => slot_method.name,
-                # rubocop:disable Style/IfUnlessModifier
                 "description" =>
                   if slot_method.base_docstring.to_s.present?
                     render_erb_ignoring_markdown_code_fences(slot_method.base_docstring)
@@ -70,10 +69,15 @@ module Primer
                 render_erb_ignoring_markdown_code_fences(docs.base_docstring)
               end
 
+            accessibility_docs =
+              if (accessibility_tag_text = docs.tags(:accessibility)&.first&.text)
+                render_erb_ignoring_markdown_code_fences(accessibility_tag_text)
+              end
+
             memo[component] = {
               "fully_qualified_name" => component.name,
               "description" => description,
-              "accessibility_docs" => docs.tags(:accessibility)&.first&.text,
+              "accessibility_docs" => accessibility_docs,
               "is_form_component" => docs.manifest_entry.form_component?,
               "is_published" => docs.manifest_entry.published?,
               "requires_js" => docs.manifest_entry.requires_js?,
@@ -85,7 +89,7 @@ module Primer
             }
           end
 
-          statuses = Primer::Status::Dsl::STATUSES.keys.map(&:to_s).map(&:capitalize)
+          statuses = Primer::Status::Dsl::STATUSES.keys.map { |k| k.to_s.capitalize }
 
           Primer::Component.descendants.each do |component|
             fq_class = component.name.to_s.split("::")

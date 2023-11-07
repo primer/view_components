@@ -3,13 +3,13 @@
 source "https://rubygems.org"
 
 gemspec
-rails_version = (ENV["RAILS_VERSION"] || "7.0.3").to_s
+rails_version = (ENV["RAILS_VERSION"] || "7.1.1").to_s
 
 # remove when https://github.com/rails/rails/pull/47142 is merged
 gem "rack", "~> 2.2"
 
 gem "rack-cors"
-gem "rake", "~> 13.0"
+gem "rake", "~> 13.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -41,8 +41,8 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "lookbook", "~> 2.1.1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
-gem "sourcemap", "~> 0.1"
 gem "kramdown", "~> 2.4"
+gem "sourcemap", "~> 0.1"
 
 group :test do
   gem "webmock"
@@ -50,5 +50,32 @@ group :test do
   # Disallow v5.19 for now since it breaks mocha.
   # See: https://github.com/freerange/mocha/issues/614
   # Remove this line when mocha has fixed the issue
-  gem "minitest", "< 5.19"
+  gem "minitest", "< 5.21"
+end
+
+# development dependencies
+group :development do
+  gem "allocation_stats", "~> 0.1"
+  gem "allocation_tracer", "~> 0.6.3"
+  gem "benchmark-ips", "~> 2.12.0"
+  gem "capybara", "~> 3.39.2"
+  gem "cuprite", "~> 0.14.3"
+  gem "erb_lint", "~> 0.4.0"
+  gem "erblint-github", "~> 0.4.1"
+  gem "listen", "~> 3.0"
+  gem "matrix", "~> 0.4.2"
+  gem "mocha"
+  gem "pry"
+  gem "rubocop"
+  gem "rubocop-github", "~> 0.20.0"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rails-accessibility", "~> 0.2.0"
+  gem "simplecov", "~> 0.22.0"
+  gem "simplecov-console", "~> 0.9.1"
+  gem "sprockets"
+  gem "sprockets-rails"
+  gem "thor"
+  gem "timecop"
+  gem "yard", "~> 0.9.25"
 end

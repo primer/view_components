@@ -2,10 +2,9 @@
 
 require "system/test_case"
 
-require_relative "./test_helper"
+require_relative "test_helper"
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
-# rubocop:disable Style/WordArray
 IGNORED_SELECTORS = {
   # these are all provided by primer/css
   :global => ["octicon", "btn-octicon", "btn", "btn-primary", "btn-danger", "btn-outline"],

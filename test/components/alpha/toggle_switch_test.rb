@@ -4,7 +4,7 @@ require "components/test_helper"
 
 module Primer
   module Alpha
-    class ToggleSwitchTest < MiniTest::Test
+    class ToggleSwitchTest < Minitest::Test
       include ViewComponent::TestHelpers
 
       def test_default_unchecked

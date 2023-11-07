@@ -9,7 +9,7 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
       constant: "TAG_OPTIONS"
     )
 
-    assert_equal tag_options, %w[button a summary]
+    assert_equal tag_options, %w[button a summary clipboard-copy]
   end
 
   def test_get_symbolizes_array_elements
@@ -19,7 +19,7 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
       symbolize: true
     )
 
-    assert_equal tag_options, %w[:button :a :summary]
+    assert_equal tag_options, %w[:button :a :summary :clipboard-copy]
   end
 
   def test_get_hash

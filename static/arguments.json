@@ -923,7 +923,7 @@
         "name": "subtitle",
         "type": "String",
         "default": "`nil`",
-        "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+        "description": "Provides additional context for the dialog, also setting the `aria-describedby` attribute."
       },
       {
         "name": "show_divider",
@@ -3108,7 +3108,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -3250,6 +3250,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/default/",
     "parameters": [
       {
+        "name": "base_button_class",
+        "type": "Class",
+        "default": "`Primer::Beta::BaseButton`",
+        "description": "The button class to render."
+      },
+      {
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
@@ -3277,7 +3283,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -3358,6 +3364,68 @@
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ClipboardCopyBaseButton",
+    "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ClipboardCopyBaseButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy_base_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy_base_button/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:button`",
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
+      },
+      {
+        "name": "type",
+        "type": "Symbol",
+        "default": "`:button`",
+        "description": "One of `:button`, `:reset`, or `:submit`."
+      },
+      {
+        "name": "block",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether button is full-width with `display: block`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
+      },
+      {
+        "name": "inactive",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ClipboardCopyButton",
+    "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "ClipboardCopyButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy_button/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [Button](/components/beta/button) and [ClipboardCopy](/components/beta/clipboardcopy)."
       }
     ]
   },
@@ -3561,7 +3629,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "wrapper_arguments",
@@ -4399,7 +4467,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "`:button`",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",
@@ -4490,7 +4558,7 @@
         "name": "tag",
         "type": "Symbol",
         "default": "N/A",
-        "description": "One of `:a`, `:button`, or `:summary`."
+        "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
         "name": "type",

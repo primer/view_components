@@ -73,6 +73,8 @@
   "Primer::Beta::Button": "beta",
   "Primer::Beta::ButtonGroup": "beta",
   "Primer::Beta::ClipboardCopy": "beta",
+  "Primer::Beta::ClipboardCopyBaseButton": "beta",
+  "Primer::Beta::ClipboardCopyButton": "beta",
   "Primer::Beta::CloseButton": "beta",
   "Primer::Beta::Counter": "beta",
   "Primer::Beta::Details": "beta",

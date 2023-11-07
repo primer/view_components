@@ -1,5 +1,58 @@
 # CHANGELOG
 
+## 0.13.2
+
+### Patch Changes
+
+- [#2331](https://github.com/primer/view_components/pull/2331) [`4f8af24f`](https://github.com/primer/view_components/commit/4f8af24f2bb657c09d3b371a9d2ab1e30ac3ad7c) Thanks [@camertron](https://github.com/camertron)! - Prevent scrolling when activating ActionMenu form items via space
+
+- [#2323](https://github.com/primer/view_components/pull/2323) [`c481ed2d`](https://github.com/primer/view_components/commit/c481ed2dedf9a480dca2a4ba41d2f1e3b39a2687) Thanks [@keithamus](https://github.com/keithamus)! - Fix bug in ActionMenu/Tooltip/Overlay being always visible in Firefox on ios 17
+
+## 0.13.1
+
+### Patch Changes
+
+- [#2326](https://github.com/primer/view_components/pull/2326) [`4e05b7ec`](https://github.com/primer/view_components/commit/4e05b7ecb764b104a0afa35c478eff5c79f9270e) Thanks [@camertron](https://github.com/camertron)! - Prevent scrolling when activating ActionMenu items via space
+
+- [#2324](https://github.com/primer/view_components/pull/2324) [`cc44952c`](https://github.com/primer/view_components/commit/cc44952c1c84e4fcd3ad6dc786db7211cdb82d36) Thanks [@langermank](https://github.com/langermank)! - Revert Tooltip caret removal
+
+  <!-- Changed components: Tooltip -->
+
+## 0.13.0
+
+### Minor Changes
+
+- [#2284](https://github.com/primer/view_components/pull/2284) [`374d10fd`](https://github.com/primer/view_components/commit/374d10fd18e7371f49abf75dde135c3ed29fe33d) Thanks [@langermank](https://github.com/langermank)! - Update tooltip design
+
+  - Removes caret
+  - Decrease offset
+  - Remove animation delay
+  - Use v8 color tokens
+
+  <!-- Changed components: Tooltip -->
+
+- [#2293](https://github.com/primer/view_components/pull/2293) [`d7eafca0`](https://github.com/primer/view_components/commit/d7eafca0b2bbcea41f28c7ab16e6f396c150be8f) Thanks [@camertron](https://github.com/camertron)! - Fix multi-select behavior when ActionMenus are embedded in dialogs
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+- [#2291](https://github.com/primer/view_components/pull/2291) [`725bbd95`](https://github.com/primer/view_components/commit/725bbd954564995667398b1ea0b1388d4f6d8410) Thanks [@camertron](https://github.com/camertron)! - Allow ActionMenu items to submit multiple values on form submission; fix keyboard handling for submit items
+
+  <!-- Changed components: Primer::Alpha::ActionMenu -->
+
+### Patch Changes
+
+- [#2286](https://github.com/primer/view_components/pull/2286) [`02e7f785`](https://github.com/primer/view_components/commit/02e7f785666bb85f522fe31c51a51c9a58806e33) Thanks [@langermank](https://github.com/langermank)! - fix SegmentedControl alignment issues
+
+  <!-- Changed components: SegmentedControl -->
+
+- [#2288](https://github.com/primer/view_components/pull/2288) [`caf09967`](https://github.com/primer/view_components/commit/caf09967dd29668f380e509514ec98b9aa95baa7) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Fixes issue where sometimes a dialog cannot be closed if another is open
+
+  <!-- Changed components: Primer::Alpha::Dialog -->
+
+- [#2292](https://github.com/primer/view_components/pull/2292) [`46e3ff02`](https://github.com/primer/view_components/commit/46e3ff02bd1e253e2bfb3bb2a586c589b3aa0c5b) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix ActionBar issue where left and end key don't loop around to end of the action bar items.
+
+- [#2290](https://github.com/primer/view_components/pull/2290) [`f33eed35`](https://github.com/primer/view_components/commit/f33eed35e619550bf2937d3f8f2ecaa219369d46) Thanks [@jonrohan](https://github.com/jonrohan)! - Bug fix: Respect autofocus attributes inside of a Dialog when opening a modal-dialog. When the dialog was opening before it was always focusing the first focusable element which was always the close button.
+
 ## 0.12.0
 
 ### Minor Changes

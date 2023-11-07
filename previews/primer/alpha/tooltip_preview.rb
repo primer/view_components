@@ -78,7 +78,7 @@ module Primer
       # @!endgroup
 
       # @label Tooltip inside Primer::Alpha::Overlay
-      def tooltip_inside_primer_overlay(direction: :s, tooltip_text: "You can press a button")
+      def tooltip_inside_primer_overlay
         render_with_template(
           locals: {}
         )
