@@ -3,7 +3,6 @@ anchored-position[popover] {
   padding: 0;
   position: absolute;
   min-width: 192px;
-  inset: auto;
   overflow: visible;
   background: none;
 }
@@ -12,17 +11,6 @@ anchored-position[popover] {
   display: flex;
 }
 
-anchored-position[popover]:not(.\:popover-open) {
-  display: none;
-}
-
 anchored-position.not-anchored::backdrop {
   background-color: var(--overlay-backdrop-bgColor, var(--color-neutral-muted));
-}
-
-/* This reverts the declaration above for native popover, where `:popover-open` is supported */
-@supports selector(:popover-open) {
-  anchored-position[popover]:not(.\:popover-open) {
-    display: revert;
-  }
 }
