@@ -7062,7 +7062,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::TabNav",
     "description": "Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.\nFor panel navigation, use {{#link_to_component}}Primer::Alpha::TabPanels{{/link_to_component}} instead.",
-    "accessibility_docs": "- By default, `TabNav` renders links within a `<nav>` element. `<nav>` has an\n  implicit landmark role of `navigation` which should be reserved for main links.\n  For all other set of links, set tag to `:div`.\n- See <%= link_to_component(Primer::Alpha::Navigation::Tab) %> for additional\n  accessibility considerations.",
+    "accessibility_docs": "- By default, `TabNav` renders links within a `<nav>` element. `<nav>` has an\n  implicit landmark role of `navigation` which should be reserved for main links.\n  For all other set of links, set tag to `:div`.\n- See {{#link_to_component}}Primer::Alpha::Navigation::Tab{{/link_to_component}} for additional\n  accessibility considerations.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -8461,7 +8461,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::UnderlineNav",
     "description": "Use `UnderlineNav` to style navigation links with a minimal\nunderlined selected state, typically placed at the top\nof the page.\n\nFor panel navigation, use {{#link_to_component}}Primer::Alpha::UnderlinePanels{{/link_to_component}} instead.",
-    "accessibility_docs": "- By default, `UnderlineNav` renders links within a `<nav>` element. `<nav>` has an\n  implicit landmark role of `navigation` which should be reserved for main links.\n  For all other set of links, set tag to `:div`.\n- See <%= link_to_component(Primer::Alpha::Navigation::Tab) %> for additional\n  accessibility considerations.",
+    "accessibility_docs": "- By default, `UnderlineNav` renders links within a `<nav>` element. `<nav>` has an\n  implicit landmark role of `navigation` which should be reserved for main links.\n  For all other set of links, set tag to `:div`.\n- See {{#link_to_component}}Primer::Alpha::Navigation::Tab{{/link_to_component}} for additional\n  accessibility considerations.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -10189,7 +10189,7 @@
       {
         "fully_qualified_name": "Primer::Beta::BorderBox::Header",
         "description": "`BorderBox::Header` is used inside `BorderBox` to render its header slot.",
-        "accessibility_docs": "When using `header.with_title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>",
+        "accessibility_docs": "When using `header.with_title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)",
         "is_form_component": false,
         "is_published": true,
         "requires_js": false,
@@ -11589,7 +11589,7 @@
   {
     "fully_qualified_name": "Primer::Beta::Heading",
     "description": "`Heading` should be used to communicate page organization and hierarchy.\n\n- Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.\n- Use `Heading` as the title of a section or sub section.\n- Do not use `Heading` for styling alone. For simply styling text, consider using {{#link_to_component}}Primer::Beta::Text{{/link_to_component}} with relevant {{link_to_typography_docs}}\n  such as `font_size` and `font_weight`.\n- Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.",
-    "accessibility_docs": "While sighted users rely on visual cues such as font size changes to determine what the heading is, assistive technology users rely on programatic cues that can be read out.\nWhen text on a page is visually implied to be a heading, ensure that it is coded as a heading. Additionally, visually implied heading level and coded heading level should be\nconsistent. [See WCAG success criteria: 1.3.1: Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)\n\nHeadings allow assistive technology users to quickly navigate around a page. Navigation to text that is not meant to be a heading can be a confusing experience.\n<%= link_to_heading_practices %>",
+    "accessibility_docs": "While sighted users rely on visual cues such as font size changes to determine what the heading is, assistive technology users rely on programatic cues that can be read out.\nWhen text on a page is visually implied to be a heading, ensure that it is coded as a heading. Additionally, visually implied heading level and coded heading level should be\nconsistent. [See WCAG success criteria: 1.3.1: Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)\n\nHeadings allow assistive technology users to quickly navigate around a page. Navigation to text that is not meant to be a heading can be a confusing experience.\n[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -13751,7 +13751,7 @@
   {
     "fully_qualified_name": "Primer::Beta::Subhead",
     "description": "Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.\n\n- Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.\n- Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.\n- Use the actions slot to render a related action to the right of the heading. Use {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}} or {{#link_to_component}}Primer::Beta::Link{{/link_to_component}}.",
-    "accessibility_docs": "The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.\n<%= link_to_heading_practices %>",
+    "accessibility_docs": "The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.\n[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -14288,7 +14288,7 @@
   {
     "fully_qualified_name": "Primer::BlankslateComponent",
     "description": "Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.",
-    "accessibility_docs": "`Blankslate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.\n<%= link_to_heading_practices %>",
+    "accessibility_docs": "`Blankslate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.\n[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,

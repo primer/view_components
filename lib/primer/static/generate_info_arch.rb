@@ -70,10 +70,15 @@ module Primer
                 render_erb_ignoring_markdown_code_fences(docs.base_docstring)
               end
 
+            accessibility_docs =
+              if (accessibility_tag_text = docs.tags(:accessibility)&.first&.text)
+                render_erb_ignoring_markdown_code_fences(accessibility_tag_text)
+              end
+
             memo[component] = {
               "fully_qualified_name" => component.name,
               "description" => description,
-              "accessibility_docs" => docs.tags(:accessibility)&.first&.text,
+              "accessibility_docs" => accessibility_docs,
               "is_form_component" => docs.manifest_entry.form_component?,
               "is_published" => docs.manifest_entry.published?,
               "requires_js" => docs.manifest_entry.requires_js?,
