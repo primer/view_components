@@ -3632,12 +3632,6 @@
         "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
       },
       {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Optional keyword arguments to be passed to the wrapper `<div>` tag."
-      },
-      {
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
