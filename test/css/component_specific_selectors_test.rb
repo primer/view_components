@@ -70,9 +70,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".btn-mktg.disabled",
       ".btn-small-mktg"
     ],
-    Primer::Alpha::SegmentedControl => [
-      ".Button-withTooltip"
-    ],
     Primer::Alpha::UnderlineNav => [
       ".UnderlineNav .Counter--primary",
       ".UnderlineNav-item.selected",
