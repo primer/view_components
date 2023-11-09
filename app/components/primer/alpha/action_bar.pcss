@@ -2,7 +2,7 @@
 .ActionBar {
   position: relative;
   display: flex !important;
-  min-width: calc(var(--control-medium-size) * 3); 
+  min-width: calc(var(--control-medium-size) * 3);
   align-items: center;
   flex-grow: 1;
   flex-shrink: 1;
@@ -50,20 +50,4 @@
 
 .ActionBar--large .ActionBar-divider {
   margin: 0 var(--controlStack-large-gap-condensed);
-}
-
-/* Increase spacing so touch targets don't overlap */
-
-@media (pointer: coarse) {
-  .ActionBar .ActionBar-item-container {
-    gap: calc(var(--control-minTarget-coarse) - var(--control-medium-size)); /* 12px */
-  }
-
-  .ActionBar--small .ActionBar-item-container {
-    gap: calc(var(--control-minTarget-coarse) - var(--control-small-size));  /* 16px */
-  }
-
-  .ActionBar--large .ActionBar-item-container {
-    gap: calc(var(--control-minTarget-coarse) - var(--control-large-size));  /* 4px */
-  }
 }
