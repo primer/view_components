@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.14.0
+
+### Minor Changes
+
+- [#45](https://github.com/opf/primer_view_components/pull/45) [`ac9f7273`](https://github.com/opf/primer_view_components/commit/ac9f7273b0eea4d3c3daf5809970e3851bae58c6) Thanks [@dominic-braeunlein](https://github.com/dominic-braeunlein)! - Add back button and breadcrumbs support to PageHeader
+
+### Patch Changes
+
+- [#2331](https://github.com/primer/view_components/pull/2331) [`4f8af24f`](https://github.com/opf/primer_view_components/commit/4f8af24f2bb657c09d3b371a9d2ab1e30ac3ad7c) Thanks [@camertron](https://github.com/camertron)! - Prevent scrolling when activating ActionMenu form items via space
+
+- [#2323](https://github.com/primer/view_components/pull/2323) [`c481ed2d`](https://github.com/opf/primer_view_components/commit/c481ed2dedf9a480dca2a4ba41d2f1e3b39a2687) Thanks [@keithamus](https://github.com/keithamus)! - Fix bug in ActionMenu/Tooltip/Overlay being always visible in Firefox on ios 17
+
 ## 0.13.1
 
 ### Patch Changes
