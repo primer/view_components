@@ -23,6 +23,7 @@ module Primer
       # @param inset toggle
       # @param monospace toggle
       # @param leading_visual_icon octicon
+      # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
       def playground(
         name: "my-text-field",
         id: "my-text-field",
@@ -40,7 +41,8 @@ module Primer
         placeholder: nil,
         inset: false,
         monospace: false,
-        leading_visual_icon: nil
+        leading_visual_icon: nil,
+        input_width: nil
       )
         system_arguments = {
           name: name,
@@ -58,7 +60,8 @@ module Primer
           validation_message: validation_message,
           placeholder: placeholder,
           inset: inset,
-          monospace: monospace
+          monospace: monospace,
+          input_width: input_width
         }
 
         if leading_visual_icon

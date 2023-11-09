@@ -13,8 +13,11 @@ module Primer
           Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
         )
 
+        wrap_classes = ["FormControl-select-wrap"]
+        wrap_classes << Primer::Forms::Dsl::Input::INPUT_WIDTH_MAPPINGS[@input.input_width] if @input.input_width
+
         @field_wrap_arguments = {
-          class: "FormControl-select-wrap",
+          class: class_names(wrap_classes),
           hidden: @input.hidden?
         }
       end

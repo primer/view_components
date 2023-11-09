@@ -19,14 +19,16 @@ module Primer
           Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
         )
 
-        @field_wrap_arguments = {
-          class: class_names(
-            "FormControl-input-wrap",
-            INPUT_WRAP_SIZE[input.size],
-            "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
-            "FormControl-input-wrap--leadingVisual": @input.leading_visual?
-          ),
+        wrap_classes = [
+          "FormControl-input-wrap",
+          INPUT_WRAP_SIZE[input.size],
+          { "FormControl-input-wrap--trailingAction": @input.show_clear_button? },
+          { "FormControl-input-wrap--leadingVisual": @input.leading_visual? }
+        ]
+        wrap_classes << Primer::Forms::Dsl::Input::INPUT_WIDTH_MAPPINGS[@input.input_width] if @input.input_width
 
+        @field_wrap_arguments = {
+          class: class_names(wrap_classes),
           hidden: @input.hidden?
         }
       end

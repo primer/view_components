@@ -7,6 +7,8 @@ module Primer
 
     def multi_text_field_form; end
 
+    def custom_width_fields_form; end
+
     def text_field_and_checkbox_form; end
 
     def horizontal_form; end

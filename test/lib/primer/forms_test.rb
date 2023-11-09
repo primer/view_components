@@ -6,6 +6,13 @@ require_relative "forms/form_test_component"
 class Primer::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
+  def test_custom_width_fields
+    render_inline Primer::FormTestComponent.new(form_class: CustomWidthFieldsForm)
+
+    assert_selector "div.FormControl-input-width--medium"
+    assert_selector "div.FormControl-input-width--small"
+  end
+
   def test_renders_correct_form_structure
     render_preview :single_text_field_form
 
