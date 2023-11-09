@@ -5,19 +5,24 @@
   padding-bottom: var(--stack-padding-condensed);
   margin-bottom: var(--stack-gap-normal);
   border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
-  flex-flow: row wrap;
-  justify-content: flex-end; /* Keep actions right aligned. */
+  flex-flow: column;
 
   @media (max-width: 767.98px) {
     border-bottom: 0;
   }
 }
 
+.PageHeader-titleBar {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center; /* Keep back button vertically aligned. */
+}
+
 .PageHeader-title {
   font-size: 24px;
   font-weight: var(--base-text-weight-normal);
   flex: 1 1 auto;
-  order: 0;
 }
 
 .PageHeader-title--large {
@@ -29,17 +34,25 @@
   font-size: var(--text-body-size-medium);
   color: var(--fgColor-muted);
   flex: 1 100%;
-  order: 2;
 }
 
 /* Add 1 or 2 buttons to the right of the heading */
 .PageHeader-actions {
   margin: var(--base-size-4) 0 var(--base-size-4) var(--base-size-4);
-  align-self: center;
   justify-content: flex-end;
-  order: 1;
 
   & + .PageHeader-description {
     margin-top: var(--base-size-4);
   }
+}
+
+.PageHeader-breadcrumbs {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--base-size-8);
+}
+
+.PageHeader-backButton {
+  margin-top: 2px; /* to center align with label */
+  margin-right: var(--base-size-4);
 }
