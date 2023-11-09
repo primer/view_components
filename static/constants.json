@@ -1360,6 +1360,18 @@
     ]
   },
   "Primer::OpenProject::PageHeader": {
+    "BACK_BUTTON_ICON_OPTIONS": [
+      "arrow-left",
+      "chevron-left",
+      "triangle-left"
+    ],
+    "BACK_BUTTON_SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "DEFAULT_BACK_BUTTON_ICON": "arrow-left",
+    "DEFAULT_BACK_BUTTON_SIZE": "medium",
     "DEFAULT_HEADER_VARIANT": "medium",
     "HEADER_VARIANT_OPTIONS": [
       "large",

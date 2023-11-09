@@ -15472,10 +15472,65 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ]
+      },
+      {
+        "name": "back_button",
+        "description": "Optional back button prepend the title",
+        "parameters": [
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:large`, `:medium`, or `:small`."
+          },
+          {
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "One of `arrow-left`, `chevron-left`, or `triangle-left`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "breadcrumbs",
+        "description": "Optional breadcrumbs above the title row",
+        "parameters": [
+          {
+            "name": "items",
+            "type": "Array<String, Hash>",
+            "default": "N/A",
+            "description": "Items is an array of strings, hash {href, text} or an anchor tag string"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
       }
     ],
     "methods": [
+      {
+        "name": "anchor_string_to_object",
+        "description": "transform anchor tag strings to {href, text} objects\ne.g \"\\u003ca href=\\\"/admin\\\"\\u003eAdministration\\u003c/a\\u003e\"",
+        "parameters": [
 
+        ]
+      },
+      {
+        "name": "anchor_tag_string?",
+        "description": "Check if the item is an anchor tag string e.g \"\\u003ca href=\\\"/admin\\\"\\u003eAdministration\\u003c/a\\u003e\"",
+        "parameters": [
+
+        ]
+      }
     ],
     "previews": [
       {
@@ -15520,6 +15575,32 @@
       {
         "preview_path": "primer/open_project/page_header/actions",
         "name": "actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/back_button",
+        "name": "back_button",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/breadcrumbs",
+        "name": "breadcrumbs",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
