@@ -63,14 +63,18 @@ module Primer
           content
 
           @items.each do |item|
-            if contains_group? && item[:type] != :group
-              @action_list.with_group do |group|
-                add_item(item, to: group)
-                next
+            case item[:type]
+            when :divider, :group
+              add_item(item, to: @list)
+            else
+              if contains_group?
+                @list.with_group do |group|
+                  add_item(item, to: group)
+                end
+              else
+                add_item(item, to: @list)
               end
             end
-
-            add_item(item, to: @list)
           end
         end
 
@@ -80,10 +84,6 @@ module Primer
           parent.send(mtd, **item[:kwargs]) do |item_instance|
             evaluate_block(item_instance, &item[:block])
           end
-        end
-
-        def any_groups?
-          @items.any? { |item| item[:type] == :group }
         end
 
         def organize_arguments(data: {}, **system_arguments)
