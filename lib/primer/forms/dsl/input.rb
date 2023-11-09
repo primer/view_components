@@ -45,6 +45,15 @@ module Primer
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+        DEFAULT_WIDTH = :full
+        WIDTH_MAPPINGS = {
+          :slim => "FormControl-slim",
+          :narrow => "FormControl-narrow",
+          :half => "FormControl-half",
+          :wide => "FormControl-wide",
+          DEFAULT_WIDTH => "FormControl-full"
+        }
+
         include Primer::ClassNameHelper
 
         attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control, :base_id
@@ -73,6 +82,7 @@ module Primer
           @invalid = @input_arguments.delete(:invalid)
           @full_width = @input_arguments.delete(:full_width)
           @size = @input_arguments.delete(:size)
+          @width = @input_arguments.delete(:width)
 
           # If scope_name_to_model is false, the name of the input for eg. `my_field`
           # will be `my_field` instead of the Rails default of `model[my_field]`.
@@ -224,6 +234,10 @@ module Primer
 
         def size
           @size ||= SIZE_MAPPINGS.include?(@size) ? @size : DEFAULT_SIZE
+        end
+
+        def width
+          @width ||= WIDTH_MAPPINGS.include?(@width) ? @width : DEFAULT_WIDTH
         end
 
         def validation_messages

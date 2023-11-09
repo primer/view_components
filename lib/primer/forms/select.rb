@@ -14,7 +14,10 @@ module Primer
         )
 
         @field_wrap_arguments = {
-          class: "FormControl-select-wrap",
+          class: class_names(
+            "FormControl-select-wrap",
+            Primer::Forms::Dsl::Input::WIDTH_MAPPINGS[@input.width]
+          ),
           hidden: @input.hidden?
         }
       end

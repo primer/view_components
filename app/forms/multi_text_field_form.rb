@@ -7,7 +7,8 @@ class MultiTextFieldForm < ApplicationForm
       name: :first_name,
       label: "First name",
       required: true,
-      caption: "That which we call a rose by any other name would smell as sweet."
+      caption: "That which we call a rose by any other name would smell as sweet.",
+      width: :narrow
     )
 
     my_form.separator
@@ -16,7 +17,8 @@ class MultiTextFieldForm < ApplicationForm
       name: :last_name,
       label: "Last name",
       required: true,
-      caption: "Bueller. Bueller. Bueller."
+      caption: "Bueller. Bueller. Bueller.",
+      width: :half
     )
 
     my_form.hidden(
