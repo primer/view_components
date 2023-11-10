@@ -125,12 +125,19 @@
   "Primer::Alpha::ActionMenu": {
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "none",
+    "Group": "Primer::Alpha::ActionMenu::Group",
+    "Heading": "Primer::Alpha::ActionMenu::Heading",
     "List": "Primer::Alpha::ActionMenu::List",
+    "ListWrapper": "Primer::Alpha::ActionMenu::ListWrapper",
     "SELECT_VARIANT_OPTIONS": [
       "single",
       "multiple",
       "none"
     ]
+  },
+  "Primer::Alpha::ActionMenu::Group": {
+  },
+  "Primer::Alpha::ActionMenu::Heading": {
   },
   "Primer::Alpha::ActionMenu::List": {
     "DEFAULT_ITEM_TAG": "button",
@@ -139,6 +146,8 @@
       "clipboard-copy",
       "button"
     ]
+  },
+  "Primer::Alpha::ActionMenu::ListWrapper": {
   },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
@@ -1243,7 +1252,16 @@
     ]
   },
   "Primer::Beta::Subhead": {
+    "DEFAULT_HEADING_SIZE": "large",
     "DEFAULT_HEADING_TAG": "div",
+    "HEADING_SIZE_MAP": {
+      "large": "Subhead-heading--large",
+      "medium": "Subhead-heading--medium"
+    },
+    "HEADING_SIZE_OPTIONS": [
+      "large",
+      "medium"
+    ],
     "HEADING_TAG_OPTIONS": [
       "div",
       "h1",

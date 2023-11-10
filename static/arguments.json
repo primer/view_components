@@ -386,12 +386,97 @@
     ]
   },
   {
-    "component": "ActionMenu::List",
+    "component": "ActionMenu::Group",
     "status": "alpha",
     "a11y_reviewed": true,
+    "short_name": "ActionMenuGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/group/default/",
+    "parameters": [
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "HTML ID value."
+      },
+      {
+        "name": "role",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "ARIA role describing the function of the list. listbox and menu are a common values."
+      },
+      {
+        "name": "item_classes",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Additional CSS classes to attach to items."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:full`",
+        "description": "One of `:full` or `:inset`. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges."
+      },
+      {
+        "name": "show_dividers",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Display a divider above each item in the list when it does not follow a header or divider."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an [ActionMenu](/components/alpha/actionmenu) instead of using this feature directly."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionMenu::Heading",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ActionMenuHeading",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/heading.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/heading/default/",
+    "parameters": [
+
+    ]
+  },
+  {
+    "component": "ActionMenu::List",
+    "status": "alpha",
+    "a11y_reviewed": false,
     "short_name": "ActionMenuList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [ActionMenu::List](/components/alpha/actionmenulist)"
+      }
+    ]
+  },
+  {
+    "component": "ActionMenu::ListWrapper",
+    "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "ActionMenuListWrapper",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list_wrapper.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list_wrapper/default/",
     "parameters": [
       {
         "name": "menu_id",

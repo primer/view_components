@@ -425,6 +425,32 @@
         }
       },
       {
+        "preview_path": "primer/alpha/action_menu/with_groups",
+        "name": "with_groups",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/with_items_and_groups",
+        "name": "with_items_and_groups",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/action_menu/wide",
         "name": "wide",
         "snapshot": "interactive",
@@ -5613,6 +5639,32 @@
       {
         "preview_path": "primer/beta/subhead/spacing_dangerous",
         "name": "spacing_dangerous",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/subhead/large_header",
+        "name": "large_header",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/subhead/medium_header",
+        "name": "medium_header",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
