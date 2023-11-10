@@ -45,7 +45,7 @@ class PrimerBetaButtonTest < Minitest::Test
       "Button"
     end
 
-    assert_selector(".Button-withTooltip .Button", text: "Button")
+    assert_selector(".Button", text: "Button")
     assert_selector(".Button ~ tool-tip[for='button-id']", visible: false)
   end
 

@@ -12,7 +12,7 @@ module RuboCop
         # We only verify SystemArguments if it's a `.new` call on a component or
         # a ViewHeleper call.
         def valid_node?(node)
-          return if node.nil?
+          return false if node.nil?
 
           view_helpers.include?(node.method_name) || (node.method_name == :new && !node.receiver.nil? && ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name))
         end

@@ -19,7 +19,7 @@ module Beta
     def test_includes_tooltip
       visit_preview(:with_tooltip)
 
-      assert_selector ".Button-withTooltip tool-tip", visible: :all
+      assert_selector ".Button + tool-tip", visible: :all
     end
   end
 end

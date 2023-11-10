@@ -54,7 +54,7 @@ module Primer
           @system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME, deprecated_values: DEPRECATED_SCHEME_OPTIONS)]
         )
-        @system_arguments[:hidden] = true if count == 0 && hide_if_zero # rubocop:disable Style/NumericPredicate
+        @system_arguments[:hidden] = true if count == 0 && hide_if_zero
       end
 
       def call

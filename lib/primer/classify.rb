@@ -75,7 +75,6 @@ module Primer
                 # are about 30% faster than Hash#dig. It also ensures validate is
                 # only called when necessary, i.e. when the class can't be found
                 # in the lookup table.
-                # rubocop:disable Style/RescueModifier
                 found = (LOOKUP[key][item][brk] rescue nil) || validate(key, item, brk)
                 # rubocop:enable Style/RescueModifier
                 result << found if found
@@ -93,7 +92,6 @@ module Primer
         end.join(" ")
 
         # This is much faster than Rails' presence method.
-        # rubocop:disable Rails/Blank
         {
           class: !classes || classes.empty? ? nil : classes,
           style: !style || style.empty? ? nil : style

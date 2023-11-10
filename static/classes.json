@@ -218,9 +218,6 @@
   "Button-visual": [
     "Primer::Beta::Button"
   ],
-  "Button-withTooltip": [
-    "Primer::Beta::Button"
-  ],
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
   ],
@@ -526,6 +523,12 @@
     "Primer::Beta::Subhead"
   ],
   "Subhead-heading--danger": [
+    "Primer::Beta::Subhead"
+  ],
+  "Subhead-heading--large": [
+    "Primer::Beta::Subhead"
+  ],
+  "Subhead-heading--medium": [
     "Primer::Beta::Subhead"
   ],
   "TimelineItem": [

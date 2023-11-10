@@ -10,6 +10,7 @@ module ERBLint
       include ERBLint::LinterRegistry
       include TagTreeHelpers
 
+      # :nodoc:
       class ConfigSchema < LinterConfig
         property :ignore_files, accepts: array_of?(String), default: -> { [] }
       end

@@ -58,7 +58,7 @@ module RuboCop
         private
 
         def label_node?(node)
-          return if node.nil?
+          return false if node.nil?
 
           node.method_name == :new && !node.receiver.nil? && node.receiver.const_name == "Primer::Beta::Label"
         end

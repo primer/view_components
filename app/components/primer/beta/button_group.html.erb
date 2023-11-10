@@ -1,5 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% buttons.each do |button| %>
-    <%= button %>
+    <div>
+      <%= button %>
+    </div>
   <% end %>
 <% end %>

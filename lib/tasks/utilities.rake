@@ -9,7 +9,6 @@ namespace :utilities do
     require "primer/classify/utilities"
 
     # Keys that are looked for to be included in the utilities.yml file
-    # rubocop:disable Lint/ConstantDefinitionInBlock
     SUPPORTED_KEYS = [
       /^anim\b/,
       /^color-bg\b/,
@@ -72,7 +71,7 @@ namespace :utilities do
       end
 
       # Change the rest from hyphens to underscores
-      classname.sub!(/-/, "_")
+      classname.sub!("-", "_")
 
       # convert padding/margin negative values ie n7 to -7
       classname.sub!(/^n/, "-") if classname.match?(/^n[0-9]/)

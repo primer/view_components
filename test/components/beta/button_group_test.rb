@@ -77,9 +77,7 @@ module Primer
 
         assert_selector("div.ButtonGroup") do
           assert_selector("button.Button", text: "Button")
-          assert_selector("div.Button-withTooltip") do
-            assert_selector(".octicon.octicon-star")
-          end
+          assert_selector(".octicon.octicon-star")
         end
       end
     end

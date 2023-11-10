@@ -1008,7 +1008,7 @@
         "name": "subtitle",
         "type": "String",
         "default": "`nil`",
-        "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+        "description": "Provides additional context for the dialog, also setting the `aria-describedby` attribute."
       },
       {
         "name": "show_divider",
@@ -3119,7 +3119,7 @@
         "name": "size",
         "type": "Integer",
         "default": "`20`",
-        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`."
+        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, `64`, or `80`."
       },
       {
         "name": "shape",
@@ -3715,12 +3715,6 @@
         "type": "Symbol",
         "default": "N/A",
         "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Optional keyword arguments to be passed to the wrapper `<div>` tag."
       },
       {
         "name": "scheme",

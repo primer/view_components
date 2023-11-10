@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "./test_helper"
+require_relative "test_helper"
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 # Test Component Specific Selectors
@@ -69,9 +69,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
       ".btn-small-mktg"
-    ],
-    Primer::Alpha::SegmentedControl => [
-      ".Button-withTooltip"
     ],
     Primer::Alpha::UnderlineNav => [
       ".UnderlineNav .Counter--primary",

@@ -790,6 +790,35 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
+        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionList::FormWrapper",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionListFormWrapper",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
         "description": "Heading used to describe each sub list within an action list.",
         "accessibility_docs": null,
@@ -852,35 +881,6 @@
 
             ]
           }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
-        "description": "Utility component for wrapping ActionLists or individual ActionList::Items in forms.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionList::FormWrapper",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionListFormWrapper",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
         ],
         "previews": [
 
@@ -1848,46 +1848,6 @@
         ]
       },
       {
-        "fully_qualified_name": "Primer::Alpha::ActionMenu::List",
-        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "ActionMenu::List",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "ActionMenuList",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::List{{/link_to_component}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-          {
-            "name": "items",
-            "description": "Returns the value of attribute items.",
-            "parameters": [
-
-            ]
-          }
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::ActionMenu::ListWrapper",
         "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
         "accessibility_docs": null,
@@ -1943,6 +1903,46 @@
         ],
         "methods": [
 
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::List",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionMenu::List",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuList",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/list.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/list/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::List{{/link_to_component}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+          {
+            "name": "items",
+            "description": "Returns the value of attribute items.",
+            "parameters": [
+
+            ]
+          }
         ],
         "previews": [
 
@@ -3329,6 +3329,40 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
+        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Dialog::Body",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "DialogBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dialog::Header",
         "description": "A `Dialog::Header` is a compositional component, used to render the\nHeader of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
         "accessibility_docs": null,
@@ -3358,7 +3392,7 @@
             "name": "subtitle",
             "type": "String",
             "default": "`nil`",
-            "description": "Provides dditional context for the dialog, also setting the `aria-describedby` attribute."
+            "description": "Provides additional context for the dialog, also setting the `aria-describedby` attribute."
           },
           {
             "name": "show_divider",
@@ -3378,40 +3412,6 @@
             "default": "`:medium`",
             "description": "One of `:large` or `:medium`."
           },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dialog::Body",
-        "description": "A `Dialog::Body` is a compositional component, used to render the\nBody of a dialog. See {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Dialog::Body",
-        "status": "alpha",
-        "a11y_reviewed": true,
-        "short_name": "DialogBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/body/default/",
-        "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -3714,6 +3714,35 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
+        "description": "Items to be rendered in the `Dropdown` menu.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Dropdown::Menu::Item",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "DropdownMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+        "parameters": [
+
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
         "description": "This component is part of `Dropdown` and should not be\nused as a standalone component.",
         "accessibility_docs": null,
@@ -3777,35 +3806,6 @@
               }
             ]
           }
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Dropdown::Menu::Item",
-        "description": "Items to be rendered in the `Dropdown` menu.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Dropdown::Menu::Item",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "DropdownMenuItem",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
         ],
         "methods": [
 
@@ -4713,35 +4713,6 @@
     ],
     "subcomponents": [
       {
-        "fully_qualified_name": "Primer::Alpha::Layout::Sidebar",
-        "description": "The layout's sidebar content.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Layout::Sidebar",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "LayoutSidebar",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
         "fully_qualified_name": "Primer::Alpha::Layout::Main",
         "description": "The layout's main content.",
         "accessibility_docs": null,
@@ -4767,6 +4738,35 @@
             "default": "N/A",
             "description": "{{link_to_system_arguments_docs}}"
           }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::Layout::Sidebar",
+        "description": "The layout's sidebar content.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Layout::Sidebar",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "LayoutSidebar",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
+        "parameters": [
+
         ],
         "slots": [
 
@@ -5085,7 +5085,7 @@
   },
   {
     "fully_qualified_name": "Primer::Alpha::NavList",
-    "description": "",
+    "description": ":nodoc:",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -5134,8 +5134,199 @@
     ],
     "subcomponents": [
       {
+        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
+        "description": ":nodoc:",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Divider",
+        "status": "deprecated",
+        "a11y_reviewed": false,
+        "short_name": "NavListDivider",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
+        "parameters": [
+          {
+            "name": "scheme",
+            "type": "Symbol",
+            "default": "`:subtle`",
+            "description": "Display a background color if scheme is `filled`."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Group",
+        "description": ":nodoc:",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": true,
+        "component": "NavList::Group",
+        "status": "deprecated",
+        "a11y_reviewed": true,
+        "short_name": "NavListGroup",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
+        "parameters": [
+          {
+            "name": "selected_item_id",
+            "type": "Symbol",
+            "default": "`nil`",
+            "description": "The ID of the currently selected item. Used internally."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+          {
+            "name": "show_more_item",
+            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
+            "parameters": [
+              {
+                "name": "src",
+                "type": "String",
+                "default": "N/A",
+                "description": "The URL to query for additional pages of list items."
+              },
+              {
+                "name": "pages",
+                "type": "Integer",
+                "default": "N/A",
+                "description": "The total number of pages in the result set."
+              },
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "A component class to use instead of the default `Primer::Beta::NavList::Item` class."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by `component_klass`."
+              }
+            ]
+          }
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::NavList::Heading",
+        "description": ":nodoc:",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "NavList::Heading",
+        "status": "deprecated",
+        "a11y_reviewed": false,
+        "short_name": "NavListHeading",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/heading/default/",
+        "parameters": [
+          {
+            "name": "title",
+            "type": "String",
+            "default": "N/A",
+            "description": "The text content of the heading."
+          },
+          {
+            "name": "id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "The value of the ID HTML attribute. Auto-generated by default."
+          },
+          {
+            "name": "heading_level",
+            "type": "Integer",
+            "default": "`2`",
+            "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
-        "description": "",
+        "description": ":nodoc:",
         "accessibility_docs": null,
         "is_form_component": false,
         "is_published": true,
@@ -5242,197 +5433,6 @@
               }
             ]
           }
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Divider",
-        "description": "",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "NavList::Divider",
-        "status": "deprecated",
-        "a11y_reviewed": false,
-        "short_name": "NavListDivider",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/divider.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/divider/default/",
-        "parameters": [
-          {
-            "name": "scheme",
-            "type": "Symbol",
-            "default": "`:subtle`",
-            "description": "Display a background color if scheme is `filled`."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Group",
-        "description": "",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": true,
-        "component": "NavList::Group",
-        "status": "deprecated",
-        "a11y_reviewed": true,
-        "short_name": "NavListGroup",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/group.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/group/default/",
-        "parameters": [
-          {
-            "name": "selected_item_id",
-            "type": "Symbol",
-            "default": "`nil`",
-            "description": "The ID of the currently selected item. Used internally."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-          {
-            "name": "show_more_item",
-            "description": "A special \"show more\" list item that appears at the bottom of the group. Clicking\nthe item will fetch the next page of results from the URL passed in the `src` argument\nand append the resulting chunk of HTML to the group.",
-            "parameters": [
-              {
-                "name": "src",
-                "type": "String",
-                "default": "N/A",
-                "description": "The URL to query for additional pages of list items."
-              },
-              {
-                "name": "pages",
-                "type": "Integer",
-                "default": "N/A",
-                "description": "The total number of pages in the result set."
-              },
-              {
-                "name": "component_klass",
-                "type": "Class",
-                "default": "N/A",
-                "description": "A component class to use instead of the default `Primer::Beta::NavList::Item` class."
-              },
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "items",
-            "description": "Items.",
-            "parameters": [
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}."
-              }
-            ]
-          },
-          {
-            "name": "heading",
-            "description": "Heading text rendered above the list of items.",
-            "parameters": [
-              {
-                "name": "component_klass",
-                "type": "Class",
-                "default": "N/A",
-                "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
-              },
-              {
-                "name": "system_arguments",
-                "type": "Hash",
-                "default": "N/A",
-                "description": "The arguments accepted by `component_klass`."
-              }
-            ]
-          }
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::NavList::Heading",
-        "description": "",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "NavList::Heading",
-        "status": "deprecated",
-        "a11y_reviewed": false,
-        "short_name": "NavListHeading",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/heading.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/heading/default/",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "String",
-            "default": "N/A",
-            "description": "The text content of the heading."
-          },
-          {
-            "name": "id",
-            "type": "String",
-            "default": "`self.class.generate_id`",
-            "description": "The value of the ID HTML attribute. Auto-generated by default."
-          },
-          {
-            "name": "heading_level",
-            "type": "Integer",
-            "default": "`2`",
-            "description": "The heading level, i.e. 2 for an `<h2>`, 3 for an `<h3>`, etc."
-          },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
         ],
         "methods": [
 
@@ -5597,7 +5597,32 @@
 
     ],
     "previews": [
-
+      {
+        "preview_path": "primer/alpha/octicon_symbols/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/octicon_symbols/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
     ],
     "subcomponents": [
 
@@ -5938,6 +5963,40 @@
         ]
       },
       {
+        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
+        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "Overlay::Body",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "OverlayBody",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ],
+        "slots": [
+
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::Overlay::Header",
         "description": "A `Overlay::Header` is a compositional component, used to render the\nHeader of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
         "accessibility_docs": null,
@@ -5987,40 +6046,6 @@
             "default": "`false`",
             "description": "Visually hide the `title` while maintaining a label for assistive technologies."
           },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
-      },
-      {
-        "fully_qualified_name": "Primer::Alpha::Overlay::Body",
-        "description": "A `Overlay::Body` is a compositional component, used to render the\nBody of an overlay. See {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}.",
-        "accessibility_docs": null,
-        "is_form_component": false,
-        "is_published": true,
-        "requires_js": false,
-        "component": "Overlay::Body",
-        "status": "alpha",
-        "a11y_reviewed": false,
-        "short_name": "OverlayBody",
-        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/overlay/body.rb",
-        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
-        "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -9392,7 +9417,7 @@
         "name": "size",
         "type": "Integer",
         "default": "`20`",
-        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`."
+        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, `64`, or `80`."
       },
       {
         "name": "shape",
@@ -9527,6 +9552,19 @@
       {
         "preview_path": "primer/beta/avatar/size_48",
         "name": "size_48",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/avatar/size_64",
+        "name": "size_64",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -12067,12 +12105,6 @@
         "type": "Symbol",
         "default": "N/A",
         "description": "One of `:a`, `:button`, `:clipboard-copy`, or `:summary`."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Optional keyword arguments to be passed to the wrapper `<div>` tag."
       },
       {
         "name": "scheme",

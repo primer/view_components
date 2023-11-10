@@ -81,7 +81,6 @@ module Primer
           # methods. These methods will use the passed name if provided instead
           # of generating a scoped one.
           #
-          # rubocop:disable Style/IfUnlessModifier
           unless @input_arguments.delete(:scope_name_to_model) { true }
             @input_arguments[:name] = name
           end

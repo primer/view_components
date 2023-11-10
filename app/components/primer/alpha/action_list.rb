@@ -179,7 +179,6 @@ module Primer
       # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Item) %>
       # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
       def build_item(component_klass: ActionList::Item, **system_arguments)
-        # rubocop:disable Style/IfUnlessModifier
         if single_select? && system_arguments[:active] && items.count(&:active?).positive?
           raise ArgumentError, "only a single item may be active when select_variant is set to :single"
         end

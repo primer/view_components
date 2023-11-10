@@ -8,13 +8,10 @@ require "capybara/cuprite"
 Capybara.register_driver(:primer_cuprite) do |app|
   Capybara::Cuprite::Driver.new(
     app,
-    **{
-      # Enable debugging capabilities
-      inspector: true,
-      # Allow running Chrome in a headful mode by setting HEADLESS env
-      # var to a falsey value
-      headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
-    }
+    inspector: true,
+    # Allow running Chrome in a headful mode by setting HEADLESS env
+    # var to a falsey value
+    headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
   )
 end
 

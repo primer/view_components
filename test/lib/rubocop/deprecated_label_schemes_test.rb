@@ -24,7 +24,7 @@ class RubocopDeprecatedLabelSchemesTest < CopTestCase
   end
 
   def test_argument_not_a_symbol
-    investigate(cop, <<-'RUBY')
+    investigate(cop, <<-RUBY)
       Primer::Beta::Label.new(scheme: scheme)
     RUBY
 
