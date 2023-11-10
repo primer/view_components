@@ -1,0 +1,6 @@
+<%= render(FormControl.new(input: @input)) do %>
+  <%= render(Primer::Alpha::ActionMenu.new(**@input.input_arguments)) do |menu| %>
+    <% menu.with_show_button { "Select..." } %>
+    <% @input.block.call(menu) if @input.block %>
+  <% end %>
+<% end %>

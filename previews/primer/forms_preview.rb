@@ -23,6 +23,8 @@ module Primer
 
     def select_form; end
 
+    def action_menu_form; end
+
     def radio_button_with_nested_form; end
 
     def check_box_with_nested_form; end
