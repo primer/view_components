@@ -20,7 +20,7 @@ class PrimerTextFieldElement extends HTMLElement {
       () => {
         this.clearError()
       },
-      {signal}
+      {signal},
     )
 
     this.inputElement.addEventListener(
@@ -29,7 +29,7 @@ class PrimerTextFieldElement extends HTMLElement {
         const errorMessage = await event.detail.response.text()
         this.setError(errorMessage)
       },
-      {signal}
+      {signal},
     )
   }
 
@@ -45,11 +45,16 @@ class PrimerTextFieldElement extends HTMLElement {
   clearError(): void {
     this.inputElement.removeAttribute('invalid')
     this.validationElement.hidden = true
-    this.validationMessageElement.textContent = ''
+    this.validationMessageElement.replaceChildren()
   }
 
   setError(message: string): void {
-    this.validationMessageElement.textContent = message
+    const template = document.createElement('template')
+    // eslint-disable-next-line github/no-inner-html
+    template.innerHTML = message
+    const fragment = document.importNode(template.content, true)
+
+    this.validationMessageElement.replaceChildren(fragment)
     this.validationElement.hidden = false
     this.inputElement.setAttribute('invalid', 'true')
   }
