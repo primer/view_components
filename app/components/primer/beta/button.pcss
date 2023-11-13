@@ -47,13 +47,9 @@
     transition: none;
   }
 
-  &:disabled {
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-
+  &:disabled,
   &[aria-disabled='true'] {
-    cursor: default;
+    cursor: not-allowed;
     box-shadow: none;
   }
 }
@@ -170,7 +166,7 @@ summary.Button {
   border-color: var(--button-primary-borderColor-rest);
   box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow));
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.Button--inactive) {
     background-color: var(--button-primary-bgColor-hover);
     border-color: var(--button-primary-borderColor-hover);
   }
@@ -219,7 +215,7 @@ summary.Button {
   border-color: var(--button-default-borderColor-rest);
   box-shadow: var(--button-default-shadow-resting), var(--button-default-shadow-inset);
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.Button--inactive) {
     background-color: var(--button-default-bgColor-hover);
     border-color: var(--button-default-borderColor-hover);
   }
@@ -250,7 +246,7 @@ summary.Button {
     color: var(--button-invisible-iconColor-rest, var(--color-fg-muted));
   }
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.Button--inactive) {
     background-color: var(--button-invisible-bgColor-hover);
 
     & .Button-visual {
@@ -294,7 +290,7 @@ summary.Button {
   height: unset;
   padding: 0;
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.Button--inactive) {
     text-decoration: underline;
   }
 
@@ -320,7 +316,7 @@ summary.Button {
   border-color: var(--button-danger-borderColor-rest);
   box-shadow: var(--button-default-shadow-resting), var(--button-default-shadow-inset);
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.Button--inactive) {
     color: var(--button-danger-fgColor-hover);
     fill: var(--button-danger-fgColor-hover);
     background-color: var(--button-danger-bgColor-hover);
@@ -374,4 +370,12 @@ summary.Button {
   &.Button--large {
     width: var(--control-large-size);
   }
+}
+
+/* TODO: remove fallback when we can get new @primer/primitives release. The fallback only applies to light mode */
+.Button--inactive {
+  background-color: var(--button-inactive-bgColor, #EAEEF2);
+  border: 0;
+  color: var(--button-inactive-fgColor, #656D76);
+  cursor: default;
 }

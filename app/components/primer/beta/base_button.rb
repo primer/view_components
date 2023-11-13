@@ -36,10 +36,9 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "btn-block" => block
+          "btn-block" => block,
+          "Button--inactive" => inactive
         )
-
-        @system_arguments[:"aria-disabled"] = true if inactive
 
         @disabled = disabled
         return unless @disabled

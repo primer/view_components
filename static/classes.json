@@ -179,6 +179,9 @@
   "Button--iconOnly": [
     "Primer::Beta::Button"
   ],
+  "Button--inactive": [
+    "Primer::Beta::Button"
+  ],
   "Button--invisible": [
     "Primer::Beta::Button"
   ],
