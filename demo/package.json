@@ -6,7 +6,7 @@
     "@primer/css": "^21.0.9",
     "@primer/primitives": "^7.15.0",
     "@rails/actioncable": "^7.1.2",
-    "@rails/ujs": "^7.1.1",
+    "@rails/ujs": "^7.1.2",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^4.15.1"
   }
