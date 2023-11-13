@@ -15,13 +15,13 @@ class AutoCheckController < ApplicationController
   def ok
     head :ok
   end
-  
+
   def accepted
     render partial: "auto_check/warning_message",
       locals: { input_value: params[:value] },
       status: :accepted,
       formats: :html
-end
+  end
 
   def random
     if rand > 0.5
