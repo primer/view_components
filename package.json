@@ -68,7 +68,7 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^5.31.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "axe-core": "^4.7.1",
     "chokidar-cli": "^3.0.0",
     "cssnano": "^6.0.1",
