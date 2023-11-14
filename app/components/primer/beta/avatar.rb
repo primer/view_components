@@ -25,7 +25,7 @@ module Primer
       DEFAULT_SHAPE = :circle
       SHAPE_OPTIONS = [DEFAULT_SHAPE, :square].freeze
 
-      SIZE_OPTIONS = [16, DEFAULT_SIZE, SMALL_THRESHOLD, 32, 40, 48, 80].freeze
+      SIZE_OPTIONS = [16, DEFAULT_SIZE, SMALL_THRESHOLD, 32, 40, 48, 64, 80].freeze
 
       # @param src [String] The source url of the avatar image.
       # @param alt [String] Passed through to alt on img tag.

@@ -10,13 +10,13 @@ updates:
       - "skip changeset"
       - "actions"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
 
   # NPM
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "dependencies"
       - "skip changeset"
@@ -24,7 +24,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "dependencies"
       - "skip changeset"
@@ -34,7 +34,7 @@ updates:
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "dependencies"
       - "skip changeset"
@@ -42,7 +42,7 @@ updates:
   - package-ecosystem: "bundler"
     directory: "/demo"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "dependencies"
       - "skip changeset"

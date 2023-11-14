@@ -48,7 +48,7 @@ jobs:
     name: semver label
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         id: version-result
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -60,7 +60,7 @@ jobs:
             if (match && match[0]) {
               return match[0][1]
             }
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         env:
           RELEASE: ${{ steps.version-result.outputs.result }}
         with:

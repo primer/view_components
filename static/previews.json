@@ -1177,6 +1177,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/avatar/size_64",
+        "name": "size_64",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/avatar/size_80",
         "name": "size_80",
         "snapshot": "true",

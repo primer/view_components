@@ -9258,7 +9258,7 @@
         "name": "size",
         "type": "Integer",
         "default": "`20`",
-        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`."
+        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, `64`, or `80`."
       },
       {
         "name": "shape",
@@ -9393,6 +9393,19 @@
       {
         "preview_path": "primer/beta/avatar/size_48",
         "name": "size_48",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/avatar/size_64",
+        "name": "size_64",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

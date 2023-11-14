@@ -3034,7 +3034,7 @@
         "name": "size",
         "type": "Integer",
         "default": "`20`",
-        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`."
+        "description": "One of `16`, `20`, `24`, `32`, `40`, `48`, `64`, or `80`."
       },
       {
         "name": "shape",
