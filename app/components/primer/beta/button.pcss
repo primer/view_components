@@ -372,7 +372,8 @@ summary.Button {
   }
 }
 
-.Button--inactive {
+/* `disabled` takes precedence over `inactive` */
+.Button--inactive:not([aria-disabled='true']):not(:disabled) {
   background-color: var(--button-inactive-bgColor);
   border: 0;
   color: var(--button-inactive-fgColor);
