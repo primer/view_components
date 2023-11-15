@@ -24,8 +24,13 @@ class AutoCheckController < ApplicationController
   end
 
   def random
-    if rand > 0.5
+    if rand < 0.33
       head :ok
+    elsif rand < 0.66
+      render partial: "auto_check/success_message",
+        locals: { input_value: params[:value] },
+        status: :ok,
+        formats: :html
     else
       render status: :unprocessable_entity, plain: "Random error!"
     end
