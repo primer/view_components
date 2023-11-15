@@ -219,6 +219,7 @@ GEM
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1003)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     ms_rest (0.7.6)
       concurrent-ruby (~> 1.0)
@@ -235,6 +236,9 @@ GEM
     mutex_m (0.1.2)
     netrc (0.11.0)
     nio4r (2.5.9)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-darwin)
@@ -342,6 +346,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  ruby
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
