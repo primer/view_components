@@ -154,6 +154,7 @@ module Primer
       # @param dynamic_label_prefix [String] If provided, the prefix is prepended to the dynamic label and displayed in the show button.
       # @param select_variant [Symbol] <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>
       # @param form_arguments [Hash] Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
+      # @param overflow [Symbol] Control the overflow behavior of the menu. <%= one_of(Primer::Alpha::Overlay::OVERFLOW_OPTIONS) %>. Defaults to `<%= Primer::Alpha::Overlay::DEFAULT_OVERFLOW_STYLE %>`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
       def initialize(
         menu_id: self.class.generate_id,
@@ -166,6 +167,7 @@ module Primer
         dynamic_label_prefix: nil,
         select_variant: DEFAULT_SELECT_VARIANT,
         form_arguments: {},
+        overflow: Primer::Alpha::Overlay::DEFAULT_OVERFLOW_STYLE,
         **system_arguments
       )
         @menu_id = menu_id
@@ -188,7 +190,8 @@ module Primer
           visually_hide_title: true,
           anchor_align: anchor_align,
           anchor_side: anchor_side,
-          size: size
+          size: size,
+          overflow: overflow,
         )
 
         @list = Primer::Alpha::ActionMenu::List.new(

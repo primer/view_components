@@ -65,6 +65,15 @@ module Primer
 
       ROLE_OPTIONS = [:dialog, :menu, nil].freeze
 
+      DEFAULT_OVERFLOW_STYLE = :auto
+      OVERFLOW_MAPPINGS = {
+        DEFAULT_OVERFLOW_STYLE => "overflow-y-auto",
+        :scroll => "overflow-y-scroll",
+        :hidden => "overflow-y-hidden",
+        :visible => "overflow-y-visible"
+      }.freeze
+      OVERFLOW_OPTIONS = OVERFLOW_MAPPINGS.keys
+
       # Optional button to open the Overlay.
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
@@ -135,6 +144,7 @@ module Primer
       # @param allow_out_of_bounds [Boolean] Allow the Overlay to overflow its container.
       # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
       # @param role [String] The ARIA role. <%= one_of(Primer::Alpha::Overlay::ROLE_OPTIONS) %>
+      # @param overflow [Symbol] Sets the overflow behavior of the Overlay wrapper. <%= one_of(Primer::Alpha::Overlay::OVERFLOW_OPTIONS) %>.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
@@ -150,6 +160,7 @@ module Primer
         allow_out_of_bounds: false,
         visually_hide_title: false,
         id: self.class.generate_id,
+        overflow: nil,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -159,7 +170,8 @@ module Primer
         @system_arguments[:id] = id.to_s
         @wrapper_classes = class_names(
           "Overlay",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
+          OVERFLOW_MAPPINGS[fetch_or_fallback(OVERFLOW_OPTIONS, overflow, DEFAULT_OVERFLOW_STYLE)] => overflow.present?
         )
         @system_arguments[:tag] = "anchored-position"
         @system_arguments[:anchor] = anchor || "overlay-show-#{@system_arguments[:id]}"
