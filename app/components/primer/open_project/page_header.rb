@@ -30,6 +30,7 @@ module Primer
       DEFAULT_BACK_BUTTON_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
+      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:block, :none].freeze
 
       status :open_project
 
@@ -75,6 +76,7 @@ module Primer
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-contextBarActions")
+        system_arguments[:display] ||= DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY
 
         Primer::BaseComponent.new(**system_arguments)
       }
