@@ -64,12 +64,11 @@ class PrimerTextFieldElement extends HTMLElement {
   }
 
   toggleValidationStyling(isError: boolean): void {
-    this.validationElement.classList.remove(
-      isError ? 'FormControl-inlineValidation--success' : 'FormControl-inlineValidation--error',
-    )
-    this.validationElement.classList.add(
-      isError ? 'FormControl-inlineValidation--error' : 'FormControl-inlineValidation--success',
-    )
+    if (isError) {
+      this.validationElement.classList.remove('FormControl-inlineValidation--success')
+    } else {
+      this.validationElement.classList.add('FormControl-inlineValidation--success')
+    }
     this.validationSuccessIcon.hidden = isError
     this.validationErrorIcon.hidden = !isError
     this.inputElement.setAttribute('invalid', isError ? 'true' : 'false')

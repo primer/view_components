@@ -21,7 +21,7 @@ module Alpha
 
       find("input[type=text]").fill_in(with: "foobar")
 
-      assert_selector ".FormControl-inlineValidation.FormControl-inlineValidation--error", text: "The name foobar is already taken."
+      assert_selector ".FormControl-inlineValidation", text: "The name foobar is already taken."
       assert_selector ".FormControl-inlineValidation--visual .octicon-alert-fill"
       refute_selector ".FormControl-inlineValidation--visual .octicon-check-circle-fill"
     end
