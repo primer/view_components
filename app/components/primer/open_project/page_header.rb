@@ -70,6 +70,7 @@ module Primer
       }
 
       # Context Bar Actions
+      # By default shown on narrow screens. Can be overridden with system_argument: display
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :context_bar_actions, lambda { |**system_arguments|
@@ -82,6 +83,7 @@ module Primer
       }
 
       # Optional back button prepend the title
+      # By default shown on wider screens. Can be overridden with system_argument: display
       #
       # @param size [Symbol] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_SIZE_OPTIONS) %>
       # @param icon [String] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_ICON_OPTIONS) %>
@@ -103,6 +105,7 @@ module Primer
       }
 
       # Optional parent link in the context area
+      # By default shown on narrow screens. Can be overridden with system_argument: display
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :parent_link, lambda { |icon: DEFAULT_BACK_BUTTON_ICON, **system_arguments, &block|
@@ -117,6 +120,7 @@ module Primer
       }
 
       # Optional breadcrumbs above the title row
+      # By default shown on wider screens. Can be overridden with system_argument: display
       #
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
