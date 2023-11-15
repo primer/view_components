@@ -1,5 +1,5 @@
 <%= content_tag(:div, **@input.validation_arguments) do %>
   <span class="FormControl-inlineValidation--visual" data-target="<%= @input.validation_success_icon_target %>" hidden><%= render(Primer::Beta::Octicon.new(icon: :"check-circle-fill", size: :xsmall, aria: { hidden: true })) %></span>
-  <span class=" FormControl-inlineValidation--visual" data-target="<%= @input.validation_error_icon_target %>" hidden><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
+  <span class=" FormControl-inlineValidation--visual" data-target="<%= @input.validation_error_icon_target %>"><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
   <%= content_tag(:span, @input.invalid? ? @input.validation_messages.first : "", **@input.validation_message_arguments) %>
 <% end %>
