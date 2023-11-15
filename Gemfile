@@ -43,6 +43,7 @@ gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PA
 
 gem "kramdown", "~> 2.4"
 gem "sourcemap", "~> 0.1"
+gem "dartsass-rails", "~> 0.4.1"
 
 group :test do
   gem "webmock"

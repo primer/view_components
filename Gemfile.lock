@@ -76,6 +76,8 @@ GEM
     cuprite (0.14.3)
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
+    dartsass-rails (0.4.1)
+      railties (>= 6.0.0)
     docile (1.4.0)
     drb (2.1.1)
       ruby2_keywords
@@ -287,6 +289,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (~> 3.39.2)
   cuprite (~> 0.14.3)
+  dartsass-rails (~> 0.4.1)
   erb_lint (~> 0.4.0)
   erblint-github (~> 0.5.1)
   kramdown (~> 2.4)
