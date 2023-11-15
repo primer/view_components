@@ -6,8 +6,7 @@ npm install
 
 # Set up demo
 pushd demo
-bundle install --path vendor/bundle
-npm install
+bin/setup
 popd
 
 # Initial build of docs content

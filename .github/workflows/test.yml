@@ -37,7 +37,7 @@ jobs:
     - name: Build
       run: |
         npm ci
-        cd demo && npm ci
+        cd demo && bin/setup
     - name: Test
       run: bundle exec rake test:accessibility
   components:
@@ -184,7 +184,7 @@ jobs:
     - name: Build
       run: |
         npm ci
-        cd demo && npm ci
+        cd demo && bin/setup
     - name: Test
       run: |
         bundle exec rake test:system
@@ -212,8 +212,7 @@ jobs:
         bundle install
         bundle exec rake static:dump
         cd demo
-        npm ci
-        bundle install
+        bin/setup
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
