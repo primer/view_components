@@ -8,6 +8,8 @@ class PrimerTextFieldElement extends HTMLElement {
   @target inputElement: HTMLInputElement
   @target validationElement: HTMLElement
   @target validationMessageElement: HTMLElement
+  @target validationSuccessIcon: HTMLElement
+  @target validationErrorIcon: HTMLElement
 
   #abortController: AbortController | null
 
@@ -17,8 +19,13 @@ class PrimerTextFieldElement extends HTMLElement {
 
     this.inputElement.addEventListener(
       'auto-check-success',
-      () => {
-        this.clearError()
+      async (event: any) => {
+        const message = await event.detail.response.text()
+        if (message && message.length > 0) {
+          this.setSuccess(message)
+        } else {
+          this.clearError()
+        }
       },
       {signal},
     )
@@ -48,14 +55,35 @@ class PrimerTextFieldElement extends HTMLElement {
     this.validationMessageElement.replaceChildren()
   }
 
-  setError(message: string): void {
+  setValidationMessage(message: string): void {
     const template = document.createElement('template')
     // eslint-disable-next-line github/no-inner-html
     template.innerHTML = message
     const fragment = document.importNode(template.content, true)
-
     this.validationMessageElement.replaceChildren(fragment)
+  }
+
+  toggleValidationStyling(isError: boolean): void {
+    this.validationElement.classList.remove(
+      isError ? 'FormControl-inlineValidation--success' : 'FormControl-inlineValidation--error',
+    )
+    this.validationElement.classList.add(
+      isError ? 'FormControl-inlineValidation--error' : 'FormControl-inlineValidation--success',
+    )
+    this.validationSuccessIcon.hidden = isError
+    this.validationErrorIcon.hidden = !isError
+    this.inputElement.setAttribute('invalid', isError ? 'true' : 'false')
+  }
+
+  setSuccess(message: string): void {
+    this.toggleValidationStyling(false)
+    this.setValidationMessage(message)
     this.validationElement.hidden = false
-    this.inputElement.setAttribute('invalid', 'true')
+  }
+
+  setError(message: string): void {
+    this.toggleValidationStyling(true)
+    this.setValidationMessage(message)
+    this.validationElement.hidden = false
   }
 }

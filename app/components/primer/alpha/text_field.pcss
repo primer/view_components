@@ -36,8 +36,6 @@
   font-size: var(--text-caption-size);
   line-height: var(--text-caption-lineHeight);
   font-weight: var(--base-text-weight-semibold);
-  color: var(--control-borderColor-danger);
-  fill: var(--control-borderColor-danger);
   flex-direction: row;
   align-items: flex-start;
   gap: var(--base-size-4);
@@ -45,6 +43,16 @@
   & p {
     margin-bottom: 0;
   }
+}
+
+.FormControl-inlineValidation--error {
+  color: var(--control-borderColor-danger);
+  fill: var(--control-borderColor-danger);
+}
+
+.FormControl-inlineValidation--success {
+  color: var(--control-borderColor-success);
+  fill: var(--control-borderColor-success);
 }
 
 .FormControl-inlineValidation--visual {
@@ -79,8 +87,12 @@
     -webkit-text-fill-color: var(--control-fgColor-disabled);
   }
 
-  &:not(:focus)[invalid] {
+  &:not(:focus)[invalid=true] {
     border-color: var(--control-borderColor-danger);
+  }
+
+  &:not(:focus)[invalid=false] {
+    border-color: var(--control-borderColor-success);
   }
 
   &:not([type='checkbox'], [type='radio']):focus {
