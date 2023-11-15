@@ -17,7 +17,6 @@
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: var(--base-size-4);
 }
 
 .PageHeader-titleArea {
@@ -46,7 +45,7 @@
 
 /* Add 1 or 2 buttons to the right of the heading */
 .PageHeader-actions {
-  margin: var(--base-size-4) 0 var(--base-size-4) var(--base-size-4);
+  margin: 0 0 0 var(--base-size-4);
   justify-content: flex-end;
 
   & + .PageHeader-description {
@@ -57,10 +56,15 @@
 .PageHeader-breadcrumbs {
   display: block;
   width: 100%;
-  margin-bottom: var(--base-size-4);
+  margin-bottom: var(--base-size-8);
+  padding-bottom: var(--base-size-4);
 }
 
 .PageHeader-backButton {
   margin-top: 2px; /* to center align with label */
   margin-right: var(--base-size-4);
+}
+
+.PageHeader-parentLink, .PageHeader-contextBarActions {
+  margin-bottom: var(--base-size-4);
 }
