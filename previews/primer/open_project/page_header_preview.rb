@@ -21,13 +21,15 @@ module Primer
       # @param with_back_button [Boolean]
       # @param back_button_size [Symbol] select [small, medium, large]
       # @param with_breadcrumbs [Boolean]
+      # @param parent_link [Boolean]
       def playground(
         variant: :medium,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
         with_back_button: false,
         back_button_size: :medium,
-        with_breadcrumbs: false
+        with_breadcrumbs: false,
+        parent_link: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
@@ -36,6 +38,7 @@ module Primer
           header.with_description { description }
           header.with_back_button(href: "#", size: back_button_size, 'aria-label': "Back") if with_back_button
           header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs
+          header.with_parent_link(href: "#") { "Parent link" } if parent_link
         end
       end
 
@@ -73,6 +76,14 @@ module Primer
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "A title" }
           header.with_breadcrumbs(breadcrumb_items)
+        end
+      end
+
+      # @label With parent link
+      def parent_link
+        render(Primer::OpenProject::PageHeader.new) do |header|
+          header.with_title { "A title" }
+          header.with_parent_link(href: "test") { "Parent link" }
         end
       end
     end

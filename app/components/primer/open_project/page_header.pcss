@@ -12,7 +12,15 @@
   }
 }
 
-.PageHeader-titleBar {
+.PageHeader-contextArea {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: var(--base-size-4);
+}
+
+.PageHeader-titleArea {
   display: flex;
   flex-flow: row;
   justify-content: flex-end;
@@ -49,7 +57,7 @@
 .PageHeader-breadcrumbs {
   display: block;
   width: 100%;
-  margin-bottom: var(--base-size-8);
+  margin-bottom: var(--base-size-4);
 }
 
 .PageHeader-backButton {

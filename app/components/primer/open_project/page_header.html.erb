@@ -1,9 +1,17 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= breadcrumbs %>
-  <div class="PageHeader-titleBar">
+  <% if parent_link || breadcrumbs || context_bar_actions %>
+    <div class="PageHeader-contextArea">
+      <%= parent_link %>
+      <%= breadcrumbs %>
+      <%= context_bar_actions %>
+    </div>
+  <% end %>
+
+  <div class="PageHeader-titleArea">
     <%= back_button %>
     <%= title %>
     <%= actions %>
   </div>
+
   <%= description %>
 <% end %>
