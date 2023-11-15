@@ -58,3 +58,5 @@ group :development do
 
   gem "listen"
 end
+
+gem "dartsass-rails", "~> 0.4.1"

@@ -129,6 +129,7 @@ Kuby.define("ViewComponentsStorybook") do
 
       insert :build_demo_assets, before: :assets_phase do |dockerfile|
         dockerfile.run("npm", "install")
+        dockerfile.run("bundle", "exec", "rake", "assets:precompile")
       end
 
       # Generate documentation pages served by Lookbook's pages feature

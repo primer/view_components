@@ -1,0 +1,63 @@
+/* stylelint-disable */
+@import "@primer/css/support/index.scss";
+
+@import "@primer/primitives/tokens-next-private/css/base/size/size";
+@import "@primer/primitives/tokens-next-private/css/base/typography/typography";
+@import "@primer/primitives/tokens-next-private/css/functional/size/border";
+@import "@primer/primitives/tokens-next-private/css/functional/size/breakpoints";
+@import "@primer/primitives/tokens-next-private/css/functional/size/size-coarse";
+@import "@primer/primitives/tokens-next-private/css/functional/size/size-fine";
+@import "@primer/primitives/tokens-next-private/css/functional/size/size";
+@import "@primer/primitives/tokens-next-private/css/functional/size/viewport";
+@import "@primer/primitives/tokens-next-private/css/functional/typography/typography";
+@import "@primer/css/color-modes/index.scss";
+@import "@primer/css/dist/base";
+@import "@primer/css/dist/buttons";
+@import "@primer/css/dist/layout";
+@import "@primer/css/dist/utilities";
+@import "@primer/css/dist/markdown";
+
+
+.theme-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(var(--primer-breakpoint-xsmall), auto));
+  grid-gap: 1px;
+}
+
+.theme-wrap .preview-wrap {
+  /* Lookbook border color */
+  outline: 1px solid #d4d4d8;
+  padding-bottom: 40px;
+}
+
+@media (max-width: calc(20rem * 4)) {
+  .theme-wrap {
+    grid-template-columns: repeat(3, minmax(var(--primer-breakpoint-xsmall), auto));
+  }
+}
+
+@media (max-width: calc(20rem * 3)) {
+  .theme-wrap {
+    grid-template-columns: repeat(2, minmax(var(--primer-breakpoint-xsmall), auto));
+  }
+}
+
+@media (max-width: calc(20rem * 2)) {
+  .theme-wrap {
+    display: block;
+  }
+}
+
+.theme-name {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-canvas-subtle);
+  padding: var(--base-size-4) var(--base-size-8);
+  font: var(--primer-text-caption-shorthand);
+}
+
+.preview-wrap {
+  position: relative;
+  padding: 16px;
+}
