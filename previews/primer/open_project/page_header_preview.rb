@@ -55,7 +55,11 @@ module Primer
         render_with_template(locals: {})
       end
 
-      # @label With back button
+      # @label With back button (on wide)
+      # **Back button** is only shown on **wider than narrow screens** by default.
+      # If you want to override that behaviour please use the system_argument: **display**
+      # e.g. **component.with\_breadcrumbs(display: [:block, :block])**
+      #
       # @param href [String] text
       # @param size [Symbol] select [small, medium, large]
       # @param icon [String] select ["arrow-left", "chevron-left", "triangle-left"]
@@ -66,7 +70,11 @@ module Primer
         end
       end
 
-      # @label With breadcrumbs
+      # @label With breadcrumbs (on wide)
+      # **Breadcrumbs** are only shown on **wider than narrow screens** by default.
+      # If you want to override that behaviour please use the system_argument: **display**
+      # e.g. **component.with\_breadcrumbs(display: [:block, :block])**
+      #
       def breadcrumbs
         breadcrumb_items = [
           { href: "/foo", text: "Foo" },
@@ -79,12 +87,25 @@ module Primer
         end
       end
 
-      # @label With parent link
+      # @label With parent link (on narrow)
+      # **Parent link** is only shown on **narrow screens** by default.
+      # If you want to override that behaviour please use the system_argument: **display**
+      # e.g. **component.with\_parent\_link(display: [:block, :block])**
+      #
       def parent_link
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "A title" }
           header.with_parent_link(href: "test") { "Parent link" }
         end
+      end
+
+      # @label With context bar actions (on narrow)
+      # **Context bar actions** are only shown on **narrow screens** by default.
+      # If you want to override that behaviour please use the system_argument: **display**
+      # e.g. **component.with\_context\_bar\_actions(display: [:block, :block])**
+      #
+      def context_bar_actions
+        render_with_template(locals: {})
       end
     end
   end
