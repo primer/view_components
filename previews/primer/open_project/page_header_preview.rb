@@ -21,7 +21,9 @@ module Primer
       # @param with_back_button [Boolean]
       # @param back_button_size [Symbol] select [small, medium, large]
       # @param with_breadcrumbs [Boolean]
-      # @param parent_link [Boolean]
+      # @param with_actions [Boolean]
+      # @param with_context_bar_actions [Boolean]
+      # @param with_parent_link [Boolean]
       def playground(
         variant: :medium,
         title: "Hello",
@@ -29,17 +31,22 @@ module Primer
         with_back_button: false,
         back_button_size: :medium,
         with_breadcrumbs: false,
-        parent_link: false
+        with_actions: false,
+        with_context_bar_actions: false,
+        with_parent_link: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
-        render(Primer::OpenProject::PageHeader.new) do |header|
-          header.with_title(variant: variant) { title }
-          header.with_description { description }
-          header.with_back_button(href: "#", size: back_button_size, 'aria-label': "Back") if with_back_button
-          header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs
-          header.with_parent_link(href: "#") { "Parent link" } if parent_link
-        end
+        render_with_template(locals: { variant: variant,
+                                       title: title,
+                                       description: description,
+                                       with_back_button: with_back_button,
+                                       back_button_size: back_button_size,
+                                       with_breadcrumbs: with_breadcrumbs,
+                                       with_parent_link: with_parent_link,
+                                       with_actions: with_actions,
+                                       with_context_bar_actions: with_context_bar_actions,
+                                       breadcrumb_items: breadcrumb_items })
       end
 
       # @label Large
