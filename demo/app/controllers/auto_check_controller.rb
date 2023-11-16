@@ -24,9 +24,10 @@ class AutoCheckController < ApplicationController
   end
 
   def random
-    if rand < 0.33
+    roll = rand
+    if roll < 0.33
       head :ok
-    elsif rand < 0.66
+    elsif roll < 0.66
       render partial: "auto_check/success_message",
         locals: { input_value: params[:value] },
         status: :ok,
