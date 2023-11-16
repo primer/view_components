@@ -45,6 +45,17 @@ module Primer
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+        DEFAULT_INPUT_WIDTH = :auto
+        INPUT_WIDTH_MAPPINGS = {
+          DEFAULT_INPUT_WIDTH => "FormControl-input-width--auto",
+          :small => "FormControl-input-width--small",
+          :medium => "FormControl-input-width--medium",
+          :large => "FormControl-input-width--large",
+          :xlarge => "FormControl-input-width--xlarge",
+          :xxlarge => "FormControl-input-width--xxlarge"
+        }.freeze
+        INPUT_WIDTH_OPTIONS = INPUT_WIDTH_MAPPINGS.keys
+
         include Primer::ClassNameHelper
 
         attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control, :base_id
@@ -73,6 +84,7 @@ module Primer
           @invalid = @input_arguments.delete(:invalid)
           @full_width = @input_arguments.delete(:full_width)
           @size = @input_arguments.delete(:size)
+          @input_width = @input_arguments.delete(:input_width)
 
           # If scope_name_to_model is false, the name of the input for eg. `my_field`
           # will be `my_field` instead of the Rails default of `model[my_field]`.
@@ -152,6 +164,7 @@ module Primer
         def remove_input_data(key)
           input_data.delete(key)
         end
+
         # :nocov:
 
         def merge_input_arguments!(arguments)
@@ -226,6 +239,10 @@ module Primer
           @size ||= SIZE_MAPPINGS.include?(@size) ? @size : DEFAULT_SIZE
         end
 
+        def input_width
+          @input_width ||= INPUT_WIDTH_MAPPINGS.include?(@input_width) ? @input_width : DEFAULT_INPUT_WIDTH
+        end
+
         def validation_messages
           @validation_messages ||=
             if validation_message
@@ -257,6 +274,7 @@ module Primer
         def to_component
           raise_for_abstract_method!(__method__)
         end
+
         # :nocov:
 
         def focusable?
@@ -309,6 +327,7 @@ module Primer
         def raise_for_abstract_method!(method_name)
           raise NotImplementedError, "subclasses must implement ##{method_name}."
         end
+
         # :nocov:
       end
     end

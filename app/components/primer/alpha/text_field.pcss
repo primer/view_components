@@ -216,10 +216,39 @@
   gap: var(--base-size-16);
 }
 
+/* widths */
+@define-mixin FormControl-input-width {
+  &.FormControl-input-width--auto {
+    width: auto;
+  }
+
+  &.FormControl-input-width--small {
+    width: min(256px, 100vw - 2rem);
+  }
+
+  &.FormControl-input-width--medium {
+    width: min(320px, 100vw - 2rem);
+  }
+
+  &.FormControl-input-width--large {
+    width: min(480px, 100vw - 2rem);
+  }
+
+  &.FormControl-input-width--xlarge {
+    width: min(640px, 100vw - 2rem);
+  }
+
+  &.FormControl-input-width--xxlarge {
+    width: min(960px, 100vw - 2rem);
+  }
+}
+
 /* positioning for leading/trailing items for TextInput */
 .FormControl-input-wrap {
   position: relative;
   display: grid;
+
+  @mixin FormControl-input-width;
 
   & .FormControl-input-leadingVisualWrap {
     position: absolute;
@@ -478,6 +507,8 @@
 .FormControl-select-wrap {
   display: grid;
   grid-template-columns: minmax(0, auto) var(--base-size-16);
+
+  @mixin FormControl-input-width;
 
   /* mask allows for background-color to respect themes */
   &::after {
