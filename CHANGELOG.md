@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.15.0
+
+### Minor Changes
+
+- [#48](https://github.com/opf/primer_view_components/pull/48) [`102a2ee9`](https://github.com/opf/primer_view_components/commit/102a2ee9fe7b6a049906ca108607c38e3468d0ae) Thanks [@apfohl](https://github.com/apfohl)! - Added a "width" attribute to control how wide an input is rendered on screen.
+
+  It is active for:
+
+  - TextField
+  - Select
+
 ## 0.14.0
 
 ### Minor Changes
