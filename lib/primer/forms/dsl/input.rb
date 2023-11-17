@@ -278,6 +278,14 @@ module Primer
           {}
         end
 
+        def validation_success_icon_target
+          ""
+        end
+
+        def validation_error_icon_target
+          ""
+        end
+
         private
 
         def input_data
