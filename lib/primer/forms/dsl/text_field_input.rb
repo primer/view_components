@@ -69,6 +69,14 @@ module Primer
           end
         end
 
+        def validation_success_icon_target
+          "primer-text-field.validationSuccessIcon"
+        end
+
+        def validation_error_icon_target
+          "primer-text-field.validationErrorIcon"
+        end
+
         def validation_message_arguments
           if auto_check_src.present?
             super.merge(
