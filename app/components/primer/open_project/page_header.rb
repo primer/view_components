@@ -27,6 +27,11 @@ module Primer
         "triangle-left"
       ].freeze
 
+      DEFAULT_BACK_BUTTON_DISPLAY = [:none, :flex].freeze
+      DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
+      DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
+      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:block, :none].freeze
+
       status :open_project
 
       # The title of the page header
@@ -64,7 +69,21 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
+      # Context Bar Actions
+      # By default shown on narrow screens. Can be overridden with system_argument: display
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :context_bar_actions, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
+        system_arguments[:tag] = :div
+        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-contextBarActions")
+        system_arguments[:display] ||= DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY
+
+        Primer::BaseComponent.new(**system_arguments)
+      }
+
       # Optional back button prepend the title
+      # By default shown on wider screens. Can be overridden with system_argument: display
       #
       # @param size [Symbol] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_SIZE_OPTIONS) %>
       # @param icon [String] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_ICON_OPTIONS) %>
@@ -80,16 +99,35 @@ module Primer
         system_arguments[:size] = fetch_or_fallback(BACK_BUTTON_SIZE_OPTIONS, size, DEFAULT_BACK_BUTTON_SIZE)
         system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-backButton")
+        system_arguments[:display] ||= DEFAULT_BACK_BUTTON_DISPLAY
 
         Primer::Beta::IconButton.new(**system_arguments)
       }
 
+      # Optional parent link in the context area
+      # By default shown on narrow screens. Can be overridden with system_argument: display
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :parent_link, lambda { |icon: DEFAULT_BACK_BUTTON_ICON, **system_arguments, &block|
+        deny_tag_argument(**system_arguments)
+        system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
+        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-parentLink")
+        system_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
+
+        render(Primer::Beta::Link.new(scheme: :primary, muted: true, **system_arguments)) do
+          render(Primer::Beta::Octicon.new(icon: "arrow-left", "aria-label": "aria_label", mr: 2)) + content_tag(:span, &block)
+        end
+      }
+
       # Optional breadcrumbs above the title row
+      # By default shown on wider screens. Can be overridden with system_argument: display
       #
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :breadcrumbs, lambda { |items, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
+        system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
+
         render(Primer::Beta::Breadcrumbs.new(**system_arguments)) do |breadcrumbs|
           items.each do |item|
             item = anchor_string_to_object(item) if anchor_tag_string?(item)

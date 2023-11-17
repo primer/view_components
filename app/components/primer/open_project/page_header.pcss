@@ -12,6 +12,13 @@
   }
 }
 
+.PageHeader-contextBar {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .PageHeader-titleBar {
   display: flex;
   flex-flow: row;
@@ -38,8 +45,9 @@
 
 /* Add 1 or 2 buttons to the right of the heading */
 .PageHeader-actions {
-  margin: var(--base-size-4) 0 var(--base-size-4) var(--base-size-4);
+  margin: 0 0 0 var(--base-size-4);
   justify-content: flex-end;
+  display: flex;
 
   & + .PageHeader-description {
     margin-top: var(--base-size-4);
@@ -50,9 +58,19 @@
   display: block;
   width: 100%;
   margin-bottom: var(--base-size-8);
+  padding-bottom: var(--base-size-4);
 }
 
 .PageHeader-backButton {
   margin-top: 2px; /* to center align with label */
   margin-right: var(--base-size-4);
+}
+
+.PageHeader-parentLink {
+  flex: 1 1 auto;
+  margin-bottom: var(--base-size-4);
+}
+
+.PageHeader-contextBarActions {
+  margin: 0 0 0 var(--base-size-4);
 }
