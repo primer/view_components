@@ -21,8 +21,8 @@ class ImmediateValidationForm < ApplicationForm
 
     validation_form.text_field(
       name: :random_error,
-      label: "Random error",
-      caption: "Server checks will randomly respond with errors",
+      label: "Random error or success",
+      caption: "Server checks will randomly respond with errors or success",
       auto_check_src: @view_context.example_check_random_path
     )
   end

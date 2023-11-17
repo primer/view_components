@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :nav_list_items, only: [:index]
     resources :multi, only: [:create]
 
+    post "/example_check/accepted", to: "auto_check#accepted", as: :example_check_accepted
     post "/example_check/ok", to: "auto_check#ok", as: :example_check_ok
     post "/example_check/error", to: "auto_check#error", as: :example_check_error
     post "/example_check/random", to: "auto_check#random", as: :example_check_random

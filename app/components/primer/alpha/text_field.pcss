@@ -47,6 +47,11 @@
   }
 }
 
+.FormControl-inlineValidation--success {
+  color: var(--control-borderColor-success);
+  fill: var(--control-borderColor-success);
+}
+
 .FormControl-inlineValidation--visual {
   align-items: center;
   display: flex;
@@ -79,8 +84,12 @@
     -webkit-text-fill-color: var(--control-fgColor-disabled);
   }
 
-  &:not(:focus)[invalid] {
+  &:not(:focus)[invalid=true] {
     border-color: var(--control-borderColor-danger);
+  }
+
+  &:not(:focus)[invalid=false] {
+    border-color: var(--control-borderColor-success);
   }
 
   &:not([type='checkbox'], [type='radio']):focus {
