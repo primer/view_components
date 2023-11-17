@@ -6166,8 +6166,8 @@
         }
       },
       {
-        "preview_path": "primer/alpha/text_field/with_auto_check_accepted",
-        "name": "with_auto_check_accepted",
+        "preview_path": "primer/alpha/text_field/with_auto_check_ok",
+        "name": "with_auto_check_ok",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -6179,8 +6179,8 @@
         }
       },
       {
-        "preview_path": "primer/alpha/text_field/with_auto_check_ok",
-        "name": "with_auto_check_ok",
+        "preview_path": "primer/alpha/text_field/with_auto_check_accepted",
+        "name": "with_auto_check_accepted",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
