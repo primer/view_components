@@ -64,7 +64,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-check-group-wrap fieldset",
       ".FormControl-toggleSwitchInput",
       ".FormControl-spacingWrapper",
-      ".FormControl-horizontalGroup"
+      ".FormControl-horizontalGroup",
+      ".FormControl-inlineValidation--success",
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
