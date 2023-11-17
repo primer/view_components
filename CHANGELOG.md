@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.16.0
+
+### Minor Changes
+
+- [#49](https://github.com/opf/primer_view_components/pull/49) [`be7884dc`](https://github.com/opf/primer_view_components/commit/be7884dce8b62b1795dc9337be68e12355ec1119) Thanks [@dominic-braeunlein](https://github.com/dominic-braeunlein)! - Extend page header with parent link, context bar actions and responsiveness
+
 ## 0.15.0
 
 ### Minor Changes
