@@ -441,7 +441,16 @@
   "PageHeader-breadcrumbs": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader-contextBar": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-contextBarActions": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "PageHeader-description": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-parentLink": [
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-title": [

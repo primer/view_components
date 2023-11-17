@@ -15474,8 +15474,20 @@
         ]
       },
       {
+        "name": "context_bar_actions",
+        "description": "Context Bar Actions\nBy default shown on narrow screens. Can be overridden with system_argument: display",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
         "name": "back_button",
-        "description": "Optional back button prepend the title",
+        "description": "Optional back button prepend the title\nBy default shown on wider screens. Can be overridden with system_argument: display",
         "parameters": [
           {
             "name": "size",
@@ -15498,8 +15510,20 @@
         ]
       },
       {
+        "name": "parent_link",
+        "description": "Optional parent link in the context area\nBy default shown on narrow screens. Can be overridden with system_argument: display",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
         "name": "breadcrumbs",
-        "description": "Optional breadcrumbs above the title row",
+        "description": "Optional breadcrumbs above the title row\nBy default shown on wider screens. Can be overridden with system_argument: display",
         "parameters": [
           {
             "name": "items",
@@ -15601,6 +15625,32 @@
       {
         "preview_path": "primer/open_project/page_header/breadcrumbs",
         "name": "breadcrumbs",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/parent_link",
+        "name": "parent_link",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/context_bar_actions",
+        "name": "context_bar_actions",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

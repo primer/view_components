@@ -1370,9 +1370,25 @@
       "medium",
       "large"
     ],
+    "DEFAULT_BACK_BUTTON_DISPLAY": [
+      "none",
+      "flex"
+    ],
     "DEFAULT_BACK_BUTTON_ICON": "arrow-left",
     "DEFAULT_BACK_BUTTON_SIZE": "medium",
+    "DEFAULT_BREADCRUMBS_DISPLAY": [
+      "none",
+      "flex"
+    ],
+    "DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY": [
+      "block",
+      "none"
+    ],
     "DEFAULT_HEADER_VARIANT": "medium",
+    "DEFAULT_PARENT_LINK_DISPLAY": [
+      "block",
+      "none"
+    ],
     "HEADER_VARIANT_OPTIONS": [
       "large",
       "medium"
