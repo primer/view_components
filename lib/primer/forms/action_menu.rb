@@ -9,12 +9,10 @@ module Primer
       def initialize(input:)
         @input = input
 
-        @input.input_arguments.merge!(
-          form_arguments: {
-            name: @input.name,
-            builder: builder
-          }
-        )
+        @input.input_arguments[:form_arguments] = {
+          name: @input.name,
+          builder: builder
+        }
 
         @input.input_arguments[:select_variant] ||= :single
 
