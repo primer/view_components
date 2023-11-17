@@ -49,6 +49,8 @@ module Primer
           rescue LoadError
           end
 
+          helper Primer::FormHelper
+
           # make primer_form_with available to view components also
           ViewComponent::Base.prepend(Primer::FormHelper)
         end
