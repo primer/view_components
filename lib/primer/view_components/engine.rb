@@ -44,7 +44,10 @@ module Primer
 
       initializer "primer.forms.helpers" do
         ActiveSupport.on_load :action_controller_base do
-          helper Primer::FormHelper
+          begin
+            require "primer/form_helper"
+          rescue LoadError
+          end
 
           # make primer_form_with available to view components also
           ViewComponent::Base.prepend(Primer::FormHelper)
