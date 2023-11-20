@@ -65,7 +65,7 @@
     "@primer/css": "21.0.9",
     "@primer/primitives": "^7.14.0",
     "@primer/stylelint-config": "^12.7.2",
-    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.0.0",
