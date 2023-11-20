@@ -1,25 +1,27 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <focus-group direction="vertical" mnemonics retain>
     <%= render(@overlay) do |overlay| %>
-      <% if @src.present? %>
-        <include-fragment src="<%= @src %>" loading="<%= preload? ? "eager" : "lazy" %>" data-target="action-menu.includeFragment">
-          <%= render(Primer::Alpha::ActionMenu::List.new(id: "#{@menu_id}-list", menu_id: @menu_id)) do |list| %>
-            <% list.with_item(
-              aria: { disabled: true },
-              content_arguments: {
-                display: :flex,
-                align_items: :center,
-                justify_content: :center,
-                text_align: :center,
-                autofocus: true
-              }
-            ) do %>
-              <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }) %>
+      <% overlay.with_body(padding: :none) do %>
+        <% if @src.present? %>
+          <include-fragment src="<%= @src %>" loading="<%= preload? ? "eager" : "lazy" %>" data-target="action-menu.includeFragment">
+            <%= render(Primer::Alpha::ActionMenu::List.new(id: "#{@menu_id}-list", menu_id: @menu_id)) do |list| %>
+              <% list.with_item(
+                aria: { disabled: true },
+                content_arguments: {
+                  display: :flex,
+                  align_items: :center,
+                  justify_content: :center,
+                  text_align: :center,
+                  autofocus: true
+                }
+              ) do %>
+                <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }) %>
+              <% end %>
             <% end %>
-          <% end %>
-        </include-fragment>
-      <% else %>
-        <%= render(@list) %>
+          </include-fragment>
+        <% else %>
+          <%= render(@list) %>
+        <% end %>
       <% end %>
     <% end %>
   </focus-group>
