@@ -98,34 +98,11 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mousedown', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
-    this.#softDisableItems()
 
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {
         signal
       })
-    }
-  }
-
-  #softDisableItems() {
-    const {signal} = this.#abortController
-
-    for (const item of this.#items) {
-      item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
-      item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
-    }
-  }
-
-  #potentiallyDisallowActivation(event: Event) {
-    if (!this.#isActivation(event)) return
-
-    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
-    if (!item) return
-
-    if (item.getAttribute('aria-disabled')) {
-      event.preventDefault()
-      event.stopPropagation()
-      event.stopImmediatePropagation()
     }
   }
 
@@ -202,6 +179,13 @@ export class ActionMenuElement extends HTMLElement {
     const targetIsItem = item !== null
 
     if (targetIsItem && eventIsActivation) {
+      if (item.getAttribute('aria-disabled')) {
+        event.preventDefault()
+        event.stopPropagation()
+        event.stopImmediatePropagation()
+        return
+      }
+
       const dialogInvoker = item.closest('[data-show-dialog-id]')
 
       if (dialogInvoker) {
@@ -214,7 +198,7 @@ export class ActionMenuElement extends HTMLElement {
       }
 
       this.#activateItem(event, item)
-      this.#handleItemActivated(event, item)
+      this.#handleItemActivated(item)
 
       // Pressing the space key on a button or link will cause the page to scroll unless preventDefault()
       // is called. While calling preventDefault() appears to have no effect on link navigation, it skips
@@ -263,7 +247,7 @@ export class ActionMenuElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(event: Event, item: Element) {
+  #handleItemActivated(item: Element) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -327,7 +311,6 @@ export class ActionMenuElement extends HTMLElement {
 
   #handleIncludeFragmentReplaced() {
     if (this.#firstItem) this.#firstItem.focus()
-    this.#softDisableItems()
   }
 
   // Close when focus leaves menu
@@ -410,8 +393,68 @@ export class ActionMenuElement extends HTMLElement {
     return this.querySelector(menuItemSelectors.join(','))
   }
 
-  get #items(): HTMLElement[] {
-    return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
+  getItemById(itemId: string): HTMLElement | null {
+    return this.querySelector(`li[data-item-id="${itemId}"`)
+  }
+
+  disableItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      item.classList.add('ActionListItem--disabled')
+      item.querySelector('.ActionListContent')!.setAttribute('aria-disabled', 'true')
+    }
+  }
+
+  enableItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      item.classList.remove('ActionListItem--disabled')
+      item.querySelector('.ActionListContent')!.removeAttribute('aria-disabled')
+    }
+  }
+
+  hideItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      item.setAttribute('hidden', 'hidden')
+    }
+  }
+
+  showItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      item.removeAttribute('hidden')
+    }
+  }
+
+  checkItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
+      const itemContent = item.querySelector('.ActionListContent')!
+      const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
+
+      if (!ariaChecked) {
+        this.#handleItemActivated(itemContent)
+      }
+    }
+  }
+
+  uncheckItemById(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
+      const itemContent = item.querySelector('.ActionListContent')!
+      const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
+
+      if (ariaChecked) {
+        this.#handleItemActivated(itemContent)
+      }
+    }
   }
 }
 

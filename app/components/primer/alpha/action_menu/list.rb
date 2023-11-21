@@ -11,7 +11,7 @@ module Primer
 
         attr_reader :items
 
-        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu::List) %>
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>
         def initialize(**system_arguments)
           @items = []
           @has_group = false

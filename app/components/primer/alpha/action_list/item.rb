@@ -128,7 +128,7 @@ module Primer
         # @private
         renders_one :private_content
 
-        attr_reader :id, :list, :href, :active, :disabled, :parent
+        attr_reader :id, :item_id, :list, :href, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -143,6 +143,7 @@ module Primer
         # @param list [Primer::Alpha::ActionList] The list that contains this item. Used internally.
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label. If no label is provided, content is used.
+        # @param item_id [String] An ID that will be attached to the item's `<li>` element as `data-item-id` for distinguishing between items, perhaps in JavaScript.
         # @param label_classes [String] CSS classes that will be added to the label.
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
@@ -161,6 +162,7 @@ module Primer
         def initialize(
           list:,
           label: nil,
+          item_id: nil,
           label_classes: nil,
           label_arguments: {},
           content_arguments: {},
@@ -181,6 +183,7 @@ module Primer
           @list = list
           @parent = parent
           @label = label
+          @item_id = item_id
           @href = href || content_arguments[:href]
           @truncate_label = truncate_label
           @disabled = disabled
@@ -205,6 +208,15 @@ module Primer
 
           @system_arguments[:data] ||= {}
           @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
+
+          @system_arguments[:data] = merge_data(
+            @system_arguments, {
+              data: {
+                targets: "#{list_class.custom_element_name}.items",
+                **(@item_id ? { item_id: @item_id } : {})
+              }
+            }
+          )
 
           @label_arguments = {
             **label_arguments,
