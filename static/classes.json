@@ -254,6 +254,9 @@
   "FormControl-inlineValidation": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-inlineValidation--success": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-inlineValidation--visual": [
     "Primer::Alpha::TextField"
   ],
