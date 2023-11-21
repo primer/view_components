@@ -1,8 +1,10 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard"],
   "plugins": ["@primer/stylelint-config/plugins/no-deprecated-colors"],
   "ignoreFiles": ["app/**/*.css", "**/*.js", "**/*.ts"],
   "rules": {
+    "media-feature-range-notation": null,
+    "import-notation": null,
     "custom-property-pattern": null,
     "selector-class-pattern": null,
     "keyframes-name-pattern": null,
