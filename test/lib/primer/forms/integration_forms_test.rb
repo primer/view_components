@@ -36,8 +36,8 @@ module Forms
       click_on("Submit")
 
       result = JSON.parse(page.text)
-      assert result["country"], "CA"
-      assert result["region"], "SK"
+      assert_equal result["country"], "CA"
+      assert_equal result["region"], "SK"
     end
 
     def test_toggle_switch_form_errors
@@ -60,6 +60,17 @@ module Forms
 
       refute_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
       refute_selector("#error-toggle", text: "Bad CSRF token")
+    end
+
+    def test_action_menu_form_input
+      visit_preview(:action_menu_form, route_format: :json)
+
+      click_on("Select...")
+      click_on("Lopez Island")
+      click_on("Submit")
+
+      result = JSON.parse(page.text)
+      assert_equal result.dig("other_params", "city"), "lopez_island"
     end
 
     private

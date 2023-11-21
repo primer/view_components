@@ -64,6 +64,12 @@ module Primer
         render(Primer::Beta::Avatar.new(size: 48, src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser"))
       end
 
+      # @label 64px
+      # @snapshot
+      def size_64
+        render(Primer::Beta::Avatar.new(size: 64, src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser"))
+      end
+
       # @label 80px
       # @snapshot
       def size_80

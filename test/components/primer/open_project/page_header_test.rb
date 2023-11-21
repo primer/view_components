@@ -58,8 +58,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-backButton")
-    assert_selector(".Button-withTooltip a[href='/link']")
+    assert_selector("a.PageHeader-backButton[href='/link']")
   end
 
   def test_renders_breadcrumbs

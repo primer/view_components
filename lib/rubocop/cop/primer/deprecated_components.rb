@@ -3,7 +3,7 @@
 require "rubocop"
 require "json"
 require "parser/current"
-require_relative "./../../../primer/view_components/linters/helpers/deprecated_components_helpers"
+require_relative "../../../primer/view_components/linters/helpers/deprecated_components_helpers"
 
 module RuboCop
   module Cop

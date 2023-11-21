@@ -21,7 +21,7 @@ module Primer
         renders_one :leading_visual, types: {
           icon: Primer::Beta::Octicon,
           avatar: lambda { |**kwargs|
-            Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
+            Primer::Beta::Avatar.new(**kwargs, size: 16)
           }
         }
 

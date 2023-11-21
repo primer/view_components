@@ -1,3 +1,4 @@
+<%# erblint:counter DeprecatedComponentsCounter 2 %>
 <% @fruit_list.each do |fruit| %>
   <% if params['version'] == "alpha" %>
     <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>

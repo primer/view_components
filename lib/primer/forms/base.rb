@@ -120,7 +120,6 @@ module Primer
       private
 
       def form_object
-        # rubocop:disable Naming/MemoizedInstanceVariableName
         @__pf_form_object ||= Primer::Forms::Dsl::FormObject.new(builder: @builder, form: self).tap do |obj|
           # compile before adding inputs so caption templates are identified
           self.class.compile!

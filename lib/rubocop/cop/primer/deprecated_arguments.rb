@@ -298,7 +298,6 @@ module RuboCop
         def extract_kv_from(pair)
           key = pair.key.value
 
-          # rubocop:disable Lint/BooleanSymbol
           value = case pair.value.type
                   when :sym, :str
                     pair.value.value.to_sym
@@ -307,7 +306,6 @@ module RuboCop
                   else
                     return []
                   end
-          # rubocop:enable Lint/BooleanSymbol
 
           [key, value]
         end

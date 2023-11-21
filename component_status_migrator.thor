@@ -33,7 +33,7 @@ class ComponentVersion
   end
 
   def component_belongs_in_module?
-    ![:deprecated, :stable].include?(status) # rubocop:disable Rails/NegateInclude
+    ![:deprecated, :stable].include?(status)
   end
 
   def controller_path

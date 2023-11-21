@@ -25,6 +25,10 @@ module Primer
 
     def select_form; end
 
+    def action_menu_form(route_format: :html)
+      render_with_template(locals: { route_format: route_format })
+    end
+
     def radio_button_with_nested_form; end
 
     def check_box_with_nested_form; end

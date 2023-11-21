@@ -17,16 +17,24 @@ module Primer
       DEFAULT_HEADING_TAG = :div
       HEADING_TAG_OPTIONS = [DEFAULT_HEADING_TAG, :h1, :h2, :h3, :h4, :h5, :h6].freeze
 
+      DEFAULT_HEADING_SIZE = :large
+      HEADING_SIZE_MAP = {
+        DEFAULT_HEADING_SIZE => "Subhead-heading--large",
+        :medium => "Subhead-heading--medium"
+      }.freeze
+      HEADING_SIZE_OPTIONS = HEADING_SIZE_MAP.keys.freeze
+
       # The heading
       #
       # @param tag [Symbol] <%= one_of(Primer::Beta::Subhead::HEADING_TAG_OPTIONS)%>
       # @param danger [Boolean] Whether to style the heading as dangerous.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :heading, lambda { |tag: DEFAULT_HEADING_TAG, danger: false, **system_arguments|
+      renders_one :heading, lambda { |tag: DEFAULT_HEADING_TAG, danger: false, size: DEFAULT_HEADING_SIZE, **system_arguments|
         system_arguments[:tag] = fetch_or_fallback(HEADING_TAG_OPTIONS, tag, DEFAULT_HEADING_TAG)
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "Subhead-heading",
+          HEADING_SIZE_MAP[fetch_or_fallback(HEADING_SIZE_OPTIONS, size, DEFAULT_HEADING_SIZE)],
           "Subhead-heading--danger": danger
         )
 

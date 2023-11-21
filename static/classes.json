@@ -230,9 +230,6 @@
   "Button-visual": [
     "Primer::Beta::Button"
   ],
-  "Button-withTooltip": [
-    "Primer::Beta::Button"
-  ],
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
   ],
@@ -267,6 +264,9 @@
     "Primer::Alpha::TextField"
   ],
   "FormControl-inlineValidation": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-inlineValidation--success": [
     "Primer::Alpha::TextField"
   ],
   "FormControl-inlineValidation--visual": [
@@ -574,6 +574,12 @@
     "Primer::Beta::Subhead"
   ],
   "Subhead-heading--danger": [
+    "Primer::Beta::Subhead"
+  ],
+  "Subhead-heading--large": [
+    "Primer::Beta::Subhead"
+  ],
+  "Subhead-heading--medium": [
     "Primer::Beta::Subhead"
   ],
   "TimelineItem": [

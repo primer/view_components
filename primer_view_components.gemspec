@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency     "actionview", ">= 5.0.0"
   spec.add_runtime_dependency     "activesupport", ">= 5.0.0"
-  spec.add_runtime_dependency     "openproject-octicons", ">= 19.7.0"
+  spec.add_runtime_dependency     "openproject-octicons", ">= 19.8.0"
   spec.add_runtime_dependency     "view_component", [">= 3.1", "< 4.0"]
 end
