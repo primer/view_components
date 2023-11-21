@@ -4,6 +4,7 @@ require "erb_lint/utils/severity_levels"
 
 module ERBLint
   module Linters
+    # :nodoc:
     class SeveritySchema < LinterConfig
       # SEVERITY_NAMES :info, :refactor, :convention, :warning, :error, :fatal
       # see https://github.com/Shopify/erb-lint/blob/main/lib/erb_lint/utils/severity_levels.rb

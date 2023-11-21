@@ -31,16 +31,9 @@ class PrimerBetaIconButtonTest < Minitest::Test
     assert_selector(".Button.Button--iconOnly[aria-describedby='#{tooltip_id}']")
   end
 
-  def test_adds_wrapper_arguments
-    render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", wrapper_arguments: { id: "foo" }))
-
-    assert_selector(".Button-withTooltip#foo")
-  end
-
   def test_allows_hiding_tooltip
     render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", show_tooltip: false))
 
-    refute_selector(".Button-withTooltip")
     refute_selector("tool-tip")
   end
 
@@ -51,6 +44,6 @@ class PrimerBetaIconButtonTest < Minitest::Test
 
   def test_forces_button_tag_when_disabled
     render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", disabled: true, tag: :a))
-    assert_selector(".Button-withTooltip button[disabled]")
+    assert_selector("button[disabled]")
   end
 end

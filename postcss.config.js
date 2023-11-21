@@ -41,15 +41,7 @@ module.exports = {
       features: {
         'nesting-rules': {noIsPseudoSelector: true},
         'focus-visible-pseudo-class': false,
-        'logical-properties-and-values': false,
-        'custom-media-queries': {
-          importFrom: [
-            path.join(
-              __dirname,
-              './node_modules/@primer/primitives/tokens-next-private/css/functional/size/viewport.css'
-            )
-          ]
-        }
+        'logical-properties-and-values': false
       }
     }),
     process.env.CI === 'true' ? require('cssnano') : null

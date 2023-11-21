@@ -29,7 +29,7 @@ module Minitest
       def should_retry?(failures)
         return false if failures.empty?
 
-        errors = failures.map(&:error).map(&:class)
+        errors = failures.map { |failure| failure.error.class }
         (errors & Minitest::Retry::ERRORS).any?
       end
     end

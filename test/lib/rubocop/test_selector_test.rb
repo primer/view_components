@@ -21,7 +21,7 @@ class RubocopTestSelectorTest < CopTestCase
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+    assert_equal "Primer/TestSelector: Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
   end
 
   def test_primer_component_with_string_key
@@ -30,7 +30,7 @@ class RubocopTestSelectorTest < CopTestCase
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+    assert_equal "Primer/TestSelector: Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
   end
 
   def test_non_primer_view_helper
@@ -47,7 +47,7 @@ class RubocopTestSelectorTest < CopTestCase
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+    assert_equal "Primer/TestSelector: Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
   end
 
   def test_no_test_selector

@@ -44,7 +44,11 @@ module Primer
 
       initializer "primer.forms.helpers" do
         ActiveSupport.on_load :action_controller_base do
-          require "primer/form_helper"
+          begin
+            require "primer/form_helper"
+          rescue LoadError
+          end
+
           helper Primer::FormHelper
 
           # make primer_form_with available to view components also

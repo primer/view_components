@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "primer/class_name_helper"
-
 module Primer
   module Forms
     # Wraps Primer::BaseComponent.

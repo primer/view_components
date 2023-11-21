@@ -1177,6 +1177,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/avatar/size_64",
+        "name": "size_64",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/avatar/size_80",
         "name": "size_80",
         "snapshot": "true",
@@ -2243,6 +2256,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/button_group/with_clipboard_copy_button",
+        "name": "with_clipboard_copy_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -2592,6 +2618,53 @@
         "preview_path": "primer/beta/clipboard_copy/element",
         "name": "element",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "clipboard_copy_button",
+    "component": "ClipboardCopyButton",
+    "status": "beta",
+    "lookup_path": "primer/beta/clipboard_copy_button",
+    "examples": [
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/clipboard_copy_button/with_tooltip",
+        "name": "with_tooltip",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -4600,6 +4673,40 @@
     ]
   },
   {
+    "name": "octicon_symbols",
+    "component": "OcticonSymbols",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/octicon_symbols",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/octicon_symbols/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/octicon_symbols/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "overlay",
     "component": "Overlay",
     "status": "alpha",
@@ -5862,6 +5969,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/subhead/large_header",
+        "name": "large_header",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/subhead/medium_header",
+        "name": "medium_header",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6335,6 +6468,19 @@
       {
         "preview_path": "primer/alpha/text_field/with_auto_check_ok",
         "name": "with_auto_check_ok",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_auto_check_accepted",
+        "name": "with_auto_check_accepted",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

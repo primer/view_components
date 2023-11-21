@@ -90,6 +90,15 @@ module Primer
           add_input SelectInput.new(builder: builder, form: form, **options, &block)
         end
 
+        # Adds an <%= link_to_component(Primer::Alpha::ActionMenu) %> to this form.
+        #
+        # @param options [Hash] The options accepted by the <%= link_to_component(Primer::Alpha::ActionMenu) %> component.
+        # @param block [Proc] The block passed to `#render` when the <%= link_to_component(Primer::Alpha::ActionMenu) %> is rendered. This block is passed an instance of <%= link_to_component(Primer::Alpha::ActionMenu) %>, which can be used to add items, dividers, etc.
+        def action_menu(**options, &block)
+          options = decorate_options(**options)
+          add_input ActionMenuInput.new(builder: builder, form: form, **options, &block)
+        end
+
         # END select input methods
 
         # START button input methods

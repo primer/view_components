@@ -16,11 +16,9 @@ module Primer
 
             component = preview.components.first&.component_class
 
-            # rubocop:disable Style/IfUnlessModifier
             unless component
               raise "Could not determine which component `#{preview.preview_class}` is designed to preview. Please add a `@component` annotation."
             end
-            # rubocop:enable Style/IfUnlessModifier
 
             _, _, class_name = Primer::Yard::DocsHelper.status_module_and_short_name(component)
 

@@ -93,7 +93,6 @@ module Primer
           # methods. These methods will use the passed name if provided instead
           # of generating a scoped one.
           #
-          # rubocop:disable Style/IfUnlessModifier
           unless @input_arguments.delete(:scope_name_to_model) { true }
             @input_arguments[:name] = name
           end
@@ -295,6 +294,14 @@ module Primer
 
         def validation_message_arguments
           {}
+        end
+
+        def validation_success_icon_target
+          ""
+        end
+
+        def validation_error_icon_target
+          ""
         end
 
         private

@@ -48,12 +48,10 @@ module Primer
         render_preview(:icon_only_medium)
 
         assert_selector("segmented-control ul.SegmentedControl") do
-          assert_selector(".Button-withTooltip", count: 3) do
-            assert_selector("button.Button[id^=\"icon-button-\"]") do
-              assert_selector(".Button-visual")
-            end
-            assert_selector("tool-tip[for^=\"icon-button-\"]", visible: false)
+          assert_selector("button.Button[id^=\"icon-button-\"]") do
+            assert_selector(".Button-visual")
           end
+          assert_selector("tool-tip[for^=\"icon-button-\"]", visible: false)
         end
       end
 
