@@ -52,9 +52,10 @@ module Primer
 
       # Heading text rendered above the list of items.
       #
-      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Heading) %>.
-      renders_one :heading, lambda { |**system_arguments|
-        Heading.new(**system_arguments)
+      # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::Alpha::ActionList::Heading) %>.
+      # @param system_arguments [Hash] The arguments accepted by `component_klass`.
+      renders_one :heading, lambda { |component_klass: Primer::Alpha::ActionList::Heading, **system_arguments|
+        component_klass.new(**system_arguments)
       }
 
       # @!parse
@@ -229,7 +230,7 @@ module Primer
       end
 
       def acts_as_menu?
-        @system_arguments[:role] == :menu
+        @system_arguments[:role] == :menu || @system_arguments[:role] == :group
       end
 
       def required_form_arguments_given?
