@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## 0.17.0
+
+### Minor Changes
+
+- [#2367](https://github.com/primer/view_components/pull/2367) [`b2acc97d`](https://github.com/opf/primer_view_components/commit/b2acc97d69203094911d013eea07c8e0de6daa02) Thanks [@camertron](https://github.com/camertron)! - Add an ActionMenu form input
+
+- [#2335](https://github.com/primer/view_components/pull/2335) [`684f9a51`](https://github.com/opf/primer_view_components/commit/684f9a51a1ccb006a9ce2fbadb296ca5c68bd560) Thanks [@camertron](https://github.com/camertron)! - Add a ClipboardCopyButton component
+
+- [#2365](https://github.com/primer/view_components/pull/2365) [`314c0f1f`](https://github.com/opf/primer_view_components/commit/314c0f1f1ec8152c0a0862ee3468e88efcad0ec8) Thanks [@camertron](https://github.com/camertron)! - Remove touch target gaps between ActionBar items
+
+- [#2296](https://github.com/primer/view_components/pull/2296) [`3374555e`](https://github.com/opf/primer_view_components/commit/3374555ee1d2c24e88ca4a53cc58221a0ec2bc51) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the button wrapper `Button--withTooltip` when using a tooltip with a button.
+
+- [#2330](https://github.com/primer/view_components/pull/2330) [`6bf8da54`](https://github.com/opf/primer_view_components/commit/6bf8da54220c3301ad0bc2bbb44c2905ad6db89c) Thanks [@camertron](https://github.com/camertron)! - Allow several font sizes for Subhead headings
+
+- [#2336](https://github.com/primer/view_components/pull/2336) [`94db2c4b`](https://github.com/opf/primer_view_components/commit/94db2c4bc590e6b41760f5a8867c6b1cae669a1d) Thanks [@camertron](https://github.com/camertron)! - Add Rails 7.1 support
+
+- [#2366](https://github.com/primer/view_components/pull/2366) [`73d05613`](https://github.com/opf/primer_view_components/commit/73d05613ec2a5eb2731b170927c505e9c688f4e0) Thanks [@camertron](https://github.com/camertron)! - Add missing 64px Avatar size
+
+- [#2377](https://github.com/primer/view_components/pull/2377) [`482152ae`](https://github.com/opf/primer_view_components/commit/482152aec156982cc309aaa830e46269a46ef355) Thanks [@gwwar](https://github.com/gwwar)! - Updates Primer::Alpha::TextField to support success inline validation messages and allows validation messages to contain html fragments.
+  <!-- Changed components: Primer::Alpha::TextField -->
+
+### Patch Changes
+
+- [#2360](https://github.com/primer/view_components/pull/2360) [`94b7a445`](https://github.com/opf/primer_view_components/commit/94b7a4455fbe0c80472034c7268f4beaa654cd2f) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Removes redundant `aria-disabled` from list item within `ActionMenu`.
+
+- [#2337](https://github.com/primer/view_components/pull/2337) [`0189b553`](https://github.com/opf/primer_view_components/commit/0189b553f9fb94858d5526a669d006dc0b2a6050) Thanks [@mperrotti](https://github.com/mperrotti)! - Adapts Blankslate to render proportionally in narrow areas
+
+  <!-- Changed components: Blankslate -->
+
+- [#2383](https://github.com/primer/view_components/pull/2383) [`7c2e6f6c`](https://github.com/opf/primer_view_components/commit/7c2e6f6c6c3cc8cd69758b36760f4e18ec4e48ba) Thanks [@strackoverflow](https://github.com/strackoverflow)! - Fix an issue where ActionMenu wouldn't scroll its contents
+
+- [#2384](https://github.com/primer/view_components/pull/2384) [`2c778661`](https://github.com/opf/primer_view_components/commit/2c7786615ceb6b0149b87fb9d01ad31f977a908d) Thanks [@camertron](https://github.com/camertron)! - Re-introduce require 'primer/form_helper' for setups that rely on Rails eager load paths
+
 ## 0.16.0
 
 ### Minor Changes
