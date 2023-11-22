@@ -218,6 +218,12 @@
         "description": "Item label. If no label is provided, content is used."
       },
       {
+        "name": "item_id",
+        "type": "String",
+        "default": "`nil`",
+        "description": "An ID that will be attached to the item's `<li>` element as `data-item-id` for distinguishing between items, perhaps in JavaScript."
+      },
+      {
         "name": "label_classes",
         "type": "String",
         "default": "`nil`",
@@ -466,7 +472,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by [ActionMenu::List](/components/alpha/actionmenulist)"
+        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)"
       }
     ]
   },
