@@ -12,6 +12,17 @@ type SelectedItem = {
 const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
+export type ItemActivatedEvent = {
+  item: Element
+  checked: boolean
+}
+
+declare global {
+  interface HTMLElementEventMap {
+    itemActivated: CustomEvent<ItemActivatedEvent>
+  }
+}
+
 @controller
 export class ActionMenuElement extends HTMLElement {
   @target
@@ -310,6 +321,11 @@ export class ActionMenuElement extends HTMLElement {
     }
 
     this.#updateInput()
+    this.dispatchEvent(
+      new CustomEvent('itemActivated', {
+        detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)}
+      })
+    )
   }
 
   #activateItem(event: Event, item: Element) {
@@ -416,7 +432,7 @@ export class ActionMenuElement extends HTMLElement {
     return this.querySelector(menuItemSelectors.join(','))
   }
 
-  get #items(): HTMLElement[] {
+  get items(): HTMLElement[] {
     return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
   }
 
@@ -424,9 +440,7 @@ export class ActionMenuElement extends HTMLElement {
     return this.querySelector(`li[data-item-id="${itemId}"`)
   }
 
-  isItemDisabled(itemId: string): boolean {
-    const item = this.getItemById(itemId)
-
+  isItemDisabled(item: Element | null): boolean {
     if (item) {
       return item.classList.contains('ActionListItem--disabled')
     } else {
@@ -434,27 +448,21 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  disableItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  disableItem(item: Element | null) {
     if (item) {
       item.classList.add('ActionListItem--disabled')
       item.querySelector('.ActionListContent')!.setAttribute('aria-disabled', 'true')
     }
   }
 
-  enableItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  enableItem(item: Element | null) {
     if (item) {
       item.classList.remove('ActionListItem--disabled')
       item.querySelector('.ActionListContent')!.removeAttribute('aria-disabled')
     }
   }
 
-  isItemHidden(itemId: string): boolean {
-    const item = this.getItemById(itemId)
-
+  isItemHidden(item: Element | null): boolean {
     if (item) {
       return item.hasAttribute('hidden')
     } else {
@@ -462,25 +470,19 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  hideItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  hideItem(item: Element | null) {
     if (item) {
       item.setAttribute('hidden', 'hidden')
     }
   }
 
-  showItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  showItem(item: Element | null) {
     if (item) {
       item.removeAttribute('hidden')
     }
   }
 
-  isItemChecked(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  isItemChecked(item: Element | null) {
     if (item) {
       return item.querySelector('.ActionListContent')!.getAttribute('aria-checked') === 'true'
     } else {
@@ -488,9 +490,7 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  checkItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  checkItem(item: Element | null) {
     if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
       const itemContent = item.querySelector('.ActionListContent')!
       const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
@@ -501,9 +501,7 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  uncheckItemById(itemId: string) {
-    const item = this.getItemById(itemId)
-
+  uncheckItem(item: Element | null) {
     if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
       const itemContent = item.querySelector('.ActionListContent')!
       const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'

@@ -137,19 +137,30 @@ module Primer
     #
     # #### Query methods
     #
-    # * `isItemChecked(itemId: string): boolean`: Returns `true` if the item is checked, `false` otherwise.
-    # * `isItemHidden(itemId: string): boolean`: Returns `true` if the item is hidden, `false` otherwise.
-    # * `isItemDisabled(itemId: string): boolean`: Returns `true` if the item is disabled, `false` otherwise.
-    # * `getItemById(itemId: string): HTMLElement`: Returns the item's HTML `<li>` element.
+    # * `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.
+    # * `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.
+    # * `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.
+    # * `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.
     #
     # #### State methods
     #
-    # * `showItemById(itemId: string)`: Shows the item, i.e. makes it visible.
-    # * `hideItemById(itemId: string)`: Hides the item, i.e. makes it invisible.
-    # * `enableItemById(itemId: string)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
-    # * `disableItemById(itemId: string)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
-    # * `checkItemById(itemId: string)`: Checks the item. Only has an effect in single- and multi-select modes.
-    # * `uncheckItemById(itemId: string)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.
+    # * `showItem(item: Element)`: Shows the item, i.e. makes it visible.
+    # * `hideItem(item: Element)`: Hides the item, i.e. makes it invisible.
+    # * `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
+    # * `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
+    # * `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.
+    # * `uncheckItem(item: Element)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.
+    #
+    # #### Events
+    #
+    # The `<action-menu>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.
+    #
+    # ```typescript
+    # document.querySelector("action-menu").addEventListener("itemActivated", (event: ItemActivatedEvent) => {
+    #   event.item  // Element: the <li> item that was activated
+    #   event.checked  // boolean: whether or not the result of the activation checked the item
+    # })
+    # ```
     class ActionMenu < Primer::Component
       status :alpha
 

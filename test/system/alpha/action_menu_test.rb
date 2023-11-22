@@ -50,6 +50,12 @@ module Alpha
       # expected behavior
     end
 
+    def evaluate_multiline_script(script)
+      page.evaluate_script(<<~JS)
+        (() => { #{script} })()
+      JS
+    end
+
     ########## TESTS ############
 
     def test_dynamic_labels
@@ -610,8 +616,9 @@ module Alpha
       click_on_invoker_button
       refute_selector "li[data-item-id=hidden]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').showItemById('hidden');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.showItem(menu.getItemById('hidden'))
       JS
 
       assert_selector "li[data-item-id=hidden]"
@@ -626,8 +633,9 @@ module Alpha
       click_on_invoker_button
       assert_selector "li[data-item-id=recursive]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').hideItemById('recursive');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.hideItem(menu.getItemById('recursive'));
       JS
 
       refute_selector "li[data-item-id=recursive]"
@@ -639,8 +647,9 @@ module Alpha
       click_on_invoker_button
       refute_selector "li[data-item-id=hidden]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').showItemById('hidden');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.showItem(menu.getItemById('hidden'))
       JS
 
       assert_selector "li[data-item-id=hidden]"
@@ -652,8 +661,9 @@ module Alpha
       click_on_invoker_button
       refute_selector "li[data-item-id=resolve] [aria-disabled=true]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').disableItemById('resolve');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.disableItem(menu.getItemById('resolve'))
       JS
 
       assert_selector "li[data-item-id=resolve] [aria-disabled=true]"
@@ -665,8 +675,9 @@ module Alpha
       click_on_invoker_button
       assert_selector "li[data-item-id=disabled] [aria-disabled=true]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').enableItemById('disabled');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.enableItem(menu.getItemById('disabled'))
       JS
 
       refute_selector "li[data-item-id=disabled] [aria-disabled=true]"
@@ -678,8 +689,9 @@ module Alpha
       click_on_invoker_button
       refute_selector "li[data-item-id=recursive] [aria-checked=true]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').checkItemById('recursive');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.checkItem(menu.getItemById('recursive'))
       JS
 
       click_on_invoker_button
@@ -695,11 +707,32 @@ module Alpha
 
       assert_selector "li[data-item-id=jon] [aria-checked=true]"
 
-      page.evaluate_script(<<~JS)
-        document.querySelector('action-menu').uncheckItemById('jon');
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.uncheckItem(menu.getItemById('jon'))
       JS
 
       refute_selector "li[data-item-id=jon] [aria-checked=true]"
+    end
+
+    def test_fires_event_on_activation
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.activatedItemText = null
+        window.activatedItemChecked = false
+
+        document.querySelector('action-menu').addEventListener('itemActivated', (event) => {
+          window.activatedItemText = event.detail.item.innerText
+          window.activatedItemChecked = event.detail.checked
+        })
+      JS
+
+      click_on_invoker_button
+      click_on_first_item
+
+      assert page.evaluate_script("window.activatedItemChecked")
+      assert_equal "Fast forward", page.evaluate_script("window.activatedItemText")
     end
   end
 end
