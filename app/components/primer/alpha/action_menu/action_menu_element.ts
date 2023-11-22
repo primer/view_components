@@ -93,7 +93,7 @@ export class ActionMenuElement extends HTMLElement {
       results.push({
         label: labelEl?.textContent,
         value: selectedItem?.getAttribute('data-value'),
-        element: selectedItem
+        element: selectedItem,
       })
     }
 
@@ -113,7 +113,7 @@ export class ActionMenuElement extends HTMLElement {
 
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {
-        signal
+        signal,
       })
     }
   }
@@ -323,8 +323,8 @@ export class ActionMenuElement extends HTMLElement {
     this.#updateInput()
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
-        detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)}
-      })
+        detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)},
+      }),
     )
   }
 
