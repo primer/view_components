@@ -16,6 +16,9 @@ module Primer
       include ViewComponent::PolymorphicSlots
     end
 
+    include ExperimentalRenderHelpers
+    include ExperimentalSlotHelpers
+
     include AttributesHelper
     include ClassNameHelper
     include FetchOrFallbackHelper

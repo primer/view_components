@@ -52,6 +52,67 @@ module Primer
         end
       end
 
+      # @label With groups
+      #
+      # @snapshot interactive
+      def with_groups
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Favorite character"
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Battlestar Galactica")
+            group.with_item(label: "William Adama")
+            group.with_item(label: 'Kara "Starbuck" Thrace')
+            group.with_item(label: 'Sharon "Boomer" Valerii')
+            group.with_item(label: "Gaius Baltar")
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Star Trek")
+            group.with_item(label: "Capt. Jean-luc Picard")
+            group.with_item(label: "Capt. Kathryn M. Janeway")
+            group.with_item(label: "Capt. Benjamin L. Sisko")
+            group.with_item(label: "Capt. James T. Kirk")
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Star Wars")
+            group.with_item(label: "Leia Organa")
+            group.with_item(label: "Luke Skywalker")
+            group.with_item(label: "Han Solo")
+            group.with_item(label: "Chewbacca")
+          end
+        end
+      end
+
+      # @label With items and groups
+      #
+      # @snapshot interactive
+      def with_items_and_groups
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Meal preference"
+          end
+
+          menu.with_item(label: "Meat option")
+          menu.with_divider
+
+          menu.with_group do |group|
+            group.with_heading(title: "Vegetarian options")
+            group.with_item(label: "Grilled portbello mushroom")
+            group.with_item(label: "Polenta")
+            group.with_item(label: "Seitan")
+          end
+
+          menu.with_divider
+          menu.with_item(label: "Fish option")
+        end
+      end
+
       # @label Wide
       #
       # @snapshot interactive

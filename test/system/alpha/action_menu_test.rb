@@ -13,7 +13,8 @@ module Alpha
     end
 
     def click_on_item(idx)
-      find("action-menu ul li:nth-child(#{idx})").click
+      items = find_all("action-menu ul li")
+      items[idx - 1].click
     end
 
     def click_on_first_item
