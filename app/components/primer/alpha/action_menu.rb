@@ -128,6 +128,28 @@ module Primer
     #
     #   Additional information around the keyboard functionality and implementation can be found on the
     #   [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#menu).
+    #
+    # ### JavaScript API
+    #
+    # `ActionList`s render an `<action-list>` custom element that exposes behavior to the client. For all these methods,
+    # `itemId` refers to the value of the `item_id:` argument (see below) that is used to populate the `data-item-id` HTML
+    # attribute.
+    #
+    # #### Query methods
+    #
+    # * `isItemChecked(itemId: string): boolean`: Returns `true` if the item is checked, `false` otherwise.
+    # * `isItemHidden(itemId: string): boolean`: Returns `true` if the item is hidden, `false` otherwise.
+    # * `isItemDisabled(itemId: string): boolean`: Returns `true` if the item is disabled, `false` otherwise.
+    # * `getItemById(itemId: string): HTMLElement`: Returns the item's HTML `<li>` element.
+    #
+    # #### State methods
+    #
+    # * `showItemById(itemId: string)`: Shows the item, i.e. makes it visible.
+    # * `hideItemById(itemId: string)`: Hides the item, i.e. makes it invisible.
+    # * `enableItemById(itemId: string)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
+    # * `disableItemById(itemId: string)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
+    # * `checkItemById(itemId: string)`: Checks the item. Only has an effect in single- and multi-select modes.
+    # * `uncheckItemById(itemId: string)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.
     class ActionMenu < Primer::Component
       status :alpha
 

@@ -98,6 +98,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mousedown', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
+    this.#softDisableItems()
 
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {
@@ -108,6 +109,32 @@ export class ActionMenuElement extends HTMLElement {
 
   disconnectedCallback() {
     this.#abortController.abort()
+  }
+
+  #softDisableItems() {
+    const {signal} = this.#abortController
+
+    for (const item of this.querySelectorAll(validSelectors.join(','))) {
+      item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
+      item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
+    }
+  }
+
+  // returns true if activation was prevented
+  #potentiallyDisallowActivation(event: Event): boolean {
+    if (!this.#isActivation(event)) return false
+
+    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
+    if (!item) return false
+
+    if (item.getAttribute('aria-disabled')) {
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+      return true
+    }
+
+    return false
   }
 
   #isKeyboardActivation(event: Event): boolean {
@@ -179,12 +206,7 @@ export class ActionMenuElement extends HTMLElement {
     const targetIsItem = item !== null
 
     if (targetIsItem && eventIsActivation) {
-      if (item.getAttribute('aria-disabled')) {
-        event.preventDefault()
-        event.stopPropagation()
-        event.stopImmediatePropagation()
-        return
-      }
+      if (this.#potentiallyDisallowActivation(event)) return
 
       const dialogInvoker = item.closest('[data-show-dialog-id]')
 
@@ -311,6 +333,7 @@ export class ActionMenuElement extends HTMLElement {
 
   #handleIncludeFragmentReplaced() {
     if (this.#firstItem) this.#firstItem.focus()
+    this.#softDisableItems()
   }
 
   // Close when focus leaves menu
@@ -393,8 +416,22 @@ export class ActionMenuElement extends HTMLElement {
     return this.querySelector(menuItemSelectors.join(','))
   }
 
+  get #items(): HTMLElement[] {
+    return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
+  }
+
   getItemById(itemId: string): HTMLElement | null {
     return this.querySelector(`li[data-item-id="${itemId}"`)
+  }
+
+  isItemDisabled(itemId: string): boolean {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      return item.classList.contains('ActionListItem--disabled')
+    } else {
+      return false
+    }
   }
 
   disableItemById(itemId: string) {
@@ -415,6 +452,16 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
+  isItemHidden(itemId: string): boolean {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      return item.hasAttribute('hidden')
+    } else {
+      return false
+    }
+  }
+
   hideItemById(itemId: string) {
     const item = this.getItemById(itemId)
 
@@ -428,6 +475,16 @@ export class ActionMenuElement extends HTMLElement {
 
     if (item) {
       item.removeAttribute('hidden')
+    }
+  }
+
+  isItemChecked(itemId: string) {
+    const item = this.getItemById(itemId)
+
+    if (item) {
+      return item.querySelector('.ActionListContent')!.getAttribute('aria-checked') === 'true'
+    } else {
+      return false
     }
   }
 

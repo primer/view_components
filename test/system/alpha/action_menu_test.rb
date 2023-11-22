@@ -17,6 +17,10 @@ module Alpha
       items[idx - 1].click
     end
 
+    def click_on_item_by_id(id)
+      find("li[data-item-id='#{id}']").click
+    end
+
     def click_on_first_item
       click_on_item(1)
     end
@@ -598,6 +602,104 @@ module Alpha
       # clicking the invoker a second time should close the menu
       click_on_invoker_button
       refute_selector "action-menu ul li"
+    end
+
+    def test_unhidden_disabled_item_cannot_be_checked
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=hidden]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').showItemById('hidden');
+      JS
+
+      assert_selector "li[data-item-id=hidden]"
+
+      click_on_item_by_id("hidden")
+      refute_selector "li [aria-checked=true]"
+    end
+
+    def test_hide_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=recursive]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').hideItemById('recursive');
+      JS
+
+      refute_selector "li[data-item-id=recursive]"
+    end
+
+    def test_show_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=hidden]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').showItemById('hidden');
+      JS
+
+      assert_selector "li[data-item-id=hidden]"
+    end
+
+    def test_disable_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=resolve] [aria-disabled=true]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').disableItemById('resolve');
+      JS
+
+      assert_selector "li[data-item-id=resolve] [aria-disabled=true]"
+    end
+
+    def test_enable_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=disabled] [aria-disabled=true]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').enableItemById('disabled');
+      JS
+
+      refute_selector "li[data-item-id=disabled] [aria-disabled=true]"
+    end
+
+    def test_check_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=recursive] [aria-checked=true]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').checkItemById('recursive');
+      JS
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=recursive] [aria-checked=true]"
+    end
+
+    def test_uncheck_item_via_js_api
+      # use multiple_select preview here because single-select menus do not allow unchecking checked items
+      visit_preview(:multiple_select)
+
+      click_on_invoker_button
+      click_on_item_by_id("jon")
+
+      assert_selector "li[data-item-id=jon] [aria-checked=true]"
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('action-menu').uncheckItemById('jon');
+      JS
+
+      refute_selector "li[data-item-id=jon] [aria-checked=true]"
     end
   end
 end
