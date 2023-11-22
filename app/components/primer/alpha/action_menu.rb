@@ -128,6 +128,39 @@ module Primer
     #
     #   Additional information around the keyboard functionality and implementation can be found on the
     #   [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#menu).
+    #
+    # ### JavaScript API
+    #
+    # `ActionList`s render an `<action-list>` custom element that exposes behavior to the client. For all these methods,
+    # `itemId` refers to the value of the `item_id:` argument (see below) that is used to populate the `data-item-id` HTML
+    # attribute.
+    #
+    # #### Query methods
+    #
+    # * `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.
+    # * `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.
+    # * `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.
+    # * `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.
+    #
+    # #### State methods
+    #
+    # * `showItem(item: Element)`: Shows the item, i.e. makes it visible.
+    # * `hideItem(item: Element)`: Hides the item, i.e. makes it invisible.
+    # * `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
+    # * `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
+    # * `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.
+    # * `uncheckItem(item: Element)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.
+    #
+    # #### Events
+    #
+    # The `<action-menu>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.
+    #
+    # ```typescript
+    # document.querySelector("action-menu").addEventListener("itemActivated", (event: ItemActivatedEvent) => {
+    #   event.item  // Element: the <li> item that was activated
+    #   event.checked  // boolean: whether or not the result of the activation checked the item
+    # })
+    # ```
     class ActionMenu < Primer::Component
       status :alpha
 

@@ -17,6 +17,10 @@ module Alpha
       items[idx - 1].click
     end
 
+    def click_on_item_by_id(id)
+      find("li[data-item-id='#{id}']").click
+    end
+
     def click_on_first_item
       click_on_item(1)
     end
@@ -44,6 +48,12 @@ module Alpha
       assert false, message || "Unexpected alert dialog"
     rescue Capybara::ModalNotFound
       # expected behavior
+    end
+
+    def evaluate_multiline_script(script)
+      page.evaluate_script(<<~JS)
+        (() => { #{script} })()
+      JS
     end
 
     ########## TESTS ############
@@ -598,6 +608,131 @@ module Alpha
       # clicking the invoker a second time should close the menu
       click_on_invoker_button
       refute_selector "action-menu ul li"
+    end
+
+    def test_unhidden_disabled_item_cannot_be_checked
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=hidden]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.showItem(menu.getItemById('hidden'))
+      JS
+
+      assert_selector "li[data-item-id=hidden]"
+
+      click_on_item_by_id("hidden")
+      refute_selector "li [aria-checked=true]"
+    end
+
+    def test_hide_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=recursive]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.hideItem(menu.getItemById('recursive'));
+      JS
+
+      refute_selector "li[data-item-id=recursive]"
+    end
+
+    def test_show_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=hidden]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.showItem(menu.getItemById('hidden'))
+      JS
+
+      assert_selector "li[data-item-id=hidden]"
+    end
+
+    def test_disable_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=resolve] [aria-disabled=true]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.disableItem(menu.getItemById('resolve'))
+      JS
+
+      assert_selector "li[data-item-id=resolve] [aria-disabled=true]"
+    end
+
+    def test_enable_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=disabled] [aria-disabled=true]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.enableItem(menu.getItemById('disabled'))
+      JS
+
+      refute_selector "li[data-item-id=disabled] [aria-disabled=true]"
+    end
+
+    def test_check_item_via_js_api
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=recursive] [aria-checked=true]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.checkItem(menu.getItemById('recursive'))
+      JS
+
+      click_on_invoker_button
+      assert_selector "li[data-item-id=recursive] [aria-checked=true]"
+    end
+
+    def test_uncheck_item_via_js_api
+      # use multiple_select preview here because single-select menus do not allow unchecking checked items
+      visit_preview(:multiple_select)
+
+      click_on_invoker_button
+      click_on_item_by_id("jon")
+
+      assert_selector "li[data-item-id=jon] [aria-checked=true]"
+
+      evaluate_multiline_script(<<~JS)
+        const menu = document.querySelector('action-menu')
+        menu.uncheckItem(menu.getItemById('jon'))
+      JS
+
+      refute_selector "li[data-item-id=jon] [aria-checked=true]"
+    end
+
+    def test_fires_event_on_activation
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.activatedItemText = null
+        window.activatedItemChecked = false
+
+        document.querySelector('action-menu').addEventListener('itemActivated', (event) => {
+          window.activatedItemText = event.detail.item.innerText
+          window.activatedItemChecked = event.detail.checked
+        })
+      JS
+
+      click_on_invoker_button
+      click_on_first_item
+
+      assert page.evaluate_script("window.activatedItemChecked")
+      assert_equal "Fast forward", page.evaluate_script("window.activatedItemText")
     end
   end
 end

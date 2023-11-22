@@ -148,10 +148,12 @@ module Primer
       def single_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "Fast forward")
-          menu.with_item(label: "Recursive")
-          menu.with_item(label: "Ours")
-          menu.with_item(label: "Resolve")
+          menu.with_item(label: "Fast forward", item_id: :fast_forward)
+          menu.with_item(label: "Recursive", item_id: :recursive)
+          menu.with_item(label: "Ours", item_id: :ours)
+          menu.with_item(label: "Resolve", item_id: :resolve)
+          menu.with_item(label: "Disabled", disabled: true, item_id: :disabled)
+          menu.with_item(label: "Hidden", hidden: true, disabled: true, item_id: :hidden)
         end
       end
 
@@ -166,7 +168,8 @@ module Primer
             username: "langermank",
             full_name: "Katie Langerman",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :katie
           )
 
           menu.with_avatar_item(
@@ -174,7 +177,8 @@ module Primer
             username: "jonrohan",
             full_name: "Jon Rohan",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :jon
           )
 
           menu.with_avatar_item(
@@ -182,7 +186,8 @@ module Primer
             username: "broccolinisoup",
             full_name: "Armağan Ersöz",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :armagan
           )
         end
       end
