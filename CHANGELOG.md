@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.17.1
+
+### Patch Changes
+
+- [#54](https://github.com/opf/primer_view_components/pull/54) [`6879136d`](https://github.com/opf/primer_view_components/commit/6879136dd0b0bbcfeff7dc3ad8aae1c1ce940557) Thanks [@apfohl](https://github.com/apfohl)! - TextField style now uses max-width
+
 ## 0.17.0
 
 ### Minor Changes
