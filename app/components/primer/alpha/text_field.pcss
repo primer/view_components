@@ -228,27 +228,27 @@
 /* widths */
 @define-mixin FormControl-input-width {
   &.FormControl-input-width--auto {
-    width: auto;
+    max-width: auto;
   }
 
   &.FormControl-input-width--small {
-    width: min(256px, 100vw - 2rem);
+    max-width: min(256px, 100vw - 2rem);
   }
 
   &.FormControl-input-width--medium {
-    width: min(320px, 100vw - 2rem);
+    max-width: min(320px, 100vw - 2rem);
   }
 
   &.FormControl-input-width--large {
-    width: min(480px, 100vw - 2rem);
+    max-width: min(480px, 100vw - 2rem);
   }
 
   &.FormControl-input-width--xlarge {
-    width: min(640px, 100vw - 2rem);
+    max-width: min(640px, 100vw - 2rem);
   }
 
   &.FormControl-input-width--xxlarge {
-    width: min(960px, 100vw - 2rem);
+    max-width: min(960px, 100vw - 2rem);
   }
 }
 
