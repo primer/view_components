@@ -9,7 +9,7 @@ module Beta
 
       assert_selector("auto-complete[for=\"list-id\"][src=\"/auto_complete\"]") do
         assert_selector("input.FormControl-input")
-        assert_selector("ul[id=\"list-id\"].ActionListWrap", visible: false)
+        assert_selector("#list-id.ActionListWrap", visible: false)
       end
       refute_selector(".ActionListItem")
     end
@@ -21,7 +21,7 @@ module Beta
       fill_in "input-id", with: "a"
 
       # results are now visible
-      assert_selector("ul[id=\"list-id\"].ActionListWrap", visible: true)
+      assert_selector("#list-id.ActionListWrap", visible: true)
       assert_selector(".ActionListItem")
     end
 

@@ -51,7 +51,7 @@ module Primer
           )
 
           @system_arguments = deny_tag_argument(**system_arguments)
-          @system_arguments[:tag] = :li
+          @system_arguments[:tag] = :div
           @system_arguments[:role] = :option
           @system_arguments[:"data-autocomplete-value"] = value
 

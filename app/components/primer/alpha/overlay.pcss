@@ -4,11 +4,15 @@ anchored-position[popover] {
   position: absolute;
   min-width: 192px;
   overflow: visible;
+}
+
+anchored-position:not(.Overlay) {
   background: none;
 }
 
-.Overlay {
-  display: flex;
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+.Overlay[popover]:not(:popover-open) {
+  display: none
 }
 
 anchored-position.not-anchored::backdrop {
