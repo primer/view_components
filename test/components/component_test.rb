@@ -8,6 +8,10 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::InputGroup, {}, proc { |component|
+      component.with_text_input(name: "a name", label: "My input group", value: "Copyable value")
+      component.with_trailing_action_clipboard_copy_button(id: "button", value: "Copyable value", aria: { label: "Copy some text" })
+    }],
     [Primer::OpenProject::GridLayout, { css_class: "grid-layout", tag: :div }, proc { |component|
       component.with_area(:area) do
         "Foo"
