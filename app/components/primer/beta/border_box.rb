@@ -73,6 +73,8 @@ module Primer
       # @param padding [Symbol] <%= one_of(Primer::Beta::BorderBox::PADDING_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(padding: DEFAULT_PADDING, **system_arguments)
+        list_id = system_arguments.delete(:list_id)
+
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
@@ -83,6 +85,7 @@ module Primer
 
         @system_arguments[:system_arguments_denylist] = { [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION }
         @list_arguments = { tag: :ul }
+        @list_arguments[:id] = list_id if list_id
       end
 
       def render?
