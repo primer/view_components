@@ -60,6 +60,15 @@ class PrimerBetaBorderBoxTest < Minitest::Test
     assert_selector("li.Box-row", count: 3)
   end
 
+  def test_renders_the_list_element_with_an_id_if_provided
+    render_inline(Primer::Beta::BorderBox.new(list_id: "an-id")) do |component|
+      component.with_row { "First" }
+    end
+
+    assert_selector("ul#an-id", count: 1)
+    assert_selector("li.Box-row", count: 1)
+  end
+
   def test_renders_condensed
     render_inline(Primer::Beta::BorderBox.new(padding: :condensed)) do |component|
       component.with_body { "Body" }
