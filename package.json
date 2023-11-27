@@ -59,7 +59,7 @@
     "@changesets/cli": "^2.24.1",
     "@github/axe-github": "^0.6.1",
     "@github/browserslist-config": "^1.0.0",
-    "@github/markdownlint-github": "^0.2.2",
+    "@github/markdownlint-github": "^0.6.0",
     "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.0.10",
