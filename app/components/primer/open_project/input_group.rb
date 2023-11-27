@@ -2,11 +2,20 @@
 
 module Primer
   module OpenProject
-    # Add a general description of component here
-    # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
+    # `InputGroup` is composed of a text field input with a trailing action
     class InputGroup < Primer::Component
       status :open_project
+
+      DEFAULT_INPUT_WIDTH = :auto
+      INPUT_WIDTH_MAPPINGS = {
+        DEFAULT_INPUT_WIDTH => "InputGroup-input-width--auto",
+        :small => "InputGroup-input-width--small",
+        :medium => "InputGroup-input-width--medium",
+        :large => "InputGroup-input-width--large",
+        :xlarge => "InputGroup-input-width--xlarge",
+        :xxlarge => "InputGroup-input-width--xxlarge"
+      }.freeze
+      INPUT_WIDTH_OPTIONS = INPUT_WIDTH_MAPPINGS.keys
 
       # A component that will render to the right of the label.
       #
@@ -37,10 +46,13 @@ module Primer
       # @param readonly [Boolean] Shall the text field be editable.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :text_input, lambda { |readonly: true, **system_arguments|
+        deny_single_argument(:input_width, "Set the `input_width` on the `InputGroup`", **system_arguments)
+        system_arguments[:input_width] = @system_arguments[:input_width]
+
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "rounded-right-0"
-          )
+        )
 
         if readonly
           system_arguments[:readonly] = readonly
@@ -60,9 +72,16 @@ module Primer
         @system_arguments[:display] = :flex
         @system_arguments[:align_items] = :flex_end
 
+        @system_arguments[:input_width] = fetch_or_fallback(
+          Primer::OpenProject::InputGroup::INPUT_WIDTH_OPTIONS,
+          @system_arguments[:input_width] || Primer::OpenProject::InputGroup::DEFAULT_INPUT_WIDTH,
+          Primer::OpenProject::InputGroup::DEFAULT_INPUT_WIDTH
+        )
+
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "InputGroup"
+          "InputGroup",
+          INPUT_WIDTH_MAPPINGS[@system_arguments[:input_width]]
         )
       end
 
