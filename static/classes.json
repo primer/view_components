@@ -302,6 +302,9 @@
   "FormControl-toggleSwitchInput": [
     "Primer::Alpha::TextField"
   ],
+  "InputGroup": [
+    "Primer::OpenProject::InputGroup"
+  ],
   "Label": [
     "Primer::Beta::Label"
   ],

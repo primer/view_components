@@ -115,6 +115,7 @@
   "Primer::OpenProject::FlexLayout": "open_project",
   "Primer::OpenProject::GridLayout": "open_project",
   "Primer::OpenProject::GridLayout::Area": "open_project",
+  "Primer::OpenProject::InputGroup": "open_project",
   "Primer::OpenProject::PageHeader": "open_project",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "deprecated"

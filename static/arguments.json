@@ -4811,6 +4811,22 @@
     ]
   },
   {
+    "component": "OpenProject::InputGroup",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectInputGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/input_group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/input_group/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::PageHeader",
     "status": "open_project",
     "a11y_reviewed": false,

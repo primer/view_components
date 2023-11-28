@@ -3850,6 +3850,66 @@
     ]
   },
   {
+    "name": "input_group",
+    "component": "OpenProject::InputGroup",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/input_group",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/input_group/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/icon_button",
+        "name": "icon_button",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/small_input_width",
+        "name": "small_input_width",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "label",
     "component": "Label",
     "status": "beta",

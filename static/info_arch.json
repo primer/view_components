@@ -15723,6 +15723,115 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::InputGroup",
+    "description": "`InputGroup` is composed of a text field input with a trailing action",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::InputGroup",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectInputGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/input_group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/input_group/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "trailing_action",
+        "description": "A component that will render to the right of the label.\n\nTo render a clipboardCopyButton, call the `with_trailing_action_clipboard_copy_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}.\n\nTo render an iconButton, call the `with_trailing_action_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "text_input",
+        "description": "Input that is the central part of the input group\n\nSince the central use case of this component is a copyClipboard Button next to the input, it is readonly by default",
+        "parameters": [
+          {
+            "name": "readonly",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Shall the text field be editable."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/input_group/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/icon_button",
+        "name": "icon_button",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/small_input_width",
+        "name": "small_input_width",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::PageHeader",
     "description": "A ViewComponent PageHeader inspired by the primer react variant",
     "accessibility_docs": null,

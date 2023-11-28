@@ -1374,6 +1374,25 @@
       "span"
     ]
   },
+  "Primer::OpenProject::InputGroup": {
+    "DEFAULT_INPUT_WIDTH": "auto",
+    "INPUT_WIDTH_MAPPINGS": {
+      "auto": "InputGroup-input-width--auto",
+      "small": "InputGroup-input-width--small",
+      "medium": "InputGroup-input-width--medium",
+      "large": "InputGroup-input-width--large",
+      "xlarge": "InputGroup-input-width--xlarge",
+      "xxlarge": "InputGroup-input-width--xxlarge"
+    },
+    "INPUT_WIDTH_OPTIONS": [
+      "auto",
+      "small",
+      "medium",
+      "large",
+      "xlarge",
+      "xxlarge"
+    ]
+  },
   "Primer::OpenProject::PageHeader": {
     "BACK_BUTTON_ICON_OPTIONS": [
       "arrow-left",

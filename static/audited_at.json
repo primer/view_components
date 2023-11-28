@@ -115,6 +115,7 @@
   "Primer::OpenProject::FlexLayout": "",
   "Primer::OpenProject::GridLayout": "",
   "Primer::OpenProject::GridLayout::Area": "",
+  "Primer::OpenProject::InputGroup": "",
   "Primer::OpenProject::PageHeader": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
