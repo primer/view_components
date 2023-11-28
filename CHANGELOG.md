@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.18.0
+
+### Minor Changes
+
+- [#56](https://github.com/opf/primer_view_components/pull/56) [`384c4b45`](https://github.com/opf/primer_view_components/commit/384c4b456a5f217cd9caa3ccaad6cfed289766ea) Thanks [@HDinger](https://github.com/HDinger)! - Create OpenProject::InputGroupComponent
+
+### Patch Changes
+
+- [#57](https://github.com/opf/primer_view_components/pull/57) [`29a18c91`](https://github.com/opf/primer_view_components/commit/29a18c91d6d9e4cfbdfffa52c178481cb8305031) Thanks [@aaron-contreras](https://github.com/aaron-contreras)! - Allow setting an `id` attribute on the BorderBox's `ul` element
+
+  <!-- Changed components: Primer::Beta::BorderBox -->
+
 ## 0.17.1
 
 ### Patch Changes
