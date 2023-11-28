@@ -114,6 +114,15 @@ module Primer
               item.with_trailing_visual_icon(icon: :plus)
             end
           end
+
+          list.with_group do |group|
+            group.with_heading(title: "My favorite snacks")
+            group.with_item(label: "Popplers", href: "/foods/popplers")
+            group.with_item(label: "Slurm", href: "/foods/slurm")
+            group.with_show_more_item(label: "Show more snacks", src: UrlHelpers.nav_list_items_path, pages: 4) do |item|
+              item.with_trailing_visual_icon(icon: :plus)
+            end
+          end
         end
       end
 
