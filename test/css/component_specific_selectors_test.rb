@@ -175,6 +175,11 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".TimelineItem-break",
       ".TimelineItem--condensed",
       ".TimelineItem--condensed .TimelineItem-badge"
+    ],
+    Primer::OpenProject::InputGroup => [
+      ".InputGroup-input-width--large",
+      ".InputGroup-input-width--xlarge",
+      ".InputGroup-input-width--xxlarge",
     ]
   }.freeze
 
