@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.18.1
+
+### Patch Changes
+
+- [#58](https://github.com/opf/primer_view_components/pull/58) [`97595a03`](https://github.com/opf/primer_view_components/commit/97595a03c2fb3a0e6712392c80e18f2dae597398) Thanks [@HDinger](https://github.com/HDinger)! - Fix invalid CSS rule for `input_width: :auto`
+
 ## 0.18.0
 
 ### Minor Changes
