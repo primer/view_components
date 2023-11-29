@@ -44,10 +44,8 @@ class ActionBarElement extends HTMLElement {
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
-    setTimeout(() => {
-      this.style.overflow = 'visible'
-      this.update()
-    }, 20) // Wait for the items to be rendered, making this really short to avoid a flash of unstyled content
+    // Wait for the items to be rendered, making this really short to avoid a flash of unstyled content
+    requestAnimationFrame(() => this.update())
   }
 
   disconnectedCallback() {
@@ -87,7 +85,7 @@ class ActionBarElement extends HTMLElement {
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
         return this.#isVisible(element)
-      }
+      },
     })
   }
 
