@@ -52,7 +52,7 @@ module Primer
 
       MONTH_DEFAULT = nil
       MONTH_MAPPINGS = {
-        DAY_DEFAULT => nil,
+        MONTH_DEFAULT => nil,
         :numeric => "numeric",
         :two_digit => "2-digit",
         :short => "short",
@@ -63,7 +63,7 @@ module Primer
 
       YEAR_DEFAULT = nil
       YEAR_MAPPINGS = {
-        DAY_DEFAULT => nil,
+        YEAR_DEFAULT => nil,
         :numeric => "numeric",
         :two_digit => "2-digit"
       }.freeze
@@ -71,7 +71,7 @@ module Primer
 
       TIMEZONENAME_DEFAULT = nil
       TIMEZONE_MAPPINGS = {
-        DAY_DEFAULT => nil,
+        TIMEZONENAME_DEFAULT => nil,
         :long => "long",
         :short => "short",
         :short_offset => "shortOffset",
@@ -131,7 +131,7 @@ module Primer
         @system_arguments[:hour] = fetch_or_fallback(HOUR_OPTIONS, hour, HOUR_DEFAULT) if hour.present?
         @system_arguments[:weekday] = fetch_or_fallback(WEEKDAY_OPTIONS, weekday, WEEKDAY_DEFAULT) if weekday.present?
         @system_arguments[:day] = fetch_or_fallback(DAY_OPTIONS, day, DAY_DEFAULT) if day.present?
-        @system_arguments[:month] = fetch_or_fallback(MONTH_DEFAULT, month, MONTH_DEFAULT) if month.present?
+        @system_arguments[:month] = fetch_or_fallback(MONTH_OPTIONS, month, MONTH_DEFAULT) if month.present?
         @system_arguments[:year] = fetch_or_fallback(YEAR_OPTIONS, year, YEAR_DEFAULT) if year.present?
         @system_arguments[:"time-zone-name"] = fetch_or_fallback(TIMEZONENAME_OPTIONS, time_zone_name, TIMEZONENAME_DEFAULT) if time_zone_name.present?
         @system_arguments[:threshold] = threshold if threshold.present?
