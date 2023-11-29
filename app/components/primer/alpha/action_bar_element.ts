@@ -45,7 +45,10 @@ class ActionBarElement extends HTMLElement {
     instersectionObserver.observe(this)
 
     // Wait for the items to be rendered, making this really short to avoid a flash of unstyled content
-    requestAnimationFrame(() => this.update())
+    requestAnimationFrame(() => {
+      this.update()
+      this.style.overflow = 'visible'
+    })
   }
 
   disconnectedCallback() {
