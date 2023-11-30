@@ -218,8 +218,8 @@ module Primer
           path, <<~ERB
             #{YAML.dump(frontmatter)}
             ---
-            <%= @page.data[:description_md] %>
-            <%= @page.data[:args_md] %>
+            <%= @page.data[:description_md].html_safe %>
+            <%= @page.data[:args_md].html_safe %>
           ERB
         )
       end
