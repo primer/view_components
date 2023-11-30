@@ -5,6 +5,7 @@ require "system/test_case"
 module Alpha
   class IntegrationActionMenuTest < System::TestCase
     include Primer::ClipboardTestHelpers
+    include Primer::JsTestHelpers
 
     ###### HELPER METHODS ######
 
@@ -48,12 +49,6 @@ module Alpha
       assert false, message || "Unexpected alert dialog"
     rescue Capybara::ModalNotFound
       # expected behavior
-    end
-
-    def evaluate_multiline_script(script)
-      page.evaluate_script(<<~JS)
-        (() => { #{script} })()
-      JS
     end
 
     ########## TESTS ############

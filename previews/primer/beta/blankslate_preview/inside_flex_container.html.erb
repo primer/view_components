@@ -1,0 +1,6 @@
+<div style="display: flex">
+  <%= render Primer::Beta::Blankslate.new do |component| %>
+    <% component.with_heading(tag: :h2) { "Heading" } %>
+    <% component.with_description { "Description" } %>
+  <% end %>
+</div>
