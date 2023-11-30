@@ -25,8 +25,8 @@ module Primer
           system_arguments[:hidden] = true
           system_arguments[:href] = "#"
           system_arguments[:data] ||= {}
-          system_arguments[:data][:target] = "nav-list.showMoreItem"
-          system_arguments[:data][:action] = "click:nav-list#showMore"
+          system_arguments[:data][:target] = "nav-list-group.showMoreItem"
+          system_arguments[:data][:action] = "click:nav-list-group#showMore"
           system_arguments[:data][:current_page] = "1"
           system_arguments[:data][:total_pages] = pages.to_s
           system_arguments[:label_arguments] = {
