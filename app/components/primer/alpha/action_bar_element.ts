@@ -14,7 +14,7 @@ const resizeObserver = new ResizeObserver(entries => {
   for (const entry of entries) {
     const action = entry.target
     if (action instanceof ActionBarElement) {
-      action.update(entry.contentRect)
+      action.update()
     }
   }
 })
@@ -25,14 +25,9 @@ class ActionBarElement extends HTMLElement {
   @target itemContainer: HTMLElement
   @target moreMenu: HTMLElement
 
-  #initialBarWidth: number
-  #previousBarWidth: number
   #focusZoneAbortController: AbortController | null = null
 
   connectedCallback() {
-    this.#previousBarWidth = this.offsetWidth ?? Infinity
-    this.#initialBarWidth = this.itemContainer.offsetWidth ?? Infinity
-
     // Calculate the width of all the items before hiding anything
     for (const item of this.items) {
       const width = item.getBoundingClientRect().width
@@ -44,10 +39,7 @@ class ActionBarElement extends HTMLElement {
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
-    setTimeout(() => {
-      this.style.overflow = 'visible'
-      this.update()
-    }, 20) // Wait for the items to be rendered, making this really short to avoid a flash of unstyled content
+    requestAnimationFrame(() => this.update())
   }
 
   disconnectedCallback() {
@@ -65,29 +57,38 @@ class ActionBarElement extends HTMLElement {
     }
   }
 
-  update(rect: DOMRect = this.getBoundingClientRect()) {
-    // Only recalculate if the bar width changed
-    if (rect.width <= this.#previousBarWidth || this.#previousBarWidth === 0) {
-      this.#shrink()
-    } else if (rect.width > this.#previousBarWidth) {
-      this.#grow()
-    }
-    this.#previousBarWidth = rect.width
+  update() {
+    const firstItemTop = this.items[0].getBoundingClientRect().top
 
-    if (rect.width <= this.#initialBarWidth) {
-      this.style.justifyContent = 'space-between'
-    } else {
-      this.style.justifyContent = 'flex-end'
+    for (let i = 0; i < this.items.length; i++) {
+      const item = this.items[i]
+      const itemTop = item.getBoundingClientRect().top
+
+      if (itemTop > firstItemTop) {
+        this.#hideItem(i)
+
+        if (this.moreMenu.hidden) {
+          this.moreMenu.hidden = false
+        }
+      } else {
+        this.#showItem(i)
+
+        if (i === this.items.length - 1) {
+          this.moreMenu.hidden = true
+        }
+      }
     }
+
     if (this.#focusZoneAbortController) {
       this.#focusZoneAbortController.abort()
     }
+
     this.#focusZoneAbortController = focusZone(this, {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
         return this.#isVisible(element)
-      }
+      },
     })
   }
 
@@ -100,78 +101,18 @@ class ActionBarElement extends HTMLElement {
     return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
   }
 
-  #itemGap(): number {
-    return parseInt(window.getComputedStyle(this.itemContainer)?.columnGap, 10) || 0
-  }
-
-  #availableSpace(): number {
-    // Get the offset of the item container from the container edge
-    return this.offsetWidth - this.itemContainer.offsetWidth
-  }
-
-  #menuSpace(): number {
-    if (this.moreMenu.hidden) {
-      return 0
-    }
-    return this.moreMenu.offsetWidth + this.#itemGap()
-  }
-
-  #shrink() {
-    if (this.items[0]!.hidden) {
-      return
-    }
-
-    let index = this.items.length - 1
-    for (const item of this.items.reverse()) {
-      if (!item.hidden && this.#availableSpace() < this.#menuSpace()) {
-        this.#hideItem(index)
-      } else if (this.#availableSpace() >= this.#menuSpace()) {
-        return
-      }
-      index--
-    }
-  }
-
-  #grow() {
-    // If last item is visible, there is no need to grow
-    if (!this.items[this.items.length - 1]!.hidden) {
-      return
-    }
-    let index = 0
-    for (const item of this.items) {
-      if (item.hidden) {
-        const offsetWidth = Number(item.getAttribute('data-offset-width'))
-
-        if (this.#availableSpace() >= this.#menuSpace() + offsetWidth || index === this.items.length - 1) {
-          this.#showItem(index)
-        } else {
-          return
-        }
-      }
-      index++
-    }
-
-    if (!this.items[this.items.length - 1]!.hidden) {
-      this.moreMenu.hidden = true
-    }
-  }
-
   #showItem(index: number) {
-    this.items[index]!.hidden = false
+    this.items[index].style.setProperty('visibility', 'visible')
     this.#menuItems[index]!.hidden = true
   }
 
   #hideItem(index: number) {
-    this.items[index]!.hidden = true
+    this.items[index].style.setProperty('visibility', 'hidden')
     this.#menuItems[index]!.hidden = false
-
-    if (this.moreMenu.hidden) {
-      this.moreMenu.hidden = false
-    }
   }
 
   get #menuItems(): NodeListOf<HTMLElement> {
-    return this.moreMenu.querySelectorAll('[role="menu"] > li')
+    return this.moreMenu.querySelectorAll('[role="menu"] > li.ActionListItem')
   }
 }
 
