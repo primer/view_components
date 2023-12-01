@@ -136,5 +136,25 @@ module Alpha
 
       assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :hidden)
     end
+
+    def test_tooltip_escape_hides_only_tooltip
+      visit_preview(:tooltip_inside_primer_overlay)
+
+      find("button[popovertarget]").click
+
+      assert_selector("anchored-position[popover]", visible: :visible)
+
+      assert_selector("tool-tip[for='overlay-button']", visible: :hidden)
+
+      find("button#overlay-button").hover
+
+      assert_selector("tool-tip[for='overlay-button']", visible: :visible)
+
+      find("button#overlay-button").send_keys(:escape)
+
+      assert_selector("tool-tip[for='overlay-button']", visible: :hidden)
+
+      assert_selector("anchored-position[popover]", visible: :visible)
+    end
   end
 end
