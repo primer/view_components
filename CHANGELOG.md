@@ -1,5 +1,34 @@
 # CHANGELOG
 
+## 0.15.0
+
+### Minor Changes
+
+- [#2378](https://github.com/primer/view_components/pull/2378) [`81b5acc6`](https://github.com/primer/view_components/commit/81b5acc641d2bebc3a634fe0d5d712ad289747cd) Thanks [@keithamus](https://github.com/keithamus)! - Primer::Alpha::ActionList now uses popover
+
+- [#2340](https://github.com/primer/view_components/pull/2340) [`b8d05407`](https://github.com/primer/view_components/commit/b8d05407b42ec843f4a46b979779e6db69bd56ba) Thanks [@camertron](https://github.com/camertron)! - Add group support to ActionMenu
+
+- [#2393](https://github.com/primer/view_components/pull/2393) [`745eae0d`](https://github.com/primer/view_components/commit/745eae0d0be5efa3f368630b49db1eda2a11307e) Thanks [@camertron](https://github.com/camertron)! - [ActionMenu] Don't allow previously hidden items to be checkable; add JavaScript API
+
+### Patch Changes
+
+- [#2414](https://github.com/primer/view_components/pull/2414) [`48a2405a`](https://github.com/primer/view_components/commit/48a2405a2cdb6865eb57c2ea411fcece026590d0) Thanks [@keithamus](https://github.com/keithamus)! - Prevent other Overlays closing when Escape is pressed while Tooltips are open
+
+- [#2379](https://github.com/primer/view_components/pull/2379) [`2c59c33b`](https://github.com/primer/view_components/commit/2c59c33bf54e392d743fbdd1076d06bff2151b42) Thanks [@mperrotti](https://github.com/mperrotti)! - Updates 'inactive' state for buttons based on feedback from the a11y team:
+
+  - inactive buttons need to meet the color contrast ratio minimum
+  - inactive buttons shouldn't have aria-disabled since they can still accept interactions such as:
+    - hover/focus to show a tooltip
+    - click/activate to show a dialog with more detailed info on why it's inactive
+
+  <!-- Changed components: Button -->
+
+- [#2408](https://github.com/primer/view_components/pull/2408) [`57586da4`](https://github.com/primer/view_components/commit/57586da49cf0f82c0da4736bc276984d6ea3b479) Thanks [@HDinger](https://github.com/HDinger)! - Fix: Allow month attribute for Primer::Beta::RelativeTime
+
+- [#2406](https://github.com/primer/view_components/pull/2406) [`fb9bf257`](https://github.com/primer/view_components/commit/fb9bf257c358add060679d401719993b21ce7f45) Thanks [@strackoverflow](https://github.com/strackoverflow)! - Fix an issue where multiple groups could not be paginated within the same NavList
+
+- [#2412](https://github.com/primer/view_components/pull/2412) [`e7c9a6c6`](https://github.com/primer/view_components/commit/e7c9a6c62b82ec9ebff575ddd5fbd361fcc40334) Thanks [@camertron](https://github.com/camertron)! - Prevent Blankslates from having a zero width inside flex containers
+
 ## 0.14.0
 
 ### Minor Changes
