@@ -14,6 +14,9 @@ module Primer
             aria: {
               hidden: true
             },
+            data: {
+              targets: "action-bar.items"
+            },
             classes: "ActionBar-item ActionBar-divider"
           }
         end

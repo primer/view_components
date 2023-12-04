@@ -19,6 +19,11 @@ const resizeObserver = new ResizeObserver(entries => {
   }
 })
 
+enum ItemType {
+  Item,
+  Divider
+}
+
 @controller
 class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
@@ -58,26 +63,43 @@ class ActionBarElement extends HTMLElement {
   }
 
   update() {
-    const firstItemTop = this.items[0].getBoundingClientRect().top
+    const firstItem = this.#firstItem
+    if (!firstItem) return
 
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i]
+    const firstItemTop = firstItem.getBoundingClientRect().top
+    let previousItemType: ItemType | null = null
+
+    this.#eachItem((item: HTMLElement, index: number, type: ItemType): boolean => {
       const itemTop = item.getBoundingClientRect().top
 
-      if (itemTop > firstItemTop) {
-        this.#hideItem(i)
+      if (type === ItemType.Item) {
+        if (itemTop > firstItemTop) {
+          this.#hideItem(index)
 
-        if (this.moreMenu.hidden) {
-          this.moreMenu.hidden = false
-        }
-      } else {
-        this.#showItem(i)
+          if (this.moreMenu.hidden) {
+            this.moreMenu.hidden = false
+          }
 
-        if (i === this.items.length - 1) {
-          this.moreMenu.hidden = true
+          if (previousItemType === ItemType.Divider) {
+            this.#hideItem(index - 1)
+          }
+        } else {
+          this.#showItem(index)
+
+          if (index === this.items.length - 1) {
+            this.moreMenu.hidden = true
+          }
+
+          if (previousItemType === ItemType.Divider) {
+            this.#showItem(index - 1)
+          }
         }
       }
-    }
+
+      previousItemType = type
+
+      return true
+    })
 
     if (this.#focusZoneAbortController) {
       this.#focusZoneAbortController.abort()
@@ -90,6 +112,21 @@ class ActionBarElement extends HTMLElement {
         return this.#isVisible(element)
       },
     })
+  }
+
+  get #firstItem(): HTMLElement | null {
+    let foundItem = null
+
+    this.#eachItem((item: HTMLElement, _index: number, type: ItemType): boolean => {
+      if (type === ItemType.Item) {
+        foundItem = item
+        return false
+      }
+
+      return true
+    })
+
+    return foundItem
   }
 
   #isVisible(element: HTMLElement): boolean {
@@ -112,7 +149,18 @@ class ActionBarElement extends HTMLElement {
   }
 
   get #menuItems(): NodeListOf<HTMLElement> {
-    return this.moreMenu.querySelectorAll('[role="menu"] > li.ActionListItem')
+    return this.moreMenu.querySelectorAll('[role="menu"] > li')
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  #eachItem(callback: (item: HTMLElement, index: number, type: ItemType) => boolean): void {
+    for (let i = 0; i < this.items.length; i++) {
+      const item = this.items[i]
+      const type = item.classList.contains('ActionBar-divider') ? ItemType.Divider : ItemType.Item
+      if (!callback(item, i, type)) {
+        break
+      }
+    }
   }
 }
 
