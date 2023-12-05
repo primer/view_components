@@ -20,9 +20,14 @@ const resizeObserver = new ResizeObserver(entries => {
   }
 })
 
+// These are definitely used, but eslint is dumb apparently
+
+// eslint-disable-next-line no-unused-vars
 enum ItemType {
+  // eslint-disable-next-line no-unused-vars
   Item,
-  Divider
+  // eslint-disable-next-line no-unused-vars
+  Divider,
 }
 
 @controller
