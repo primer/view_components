@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.15.1
+
+### Patch Changes
+
+- [#2426](https://github.com/primer/view_components/pull/2426) [`78dd9dd`](https://github.com/primer/view_components/commit/78dd9ddb70ee5ade30e243968c87364a80ff1325) Thanks [@camertron](https://github.com/camertron)! - Fix typo in argument passed to event listener in ToolTip
 
 ## 0.15.0
 
