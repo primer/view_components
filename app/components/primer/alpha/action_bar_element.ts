@@ -1,5 +1,6 @@
 import {controller, targets, target} from '@github/catalyst'
 import {focusZone, FocusKeys} from '@primer/behaviors'
+import {ActionMenuElement} from './action_menu/action_menu_element'
 
 const instersectionObserver = new IntersectionObserver(entries => {
   for (const entry of entries) {
@@ -28,7 +29,7 @@ enum ItemType {
 class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @target itemContainer: HTMLElement
-  @target moreMenu: HTMLElement
+  @target moreMenu: ActionMenuElement
 
   #focusZoneAbortController: AbortController | null = null
 
@@ -109,7 +110,10 @@ class ActionBarElement extends HTMLElement {
       bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd,
       focusOutBehavior: 'wrap',
       focusableElementFilter: element => {
-        return this.#isVisible(element)
+        const idx = this.items.indexOf(element.parentElement!)
+        const elementIsVisibleItem = idx > -1 && this.items[idx].style.visibility === 'visible'
+        const elementIsVisibleActionMenuInvoker = element === this.moreMenu.invokerElement && !this.moreMenu.hidden
+        return elementIsVisibleItem || elementIsVisibleActionMenuInvoker
       },
     })
   }
@@ -127,15 +131,6 @@ class ActionBarElement extends HTMLElement {
     })
 
     return foundItem
-  }
-
-  #isVisible(element: HTMLElement): boolean {
-    // Safari doesn't support `checkVisibility` yet.
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (typeof element.checkVisibility === 'function') return element.checkVisibility()
-
-    return Boolean(element.offsetParent || element.offsetWidth || element.offsetHeight)
   }
 
   #showItem(index: number) {
