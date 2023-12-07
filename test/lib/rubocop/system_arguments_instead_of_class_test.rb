@@ -50,6 +50,15 @@ class RubocopSystemArgumentInsteadOfClassTest < CopTestCase
     assert_equal "Primer/SystemArgumentInsteadOfClass: Avoid using CSS classes when you can use System Arguments: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
   end
 
+  def test_marketing_class
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(classes: "f4-mktg")
+    RUBY
+
+    assert_equal 1, cop.offenses.count
+    assert_equal "Primer/SystemArgumentInsteadOfClass: Avoid using CSS classes when you can use System Arguments: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+  end
+
   def test_no_classes
     investigate(cop, <<-RUBY)
       Primer::BaseComponent.new
