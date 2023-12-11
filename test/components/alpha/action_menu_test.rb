@@ -141,6 +141,41 @@ module Primer
         assert_selector ".ActionListItem .avatar"
         refute_selector ".ActionListItem .avatar.circle"
       end
+
+      def test_renders_groups
+        render_preview(:with_groups)
+
+        assert_selector("ul[role=menu]") do |menu|
+          menu.assert_selector(".ActionList-sectionDivider .ActionList-sectionDivider-title", count: 3)
+          menu.assert_selector("ul[role=group]", count: 3) do |group|
+            group.assert_selector("li[role=none]") do |item|
+              item.assert_selector "button[role=menuitem]"
+            end
+          end
+        end
+      end
+
+      def test_renders_individual_items_inside_groups_when_at_least_one_group
+        render_preview(:with_items_and_groups)
+
+        assert_selector("ul[role=menu]") do |menu|
+          menu.assert_selector("ul[role=group]", count: 3) do |group|
+            group.assert_selector("li[role=none]") do |item|
+              item.assert_selector "button[role=menuitem]"
+            end
+          end
+        end
+      end
+
+      def test_groups_cannot_have_dividers
+        err = assert_raises RuntimeError do
+          render_inline(Primer::Alpha::ActionMenu.new(menu_id: "foo")) do |menu|
+            menu.with_group(&:with_divider)
+          end
+        end
+
+        assert_equal "ActionMenu groups cannot have dividers", err.message
+      end
     end
   end
 end

@@ -1,4 +1,3 @@
-# typed: true
 # frozen_string_literal: true
 
 module Primer
@@ -6,72 +5,84 @@ module Primer
     class ActionMenu
       # This component is part of <%= link_to_component(Primer::Alpha::ActionMenu) %> and should not be
       # used as a standalone component.
-      class List < Primer::Alpha::ActionList
+      class List < Primer::Component
         DEFAULT_ITEM_TAG = :button
         ITEM_TAG_OPTIONS = [:a, :"clipboard-copy", DEFAULT_ITEM_TAG].freeze
 
-        # Adds a new item to the list.
-        #
-        # @param data [Hash] When the menu is used as a form input (see the <%= link_to_component(Primer::Alpha::ActionMenu) %> docs), the label is submitted to the server by default. However, if the `data: { value: }` or `"data-value":` attribute is provided, it will be sent to the server instead.
-        # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
-        def with_item(data: {}, **system_arguments, &block)
-          system_arguments = organize_arguments(data: data, **system_arguments)
+        attr_reader :items
 
-          super(**system_arguments) do |item|
-            evaluate_block(item, &block)
-          end
-        end
-
-        # Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.
-        #
-        # @param src [String] The source url of the avatar image.
-        # @param username [String] The username associated with the avatar.
-        # @param full_name [String] Optional. The user's full name.
-        # @param full_name_scheme [Symbol] Optional. How to display the user's full name. <%= one_of(Primer::Alpha::ActionList::Item::DESCRIPTION_SCHEME_OPTIONS) %>
-        # @param data [Hash] When the menu is used as a form input (see the <%= link_to_component(Primer::Alpha::ActionMenu) %> docs), the label is submitted to the server by default. However, if the `data: { value: }` or `"data-value":` attribute is provided, it will be sent to the server instead.
-        # @param avatar_arguments [Hash] Optional. The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
-        # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::Alpha::ActionList::Item) %>, or whatever class is passed as the `component_klass` argument.
-        def with_avatar_item(src:, username:, full_name: nil, full_name_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME, data: {}, avatar_arguments: {}, **system_arguments, &block)
-          system_arguments = organize_arguments(data: data, **system_arguments)
-
-          super(src: src, username: username, full_name: full_name, full_name_scheme: full_name_scheme, avatar_arguments: avatar_arguments, **system_arguments) do |item|
-            evaluate_block(item, &block)
-          end
-        end
-
-        # @param menu_id [String] ID of the parent menu.
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>
-        def initialize(menu_id:, **system_arguments, &block)
-          @menu_id = menu_id
+        def initialize(**system_arguments)
+          @items = []
+          @has_group = false
 
-          system_arguments[:aria] = merge_aria(
-            system_arguments,
-            { aria: { labelledby: "#{@menu_id}-button" } }
-          )
+          @list = Primer::Alpha::ActionMenu::ListWrapper.new(**system_arguments)
+        end
 
-          system_arguments[:role] = :menu
-          system_arguments[:scheme] = :inset
-          system_arguments[:id] = "#{@menu_id}-list"
+        def with_group(**system_arguments, &block)
+          @has_group = true
 
-          super(**system_arguments, &block)
+          @items << {
+            type: :group,
+            kwargs: system_arguments,
+            block: block
+          }
+        end
+
+        def with_item(**system_arguments, &block)
+          @items << {
+            type: :item,
+            kwargs: organize_arguments(**system_arguments),
+            block: block
+          }
+        end
+
+        def with_avatar_item(**system_arguments, &block)
+          @items << {
+            type: :avatar_item,
+            kwargs: organize_arguments(**system_arguments),
+            block: block
+          }
+        end
+
+        def with_divider(**system_arguments, &block)
+          @items << {
+            type: :divider,
+            kwargs: system_arguments,
+            block: block
+          }
         end
 
         private
 
-        def evaluate_block(*args, &block)
-          # Prevent double renders by using the capture method on the component
-          # that originally received the block.
-          #
-          # Handle blocks that originate from C code such as `&:method` by checking
-          # source_location. Such blocks don't allow access to their receiver.
-          return unless block&.source_location
+        def contains_group?
+          @has_group
+        end
 
-          block_context = block.binding.receiver
+        def before_render
+          content
 
-          if block_context.class < ActionView::Base
-            block_context.capture(*args, &block)
-          else
-            capture(*args, &block)
+          @items.each do |item|
+            case item[:type]
+            when :divider, :group
+              add_item(item, to: @list)
+            else
+              if contains_group?
+                @list.with_group do |group|
+                  add_item(item, to: group)
+                end
+              else
+                add_item(item, to: @list)
+              end
+            end
+          end
+        end
+
+        def add_item(item, to:)
+          parent = to
+          mtd = :"with_#{item[:type]}"
+          parent.send(mtd, **item[:kwargs]) do |item_instance|
+            evaluate_block(item_instance, &item[:block])
           end
         end
 

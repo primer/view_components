@@ -134,6 +134,9 @@ module Primer
           component.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
         end
       end
+
+      def inside_flex_container
+      end
     end
   end
 end

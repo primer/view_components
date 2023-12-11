@@ -38,10 +38,15 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :results, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :ul
+        system_arguments[:tag] = :"anchored-position"
+        system_arguments[:anchor] = @input_id
+        system_arguments[:side] = "outside-bottom"
+        system_arguments[:"allow-out-of-bounds"] = ""
         system_arguments[:id] = @list_id
+        system_arguments[:popover] = ""
         system_arguments[:classes] = class_names(
           "ActionListWrap ActionListWrap--inset",
+          @overlay_classes,
           system_arguments[:classes]
         )
 
