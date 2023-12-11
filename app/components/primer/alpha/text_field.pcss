@@ -615,9 +615,7 @@ input[type='checkbox'].FormControl-checkbox {
   &:checked {
     background: var(--control-checked-bgColor-rest, var(--color-accent-fg));
     border-color: var(--control-checked-borderColor-rest, var(--color-accent-fg));
-    transition:
-      background-color,
-      border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
+    transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
 
     &::before {
       visibility: visible;
