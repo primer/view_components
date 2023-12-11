@@ -90,7 +90,7 @@ module Primer
         end
 
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
-        def classes_to_hash(classes, force: true)
+        def classes_to_hash(classes)
           obj = {}
           classes = classes.split
           # Loop through all classes supplied and reject ones we find a match for
