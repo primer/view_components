@@ -125,12 +125,19 @@
   "Primer::Alpha::ActionMenu": {
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "none",
+    "Group": "Primer::Alpha::ActionMenu::Group",
+    "Heading": "Primer::Alpha::ActionMenu::Heading",
     "List": "Primer::Alpha::ActionMenu::List",
+    "ListWrapper": "Primer::Alpha::ActionMenu::ListWrapper",
     "SELECT_VARIANT_OPTIONS": [
       "single",
       "multiple",
       "none"
     ]
+  },
+  "Primer::Alpha::ActionMenu::Group": {
+  },
+  "Primer::Alpha::ActionMenu::Heading": {
   },
   "Primer::Alpha::ActionMenu::List": {
     "DEFAULT_ITEM_TAG": "button",
@@ -139,6 +146,8 @@
       "clipboard-copy",
       "button"
     ]
+  },
+  "Primer::Alpha::ActionMenu::ListWrapper": {
   },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"

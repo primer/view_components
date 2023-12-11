@@ -35,7 +35,7 @@ const DIRECTION_CLASSES = [
   'tooltip-ne',
   'tooltip-se',
   'tooltip-nw',
-  'tooltip-sw'
+  'tooltip-sw',
 ]
 
 function closeOpenTooltips(except?: Element) {
@@ -272,11 +272,11 @@ class ToolTipElement extends HTMLElement {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore popoverTargetElement is not in the type definition
     this.control.popoverTargetElement?.addEventListener('beforetoggle', this, {
-      signal
+      signal,
     })
     this.ownerDocument.addEventListener('focusout', focusOutListener)
     this.ownerDocument.addEventListener('focusin', focusInListener)
-    this.ownerDocument.addEventListener('keydown', this, {signal})
+    this.ownerDocument.addEventListener('keydown', this, {signal, captures: true})
   }
 
   disconnectedCallback() {
@@ -300,6 +300,11 @@ class ToolTipElement extends HTMLElement {
     const isMouseDownOnButton = event.type === 'mousedown' && event.currentTarget === this.control
     const isOpeningOtherPopover = event.type === 'beforetoggle' && event.currentTarget !== this
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
+
+    if (showing && isEscapeKeydown) {
+      event.stopImmediatePropagation()
+      event.preventDefault()
+    }
 
     await Promise.resolve()
     if (!showing && shouldShow && !isPopoverOpen(this)) {
@@ -408,7 +413,7 @@ class ToolTipElement extends HTMLElement {
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
-      anchorOffset: TOOLTIP_OFFSET
+      anchorOffset: TOOLTIP_OFFSET,
     })
     const anchorSide = position.anchorSide
     const align = position.anchorAlign

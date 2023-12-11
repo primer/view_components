@@ -12,6 +12,17 @@ type SelectedItem = {
 const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
+export type ItemActivatedEvent = {
+  item: Element
+  checked: boolean
+}
+
+declare global {
+  interface HTMLElementEventMap {
+    itemActivated: CustomEvent<ItemActivatedEvent>
+  }
+}
+
 @controller
 export class ActionMenuElement extends HTMLElement {
   @target
@@ -82,7 +93,7 @@ export class ActionMenuElement extends HTMLElement {
       results.push({
         label: labelEl?.textContent,
         value: selectedItem?.getAttribute('data-value'),
-        element: selectedItem
+        element: selectedItem,
       })
     }
 
@@ -102,35 +113,39 @@ export class ActionMenuElement extends HTMLElement {
 
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {
-        signal
+        signal,
       })
-    }
-  }
-
-  #softDisableItems() {
-    const {signal} = this.#abortController
-
-    for (const item of this.#items) {
-      item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
-      item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
-    }
-  }
-
-  #potentiallyDisallowActivation(event: Event) {
-    if (!this.#isActivation(event)) return
-
-    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
-    if (!item) return
-
-    if (item.getAttribute('aria-disabled')) {
-      event.preventDefault()
-      event.stopPropagation()
-      event.stopImmediatePropagation()
     }
   }
 
   disconnectedCallback() {
     this.#abortController.abort()
+  }
+
+  #softDisableItems() {
+    const {signal} = this.#abortController
+
+    for (const item of this.querySelectorAll(validSelectors.join(','))) {
+      item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
+      item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
+    }
+  }
+
+  // returns true if activation was prevented
+  #potentiallyDisallowActivation(event: Event): boolean {
+    if (!this.#isActivation(event)) return false
+
+    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
+    if (!item) return false
+
+    if (item.getAttribute('aria-disabled')) {
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+      return true
+    }
+
+    return false
   }
 
   #isKeyboardActivation(event: Event): boolean {
@@ -202,6 +217,8 @@ export class ActionMenuElement extends HTMLElement {
     const targetIsItem = item !== null
 
     if (targetIsItem && eventIsActivation) {
+      if (this.#potentiallyDisallowActivation(event)) return
+
       const dialogInvoker = item.closest('[data-show-dialog-id]')
 
       if (dialogInvoker) {
@@ -214,7 +231,7 @@ export class ActionMenuElement extends HTMLElement {
       }
 
       this.#activateItem(event, item)
-      this.#handleItemActivated(event, item)
+      this.#handleItemActivated(item)
 
       // Pressing the space key on a button or link will cause the page to scroll unless preventDefault()
       // is called. While calling preventDefault() appears to have no effect on link navigation, it skips
@@ -263,7 +280,7 @@ export class ActionMenuElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(event: Event, item: Element) {
+  #handleItemActivated(item: Element) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -304,6 +321,11 @@ export class ActionMenuElement extends HTMLElement {
     }
 
     this.#updateInput()
+    this.dispatchEvent(
+      new CustomEvent('itemActivated', {
+        detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)},
+      }),
+    )
   }
 
   #activateItem(event: Event, item: Element) {
@@ -410,8 +432,84 @@ export class ActionMenuElement extends HTMLElement {
     return this.querySelector(menuItemSelectors.join(','))
   }
 
-  get #items(): HTMLElement[] {
+  get items(): HTMLElement[] {
     return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
+  }
+
+  getItemById(itemId: string): HTMLElement | null {
+    return this.querySelector(`li[data-item-id="${itemId}"`)
+  }
+
+  isItemDisabled(item: Element | null): boolean {
+    if (item) {
+      return item.classList.contains('ActionListItem--disabled')
+    } else {
+      return false
+    }
+  }
+
+  disableItem(item: Element | null) {
+    if (item) {
+      item.classList.add('ActionListItem--disabled')
+      item.querySelector('.ActionListContent')!.setAttribute('aria-disabled', 'true')
+    }
+  }
+
+  enableItem(item: Element | null) {
+    if (item) {
+      item.classList.remove('ActionListItem--disabled')
+      item.querySelector('.ActionListContent')!.removeAttribute('aria-disabled')
+    }
+  }
+
+  isItemHidden(item: Element | null): boolean {
+    if (item) {
+      return item.hasAttribute('hidden')
+    } else {
+      return false
+    }
+  }
+
+  hideItem(item: Element | null) {
+    if (item) {
+      item.setAttribute('hidden', 'hidden')
+    }
+  }
+
+  showItem(item: Element | null) {
+    if (item) {
+      item.removeAttribute('hidden')
+    }
+  }
+
+  isItemChecked(item: Element | null) {
+    if (item) {
+      return item.querySelector('.ActionListContent')!.getAttribute('aria-checked') === 'true'
+    } else {
+      return false
+    }
+  }
+
+  checkItem(item: Element | null) {
+    if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
+      const itemContent = item.querySelector('.ActionListContent')!
+      const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
+
+      if (!ariaChecked) {
+        this.#handleItemActivated(itemContent)
+      }
+    }
+  }
+
+  uncheckItem(item: Element | null) {
+    if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
+      const itemContent = item.querySelector('.ActionListContent')!
+      const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
+
+      if (ariaChecked) {
+        this.#handleItemActivated(itemContent)
+      }
+    }
   }
 }
 

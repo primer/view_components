@@ -48,7 +48,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector('input[id="test-input"].FormControl-input')
-      assert_selector('ul[id="my-list-id"].ActionListWrap')
+      assert_selector("#my-list-id.ActionListWrap")
     end
   end
 
@@ -57,7 +57,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector('input[id="test-input"].FormControl-input')
-      assert_selector('ul[id="my-list-id"].ActionListWrap')
+      assert_selector("#my-list-id.ActionListWrap")
     end
   end
 
@@ -107,7 +107,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
     end
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector('ul[id="my-list-id"].ActionListWrap.my-class')
+      assert_selector("#my-list-id.ActionListWrap.my-class")
     end
   end
 

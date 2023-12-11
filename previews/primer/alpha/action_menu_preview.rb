@@ -52,6 +52,67 @@ module Primer
         end
       end
 
+      # @label With groups
+      #
+      # @snapshot interactive
+      def with_groups
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Favorite character"
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Battlestar Galactica")
+            group.with_item(label: "William Adama")
+            group.with_item(label: 'Kara "Starbuck" Thrace')
+            group.with_item(label: 'Sharon "Boomer" Valerii')
+            group.with_item(label: "Gaius Baltar")
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Star Trek")
+            group.with_item(label: "Capt. Jean-luc Picard")
+            group.with_item(label: "Capt. Kathryn M. Janeway")
+            group.with_item(label: "Capt. Benjamin L. Sisko")
+            group.with_item(label: "Capt. James T. Kirk")
+          end
+
+          menu.with_group do |group|
+            group.with_heading(title: "Star Wars")
+            group.with_item(label: "Leia Organa")
+            group.with_item(label: "Luke Skywalker")
+            group.with_item(label: "Han Solo")
+            group.with_item(label: "Chewbacca")
+          end
+        end
+      end
+
+      # @label With items and groups
+      #
+      # @snapshot interactive
+      def with_items_and_groups
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Meal preference"
+          end
+
+          menu.with_item(label: "Meat option")
+          menu.with_divider
+
+          menu.with_group do |group|
+            group.with_heading(title: "Vegetarian options")
+            group.with_item(label: "Grilled portbello mushroom")
+            group.with_item(label: "Polenta")
+            group.with_item(label: "Seitan")
+          end
+
+          menu.with_divider
+          menu.with_item(label: "Fish option")
+        end
+      end
+
       # @label Wide
       #
       # @snapshot interactive
@@ -87,10 +148,12 @@ module Primer
       def single_select
         render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu|
           menu.with_show_button { "Menu" }
-          menu.with_item(label: "Fast forward")
-          menu.with_item(label: "Recursive")
-          menu.with_item(label: "Ours")
-          menu.with_item(label: "Resolve")
+          menu.with_item(label: "Fast forward", item_id: :fast_forward)
+          menu.with_item(label: "Recursive", item_id: :recursive)
+          menu.with_item(label: "Ours", item_id: :ours)
+          menu.with_item(label: "Resolve", item_id: :resolve)
+          menu.with_item(label: "Disabled", disabled: true, item_id: :disabled)
+          menu.with_item(label: "Hidden", hidden: true, disabled: true, item_id: :hidden)
         end
       end
 
@@ -105,7 +168,8 @@ module Primer
             username: "langermank",
             full_name: "Katie Langerman",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :katie
           )
 
           menu.with_avatar_item(
@@ -113,7 +177,8 @@ module Primer
             username: "jonrohan",
             full_name: "Jon Rohan",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :jon
           )
 
           menu.with_avatar_item(
@@ -121,7 +186,8 @@ module Primer
             username: "broccolinisoup",
             full_name: "Armağan Ersöz",
             full_name_scheme: :inline,
-            avatar_arguments: { shape: :square }
+            avatar_arguments: { shape: :square },
+            item_id: :armagan
           )
         end
       end

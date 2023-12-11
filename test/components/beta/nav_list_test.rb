@@ -179,7 +179,7 @@ module Primer
       def test_show_more_item
         render_preview(:show_more_item)
 
-        assert_selector("[data-target='nav-list.showMoreItem']", visible: false, text: "Show more")
+        assert_selector("[data-target='nav-list-group.showMoreItem']", visible: false, text: "Show more")
       end
 
       def test_disallow_subitems_and_trailing_action
