@@ -160,6 +160,15 @@ module Primer
     #   event.item  // Element: the <li> item that was activated
     #   event.checked  // boolean: whether or not the result of the activation checked the item
     # })
+    #
+    # The `<action-menu>` element fires a `dialogItemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard that displays a dialog.
+    #
+    # ```typescript
+    # document.querySelector("action-menu").addEventListener("dialogItemActivated", (event: DialogItemActivatedEvent) => {
+    #   event.item     // Element: the <li> item that was activated
+    #   event.checked  // boolean: whether or not the result of the activation checked the item
+    #   event.dialog   // Element: the <dialog> element that was shown.
+    # })
     # ```
     class ActionMenu < Primer::Component
       status :alpha
