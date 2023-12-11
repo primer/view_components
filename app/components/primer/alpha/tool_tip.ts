@@ -276,7 +276,7 @@ class ToolTipElement extends HTMLElement {
     })
     this.ownerDocument.addEventListener('focusout', focusOutListener)
     this.ownerDocument.addEventListener('focusin', focusInListener)
-    this.ownerDocument.addEventListener('keydown', this, {signal, captures: true})
+    this.ownerDocument.addEventListener('keydown', this, {signal, capture: true})
   }
 
   disconnectedCallback() {
