@@ -38,6 +38,10 @@ module Alpha
       click_on_item(4)
     end
 
+    def click_on_fifth_item
+      click_on_item(5)
+    end
+
     def focus_on_invoker_button
       page.evaluate_script(<<~JS)
         document.querySelector('action-menu button[aria-controls]').focus()
@@ -718,7 +722,7 @@ module Alpha
         window.activatedItemChecked = false
 
         document.querySelector('action-menu').addEventListener('itemActivated', (event) => {
-          window.activatedItemText = event.detail.item.innerText
+          window.activatedItemText = event.detail.item.innerText.trim()
           window.activatedItemChecked = event.detail.checked
         })
       JS
@@ -728,6 +732,23 @@ module Alpha
 
       assert page.evaluate_script("window.activatedItemChecked")
       assert_equal "Fast forward", page.evaluate_script("window.activatedItemText")
+    end
+
+    def test_single_select_works_with_groups
+      visit_preview(:single_select_with_groups)
+
+      click_on_invoker_button
+      click_on_first_item
+
+      # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "William Adama", visible: :hidden
+
+      click_on_invoker_button
+      click_on_fifth_item  # 5th item is in a different group
+
+      # clicking item closes menu, so checked item is hidden
+      refute_selector "[aria-checked=true]", text: "William Adama", visible: :hidden
+      assert_selector "[aria-checked=true]", text: "Capt. Jean-luc Picard", visible: :hidden
     end
   end
 end

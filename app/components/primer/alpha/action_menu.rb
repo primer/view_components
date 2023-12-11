@@ -170,6 +170,7 @@ module Primer
       SELECT_VARIANT_OPTIONS = [
         :single,
         :multiple,
+        :multiple_checkbox,
         DEFAULT_SELECT_VARIANT
       ].freeze
 

@@ -459,6 +459,41 @@ module Primer
           component.with_item(label: "Active item", href: "/", active: true)
         end
       end
+
+      def single_select
+        render(Primer::Alpha::ActionList.new(
+                 select_variant: :single,
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", item_id: :item_one)
+          component.with_item(label: "Item two", item_id: :item_two)
+          component.with_item(label: "Item three", item_id: :item_three)
+          component.with_item(label: "Disabled item", item_id: :disabled, disabled: true)
+          component.with_item(label: "Hidden item", item_id: :hidden, hidden: true)
+        end
+      end
+
+      def multiple_select
+        render(Primer::Alpha::ActionList.new(
+                 select_variant: :multiple,
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", item_id: :item_one)
+          component.with_item(label: "Item two", item_id: :item_two)
+          component.with_item(label: "Item three", item_id: :item_three)
+        end
+      end
+
+      def multiple_select_checkboxes
+        render(Primer::Alpha::ActionList.new(
+                 select_variant: :multiple_checkbox,
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", item_id: :item_one)
+          component.with_item(label: "Item two", item_id: :item_two)
+          component.with_item(label: "Item three", item_id: :item_three)
+        end
+      end
     end
   end
 end

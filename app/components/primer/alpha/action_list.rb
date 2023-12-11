@@ -142,7 +142,7 @@ module Primer
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
-        @select_variant = select_variant
+        @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
         @system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
@@ -153,7 +153,9 @@ module Primer
         @role = role || (allows_selection? ? MENU_ROLE : DEFAULT_ROLE)
         @system_arguments[:role] = @role
 
-        @list_wrapper_arguments = {}
+        @list_arguments = {
+          "data-select-variant": select_variant
+        }
 
         @form_builder = form_arguments[:builder]
         @input_name = form_arguments[:name]

@@ -33,6 +33,8 @@ module Primer
           system_arguments[:id] = "#{@menu_id}-list"
 
           super(**system_arguments)
+
+          @list_arguments["data-targets"] = "action-menu.lists"
         end
       end
     end

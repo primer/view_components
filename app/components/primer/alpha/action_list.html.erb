@@ -1,4 +1,4 @@
-<%= render(Primer::BaseComponent.new(tag: :div)) do %>
+<%= render(Primer::BaseComponent.new(tag: :"action-list", **@list_arguments)) do %>
   <% if acts_as_form_input? %>
     <span data-list-inputs="true">
       <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true) %>
