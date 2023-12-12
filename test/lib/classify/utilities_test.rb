@@ -104,6 +104,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal('mr: 1, mb: 2, classes: "foo"', Primer::Classify::Utilities.classes_to_args("mr-1 mb-2 foo"))
     assert_equal('classes: "foo"', Primer::Classify::Utilities.classes_to_args("foo"))
     assert_equal("mx: :auto", Primer::Classify::Utilities.classes_to_args("mx-auto"))
+    assert_equal("font_size: 3, border_radius: 0", Primer::Classify::Utilities.classes_to_args("f3 rounded-0"))
     assert_equal('mr: [1, 2], classes: "baz bin"', Primer::Classify::Utilities.classes_to_args("mr-1 mr-sm-2 baz bin"))
     assert_equal('mr: [1, nil, 2], classes: "foo bar"', Primer::Classify::Utilities.classes_to_args("mr-1 mr-md-2 foo bar"))
   end
