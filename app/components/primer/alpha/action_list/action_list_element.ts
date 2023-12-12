@@ -153,30 +153,29 @@ export class ActionListElement extends HTMLElement {
   }
 
   #handleItemActivated(item: Element) {
-    // The rest of the code below deals with single/multiple selection behavior, and should not
-    // interfere with events fired by menu items whose behavior is specified outside the library.
-    if (this.#hasNoSelectBehavior) return
+    if (this.#hasAnySelectBehavior) {
+      const ariaChecked = item.getAttribute('aria-checked')
+      const checked = ariaChecked !== 'true'
 
-    const ariaChecked = item.getAttribute('aria-checked')
-    const checked = ariaChecked !== 'true'
-
-    if (this.selectVariant === 'single') {
-      // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
-      if (checked) {
-        item.setAttribute('aria-checked', 'true')
-      }
-
-      for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
-        if (checkedItem !== item) {
-          checkedItem.setAttribute('aria-checked', 'false')
+      if (this.selectVariant === 'single') {
+        // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
+        if (checked) {
+          item.setAttribute('aria-checked', 'true')
         }
+
+        for (const checkedItem of this.querySelectorAll('[aria-checked]')) {
+          if (checkedItem !== item) {
+            checkedItem.setAttribute('aria-checked', 'false')
+          }
+        }
+      } else {
+        // multi-select mode allows unchecking a checked item
+        item.setAttribute('aria-checked', `${checked}`)
       }
-    } else {
-      // multi-select mode allows unchecking a checked item
-      item.setAttribute('aria-checked', `${checked}`)
+
+      this.#updateInput()
     }
 
-    this.#updateInput()
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
         bubbles: true,

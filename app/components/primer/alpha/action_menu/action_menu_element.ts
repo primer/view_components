@@ -2,13 +2,15 @@ import {controller, target, targets} from '@github/catalyst'
 import '@oddbird/popover-polyfill'
 import type {IncludeFragmentElement} from '@github/include-fragment-element'
 import {isActivation} from '../../utils'
-import {
-  ActionListElement,
+import {ActionListElement} from '../action_list/action_list_element'
+import type {
   DialogItemActivatedEvent,
   ItemActivatedEvent,
   SelectedItem,
   SelectVariant,
 } from '../action_list/action_list_element'
+
+const menuItemSelector = ':not([hidden]) > .ActionListContent'
 
 @controller
 export class ActionMenuElement extends HTMLElement {
@@ -156,7 +158,7 @@ export class ActionMenuElement extends HTMLElement {
       this.#hide()
     } else {
       this.#show()
-      this.#firstItem?.focus()
+      this.firstItem?.focus()
     }
   }
 
@@ -202,7 +204,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #handleIncludeFragmentReplaced() {
-    if (this.#firstItem) this.#firstItem.focus()
+    if (this.firstItem) this.firstItem.focus()
 
     for (const list of this.lists) {
       list.softDisableItems()
@@ -244,8 +246,8 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  get #firstItem(): HTMLElement | null {
-    return this.querySelector('.ActionListContent')
+  get firstItem(): HTMLElement | null {
+    return this.querySelector(menuItemSelector)
   }
 
   getItemById(itemId: string): HTMLElement | null {
