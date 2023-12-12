@@ -6,6 +6,12 @@ anchored-position[popover] {
   overflow: visible;
 }
 
+.Overlay {
+  display: flex;
+  border-width: 0;
+  padding: 0;
+}
+
 anchored-position:not(.Overlay) {
   background: none;
 }
@@ -15,6 +21,7 @@ anchored-position:not(.Overlay) {
   display: none
 }
 
-anchored-position.not-anchored::backdrop {
+anchored-position.not-anchored::backdrop, dialog::backdrop {
   background-color: var(--overlay-backdrop-bgColor, var(--color-neutral-muted));
 }
+

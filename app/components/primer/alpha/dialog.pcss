@@ -1,5 +1,15 @@
 /* Overlay */
 
+dialog.Overlay:not([open]) {
+  display: none;
+}
+
+/* dialog defualts to CanvasText not inherit */
+dialog.Overlay {
+  color: var(--fgColor-default);
+}
+
+
 .Overlay--hidden {
   display: none !important;
 }
