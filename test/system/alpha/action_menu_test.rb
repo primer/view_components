@@ -320,7 +320,7 @@ module Alpha
       click_on_invoker_button
       click_on_second_item
 
-      assert_selector "modal-dialog[open]"
+      assert_selector "dialog[open]"
 
       # opening the dialog should close the menu
       refute_selector "action-menu ul li"
@@ -334,7 +334,7 @@ module Alpha
       # open menu, arrow down to second item, "click" second item
       page.driver.browser.keyboard.type(:enter, :down, :enter)
 
-      assert_selector "modal-dialog#my-dialog"
+      assert_selector "dialog#my-dialog"
     end
 
     def test_opens_dialog_on_keydown_space
@@ -345,7 +345,7 @@ module Alpha
       # open menu, arrow down to second item, "click" second item
       page.driver.browser.keyboard.type(:enter, :down, :space)
 
-      assert_selector "modal-dialog#my-dialog"
+      assert_selector "dialog#my-dialog"
     end
 
     def test_single_select_form_submission
@@ -496,7 +496,7 @@ module Alpha
       click_on_invoker_button
       click_on_fourth_item
 
-      assert_selector "modal-dialog[open]"
+      assert_selector "dialog[open]"
 
       # menu should close
       refute_selector "action-menu ul li"

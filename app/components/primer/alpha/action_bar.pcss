@@ -12,20 +12,18 @@
 }
 
 .ActionBar-item-container {
-  display: flex;
   box-sizing: content-box;
-  align-items: center;
-  flex-shrink: 0;
-  flex-grow: 0;
+  overflow: hidden;
+  height: var(--control-medium-size);
 }
 
 .ActionBar-item {
   position: relative;
-  flex-shrink: 0;
+  float: left;
 }
 
 .ActionBar-more-menu {
-  flex-shrink: 0;
+  float: left;
 }
 
 .ActionBar--small {
@@ -42,6 +40,10 @@
   height: calc(var(--control-medium-size) / 2);
   margin: 0 var(--controlStack-medium-gap-condensed);
   border-left: var(--borderWidth-thin) solid var(--borderColor-muted);
+  float: left;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
 }
 
 .ActionBar--small .ActionBar-divider {

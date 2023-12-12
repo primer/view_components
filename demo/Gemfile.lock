@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.14.0)
+    primer_view_components (0.15.1)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -50,7 +50,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     azure_mgmt_container_service (0.22.0)
       ms_rest_azure (~> 0.12.0)
-    base64 (0.1.1)
+    base64 (0.2.0)
     bigdecimal (3.1.4)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
@@ -66,7 +66,7 @@ GEM
     docker-remote (0.8.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    drb (2.1.1)
+    drb (2.2.0)
       ruby2_keywords
     dry-inflector (0.3.0)
     ejson (1.4.1)
@@ -232,7 +232,7 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     multipart-post (2.3.0)
-    mutex_m (0.1.2)
+    mutex_m (0.2.0)
     netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
@@ -329,7 +329,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (3.7.0)
+    view_component (3.8.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)

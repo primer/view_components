@@ -21,8 +21,8 @@ module Alpha
 
       click_button("Show Dialog")
 
-      assert_selector("modal-dialog[aria-labelledby]")
-      assert_equal(find("modal-dialog")["aria-labelledby"], find("h1")["id"])
+      assert_selector("dialog[aria-labelledby]")
+      assert_equal(find("dialog")["aria-labelledby"], find("h1")["id"])
     end
 
     def test_focuses_close_button
@@ -47,12 +47,12 @@ module Alpha
       click_button("Show Dialog")
       click_on_nested_dialog_button
 
-      assert_equal(find("modal-dialog#dialog-two")["open"], true)
+      assert_equal(find("dialog#dialog-two")["open"], true)
 
       click_on_nested_dialog_close_button
 
-      assert_selector "modal-dialog#dialog-two", visible: :hidden
-      assert_selector "modal-dialog#dialog-one"
+      assert_selector "dialog#dialog-two", visible: :hidden
+      assert_selector "dialog#dialog-one"
     end
 
     def test_closes_dialog_that_is_not_top_level
@@ -61,11 +61,11 @@ module Alpha
       click_button("Show Dialog")
       click_on_nested_dialog_button
 
-      assert_equal(find("modal-dialog#dialog-two")["open"], true)
+      assert_equal(find("dialog#dialog-two")["open"], true)
 
       click_on_initial_dialog_close_button
 
-      assert_selector "modal-dialog#dialog-one", visible: :hidden
+      assert_selector "dialog#dialog-one", visible: :hidden
     end
   end
 end
