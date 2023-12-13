@@ -112,6 +112,13 @@ class PrimerBannerTest < Minitest::Test
     refute_selector(".Banner-close")
   end
 
+  def test_does_render_dismiss_label
+    render_inline(Primer::Alpha::Banner.new(dismiss_scheme: :remove, dismiss_label: "My new label")) { "foo" }
+
+    assert_selector(".Banner .Banner-close")
+    assert_selector("tool-tip", text: "My new label")
+  end
+
   def test_renders_action_button_slot
     render_inline(Primer::Alpha::Banner.new) do |component|
       component.with_action_button { "submit" }
