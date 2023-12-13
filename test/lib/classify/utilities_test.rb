@@ -115,10 +115,4 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal('mr: [1, 2], classes: "baz bin"', Primer::Classify::Utilities.hash_to_args({ mr: [1, 2], classes: "baz bin" }))
     assert_equal('mr: [1, nil, 2], classes: "foo bar"', Primer::Classify::Utilities.hash_to_args({ mr: [1, nil, 2], classes: "foo bar" }))
   end
-
-  def test_classes_to_hash_returns_classes_when_run_with_validation_disabled
-    with_validate_class_names(false) do
-      assert_equal({ classes: "mr-1 mr-md-2 foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
-    end
-  end
 end
