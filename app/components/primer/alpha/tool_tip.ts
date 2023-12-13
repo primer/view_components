@@ -291,7 +291,7 @@ class ToolTipElement extends HTMLElement {
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    const shouldShow = event.type === 'mouseenter' || event.type === 'focus'
+    const shouldShow = event.type === 'mouseenter' || (event.type === 'focus' && this.control.matches(':focus-visible'))
     const isMouseLeaveFromButton =
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
