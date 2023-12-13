@@ -73,6 +73,7 @@
   color: var(--fgColor-default);
   background-color: var(--bgColor-default);
   border: var(--borderWidth-thin) solid var(--control-borderColor-rest, var(--color-border-default));
+  box-shadow: var(--shadow-inset);
 
   &[disabled] {
     color: var(--control-fgColor-disabled);
@@ -80,14 +81,15 @@
     background-color: var(--control-bgColor-disabled);
     border-color: var(--control-borderColor-disabled);
     opacity: 1;
+    box-shadow: none;
     -webkit-text-fill-color: var(--control-fgColor-disabled);
   }
 
-  &:not(:focus)[invalid="true"] {
+  &:not(:focus)[invalid='true'] {
     border-color: var(--control-borderColor-danger);
   }
 
-  &:not(:focus)[invalid="false"] {
+  &:not(:focus)[invalid='false'] {
     border-color: var(--control-borderColor-success);
   }
 
