@@ -729,5 +729,17 @@ module Alpha
       assert page.evaluate_script("window.activatedItemChecked")
       assert_equal "Fast forward", page.evaluate_script("window.activatedItemText")
     end
+
+    def test_doesnt_scroll_when_opened
+      visit_preview(:in_scroll_container)
+
+      page.evaluate_script("window.scrollTo(0,400)")
+
+      assert_equal 400, page.evaluate_script("window.scrollY")
+
+      click_on_invoker_button
+
+      assert_equal 400, page.evaluate_script("window.scrollY")
+    end
   end
 end
