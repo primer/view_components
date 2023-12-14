@@ -187,6 +187,16 @@ class ToolTipElement extends HTMLElement {
         margin-top: -6px;
         border-right-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
     `
   }
 
