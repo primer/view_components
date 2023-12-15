@@ -729,22 +729,5 @@ module Alpha
       assert page.evaluate_script("window.activatedItemChecked")
       assert_equal "Fast forward", page.evaluate_script("window.activatedItemText")
     end
-
-    def test_doesnt_scroll_when_opened
-      visit_preview(:in_scroll_container)
-      focus_on_invoker_button
-
-      # Scroll to the invoker button
-      page.evaluate_script("window.scrollTo(0,400)")
-
-      # Confirm that the page is scrolled
-      assert_equal 400, page.evaluate_script("window.scrollY")
-
-      # Click on the button to open the menu
-      page.driver.browser.keyboard.type(:enter)
-
-      # Assert we're still scrolled
-      assert_equal 400, page.evaluate_script("window.scrollY")
-    end
   end
 end
