@@ -107,6 +107,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
     this.addEventListener('mousedown', this, {signal})
+    this.popoverElement?.addEventListener('toggle', this, {signal})
     this.#setDynamicLabel()
     this.#updateInput()
     this.#softDisableItems()
@@ -181,6 +182,10 @@ export class ActionMenuElement extends HTMLElement {
   handleEvent(event: Event) {
     const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
     const eventIsActivation = this.#isActivation(event)
+
+    if (event.type === 'toggle' && (event as ToggleEvent).newState === 'open') {
+      this.#firstItem?.focus()
+    }
 
     if (targetIsInvoker && event.type === 'mousedown') {
       this.#invokerBeingClicked = true
@@ -261,7 +266,6 @@ export class ActionMenuElement extends HTMLElement {
       this.#hide()
     } else {
       this.#show()
-      this.#firstItem?.focus()
     }
   }
 
