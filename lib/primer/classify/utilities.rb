@@ -27,7 +27,9 @@ module Primer
         "^height" => "h",
         "^color-bg" => "bg",
         "^color-border" => "border_color",
-        "^color-fg" => "color"
+        "^color-fg" => "color",
+        "^f" => "font_size",
+        "^rounded" => "border_radius"
       }.freeze
 
       SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
