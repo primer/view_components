@@ -30,25 +30,27 @@ module Primer
     SELF_CLOSING_TAGS = [:area, :base, :br, :col, :embed, :hr, :img, :input, :link, :meta, :param, :source, :track, :wbr].freeze
     # ## HTML attributes
     #
-    # System arguments include most HTML attributes. For example:
+    # Use system arguments to add HTML attributes to elements. For the most part, system arguments map 1:1 to
+    # HTML attributes. For example, `render(Component.new(title: "Foo"))` will result in eg. `<div title="foo">`.
+    # However, ViewComponents applies special handling to certain system arguments. See the table below for details.
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
     # | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
-    # | `height` | `Integer` | Height. |
-    # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
-    # | `style` | `String` | Inline styles. |
-    # | `title` | `String` | The `title` attribute. |
-    # | `width` | `Integer` | Width. |
     #
-    # ## Animation
+    # ## Utility classes
+    #
+    # ViewComponents provides a convenient way to add Primer CSS utility classes to HTML elements. Use the shorthand
+    # documented in the tables below instead of adding CSS classes directly.
+    #
+    # ### Animation
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `animation` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:animation)) %> |
     #
-    # ## Border
+    # ### Border
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -60,7 +62,7 @@ module Primer
     # | `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %> |
     # | `box_shadow` | Boolean, Symbol | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %> |
     #
-    # ## Color
+    # ### Color
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -68,7 +70,7 @@ module Primer
     # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::Utilities.mappings(:border_color)) %> |
     # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::Utilities.mappings(:color)) %> |
     #
-    # ## Flex
+    # ### Flex
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -81,7 +83,7 @@ module Primer
     # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::FLEX_WRAP_MAPPINGS.keys) %> |
     # | `justify_content` | Symbol | <%= one_of(Primer::Classify::FLEX_JUSTIFY_CONTENT_VALUES) %> |
     #
-    # ## Grid
+    # ### Grid
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -89,18 +91,18 @@ module Primer
     # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Utilities.mappings(:col)) %> |
     # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Utilities.mappings(:container)) %> |
     #
-    # ## Layout
+    # ### Layout
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
-    # | `w` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> |
-    # | `h` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> |
+    # | `w` | Symbol | Sets the element's width. <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> |
+    # | `h` | Symbol | Sets the element's height. <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
     # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
     #
-    # ## Position
+    # ### Position
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -111,7 +113,7 @@ module Primer
     # | `right` | Boolean | If `false`, sets `right: 0`. |
     # | `top` | Boolean | If `false`, sets `top: 0`. |
     #
-    # ## Spacing
+    # ### Spacing
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -130,7 +132,7 @@ module Primer
     # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
     # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |
     #
-    # ## Typography
+    # ### Typography
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
@@ -143,7 +145,7 @@ module Primer
     # | `underline` | Boolean | Whether text should be underlined. |
     # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #
-    # ## Other
+    # ### Other
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
