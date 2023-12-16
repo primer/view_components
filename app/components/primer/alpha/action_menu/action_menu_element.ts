@@ -230,7 +230,7 @@ export class ActionMenuElement extends HTMLElement {
         const dialog = this.ownerDocument.getElementById(dialogInvoker.getAttribute('data-show-dialog-id') || '')
 
         if (dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
-          this.#handleDialogItemActivated(event, dialog)
+          this.#handleDialogItemActivated(event, dialog as HTMLDialogElement)
           return
         }
       }
@@ -269,7 +269,7 @@ export class ActionMenuElement extends HTMLElement {
     }
   }
 
-  #handleDialogItemActivated(event: Event, dialog: HTMLElement) {
+  #handleDialogItemActivated(event: Event, dialog: HTMLDialogElement) {
     this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
     const dialog_controller = new AbortController()
     const {signal} = dialog_controller
@@ -286,8 +286,33 @@ export class ActionMenuElement extends HTMLElement {
         setTimeout(() => this.invokerElement?.focus(), 0)
       }
     }
-    // a modal <dialog> element will close all popovers
-    setTimeout(() => this.#show(), 0)
+
+    // At this point, the dialog is about to open. When it opens, all other popovers (incuding
+    // this ActionMenu) will be closed. We listen to the toggle event here, which will fire when
+    // the menu is closed and manually re-open it. When the menu is re-opened, it gets added to
+    // the top of the popover stack. Only the item at the top of the stack will close when the
+    // escape key is pressed, so we add another beforetoggle listener. When the escape key is
+    // pressed, the listener is invoked, which manually closes the dialog. Closing the dialog
+    // causes the dialog's close event to fire, which
+    this.popoverElement?.addEventListener(
+      'toggle',
+      (toggleEvent: Event) => {
+        if ((toggleEvent as ToggleEvent).newState === 'closed') {
+          this.#show()
+          this.popoverElement?.addEventListener(
+            'beforetoggle',
+            (beforeToggleEvent: Event) => {
+              if ((beforeToggleEvent as ToggleEvent).newState === 'closed') {
+                dialog.close()
+              }
+            },
+            {signal},
+          )
+        }
+      },
+      {signal, once: true},
+    )
+
     dialog.addEventListener('close', handleDialogClose, {signal})
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
