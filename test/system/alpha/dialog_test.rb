@@ -67,5 +67,12 @@ module Alpha
 
       assert_selector "dialog#dialog-one", visible: :hidden
     end
+
+    # We're just opening the dialog with a scrollable body
+    # so the Axe scan can ensure the scrollable region is compliant
+    def test_with_scrollable_body
+      visit_preview(:long_text)
+      click_button("Show Dialog")
+    end
   end
 end

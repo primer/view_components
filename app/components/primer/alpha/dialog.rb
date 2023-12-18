@@ -132,7 +132,7 @@ module Primer
           @system_arguments, {
             aria: {
               disabled: true,
-              labelledby: "#{@id}-title",
+              labelledby: labelledby,
               describedby: "#{@id}-description"
             }
           }
@@ -153,6 +153,10 @@ module Primer
       def before_render
         with_header unless header?
         with_body unless body?
+      end
+
+      def labelledby
+        "#{@id}-title"
       end
     end
   end
