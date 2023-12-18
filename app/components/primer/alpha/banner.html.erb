@@ -22,7 +22,7 @@
           Primer::Beta::IconButton.new(
             scheme: :invisible,
             icon: :x,
-            aria: { label: "Dismiss" },
+            aria: { label: @dismiss_label },
             data: { action: catalyst_action(event: "click", function: "dismiss") },
             autofocus: true
           )

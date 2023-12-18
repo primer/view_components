@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.15.0)
+    primer_view_components (0.15.1)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
@@ -44,7 +44,7 @@ GEM
     ansi (1.5.0)
     ast (2.4.2)
     base64 (0.1.1)
-    benchmark-ips (2.12.0)
+    benchmark-ips (2.13.0)
     better_html (2.0.2)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -283,7 +283,7 @@ DEPENDENCIES
   activesupport (= 7.1.1)
   allocation_stats (~> 0.1)
   allocation_tracer (~> 0.6.3)
-  benchmark-ips (~> 2.12.0)
+  benchmark-ips (~> 2.13.0)
   bootsnap (>= 1.4.2)
   capybara (~> 3.39.2)
   cuprite (~> 0.14.3)

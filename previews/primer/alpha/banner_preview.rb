@@ -9,13 +9,14 @@ module Primer
       # @param full toggle
       # @param full_when_narrow toggle
       # @param dismiss_scheme [Symbol] select [none, remove, hide]
+      # @param dismiss_label text
       # @param icon [Symbol] octicon
       # @param scheme [Symbol] select [default, warning, danger, success]
       # @param content text
       # @param description text
-      def playground(full: false, full_when_narrow: false, dismiss_scheme: Primer::Alpha::Banner::DEFAULT_DISMISS_SCHEME, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, content: "This is a banner!", description: nil)
+      def playground(full: false, full_when_narrow: false, dismiss_scheme: Primer::Alpha::Banner::DEFAULT_DISMISS_SCHEME,  dismiss_label: Primer::Alpha::Banner::DEFAULT_DISMISS_LABEL, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, content: "This is a banner!", description: nil)
         icon = nil if icon == :none
-        render(Primer::Alpha::Banner.new(full: full, full_when_narrow: full_when_narrow, dismiss_scheme: dismiss_scheme, icon: icon == :none ? nil : icon, scheme: scheme, description: description)) { content }
+        render(Primer::Alpha::Banner.new(full: full, full_when_narrow: full_when_narrow, dismiss_scheme: dismiss_scheme, dismiss_label: dismiss_label, icon: icon == :none ? nil : icon, scheme: scheme, description: description)) { content }
       end
 
       # @label Default
