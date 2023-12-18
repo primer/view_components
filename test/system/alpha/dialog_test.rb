@@ -68,16 +68,11 @@ module Alpha
       assert_selector "modal-dialog#dialog-one", visible: :hidden
     end
 
-    def test_can_focus_dialog_body_with_keyboard
+    # We're just opening the dialog with a scrollable body
+    # so the Axe scan can ensure the scrollable region is compliant
+    def test_with_scrollable_body
       visit_preview(:long_text)
-
       click_button("Show Dialog")
-
-      # tab twice to focus the dialog body
-      find("modal-dialog").send_keys(:tab).send_keys(:tab)
-
-      # the scrollable-region element should now be focused after the two tab presses
-      assert_equal page.evaluate_script("document.activeElement.tagName"), "SCROLLABLE-REGION"
     end
   end
 end
