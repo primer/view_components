@@ -16,7 +16,8 @@
   <input type="text" id="input">
 </label>
 <script>
-  document.querySelector('#my-dialog').addEventListener('close', function () {
-    document.querySelector('#input').focus();
+  document.querySelector('#my-dialog').addEventListener('cancel', function () {
+    console.log('!!')
+    setTimeout(() => document.querySelector('#input').focus(), 0);
   });
 </script>

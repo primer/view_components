@@ -12,7 +12,7 @@ module Primer
           component.with_body { "Hello" }
         end
 
-        assert_selector("dialog") do
+        assert_selector("modal-dialog[role='dialog']") do
           assert_selector("h1", text: "Title")
           assert_selector(".Overlay-body", text: "Hello")
         end
@@ -47,7 +47,7 @@ module Primer
           component.with_body { "content" }
         end
 
-        assert_selector("dialog[id='my-id']")
+        assert_selector("modal-dialog[id='my-id']")
       end
 
       def test_renders_random_id
@@ -55,7 +55,7 @@ module Primer
           component.with_body { "content" }
         end
 
-        assert_selector("dialog[id^='dialog-']")
+        assert_selector("modal-dialog[id^='dialog-']")
       end
 
       def test_renders_title_and_subtitle_with_describedby
@@ -63,7 +63,7 @@ module Primer
           component.with_body { "content" }
         end
 
-        assert_selector("dialog[id='my-dialog'][aria-labelledby='my-dialog-title'][aria-describedby='my-dialog-description']") do
+        assert_selector("modal-dialog[id='my-dialog'][aria-labelledby='my-dialog-title'][aria-describedby='my-dialog-description']") do
           assert_selector("h1[id='my-dialog-title']", text: "Title")
           assert_selector("h2[id='my-dialog-description']", text: "Subtitle")
         end
@@ -75,7 +75,7 @@ module Primer
           component.with_header { "header" }
         end
 
-        assert_selector("dialog") do
+        assert_selector("modal-dialog") do
           assert_selector(".Overlay-header", text: "header")
         end
       end
@@ -86,7 +86,7 @@ module Primer
           component.with_header(variant: :large) { "header" }
         end
 
-        assert_selector("dialog") do
+        assert_selector("modal-dialog") do
           assert_selector(".Overlay-header.Overlay-header--large", text: "header")
         end
       end
@@ -97,7 +97,7 @@ module Primer
           component.with_footer { "footer" }
         end
 
-        assert_selector("dialog") do
+        assert_selector("modal-dialog") do
           assert_selector(".Overlay-footer:not(.Overlay-footer--divided)")
         end
       end
@@ -108,7 +108,7 @@ module Primer
           component.with_footer(show_divider: true) { "footer" }
         end
 
-        assert_selector("dialog") do
+        assert_selector("modal-dialog") do
           assert_selector(".Overlay-footer.Overlay-footer--divided")
         end
       end
