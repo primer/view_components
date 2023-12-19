@@ -85,7 +85,7 @@ function mousedownHandler(event: Event) {
           topLevelDialog.close()
         }
       },
-      {once: true}
+      {once: true},
     )
   }
 }
