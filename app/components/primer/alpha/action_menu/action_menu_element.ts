@@ -279,15 +279,7 @@ export class ActionMenuElement extends HTMLElement {
       if (this.#isOpen()) {
         this.#hide()
       }
-      const activeElement = this.ownerDocument.activeElement
-      const lostFocus = this.ownerDocument.activeElement === this.ownerDocument.body
-      const focusInClosedMenu = this.contains(activeElement)
-      if (lostFocus || focusInClosedMenu) {
-        setTimeout(() => this.invokerElement?.focus(), 0)
-      }
     }
-    // a modal <dialog> element will close all popovers
-    setTimeout(() => this.#show(), 0)
     dialog.addEventListener('close', handleDialogClose, {signal})
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }

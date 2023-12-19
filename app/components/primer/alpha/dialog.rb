@@ -125,7 +125,8 @@ module Primer
         @position_narrow = position_narrow
         @visually_hide_title = visually_hide_title
 
-        @system_arguments[:tag] = "dialog"
+        @system_arguments[:tag] = "modal-dialog"
+        @system_arguments[:role] = "dialog"
         @system_arguments[:id] = @id
         @system_arguments[:aria] = { modal: true }
         @system_arguments[:aria] = merge_aria(

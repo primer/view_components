@@ -132,7 +132,7 @@ module Alpha
 
       find("button#dialog-show-my-dialog").click
 
-      find("dialog#my-dialog button#yes-button").click
+      find("modal-dialog#my-dialog button#yes-button").click
 
       assert_selector("tool-tip[for='dialog-show-my-dialog']", visible: :hidden)
     end
