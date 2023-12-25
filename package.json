@@ -62,7 +62,7 @@
     "@github/markdownlint-github": "^0.6.0",
     "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.35.1",
-    "@primer/css": "21.1.0",
+    "@primer/css": "21.1.1",
     "@primer/primitives": "7.15.4",
     "@primer/stylelint-config": "^12.7.2",
     "@rollup/plugin-node-resolve": "^15.2.3",
