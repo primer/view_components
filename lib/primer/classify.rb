@@ -49,7 +49,7 @@ module Primer
             case key
             when :classes
               # insert :classes first to avoid huge doc diffs
-              result.unshift(class_names)
+              result.unshift(val)
               next
             when :style
               style = val
