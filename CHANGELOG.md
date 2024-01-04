@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.16.1
+
+### Patch Changes
+
+- [#2478](https://github.com/primer/view_components/pull/2478) [`6e7b7c2`](https://github.com/primer/view_components/commit/6e7b7c2340339a15b21857ee1fbc734a5760135d) Thanks [@jonrohan](https://github.com/jonrohan)! - Bug fix in ActionBar: When collapsed the menu and tooltips aren't visible in Firefox
+
 ## 0.16.0
 
 ### Minor Changes
