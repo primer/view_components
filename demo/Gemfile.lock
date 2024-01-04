@@ -51,7 +51,7 @@ GEM
     azure_mgmt_container_service (0.22.0)
       ms_rest_azure (~> 0.12.0)
     base64 (0.2.0)
-    bigdecimal (3.1.4)
+    bigdecimal (3.1.5)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -329,7 +329,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (3.8.0)
+    view_component (3.9.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
