@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.16.0
+
+### Minor Changes
+
+- [#2445](https://github.com/primer/view_components/pull/2445) [`da60c73`](https://github.com/primer/view_components/commit/da60c7370104a7edd8713d271210e2c9cb3eeb96) Thanks [@camertron](https://github.com/camertron)! - Always convert CSS classes to system arguments in linters
+
+- [#2447](https://github.com/primer/view_components/pull/2447) [`08a8e01`](https://github.com/primer/view_components/commit/08a8e012572bb5d2248f89acdaf7329747fd3108) Thanks [@kenyonj](https://github.com/kenyonj)! - Support font_size and border_radius in classify/utilities
+
+### Patch Changes
+
+- [#2452](https://github.com/primer/view_components/pull/2452) [`87e03ea`](https://github.com/primer/view_components/commit/87e03ea4dd41822454c72ddb7e55b0aa9294c69c) Thanks [@nicolleromero](https://github.com/nicolleromero)! - Ensure tooltip does not reopen errantly unless focus is visible
+
+- [#2456](https://github.com/primer/view_components/pull/2456) [`fd38b17`](https://github.com/primer/view_components/commit/fd38b170014cfadbd8ecc78814f70a5323fda3ee) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Adds visible outlines to `Overlay` and `Tooltip` in high contrast mode.
+
+- [#2432](https://github.com/primer/view_components/pull/2432) [`c162880`](https://github.com/primer/view_components/commit/c162880a5a57b86fd6f640d0dd5c9a4548335f09) Thanks [@dylanatsmith](https://github.com/dylanatsmith)! - Remove `user-select: none` to allow users to select form label text
+
+- [#2428](https://github.com/primer/view_components/pull/2428) [`4cb9a57`](https://github.com/primer/view_components/commit/4cb9a57de1d507e7c22d7c3cdb39b20e73bc36bc) Thanks [@strackoverflow](https://github.com/strackoverflow)! - Fix an accessibility issue where the Dialog body could not be reached via keyboard navigation
+
+- [#2411](https://github.com/primer/view_components/pull/2411) [`58e700a`](https://github.com/primer/view_components/commit/58e700ab9222054bc803541d9eccc4877254b1c1) Thanks [@keithamus](https://github.com/keithamus)! - Ensure scroll position does not change when opening ActionMenus
+
+- [#2425](https://github.com/primer/view_components/pull/2425) [`65f418f`](https://github.com/primer/view_components/commit/65f418f8f191768b0fc0b92ffd2a681631594631) Thanks [@camertron](https://github.com/camertron)! - Use floats to hide ActionBar items to address Android Chrome overflow issue
+
+- [#2455](https://github.com/primer/view_components/pull/2455) [`6ca4ac4`](https://github.com/primer/view_components/commit/6ca4ac4476b00be4f5561ae3ad452c4609dd2928) Thanks [@HDinger](https://github.com/HDinger)! - Make dismiss action on Banner translatable
+
+- [#2434](https://github.com/primer/view_components/pull/2434) [`dc87edf`](https://github.com/primer/view_components/commit/dc87edf407d98cdefc32d095fea99909c066a2fc) Thanks [@langermank](https://github.com/langermank)! - Add missing `box-shadow` to text field
+
 ## 0.15.1
 
 ### Patch Changes
