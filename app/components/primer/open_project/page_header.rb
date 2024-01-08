@@ -7,16 +7,16 @@ module Primer
       HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
       HEADING_TAG_FALLBACK = :h2
 
-      DEFAULT_HEADER_VARIANT = :medium
+      DEFAULT_HEADER_VARIANT = :large
       HEADER_VARIANT_OPTIONS = [
-        :large,
+        :medium,
         DEFAULT_HEADER_VARIANT
       ].freeze
 
       DEFAULT_BACK_BUTTON_SIZE = :medium
       BACK_BUTTON_SIZE_OPTIONS = [
         :small,
-        DEFAULT_HEADER_VARIANT,
+        DEFAULT_BACK_BUTTON_SIZE,
         :large
       ].freeze
 
