@@ -135,7 +135,7 @@ GEM
       ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
     mutex_m (0.1.2)
-    nio4r (2.5.9)
+    nio4r (2.7.0)
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -152,7 +152,7 @@ GEM
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
-    puma (6.4.0)
+    puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.2)
     rack (2.2.8)
@@ -297,7 +297,7 @@ DEPENDENCIES
   mocha
   primer_view_components!
   pry
-  puma (~> 6.4.0)
+  puma (~> 6.4.2)
   rack (~> 2.2)
   rack-cors
   railties (= 7.1.1)
