@@ -25,7 +25,7 @@ module Primer
       # @param with_context_bar_actions [Boolean]
       # @param with_parent_link [Boolean]
       def playground(
-        variant: :medium,
+        variant: :large,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
         with_back_button: false,
@@ -49,10 +49,10 @@ module Primer
                                        breadcrumb_items: breadcrumb_items })
       end
 
-      # @label Large
-      def large_title
+      # @label Medium title
+      def medium_title
         render(Primer::OpenProject::PageHeader.new) do |header|
-          header.with_title(variant: :large) { "Hello" }
+          header.with_title(variant: :medium) { "Hello" }
           header.with_description { "Last updated 5 minutes ago by XYZ." }
         end
       end

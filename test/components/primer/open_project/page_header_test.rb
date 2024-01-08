@@ -16,14 +16,15 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-title--large")
   end
 
-  def test_renders_large_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :large) { "Hello" } }
+  def test_renders_medium_title
+    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :medium) { "Hello" } }
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-title--large")
+    assert_selector(".PageHeader-title--medium")
   end
 
   def test_renders_description
