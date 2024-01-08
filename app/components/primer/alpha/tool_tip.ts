@@ -187,6 +187,16 @@ class ToolTipElement extends HTMLElement {
         margin-top: -6px;
         border-right-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
     `
   }
 
@@ -291,7 +301,11 @@ class ToolTipElement extends HTMLElement {
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    const shouldShow = event.type === 'mouseenter' || event.type === 'focus'
+    const shouldShow =
+      event.type === 'mouseenter' ||
+      // Only show tooltip on focus if running in headless browser (for tests) or if focus ring
+      // is visible (i.e. if user is using keyboard navigation)
+      (event.type === 'focus' && (navigator.webdriver || this.control.matches(':focus-visible')))
     const isMouseLeaveFromButton =
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&

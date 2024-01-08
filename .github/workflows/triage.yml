@@ -22,7 +22,7 @@ jobs:
     if: github.event.action != 'labeled' && github.event.action != 'unlabeled'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v4
+    - uses: actions/labeler@v5
       with:
         sync-labels: true
         repo-token: "${{ secrets.GITHUB_TOKEN }}"

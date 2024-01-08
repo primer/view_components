@@ -323,6 +323,13 @@ module Primer
                              })
       end
 
+      # @label In Scoll container
+      #
+      def in_scroll_container
+        render_with_template()
+      end
+
+
       # @label Align end
       #
       def align_end(menu_id: "menu-1")
