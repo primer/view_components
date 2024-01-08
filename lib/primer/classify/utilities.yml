@@ -1,13 +1,24 @@
 ---
+:font_size:
+  '00':
+  - f00
+  1:
+  - f1
+  2:
+  - f2
+  3:
+  - f3
+  4:
+  - f4
+  5:
+  - f5
+  6:
+  - f6
+  :small:
+  - text-small
+  :normal:
+  - text-normal
 :animation:
-  :fade_in:
-  - anim-fade-in
-  :fade_out:
-  - anim-fade-out
-  :fade_up:
-  - anim-fade-up
-  :fade_down:
-  - anim-fade-down
   :grow_x:
   - anim-grow-x
   :shrink_x:
@@ -210,21 +221,12 @@
   - float-lg-none
   - float-xl-none
 :w:
-  :fit:
-  - width-fit
-  :full:
-  - width-full
   :auto:
   - width-auto
   - width-sm-auto
   - width-md-auto
   - width-lg-auto
   - width-xl-auto
-:h:
-  :fit:
-  - height-fit
-  :full:
-  - height-full
 :m:
   0:
   - m-0
@@ -1361,12 +1363,6 @@
   - d-md-block
   - d-lg-block
   - d-xl-block
-  :flex:
-  - d-flex
-  - d-sm-flex
-  - d-md-flex
-  - d-lg-flex
-  - d-xl-flex
   :inline:
   - d-inline
   - d-sm-inline
@@ -1403,6 +1399,12 @@
   - d-md-table-cell
   - d-lg-table-cell
   - d-xl-table-cell
+  :flex:
+  - 
+  - d-sm-flex
+  - d-md-flex
+  - d-lg-flex
+  - d-xl-flex
 :visibility:
   :hidden:
   - v-hidden
@@ -1505,25 +1507,6 @@
   - col-md-12
   - col-lg-12
   - col-xl-12
-:font_size:
-  '00':
-  - f00
-  1:
-  - f1
-  2:
-  - f2
-  3:
-  - f3
-  4:
-  - f4
-  5:
-  - f5
-  6:
-  - f6
-  :small:
-  - text-small
-  :normal:
-  - text-normal
 :top:
   0:
   - top-0

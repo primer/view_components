@@ -155,6 +155,7 @@
   "Primer::Alpha::AutoComplete::Item": {
   },
   "Primer::Alpha::Banner": {
+    "DEFAULT_DISMISS_LABEL": "Dismiss",
     "DEFAULT_DISMISS_SCHEME": "none",
     "DEFAULT_ICONS": {
       "default": "bell",
