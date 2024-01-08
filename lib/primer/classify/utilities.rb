@@ -27,7 +27,9 @@ module Primer
         "^height" => "h",
         "^color-bg" => "bg",
         "^color-border" => "border_color",
-        "^color-fg" => "color"
+        "^color-fg" => "color",
+        "^f" => "font_size",
+        "^rounded" => "border_radius"
       }.freeze
 
       SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
@@ -91,9 +93,6 @@ module Primer
 
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
         def classes_to_hash(classes)
-          # This method is too slow to run in production
-          return { classes: classes } unless validate_class_names?
-
           obj = {}
           classes = classes.split
           # Loop through all classes supplied and reject ones we find a match for

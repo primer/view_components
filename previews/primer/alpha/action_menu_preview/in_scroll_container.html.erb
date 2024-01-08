@@ -1,0 +1,11 @@
+<div style="height: 400px"></div>
+
+<div style="position: relative">
+  <%= render Primer::Alpha::ActionMenu.new(anchor_align: :end) do |c| %>
+    <% c.with_show_button { "Edit" } %>
+    <% c.with_item(tag: :button, type: "button", label: "Rename") %>
+    <% c.with_item(tag: :button, type: "button", scheme: :danger, label: "Remove") %>
+  <% end %>
+</div>
+
+<div style="height: 1400px"></div>
