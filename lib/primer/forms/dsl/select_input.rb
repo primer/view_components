@@ -9,12 +9,14 @@ module Primer
 
         # :nodoc:
         class Option
+          include Primer::TestSelectorHelper
+
           attr_reader :label, :value, :system_arguments
 
           def initialize(label:, value:, **system_arguments)
             @label = label
             @value = value
-            @system_arguments = system_arguments
+            @system_arguments = add_test_selector(system_arguments)
           end
         end
 
