@@ -34,19 +34,19 @@ module Primer
 
       DEFAULT_POSITION = :center
       POSITION_MAPPINGS = {
-        DEFAULT_POSITION => "Overlay-backdrop--center",
-        :left => "Overlay-backdrop--side Overlay-backdrop--placement-left",
-        :right => "Overlay-backdrop--side Overlay-backdrop--placement-right"
+        DEFAULT_POSITION => "",
+        :left => "Overlay--placement-left",
+        :right => "Overlay--placement-right"
       }.freeze
       POSITION_OPTIONS = POSITION_MAPPINGS.keys
 
       DEFAULT_POSITION_NARROW = :inherit
       POSITION_NARROW_MAPPINGS = {
         DEFAULT_POSITION_NARROW => "",
-        :bottom => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
-        :fullscreen => "Overlay-backdrop--full-whenNarrow",
-        :left => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
-        :right => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow"
+        :bottom => "Overlay--placement-bottom-whenNarrow",
+        :fullscreen => "Overlay--full-whenNarrow",
+        :left => "Overlay--placement-left-whenNarrow",
+        :right => "Overlay--placement-right-whenNarrow"
       }.freeze
       POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
 
@@ -142,11 +142,9 @@ module Primer
           "Overlay-whenNarrow",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           "Overlay--motion-scaleFade",
-          system_arguments[:classes]
-        )
-        @backdrop_classes = class_names(
           POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, @position, DEFAULT_POSITION)],
-          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, @position_narrow, DEFAULT_POSITION_NARROW)]
+          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, @position_narrow, DEFAULT_POSITION_NARROW)],
+          system_arguments[:classes]
         )
       end
 
