@@ -4,9 +4,15 @@ dialog.Overlay:not([open]) {
   display: none;
 }
 
-/* dialog defualts to CanvasText not inherit */
+/* override dialog user agent styles */
 dialog.Overlay {
-  color: var(--fgColor-default);
+  position: initial;
+  display: initial;
+  inset: initial;
+  margin: initial;
+  border: initial;
+  padding: initial;
+  color: initial;
 }
 
 
