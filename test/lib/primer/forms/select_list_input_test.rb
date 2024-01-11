@@ -36,4 +36,21 @@ class Primer::Forms::SelectInputTest < Minitest::Test
 
     refute_selector ".field_with_errors", visible: :all
   end
+
+  def test_option_includes_test_selector
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |select_form|
+          select_form.select_list(name: :foo, label: "Foo", hidden: true) do |list|
+            list.option(
+              label: "Foo",
+              value: "foo",
+              test_selector: "test-selector-foo",
+            )
+          end
+        end
+      end
+    end
+    assert_selector "[data-test-selector='test-selector-foo']", visible: :hidden
+  end
 end
