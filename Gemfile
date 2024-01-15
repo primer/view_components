@@ -50,7 +50,7 @@ group :test do
   # Disallow v5.19 for now since it breaks mocha.
   # See: https://github.com/freerange/mocha/issues/614
   # Remove this line when mocha has fixed the issue
-  gem "minitest", "< 5.21"
+  gem "minitest", "< 5.22"
 end
 
 # development dependencies
