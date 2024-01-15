@@ -130,7 +130,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.20.0)
+    minitest (5.21.1)
     mocha (2.1.0)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
@@ -293,7 +293,7 @@ DEPENDENCIES
   listen (~> 3.0)
   lookbook (~> 2.1.1)
   matrix (~> 0.4.2)
-  minitest (< 5.21)
+  minitest (< 5.22)
   mocha
   primer_view_components!
   pry
