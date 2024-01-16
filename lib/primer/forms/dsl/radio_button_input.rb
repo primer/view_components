@@ -36,6 +36,10 @@ module Primer
           :radio_button
         end
         # :nocov:
+
+        def supports_validation?
+          false
+        end
       end
     end
   end

@@ -44,6 +44,10 @@ module Primer
           :check_box
         end
 
+        def supports_validation?
+          false
+        end
+
         private
 
         def caption_template_name
