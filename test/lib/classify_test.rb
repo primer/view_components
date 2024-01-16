@@ -411,10 +411,41 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("anim-hover-grow", { animation: :hover_grow })
   end
 
+  def test_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
+    ENV["PRIMER_WARNINGS_DISABLED"] = "1"
+    with_raise_on_invalid_options(true) do
+      assert_generated_class("color-bg-primary text-center float-left ml-1", { classes: "color-bg-primary text-center float-left ml-1" })
+    end
+  ensure
+    ENV["PRIMER_WARNINGS_DISABLED"] = nil
+  end
+
+  def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
+    with_raise_on_invalid_options(false) do
+      assert_generated_class("color-bg-primary text-center float-left ml-1", { classes: "color-bg-primary text-center float-left ml-1" })
+    end
+  end
+
   def test_does_include_leading_trailing_whitespace_in_class
     generated_class = Primer::Classify.call(classes: "foo-class")[:class]
     refute(generated_class.start_with?(" "))
     refute(generated_class.end_with?(" "))
+  end
+
+  def test_raises_if_not_using_system_arguments_when_raise_on_invalid_options_is_true
+    with_raise_on_invalid_options(true) do
+      exception = assert_raises ArgumentError do
+        Primer::Classify.call(classes: "d-block")
+      end
+
+      assert_includes exception.message, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class"
+    end
+  end
+
+  def test_does_not_raise_if_not_using_system_arguments_when_raise_on_invalid_options_is_false
+    with_raise_on_invalid_options(false) do
+      assert_generated_class("d-block", { classes: "d-block" })
+    end
   end
 
   private
