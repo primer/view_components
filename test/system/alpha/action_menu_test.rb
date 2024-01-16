@@ -492,7 +492,7 @@ module Alpha
       click_on_invoker_button
       click_on_fourth_item
 
-      assert_selector "dialog[open]"
+      assert_selector "dialog[open]", visible: :hidden
 
       # menu should close
       refute_selector "action-menu ul li"
