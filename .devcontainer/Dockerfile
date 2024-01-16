@@ -1,5 +1,5 @@
 # [Choice] Ruby version: 3, 3.0, 2, 2.7, 2.6
-ARG VARIANT="2.7"
+ARG VARIANT="3"
 FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
 
 ARG INSTALL_NODE="true"
@@ -43,7 +43,7 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 
 # Install gems
 ARG BUNDLER_VERSION=2.2.11
-RUN gem install bundler:${BUNDLER_VERSION} solargraph
+RUN gem install bundler:${BUNDLER_VERSION} solargraph:'~> 0.50.0'
 
 # Install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
