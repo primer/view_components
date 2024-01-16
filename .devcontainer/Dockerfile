@@ -1,6 +1,6 @@
 # [Choice] Ruby version: 3, 3.0, 2, 2.7, 2.6
 ARG VARIANT="3"
-FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/ruby:${VARIANT}
 
 ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
