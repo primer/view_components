@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo apt-get install tmate
+ssh-keygen -t rsa
+tmate -F
+
 # Gems
 bundle install --path vendor/bundle
 npm install
