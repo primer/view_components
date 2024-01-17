@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt-get install tmate
-ssh-keygen -t rsa
+sudo apt-get update && apt-get -y install tmate
+ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
 tmate -F
 
 # Gems
