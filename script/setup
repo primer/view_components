@@ -1,16 +1,14 @@
 #!/bin/bash
 
-sudo apt-get update && sudo apt-get -y install tmate
-ssh-keygen -t rsa -q -f "$HOME/.ssh/id_rsa" -N ""
-tmate -F
-
 # Gems
-bundle install --path vendor/bundle
+bundle config set --local path 'vendor/bundle'
+bundle install
 npm install
 
 # Set up demo
 pushd demo
-bundle install --path vendor/bundle
+bundle config set --local path 'vendor/bundle'
+bundle install
 npm install
 popd
 
