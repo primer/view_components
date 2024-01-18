@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Break up button text when it is too long
+Button component: update overflow strategy to allow for line wrap if button label text is too long
