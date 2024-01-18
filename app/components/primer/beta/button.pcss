@@ -152,7 +152,7 @@ summary.Button {
   & .Button-content {
     /* calc explained: sets block padding to the correct size, minus 2px for border */
     padding-block: calc(var(--control-large-paddingBlock) - 2px);
-    
+
     & > :not(:last-child) {
       margin-right: var(--control-large-gap);
     }
@@ -294,7 +294,7 @@ summary.Button {
   display: inline-block;
   font-size: inherit;
   border: none;
-  height: unset;
+  min-height: unset;
   padding: 0;
 
   &:hover:not(:disabled, .Button--inactive) {
@@ -312,6 +312,10 @@ summary.Button {
     background-color: transparent;
     border-color: transparent;
     fill: var(--control-fgColor-disabled);
+  }
+
+  & .Button-content {
+    padding: 0;
   }
 }
 
