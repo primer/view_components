@@ -230,6 +230,26 @@ module Primer
 
         assert_match(%r{lists/menus that act as form inputs must also allow item selection}, error.message)
       end
+
+      def test_supports_avatar_sizing
+        render_in_view_context do
+          foo = render(Primer::Alpha::ActionList.new) do |component|
+            component.with_avatar_item(
+              username: "default",
+              src: "https://avatars.githubusercontent.com/u/103004183?v=4"
+            )
+            component.with_avatar_item(
+              username: "non_default",
+              src: "https://avatars.githubusercontent.com/u/103004183?v=4",
+              avatar_arguments: { size: 24 }
+            )
+          end
+        end
+
+        # we should probably have an enum for this, looks like we have a non-standard default size?
+        assert_selector(".ActionListItem-visual--leading img[size='16']")
+        assert_selector(".ActionListItem-visual--leading img[size='24']")
+      end
     end
   end
 end
