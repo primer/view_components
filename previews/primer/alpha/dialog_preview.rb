@@ -16,8 +16,10 @@ module Primer
       # @param button_text [String] text
       # @param body_text [String] text
       # @param icon [Symbol] octicon
-      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false)
-        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
+      # @param padding [Symbol] select [none, normal, condensed]
+      # @param variant [Symbol] select [medium, large]
+      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false, padding: :none, variant: :medium)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title, padding: padding, variant: variant)) do |d|
           if icon.present? && (icon != :none)
             d.with_show_button(icon: icon, "aria-label": icon.to_s, disabled: disable_button)
           else
@@ -221,6 +223,21 @@ module Primer
           d.with_show_button { button_text }
           d.with_body { body_text }
         end
+      end
+
+      # @label With Banner
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      def with_banner(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+        render_with_template(locals: {
+                               title: title,
+                               subtitle: subtitle,
+                               button_text: button_text,
+                               show_divider: show_divider
+                             })
       end
     end
   end

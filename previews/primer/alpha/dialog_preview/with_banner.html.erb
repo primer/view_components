@@ -1,0 +1,11 @@
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle)) do |d| %>
+  <% d.with_show_button { button_text } %>
+  <% d.with_banner(scheme: :danger, description: "Test", dismiss_label: "Test") do %>
+    Test
+  <% end %>
+  <% d.with_body { "Content" } %>
+  <% d.with_footer(show_divider: show_divider) do %>
+    <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
+    <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
+  <% end %>
+<% end %>
