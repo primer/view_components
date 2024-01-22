@@ -4,7 +4,7 @@
     <b>Warning</b>: this will also delete the temporary private fork
   <% end %>
   <% d.with_body { "If you're ready, publishing this advisory will also delete the temporary private fork. This action can only be undone by contacting support." } %>
-  <% d.with_footer do %>
+  <% d.with_footer(show_divider: :true) do %>
     <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
     <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Delete fork and publish" } %>
   <% end %>
