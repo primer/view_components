@@ -23,6 +23,10 @@ module Primer
         def type
           :hidden
         end
+
+        def supports_validation?
+          false
+        end
       end
     end
   end
