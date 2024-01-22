@@ -229,6 +229,7 @@ module Primer
       #
       # @param title [String] text
       # @param button_text [String] text
+      # @snapshot interactive
       def with_banner(title: "Test Dialog", button_text: "Show Dialog")
         render_with_template(locals: {
                                title: title,
