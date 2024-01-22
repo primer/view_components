@@ -130,9 +130,8 @@ module Primer
       # @param size [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::SIZE_OPTIONS) %>
       # @param position [Symbol] The position of the dialog. <%= one_of(Primer::Alpha::Dialog::POSITION_OPTIONS) %>
       # @param position_narrow [Symbol] The position of the dialog when narrow. <%= one_of(Primer::Alpha::Dialog::POSITION_NARROW_OPTIONS) %>
-      # @param visually_hide_title [Boolean] If `true`, will hide the heading title while still making it available to Screen Readers.
+      # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
       # @param header_variant [Symbol] The header variant. <%= one_of(Primer::Alpha::Dialog::Header::VARIANT_OPTIONS) %>
-      # @param auto_open [Boolean] If `true`, the dialog will open immediately on page load.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
@@ -142,7 +141,6 @@ module Primer
         position_narrow: DEFAULT_POSITION_NARROW,
         visually_hide_title: false,
         header_variant: Header::DEFAULT_VARIANT,
-        auto_open: false,
         id: self.class.generate_id,
         **system_arguments
       )
@@ -156,9 +154,6 @@ module Primer
         @position_narrow = position_narrow
         @visually_hide_title = visually_hide_title
         @header_variant = header_variant
-        @auto_open = auto_open
-
-        @system_arguments[:open] = "open" if auto_open
 
         @system_arguments[:tag] = "dialog"
         @system_arguments[:id] = @id

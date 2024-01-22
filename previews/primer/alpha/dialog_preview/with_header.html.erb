@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, auto_open: auto_open)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle)) do |d| %>
   <% d.with_show_button { button_text } %>
   <% d.with_body { "Content" } %>
   <% d.with_header(show_divider: show_divider, variant: header_variant) %>

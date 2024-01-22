@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, auto_open: auto_open)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title)) do |d| %>
   <% d.with_show_button { button_text } %>
   <% d.with_banner(scheme: :warning) do %>
     <b>Warning</b>: this will also delete the temporary private fork
