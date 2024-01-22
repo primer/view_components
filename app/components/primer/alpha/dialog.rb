@@ -106,6 +106,12 @@ module Primer
 
       # Optional Banner
       #
+      # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
+      # @param dismiss_label [String] The aria-label text of the dismiss "x" button
+      # @param description [String] Description text rendered underneath the message.
+      # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
+      # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :banner, lambda { |scheme: :default, dismiss_scheme: :none, **system_arguments|
         Primer::Alpha::Banner.new(
           scheme: scheme || @scheme,
@@ -113,6 +119,7 @@ module Primer
           dismiss_scheme: dismiss_scheme || @dismiss_scheme,
           dismiss_label: @dismiss_label,
           description: @description,
+          full: :full,
           **system_arguments
         )
       }

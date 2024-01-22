@@ -6,7 +6,11 @@
       <%= content %>
     <% else %>
       <scrollable-region data-labelled-by="<%= labelledby %>">
-        <%= banner %>
+        <% if banner.present? %>
+          <div role="status">
+            <%= banner %>
+          </div>
+        <% end %>
         <%= body %>
       </scrollable-region>
       <%= footer %>
