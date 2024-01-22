@@ -1,10 +1,10 @@
-<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, auto_open: auto_open)) do |d| %>
   <% d.with_show_button { button_text } %>
   <% d.with_banner(scheme: :warning) do %>
     <b>Warning</b>: this will also delete the temporary private fork
   <% end %>
   <% d.with_body { "If you're ready, publishing this advisory will also delete the temporary private fork. This action can only be undone by contacting support." } %>
-  <% d.with_footer do %>
+  <% d.with_footer(show_divider: :true) do %>
     <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
     <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Delete fork and publish" } %>
   <% end %>

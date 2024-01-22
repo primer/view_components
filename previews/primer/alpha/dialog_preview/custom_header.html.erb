@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, visually_hide_title: false)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, visually_hide_title: false, auto_open: auto_open)) do |d| %>
   <% d.with_header(show_divider: show_divider) do %>
     <button class="btn">Custom Header Controls</button>
   <% end %>
