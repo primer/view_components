@@ -435,20 +435,6 @@
     /* singleselect checkmark */
     & .ActionListItem-singleSelectCheckmark {
       visibility: visible;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkIn 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
-
-        @keyframes checkmarkIn {
-          from {
-            clip-path: inset(16px 0 0 0);
-          }
-
-          to {
-            clip-path: inset(0 0 0 0);
-          }
-        }
-      }
     }
 
     /* checkbox */
