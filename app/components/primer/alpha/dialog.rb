@@ -113,6 +113,7 @@ module Primer
           dismiss_scheme: dismiss_scheme || @dismiss_scheme,
           dismiss_label: @dismiss_label,
           description: @description,
+          full: :full,
           **system_arguments
         )
       }

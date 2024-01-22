@@ -19,13 +19,13 @@ module Primer
       # @param padding [Symbol] select [none, normal, condensed]
       # @param header_variant [Symbol] select [medium, large]
       def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false, padding: :none, header_variant: :medium)
-        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title, padding: padding, header_variant: header_variant)) do |d|
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title, header_variant: header_variant)) do |d|
           if icon.present? && (icon != :none)
             d.with_show_button(icon: icon, "aria-label": icon.to_s, disabled: disable_button)
           else
             d.with_show_button(disabled: disable_button) { button_text }
           end
-          d.with_body { body_text }
+          d.with_body(padding: padding) { body_text }
         end
       end
 
@@ -225,18 +225,14 @@ module Primer
         end
       end
 
-      # @label With Banner
+      # @label Confirmation Dialog
       #
       # @param title [String] text
-      # @param subtitle [String] text
       # @param button_text [String] text
-      # @param show_divider [Boolean] toggle
-      def with_banner(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+      def with_banner(title: "Test Dialog", button_text: "Show Dialog")
         render_with_template(locals: {
                                title: title,
-                               subtitle: subtitle,
                                button_text: button_text,
-                               show_divider: show_divider
                              })
       end
     end
