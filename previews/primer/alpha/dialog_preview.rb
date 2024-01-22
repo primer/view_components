@@ -17,9 +17,9 @@ module Primer
       # @param body_text [String] text
       # @param icon [Symbol] octicon
       # @param padding [Symbol] select [none, normal, condensed]
-      # @param variant [Symbol] select [medium, large]
-      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false, padding: :none, variant: :medium)
-        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title, padding: padding, variant: variant)) do |d|
+      # @param header_variant [Symbol] select [medium, large]
+      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false, icon: nil, disable_button: false, padding: :none, header_variant: :medium)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title, padding: padding, header_variant: header_variant)) do |d|
           if icon.present? && (icon != :none)
             d.with_show_button(icon: icon, "aria-label": icon.to_s, disabled: disable_button)
           else

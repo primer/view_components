@@ -75,14 +75,14 @@ module Primer
       # @param show_divider [Boolean] Show a divider between the header and body.
       # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Dialog::Header) %>.
-      renders_one :header, lambda { |show_divider: false, visually_hide_title: @visually_hide_title, variant: :medium, **system_arguments|
+      renders_one :header, lambda { |show_divider: false, visually_hide_title: @visually_hide_title, variant: nil, **system_arguments|
         Primer::Alpha::Dialog::Header.new(
           id: @id,
           title: @title,
           subtitle: @subtitle,
           show_divider: show_divider,
           visually_hide_title: visually_hide_title,
-          variant: variant || @variant,
+          variant: variant || @header_variant,
           **system_arguments
         )
       }
@@ -124,6 +124,7 @@ module Primer
       # @param position [Symbol] The position of the dialog. <%= one_of(Primer::Alpha::Dialog::POSITION_OPTIONS) %>
       # @param position_narrow [Symbol] The position of the dialog when narrow. <%= one_of(Primer::Alpha::Dialog::POSITION_NARROW_OPTIONS) %>
       # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
+      # @param header_variant [Symbol] The header variant. <%= one_of(Primer::Alpha::Dialog::Header::VARIANT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
@@ -132,6 +133,7 @@ module Primer
         position: DEFAULT_POSITION,
         position_narrow: DEFAULT_POSITION_NARROW,
         visually_hide_title: false,
+        header_variant: Header::DEFAULT_VARIANT,
         id: self.class.generate_id,
         **system_arguments
       )
@@ -144,6 +146,7 @@ module Primer
         @position = position
         @position_narrow = position_narrow
         @visually_hide_title = visually_hide_title
+        @header_variant = header_variant
 
         @system_arguments[:tag] = "dialog"
         @system_arguments[:id] = @id
