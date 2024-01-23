@@ -381,12 +381,6 @@
   "Overlay--hidden": [
     "Primer::Alpha::Dialog"
   ],
-  "Overlay--placement-bottom-whenNarrow": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay--placement-left-whenNarrow": [
-    "Primer::Alpha::Dialog"
-  ],
   "Overlay--placement-right-whenNarrow": [
     "Primer::Alpha::Dialog"
   ],
