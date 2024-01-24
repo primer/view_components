@@ -629,6 +629,12 @@
         "description": "Whether the component can be dismissed with an \"x\" button. One of `:hide`, `:none`, or `:remove`."
       },
       {
+        "name": "dismiss_label",
+        "type": "String",
+        "default": "`Dismiss`",
+        "description": "The aria-label text of the dismiss \"x\" button"
+      },
+      {
         "name": "description",
         "type": "String",
         "default": "`nil`",

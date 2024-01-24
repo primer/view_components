@@ -372,34 +372,19 @@
     "Primer::Alpha::Dialog",
     "Primer::Alpha::Overlay"
   ],
+  "Overlay--full": [
+    "Primer::Alpha::Dialog"
+  ],
+  "Overlay--full-whenNarrow": [
+    "Primer::Alpha::Dialog"
+  ],
   "Overlay--hidden": [
     "Primer::Alpha::Dialog"
   ],
+  "Overlay--placement-right-whenNarrow": [
+    "Primer::Alpha::Dialog"
+  ],
   "Overlay--visibilityHidden": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--anchor": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--anchor-whenNarrow": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--center": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--center-whenNarrow": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--full": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--full-whenNarrow": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--side": [
-    "Primer::Alpha::Dialog"
-  ],
-  "Overlay-backdrop--side-whenNarrow": [
     "Primer::Alpha::Dialog"
   ],
   "Overlay-body": [

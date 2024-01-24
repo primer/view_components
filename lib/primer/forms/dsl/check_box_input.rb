@@ -27,9 +27,11 @@ module Primer
         end
 
         # check boxes cannot be invalid, as both checked and unchecked are valid states
+        # :nocov:
         def valid?
           true
         end
+        # :nocov:
 
         def to_component
           CheckBox.new(input: self)
@@ -42,6 +44,10 @@ module Primer
 
         def type
           :check_box
+        end
+
+        def supports_validation?
+          false
         end
 
         private

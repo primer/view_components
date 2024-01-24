@@ -155,6 +155,7 @@
   "Primer::Alpha::AutoComplete::Item": {
   },
   "Primer::Alpha::Banner": {
+    "DEFAULT_DISMISS_LABEL": "Dismiss",
     "DEFAULT_DISMISS_SCHEME": "none",
     "DEFAULT_ICONS": {
       "default": "bell",
@@ -227,16 +228,16 @@
     "Footer": "Primer::Alpha::Dialog::Footer",
     "Header": "Primer::Alpha::Dialog::Header",
     "POSITION_MAPPINGS": {
-      "center": "Overlay-backdrop--center",
-      "left": "Overlay-backdrop--side Overlay-backdrop--placement-left",
-      "right": "Overlay-backdrop--side Overlay-backdrop--placement-right"
+      "center": "",
+      "left": "Overlay--placement-left",
+      "right": "Overlay--placement-right"
     },
     "POSITION_NARROW_MAPPINGS": {
       "inherit": "",
-      "bottom": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
-      "fullscreen": "Overlay-backdrop--full-whenNarrow",
-      "left": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
-      "right": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow"
+      "bottom": "Overlay--placement-bottom-whenNarrow",
+      "fullscreen": "Overlay--full-whenNarrow",
+      "left": "Overlay--placement-left-whenNarrow",
+      "right": "Overlay--placement-right-whenNarrow"
     },
     "POSITION_NARROW_OPTIONS": [
       "inherit",

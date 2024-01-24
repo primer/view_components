@@ -4,12 +4,6 @@ dialog.Overlay:not([open]) {
   display: none;
 }
 
-/* dialog defualts to CanvasText not inherit */
-dialog.Overlay {
-  color: var(--fgColor-default);
-}
-
-
 .Overlay--hidden {
   display: none !important;
 }
@@ -23,12 +17,18 @@ dialog.Overlay {
 
 .Overlay {
   display: flex;
+  inset: 0;
+  position: static;
+  margin: auto;
+  padding: 0;
   width: min(var(--overlay-width), 100vw - 2rem);
   min-width: 192px;
   max-height: min(calc(100vh - 2rem), var(--overlay-height));
   white-space: normal;
   flex-direction: column;
   background-color: var(--overlay-bgColor);
+  color: var(--fgColor-default);
+  border: 0;
   border-radius: var(--borderRadius-large);
   box-shadow: var(--shadow-floating-small);
   opacity: 1;
@@ -84,6 +84,32 @@ dialog.Overlay {
     height: auto;
   }
 
+  &.Overlay--placement-left, &.Overlay--placement-right {
+    height: 100%;
+    max-height: unset;
+    position: fixed;
+  }
+
+  &.Overlay--motion-scaleFade, &.Overlay--placement-left, &.Overlay--placement-right {
+    @media screen and (prefers-reduced-motion: no-preference) {
+      animation: 200ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-scaleFade;
+    }
+  }
+
+  &.Overlay--placement-left {
+    inset: 0 auto 0 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    animation-name: Overlay--motion-slideInRight;
+  }
+
+  &.Overlay--placement-right {
+    inset: 0 0 0 auto;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    animation-name: Overlay--motion-slideInLeft;
+  }
+
   /* start deprecate in favor of Alpha::Dialog */
   &.Overlay--height-xsmall {
     height: min(192px, 100vh - 2rem);
@@ -130,12 +156,6 @@ dialog.Overlay {
   }
 
   /* end deprecate */
-
-  &.Overlay--motion-scaleFade {
-    @media screen and (prefers-reduced-motion: no-preference) {
-      animation: 200ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-scaleFade;
-    }
-  }
 }
 
 @keyframes Overlay--motion-scaleFade {
@@ -305,165 +325,60 @@ dialog.Overlay {
   }
 }
 
-@define-mixin Overlay-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
-  display: flex;
-  background-color: var(--overlay-backdrop-bgColor, var(--color-neutral-muted));
-}
-
-@define-mixin Overlay-backdrop--transparent {
-  position: absolute;
-  z-index: 999;
-  background-color: transparent;
-}
-
 /* variants must be mixins so we can extend within a media query (@extend is not supported inside media queries) */
 
 /* border-radius repeats within placement options to ensure the original radius is reset when two classes co-exist */
 
-/* center */
-@define-mixin Overlay-backdrop--center {
-  @mixin Overlay-backdrop;
-
-  align-items: center;
-  justify-content: center;
-}
-
-/* anchor */
-@define-mixin Overlay-backdrop--anchor {
-  @mixin Overlay-backdrop--transparent;
-}
-
-/* anchor side(s) */
-@define-mixin Overlay-backdrop--side $responsiveVariant {
-  @mixin Overlay-backdrop;
-
-  /* default left */
-  align-items: center;
-  justify-content: left;
-
-  &.Overlay-backdrop--placement-left$(responsiveVariant) {
-    align-items: center;
-    justify-content: left;
-
-    & > .Overlay$(responsiveVariant) {
-      height: 100vh;
-      max-height: unset;
-      border-radius: var(--borderRadius-large);
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: 250ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-slideInRight;
-      }
-    }
-  }
-
-  &.Overlay-backdrop--placement-right$(responsiveVariant) {
-    align-items: center;
-    justify-content: right;
-
-    & > .Overlay$(responsiveVariant) {
-      height: 100vh;
-      max-height: unset;
-      border-radius: var(--borderRadius-large);
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: 250ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-slideInLeft;
-      }
-    }
-  }
-
-  &.Overlay-backdrop--placement-bottom$(responsiveVariant) {
-    align-items: end;
-    justify-content: center;
-
-    & > .Overlay$(responsiveVariant) {
-      width: 100vw;
-      height: auto;
-      max-height: calc(100vh - 2rem);
-      border-radius: var(--borderRadius-large);
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: 250ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-slideUp;
-      }
-    }
-  }
-
-  &.Overlay-backdrop--placement-top$(responsiveVariant) {
-    align-items: start;
-    justify-content: center;
-
-    & > .Overlay$(responsiveVariant) {
-      border-radius: var(--borderRadius-large);
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: 250ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-slideDown;
-      }
-    }
-  }
-}
-
 /* full width */
-@define-mixin Overlay-backdrop--full {
-  @mixin Overlay-backdrop;
-
-  & .Overlay {
-    width: 100%;
-    max-width: 100vw;
-    height: 100%;
-    max-height: 100vh;
-    border-radius: unset !important;
-    flex-grow: 1;
-  }
-}
-
-/* Overlay variant classnames */
-.Overlay-backdrop--center {
-  @mixin Overlay-backdrop--center;
-}
-
-.Overlay-backdrop--anchor {
-  @mixin Overlay-backdrop--anchor;
-}
-
-.Overlay-backdrop--side {
-  @mixin Overlay-backdrop--side;
-}
-
-.Overlay-backdrop--full {
-  @mixin Overlay-backdrop--full;
+.Overlay--full {
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  max-height: 100vh;
+  border-radius: unset !important;
+  flex-grow: 1;
 }
 
 /* responsive variants */
 
 /* --viewportRange-narrowLandscape */
 @media (max-width: 767px) {
-  .Overlay-backdrop--center-whenNarrow {
-    @mixin Overlay-backdrop--center;
+  .Overlay.Overlay--placement-left-whenNarrow, .Overlay--placement-right-whenNarrow {
+    height: 100%;
+    max-height: 100vh;
+    position: fixed;
   }
 
-  .Overlay-backdrop--anchor-whenNarrow {
-    @mixin Overlay-backdrop--anchor;
+  .Overlay.Overlay--placement-left-whenNarrow {
+    inset: 0 auto 0 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    animation-name: Overlay--motion-slideInLeft;
   }
 
-  .Overlay-backdrop--side-whenNarrow {
-    @mixin Overlay-backdrop--side -whenNarrow;
+  .Overlay.Overlay--placement-right-whenNarrow {
+    inset: 0 0 0 auto;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    animation-name: Overlay--motion-slideInLeft;
   }
 
-  .Overlay-backdrop--full-whenNarrow {
-    @mixin Overlay-backdrop--full;
+  .Overlay.Overlay--placement-bottom-whenNarrow {
+    width: 100%;
+    max-width: 100vw;
+    inset: auto 0 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation-name: Overlay--motion-slideUp;
+  }
+
+  .Overlay--full-whenNarrow {
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: unset !important;
+    flex-grow: 1;
   }
 }
 

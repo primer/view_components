@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Add missing `box-shadow` to text field
+- add min-width to Button

@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Gems
-bundle install --path vendor/bundle
+bundle config set --local path 'vendor/bundle'
+bundle install
 npm install
 
 # Set up demo
 pushd demo
-bundle install --path vendor/bundle
+bundle config set --local path 'vendor/bundle'
+bundle install
 npm install
 popd
 

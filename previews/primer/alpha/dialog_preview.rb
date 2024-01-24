@@ -188,6 +188,40 @@ module Primer
       def autofocus_element
         render_with_template(locals: {})
       end
+
+      # @label Left Side
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
+      # @param visually_hide_title [Boolean] toggle
+      # @param button_text [String] text
+      # @param body_text [String] text
+      # @snapshot interactive
+      def left_side(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: :left, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
+          d.with_show_button { button_text }
+          d.with_body { body_text }
+        end
+      end
+
+      # @label Right Side
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
+      # @param visually_hide_title [Boolean] toggle
+      # @param button_text [String] text
+      # @param body_text [String] text
+      # @snapshot interactive
+      def right_side(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: :right, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
+          d.with_show_button { button_text }
+          d.with_body { body_text }
+        end
+      end
     end
   end
 end

@@ -9,7 +9,9 @@
       <% end %>
     <% end %>
     <%= content %>
-    <%= render(ValidationMessage.new(input: @input)) %>
+    <% if @input.supports_validation? %>
+      <%= render(ValidationMessage.new(input: @input)) %>
+    <% end %>
     <%= render(Caption.new(input: @input)) %>
   <% end %>
 <% else %>

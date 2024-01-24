@@ -5,7 +5,9 @@
     <% if content.present? %>
       <%= content %>
     <% else %>
-      <%= body %>
+      <scrollable-region data-labelled-by="<%= labelledby %>">
+        <%= body %>
+      </scrollable-region>
       <%= footer %>
     <% end %>
   <% end %>

@@ -659,6 +659,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/action_menu/in_scroll_container",
+        "name": "in_scroll_container",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/action_menu/align_end",
         "name": "align_end",
         "snapshot": "false",
@@ -3079,6 +3092,32 @@
         "preview_path": "primer/alpha/dialog/autofocus_element",
         "name": "autofocus_element",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/left_side",
+        "name": "left_side",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/right_side",
+        "name": "right_side",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"

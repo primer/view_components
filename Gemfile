@@ -31,7 +31,7 @@ end
 # rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
-gem "puma", "~> 6.4.0"
+gem "puma", "~> 6.4.2"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.0"
 
@@ -50,7 +50,7 @@ group :test do
   # Disallow v5.19 for now since it breaks mocha.
   # See: https://github.com/freerange/mocha/issues/614
   # Remove this line when mocha has fixed the issue
-  gem "minitest", "< 5.21"
+  gem "minitest", "< 5.22"
 end
 
 # development dependencies

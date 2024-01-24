@@ -50,7 +50,13 @@ class ActionBarElement extends HTMLElement {
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
-    requestAnimationFrame(() => this.update())
+    requestAnimationFrame(() => {
+      // This overflow visible is needed for browsers that don't support PopoverElement
+      // to ensure the menu and tooltips are visible when the action bar is in a collapsed state
+      // once popover is fully supported we can remove this.style.overflow = 'visible'
+      this.style.overflow = 'visible'
+      this.update()
+    })
   }
 
   disconnectedCallback() {
