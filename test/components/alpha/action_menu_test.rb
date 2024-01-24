@@ -176,6 +176,19 @@ module Primer
 
         assert_equal "ActionMenu groups cannot have dividers", err.message
       end
+
+      def test_does_not_double_render_show_button_content
+        render_inline_erb(<<~ERB)
+          <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
+            <% menu.with_show_button(scheme: :invisible) do |button| %>
+              test
+            <% end %>
+            <% menu.with_item { "an account" } %>
+          <% end %>
+        ERB
+
+        assert @rendered_content.scan("test").size == 1, "The show button rendered its content more than once"
+      end
     end
   end
 end
