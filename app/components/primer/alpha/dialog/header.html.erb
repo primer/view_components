@@ -11,7 +11,14 @@
       <% end %>
     </div>
     <div class="Overlay-actionWrap">
-      <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @id) %>
+      <%= render(
+          Primer::Beta::IconButton.new(
+            scheme: :invisible,
+            icon: :x,
+            aria: { label: "Close" },
+            "data-close-dialog-id": @id
+          )
+        ) %>
     </div>
   </div>
 <% end %>
