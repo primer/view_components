@@ -128,10 +128,12 @@ module Primer
       # @param subtitle [String] text
       # @param button_text [String] text
       # @param show_divider [Boolean] toggle
-      def nested_dialog(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+      # @param position [Symbol] select [center, left, right]
+      def nested_dialog(title: "Test Dialog", subtitle: nil, position: :center, button_text: "Show Dialog", show_divider: true)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,
+                               position: position,
                                button_text: button_text,
                                show_divider: show_divider
                              })
