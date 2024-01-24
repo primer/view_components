@@ -133,8 +133,8 @@
 
   /* Button ----------------------------------------- */
   & .Button {
-    min-height: 100%;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
     border: 0;
     font-weight: var(--base-text-weight-normal);
     border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
@@ -148,13 +148,6 @@
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
     color: var(--button-default-fgColor-rest);
-  }
-
-  /* use ellipsis with the assumption that icon only variant will be used when not enough space is available */
-  & .Button-label {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
