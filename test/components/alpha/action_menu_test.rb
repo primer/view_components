@@ -187,7 +187,7 @@ module Primer
           <% end %>
         ERB
 
-        assert @rendered_content.scan(/test/).size == 1, "The show button rendered its content more than once"
+        assert @rendered_content.scan("test").size == 1, "The show button rendered its content more than once"
       end
     end
   end
