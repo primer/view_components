@@ -1,0 +1,12 @@
+<%= render(Primer::BaseComponent.new(tag: "zen-mode-button", **@system_arguments)) do %>
+  <%= render(
+          Primer::Beta::IconButton.new(
+            scheme: :default,
+            id: 'zenModeButton',
+            icon: 'screen-normal',
+            aria: { label: 'zen mode' },
+            autofocus: true,
+            data: { target: "zen-mode-button.button", action: "click:zen-mode-button#performAction" }
+          )
+        ) %>
+<% end %>
