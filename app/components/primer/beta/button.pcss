@@ -21,14 +21,14 @@
   transition: var(--duration-fast) var(--easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
   text-align: center;
-  min-height: var(--control-medium-size);
-  min-width: fit-content;
+  height: var(--control-medium-size);
   padding: 0 var(--control-medium-paddingInline-normal);
   display: inline-flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: var(--base-size-4);
+  min-width: max-content;
 
   /* mobile friendly sizing */
   @media (pointer: coarse) {
@@ -63,16 +63,12 @@ summary.Button {
 
 /* wrap grid content to allow trailingAction to lock-right */
 .Button-content {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   display: grid;
   grid-template-areas: 'leadingVisual text trailingVisual';
   grid-template-columns: min-content minmax(0, auto) min-content;
   align-items: center;
   place-content: center;
-  align-self: stretch;
-  
-  /* calc explained: sets block padding to the correct size, minus 2px for border */
-  padding-block: calc(var(--control-medium-paddingBlock) - 2px);
 
   /* padding-bottom: 1px; optical alignment for firefox */
 
@@ -101,6 +97,7 @@ summary.Button {
 
 .Button-label {
   grid-area: text;
+  white-space: nowrap;
   line-height: var(--text-body-lineHeight-medium);
 }
 
@@ -124,8 +121,8 @@ summary.Button {
 
 .Button--small {
   font-size: var(--text-body-size-small);
-  min-height: var(--control-small-size);
-  padding-inline: var(--control-small-paddingInline-condensed);
+  height: var(--control-small-size);
+  padding: 0 var(--control-small-paddingInline-condensed);
   gap: var(--control-small-gap);
 
   & .Button-label {
@@ -133,9 +130,6 @@ summary.Button {
   }
 
   & .Button-content {
-    /* calc explained: sets block padding to the correct size, minus 2px for border */
-    padding-block: calc(var(--control-small-paddingBlock) - 2px);
-
     & > :not(:last-child) {
       margin-right: var(--control-small-gap);
     }
@@ -143,8 +137,8 @@ summary.Button {
 }
 
 .Button--large {
-  min-height: var(--control-large-size);
-  padding-inline: var(--control-large-paddingInline-spacious);
+  height: var(--control-large-size);
+  padding: 0 var(--control-large-paddingInline-spacious);
   gap: var(--control-large-gap);
 
   & .Button-label {
@@ -152,9 +146,6 @@ summary.Button {
   }
 
   & .Button-content {
-    /* calc explained: sets block padding to the correct size, minus 2px for border */
-    padding-block: calc(var(--control-large-paddingBlock) - 2px);
-
     & > :not(:last-child) {
       margin-right: var(--control-large-gap);
     }
@@ -296,7 +287,7 @@ summary.Button {
   display: inline-block;
   font-size: inherit;
   border: none;
-  min-height: unset;
+  height: unset;
   padding: 0;
 
   &:hover:not(:disabled, .Button--inactive) {
@@ -314,10 +305,6 @@ summary.Button {
     background-color: transparent;
     border-color: transparent;
     fill: var(--control-fgColor-disabled);
-  }
-
-  & .Button-content {
-    padding: 0;
   }
 }
 
