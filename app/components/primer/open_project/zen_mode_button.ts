@@ -1,48 +1,45 @@
-import {attr, controller, target, targets} from '@github/catalyst'
-import screenfull from 'screenfull';
-
+import {controller, target} from '@github/catalyst'
+import screenfull from 'screenfull'
 
 @controller
 class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
-  inZenMode = false;
-  @attr name = 'screen-full';
+  inZenMode = false
 
   private deactivateZenMode():void {
-    this.inZenMode = false;
-    this.button.classList.remove('zen-mode-button--active');
-    this.querySelector('body')?.classList.remove('zen-mode');
+    this.inZenMode = false
+    this.button.classList.remove('zen-mode-button--active')
+    this.querySelector('body')?.classList.remove('zen-mode')
     if (screenfull.isEnabled && screenfull.isFullscreen) {
-      screenfull.exit();
+      screenfull.exit()
     }
   }
 
   private activateZenMode() {
-    this.inZenMode = true;
-    document.querySelector('body')?.classList.add('zen-mode');
-    this.button.classList.add('zen-mode-button--active');
+    this.inZenMode = true
+    document.querySelector('body')?.classList.add('zen-mode')
+    this.button.classList.add('zen-mode-button--active')
     if (screenfull.isEnabled) {
-      screenfull.request();
+      screenfull.request()
     }
   }
 
   public performAction() {
     if (this.inZenMode) {
-      this.deactivateZenMode();
+      this.deactivateZenMode()
     } else {
-      this.activateZenMode();
+      this.activateZenMode()
     }
   }
 }
 
 declare global {
   interface Window {
-      ZenModeButtonElement: typeof ZenModeButtonElement
+    ZenModeButtonElement: typeof ZenModeButtonElement
   }
 }
-  
+
 if (!window.customElements.get('zen-mode-button')) {
   window.ZenModeButtonElement = ZenModeButtonElement
   window.customElements.define('zen-mode-button', ZenModeButtonElement)
 }
-  
