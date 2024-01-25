@@ -60,6 +60,7 @@ module Primer
 
       DEFAULT_DISMISS_LABEL = "Dismiss"
 
+      # @param tag [Symbol] <%= one_of(Primer::Alpha::Banner::TAG_OPTIONS) %>
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
       # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
