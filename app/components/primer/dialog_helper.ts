@@ -37,6 +37,17 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler)
     document.addEventListener('click', this, {signal})
+    this.ownerDocument.body.style.setProperty(
+      '--dialog-scrollgutter',
+      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
+    )
+    new MutationObserver(records => {
+      for (const record of records) {
+        if (record.target === this.dialog) {
+          this.ownerDocument.body.classList.toggle('has-modal', this.dialog.hasAttribute('open'))
+        }
+      }
+    }).observe(this, {subtree: true, attributeFilter: ['open']})
   }
 
   disconnectedCallback() {
