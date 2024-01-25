@@ -1,5 +1,4 @@
 # Adding components
-# Adding components
 
 ## Criteria for adding a component
 
