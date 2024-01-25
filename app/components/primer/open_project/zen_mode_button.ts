@@ -6,7 +6,7 @@ class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
   inZenMode = false
 
-  private deactivateZenMode():void {
+  private deactivateZenMode() {
     this.inZenMode = false
     this.button.classList.remove('zen-mode-button--active')
     this.querySelector('body')?.classList.remove('zen-mode')
