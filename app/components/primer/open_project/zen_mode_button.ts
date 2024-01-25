@@ -9,7 +9,7 @@ class ZenModeButtonElement extends HTMLElement {
   private deactivateZenMode() {
     this.inZenMode = false
     this.button.classList.remove('zen-mode-button--active')
-    this.querySelector('body')?.classList.remove('zen-mode')
+    document.getElementsByTagName('body')[0].classList.remove('zen-mode')
     if (screenfull.isEnabled && screenfull.isFullscreen) {
       screenfull.exit()
     }
@@ -17,7 +17,7 @@ class ZenModeButtonElement extends HTMLElement {
 
   private activateZenMode() {
     this.inZenMode = true
-    document.querySelector('body')?.classList.add('zen-mode')
+    document.getElementsByTagName('body')[0].classList.add('zen-mode')
     this.button.classList.add('zen-mode-button--active')
     if (screenfull.isEnabled) {
       screenfull.request()
