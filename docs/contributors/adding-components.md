@@ -45,12 +45,13 @@ Catalyst has controller and target decorators, in order to use them, you should 
 `import {controller, target} from '@github/catalyst'`
 
 then you can use them like this:
-``` 
+
+```ts
 @controller
 class MyComponentNameElement extends HTMLElement {
   @target button: HTMLElement
 } 
-  ```
+```
 
 ### Generated files
 
