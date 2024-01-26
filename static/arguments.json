@@ -611,6 +611,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
       {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:section`."
+      },
+      {
         "name": "full",
         "type": "Boolean",
         "default": "`false`",

@@ -164,6 +164,7 @@
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "div",
     "DISMISS_SCHEMES": [
       "none",
       "remove",
@@ -180,7 +181,11 @@
       "warning": "Banner--warning",
       "danger": "Banner--error",
       "success": "Banner--success"
-    }
+    },
+    "TAG_OPTIONS": [
+      "div",
+      "section"
+    ]
   },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
