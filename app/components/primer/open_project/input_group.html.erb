@@ -1,4 +1,10 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= text_input %>
-  <%= trailing_action %>
+  <%= render(Primer::Beta::Text.new(tag: :div, display: :flex, align_items: :flex_end)) do %>
+    <%= text_input %>
+    <%= trailing_action %>
+  <% end %>
+
+  <%= render(Primer::Beta::Text.new(tag: :div, display: :flex, direction: :column)) do %>
+    <%= caption %>
+  <% end %>
 <% end %>
