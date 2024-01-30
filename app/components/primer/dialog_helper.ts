@@ -58,7 +58,11 @@ export class DialogHelperElement extends HTMLElement {
     const target = event.target as HTMLElement
     const dialog = this.dialog
     if (!dialog?.open) return
-    if (target?.closest('dialog') === dialog) return
+
+    // if the target is inside the dialog, but is not the dialog itself, leave
+    // the dialog open
+    if (target?.closest('dialog') === dialog && target !== dialog) return
+    if (target?.closest('button')?.getAttribute('data-show-dialog-id')) return
 
     const rect = dialog.getBoundingClientRect()
     const clickWasInsideDialog =
