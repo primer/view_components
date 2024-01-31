@@ -15,6 +15,7 @@ function dialogInvokerButtonHandler(event: Event) {
       // If the behaviour is allowed through the dialog will be shown but then
       // quickly hidden- as if it were never shown. This prevents that.
       event.preventDefault()
+      event.stopPropagation()
     }
   }
 
@@ -35,7 +36,7 @@ export class DialogHelperElement extends HTMLElement {
   #abortController: AbortController | null = null
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
-    document.addEventListener('click', dialogInvokerButtonHandler)
+    document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
     this.ownerDocument.body.style.setProperty(
       '--dialog-scrollgutter',
@@ -58,7 +59,10 @@ export class DialogHelperElement extends HTMLElement {
     const target = event.target as HTMLElement
     const dialog = this.dialog
     if (!dialog?.open) return
-    if (target?.closest('dialog') !== dialog) return
+
+    // if the target is inside the dialog, but is not the dialog itself, leave
+    // the dialog open
+    if (target?.closest('dialog') === dialog && target !== dialog) return
 
     const rect = dialog.getBoundingClientRect()
     const clickWasInsideDialog =
