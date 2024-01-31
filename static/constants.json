@@ -1433,14 +1433,14 @@
       "block",
       "none"
     ],
-    "DEFAULT_HEADER_VARIANT": "medium",
+    "DEFAULT_HEADER_VARIANT": "large",
     "DEFAULT_PARENT_LINK_DISPLAY": [
       "block",
       "none"
     ],
     "HEADER_VARIANT_OPTIONS": [
-      "large",
-      "medium"
+      "medium",
+      "large"
     ],
     "HEADING_TAG_FALLBACK": "h2",
     "HEADING_TAG_OPTIONS": [

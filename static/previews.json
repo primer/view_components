@@ -5002,8 +5002,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/large_title",
-        "name": "large_title",
+        "preview_path": "primer/open_project/page_header/medium_title",
+        "name": "medium_title",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
