@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.21.0
+
+### Minor Changes
+
+- [#2539](https://github.com/primer/view_components/pull/2539) [`9985fc0`](https://github.com/opf/primer_view_components/commit/9985fc01ef4a343a7c455ec114a68a249a01ed3e) Thanks [@camertron](https://github.com/camertron)! - Use latest version of @primer/primitives
+
+- [#2496](https://github.com/primer/view_components/pull/2496) [`983e3a5`](https://github.com/opf/primer_view_components/commit/983e3a5fbf885c46d5bde0c749b0f9298ab2b53f) Thanks [@keithamus](https://github.com/keithamus)! - Primer::Alpha::Dialog uses <dialog> internally
+
+### Patch Changes
+
+- [#2495](https://github.com/primer/view_components/pull/2495) [`fbaea76`](https://github.com/opf/primer_view_components/commit/fbaea76c3209a7c4e92d18b3b80bb347f971c448) Thanks [@antn](https://github.com/antn)! - Allow setting `test_selector` on select list options
+
+- [#2538](https://github.com/primer/view_components/pull/2538) [`35e5d06`](https://github.com/opf/primer_view_components/commit/35e5d0696f503bf2bac14329dc455cc6245f6ba9) Thanks [@camertron](https://github.com/camertron)! - Prevent ActionMenu's show_button slot from rendering its content more than once
+
+- [#67](https://github.com/opf/primer_view_components/pull/67) [`a465b9e`](https://github.com/opf/primer_view_components/commit/a465b9e50b73a402cb0a3f66668358b4d7c40563) Thanks [@HDinger](https://github.com/HDinger)! - Make the large header variant the default for OpenProject::PageHeader
+
+- [#2541](https://github.com/primer/view_components/pull/2541) [`116a343`](https://github.com/opf/primer_view_components/commit/116a3438d0f9404483b638ef3f13a656609415cb) Thanks [@khiga8](https://github.com/khiga8)! - Allow `Banner` to be rendered as a section
+
+- [#2530](https://github.com/primer/view_components/pull/2530) [`1d14d5c`](https://github.com/opf/primer_view_components/commit/1d14d5c03a528930ac59bb8ec30fbec2ea92883e) Thanks [@camertron](https://github.com/camertron)! - Update @oddbird/popover-polyfill to v0.3.8
+
+- [#2491](https://github.com/primer/view_components/pull/2491) [`11b1eec`](https://github.com/opf/primer_view_components/commit/11b1eecc817c7013ed56c84f7050e642b098db41) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing the utilities build not matching properly for `font_size`
+
+- [#2511](https://github.com/primer/view_components/pull/2511) [`15a090a`](https://github.com/opf/primer_view_components/commit/15a090a999e69056d78ba099671ff1f68d61c610) Thanks [@camertron](https://github.com/camertron)! - Only attach validation IDs to form elements that support validation
+
 ## 0.20.0
 
 ### Minor Changes
