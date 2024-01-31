@@ -1,5 +1,5 @@
 <%= show_button %>
-<div class="Overlay--hidden <%= @backdrop_classes %>" data-modal-dialog-overlay>
+<dialog-helper>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= header %>
     <% if content.present? %>
@@ -11,4 +11,4 @@
       <%= footer %>
     <% end %>
   <% end %>
-</div>
+</dialog-helper>

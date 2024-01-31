@@ -611,6 +611,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
       {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:section`."
+      },
+      {
         "name": "full",
         "type": "Boolean",
         "default": "`false`",
@@ -627,6 +633,12 @@
         "type": "Symbol",
         "default": "`:none`",
         "description": "Whether the component can be dismissed with an \"x\" button. One of `:hide`, `:none`, or `:remove`."
+      },
+      {
+        "name": "dismiss_label",
+        "type": "String",
+        "default": "`Dismiss`",
+        "description": "The aria-label text of the dismiss \"x\" button"
       },
       {
         "name": "description",

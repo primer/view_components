@@ -8,7 +8,7 @@ module Primer
     module DocsHelper
       def one_of(enumerable, lower: false, sort: true)
         # Sort the array if requested
-        if sort
+        if sort && !enumerable.nil?
           enumerable = enumerable.sort do |a, b|
             a.instance_of?(b.class) ? a <=> b : a.class.to_s <=> b.class.to_s
           end

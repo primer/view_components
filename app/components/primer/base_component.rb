@@ -97,7 +97,7 @@ module Primer
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
     # | `w` | Symbol | Sets the element's width. <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> |
-    # | `h` | Symbol | Sets the element's height. <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> |
+    # | `h` | Symbol | Sets the element's height. One of `:fit` or `:full`. |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
     # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
