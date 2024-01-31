@@ -468,9 +468,6 @@
   "SegmentedControl--iconOnly": [
     "Primer::Alpha::SegmentedControl"
   ],
-  "SegmentedControl--large": [
-    "Primer::Alpha::SegmentedControl"
-  ],
   "SegmentedControl--medium": [
     "Primer::Alpha::SegmentedControl"
   ],
