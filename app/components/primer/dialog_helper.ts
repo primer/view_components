@@ -36,7 +36,7 @@ export class DialogHelperElement extends HTMLElement {
   #abortController: AbortController | null = null
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
-    document.addEventListener('click', dialogInvokerButtonHandler)
+    document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
     this.ownerDocument.body.style.setProperty(
       '--dialog-scrollgutter',
