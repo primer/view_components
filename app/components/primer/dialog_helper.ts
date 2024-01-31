@@ -15,6 +15,7 @@ function dialogInvokerButtonHandler(event: Event) {
       // If the behaviour is allowed through the dialog will be shown but then
       // quickly hidden- as if it were never shown. This prevents that.
       event.preventDefault()
+      event.stopPropagation()
     }
   }
 
@@ -62,7 +63,6 @@ export class DialogHelperElement extends HTMLElement {
     // if the target is inside the dialog, but is not the dialog itself, leave
     // the dialog open
     if (target?.closest('dialog') === dialog && target !== dialog) return
-    if (target?.closest('button')?.getAttribute('data-show-dialog-id')) return
 
     const rect = dialog.getBoundingClientRect()
     const clickWasInsideDialog =
