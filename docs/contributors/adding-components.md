@@ -34,6 +34,27 @@ The generator script has several flags:
 - `inline` creates a `#call` method instead of generating an ERB template
 - `js` can be passed the name of an npm package dependency
 
+### JavaScript controllers
+
+If your component needs a JavaScript controller, you can pass `@github/catalyst` to the `js` flag.
+
+```sh
+bundle exec thor component_generator my_component_name --js='@github/catalyst'
+```
+
+[Catalyst](https://catalyst.rocks/) is a small library for developing Web Components and is very similar to [Stimulus](https://stimulus.hotwired.dev/).
+
+Catalyst has `controller` and `target` decorators which you have to import from `@github/catalyst` inside `app/components/<status>/<component_name>.ts`. It can then be used like this:
+
+```ts
+import {controller, target} from '@github/catalyst';
+
+@controller
+class MyComponentNameElement extends HTMLElement {
+  @target button: HTMLElement
+} 
+```
+
 ### Generated files
 
 Running the component generator script creates several files across the codebase:
