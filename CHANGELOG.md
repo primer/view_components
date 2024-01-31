@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.18.0
+
+### Minor Changes
+
+- [#2551](https://github.com/primer/view_components/pull/2551) [`5340243`](https://github.com/primer/view_components/commit/5340243c91a5a7d020cf216f421704fc5a76afca) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove large size options from SegmentedControl
+
+### Patch Changes
+
+- [#2527](https://github.com/primer/view_components/pull/2527) [`1d20198`](https://github.com/primer/view_components/commit/1d201989bfe0d1fb6cdb879f82264bdc55978d8d) Thanks [@keithamus](https://github.com/keithamus)! - Remove animations on actionlist checkmark
+
+- [#2549](https://github.com/primer/view_components/pull/2549) [`1259249`](https://github.com/primer/view_components/commit/1259249eaddd4b8744a3dc212fb9f8800b45daac) Thanks [@keithamus](https://github.com/keithamus)! - Ensure dialogs do not close when a child menu item (or similar) is clicked
+
 ## 0.17.0
 
 ### Minor Changes
