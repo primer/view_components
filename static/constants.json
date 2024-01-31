@@ -569,8 +569,7 @@
     },
     "SIZE_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::Alpha::SegmentedControl::Item": {
