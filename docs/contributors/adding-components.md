@@ -34,19 +34,21 @@ The generator script has several flags:
 - `inline` creates a `#call` method instead of generating an ERB template
 - `js` can be passed the name of an npm package dependency
 
-If you need to develop your component with Javascript, you can pass `@github/catalyst` to `js` flag
+### JavaScript controllers
+
+If your component needs a JavaScript controller, you can pass `@github/catalyst` to the `js` flag.
 
 ```sh
 bundle exec thor component_generator my_component_name --js='@github/catalyst'
 ```
 
-[Catalyst](https://catalyst.rocks/) is a small library for developing Web Components and is very similar to [Stimulus](https://stimulus.hotwired.dev/)
-Catalyst has controller and target decorators, in order to use them, you should import them from `@github/catalyst` into `app/components/<status>/<component_name>.ts`
-`import {controller, target} from '@github/catalyst'`
+[Catalyst](https://catalyst.rocks/) is a small library for developing Web Components and is very similar to [Stimulus](https://stimulus.hotwired.dev/).
 
-then you can use them like this:
+Catalyst has `controller` and `target` decorators which you have to import from `@github/catalyst` inside `app/components/<status>/<component_name>.ts`. It can then be used like this:
 
 ```ts
+import {controller, target} from '@github/catalyst';
+
 @controller
 class MyComponentNameElement extends HTMLElement {
   @target button: HTMLElement
@@ -75,7 +77,6 @@ The script also edits some files:
 - The component is added to the list of components in `test/component/component_test.rb`, in that you need to add examples for all the required arguments of the component
 - The pcss file is added to the list in `app/components/primer/primer.pcss`
 - The js file is added to the list in `app/components/primer/primer.ts` if the `js` flag is passed
-  and since then you can add any npm package dependency by just importing it in `app/components/<status>/<component_name>.ts`
 
 ### Playwright testing
 
