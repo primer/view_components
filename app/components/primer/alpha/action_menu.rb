@@ -241,7 +241,9 @@ module Primer
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Overlay) %>'s `show_button` slot.
       def with_show_button(**system_arguments, &block)
-        @overlay.with_show_button(**system_arguments, id: "#{@menu_id}-button", controls: "#{@menu_id}-list", &block)
+        @overlay.with_show_button(**system_arguments, id: "#{@menu_id}-button", controls: "#{@menu_id}-list") do |button|
+          evaluate_block(button, &block)
+        end
       end
 
       # @!parse

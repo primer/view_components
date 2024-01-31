@@ -121,7 +121,7 @@ module Primer
           @base_id = SecureRandom.uuid
 
           @ids = {}.tap do |id_map|
-            id_map[:validation] = "validation-#{@base_id}"
+            id_map[:validation] = "validation-#{@base_id}" if supports_validation?
             id_map[:caption] = "caption-#{@base_id}" if caption? || caption_template?
           end
 
@@ -208,11 +208,11 @@ module Primer
         end
 
         def valid?
-          validation_messages.empty? && !@invalid
+          supports_validation? && validation_messages.empty? && !@invalid
         end
 
         def invalid?
-          !valid?
+          supports_validation? && !valid?
         end
 
         def hidden?
@@ -281,6 +281,10 @@ module Primer
         end
 
         def input?
+          true
+        end
+
+        def supports_validation?
           true
         end
 

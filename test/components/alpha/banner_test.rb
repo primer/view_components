@@ -19,6 +19,18 @@ class PrimerBannerTest < Minitest::Test
     assert_selector(".octicon")
   end
 
+  def test_default_renders_as_div
+    render_inline(Primer::Alpha::Banner.new) { "foo" }
+
+    assert_selector("div.Banner")
+  end
+
+  def test_renders_as_section
+    render_inline(Primer::Alpha::Banner.new(tag: :section)) { "foo" }
+
+    assert_selector("section.Banner")
+  end
+
   def test_includes_legacy_classes
     render_inline(Primer::Alpha::Banner.new) { "foo" }
 

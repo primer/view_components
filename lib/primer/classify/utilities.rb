@@ -18,6 +18,7 @@ module Primer
 
       # Replacements for some classnames that end up being a different argument key
       REPLACEMENT_KEYS = {
+        "^f" => "font_size",
         "^anim" => "animation",
         "^v-align" => "vertical_align",
         "^d" => "display",
@@ -28,7 +29,6 @@ module Primer
         "^color-bg" => "bg",
         "^color-border" => "border_color",
         "^color-fg" => "color",
-        "^f" => "font_size",
         "^rounded" => "border_radius"
       }.freeze
 

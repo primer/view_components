@@ -40,7 +40,7 @@ deprecations:
   - component: "Primer::ButtonComponent"
     autocorrect: false
     replacement: "Primer::Beta::Button"
-    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-button-component"
+    guide: "https://primer.style/guides/rails/migration-guides/primer-button-component"
 
   - component: "Primer::IconButton"
     autocorrect: true
@@ -49,7 +49,7 @@ deprecations:
   - component: "Primer::LayoutComponent"
     autocorrect: false
     replacement: "Primer::Alpha::Layout"
-    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-layout-component"
+    guide: "https://primer.style/guides/rails/migration-guides/primer-layout-component"
 
   - component: "Primer::Navigation::TabComponent"
     autocorrect: true
@@ -62,4 +62,4 @@ deprecations:
   - component: "Primer::Truncate"
     autocorrect: false
     replacement: "Primer::Beta::Truncate"
-    guide: "https://primer.style/design/guides/development/rails/migration-guides/primer-truncate"
+    guide: "https://primer.style/guides/rails/migration-guides/primer-truncate"

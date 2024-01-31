@@ -1628,6 +1628,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/action_menu/in_scroll_container",
+        "name": "in_scroll_container",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/action_menu/align_end",
         "name": "align_end",
         "snapshot": "false",
@@ -2231,6 +2244,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
       {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:section`."
+      },
+      {
         "name": "full",
         "type": "Boolean",
         "default": "`false`",
@@ -2247,6 +2266,12 @@
         "type": "Symbol",
         "default": "`:none`",
         "description": "Whether the component can be dismissed with an \"x\" button. One of `:hide`, `:none`, or `:remove`."
+      },
+      {
+        "name": "dismiss_label",
+        "type": "String",
+        "default": "`Dismiss`",
+        "description": "The aria-label text of the dismiss \"x\" button"
       },
       {
         "name": "description",
@@ -3303,6 +3328,45 @@
         "preview_path": "primer/alpha/dialog/autofocus_element",
         "name": "autofocus_element",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/left_side",
+        "name": "left_side",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/right_side",
+        "name": "right_side",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -16408,6 +16472,6 @@
     "component": "BaseComponent",
     "fully_qualified_name": "Primer::BaseComponent",
     "description_md": "All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).\n\nUnder the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).\n\n## Responsive values\n\nTo apply different values across responsive breakpoints, pass an array with up to five values in the order `[default, small, medium, large, xlarge]`. To skip a breakpoint, pass `nil`.\n\nFor example:\n\n```erb\n<%= render Primer::Beta::Heading.new(mt: [0, nil, nil, 4, 2]) do %>\n  Hello world\n<% end %>\n```\n\nRenders:\n\n```html\n<h1 class=\"mt-0 mt-lg-4 mt-xl-2\">Hello world</h1>\n```",
-    "args_md": "## HTML attributes\n\nSystem arguments include most HTML attributes. For example:\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `aria` | `Hash` | Aria attributes: `aria: { label: \"foo\" }` renders `aria-label='foo'`. |\n| `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |\n| `height` | `Integer` | Height. |\n| `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |\n| `style` | `String` | Inline styles. |\n| `title` | `String` | The `title` attribute. |\n| `width` | `Integer` | Width. |\n\n## Animation\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `animation` | Symbol | One of `:fade_down`, `:fade_in`, `:fade_out`, `:fade_up`, `:grow_x`, `:hover_grow`, `:pulse`, `:pulse_in`, `:rotate`, `:scale_in`, or `:shrink_x`. |\n\n## Border\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `border_bottom` | Integer | Set to `0` to remove the bottom border. |\n| `border_left` | Integer | Set to `0` to remove the left border. |\n| `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |\n| `border_right` | Integer | Set to `0` to remove the right border. |\n| `border_top` | Integer | Set to `0` to remove the top border. |\n| `border` | Symbol | One of `:bottom`, `:left`, `:right`, `:top`, `:x`, `:y`, or `true`. |\n| `box_shadow` | Boolean, Symbol | Box shadow. One of `:extra_large`, `:large`, `:medium`, `:none`, or `true`. |\n\n## Color\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, or `:transparent`. |\n| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:open`, `:open_emphasis`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |\n| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:closed`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:open`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |\n\n## Flex\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `align_items` | Symbol | One of `:baseline`, `:center`, `:flex_end`, `:flex_start`, or `:stretch`. |\n| `align_self` | Symbol | One of `:auto`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`. |\n| `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |\n| `flex` | Integer, Symbol | One of `1` or `:auto`. |\n| `flex_grow` | Integer | To enable, set to `0`. |\n| `flex_shrink` | Integer | To enable, set to `0`. |\n| `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |\n| `justify_content` | Symbol | One of `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |\n\n## Grid\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `clearfix` | Boolean | Whether to assign the `clearfix` class. |\n| `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |\n\n## Layout\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |\n| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |\n| `h` | Symbol | One of `:fit` or `:full`. |\n| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, `:whenNarrow`, `:whenRegular`, `:whenWide`, or `:xl`. |\n| `visibility` | Symbol | Visibility. One of `:hidden` or `:visible`. |\n| `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |\n\n## Position\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bottom` | Boolean | If `false`, sets `bottom: 0`. |\n| `float` | Symbol | One of `:left`, `:none`, or `:right`. |\n| `left` | Boolean | If `false`, sets `left: 0`. |\n| `position` | Symbol | One of `:absolute`, `:fixed`, `:relative`, `:static`, or `:sticky`. |\n| `right` | Boolean | If `false`, sets `right: 0`. |\n| `top` | Boolean | If `false`, sets `top: 0`. |\n\n## Spacing\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mb` | Integer | Margin bottom. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |\n| `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mt` | Integer | Margin top. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |\n| `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |\n| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `px` | Integer | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |\n| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n\n## Typography\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `font_family` | Symbol | Font family. One of `:mono`. |\n| `font_size` | String, Integer, Symbol | One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `00`, `:normal`, or `:small`. |\n| `font_style` | Symbol | Font style. One of `:italic`. |\n| `font_weight` | Symbol | Font weight. One of `:bold`, `:emphasized`, `:light`, or `:normal`. |\n| `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |\n| `text_transform` | Symbol | Text transformation. One of `:capitalize` or `:uppercase`. |\n| `underline` | Boolean | Whether text should be underlined. |\n| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all` or `:break_word`. |\n\n## Other\n\n| Name | Type | Description |\n| :- | :- | :- |\n| classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |\n| test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |"
+    "args_md": "## HTML attributes\n\nUse system arguments to add HTML attributes to elements. For the most part, system arguments map 1:1 to\nHTML attributes. For example, `render(Component.new(title: \"Foo\"))` will result in eg. `<div title=\"foo\">`.\nHowever, ViewComponents applies special handling to certain system arguments. See the table below for details.\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `aria` | `Hash` | Aria attributes: `aria: { label: \"foo\" }` renders `aria-label='foo'`. |\n| `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |\n\n## Utility classes\n\nViewComponents provides a convenient way to add Primer CSS utility classes to HTML elements. Use the shorthand\ndocumented in the tables below instead of adding CSS classes directly.\n\n### Animation\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `animation` | Symbol | One of `:fade_down`, `:fade_in`, `:fade_out`, `:fade_up`, `:grow_x`, `:hover_grow`, `:pulse`, `:pulse_in`, `:rotate`, `:scale_in`, or `:shrink_x`. |\n\n### Border\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `border_bottom` | Integer | Set to `0` to remove the bottom border. |\n| `border_left` | Integer | Set to `0` to remove the left border. |\n| `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |\n| `border_right` | Integer | Set to `0` to remove the right border. |\n| `border_top` | Integer | Set to `0` to remove the top border. |\n| `border` | Symbol | One of `:bottom`, `:left`, `:right`, `:top`, `:x`, `:y`, or `true`. |\n| `box_shadow` | Boolean, Symbol | Box shadow. One of `:extra_large`, `:large`, `:medium`, `:none`, or `true`. |\n\n### Color\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, or `:transparent`. |\n| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:open`, `:open_emphasis`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |\n| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:closed`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:open`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |\n\n### Flex\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `align_items` | Symbol | One of `:baseline`, `:center`, `:flex_end`, `:flex_start`, or `:stretch`. |\n| `align_self` | Symbol | One of `:auto`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`. |\n| `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |\n| `flex` | Integer, Symbol | One of `1` or `:auto`. |\n| `flex_grow` | Integer | To enable, set to `0`. |\n| `flex_shrink` | Integer | To enable, set to `0`. |\n| `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |\n| `justify_content` | Symbol | One of `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |\n\n### Grid\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `clearfix` | Boolean | Whether to assign the `clearfix` class. |\n| `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |\n\n### Layout\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |\n| `w` | Symbol | Sets the element's width. One of `:auto`, `:fit`, or `:full`. |\n| `h` | Symbol | Sets the element's height. One of `:fit` or `:full`. |\n| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, `:whenNarrow`, `:whenRegular`, `:whenWide`, or `:xl`. |\n| `visibility` | Symbol | Visibility. One of `:hidden` or `:visible`. |\n| `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |\n\n### Position\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `bottom` | Boolean | If `false`, sets `bottom: 0`. |\n| `float` | Symbol | One of `:left`, `:none`, or `:right`. |\n| `left` | Boolean | If `false`, sets `left: 0`. |\n| `position` | Symbol | One of `:absolute`, `:fixed`, `:relative`, `:static`, or `:sticky`. |\n| `right` | Boolean | If `false`, sets `right: 0`. |\n| `top` | Boolean | If `false`, sets `top: 0`. |\n\n### Spacing\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mb` | Integer | Margin bottom. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |\n| `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `mt` | Integer | Margin top. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |\n| `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |\n| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |\n| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n| `px` | Integer | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |\n| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |\n\n### Typography\n\n| Name | Type | Description |\n| :- | :- | :- |\n| `font_family` | Symbol | Font family. One of `:mono`. |\n| `font_size` | String, Integer, Symbol | One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `00`, `:normal`, or `:small`. |\n| `font_style` | Symbol | Font style. One of `:italic`. |\n| `font_weight` | Symbol | Font weight. One of `:bold`, `:emphasized`, `:light`, or `:normal`. |\n| `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |\n| `text_transform` | Symbol | Text transformation. One of `:capitalize` or `:uppercase`. |\n| `underline` | Boolean | Whether text should be underlined. |\n| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all` or `:break_word`. |\n\n### Other\n\n| Name | Type | Description |\n| :- | :- | :- |\n| classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |\n| test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |"
   }
 ]

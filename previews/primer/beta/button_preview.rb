@@ -206,7 +206,8 @@ module Primer
         block: false,
         id: "button-preview",
         align_content: :center,
-        tag: :a
+        tag: :a,
+        href: "#"
       )
         render(Primer::Beta::Button.new(
                  scheme: scheme,
@@ -214,7 +215,8 @@ module Primer
                  block: block,
                  id: id,
                  align_content: align_content,
-                 tag: tag
+                 tag: tag,
+                 href: href
                )) do |_c|
           "Button"
         end

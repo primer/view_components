@@ -127,6 +127,12 @@ class Primer::FormsTest < Minitest::Test
     assert_selector "button[type=button]"
   end
 
+  def test_buttons_are_not_described_by_validation_ids
+    render_preview :submit_button_form
+
+    refute_selector "button[aria-describedby]"
+  end
+
   def test_renders_buttons_with_slots
     render_preview :submit_button_form
 

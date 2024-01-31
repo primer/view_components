@@ -67,5 +67,24 @@ module Primer
 
       raise ::Minitest::Assertion, "#{message}: #{e.message}"
     end
+
+    class DummyComponent
+      def self.type
+        "text/html"
+      end
+
+      def self.identifier
+        source_location
+      end
+    end
+
+    def render_inline_erb(erb)
+      @page = nil
+      handler = ActionView::Template.handler_for_extension("erb")
+      erb_code = handler.call(DummyComponent, erb)
+      view_context = vc_test_controller.view_context
+      @rendered_content = view_context.capture { view_context.instance_eval(erb_code) }
+      Nokogiri::HTML.fragment(@rendered_content)
+    end
   end
 end
