@@ -248,6 +248,29 @@ module Primer
                                visually_hide_title: visually_hide_title
                              })
       end
+
+      # @label Dialog inside Overlay
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
+      # @param position [Symbol] select [center, right, left]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
+      # @param visually_hide_title [Boolean] toggle
+      # @param button_text [String] text
+      # @param body_text [String] text
+      def dialog_inside_overlay(title: "Test Dialog", subtitle: nil, position: :center, size: :medium, button_text: "Show Dialog", body_text: "Content", position_narrow: :fullscreen, visually_hide_title: false)
+        render_with_template(locals: {
+                               title: title,
+                               subtitle: subtitle,
+                               position: position,
+                               size: size,
+                               button_text: button_text,
+                               body_text: body_text,
+                               position_narrow: position_narrow,
+                               visually_hide_title: visually_hide_title
+                             })
+      end
     end
   end
 end

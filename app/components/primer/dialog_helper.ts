@@ -44,6 +44,20 @@ export class DialogHelperElement extends HTMLElement {
       for (const record of records) {
         if (record.target === this.dialog) {
           this.ownerDocument.body.classList.toggle('has-modal', this.dialog.hasAttribute('open'))
+          // In some older browsers, such as Chrome 122, when a top layer element (such as a dialog)
+          // opens from within a popover, the "hide all popovers" internal algorithm runs, hiding
+          // any popover that is currently open, regardless of whether or not another top layer element,
+          // such as a <dialog> is nested inside.
+          // See https://github.com/whatwg/html/issues/9998.
+          // This is fixed by https://github.com/whatwg/html/pull/10116, but while we still support browsers that present this bug,
+          // we must undo the work they did to hide ancestral popovers of the dialog:
+          if (this.dialog.hasAttribute('open')) {
+            let node: HTMLElement | null = this.dialog
+            while (node) {
+              node = node.closest('[popover]:not(:popover-open)')
+              if (node) node.showPopover()
+            }
+          }
         }
       }
     }).observe(this, {subtree: true, attributeFilter: ['open']})

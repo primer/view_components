@@ -1,0 +1,9 @@
+<%= render(Primer::Alpha::Overlay.new(title: "An overlay")) do |o| %>
+  <% o.with_show_button() { "Show overlay" } %>
+  <% o.with_body() do %>
+    <%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, position: position, subtitle: subtitle, visually_hide_title: false)) do |d| %>
+      <% d.with_show_button { button_text } %>
+      <% d.with_body { body_text} %>
+    <% end %>
+  <% end %>
+<% end %>

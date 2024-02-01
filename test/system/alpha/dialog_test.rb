@@ -108,5 +108,13 @@ module Alpha
 
       assert page.evaluate_script("window.dialogInvokerClicked"), "click event was not fired"
     end
+
+    def test_dialog_inside_overlay_opens_when_clicked
+      visit_preview(:dialog_inside_overlay)
+
+      click_button("Show overlay")
+      click_button("Show Dialog")
+      assert_selector "dialog[open]"
+    end
   end
 end
