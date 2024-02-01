@@ -93,5 +93,13 @@ module Alpha
       find(".ActionListItem", text: "Avocado").click
       assert_selector "dialog[open]"
     end
+
+    def test_dialog_inside_overlay_opens_when_clicked
+      visit_preview(:dialog_inside_overlay)
+
+      click_button("Show overlay")
+      click_button("Show Dialog")
+      assert_selector "dialog[open]"
+    end
   end
 end
