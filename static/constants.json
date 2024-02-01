@@ -565,13 +565,11 @@
     "Item": "Primer::Alpha::SegmentedControl::Item",
     "SIZE_MAPPINGS": {
       "small": "SegmentedControl--small",
-      "medium": "SegmentedControl--medium",
-      "large": "SegmentedControl--large"
+      "medium": "SegmentedControl--medium"
     },
     "SIZE_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::Alpha::SegmentedControl::Item": {

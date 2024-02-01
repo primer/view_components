@@ -5570,19 +5570,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/full_width_large",
-        "name": "full_width_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_small",
         "name": "icons_and_text_small",
         "snapshot": "true",
@@ -5598,19 +5585,6 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_medium",
         "name": "icons_and_text_medium",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
-        "name": "icons_and_text_large",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -5648,19 +5622,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
-        "name": "trailing_label_width_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
         "snapshot": "true",
@@ -5687,19 +5648,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/icon_only_large",
-        "name": "icon_only_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_small",
         "name": "icon_only_full_width_small",
         "snapshot": "false",
@@ -5715,19 +5663,6 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_medium",
         "name": "icon_only_full_width_medium",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/segmented_control/icon_only_full_width_large",
-        "name": "icon_only_full_width_large",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
