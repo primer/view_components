@@ -93,5 +93,20 @@ module Alpha
       find(".ActionListItem", text: "Avocado").click
       assert_selector "dialog[open]"
     end
+
+    def test_click_events_can_be_added_to_invoker_buttons
+      # use this preview because it assigns a static ID to the invoker button
+      visit_preview(:with_header)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('#dialog-show-my-dialog').addEventListener('click', () => {
+          window.dialogInvokerClicked = true
+        })
+      JS
+
+      click_button("Show Dialog")
+
+      assert page.evaluate_script("window.dialogInvokerClicked"), "click event was not fired"
+    end
   end
 end

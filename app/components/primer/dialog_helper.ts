@@ -7,7 +7,6 @@ function dialogInvokerButtonHandler(event: Event) {
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
   if (dialogId) {
-    event.stopPropagation()
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
       dialog.showModal()
