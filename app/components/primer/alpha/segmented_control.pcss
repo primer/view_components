@@ -11,8 +11,7 @@
 
 .SegmentedControl--iconOnly {
   & .Button--iconOnly.Button--small,
-  & .Button--iconOnly.Button--medium,
-  & .Button--iconOnly.Button--large {
+  & .Button--iconOnly.Button--medium {
     width: 100%;
     padding-inline: 0 !important;
   }
@@ -46,22 +45,6 @@
   &.SegmentedControl--iconOnly {
     & .SegmentedControl-item {
       width: var(--control-medium-size);
-    }
-  }
-}
-
-.SegmentedControl--large {
-  & .SegmentedControl-item {
-    height: var(--control-large-size);
-
-    & .Button {
-      padding-inline: calc(var(--control-large-paddingInline-normal) - var(--segmentedControl-item-padding));
-    }
-  }
-
-  &.SegmentedControl--iconOnly {
-    & .SegmentedControl-item {
-      width: var(--control-large-size);
     }
   }
 }

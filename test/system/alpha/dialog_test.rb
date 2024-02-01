@@ -74,5 +74,24 @@ module Alpha
       visit_preview(:long_text)
       click_button("Show Dialog")
     end
+
+    def test_outside_click_closes_dialog
+      visit_preview(:default)
+
+      click_button("Show Dialog")
+      page.driver.browser.mouse.click(x: 0, y: 0)
+
+      refute_selector "dialog[open]"
+    end
+
+    def test_outside_menu_click_does_not_close_dialog
+      visit_preview(:with_auto_complete)
+
+      click_button("Show Dialog")
+      fill_in "input", with: "a"
+
+      find(".ActionListItem", text: "Avocado").click
+      assert_selector "dialog[open]"
+    end
   end
 end
