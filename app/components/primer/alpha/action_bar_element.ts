@@ -145,13 +145,15 @@ class ActionBarElement extends HTMLElement {
   }
 
   #showItem(index: number) {
+    if (!this.items[index]) return
     this.items[index].style.setProperty('visibility', 'visible')
-    this.#menuItems[index]!.hidden = true
+    this.#menuItems[index].hidden = true
   }
 
   #hideItem(index: number) {
+    if (!this.items[index]) return
     this.items[index].style.setProperty('visibility', 'hidden')
-    this.#menuItems[index]!.hidden = false
+    this.#menuItems[index].hidden = false
   }
 
   get #menuItems(): NodeListOf<HTMLElement> {
