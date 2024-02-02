@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Overlay.new(title: "An overlay")) do |o| %>
+<%= render(Primer::Alpha::Overlay.new(title: "An overlay", id: "first-overlay")) do |o| %>
   <% o.with_show_button() { "Show overlay" } %>
   <% o.with_body() do %>
     <%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, position: position, subtitle: subtitle, visually_hide_title: false)) do |d| %>
@@ -7,3 +7,11 @@
     <% end %>
   <% end %>
 <% end %>
+
+<script type="module">
+document.getElementById('overlay-show-first-overlay')?.addEventListener('click', e => {
+    setTimeout(() => {
+        document.getElementById('first-overlay').querySelector('button')?.click()
+    });
+  });
+</script>
