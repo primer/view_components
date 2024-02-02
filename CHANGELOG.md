@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.18.1
+
+### Patch Changes
+
+- [#2554](https://github.com/primer/view_components/pull/2554) [`652e795`](https://github.com/primer/view_components/commit/652e7957c59ddc5d05af9c9bc797a917d01cf453) Thanks [@keithamus](https://github.com/keithamus)! - Ensure Overlays that open dialogs do not close when the Dialog opens
+
+- [#2553](https://github.com/primer/view_components/pull/2553) [`1ca2f17`](https://github.com/primer/view_components/commit/1ca2f1790a5fb95069f85936d6cb1deafad782fd) Thanks [@keithamus](https://github.com/keithamus)! - Ensure only direct clicks to the dialog can close it
+
 ## 0.18.0
 
 ### Minor Changes
