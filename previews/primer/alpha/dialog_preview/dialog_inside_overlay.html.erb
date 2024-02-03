@@ -3,7 +3,10 @@
   <% o.with_body() do %>
     <%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, position: position, subtitle: subtitle, visually_hide_title: false)) do |d| %>
       <% d.with_show_button { button_text } %>
-      <% d.with_body { body_text} %>
+      <% d.with_body { body_text } %>
+      <% d.with_footer(show_divider: true) do %>
+        <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "dialog-one" })) { "Cancel" } %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
