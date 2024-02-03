@@ -29,14 +29,14 @@ function dialogInvokerButtonHandler(event: Event) {
         if (node && node.popover === 'auto') {
           node.classList.add('dialog-inside-popover-fix')
           node.popover = 'manual'
-          node.showPopover();
+          node.showPopover()
           fixed = true
         }
       }
       if (fixed) {
         // We need to re-open the dialog as modal
-        dialog.close();
-        dialog.showModal();
+        dialog.close()
+        dialog.showModal()
         setTimeout(() => {
           dialog.addEventListener(
             'close',
@@ -44,14 +44,14 @@ function dialogInvokerButtonHandler(event: Event) {
               for (const node of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
                 if (node.contains(dialog)) {
                   node.classList.remove('dialog-inside-popover-fix')
-                  node.popover = 'auto';
-                  node.showPopover();
+                  node.popover = 'auto'
+                  node.showPopover()
                 }
               }
             },
             {once: true},
           )
-        }, 10);
+        }, 10)
       }
     }
   }
