@@ -34,24 +34,24 @@ function dialogInvokerButtonHandler(event: Event) {
         }
       }
       if (fixed) {
-        // We need to re-open the dialog as modal
+        // We need to re-open the dialog as modal, and also ensure no close event listeners
+        // are trying to act on the close
+        dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
         dialog.close()
         dialog.showModal()
-        setTimeout(() => {
-          dialog.addEventListener(
-            'close',
-            () => {
-              for (const el of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
-                if (el.contains(dialog)) {
-                  el.classList.remove('dialog-inside-popover-fix')
-                  el.popover = 'auto'
-                  el.showPopover()
-                }
+        dialog.addEventListener(
+          'close',
+          () => {
+            for (const el of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
+              if (el.contains(dialog)) {
+                el.classList.remove('dialog-inside-popover-fix')
+                el.popover = 'auto'
+                el.showPopover()
               }
-            },
-            {once: true},
-          )
-        }, 10)
+            }
+          },
+          {once: true},
+        )
       }
     }
   }
