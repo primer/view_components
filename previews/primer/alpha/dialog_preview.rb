@@ -259,6 +259,7 @@ module Primer
       # @param visually_hide_title [Boolean] toggle
       # @param button_text [String] text
       # @param body_text [String] text
+      # @snapshot interactive
       def dialog_inside_overlay(title: "Test Dialog", subtitle: nil, position: :center, size: :medium, button_text: "Show Dialog", body_text: "Content", position_narrow: :fullscreen, visually_hide_title: false)
         render_with_template(locals: {
                                title: title,
