@@ -41,11 +41,11 @@ function dialogInvokerButtonHandler(event: Event) {
           dialog.addEventListener(
             'close',
             () => {
-              for (const node of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
-                if (node.contains(dialog)) {
-                  node.classList.remove('dialog-inside-popover-fix')
-                  node.popover = 'auto'
-                  node.showPopover()
+              for (const el of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
+                if (el.contains(dialog)) {
+                  el.classList.remove('dialog-inside-popover-fix')
+                  el.popover = 'auto'
+                  el.showPopover()
                 }
               }
             },
