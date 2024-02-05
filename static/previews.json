@@ -3186,6 +3186,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/dialog_inside_overlay",
+        "name": "dialog_inside_overlay",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
