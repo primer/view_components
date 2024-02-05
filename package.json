@@ -80,7 +80,7 @@
     "mocha": "^10.0.0",
     "playwright": "^1.35.1",
     "postcss": "^8.4.16",
-    "postcss-cli": "^10.1.0",
+    "postcss-cli": "^11.0.0",
     "postcss-custom-properties-fallback": "^1.0.2",
     "postcss-import": "^16.0.0",
     "postcss-mixins": "^9.0.3",
