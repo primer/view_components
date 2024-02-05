@@ -141,7 +141,9 @@ export class ActionMenuElement extends HTMLElement {
 
     if (item.getAttribute('aria-disabled')) {
       event.preventDefault()
+      /* eslint-disable-next-line no-restricted-syntax */
       event.stopPropagation()
+      /* eslint-disable-next-line no-restricted-syntax */
       event.stopImmediatePropagation()
       return true
     }
@@ -260,6 +262,7 @@ export class ActionMenuElement extends HTMLElement {
 
   #handleInvokerActivated(event: Event) {
     event.preventDefault()
+    /* eslint-disable-next-line no-restricted-syntax */
     event.stopPropagation()
 
     if (this.#isOpen()) {
@@ -353,6 +356,7 @@ export class ActionMenuElement extends HTMLElement {
 
     // otherwise, event will not result in activation by default, so we stop it and
     // simulate a click
+    /* eslint-disable-next-line no-restricted-syntax */
     event.stopPropagation()
     const elem = item as HTMLElement
     elem.click()

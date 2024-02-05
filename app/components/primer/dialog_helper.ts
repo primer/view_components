@@ -36,6 +36,7 @@ function dialogInvokerButtonHandler(event: Event) {
       if (fixed) {
         // We need to re-open the dialog as modal, and also ensure no close event listeners
         // are trying to act on the close
+        /* eslint-disable-next-line no-restricted-syntax */
         dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
         dialog.close()
         dialog.showModal()
