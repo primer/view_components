@@ -59,7 +59,7 @@ group :development do
   gem "allocation_tracer", "~> 0.6.3"
   gem "benchmark-ips", "~> 2.13.0"
   gem "capybara", "~> 3.39.2"
-  gem "cuprite", "~> 0.14.3"
+  gem "cuprite", "~> 0.15"
   gem "erb_lint", "~> 0.4.0"
   gem "erblint-github", "~> 0.5.1"
   gem "listen", "~> 3.0"

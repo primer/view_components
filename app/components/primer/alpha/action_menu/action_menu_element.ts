@@ -287,7 +287,6 @@ export class ActionMenuElement extends HTMLElement {
       }
     }
     // a modal <dialog> element will close all popovers
-    setTimeout(() => this.#show(), 0)
     dialog.addEventListener('close', handleDialogClose, {signal})
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }

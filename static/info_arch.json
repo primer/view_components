@@ -3379,7 +3379,7 @@
       {
         "preview_path": "primer/alpha/dialog/dialog_inside_overlay",
         "name": "dialog_inside_overlay",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
