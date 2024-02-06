@@ -163,9 +163,9 @@ class ToggleSwitchElement extends HTMLElement {
         credentials: 'same-origin',
         method: 'POST',
         headers: {
-          'Requested-With': 'XMLHttpRequest'
+          'Requested-With': 'XMLHttpRequest',
         },
-        body
+        body,
       })
     } catch (error) {
       throw new Error('A network error occurred, please try again.')
