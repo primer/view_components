@@ -4,12 +4,6 @@ import {controller, target} from '@github/catalyst'
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 
-  // connectedCallback() {
-  //   if (this.#focusOnShow === 'true') {
-  //     this.focus()
-  //   }
-  // }
-
   dismiss() {
     const parentElement = this.parentElement
     if (!parentElement) return
