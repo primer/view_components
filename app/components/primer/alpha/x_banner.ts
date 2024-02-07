@@ -17,6 +17,9 @@ class XBannerElement extends HTMLElement {
 
   show() {
     this.style.setProperty('display', 'initial')
+    if (this.#focusOnShow === 'true') {
+      this.focus()
+    }
   }
 
   hide() {
@@ -25,6 +28,10 @@ class XBannerElement extends HTMLElement {
 
   get #dismissScheme(): string {
     return this.getAttribute('data-dismiss-scheme')!
+  }
+
+  get #focusOnShow(): string {
+    return this.getAttribute('data-focus-on-show')!
   }
 }
 

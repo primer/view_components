@@ -69,12 +69,13 @@ module Primer
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
+      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, focus_on_show: false, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
         @dismiss_scheme = dismiss_scheme
         @dismiss_label = dismiss_label
         @description = description
+        @focus_on_show = focus_on_show
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
@@ -89,6 +90,10 @@ module Primer
           "Banner--full-whenNarrow": full_when_narrow
         )
 
+        if @focus_on_show
+          @system_arguments[:tabindex] = -1
+        end
+
         @message_arguments = {
           tag: :div,
           classes: "Banner-message"
@@ -96,7 +101,7 @@ module Primer
 
         @wrapper_arguments = {
           tag: custom_element_name,
-          data: { dismiss_scheme: @dismiss_scheme }
+          data: { dismiss_scheme: @dismiss_scheme, focus_on_show: @focus_on_show }
         }
       end
 
