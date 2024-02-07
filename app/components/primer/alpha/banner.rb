@@ -99,6 +99,7 @@ module Primer
           data: { dismiss_scheme: @dismiss_scheme }
         }
       end
+
       private
 
       def custom_element_name
