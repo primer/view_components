@@ -90,10 +90,6 @@ module Primer
           "Banner--full-whenNarrow": full_when_narrow
         )
 
-        if @focus_on_show
-          @system_arguments[:tabindex] = -1
-        end
-
         @message_arguments = {
           tag: :div,
           classes: "Banner-message"
@@ -103,8 +99,11 @@ module Primer
           tag: custom_element_name,
           data: { dismiss_scheme: @dismiss_scheme, focus_on_show: @focus_on_show }
         }
-      end
 
+        # if @focus_on_show
+        #   @wrapper_arguments[:tabindex] = -1
+        # end
+      end
       private
 
       def custom_element_name

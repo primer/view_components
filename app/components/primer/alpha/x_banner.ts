@@ -4,6 +4,12 @@ import {controller, target} from '@github/catalyst'
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 
+  // connectedCallback() {
+  //   if (this.#focusOnShow === 'true') {
+  //     this.focus()
+  //   }
+  // }
+
   dismiss() {
     const parentElement = this.parentElement
     if (!parentElement) return
@@ -15,11 +21,13 @@ class XBannerElement extends HTMLElement {
     }
   }
 
+  focusBanner() {
+    this.setAttribute('tabindex', '-1')
+    this.focus()
+  }
+
   show() {
     this.style.setProperty('display', 'initial')
-    if (this.#focusOnShow === 'true') {
-      this.focus()
-    }
   }
 
   hide() {
@@ -28,10 +36,6 @@ class XBannerElement extends HTMLElement {
 
   get #dismissScheme(): string {
     return this.getAttribute('data-dismiss-scheme')!
-  }
-
-  get #focusOnShow(): string {
-    return this.getAttribute('data-focus-on-show')!
   }
 }
 
