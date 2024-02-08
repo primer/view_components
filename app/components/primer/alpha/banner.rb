@@ -3,6 +3,13 @@
 module Primer
   module Alpha
     # Use `Banner` to highlight important information.
+    #
+    # @accessibility
+    #   Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Defer to the accessibility team to determine if your scenario requires focusing the banner.
+    #
+    #   To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
+    #
+    #   For more information about the focus management technique, visit the [Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.
     class Banner < Primer::Component
       status :alpha
 
