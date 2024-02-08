@@ -5,7 +5,7 @@ module Primer
     # Use `Banner` to highlight important information.
     #
     # @accessibility
-    #   Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Defer to the accessibility team to determine if your scenario requires focusing the banner.
+    #   Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires focusing the banner.
     #
     #   To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
     #
