@@ -131,7 +131,6 @@ module Primer
         @system_arguments[:aria] = merge_aria(
           @system_arguments, {
             aria: {
-              disabled: true,
               labelledby: labelledby,
               describedby: "#{@id}-description"
             }
