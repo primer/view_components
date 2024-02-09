@@ -1,4 +1,5 @@
 import {controller, target} from '@github/catalyst'
+// import {announceFromElement} from '@primer/live-region-element'
 
 @controller
 class XBannerElement extends HTMLElement {
@@ -16,7 +17,8 @@ class XBannerElement extends HTMLElement {
       const callback = (entries: IntersectionObserverEntry[]) => {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            // TODO: call https://github.com/primer/live-region-element/
+            // Uncomment when available: https://github.com/primer/live-region-element/
+            // announceFromElement(this.banner)
             this.observer?.disconnect()
           }
         }
