@@ -24,6 +24,11 @@ module Primer
         render(Primer::Alpha::Banner.new) { "This is a banner." }
       end
 
+      # @label Announce
+      def announce_on_show
+        render(Primer::Alpha::Banner.new(announce_on_show: true)) { "This is a banner." }
+      end
+
       # @!group Schemes
       #
       # @label Default scheme

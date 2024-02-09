@@ -3,6 +3,31 @@ import {controller, target} from '@github/catalyst'
 @controller
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
+  @target banner: HTMLElement
+  private observer?: IntersectionObserver
+
+  connectedCallback() {
+    if (this.#announceOnShow === 'true') {
+      const options = {
+        root: document.body,
+        rootMargin: '0px',
+        threshold: 0,
+      }
+      const callback = (entries: IntersectionObserverEntry[]) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            // TODO: call https://github.com/primer/live-region-element/
+            this.observer?.disconnect()
+          }
+        }
+      }
+      this.observer = new IntersectionObserver(callback, options)
+      this.observer.observe(this.banner)
+    }
+  }
+  disconnectedCallback() {
+    this.observer?.disconnect()
+  }
 
   dismiss() {
     const parentElement = this.parentElement
@@ -21,6 +46,10 @@ class XBannerElement extends HTMLElement {
 
   hide() {
     this.style.setProperty('display', 'none')
+  }
+
+  get #announceOnShow(): string {
+    return this.getAttribute('data-announce-on-show')!
   }
 
   get #dismissScheme(): string {
