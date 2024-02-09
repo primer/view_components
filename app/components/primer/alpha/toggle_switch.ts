@@ -17,6 +17,13 @@ class ToggleSwitchElement extends HTMLElement {
     return link.href
   }
 
+  get method(): string | null {
+    const method = this.getAttribute('method')
+    if (!method) return null
+
+    return method
+  }
+
   get csrf(): string | null {
     const csrfElement = this.querySelector('[data-csrf]')
     return this.getAttribute('csrf') || (csrfElement instanceof HTMLInputElement && csrfElement.value) || null
@@ -161,7 +168,7 @@ class ToggleSwitchElement extends HTMLElement {
     try {
       response = await fetch(this.src, {
         credentials: 'same-origin',
-        method: 'POST',
+        method: this.method || 'POST',
         headers: {
           'Requested-With': 'XMLHttpRequest',
         },

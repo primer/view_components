@@ -76,6 +76,9 @@ GEM
     cuprite (0.15)
       capybara (~> 3.0)
       ferrum (~> 0.14.0)
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     docile (1.4.0)
     drb (2.2.0)
       ruby2_keywords
@@ -288,6 +291,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (~> 3.39.2)
   cuprite (~> 0.15)
+  debug
   erb_lint (~> 0.4.0)
   erblint-github (~> 0.5.1)
   kramdown (~> 2.4)

@@ -3,6 +3,7 @@
 require "primer/classify"
 require "primer/view_components/version"
 require "primer/view_components/engine"
+require "primer/view_components/feature_flags"
 
 module Primer
   # :nodoc:

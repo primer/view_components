@@ -1,0 +1,20 @@
+<div class="container-md">
+  <h1 class="mt-4">Feature flags</h1>
+  <p class="mb-4">These flags control the behavior of Lookbook previews</p>
+  <%= render(Primer::Beta::BorderBox.new) do |border_box| %>
+    <% Primer.feature_flags.all_flags.each do |flag| %>
+      <% border_box.with_row do %>
+        <%= render(Primer::Forms::ToggleSwitchForm.new(name: flag[:name], caption: flag[:description], data: { flag: flag[:name] }, label: flag[:name].to_s.humanize, checked: cookies[flag[:name]] == "true", src: feature_flag_path(id: flag[:name]), method: :put)) %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  for (const toggleSwitch of document.querySelectorAll("toggle-switch")) {
+    toggleSwitch.addEventListener("toggleSwitchSuccess", (event) => {
+      const flag = event.target.getAttribute("data-flag")
+      document.cookie = `${flag}=${event.target.isOn() ? "true" : "false"}`
+    })
+  }
+</script>

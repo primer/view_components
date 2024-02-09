@@ -21,3 +21,21 @@ import '../../../lib/primer/forms/primer_multi_input'
 import '../../../lib/primer/forms/primer_text_field'
 import '../../../lib/primer/forms/toggle_switch_input'
 import './alpha/action_menu/action_menu_element'
+
+const enabledFlags = new Set()
+
+export const Primer = {
+  featureFlags: {
+    isEnabled: (flagName: string) => {
+      return enabledFlags.has(flagName)
+    },
+
+    setEnabledFlags: (flagNames: string[]): void => {
+      enabledFlags.clear()
+
+      for (const flagName of flagNames) {
+        enabledFlags.add(flagName)
+      }
+    },
+  },
+}
