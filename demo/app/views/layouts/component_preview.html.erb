@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <div id="component-preview" hidden>
+    <div id="component-preview">
       <% if params.dig(:lookbook, :display, :theme) == "all" || params.dig(:theme) == "all" %>
         <div class="theme-wrap">
           <% color_themes.each do |theme| %>
@@ -33,6 +33,7 @@
         </div>
       <% end %>
     </div>
-  <div aria-live="polite" aria-atomic="true" class="sr-only">
+    <%# TODO: Use live-region-element %>
+    <div aria-live="polite" aria-atomic="true" class="sr-only"> 
   </body>
 </html>
