@@ -22,20 +22,19 @@ import '../../../lib/primer/forms/primer_text_field'
 import '../../../lib/primer/forms/toggle_switch_input'
 import './alpha/action_menu/action_menu_element'
 
-const enabledFlags = new Set()
+type Primer = {
+  featureFlags: FeatureFlags
+}
 
-export const Primer = {
+type FeatureFlags = {
+  // eslint-disable-next-line no-unused-vars
+  isEnabled: (flagName: string) => boolean
+}
+
+export const Primer: Primer = {
   featureFlags: {
-    isEnabled: (flagName: string) => {
-      return enabledFlags.has(flagName)
-    },
-
-    setEnabledFlags: (flagNames: string[]): void => {
-      enabledFlags.clear()
-
-      for (const flagName of flagNames) {
-        enabledFlags.add(flagName)
-      }
+    isEnabled: (): boolean => {
+      return false
     },
   },
 }
