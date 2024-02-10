@@ -5,17 +5,19 @@
         <%= render(Primer::Beta::Octicon.new(icon: @icon)) %>
       </div>
     <% end %>
-    <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>
-      <p class="Banner-title" data-target="<%= catalyst_target(field: "titleText") %>"><%= content %></p>
-      <% if @description %>
-        <p><%= @description %></p>
+    <span data-target="<%= catalyst_target(field: "contentToAnnounce") %>">
+      <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>
+        <p class="Banner-title" data-target="<%= catalyst_target(field: "titleText") %>"><%= content %></p>
+        <% if @description %>
+          <p><%= @description %></p>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if action %>
-      <div class="flash-action Banner-actions">
-        <%= action %>
-      </div>
-    <% end %>
+      <% if action %>
+        <div class="flash-action Banner-actions">
+          <%= action %>
+        </div>
+      <% end %>
+    </span>
     <% if @dismiss_scheme != :none %>
       <div class="flash-close Banner-close">
         <%= render(

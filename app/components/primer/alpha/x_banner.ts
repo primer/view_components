@@ -5,6 +5,7 @@ import {controller, target} from '@github/catalyst'
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
   @target banner: HTMLElement
+  @target contentToAnnounce: HTMLElement
   private observer?: IntersectionObserver
 
   connectedCallback() {
@@ -18,7 +19,7 @@ class XBannerElement extends HTMLElement {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
             // Uncomment when available: https://github.com/primer/live-region-element/
-            // announceFromElement(this.banner)
+            // announceFromElement(this.contentToAnnounce)
             this.observer?.disconnect()
           }
         }
