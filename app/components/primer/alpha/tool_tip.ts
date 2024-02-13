@@ -21,7 +21,6 @@ const isPopoverOpen = (() => {
   return (el: Element) => (selector ? el.matches(selector) : setSelector(el))
 })()
 
-const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
 const TOOLTIP_OFFSET = 4
 
