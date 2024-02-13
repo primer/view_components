@@ -1,5 +1,5 @@
 ---
-"@primer/view-components": patch
+"@primer/view-components": minor
 ---
 
 Tooltip visual refresh to match Primer React
