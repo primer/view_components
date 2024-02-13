@@ -60,7 +60,7 @@ group :development do
   gem "benchmark-ips", "~> 2.13.0"
   gem "capybara", "~> 3.39.2"
   gem "cuprite", "~> 0.15"
-  gem "erb_lint", "~> 0.4.0"
+  gem "erb_lint", "~> 0.5.0"
   gem "erblint-github", "~> 0.5.1"
   gem "listen", "~> 3.0"
   gem "matrix", "~> 0.4.2"

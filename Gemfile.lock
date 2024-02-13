@@ -79,7 +79,7 @@ GEM
     docile (1.4.0)
     drb (2.2.0)
       ruby2_keywords
-    erb_lint (0.4.0)
+    erb_lint (0.5.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -288,7 +288,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (~> 3.39.2)
   cuprite (~> 0.15)
-  erb_lint (~> 0.4.0)
+  erb_lint (~> 0.5.0)
   erblint-github (~> 0.5.1)
   kramdown (~> 2.4)
   listen (~> 3.0)
