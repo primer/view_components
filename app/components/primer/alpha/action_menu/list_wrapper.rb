@@ -18,8 +18,6 @@ module Primer
           }
         )
 
-        attr_reader :id
-
         # @param menu_id [String] ID of the parent menu.
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>
         def initialize(menu_id:, **system_arguments)
@@ -32,7 +30,7 @@ module Primer
 
           system_arguments[:role] = :menu
           system_arguments[:scheme] = :inset
-          system_arguments[:id] = @id = "#{@menu_id}-list"
+          system_arguments[:id] = "#{@menu_id}-list"
 
           super(**system_arguments)
         end
