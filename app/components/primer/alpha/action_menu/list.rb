@@ -53,6 +53,10 @@ module Primer
           }
         end
 
+        def id
+          @list.id
+        end
+
         private
 
         def contains_group?

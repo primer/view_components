@@ -174,6 +174,7 @@ module Primer
       ].freeze
 
       attr_reader :list, :preload
+      attr_reader :menu_id, :overlay_id
 
       alias preload? preload
 
@@ -202,6 +203,7 @@ module Primer
         **system_arguments
       )
         @menu_id = menu_id
+        @overlay_id = "#{@menu_id}-overlay"
         @src = src
         @preload = fetch_or_fallback_boolean(preload, DEFAULT_PRELOAD)
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -216,7 +218,7 @@ module Primer
         @system_arguments[:"data-dynamic-label-prefix"] = dynamic_label_prefix if dynamic_label_prefix.present?
 
         @overlay = Primer::Alpha::Overlay.new(
-          id: "#{@menu_id}-overlay",
+          id: @overlay_id,
           title: "Menu",
           visually_hide_title: true,
           anchor_align: anchor_align,
@@ -229,6 +231,10 @@ module Primer
           select_variant: select_variant,
           form_arguments: form_arguments
         )
+      end
+
+      def list_id
+        @list.id
       end
 
       # @!parse
