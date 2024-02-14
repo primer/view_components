@@ -11038,7 +11038,7 @@
     "slots": [
       {
         "name": "buttons",
-        "description": "List of buttons to be rendered. Add buttons via the `#with_button` and `#with_clipboard_copy_button` methods (see below).",
+        "description": "List of buttons to be rendered. Add buttons via the `#with_button`, `#with_menu_button`, and `#with_clipboard_copy_button` methods (see below).",
         "parameters": [
 
         ]
@@ -11060,6 +11060,18 @@
             "type": "Hash",
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+          }
+        ]
+      },
+      {
+        "name": "with_menu_button",
+        "description": "Adds a button that activates a menu when clicked.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::ButtonGroup::MenuButton{{/link_to_component}}."
           }
         ]
       },
@@ -11117,6 +11129,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/button_group/with_menu_button",
+        "name": "with_menu_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
         "snapshot": "true",
@@ -11157,7 +11182,46 @@
       }
     ],
     "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Beta::ButtonGroup::MenuButton",
+        "description": "Renders a button in a {{#link_to_component}}Primer::Beta::ButtonGroup{{/link_to_component}} that displays an {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} when clicked.\nThis component should not be used outside of a `ButtonGroup` context.\n\nThis component yields both the button and the list to the block when rendered.\n\n```erb\n<%= render(Primer::Beta::ButtonGroup.new) do |group| %>\n  <% group.with_menu_button do |menu, button| %>\n    <% menu.with_item(label: \"Item 1\") %>\n    <% button.with_trailing_visual_icon(icon: \"triangle-down\") %>\n  <% end %>\n<% end %>\n```",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ButtonGroup::MenuButton",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ButtonGroupMenuButton",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group/menu_button.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/menu_button/default/",
+        "parameters": [
+          {
+            "name": "menu_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}}."
+          },
+          {
+            "name": "button_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+          }
+        ],
+        "slots": [
 
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      }
     ]
   },
   {
