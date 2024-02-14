@@ -68,6 +68,7 @@ class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
+        --tooltip-offset: 4;
         padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
         font: var(--text-body-shorthand-small);
         color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis)) !important;
@@ -352,10 +353,30 @@ class ToolTipElement extends HTMLElement {
     if (!this.control) return
     if (!this.#allowUpdatePosition || !isPopoverOpen(this)) return
 
+    // Extract the value of the CSS variable (including the 'rem' unit)
+    // const remValueStr = getComputedStyle(document.documentElement).getPropertyValue('--overlay-offset').trim()
+    // // Use parseFloat to extract the numeric part of the value
+    // const remValue = parseFloat(remValueStr)
+
+    // // Get the base font-size of the document, assuming it's defined in pixels
+    // const baseFontSize = '16px'
+
+    // // Convert the 'rem' value to pixels
+    // const valueInPixels = remValue * baseFontSize
+
+    // // Use the converted value or fallback to 0 if conversion fails
+    // const finalValue = valueInPixels || 0
+
+    // Reading the CSS variable value
+    const tooltipOffset =
+      parseInt(getComputedStyle(document.documentElement).getPropertyValue('--overlay-offset'), 10) || 0
+
+    console.log(tooltipOffset)
+
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
-      anchorOffset: TOOLTIP_OFFSET,
+      anchorOffset: tooltipOffset,
     })
     const anchorSide = position.anchorSide
     const align = position.anchorAlign
