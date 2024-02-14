@@ -3,7 +3,5 @@
   <% component.with_menu_button(button_arguments: { "aria-label": "secondary menu" }, menu_arguments: { anchor_align: :end }) do |menu, button| %>
     <% menu.with_item(label: "Item 1", item_id: :item1) %>
     <% menu.with_item(label: "Item 2", item_id: :item2) %>
-    <% button.with_trailing_action_icon(icon: "triangle-down") %>
-    Other menu
   <% end %>
 <% end %>

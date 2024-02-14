@@ -86,15 +86,13 @@ module Primer
       # Renders a button in a <%= link_to_component(Primer::Beta::ButtonGroup) %> that displays an <%= link_to_component(Primer::Alpha::ActionMenu) %> when clicked.
       # This component should not be used outside of a `ButtonGroup` context.
       #
-      # This component yields both the button and the list to the block when rendered. The return value of the block
-      # is used as the button's content (i.e. its text), eg:
+      # This component yields both the button and the list to the block when rendered.
       #
       # ```erb
       # <%= render(Primer::Beta::ButtonGroup.new) do |group| %>
       #   <% group.with_menu_button do |menu, button| %>
       #     <% menu.with_item(label: "Item 1") %>
       #     <% button.with_trailing_visual_icon(icon: "triangle-down") %>
-      #     Button text
       #   <% end %>
       # <% end %>
       # ```
@@ -104,14 +102,12 @@ module Primer
         # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
         def initialize(menu_arguments: {}, button_arguments: {})
           @menu = Primer::Alpha::ActionMenu.new(**menu_arguments)
-          @button = @menu.with_show_button(**button_arguments) do |button|
-            @button_contents
-          end
+          @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
         end
 
         def render_in(view_context, &block)
           super(view_context) do
-            @button_contents = block.call(@menu, @button)
+            block.call(@menu, @button)
           end
         end
 
