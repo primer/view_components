@@ -848,6 +848,9 @@
     ]
   },
   "Primer::Beta::ButtonGroup": {
+    "MenuButton": "Primer::Beta::ButtonGroup::MenuButton"
+  },
+  "Primer::Beta::ButtonGroup::MenuButton": {
   },
   "Primer::Beta::ClipboardCopy": {
   },

@@ -75,6 +75,7 @@
   "Primer::Beta::Breadcrumbs::Item": "alpha",
   "Primer::Beta::Button": "beta",
   "Primer::Beta::ButtonGroup": "beta",
+  "Primer::Beta::ButtonGroup::MenuButton": "alpha",
   "Primer::Beta::ClipboardCopy": "beta",
   "Primer::Beta::ClipboardCopyBaseButton": "beta",
   "Primer::Beta::ClipboardCopyButton": "beta",
