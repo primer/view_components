@@ -18,9 +18,11 @@ module Primer
         end
 
         # radio buttons cannot be invalid, as both selected and unselected are valid states
+        # :nocov:
         def valid?
           true
         end
+        # :nocov:
 
         def to_component
           RadioButton.new(input: self)
@@ -36,6 +38,10 @@ module Primer
           :radio_button
         end
         # :nocov:
+
+        def supports_validation?
+          false
+        end
       end
     end
   end

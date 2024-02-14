@@ -11,7 +11,7 @@ module Primer
       # @param full_width [Boolean] toggle
       # @param hide_labels [Boolean] toggle
       # @param icon [Symbol] octicon
-      # @param size select [small, medium, large]
+      # @param size select [small, medium]
       def playground(full_width: false, hide_labels: false, size: :medium, icon: :none)
         if icon == :none
           icon = hide_labels ? :zap : nil
@@ -55,17 +55,6 @@ module Primer
           component.with_item(label: "Blame")
         end
       end
-
-      # @label Size large
-      # @param hide_labels [Boolean] toggle
-      # @snapshot
-      def full_width_large(hide_labels: false)
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :large)) do |component|
-          component.with_item(label: "Preview", selected: true)
-          component.with_item(label: "Raw")
-          component.with_item(label: "Blame")
-        end
-      end
       # @!endgroup
 
       # @!group Icons and text
@@ -83,16 +72,6 @@ module Primer
       # @snapshot
       def icons_and_text_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :medium)) do |component|
-          component.with_item(label: "Preview", icon: :eye, selected: true)
-          component.with_item(label: "Raw", icon: :"file-code")
-          component.with_item(label: "Blame", icon: :people)
-        end
-      end
-
-      # @label Size large
-      # @snapshot
-      def icons_and_text_large
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :large)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
           component.with_item(label: "Raw", icon: :"file-code")
           component.with_item(label: "Blame", icon: :people)
@@ -122,17 +101,6 @@ module Primer
           end
         end
       end
-
-      # @label Size large
-      # @snapshot
-      def trailing_label_width_large
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "Billing duration", size: :large)) do |component|
-          component.with_item(label: "Monthly")
-          component.with_item(label: "Yearly", selected: true) do |button|
-            button.with_trailing_visual_label(scheme: :accent) { "-8%" }
-          end
-        end
-      end
       # @!endgroup
 
       # @!group Icons only
@@ -156,16 +124,6 @@ module Primer
         end
       end
 
-      # @label Size large
-      # @snapshot
-      def icon_only_large
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :large)) do |component|
-          component.with_item(label: "Preview", icon: :eye, selected: true)
-          component.with_item(label: "Raw", icon: :"file-code")
-          component.with_item(label: "Blame", icon: :people)
-        end
-      end
-
       # @label Full width, size small
       def icon_only_full_width_small
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :small)) do |component|
@@ -178,15 +136,6 @@ module Primer
       # @label Full width, size medium
       def icon_only_full_width_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :medium)) do |component|
-          component.with_item(label: "Preview", icon: :eye, selected: true)
-          component.with_item(label: "Raw", icon: :"file-code")
-          component.with_item(label: "Blame", icon: :people)
-        end
-      end
-
-      # @label Full width, size large
-      def icon_only_full_width_large
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :large)) do |component|
           component.with_item(label: "Preview", icon: :eye, selected: true)
           component.with_item(label: "Raw", icon: :"file-code")
           component.with_item(label: "Blame", icon: :people)

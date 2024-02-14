@@ -1,5 +1,11 @@
 /* Overlay */
 
+/* TODO: One day this can be :has(:modal), when it is better supported */
+body.has-modal {
+  overflow: hidden !important;
+  padding-right: var(--dialog-scrollgutter) !important;
+}
+
 dialog.Overlay:not([open]) {
   display: none;
 }
@@ -156,6 +162,10 @@ dialog.Overlay:not([open]) {
   }
 
   /* end deprecate */
+}
+
+.Overlay:modal {
+  position: fixed;
 }
 
 @keyframes Overlay--motion-scaleFade {

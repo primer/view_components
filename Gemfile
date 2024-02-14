@@ -38,7 +38,7 @@ gem "webpacker", "~> 5.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.1.1" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.2.1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 gem "kramdown", "~> 2.4"
@@ -59,8 +59,8 @@ group :development do
   gem "allocation_tracer", "~> 0.6.3"
   gem "benchmark-ips", "~> 2.13.0"
   gem "capybara", "~> 3.39.2"
-  gem "cuprite", "~> 0.14.3"
-  gem "erb_lint", "~> 0.4.0"
+  gem "cuprite", "~> 0.15"
+  gem "erb_lint", "~> 0.5.0"
   gem "erblint-github", "~> 0.5.1"
   gem "listen", "~> 3.0"
   gem "matrix", "~> 0.4.2"

@@ -2232,7 +2232,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::Banner",
     "description": "Use `Banner` to highlight important information.",
-    "accessibility_docs": null,
+    "accessibility_docs": "Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires focusing the banner.\n\nTo properly focus a banner, add a `tabindex=\"-1\"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).\n\nFor more information about the focus management technique, visit the [Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
@@ -2243,6 +2243,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/banner.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
     "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:div` or `:section`."
+      },
       {
         "name": "full",
         "type": "Boolean",
@@ -3347,6 +3353,32 @@
       {
         "preview_path": "primer/alpha/dialog/right_side",
         "name": "right_side",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/dialog_inside_overlay",
+        "name": "dialog_inside_overlay",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
@@ -6639,19 +6671,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/full_width_large",
-        "name": "full_width_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_small",
         "name": "icons_and_text_small",
         "snapshot": "true",
@@ -6667,19 +6686,6 @@
       {
         "preview_path": "primer/alpha/segmented_control/icons_and_text_medium",
         "name": "icons_and_text_medium",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/segmented_control/icons_and_text_large",
-        "name": "icons_and_text_large",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -6717,19 +6723,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/trailing_label_width_large",
-        "name": "trailing_label_width_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icon_only_small",
         "name": "icon_only_small",
         "snapshot": "true",
@@ -6756,19 +6749,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/segmented_control/icon_only_large",
-        "name": "icon_only_large",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_small",
         "name": "icon_only_full_width_small",
         "snapshot": "false",
@@ -6784,19 +6764,6 @@
       {
         "preview_path": "primer/alpha/segmented_control/icon_only_full_width_medium",
         "name": "icon_only_full_width_medium",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/segmented_control/icon_only_full_width_large",
-        "name": "icon_only_full_width_large",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

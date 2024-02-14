@@ -3,6 +3,13 @@
 module Primer
   module Alpha
     # Use `Banner` to highlight important information.
+    #
+    # @accessibility
+    #   Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires focusing the banner.
+    #
+    #   To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
+    #
+    #   For more information about the focus management technique, visit the [Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.
     class Banner < Primer::Component
       status :alpha
 
@@ -25,6 +32,9 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
       }
+
+      DEFAULT_TAG = :div
+      TAG_OPTIONS = [DEFAULT_TAG, :section].freeze
 
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
@@ -57,6 +67,7 @@ module Primer
 
       DEFAULT_DISMISS_LABEL = "Dismiss"
 
+      # @param tag [Symbol] <%= one_of(Primer::Alpha::Banner::TAG_OPTIONS) %>
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
       # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
@@ -65,15 +76,15 @@ module Primer
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
+      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
         @dismiss_scheme = dismiss_scheme
         @dismiss_label = dismiss_label
         @description = description
 
-        @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments[:tag] = :div
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "Banner",

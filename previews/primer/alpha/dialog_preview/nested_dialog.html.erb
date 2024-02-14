@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, subtitle: subtitle, visually_hide_title: false)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, position: position, subtitle: subtitle, visually_hide_title: false)) do |d| %>
   <% d.with_show_button { button_text } %>
   <% d.with_body do %>
     <p>Dialog One!</p>
@@ -12,3 +12,10 @@
     <% end %>
   <% end %>
 <% end %>
+
+<div style="margin-top:2rem">
+<%= render(Primer::Beta::Flash.new(scheme: :warning)) do %>
+  <p>Please be careful nesting dialogs! Note that in this example, opening the second dialog does not close the first.</p>
+  <p>Closing a dialog while opening a dialog inside, will cause both to be invisible which will lead to undesired effects!</p>
+<% end %>
+</div>

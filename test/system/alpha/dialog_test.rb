@@ -74,5 +74,55 @@ module Alpha
       visit_preview(:long_text)
       click_button("Show Dialog")
     end
+
+    def test_outside_click_closes_dialog
+      visit_preview(:default)
+
+      click_button("Show Dialog")
+      page.driver.browser.mouse.click(x: 0, y: 0)
+
+      refute_selector "dialog[open]"
+    end
+
+    def test_outside_menu_click_does_not_close_dialog
+      visit_preview(:with_auto_complete)
+
+      click_button("Show Dialog")
+      fill_in "input", with: "a"
+
+      find(".ActionListItem", text: "Avocado").click
+      assert_selector "dialog[open]"
+    end
+
+    def test_click_events_can_be_added_to_invoker_buttons
+      # use this preview because it assigns a static ID to the invoker button
+      visit_preview(:with_header)
+
+      page.evaluate_script(<<~JS)
+        document.querySelector('#dialog-show-my-dialog').addEventListener('click', () => {
+          window.dialogInvokerClicked = true
+        })
+      JS
+
+      click_button("Show Dialog")
+
+      assert page.evaluate_script("window.dialogInvokerClicked"), "click event was not fired"
+    end
+
+    def test_dialog_inside_overlay_opens_when_clicked
+      visit_preview(:dialog_inside_overlay)
+
+      click_button("Show overlay")
+      # This preview has script that automatically opens the dialog when the overlay is clicked
+      assert_selector "dialog[open]"
+
+      click_button("Cancel")
+
+      refute_selector "dialog[open]"
+
+      click_button("Show Dialog")
+
+      assert_selector "dialog[open]"
+    end
   end
 end

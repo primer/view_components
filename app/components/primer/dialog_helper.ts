@@ -7,7 +7,6 @@ function dialogInvokerButtonHandler(event: Event) {
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
   if (dialogId) {
-    event.stopPropagation()
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
       dialog.showModal()
@@ -15,6 +14,46 @@ function dialogInvokerButtonHandler(event: Event) {
       // If the behaviour is allowed through the dialog will be shown but then
       // quickly hidden- as if it were never shown. This prevents that.
       event.preventDefault()
+
+      // In some older browsers, such as Chrome 122, when a top layer element (such as a dialog)
+      // opens from within a popover, the "hide all popovers" internal algorithm runs, hiding
+      // any popover that is currently open, regardless of whether or not another top layer element,
+      // such as a <dialog> is nested inside.
+      // See https://github.com/whatwg/html/issues/9998.
+      // This is fixed by https://github.com/whatwg/html/pull/10116, but while we still support browsers
+      // that present this bug, we must undo the work they did to hide ancestral popovers of the dialog:
+      let node: HTMLElement | null | undefined = button
+      let fixed = false
+      while (node) {
+        node = node.parentElement?.closest('[popover]:not(:popover-open)')
+        if (node && node.popover === 'auto') {
+          node.classList.add('dialog-inside-popover-fix')
+          node.popover = 'manual'
+          node.showPopover()
+          fixed = true
+        }
+      }
+      if (fixed) {
+        // We need to re-open the dialog as modal, and also ensure no close event listeners
+        // are trying to act on the close
+        /* eslint-disable-next-line no-restricted-syntax */
+        dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
+        dialog.close()
+        dialog.showModal()
+        dialog.addEventListener(
+          'close',
+          () => {
+            for (const el of dialog.ownerDocument.querySelectorAll<HTMLElement>('.dialog-inside-popover-fix')) {
+              if (el.contains(dialog)) {
+                el.classList.remove('dialog-inside-popover-fix')
+                el.popover = 'auto'
+                el.showPopover()
+              }
+            }
+          },
+          {once: true},
+        )
+      }
     }
   }
 
@@ -35,8 +74,19 @@ export class DialogHelperElement extends HTMLElement {
   #abortController: AbortController | null = null
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
-    document.addEventListener('click', dialogInvokerButtonHandler)
+    document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
+    this.ownerDocument.body.style.setProperty(
+      '--dialog-scrollgutter',
+      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
+    )
+    new MutationObserver(records => {
+      for (const record of records) {
+        if (record.target === this.dialog) {
+          this.ownerDocument.body.classList.toggle('has-modal', this.dialog.hasAttribute('open'))
+        }
+      }
+    }).observe(this, {subtree: true, attributeFilter: ['open']})
   }
 
   disconnectedCallback() {
@@ -46,8 +96,8 @@ export class DialogHelperElement extends HTMLElement {
   handleEvent(event: MouseEvent) {
     const target = event.target as HTMLElement
     const dialog = this.dialog
-    if (!dialog?.open) return
-    if (target?.closest('dialog') !== dialog) return
+    // The click target _must_ be the dialog element itself, and not elements underneath or inside.
+    if (target !== dialog || !dialog?.open) return
 
     const rect = dialog.getBoundingClientRect()
     const clickWasInsideDialog =

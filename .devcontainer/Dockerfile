@@ -41,9 +41,8 @@ RUN curl --fail --location --output /usr/bin/overmind.gz https://github.com/Dart
 # Install Node.js
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-# Install gems
-ARG BUNDLER_VERSION=2.2.11
-RUN gem install bundler:${BUNDLER_VERSION} solargraph:'~> 0.50.0'
+# Install gems (see script/setup for installing lib and app dependencies)
+RUN gem install solargraph:'~> 0.50.0'
 
 # Install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \

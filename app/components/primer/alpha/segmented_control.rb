@@ -17,7 +17,6 @@ module Primer
       SIZE_MAPPINGS = {
         :small => "SegmentedControl--small",
         :medium => "SegmentedControl--medium",
-        :large => "SegmentedControl--large",
         DEFAULT_SIZE => "SegmentedControl--medium"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys

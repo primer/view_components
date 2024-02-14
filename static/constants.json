@@ -164,6 +164,7 @@
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "div",
     "DISMISS_SCHEMES": [
       "none",
       "remove",
@@ -180,7 +181,11 @@
       "warning": "Banner--warning",
       "danger": "Banner--error",
       "success": "Banner--success"
-    }
+    },
+    "TAG_OPTIONS": [
+      "div",
+      "section"
+    ]
   },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
@@ -560,13 +565,11 @@
     "Item": "Primer::Alpha::SegmentedControl::Item",
     "SIZE_MAPPINGS": {
       "small": "SegmentedControl--small",
-      "medium": "SegmentedControl--medium",
-      "large": "SegmentedControl--large"
+      "medium": "SegmentedControl--medium"
     },
     "SIZE_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::Alpha::SegmentedControl::Item": {
