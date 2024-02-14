@@ -88,6 +88,18 @@ module Primer
       def tooltip_with_dialog_moving_focus_to_input
         render_with_template(locals: {})
       end
+
+      # @label All directions
+      # @param tooltip_text text
+      # @snapshot interactive
+      def tooltip_all_positions(type: :description, tooltip_text: "This is a tooltip")
+        render_with_template(
+          locals: {
+            type: type,
+            tooltip_text: tooltip_text
+          }
+        )
+      end
     end
   end
 end

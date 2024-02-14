@@ -1,0 +1,41 @@
+<div style="display: grid; gap: 4rem; justify-content: center;">
+    <%= render(Primer::Beta::Button.new(id: "tooltip-s")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :s) %>
+      Tooltip south
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-n")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :n) %>
+      Tooltip north
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-e")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :e) %>
+      Tooltip east
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-w")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :w) %>
+      Tooltip west
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-sw")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :sw) %>
+      Tooltip southwest
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-se")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :se) %>
+      Tooltip southeast
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-nw")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :nw) %>
+      Tooltip northwest
+    <% end %>
+
+    <%= render(Primer::Beta::Button.new(id: "tooltip-ne")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :ne) %>
+      Tooltip northeast
+    <% end %>
+</div>
