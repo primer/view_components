@@ -83,7 +83,22 @@ module Primer
         buttons.any?
       end
 
-
+      # Renders a button in a <%= link_to_component(Primer::Beta::ButtonGroup) %> that displays an <%= link_to_component(Primer::Alpha::ActionMenu) %> when clicked.
+      # This component should not be used outside of a `ButtonGroup` context.
+      #
+      # This component yields both the button and the list to the block when rendered. The return value of the block
+      # is used as the button's content (i.e. its text), eg:
+      #
+      # ```erb
+      # <%= render(Primer::Beta::ButtonGroup.new) do |group| %>
+      #   <% group.with_menu_button do |menu, button| %>
+      #     <% menu.with_item(label: "Item 1") %>
+      #     <% button.with_trailing_visual_icon(icon: "triangle-down") %>
+      #     Button text
+      #   <% end %>
+      # <% end %>
+      # ```
+      #
       class MenuButton < Primer::Component
         # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
         # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
