@@ -112,6 +112,27 @@ class ToolTipElement extends HTMLElement {
         --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
       }
 
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: 12px;
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
       @keyframes tooltip-appear {
         from {
           opacity: 0;
