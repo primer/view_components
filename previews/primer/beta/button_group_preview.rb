@@ -39,6 +39,12 @@ module Primer
         end
       end
 
+      # @label With menu button
+      #
+      # @snapshot
+      def with_menu_button
+      end
+
       # @label Icon buttons
       #
       # @param size [Symbol] select [medium, small]

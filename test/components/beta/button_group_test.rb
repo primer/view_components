@@ -80,6 +80,15 @@ module Primer
           assert_selector(".octicon.octicon-star")
         end
       end
+
+      def test_menu_button
+        render_preview(:with_menu_button)
+
+        assert_selector("action-menu") do |menu|
+          menu.assert_selector("li[data-item-id=item1]", text: "Item 1")
+          menu.assert_selector("li[data-item-id=item2]", text: "Item 2")
+        end
+      end
     end
   end
 end
