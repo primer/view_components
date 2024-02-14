@@ -22,7 +22,6 @@ const isPopoverOpen = (() => {
 })()
 
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
-const TOOLTIP_OFFSET = 4
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -68,7 +67,8 @@ class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
-        --tooltip-offset: 4;
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
         padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
         font: var(--text-body-shorthand-small);
         color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis)) !important;
@@ -87,9 +87,29 @@ class ToolTipElement extends HTMLElement {
         word-wrap: break-word;
         white-space: normal;
         width: max-content !important;
-        inset: var(--tool-tip-position-top, 0) auto auto var(--tool-tip-position-left, 0) !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
         overflow: visible !important;
         text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
       }
 
       @keyframes tooltip-appear {
@@ -353,30 +373,10 @@ class ToolTipElement extends HTMLElement {
     if (!this.control) return
     if (!this.#allowUpdatePosition || !isPopoverOpen(this)) return
 
-    // Extract the value of the CSS variable (including the 'rem' unit)
-    // const remValueStr = getComputedStyle(document.documentElement).getPropertyValue('--overlay-offset').trim()
-    // // Use parseFloat to extract the numeric part of the value
-    // const remValue = parseFloat(remValueStr)
-
-    // // Get the base font-size of the document, assuming it's defined in pixels
-    // const baseFontSize = '16px'
-
-    // // Convert the 'rem' value to pixels
-    // const valueInPixels = remValue * baseFontSize
-
-    // // Use the converted value or fallback to 0 if conversion fails
-    // const finalValue = valueInPixels || 0
-
-    // Reading the CSS variable value
-    const tooltipOffset =
-      parseInt(getComputedStyle(document.documentElement).getPropertyValue('--overlay-offset'), 10) || 0
-
-    console.log(tooltipOffset)
-
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
-      anchorOffset: tooltipOffset,
+      anchorOffset: 0,
     })
     const anchorSide = position.anchorSide
     const align = position.anchorAlign
