@@ -7,6 +7,15 @@ module Primer
       # such as icons, avatars, and counters.
       class Item < Primer::Component
         DEFAULT_SIZE = :medium
+        DEFAULT_TRUNCATION = :none
+        TRUNCATION_MAPPINGS = {
+          DEFAULT_TRUNCATION => nil,
+          false => nil,
+          :show_tooltip => "ActionListItem-label--truncate",
+          true => "ActionListItem-label--truncate"
+        }
+        TRUNCATION_OPTIONS = TRUNCATION_MAPPINGS.keys.freeze
+
         SIZE_MAPPINGS = {
           DEFAULT_SIZE => nil,
           :large => "ActionListContent--sizeLarge",
@@ -120,6 +129,8 @@ module Primer
           system_arguments[:for_id] = @id
           system_arguments[:type] ||= :description
 
+          system_arguments[:classes] = class_names(system_arguments[:classes], "ActionListItem-truncationTooltip")
+
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
@@ -169,6 +180,7 @@ module Primer
           form_arguments: {},
           parent: nil,
           truncate_label: false,
+          use_tooltip: false,
           href: nil,
           role: nil,
           size: DEFAULT_SIZE,
@@ -186,6 +198,7 @@ module Primer
           @item_id = item_id
           @href = href || content_arguments[:href]
           @truncate_label = truncate_label
+          @use_tooltip = use_tooltip
           @disabled = disabled
           @active = active
           @id = id
@@ -221,7 +234,7 @@ module Primer
               label_classes,
               label_arguments[:classes],
               "ActionListItem-label",
-              "ActionListItem-label--truncate" => @truncate_label
+              TRUNCATION_MAPPINGS[@truncate_label],
             )
           }
 
@@ -289,6 +302,10 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?
           )
+
+          if @truncate_label == :show_tooltip && !tooltip?
+            with_tooltip(text: @label)
+          end
 
           return unless leading_visual
 

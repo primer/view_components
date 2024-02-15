@@ -16,9 +16,15 @@ module Primer
           list.with_group do |group|
             group.with_heading(title: "Access")
 
-            group.with_item(label: "Collaborators and teams", href: "/collaborators", selected_by_ids: :collaborators) do |item|
-              item.with_leading_visual_icon(icon: :people)
-            end
+            group.with_item(
+                label: "Collaborators and teams and really long words to eventuall get truncated by the UI, this is my typing words everyday forever words foo bar baz veryday forevveryday forever words foo bar bazer words foo bar baz",
+                href: "/collaborators", 
+                selected_by_ids: :collaborators,
+                truncate_label: :show_tooltip,
+                ) do |item|
+                 item.with_leading_visual_icon(icon: :people)
+                end
+
 
             group.with_item(label: "Moderation options") do |item|
               item.with_leading_visual_icon(icon: :"comment-discussion")
