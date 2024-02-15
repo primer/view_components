@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.22.2
+
+### Patch Changes
+
+- [#2577](https://github.com/primer/view_components/pull/2577) [`6a3071d`](https://github.com/opf/primer_view_components/commit/6a3071d6adc1135576156df9bc48fd99d23c0153) Thanks [@lindseywild](https://github.com/lindseywild)! - Adds documentation for the Rails Banner and focus management guidance
+
+- [#2579](https://github.com/primer/view_components/pull/2579) [`c195fc5`](https://github.com/opf/primer_view_components/commit/c195fc51dc373b86f8f8461a52562d18797c363c) Thanks [@keithamus](https://github.com/keithamus)! - Remove aria-disabled from dialogs
+
+- [#2556](https://github.com/primer/view_components/pull/2556) [`077cb08`](https://github.com/opf/primer_view_components/commit/077cb08fe4f7ef5c8e512879bd2847d90f74dea4) Thanks [@keithamus](https://github.com/keithamus)! - Fix issue with layering of nested overlays/dialogs
+
+- [#2557](https://github.com/primer/view_components/pull/2557) [`77e59ee`](https://github.com/opf/primer_view_components/commit/77e59ee8af781711026c7785ef58c300561c6e7d) Thanks [@keithamus](https://github.com/keithamus)! - Fix potential out-of-bounds error in ActionBar
+
+- [#2585](https://github.com/primer/view_components/pull/2585) [`6124098`](https://github.com/opf/primer_view_components/commit/61240988a7e7f0f76a8df1cc361ef6facf240ab7) Thanks [@khiga8](https://github.com/khiga8)! - Bug: Remove dismissable flash stealing focus
+
 ## 0.22.1
 
 ### Patch Changes
