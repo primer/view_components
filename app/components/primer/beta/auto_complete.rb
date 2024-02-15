@@ -69,41 +69,18 @@ module Primer
       # It is preferred to use this slot sparingly - it will be created by default if not explicity added.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :input, lambda { |**system_arguments|
-        sanitized_args = deny_tag_argument(**system_arguments)
-        sanitized_args = deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **sanitized_args)
-        deny_aria_key(
-          :label,
-          "instead of `aria-label`, include `label_text` and set `visually_hide_label` to `true` on the component initializer.",
-          **sanitized_args
-        )
-        deny_single_argument(
-          :id,
-          "`id` will always be set to @input_id.",
-          **sanitized_args
-        )
-        deny_single_argument(
-          :name,
-          "Set @input_name on the component initializer instead with `input_name`.",
-          **sanitized_args
-        )
-        sanitized_args[:id] = @input_id
-        sanitized_args[:name] = @input_name
-        sanitized_args[:tag] = :input
-        sanitized_args[:autocomplete] = "off"
-        sanitized_args[:disabled] = true if @disabled
-        sanitized_args[:invalid] = true if @invalid
-        sanitized_args[:type] = :text
-        sanitized_args[:classes] = class_names(
-          "FormControl-input",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          sanitized_args[:classes],
-          "FormControl-inset": @inset,
-          "FormControl-monospace": @monospace
-        )
-        sanitized_args[:placeholder] = @placeholder
+      renders_one :input, types: {
+        input: {
+          renders: lambda { |**system_arguments|
+            Primer::BaseComponent.new(**input_arguments_from(**system_arguments))
+          },
 
-        Primer::BaseComponent.new(**sanitized_args)
+          as: :input,
+        },
+
+        custom_input: {
+          as: :custom_input
+        }
       }
 
       # @param label_text [String] The label of the input.
@@ -161,6 +138,44 @@ module Primer
       def before_render
         with_results(classes: "") unless results?
         with_input(classes: "") unless input?
+      end
+
+      private
+
+      def input_arguments_from(**system_arguments)
+        sanitized_args = deny_tag_argument(**system_arguments)
+        sanitized_args = deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **sanitized_args)
+        deny_aria_key(
+          :label,
+          "instead of `aria-label`, include `label_text` and set `visually_hide_label` to `true` on the component initializer.",
+          **sanitized_args
+        )
+        deny_single_argument(
+          :id,
+          "`id` will always be set to @input_id.",
+          **sanitized_args
+        )
+        deny_single_argument(
+          :name,
+          "Set @input_name on the component initializer instead with `input_name`.",
+          **sanitized_args
+        )
+        sanitized_args[:id] = @input_id
+        sanitized_args[:name] = @input_name
+        sanitized_args[:tag] = :input
+        sanitized_args[:autocomplete] = "off"
+        sanitized_args[:disabled] = true if @disabled
+        sanitized_args[:invalid] = true if @invalid
+        sanitized_args[:type] = :text
+        sanitized_args[:classes] = class_names(
+          "FormControl-input",
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
+          sanitized_args[:classes],
+          "FormControl-inset": @inset,
+          "FormControl-monospace": @monospace
+        )
+        sanitized_args[:placeholder] = @placeholder
+        sanitized_args
       end
     end
   end

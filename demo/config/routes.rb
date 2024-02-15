@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     resources :nav_list_items, only: [:index]
     resources :multi, only: [:create]
 
+    # generic form submission path
+    post "/form_handler", to: "form_handler#form_action", as: :generic_form_submission
+
     post "/example_check/accepted", to: "auto_check#accepted", as: :example_check_accepted
     post "/example_check/ok", to: "auto_check#ok", as: :example_check_ok
     post "/example_check/error", to: "auto_check#error", as: :example_check_error
