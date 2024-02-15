@@ -15,31 +15,31 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FERRUM_PROCESS_TIMEOUT: 60
+  FERRUM_PROCESS_TIMEOUT: 45
 
 jobs:
   accessibility:
     name: Accessibility
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          demo/package-lock.json
-    - name: Build
-      run: |
-        npm ci
-        cd demo && npm ci
-    - name: Test
-      run: bundle exec rake test:accessibility
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          cd demo && npm ci
+      - name: Test
+        run: bundle exec rake test:accessibility
   components:
     name: Components
     runs-on: ubuntu-latest
@@ -58,32 +58,32 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.2"
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: Build
-      run: |
-        npm ci
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:components
-        bundle exec rake test:coverage
-      env:
-        COVERAGE: 1
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Build
+        run: |
+          npm ci
+          bundle config unset deployment
+          bundle update
+        env:
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
+      - name: Test
+        run: |
+          bundle exec rake test:components
+          bundle exec rake test:coverage
+        env:
+          COVERAGE: 1
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
     name: Lib
     runs-on: ubuntu-latest
@@ -102,32 +102,32 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.2"
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: Build
-      run: |
-        npm ci
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:lib
-        bundle exec rake test:coverage
-      env:
-        COVERAGE: 1
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Build
+        run: |
+          npm ci
+          bundle config unset deployment
+          bundle update
+        env:
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
+      - name: Test
+        run: |
+          bundle exec rake test:lib
+          bundle exec rake test:coverage
+        env:
+          COVERAGE: 1
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
   performance:
     name: Performance
     runs-on: ubuntu-latest
@@ -146,105 +146,105 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.2"
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby_version }}
-        bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - name: Build
-      run: |
-        bundle config unset deployment
-        bundle update
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Test
-      run: |
-        bundle exec rake test:performance
-      env:
-        RUBY_VERSION: ${{ matrix.ruby_version }}
-        RAILS_VERSION: ${{ matrix.rails_version }}
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+      - name: Build
+        run: |
+          bundle config unset deployment
+          bundle update
+        env:
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
+      - name: Test
+        run: |
+          bundle exec rake test:performance
+        env:
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
   system:
     name: System
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          demo/package-lock.json
-    - name: Build
-      run: |
-        npm ci
-        cd demo && npm ci
-    - name: Test
-      run: |
-        bundle exec rake test:system
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          cd demo && npm ci
+      - name: Test
+        run: |
+          bundle exec rake test:system
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-        bundler-cache: true
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          demo/package-lock.json
-    - name: Build
-      run: |
-        npm ci
-        bundle install
-        bundle exec rake static:dump
-        cd demo
-        npm ci
-        bundle install
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      id: playwright-run
-      continue-on-error: true
-      run: npx playwright test --workers 6
-    - id: auto-commit
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: Generating component snapshots
-        file_pattern: .playwright/screenshots/**/*.png
-    - name: "Changes detected"
-      if: steps.auto-commit.outputs.changes_detected == 'true'
-      uses: phulsechinmay/rewritable-pr-comment@v0.3.0
-      with:
-        message: |
-          ### ⚠️ Visual differences found
-
-          Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
-
-          [Review visual differences](https://github.com/opf/primer_view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        COMMENT_IDENTIFIER: 'visual-comparison-diff'
-    - uses: actions/upload-artifact@v4
-      with:
-        name: playwright-report
-        path: .playwright/report/
-        retention-days: 30
-    - name: Failure
-      if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
-      run: exit 1
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          bundle install
+          bundle exec rake static:dump
+          cd demo
+          npm ci
+          bundle install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        id: playwright-run
+        continue-on-error: true
+        run: npx playwright test --workers 6
+      - id: auto-commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Generating component snapshots
+          file_pattern: .playwright/screenshots/**/*.png
+      - name: "Changes detected"
+        if: steps.auto-commit.outputs.changes_detected == 'true'
+        uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+        with:
+          message: |
+            ### ⚠️ Visual differences found
+            
+            Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+            
+            [Review visual differences](https://github.com/opf/primer_view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT_IDENTIFIER: 'visual-comparison-diff'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: .playwright/report/
+          retention-days: 30
+      - name: Failure
+        if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
+        run: exit 1
   selectors:
     name: CSS coverage
     runs-on: ubuntu-latest
