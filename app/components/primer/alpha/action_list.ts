@@ -4,6 +4,7 @@ import {controller, targets} from '@github/catalyst'
 const resizeObserver = new ResizeObserver(entries => {
   for (const entry of entries) {
     const action = entry.target
+
     if (action instanceof ActionListElement) {
       action.update()
     }
@@ -24,21 +25,23 @@ export class ActionListElement extends HTMLElement {
 
   update() {
     for (const item of this.items) {
-      const isTruncated = item.scrollWidth > item.clientWidth
-      if (!isTruncated) {
-        const result = item.querySelector('.ActionListItem-truncationTooltip') as HTMLElement
-        if (result) {
-          result.style.display = 'none'
-        }
+      const label = item.querySelector('.ActionListItem-label')
+      if (!label) continue
+
+      const tooltip = item.querySelector('.ActionListItem-truncationTooltip') as HTMLElement | null
+      if (!tooltip) continue
+
+      const isTruncated = label.scrollWidth > label.clientWidth
+
+      if (isTruncated) {
+        tooltip.style.display = ''
       } else {
-        const result = item.querySelector('.ActionListItem-truncationTooltip') as HTMLElement
-        if (result) {
-          result.style.display = ''
-        }
+        tooltip.style.display = 'none'
       }
     }
   }
 }
+
 declare global {
   interface Window {
     ActionListElement: typeof ActionListElement

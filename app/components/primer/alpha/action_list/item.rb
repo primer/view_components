@@ -7,15 +7,6 @@ module Primer
       # such as icons, avatars, and counters.
       class Item < Primer::Component
         DEFAULT_SIZE = :medium
-        DEFAULT_TRUNCATION = :none
-        TRUNCATION_MAPPINGS = {
-          DEFAULT_TRUNCATION => nil,
-          false => nil,
-          :show_tooltip => "ActionListItem-label--truncate",
-          true => "ActionListItem-label--truncate"
-        }
-        TRUNCATION_OPTIONS = TRUNCATION_MAPPINGS.keys.freeze
-
         SIZE_MAPPINGS = {
           DEFAULT_SIZE => nil,
           :large => "ActionListContent--sizeLarge",
@@ -36,6 +27,15 @@ module Primer
           :danger => "ActionListItem--danger"
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
+
+        DEFAULT_TRUNCATION_BEHAVIOR = :none
+        TRUNCATION_BEHAVIOR_MAPPINGS = {
+          DEFAULT_TRUNCATION_BEHAVIOR => nil,
+          false => nil,
+          :show_tooltip => "ActionListItem-label--truncate",
+          true => "ActionListItem-label--truncate"
+        }
+        TRUNCATION_BEHAVIOR_OPTIONS = TRUNCATION_BEHAVIOR_MAPPINGS.keys.freeze
 
         # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
         # for layout options.
@@ -159,7 +159,7 @@ module Primer
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         # @param form_arguments [Hash] Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, <%= one_of(Primer::Alpha::ActionList::FormWrapper::HTTP_METHOD_OPTIONS) %> The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent.
-        # @param truncate_label [Boolean] Truncate label with ellipsis.
+        # @param truncate_label [Boolean] How the label should be truncated. <%= one_of(Primer::Alpha::ActionList::TRUNCATION_BEHAVIOR_OPTIONS) %> Pass `false` or `:none` to wrap label text. Pass `true` to truncate labels with ellipses. Pass `:show_tooltip` to show the entire label contents in a tooltip when the item is hovered.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
         # @param size [Symbol] Controls block sizing of the item.
@@ -179,8 +179,7 @@ module Primer
           content_arguments: {},
           form_arguments: {},
           parent: nil,
-          truncate_label: false,
-          use_tooltip: false,
+          truncate_label: :none,
           href: nil,
           role: nil,
           size: DEFAULT_SIZE,
@@ -198,7 +197,6 @@ module Primer
           @item_id = item_id
           @href = href || content_arguments[:href]
           @truncate_label = truncate_label
-          @use_tooltip = use_tooltip
           @disabled = disabled
           @active = active
           @id = id
@@ -234,7 +232,7 @@ module Primer
               label_classes,
               label_arguments[:classes],
               "ActionListItem-label",
-              TRUNCATION_MAPPINGS[@truncate_label],
+              TRUNCATION_BEHAVIOR_MAPPINGS[@truncate_label],
             )
           }
 
