@@ -23,8 +23,9 @@ module Primer
           :autocomplete
         end
 
+        # The AutoComplete Primer component does not allow auto-focusing
         def focusable?
-          true
+          false
         end
       end
     end
