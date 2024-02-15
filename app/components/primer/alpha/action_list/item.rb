@@ -33,6 +33,7 @@ module Primer
           DEFAULT_TRUNCATION_BEHAVIOR => nil,
           false => nil,
           :show_tooltip => "ActionListItem-label--truncate",
+          :truncate => "ActionListItem-label--truncate",
           true => "ActionListItem-label--truncate"
         }
         TRUNCATION_BEHAVIOR_OPTIONS = TRUNCATION_BEHAVIOR_MAPPINGS.keys.freeze

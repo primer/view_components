@@ -459,6 +459,19 @@ module Primer
           component.with_item(label: "Active item", href: "/", active: true)
         end
       end
+
+      # @label Long label
+      #
+      # @param truncate_label [Symbol] select [none, truncate, show_tooltip]
+      # @snapshot
+      def long_label(truncate_label: :none)
+        render(Primer::Alpha::ActionList.new(aria: { label: "List heading" })) do |component|
+          component.with_item(
+            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+            truncate_label: truncate_label
+          )
+        end
+      end
     end
   end
 end
