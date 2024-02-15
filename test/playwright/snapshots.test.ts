@@ -37,11 +37,11 @@ test.describe('generate snapshots', () => {
               // Focus state
               await page.keyboard.press('Tab')
 
-              await new Promise(resolve => setTimeout(resolve, 100))
+              await new Promise(resolve => setTimeout(resolve, 500))
               await page.keyboard.press('Enter')
 
               // Wait a bit for animations etc to resolve
-              await new Promise(resolve => setTimeout(resolve, 100))
+              await new Promise(resolve => setTimeout(resolve, 500))
 
               const focusedScreenshot = await page.screenshot({animations: 'disabled'})
               expect(focusedScreenshot).toMatchSnapshot([example.preview_path, `${theme}.png`])
