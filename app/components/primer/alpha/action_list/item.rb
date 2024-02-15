@@ -206,13 +206,10 @@ module Primer
             "ActionListItem--disabled" => @disabled
           )
 
-          @system_arguments[:data] ||= {}
-          @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
-
           @system_arguments[:data] = merge_data(
             @system_arguments, {
               data: {
-                targets: "#{list_class.custom_element_name}.items",
+                targets: list_class.custom_element_names.map { |el_name| "#{el_name}.items" }.join(" "),
                 **(@item_id ? { item_id: @item_id } : {})
               }
             }

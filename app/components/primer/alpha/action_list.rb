@@ -40,13 +40,13 @@ module Primer
 
       # :nocov:
       # @private
-      def self.custom_element_name
-        @custom_element_name ||= name.split("::").last.underscore.dasherize
+      def self.custom_element_names
+        @custom_element_names ||= ["action-list", name.split("::").last.underscore.dasherize]
       end
 
       # @private
-      def custom_element_name
-        self.class.custom_element_name
+      def custom_element_names
+        self.class.custom_element_names
       end
       # :nocov:
 
