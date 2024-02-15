@@ -316,6 +316,7 @@ class ToolTipElement extends HTMLElement {
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
 
     if (showing && isEscapeKeydown) {
+      /* eslint-disable-next-line no-restricted-syntax */
       event.stopImmediatePropagation()
       event.preventDefault()
     }

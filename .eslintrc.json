@@ -10,7 +10,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "2022",
+    "ecmaVersion": 2022,
     "sourceType": "module"
   },
   "plugins": [
@@ -38,7 +38,7 @@
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "ecmaVersion": "2022",
+        "ecmaVersion": 2022,
         "sourceType": "module"
       },
       "plugins": [
@@ -63,7 +63,20 @@
         "custom-elements/tag-name-matches-class": [
           "error", {"suffix": "Element"}
         ],
-        "i18n-text/no-en": "off"
+        "i18n-text/no-en": "off",
+        "no-restricted-syntax": [
+          "error",
+          {
+            "message": "stopPropagation() and friends are considered dangerous because they swallow events that consumers may listen for. Consider alternatives.",
+            "selector":
+              "CallExpression[callee.property.name='stopPropagation']"
+          },
+          {
+            "message": "stopImmediatePropagation() and friends are considered dangerous because they swallow events that consumers may listen for. Consider alternatives.",
+            "selector":
+              "CallExpression[callee.property.name='stopImmediatePropagation']"
+          }
+        ]
       }
     }
   ]

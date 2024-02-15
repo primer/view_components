@@ -18,6 +18,7 @@ function clickHandler(event: Event) {
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
   if (dialogId) {
+    /* eslint-disable-next-line no-restricted-syntax */
     event.stopPropagation()
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof ModalDialogElement) {
@@ -170,12 +171,14 @@ export class ModalDialogElement extends HTMLElement {
       case 'Escape':
         this.close()
         event.preventDefault()
+        /* eslint-disable-next-line no-restricted-syntax */
         event.stopPropagation()
         break
       case 'Enter': {
         const target = event.target as HTMLElement
 
         if (target.getAttribute('data-close-dialog-id') === this.id) {
+          /* eslint-disable-next-line no-restricted-syntax */
           event.stopPropagation()
         }
         break

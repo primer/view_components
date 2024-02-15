@@ -113,7 +113,15 @@ module Alpha
       visit_preview(:dialog_inside_overlay)
 
       click_button("Show overlay")
+      # This preview has script that automatically opens the dialog when the overlay is clicked
+      assert_selector "dialog[open]"
+
+      click_button("Cancel")
+
+      refute_selector "dialog[open]"
+
       click_button("Show Dialog")
+
       assert_selector "dialog[open]"
     end
   end
