@@ -85,7 +85,7 @@ export default class FocusGroupElement extends HTMLElement {
                   }
                 }
               },
-              {signal}
+              {signal},
             )
           }
         }

@@ -145,13 +145,19 @@ class ActionBarElement extends HTMLElement {
   }
 
   #showItem(index: number) {
-    this.items[index].style.setProperty('visibility', 'visible')
-    this.#menuItems[index]!.hidden = true
+    const item = this.items[index]
+    const menuItem = this.#menuItems[index]
+    if (!item || !menuItem) return
+    item.style.setProperty('visibility', 'visible')
+    menuItem.hidden = true
   }
 
   #hideItem(index: number) {
-    this.items[index].style.setProperty('visibility', 'hidden')
-    this.#menuItems[index]!.hidden = false
+    const item = this.items[index]
+    const menuItem = this.#menuItems[index]
+    if (!item || !menuItem) return
+    item.style.setProperty('visibility', 'hidden')
+    menuItem.hidden = false
   }
 
   get #menuItems(): NodeListOf<HTMLElement> {

@@ -50,6 +50,6 @@ document.addEventListener('clipboard-copy', ({target}) => {
     setTimeout(() => {
       showCopy(target)
       clipboardCopyElementTimers.delete(target)
-    }, CLIPBOARD_COPY_TIMER_DURATION)
+    }, CLIPBOARD_COPY_TIMER_DURATION),
   )
 })

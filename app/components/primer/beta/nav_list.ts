@@ -74,6 +74,7 @@ export class NavListElement extends HTMLElement {
       this.expandItem(button)
     }
 
+    /* eslint-disable-next-line no-restricted-syntax */
     e.stopPropagation()
   }
 
@@ -96,6 +97,7 @@ export class NavListElement extends HTMLElement {
       this.collapseItem(button)
     }
 
+    /* eslint-disable-next-line no-restricted-syntax */
     e.stopPropagation()
   }
 
