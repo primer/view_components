@@ -103,14 +103,14 @@ Note: if you're pointing to the file locally (i.e. `./info_arch.json`), you will
 
 Change:
 
-```bash
+```js
 const argsJson = await fetch(url).then(res => res.json())
 const argsContent = JSON.parse(Buffer.from(argsJson.content, 'base64').toString())
 ```
 
 to
 
-```bash
+```js
 const argsJson = fs.readFileSync(url, 'utf-8')
 const argsContent = JSON.parse(argsJson)
 ```
