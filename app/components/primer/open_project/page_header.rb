@@ -5,7 +5,7 @@ module Primer
     # A ViewComponent PageHeader inspired by the primer react variant
     class PageHeader < Primer::Component
       HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
-      HEADING_TAG_FALLBACK = :h2
+      HEADING_TAG_FALLBACK = :h1
 
       DEFAULT_HEADER_VARIANT = :large
       HEADER_VARIANT_OPTIONS = [
