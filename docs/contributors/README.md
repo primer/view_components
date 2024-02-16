@@ -94,19 +94,21 @@ To generate the `info_arch.json` file with your changes to preview, in the `view
 bundle exec rake static:dump_info_arch
 ```
 
-You should see a generated `info_arch.json` file. Clone the [`primer/design` repo](https://github.com/primer/design) repo, and copy/paste the `info_arch.json` file into the root of that repo.
+You should see a generated `static/info_arch.json` file. Clone the [`primer/design` repo](https://github.com/primer/design) repo and copy/paste the `info_arch.json` file into the root of that repo.
 
 Then, change the path in the [`gatsby-node.esm.js` file](https://github.com/primer/design/blob/main/gatsby-node.esm.js#L199) to point to your new, generated file.
 
-Note: if you're pointing to the file locally (i.e. `./info_arch.json`), you will also need to change the following lines since you don't need to `fetch` this data:
+Note: if you're pointing to the file locally (i.e. `./info_arch.json`), you will also need to change the following lines since you don't need to `fetch` this data from an API.
 
 Change:
+
 ```bash
 const argsJson = await fetch(url).then(res => res.json())
 const argsContent = JSON.parse(Buffer.from(argsJson.content, 'base64').toString())
 ```
 
 to
+
 ```bash
 const argsJson = fs.readFileSync(url, 'utf-8')
 const argsContent = JSON.parse(argsJson)
