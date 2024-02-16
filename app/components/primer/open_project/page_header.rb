@@ -13,13 +13,6 @@ module Primer
         DEFAULT_HEADER_VARIANT
       ].freeze
 
-      DEFAULT_BACK_BUTTON_SIZE = :medium
-      BACK_BUTTON_SIZE_OPTIONS = [
-        :small,
-        DEFAULT_BACK_BUTTON_SIZE,
-        :large
-      ].freeze
-
       DEFAULT_BACK_BUTTON_ICON = "arrow-left"
       BACK_BUTTON_ICON_OPTIONS = [
         DEFAULT_BACK_BUTTON_ICON,
@@ -27,7 +20,7 @@ module Primer
         "triangle-left"
       ].freeze
 
-      DEFAULT_BACK_BUTTON_DISPLAY = [:none, :flex].freeze
+      DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
       DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:block, :none].freeze
@@ -82,26 +75,23 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Optional back button prepend the title
+      # Optional leading action prepend the title
       # By default shown on wider screens. Can be overridden with system_argument: display
       #
-      # @param size [Symbol] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_SIZE_OPTIONS) %>
-      # @param icon [String] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_ICON_OPTIONS) %>
+      # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :back_button, lambda { |
-        size: DEFAULT_BACK_BUTTON_SIZE,
-        icon: DEFAULT_BACK_BUTTON_ICON,
+      renders_one :leading_action, lambda { |
+        icon:,
         **system_arguments
       |
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :a
         system_arguments[:scheme] = :invisible
-        system_arguments[:size] = fetch_or_fallback(BACK_BUTTON_SIZE_OPTIONS, size, DEFAULT_BACK_BUTTON_SIZE)
-        system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-backButton")
-        system_arguments[:display] ||= DEFAULT_BACK_BUTTON_DISPLAY
+        system_arguments[:icon] = icon
+        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-leadingAction")
+        system_arguments[:display] ||= DEFAULT_LEADING_ACTION_DISPLAY
 
-        Primer::Beta::IconButton.new(**system_arguments)
+        Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
       # Optional parent link in the context area

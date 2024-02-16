@@ -426,9 +426,6 @@
   "PageHeader-actions": [
     "Primer::OpenProject::PageHeader"
   ],
-  "PageHeader-backButton": [
-    "Primer::OpenProject::PageHeader"
-  ],
   "PageHeader-breadcrumbs": [
     "Primer::OpenProject::PageHeader"
   ],
@@ -439,6 +436,9 @@
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-description": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-leadingAction": [
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-parentLink": [

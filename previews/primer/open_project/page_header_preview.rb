@@ -18,8 +18,7 @@ module Primer
       # @param variant [Symbol] select [medium, large]
       # @param title [String] text
       # @param description [String] text
-      # @param with_back_button [Boolean]
-      # @param back_button_size [Symbol] select [small, medium, large]
+      # @param with_leading_action [Symbol] octicon
       # @param with_breadcrumbs [Boolean]
       # @param with_actions [Boolean]
       # @param with_context_bar_actions [Boolean]
@@ -28,8 +27,7 @@ module Primer
         variant: :large,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
-        with_back_button: false,
-        back_button_size: :medium,
+        with_leading_action: :"arrow-left",
         with_breadcrumbs: false,
         with_actions: false,
         with_context_bar_actions: false,
@@ -40,8 +38,7 @@ module Primer
         render_with_template(locals: { variant: variant,
                                        title: title,
                                        description: description,
-                                       with_back_button: with_back_button,
-                                       back_button_size: back_button_size,
+                                       with_leading_action: with_leading_action,
                                        with_breadcrumbs: with_breadcrumbs,
                                        with_parent_link: with_parent_link,
                                        with_actions: with_actions,
@@ -62,18 +59,17 @@ module Primer
         render_with_template(locals: {})
       end
 
-      # @label With back button (on wide)
-      # **Back button** is only shown on **wider than narrow screens** by default.
+      # @label With leading action (on wide)
+      # **Leading action** is only shown on **wide screens** by default.
       # If you want to override that behaviour please use the system_argument: **display**
       # e.g. **component.with\_breadcrumbs(display: [:block, :block])**
       #
       # @param href [String] text
-      # @param size [Symbol] select [small, medium, large]
-      # @param icon [String] select ["arrow-left", "chevron-left", "triangle-left"]
-      def back_button(href: "#", size: :medium, icon: "arrow-left")
+      # @param icon [Symbol] octicon
+      def leading_action(href: "#", icon: :"arrow-left")
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "Hello" }
-          header.with_back_button(href: href, size: size, icon: icon, 'aria-label': "Back")
+          header.with_leading_action(icon: icon, href: href, 'aria-label': "Back")
         end
       end
 

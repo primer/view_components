@@ -51,15 +51,15 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-actions")
   end
 
-  def test_renders_back_button
+  def test_renders_leading_action
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_back_button(href: "/link", 'aria-label': "Back")
+      header.with_leading_action(icon: :"arrow-left", href: "/link", 'aria-label': "Back")
     end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector("a.PageHeader-backButton[href='/link']")
+    assert_selector("a.PageHeader-leadingAction[href='/link']")
   end
 
   def test_renders_breadcrumbs
