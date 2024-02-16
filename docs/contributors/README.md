@@ -66,8 +66,9 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
 #### Demo App
 
 See components on a plain page with no interfering framework or styling. Used to test functionality.
-  * Typically runs on port 4000 - visit `/rails/view_components/` in your browser
-  * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
+
+* Typically runs on port 4000 - visit `/rails/view_components/` in your browser
+* To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
 
 ---
 To run the demo app, run:
