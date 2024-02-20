@@ -63,15 +63,15 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
 
 ### Documentation / Demo Rails App
 
-* **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
-  * Typically runs on port 5400
-  * To rebuild docs, run `bundle exec rake docs:build`
-* **Demo App**: See components on a plain page with no interfering framework or styling. Used to test functionality.
-  * Typically runs on port 4000 - visit `/rails/view_components/` in your browser
-  * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
+#### Demo App
+
+See components on a plain page with no interfering framework or styling. Used to test functionality.
+
+* Typically runs on port 4000 - visit `/rails/view_components/` in your browser
+* To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
 
 ---
-To run the documentation site and the demo app, run:
+To run the demo app, run:
 
 ```bash
 script/dev
@@ -82,10 +82,40 @@ If you are running into issues or not seeing your updates, a few things you can 
 * Delete the `overmind.sock` file and run `script/dev` again
 * Ensure you have run `script/setup`
 * Delete the `node_modules` directory and re-run `script/setup`
-* Run `bundle exec rake docs:build`
-* Run `bundle exec rake docs:preview`
 
 _Note: Overmind is required to run script/dev._
+
+#### Documentation
+
+To run the documentation site locally, one option is to generate the `info_arch.json` file required for the documentation site to run, then updating the path to your generated version in a clone of the [`primer/design` repo](https://github.com/primer/design).
+
+To generate the `info_arch.json` file with your changes to preview, in the `view_components` repo, run:
+
+```bash
+bundle exec rake static:dump_info_arch
+```
+
+You should see a generated `static/info_arch.json` file. Clone the [`primer/design` repo](https://github.com/primer/design) repo and copy/paste the `info_arch.json` file into the root of that repo.
+
+Then, change the path in the [`gatsby-node.esm.js` file](https://github.com/primer/design/blob/main/gatsby-node.esm.js#L199) to point to your new, generated file.
+
+Note: if you're pointing to the file locally (i.e. `./info_arch.json`), you will also need to change the following lines since you don't need to `fetch` this data from an API.
+
+Change:
+
+```js
+const argsJson = await fetch(url).then(res => res.json())
+const argsContent = JSON.parse(Buffer.from(argsJson.content, 'base64').toString())
+```
+
+to
+
+```js
+const argsJson = fs.readFileSync(url, 'utf-8')
+const argsContent = JSON.parse(argsJson)
+```
+
+Then, in the **primer/design repo**, run `yarn run start` to spin up the Gatsby docs to preview locally with your changes!
 
 ## Developing with another app
 
