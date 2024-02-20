@@ -468,7 +468,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
-            truncate_label: truncate_label
+            truncate_label: :show_tooltip
           )
         end
       end

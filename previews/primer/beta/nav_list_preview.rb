@@ -141,8 +141,16 @@ module Primer
           list.with_group do |group|
             group.with_heading(title: "Access")
             group.with_item(
-              label: "Really really long label that may wrap, truncate, or appear as a tooltip",
-              truncate_label: truncate_label
+              label: "Really really long label that truncates texts and displays a tooltip",
+              truncate_label: :show_tooltip
+            )
+            group.with_item(
+              label: "Really really long label that truncates and doesn't show a tooltip",
+              truncate_label: :truncate
+            )
+            group.with_item(
+              label: "Really really long label that wraps around and doesn't truncate or show a tooltip",
+              truncate_label: :none
             )
           end
         end
