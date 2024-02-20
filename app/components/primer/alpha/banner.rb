@@ -19,7 +19,7 @@ module Primer
     #     For more information about either techniques, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.
     #
     #   ### Focusing a Banner
-    #     Focusing a Banner when it appear helps to maximize discoverability of the message, especially in critical scenarios.
+    #     Focusing a Banner when it appears helps to maximize discoverability of the message, especially in critical scenarios.
     #
     #     To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
     #
