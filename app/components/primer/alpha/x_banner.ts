@@ -18,7 +18,6 @@ class XBannerElement extends HTMLElement {
       const callback = (entries: IntersectionObserverEntry[]) => {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            // Uncomment when available: https://github.com/primer/live-region-element/
             announceFromElement(this.contentToAnnounce)
             this.observer?.disconnect()
           }
