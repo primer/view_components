@@ -8,11 +8,14 @@
   <% component.with_parent_link(href: "#") do %>
     Parent link
   <% end %>
-  <% component.with_context_bar_actions do %>
-    <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
-      <% component.with_show_button { "Menu" } %>
-      <% component.with_item(label: "Item", tag: :button, value: "") %>
-      <% component.with_item(
+  <% component.with_context_bar_action do %>
+    <%= render(Primer::Beta::IconButton.new(icon: 'star', 'aria-label': 'Star')) %>
+  <% end %>
+  <% component.with_context_bar_action do %>
+    <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
+      <% menu.with_show_button { "Menu" } %>
+      <% menu.with_item(label: "Item", tag: :button, value: "") %>
+      <% menu.with_item(
            label: "Show dialog",
            tag: :button,
            content_arguments: { "data-show-dialog-id": "my-dialog" },
@@ -22,4 +25,3 @@
     <% end %>
   <% end %>
 <% end %>
-

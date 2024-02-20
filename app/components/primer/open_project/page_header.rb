@@ -23,7 +23,7 @@ module Primer
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
-      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:block, :none].freeze
+      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:flex, :none].freeze
 
       status :open_project
 
@@ -54,10 +54,10 @@ module Primer
       # Actions
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :actions, lambda { |**system_arguments|
+      renders_many :actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-actions")
+        system_arguments[:ml] ||= 1
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -66,11 +66,10 @@ module Primer
       # By default shown on narrow screens. Can be overridden with system_argument: display
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :context_bar_actions, lambda { |**system_arguments|
+      renders_many :context_bar_actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-contextBarActions")
-        system_arguments[:display] ||= DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY
+        system_arguments[:ml] ||= 1
 
         Primer::BaseComponent.new(**system_arguments)
       }

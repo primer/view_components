@@ -42,7 +42,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_actions { "An action" }
+      header.with_action { "An action" }
     end
 
     assert_text("Hello")
@@ -97,7 +97,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_context_bar_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_context_bar_actions { "An context bar action" }
+      header.with_context_bar_action { "An context bar action" }
     end
 
     assert_text("Hello")
