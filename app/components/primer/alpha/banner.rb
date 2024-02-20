@@ -16,7 +16,7 @@ module Primer
     #
     #     To ensure a Banner is announced reliably, make sure that there's a live region container that is already on the page. When the Banner is shown, populate the live region container with the content of the Banner. This can be done in one of two ways. The first is to rely on a global live region container that is guaranteed to be on the page. When the Banner appears, populate this global live region container with the Banner content. The second technique is to hide or show the Banner within a live region wrapper that is guaranteed to always be on the page.
     #
-    #     For more information about either techniques, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.
+    #     For more information about either technique, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.
     #
     #   ### Focusing a Banner
     #     Focusing a Banner when it appears helps to maximize discoverability of the message, especially in critical scenarios.
