@@ -1,0 +1,22 @@
+<div>
+  <%= render Primer::Beta::Button.new(id: "announce-polite-button") do %>
+    Announce polite
+  <% end %>
+
+  <%= render Primer::Beta::Button.new(id: "announce-assertive-button") do %>
+    Announce assertive
+  <% end %>
+  <%= render Primer::Alpha::LiveRegionAnnouncement.new %>
+</div>
+
+<script type="text/javascript">
+  const liveRegion = document.querySelector('live-region')
+
+  document.querySelector("#announce-polite-button").addEventListener("click", () => {
+    liveRegion.announce("I am a polite announcement.");
+  });
+
+  document.querySelector("#announce-assertive-button").addEventListener("click", () => {
+    liveRegion.announce("I am an assertive announcement!", { politeness: "assertive" });
+  });
+</script>

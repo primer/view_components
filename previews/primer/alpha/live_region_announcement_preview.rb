@@ -8,6 +8,11 @@ module Primer
       def default
         render(Primer::Alpha::LiveRegionAnnouncement.new)
       end
+
+      # @label With button to announce
+      def with_button_to_announce
+        render_with_template
+      end
     end
   end
 end
