@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::LiveRegionAnnouncement, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
       component.with_item_icon_button(icon: :pencil, label: "Edit")
