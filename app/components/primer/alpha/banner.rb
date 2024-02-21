@@ -77,7 +77,7 @@ module Primer
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, announce_on_show: false, focus_on_show: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
+      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, announce_on_show: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
         @dismiss_scheme = dismiss_scheme
@@ -101,7 +101,8 @@ module Primer
 
         @message_arguments = {
           tag: :div,
-          classes: "Banner-message"
+          classes: "Banner-message",
+          data: { target: catalyst_target(field: "contentToAnnounce") }
         }
 
         @wrapper_arguments = {
