@@ -28,6 +28,11 @@ module Primer
         render_with_template
       end
 
+      # @label Announce when updating wrapper visibility
+      def announce_on_show_with_hidden_wrapper
+        render_with_template
+      end
+
       # @!group Schemes
       #
       # @label Default scheme

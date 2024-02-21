@@ -1,0 +1,12 @@
+<div>
+  <%= render(Primer::Beta::Button.new(id: "toggle-wrapper")) { "Show"} %>
+  <div id="wrapper" hidden>
+      <%= render(Primer::Alpha::Banner.new(announce_on_show: true, id: "announce-on-show-banner")) { "Hello." } %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.getElementById('toggle-wrapper')?.addEventListener('click', e => {
+    document.getElementById('wrapper').hidden = false;
+  });
+</script>
