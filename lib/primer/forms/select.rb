@@ -8,14 +8,18 @@ module Primer
 
       def initialize(input:)
         @input = input
-        @input.add_input_classes(
-          "FormControl-select",
-          Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
-        )
+        @input.add_input_classes("FormControl-select")
+
+        if !input.multiple?
+          @input.add_input_classes(
+            Primer::Forms::Dsl::Input::SIZE_MAPPINGS[@input.size]
+          )
+        end
 
         @field_wrap_arguments = {
           class: "FormControl-select-wrap",
-          hidden: @input.hidden?
+          hidden: @input.hidden?,
+          data: { multiple: input.multiple? }
         }
       end
 
