@@ -41,7 +41,7 @@ module Primer
         assert_selector(".octicon-arrow-down")
       end
 
-      def test_item_text_truncates_with_tooltip 
+      def test_item_text_truncates_with_tooltip
         render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
           component.with_item(label: "Item 1", href: "/item1", truncate_label: :show_tooltip)
         end
