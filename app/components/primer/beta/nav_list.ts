@@ -1,8 +1,8 @@
-/* eslint-disable custom-elements/expose-class-on-global */
 import {controller, targets} from '@github/catalyst'
+import {ActionListElement} from '../alpha/action_list'
 
 @controller
-export class NavListElement extends HTMLElement {
+export class NavListElement extends ActionListElement {
   @targets items: HTMLElement[]
 
   selectItemById(itemId: string | null): boolean {

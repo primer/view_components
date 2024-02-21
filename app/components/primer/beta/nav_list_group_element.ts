@@ -1,12 +1,14 @@
 import {controller, target, targets} from '@github/catalyst'
+import {ActionListElement} from '../alpha/action_list'
 
 @controller
-export class NavListGroupElement extends HTMLElement {
+export class NavListGroupElement extends ActionListElement {
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]
 
   connectedCallback(): void {
     this.setShowMoreItemState()
+    super.connectedCallback()
   }
 
   get showMoreDisabled(): boolean {
