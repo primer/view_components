@@ -7,10 +7,10 @@ module Primer
       HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
       HEADING_TAG_FALLBACK = :h1
 
-      DEFAULT_HEADER_VARIANT = :large
+      DEFAULT_HEADER_VARIANT = :medium
       HEADER_VARIANT_OPTIONS = [
-        :medium,
-        DEFAULT_HEADER_VARIANT
+        DEFAULT_HEADER_VARIANT,
+        :large
       ].freeze
 
       DEFAULT_BACK_BUTTON_ICON = "arrow-left"

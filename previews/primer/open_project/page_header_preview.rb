@@ -46,10 +46,10 @@ module Primer
                                        breadcrumb_items: breadcrumb_items })
       end
 
-      # @label Medium title
-      def medium_title
+      # @label Large title
+      def large_title
         render(Primer::OpenProject::PageHeader.new) do |header|
-          header.with_title(variant: :medium) { "Hello" }
+          header.with_title(variant: :large) { "Hello" }
           header.with_description { "Last updated 5 minutes ago by XYZ." }
         end
       end
