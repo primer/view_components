@@ -43,8 +43,6 @@ module Primer
 
       # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the tabs.
       # @param align [Symbol] <%= one_of(Primer::TabNavHelper::EXTRA_ALIGN_OPTIONS) %> - Defaults to <%= Primer::TabNavHelper::EXTRA_ALIGN_DEFAULT %>
-      # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
-      # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
         @align = EXTRA_ALIGN_DEFAULT
