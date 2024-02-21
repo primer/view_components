@@ -1,4 +1,6 @@
 import {controller, target} from '@github/catalyst'
+// eslint-disable-next-line import/no-unresolved
+import '@primer/live-region-element/define'
 import {announceFromElement} from '@primer/live-region-element'
 
 @controller
@@ -18,7 +20,9 @@ class XBannerElement extends HTMLElement {
       const callback = (entries: IntersectionObserverEntry[]) => {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            announceFromElement(this.contentToAnnounce)
+            if (this.#announceOnShow === 'true') {
+              announceFromElement(this.contentToAnnounce)
+            }
             this.observer?.disconnect()
           }
         }
