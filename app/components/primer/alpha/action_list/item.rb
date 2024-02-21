@@ -130,7 +130,7 @@ module Primer
           system_arguments[:for_id] = @id
           system_arguments[:type] ||= :description
 
-          system_arguments[:classes] = class_names(system_arguments[:classes], "ActionListItem-truncationTooltip")
+          system_arguments[:classes] = class_names(system_arguments[:classes], "ActionListItem-truncationTooltip") if @truncate_label == :show_tooltip
 
           Primer::Alpha::Tooltip.new(**system_arguments)
         }

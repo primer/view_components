@@ -11,7 +11,6 @@ module Primer
 
           list.with_item(label: "General", href: "/general") do |item|
             item.with_leading_visual_icon(icon: :gear)
-            item.with_tooltip(text: "General settings", description: "Change the name, description, and visibility of the repository.")
           end
 
           list.with_group do |group|
@@ -136,19 +135,18 @@ module Primer
       # @param truncate_label [Symbol] select [none, truncate, show_tooltip]
       # @snapshot
       def long_label_with_tooltip(truncate_label: :show_tooltip)
-        render(Primer::Alpha::ActionList.new(aria: { label: "List heading" })) do |component|
+        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
           ) do |item|
             item.with_trailing_visual_icon(icon: :plus)
-            item.with_tooltip(text: "Really really long label that may wrap, truncate, or appear as a tooltip") #ensure no double tooltip
           end
         end
       end
 
       def long_label_wrap(truncate_label: :none)
-        render(Primer::Alpha::ActionList.new(aria: { label: "List heading" })) do |component|
+        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
@@ -157,11 +155,32 @@ module Primer
       end
 
       def long_label_truncate_no_tooltip(truncate_label: :truncate)
-        render(Primer::Alpha::ActionList.new(aria: { label: "List heading" })) do |component|
+        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
           )
+        end
+      end
+
+      def long_label_show_tooltip_with_truncate_label(truncate_label: :none)
+        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
+          component.with_item(
+            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+            truncate_label: truncate_label
+          ) do |item|
+            item.with_tooltip(text: "this is a tooltip")
+          end
+        end
+      end
+
+      def long_label_show_tooltip_no_truncate_label
+        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
+          component.with_item(
+            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+          ) do |item|
+            item.with_tooltip(text: "this is a tooltip")
+          end
         end
       end
     end
