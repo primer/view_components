@@ -41,6 +41,24 @@ module Primer
         assert_selector(".octicon-arrow-down")
       end
 
+      def test_item_text_truncates_with_tooltip 
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", href: "/item1", truncate_label: :show_tooltip)
+        end
+
+        assert_selector "li.ActionListItem", text: "Item 1"
+        assert_selector "li.ActionListItem span.ActionListItem-label--truncate"
+      end
+
+      def test_item_text_wraps
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", href: "/item1", truncate_label: :none)
+        end
+
+        assert_selector "li.ActionListItem", text: "Item 1"
+        assert_selector "li.ActionListItem span.ActionListItem-label"
+      end
+
       def test_list_labelled_by_heading
         render_preview(:default)
 
