@@ -57,7 +57,7 @@ module Primer
       renders_many :actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 1
+        system_arguments[:ml] ||= 2
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -69,7 +69,7 @@ module Primer
       renders_many :context_bar_actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 1
+        system_arguments[:ml] ||= 2
 
         Primer::BaseComponent.new(**system_arguments)
       }
