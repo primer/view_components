@@ -367,25 +367,25 @@ class ToolTipElement extends HTMLElement {
       this.#align = 'center'
       this.#side = 'outside-top'
     } else if (direction === 'ne') {
-      this.#align = 'start'
+      this.#align = 'end'
       this.#side = 'outside-top'
     } else if (direction === 'e') {
       this.#align = 'center'
       this.#side = 'outside-right'
     } else if (direction === 'se') {
-      this.#align = 'start'
+      this.#align = 'end'
       this.#side = 'outside-bottom'
     } else if (direction === 's') {
       this.#align = 'center'
       this.#side = 'outside-bottom'
     } else if (direction === 'sw') {
-      this.#align = 'end'
+      this.#align = 'start'
       this.#side = 'outside-bottom'
     } else if (direction === 'w') {
       this.#align = 'center'
       this.#side = 'outside-left'
     } else if (direction === 'nw') {
-      this.#align = 'end'
+      this.#align = 'start'
       this.#side = 'outside-top'
     }
   }
