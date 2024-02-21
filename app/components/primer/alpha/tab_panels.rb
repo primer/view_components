@@ -26,7 +26,7 @@ module Primer
         Primer::Alpha::Navigation::Tab.new(
           selected: selected,
           with_panel: true,
-          list: true,
+          list: false,
           panel_id: "panel-#{id}",
           **system_arguments
         )
@@ -51,7 +51,7 @@ module Primer
         @wrapper_arguments = wrapper_arguments
 
         @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments[:tag] = :div
+        @system_arguments[:tag] = :"tab-container"
         @system_arguments[:classes] = tab_nav_classes(@system_arguments[:classes])
 
         @body_arguments = deny_tag_argument(**body_arguments)
