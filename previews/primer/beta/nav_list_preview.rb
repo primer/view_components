@@ -130,10 +130,10 @@ module Primer
       # @snapshot
       def trailing_action; end
 
-      # @label Long label
+      # @label Long label truncate overflow
       #
       # @param truncate_label [Symbol] select [none, truncate, show_tooltip]
-      # @snapshot
+      # @snapshot interactive
       def long_label_with_tooltip(truncate_label: :show_tooltip)
         render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
@@ -160,17 +160,6 @@ module Primer
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
           )
-        end
-      end
-
-      def long_label_show_tooltip_with_truncate_label(truncate_label: :none)
-        render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
-          component.with_item(
-            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
-            truncate_label: truncate_label
-          ) do |item|
-            item.with_tooltip(text: "this is a tooltip")
-          end
         end
       end
 
