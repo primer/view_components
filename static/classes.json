@@ -368,6 +368,9 @@
   "Link--underline": [
     "Primer::Beta::Link"
   ],
+  "LiveRegionAnnouncement": [
+    "Primer::Alpha::LiveRegionAnnouncement"
+  ],
   "Overlay": [
     "Primer::Alpha::Dialog",
     "Primer::Alpha::Overlay"

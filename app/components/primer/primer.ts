@@ -1,4 +1,5 @@
 import '@github/include-fragment-element'
+import './alpha/live_region_element'
 import './alpha/action_bar_element'
 import './alpha/dropdown'
 import './anchored_position'
