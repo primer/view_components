@@ -1,5 +1,5 @@
-<%= content_tag(:div, **@input.input_arguments) do %>
-  <fieldset>
+<div class="FormControl-radio-group-wrap">
+  <%= content_tag(:fieldset, **@input.input_arguments) do %>
     <% if @input.label %>
       <%= content_tag(:legend, **@input.label_arguments) do %>
         <%= @input.label %>
@@ -10,11 +10,11 @@
         <%= render(radio_button.to_component) %>
       <% end %>
     <% end %>
-  </fieldset>
+  <% end %>
   <div class="mt-2">
     <%= render(ValidationMessage.new(input: @input)) %>
   </div>
   <div class="mt-2">
     <%= render(Caption.new(input: @input)) %>
   </div>
-<% end %>
+</div>

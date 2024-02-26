@@ -59,11 +59,15 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
       end
     end
 
-    # the wrapper should be marked invalid, but not individual check boxes
-    assert_selector ".FormControl-radio-group-wrap[invalid=true][aria-invalid=true]"
+    # the wrapper should be marked invalid, but not individual radio buttons
+    assert_selector ".FormControl-radio-group-wrap fieldset[invalid=true][aria-invalid=true]"
     refute_selector "input[type=radio][invalid]"
 
     # should have a validation message
-    assert_selector ".FormControl-inlineValidation", text: /Channel can['’]t be blank/
+    validation_id = page.find("fieldset")["aria-describedby"]
+    assert_selector ".FormControl-inlineValidation[id='#{validation_id}']", text: /Channel can['’]t be blank/
+
+    # first radio button should have focus
+    assert_selector "input[type=radio][value=online][autofocus]"
   end
 end
