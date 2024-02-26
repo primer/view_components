@@ -2,9 +2,11 @@
 
 module Primer
   module Beta
+    # This component has been deprecated. Use [Banner](<%= link_to_component(Primer::Alpha::Banner) %>) instead.
+    #
     # Use `Flash` to inform users of successful or pending actions.
     class Flash < Primer::Component
-      status :beta
+      status :deprecated
 
       # Optional action content showed on the right side of the component.
       #
