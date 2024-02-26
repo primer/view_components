@@ -33,6 +33,11 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete::Item"
 
+  - component: "Primer::Beta::Flash"
+    autocorrect: false
+    replacement: "Primer::Alpha::Banner"
+    guide: "https://primer.style/components/banner/rails/alpha"
+
   - component: "Primer::BlankslateComponent"
     autocorrect: true
     replacement: "Primer::Beta::Blankslate"
@@ -63,7 +68,3 @@ deprecations:
     autocorrect: false
     replacement: "Primer::Beta::Truncate"
     guide: "https://primer.style/guides/rails/migration-guides/primer-truncate"
-
-  - component: "Primer::Beta::Flash"
-    autocorrect: false
-    replacement: "Primer::Alpha::Banner"
