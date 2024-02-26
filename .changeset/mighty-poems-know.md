@@ -1,5 +1,5 @@
 ---
-"@primer/view-components": patch
+"@primer/view-components": minor
 ---
 
 Mark `Flash` as deprecated
