@@ -60,10 +60,14 @@ class Primer::Forms::CheckboxGroupInputTest < Minitest::Test
     end
 
     # the wrapper should be marked invalid, but not individual check boxes
-    assert_selector ".FormControl-check-group-wrap[invalid=true][aria-invalid=true]"
+    assert_selector ".FormControl-check-group-wrap fieldset[invalid=true][aria-invalid=true]"
     refute_selector "input[type=checkbox][invalid]"
 
     # should have a validation message
-    assert_selector ".FormControl-inlineValidation", text: "Places must have at least two selections"
+    validation_id = page.find("fieldset")["aria-describedby"]
+    assert_selector ".FormControl-inlineValidation[id='#{validation_id}']", text: "Places must have at least two selections"
+
+    # first check box should have focus
+    assert_selector "input[type=checkbox][value=lopez][autofocus]"
   end
 end
