@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.19.0
+
+### Minor Changes
+
+- [#2607](https://github.com/primer/view_components/pull/2607) [`1cf14e5`](https://github.com/primer/view_components/commit/1cf14e5034b7461663a982a80c6756f09f4fa968) Thanks [@camertron](https://github.com/camertron)! - Add ability to attach action menus to button group buttons
+
+- [#2626](https://github.com/primer/view_components/pull/2626) [`1160edf`](https://github.com/primer/view_components/commit/1160edf76c72de4cc71f7b4ed435ebd336feb854) Thanks [@camertron](https://github.com/camertron)! - Upgrade to view_component v3.11.0
+
+- [#2640](https://github.com/primer/view_components/pull/2640) [`56b2413`](https://github.com/primer/view_components/commit/56b24139e7b58a337cf98203cf7a765adfd20414) Thanks [@khiga8](https://github.com/khiga8)! - Mark `Flash` as deprecated
+
+- [#2604](https://github.com/primer/view_components/pull/2604) [`8d67631`](https://github.com/primer/view_components/commit/8d67631298b6bbef8efb9acb2ced412253fe0d26) Thanks [@mattcosta7](https://github.com/mattcosta7)! - update tsconfig compile target
+
+### Patch Changes
+
+- [#2628](https://github.com/primer/view_components/pull/2628) [`5619810`](https://github.com/primer/view_components/commit/56198108dfb38c1a2a2b52e6798bbbd3ba143090) Thanks [@langermank](https://github.com/langermank)! - Primitives v8 bug fix: `invisible` button hover state in high contrast themes
+
+- [#2620](https://github.com/primer/view_components/pull/2620) [`59c3396`](https://github.com/primer/view_components/commit/59c3396d4676947ffe98022dc8f7752eecf82cd0) Thanks [@khiga8](https://github.com/khiga8)! - Docs: update accessibility section of PVC Banner
+
+- [#2611](https://github.com/primer/view_components/pull/2611) [`8c111df`](https://github.com/primer/view_components/commit/8c111df3cbd0c8964ab2376c72db2dc72e288de7) Thanks [@lindseywild](https://github.com/lindseywild)! - Update README docs with instructions to preview docs site locally
+
 ## 0.18.2
 
 ### Patch Changes
