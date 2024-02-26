@@ -5,11 +5,25 @@ module Primer
     # Use `Banner` to highlight important information.
     #
     # @accessibility
-    #   Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires focusing the banner.
+    #   Given that Banner is made visually prominent to sighted users through the use of icons and color, consider providing a heading and designating the Banner as a region landmark to improve navigability and discoverability of the Banner of assistive technology users. At this time, the PVC Banner does not render a heading nor render as a region landmark by default. This may be introduced in the future [as a breaking API change](https://github.com/primer/view_components/issues/2619). For now, consider providing an appropriate heading inside of the Banner and rendering the Banner as a `<section>` tag with `aria-labelledby="switch-this-with-banner-heading-id"` to implicitly designate the Banner as a region landmark.
     #
-    #   To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
+    #   A Banner can be used in one of two ways – to highlight information on a page, or to communicate an urgent message/feedback for a user action. For the latter scenario, it may be necessary to use a live region or focus management technique to ensure that the Banner is discoverable and accessible for all users. Otherwise, the Banner can easily be missed, including by those using magnification software or screen reader users who may not realize that a Banner has appeared. The appropriate technique to use is highly context-dependent. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires either techniques.
     #
-    #   For more information about the focus management technique, visit the [Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.
+    #   ### Announcing a Banner
+    #     When a Banner is used to communicate non-critical feedback, or is used in critical scenarios where moving focus is considered too disruptive, use a live region announcement to announce the content of the Banner to screen reader users.
+    #
+    #     Live regions can be finicky and don't work well when injected dynamically. Setting a live region attribute on the Banner itself is discouraged as it will not announce as expected for most screen readers.
+    #
+    #     To ensure a Banner is announced reliably, make sure that there's a live region container that is already on the page. When the Banner is shown, populate the live region container with the content of the Banner. This can be done in one of two ways. The first is to rely on a global live region container that is guaranteed to be on the page. When the Banner appears, populate this global live region container with the Banner content. The second technique is to hide or show the Banner within a live region wrapper that is guaranteed to always be on the page.
+    #
+    #     For more information about either technique, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.
+    #
+    #   ### Focusing a Banner
+    #     Focusing a Banner when it appears helps to maximize discoverability of the message, especially in critical scenarios.
+    #
+    #     To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
+    #
+    #     For more information about the focus management technique, visit the [Staff only: Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.
     class Banner < Primer::Component
       status :alpha
 
