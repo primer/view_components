@@ -247,11 +247,7 @@ summary.Button {
   }
 
   &:hover:not(:disabled, .Button--inactive) {
-    background-color: var(--button-invisible-bgColor-hover);
-
-    & .Button-visual {
-      color: var(--button-invisible-iconColor-hover, var(--color-fg-default));
-    }
+    background-color: var(--control-transparent-bgColor-hover, var(--color-action-list-item-default-hover-bg));
   }
 
   &[aria-pressed='true'],
