@@ -63,3 +63,7 @@ deprecations:
     autocorrect: false
     replacement: "Primer::Beta::Truncate"
     guide: "https://primer.style/guides/rails/migration-guides/primer-truncate"
+
+  - component: "Primer::Beta::Flash"
+    autocorrect: false
+    replacement: "Primer::Alpha::Banner"
