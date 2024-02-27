@@ -249,9 +249,9 @@
       },
       {
         "name": "truncate_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Truncate label with ellipsis."
+        "type": "Boolean | Symbol",
+        "default": "`:none`",
+        "description": "How the label should be truncated when the text does not fit inside the bounds of the list item. One of `false`, `:none`, `:show_tooltip`, `:truncate`, or `true`. Pass `false` or `:none` to wrap label text. Pass `true` or `:truncate` to truncate labels with ellipses. Pass `:show_tooltip` to show the entire label contents in a tooltip when the item is hovered."
       },
       {
         "name": "href",
