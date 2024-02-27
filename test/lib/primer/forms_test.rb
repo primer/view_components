@@ -198,10 +198,20 @@ class Primer::FormsTest < Minitest::Test
   def test_select_form
     render_preview :select_form
 
-    assert_selector ".FormControl-select option[value='']"
-    assert_selector ".FormControl-select option[value=lopez_island]"
-    assert_selector ".FormControl-select option[value=bellevue]"
-    assert_selector ".FormControl-select option[value=seattle]"
+    assert_selector ".FormControl-select-wrap .FormControl-select.FormControl-medium" do |single_select|
+      single_select.assert_selector "option[value='']"
+      single_select.assert_selector "option[value=lopez_island]"
+      single_select.assert_selector "option[value=bellevue]"
+      single_select.assert_selector "option[value=seattle]"
+    end
+
+    assert_selector ".FormControl-select-wrap[data-multiple] .FormControl-select" do |multi_select|
+      multi_select.assert_selector("option[value=lima]")
+      multi_select.assert_selector("option[value=tokyo]")
+      multi_select.assert_selector("option[value=reykjavik]")
+      multi_select.assert_selector("option[value=chiang_mai]")
+      multi_select.assert_selector("option[value=queenstown]")
+    end
   end
 
   def test_composed_form
