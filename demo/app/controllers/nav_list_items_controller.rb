@@ -19,5 +19,6 @@ class NavListItemsController < ApplicationController
     # the first page is already shown in the nav list, so we need to offset the starting index
     start_index = (params[:page].to_i - items_per_page) * items_per_page
     @data = FOODS.slice(start_index, items_per_page)
+    @list = Primer::Beta::NavList::Group.new  # dummy group
   end
 end
