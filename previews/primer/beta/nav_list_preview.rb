@@ -133,7 +133,7 @@ module Primer
       # @label Long label truncate overflow
       #
       # @param truncate_label [Symbol] select [none, truncate, show_tooltip]
-      # @snapshot interactive
+      # @snapshot
       def long_label_with_tooltip(truncate_label: :show_tooltip)
         render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(

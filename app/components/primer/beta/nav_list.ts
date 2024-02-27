@@ -1,9 +1,14 @@
+/* eslint-disable custom-elements/expose-class-on-global */
 import {controller, targets} from '@github/catalyst'
-import {ActionListElement} from '../alpha/action_list'
+import {ActionListElementTruncationObserver} from '../alpha/action_list'
 
 @controller
-export class NavListElement extends ActionListElement {
+export class NavListElement extends HTMLElement {
   @targets items: HTMLElement[]
+
+  disconnectedCallback() {
+    this.#truncateObserver.unobserve(this)
+  }
 
   selectItemById(itemId: string | null): boolean {
     if (!itemId) return false
@@ -100,6 +105,8 @@ export class NavListElement extends ActionListElement {
     /* eslint-disable-next-line no-restricted-syntax */
     e.stopPropagation()
   }
+
+  #truncateObserver = new ActionListElementTruncationObserver(this)
 
   #findSelectedNavItemById(itemId: string): HTMLElement | null {
     // First we compare the selected link to data-item-id for each nav item

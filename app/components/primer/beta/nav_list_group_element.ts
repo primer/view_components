@@ -1,14 +1,13 @@
 import {controller, target, targets} from '@github/catalyst'
-import {ActionListElement} from '../alpha/action_list'
+import {ActionListElementTruncationObserver} from '../alpha/action_list'
 
 @controller
-export class NavListGroupElement extends ActionListElement {
+export class NavListGroupElement extends HTMLElement {
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]
 
   connectedCallback(): void {
     this.setShowMoreItemState()
-    super.connectedCallback()
   }
 
   get showMoreDisabled(): boolean {
@@ -88,6 +87,8 @@ export class NavListGroupElement extends ActionListElement {
     template.innerHTML = html
     return document.importNode(template.content, true)
   }
+
+  #truncateObserver = new ActionListElementTruncationObserver(this)
 }
 
 declare global {
