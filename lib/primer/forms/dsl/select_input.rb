@@ -5,7 +5,7 @@ module Primer
     module Dsl
       # :nodoc:
       class SelectInput < Input
-        SELECT_ARGUMENTS = %i[multiple include_blank prompt].freeze
+        SELECT_ARGUMENTS = %i[multiple include_blank include_hidden prompt].freeze
 
         # :nodoc:
         class Option
@@ -36,6 +36,10 @@ module Primer
           super(**system_arguments)
 
           yield(self) if block_given?
+        end
+
+        def multiple?
+          @select_arguments.fetch(:multiple, false)
         end
 
         def option(**system_arguments)
