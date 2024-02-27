@@ -19,8 +19,8 @@ module Primer
       audited_at "2023-07-10"
 
       # @private
-      def self.custom_element_names
-        ["action-list", "nav-list"]
+      def self.custom_element_name
+        "nav-list"
       end
 
       # The heading for the list at large. Accepts the arguments accepted by <%= link_to_component(Primer::Beta::NavList::Heading) %>.

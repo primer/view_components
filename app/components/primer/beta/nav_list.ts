@@ -1,13 +1,25 @@
 /* eslint-disable custom-elements/expose-class-on-global */
-import {controller, targets} from '@github/catalyst'
-import {ActionListElementTruncationObserver} from '../alpha/action_list'
+import {controller, target, targets} from '@github/catalyst'
+import {ActionListTruncationObserver} from '../alpha/action_list'
 
 @controller
 export class NavListElement extends HTMLElement {
   @targets items: HTMLElement[]
+  @target topLevelList: HTMLElement
+
+  #truncationObserver: ActionListTruncationObserver
+
+  connectedCallback() {
+    // groups are wrapped in <action-list>, which handles resizing on its own
+    if (this.topLevelList) {
+      this.#truncationObserver = new ActionListTruncationObserver(this.topLevelList)
+    }
+  }
 
   disconnectedCallback() {
-    this.#truncateObserver.unobserve(this)
+    if (this.topLevelList) {
+      this.#truncationObserver.unobserve(this.topLevelList)
+    }
   }
 
   selectItemById(itemId: string | null): boolean {
@@ -105,8 +117,6 @@ export class NavListElement extends HTMLElement {
     /* eslint-disable-next-line no-restricted-syntax */
     e.stopPropagation()
   }
-
-  #truncateObserver = new ActionListElementTruncationObserver(this)
 
   #findSelectedNavItemById(itemId: string): HTMLElement | null {
     // First we compare the selected link to data-item-id for each nav item
