@@ -3374,7 +3374,7 @@
   {
     "name": "flash",
     "component": "Flash",
-    "status": "beta",
+    "status": "deprecated",
     "lookup_path": "primer/beta/flash",
     "examples": [
       {

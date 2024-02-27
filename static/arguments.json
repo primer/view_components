@@ -3670,7 +3670,7 @@
   },
   {
     "component": "Flash",
-    "status": "beta",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Flash",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb",
