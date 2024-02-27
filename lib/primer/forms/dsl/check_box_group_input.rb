@@ -25,6 +25,14 @@ module Primer
           :check_box_group
         end
 
+        def focusable?
+          true
+        end
+
+        def autofocus!
+          @check_boxes.first&.autofocus!
+        end
+
         def check_box(**system_arguments, &block)
           args = {
             name: @name,
