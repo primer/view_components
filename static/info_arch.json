@@ -746,6 +746,58 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_with_tooltip",
+        "name": "long_label_with_tooltip",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_wrap",
+        "name": "long_label_wrap",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_truncate_no_tooltip",
+        "name": "long_label_truncate_no_tooltip",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_show_tooltip_with_truncate_label",
+        "name": "long_label_show_tooltip_with_truncate_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -813,9 +865,9 @@
           },
           {
             "name": "truncate_label",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Truncate label with ellipsis."
+            "type": "Boolean | Symbol",
+            "default": "`:none`",
+            "description": "How the label should be truncated when the text does not fit inside the bounds of the list item. One of `false`, `:none`, `:show_tooltip`, `:truncate`, or `true`. Pass `false` or `:none` to wrap label text. Pass `true` or `:truncate` to truncate labels with ellipses. Pass `:show_tooltip` to show the entire label contents in a tooltip when the item is hovered."
           },
           {
             "name": "href",
@@ -13107,6 +13159,58 @@
         "preview_path": "primer/beta/nav_list/trailing_action",
         "name": "trailing_action",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_with_tooltip",
+        "name": "long_label_with_tooltip",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_wrap",
+        "name": "long_label_wrap",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_truncate_no_tooltip",
+        "name": "long_label_truncate_no_tooltip",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_show_tooltip_no_truncate_label",
+        "name": "long_label_show_tooltip_no_truncate_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
