@@ -1,7 +1,7 @@
 <%= render(Primer::BaseComponent.new(tag: :nav, **@system_arguments)) do %>
   <%= heading %>
   <nav-list>
-    <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list?, tag: :ul, classes: "ActionListWrap")) do %>
+    <%= render(Primer::ConditionalWrapper.new(condition: render_outer_list?, tag: :ul, classes: "ActionListWrap", data: { target: "nav-list.topLevelList" })) do %>
       <% items.each_with_index do |item, index| %>
         <% if index > 0 && render_divider_between?(item, items[index - 1]) %>
           <%= render(Primer::Alpha::ActionList::Divider.new) %>
