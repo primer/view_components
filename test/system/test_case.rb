@@ -4,12 +4,11 @@ require "system/test_helper"
 require "capybara/rails"
 require "capybara/minitest"
 
-require "test_helpers/cuprite_setup"
-require "test_helpers/retry"
+Primer::DriverTestHelpers.setup_driver
 
 module System
   class TestCase < ActionDispatch::SystemTestCase
-    driven_by :primer_cuprite, using: :chrome, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
+    driven_by Primer::DriverTestHelpers.driver_name, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
     def visit_preview(scenario_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")

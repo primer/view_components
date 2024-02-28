@@ -77,6 +77,9 @@ GEM
     cuprite (0.15)
       capybara (~> 3.0)
       ferrum (~> 0.14.0)
+    debug (1.9.1)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     docile (1.4.0)
     drb (2.2.0)
       ruby2_keywords
@@ -225,6 +228,12 @@ GEM
       rubocop (>= 1.0.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.18.1)
+      base64 (~> 0.2)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -257,6 +266,10 @@ GEM
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
     webmock (3.23.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -267,6 +280,7 @@ GEM
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
     webrick (1.8.1)
+    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -289,6 +303,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (~> 3.39.2)
   cuprite (~> 0.15)
+  debug
   erb_lint (~> 0.5.0)
   erblint-github (~> 0.5.1)
   kramdown (~> 2.4)
@@ -307,6 +322,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rails-accessibility (~> 0.2.0)
+  selenium-webdriver (~> 4.18)
   simplecov (~> 0.22.0)
   simplecov-console (~> 0.9.1)
   sourcemap (~> 0.1)
@@ -314,6 +330,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
+  webdrivers
   webmock
   webpacker (~> 5.0)
   yard (~> 0.9.25)

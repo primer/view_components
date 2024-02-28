@@ -4,8 +4,13 @@ require "system/test_case"
 
 module Alpha
   class IntegrationDialogTest < System::TestCase
+    include Primer::MouseTestHelpers
+
     def click_on_initial_dialog_close_button
-      find("button[data-close-dialog-id='dialog-one']").trigger("click")
+      # this simulates capybara's #trigger method, which isn't supported with selenium drivers
+      page.evaluate_script(<<~JS)
+        document.querySelector("button[data-close-dialog-id='dialog-one']").dispatchEvent(new Event('click'))
+      JS
     end
 
     def click_on_nested_dialog_close_button
@@ -47,7 +52,7 @@ module Alpha
       click_button("Show Dialog")
       click_on_nested_dialog_button
 
-      assert_equal(find("dialog#dialog-two")["open"], true)
+      assert_equal(find("dialog#dialog-two")["open"].to_s, "true")
 
       click_on_nested_dialog_close_button
 
@@ -61,7 +66,7 @@ module Alpha
       click_button("Show Dialog")
       click_on_nested_dialog_button
 
-      assert_equal(find("dialog#dialog-two")["open"], true)
+      assert_equal(find("dialog#dialog-two")["open"].to_s, "true")
 
       click_on_initial_dialog_close_button
 
@@ -79,7 +84,7 @@ module Alpha
       visit_preview(:default)
 
       click_button("Show Dialog")
-      page.driver.browser.mouse.click(x: 0, y: 0)
+      mouse.click(x: 0, y: 0)
 
       refute_selector "dialog[open]"
     end
