@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "rake/testtask"
+require "webdrivers"
+
+load "webdrivers/Rakefile"
 
 namespace :test do
   desc "Run all tests"

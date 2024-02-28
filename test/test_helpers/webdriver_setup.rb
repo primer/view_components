@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
-# allow downloading geckodriver automatically
-WebMock.enable_net_connect!
-
 require "selenium-webdriver"
 require "webdrivers/geckodriver"
-
-WebMock.disable_net_connect!(allow_localhost: true)
 
 Capybara.register_driver(:primer_webdriver) do |app|
   options = Selenium::WebDriver::Firefox::Options.new
