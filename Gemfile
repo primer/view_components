@@ -69,5 +69,5 @@ group :development do
   gem "sprockets-rails"
   gem "thor"
   gem "timecop"
-  gem "yard", "~> 0.9.25"
+  gem "yard", "~> 0.9.35"
 end
