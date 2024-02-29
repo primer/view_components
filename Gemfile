@@ -5,9 +5,6 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "7.1.1").to_s
 
-# remove when https://github.com/rails/rails/pull/47142 is merged
-gem "rack", "~> 2.2"
-
 gem "rack-cors"
 gem "rake", "~> 13.1"
 
@@ -46,11 +43,6 @@ gem "sourcemap", "~> 0.1"
 
 group :test do
   gem "webmock"
-
-  # Disallow v5.19 for now since it breaks mocha.
-  # See: https://github.com/freerange/mocha/issues/614
-  # Remove this line when mocha has fixed the issue
-  gem "minitest", "< 5.22"
 end
 
 # development dependencies
@@ -62,7 +54,7 @@ group :development do
   gem "cuprite", "~> 0.15"
   gem "erb_lint", "~> 0.5.0"
   gem "erblint-github", "~> 0.5.1"
-  gem "listen", "~> 3.0"
+  gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
   gem "pry"
@@ -77,5 +69,5 @@ group :development do
   gem "sprockets-rails"
   gem "thor"
   gem "timecop"
-  gem "yard", "~> 0.9.25"
+  gem "yard", "~> 0.9.35"
 end

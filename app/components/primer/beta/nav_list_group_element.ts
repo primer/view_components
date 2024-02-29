@@ -1,4 +1,5 @@
 import {controller, target, targets} from '@github/catalyst'
+import {ActionListTruncationObserver} from '../alpha/action_list'
 
 @controller
 export class NavListGroupElement extends HTMLElement {
@@ -86,6 +87,8 @@ export class NavListGroupElement extends HTMLElement {
     template.innerHTML = html
     return document.importNode(template.content, true)
   }
+
+  #truncateObserver = new ActionListTruncationObserver(this)
 }
 
 declare global {

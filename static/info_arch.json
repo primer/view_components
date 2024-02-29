@@ -746,6 +746,58 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_with_tooltip",
+        "name": "long_label_with_tooltip",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_wrap",
+        "name": "long_label_wrap",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_truncate_no_tooltip",
+        "name": "long_label_truncate_no_tooltip",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/long_label_show_tooltip_with_truncate_label",
+        "name": "long_label_show_tooltip_with_truncate_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -813,9 +865,9 @@
           },
           {
             "name": "truncate_label",
-            "type": "Boolean",
-            "default": "`false`",
-            "description": "Truncate label with ellipsis."
+            "type": "Boolean | Symbol",
+            "default": "`:none`",
+            "description": "How the label should be truncated when the text does not fit inside the bounds of the list item. One of `false`, `:none`, `:show_tooltip`, `:truncate`, or `true`. Pass `false` or `:none` to wrap label text. Pass `true` or `:truncate` to truncate labels with ellipses. Pass `:show_tooltip` to show the entire label contents in a tooltip when the item is hovered."
           },
           {
             "name": "href",
@@ -2232,7 +2284,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::Banner",
     "description": "Use `Banner` to highlight important information.",
-    "accessibility_docs": "Depending on the scenario, some Banners may need to receive focus when they appear. This helps to maximize discoverability of the message, especially in critical scenarios. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires focusing the banner.\n\nTo properly focus a banner, add a `tabindex=\"-1\"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).\n\nFor more information about the focus management technique, visit the [Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.",
+    "accessibility_docs": "Given that Banner is made visually prominent to sighted users through the use of icons and color, consider providing a heading and designating the Banner as a region landmark to improve navigability and discoverability of the Banner of assistive technology users. At this time, the PVC Banner does not render a heading nor render as a region landmark by default. This may be introduced in the future [as a breaking API change](https://github.com/primer/view_components/issues/2619). For now, consider providing an appropriate heading inside of the Banner and rendering the Banner as a `<section>` tag with `aria-labelledby=\"switch-this-with-banner-heading-id\"` to implicitly designate the Banner as a region landmark.\n\nA Banner can be used in one of two ways – to highlight information on a page, or to communicate an urgent message/feedback for a user action. For the latter scenario, it may be necessary to use a live region or focus management technique to ensure that the Banner is discoverable and accessible for all users. Otherwise, the Banner can easily be missed, including by those using magnification software or screen reader users who may not realize that a Banner has appeared. The appropriate technique to use is highly context-dependent. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires either techniques.\n\n### Announcing a Banner\n  When a Banner is used to communicate non-critical feedback, or is used in critical scenarios where moving focus is considered too disruptive, use a live region announcement to announce the content of the Banner to screen reader users.\n\n  Live regions can be finicky and don't work well when injected dynamically. Setting a live region attribute on the Banner itself is discouraged as it will not announce as expected for most screen readers.\n\n  To ensure a Banner is announced reliably, make sure that there's a live region container that is already on the page. When the Banner is shown, populate the live region container with the content of the Banner. This can be done in one of two ways. The first is to rely on a global live region container that is guaranteed to be on the page. When the Banner appears, populate this global live region container with the Banner content. The second technique is to hide or show the Banner within a live region wrapper that is guaranteed to always be on the page.\n\n  For more information about either technique, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.\n\n### Focusing a Banner\n  Focusing a Banner when it appears helps to maximize discoverability of the message, especially in critical scenarios.\n\n  To properly focus a banner, add a `tabindex=\"-1\"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).\n\n  For more information about the focus management technique, visit the [Staff only: Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
@@ -11038,7 +11090,7 @@
     "slots": [
       {
         "name": "buttons",
-        "description": "List of buttons to be rendered. Add buttons via the `#with_button` and `#with_clipboard_copy_button` methods (see below).",
+        "description": "List of buttons to be rendered. Add buttons via the `#with_button`, `#with_menu_button`, and `#with_clipboard_copy_button` methods (see below).",
         "parameters": [
 
         ]
@@ -11060,6 +11112,18 @@
             "type": "Hash",
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+          }
+        ]
+      },
+      {
+        "name": "with_menu_button",
+        "description": "Adds a button that activates a menu when clicked.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::ButtonGroup::MenuButton{{/link_to_component}}."
           }
         ]
       },
@@ -11117,6 +11181,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/button_group/with_menu_button",
+        "name": "with_menu_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
         "snapshot": "true",
@@ -11157,7 +11234,46 @@
       }
     ],
     "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Beta::ButtonGroup::MenuButton",
+        "description": "Renders a button in a {{#link_to_component}}Primer::Beta::ButtonGroup{{/link_to_component}} that displays an {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} when clicked.\nThis component should not be used outside of a `ButtonGroup` context.\n\nThis component yields both the button and the list to the block when rendered.\n\n```erb\n<%= render(Primer::Beta::ButtonGroup.new) do |group| %>\n  <% group.with_menu_button do |menu, button| %>\n    <% menu.with_item(label: \"Item 1\") %>\n    <% button.with_trailing_visual_icon(icon: \"triangle-down\") %>\n  <% end %>\n<% end %>\n```",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ButtonGroup::MenuButton",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ButtonGroupMenuButton",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group/menu_button.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/menu_button/default/",
+        "parameters": [
+          {
+            "name": "menu_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}}."
+          },
+          {
+            "name": "button_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+          }
+        ],
+        "slots": [
 
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      }
     ]
   },
   {
@@ -11890,13 +12006,13 @@
   },
   {
     "fully_qualified_name": "Primer::Beta::Flash",
-    "description": "Use `Flash` to inform users of successful or pending actions.",
+    "description": "This component has been deprecated. Use [Banner]({{#link_to_component}}Primer::Alpha::Banner{{/link_to_component}}) instead.\n\nUse `Flash` to inform users of successful or pending actions.",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
     "component": "Flash",
-    "status": "beta",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Flash",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb",
@@ -13043,6 +13159,58 @@
         "preview_path": "primer/beta/nav_list/trailing_action",
         "name": "trailing_action",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_with_tooltip",
+        "name": "long_label_with_tooltip",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_wrap",
+        "name": "long_label_wrap",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_truncate_no_tooltip",
+        "name": "long_label_truncate_no_tooltip",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/long_label_show_tooltip_no_truncate_label",
+        "name": "long_label_show_tooltip_no_truncate_label",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

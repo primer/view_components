@@ -95,6 +95,7 @@
     "DEFAULT_DESCRIPTION_SCHEME": "block",
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
+    "DEFAULT_TRUNCATION_BEHAVIOR": "none",
     "DESCRIPTION_SCHEME_MAPPINGS": {
       "inline": "ActionListItem-descriptionWrap--inline",
       "block": "ActionListItem-descriptionWrap"
@@ -120,6 +121,20 @@
       "medium",
       "large",
       "xlarge"
+    ],
+    "TRUNCATION_BEHAVIOR_MAPPINGS": {
+      "none": null,
+      "false": null,
+      "show_tooltip": "ActionListItem-label--truncate",
+      "truncate": "ActionListItem-label--truncate",
+      "true": "ActionListItem-label--truncate"
+    },
+    "TRUNCATION_BEHAVIOR_OPTIONS": [
+      "none",
+      false,
+      "show_tooltip",
+      "truncate",
+      true
     ]
   },
   "Primer::Alpha::ActionMenu": {
@@ -848,6 +863,9 @@
     ]
   },
   "Primer::Beta::ButtonGroup": {
+    "MenuButton": "Primer::Beta::ButtonGroup::MenuButton"
+  },
+  "Primer::Beta::ButtonGroup::MenuButton": {
   },
   "Primer::Beta::ClipboardCopy": {
   },

@@ -15,13 +15,20 @@ module Primer
       #   end
 
       # @!parse
+      #   # Adds a button that activates a menu when clicked.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::ButtonGroup::MenuButton) %>.
+      #   def with_menu_button(**system_arguments)
+      #   end
+
+      # @!parse
       #   # Adds a <%= link_to_component(Primer::Beta::ClipboardCopyButton) %>.
       #   #
       #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::ClipboardCopyButton) %>.
       #   def with_clipboard_copy_button(**system_arguments)
       #   end
 
-      # List of buttons to be rendered. Add buttons via the `#with_button` and `#with_clipboard_copy_button` methods (see below).
+      # List of buttons to be rendered. Add buttons via the `#with_button`, `#with_menu_button`, and `#with_clipboard_copy_button` methods (see below).
       renders_many :buttons, types: {
         button: {
           renders: lambda { |icon: nil, **kwargs|
@@ -36,6 +43,14 @@ module Primer
           },
 
           as: :button
+        },
+
+        menu_button: {
+          renders: lambda { |**system_arguments|
+            MenuButton.new(**system_arguments)
+          },
+
+          as: :menu_button
         },
 
         clipboard_copy_button: {
@@ -66,6 +81,43 @@ module Primer
 
       def render?
         buttons.any?
+      end
+
+      # Renders a button in a <%= link_to_component(Primer::Beta::ButtonGroup) %> that displays an <%= link_to_component(Primer::Alpha::ActionMenu) %> when clicked.
+      # This component should not be used outside of a `ButtonGroup` context.
+      #
+      # This component yields both the button and the list to the block when rendered.
+      #
+      # ```erb
+      # <%= render(Primer::Beta::ButtonGroup.new) do |group| %>
+      #   <% group.with_menu_button do |menu, button| %>
+      #     <% menu.with_item(label: "Item 1") %>
+      #     <% button.with_trailing_visual_icon(icon: "triangle-down") %>
+      #   <% end %>
+      # <% end %>
+      # ```
+      #
+      class MenuButton < Primer::Component
+        # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
+        # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
+        def initialize(menu_arguments: {}, button_arguments: {})
+          @menu = Primer::Alpha::ActionMenu.new(**menu_arguments)
+          @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
+        end
+
+        def render_in(view_context, &block)
+          super(view_context) do
+            block.call(@menu, @button)
+          end
+        end
+
+        def before_render
+          content
+        end
+
+        def call
+          render(@menu)
+        end
       end
     end
   end

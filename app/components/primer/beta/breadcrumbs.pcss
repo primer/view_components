@@ -10,7 +10,7 @@
     margin: 0 0.5em;
     content: '';
     border-right: 0.1em solid var(--borderColor-neutral-emphasis);
-    transform: rotate(15deg);
+    transform: rotate(15deg) translateY(0.0625em);
   }
 
   &:first-child {
@@ -27,4 +27,6 @@
 
 .breadcrumb-item-selected a {
   color: var(--fgColor-default);
+  cursor: default !important;
+  text-decoration: none !important;
 }
