@@ -179,6 +179,17 @@ module Primer
           d.with_body { "This is a long body for the overlay dialog. <br>".html_safe * 20 }
         end
       end
+
+      def overlay_with_header_sub_section
+        render(Primer::Alpha::Overlay.new(title: "Dialog", role: :dialog, size: :large, padding: :condensed)) do |d|
+          d.with_header(title: "Large Dialog Header", divider: true) do |header|
+            header.with_sub_section { "Sub section" }
+          end
+          d.with_show_button { "Show Overlay" }
+          d.with_footer { "Large Dialog Footer" }
+          d.with_body { "This is a long body for the overlay dialog. <br>".html_safe * 20 }
+        end
+      end
     end
   end
 end
