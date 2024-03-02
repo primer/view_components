@@ -1,0 +1,10 @@
+<div>
+    <%= render(Primer::Beta::Button.new(id: "show-banner")) { "Show"} %>
+    <%= render(Primer::Alpha::Banner.new(announce_on_show: true, hidden: true, id: "announce-on-show-banner")) { "Hello." } %>
+</div>
+
+<script type="text/javascript">
+  document.getElementById('show-banner')?.addEventListener('click', e => {
+    document.getElementById('announce-on-show-banner').hidden = false;
+  });
+</script>

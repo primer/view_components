@@ -82,6 +82,7 @@ module Primer
       DEFAULT_DISMISS_LABEL = "Dismiss"
 
       # @param tag [Symbol] <%= one_of(Primer::Alpha::Banner::TAG_OPTIONS) %>
+      # @param announce_on_show [Boolean] Whether the component should be announced through a live region when it is shown.
       # @param full [Boolean] Whether the component should take up the full width of the screen.
       # @param full_when_narrow [Boolean] Whether the component should take up the full width of the screen when rendered inside smaller viewports.
       # @param dismiss_scheme [Symbol] Whether the component can be dismissed with an "x" button. <%= one_of(Primer::Alpha::Banner::DISMISS_SCHEMES) %>
@@ -90,10 +91,11 @@ module Primer
       # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use. If no icon is provided, a default one will be chosen based on the scheme.
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::Banner::SCHEME_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
+      def initialize(tag: DEFAULT_TAG, full: false, full_when_narrow: false, announce_on_show: false, dismiss_scheme: DEFAULT_DISMISS_SCHEME, dismiss_label: DEFAULT_DISMISS_LABEL, description: nil, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
         @scheme = fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)
         @icon = icon || DEFAULT_ICONS[@scheme]
         @dismiss_scheme = dismiss_scheme
+        @announce_on_show = announce_on_show
         @dismiss_label = dismiss_label
         @description = description
 
@@ -109,15 +111,17 @@ module Primer
           "flash-full": full, # legacy
           "Banner--full-whenNarrow": full_when_narrow
         )
+        @system_arguments[:data] = { target: catalyst_target(field: "banner")}
 
         @message_arguments = {
           tag: :div,
-          classes: "Banner-message"
+          classes: "Banner-message",
+          data: { target: catalyst_target(field: "contentToAnnounce") }
         }
 
         @wrapper_arguments = {
           tag: custom_element_name,
-          data: { dismiss_scheme: @dismiss_scheme }
+          data: { dismiss_scheme: @dismiss_scheme, announce_on_show: @announce_on_show }
         }
       end
 

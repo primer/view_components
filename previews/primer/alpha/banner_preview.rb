@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 module Primer
   module Alpha
     # @label Banner
@@ -22,6 +21,16 @@ module Primer
       # @label Default
       def default
         render(Primer::Alpha::Banner.new) { "This is a banner." }
+      end
+
+      # @label Announce
+      def announce_on_show
+        render_with_template
+      end
+
+      # @label Announce when updating wrapper visibility
+      def announce_on_show_with_hidden_wrapper
+        render_with_template
       end
 
       # @!group Schemes
