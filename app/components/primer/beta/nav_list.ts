@@ -1,9 +1,26 @@
 /* eslint-disable custom-elements/expose-class-on-global */
-import {controller, targets} from '@github/catalyst'
+import {controller, target, targets} from '@github/catalyst'
+import {ActionListTruncationObserver} from '../alpha/action_list'
 
 @controller
 export class NavListElement extends HTMLElement {
   @targets items: HTMLElement[]
+  @target topLevelList: HTMLElement
+
+  #truncationObserver: ActionListTruncationObserver
+
+  connectedCallback() {
+    // groups are wrapped in <action-list>, which handles resizing on its own
+    if (this.topLevelList) {
+      this.#truncationObserver = new ActionListTruncationObserver(this.topLevelList)
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.topLevelList) {
+      this.#truncationObserver.unobserve(this.topLevelList)
+    }
+  }
 
   selectItemById(itemId: string | null): boolean {
     if (!itemId) return false
