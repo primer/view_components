@@ -4,7 +4,7 @@
       <%= parent_link %>
       <%= breadcrumbs %>
       <% if context_bar_actions.any? %>
-        <%= render Primer::BaseComponent.new(tag: :div, classes: 'PageHeader-contextBarActions', display: DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY) do %>
+        <%= render Primer::BaseComponent.new(tag: :div, classes: 'PageHeader-contextBarActions', display: DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY, align_items: :center) do %>
           <% context_bar_actions.each do |action| %>
             <%= action %>
           <% end %>
