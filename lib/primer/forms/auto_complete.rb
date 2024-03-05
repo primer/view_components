@@ -4,6 +4,8 @@ module Primer
   module Forms
     # :nodoc:
     class AutoComplete < BaseComponent
+      ARGUMENT_TYPES = %i(keyreq key).freeze
+
       delegate :builder, :form, to: :@input
 
       def initialize(input:)
@@ -15,7 +17,7 @@ module Primer
         @auto_complete_argument_names ||=
           Primer::Beta::AutoComplete.instance_method(:initialize)
             .parameters
-            .filter_map { |(type, param_name)| next param_name if type == :keyreq || type == :key }
+            .filter_map { |(type, param_name)| next param_name if ARGUMENT_TYPES.include?(type) }
       end
 
       private
@@ -43,7 +45,7 @@ module Primer
       end
 
       def input_arguments
-        all_input_arguments.except(*self.class.auto_complete_argument_names)
+        all_input_arguments.except(*self.class.auto_complete_argument_names, :id, :name)
       end
 
       def text_field_attributes
