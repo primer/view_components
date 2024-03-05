@@ -5028,8 +5028,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/medium_title",
-        "name": "medium_title",
+        "preview_path": "primer/open_project/page_header/large_title",
+        "name": "large_title",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -5054,8 +5054,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/back_button",
-        "name": "back_button",
+        "preview_path": "primer/open_project/page_header/leading_action",
+        "name": "leading_action",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

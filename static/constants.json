@@ -1415,26 +1415,20 @@
       "chevron-left",
       "triangle-left"
     ],
-    "BACK_BUTTON_SIZE_OPTIONS": [
-      "small",
-      "medium",
-      "large"
-    ],
-    "DEFAULT_BACK_BUTTON_DISPLAY": [
-      "none",
-      "flex"
-    ],
     "DEFAULT_BACK_BUTTON_ICON": "arrow-left",
-    "DEFAULT_BACK_BUTTON_SIZE": "medium",
     "DEFAULT_BREADCRUMBS_DISPLAY": [
       "none",
       "flex"
     ],
     "DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY": [
-      "block",
+      "flex",
       "none"
     ],
-    "DEFAULT_HEADER_VARIANT": "large",
+    "DEFAULT_HEADER_VARIANT": "medium",
+    "DEFAULT_LEADING_ACTION_DISPLAY": [
+      "none",
+      "flex"
+    ],
     "DEFAULT_PARENT_LINK_DISPLAY": [
       "block",
       "none"
@@ -1443,7 +1437,7 @@
       "medium",
       "large"
     ],
-    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_FALLBACK": "h1",
     "HEADING_TAG_OPTIONS": [
       "h1",
       "h2",

@@ -16178,20 +16178,14 @@
         ]
       },
       {
-        "name": "back_button",
-        "description": "Optional back button prepend the title\nBy default shown on wider screens. Can be overridden with system_argument: display",
+        "name": "leading_action",
+        "description": "Optional leading action prepend the title\nBy default shown on wider screens. Can be overridden with system_argument: display",
         "parameters": [
           {
-            "name": "size",
+            "name": "icon",
             "type": "Symbol",
             "default": "N/A",
-            "description": "One of `:large`, `:medium`, or `:small`."
-          },
-          {
-            "name": "icon",
-            "type": "String",
-            "default": "N/A",
-            "description": "One of `arrow-left`, `chevron-left`, or `triangle-left`."
+            "description": "The name of an {{link_to_octicons}} icon to use."
           },
           {
             "name": "system_arguments",
@@ -16276,8 +16270,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/medium_title",
-        "name": "medium_title",
+        "preview_path": "primer/open_project/page_header/large_title",
+        "name": "large_title",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -16302,8 +16296,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/back_button",
-        "name": "back_button",
+        "preview_path": "primer/open_project/page_header/leading_action",
+        "name": "leading_action",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
