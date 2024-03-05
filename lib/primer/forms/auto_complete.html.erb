@@ -1,8 +1,6 @@
-<%= render(Primer::Beta::AutoComplete.new(label_text: @input.label, input_id: @input.name, list_id: "list-id", **@input.input_arguments)) do |autocomplete| %>
+<%= render(Primer::Beta::AutoComplete.new(**auto_complete_arguments)) do |autocomplete| %>
   <% @input.block.call(autocomplete) if @input.block %>
-  <% autocomplete.with_custom_input do %>
-    <%= builder.text_field(@input.name, **autocomplete.send(:input_arguments_from, **@input.input_arguments.except(:tag))) %>
-  <% end %>
+  <% autocomplete.with_input(**input_arguments) %>
 <% end %>
 <%= render(ValidationMessage.new(input: @input)) %>
 <%= render(Caption.new(input: @input)) %>
