@@ -2284,6 +2284,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/button_group/with_menu_button",
+        "name": "with_menu_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/button_group/icon_buttons",
         "name": "icon_buttons",
         "snapshot": "true",
@@ -3442,7 +3455,7 @@
   {
     "name": "flash",
     "component": "Flash",
-    "status": "beta",
+    "status": "deprecated",
     "lookup_path": "primer/beta/flash",
     "examples": [
       {

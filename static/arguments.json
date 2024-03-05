@@ -3437,6 +3437,28 @@
     ]
   },
   {
+    "component": "ButtonGroup::MenuButton",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "ButtonGroupMenuButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group/menu_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/menu_button/default/",
+    "parameters": [
+      {
+        "name": "menu_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [ActionMenu](/components/alpha/actionmenu)."
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [Button](/components/beta/button) or [IconButton](/components/beta/iconbutton), depending on the value of the `icon:` argument."
+      }
+    ]
+  },
+  {
     "component": "ClipboardCopy",
     "status": "beta",
     "a11y_reviewed": false,
@@ -3648,7 +3670,7 @@
   },
   {
     "component": "Flash",
-    "status": "beta",
+    "status": "deprecated",
     "a11y_reviewed": false,
     "short_name": "Flash",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb",
