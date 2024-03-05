@@ -6,10 +6,6 @@
   margin-bottom: var(--stack-gap-normal);
   border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
   flex-flow: column;
-
-  @media (max-width: 767.98px) {
-    border-bottom: 0;
-  }
 }
 
 .PageHeader-contextBar {
@@ -24,10 +20,11 @@
   flex-flow: row;
   justify-content: flex-end;
   align-items: center; /* Keep back button vertically aligned. */
+  margin-bottom: var(--space-xsmall);
 }
 
 .PageHeader-title {
-  font-size: 24px;
+  font-size: var(--text-title-size-medium);
   font-weight: var(--base-text-weight-normal);
   flex: 1 1 auto;
 }
@@ -43,15 +40,10 @@
   flex: 1 100%;
 }
 
-/* Add 1 or 2 buttons to the right of the heading */
 .PageHeader-actions {
-  margin: 0 0 0 var(--base-size-4);
   justify-content: flex-end;
   display: flex;
-
-  & + .PageHeader-description {
-    margin-top: var(--base-size-4);
-  }
+  align-items: center;
 }
 
 .PageHeader-breadcrumbs {
@@ -61,16 +53,11 @@
   padding-bottom: var(--base-size-4);
 }
 
-.PageHeader-backButton {
+.PageHeader-leadingAction {
   margin-top: 2px; /* to center align with label */
   margin-right: var(--base-size-4);
 }
 
 .PageHeader-parentLink {
   flex: 1 1 auto;
-  margin-bottom: var(--base-size-4);
-}
-
-.PageHeader-contextBarActions {
-  margin: 0 0 0 var(--base-size-4);
 }

@@ -426,19 +426,16 @@
   "PageHeader-actions": [
     "Primer::OpenProject::PageHeader"
   ],
-  "PageHeader-backButton": [
-    "Primer::OpenProject::PageHeader"
-  ],
   "PageHeader-breadcrumbs": [
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-contextBar": [
     "Primer::OpenProject::PageHeader"
   ],
-  "PageHeader-contextBarActions": [
+  "PageHeader-description": [
     "Primer::OpenProject::PageHeader"
   ],
-  "PageHeader-description": [
+  "PageHeader-leadingAction": [
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-parentLink": [

@@ -16,15 +16,15 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-title--large")
+    assert_selector(".PageHeader-title--medium")
   end
 
-  def test_renders_medium_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :medium) { "Hello" } }
+  def test_renders_large_title
+    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :large) { "Hello" } }
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-title--medium")
+    assert_selector(".PageHeader-title--large")
   end
 
   def test_renders_description
@@ -42,7 +42,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_actions { "An action" }
+      header.with_action { "An action" }
     end
 
     assert_text("Hello")
@@ -51,15 +51,15 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-actions")
   end
 
-  def test_renders_back_button
+  def test_renders_leading_action
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_back_button(href: "/link", 'aria-label': "Back")
+      header.with_leading_action(icon: :"arrow-left", href: "/link", 'aria-label': "Back")
     end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_selector("a.PageHeader-backButton[href='/link']")
+    assert_selector("a.PageHeader-leadingAction[href='/link']")
   end
 
   def test_renders_breadcrumbs
@@ -97,7 +97,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_context_bar_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_context_bar_actions { "An context bar action" }
+      header.with_context_bar_action { "An context bar action" }
     end
 
     assert_text("Hello")

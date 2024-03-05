@@ -5,18 +5,11 @@ module Primer
     # A ViewComponent PageHeader inspired by the primer react variant
     class PageHeader < Primer::Component
       HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
-      HEADING_TAG_FALLBACK = :h2
+      HEADING_TAG_FALLBACK = :h1
 
-      DEFAULT_HEADER_VARIANT = :large
+      DEFAULT_HEADER_VARIANT = :medium
       HEADER_VARIANT_OPTIONS = [
-        :medium,
-        DEFAULT_HEADER_VARIANT
-      ].freeze
-
-      DEFAULT_BACK_BUTTON_SIZE = :medium
-      BACK_BUTTON_SIZE_OPTIONS = [
-        :small,
-        DEFAULT_BACK_BUTTON_SIZE,
+        DEFAULT_HEADER_VARIANT,
         :large
       ].freeze
 
@@ -27,10 +20,10 @@ module Primer
         "triangle-left"
       ].freeze
 
-      DEFAULT_BACK_BUTTON_DISPLAY = [:none, :flex].freeze
+      DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
-      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:block, :none].freeze
+      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:flex, :none].freeze
 
       status :open_project
 
@@ -61,10 +54,10 @@ module Primer
       # Actions
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :actions, lambda { |**system_arguments|
+      renders_many :actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-actions")
+        system_arguments[:ml] ||= 2
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -73,35 +66,31 @@ module Primer
       # By default shown on narrow screens. Can be overridden with system_argument: display
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :context_bar_actions, lambda { |**system_arguments|
+      renders_many :context_bar_actions, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-contextBarActions")
-        system_arguments[:display] ||= DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY
+        system_arguments[:ml] ||= 2
 
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Optional back button prepend the title
+      # Optional leading action prepend the title
       # By default shown on wider screens. Can be overridden with system_argument: display
       #
-      # @param size [Symbol] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_SIZE_OPTIONS) %>
-      # @param icon [String] <%= one_of(Primer::OpenProject::PageHeader::BACK_BUTTON_ICON_OPTIONS) %>
+      # @param icon [Symbol] The name of an <%= link_to_octicons %> icon to use.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :back_button, lambda { |
-        size: DEFAULT_BACK_BUTTON_SIZE,
-        icon: DEFAULT_BACK_BUTTON_ICON,
+      renders_one :leading_action, lambda { |
+        icon:,
         **system_arguments
       |
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :a
         system_arguments[:scheme] = :invisible
-        system_arguments[:size] = fetch_or_fallback(BACK_BUTTON_SIZE_OPTIONS, size, DEFAULT_BACK_BUTTON_SIZE)
-        system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-backButton")
-        system_arguments[:display] ||= DEFAULT_BACK_BUTTON_DISPLAY
+        system_arguments[:icon] = icon
+        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-leadingAction")
+        system_arguments[:display] ||= DEFAULT_LEADING_ACTION_DISPLAY
 
-        Primer::Beta::IconButton.new(**system_arguments)
+        Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
       # Optional parent link in the context area
