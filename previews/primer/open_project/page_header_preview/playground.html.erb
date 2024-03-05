@@ -1,11 +1,11 @@
 <%= render Primer::OpenProject::PageHeader.new do |header| %>
   <%= header.with_title(variant: variant) { title } %>
   <%= header.with_description { description } %>
-  <%= header.with_back_button(href: "#", size: back_button_size, 'aria-label': "Back") if with_back_button %>
+  <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action %>
   <%= header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs %>
   <%= header.with_parent_link(href: "#") { "Parent link" } if with_parent_link %>
   <% if with_actions %>
-    <% header.with_actions do %>
+    <% header.with_action do %>
       <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
         <% component.with_show_button { "Menu" } %>
         <% component.with_item(label: "Item", tag: :button, value: "") %>
@@ -20,12 +20,12 @@
     <% end %>
   <% end %>
   <% if with_context_bar_actions %>
-    <% header.with_context_bar_actions do %>
+    <% header.with_context_bar_action do %>
       <%= render(Primer::Beta::IconButton.new(
         scheme: :default,
         size: :small,
         icon: "pencil",
-        "aria-label": "aria_label"
+        "aria-label": "A meaningful label"
       )) %>
     <% end %>
   <% end %>
