@@ -32,7 +32,7 @@ test.describe('generate snapshots', () => {
         if (example.snapshot === 'interactive') {
           for (const theme of themes) {
             test(`${example.preview_path}-${theme}`, async ({page}) => {
-              await page.goto(`/rails/view_components/${example.preview_path}?theme=${theme}`)
+              await page.goto(`/rails/view_components/${example.preview_path}?theme=${theme}&primitives=next_major_v8`)
 
               // Focus state
               await page.keyboard.press('Tab')
