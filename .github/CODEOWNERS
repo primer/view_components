@@ -1,4 +1,4 @@
-* @primer/rails-reviewers
+* @primer/rails-reviewers *@primer/engineer-reviewers
 
 # Component CSS files
 app/components/**/*.pcss @primer/css-reviewers
