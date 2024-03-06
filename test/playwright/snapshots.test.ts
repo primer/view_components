@@ -50,7 +50,7 @@ test.describe('generate snapshots', () => {
         }
 
         test(example.preview_path, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          await page.goto(`/rails/view_components/${example.preview_path}?theme=all&primitives=next_major_v8`)
           const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
           expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
 
