@@ -93,8 +93,8 @@ module Demo
         ],
         # rubocop:disable Style/WordArray
         primitives: [
-          ["Next Major v8", "next_major_v8"]
-          ["Default", "default"],
+          ["Next Major v8", "next_major_v8"],
+          ["Default", "default"]
         ]
         # rubocop:enable Style/WordArray
       }
