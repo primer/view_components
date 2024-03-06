@@ -4,15 +4,15 @@
       <%= @label_text %>
     </label>
     <% if leading_visual || @show_clear_button %>
-        <div class="<%= @field_wrap_classes %> <% if leading_visual %>FormControl-input-wrap--leadingVisual<% end %>">
-            <span class="FormControl-input-leadingVisualWrap">
-                <%= leading_visual %>
-            </span>
-            <%= input %>
-            <% if @show_clear_button %>
-              <button id="<%= @input_id %>-clear" class="FormControl-input-trailingAction" aria-label="Clear"><%= primer_octicon "x-circle-fill" %></button>
-            <% end %>
-        </div>
+      <div class="<%= @field_wrap_classes %> <% if leading_visual %>FormControl-input-wrap--leadingVisual<% end %>">
+        <span class="FormControl-input-leadingVisualWrap">
+          <%= leading_visual %>
+        </span>
+        <%= input %>
+        <% if @show_clear_button %>
+          <button id="<%= @input_id %>-clear" class="FormControl-input-trailingAction" aria-label="Clear"><%= primer_octicon "x-circle-fill" %></button>
+        <% end %>
+      </div>
     <% else %>
       <%= input %>
     <% end %>
