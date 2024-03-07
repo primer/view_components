@@ -17,7 +17,7 @@ class PrimerTextFieldElement extends HTMLElement {
     this.#abortController?.abort()
     const {signal} = (this.#abortController = new AbortController())
 
-    this.inputElement.addEventListener(
+    this.addEventListener(
       'auto-check-success',
       async (event: any) => {
         const message = await event.detail.response.text()
@@ -30,7 +30,7 @@ class PrimerTextFieldElement extends HTMLElement {
       {signal},
     )
 
-    this.inputElement.addEventListener(
+    this.addEventListener(
       'auto-check-error',
       async (event: any) => {
         const errorMessage = await event.detail.response.text()

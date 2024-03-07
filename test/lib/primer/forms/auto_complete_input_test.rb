@@ -3,14 +3,14 @@
 require "lib/test_helper"
 require_relative "models/deep_thought"
 
-class Primer::Forms::TextFieldInputTest < Minitest::Test
+class Primer::Forms::AutoCompleteInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_hidden_text_field
+  def test_hidden_auto_complete
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
-        render_inline_form(f) do |text_field_form|
-          text_field_form.text_field(name: :foo, label: "Foo", hidden: true)
+        render_inline_form(f) do |auto_complete_form|
+          auto_complete_form.auto_complete(name: :foo, label: "Foo", src: "/items", hidden: true)
         end
       end
     end
@@ -24,7 +24,9 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
 
     render_in_view_context do
       primer_form_with(model: model, url: "/foo") do |f|
-        render(SingleTextFieldForm.new(f))
+        render_inline_form(f) do |auto_complete_form|
+          auto_complete_form.auto_complete(name: :ultimate_answer, label: "Ultimate answer", src: "/items")
+        end
       end
     end
 
@@ -33,17 +35,5 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
 
     # no rails error markup
     refute_selector ".field_with_errors", visible: :all
-  end
-
-  def test_leading_visual
-    render_in_view_context do
-      primer_form_with(url: "/foo") do |f|
-        render_inline_form(f) do |text_field_form|
-          text_field_form.text_field(name: :foo, label: "Foo", leading_visual: { icon: :search })
-        end
-      end
-    end
-
-    assert_selector "svg.octicon.octicon-search.FormControl-input-leadingVisual"
   end
 end
