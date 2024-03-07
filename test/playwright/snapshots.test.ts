@@ -32,7 +32,7 @@ test.describe('generate snapshots', () => {
         if (example.snapshot === 'interactive') {
           for (const theme of themes) {
             test(`${example.preview_path}-${theme}`, async ({page}) => {
-              await page.goto(`/rails/view_components/${example.preview_path}?theme=${theme}`)
+              await page.goto(`/rails/view_components/${example.preview_path}?theme=${theme}&primitives=next_major_v8`)
 
               // Focus state
               await page.keyboard.press('Tab')
@@ -50,7 +50,7 @@ test.describe('generate snapshots', () => {
         }
 
         test(example.preview_path, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          await page.goto(`/rails/view_components/${example.preview_path}?theme=all&primitives=next_major_v8`)
           const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
           expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
 
