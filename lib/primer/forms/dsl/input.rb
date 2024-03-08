@@ -56,7 +56,9 @@ module Primer
           @form = form
 
           @input_arguments = system_arguments
+          @input_arguments.delete(:id) unless @input_arguments[:id].present?
           @label_arguments = @input_arguments.delete(:label_arguments) || {}
+          @label_arguments[:for] = id if id.present?
 
           @label_arguments[:class] = class_names(
             @label_arguments[:class],
@@ -238,6 +240,10 @@ module Primer
 
         def autofocus!
           input_arguments[:autofocus] = true
+        end
+
+        def id
+          @input_arguments[:id]
         end
 
         # :nocov:
