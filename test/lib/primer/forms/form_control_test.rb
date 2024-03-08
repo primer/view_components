@@ -41,4 +41,17 @@ class Primer::Forms::FormControlTest < Minitest::Test
     # there are validation-related elements, but they're hidden
     assert_selector(".FormControl-inlineValidation", visible: false)
   end
+
+  def test_labels_use_custom_ids_when_provided
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |test_form|
+          test_form.text_field(name: :foobar, id: "bazboo", label: "Foos and bars y'all")
+        end
+      end
+    end
+
+    assert_selector "input[id=bazboo]"
+    assert_selector "label[for=bazboo]"
+  end
 end
