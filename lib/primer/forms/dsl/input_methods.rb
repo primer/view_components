@@ -65,7 +65,7 @@ module Primer
         # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
         def text_field(**options, &block)
           options = decorate_options(**options)
-          add_input TextFieldInput.new(builder: builder, form: form, **options, &block)
+          add_input TextFieldInput.new(builder: builder, form: form, full_width: true, **options, &block)
         end
 
         # Adds an autocomplete text field to this form.
@@ -74,7 +74,7 @@ module Primer
         # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
         def auto_complete(**options, &block)
           options = decorate_options(**options)
-          add_input AutoCompleteInput.new(builder: builder, form: form, **options, &block)
+          add_input AutoCompleteInput.new(builder: builder, form: form, full_width: true, **options, &block)
         end
 
         # Adds a text area to this form.
@@ -83,7 +83,7 @@ module Primer
         # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
         def text_area(**options, &block)
           options = decorate_options(**options)
-          add_input TextAreaInput.new(builder: builder, form: form, **options, &block)
+          add_input TextAreaInput.new(builder: builder, form: form, full_width: true, **options, &block)
         end
 
         # END text input methods
@@ -96,7 +96,7 @@ module Primer
         # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
         def select_list(**options, &block)
           options = decorate_options(**options)
-          add_input SelectInput.new(builder: builder, form: form, **options, &block)
+          add_input SelectInput.new(builder: builder, form: form, full_width: true, **options, &block)
         end
 
         # Adds an <%= link_to_component(Primer::Alpha::ActionMenu) %> to this form.
@@ -105,7 +105,7 @@ module Primer
         # @param block [Proc] The block passed to `#render` when the <%= link_to_component(Primer::Alpha::ActionMenu) %> is rendered. This block is passed an instance of <%= link_to_component(Primer::Alpha::ActionMenu) %>, which can be used to add items, dividers, etc.
         def action_menu(**options, &block)
           options = decorate_options(**options)
-          add_input ActionMenuInput.new(builder: builder, form: form, **options, &block)
+          add_input ActionMenuInput.new(builder: builder, form: form, full_width: true, **options, &block)
         end
 
         # END select input methods
