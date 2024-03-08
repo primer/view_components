@@ -71,7 +71,7 @@ module Primer
           @caption = @input_arguments.delete(:caption)
           @validation_message = @input_arguments.delete(:validation_message)
           @invalid = @input_arguments.delete(:invalid)
-          @full_width = @input_arguments.delete(:full_width, true)
+          @full_width = @input_arguments.delete(:full_width) { true }
           @size = @input_arguments.delete(:size)
 
           # If scope_name_to_model is false, the name of the input for eg. `my_field`
