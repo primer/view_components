@@ -2814,13 +2814,13 @@
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "What size toggle switch to render. One of `:end` or `:start`."
+        "description": "What size toggle switch to render. One of `:medium` or `:small`."
       },
       {
         "name": "status_label_position",
         "type": "Symbol",
         "default": "`:start`",
-        "description": "Which side of the toggle switch to render the status label. One of `:medium` or `:small`."
+        "description": "Which side of the toggle switch to render the status label. One of `:end` or `:start`."
       },
       {
         "name": "system_arguments",
