@@ -23,7 +23,7 @@ module Primer
         caption: "You can trust me, I'm a website",
         required: false,
         visually_hide_label: false,
-        full_width: false,
+        full_width: true,
         disabled: false,
         invalid: false,
         validation_message: nil
@@ -68,6 +68,12 @@ module Primer
       # @snapshot
       def full_width
         render(Primer::Alpha::TextArea.new(full_width: true, name: "my-text-area", label: "Tell me about yourself"))
+      end
+
+      # @label Not full width
+      # @snapshot
+      def not_full_width
+        render(Primer::Alpha::TextArea.new(full_width: false, name: "my-text-area", label: "Tell me about yourself"))
       end
 
       # @label Disabled
