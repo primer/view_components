@@ -7180,6 +7180,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -7614,7 +7627,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -7798,6 +7811,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_area/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -7865,7 +7891,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -8132,6 +8158,19 @@
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/not_full_width",
+        "name": "not_full_width",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
