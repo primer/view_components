@@ -1,8 +1,14 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if parent_link || breadcrumbs %>
+  <% if parent_link || breadcrumbs || actions.any? %>
     <div class="PageHeader-contextBar">
       <%= parent_link %>
       <%= breadcrumbs %>
+
+      <% if @mobile_action_menu.present? %>
+        <%= render(@mobile_action_menu) do |menu| %>
+          <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 

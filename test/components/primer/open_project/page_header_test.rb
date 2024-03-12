@@ -42,7 +42,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_action { "An action" }
+      header.with_action(mobile_icon: 'pencil', mobile_label: 'Action') { "An action" }
     end
 
     assert_text("Hello")

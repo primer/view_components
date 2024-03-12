@@ -5,7 +5,7 @@
   <%= header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs %>
   <%= header.with_parent_link(href: "#") { "Parent link" } if with_parent_link %>
   <% if with_actions %>
-    <% header.with_action do %>
+    <% header.with_action(mobile_icon: 'pencil', mobile_label: 'Menu') do %>
       <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
         <% component.with_show_button { "Menu" } %>
         <% component.with_item(label: "Item", tag: :button, value: "") %>

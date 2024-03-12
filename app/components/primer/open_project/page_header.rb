@@ -20,6 +20,10 @@ module Primer
         "triangle-left"
       ].freeze
 
+      DEFAULT_ACTION_SCHEME = :default
+      ACTIONS_DISPLAY = [:none, :block].freeze
+      MORE_MENU_DISPLAY = [:block, :none].freeze
+
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
@@ -53,14 +57,18 @@ module Primer
       # Actions
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :actions, lambda { |**system_arguments|
+      renders_many :actions, lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
         system_arguments[:ml] ||= 2
+        system_arguments[:display] = ACTIONS_DISPLAY
+
+        with_menu_item(label: mobile_label, scheme: scheme) do |c|
+          c.with_leading_visual_icon(icon: mobile_icon)
+        end
 
         Primer::BaseComponent.new(**system_arguments)
       }
-
 
       # Optional leading action prepend the title
       # By default shown on wider screens. Can be overridden with system_argument: display
@@ -127,6 +135,13 @@ module Primer
             @system_arguments[:classes],
             "PageHeader"
           )
+
+        #return unless actions.any?
+
+        @mobile_action_menu = Primer::Alpha::ActionMenu.new(
+          display: MORE_MENU_DISPLAY,
+          anchor_align: :end
+        )
       end
 
       def render?
@@ -134,6 +149,16 @@ module Primer
       end
 
       private
+
+      def with_menu_item(**system_arguments, &block)
+        return unless @mobile_action_menu
+
+        @mobile_action_menu.with_item(
+          value: "",
+          **system_arguments,
+          &block
+        )
+      end
 
       # transform anchor tag strings to {href, text} objects
       # e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"

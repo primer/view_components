@@ -1,19 +1,28 @@
 <%= render(Primer::OpenProject::PageHeader.new) do |component| %>
   <% component.with_title do %>
-    A title
+    An awesome title
   <% end %>
   <% component.with_description do %>
     A description with actions
   <% end %>
-  <% component.with_action do %>
-    <%= render(Primer::Beta::IconButton.new(icon: 'pencil', 'aria-label': 'Edit')) %>
+  <% component.with_action(mobile_icon: "pencil", mobile_label: "Edit") do %>
+    <%= render(Primer::Beta::IconButton.new(icon: "pencil", 'aria-label': "Edit")) %>
   <% end %>
-  <% component.with_action do %>
+  <% component.with_action(mobile_icon: "star", mobile_label: "Star") do %>
+    <%= render(Primer::Beta::Button.new) do |button| %>
+      <% button.with_leading_visual_icon(icon: "star") %>
+      Star
+    <% end %>
+  <% end %>
+  <% component.with_action(mobile_icon: "trash", mobile_label: "Delete", scheme: :danger) do %>
+    <%= render(Primer::Beta::IconButton.new(icon: "trash", 'aria-label': 'Delete', scheme: :danger, data: { test: 'click-me-controller' })) %>
+  <% end %>
+  <% component.with_action(mobile_icon: "pencil", mobile_label: "Menu") do %>
     <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
       <% menu.with_show_button { "Menu" } %>
-      <% menu.with_item(label: "Item", tag: :button, value: "") %>
+      <% menu.with_item(label: "Some action", tag: :button, value: "") %>
       <% menu.with_item(
-           label: "Show dialog",
+           label: "Show delete dialog",
            tag: :button,
            content_arguments: { "data-show-dialog-id": "my-dialog" },
            value: "",
