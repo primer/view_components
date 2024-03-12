@@ -5556,6 +5556,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -6080,6 +6093,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_area/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -6233,6 +6259,19 @@
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/not_full_width",
+        "name": "not_full_width",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
