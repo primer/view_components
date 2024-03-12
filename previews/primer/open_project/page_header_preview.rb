@@ -21,7 +21,6 @@ module Primer
       # @param with_leading_action [Symbol] octicon
       # @param with_breadcrumbs [Boolean]
       # @param with_actions [Boolean]
-      # @param with_context_bar_actions [Boolean]
       # @param with_parent_link [Boolean]
       def playground(
         variant: :large,
@@ -30,7 +29,6 @@ module Primer
         with_leading_action: :"arrow-left",
         with_breadcrumbs: false,
         with_actions: false,
-        with_context_bar_actions: false,
         with_parent_link: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
@@ -42,7 +40,6 @@ module Primer
                                        with_breadcrumbs: with_breadcrumbs,
                                        with_parent_link: with_parent_link,
                                        with_actions: with_actions,
-                                       with_context_bar_actions: with_context_bar_actions,
                                        breadcrumb_items: breadcrumb_items })
       end
 
@@ -100,15 +97,6 @@ module Primer
           header.with_title { "A title" }
           header.with_parent_link(href: "test") { "Parent link" }
         end
-      end
-
-      # @label With context bar actions (on narrow)
-      # **Context bar actions** are only shown on **narrow screens** by default.
-      # If you want to override that behaviour please use the system_argument: **display**
-      # e.g. **component.with\_context\_bar\_actions(display: [:block, :block])**
-      #
-      def context_bar_actions
-        render_with_template(locals: {})
       end
     end
   end

@@ -1,15 +1,8 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if parent_link || breadcrumbs || context_bar_actions %>
+  <% if parent_link || breadcrumbs %>
     <div class="PageHeader-contextBar">
       <%= parent_link %>
       <%= breadcrumbs %>
-      <% if context_bar_actions.any? %>
-        <%= render Primer::BaseComponent.new(tag: :div, classes: 'PageHeader-contextBarActions', display: DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY, align_items: :center) do %>
-          <% context_bar_actions.each do |action| %>
-            <%= action %>
-          <% end %>
-        <% end %>
-      <% end %>
     </div>
   <% end %>
 

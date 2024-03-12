@@ -93,15 +93,4 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-title")
     assert_selector(".PageHeader-parentLink")
   end
-
-  def test_renders_context_bar_actions
-    render_inline(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title { "Hello" }
-      header.with_context_bar_action { "An context bar action" }
-    end
-
-    assert_text("Hello")
-    assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-contextBarActions")
-  end
 end

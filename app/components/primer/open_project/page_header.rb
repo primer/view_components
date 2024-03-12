@@ -23,7 +23,6 @@ module Primer
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
-      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:flex, :none].freeze
 
       status :open_project
 
@@ -62,17 +61,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Context Bar Actions
-      # By default shown on narrow screens. Can be overridden with system_argument: display
-      #
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :context_bar_actions, lambda { |**system_arguments|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 2
-
-        Primer::BaseComponent.new(**system_arguments)
-      }
 
       # Optional leading action prepend the title
       # By default shown on wider screens. Can be overridden with system_argument: display

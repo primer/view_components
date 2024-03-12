@@ -19,14 +19,4 @@
       <% end %>
     <% end %>
   <% end %>
-  <% if with_context_bar_actions %>
-    <% header.with_context_bar_action do %>
-      <%= render(Primer::Beta::IconButton.new(
-        scheme: :default,
-        size: :small,
-        icon: "pencil",
-        "aria-label": "A meaningful label"
-      )) %>
-    <% end %>
-  <% end %>
 <% end %>
