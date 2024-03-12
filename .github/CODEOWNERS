@@ -1,5 +1,8 @@
 * @primer/engineer-reviewers
 
+# Design changes
+.playwright/screenshots/ @primer/design-reviewers
+
 # Component CSS files
 app/components/**/*.pcss @primer/css-reviewers
 
