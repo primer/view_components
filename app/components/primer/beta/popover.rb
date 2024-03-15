@@ -54,7 +54,6 @@ module Primer
         @body_arguments[:mt] ||= 2
         @body_arguments[:mx] ||= :auto
         @body_arguments[:text_align] ||= :left
-        @body_arguments[:box_shadow] ||= :large
 
         Primer::Content.new
       }
