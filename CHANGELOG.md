@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.21.0
+
+### Minor Changes
+
+- [#2689](https://github.com/primer/view_components/pull/2689) [`a7f7dad`](https://github.com/primer/view_components/commit/a7f7dad6170afc1dea1071639b5beb3aa20b7918) Thanks [@langermank](https://github.com/langermank)! - - Bug fix: inactive button colors
+  - Bug fix: double border/box-shadow on popover and dropdown
+  - Bug fix: text color for primary button in dark dimmed
+
 ## 0.20.0
 
 ### Minor Changes
