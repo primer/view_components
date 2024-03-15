@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.20.0
+
+### Minor Changes
+
+- [#2627](https://github.com/primer/view_components/pull/2627) [`226481e`](https://github.com/primer/view_components/commit/226481e51e8c459dcd6d2a49d57c5005a8103aff) Thanks [@camertron](https://github.com/camertron)! - Support `<select>` elements that allow selecting multiple values
+
+- [#2610](https://github.com/primer/view_components/pull/2610) [`14890a3`](https://github.com/primer/view_components/commit/14890a30c736a5a01596f0863e36d81861e6d6ac) Thanks [@thesnowrose](https://github.com/thesnowrose)! - Add the ability to show a tooltip for navlists on text truncation
+
+- [#2609](https://github.com/primer/view_components/pull/2609) [`14d8dc5`](https://github.com/primer/view_components/commit/14d8dc583541879eda26b7f1836d3df7c752507f) Thanks [@camertron](https://github.com/camertron)! - Add an AutoComplete form input
+
+### Patch Changes
+
+- [#2673](https://github.com/primer/view_components/pull/2673) [`3a6762d`](https://github.com/primer/view_components/commit/3a6762db6a55b5f918b86c58ee835fe52e66eac3) Thanks [@camertron](https://github.com/camertron)! - Make text field and other form inputs respect the full_width: option
+
+- [#2665](https://github.com/primer/view_components/pull/2665) [`c7c206a`](https://github.com/primer/view_components/commit/c7c206a5f434ec023aec87623f0dc1e90902d3ee) Thanks [@langermank](https://github.com/langermank)! - Default IconButton text color `muted`
+
+- [#2629](https://github.com/primer/view_components/pull/2629) [`862f05a`](https://github.com/primer/view_components/commit/862f05ae7a751b87650c72616360cdbabb7504ee) Thanks [@camertron](https://github.com/camertron)! - Fix autofocus behavior for radio button and check box groups
+
+- [#2642](https://github.com/primer/view_components/pull/2642) [`7f17b7c`](https://github.com/primer/view_components/commit/7f17b7c1686cfa875ae75b58c8ff3245ea08eb24) Thanks [@tbenning](https://github.com/tbenning)! - Unify breadcrumbs
+
+- [#2666](https://github.com/primer/view_components/pull/2666) [`53a3390`](https://github.com/primer/view_components/commit/53a3390e897b5959e6d38f2f212ac773622c51f7) Thanks [@camertron](https://github.com/camertron)! - Make sure labels and form inputs are properly associated when a custom ID is provided
+
+- [#2672](https://github.com/primer/view_components/pull/2672) [`f1ab24a`](https://github.com/primer/view_components/commit/f1ab24ab59dd989ef21b0674b7b95189d7b50c2b) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix documented options for ToggleSwitch size and status_label_position
+
+- [#2643](https://github.com/primer/view_components/pull/2643) [`70a6dee`](https://github.com/primer/view_components/commit/70a6dee654562b505ac17991a53d1039c57f81e3) Thanks [@langermank](https://github.com/langermank)! - Swap bg-gradient with bg-color for Banner/Flash
+
 ## 0.19.0
 
 ### Minor Changes
