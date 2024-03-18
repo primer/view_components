@@ -21,6 +21,15 @@ dialog.Overlay:not([open]) {
   opacity: 0;
 }
 
+/* hacks until firefox fully supports popovers */
+:where([popover]:not(.\:popover-open)) {
+  display: none !important;
+}
+
+:popover-open {
+  display: revert !important;
+}
+
 .Overlay {
   display: flex;
   inset: 0;
