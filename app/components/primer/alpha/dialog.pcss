@@ -21,13 +21,14 @@ dialog.Overlay:not([open]) {
   opacity: 0;
 }
 
-/* hacks until firefox fully supports popovers */
-:where([popover]:not(.\:popover-open)) {
-  display: none !important;
-}
-
-:popover-open {
-  display: inherit !important;
+/* This is for @oddbird/popover-polyfill;
+ * A FOUC occurs in browsers which do not support :popover-open.
+ * We can try to hide the popover if :popover-open is not supported.
+ */
+@supports not selector(:popover-open) {
+  [popover]:not(.\:popover-open) {
+    display: none;
+  }
 }
 
 .Overlay {
