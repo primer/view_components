@@ -44,5 +44,7 @@ module Primer
     def immediate_validation_form; end
 
     def example_toggle_switch_form; end
+
+    def auto_complete_form; end
   end
 end

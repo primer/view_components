@@ -68,6 +68,15 @@ module Primer
           add_input TextFieldInput.new(builder: builder, form: form, **options, &block)
         end
 
+        # Adds an autocomplete text field to this form.
+        #
+        # @param options [Hash] The options accepted by the autocomplete input (see forms docs).
+        # @param block [Proc] A block that will be yielded a reference to the input object so it can be customized.
+        def auto_complete(**options, &block)
+          options = decorate_options(**options)
+          add_input AutoCompleteInput.new(builder: builder, form: form, **options, &block)
+        end
+
         # Adds a text area to this form.
         #
         # @param options [Hash] The options accepted by the text area input (see forms docs).

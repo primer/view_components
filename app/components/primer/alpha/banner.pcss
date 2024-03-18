@@ -5,7 +5,7 @@
   display: grid;
   padding: var(--base-size-8);
   color: var(--fgColor-default);
-  background-image: linear-gradient(var(--bgColor-accent-muted), var(--bgColor-accent-muted));
+  background-color: var(--bgColor-accent-muted);
   border: var(--borderWidth-thin) solid var(--borderColor-accent-muted);
   border-radius: var(--borderRadius-medium);
   grid-auto-flow: column;
@@ -78,7 +78,7 @@
 
   &.Banner--warning {
     color: var(--fgColor-default);
-    background-image: linear-gradient(var(--bgColor-attention-muted), var(--bgColor-attention-muted));
+    background-color: var(--bgColor-attention-muted);
     border-color: var(--borderColor-attention-muted);
 
     & .Banner-visual .octicon {
@@ -88,7 +88,7 @@
 
   &.Banner--error {
     color: var(--fgColor-default);
-    background-image: linear-gradient(var(--bgColor-danger-muted), var(--bgColor-danger-muted));
+    background-color: var(--bgColor-danger-muted);
     border-color: var(--borderColor-danger-muted);
 
     & .Banner-visual .octicon {
@@ -98,7 +98,7 @@
 
   &.Banner--success {
     color: var(--fgColor-default);
-    background-image: linear-gradient(var(--bgColor-success-muted), var(--bgColor-success-muted));
+    background-color: var(--bgColor-success-muted);
     border-color: var(--borderColor-success-muted);
 
     & .Banner-visual .octicon {

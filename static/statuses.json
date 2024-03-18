@@ -82,7 +82,7 @@
   "Primer::Beta::CloseButton": "beta",
   "Primer::Beta::Counter": "beta",
   "Primer::Beta::Details": "beta",
-  "Primer::Beta::Flash": "beta",
+  "Primer::Beta::Flash": "deprecated",
   "Primer::Beta::Heading": "beta",
   "Primer::Beta::IconButton": "beta",
   "Primer::Beta::Label": "beta",

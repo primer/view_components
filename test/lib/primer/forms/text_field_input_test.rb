@@ -18,7 +18,7 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
     assert_selector "input[type=text]#foo", visible: :hidden
   end
 
-  def test_no_error_markup
+  def test_only_primer_error_markup
     model = DeepThought.new(41)
     model.valid? # populate validation error messages
 
@@ -28,6 +28,10 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
       end
     end
 
+    # primer error markup
+    assert_selector ".FormControl-inlineValidation", text: "Ultimate answer must be greater than 41"
+
+    # no rails error markup
     refute_selector ".field_with_errors", visible: :all
   end
 

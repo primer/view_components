@@ -28,6 +28,16 @@ module Primer
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+        DEFAULT_TRUNCATION_BEHAVIOR = :none
+        TRUNCATION_BEHAVIOR_MAPPINGS = {
+          DEFAULT_TRUNCATION_BEHAVIOR => nil,
+          false => nil,
+          :show_tooltip => "ActionListItem-label--truncate",
+          :truncate => "ActionListItem-label--truncate",
+          true => "ActionListItem-label--truncate"
+        }
+        TRUNCATION_BEHAVIOR_OPTIONS = TRUNCATION_BEHAVIOR_MAPPINGS.keys.freeze
+
         # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
         # for layout options.
         renders_one :description
@@ -120,6 +130,8 @@ module Primer
           system_arguments[:for_id] = @id
           system_arguments[:type] ||= :description
 
+          system_arguments[:classes] = class_names(system_arguments[:classes], "ActionListItem-truncationTooltip") if @truncate_label == :show_tooltip
+
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
@@ -148,7 +160,7 @@ module Primer
         # @param label_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the label.
         # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         # @param form_arguments [Hash] Allows the item to submit a form on click. The URL passed in the `href:` option will be used as the form action. Pass the `method:` option to this hash to control what kind of request is made, <%= one_of(Primer::Alpha::ActionList::FormWrapper::HTTP_METHOD_OPTIONS) %> The `name:` option is required and specifies the desired name of the field that will be included in the params sent to the server on form submission. Specify the `value:` option to send a custom value to the server; otherwise the value of `name:` is sent.
-        # @param truncate_label [Boolean] Truncate label with ellipsis.
+        # @param truncate_label [Boolean | Symbol] How the label should be truncated when the text does not fit inside the bounds of the list item. <%= one_of(Primer::Alpha::ActionList::Item::TRUNCATION_BEHAVIOR_OPTIONS) %> Pass `false` or `:none` to wrap label text. Pass `true` or `:truncate` to truncate labels with ellipses. Pass `:show_tooltip` to show the entire label contents in a tooltip when the item is hovered.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
         # @param size [Symbol] Controls block sizing of the item.
@@ -168,7 +180,7 @@ module Primer
           content_arguments: {},
           form_arguments: {},
           parent: nil,
-          truncate_label: false,
+          truncate_label: :none,
           href: nil,
           role: nil,
           size: DEFAULT_SIZE,
@@ -206,9 +218,6 @@ module Primer
             "ActionListItem--disabled" => @disabled
           )
 
-          @system_arguments[:data] ||= {}
-          @system_arguments[:data][:targets] = "#{list_class.custom_element_name}.items"
-
           @system_arguments[:data] = merge_data(
             @system_arguments, {
               data: {
@@ -224,7 +233,7 @@ module Primer
               label_classes,
               label_arguments[:classes],
               "ActionListItem-label",
-              "ActionListItem-label--truncate" => @truncate_label
+              TRUNCATION_BEHAVIOR_MAPPINGS[@truncate_label],
             )
           }
 
@@ -292,6 +301,10 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?
           )
+
+          if @truncate_label == :show_tooltip && !tooltip?
+            with_tooltip(text: @label)
+          end
 
           return unless leading_visual
 
