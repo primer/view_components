@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.21.0
+
+### Minor Changes
+
+- [#2603](https://github.com/primer/view_components/pull/2603) [`bbc1776`](https://github.com/primer/view_components/commit/bbc1776b44e089516658aa76d2fec3724a4dccfc) Thanks [@langermank](https://github.com/langermank)! - Tooltip visual refresh to match Primer React
+
+- [#2693](https://github.com/primer/view_components/pull/2693) [`852e24f`](https://github.com/primer/view_components/commit/852e24ff578aa8c67902502fef4d7eda1476cfb8) Thanks [@camertron](https://github.com/camertron)! - - Bug fix: inactive button colors
+  - Bug fix: double border/box-shadow on popover and dropdown
+  - Bug fix: text color for primary button in dark dimmed
+
+### Patch Changes
+
+- [#2706](https://github.com/primer/view_components/pull/2706) [`60c5f01`](https://github.com/primer/view_components/commit/60c5f014e60c6f2e5e5e1bcfb8702fdf48d26fa7) Thanks [@camertron](https://github.com/camertron)! - Fix dialog CSS to prevent tooltip issues
+
+- [#2705](https://github.com/primer/view_components/pull/2705) [`90192bb`](https://github.com/primer/view_components/commit/90192bb652992cc47672a571aa8fb03b866703c5) Thanks [@langermank](https://github.com/langermank)! - Revert "Swap bg-gradient with bg-color for Banner/Flash"
+
 ## 0.20.0
 
 ### Minor Changes
