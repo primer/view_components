@@ -41,8 +41,14 @@ module Primer
 
       # @label With menu button
       #
+      # @param scheme [Symbol] select [default, primary, secondary, danger, invisible]
+      # @param size [Symbol] select [medium, small]
       # @snapshot
-      def with_menu_button
+      def with_menu_button(scheme: :default, size: :medium)
+        render_with_template(locals: {
+          scheme: scheme,
+          size: size
+        })
       end
 
       # @label Icon buttons
