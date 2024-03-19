@@ -26,7 +26,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number || github.event.inputs.PR_NUMBER }}
 
     steps:
-      - uses: Azure/login@v1
+      - uses: Azure/login@v2
         with:
           # excluding a client secret here will cause a login via OpenID Connect (OIDC),
           # which prevents us from having to rotate client credentials, etc

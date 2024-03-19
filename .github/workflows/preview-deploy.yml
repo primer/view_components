@@ -60,7 +60,7 @@ jobs:
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
       run: echo $AZURE_ACR_PASSWORD | docker login primer.azurecr.io --username GitHubActions --password-stdin
-    - uses: Azure/login@v1
+    - uses: Azure/login@v2
       with:
         # excluding a client secret here will cause a login via OpenID Connect (OIDC),
         # which prevents us from having to rotate client credentials, etc
@@ -95,7 +95,7 @@ jobs:
       # bots, they have no intention of viewing the deployed preview anyway.
       # This saves time because the PR can merge sooner.
       if: ${{ !github.event.pull_request.auto_merge }}
-      uses: azure/arm-deploy@65ae74fb7aec7c680c88ef456811f353adae4d06
+      uses: azure/arm-deploy@a1361c2c2cd398621955b16ca32e01c65ea340f5
       with:
         resourceGroupName: primer
         subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f

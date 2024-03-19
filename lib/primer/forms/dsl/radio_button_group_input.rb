@@ -25,6 +25,14 @@ module Primer
           :radio_button_group
         end
 
+        def autofocus!
+          @radio_buttons.first&.autofocus!
+        end
+
+        def focusable?
+          true
+        end
+
         def radio_button(**system_arguments, &block)
           @radio_buttons << RadioButtonInput.new(
             builder: @builder, form: @form, name: @name, disabled: disabled?,

@@ -73,6 +73,20 @@ module Forms
       assert_equal result.dig("other_params", "city"), "lopez_island"
     end
 
+    def test_autocomplete_form_input
+      visit_preview(:auto_complete_form)
+
+      # type "app" into the autocomplete field
+      fruit_field = find("#fruit")
+      fruit_field.fill_in(with: "app")
+
+      # click on the resulting "Apples" list item
+      find(".ActionListItem-label", text: "Apples").click
+
+      # assert autocomplete field now contains the text from the list item, "Apples"
+      assert fruit_field.value == "Apples"
+    end
+
     private
 
     def wait_for_toggle_switch_spinner

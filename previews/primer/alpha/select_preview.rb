@@ -26,7 +26,7 @@ module Primer
         required: false,
         visually_hide_label: false,
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
-        full_width: false,
+        full_width: true,
         disabled: false,
         invalid: false,
         validation_message: nil,
@@ -93,6 +93,17 @@ module Primer
       # @snapshot
       def full_width
         render(Primer::Alpha::Select.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+          component.option(label: "Lopez Island", value: "lopez")
+          component.option(label: "Shaw Island", value: "shaw")
+          component.option(label: "Orcas Island", value: "orcas")
+          component.option(label: "San Juan Island", value: "san_juan")
+        end
+      end
+
+      # @label Not full width
+      # @snapshot
+      def not_full_width
+        render(Primer::Alpha::Select.new(full_width: false, name: "my-select-list", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
