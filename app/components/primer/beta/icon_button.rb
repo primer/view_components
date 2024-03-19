@@ -20,6 +20,8 @@ module Primer
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "Button--secondary",
+        :primary => "Button--primary",
+        :secondary => "Button--secondary",
         :danger => "Button--danger",
         :invisible => "Button--invisible"
       }.freeze

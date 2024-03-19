@@ -170,6 +170,10 @@ summary.Button {
   border-color: var(--button-primary-borderColor-rest);
   box-shadow: var(--shadow-resting-small, var(--color-btn-primary-shadow));
 
+  &.Button--iconOnly {
+    color: var(--button-primary-iconColor-rest);
+  }
+
   &:hover:not(:disabled, .Button--inactive) {
     background-color: var(--button-primary-bgColor-hover);
     border-color: var(--button-primary-borderColor-hover);
@@ -315,6 +319,10 @@ summary.Button {
   background-color: var(--button-danger-bgColor-rest);
   border-color: var(--button-danger-borderColor-rest);
   box-shadow: var(--button-default-shadow-resting), var(--button-default-shadow-inset);
+
+  &.Button--iconOnly {
+    color: var(--button-primary-iconColor-rest);
+  }
 
   &:hover:not(:disabled, .Button--inactive) {
     color: var(--button-danger-fgColor-hover);
