@@ -543,6 +543,16 @@
     appearance: none;
     padding-right: var(--base-size-20);
   }
+
+  &[data-multiple] {
+    &::after {
+      content: none;
+    }
+
+    & .FormControl-select {
+      padding-right: var(--base-size-8);
+    }
+  }
 }
 
 /* checkbox + radio specific styles */

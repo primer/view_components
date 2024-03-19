@@ -91,12 +91,10 @@ module Demo
           ["Dark colorblind", "dark_colorblind"],
           ["All themes", "all"]
         ],
-        # rubocop:disable Style/WordArray
         primitives: [
-          ["Default", "default"],
-          ["Next Major v8", "next_major_v8"]
+          ["Next Major v8", "next_major_v8"],
+          ["Default", "default"]
         ]
-        # rubocop:enable Style/WordArray
       }
 
       config.lookbook.preview_embeds.policy = "ALLOWALL"

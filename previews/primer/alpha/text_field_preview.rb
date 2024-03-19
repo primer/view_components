@@ -34,7 +34,7 @@ module Primer
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         show_clear_button: false,
         clear_button_id: "my-text-field-clear-button",
-        full_width: false,
+        full_width: true,
         disabled: false,
         invalid: false,
         validation_message: nil,
@@ -126,6 +126,12 @@ module Primer
       # @snapshot
       def full_width
         render(Primer::Alpha::TextField.new(full_width: true, name: "my-text-field", label: "My text field"))
+      end
+
+      # @label Not full width
+      # @snapshot
+      def not_full_width
+        render(Primer::Alpha::TextField.new(full_width: false, name: "my-text-field", label: "My text field"))
       end
 
       # @label Disabled

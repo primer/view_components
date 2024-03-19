@@ -28,7 +28,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
       ".ActionListHeader", # used exclusively by NavList
-      ".ActionListItem.ActionListItem--navActive" # used exclusively by NavList
+      ".ActionListItem.ActionListItem--navActive", # used exclusively by NavList
+      "nav-list" # used exclusively by NavList
     ],
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"
