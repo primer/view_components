@@ -63,7 +63,9 @@ module Primer
         system_arguments[:ml] ||= 2
         system_arguments[:display] = ACTIONS_DISPLAY
 
-        with_menu_item(label: mobile_label, scheme: scheme) do |c|
+        system_arguments[:id] ||= self.class.generate_id
+
+        with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
           c.with_leading_visual_icon(icon: mobile_icon)
         end
 
@@ -150,8 +152,14 @@ module Primer
 
       private
 
-      def with_menu_item(**system_arguments, &block)
+      def with_menu_item(id:, **system_arguments, &block)
         return unless @mobile_action_menu
+
+        system_arguments = {
+          **system_arguments,
+          "data-for": id,
+          "data-action": "click:page-header#menuItemClick"
+        }
 
         @mobile_action_menu.with_item(
           value: "",

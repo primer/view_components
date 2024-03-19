@@ -5,6 +5,9 @@
   <% component.with_description do %>
     A description with actions
   <% end %>
+  <% component.with_action(mobile_icon: "link", mobile_label: "Community") do %>
+    <%= render(Primer::Beta::Link.new(href: "https://community.openproject.com", target: '_blank')) { "Community" } %>
+  <% end %>
   <% component.with_action(mobile_icon: "pencil", mobile_label: "Edit") do %>
     <%= render(Primer::Beta::IconButton.new(icon: "pencil", 'aria-label': "Edit")) %>
   <% end %>
@@ -15,9 +18,9 @@
     <% end %>
   <% end %>
   <% component.with_action(mobile_icon: "trash", mobile_label: "Delete", scheme: :danger) do %>
-    <%= render(Primer::Beta::IconButton.new(icon: "trash", 'aria-label': 'Delete', scheme: :danger, data: { test: 'click-me-controller' })) %>
+    <%= render(Primer::Beta::IconButton.new(icon: "trash", 'aria-label': 'Delete', scheme: :danger)) %>
   <% end %>
-  <% component.with_action(mobile_icon: "pencil", mobile_label: "Menu") do %>
+  <% component.with_action(mobile_icon: "info", mobile_label: "Menu") do %>
     <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
       <% menu.with_show_button { "Menu" } %>
       <% menu.with_item(label: "Some action", tag: :button, value: "") %>
