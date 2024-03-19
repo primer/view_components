@@ -197,7 +197,7 @@ export class ActionMenuElement extends HTMLElement {
     // Prevent safari bug that dismisses menu on mousedown instead of allowing
     // the click event to propagate to the button
     if (event.type === 'mousedown') {
-      event.preventDefault()
+      // event.preventDefault()
       return
     }
 
