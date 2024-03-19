@@ -199,9 +199,11 @@ module Primer
         dynamic_label_prefix: nil,
         select_variant: DEFAULT_SELECT_VARIANT,
         form_arguments: {},
+        body_id: nil,
         **system_arguments
       )
         @menu_id = menu_id
+        @body_id = "#{menu_id}-body"
         @src = src
         @preload = fetch_or_fallback_boolean(preload, DEFAULT_PRELOAD)
         @system_arguments = deny_tag_argument(**system_arguments)
