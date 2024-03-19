@@ -1,0 +1,6 @@
+<div style="display: grid; place-content: center; margin-top: 4rem;">
+    <%= render(Primer::Beta::Button.new(id: "tooltip-sw")) do |b| %>
+      <% b.with_tooltip(text: "This is a tooltip", direction: :sw) %>
+      Tooltip southwest
+    <% end %>
+</div>
