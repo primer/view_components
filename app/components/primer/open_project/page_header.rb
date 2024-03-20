@@ -21,7 +21,6 @@ module Primer
       ].freeze
 
       DEFAULT_ACTION_SCHEME = :default
-      ACTIONS_DISPLAY = [:none, :flex].freeze
       MORE_MENU_DISPLAY = [:flex, :none].freeze
 
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
@@ -58,9 +57,9 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :actions, types: {
-        icon_button: lambda { | icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        icon_button: lambda { | icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = generic_action_settings(system_arguments, icon, label, scheme)
+          system_arguments = generic_action_settings(system_arguments, mobile_icon, label, scheme)
 
           Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
         },
@@ -136,8 +135,9 @@ module Primer
         end
       }
 
-      def initialize(**system_arguments)
+      def initialize(show_mobile_menu = true, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
+        @show_mobile_menu = show_mobile_menu
 
         @system_arguments[:tag] = :'page-header'
         @system_arguments[:classes] =
@@ -146,7 +146,7 @@ module Primer
             "PageHeader"
           )
 
-        #return unless actions.any?
+        return unless @show_mobile_menu
 
         @mobile_action_menu = Primer::Alpha::ActionMenu.new(
           display: MORE_MENU_DISPLAY,
@@ -162,20 +162,22 @@ module Primer
 
       def generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
         system_arguments[:ml] ||= 2
-        system_arguments[:display] = ACTIONS_DISPLAY
+        system_arguments[:display] = @show_mobile_menu ? [:none, :flex] : [:flex]
         system_arguments[:scheme] = scheme
 
         system_arguments[:id] ||= self.class.generate_id
 
-        with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
-          c.with_leading_visual_icon(icon: mobile_icon)
+        unless mobile_icon.nil? || mobile_label.nil?
+          with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
+            c.with_leading_visual_icon(icon: mobile_icon)
+          end
         end
 
         system_arguments
       end
 
       def with_menu_item(id:, **system_arguments, &block)
-        return unless @mobile_action_menu
+        return unless @show_mobile_menu
 
         system_arguments = {
           **system_arguments,

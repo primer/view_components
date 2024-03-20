@@ -1,17 +1,17 @@
 <%= render(Primer::OpenProject::PageHeader.new) do |component| %>
   <% component.with_title do %>
-    An awesome title
+    Great news
   <% end %>
   <% component.with_description do %>
     A description with actions
   <% end %>
-  <% component.with_action_link(mobile_icon: "link", mobile_label: "Community", href: "https://community.openproject.com", target: '_blank') { 'Community' } %>
-  <% component.with_action_icon_button(icon: "pencil", label: "Edit") %>
+  <% component.with_action_link(mobile_icon: "link", mobile_label: "Community", href: "https://community.openproject.com", target: "_blank") { "Go to community" } %>
   <% component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|%>
       <% button.with_leading_visual_icon(icon: "star") %>
       Star
   <% end %>
-  <% component.with_action_icon_button(icon: "trash", label: "Delete", scheme: :danger) %>
+  <% component.with_action_button(mobile_icon: nil, mobile_label: nil) { "Hide on mobile" } %>
+  <% component.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete", scheme: :danger) %>
   <% component.with_action_menu(mobile_icon: "info", mobile_label: "Menu") do %>
     <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
       <% menu.with_show_button { "Menu" } %>

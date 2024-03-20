@@ -4,7 +4,7 @@
       <%= parent_link %>
       <%= breadcrumbs %>
 
-      <% if @mobile_action_menu.present? %>
+      <% if @show_mobile_menu %>
         <%= render(@mobile_action_menu) do |menu| %>
           <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": "Menu") %>
         <% end %>

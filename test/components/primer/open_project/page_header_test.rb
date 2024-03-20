@@ -42,6 +42,33 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
+      header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
+      header.with_action_link(mobile_icon: "link", label: "Link to") { "Link to.." }
+    end
+
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_text("An action")
+    assert_selector(".PageHeader-actions")
+
+    # The mobile variant of the actions is already rendered, but hidden
+    assert_selector(".PageHeader-contextBar")
+    assert_selector("action-menu.d-flex.d-sm-none")
+    assert_selector(".ActionListItem-label") do
+      assert_text("Action")
+    end
+    assert_selector(".ActionListItem-label") do
+      assert_text("Delete")
+    end
+    assert_selector(".ActionListItem-label") do
+      assert_text("Link to")
+    end
+  end
+
+  def test_renders_actions_without_mobile_menu
+    render_inline(Primer::OpenProject::PageHeader.new(show_mobile_menu: false)) do |header|
+      header.with_title { "Hello" }
       header.with_action_button(mobile_icon: 'pencil', mobile_label: 'Action') { "An action" }
     end
 
@@ -49,6 +76,11 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-title")
     assert_text("An action")
     assert_selector(".PageHeader-actions")
+
+    # There is no mobile menu
+    assert_no_selector(".PageHeader-contextBar")
+    assert_no_selector("action-menu.d-flex.d-sm-none")
+    assert_selector(".PageHeader-actions .Button.d-flex")
   end
 
   def test_renders_leading_action

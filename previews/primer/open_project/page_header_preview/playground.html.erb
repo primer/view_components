@@ -1,11 +1,12 @@
-<%= render Primer::OpenProject::PageHeader.new do |header| %>
+<%= render Primer::OpenProject::PageHeader.new(show_mobile_menu) do |header| %>
   <%= header.with_title(variant: variant) { title } %>
   <%= header.with_description { description } %>
   <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action %>
   <%= header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs %>
   <%= header.with_parent_link(href: "#") { "Parent link" } if with_parent_link %>
   <% if with_actions %>
-    <% header.with_action(mobile_icon: 'pencil', mobile_label: 'Menu') do %>
+    <% header.with_action_icon_button(icon: 'pencil', mobile_icon: 'pencil', label: 'Edit') %>
+    <% header.with_action_menu(mobile_icon: 'pencil', mobile_label: 'Menu') do %>
       <%= render(Primer::Alpha::ActionMenu.new) do |component| %>
         <% component.with_show_button { "Menu" } %>
         <% component.with_item(label: "Item", tag: :button, value: "") %>

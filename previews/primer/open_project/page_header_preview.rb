@@ -21,6 +21,7 @@ module Primer
       # @param with_leading_action [Symbol] octicon
       # @param with_breadcrumbs [Boolean]
       # @param with_actions [Boolean]
+      # @param show_mobile_menu [Boolean]
       # @param with_parent_link [Boolean]
       def playground(
         variant: :large,
@@ -29,6 +30,7 @@ module Primer
         with_leading_action: :"arrow-left",
         with_breadcrumbs: false,
         with_actions: false,
+        show_mobile_menu: true,
         with_parent_link: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
@@ -40,6 +42,7 @@ module Primer
                                        with_breadcrumbs: with_breadcrumbs,
                                        with_parent_link: with_parent_link,
                                        with_actions: with_actions,
+                                       show_mobile_menu: show_mobile_menu,
                                        breadcrumb_items: breadcrumb_items })
       end
 
