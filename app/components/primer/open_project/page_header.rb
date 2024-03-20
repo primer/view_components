@@ -21,8 +21,8 @@ module Primer
       ].freeze
 
       DEFAULT_ACTION_SCHEME = :default
-      ACTIONS_DISPLAY = [:none, :block].freeze
-      MORE_MENU_DISPLAY = [:block, :none].freeze
+      ACTIONS_DISPLAY = [:none, :flex].freeze
+      MORE_MENU_DISPLAY = [:flex, :none].freeze
 
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
@@ -57,19 +57,27 @@ module Primer
       # Actions
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :actions, lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 2
-        system_arguments[:display] = ACTIONS_DISPLAY
+      renders_many :actions, types: {
+        icon_button: lambda { | icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = generic_action_settings(system_arguments, icon, label, scheme)
 
-        system_arguments[:id] ||= self.class.generate_id
+          Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
+        },
+        button: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
 
-        with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
-          c.with_leading_visual_icon(icon: mobile_icon)
-        end
+          Primer::Beta::Button.new(**system_arguments)
+        },
+        link: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
 
-        Primer::BaseComponent.new(**system_arguments)
+          Primer::Beta::Link.new(**system_arguments)
+        },
+        menu: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        }
       }
 
       # Optional leading action prepend the title
@@ -131,7 +139,7 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:tag] = :header
+        @system_arguments[:tag] = :'page-header'
         @system_arguments[:classes] =
           class_names(
             @system_arguments[:classes],
@@ -151,6 +159,20 @@ module Primer
       end
 
       private
+
+      def generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
+        system_arguments[:ml] ||= 2
+        system_arguments[:display] = ACTIONS_DISPLAY
+        system_arguments[:scheme] = scheme
+
+        system_arguments[:id] ||= self.class.generate_id
+
+        with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
+          c.with_leading_visual_icon(icon: mobile_icon)
+        end
+
+        system_arguments
+      end
 
       def with_menu_item(id:, **system_arguments, &block)
         return unless @mobile_action_menu

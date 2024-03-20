@@ -3,8 +3,6 @@ import {controller} from '@github/catalyst'
 @controller
 class PageHeaderElement extends HTMLElement {
   menuItemClick(event: Event) {
-    // Todo: remove
-    alert('test')
     const currentTarget = event.currentTarget as HTMLButtonElement
 
     const id = currentTarget?.getAttribute('data-for')
@@ -21,4 +19,7 @@ declare global {
   }
 }
 
-window.PageHeaderElement = PageHeaderElement
+if (!window.customElements.get('page-header')) {
+  window.PageHeaderElement = PageHeaderElement
+  window.customElements.define('page-header', PageHeaderElement)
+}
