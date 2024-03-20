@@ -57,25 +57,25 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :actions, types: {
-        icon_button: lambda { | icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
           system_arguments = generic_action_settings(system_arguments, mobile_icon, label, scheme)
 
           Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
         },
-        button: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
           system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Button.new(**system_arguments)
         },
-        link: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
           system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Link.new(**system_arguments)
         },
-        menu: lambda { | mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        menu: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
         }
       }
 
