@@ -3760,7 +3760,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, or `:invisible`."
+        "description": "One of `:danger`, `:default`, `:invisible`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",

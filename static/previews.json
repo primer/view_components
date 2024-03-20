@@ -3782,6 +3782,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/icon_button/primary",
+        "name": "primary",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/icon_button/danger",
         "name": "danger",
         "snapshot": "true",
