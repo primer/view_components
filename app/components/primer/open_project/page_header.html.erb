@@ -1,7 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if parent_link || breadcrumbs || actions.any? %>
+  <% if @parent_link || breadcrumbs || actions.any? %>
     <div class="PageHeader-contextBar">
-      <%= parent_link %>
+      <%= @parent_link %>
       <%= breadcrumbs %>
 
       <% if @show_mobile_menu %>

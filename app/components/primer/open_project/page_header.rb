@@ -121,6 +121,19 @@ module Primer
       renders_one :breadcrumbs, lambda { |items, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
+        
+        # show parent link if there is a parent for current page
+        if items.length > 1
+          link_arguments = {}
+          parent = items[items.length - 2]
+          link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
+          link_arguments[:href] = parent[:href]
+          link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
+          link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
+          @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
+            render(Primer::Beta::Octicon.new(icon: "arrow-left", "aria-label": "aria_label", mr: 2)) + content_tag(:span, parent[:text])
+          end
+        end
 
         render(Primer::Beta::Breadcrumbs.new(**system_arguments)) do |breadcrumbs|
           items.each do |item|
