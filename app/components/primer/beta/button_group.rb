@@ -46,8 +46,10 @@ module Primer
         },
 
         menu_button: {
-          renders: lambda { |**system_arguments|
-            MenuButton.new(**system_arguments)
+          renders: lambda { |menu_arguments: {}, button_arguments: {}|
+            button_arguments[:size] = @size
+            button_arguments[:scheme] = @scheme
+            MenuButton.new(menu_arguments: menu_arguments, button_arguments: button_arguments)
           },
 
           as: :menu_button

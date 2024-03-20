@@ -87,6 +87,31 @@ module Primer
                ))
       end
 
+      # @label Primary
+      # @param size select [small, medium, large]
+      # @param aria_label text
+      # @param disabled toggle
+      # @param tag select [a, summary, button]
+      # @snapshot
+      def primary(
+        size: :medium,
+        id: "button-preview",
+        tag: :button,
+        disabled: false,
+        icon: :x,
+        aria_label: "Button"
+      )
+        render(Primer::Beta::IconButton.new(
+                 scheme: :primary,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled,
+                 icon: icon,
+                 "aria-label": aria_label
+               ))
+      end
+
       # @label Danger
       # @param size select [small, medium, large]
       # @param aria_label text
