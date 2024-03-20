@@ -22,7 +22,6 @@ module Primer
       # @param with_breadcrumbs [Boolean]
       # @param with_actions [Boolean]
       # @param show_mobile_menu [Boolean]
-      # @param with_parent_link [Boolean]
       def playground(
         variant: :large,
         title: "Hello",
@@ -30,8 +29,7 @@ module Primer
         with_leading_action: :"arrow-left",
         with_breadcrumbs: false,
         with_actions: false,
-        show_mobile_menu: true,
-        with_parent_link: false
+        show_mobile_menu: true
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
@@ -40,7 +38,6 @@ module Primer
                                        description: description,
                                        with_leading_action: with_leading_action,
                                        with_breadcrumbs: with_breadcrumbs,
-                                       with_parent_link: with_parent_link,
                                        with_actions: with_actions,
                                        show_mobile_menu: show_mobile_menu,
                                        breadcrumb_items: breadcrumb_items })
@@ -73,10 +70,9 @@ module Primer
         end
       end
 
-      # @label With breadcrumbs (on wide)
+      # @label With breadcrumbs
       # **Breadcrumbs** are only shown on **wider than narrow screens** by default.
-      # If you want to override that behaviour please use the system_argument: **display**
-      # e.g. **component.with\_breadcrumbs(display: [:block, :block])**
+      # A parent link is shown instead in narrow screens 
       #
       def breadcrumbs
         breadcrumb_items = [
@@ -87,18 +83,6 @@ module Primer
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "A title" }
           header.with_breadcrumbs(breadcrumb_items)
-        end
-      end
-
-      # @label With parent link (on narrow)
-      # **Parent link** is only shown on **narrow screens** by default.
-      # If you want to override that behaviour please use the system_argument: **display**
-      # e.g. **component.with\_parent\_link(display: [:block, :block])**
-      #
-      def parent_link
-        render(Primer::OpenProject::PageHeader.new) do |header|
-          header.with_title { "A title" }
-          header.with_parent_link(href: "test") { "Parent link" }
         end
       end
     end
