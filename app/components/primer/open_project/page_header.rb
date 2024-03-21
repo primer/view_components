@@ -110,7 +110,7 @@ module Primer
         # show parent link if there is a parent for current page
         if items.length > 1
           link_arguments = {}
-          parent = items[items.length - 2]
+          parent = anchor_string_to_object(items[items.length - 2]) if anchor_tag_string?(items[items.length - 2])
           link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
           link_arguments[:href] = parent[:href]
           link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
