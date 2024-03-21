@@ -67,7 +67,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   end
 
   def test_renders_actions_without_mobile_menu
-    render_inline(Primer::OpenProject::PageHeader.new(false)) do |header|
+    render_inline(Primer::OpenProject::PageHeader.new(show_mobile_menu: false)) do |header|
       header.with_title { "Hello" }
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
     end

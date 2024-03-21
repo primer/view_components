@@ -28,7 +28,7 @@ module Primer
         description: "Last updated 5 minutes ago by XYZ.",
         with_leading_action: :"arrow-left",
         with_breadcrumbs: false,
-        with_actions: false,
+        with_actions: true,
         show_mobile_menu: true
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
@@ -72,7 +72,7 @@ module Primer
 
       # @label With breadcrumbs
       # **Breadcrumbs** are only shown on **wider than narrow screens** by default.
-      # A parent link is shown instead in narrow screens 
+      # A parent link is shown instead in narrow screens
       #
       def breadcrumbs
         breadcrumb_items = [

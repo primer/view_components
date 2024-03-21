@@ -148,9 +148,10 @@ module Primer
         end
       }
 
-      def initialize(show_mobile_menu = true, **system_arguments)
+      def initialize(show_mobile_menu: true, mobile_menu_label: I18n.t('label_more'), **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @show_mobile_menu = show_mobile_menu
+        @mobile_menu_label = mobile_menu_label
 
         @system_arguments[:tag] = :'page-header'
         @system_arguments[:classes] =
