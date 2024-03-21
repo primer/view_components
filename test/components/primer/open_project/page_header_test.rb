@@ -44,7 +44,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       header.with_title { "Hello" }
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
-      header.with_action_link(mobile_icon: "link", mobile_label: "Link to") { "Link to.." }
+      header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
     end
 
     assert_text("Hello")
@@ -78,7 +78,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-actions")
 
     # There is no mobile menu
-    assert_no_selector(".PageHeader-contextBar")
+    assert_selector(".PageHeader-contextBar")
     assert_no_selector("action-menu.d-flex.d-sm-none")
     assert_selector(".PageHeader-actions .Button.d-flex")
   end
@@ -98,6 +98,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     breadcrumb_items = [
       { href: "/foo", text: "Foo" },
       "\u003ca href=\"/foo/bar\"\u003eBar\u003c/a\u003e",
+      { href: "#", text: "test" },
       "test"
     ]
 
@@ -109,20 +110,10 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_text("Hello")
     assert_selector(".PageHeader-title")
     assert_selector(".PageHeader-breadcrumbs")
+    assert_selector(".PageHeader-parentLink")
 
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo/bar']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='#']")
-  end
-
-  def test_renders_parent_link
-    render_inline(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title { "Hello" }
-      header.with_parent_link(href: "test") { "Parent link" }
-    end
-
-    assert_text("Hello")
-    assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-parentLink")
   end
 end
