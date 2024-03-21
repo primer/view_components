@@ -3,7 +3,6 @@
     <div class="PageHeader-contextBar">
       <%= @parent_link %>
       <%= breadcrumbs %>
-
       <% if @show_mobile_menu %>
         <%= render(@mobile_action_menu) do |menu| %>
           <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": @mobile_menu_label) %>

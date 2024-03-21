@@ -98,21 +98,6 @@ module Primer
         Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
-      # Optional parent link in the context area
-      # By default shown on narrow screens. Can be overridden with system_argument: display
-      #
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :parent_link, lambda { |icon: DEFAULT_BACK_BUTTON_ICON, **system_arguments, &block|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-parentLink")
-        system_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
-
-        render(Primer::Beta::Link.new(scheme: :primary, muted: true, **system_arguments)) do
-          render(Primer::Beta::Octicon.new(icon: "arrow-left", "aria-label": "aria_label", mr: 2)) + content_tag(:span, &block)
-        end
-      }
-
       # Optional breadcrumbs above the title row
       # By default shown on wider screens. Can be overridden with system_argument: display
       #
