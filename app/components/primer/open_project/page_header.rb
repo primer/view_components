@@ -106,7 +106,7 @@ module Primer
       renders_one :breadcrumbs, lambda { |items, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
-        
+
         # show parent link if there is a parent for current page
         if items.length > 1
           link_arguments = {}
@@ -133,7 +133,7 @@ module Primer
         end
       }
 
-      def initialize(show_mobile_menu: true, mobile_menu_label: I18n.t('label_more'), **system_arguments)
+      def initialize(show_mobile_menu: true, mobile_menu_label: I18n.t("label_more"), **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @show_mobile_menu = show_mobile_menu
         @mobile_menu_label = mobile_menu_label
