@@ -6,6 +6,7 @@
       <% if @show_mobile_menu %>
         <%= render(@mobile_action_menu) do |menu| %>
           <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": @mobile_menu_label) %>
+          <% @desktop_menu_block.call(menu) unless @desktop_menu_block.nil? %>
         <% end %>
       <% end %>
     </div>

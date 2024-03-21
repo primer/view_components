@@ -45,24 +45,35 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
       header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
+      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
+        menu.with_item(label: "Subitem 1") do |item|
+          item.with_leading_visual_icon(icon: :paste)
+        end
+      end
     end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
-    assert_text("An action")
     assert_selector(".PageHeader-actions")
+    assert_text("An action")
+    assert_selector(".PageHeader-actions .ActionListItem-label") do
+      assert_text("Subitem 1")
+    end
 
     # The mobile variant of the actions is already rendered, but hidden
     assert_selector(".PageHeader-contextBar")
     assert_selector("action-menu.d-flex.d-sm-none")
-    assert_selector(".ActionListItem-label") do
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
       assert_text("Action")
     end
-    assert_selector(".ActionListItem-label") do
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
       assert_text("Delete")
     end
-    assert_selector(".ActionListItem-label") do
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
       assert_text("Link to")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Subitem 1")
     end
   end
 
@@ -79,7 +90,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
 
     # There is no mobile menu
     assert_selector(".PageHeader-contextBar")
-    assert_no_selector("action-menu.d-flex.d-sm-none")
+    assert_no_selector("action-menu")
     assert_selector(".PageHeader-actions .Button.d-flex")
   end
 

@@ -59,24 +59,36 @@ module Primer
       renders_many :actions, types: {
         icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = generic_action_settings(system_arguments, mobile_icon, label, scheme)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, label, scheme)
 
           Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
         },
         button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Button.new(**system_arguments)
         },
         link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Link.new(**system_arguments)
         },
-        menu: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
-        }
+        menu: {
+          renders: lambda { |**system_arguments, &block|
+            deny_tag_argument(**system_arguments)
+            system_arguments[:menu_arguments] = set_action_arguments(system_arguments[:menu_arguments])
+
+            # Add the options individually to the mobile menu in the template
+            @desktop_menu_block = block
+
+            PageHeaderActionMenu.new(**system_arguments)
+          },
+        },
       }
 
       # Optional leading action prepend the title
@@ -159,20 +171,25 @@ module Primer
 
       private
 
-      def generic_action_settings(system_arguments, mobile_icon, mobile_label, scheme)
+      def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
         system_arguments[:display] = @show_mobile_menu ? [:none, :flex] : [:flex]
-        system_arguments[:scheme] = scheme
+        system_arguments[:scheme] = scheme unless scheme.nil?
 
         system_arguments[:id] ||= self.class.generate_id
+        system_arguments
+      end
 
+      def add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
         unless mobile_icon.nil? || mobile_label.nil?
           with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
             c.with_leading_visual_icon(icon: mobile_icon)
           end
         end
+      end
 
-        system_arguments
+      def add_menu_options_to_mobile_menu
+
       end
 
       def with_menu_item(id:, **system_arguments, &block)
@@ -204,6 +221,30 @@ module Primer
       # Check if the item is an anchor tag string e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
       def anchor_tag_string?(item)
         item.is_a?(String) && item.start_with?("\u003c")
+      end
+
+      class PageHeaderActionMenu < Primer::Component
+        # A Helper class to create ActionMenus inside the PageHeader action slot
+        # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
+        # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
+        def initialize(menu_arguments: {}, button_arguments: {})
+          @menu = Primer::Alpha::ActionMenu.new(**menu_arguments)
+          @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
+        end
+
+        def render_in(view_context, &block)
+          super(view_context) do
+            block.call(@menu, @button)
+          end
+        end
+
+        def before_render
+          content
+        end
+
+        def call
+          render(@menu)
+        end
       end
     end
   end
