@@ -132,7 +132,7 @@ module Primer
 
           @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
             render(Primer::Beta::Octicon.new(icon: "arrow-left",
-                                             "aria-label": I18n.t('button_back'),
+                                             "aria-label": I18n.t("button_back"),
                                              mr: 2)
             ) + content_tag(:span, parsed_parent_item[:text])
           end
@@ -156,7 +156,7 @@ module Primer
         @show_mobile_menu = show_mobile_menu
         @mobile_menu_label = mobile_menu_label
 
-        @system_arguments[:tag] = :'page-header'
+        @system_arguments[:tag] = :"page-header"
         @system_arguments[:classes] =
           class_names(
             @system_arguments[:classes],
@@ -188,6 +188,9 @@ module Primer
 
       def add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
         unless mobile_icon.nil? || mobile_label.nil?
+          # In action menus, only :default and :danger are allowed
+          scheme = DEFAULT_ACTION_SCHEME unless scheme == :danger
+
           with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
             c.with_leading_visual_icon(icon: mobile_icon)
           end
@@ -229,8 +232,8 @@ module Primer
         item.is_a?(String) && item.start_with?("\u003c")
       end
 
+      # A Helper class to create ActionMenus inside the PageHeader action slot
       class PageHeaderActionMenu < Primer::Component
-        # A Helper class to create ActionMenus inside the PageHeader action slot
         # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
         # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
         def initialize(menu_arguments: {}, button_arguments: {})
