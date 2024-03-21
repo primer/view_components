@@ -15,7 +15,7 @@ This process, is the same in the upstream Primer repository. Since we aim to hav
 1. Go to https://github.com/primer/view_components and search for the last commit named `Release Tracking (#XXXX)`. This is the actual release commit that already deleted the changeset files. Since we want to include them (as explained above), have a look at the **last commit before that** and copy the SHA.
 2. Then follow these steps:
 
-```
+```sh
 git config remote.upstream.url || git remote add upstream https://github.com/primer/view_components.git
 git fetch upstream
 
@@ -33,12 +33,12 @@ git merge bump/primer-upstream-ref
 
 There is a [script](https://github.com/opf/primer_view_components/blob/main/script/merge-upstream) that does that automatically for you. It expects the commit SHA, as well as a [SED](https://www.gnu.org/software/sed/manual/sed.html) command line tool as arguments. For OS X I recommend to use `gnu-sed`.
 
-```
+```sh
 brew install gnu-sed
 ./script/merge-upstream 1234567 gsed
 ```
 
-3. Resolve the conflicts. Usually, most of the conflicts we changed the name of the repository and are ahead in the version. For those conflicts, you can simply choose our changes. 
+3. Resolve the conflicts. Usually, most of the conflicts we changed the name of the repository and are ahead in the version. For those conflicts, you can simply choose our changes.
 4. If you did not use the script, but followed the steps manually, go to the .changeset folder again and search for all occurrences of `@primer/view-components`. Replace that with `@openproject/primer-view-components`. This is the reference to our package name.
 5. Commit, push and create a PR. Once all tests are green, you can merge.
 6. After the merge, the changes are part of the repository. If you want to release that, you have to merge the current Release PR afterwards as well. Be sure to wait until all GitHub Actions have run through before you do that.
