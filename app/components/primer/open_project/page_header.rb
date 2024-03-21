@@ -122,13 +122,19 @@ module Primer
         # show parent link if there is a parent for current page
         if items.length > 1
           link_arguments = {}
-          parent = anchor_string_to_object(items[items.length - 2]) if anchor_tag_string?(items[items.length - 2])
+          parent_item = items[items.length - 2]
+          parsed_parent_item = anchor_tag_string?(parent_item) ? anchor_string_to_object(parent_item) : parent_item
+
           link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
-          link_arguments[:href] = parent[:href]
+          link_arguments[:href] = parsed_parent_item[:href]
           link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
           link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
+
           @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
-            render(Primer::Beta::Octicon.new(icon: "arrow-left", "aria-label": "aria_label", mr: 2)) + content_tag(:span, parent[:text])
+            render(Primer::Beta::Octicon.new(icon: "arrow-left",
+                                             "aria-label": I18n.t('button_back'),
+                                             mr: 2)
+            ) + content_tag(:span, parsed_parent_item[:text])
           end
         end
 
