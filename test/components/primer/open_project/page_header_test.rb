@@ -43,6 +43,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
+      header.with_action_text { "An additional hint" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
       header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
       header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
@@ -52,10 +53,12 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       end
     end
 
+    # Renders the actions
     assert_text("Hello")
     assert_selector(".PageHeader-title")
     assert_selector(".PageHeader-actions")
     assert_text("An action")
+    assert_text("An additional hint")
     assert_selector(".PageHeader-actions .ActionListItem-label") do
       assert_text("Subitem 1")
     end
@@ -75,6 +78,9 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-contextBar .ActionListItem-label") do
       assert_text("Subitem 1")
     end
+
+    # The text is hidden on mobile
+    assert_selector("span.d-none.d-sm-flex")
   end
 
   def test_renders_actions_without_mobile_menu

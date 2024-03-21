@@ -3,8 +3,9 @@
     Great news
   <% end %>
   <% component.with_description do %>
-    A description with actions
+    This example lists all possible actions of a PageHeader. Of course, you will most likely never need all of them on the same page as it is shown here.
   <% end %>
+  <% component.with_action_text { "An additional hint" } %>
   <% component.with_action_link(mobile_icon: "link", mobile_label: "Community", href: "https://community.openproject.com", target: "_blank") { "Go to community" } %>
   <% component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|%>
       <% button.with_leading_visual_icon(icon: "star") %>

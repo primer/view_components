@@ -78,6 +78,17 @@ module Primer
 
           Primer::Beta::Link.new(**system_arguments)
         },
+        # Should only be used rarely on a per-need basis
+        text: lambda { |**system_arguments|
+          system_arguments = set_action_arguments(system_arguments)
+
+          system_arguments[:color] ||= :muted
+
+          # Enforce that texts are hidden on mobile
+          system_arguments[:display] = [:none, :flex]
+
+          Primer::Beta::Text.new(**system_arguments)
+        },
         menu: {
           renders: lambda { |**system_arguments, &block|
             deny_tag_argument(**system_arguments)
@@ -195,10 +206,6 @@ module Primer
             c.with_leading_visual_icon(icon: mobile_icon)
           end
         end
-      end
-
-      def add_menu_options_to_mobile_menu
-
       end
 
       def with_menu_item(id:, **system_arguments, &block)
