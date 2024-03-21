@@ -52,8 +52,17 @@ import {controller, target} from '@github/catalyst';
 @controller
 class MyComponentNameElement extends HTMLElement {
   @target button: HTMLElement
-} 
+}
+
+if (!window.customElements.get('my-component-name')) {
+  window.MyComponentNameElement = MyComponentNameElement
+  window.customElements.define('my-component-name', MyComponentNameElement)
+}
 ```
+
+**Please note, that Catalyst controllers are registered via a `CustomElement`. So your component needs to have a customElement in any case, as the controller is otherwise not connected.** 
+
+If you added the controller manually without the script above, remember to add the file in `app/components/primer/primer.ts` and run `npm i --save @github/catalyst`
 
 ### Generated files
 
