@@ -4,9 +4,9 @@
 
 New components can be added to Primer ViewComponents when they fulfill all these criteria:
 
-- The Design Infrastructure team has approved the component for inclusion in Primer
-- The component is compatible with [System arguments](https://primer.style/design/foundations/system-arguments) as appropriate
-- The API is consistent with existing components
+* The Design Infrastructure team has approved the component for inclusion in Primer
+* The component is compatible with [System arguments](https://primer.style/design/foundations/system-arguments) as appropriate
+* The API is consistent with existing components
 
 ### Component status
 
@@ -30,9 +30,9 @@ bundle exec thor component_generator my_component_name --js=some-npm-package-nam
 
 The generator script has several flags:
 
-- `status` can be `alpha`, `beta`, `stable` or `openproject` (defaults to `openproject`)
-- `inline` creates a `#call` method instead of generating an ERB template
-- `js` can be passed the name of an npm package dependency
+* `status` can be `alpha`, `beta`, `stable` or `openproject` (defaults to `openproject`)
+* `inline` creates a `#call` method instead of generating an ERB template
+* `js` can be passed the name of an npm package dependency
 
 ### JavaScript controllers
 
@@ -52,31 +52,40 @@ import {controller, target} from '@github/catalyst';
 @controller
 class MyComponentNameElement extends HTMLElement {
   @target button: HTMLElement
-} 
+}
+
+if (!window.customElements.get('my-component-name')) {
+  window.MyComponentNameElement = MyComponentNameElement
+  window.customElements.define('my-component-name', MyComponentNameElement)
+}
 ```
+
+**Please note, that Catalyst controllers are registered via a `CustomElement`. So your component needs to have a customElement in any case, as the controller is otherwise not connected.**
+
+If you added the controller manually without the script above, remember to add the file in `app/components/primer/primer.ts` and run `npm i --save @github/catalyst`
 
 ### Generated files
 
 Running the component generator script creates several files across the codebase:
 
-- `app/components/<status>/<component_name>.rb` is where the component logic is defined, and where you’ll write the component’s [documentation] in the form of YARD comments
-  - [Read about writing documents with YARD comments](./README.md#writing-documentation)
-- `app/components/<status>/<component_name>.html.erb` is the component’s template file (omitted if the `inline` flag is passed to the generator)
-- `app/components/<status>/<component_name>.pcss` is the component’s css logic
-- `test/components/primer/<status>/<component_name>.rb` contains the component’s unit tests
-  - [Read about writing component tests](./README.md#system-tests)
-- `test/system/<status>/<component_name>.rb` contains the component’s system tests
-- `test/components/preview/primer/<status>/<component_name>_preview.rb` contains the component’s previews
+* `app/components/<status>/<component_name>.rb` is where the component logic is defined, and where you’ll write the component’s [documentation] in the form of YARD comments
+  * [Read about writing documents with YARD comments](./README.md#writing-documentation)
+* `app/components/<status>/<component_name>.html.erb` is the component’s template file (omitted if the `inline` flag is passed to the generator)
+* `app/components/<status>/<component_name>.pcss` is the component’s css logic
+* `test/components/primer/<status>/<component_name>.rb` contains the component’s unit tests
+  * [Read about writing component tests](./README.md#system-tests)
+* `test/system/<status>/<component_name>.rb` contains the component’s system tests
+* `test/components/preview/primer/<status>/<component_name>_preview.rb` contains the component’s previews
 
 If the `js` flag is passed in it will create some extra files:
 
-- `app/components/<status>/<component_name>.ts` contains the imports for any specified npm dependencies
+* `app/components/<status>/<component_name>.ts` contains the imports for any specified npm dependencies
 
 The script also edits some files:
 
-- The component is added to the list of components in `test/component/component_test.rb`, in that you need to add examples for all the required arguments of the component
-- The pcss file is added to the list in `app/components/primer/primer.pcss`
-- The js file is added to the list in `app/components/primer/primer.ts` if the `js` flag is passed
+* The component is added to the list of components in `test/component/component_test.rb`, in that you need to add examples for all the required arguments of the component
+* The pcss file is added to the list in `app/components/primer/primer.pcss`
+* The js file is added to the list in `app/components/primer/primer.ts` if the `js` flag is passed
 
 ### Playwright testing
 

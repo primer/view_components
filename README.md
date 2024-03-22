@@ -11,6 +11,7 @@ Please have a look at our [Contribution docs](./docs/contributors/README.md) to 
 * [Getting started](./docs/contributors/setup.md)
 * [Adding a component](./docs/contributors/adding-components.md)
 * [Releasing](./docs/contributors/releasing.md)
+* [Updating the fork](./docs/contributors/updating-fork.md)
 * ...
 
 ## CI & Automation
