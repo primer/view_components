@@ -183,7 +183,8 @@ module Primer
       end
 
       def render?
-        title?
+        raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
+        title? && breadcrumbs?
       end
 
       private

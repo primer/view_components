@@ -5,14 +5,30 @@ require "components/test_helper"
 class PrimerOpenProjectPageHeaderTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_does_not_render_if_no_title_provided
-    render_inline(Primer::OpenProject::PageHeader.new)
+  def test_raises_if_no_title_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::PageHeader.new)
+    end
 
-    refute_component_rendered
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
+  end
+
+  def test_raises_if_no_breadcrumb_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::PageHeader.new) do |header|
+        header.with_title { "Hello" }
+      end
+
+    end
+
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
   end
 
   def test_renders_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title { "Hello" } }
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+    end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
@@ -20,7 +36,10 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   end
 
   def test_renders_large_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :large) { "Hello" } }
+    render_inline(Primer::OpenProject::PageHeader.new)  do |header|
+      header.with_title(variant: :large) { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+    end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
@@ -30,6 +49,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_description
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_description { "My new description" }
     end
 
@@ -42,6 +62,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
       header.with_action_text { "An additional hint" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
@@ -86,6 +107,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions_without_mobile_menu
     render_inline(Primer::OpenProject::PageHeader.new(show_mobile_menu: false)) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
     end
 
@@ -103,6 +125,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_leading_action
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_leading_action(icon: :"arrow-left", href: "/link", 'aria-label': "Back")
     end
 
@@ -132,5 +155,11 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo/bar']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='#']")
+  end
+
+  private
+
+  def breadcrumb_elements
+    [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
   end
 end

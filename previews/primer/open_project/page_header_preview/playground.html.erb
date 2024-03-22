@@ -1,8 +1,8 @@
 <%= render Primer::OpenProject::PageHeader.new(show_mobile_menu: show_mobile_menu) do |header| %>
   <%= header.with_title(variant: variant) { title } %>
   <%= header.with_description { description } %>
-  <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action %>
-  <%= header.with_breadcrumbs(breadcrumb_items) if with_breadcrumbs %>
+  <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action && with_leading_action != :none %>
+  <%= header.with_breadcrumbs(breadcrumb_items) %>
   <% if with_actions %>
     <% header.with_action_icon_button(icon: 'pencil', mobile_icon: 'pencil', label: 'Edit') %>
     <% header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Menu" }) do |menu, button| %>
