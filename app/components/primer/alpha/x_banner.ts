@@ -15,6 +15,11 @@ class XBannerElement extends HTMLElement {
     }
   }
 
+  focusBanner() {
+    this.setAttribute('tabindex', '-1')
+    this.focus()
+  }
+
   show() {
     this.style.setProperty('display', 'initial')
   }
