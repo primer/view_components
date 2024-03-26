@@ -26,6 +26,7 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::OpenProject::PageHeader, {}, proc { |component|
       component.with_title { "Foo" }
+      component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
     }],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")

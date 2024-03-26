@@ -21,7 +21,7 @@ module Primer
       # @label Default Options
       #
       # @snapshot
-      def default()
+      def default
         render(Primer::OpenProject::BorderGrid.new) do |grid|
           grid.with_row { "Block 1" }
           grid.with_row { "Block 2" }
@@ -30,7 +30,7 @@ module Primer
       end
 
       # @label Spacious
-      def spacious()
+      def spacious
         render(Primer::OpenProject::BorderGrid.new(spacious: true)) do |grid|
           grid.with_row { "Block 1" }
           grid.with_row { "Block 2" }

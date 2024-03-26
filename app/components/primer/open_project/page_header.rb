@@ -20,10 +20,12 @@ module Primer
         "triangle-left"
       ].freeze
 
+      DEFAULT_ACTION_SCHEME = :default
+      MORE_MENU_DISPLAY = [:flex, :none].freeze
+
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
-      DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY = [:flex, :none].freeze
 
       status :open_project
 
@@ -54,24 +56,50 @@ module Primer
       # Actions
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :actions, lambda { |**system_arguments|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 2
+      renders_many :actions, types: {
+        icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, label, scheme)
 
-        Primer::BaseComponent.new(**system_arguments)
-      }
+          Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
+        },
+        button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
-      # Context Bar Actions
-      # By default shown on narrow screens. Can be overridden with system_argument: display
-      #
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :context_bar_actions, lambda { |**system_arguments|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :div
-        system_arguments[:ml] ||= 2
+          Primer::Beta::Button.new(**system_arguments)
+        },
+        link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
-        Primer::BaseComponent.new(**system_arguments)
+          Primer::Beta::Link.new(**system_arguments)
+        },
+        # Should only be used rarely on a per-need basis
+        text: lambda { |**system_arguments|
+          system_arguments = set_action_arguments(system_arguments)
+
+          system_arguments[:color] ||= :muted
+
+          # Enforce that texts are hidden on mobile
+          system_arguments[:display] = [:none, :flex]
+
+          Primer::Beta::Text.new(**system_arguments)
+        },
+        menu: {
+          renders: lambda { |**system_arguments, &block|
+            deny_tag_argument(**system_arguments)
+            system_arguments[:menu_arguments] = set_action_arguments(system_arguments[:menu_arguments])
+
+            # Add the options individually to the mobile menu in the template
+            @desktop_menu_block = block
+
+            PageHeaderActionMenu.new(**system_arguments)
+          },
+        },
       }
 
       # Optional leading action prepend the title
@@ -93,21 +121,6 @@ module Primer
         Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
-      # Optional parent link in the context area
-      # By default shown on narrow screens. Can be overridden with system_argument: display
-      #
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :parent_link, lambda { |icon: DEFAULT_BACK_BUTTON_ICON, **system_arguments, &block|
-        deny_tag_argument(**system_arguments)
-        system_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, icon, DEFAULT_BACK_BUTTON_ICON)
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-parentLink")
-        system_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
-
-        render(Primer::Beta::Link.new(scheme: :primary, muted: true, **system_arguments)) do
-          render(Primer::Beta::Octicon.new(icon: "arrow-left", "aria-label": "aria_label", mr: 2)) + content_tag(:span, &block)
-        end
-      }
-
       # Optional breadcrumbs above the title row
       # By default shown on wider screens. Can be overridden with system_argument: display
       #
@@ -116,6 +129,25 @@ module Primer
       renders_one :breadcrumbs, lambda { |items, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
+
+        # show parent link if there is a parent for current page
+        if items.length > 1
+          link_arguments = {}
+          parent_item = items[items.length - 2]
+          parsed_parent_item = anchor_tag_string?(parent_item) ? anchor_string_to_object(parent_item) : parent_item
+
+          link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
+          link_arguments[:href] = parsed_parent_item[:href]
+          link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
+          link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
+
+          @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
+            render(Primer::Beta::Octicon.new(icon: "arrow-left",
+                                             "aria-label": I18n.t("button_back"),
+                                             mr: 2)
+            ) + content_tag(:span, parsed_parent_item[:text])
+          end
+        end
 
         render(Primer::Beta::Breadcrumbs.new(**system_arguments)) do |breadcrumbs|
           items.each do |item|
@@ -130,22 +162,82 @@ module Primer
         end
       }
 
-      def initialize(**system_arguments)
+      # @param mobile_menu_label [String] The tooltip label of the mobile menu
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(mobile_menu_label: I18n.t("label_more"), **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
+        @mobile_menu_label = mobile_menu_label
 
-        @system_arguments[:tag] = :header
+        @system_arguments[:tag] = :"page-header"
         @system_arguments[:classes] =
           class_names(
             @system_arguments[:classes],
             "PageHeader"
           )
+
+        @mobile_action_menu = Primer::Alpha::ActionMenu.new(
+          display: MORE_MENU_DISPLAY,
+          anchor_align: :end
+        )
       end
 
       def render?
-        title?
+        raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
+        title? && breadcrumbs?
+      end
+
+      def before_render
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "PageHeader--singleAction": !render_mobile_menu?
+        )
+
+        content
+      end
+
+      def render_mobile_menu?
+        actions.count > 1
       end
 
       private
+
+      def set_action_arguments(system_arguments, scheme: nil)
+        system_arguments[:ml] ||= 2
+        system_arguments[:display] = [:none, :flex]
+        system_arguments[:scheme] = scheme unless scheme.nil?
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "PageHeader-action",
+        )
+
+        system_arguments[:id] ||= self.class.generate_id
+        system_arguments
+      end
+
+      def add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
+        unless mobile_icon.nil? || mobile_label.nil?
+          # In action menus, only :default and :danger are allowed
+          scheme = DEFAULT_ACTION_SCHEME unless scheme == :danger
+
+          with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
+            c.with_leading_visual_icon(icon: mobile_icon)
+          end
+        end
+      end
+
+      def with_menu_item(id:, **system_arguments, &block)
+        system_arguments = {
+          **system_arguments,
+          "data-for": id,
+          "data-action": "click:page-header#menuItemClick"
+        }
+
+        @mobile_action_menu.with_item(
+          value: "",
+          **system_arguments,
+          &block
+        )
+      end
 
       # transform anchor tag strings to {href, text} objects
       # e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
@@ -160,6 +252,30 @@ module Primer
       # Check if the item is an anchor tag string e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
       def anchor_tag_string?(item)
         item.is_a?(String) && item.start_with?("\u003c")
+      end
+
+      # A Helper class to create ActionMenus inside the PageHeader action slot
+      class PageHeaderActionMenu < Primer::Component
+        # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
+        # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
+        def initialize(menu_arguments: {}, button_arguments: {})
+          @menu = Primer::Alpha::ActionMenu.new(**menu_arguments)
+          @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
+        end
+
+        def render_in(view_context, &block)
+          super(view_context) do
+            block.call(@menu, @button)
+          end
+        end
+
+        def before_render
+          content
+        end
+
+        def call
+          render(@menu)
+        end
       end
     end
   end

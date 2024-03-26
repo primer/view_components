@@ -5,14 +5,30 @@ require "components/test_helper"
 class PrimerOpenProjectPageHeaderTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_does_not_render_if_no_title_provided
-    render_inline(Primer::OpenProject::PageHeader.new)
+  def test_raises_if_no_title_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::PageHeader.new)
+    end
 
-    refute_component_rendered
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
+  end
+
+  def test_raises_if_no_breadcrumb_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::PageHeader.new) do |header|
+        header.with_title { "Hello" }
+      end
+
+    end
+
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
   end
 
   def test_renders_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title { "Hello" } }
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+    end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
@@ -20,7 +36,10 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   end
 
   def test_renders_large_title
-    render_inline(Primer::OpenProject::PageHeader.new) { |header| header.with_title(variant: :large) { "Hello" } }
+    render_inline(Primer::OpenProject::PageHeader.new)  do |header|
+      header.with_title(variant: :large) { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+    end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
@@ -30,6 +49,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_description
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_description { "My new description" }
     end
 
@@ -42,18 +62,66 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
-      header.with_action { "An action" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
+      header.with_action_text { "An additional hint" }
+      header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
+      header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
+      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
+        menu.with_item(label: "Subitem 1") do |item|
+          item.with_leading_visual_icon(icon: :paste)
+        end
+      end
+    end
+
+    # Renders the actions
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-actions")
+    assert_text("An action")
+    assert_text("An additional hint")
+    assert_selector(".PageHeader-actions .ActionListItem-label") do
+      assert_text("Subitem 1")
+    end
+
+    # The mobile variant of the actions is already rendered, but hidden
+    assert_selector(".PageHeader-contextBar")
+    assert_selector("action-menu.d-flex.d-sm-none")
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Action")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Delete")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Link to")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Subitem 1")
+    end
+
+    # The text is hidden on mobile
+    assert_selector("span.d-none.d-sm-flex")
+  end
+
+  def test_renders_single_action
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
     end
 
     assert_text("Hello")
     assert_selector(".PageHeader-title")
     assert_text("An action")
     assert_selector(".PageHeader-actions")
+    assert_selector(".PageHeader--singleAction")
   end
 
   def test_renders_leading_action
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
       header.with_leading_action(icon: :"arrow-left", href: "/link", 'aria-label': "Back")
     end
 
@@ -66,6 +134,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     breadcrumb_items = [
       { href: "/foo", text: "Foo" },
       "\u003ca href=\"/foo/bar\"\u003eBar\u003c/a\u003e",
+      { href: "#", text: "test" },
       "test"
     ]
 
@@ -77,31 +146,16 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_text("Hello")
     assert_selector(".PageHeader-title")
     assert_selector(".PageHeader-breadcrumbs")
+    assert_selector(".PageHeader-parentLink")
 
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo/bar']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='#']")
   end
 
-  def test_renders_parent_link
-    render_inline(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title { "Hello" }
-      header.with_parent_link(href: "test") { "Parent link" }
-    end
+  private
 
-    assert_text("Hello")
-    assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-parentLink")
-  end
-
-  def test_renders_context_bar_actions
-    render_inline(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title { "Hello" }
-      header.with_context_bar_action { "An context bar action" }
-    end
-
-    assert_text("Hello")
-    assert_selector(".PageHeader-title")
-    assert_selector(".PageHeader-contextBarActions")
+  def breadcrumb_elements
+    [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
   end
 end

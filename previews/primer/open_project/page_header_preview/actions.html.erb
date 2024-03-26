@@ -1,24 +1,25 @@
 <%= render(Primer::OpenProject::PageHeader.new) do |component| %>
   <% component.with_title do %>
-    A title
+    Great news
   <% end %>
   <% component.with_description do %>
-    A description with actions
+    This example lists all possible actions of a PageHeader. Of course, you will most likely never need all of them on the same page as it is shown here.
   <% end %>
-  <% component.with_action do %>
-    <%= render(Primer::Beta::IconButton.new(icon: 'pencil', 'aria-label': 'Edit')) %>
+  <% component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]) %>
+  <% component.with_action_text { "An additional hint" } %>
+  <% component.with_action_link(mobile_icon: "link", mobile_label: "Community", href: "https://community.openproject.com", target: "_blank") { "Go to community" } %>
+  <% component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|%>
+      <% button.with_leading_visual_icon(icon: "star") %>
+      Star
   <% end %>
-  <% component.with_action do %>
-    <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
-      <% menu.with_show_button { "Menu" } %>
-      <% menu.with_item(label: "Item", tag: :button, value: "") %>
-      <% menu.with_item(
-           label: "Show dialog",
-           tag: :button,
-           content_arguments: { "data-show-dialog-id": "my-dialog" },
-           value: "",
-           scheme: :danger
-         ) %>
+  <% component.with_action_button(mobile_icon: nil, mobile_label: nil) { "Hide on mobile" } %>
+  <% component.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete", scheme: :danger) %>
+  <% component.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button| %>
+    <% menu.with_item(label: "Subitem 1") do |item| %>
+      <% item.with_leading_visual_icon(icon: :paste) %>
+    <% end %>
+    <% menu.with_item(label: "Subitem 2") do |item| %>
+      <% item.with_leading_visual_icon(icon: :log) %>
     <% end %>
   <% end %>
 <% end %>

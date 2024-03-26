@@ -1,13 +1,12 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if parent_link || breadcrumbs || context_bar_actions %>
+  <% if @parent_link || breadcrumbs || actions.any? %>
     <div class="PageHeader-contextBar">
-      <%= parent_link %>
+      <%= @parent_link %>
       <%= breadcrumbs %>
-      <% if context_bar_actions.any? %>
-        <%= render Primer::BaseComponent.new(tag: :div, classes: 'PageHeader-contextBarActions', display: DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY, align_items: :center) do %>
-          <% context_bar_actions.each do |action| %>
-            <%= action %>
-          <% end %>
+      <% if render_mobile_menu? %>
+        <%= render(@mobile_action_menu) do |menu| %>
+          <% menu.with_show_button(icon: :"kebab-horizontal", "aria-label": @mobile_menu_label) %>
+          <% @desktop_menu_block.call(menu) unless @desktop_menu_block.nil? %>
         <% end %>
       <% end %>
     </div>
