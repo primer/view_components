@@ -121,7 +121,7 @@
   "Primer::OpenProject::GridLayout::Area": "open_project",
   "Primer::OpenProject::InputGroup": "open_project",
   "Primer::OpenProject::PageHeader": "open_project",
-  "Primer::OpenProject::PageHeader::PageHeaderActionMenu": "alpha",
+  "Primer::OpenProject::PageHeader::PageHeaderActionMenu": "open_project",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "deprecated"
 }
