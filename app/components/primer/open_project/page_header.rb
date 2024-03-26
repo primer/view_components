@@ -162,9 +162,10 @@ module Primer
         end
       }
 
-      def initialize(show_mobile_menu: true, mobile_menu_label: I18n.t("label_more"), **system_arguments)
+      # @param mobile_menu_label [String] The tooltip label of the mobile menu
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(mobile_menu_label: I18n.t("label_more"), **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
-        @show_mobile_menu = show_mobile_menu
         @mobile_menu_label = mobile_menu_label
 
         @system_arguments[:tag] = :"page-header"
@@ -173,8 +174,6 @@ module Primer
             @system_arguments[:classes],
             "PageHeader"
           )
-
-        return unless @show_mobile_menu
 
         @mobile_action_menu = Primer::Alpha::ActionMenu.new(
           display: MORE_MENU_DISPLAY,
@@ -187,12 +186,29 @@ module Primer
         title? && breadcrumbs?
       end
 
+      def before_render
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "PageHeader--singleAction": !render_mobile_menu?
+        )
+
+        content
+      end
+
+      def render_mobile_menu?
+        actions.count > 1
+      end
+
       private
 
       def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
-        system_arguments[:display] = @show_mobile_menu ? [:none, :flex] : [:flex]
+        system_arguments[:display] = [:none, :flex]
         system_arguments[:scheme] = scheme unless scheme.nil?
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "PageHeader-action",
+        )
 
         system_arguments[:id] ||= self.class.generate_id
         system_arguments
@@ -210,8 +226,6 @@ module Primer
       end
 
       def with_menu_item(id:, **system_arguments, &block)
-        return unless @show_mobile_menu
-
         system_arguments = {
           **system_arguments,
           "data-for": id,

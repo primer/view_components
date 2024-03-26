@@ -46,6 +46,16 @@
   align-items: center;
 }
 
+.PageHeader--singleAction .PageHeader-action {
+  @media (max-width: 543.98px) {
+    position: absolute;
+    top: 10px;
+
+    /* Normally, the actions are hidden on mobile, except for this special case of a single action */
+    display: flex !important;
+  }
+}
+
 .PageHeader-breadcrumbs {
   display: block;
   width: 100%;

@@ -23,14 +23,12 @@ module Primer
       # @param description [String] text
       # @param with_leading_action [Symbol] octicon
       # @param with_actions [Boolean]
-      # @param show_mobile_menu [Boolean]
       def playground(
         variant: :medium,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
         with_leading_action: :"none",
-        with_actions: true,
-        show_mobile_menu: true
+        with_actions: true
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
@@ -39,7 +37,6 @@ module Primer
                                        description: description,
                                        with_leading_action: with_leading_action,
                                        with_actions: with_actions,
-                                       show_mobile_menu: show_mobile_menu,
                                        breadcrumb_items: breadcrumb_items })
       end
 

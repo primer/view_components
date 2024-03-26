@@ -1,4 +1,4 @@
-<%= render Primer::OpenProject::PageHeader.new(show_mobile_menu: show_mobile_menu) do |header| %>
+<%= render Primer::OpenProject::PageHeader.new do |header| %>
   <%= header.with_title(variant: variant) { title } %>
   <%= header.with_description { description } %>
   <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action && with_leading_action != :none %>

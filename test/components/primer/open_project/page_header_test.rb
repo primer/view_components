@@ -104,8 +104,8 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("span.d-none.d-sm-flex")
   end
 
-  def test_renders_actions_without_mobile_menu
-    render_inline(Primer::OpenProject::PageHeader.new(show_mobile_menu: false)) do |header|
+  def test_renders_single_action
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
       header.with_breadcrumbs(breadcrumb_elements)
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
@@ -115,11 +115,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-title")
     assert_text("An action")
     assert_selector(".PageHeader-actions")
-
-    # There is no mobile menu
-    assert_selector(".PageHeader-contextBar")
-    assert_no_selector("action-menu")
-    assert_selector(".PageHeader-actions .Button.d-flex")
+    assert_selector(".PageHeader--singleAction")
   end
 
   def test_renders_leading_action
