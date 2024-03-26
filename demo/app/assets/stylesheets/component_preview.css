@@ -32,7 +32,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: var(--color-canvas-subtle);
+  background-color: var(--bgColor-muted);
   padding: var(--base-size-4) var(--base-size-8);
   font: var(--primer-text-caption-shorthand);
 }

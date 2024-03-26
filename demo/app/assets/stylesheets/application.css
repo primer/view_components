@@ -25,3 +25,8 @@
  *= require @primer/css/dist/utilities.css
  *= require @primer/css/dist/markdown.css
 */
+
+[data-color-mode] {
+  color: var(--fgColor-default, var(--color-fg-default));
+  background-color: var(--bgColor-default, var(--color-canvas-default));
+}
