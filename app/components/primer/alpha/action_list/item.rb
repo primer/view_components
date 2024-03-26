@@ -180,7 +180,7 @@ module Primer
           content_arguments: {},
           form_arguments: {},
           parent: nil,
-          truncate_label: :none,
+          truncate_label: false,
           href: nil,
           role: nil,
           size: DEFAULT_SIZE,
@@ -303,7 +303,7 @@ module Primer
           )
 
           if @truncate_label == :show_tooltip && !tooltip?
-            with_tooltip(text: @label)
+            with_tooltip(text: @label, direction: :s)
           end
 
           return unless leading_visual

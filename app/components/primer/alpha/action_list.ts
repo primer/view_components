@@ -21,18 +21,22 @@ export class ActionListTruncationObserver {
   }
 
   update(el: HTMLElement) {
-    const label = el.querySelector('.ActionListItem-label')
-    if (!label) return
+    const labels = el.querySelectorAll('.ActionListItem-label')
+    const tooltips = el.querySelectorAll('.ActionListItem-truncationTooltip')
 
-    const tooltip = el.querySelector('.ActionListItem-truncationTooltip') as HTMLElement | null
-    if (!tooltip) return
+    for (let i = 0; i < labels.length; i++) {
+      const label = labels[i] as HTMLElement
+      if (!label) return
+      const tooltip = tooltips[i] as HTMLElement
+      if (!tooltip) return
 
-    const isTruncated = label.scrollWidth > label.clientWidth
+      const isTruncated = label.scrollWidth > label.clientWidth
 
-    if (isTruncated) {
-      tooltip.style.display = ''
-    } else {
-      tooltip.style.display = 'none'
+      if (isTruncated) {
+        tooltip.style.display = ''
+      } else {
+        tooltip.style.display = 'none'
+      }
     }
   }
 }

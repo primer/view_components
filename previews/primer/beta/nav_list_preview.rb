@@ -139,9 +139,15 @@ module Primer
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
-          ) do |item|
-            item.with_trailing_visual_icon(icon: :plus)
-          end
+          ) 
+          component.with_item(
+            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+            truncate_label: truncate_label
+          )
+          component.with_item(
+            label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+            truncate_label: truncate_label
+          )
         end
       end
 
