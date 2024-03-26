@@ -22,14 +22,12 @@ export class ActionListTruncationObserver {
 
   update(el: HTMLElement) {
     const items = el.querySelectorAll('li')
-    const labels = el.querySelectorAll('.ActionListItem-label')
-    const tooltips = el.querySelectorAll('.ActionListItem-truncationTooltip')
 
-    for (let i = 0; i < items.length; i++) {
-      const label = labels[i] as HTMLElement
-      if (!label) return
-      const tooltip = tooltips[i] as HTMLElement
-      if (!tooltip) return
+    for (const item of items) {
+      const label = item.querySelector('.ActionListItem-label') as HTMLElement
+      if (!label) continue
+      const tooltip = item.querySelector('.ActionListItem-truncationTooltip') as HTMLElement
+      if (!tooltip) continue
 
       const isTruncated = label.scrollWidth > label.clientWidth
 
