@@ -83,14 +83,27 @@ export class DialogHelperElement extends HTMLElement {
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
-          this.ownerDocument.body.classList.toggle('has-modal', this.dialog.hasAttribute('open'))
+          this.#handleDialogOpenAttribute()
         }
       }
     }).observe(this, {subtree: true, attributeFilter: ['open']})
+    this.#handleDialogOpenAttribute()
   }
 
   disconnectedCallback() {
     this.#abortController?.abort()
+  }
+
+  #handleDialogOpenAttribute() {
+    if (!this.dialog) return
+    this.ownerDocument.body.classList.toggle('has-modal', this.dialog.matches(':modal'))
+    // We don't want to show the Dialog component as non-modal
+    if (this.dialog.matches('[open]:not(:modal)')) {
+      // eslint-disable-next-line no-restricted-syntax
+      this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
+      this.dialog.close()
+      this.dialog.showModal()
+    }
   }
 
   handleEvent(event: MouseEvent) {
