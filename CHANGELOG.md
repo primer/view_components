@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.21.1
+
+### Patch Changes
+
+- [#2707](https://github.com/primer/view_components/pull/2707) [`1c73539`](https://github.com/primer/view_components/commit/1c7353976a09b8722dd0609ff3239ed02799a5ff) Thanks [@jonrohan](https://github.com/jonrohan)! - Add `:primary` and `:secondary` scheme to IconButton and Match scheme for ButtonGroup menu
+
+- [#2582](https://github.com/primer/view_components/pull/2582) [`74c4cc0`](https://github.com/primer/view_components/commit/74c4cc037fede70f8859614d7efab8934eeb80e7) Thanks [@keithamus](https://github.com/keithamus)! - Ensure Alpha::Dialog is always opened as modal
+
 ## 0.21.0
 
 ### Minor Changes
