@@ -1430,14 +1430,11 @@
       "chevron-left",
       "triangle-left"
     ],
+    "DEFAULT_ACTION_SCHEME": "default",
     "DEFAULT_BACK_BUTTON_ICON": "arrow-left",
     "DEFAULT_BREADCRUMBS_DISPLAY": [
       "none",
       "flex"
-    ],
-    "DEFAULT_CONTEXT_BAR_ACTIONS_DISPLAY": [
-      "flex",
-      "none"
     ],
     "DEFAULT_HEADER_VARIANT": "medium",
     "DEFAULT_LEADING_ACTION_DISPLAY": [
@@ -1460,7 +1457,14 @@
       "h4",
       "h5",
       "h6"
-    ]
+    ],
+    "MORE_MENU_DISPLAY": [
+      "flex",
+      "none"
+    ],
+    "PageHeaderActionMenu": "Primer::OpenProject::PageHeader::PageHeaderActionMenu"
+  },
+  "Primer::OpenProject::PageHeader::PageHeaderActionMenu": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

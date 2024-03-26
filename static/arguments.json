@@ -4959,7 +4959,40 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/default/",
     "parameters": [
-
+      {
+        "name": "mobile_menu_label",
+        "type": "String",
+        "default": "`I18n.t(\"label_more\")`",
+        "description": "The tooltip label of the mobile menu"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::PageHeader::PageHeaderActionMenu",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderPageHeaderActionMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/page_header_action_menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/page_header_action_menu/default/",
+    "parameters": [
+      {
+        "name": "menu_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [ActionMenu](/components/alpha/actionmenu)."
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [Button](/components/beta/button) or [IconButton](/components/beta/iconbutton), depending on the value of the `icon:` argument."
+      }
     ]
   },
   {

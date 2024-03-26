@@ -16372,7 +16372,18 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/default/",
     "parameters": [
-
+      {
+        "name": "mobile_menu_label",
+        "type": "String",
+        "default": "`I18n.t(\"label_more\")`",
+        "description": "The tooltip label of the mobile menu"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
     ],
     "slots": [
       {
@@ -16413,18 +16424,6 @@
         ]
       },
       {
-        "name": "context_bar_actions",
-        "description": "Context Bar Actions\nBy default shown on narrow screens. Can be overridden with system_argument: display",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ]
-      },
-      {
         "name": "leading_action",
         "description": "Optional leading action prepend the title\nBy default shown on wider screens. Can be overridden with system_argument: display",
         "parameters": [
@@ -16434,18 +16433,6 @@
             "default": "N/A",
             "description": "The name of an {{link_to_octicons}} icon to use."
           },
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ]
-      },
-      {
-        "name": "parent_link",
-        "description": "Optional parent link in the context area\nBy default shown on narrow screens. Can be overridden with system_argument: display",
-        "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -16567,33 +16554,47 @@
             "color-contrast"
           ]
         }
-      },
-      {
-        "preview_path": "primer/open_project/page_header/parent_link",
-        "name": "parent_link",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/open_project/page_header/context_bar_actions",
-        "name": "context_bar_actions",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
       }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::PageHeader::PageHeaderActionMenu",
+    "description": "A Helper class to create ActionMenus inside the PageHeader action slot",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::PageHeader::PageHeaderActionMenu",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderPageHeaderActionMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/page_header_action_menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/page_header_action_menu/default/",
+    "parameters": [
+      {
+        "name": "menu_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}}."
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
     ],
     "subcomponents": [
 
