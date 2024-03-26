@@ -26,34 +26,34 @@
  *= require @primer/css/dist/markdown.css
 */
 
-:root,[data-color-mode=light][data-light-theme*=light],[data-color-mode=dark][data-dark-theme*=light] {
+:root,[data-color-mode="light"][data-light-theme*="light"],[data-color-mode="dark"][data-dark-theme*="light"] {
   color-scheme: light
 }
 
 @media(prefers-color-scheme: light) {
-  [data-color-mode=auto][data-light-theme*=light] {
+  [data-color-mode="auto"][data-light-theme*="light"] {
       color-scheme:light
   }
 }
 
 @media(prefers-color-scheme: dark) {
-  [data-color-mode=auto][data-dark-theme*=light] {
+  [data-color-mode="auto"][data-dark-theme*="light"] {
       color-scheme:light
   }
 }
 
-[data-color-mode=light][data-light-theme*=dark],[data-color-mode=dark][data-dark-theme*=dark] {
+[data-color-mode="light"][data-light-theme*="dark"],[data-color-mode="dark"][data-dark-theme*="dark"] {
   color-scheme: dark
 }
 
 @media(prefers-color-scheme: light) {
-  [data-color-mode=auto][data-light-theme*=dark] {
+  [data-color-mode="auto"][data-light-theme*="dark"] {
       color-scheme:dark
   }
 }
 
 @media(prefers-color-scheme: dark) {
-  [data-color-mode=auto][data-dark-theme*=dark] {
+  [data-color-mode="auto"][data-dark-theme*="dark"] {
       color-scheme:dark
   }
 }
