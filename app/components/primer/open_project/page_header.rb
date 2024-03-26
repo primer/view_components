@@ -256,6 +256,8 @@ module Primer
 
       # A Helper class to create ActionMenus inside the PageHeader action slot
       class PageHeaderActionMenu < Primer::Component
+        status :open_project
+
         # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
         # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
         def initialize(menu_arguments: {}, button_arguments: {})
