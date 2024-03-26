@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.25.0
+
+### Minor Changes
+
+- [#2603](https://github.com/primer/view_components/pull/2603) [`bbc1776`](https://github.com/opf/primer_view_components/commit/bbc1776b44e089516658aa76d2fec3724a4dccfc) Thanks [@langermank](https://github.com/langermank)! - Tooltip visual refresh to match Primer React
+
+- [#89](https://github.com/opf/primer_view_components/pull/89) [`0d06bec`](https://github.com/opf/primer_view_components/commit/0d06bec7224ad70c071586f5884b2ef8692237dc) Thanks [@HDinger](https://github.com/HDinger)! - Changes `Primer::OpenProject::PageHeader`:
+
+  - Remove the `context_bar_actions` slot
+  - Make `breadcrumbs` required
+  - Remove the `parent_link` slot (will be derived automatically from the breadcrumb)
+  - Change the slot definition for `actions` to be type specific (allowed types are: icon_button, button, link, text and menu)
+  - On mobile, the actions collapse into a single action menu which is placed in the context_bar
+
+### Patch Changes
+
+- [#2706](https://github.com/primer/view_components/pull/2706) [`60c5f01`](https://github.com/opf/primer_view_components/commit/60c5f014e60c6f2e5e5e1bcfb8702fdf48d26fa7) Thanks [@camertron](https://github.com/camertron)! - Fix dialog CSS to prevent tooltip issues
+
+- [#2705](https://github.com/primer/view_components/pull/2705) [`90192bb`](https://github.com/opf/primer_view_components/commit/90192bb652992cc47672a571aa8fb03b866703c5) Thanks [@langermank](https://github.com/langermank)! - Revert "Swap bg-gradient with bg-color for Banner/Flash"
+
 ## 0.24.0
 
 ### Minor Changes
