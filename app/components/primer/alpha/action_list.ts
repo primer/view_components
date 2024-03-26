@@ -21,10 +21,11 @@ export class ActionListTruncationObserver {
   }
 
   update(el: HTMLElement) {
+    const items = el.querySelectorAll('li')
     const labels = el.querySelectorAll('.ActionListItem-label')
     const tooltips = el.querySelectorAll('.ActionListItem-truncationTooltip')
 
-    for (let i = 0; i < labels.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       const label = labels[i] as HTMLElement
       if (!label) return
       const tooltip = tooltips[i] as HTMLElement
