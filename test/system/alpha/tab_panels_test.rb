@@ -9,9 +9,9 @@ module Alpha
         assert_selector("button#tab-1.tabnav-tab[role='tab'][aria-selected='true']", text: "Tab 1")
         assert_selector("button#tab-2.tabnav-tab[role='tab']", text: "Tab 2")
         assert_selector("button#tab-3.tabnav-tab[role='tab']", text: "Tab 3")
-        assert_selector("div#panel-tab-2[role='tabpanel']", text: "Panel 1")
-        assert_selector("div#panel-tab-2[role='tabpanel']", text: "Panel 2", visible: false)
-        assert_selector("div#panel-tab-3[role='tabpanel']", text: "Panel 3", visible: false)
+        assert_selector("div#panel-tab-1[role='tabpanel']", text: "Panel 1")
+        refute_selector("div#panel-tab-2[role='tabpanel']", text: "Panel 2")
+        refute_selector("div#panel-tab-3[role='tabpanel']", text: "Panel 3")
       end
     end
 
@@ -27,7 +27,7 @@ module Alpha
 
     def assert_shows_panel(panel)
       (1..3).each do |num|
-        assert_selector("div[role='tabpanel']#{'[hidden]' unless panel == num}", text: "Panel #{num}", visible: panel == num)
+        assert_selector("div[role='tabpanel']", text: "Panel #{num}", visible: panel == num)
       end
     end
 
