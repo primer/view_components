@@ -89,7 +89,7 @@
   border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 
   /* Ensures bottom-border doesn't poke out when .Box-body used without box-footer */
-  &:last-of-type {
+  &:last-child {
     margin-bottom: calc(var(--borderWidth-thin) * -1);
     border-bottom-right-radius: var(--borderRadius-medium);
     border-bottom-left-radius: var(--borderRadius-medium);
@@ -106,8 +106,7 @@
   border-top-width: var(--borderWidth-thin);
 
   &:first-of-type {
-    border-top-left-radius: var(--borderRadius-medium);
-    border-top-right-radius: var(--borderRadius-medium);
+    border-top-width: 0;
   }
 
   &:last-of-type {
