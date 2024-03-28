@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.22.0
+
+### Minor Changes
+
+- [#2729](https://github.com/primer/view_components/pull/2729) [`2b0a7bf`](https://github.com/primer/view_components/commit/2b0a7bf7d82a837156df3794fe25bef435c66147) Thanks [@thesnowrose](https://github.com/thesnowrose)! - Fixes a bug where a tooltip was being shown in the navlist even when the text wasn't truncated for certain items.
+
+### Patch Changes
+
+- [#2735](https://github.com/primer/view_components/pull/2735) [`507a743`](https://github.com/primer/view_components/commit/507a743a7e4e018330765cd1273344bb55829bb6) Thanks [@antn](https://github.com/antn)! - Explicitly convert params to integers where needed for several previews
+
+- [#2731](https://github.com/primer/view_components/pull/2731) [`8123aee`](https://github.com/primer/view_components/commit/8123aeeb616f0ed34c96f9517666a28031c948ac) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove old primitives color themes imports and only use V8 on the demo lookbook
+
+- [#2733](https://github.com/primer/view_components/pull/2733) [`6fe410b`](https://github.com/primer/view_components/commit/6fe410b1a306ecc5a43507de9b0fb9bea76abb26) Thanks [@broccolinisoup](https://github.com/broccolinisoup)! - Tooltip: Update the threshold value to match with the offset
+
 ## 0.21.1
 
 ### Patch Changes
