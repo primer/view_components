@@ -11,7 +11,7 @@ module Primer
       # @param with_counters [Boolean] toggle
       def playground(number_of_tabs: 3, with_icons: false, with_counters: false)
         render(Primer::Alpha::TabNav.new(label: "label")) do |component|
-          Array.new(number_of_tabs || 3) do |i|
+          Array.new(number_of_tabs&.to_i || 3) do |i|
             component.with_tab(selected: i.zero?, href: "##{i + 1}") do |tab|
               tab.with_icon(icon: :star) if with_icons
               tab.with_text { "Tab #{i + 1}" }
