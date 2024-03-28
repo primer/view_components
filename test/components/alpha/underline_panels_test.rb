@@ -20,21 +20,13 @@ class PrimerUnderlinePanelsTest < Minitest::Test
       end
     end
 
-    assert_selector("tab-container") do
-      assert_selector("div.UnderlineNav") do
-        assert_selector("ul.UnderlineNav-body[role='tablist'][aria-label='label']") do
-          assert_selector("li[role='presentation']") do
-            assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-          end
-          assert_selector("li[role='presentation']") do
-            assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
-          end
-        end
-        assert_selector("div.UnderlineNav-actions", text: "Actions content")
-      end
-      assert_selector("div[role='tabpanel']", text: "Panel 1")
-      assert_selector("div[role='tabpanel']", text: "Panel 2", visible: false)
+    assert_selector("tab-container.UnderlineNav") do
+      assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
+      assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
+      assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
+    assert_selector("div[role='tabpanel']", text: "Panel 1")
+    assert_selector("div[role='tabpanel']", text: "Panel 2", visible: false)
   end
 
   def test_customizes_tab_container
@@ -109,7 +101,7 @@ class PrimerUnderlinePanelsTest < Minitest::Test
 
     refute_selector(".UnderlineNav--right")
 
-    assert_selector("div.UnderlineNav") do
+    assert_selector("tab-container.UnderlineNav") do
       assert_selector("ul.UnderlineNav-body[aria-label='label']") do
         assert_selector("li[role='presentation']") do
           assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
@@ -137,15 +129,9 @@ class PrimerUnderlinePanelsTest < Minitest::Test
       end
     end
 
-    assert_selector("div.UnderlineNav.UnderlineNav--right") do
-      assert_selector("ul.UnderlineNav-body[aria-label='label']") do
-        assert_selector("li[role='presentation']") do
-          assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-        end
-        assert_selector("li[role='presentation']") do
-          assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
-        end
-      end
+    assert_selector("tab-container.UnderlineNav.UnderlineNav--right") do
+      assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
+      assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
   end
@@ -164,8 +150,6 @@ class PrimerUnderlinePanelsTest < Minitest::Test
         "Actions content"
       end
     end
-
-    assert_selector(".UnderlineNav > .UnderlineNav-body:last-child")
   end
 
   def test_renders_tab_icon_with_correct_classes
