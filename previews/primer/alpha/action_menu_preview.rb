@@ -192,6 +192,34 @@ module Primer
         end
       end
 
+      # @label Multiple select with additional links
+      #
+      def multiple_select_with_additional_links
+        render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
+          menu.with_show_button { "Menu" }
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/18661030?v=4",
+            username: "langermank",
+            full_name: "Katie Langerman",
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square },
+            item_id: :katie
+          )
+
+          menu.with_avatar_item(
+            src: "https://avatars.githubusercontent.com/u/54012?s=96&v=4",
+            username: "jonrohan",
+            full_name: "Jon Rohan",
+            full_name_scheme: :inline,
+            avatar_arguments: { shape: :square },
+            item_id: :jon
+          )
+          menu.with_divider
+          menu.with_item(label: "Edit", href: "/", role: "menuitem", "aria-checked": :false)
+        end
+      end
+
       # @label Links
       #
       def links
