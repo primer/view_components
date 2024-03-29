@@ -1,6 +1,6 @@
 <%= render(Primer::Alpha::Overlay.new(title: "Dialog", role: :dialog, size: :large, padding: :condensed)) do |d| %>
   <% d.with_header(title: "Large Dialog Header", divider: true) do |header| %>
-    <% header.with_sub_section do %>
+    <% header.with_filter do %>
       <%= render Primer::Alpha::TextField.new(
         autofocus: true,
         visually_hide_label:

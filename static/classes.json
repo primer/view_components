@@ -402,7 +402,7 @@
   "Overlay-header": [
     "Primer::Alpha::Dialog"
   ],
-  "Overlay-header-subsection": [
+  "Overlay-headerFilter": [
     "Primer::Alpha::Dialog"
   ],
   "Popover": [

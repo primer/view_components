@@ -13,10 +13,10 @@ module Primer
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-        renders_one :sub_section, lambda { |**system_arguments|
+        renders_one :filter, lambda { |**system_arguments|
           system_arguments[:tag] = :div
           system_arguments[:classes] = class_names(
-            "Overlay-header-subsection",
+            "Overlay-headerFilter",
             system_arguments[:classes]
           )
           Primer::BaseComponent.new(**system_arguments)

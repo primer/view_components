@@ -180,7 +180,7 @@ module Primer
         end
       end
 
-      def overlay_with_header_sub_section
+      def overlay_with_header_filter
         render_with_template(locals: {})
       end
     end
