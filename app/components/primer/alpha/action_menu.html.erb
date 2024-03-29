@@ -1,7 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <focus-group direction="vertical" mnemonics retain>
     <%= render(@overlay) do |overlay| %>
-      <% overlay.with_body(padding: :none, id: @body_id) do %>
+      <% overlay.with_body(padding: :none) do %>
         <% if @src.present? %>
           <include-fragment src="<%= @src %>" loading="<%= preload? ? "eager" : "lazy" %>" data-target="action-menu.includeFragment">
             <%= render(Primer::Alpha::ActionMenu::List.new(id: "#{@menu_id}-list", menu_id: @menu_id)) do |list| %>
