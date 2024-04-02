@@ -179,6 +179,10 @@ module Primer
           d.with_body { "This is a long body for the overlay dialog. <br>".html_safe * 20 }
         end
       end
+
+      def overlay_with_header_filter
+        render_with_template(locals: {})
+      end
     end
   end
 end

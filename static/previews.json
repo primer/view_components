@@ -5122,6 +5122,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/overlay/overlay_with_header_filter",
+        "name": "overlay_with_header_filter",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -7406,7 +7419,33 @@
       {
         "preview_path": "primer/alpha/underline_panels/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_icons_and_counters",
+        "name": "with_icons_and_counters",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_actions",
+        "name": "with_actions",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"

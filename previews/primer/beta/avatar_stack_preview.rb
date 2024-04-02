@@ -13,7 +13,7 @@ module Primer
       # @param tooltip_label text
       def playground(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!")
         render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, body_arguments: { label: tooltip_label })) do |component|
-          Array.new(number_of_avatars || 1) do
+          Array.new(number_of_avatars&.to_i || 1) do
             component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
           end
         end

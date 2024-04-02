@@ -420,6 +420,9 @@
   "Overlay-header": [
     "Primer::Alpha::Dialog"
   ],
+  "Overlay-headerFilter": [
+    "Primer::Alpha::Dialog"
+  ],
   "PageHeader": [
     "Primer::OpenProject::PageHeader"
   ],
