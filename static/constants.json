@@ -938,11 +938,15 @@
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
       "default": "Button--secondary",
+      "primary": "Button--primary",
+      "secondary": "Button--secondary",
       "danger": "Button--danger",
       "invisible": "Button--invisible"
     },
     "SCHEME_OPTIONS": [
       "default",
+      "primary",
+      "secondary",
       "danger",
       "invisible"
     ]

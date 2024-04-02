@@ -3264,6 +3264,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/initally_open",
+        "name": "initally_open",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3959,6 +3972,19 @@
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/primary",
+        "name": "primary",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
