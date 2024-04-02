@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "selenium-webdriver"
-require "webdrivers/geckodriver"
 
 Capybara.register_driver(:primer_webdriver) do |app|
   options = Selenium::WebDriver::Firefox::Options.new
