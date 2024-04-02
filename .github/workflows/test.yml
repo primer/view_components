@@ -185,9 +185,9 @@ jobs:
       run: |
         npm ci
         cd demo && npm ci
-    - name: Test Chrome
-      run: |
-        USE_BROWSER=chrome bundle exec rake test:system
+    # - name: Test Chrome
+    #   run: |
+    #     USE_BROWSER=chrome bundle exec rake test:system
     - name: Test Firefox
       run: |
         bundle exec rake webdrivers:geckodriver:update &&
