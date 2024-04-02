@@ -116,4 +116,12 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
     assert_selector(".Overlay-footer.Overlay-footer--alignStart")
   end
+
+  def test_renders_header_filter
+    render_inline(Primer::Alpha::Overlay::Header.new(id: "1", title: "Header")) do |component|
+      component.with_filter { "content" }
+    end
+
+    assert_selector(".Overlay-header .Overlay-headerContentWrap + .Overlay-headerFilter")
+  end
 end

@@ -117,7 +117,7 @@ class ToolTipElement extends HTMLElement {
         display: block;
         right: 0;
         left: 0;
-        height: 12px;
+        height: var(--overlay-offset, 0.25rem);
         content: "";
       }
 
