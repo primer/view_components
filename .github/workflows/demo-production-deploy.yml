@@ -28,7 +28,7 @@ jobs:
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
       run: echo $AZURE_ACR_PASSWORD | docker login primer.azurecr.io --username GitHubActions --password-stdin
-    - uses: Azure/login@v1
+    - uses: Azure/login@v2
       with:
         # excluding a client secret here will cause a login via OpenID Connect (OIDC),
         # which prevents us from having to rotate client credentials, etc
@@ -72,7 +72,7 @@ jobs:
       with:
         ruby-version: '3.2'
         bundler-cache: true
-    - uses: actions/cache@v4.0.0
+    - uses: actions/cache@v4.0.2
       with:
         path: demo/gemfiles/vendor/bundle
         key: gems-build-kuby-main-ruby-3.2.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
@@ -80,7 +80,7 @@ jobs:
       run: |
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
-    - uses: Azure/login@v1
+    - uses: Azure/login@v2
       with:
         # excluding a client secret here will cause a login via OpenID Connect (OIDC),
         # which prevents us from having to rotate client credentials, etc

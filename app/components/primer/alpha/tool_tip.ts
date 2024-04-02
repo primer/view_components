@@ -21,9 +21,7 @@ const isPopoverOpen = (() => {
   return (el: Element) => (selector ? el.matches(selector) : setSelector(el))
 })()
 
-const TOOLTIP_ARROW_EDGE_OFFSET = 6
 const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
-const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -69,6 +67,8 @@ class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
         padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
         font: var(--text-body-shorthand-small);
         color: var(--fgColor-onEmphasis, var(--color-fg-on-emphasis)) !important;
@@ -87,18 +87,50 @@ class ToolTipElement extends HTMLElement {
         word-wrap: break-word;
         white-space: normal;
         width: max-content !important;
-        inset: var(--tool-tip-position-top, 0) auto auto var(--tool-tip-position-left, 0) !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
         overflow: visible !important;
         text-wrap: balance;
       }
 
-      :host:before{
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
         position: absolute;
-        z-index: 1000001;
-        color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
         content: "";
-        border: 6px solid transparent;
-        opacity: 0;
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
       }
 
       @keyframes tooltip-appear {
@@ -110,15 +142,6 @@ class ToolTipElement extends HTMLElement {
         }
       }
 
-      :host:after{
-        position: absolute;
-        display: block;
-        right: 0;
-        left: 0;
-        height: 12px;
-        content: "";
-      }
-
       :host(:popover-open),
       :host(:popover-open):before {
         animation-name: tooltip-appear;
@@ -127,65 +150,11 @@ class ToolTipElement extends HTMLElement {
         animation-timing-function: ease-in;
       }
 
-      :host(.\\:popover-open),
-      :host(.\\:popover-open):before {
+      :host(.\\:popover-open) {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
         animation-timing-function: ease-in;
-        animation-delay: .4s;
-      }
-
-      :host(.tooltip-s):before,
-      :host(.tooltip-n):before {
-        right: 50%;
-        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-      :host(.tooltip-s):before,
-      :host(.tooltip-se):before,
-      :host(.tooltip-sw):before {
-        bottom: 100%;
-        border-bottom-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
-      }
-      :host(.tooltip-s):after,
-      :host(.tooltip-se):after,
-      :host(.tooltip-sw):after {
-        bottom: 100%
-      }
-      :host(.tooltip-n):before,
-      :host(.tooltip-ne):before,
-      :host(.tooltip-nw):before {
-        top: 100%;
-        border-top-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
-      }
-      :host(.tooltip-n):after,
-      :host(.tooltip-ne):after,
-      :host(.tooltip-nw):after {
-        top: 100%;
-      }
-      :host(.tooltip-se):before,
-      :host(.tooltip-ne):before {
-        left: 0;
-        margin-left: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-      :host(.tooltip-sw):before,
-      :host(.tooltip-nw):before {
-        right: 0;
-        margin-right: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
-      }
-      :host(.tooltip-w):before {
-        top: 50%;
-        bottom: 50%;
-        left: 100%;
-        margin-top: -6px;
-        border-left-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
-      }
-      :host(.tooltip-e):before {
-        top: 50%;
-        right: 100%;
-        bottom: 50%;
-        margin-top: -6px;
-        border-right-color: var(--bgColor-emphasis, var(--color-neutral-emphasis-plus));
       }
 
       @media (forced-colors: active) {
@@ -398,25 +367,25 @@ class ToolTipElement extends HTMLElement {
       this.#align = 'center'
       this.#side = 'outside-top'
     } else if (direction === 'ne') {
-      this.#align = 'start'
+      this.#align = 'end'
       this.#side = 'outside-top'
     } else if (direction === 'e') {
       this.#align = 'center'
       this.#side = 'outside-right'
     } else if (direction === 'se') {
-      this.#align = 'start'
+      this.#align = 'end'
       this.#side = 'outside-bottom'
     } else if (direction === 's') {
       this.#align = 'center'
       this.#side = 'outside-bottom'
     } else if (direction === 'sw') {
-      this.#align = 'end'
+      this.#align = 'start'
       this.#side = 'outside-bottom'
     } else if (direction === 'w') {
       this.#align = 'center'
       this.#side = 'outside-left'
     } else if (direction === 'nw') {
-      this.#align = 'end'
+      this.#align = 'start'
       this.#side = 'outside-top'
     }
   }
@@ -428,7 +397,7 @@ class ToolTipElement extends HTMLElement {
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
-      anchorOffset: TOOLTIP_OFFSET,
+      anchorOffset: 0,
     })
     const anchorSide = position.anchorSide
     const align = position.anchorAlign

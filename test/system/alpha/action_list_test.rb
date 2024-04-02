@@ -14,7 +14,7 @@ module Alpha
       assert_selector "li.ActionListItem span.ActionListItem-label--truncate"
       assert_selector "tool-tip", text: "Really really long label that may wrap, truncate, or appear as a tooltip", visible: :hidden
 
-      find("button").send_keys("tab") # sends focus to button
+      first("button").send_keys("tab") # sends focus to button
       assert_selector "tool-tip", text: "Really really long label that may wrap, truncate, or appear as a tooltip", visible: :visible
     end
 

@@ -3217,6 +3217,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/initally_open",
+        "name": "initally_open",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3771,6 +3784,19 @@
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/primary",
+        "name": "primary",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -4848,6 +4874,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/overlay/overlay_with_header_filter",
+        "name": "overlay_with_header_filter",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -5556,6 +5595,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -6080,6 +6132,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_area/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -6233,6 +6298,19 @@
       {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/not_full_width",
+        "name": "not_full_width",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -6758,6 +6836,110 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_n",
+        "name": "tooltip_n",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_s",
+        "name": "tooltip_s",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_e",
+        "name": "tooltip_e",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_w",
+        "name": "tooltip_w",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_se",
+        "name": "tooltip_se",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_sw",
+        "name": "tooltip_sw",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_ne",
+        "name": "tooltip_ne",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_nw",
+        "name": "tooltip_nw",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6903,7 +7085,33 @@
       {
         "preview_path": "primer/alpha/underline_panels/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_icons_and_counters",
+        "name": "with_icons_and_counters",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_actions",
+        "name": "with_actions",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"

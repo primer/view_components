@@ -16,8 +16,7 @@ module Primer
             system_arguments[:class],
             system_arguments[:classes],
             "FormControl",
-            "width-full",
-            "FormControl--fullWidth" => @input.full_width?
+            "width-full FormControl--fullWidth" => @input.full_width?
           )
         }
 

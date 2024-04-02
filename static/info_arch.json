@@ -3440,6 +3440,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/initally_open",
+        "name": "initally_open",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -6068,6 +6081,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/overlay/overlay_with_header_filter",
+        "name": "overlay_with_header_filter",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -6129,7 +6155,18 @@
           }
         ],
         "slots": [
-
+          {
+            "name": "filter",
+            "description": "Optional filter slot for adding a filter input to the header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "{{link_to_system_arguments_docs}}"
+              }
+            ]
+          }
         ],
         "methods": [
 
@@ -7180,6 +7217,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -7614,7 +7664,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -7798,6 +7848,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_area/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_area/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -7865,7 +7928,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -8143,6 +8206,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_field/not_full_width",
+        "name": "not_full_width",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_field/disabled",
         "name": "disabled",
         "snapshot": "true",
@@ -8371,13 +8447,13 @@
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "What size toggle switch to render. One of `:end` or `:start`."
+        "description": "What size toggle switch to render. One of `:medium` or `:small`."
       },
       {
         "name": "status_label_position",
         "type": "Symbol",
         "default": "`:start`",
-        "description": "Which side of the toggle switch to render the status label. One of `:medium` or `:small`."
+        "description": "Which side of the toggle switch to render the status label. One of `:end` or `:start`."
       },
       {
         "name": "system_arguments",
@@ -8739,6 +8815,110 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_n",
+        "name": "tooltip_n",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_s",
+        "name": "tooltip_s",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_e",
+        "name": "tooltip_e",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_w",
+        "name": "tooltip_w",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_se",
+        "name": "tooltip_se",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_sw",
+        "name": "tooltip_sw",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_ne",
+        "name": "tooltip_ne",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tooltip/tooltip_nw",
+        "name": "tooltip_nw",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -8985,7 +9165,33 @@
       {
         "preview_path": "primer/alpha/underline_panels/default",
         "name": "default",
-        "snapshot": "false",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_icons_and_counters",
+        "name": "with_icons_and_counters",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/underline_panels/with_actions",
+        "name": "with_actions",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -12290,7 +12496,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, or `:invisible`."
+        "description": "One of `:danger`, `:default`, `:invisible`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",
@@ -12377,6 +12583,19 @@
       {
         "preview_path": "primer/beta/icon_button/invisible",
         "name": "invisible",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/primary",
+        "name": "primary",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

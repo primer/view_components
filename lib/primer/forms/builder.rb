@@ -27,6 +27,21 @@ ActionView::Helpers::Tags::Base.prepend(
 
 module Primer
   module Forms
+    module Tags
+      # :nodoc:
+      class TextField < ::ActionView::Helpers::Tags::TextField
+        def attributes
+          render
+        end
+
+        private
+
+        def tag(_name, options)
+          options
+        end
+      end
+    end
+
     # :nodoc:
     class Builder < ActionView::Helpers::FormBuilder
       alias primer_fields_for fields_for
@@ -55,6 +70,10 @@ module Primer
 
       def text_field(*args, **options, &block)
         super(*args, classify(options).merge(generate_error_markup: false), &block)
+      end
+
+      def text_field_attributes(method, options = {})
+        Tags::TextField.new(@object_name, method, @template, options).attributes
       end
 
       def text_area(*args, **options, &block)

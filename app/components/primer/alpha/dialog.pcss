@@ -21,6 +21,16 @@ dialog.Overlay:not([open]) {
   opacity: 0;
 }
 
+/* This is for @oddbird/popover-polyfill;
+ * A FOUC occurs in browsers which do not support :popover-open.
+ * We can try to hide the popover if :popover-open is not supported.
+ */
+@supports not selector(:popover-open) {
+  [popover]:not(.\:popover-open) {
+    display: none;
+  }
+}
+
 .Overlay {
   display: flex;
   inset: 0;
@@ -253,6 +263,10 @@ dialog.Overlay:not([open]) {
       }
     }
   }
+}
+
+.Overlay-headerFilter {
+  padding: var(--stack-gap-condensed) var(--stack-gap-condensed) 0 var(--stack-gap-condensed);
 }
 
 /* generic body content slot */

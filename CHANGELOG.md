@@ -1,5 +1,71 @@
 # CHANGELOG
 
+## 0.22.0
+
+### Minor Changes
+
+- [#2729](https://github.com/primer/view_components/pull/2729) [`2b0a7bf`](https://github.com/primer/view_components/commit/2b0a7bf7d82a837156df3794fe25bef435c66147) Thanks [@thesnowrose](https://github.com/thesnowrose)! - Fixes a bug where a tooltip was being shown in the navlist even when the text wasn't truncated for certain items.
+
+- [#2651](https://github.com/primer/view_components/pull/2651) [`e1f3434`](https://github.com/primer/view_components/commit/e1f34344d237505fb3cbe2a4d0b68300f244752c) Thanks [@jonrohan](https://github.com/jonrohan)! - Add a slot to `Overlay::Header` called `filter` for a filter input.
+
+### Patch Changes
+
+- [#2735](https://github.com/primer/view_components/pull/2735) [`507a743`](https://github.com/primer/view_components/commit/507a743a7e4e018330765cd1273344bb55829bb6) Thanks [@antn](https://github.com/antn)! - Explicitly convert params to integers where needed for several previews
+
+- [#2731](https://github.com/primer/view_components/pull/2731) [`8123aee`](https://github.com/primer/view_components/commit/8123aeeb616f0ed34c96f9517666a28031c948ac) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove old primitives color themes imports and only use V8 on the demo lookbook
+
+- [#2733](https://github.com/primer/view_components/pull/2733) [`6fe410b`](https://github.com/primer/view_components/commit/6fe410b1a306ecc5a43507de9b0fb9bea76abb26) Thanks [@broccolinisoup](https://github.com/broccolinisoup)! - Tooltip: Update the threshold value to match with the offset
+
+## 0.21.1
+
+### Patch Changes
+
+- [#2707](https://github.com/primer/view_components/pull/2707) [`1c73539`](https://github.com/primer/view_components/commit/1c7353976a09b8722dd0609ff3239ed02799a5ff) Thanks [@jonrohan](https://github.com/jonrohan)! - Add `:primary` and `:secondary` scheme to IconButton and Match scheme for ButtonGroup menu
+
+- [#2582](https://github.com/primer/view_components/pull/2582) [`74c4cc0`](https://github.com/primer/view_components/commit/74c4cc037fede70f8859614d7efab8934eeb80e7) Thanks [@keithamus](https://github.com/keithamus)! - Ensure Alpha::Dialog is always opened as modal
+
+## 0.21.0
+
+### Minor Changes
+
+- [#2603](https://github.com/primer/view_components/pull/2603) [`bbc1776`](https://github.com/primer/view_components/commit/bbc1776b44e089516658aa76d2fec3724a4dccfc) Thanks [@langermank](https://github.com/langermank)! - Tooltip visual refresh to match Primer React
+
+- [#2693](https://github.com/primer/view_components/pull/2693) [`852e24f`](https://github.com/primer/view_components/commit/852e24ff578aa8c67902502fef4d7eda1476cfb8) Thanks [@camertron](https://github.com/camertron)! - - Bug fix: inactive button colors
+  - Bug fix: double border/box-shadow on popover and dropdown
+  - Bug fix: text color for primary button in dark dimmed
+
+### Patch Changes
+
+- [#2706](https://github.com/primer/view_components/pull/2706) [`60c5f01`](https://github.com/primer/view_components/commit/60c5f014e60c6f2e5e5e1bcfb8702fdf48d26fa7) Thanks [@camertron](https://github.com/camertron)! - Fix dialog CSS to prevent tooltip issues
+
+- [#2705](https://github.com/primer/view_components/pull/2705) [`90192bb`](https://github.com/primer/view_components/commit/90192bb652992cc47672a571aa8fb03b866703c5) Thanks [@langermank](https://github.com/langermank)! - Revert "Swap bg-gradient with bg-color for Banner/Flash"
+
+## 0.20.0
+
+### Minor Changes
+
+- [#2627](https://github.com/primer/view_components/pull/2627) [`226481e`](https://github.com/primer/view_components/commit/226481e51e8c459dcd6d2a49d57c5005a8103aff) Thanks [@camertron](https://github.com/camertron)! - Support `<select>` elements that allow selecting multiple values
+
+- [#2610](https://github.com/primer/view_components/pull/2610) [`14890a3`](https://github.com/primer/view_components/commit/14890a30c736a5a01596f0863e36d81861e6d6ac) Thanks [@thesnowrose](https://github.com/thesnowrose)! - Add the ability to show a tooltip for navlists on text truncation
+
+- [#2609](https://github.com/primer/view_components/pull/2609) [`14d8dc5`](https://github.com/primer/view_components/commit/14d8dc583541879eda26b7f1836d3df7c752507f) Thanks [@camertron](https://github.com/camertron)! - Add an AutoComplete form input
+
+### Patch Changes
+
+- [#2673](https://github.com/primer/view_components/pull/2673) [`3a6762d`](https://github.com/primer/view_components/commit/3a6762db6a55b5f918b86c58ee835fe52e66eac3) Thanks [@camertron](https://github.com/camertron)! - Make text field and other form inputs respect the full_width: option
+
+- [#2665](https://github.com/primer/view_components/pull/2665) [`c7c206a`](https://github.com/primer/view_components/commit/c7c206a5f434ec023aec87623f0dc1e90902d3ee) Thanks [@langermank](https://github.com/langermank)! - Default IconButton text color `muted`
+
+- [#2629](https://github.com/primer/view_components/pull/2629) [`862f05a`](https://github.com/primer/view_components/commit/862f05ae7a751b87650c72616360cdbabb7504ee) Thanks [@camertron](https://github.com/camertron)! - Fix autofocus behavior for radio button and check box groups
+
+- [#2642](https://github.com/primer/view_components/pull/2642) [`7f17b7c`](https://github.com/primer/view_components/commit/7f17b7c1686cfa875ae75b58c8ff3245ea08eb24) Thanks [@tbenning](https://github.com/tbenning)! - Unify breadcrumbs
+
+- [#2666](https://github.com/primer/view_components/pull/2666) [`53a3390`](https://github.com/primer/view_components/commit/53a3390e897b5959e6d38f2f212ac773622c51f7) Thanks [@camertron](https://github.com/camertron)! - Make sure labels and form inputs are properly associated when a custom ID is provided
+
+- [#2672](https://github.com/primer/view_components/pull/2672) [`f1ab24a`](https://github.com/primer/view_components/commit/f1ab24ab59dd989ef21b0674b7b95189d7b50c2b) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix documented options for ToggleSwitch size and status_label_position
+
+- [#2643](https://github.com/primer/view_components/pull/2643) [`70a6dee`](https://github.com/primer/view_components/commit/70a6dee654562b505ac17991a53d1039c57f81e3) Thanks [@langermank](https://github.com/langermank)! - Swap bg-gradient with bg-color for Banner/Flash
+
 ## 0.19.0
 
 ### Minor Changes

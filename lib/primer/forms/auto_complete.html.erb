@@ -1,0 +1,6 @@
+<%= render(Primer::Beta::AutoComplete.new(**auto_complete_arguments)) do |autocomplete| %>
+  <% @input.block.call(autocomplete) if @input.block %>
+  <% autocomplete.with_input(**input_arguments) %>
+<% end %>
+<%= render(ValidationMessage.new(input: @input)) %>
+<%= render(Caption.new(input: @input)) %>

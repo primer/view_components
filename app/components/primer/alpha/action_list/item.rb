@@ -303,7 +303,7 @@ module Primer
           )
 
           if @truncate_label == :show_tooltip && !tooltip?
-            with_tooltip(text: @label)
+            with_tooltip(text: @label, direction: :ne)
           end
 
           return unless leading_visual

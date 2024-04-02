@@ -35,7 +35,7 @@ gem "webpacker", "~> 5.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.2.1" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.2.2" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 gem "kramdown", "~> 2.4"
@@ -72,5 +72,5 @@ group :development do
   gem "thor"
   gem "timecop"
   gem "webdrivers"
-  gem "yard", "~> 0.9.25"
+  gem "yard", "~> 0.9.36"
 end

@@ -2494,7 +2494,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -2624,7 +2624,7 @@
         "name": "full_width",
         "type": "Boolean",
         "default": "N/A",
-        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container."
+        "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
         "name": "name",
@@ -2814,13 +2814,13 @@
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "What size toggle switch to render. One of `:end` or `:start`."
+        "description": "What size toggle switch to render. One of `:medium` or `:small`."
       },
       {
         "name": "status_label_position",
         "type": "Symbol",
         "default": "`:start`",
-        "description": "Which side of the toggle switch to render the status label. One of `:medium` or `:small`."
+        "description": "Which side of the toggle switch to render the status label. One of `:end` or `:start`."
       },
       {
         "name": "system_arguments",
@@ -3760,7 +3760,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, or `:invisible`."
+        "description": "One of `:danger`, `:default`, `:invisible`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",
