@@ -71,6 +71,5 @@ group :development do
   gem "sprockets-rails"
   gem "thor"
   gem "timecop"
-  gem "webdrivers"
   gem "yard", "~> 0.9.36"
 end

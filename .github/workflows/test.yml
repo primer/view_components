@@ -190,8 +190,7 @@ jobs:
     #     USE_BROWSER=chrome bundle exec rake test:system
     - name: Test Firefox
       run: |
-        bundle exec rake webdrivers:geckodriver:update &&
-          USE_BROWSER=firefox bundle exec rake test:system
+        USE_BROWSER=firefox bundle exec rake test:system
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}

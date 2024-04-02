@@ -265,10 +265,6 @@ GEM
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
-    webdrivers (5.2.0)
-      nokogiri (~> 1.6)
-      rubyzip (>= 1.3.0)
-      selenium-webdriver (~> 4.0)
     webmock (3.23.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -329,7 +325,6 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  webdrivers
   webmock
   webpacker (~> 5.0)
   yard (~> 0.9.36)
