@@ -72,10 +72,13 @@ module Beta
     def test_js_api_allows_selecting_item_by_current_location
       visit_preview(:default)
 
+      server = Capybara.current_session.server
+      collaborators_url = "http://#{server.host}:#{server.port}/collaborators"
+
       # set the URL without reloading the page
       page.evaluate_script(<<~JS)
         (() => {
-          window.history.pushState({}, "", "http://localhost/collaborators")
+          window.history.pushState({}, "", "#{collaborators_url}")
         })();
       JS
 
