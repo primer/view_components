@@ -208,6 +208,10 @@ jobs:
       run: |
         npm ci
         cd demo && npm ci
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: true
     - name: Test
       run: |
         USE_BROWSER=firefox bundle exec rake test:system
