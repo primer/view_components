@@ -1,5 +1,4 @@
 import {controller, target} from '@github/catalyst'
-import screenfull from 'screenfull'
 
 @controller
 class ZenModeButtonElement extends HTMLElement {
@@ -8,19 +7,17 @@ class ZenModeButtonElement extends HTMLElement {
 
   private deactivateZenMode() {
     this.inZenMode = false
-    this.button.classList.remove('zen-mode-button--active')
-    document.getElementsByTagName('body')[0].classList.remove('zen-mode')
-    if (screenfull.isEnabled && screenfull.isFullscreen) {
-      screenfull.exit()
+    this.button.setAttribute('aria-pressed', 'false')
+    if (document.exitFullscreen) {
+      void document.exitFullscreen()
     }
   }
 
   private activateZenMode() {
     this.inZenMode = true
-    document.getElementsByTagName('body')[0].classList.add('zen-mode')
-    this.button.classList.add('zen-mode-button--active')
-    if (screenfull.isEnabled) {
-      screenfull.request()
+    this.button.setAttribute('aria-pressed', 'true')
+    if (document.documentElement.requestFullscreen) {
+      void document.documentElement.requestFullscreen()
     }
   }
 

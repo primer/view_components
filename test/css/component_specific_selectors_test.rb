@@ -185,9 +185,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     ],
     Primer::OpenProject::PageHeader => [
       ".PageHeader--singleAction .PageHeader-action",
-    ],
-    Primer::OpenProject::ZenModeButton => [
-      ".zen-mode-button--active"
     ]
   }.freeze
 

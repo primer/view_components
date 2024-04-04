@@ -7,12 +7,15 @@ module Primer
   module OpenProject
     # @label ZenModeButton
     class ZenModeButtonPreview < ViewComponent::Preview
-      def playground()
-        render(Primer::OpenProject::ZenModeButton.new())
+      # @label Default
+      # @snapshot
+      def default
+        render(Primer::OpenProject::ZenModeButton.new)
       end
-    # @label Default
-      def default()
-        render(Primer::OpenProject::ZenModeButton.new())
+
+      # @label Playground
+      def playground
+        render(Primer::OpenProject::ZenModeButton.new)
       end
     end
   end

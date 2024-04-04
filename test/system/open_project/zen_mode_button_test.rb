@@ -6,6 +6,6 @@ class IntegrationOpenProjectZenModeButtonTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".zen-mode-button")
+    assert_selector(".ZenModeButton")
   end
 end

@@ -662,8 +662,5 @@
   ],
   "UnderlineNav-octicon": [
     "Primer::Alpha::UnderlineNav"
-  ],
-  "Zone-mode-button": [
-    "Primer::OpenProject::ZoneModeButton"
   ]
 }

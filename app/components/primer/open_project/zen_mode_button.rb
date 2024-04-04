@@ -15,7 +15,7 @@ module Primer
         @system_arguments[:classes] =
         class_names(
           @system_arguments[:classes],
-          "zen-mode-button"
+          "ZenModeButton"
         )
       end
     end

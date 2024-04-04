@@ -8,6 +8,6 @@ class PrimerOpenProjectZenModeButtonTest < Minitest::Test
   def test_renders
     render_inline(Primer::OpenProject::ZenModeButton.new)
 
-    assert_selector(".zen-mode-button .octicon-screen-normal")
+    assert_selector(".ZenModeButton .octicon-screen-normal")
   end
 end

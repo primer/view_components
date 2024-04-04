@@ -1,10 +1,10 @@
-<%= render(Primer::BaseComponent.new(tag: "zen-mode-button", **@system_arguments)) do %>
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(
           Primer::Beta::IconButton.new(
             scheme: :default,
-            id: 'zenModeButton',
-            icon: 'screen-normal',
-            aria: { label: 'zen mode' },
+            id: "zenModeButton",
+            icon: "screen-normal",
+            aria: { label: I18n.t("zen_mode") },
             data: { target: "zen-mode-button.button", action: "click:zen-mode-button#performAction" }
           )
         ) %>
