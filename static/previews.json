@@ -5197,6 +5197,32 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/menu_actions",
+        "name": "menu_actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/dialog_actions",
+        "name": "dialog_actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/leading_action",
         "name": "leading_action",
         "snapshot": "false",

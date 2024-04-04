@@ -16606,6 +16606,32 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/menu_actions",
+        "name": "menu_actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/dialog_actions",
+        "name": "dialog_actions",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/leading_action",
         "name": "leading_action",
         "snapshot": "false",
@@ -16637,18 +16663,58 @@
     ]
   },
   {
-    "fully_qualified_name": "Primer::OpenProject::PageHeader::PageHeaderActionMenu",
-    "description": "A Helper class to create ActionMenus inside the PageHeader action slot",
+    "fully_qualified_name": "Primer::OpenProject::PageHeader::Dialog",
+    "description": "A Helper class to create ActionMenus inside the PageHeader action slot\nDo not use standalone",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
-    "component": "OpenProject::PageHeader::PageHeaderActionMenu",
+    "component": "OpenProject::PageHeader::Dialog",
     "status": "open_project",
     "a11y_reviewed": false,
-    "short_name": "OpenProjectPageHeaderPageHeaderActionMenu",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/page_header_action_menu.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/page_header_action_menu/default/",
+    "short_name": "OpenProjectPageHeaderDialog",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/dialog.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/dialog/default/",
+    "parameters": [
+      {
+        "name": "dialog_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Dialog{{/link_to_component}}."
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::PageHeader::Menu",
+    "description": "A Helper class to create ActionMenus inside the PageHeader action slot\nIt should not be used standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::PageHeader::Menu",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/menu/default/",
     "parameters": [
       {
         "name": "menu_arguments",

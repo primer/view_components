@@ -4974,12 +4974,34 @@
     ]
   },
   {
-    "component": "OpenProject::PageHeader::PageHeaderActionMenu",
+    "component": "OpenProject::PageHeader::Dialog",
     "status": "open_project",
     "a11y_reviewed": false,
-    "short_name": "OpenProjectPageHeaderPageHeaderActionMenu",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/page_header_action_menu.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/page_header_action_menu/default/",
+    "short_name": "OpenProjectPageHeaderDialog",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/dialog.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/dialog/default/",
+    "parameters": [
+      {
+        "name": "dialog_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [Dialog](/components/alpha/dialog)."
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "The arguments accepted by [Button](/components/beta/button) or [IconButton](/components/beta/iconbutton), depending on the value of the `icon:` argument."
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::PageHeader::Menu",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/menu/default/",
     "parameters": [
       {
         "name": "menu_arguments",

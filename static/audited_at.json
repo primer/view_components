@@ -121,7 +121,8 @@
   "Primer::OpenProject::GridLayout::Area": "",
   "Primer::OpenProject::InputGroup": "",
   "Primer::OpenProject::PageHeader": "",
-  "Primer::OpenProject::PageHeader::PageHeaderActionMenu": "",
+  "Primer::OpenProject::PageHeader::Dialog": "",
+  "Primer::OpenProject::PageHeader::Menu": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }

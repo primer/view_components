@@ -1449,6 +1449,7 @@
       "block",
       "none"
     ],
+    "Dialog": "Primer::OpenProject::PageHeader::Dialog",
     "HEADER_VARIANT_OPTIONS": [
       "medium",
       "large"
@@ -1466,9 +1467,11 @@
       "flex",
       "none"
     ],
-    "PageHeaderActionMenu": "Primer::OpenProject::PageHeader::PageHeaderActionMenu"
+    "Menu": "Primer::OpenProject::PageHeader::Menu"
   },
-  "Primer::OpenProject::PageHeader::PageHeaderActionMenu": {
+  "Primer::OpenProject::PageHeader::Dialog": {
+  },
+  "Primer::OpenProject::PageHeader::Menu": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
