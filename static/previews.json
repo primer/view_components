@@ -7482,5 +7482,39 @@
         }
       }
     ]
+  },
+  {
+    "name": "zen_mode_button",
+    "component": "OpenProject::ZenModeButton",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/zen_mode_button",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/zen_mode_button/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/zen_mode_button/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
   }
 ]

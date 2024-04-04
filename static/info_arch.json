@@ -16743,6 +16743,65 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::ZenModeButton",
+    "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
+    "accessibility_docs": "Add any accessibility considerations",
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::ZenModeButton",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectZenModeButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/zen_mode_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/zen_mode_button/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/zen_mode_button/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/zen_mode_button/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::Tooltip",
     "description": "`Tooltip` is a wrapper component that will apply a tooltip to the provided content.",
     "accessibility_docs": null,

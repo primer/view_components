@@ -1473,6 +1473,8 @@
   },
   "Primer::OpenProject::PageHeader::Menu": {
   },
+  "Primer::OpenProject::ZenModeButton": {
+  },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
     "ALIGN_MAPPING": {

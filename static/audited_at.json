@@ -123,6 +123,7 @@
   "Primer::OpenProject::PageHeader": "",
   "Primer::OpenProject::PageHeader::Dialog": "",
   "Primer::OpenProject::PageHeader::Menu": "",
+  "Primer::OpenProject::ZenModeButton": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }

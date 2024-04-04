@@ -5018,6 +5018,22 @@
     ]
   },
   {
+    "component": "OpenProject::ZenModeButton",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectZenModeButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/zen_mode_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/zen_mode_button/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Tooltip",
     "status": "deprecated",
     "a11y_reviewed": false,
