@@ -10,8 +10,29 @@ module Alpha
 
     ###### HELPER METHODS ######
 
-    def click_on_invoker_button
-      find("action-menu button[aria-controls]").click
+    def click_on_invoker_button(expect_to_open: true)
+      attempts = 0
+      max_attempts = 3
+
+      begin
+        attempts += 1
+
+        find("action-menu button[aria-controls]").click
+
+        if expect_to_open
+          if Primer::DriverTestHelpers.supports_native_popover?
+            assert_selector "anchored-position:popover-open"
+          else
+            assert_selector "anchored-position[class=':popover-open']"
+          end
+        end
+
+        STDERR.puts "Succeeded" if attempts > 1
+      rescue Minitest::Assertion => e
+        raise e if attempts >= max_attempts
+        STDERR.puts "Menu failed to open, retrying (attempt #{attempts} of #{max_attempts})"
+        retry
+      end
     end
 
     def click_on_item(idx)
@@ -602,7 +623,7 @@ module Alpha
       assert_selector "action-menu ul li"
 
       # clicking the invoker a second time should close the menu
-      click_on_invoker_button
+      click_on_invoker_button(expect_to_open: false)
       refute_selector "action-menu ul li"
     end
 

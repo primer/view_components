@@ -14,6 +14,10 @@ module Primer
       chrome? ? :primer_cuprite : :primer_webdriver
     end
 
+    def supports_native_popover?
+      !firefox?
+    end
+
     def setup_driver
       if chrome?
         require "test_helpers/cuprite_setup"
