@@ -100,6 +100,19 @@ module Primer
             Primer::OpenProject::PageHeader::Menu.new(**system_arguments)
           },
         },
+        dialog: {
+          renders: lambda { |mobile_icon:, mobile_label:, **system_arguments|
+            deny_tag_argument(**system_arguments)
+
+            # The id will be automatically calculated for the trigger button, so we have to behave the same, for the mobile click to work
+            system_arguments[:button_arguments][:id] = "dialog-show-#{system_arguments[:dialog_arguments][:id]}"
+
+            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments])
+            add_option_to_mobile_menu(system_arguments[:button_arguments], mobile_icon, mobile_label, :default)
+
+            Primer::OpenProject::PageHeader::Dialog.new(**system_arguments)
+          },
+        },
       }
 
       # Optional leading action prepend the title
@@ -183,6 +196,8 @@ module Primer
 
       def render?
         raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
+        raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
+
         title? && breadcrumbs?
       end
 
