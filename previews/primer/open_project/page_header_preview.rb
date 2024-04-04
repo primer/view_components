@@ -56,6 +56,54 @@ module Primer
         render_with_template(locals: {})
       end
 
+      # @label With a menu inside the actions
+      def menu_actions
+        callback = lambda do |button|
+          button.with_leading_visual_icon(icon: :alert)
+          "Click me"
+        end
+
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Great news" }
+          component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+
+          component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|
+             button.with_leading_visual_icon(icon: "star")
+             "Star"
+          end
+          component.with_action_menu(menu_arguments: { anchor_align: :end },
+                                     button_arguments: { button_block: callback }) do |menu|
+            menu.with_item(label: "Subitem 1") do |item|
+              item.with_leading_visual_icon(icon: :paste)
+            end
+            menu.with_item(label: "Subitem 2") do |item|
+              item.with_leading_visual_icon(icon: :log)
+            end
+          end
+        end
+      end
+
+      # @label With a dialog inside the actions
+      def dialog_actions
+        callback = lambda do |button|
+          button.with_leading_visual_icon(icon: :plus)
+          "Open dialog"
+        end
+
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Great news" }
+          component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+
+          component.with_action_icon_button(icon: :trash, mobile_icon: :trash, label: "Delete", scheme: :danger)
+
+          component.with_action_dialog(mobile_icon: :plus, mobile_label: "Open dialog",
+                                       dialog_arguments: { id: "my_dialog", title: "A great dialog" },
+                                       button_arguments: { button_block: callback }) do |d|
+            d.with_body { "Hello" }
+          end
+        end
+      end
+
       # @label With leading action (on wide)
       # **Leading action** is only shown on **wide screens** by default.
       # If you want to override that behaviour please use the system_argument: **display**

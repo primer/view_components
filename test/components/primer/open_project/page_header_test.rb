@@ -67,11 +67,6 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       header.with_action_text { "An additional hint" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
       header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
-      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
-        menu.with_item(label: "Subitem 1") do |item|
-          item.with_leading_visual_icon(icon: :paste)
-        end
-      end
     end
 
     # Renders the actions
@@ -80,9 +75,6 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-actions")
     assert_text("An action")
     assert_text("An additional hint")
-    assert_selector(".PageHeader-actions .ActionListItem-label") do
-      assert_text("Subitem 1")
-    end
 
     # The mobile variant of the actions is already rendered, but hidden
     assert_selector(".PageHeader-contextBar")
@@ -96,12 +88,49 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-contextBar .ActionListItem-label") do
       assert_text("Link to")
     end
-    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
-      assert_text("Subitem 1")
-    end
 
     # The text is hidden on mobile
     assert_selector("span.d-none.d-sm-flex")
+  end
+
+  def test_renders_a_menu_as_action
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+
+      header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
+      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
+        menu.with_item(label: "Subitem 1") do |item|
+          item.with_leading_visual_icon(icon: :paste)
+        end
+      end
+    end
+
+    assert_selector(".PageHeader-actions .ActionListItem-label") do
+      assert_text("Subitem 1")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Link to")
+    end
+    assert_selector(".PageHeader-contextBar .ActionListItem-label") do
+      assert_text("Subitem 1")
+    end
+  end
+
+  def test_renders_a_dialog_as_action
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_action_dialog(mobile_icon: "alert",
+                                mobile_label: "Open a dialog",
+                                dialog_arguments: { id: "my-dialog", title: "A great dialog" },
+                                button_arguments: { icon: "alert", "aria-label": "Some dialog" })  do |dialog|
+        dialog.with_body { "Hello" }
+      end
+    end
+
+    assert_selector(".PageHeader-actions #dialog-show-my-dialog")
+    assert_selector("dialog#my-dialog")
   end
 
   def test_renders_single_action

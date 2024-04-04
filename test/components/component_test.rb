@@ -176,7 +176,9 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Content",
       "Primer::Navigation::TabComponent",
       "Primer::OpenProject::BorderGrid::Cell",
-      "Primer::OpenProject::GridLayout::Area"
+      "Primer::OpenProject::GridLayout::Area",
+      "Primer::OpenProject::PageHeader::Menu",
+      "Primer::OpenProject::PageHeader::Dialog"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

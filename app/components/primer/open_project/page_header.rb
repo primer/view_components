@@ -97,7 +97,20 @@ module Primer
             # Add the options individually to the mobile menu in the template
             @desktop_menu_block = block
 
-            PageHeaderActionMenu.new(**system_arguments)
+            Primer::OpenProject::PageHeader::Menu.new(**system_arguments)
+          },
+        },
+        dialog: {
+          renders: lambda { |mobile_icon:, mobile_label:, **system_arguments|
+            deny_tag_argument(**system_arguments)
+
+            # The id will be automatically calculated for the trigger button, so we have to behave the same, for the mobile click to work
+            system_arguments[:button_arguments][:id] = "dialog-show-#{system_arguments[:dialog_arguments][:id]}"
+
+            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments])
+            add_option_to_mobile_menu(system_arguments[:button_arguments], mobile_icon, mobile_label, :default)
+
+            Primer::OpenProject::PageHeader::Dialog.new(**system_arguments)
           },
         },
       }
@@ -183,6 +196,8 @@ module Primer
 
       def render?
         raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
+        raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
+
         title? && breadcrumbs?
       end
 
@@ -252,32 +267,6 @@ module Primer
       # Check if the item is an anchor tag string e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
       def anchor_tag_string?(item)
         item.is_a?(String) && item.start_with?("\u003c")
-      end
-
-      # A Helper class to create ActionMenus inside the PageHeader action slot
-      class PageHeaderActionMenu < Primer::Component
-        status :open_project
-
-        # @param menu_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
-        # @param button_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> or <%= link_to_component(Primer::Beta::IconButton) %>, depending on the value of the `icon:` argument.
-        def initialize(menu_arguments: {}, button_arguments: {})
-          @menu = Primer::Alpha::ActionMenu.new(**menu_arguments)
-          @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
-        end
-
-        def render_in(view_context, &block)
-          super(view_context) do
-            block.call(@menu, @button)
-          end
-        end
-
-        def before_render
-          content
-        end
-
-        def call
-          render(@menu)
-        end
       end
     end
   end
