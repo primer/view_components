@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.27.0
+
+### Minor Changes
+
+- [#96](https://github.com/opf/primer_view_components/pull/96) [`f52bbfa`](https://github.com/opf/primer_view_components/commit/f52bbfafcba707bd24e76495e84dc9e5128b0284) Thanks [@HDinger](https://github.com/HDinger)! - \* Add support for Dialogs inside the Primer::OpenProject::PageHeader component
+
+  - Limit the number of allowed actions to 5
+
+- [#69](https://github.com/opf/primer_view_components/pull/69) [`81bb4b7`](https://github.com/opf/primer_view_components/commit/81bb4b7f746da1e076d085387a4ef2000067b946) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Add `Primer::OpenProject::ZenModeButton` component. By clicking on the button, screen will be in full-mode or back in normal-mode.
+
 ## 0.26.0
 
 ### Minor Changes
