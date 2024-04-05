@@ -133,6 +133,16 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("dialog#my-dialog")
   end
 
+  def test_renders_a_zen_mode_button_as_action
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_action_zen_mode_button
+    end
+
+    assert_selector(".PageHeader-actions zen-mode-button")
+  end
+
   def test_renders_single_action
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }

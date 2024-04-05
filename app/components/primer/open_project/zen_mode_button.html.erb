@@ -3,8 +3,8 @@
           Primer::Beta::IconButton.new(
             scheme: :default,
             id: "zenModeButton",
-            icon: "screen-normal",
-            aria: { label: I18n.t("zen_mode") },
+            icon: ZEN_MODE_BUTTON_ICON,
+            aria: { label: ZEN_MODE_BUTTON_LABEL },
             data: { target: "zen-mode-button.button", action: "click:zen-mode-button#performAction" }
           )
         ) %>

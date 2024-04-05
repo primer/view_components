@@ -71,6 +71,14 @@ module Primer
 
           Primer::Beta::Button.new(**system_arguments)
         },
+        zen_mode_button: lambda { |mobile_icon: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_ICON, mobile_label: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_LABEL, **system_arguments|
+          deny_tag_argument(**system_arguments)
+          system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME)
+          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, DEFAULT_ACTION_SCHEME)
+
+          Primer::OpenProject::ZenModeButton.new(**system_arguments)
+        },
+
         link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
           system_arguments = set_action_arguments(system_arguments, scheme: scheme)

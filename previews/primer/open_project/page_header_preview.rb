@@ -104,6 +104,22 @@ module Primer
         end
       end
 
+      # @label With a ZenModeButton inside the actions
+      # The missing label will be resolved automatically when included into the core
+      def zen_mode_button_actions
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Great news" }
+          component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+
+          # The missing label will be resolved automatically when included into the core
+          component.with_action_zen_mode_button
+          component.with_action_button(mobile_icon: "plus", mobile_label: "Meeting", scheme: :primary) do |button|
+            button.with_leading_visual_icon(icon: "plus")
+            "Meeting"
+          end
+        end
+      end
+
       # @label With leading action (on wide)
       # **Leading action** is only shown on **wide screens** by default.
       # If you want to override that behaviour please use the system_argument: **display**
