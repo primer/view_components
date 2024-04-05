@@ -293,6 +293,7 @@ summary.Button {
   border: none;
   height: unset;
   padding: 0;
+  min-width: fit-content;
 
   &:hover:not(:disabled, .Button--inactive) {
     text-decoration: underline;
@@ -309,6 +310,10 @@ summary.Button {
     background-color: transparent;
     border-color: transparent;
     fill: var(--control-fgColor-disabled);
+  }
+
+  & .Button-label {
+      white-space: unset;
   }
 }
 
