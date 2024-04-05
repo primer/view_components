@@ -123,6 +123,7 @@
     font-weight: var(--base-text-weight-normal);
     border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
     padding-inline: calc(var(--control-medium-paddingInline-normal) - var(--segmentedControl-item-padding));
+    min-width: fit-content;
 
     &:focus-visible {
       outline-offset: calc(var(--segmentedControl-item-padding) - var(--borderWidth-thin));
@@ -132,6 +133,18 @@
 
   & .Button--invisible.Button--invisible-noVisuals .Button-label {
     color: var(--button-default-fgColor-rest);
+  }
+
+  & .Button-content {
+    flex: 1 1 auto;
+    align-self: stretch;
+  }
+
+  /* use ellipsis with the assumption that icon only variant will be used when not enough space is available */
+  & .Button-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

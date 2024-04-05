@@ -185,6 +185,9 @@
   "Button--invisible": [
     "Primer::Beta::Button"
   ],
+  "Button--labelWrap": [
+    "Primer::Beta::Button"
+  ],
   "Button--large": [
     "Primer::Beta::Button"
   ],

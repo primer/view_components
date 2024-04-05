@@ -101,6 +101,7 @@ module Primer
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param disabled [Boolean] Whether or not the button is disabled. If true, this option forces `tag:` to `:button`.
+      # @param label_wrap [Boolean] Whether or not the button label text wraps and the button height expands.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         base_button_class: Primer::Beta::BaseButton,
@@ -109,11 +110,13 @@ module Primer
         block: false,
         align_content: DEFAULT_ALIGN_CONTENT,
         disabled: false,
+        label_wrap: false,
         **system_arguments
       )
         @base_button_class = base_button_class
         @scheme = scheme
         @block = block
+        @label_wrap = label_wrap
 
         @system_arguments = system_arguments
         @system_arguments[:disabled] = disabled
@@ -133,7 +136,8 @@ module Primer
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "Button",
-          "Button--fullWidth" => @block
+          "Button--fullWidth" => @block,
+          "Button--labelWrap" => @label_wrap
         )
       end
 
