@@ -44,7 +44,7 @@ module Primer
                  inactive: inactive,
                  label_wrap: label_wrap
                )) do |_c|
-          "Button heheheh whoaaaa wowowow wowowo omg"
+          "Button"
         end
       end
 
