@@ -384,6 +384,12 @@ module Primer
           "Button"
         end
       end
+
+      # @label Link scheme with long label
+      # @snapshot
+      def link_scheme_label_wrap
+        render_with_template(locals: {})
+      end
     end
   end
 end

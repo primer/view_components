@@ -2240,6 +2240,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/button/link_scheme_label_wrap",
+        "name": "link_scheme_label_wrap",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
