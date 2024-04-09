@@ -1474,6 +1474,8 @@
   "Primer::OpenProject::PageHeader::Menu": {
   },
   "Primer::OpenProject::ZenModeButton": {
+    "ZEN_MODE_BUTTON_ICON": "screen-full",
+    "ZEN_MODE_BUTTON_LABEL": "Translation missing: en.label_zen_mode"
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
