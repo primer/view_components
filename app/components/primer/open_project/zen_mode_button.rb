@@ -8,6 +8,9 @@ module Primer
     class ZenModeButton < Primer::Component
       status :open_project
 
+      ZEN_MODE_BUTTON_LABEL = I18n.t("label_zen_mode")
+      ZEN_MODE_BUTTON_ICON = "screen-full"
+
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
