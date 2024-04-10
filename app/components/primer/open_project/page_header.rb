@@ -81,6 +81,8 @@ module Primer
 
         link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
+          system_arguments[:target] ||= "_top"
+
           system_arguments = set_action_arguments(system_arguments, scheme: scheme)
           add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
@@ -159,6 +161,8 @@ module Primer
 
           link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
           link_arguments[:href] = parsed_parent_item[:href]
+          link_arguments[:target] = "_top"
+
           link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
           link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
 
@@ -177,7 +181,7 @@ module Primer
             if item.is_a?(String)
               breadcrumbs.with_item(href: "#") { item }
             else
-              breadcrumbs.with_item(href: item[:href]) { item[:text] }
+              breadcrumbs.with_item(href: item[:href], target: "_top") { item[:text] }
             end
           end
         end
