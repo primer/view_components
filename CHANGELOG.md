@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.28.1
+
+### Patch Changes
+
+- [#102](https://github.com/opf/primer_view_components/pull/102) [`b1bd1e2`](https://github.com/opf/primer_view_components/commit/b1bd1e26ef02172fdfb5780d3b109fad9a29bd65) Thanks [@HDinger](https://github.com/HDinger)! - Set target attribute on the actual link element in the Breadcrumb instead of the list element above
+
 ## 0.28.0
 
 ### Minor Changes
