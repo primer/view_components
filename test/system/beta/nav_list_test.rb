@@ -4,6 +4,8 @@ require "system/test_case"
 
 module Beta
   class NavListTest < System::TestCase
+    include Primer::WindowTestHelpers
+
     def test_collapses_group
       visit_preview(:default)
 
@@ -85,6 +87,16 @@ module Beta
       select_item_by_current_location
       assert_item_href_selected("/collaborators")
       assert_selector "button[aria-expanded=false]", text: "Moderation"
+    end
+
+    def test_truncate_tooltip_does_not_affect_expanding_group
+      visit_preview(:group_long_label_with_tooltip)
+
+      window.resize(width: 200, height: 200)
+      refute_selector ".ActionList--subGroup"
+
+      find(".ActionListItem--hasSubItem").click
+      assert_selector ".ActionList--subGroup"
     end
 
     private

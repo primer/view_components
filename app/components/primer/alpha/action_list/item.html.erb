@@ -1,5 +1,6 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <%= render(@form_wrapper) do %>
+    <%= tooltip %>
     <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
       <% if private_leading_action_icon %>
         <span class="ActionListItem-visual ActionListItem-action--leading">
@@ -45,7 +46,6 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= tooltip %>
   <% if trailing_action %>
     <%= trailing_action %>
   <% end %>
