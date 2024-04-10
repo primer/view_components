@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.28.0
+
+### Minor Changes
+
+- [#98](https://github.com/opf/primer_view_components/pull/98) [`7e56211`](https://github.com/opf/primer_view_components/commit/7e562112d65e48d42b1f7d5b2039bede68fc1383) Thanks [@HDinger](https://github.com/HDinger)! - Add a slot for Primer::OpenProject::ZenModeButton to the Primer::OpenProject::PageHeader
+
+### Patch Changes
+
+- [#100](https://github.com/opf/primer_view_components/pull/100) [`7d4e6fb`](https://github.com/opf/primer_view_components/commit/7d4e6fbde24069b80e6dae5f2c07fa1fd4538557) Thanks [@HDinger](https://github.com/HDinger)! - Set link target "\_top" as default for breadcrumb items and link actions
+
 ## 0.27.0
 
 ### Minor Changes
