@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     # break production.
     root "home#index"
 
+    get "/healthz", to: "health#index"
+
     get "/auto_complete", to: "auto_complete_test#index", as: :autocomplete_index
 
     resources :toggle_switch, only: [:create]
