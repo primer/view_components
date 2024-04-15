@@ -100,7 +100,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    foreman (0.87.2)
+    foreman (0.88.1)
     gli (2.21.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
