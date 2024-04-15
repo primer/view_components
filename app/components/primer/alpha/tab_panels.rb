@@ -19,7 +19,7 @@ module Primer
       # @param id [String] Unique ID of tab.
       # @param selected [Boolean] Whether the tab is selected.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :tabs, lambda { |id:, selected: false, **system_arguments|
+      renders_many :tabs, lambda { |id: self.class.generate_id, selected: false, **system_arguments|
         system_arguments[:id] = id
         system_arguments[:classes] = tab_nav_tab_classes(system_arguments[:classes])
 
