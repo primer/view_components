@@ -1,0 +1,9 @@
+<div style="width: 200px;">
+  <%= render(Primer::Beta::Button.new(
+      scheme: scheme,
+      size: size,
+      label_wrap: label_wrap
+  )) do %>
+    This button has a long label and will wrap
+  <% end %>
+</div>

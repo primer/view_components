@@ -21,6 +21,7 @@ module Primer
       # @param inactive toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
+      # @param label_wrap toggle
       def playground(
         scheme: :default,
         size: :medium,
@@ -29,7 +30,8 @@ module Primer
         align_content: :center,
         tag: :button,
         disabled: false,
-        inactive: false
+        inactive: false,
+        label_wrap: false
       )
         render(Primer::Beta::Button.new(
                  scheme: scheme,
@@ -39,7 +41,8 @@ module Primer
                  align_content: align_content,
                  tag: tag,
                  disabled: disabled,
-                 inactive: inactive
+                 inactive: inactive,
+                 label_wrap: label_wrap
                )) do |_c|
           "Button"
         end
@@ -192,6 +195,26 @@ module Primer
                )) do |_c|
           "Button"
         end
+      end
+
+      # @label Label wrap
+      # @param scheme select [default, primary, danger, invisible, link]
+      # @param size select [small, medium]
+      # @param block toggle
+      # @param label_wrap toggle
+      # @snapshot
+      def label_wrap(
+        scheme: :default,
+        size: :medium,
+        block: false,
+        label_wrap: true
+      )
+        render_with_template(locals: {
+                               scheme: scheme,
+                               size: size,
+                               block: block,
+                               label_wrap: label_wrap
+                             })
       end
 
       # @label Link as button
@@ -360,6 +383,12 @@ module Primer
                )) do |_c|
           "Button"
         end
+      end
+
+      # @label Link scheme with long label
+      # @snapshot
+      def link_scheme_label_wrap
+        render_with_template(locals: {})
       end
     end
   end

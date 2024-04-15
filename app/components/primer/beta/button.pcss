@@ -160,6 +160,43 @@ summary.Button {
   width: 100%;
 }
 
+/* allow button label text to wrap */
+
+.Button--labelWrap {
+  min-width: fit-content;
+  height: unset;
+  min-height: var(--control-medium-size);
+
+  & .Button-content {
+    flex: 1 1 auto;
+    align-self: stretch;
+    padding-block: calc(var(--control-medium-paddingBlock) - 2px);
+  }
+
+  & .Button-label {
+    white-space: unset;
+  }
+
+  &.Button--small {
+    height: unset;
+    min-height: var(--control-small-size);
+
+    & .Button-content {
+      padding-block: calc(var(--control-small-paddingBlock) - 2px);
+    }
+  }
+
+  &.Button--large {
+    height: unset;
+    min-height: var(--control-large-size);
+    padding-inline: var(--control-large-paddingInline-spacious);
+
+    & .Button-content {
+      padding-block: calc(var(--control-large-paddingBlock) - 2px);
+    }
+  }
+}
+
 /* variants */
 
 /* primary */
@@ -293,6 +330,7 @@ summary.Button {
   border: none;
   height: unset;
   padding: 0;
+  min-width: fit-content;
 
   &:hover:not(:disabled, .Button--inactive) {
     text-decoration: underline;
@@ -309,6 +347,10 @@ summary.Button {
     background-color: transparent;
     border-color: transparent;
     fill: var(--control-fgColor-disabled);
+  }
+
+  & .Button-label {
+      white-space: unset;
   }
 }
 

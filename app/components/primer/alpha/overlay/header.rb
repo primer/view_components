@@ -13,6 +13,18 @@ module Primer
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+        # Optional filter slot for adding a filter input to the header.
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :filter, lambda { |**system_arguments|
+          system_arguments[:tag] = :div
+          system_arguments[:classes] = class_names(
+            "Overlay-headerFilter",
+            system_arguments[:classes]
+          )
+          Primer::BaseComponent.new(**system_arguments)
+        }
+
         # @param title [String] Describes the content of the Overlay.
         # @param subtitle [String] Provides additional context for the Overlay, also setting the `aria-describedby` attribute.
         # @param overlay_id [String] Provides the id of the overlay element so the close button can close it

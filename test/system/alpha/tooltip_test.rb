@@ -16,7 +16,7 @@ module Alpha
       visit_preview(:default)
 
       assert_selector("tool-tip.position-absolute.sr-only", visible: :hidden)
-      assert_nil(find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
+      assert(!find("tool-tip", visible: :hidden)["style"].present?) # position not set on initial load
 
       find("button").send_keys("tab") # sends focus to button
 
@@ -30,7 +30,7 @@ module Alpha
     def test_appears_and_positions_on_hover_of_button
       visit_preview(:default)
 
-      assert_nil(find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
+      assert(!find("tool-tip", visible: :hidden)["style"].present?) # position not set on initial load
       assert_selector("tool-tip.position-absolute.sr-only", visible: :hidden)
 
       find("button").hover

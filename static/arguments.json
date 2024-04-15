@@ -3401,6 +3401,12 @@
         "description": "Whether or not the button is disabled. If true, this option forces `tag:` to `:button`."
       },
       {
+        "name": "label_wrap",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button label text wraps and the button height expands."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",

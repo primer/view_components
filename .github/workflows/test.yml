@@ -165,8 +165,8 @@ jobs:
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-  system:
-    name: System
+  system_chrome:
+    name: System (Chrome)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -187,7 +187,30 @@ jobs:
         cd demo && npm ci
     - name: Test
       run: |
-        bundle exec rake test:system
+        USE_BROWSER=chrome bundle exec rake test:system
+  system_firefox:
+    name: System (Firefox)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        npm ci
+        cd demo && npm ci
+    - name: Test
+      run: |
+        USE_BROWSER=firefox bundle exec rake test:system
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}
