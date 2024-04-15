@@ -106,6 +106,7 @@ module Primer
       }
 
       # Required body content.
+      # when multiple bodies are passed, they will be rendered in a TabPanels component.
       #
       # @param padding [Symbol] The padding. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
