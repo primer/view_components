@@ -179,7 +179,9 @@ module Primer
             item = anchor_string_to_object(item) if anchor_tag_string?(item)
 
             if item.is_a?(String)
-              breadcrumbs.with_item(href: "#") { item }
+              # Unless it is defined differently, make the last item of the breadcrumb bold
+              font_weight = item.include?('<b>') || item.include?('text-bold') ? :normal : :bold
+              breadcrumbs.with_item(href: "#", font_weight: font_weight) { item }
             else
               breadcrumbs.with_item(href: item[:href], target: "_top") { item[:text] }
             end

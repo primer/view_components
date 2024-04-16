@@ -8,7 +8,7 @@ module Primer
       # @label Default
       # @snapshot
       def default
-        breadcrumb_items = [{ href: "/foo", text: "Grandparent" }, { href: "/bar", text: "Parent" }, "Hello"]
+        breadcrumb_items = [{ href: "/foo", text: "Grandparent" }, { href: "/bar", text: "Parent" }, "Test: <b>Hello</b>".html_safe]
 
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "Hello" }
