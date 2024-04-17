@@ -43,7 +43,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, align: ALIGN_DEFAULT, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
         @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
-        @wrapper_arguments = wrapper_arguments
+        @wrapper_arguments = deny_tag_argument(**wrapper_arguments)
         @wrapper_arguments[:tag] = :div
 
         @system_arguments = deny_tag_argument(**system_arguments)
