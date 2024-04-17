@@ -31,7 +31,7 @@ module Primer
         #   @param size [Symbol] The size of the field. <%= one_of(Primer::Forms::Dsl::Input::SIZE_OPTIONS) %>
 
         # @!macro [new] form_full_width_arguments
-        #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container.
+        #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`.
 
         # @!macro [new] form_system_arguments
         #   @param system_arguments [Hash] A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details.
@@ -56,7 +56,9 @@ module Primer
           @form = form
 
           @input_arguments = system_arguments
+          @input_arguments.delete(:id) unless @input_arguments[:id].present?
           @label_arguments = @input_arguments.delete(:label_arguments) || {}
+          @label_arguments[:for] = id if id.present?
 
           @label_arguments[:class] = class_names(
             @label_arguments[:class],
@@ -71,7 +73,7 @@ module Primer
           @caption = @input_arguments.delete(:caption)
           @validation_message = @input_arguments.delete(:validation_message)
           @invalid = @input_arguments.delete(:invalid)
-          @full_width = @input_arguments.delete(:full_width)
+          @full_width = @input_arguments.delete(:full_width) { true }
           @size = @input_arguments.delete(:size)
 
           # If scope_name_to_model is false, the name of the input for eg. `my_field`
@@ -238,6 +240,10 @@ module Primer
 
         def autofocus!
           input_arguments[:autofocus] = true
+        end
+
+        def id
+          @input_arguments[:id]
         end
 
         # :nocov:

@@ -88,6 +88,86 @@ module Primer
       def tooltip_with_dialog_moving_focus_to_input
         render_with_template(locals: {})
       end
+
+      # @label Direction: North
+      # @snapshot interactive
+      def tooltip_n(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: South
+      # @snapshot interactive
+      def tooltip_s(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: East
+      # @snapshot interactive
+      def tooltip_e(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: West
+      # @snapshot interactive
+      def tooltip_w(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: Southeast
+      # @snapshot interactive
+      def tooltip_se(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: Southwest
+      # @snapshot interactive
+      def tooltip_sw(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: Northeast
+      # @snapshot interactive
+      def tooltip_ne(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
+
+      # @label Direction: Northwest
+      # @snapshot interactive
+      def tooltip_nw(type: :description)
+        render_with_template(
+          locals: {
+            type: type,
+          }
+        )
+      end
     end
   end
 end

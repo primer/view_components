@@ -1,19 +1,73 @@
 /*
  *= require component_preview.css
  *= require_self
- *= require @primer/primitives/tokens-next-private/css/base/size/size.css
- *= require @primer/primitives/tokens-next-private/css/base/typography/typography.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/border.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/breakpoints.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/size-coarse.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/size-fine.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/size.css
- *= require @primer/primitives/tokens-next-private/css/functional/size/viewport.css
- *= require @primer/primitives/tokens-next-private/css/functional/typography/typography.css
- *= require @primer/css/dist/color-modes.css
+ *= require @primer/primitives/dist/css/base/size/size.css
+ *= require @primer/primitives/dist/css/base/typography/typography.css
+ *= require @primer/primitives/dist/css/functional/size/border.css
+ *= require @primer/primitives/dist/css/functional/size/breakpoints.css
+ *= require @primer/primitives/dist/css/functional/size/size-coarse.css
+ *= require @primer/primitives/dist/css/functional/size/size-fine.css
+ *= require @primer/primitives/dist/css/functional/size/size.css
+ *= require @primer/primitives/dist/css/functional/size/viewport.css
+ *= require @primer/primitives/dist/css/functional/typography/typography.css
+ *= require @primer/primitives/dist/css/functional/themes/dark-colorblind.css
+ *= require @primer/primitives/dist/css/functional/themes/dark-dimmed.css
+ *= require @primer/primitives/dist/css/functional/themes/dark-high-contrast.css
+ *= require @primer/primitives/dist/css/functional/themes/dark-tritanopia.css
+ *= require @primer/primitives/dist/css/functional/themes/dark.css
+ *= require @primer/primitives/dist/css/functional/themes/light-colorblind.css
+ *= require @primer/primitives/dist/css/functional/themes/light-high-contrast.css
+ *= require @primer/primitives/dist/css/functional/themes/light-tritanopia.css
+ *= require @primer/primitives/dist/css/functional/themes/light.css
  *= require @primer/css/dist/base.css
  *= require @primer/css/dist/buttons.css
  *= require @primer/css/dist/layout.css
  *= require @primer/css/dist/utilities.css
  *= require @primer/css/dist/markdown.css
 */
+
+:root,[data-color-mode="light"][data-light-theme*="light"],[data-color-mode="dark"][data-dark-theme*="light"] {
+  color-scheme: light
+}
+
+@media(prefers-color-scheme: light) {
+  [data-color-mode="auto"][data-light-theme*="light"] {
+      color-scheme:light
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  [data-color-mode="auto"][data-dark-theme*="light"] {
+      color-scheme:light
+  }
+}
+
+[data-color-mode="light"][data-light-theme*="dark"],[data-color-mode="dark"][data-dark-theme*="dark"] {
+  color-scheme: dark
+}
+
+@media(prefers-color-scheme: light) {
+  [data-color-mode="auto"][data-light-theme*="dark"] {
+      color-scheme:dark
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  [data-color-mode="auto"][data-dark-theme*="dark"] {
+      color-scheme:dark
+  }
+}
+
+[data-color-mode] {
+  color: var(--fgColor-default, var(--color-fg-default));
+  background-color: var(--bgColor-default, var(--color-canvas-default))
+}
+
+@media(forced-colors: active) {
+  body {
+      --color-accent-emphasis: Highlight;
+      --color-fg-on-emphasis: LinkText;
+      --fgColor-onEmphasis: LinkText;
+      --fgColor-accent: Highlight
+  }
+}
