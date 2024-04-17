@@ -37,7 +37,7 @@ class PrimerUnderlinePanelsTest < Minitest::Test
       end
     end
 
-    assert_selector("tab-container.m-2.custom-class")
+    assert_selector("div.m-2.custom-class")
   end
 
   def test_raises_if_multiple_tabs_are_selected
@@ -102,14 +102,8 @@ class PrimerUnderlinePanelsTest < Minitest::Test
     refute_selector(".UnderlineNav--right")
 
     assert_selector("tab-container.UnderlineNav") do
-      assert_selector("ul.UnderlineNav-body[aria-label='label']") do
-        assert_selector("li[role='presentation']") do
-          assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-        end
-        assert_selector("li[role='presentation']") do
-          assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
-        end
-      end
+      assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
+      assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
   end

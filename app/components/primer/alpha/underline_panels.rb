@@ -44,6 +44,7 @@ module Primer
       def initialize(label:, align: ALIGN_DEFAULT, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
         @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
         @wrapper_arguments = wrapper_arguments
+        @wrapper_arguments[:tag] ||= :"div"
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"tab-container"
