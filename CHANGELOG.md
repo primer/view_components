@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 0.23.0
+
+### Minor Changes
+
+- [#2764](https://github.com/primer/view_components/pull/2764) [`a58824e`](https://github.com/primer/view_components/commit/a58824e10255901bcf394edcc5873db1ed21e0d6) Thanks [@langermank](https://github.com/langermank)! - - Upgrade `primer/primitives`
+  - Remove CSS color variable fallbacks
+
+### Patch Changes
+
+- [#2751](https://github.com/primer/view_components/pull/2751) [`b1fef3c`](https://github.com/primer/view_components/commit/b1fef3cf8ae547241b4d63fde81bc6c127fbd862) Thanks [@langermank](https://github.com/langermank)! - - Add `label_wrap` param to `Beta::Button`
+
+  - Bug fix: text overflows in SegmentedControl instead of ellipses
+
+- [#2765](https://github.com/primer/view_components/pull/2765) [`1857983`](https://github.com/primer/view_components/commit/1857983591752336d34133c83af3c8cfe232f1af) Thanks [@camertron](https://github.com/camertron)! - Fix issue preventing expansion and collapse of nav list items with tooltips
+
+- [#2750](https://github.com/primer/view_components/pull/2750) [`ba87524`](https://github.com/primer/view_components/commit/ba8752440b909b57643b91b9e25c7e91a15bcd60) Thanks [@langermank](https://github.com/langermank)! - Allow `:link` Button scheme text label to wrap
+
 ## 0.22.0
 
 ### Minor Changes
