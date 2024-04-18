@@ -160,7 +160,7 @@ module Primer
       #
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :breadcrumbs, lambda { |items, **system_arguments|
+      renders_one :breadcrumbs, lambda { |items, selected_item_font_weight: :bold, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
 
@@ -190,9 +190,7 @@ module Primer
             item = anchor_string_to_object(item) if anchor_tag_string?(item)
 
             if item.is_a?(String)
-              # Unless it is defined differently, make the last item of the breadcrumb bold
-              font_weight = item.include?("<b>") || item.include?("text-bold") ? :normal : :bold
-              breadcrumbs.with_item(href: "#", font_weight: font_weight) { item }
+              breadcrumbs.with_item(href: "#", font_weight: selected_item_font_weight) { item }
             else
               breadcrumbs.with_item(href: item[:href], target: "_top") { item[:text] }
             end
