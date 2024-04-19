@@ -6,9 +6,7 @@
     <% if content.present? %>
       <%= content %>
     <% else %>
-      <% if bodies.size == 1 %>
-        <%= bodies.first %>
-      <% else %>
+      <% if bodies.size > 1 %>
         <%= render(Primer::Alpha::TabPanels.new(label: "label", wrapper_arguments: { classes: "Overlay-tabPanels" })) do |component| %>
           <% bodies.each do |body| %>
             <% component.with_tab(**body.tab_arguments) do |tab| %>
@@ -19,6 +17,8 @@
             <% end %>
           <% end %>
         <% end %>
+      <% else %>
+        <%= bodies.first %>
       <% end %>
       <%= footer %>
     <% end %>
