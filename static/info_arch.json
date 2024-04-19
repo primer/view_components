@@ -16658,8 +16658,8 @@
         }
       },
       {
-        "preview_path": "primer/open_project/page_header/breadcrumbs",
-        "name": "breadcrumbs",
+        "preview_path": "primer/open_project/page_header/non_bold_breadcrumbs",
+        "name": "non_bold_breadcrumbs",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
