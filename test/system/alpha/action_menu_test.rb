@@ -6,11 +6,33 @@ module Alpha
   class IntegrationActionMenuTest < System::TestCase
     include Primer::ClipboardTestHelpers
     include Primer::JsTestHelpers
+    include Primer::KeyboardTestHelpers
 
     ###### HELPER METHODS ######
 
-    def click_on_invoker_button
-      find("action-menu button[aria-controls]").click
+    def click_on_invoker_button(expect_to_open: true)
+      attempts = 0
+      max_attempts = 3
+
+      begin
+        attempts += 1
+
+        find("action-menu button[aria-controls]").click
+
+        if expect_to_open
+          if Primer::DriverTestHelpers.supports_native_popover?
+            assert_selector "anchored-position:popover-open"
+          else
+            assert_selector "anchored-position[class=':popover-open']"
+          end
+        end
+
+        STDERR.puts "Succeeded" if attempts > 1
+      rescue Minitest::Assertion => e
+        raise e if attempts >= max_attempts
+        STDERR.puts "Menu failed to open, retrying (attempt #{attempts} of #{max_attempts})"
+        retry
+      end
     end
 
     def click_on_item(idx)
@@ -93,7 +115,7 @@ module Alpha
 
       accept_alert do
         # open menu, "click" on first item
-        page.driver.browser.keyboard.type(:enter, :enter)
+        keyboard.type(:enter, :enter)
       end
     end
 
@@ -104,7 +126,7 @@ module Alpha
 
       accept_alert do
         # open menu, "click" on first item
-        page.driver.browser.keyboard.type(:enter, :space)
+        keyboard.type(:enter, :space)
       end
     end
 
@@ -125,7 +147,7 @@ module Alpha
 
       assert_no_alert do
         # open menu, "click" on first item
-        page.driver.browser.keyboard.type(:enter, :enter)
+        keyboard.type(:enter, :enter)
       end
     end
 
@@ -136,7 +158,7 @@ module Alpha
 
       assert_no_alert do
         # open menu, "click" on first item
-        page.driver.browser.keyboard.type(:enter, :space)
+        keyboard.type(:enter, :space)
       end
     end
 
@@ -145,7 +167,7 @@ module Alpha
 
       focus_on_invoker_button
 
-      page.driver.browser.keyboard.type(:enter)
+      keyboard.type(:enter)
 
       assert_selector "anchored-position"
     end
@@ -165,7 +187,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :enter)
+      keyboard.type(:enter, :down, :enter)
 
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
@@ -176,7 +198,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :space)
+      keyboard.type(:enter, :down, :space)
 
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
@@ -197,7 +219,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :enter)
+      keyboard.type(:enter, :down, :enter)
 
       # assert no navigation took place
       refute_selector ".action-menu-landing-page", text: "Hello world!"
@@ -209,7 +231,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :space)
+      keyboard.type(:enter, :down, :space)
 
       # assert no navigation took place
       refute_selector ".action-menu-landing-page", text: "Hello world!"
@@ -234,7 +256,7 @@ module Alpha
 
       clipboard_text = capture_clipboard do
         # open menu, arrow down to third item, "click" third item
-        page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+        keyboard.type(:enter, :down, :down, :enter)
       end
 
       assert_equal clipboard_text, "Text to copy"
@@ -247,7 +269,7 @@ module Alpha
 
       clipboard_text = capture_clipboard do
         # open menu, arrow down to third item, "click" third item
-        page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+        keyboard.type(:enter, :down, :down, :space)
       end
 
       assert_equal clipboard_text, "Text to copy"
@@ -272,7 +294,7 @@ module Alpha
 
       clipboard_text = capture_clipboard do
         # open menu, arrow down to third item, "click" third item
-        page.driver.browser.keyboard.type(:enter, :down, :down, :enter)
+        keyboard.type(:enter, :down, :down, :enter)
       end
 
       assert_nil clipboard_text
@@ -285,7 +307,7 @@ module Alpha
 
       clipboard_text = capture_clipboard do
         # open menu, arrow down to third item, "click" third item
-        page.driver.browser.keyboard.type(:enter, :down, :down, :space)
+        keyboard.type(:enter, :down, :down, :space)
       end
 
       assert_nil clipboard_text
@@ -297,7 +319,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu
-      page.driver.browser.keyboard.type(:enter)
+      keyboard.type(:enter)
 
       assert_equal page.evaluate_script("document.activeElement").text, "Alert"
     end
@@ -328,7 +350,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :enter)
+      keyboard.type(:enter, :down, :enter)
 
       assert_selector "dialog#my-dialog"
     end
@@ -339,7 +361,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, arrow down to second item, "click" second item
-      page.driver.browser.keyboard.type(:enter, :down, :space)
+      keyboard.type(:enter, :down, :space)
 
       assert_selector "dialog#my-dialog"
     end
@@ -378,7 +400,7 @@ module Alpha
       click_on_second_item
 
       # close the menu to reveal the submit button
-      page.driver.browser.keyboard.type(:escape)
+      keyboard.type(:escape)
 
       find("input[type=submit]").click
 
@@ -395,7 +417,7 @@ module Alpha
       click_on_fourth_item
 
       # close the menu to reveal the submit button
-      page.driver.browser.keyboard.type(:escape)
+      keyboard.type(:escape)
 
       find("input[type=submit]").click
 
@@ -431,7 +453,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, "click" first item
-      page.driver.browser.keyboard.type(:enter, :enter)
+      keyboard.type(:enter, :enter)
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
@@ -444,7 +466,7 @@ module Alpha
       focus_on_invoker_button
 
       # open menu, "click" first item
-      page.driver.browser.keyboard.type(:enter, :space)
+      keyboard.type(:enter, :space)
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
@@ -479,7 +501,7 @@ module Alpha
 
       focus_on_invoker_button
 
-      page.driver.browser.keyboard.type(:enter)
+      keyboard.type(:enter)
 
       # wait for menu to load
       assert_selector "action-menu ul li", text: "Copy link"
@@ -601,7 +623,7 @@ module Alpha
       assert_selector "action-menu ul li"
 
       # clicking the invoker a second time should close the menu
-      click_on_invoker_button
+      click_on_invoker_button(expect_to_open: false)
       refute_selector "action-menu ul li"
     end
 

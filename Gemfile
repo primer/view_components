@@ -6,7 +6,7 @@ gemspec
 rails_version = (ENV["RAILS_VERSION"] || "7.1.1").to_s
 
 gem "rack-cors"
-gem "rake", "~> 13.1"
+gem "rake", "~> 13.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -52,6 +52,7 @@ group :development do
   gem "benchmark-ips", "~> 2.13.0"
   gem "capybara", "~> 3.39.2"
   gem "cuprite", "~> 0.15"
+  gem "debug"
   gem "erb_lint", "~> 0.5.0"
   gem "erblint-github", "~> 0.5.1"
   gem "listen", "~> 3.9"
@@ -63,6 +64,7 @@ group :development do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 0.2.0"
+  gem "selenium-webdriver", "~> 4.18"
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-console", "~> 0.9.1"
   gem "sprockets"

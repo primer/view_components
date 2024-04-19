@@ -139,7 +139,7 @@ module Primer
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
-          ) 
+          )
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
             truncate_label: truncate_label
@@ -175,6 +175,20 @@ module Primer
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
           ) do |item|
             item.with_tooltip(text: "this is a tooltip")
+          end
+        end
+      end
+
+      def group_long_label_with_tooltip
+        render(Primer::Beta::NavList.new) do |list|
+          list.with_heading(title: "Repository settings")
+
+          list.with_item(label: "Really really long label that may wrap, truncate, or appear as a tooltip", truncate_label: :show_tooltip) do |item|
+            item.with_leading_visual_icon(icon: :"comment-discussion")
+
+            item.with_item(label: "Interaction limits", href: "/interaction-limits", selected_by_ids: :interaction_limits)
+            item.with_item(label: "Code review limits", href: "/review-limits", selected_by_ids: :code_review_limits)
+            item.with_item(label: "Reported content", href: "/reported-content", selected_by_ids: :reported_content)
           end
         end
       end
