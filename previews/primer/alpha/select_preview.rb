@@ -11,6 +11,7 @@ module Primer
       # @param label text
       # @param caption text
       # @param required toggle
+      # @param multiple toggle
       # @param visually_hide_label toggle
       # @param size [Symbol] select [small, medium, large]
       # @param full_width toggle
@@ -24,6 +25,7 @@ module Primer
         label: "Favorite place to visit",
         caption: "They're all good",
         required: false,
+        multiple: false,
         visually_hide_label: false,
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         full_width: true,
@@ -38,6 +40,7 @@ module Primer
           label: label,
           caption: caption,
           required: required,
+          multiple: multiple,
           visually_hide_label: visually_hide_label,
           size: size,
           full_width: full_width,

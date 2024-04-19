@@ -146,48 +146,71 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.2"
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby_version }}
-          bundler-cache: true
-          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - name: Build
-        run: |
-          bundle config unset deployment
-          bundle update
-        env:
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
-      - name: Test
-        run: |
-          bundle exec rake test:performance
-        env:
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
-  system:
-    name: System
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - name: Build
+      run: |
+        bundle config unset deployment
+        bundle update
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:performance
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+  system_chrome:
+    name: System (Chrome)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2'
-          bundler-cache: true
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-          cache: 'npm'
-          cache-dependency-path: |
-            package-lock.json
-            demo/package-lock.json
-      - name: Build
-        run: |
-          npm ci
-          cd demo && npm ci
-      - name: Test
-        run: |
-          bundle exec rake test:system
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        npm ci
+        cd demo && npm ci
+    - name: Test
+      run: |
+        USE_BROWSER=chrome bundle exec rake test:system
+  system_firefox:
+    name: System (Firefox)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        npm ci
+        cd demo && npm ci
+    - name: Test
+      run: |
+        USE_BROWSER=firefox bundle exec rake test:system
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}

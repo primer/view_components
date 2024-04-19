@@ -2185,6 +2185,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/button/label_wrap",
+        "name": "label_wrap",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/button/link_as_button",
         "name": "link_as_button",
         "snapshot": "true",
@@ -2278,6 +2291,19 @@
       {
         "preview_path": "primer/beta/button/inactive",
         "name": "inactive",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button/link_scheme_label_wrap",
+        "name": "link_scheme_label_wrap",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -4946,6 +4972,19 @@
       {
         "preview_path": "primer/beta/nav_list/long_label_show_tooltip_no_truncate_label",
         "name": "long_label_show_tooltip_no_truncate_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/nav_list/group_long_label_with_tooltip",
+        "name": "group_long_label_with_tooltip",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
