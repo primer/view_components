@@ -137,19 +137,19 @@ module Primer
         end
       end
 
-      # @label With breadcrumbs
+      # @label With non-bold breadcrumbs
       # **Breadcrumbs** are only shown on **wider than narrow screens** by default.
       # A parent link is shown instead in narrow screens
-      #
-      def breadcrumbs
+      # Per default, the last element is shown in bold, but that can be disabled, e.g if only parts of the string should be bold.
+      def non_bold_breadcrumbs
         breadcrumb_items = [
           { href: "/foo", text: "Foo" },
           "\u003ca href=\"/foo/bar\"\u003eBar\u003c/a\u003e",
-          "Baz"
+          "Test: <b>Baz</b>".html_safe
         ]
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "A title" }
-          header.with_breadcrumbs(breadcrumb_items)
+          header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: :normal)
         end
       end
     end

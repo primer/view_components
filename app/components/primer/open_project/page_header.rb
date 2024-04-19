@@ -47,6 +47,7 @@ module Primer
       # Optional description below the title row
       renders_one :description, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
+
         system_arguments[:tag] = :div
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-description")
 
@@ -59,21 +60,27 @@ module Primer
       renders_many :actions, types: {
         icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme, button_action: true)
+
           add_option_to_mobile_menu(system_arguments, mobile_icon, label, scheme)
 
           Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
         },
         button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme, button_action: true)
+
           add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Button.new(**system_arguments)
         },
         zen_mode_button: lambda { |mobile_icon: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_ICON, mobile_label: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_LABEL, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME)
+
+          system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME, button_action: true)
+
           add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, DEFAULT_ACTION_SCHEME)
 
           Primer::OpenProject::ZenModeButton.new(**system_arguments)
@@ -81,9 +88,10 @@ module Primer
 
         link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
           deny_tag_argument(**system_arguments)
-          system_arguments[:target] ||= "_top"
 
+          system_arguments[:target] ||= "_top"
           system_arguments = set_action_arguments(system_arguments, scheme: scheme)
+
           add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
 
           Primer::Beta::Link.new(**system_arguments)
@@ -91,9 +99,7 @@ module Primer
         # Should only be used rarely on a per-need basis
         text: lambda { |**system_arguments|
           system_arguments = set_action_arguments(system_arguments)
-
           system_arguments[:color] ||= :muted
-
           # Enforce that texts are hidden on mobile
           system_arguments[:display] = [:none, :flex]
 
@@ -102,7 +108,11 @@ module Primer
         menu: {
           renders: lambda { |**system_arguments, &block|
             deny_tag_argument(**system_arguments)
+
             system_arguments[:menu_arguments] = set_action_arguments(system_arguments[:menu_arguments])
+            system_arguments[:button_arguments] ||= {}
+            system_arguments[:button_arguments][:data] ||= {}
+            system_arguments[:button_arguments][:data][:targets] = "page-header.actionItems"
 
             # Add the options individually to the mobile menu in the template
             @desktop_menu_block = block
@@ -115,9 +125,10 @@ module Primer
             deny_tag_argument(**system_arguments)
 
             # The id will be automatically calculated for the trigger button, so we have to behave the same, for the mobile click to work
+            system_arguments[:button_arguments] ||= {}
             system_arguments[:button_arguments][:id] = "dialog-show-#{system_arguments[:dialog_arguments][:id]}"
+            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments], button_action: true)
 
-            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments])
             add_option_to_mobile_menu(system_arguments[:button_arguments], mobile_icon, mobile_label, :default)
 
             Primer::OpenProject::PageHeader::Dialog.new(**system_arguments)
@@ -149,7 +160,7 @@ module Primer
       #
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :breadcrumbs, lambda { |items, **system_arguments|
+      renders_one :breadcrumbs, lambda { |items, selected_item_font_weight: :bold, **system_arguments|
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
 
@@ -179,7 +190,7 @@ module Primer
             item = anchor_string_to_object(item) if anchor_tag_string?(item)
 
             if item.is_a?(String)
-              breadcrumbs.with_item(href: "#") { item }
+              breadcrumbs.with_item(href: "#", font_weight: selected_item_font_weight) { item }
             else
               breadcrumbs.with_item(href: item[:href], target: "_top") { item[:text] }
             end
@@ -228,7 +239,7 @@ module Primer
 
       private
 
-      def set_action_arguments(system_arguments, scheme: nil)
+      def set_action_arguments(system_arguments, scheme: nil, button_action: false)
         system_arguments[:ml] ||= 2
         system_arguments[:display] = [:none, :flex]
         system_arguments[:scheme] = scheme unless scheme.nil?
@@ -236,6 +247,10 @@ module Primer
           system_arguments[:classes],
           "PageHeader-action",
         )
+        if button_action
+          system_arguments[:data] ||= {}
+          system_arguments[:data][:targets] = "page-header.actionItems"
+        end
 
         system_arguments[:id] ||= self.class.generate_id
         system_arguments

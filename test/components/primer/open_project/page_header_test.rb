@@ -189,7 +189,30 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
 
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo/bar']")
-    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='#']")
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item.text-bold a[href='#']")
+  end
+
+  def test_renders_non_bold_breadcrumbs
+    breadcrumb_items = [
+      { href: "/foo", text: "Foo" },
+      "\u003ca href=\"/foo/bar\"\u003eBar\u003c/a\u003e",
+      { href: "#", text: "test" },
+      "test"
+    ]
+
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: :normal)
+    end
+
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-breadcrumbs")
+    assert_selector(".PageHeader-parentLink")
+
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo/bar']")
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item:not(.text-bold) a[href='#']")
   end
 
   private
