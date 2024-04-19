@@ -1,0 +1,18 @@
+<%= render(Primer::Alpha::Overlay.new(title: "Dialog", role: :dialog, size: :large, padding: :condensed)) do |d| %>
+  <% d.with_header(title: "Large Dialog Header", divider: true) do |header| %>
+    <% header.with_filter do %>
+      <%= render Primer::Alpha::TextField.new(
+        autofocus: true,
+        visually_hide_label:
+        true,
+        name: "filter",
+        label: "Filter Overlay"
+      ) %>
+    <% end %>
+  <% end %>
+  <% d.with_show_button { "Show Overlay" } %>
+  <% d.with_footer { "Large Dialog Footer" } %>
+  <% d.with_body(tab_label: "Tab 1", tab_arguments: { selected: true }) { "This is the first tab <br>".html_safe * 20 } %>
+  <% d.with_body(tab_label: "Tab 2") { "This is the second tab <br>".html_safe * 20 } %>
+  <% d.with_body(tab_label: "Tab 3") { "This is the third tab <br>".html_safe * 20 } %>
+<% end %>
