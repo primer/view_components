@@ -13,6 +13,8 @@ const updateWhenVisible = (() => {
   return (el: AnchoredPositionElement) => {
     // eslint-disable-next-line github/prefer-observers
     window.addEventListener('resize', updateVisibleAnchors)
+    // eslint-disable-next-line github/prefer-observers
+    window.addEventListener('scroll', updateVisibleAnchors)
     intersectionObserver ||= new IntersectionObserver(entries => {
       for (const entry of entries) {
         const target = entry.target as AnchoredPositionElement
@@ -64,6 +66,10 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
 
   set side(value: AnchorSide) {
     this.setAttribute('side', `${value}`)
+  }
+
+  get open(): boolean {
+    return this.matches(':popover-open')
   }
 
   get anchorOffset(): number {
