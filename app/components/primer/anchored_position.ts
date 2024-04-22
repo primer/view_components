@@ -68,10 +68,6 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.setAttribute('side', `${value}`)
   }
 
-  get open(): boolean {
-    return this.matches(':popover-open')
-  }
-
   get anchorOffset(): number {
     const alias = this.getAttribute('anchor-offset')
     if (alias === 'spacious' || alias === '8') return 8
