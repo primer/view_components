@@ -183,6 +183,10 @@ module Primer
       def overlay_with_header_filter
         render_with_template(locals: {})
       end
+
+      def overlay_with_three_bodies
+        render_with_template(locals: {})
+      end
     end
   end
 end

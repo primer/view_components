@@ -408,6 +408,12 @@
   "Overlay-headerFilter": [
     "Primer::Alpha::Dialog"
   ],
+  "Overlay-tabPanel": [
+    "Primer::Alpha::Overlay"
+  ],
+  "Overlay-tabPanels": [
+    "Primer::Alpha::Overlay"
+  ],
   "Popover": [
     "Primer::Beta::Popover"
   ],
