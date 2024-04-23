@@ -7574,18 +7574,6 @@
         "description": "One of `:left` or `:right`. - Defaults to left"
       },
       {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "{{link_to_system_arguments_docs}} for the `TabContainer` wrapper."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
