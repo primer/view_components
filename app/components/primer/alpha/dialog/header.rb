@@ -16,6 +16,18 @@ module Primer
         }.freeze
         VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
+        # Optional filter slot for adding a filter input to the header.
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :filter, lambda { |**system_arguments|
+          system_arguments[:tag] = :div
+          system_arguments[:classes] = class_names(
+            "Overlay-headerFilter",
+            system_arguments[:classes]
+          )
+          Primer::BaseComponent.new(**system_arguments)
+        }
+
         # @param id [String] The HTML element's ID value.
         # @param title [String] Describes the content of the dialog.
         # @param subtitle [String] Provides additional context for the dialog, also setting the `aria-describedby` attribute.
