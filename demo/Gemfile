@@ -38,7 +38,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
 gem "view_component", '>= 3.11.0'
-gem "lookbook", "~> 2.3.0" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.2.2" unless rails_version.to_f < 7
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

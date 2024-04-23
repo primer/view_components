@@ -61,7 +61,7 @@ GEM
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
-    css_parser (1.17.1)
+    css_parser (1.16.0)
       addressable
     docker-remote (0.8.0)
     domain_name (0.5.20190701)
@@ -201,7 +201,7 @@ GEM
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lookbook (2.3.0)
+    lookbook (2.2.2)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -234,11 +234,11 @@ GEM
     mutex_m (0.2.0)
     netrc (0.11.0)
     nio4r (2.7.1)
-    nokogiri (1.16.4-arm64-darwin)
+    nokogiri (1.16.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-darwin)
+    nokogiri (1.16.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-linux)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     octicons (19.9.0)
     oj (3.16.1)
@@ -251,7 +251,7 @@ GEM
       pry (>= 0.13, < 0.15)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.5)
+    public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
@@ -288,7 +288,7 @@ GEM
       psych (>= 4.0.0)
     recursive-open-struct (1.1.3)
     redcarpet (3.6.0)
-    reline (0.5.2)
+    reline (0.5.0)
       io-console (~> 0.5)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -362,7 +362,7 @@ DEPENDENCIES
   kuby-core (~> 0.20)
   kuby-kind (~> 0.2)
   listen
-  lookbook (~> 2.3.0)
+  lookbook (~> 2.2.2)
   primer_view_components!
   pry-byebug
   puma (~> 6.4.2)
