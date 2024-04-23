@@ -31,19 +31,26 @@ module Primer
         tag: :button,
         disabled: false,
         inactive: false,
-        label_wrap: false
+        label_wrap: false,
+        href: nil
       )
+
+        if tag == :a && href.nil?
+          href = "#" # Sets default href to a to ensure it's keyboard interactive and proper markup
+        end
+
         render(Primer::Beta::Button.new(
-                 scheme: scheme,
-                 size: size,
-                 block: block,
-                 id: id,
-                 align_content: align_content,
-                 tag: tag,
-                 disabled: disabled,
-                 inactive: inactive,
-                 label_wrap: label_wrap
-               )) do |_c|
+            scheme: scheme,
+            size: size,
+            block: block,
+            id: id,
+            align_content: align_content,
+            tag: tag,
+            disabled: disabled,
+            inactive: inactive,
+            label_wrap: label_wrap,
+            href: href
+          )) do |_c|
           "Button"
         end
       end
