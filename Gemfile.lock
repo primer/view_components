@@ -198,7 +198,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.6)
     rouge (4.2.0)
-    rubocop (1.63.2)
+    rubocop (1.63.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
