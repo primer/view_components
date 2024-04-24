@@ -63,9 +63,9 @@ module Primer
         end
       end
 
-      # @label Button group with all tags
+      # @label Button group with multiple tags
       # @snapshot
-      def all_tags
+      def multiple_tags
         render(Primer::Beta::ButtonGroup.new) do |component|
           component.with_button(id: "button-1", tag: :button) do |button|
             button.with_tooltip(text: "Button Tooltip")
@@ -74,10 +74,6 @@ module Primer
           component.with_button(id: "button-2", tag: :a, href: "#") do |button|
             button.with_tooltip(text: "Button Tooltip")
             "Button 2"
-          end
-          component.with_button(id: "button-3", tag: :summary) do |button|
-            button.with_tooltip(text: "Button Tooltip")
-            "Button 3"
           end
         end
       end
