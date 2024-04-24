@@ -30,7 +30,7 @@ anchored-position.not-anchored::backdrop, dialog::backdrop {
   flex-direction: column;
   overflow-y: hidden;
 
-  & > .tabnav {
+  &::part(tablist-wrapper) {
     margin: var(--base-size-8) 0;
     padding: 0 var(--base-size-8);
   }

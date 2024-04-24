@@ -5,20 +5,10 @@ require "system/test_case"
 module Alpha
   class IntegrationUnderlinePanelsTest < System::TestCase
     def assert_underline_panels_rendered
-      assert_selector("tab-container") do
-        assert_selector("div.UnderlineNav") do
-          assert_selector("ul.UnderlineNav-body[role='tablist']") do
-            assert_selector("li[role='presentation']") do
-              assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-            end
-            assert_selector("li[role='presentation']") do
-              assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
-            end
-            assert_selector("li[role='presentation']") do
-              assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 3")
-            end
-          end
-        end
+      assert_selector("tab-container.UnderlineNav") do
+        assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
+        assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
+        assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 3")
         assert_selector("div[role='tabpanel']", text: "Panel 1")
         assert_selector("div[role='tabpanel']", text: "Panel 2", visible: false)
         assert_selector("div[role='tabpanel']", text: "Panel 3", visible: false)
@@ -37,7 +27,7 @@ module Alpha
 
     def assert_shows_panel(panel)
       (1..3).each do |num|
-        assert_selector("div[role='tabpanel']#{'[hidden]' unless panel == num}", text: "Panel #{num}", visible: panel == num)
+        assert_selector("div[role='tabpanel']", text: "Panel #{num}", visible: panel == num)
       end
     end
 
