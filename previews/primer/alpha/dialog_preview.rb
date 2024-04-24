@@ -296,6 +296,10 @@ module Primer
           d.with_body { body_text }
         end
       end
+
+      def with_header_filter
+        render_with_template(locals: {})
+      end
     end
   end
 end
