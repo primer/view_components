@@ -71,7 +71,7 @@ module Primer
             button.with_tooltip(text: "Button Tooltip")
             "Button 1"
           end
-          component.with_button(id: "button-2", tag: :a) do |button|
+          component.with_button(id: "button-2", tag: :a, href: "#") do |button|
             button.with_tooltip(text: "Button Tooltip")
             "Button 2"
           end

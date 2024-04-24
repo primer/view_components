@@ -4,16 +4,6 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
-
-      # Determine if we should add a default "#"
-      def determine_href(tag, href)
-        if tag == :a && href.nil?
-          return "#"
-        else
-          return href
-        end
-      end
-
       # Upgrade guide to Primer::Beta::Button
       #
       # | old param | new param | options |
@@ -30,7 +20,6 @@ module Primer
       # @param disabled toggle
       # @param inactive toggle
       # @param align_content select [center, start]
-      # @param tag select [a, summary, button]
       # @param label_wrap toggle
       def playground(
         scheme: :default,
@@ -41,8 +30,7 @@ module Primer
         tag: :button,
         disabled: false,
         inactive: false,
-        label_wrap: false,
-        href: nil
+        label_wrap: false
       )
 
         render(Primer::Beta::Button.new(
@@ -54,8 +42,7 @@ module Primer
             tag: tag,
             disabled: disabled,
             inactive: inactive,
-            label_wrap: label_wrap,
-            href: determine_href(tag, href)
+            label_wrap: label_wrap
           )) do |_c|
           "Button"
         end
@@ -64,13 +51,11 @@ module Primer
       # @label Default
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def default(
         block: false,
         id: "button-preview",
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :default,
@@ -78,8 +63,7 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -88,13 +72,11 @@ module Primer
       # @label Primary
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def primary(
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :primary,
@@ -102,8 +84,7 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -112,13 +93,11 @@ module Primer
       # @label Danger
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def danger(
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :danger,
@@ -126,8 +105,7 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -136,13 +114,11 @@ module Primer
       # @label Invisible
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def invisible(
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :invisible,
@@ -150,8 +126,7 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -166,14 +141,12 @@ module Primer
       # @label Link
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       # @snapshot
       def link(
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :link,
@@ -181,8 +154,7 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -201,13 +173,11 @@ module Primer
 
       # @label Full width
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       # @snapshot
       def full_width(
         id: "button-preview",
         tag: :button,
-        disabled: false,
-        href: nil
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :default,
@@ -215,8 +185,7 @@ module Primer
                  block: true,
                  id: id,
                  tag: tag,
-                 disabled: disabled,
-                 href: determine_href(tag, href)
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -247,6 +216,7 @@ module Primer
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
+      # @param href
       # @snapshot
       def link_as_button(
         scheme: :default,
@@ -270,12 +240,35 @@ module Primer
         end
       end
 
+      # @label Summary as button
+      # @param scheme select [default, primary, danger, invisible, link]
+      # @param size select [small, medium]
+      # @param block toggle
+      # @param align_content select [center, start]
+      # @snapshot
+      def summary_as_button(
+        scheme: :default,
+        size: :medium,
+        block: false,
+        id: "button-preview",
+        align_content: :center,
+        tag: :summary
+      )
+        render_with_template(locals: {
+                              scheme: scheme,
+                              size: size,
+                              block: block,
+                              id: id,
+                              align_content: align_content,
+                              tag: tag
+                             })
+      end
+
       # @label Trailing visual
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
-      # @param tag select [a, summary, button]
       # @snapshot
       def trailing_visual(
         scheme: :default,
