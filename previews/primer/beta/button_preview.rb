@@ -41,8 +41,8 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  inactive: inactive,
-                label_wrap: label_wrap
-              )) do |_c|
+                 label_wrap: label_wrap
+               )) do |_c|
           "Button"
         end
       end
