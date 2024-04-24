@@ -3,6 +3,8 @@
 module Primer
   module Alpha
     # Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+    # @accessibility
+    #   Setting the tag argument to `:a:` requires you to pass in an `href` attribute.
     class ButtonMarketing < Primer::Component
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
