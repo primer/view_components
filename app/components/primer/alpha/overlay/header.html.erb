@@ -10,7 +10,7 @@
     </div>
     <% if @overlay_id %>
       <div class="Overlay-actionWrap">
-        <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "popovertarget": @overlay_id, "popovertargetaction": "hide") %>
+        <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "popovertarget": @overlay_id, "popovertargetaction": "hide", "data-show-dialog-id": @overlay_id) %>
       </div>
     <% end %>
   </div>
