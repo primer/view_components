@@ -1,0 +1,19 @@
+<%= render(Primer::Alpha::Dialog.new(open: true, title: "Dialog")) do |dialog| %>
+  <% dialog.with_show_button { "Open" } %>
+  <% dialog.with_header do |header| %>
+    <% header.with_filter(pr: 3, pl: 3) do %>
+      <%= render Primer::Alpha::TextField.new(
+        autofocus: true,
+        visually_hide_label: true,
+        name: "filter",
+        label: "Filter dialog",
+      ) %>
+    <% end %>
+  <% end %>
+  <% dialog.with_body do %>
+    Body
+  <% end %>
+  <% dialog.with_footer do %>
+    Footer
+  <% end %>
+<% end %>
