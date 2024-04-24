@@ -13,6 +13,8 @@ const updateWhenVisible = (() => {
   return (el: AnchoredPositionElement) => {
     // eslint-disable-next-line github/prefer-observers
     window.addEventListener('resize', updateVisibleAnchors)
+    // eslint-disable-next-line github/prefer-observers
+    window.addEventListener('scroll', updateVisibleAnchors)
     intersectionObserver ||= new IntersectionObserver(entries => {
       for (const entry of entries) {
         const target = entry.target as AnchoredPositionElement
