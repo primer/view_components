@@ -3453,6 +3453,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header_filter",
+        "name": "with_header_filter",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -3514,7 +3527,18 @@
           }
         ],
         "slots": [
-
+          {
+            "name": "filter",
+            "description": "Optional filter slot for adding a filter input to the header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "{{link_to_system_arguments_docs}}"
+              }
+            ]
+          }
         ],
         "methods": [
 
