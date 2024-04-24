@@ -4,6 +4,16 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
+
+      # Determine if we should add a default "#"
+      def determine_href(tag, href)
+        if tag == :a && href.nil?
+          return "#"
+        else
+          return href
+        end
+      end
+
       # Upgrade guide to Primer::Beta::Button
       #
       # | old param | new param | options |
@@ -35,10 +45,6 @@ module Primer
         href: nil
       )
 
-        if tag == :a && href.nil?
-          href = "#" # Sets default href to a to ensure it's keyboard interactive and proper markup
-        end
-
         render(Primer::Beta::Button.new(
             scheme: scheme,
             size: size,
@@ -49,7 +55,7 @@ module Primer
             disabled: disabled,
             inactive: inactive,
             label_wrap: label_wrap,
-            href: href
+            href: determine_href(tag, href)
           )) do |_c|
           "Button"
         end
@@ -63,7 +69,8 @@ module Primer
         block: false,
         id: "button-preview",
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :default,
@@ -71,7 +78,8 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -85,7 +93,8 @@ module Primer
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :primary,
@@ -93,7 +102,8 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -107,7 +117,8 @@ module Primer
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :danger,
@@ -115,7 +126,8 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -129,7 +141,8 @@ module Primer
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :invisible,
@@ -137,7 +150,8 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -158,7 +172,8 @@ module Primer
         id: "button-preview",
         block: false,
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :link,
@@ -166,7 +181,8 @@ module Primer
                  block: block,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -190,7 +206,8 @@ module Primer
       def full_width(
         id: "button-preview",
         tag: :button,
-        disabled: false
+        disabled: false,
+        href: nil
       )
         render(Primer::Beta::Button.new(
                  scheme: :default,
@@ -198,7 +215,8 @@ module Primer
                  block: true,
                  id: id,
                  tag: tag,
-                 disabled: disabled
+                 disabled: disabled,
+                 href: determine_href(tag, href)
                )) do |_c|
           "Button"
         end
@@ -265,7 +283,7 @@ module Primer
         block: false,
         id: "button-preview",
         align_content: :center,
-        tag: :a
+        tag: :button
       )
         render_with_template(locals: {
                                scheme: scheme,
