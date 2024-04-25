@@ -7,7 +7,6 @@ module Primer
       # @label Playground
       # @param scheme [Symbol] select [default, primary, outline, transparent]
       # @param variant [Symbol] select [default, large]
-      # @param tag [Symbol] select [button, a]
       # @param type [Symbol] select [button, submit]
       # @param disabled [Boolean]
       def playground(tag: :button, type: :button, scheme: :default, variant: :default, disabled: false)
@@ -17,10 +16,18 @@ module Primer
       # @label Default options
       # @param scheme [Symbol] select [default, primary, outline, transparent]
       # @param variant [Symbol] select [default, large]
-      # @param tag [Symbol] select [button, a]
       # @param type [Symbol] select [button, submit]
       def default(tag: :button, type: :button, scheme: :default, variant: :default)
         render(Primer::Alpha::ButtonMarketing.new(tag: tag, type: type, scheme: scheme, variant: variant)) { "Default" }
+      end
+
+      # @label Link as button options
+      # @param scheme [Symbol] select [default, primary, outline, transparent]
+      # @param variant [Symbol] select [default, large]
+      # @param type [Symbol] select [button, submit]
+      # @param href [String]
+      def link_as_button(tag: :a, href: "#", type: :button, scheme: :default, variant: :default)
+        render(Primer::Alpha::ButtonMarketing.new(tag: tag, href: href, type: type, scheme: scheme, variant: variant)) { "Default" }
       end
 
       # @!group Size Variants

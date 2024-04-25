@@ -2514,7 +2514,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::ButtonMarketing",
     "description": "Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.",
-    "accessibility_docs": null,
+    "accessibility_docs": "Setting the tag argument to `:a:` requires you to pass in an `href` attribute.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -2585,6 +2585,19 @@
       {
         "preview_path": "primer/alpha/button_marketing/default",
         "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/button_marketing/link_as_button",
+        "name": "link_as_button",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -10965,7 +10978,7 @@
   {
     "fully_qualified_name": "Primer::Beta::Button",
     "description": "Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.",
-    "accessibility_docs": null,
+    "accessibility_docs": "Additional markup is required if setting the `tag` argument to either `:a` or `:summary`.\n\n* `:a:` requires you to pass in an `href` attribute\n* `:summary` requires you to wrap the component in a `<details>` element",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -11230,6 +11243,19 @@
       {
         "preview_path": "primer/beta/button/link_as_button",
         "name": "link_as_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/button/summary_as_button",
+        "name": "summary_as_button",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

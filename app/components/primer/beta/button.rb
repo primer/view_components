@@ -3,6 +3,11 @@
 module Primer
   module Beta
     # Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+    # @accessibility
+    #   Additional markup is required if setting the `tag` argument to either `:a` or `:summary`.
+    #
+    #   * `:a` requires you to pass in an `href` attribute
+    #   * `:summary` requires you to wrap the component in a `<details>` element
     class Button < Primer::Component
       status :beta
 
