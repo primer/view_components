@@ -2354,8 +2354,8 @@
         }
       },
       {
-        "preview_path": "primer/beta/button_group/all_tags",
-        "name": "all_tags",
+        "preview_path": "primer/beta/button_group/multiple_tags",
+        "name": "multiple_tags",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
