@@ -7,10 +7,15 @@ module Primer
       # @label Playground
       # @param scheme [Symbol] select [default, primary, outline, transparent]
       # @param variant [Symbol] select [default, large]
+      # @param tag [Symbol] select [button, a]
       # @param type [Symbol] select [button, submit]
       # @param disabled [Boolean]
-      def playground(tag: :button, type: :button, scheme: :default, variant: :default, disabled: false)
-        render(Primer::Alpha::ButtonMarketing.new(tag: tag, type: type, scheme: scheme, variant: variant, disabled: disabled)) { "Default" }
+      def playground(tag: :button, type: :button, scheme: :default, variant: :default, disabled: false, href: nil)
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
+        render(Primer::Alpha::ButtonMarketing.new(tag: tag, type: type, scheme: scheme, variant: variant, disabled: disabled, href: href)) { "Default" }
       end
 
       # @label Default options
