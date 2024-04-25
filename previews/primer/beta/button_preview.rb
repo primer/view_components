@@ -39,16 +39,16 @@ module Primer
           href = "#"
         end
         render(Primer::Beta::Button.new(
-                  scheme: scheme,
-                  size: size,
-                  block: block,
-                  id: id,
-                  align_content: align_content,
-                  tag: tag,
-                  disabled: disabled,
-                  inactive: inactive,
-                  label_wrap: label_wrap,
-                  href: href
+                 scheme: scheme,
+                 size: size,
+                 block: block,
+                 id: id,
+                 align_content: align_content,
+                 tag: tag,
+                 disabled: disabled,
+                 inactive: inactive,
+                 label_wrap: label_wrap,
+                 href: href
                 )) do |_c|
           "Button"
         end
