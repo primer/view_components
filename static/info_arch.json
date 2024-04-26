@@ -16690,6 +16690,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/single_action",
+        "name": "single_action",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/leading_action",
         "name": "leading_action",
         "snapshot": "false",
