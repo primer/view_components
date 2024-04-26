@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.29.1
+
+### Patch Changes
+
+- [#108](https://github.com/opf/primer_view_components/pull/108) [`22cf2ef`](https://github.com/opf/primer_view_components/commit/22cf2ef963b2d0dd2a738b8019cb195067784f65) Thanks [@HDinger](https://github.com/HDinger)! - Show single actions of Primer::OpenProject::PageHeader in a smaller variant on mobile
+
 ## 0.29.0
 
 ### Minor Changes
