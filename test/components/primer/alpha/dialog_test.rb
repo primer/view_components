@@ -97,7 +97,7 @@ module Primer
         end
         assert_selector(".Overlay-header .Overlay-description")
       end
-    
+
       def test_renders_header_with_filter
         render_preview(:with_header_filter)
 
