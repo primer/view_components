@@ -6,6 +6,8 @@
         <%= content %>
       <% elsif @subtitle.present? %>
         <h2 class="Overlay-description"><%= @subtitle %></h2>
+      <% else %>
+        <%= subtitle %>
       <% end %>
     </div>
     <% if @overlay_id %>
