@@ -70,7 +70,7 @@ module Primer
         label: Primer::Beta::Label,
         counter: lambda { |**system_arguments|
           @trailing_visual_counter = true
-          Primer::Beta::Counter.new(**system_arguments)
+          Primer::Beta::Counter.new("aria-hidden": true, **system_arguments)
         }
       }
 
