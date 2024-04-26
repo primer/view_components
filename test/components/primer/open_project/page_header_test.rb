@@ -154,7 +154,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-title")
     assert_text("An action")
     assert_selector(".PageHeader-actions")
-    assert_selector(".PageHeader--singleAction")
+    assert_selector(".PageHeader-contextBar .Button--small.d-flex.d-sm-none")
   end
 
   def test_renders_leading_action

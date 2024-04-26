@@ -21,7 +21,7 @@ module Primer
       ].freeze
 
       DEFAULT_ACTION_SCHEME = :default
-      MORE_MENU_DISPLAY = [:flex, :none].freeze
+      MOBILE_ACTIONS_DISPLAY = [:flex, :none].freeze
 
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
@@ -58,32 +58,37 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :actions, types: {
-        icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        icon_button: lambda { |icon:, mobile_icon:, label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments, &block|
           deny_tag_argument(**system_arguments)
 
-          system_arguments = set_action_arguments(system_arguments, scheme: scheme, button_action: true)
+          system_arguments[:icon] = icon
+          system_arguments[:"aria-label"] ||= label
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
 
-          add_option_to_mobile_menu(system_arguments, mobile_icon, label, scheme)
+          component = Primer::Beta::IconButton
+          create_mobile_alternatives(component, mobile_icon, label, scheme, **system_arguments, &block)
 
-          Primer::Beta::IconButton.new(icon: icon, "aria-label": label, **system_arguments)
+          component.new(**system_arguments)
         },
-        button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
+        button: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments, &block|
           deny_tag_argument(**system_arguments)
 
-          system_arguments = set_action_arguments(system_arguments, scheme: scheme, button_action: true)
+          system_arguments = set_action_arguments(system_arguments, scheme: scheme)
 
-          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
+          component = Primer::Beta::Button
+          create_mobile_alternatives(component, mobile_icon, mobile_label, scheme, **system_arguments, &block)
 
-          Primer::Beta::Button.new(**system_arguments)
+          component.new(**system_arguments)
         },
-        zen_mode_button: lambda { |mobile_icon: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_ICON, mobile_label: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_LABEL, **system_arguments|
+        zen_mode_button: lambda { |mobile_icon: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_ICON, mobile_label: Primer::OpenProject::ZenModeButton::ZEN_MODE_BUTTON_LABEL, **system_arguments, &block|
           deny_tag_argument(**system_arguments)
 
-          system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME, button_action: true)
+          system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME)
 
-          add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, DEFAULT_ACTION_SCHEME)
+          component = Primer::OpenProject::ZenModeButton
+          create_mobile_alternatives(component, mobile_icon, mobile_label, DEFAULT_ACTION_SCHEME, **system_arguments, &block)
 
-          Primer::OpenProject::ZenModeButton.new(**system_arguments)
+          component.new(**system_arguments)
         },
 
         link: lambda { |mobile_icon:, mobile_label:, scheme: DEFAULT_ACTION_SCHEME, **system_arguments|
@@ -109,29 +114,31 @@ module Primer
           renders: lambda { |**system_arguments, &block|
             deny_tag_argument(**system_arguments)
 
-            system_arguments[:menu_arguments] = set_action_arguments(system_arguments[:menu_arguments])
             system_arguments[:button_arguments] ||= {}
-            system_arguments[:button_arguments][:data] ||= {}
-            system_arguments[:button_arguments][:data][:targets] = "page-header.actionItems"
+            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments])
 
             # Add the options individually to the mobile menu in the template
             @desktop_menu_block = block
 
-            Primer::OpenProject::PageHeader::Menu.new(**system_arguments)
+            component = Primer::OpenProject::PageHeader::Menu
+            create_mobile_single_action(component, **system_arguments, &block)
+
+            component.new(**system_arguments)
           },
         },
         dialog: {
-          renders: lambda { |mobile_icon:, mobile_label:, **system_arguments|
+          renders: lambda { |mobile_icon:, mobile_label:, **system_arguments, &block|
             deny_tag_argument(**system_arguments)
 
             # The id will be automatically calculated for the trigger button, so we have to behave the same, for the mobile click to work
             system_arguments[:button_arguments] ||= {}
             system_arguments[:button_arguments][:id] = "dialog-show-#{system_arguments[:dialog_arguments][:id]}"
-            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments], button_action: true)
+            system_arguments[:button_arguments] = set_action_arguments(system_arguments[:button_arguments])
 
-            add_option_to_mobile_menu(system_arguments[:button_arguments], mobile_icon, mobile_label, :default)
+            component = Primer::OpenProject::PageHeader::Dialog
+            create_mobile_alternatives(component, mobile_icon, mobile_label, :default, **system_arguments, &block)
 
-            Primer::OpenProject::PageHeader::Dialog.new(**system_arguments)
+            component.new(**system_arguments)
           },
         },
       }
@@ -212,7 +219,7 @@ module Primer
           )
 
         @mobile_action_menu = Primer::Alpha::ActionMenu.new(
-          display: MORE_MENU_DISPLAY,
+          display: MOBILE_ACTIONS_DISPLAY,
           anchor_align: :end
         )
       end
@@ -224,15 +231,6 @@ module Primer
         title? && breadcrumbs?
       end
 
-      def before_render
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "PageHeader--singleAction": !render_mobile_menu?
-        )
-
-        content
-      end
-
       def render_mobile_menu?
         actions.count > 1
       end
@@ -242,18 +240,23 @@ module Primer
       def set_action_arguments(system_arguments, scheme: nil, button_action: false)
         system_arguments[:ml] ||= 2
         system_arguments[:display] = [:none, :flex]
+        system_arguments[:size] = :medium
         system_arguments[:scheme] = scheme unless scheme.nil?
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "PageHeader-action",
         )
-        if button_action
-          system_arguments[:data] ||= {}
-          system_arguments[:data][:targets] = "page-header.actionItems"
-        end
 
         system_arguments[:id] ||= self.class.generate_id
         system_arguments
+      end
+
+      def create_mobile_alternatives(component, mobile_icon, mobile_label, scheme, **system_arguments, &block)
+        # All actions should collapse into a single actionMenu on mobile
+        add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
+
+        # Except for single actions, which remain as they are, just smaller.
+        create_mobile_single_action(component, **system_arguments, &block)
       end
 
       def add_option_to_mobile_menu(system_arguments, mobile_icon, mobile_label, scheme)
@@ -261,7 +264,8 @@ module Primer
           # In action menus, only :default and :danger are allowed
           scheme = DEFAULT_ACTION_SCHEME unless scheme == :danger
 
-          with_menu_item(id: system_arguments[:id], label: mobile_label, scheme: scheme) do |c|
+          id = system_arguments[:button_arguments].present? ? system_arguments[:button_arguments][:id] : system_arguments[:id]
+          with_menu_item(id: id, label: mobile_label, scheme: scheme) do |c|
             c.with_leading_visual_icon(icon: mobile_icon)
           end
         end
@@ -279,6 +283,19 @@ module Primer
           **system_arguments,
           &block
         )
+      end
+
+      def create_mobile_single_action(component, **system_arguments, &block)
+        # Single actions shall not collapse into an action menu on mobile, but keep their state.
+        # However the position and size will change
+        unless render_mobile_menu?
+          mobile_options = system_arguments[:button_arguments].present? ?
+                             { button_arguments: { display: MOBILE_ACTIONS_DISPLAY, size: :small } } :
+                             { display: MOBILE_ACTIONS_DISPLAY, size: :small }
+
+          @mobile_action = component.new(**system_arguments.deep_merge(mobile_options))
+          @mobile_action_block = block
+        end
       end
 
       # transform anchor tag strings to {href, text} objects

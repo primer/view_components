@@ -429,9 +429,6 @@
   "PageHeader": [
     "Primer::OpenProject::PageHeader"
   ],
-  "PageHeader--singleAction": [
-    "Primer::OpenProject::PageHeader"
-  ],
   "PageHeader-actions": [
     "Primer::OpenProject::PageHeader"
   ],

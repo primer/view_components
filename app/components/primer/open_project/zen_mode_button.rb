@@ -20,6 +20,8 @@ module Primer
           @system_arguments[:classes],
           "ZenModeButton"
         )
+
+        @button_size = @system_arguments[:size] || Primer::Beta::Button::DEFAULT_SIZE
       end
     end
   end

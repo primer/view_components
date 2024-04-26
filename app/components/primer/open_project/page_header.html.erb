@@ -8,6 +8,8 @@
           <% menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label) %>
           <% @desktop_menu_block.call(menu) unless @desktop_menu_block.nil? %>
         <% end %>
+      <% elsif actions.length == 1 && @mobile_action.present? %>
+        <%= render(@mobile_action) { |el| @mobile_action_block.call(el) unless @mobile_action_block.nil?} %>
       <% end %>
     </div>
   <% end %>

@@ -120,6 +120,21 @@ module Primer
         end
       end
 
+
+      # @label With a single action
+      # The single action will not be transformed into a menu on mobile, but remains in a smaller variant
+      def single_action
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Great news" }
+          component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+
+          component.with_action_button(mobile_icon: "plus", mobile_label: "Meeting", scheme: :primary) do |button|
+            button.with_leading_visual_icon(icon: "plus")
+            "Meeting"
+          end
+        end
+      end
+
       # @label With leading action (on wide)
       # **Leading action** is only shown on **wide screens** by default.
       # If you want to override that behaviour please use the system_argument: **display**

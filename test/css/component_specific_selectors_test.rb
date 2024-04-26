@@ -182,9 +182,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".InputGroup-input-width--large",
       ".InputGroup-input-width--xlarge",
       ".InputGroup-input-width--xxlarge",
-    ],
-    Primer::OpenProject::PageHeader => [
-      ".PageHeader--singleAction .PageHeader-action",
     ]
   }.freeze
 
