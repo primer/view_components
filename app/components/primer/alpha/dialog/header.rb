@@ -28,7 +28,7 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
-                # Optional subtitle slot for adding a subtitle to the header.
+        # Optional subtitle slot for adding a subtitle to the header.
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :subtitle, lambda { |**system_arguments|
