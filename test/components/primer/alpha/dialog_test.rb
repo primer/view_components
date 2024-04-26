@@ -95,6 +95,7 @@ module Primer
         render_inline(Primer::Alpha::Dialog::Header.new(id: "1", title: "Header")) do |component|
           component.with_subtitle { "subtitle" }
         end
+        assert_selector(".Overlay-header .Overlay-description")
       end
     
       def test_renders_header_with_filter
