@@ -1867,12 +1867,6 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
     "parameters": [
       {
-        "name": "tab_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Arguments passed to TabPanels component"
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
