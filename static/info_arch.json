@@ -3551,6 +3551,18 @@
                 "description": "{{link_to_system_arguments_docs}}"
               }
             ]
+          },
+          {
+            "name": "subtitle",
+            "description": "Optional subtitle slot for adding a subtitle to the header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "{{link_to_system_arguments_docs}}"
+              }
+            ]
           }
         ],
         "methods": [
@@ -6133,6 +6145,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/overlay/overlay_with_header_subtitle",
+        "name": "overlay_with_header_subtitle",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/overlay/overlay_with_three_bodies",
         "name": "overlay_with_three_bodies",
         "snapshot": "false",
@@ -6221,6 +6246,18 @@
           {
             "name": "filter",
             "description": "Optional filter slot for adding a filter input to the header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "{{link_to_system_arguments_docs}}"
+              }
+            ]
+          },
+          {
+            "name": "subtitle",
+            "description": "Optional subtitle slot for adding a subtitle to the header.",
             "parameters": [
               {
                 "name": "system_arguments",

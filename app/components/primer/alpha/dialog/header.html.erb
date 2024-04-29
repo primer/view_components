@@ -8,6 +8,8 @@
         <%= content %>
       <% elsif @subtitle.present? %>
         <h2 id="<%= @id %>-description" class="Overlay-description"><%= @subtitle %></h2>
+      <% else %>
+        <%= subtitle %>
       <% end %>
     </div>
     <div class="Overlay-actionWrap">

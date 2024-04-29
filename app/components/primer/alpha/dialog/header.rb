@@ -28,6 +28,20 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
+        # Optional subtitle slot for adding a subtitle to the header.
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :subtitle, lambda { |**system_arguments|
+          raise ArgumentError, "Do not use the subtitle slot if you are passing subtitle in as an argument" if @subtitle.present? && !Rails.env.production?
+
+          system_arguments[:tag] = :h2
+          system_arguments[:classes] = class_names(
+            "Overlay-description",
+            system_arguments[:classes]
+          )
+          Primer::BaseComponent.new(**system_arguments)
+        }
+
         # @param id [String] The HTML element's ID value.
         # @param title [String] Describes the content of the dialog.
         # @param subtitle [String] Provides additional context for the dialog, also setting the `aria-describedby` attribute.
