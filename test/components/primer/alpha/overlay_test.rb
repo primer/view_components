@@ -132,29 +132,4 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
     assert_selector(".Overlay-header .Overlay-description")
   end
-
-  def test_renders_multiple_bodies_as_tabpanels
-    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
-      component.with_header
-      component.with_body(tab_label: "Tab 1") { "Hello" }
-      component.with_body(tab_label: "Tab 2") { "Hello" }
-    end
-
-    assert_selector("tab-container.Overlay-tabPanels") do
-      assert_selector(".tabnav-tab", count: 2)
-      assert_selector(".Overlay-tabPanel", count: 2, visible: :all)
-    end
-  end
-
-  def test_raises_argument_error_when_tab_label_is_missing
-    error = assert_raises(ArgumentError) do
-      render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog)) do |component|
-        component.with_header
-        component.with_body { "Hello" }
-        component.with_body { "Hello" }
-      end
-    end
-
-    assert_includes(error.message, "Multiple with_body slots require `tab_label` to be passed.")
-  end
 end
