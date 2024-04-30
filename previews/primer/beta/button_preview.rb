@@ -414,6 +414,12 @@ module Primer
       def link_scheme_label_wrap
         render_with_template(locals: {})
       end
+
+      # @label Small scheme with one character
+      # @snapshot
+      def small_scheme_one_character
+        render_with_template(locals: {})
+      end
     end
   end
 end
