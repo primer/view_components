@@ -24,19 +24,3 @@ anchored-position.not-anchored::backdrop, dialog::backdrop {
     outline: solid 1px transparent;
   }
 }
-
-.Overlay-tabPanels {
-  display: flex;
-  flex-direction: column;
-  overflow-y: hidden;
-
-  &::part(tablist-wrapper) {
-    margin: var(--base-size-8) 0;
-    padding: 0 var(--base-size-8);
-  }
-}
-
-.Overlay-tabPanel {
-  overflow: hidden;
-  display: flex;
-}

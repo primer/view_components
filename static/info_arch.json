@@ -6000,8 +6000,8 @@
         ]
       },
       {
-        "name": "bodies",
-        "description": "Required body content.\nwhen multiple bodies are passed, they will be rendered in a TabPanels component.",
+        "name": "body",
+        "description": "Required body content.",
         "parameters": [
           {
             "name": "padding",
@@ -6147,19 +6147,6 @@
       {
         "preview_path": "primer/alpha/overlay/overlay_with_header_subtitle",
         "name": "overlay_with_header_subtitle",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/overlay_with_three_bodies",
-        "name": "overlay_with_three_bodies",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -6339,12 +6326,6 @@
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/overlay/body/default/",
         "parameters": [
           {
-            "name": "tab_arguments",
-            "type": "Hash",
-            "default": "`{}`",
-            "description": "Arguments passed to TabPanels component"
-          },
-          {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
@@ -6355,20 +6336,7 @@
 
         ],
         "methods": [
-          {
-            "name": "tab_arguments",
-            "description": "Returns the value of attribute tab_arguments.",
-            "parameters": [
 
-            ]
-          },
-          {
-            "name": "tab_label",
-            "description": "Returns the value of attribute tab_label.",
-            "parameters": [
-
-            ]
-          }
         ],
         "previews": [
 

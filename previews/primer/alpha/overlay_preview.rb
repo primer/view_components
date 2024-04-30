@@ -195,10 +195,6 @@ module Primer
         end
       end
 
-      def overlay_with_three_bodies
-        render_with_template(locals: {})
-      end
-
       def in_a_sticky_container
         render_with_template(locals: {})
       end
