@@ -106,11 +106,10 @@ module Primer
       }
 
       # Required body content.
-      # when multiple bodies are passed, they will be rendered in a TabPanels component.
       #
       # @param padding [Symbol] The padding. <%= one_of(Primer::Alpha::Overlay::PADDING_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :bodies, lambda { |padding: @padding, **system_arguments|
+      renders_one :body, lambda { |padding: @padding, **system_arguments|
         Primer::Alpha::Overlay::Body.new(
           padding: padding,
           **system_arguments
@@ -186,16 +185,7 @@ module Primer
             @system_arguments[:aria][:label] = @title
           end
         end
-        if bodies?
-          if bodies.size > 1
-            # confirm all bodies have tab_label
-            bodies.each do |body|
-              raise ArgumentError, "Multiple with_body slots require `tab_label` to be passed." unless body.tab_label.present?
-            end
-          end
-        else
-          with_body
-        end
+        with_body unless body?
       end
 
       private
