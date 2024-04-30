@@ -8,7 +8,12 @@
     <span class="Button-label"><%= trimmed_content %></span>
     <% if trailing_visual %>
       <span class="Button-visual Button-trailingVisual">
-        <%= trailing_visual %>
+        <% if @trailing_visual_counter %>
+          <span class="sr-only">(<%= trailing_visual %>)</span>
+          <%= trailing_visual %>
+        <% else %>
+          <%= trailing_visual %>
+        <% end %>
       </span>
     <% end %>
   </span>
