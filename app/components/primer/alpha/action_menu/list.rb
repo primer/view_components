@@ -89,6 +89,12 @@ module Primer
         def organize_arguments(data: {}, **system_arguments)
           content_arguments = system_arguments.delete(:content_arguments) || {}
 
+          # When a form is inside a menu, suppress form semantics.
+          # Otherwise, NVDA will miscount menu items.
+          form_arguments = system_arguments.delete(:form_arguments) || {}
+          form_arguments[:html] = form_arguments[:html] || {}
+          form_arguments[:html][:role] = :none
+
           if system_arguments[:tag] && ITEM_TAG_OPTIONS.include?(system_arguments[:tag])
             content_arguments[:tag] = system_arguments[:tag]
           end
@@ -115,7 +121,7 @@ module Primer
             )
           end
 
-          { data: data, **system_arguments, content_arguments: content_arguments }
+          { data: data, **system_arguments, content_arguments: content_arguments, form_arguments: form_arguments }
         end
       end
     end
