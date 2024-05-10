@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.24.0
+
+### Minor Changes
+
+- [#2624](https://github.com/primer/view_components/pull/2624) [`8600b3b`](https://github.com/primer/view_components/commit/8600b3bd96d5b425fa34e0434c5aeb3223fd66c8) Thanks [@keithamus](https://github.com/keithamus)! - Upgrade @github/tab-container, using shadowdom
+
+- [#2808](https://github.com/primer/view_components/pull/2808) [`bdb3d88`](https://github.com/primer/view_components/commit/bdb3d88595dedc93ad20e55a68d34ba1899e8fac) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Adds a subtitle slot to the Primer::Alpha::Overlay::Header and Primer::Alpha::Dialog::Header
+
+- [#2804](https://github.com/primer/view_components/pull/2804) [`757635a`](https://github.com/primer/view_components/commit/757635a902c0986da60d94daa3799bd59ad1e697) Thanks [@camertron](https://github.com/camertron)! - Add a filter slot to the dialog header
+
+### Patch Changes
+
+- [#2807](https://github.com/primer/view_components/pull/2807) [`1863522`](https://github.com/primer/view_components/commit/186352212178c66b651852ab6517213869927eae) Thanks [@khiga8](https://github.com/khiga8)! - Add parenthesis to trailing counter for React parity, and to improve screen reader speech output
+
+- [#2794](https://github.com/primer/view_components/pull/2794) [`1d0ecc5`](https://github.com/primer/view_components/commit/1d0ecc5fe4cd738809fc67e9ee43cecf69b2899c) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix: Re-calculate anchored-position on scroll
+
+- [#2821](https://github.com/primer/view_components/pull/2821) [`19f4d7e`](https://github.com/primer/view_components/commit/19f4d7e2068aa8c0fee5da9c15850c1afb9238cb) Thanks [@khiga8](https://github.com/khiga8)! - Add min-width
+
+- [#2803](https://github.com/primer/view_components/pull/2803) [`d81824c`](https://github.com/primer/view_components/commit/d81824c43eea2c313b3c024dfc2d4adcb5b51fd0) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Adds data attribute to overlay header
+
+- [#2822](https://github.com/primer/view_components/pull/2822) [`11aa0e9`](https://github.com/primer/view_components/commit/11aa0e92034ceac4fe3b9042be31102723b85b8a) Thanks [@smockle](https://github.com/smockle)! - Fix NVDA menu item counts that are broken by using '<form>' inside an 'ActionMenu'.
+
+- [#2828](https://github.com/primer/view_components/pull/2828) [`9ca87d3`](https://github.com/primer/view_components/commit/9ca87d39e4bcff1753a116e829ea336425e161d1) Thanks [@camertron](https://github.com/camertron)! - Fix issue with ActionMenu form items which would prevent a wrapping form if form_arguments: was passed
+
+- [#2802](https://github.com/primer/view_components/pull/2802) [`2906d96`](https://github.com/primer/view_components/commit/2906d96e0780dd5795800cfd29ede076c1e4bcd5) Thanks [@lindseywild](https://github.com/lindseywild)! - Updates Button and ButtonMarketing docs with markup requirements
+
 ## 0.23.0
 
 ### Minor Changes
