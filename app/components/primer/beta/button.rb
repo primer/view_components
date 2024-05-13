@@ -3,6 +3,11 @@
 module Primer
   module Beta
     # Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+    # @accessibility
+    #   Additional markup is required if setting the `tag` argument to either `:a` or `:summary`.
+    #
+    #   * `:a` requires you to pass in an `href` attribute
+    #   * `:summary` requires you to wrap the component in a `<details>` element
     class Button < Primer::Component
       status :beta
 
@@ -63,7 +68,10 @@ module Primer
       renders_one :trailing_visual, types: {
         icon: Primer::Beta::Octicon,
         label: Primer::Beta::Label,
-        counter: Primer::Beta::Counter
+        counter: lambda { |**system_arguments|
+          @trailing_visual_counter = true
+          Primer::Beta::Counter.new("aria-hidden": true, **system_arguments)
+        }
       }
 
       # Trailing action appears to the right of the trailing visual.

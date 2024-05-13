@@ -1,0 +1,14 @@
+<details>
+  <%= render(Primer::Beta::Button.new(
+      scheme: scheme,
+      size: size,
+      block: block,
+      id: id,
+      align_content: align_content,
+      tag: tag
+  )) do %>
+    Button
+  <% end %>
+  <p>A wrapping `details` tag is required when using the button with the `:summary` tag</p>
+</details>
+
