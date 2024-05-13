@@ -20,7 +20,11 @@ module Alpha
         find("action-menu button[aria-controls]").click
 
         if expect_to_open
-          assert_selector "anchored-position:popover-open"
+          if Primer::DriverTestHelpers.supports_native_popover?
+            assert_selector "anchored-position:popover-open"
+          else
+            assert_selector "anchored-position[class=':popover-open']"
+          end
         end
 
         STDERR.puts "Succeeded" if attempts > 1
