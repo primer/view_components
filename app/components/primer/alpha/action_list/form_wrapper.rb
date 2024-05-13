@@ -19,6 +19,11 @@ module Primer
           @list = list
           @form_arguments = form_arguments
 
+          # When a form is inside a menu, suppress form semantics.
+          # Otherwise, NVDA will miscount menu items.
+          @form_arguments[:html] ||= {}
+          @form_arguments[:html][:role] = :none
+
           @action = action
           @http_method = extract_http_method(@form_arguments)
 

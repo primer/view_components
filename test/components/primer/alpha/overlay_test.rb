@@ -124,4 +124,12 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
     assert_selector(".Overlay-header .Overlay-headerContentWrap + .Overlay-headerFilter")
   end
+
+  def test_renders_header_subtitle
+    render_inline(Primer::Alpha::Overlay::Header.new(id: "1", title: "Header")) do |component|
+      component.with_subtitle { "subtitle" }
+    end
+
+    assert_selector(".Overlay-header .Overlay-description")
+  end
 end

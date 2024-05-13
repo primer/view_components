@@ -27,6 +27,18 @@ class PrimerBetaButtonTest < Minitest::Test
     assert_selector(".Button .Button-leadingVisual .octicon-alert")
   end
 
+  def test_renders_with_trailing_visual_counter
+    render_inline(Primer::Beta::Button.new) do |component|
+      component.with_trailing_visual_counter(count: 15)
+      "Button"
+    end
+
+    assert_selector(".Button", text: "Button")
+    assert_selector('[aria-hidden="true"]', text: "15")
+    # Parenthesis provides improved screen reader output
+    assert_selector(".sr-only", text: "(15)")
+  end
+
   def test_renders_with_leading_visual_svg
     render_inline(Primer::Beta::Button.new) do |component|
       component.with_leading_visual_svg do
