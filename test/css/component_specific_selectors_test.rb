@@ -50,7 +50,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
-      "tab-container .tabnav-tab",
       ".tabnav-extra",
       ".tabnav-btn"
     ],
