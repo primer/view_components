@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.24.1
+
+### Patch Changes
+
+- [#2837](https://github.com/primer/view_components/pull/2837) [`e4d6177`](https://github.com/primer/view_components/commit/e4d6177a1d5f5ca65e71bc3a27de7fe951df4cba) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Update Ruby dependencies to address upstream security notices
+
+- [#2839](https://github.com/primer/view_components/pull/2839) [`97ec908`](https://github.com/primer/view_components/commit/97ec9085788f1d5e0b59aaa0178d7b24c6dc25c6) Thanks [@camertron](https://github.com/camertron)! - Revert tab container upgrade
+
 ## 0.24.0
 
 ### Minor Changes
