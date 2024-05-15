@@ -1,4 +1,4 @@
-<div>
+<%= render Primer::BaseComponent.new(tag: :div) do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <% if content.present? %>
       <%= content %>
@@ -8,4 +8,4 @@
     <% end %>
   <% end %>
   <div aria-live="polite" aria-atomic="true" class="sr-only" data-clipboard-copy-feedback></div>
-</div>
+<% end %>
