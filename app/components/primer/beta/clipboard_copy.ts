@@ -37,7 +37,7 @@ document.addEventListener('clipboard-copy', ({target}) => {
   if (!target.hasAttribute('data-view-component')) return
 
   const currentTimeout = clipboardCopyElementTimers.get(target)
-  const clipboardCopyLiveRegion = document.querySelector<HTMLDivElement>('[data-clipboard-copy-live-region]')
+  const clipboardCopyLiveRegion = document.querySelector<HTMLDivElement>('[data-clipboard-copy-feedback]')
   const copiedAnnouncement = 'Copied!'
 
   if (currentTimeout) {
@@ -63,9 +63,6 @@ document.addEventListener('clipboard-copy', ({target}) => {
     target,
     setTimeout(() => {
       showCopy(target)
-      // if (clipboardCopyLiveRegion) {
-      //   clipboardCopyLiveRegion.textContent = ''
-      // }
       clipboardCopyElementTimers.delete(target)
     }, CLIPBOARD_COPY_TIMER_DURATION),
   )

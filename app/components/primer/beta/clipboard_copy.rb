@@ -10,6 +10,8 @@ module Primer
     #
     # @accessibility
     #   Always set an accessible label to help the user interact with the component.
+    #
+    #   This component has a built-in `aria-live` region that announces "Copied!" when the copy element is pressed.
     class ClipboardCopy < Primer::Component
       status :beta
 

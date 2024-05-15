@@ -1,9 +1,11 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if content.present? %>
-    <%= content %>
-  <% else %>
-    <%= render Primer::Beta::Octicon.new(:copy) %>
-    <%= render Primer::Beta::Octicon.new(:check, color: :success, style: "display: none;") %>
+<div>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <% if content.present? %>
+      <%= content %>
+    <% else %>
+      <%= render Primer::Beta::Octicon.new(:copy) %>
+      <%= render Primer::Beta::Octicon.new(:check, color: :success, style: "display: none;") %>
+    <% end %>
   <% end %>
-  <div aria-live="polite" aria-atomic="true" class="sr-only" data-clipboard-copy-live-region></div>
-<% end %>
+  <div aria-live="polite" aria-atomic="true" class="sr-only" data-clipboard-copy-feedback></div>
+</div>

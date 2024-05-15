@@ -5,6 +5,8 @@ module Primer
     # `ClipboardCopyButton` uses the `ClipboardCopy` component to copy text to the clipboard,
     # styled as a Primer button. It can be used wherever a button is desired, and works well
     # with components like `ButtonGroup`.
+    # @accessibility
+    #   This component has a built-in `aria-live` region that announces "Copied!" when the copy button is pressed.
     class ClipboardCopyButton < Primer::Beta::Button
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %> and <%= link_to_component(Primer::Beta::ClipboardCopy) %>.
       def initialize(**system_arguments)
