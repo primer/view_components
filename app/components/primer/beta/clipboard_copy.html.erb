@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(tag: :span, classes: "ClipboardCopyWrapper") do %>
+<%= render Primer::BaseComponent.new(tag: :span) do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <% if content.present? %>
       <%= content %>

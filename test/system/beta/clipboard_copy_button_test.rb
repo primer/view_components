@@ -19,7 +19,7 @@ module Beta
     def test_includes_tooltip
       visit_preview(:with_tooltip)
 
-      assert_selector ".ClipboardCopyWrapper + tool-tip", visible: :all
+      assert_selector "tool-tip[for='clipboard-button']", visible: :all
     end
   end
 end
