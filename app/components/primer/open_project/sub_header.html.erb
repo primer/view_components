@@ -1,0 +1,15 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <div class="SubHeader-leftPane">
+    <%= filter_input %>
+  </div>
+  <div class="SubHeader-middlePane">
+    <%= text %>
+  </div>
+  <div class="SubHeader-rightPane">
+    <% buttons.each do |button| %>
+      <%= button %>
+    <% end %>
+  </div>
+  <div class="SubHeader-bottomPane">
+  </div>
+<% end %>

@@ -549,6 +549,27 @@
   "State--small": [
     "Primer::Beta::State"
   ],
+  "SubHeader": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-bottomPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-button": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-filterInput": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-leftPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-middlePane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-rightPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
   "Subhead": [
     "Primer::Beta::Subhead"
   ],

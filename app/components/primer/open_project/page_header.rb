@@ -237,7 +237,7 @@ module Primer
 
       private
 
-      def set_action_arguments(system_arguments, scheme: nil, button_action: false)
+      def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
         system_arguments[:display] = [:none, :flex]
         system_arguments[:size] = :medium

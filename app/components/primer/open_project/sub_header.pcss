@@ -1,0 +1,38 @@
+/* CSS for SubHeader  */
+
+.SubHeader {
+    display: grid;
+    grid-template-areas: "left middle right" "bottom bottom bottom";
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+.SubHeader-button {
+    margin-left: 12px;
+}
+
+.SubHeader-rightPane {
+    grid-area: right;
+    display: flex;
+    align-items: center;
+}
+
+.SubHeader-middlePane {
+    grid-area: middle;
+    text-align: center;
+}
+
+.SubHeader-bottomPane {
+    grid-area: bottom;
+}
+
+.SubHeader-leftPane {
+    grid-area: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.SubHeader-filterInput {
+    min-width: 300px;
+}
