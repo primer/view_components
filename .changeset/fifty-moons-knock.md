@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Revert tab container upgrade
+Update Rails dependency versions
