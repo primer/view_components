@@ -5,25 +5,25 @@ module Primer
     # Use `Banner` to highlight important information.
     #
     # @accessibility
-    #   Given that Banner is made visually prominent to sighted users through the use of icons and color, consider providing a heading and designating the Banner as a region landmark to improve navigability and discoverability of the Banner of assistive technology users. At this time, the PVC Banner does not render a heading nor render as a region landmark by default. This may be introduced in the future [as a breaking API change](https://github.com/primer/view_components/issues/2619). For now, consider providing an appropriate heading inside of the Banner and rendering the Banner as a `<section>` tag with `aria-labelledby="switch-this-with-banner-heading-id"` to implicitly designate the Banner as a region landmark.
+    #  ### Improve discoverability with a heading and landmark
+    #  Banners are made visually prominent with icons and colors to immediately draw attention.
     #
-    #   A Banner can be used in one of two ways – to highlight information on a page, or to communicate an urgent message/feedback for a user action. For the latter scenario, it may be necessary to use a live region or focus management technique to ensure that the Banner is discoverable and accessible for all users. Otherwise, the Banner can easily be missed, including by those using magnification software or screen reader users who may not realize that a Banner has appeared. The appropriate technique to use is highly context-dependent. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility) or defer to the accessibility team to determine if your scenario requires either techniques.
+    #  To ensure the Banner is also easily discoverable for assistive technology users, consider:
+    #  1. Providing a heading inside of the Banner that describes the purpose of the Banner.
+    #  2. Designating the Banner as a `region` landmark. This can be achieved by rendering the Banner as a `section`  with an `aria-labelledby` pointing to the heading.
     #
-    #   ### Announcing a Banner
-    #     When a Banner is used to communicate non-critical feedback, or is used in critical scenarios where moving focus is considered too disruptive, use a live region announcement to announce the content of the Banner to screen reader users.
+    #  ### Communicating feedback
+    #  When a Banner is used to communicate feedback, a live region or focus management technique should be in place to ensure that assistive technology users are aware of the feedback, especially when the Banner is shown client-side. Visit the [Banner's Accessibility section](https://primer.style/components/banner#accessibility), or defer to the accessibility team.
     #
-    #     Live regions can be finicky and don't work well when injected dynamically. Setting a live region attribute on the Banner itself is discouraged as it will not announce as expected for most screen readers.
+    #  #### Approach 1: Announcing a Banner
+    #  A live region announcement can be used to communicate non-critical feedback, such as a success message.
     #
-    #     To ensure a Banner is announced reliably, make sure that there's a live region container that is already on the page. When the Banner is shown, populate the live region container with the content of the Banner. This can be done in one of two ways. The first is to rely on a global live region container that is guaranteed to be on the page. When the Banner appears, populate this global live region container with the Banner content. The second technique is to hide or show the Banner within a live region wrapper that is guaranteed to always be on the page.
+    #  To successfully trigger a live region announcement for a Banner that is un-`hidden` or dynamically injected onto the page, **do not** set the live region attribute/role on the Banner itself. Instead, it's important to rely on a live region that is already guaranteed to be on the page. Learn more about specific techniques at: [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region).
     #
-    #     For more information about either technique, visit [Staff only: Challenges with live regions](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#challenges-with-dynamically-inserted-live-region). This guidance is subject to change.
+    #  #### Approach 2: Focusing a Banner
+    #  Focusing the Banner can be appropriate for critical feedback scenarios, such as a [form validation error summary](https://primer.style/ui-patterns/forms/overview#interactive-summary-of-errors) where the Banner contains actions to help unblock the user.
     #
-    #   ### Focusing a Banner
-    #     Focusing a Banner when it appears helps to maximize discoverability of the message, especially in critical scenarios.
-    #
-    #     To properly focus a banner, add a `tabindex="-1"` to the Banner container, and focus that container (one way is using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
-    #
-    #     For more information about the focus management technique, visit the [Staff only: Accessible Banner Prototype docs](https://github.com/github/accessibility/blob/main/docs/coaching-recommendations/toast-flash-banner/accessible-banner-prototype.md#consideration). This guidance is subject to change.
+    #  To properly focus a Banner, add a `tabindex="-1"` place focus with JavaScript (using the [`focus()` API](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)).
     class Banner < Primer::Component
       status :alpha
 

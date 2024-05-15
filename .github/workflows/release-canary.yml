@@ -10,7 +10,7 @@ jobs:
   release-canary:
     name: npm
     if: ${{ github.repository == 'opf/primer_view_components' }}
-    uses: primer/.github/.github/workflows/release_canary.yml@v1.0.0
+    uses: primer/.github/.github/workflows/release_canary.yml@v2.0.1
     with:
       install: npm i
     secrets:
