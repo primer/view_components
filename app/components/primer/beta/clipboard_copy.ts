@@ -37,7 +37,7 @@ document.addEventListener('clipboard-copy', ({target}) => {
   if (!target.hasAttribute('data-view-component')) return
 
   const currentTimeout = clipboardCopyElementTimers.get(target)
-  const clipboardCopyLiveRegion = target.parentNode?.querySelector<HTMLDivElement>('[data-clipboard-copy-feedback]')
+  const clipboardCopyLiveRegion = target.parentNode?.querySelector<HTMLElement>('[data-clipboard-copy-feedback]')
   const copiedAnnouncement = 'Copied!'
 
   if (currentTimeout) {
