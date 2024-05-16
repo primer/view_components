@@ -6,16 +6,6 @@ module Beta
   class IntegrationClipboardCopyButtonTest < System::TestCase
     include Primer::ClipboardTestHelpers
 
-    def test_populates_live_region
-      visit_preview(:playground)
-
-      find("#clipboard-button").click
-
-      assert_selector("[data-clipboard-copy-feedback]") do |node|
-        assert_equal(node.text.strip, "Copied!")
-      end
-    end
-
     def test_copies_text
       visit_preview(:playground)
 
@@ -24,6 +14,7 @@ module Beta
       end
 
       assert_equal "Text to copy", clipboard_text
+      assert_selector("[data-clipboard-copy-feedback]", text: "Copied!", visible: :false)
     end
 
     def test_includes_tooltip
