@@ -9,8 +9,13 @@ module Primer
       # @param size [Symbol] select [medium, large]
       # @param tag [Symbol] select [span, summary, a, div]
       # @param inline [Boolean] toggle
-      def playground(size: :medium, tag: :span, inline: false)
-        render(Primer::Beta::Label.new(tag: tag, size: size, inline: inline)) { "Label" }
+      # @param href [String] URL to be used with an anchor tag
+      def playground(size: :medium, tag: :span, inline: false, href: nil)
+        if tag == :a
+          render(Primer::Beta::Label.new(tag: tag, size: size, inline: inline, href: href || "#")) { "Link label" }
+        else
+          render(Primer::Beta::Label.new(tag: tag, size: size, inline: inline)) { "Label" }
+        end
       end
 
       # @label Default Options
