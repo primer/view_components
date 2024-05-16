@@ -91,6 +91,23 @@ module Primer
         end
       end
 
+      def test_renders_header_subtitle
+        render_inline(Primer::Alpha::Dialog::Header.new(id: "1", title: "Header")) do |component|
+          component.with_subtitle { "subtitle" }
+        end
+        assert_selector(".Overlay-header .Overlay-description")
+      end
+
+      def test_renders_header_with_filter
+        render_preview(:with_header_filter)
+
+        assert_selector("dialog") do |dialog|
+          dialog.assert_selector(".Overlay-header") do |header|
+            header.assert_selector("input[type=text]")
+          end
+        end
+      end
+
       def test_renders_footer_without_divider_by_default
         render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
           component.with_body { "content" }

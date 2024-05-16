@@ -189,6 +189,13 @@ module Primer
 
         assert @rendered_content.scan("test").size == 1, "The show button rendered its content more than once"
       end
+
+      def test_single_select_form_items_have_role_none
+        render_preview(:single_select_form_items)
+
+        # one form per item
+        assert_selector "form[role=none]", count: 2
+      end
     end
   end
 end

@@ -20,7 +20,7 @@ module Primer
       # @param disabled toggle
       # @param inactive toggle
       # @param align_content select [center, start]
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @param label_wrap toggle
       def playground(
         scheme: :default,
@@ -31,8 +31,13 @@ module Primer
         tag: :button,
         disabled: false,
         inactive: false,
-        label_wrap: false
+        label_wrap: false,
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::Button.new(
                  scheme: scheme,
                  size: size,
@@ -42,8 +47,9 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  inactive: inactive,
-                 label_wrap: label_wrap
-               )) do |_c|
+                 label_wrap: label_wrap,
+                 href: href
+                )) do |_c|
           "Button"
         end
       end
@@ -51,7 +57,6 @@ module Primer
       # @label Default
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def default(
         block: false,
         id: "button-preview",
@@ -73,7 +78,6 @@ module Primer
       # @label Primary
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def primary(
         id: "button-preview",
         block: false,
@@ -95,7 +99,6 @@ module Primer
       # @label Danger
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def danger(
         id: "button-preview",
         block: false,
@@ -117,7 +120,6 @@ module Primer
       # @label Invisible
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       def invisible(
         id: "button-preview",
         block: false,
@@ -145,7 +147,6 @@ module Primer
       # @label Link
       # @param block toggle
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       # @snapshot
       def link(
         id: "button-preview",
@@ -178,7 +179,6 @@ module Primer
 
       # @label Full width
       # @param disabled toggle
-      # @param tag select [a, summary, button]
       # @snapshot
       def full_width(
         id: "button-preview",
@@ -222,6 +222,7 @@ module Primer
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
+      # @param href
       # @snapshot
       def link_as_button(
         scheme: :default,
@@ -245,12 +246,35 @@ module Primer
         end
       end
 
+      # @label Summary as button
+      # @param scheme select [default, primary, danger, invisible, link]
+      # @param size select [small, medium]
+      # @param block toggle
+      # @param align_content select [center, start]
+      # @snapshot
+      def summary_as_button(
+        scheme: :default,
+        size: :medium,
+        block: false,
+        id: "button-preview",
+        align_content: :center,
+        tag: :summary
+      )
+        render_with_template(locals: {
+                              scheme: scheme,
+                              size: size,
+                              block: block,
+                              id: id,
+                              align_content: align_content,
+                              tag: tag
+                             })
+      end
+
       # @label Trailing visual
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
-      # @param tag select [a, summary, button]
       # @snapshot
       def trailing_visual(
         scheme: :default,
@@ -258,7 +282,7 @@ module Primer
         block: false,
         id: "button-preview",
         align_content: :center,
-        tag: :a
+        tag: :button
       )
         render_with_template(locals: {
                                scheme: scheme,
@@ -388,6 +412,12 @@ module Primer
       # @label Link scheme with long label
       # @snapshot
       def link_scheme_label_wrap
+        render_with_template(locals: {})
+      end
+
+      # @label Small scheme with one character
+      # @snapshot
+      def small_scheme_one_character
         render_with_template(locals: {})
       end
     end
