@@ -9,6 +9,8 @@ module Beta
     def test_copies_text
       visit_preview(:playground)
 
+      assert_selector("[data-clipboard-copy-feedback]", text: "", visible: :false)
+
       clipboard_text = capture_clipboard do
         find("#clipboard-button").click
       end
