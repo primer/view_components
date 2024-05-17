@@ -7,8 +7,6 @@ class ToggleSwitchController < ApplicationController
     attr_accessor :last_request
   end
 
-  skip_before_action :verify_authenticity_token
-
   before_action :reject_non_ajax_request
   before_action :verify_artificial_authenticity_token
 
