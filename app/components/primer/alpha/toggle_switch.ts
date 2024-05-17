@@ -19,7 +19,7 @@ class ToggleSwitchElement extends HTMLElement {
 
   get csrf(): string | null {
     const csrfElement = this.querySelector('[data-csrf]')
-    return this.getAttribute('csrf') || (csrfElement instanceof HTMLInputElement && csrfElement.value) || null
+    return this.getAttribute('data-csrf') || (csrfElement instanceof HTMLInputElement && csrfElement.value) || null
   }
 
   get csrfField(): string {

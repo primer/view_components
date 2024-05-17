@@ -7,8 +7,9 @@ class ToggleSwitchController < ApplicationController
     attr_accessor :last_request
   end
 
+  rescue_from ActionController::InvalidAuthenticityToken, with: :handle_invalid_authenticity_token
+
   before_action :reject_non_ajax_request
-  before_action :verify_artificial_authenticity_token
 
   def create
     # lol this is so not threadsafe
@@ -16,26 +17,25 @@ class ToggleSwitchController < ApplicationController
 
     sleep 1 unless Rails.env.test?
 
+    if params[:fail] == "true"
+      render status: :internal_server_error, plain: "Something went wrong."
+      return
+    end
+
     head :accepted
   end
 
   private
+
+  def handle_invalid_authenticity_token
+    render status: :unauthorized, plain: "Bad CSRF token."
+  end
 
   # this mimics dotcom behavior
   def reject_non_ajax_request
     return if request.headers["HTTP_REQUESTED_WITH"] == "XMLHttpRequest"
 
     head :unprocessable_entity
-  end
-
-  def verify_artificial_authenticity_token
-    # don't check token if not provided
-    return unless form_params[:authenticity_token]
-
-    # if provided, check token
-    return if form_params[:authenticity_token] == "let_me_in"
-
-    render status: :unauthorized, plain: "Bad CSRF token"
   end
 
   def form_params
