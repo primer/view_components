@@ -54,7 +54,7 @@ module Primer
     # It's designed to be used to normalize and merge data information from system_arguments
     # hashes. Consider using this pattern in component initializers:
     #
-    # @system_arguments[:data] = merge_aria(
+    # @system_arguments[:data] = merge_data(
     #   @system_arguments,
     #   { data: { foo: "bar" } }
     # )

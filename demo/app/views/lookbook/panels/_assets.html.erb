@@ -34,7 +34,7 @@
           <h4 class="asset-title font-mono"><%= asset[:path].relative_path_from(Primer::ViewComponents.root) %></h4>
         </header>
         <div class="asset-contents">
-          <%= code language: asset[:language], line_numbers: true do %><%== File.read(asset[:path]) %><% end %>
+          <%= code language: asset[:language], line_numbers: true do %><%= File.read(asset[:path]) %><% end %>
         </div>
       </div>
     <% end %>
