@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.25.0
+
+### Minor Changes
+
+- [#2843](https://github.com/primer/view_components/pull/2843) [`3eccd4e`](https://github.com/primer/view_components/commit/3eccd4e293658ea846fa97659c76861d4f3404ea) Thanks [@lindseywild](https://github.com/lindseywild)! - Adds live region to announce "Copied!" on ClipboardCopy component
+
+### Patch Changes
+
+- [#2840](https://github.com/primer/view_components/pull/2840) [`f9947de`](https://github.com/primer/view_components/commit/f9947de93b276ec9fa6c7873e178f3c01211ebb2) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Update Rails dependency versions
+
+- [#2846](https://github.com/primer/view_components/pull/2846) [`4b8c00b`](https://github.com/primer/view_components/commit/4b8c00b76d65ad321a9d9c546151d58858571cf7) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Clean up Lookbook-related security alerts.
+
 ## 0.24.1
 
 ### Patch Changes
