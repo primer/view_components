@@ -1,15 +1,28 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <div class="SubHeader-leftPane">
-    <%= filter_input %>
+    <%= render Primer::BaseComponent.new(tag: :div,
+                                         classes: 'SubHeader-filterContainer',
+                                         display: [:none, :flex],
+                                         data: { targets: "sub-header.shownItemsOnExpandedFilter"}) do %>
+      <%= filter_input %>
+      <%= render Primer::Beta::Button.new(scheme: :invisible,
+                                          display: :none,
+                                          data: {
+                                            targets: "sub-header.shownItemsOnExpandedFilter",
+                                            action: "click:sub-header#collapseFilterInput"}) do %>
+        <%= I18n.t("button_cancel") %>
+        <% end %>
+    <% end %>
+    <%= render @mobile_filter_trigger if @mobile_filter_trigger.present? %>
   </div>
-  <div class="SubHeader-middlePane">
+  <div class="SubHeader-middlePane" data-targets="sub-header.hiddenItemsOnExpandedFilter">
     <%= text %>
   </div>
-  <div class="SubHeader-rightPane">
+  <div class="SubHeader-rightPane" data-targets="sub-header.hiddenItemsOnExpandedFilter">
     <% buttons.each do |button| %>
       <%= button %>
     <% end %>
   </div>
-  <div class="SubHeader-bottomPane">
+  <div class="SubHeader-bottomPane" data-targets="sub-header.hiddenItemsOnExpandedFilter">
   </div>
 <% end %>

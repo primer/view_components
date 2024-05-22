@@ -72,6 +72,15 @@ module Primer
         system_arguments[:leading_visual] ||= { icon: :search }
         system_arguments[:visually_hide_label] ||= true
 
+        system_arguments[:data] ||= {}
+        system_arguments[:data][:target]= "sub-header.filterInput"
+
+        @mobile_filter_trigger = Primer::Beta::IconButton.new(icon: system_arguments[:leading_visual][:icon],
+                                                              display: [:inline_flex, :none],
+                                                              aria: {label: label },
+                                                              "data-action": "click:sub-header#expandFilterInput",
+                                                              "data-targets": "sub-header.hiddenItemsOnExpandedFilter")
+
         Primer::Alpha::TextField.new(name: name, label: label, **system_arguments)
       }
 
@@ -86,11 +95,12 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
+        @system_arguments[:tag] = :"sub-header"
+
         @system_arguments[:classes] = class_names(
           "SubHeader",
           system_arguments[:classes]
         )
-        @system_arguments[:tag] = "div"
       end
     end
   end

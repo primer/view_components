@@ -558,7 +558,7 @@
   "SubHeader-button": [
     "Primer::OpenProject::SubHeader"
   ],
-  "SubHeader-filterInput": [
+  "SubHeader-filterContainer": [
     "Primer::OpenProject::SubHeader"
   ],
   "SubHeader-leftPane": [
