@@ -90,4 +90,39 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     assert_selector(".SubHeader")
     assert_text("Hello world!")
   end
+
+  def test_renders_a_filter_button
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_button do |button|
+        button.with_trailing_visual_counter(count: "15")
+        "Filter"
+      end
+    end
+
+    assert_selector(".SubHeader")
+    assert_selector(".SubHeader-filterButton")
+    assert_text("Filter")
+  end
+
+
+  def test_renders_an_icon_filter_button
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_button(icon: "filter", "aria-label": "Filter")
+    end
+
+    assert_selector(".SubHeader")
+    assert_selector(".SubHeader-filterButton.Button--iconOnly .octicon-filter")
+  end
+
+  def test_renders_a_custom_filter_button
+    render_inline(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_cool_id")) do |component|
+      component.with_filter_component do
+        "<button class='MyCustomButton'>Filter</button>".html_safe
+      end
+    end
+
+    assert_selector(".SubHeader")
+    assert_selector(".SubHeader .MyCustomButton")
+    assert_selector(".SubHeader .SubHeader-bottomPane#my_cool_id")
+  end
 end

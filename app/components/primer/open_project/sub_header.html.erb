@@ -14,6 +14,7 @@
         <% end %>
     <% end %>
     <%= render @mobile_filter_trigger if @mobile_filter_trigger.present? %>
+    <%= filter_button %>
   </div>
   <div class="SubHeader-middlePane" data-targets="sub-header.hiddenItemsOnExpandedFilter">
     <%= text %>
@@ -23,6 +24,8 @@
       <%= button %>
     <% end %>
   </div>
-  <div class="SubHeader-bottomPane" data-targets="sub-header.hiddenItemsOnExpandedFilter">
-  </div>
+  <% if @bottom_pane_id.present? %>
+    <div class="SubHeader-bottomPane" id="<%= @bottom_pane_id %>" data-targets="sub-header.hiddenItemsOnExpandedFilter">
+    </div>
+  <% end %>
 <% end %>

@@ -84,6 +84,40 @@ module Primer
         Primer::Alpha::TextField.new(name: name, label: label, **system_arguments)
       }
 
+      renders_one :filter_button, types: {
+        button: {
+          renders: lambda { |icon: nil, **kwargs|
+            kwargs[:classes] = class_names(
+              kwargs[:classes],
+              "SubHeader-filterButton"
+            )
+            kwargs[:data] ||= {}
+            kwargs[:data][:targets] ||= "sub-header.hiddenItemsOnExpandedFilter"
+
+            if icon
+              Primer::Beta::IconButton.new(icon: icon, **kwargs)
+            else
+              Primer::Beta::Button.new(**kwargs)
+            end
+          },
+
+          as: :filter_button
+        },
+        component: {
+          # A generic slot to render a custom filter components
+          renders: lambda { |**kwargs|
+            deny_tag_argument(**kwargs)
+            kwargs[:tag] = :div
+            kwargs[:data] ||= {}
+            kwargs[:data][:targets] ||= "sub-header.hiddenItemsOnExpandedFilter"
+
+            Primer::BaseComponent.new(**kwargs)
+          },
+
+          as: :filter_component
+        }
+      }
+
       renders_one :text, lambda { |**system_arguments|
         system_arguments[:font_weight] ||= :bold
 
@@ -93,9 +127,11 @@ module Primer
 
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
+      def initialize(bottom_pane_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"sub-header"
+
+        @bottom_pane_id = bottom_pane_id
 
         @system_arguments[:classes] = class_names(
           "SubHeader",

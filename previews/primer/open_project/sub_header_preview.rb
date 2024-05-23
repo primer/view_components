@@ -9,11 +9,16 @@ module Primer
     class SubHeaderPreview < ViewComponent::Preview
       # @label Playground
       # @param show_filter_input toggle
+      # @param show_filter_button toggle
       # @param button_type [Symbol] select [Button, IconButton, ActionMenu, Dialog, ButtonGroup]
       # @param text text
-      def playground(show_filter_input: true, button_type: :button, text: nil)
+      def playground(show_filter_input: true, show_filter_button: true, button_type: :button, text: nil)
         render(Primer::OpenProject::SubHeader.new) do |component|
           component.with_filter_input(name: "filter", label: "Filter") if show_filter_input
+          component.with_filter_button do |button|
+            button.with_trailing_visual_counter(count: "15")
+            "Filter"
+          end if show_filter_button
 
           component.with_text { text } unless text.nil?
 
@@ -65,6 +70,10 @@ module Primer
       def default
         render(Primer::OpenProject::SubHeader.new) do |component|
           component.with_filter_input(name: "filter", label: "Filter")
+          component.with_filter_button do |button|
+            button.with_trailing_visual_counter(count: "15")
+            "Filter"
+          end
 
           component.with_button(scheme: :primary)  do |button|
             button.with_leading_visual_icon(icon: :plus)
@@ -121,6 +130,11 @@ module Primer
             end
           end
         end
+      end
+
+      # @label With custom filter button
+      def custom_filter_button
+        render_with_template(locals: {})
       end
 
       # @label With Text in the middle
