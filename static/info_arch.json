@@ -16692,6 +16692,18 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ]
+      },
+      {
+        "name": "tab_nav",
+        "description": "Optional tabs nav at the bottom of the page header",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
       }
     ],
     "methods": [
@@ -16831,6 +16843,19 @@
       {
         "preview_path": "primer/open_project/page_header/non_bold_breadcrumbs",
         "name": "non_bold_breadcrumbs",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/tab_nav",
+        "name": "tab_nav",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
