@@ -215,6 +215,24 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item:not(.text-bold) a[href='#']")
   end
 
+  def test_renders_tab_nav
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_tab_nav(label: "label") do |nav|
+        Array.new(3) do |i|
+          nav.with_tab(selected: i.zero? , href: "#") do |tab|
+            tab.with_text { "Tab #{i + 1}" }
+          end
+        end
+      end
+    end
+
+    assert_selector(".PageHeader--noBorder")
+    assert_selector(".PageHeader-tabNav")
+    assert_selector(".PageHeader-tabNav .tabnav-tab")
+  end
+
   private
 
   def breadcrumb_elements

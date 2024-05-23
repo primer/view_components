@@ -205,6 +205,19 @@ module Primer
         end
       }
 
+      # Optional tabs nav at the bottom of the page header
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :tab_nav, lambda { |**system_arguments, &block|
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--noBorder")
+
+        system_arguments = deny_tag_argument(**system_arguments)
+        system_arguments[:tag] = :div
+        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-tabNav")
+
+        Primer::Alpha::TabNav.new(**system_arguments, &block)
+      }
+
       # @param mobile_menu_label [String] The tooltip label of the mobile menu
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(mobile_menu_label: I18n.t("label_more"), **system_arguments)

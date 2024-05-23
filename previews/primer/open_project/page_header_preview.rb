@@ -23,12 +23,14 @@ module Primer
       # @param description [String] text
       # @param with_leading_action [Symbol] octicon
       # @param with_actions [Boolean]
+      # @param with_tab_nav [Boolean]
       def playground(
         variant: :medium,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
         with_leading_action: :"none",
-        with_actions: true
+        with_actions: true,
+        with_tab_nav: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
@@ -37,7 +39,8 @@ module Primer
                                        description: description,
                                        with_leading_action: with_leading_action,
                                        with_actions: with_actions,
-                                       breadcrumb_items: breadcrumb_items })
+                                       breadcrumb_items: breadcrumb_items,
+                                       with_tab_nav: with_tab_nav})
       end
 
       # @label Large title
@@ -165,6 +168,23 @@ module Primer
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "A title" }
           header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: :normal)
+        end
+      end
+
+      # @label With tab nav
+      #
+      def tab_nav
+        render(Primer::OpenProject::PageHeader.new) do |header|
+          header.with_title { "Hello" }
+          header.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+          header.with_description { "Last updated 5 minutes ago by XYZ." }
+          header.with_tab_nav(label: "label") do |nav|
+            Array.new(3) do |i|
+              nav.with_tab(selected: i.zero? , href: "#") do |tab|
+                tab.with_text { "Tab #{i + 1}" }
+              end
+            end
+          end
         end
       end
     end

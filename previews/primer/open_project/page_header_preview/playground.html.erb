@@ -14,4 +14,11 @@
       <% end %>
     <% end %>
   <% end %>
+  <% if with_tab_nav %>
+    <% header.with_tab_nav(label: "label") do |nav|%>
+      <% nav.with_tab(selected: true, href: "#") { "Tab 1" } %>
+      <% nav.with_tab(href: "#") { "Tab 2" } %>
+      <% nav.with_tab(href: "#") { "Tab 3" } %>
+    <% end %>
+  <% end %>
 <% end %>

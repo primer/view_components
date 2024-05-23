@@ -429,6 +429,9 @@
   "PageHeader": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader--noBorder": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "PageHeader-actions": [
     "Primer::OpenProject::PageHeader"
   ],
@@ -445,6 +448,9 @@
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-parentLink": [
+    "Primer::OpenProject::PageHeader"
+  ],
+  "PageHeader-tabNav": [
     "Primer::OpenProject::PageHeader"
   ],
   "PageHeader-title": [
