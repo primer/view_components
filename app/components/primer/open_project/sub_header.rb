@@ -7,59 +7,28 @@ module Primer
     class SubHeader < Primer::Component
       status :open_project
 
-      renders_many :buttons, types: {
+      # A button or custom content that will render on the right-hand side of the component.
+      #
+      # To render a button, call the `with_button` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
+      #
+      # To render custom content, call the `with_button_component` method and pass a block that returns HTML.
+      renders_many :actions, types: {
         button: {
           renders: lambda { |icon: nil, **kwargs|
-            kwargs[:classes] = class_names(
-              kwargs[:classes],
-              "SubHeader-button"
-            )
             if icon
               Primer::Beta::IconButton.new(icon: icon, **kwargs)
             else
               Primer::Beta::Button.new(**kwargs)
             end
           },
-
-          as: :button
         },
-
-        menu_button: {
-          renders: lambda { |menu_arguments: {}, button_arguments: {}|
-            button_arguments[:classes] = class_names(
-              button_arguments[:classes],
-              "SubHeader-button"
-            )
-            Primer::OpenProject::PageHeader::Menu.new(menu_arguments: menu_arguments, button_arguments: button_arguments)
-          },
-
-          as: :menu_button
-        },
-
-        dialog_button: {
-          renders: lambda { |dialog_arguments: {}, button_arguments: {}|
-            button_arguments[:classes] = class_names(
-              button_arguments[:classes],
-              "SubHeader-button"
-            )
-
-            Primer::OpenProject::PageHeader::Dialog.new(dialog_arguments: dialog_arguments, button_arguments: button_arguments)
-          },
-
-          as: :dialog_button
-        },
-
-        group_button: {
+        component: {
+          # A generic slot to render whatever component you like on the right side
           renders: lambda { |**kwargs|
-            kwargs[:classes] = class_names(
-              kwargs[:classes],
-              "SubHeader-button"
-            )
-
-            Primer::Beta::ButtonGroup.new(**kwargs)
+            deny_tag_argument(**kwargs)
+            kwargs[:tag] = :div
+            Primer::BaseComponent.new(**kwargs)
           },
-
-          as: :button_group
         }
       }
 
@@ -84,6 +53,12 @@ module Primer
         Primer::Alpha::TextField.new(name: name, label: label, **system_arguments)
       }
 
+
+      # A button or custom content that will render on the left-hand side of the component, next to the filter input.
+      #
+      # To render a button, call the `with_filter_button` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
+      #
+      # To render custom content, call the `with_filter_component` method and pass a block that returns HTML.
       renders_one :filter_button, types: {
         button: {
           renders: lambda { |icon: nil, **kwargs|
@@ -104,7 +79,7 @@ module Primer
           as: :filter_button
         },
         component: {
-          # A generic slot to render a custom filter components
+          # A generic slot to render a custom filter component
           renders: lambda { |**kwargs|
             deny_tag_argument(**kwargs)
             kwargs[:tag] = :div

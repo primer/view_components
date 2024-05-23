@@ -1,7 +1,7 @@
 <%= render(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_custom_id")) do |component| %>
   <% component.with_filter_input(name: "filter", label: "Filter") %>
   <% component.with_filter_component do %>
-    <!-- Render any custom filter component that you want, but take care that in the end a button is rendered. Otherwise, it cannot be guaranteed that the layout fits. -->
+    <!-- Render any custom filter component that you want -->
     <!-- Note, that you can pass an ID for the bottom pane if you need to access that area for further filter actions-->
     <%= render(Primer::Beta::IconButton.new(icon: "filter", "aria-label": "Filter")) %>
   <% end %>

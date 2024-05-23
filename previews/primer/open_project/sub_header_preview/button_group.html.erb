@@ -1,0 +1,11 @@
+<%= render(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_custom_id")) do |component| %>
+  <% component.with_filter_input(name: "filter", label: "Filter") %>
+
+  <% component.with_action_component do %>
+    <%= render(Primer::Beta::ButtonGroup.new) do |group|
+      group.with_button { "Button 1" }
+      group.with_button { "Button 2" }
+      group.with_button { "Button 3" }
+    end %>
+  <% end %>
+<% end %>

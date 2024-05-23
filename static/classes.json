@@ -555,9 +555,6 @@
   "SubHeader-bottomPane": [
     "Primer::OpenProject::SubHeader"
   ],
-  "SubHeader-button": [
-    "Primer::OpenProject::SubHeader"
-  ],
   "SubHeader-filterContainer": [
     "Primer::OpenProject::SubHeader"
   ],

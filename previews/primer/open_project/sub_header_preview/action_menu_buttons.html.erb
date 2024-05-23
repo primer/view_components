@@ -1,0 +1,15 @@
+<%= render(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_custom_id")) do |component| %>
+  <% component.with_filter_input(name: "filter", label: "Filter") %>
+
+  <% component.with_action_component do %>
+    <%= render Primer::Alpha::ActionMenu.new(menu_id: "menu-1") do |menu|
+      menu.with_show_button(icon: :"op-kebab-vertical", "aria-label": "Menu")
+      menu.with_item(label: "Subitem 1") do |item|
+        item.with_leading_visual_icon(icon: :paste)
+      end
+      menu.with_item(label: "Subitem 2") do |item|
+        item.with_leading_visual_icon(icon: :log)
+      end
+    end  %>
+  <% end %>
+<% end %>
