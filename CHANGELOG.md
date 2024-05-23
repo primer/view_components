@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.31.0
+
+### Minor Changes
+
+- [#117](https://github.com/opf/primer_view_components/pull/117) [`72c239e`](https://github.com/opf/primer_view_components/commit/72c239ef39bb188ed05815a1e0e5e98f97663f0b) Thanks [@dominic-braeunlein](https://github.com/dominic-braeunlein)! - Adds a TabNav slot to Primer::OpenProject::PageHeader
+
 ## 0.30.1
 
 ### Patch Changes
