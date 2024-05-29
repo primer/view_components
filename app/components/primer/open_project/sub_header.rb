@@ -7,6 +7,9 @@ module Primer
     class SubHeader < Primer::Component
       status :open_project
 
+      HIDDEN_FILTER_TARGET_SELECTOR = "sub-header.hiddenItemsOnExpandedFilter"
+      SHOWN_FILTER_TARGET_SELECTOR = "sub-header.shownItemsOnExpandedFilter"
+
       # A button or custom content that will render on the right-hand side of the component.
       #
       # To render a button, call the `with_button` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
@@ -44,11 +47,19 @@ module Primer
         system_arguments[:data] ||= {}
         system_arguments[:data][:target]= "sub-header.filterInput"
 
+
         @mobile_filter_trigger = Primer::Beta::IconButton.new(icon: system_arguments[:leading_visual][:icon],
                                                               display: [:inline_flex, :none],
                                                               aria: {label: label },
                                                               "data-action": "click:sub-header#expandFilterInput",
-                                                              "data-targets": "sub-header.hiddenItemsOnExpandedFilter")
+                                                              "data-targets": HIDDEN_FILTER_TARGET_SELECTOR)
+
+        @mobile_filter_cancel = Primer::Beta::Button.new(scheme: :invisible,
+                                                         display: :none,
+                                                         data: {
+                                                           targets: SHOWN_FILTER_TARGET_SELECTOR,
+                                                           action: "click:sub-header#collapseFilterInput"})
+
 
         Primer::Alpha::TextField.new(name: name, label: label, **system_arguments)
       }
@@ -67,7 +78,7 @@ module Primer
               "SubHeader-filterButton"
             )
             kwargs[:data] ||= {}
-            kwargs[:data][:targets] ||= "sub-header.hiddenItemsOnExpandedFilter"
+            kwargs[:data][:targets] ||= HIDDEN_FILTER_TARGET_SELECTOR
 
             if icon
               Primer::Beta::IconButton.new(icon: icon, **kwargs)
@@ -84,7 +95,7 @@ module Primer
             deny_tag_argument(**kwargs)
             kwargs[:tag] = :div
             kwargs[:data] ||= {}
-            kwargs[:data][:targets] ||= "sub-header.hiddenItemsOnExpandedFilter"
+            kwargs[:data][:targets] ||= HIDDEN_FILTER_TARGET_SELECTOR
 
             Primer::BaseComponent.new(**kwargs)
           },
@@ -107,6 +118,11 @@ module Primer
         @system_arguments[:tag] = :"sub-header"
 
         @bottom_pane_id = bottom_pane_id
+
+        @filter_container = Primer::BaseComponent.new(tag: :div,
+                                                      classes: "SubHeader-filterContainer",
+                                                      display: [:none, :flex],
+                                                      data: { targets: SHOWN_FILTER_TARGET_SELECTOR })
 
         @system_arguments[:classes] = class_names(
           "SubHeader",
