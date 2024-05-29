@@ -55,7 +55,7 @@ module Primer
       # @label Dismissable
       # @snapshot
       def dismissible
-        render(Primer::Alpha::Banner.new(dismiss_scheme: :hide, reappear: true)) { "This is a dismissable banner." }
+        render(Primer::Alpha::Banner.new(dismiss_scheme: :hide)) { "This is a dismissable banner." }
       end
 
       # @!group Full Width
