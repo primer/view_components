@@ -12,11 +12,15 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
         button.with_leading_visual_icon(icon: :plus)
         "Create"
       end
+      component.with_action_button(scheme: :danger) { "Delete" }
     end
 
     assert_selector(".SubHeader")
     assert_selector(".SubHeader-filterInput")
     assert_selector(".SubHeader .Button--primary")
+    assert_selector(".SubHeader .Button--danger")
+    # Assert the correct order
+    assert_selector(".SubHeader-rightPane .Button--primary+.Button--danger")
   end
 
   def test_renders_an_icon_button_as_action
