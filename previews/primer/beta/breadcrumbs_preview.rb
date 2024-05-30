@@ -26,6 +26,18 @@ module Primer
           end
         end
       end
+
+      # @label WithBetaTruncate
+      # @snapshot
+      def with_beta_truncate
+        render_with_template
+      end
+
+      # @label WithDeprecatedTruncate
+      # @snapshot
+      def with_deprecated_truncate
+        render_with_template
+      end
     end
   end
 end
