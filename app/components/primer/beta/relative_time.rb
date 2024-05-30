@@ -101,6 +101,7 @@ module Primer
       # @param format_style [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_STYLE_OPTIONS) %>
       # @param lang [string] The language to use.
       # @param title [string] Provide a custom title to the element.
+      # @param no_title [Boolean] Removes the `title` attribute provided on the element by default.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         datetime:,
@@ -120,6 +121,7 @@ module Primer
         format_style: nil,
         lang: nil,
         title: nil,
+        no_title: nil,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -137,6 +139,7 @@ module Primer
         @system_arguments[:threshold] = threshold if threshold.present?
         @system_arguments[:precision] = precision if precision.present?
         @system_arguments[:title] = title if title.present?
+        @system_arguments[:"no-title"] = no_title if no_title.present?
         @system_arguments[:lang] = lang if lang.present?
         @system_arguments[:format] = fetch_or_fallback(FORMAT_OPTIONS, format, FORMAT_DEFAULT) if format.present?
         @system_arguments[:"format-style"] = format_style if format_style.present?

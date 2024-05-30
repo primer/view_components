@@ -281,6 +281,18 @@ module Primer
                  title: title
                ))
       end
+
+      # @label No Title Attribute
+      # @snapshot
+      def no_title_attribute()
+        render(Primer::Beta::RelativeTime.new(datetime: Time.utc(2020, 1, 1, 0, 0, 0), no_title: true))
+      end
+
+      # @label Link With Tooltip
+      # @snapshot
+      def link_with_tooltip()
+        render_with_template
+      end
     end
   end
 end
