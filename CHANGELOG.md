@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.32.1
+
+### Patch Changes
+
+- [#121](https://github.com/opf/primer_view_components/pull/121) [`20d031f`](https://github.com/opf/primer_view_components/commit/20d031f9ecff3802f6810939b167a5490b3c789e) Thanks [@HDinger](https://github.com/HDinger)! - Fix spacings in OpenProject::SubHeader when some elements are not present
+
 ## 0.32.0
 
 ### Minor Changes
