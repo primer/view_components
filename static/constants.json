@@ -1473,6 +1473,10 @@
   },
   "Primer::OpenProject::PageHeader::Menu": {
   },
+  "Primer::OpenProject::SubHeader": {
+    "HIDDEN_FILTER_TARGET_SELECTOR": "sub-header.hiddenItemsOnExpandedFilter",
+    "SHOWN_FILTER_TARGET_SELECTOR": "sub-header.shownItemsOnExpandedFilter"
+  },
   "Primer::OpenProject::ZenModeButton": {
     "ZEN_MODE_BUTTON_ICON": "screen-full",
     "ZEN_MODE_BUTTON_LABEL": "Translation missing: en.label_zen_mode"

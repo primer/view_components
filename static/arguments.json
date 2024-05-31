@@ -5024,6 +5024,22 @@
     ]
   },
   {
+    "component": "OpenProject::SubHeader",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::ZenModeButton",
     "status": "open_project",
     "a11y_reviewed": false,

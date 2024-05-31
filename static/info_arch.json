@@ -16952,6 +16952,177 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader",
+    "description": "The SubHeader contains specific actions to modify the page content below, e.g a filter button or a create button\nIt should not be used stand alone, but in combination with a PageHeader, either as a direct sibling or as part of a tab content",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "actions",
+        "description": "A button or custom content that will render on the right-hand side of the component.\n\nTo render a button, call the `with_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}.\n\nTo render custom content, call the `with_button_component` method and pass a block that returns HTML.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "filter_input",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "filter_button",
+        "description": "A button or custom content that will render on the left-hand side of the component, next to the filter input.\n\nTo render a button, call the `with_filter_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}.\n\nTo render custom content, call the `with_filter_component` method and pass a block that returns HTML.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "text",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "bottom_pane_component",
+        "description": "A slot for a generic component which will be shown in a second row below the rest, spanning the whole width",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/sub_header/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/action_menu_buttons",
+        "name": "action_menu_buttons",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/dialog_buttons",
+        "name": "dialog_buttons",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/button_group",
+        "name": "button_group",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/custom_filter_button",
+        "name": "custom_filter_button",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/bottom_pane",
+        "name": "bottom_pane",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/text",
+        "name": "text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::ZenModeButton",
     "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
     "accessibility_docs": "Add any accessibility considerations",
