@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.32.0
+
+### Minor Changes
+
+- [#116](https://github.com/opf/primer_view_components/pull/116) [`da108fa`](https://github.com/opf/primer_view_components/commit/da108faea261fcb9eaec86250792c63d07077de2) Thanks [@HDinger](https://github.com/HDinger)! - Create a Primer::OpenProject::SubHeader component
+
 ## 0.31.0
 
 ### Minor Changes
