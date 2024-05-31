@@ -108,16 +108,15 @@ module Primer
         system_arguments[:font_weight] ||= :bold
 
         Primer::Beta::Text.new(**system_arguments)
-
       }
 
       # A slot for a generic component which will be shown in a second row below the rest, spanning the whole width
       renders_one :bottom_pane_component, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
+        system_arguments[:mt] ||= 3
 
         Primer::BaseComponent.new(**system_arguments)
-
       }
 
 

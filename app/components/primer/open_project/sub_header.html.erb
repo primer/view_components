@@ -5,7 +5,7 @@
       <%= render @mobile_filter_cancel do
         I18n.t("button_cancel")
       end if @mobile_filter_cancel.present? %>
-    <% end if @filter_container.present? %>
+    <% end if filter_input.present? %>
     <%= render @mobile_filter_trigger if @mobile_filter_trigger.present? %>
     <%= filter_button %>
   </div>
