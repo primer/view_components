@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_custom_id")) do |component| %>
+<%= render(Primer::OpenProject::SubHeader.new) do |component| %>
   <% component.with_filter_input(name: "filter", label: "Filter") %>
 
   <% component.with_action_component do %>

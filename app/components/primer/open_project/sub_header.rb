@@ -111,13 +111,20 @@ module Primer
 
       }
 
+      # A slot for a generic component which will be shown in a second row below the rest, spanning the whole width
+      renders_one :bottom_pane_component, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
+        system_arguments[:tag] = :div
+
+        Primer::BaseComponent.new(**system_arguments)
+
+      }
+
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(bottom_pane_id: nil, **system_arguments)
+      def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"sub-header"
-
-        @bottom_pane_id = bottom_pane_id
 
         @filter_container = Primer::BaseComponent.new(tag: :div,
                                                       classes: "SubHeader-filterContainer",

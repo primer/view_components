@@ -17,8 +17,9 @@
       <%= action %>
     <% end %>
   </div>
-  <% if @bottom_pane_id.present? %>
-    <div class="SubHeader-bottomPane" id="<%= @bottom_pane_id %>" data-targets="<%= HIDDEN_FILTER_TARGET_SELECTOR %>">
+  <% if bottom_pane_component.present? %>
+    <div class="SubHeader-bottomPane">
+      <%= bottom_pane_component %>
     </div>
   <% end %>
 <% end %>

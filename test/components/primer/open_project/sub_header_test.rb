@@ -79,14 +79,17 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
   end
 
   def test_renders_a_custom_filter_button
-    render_inline(Primer::OpenProject::SubHeader.new(bottom_pane_id: "my_cool_id")) do |component|
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
       component.with_filter_component do
         "<button class='MyCustomButton'>Filter</button>".html_safe
+      end
+      component.with_bottom_pane_component do
+        "<div class='ABottomPane'>Whatever block you need</div>".html_safe
       end
     end
 
     assert_selector(".SubHeader")
     assert_selector(".SubHeader .MyCustomButton")
-    assert_selector(".SubHeader .SubHeader-bottomPane#my_cool_id")
+    assert_selector(".SubHeader .SubHeader-bottomPane .ABottomPane")
   end
 end
