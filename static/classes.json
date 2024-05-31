@@ -555,6 +555,24 @@
   "State--small": [
     "Primer::Beta::State"
   ],
+  "SubHeader": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-bottomPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-filterContainer": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-leftPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-middlePane": [
+    "Primer::OpenProject::SubHeader"
+  ],
+  "SubHeader-rightPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
   "Subhead": [
     "Primer::Beta::Subhead"
   ],

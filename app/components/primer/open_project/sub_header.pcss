@@ -1,0 +1,43 @@
+/* CSS for SubHeader  */
+
+.SubHeader {
+    display: grid;
+    grid-template-areas: "left middle right" "bottom bottom bottom";
+    grid-template-columns: auto 1fr auto;
+    row-gap: 16px;
+    align-items: center;
+
+    /* When the filter input is expanded in mobile, we switch to a flex layout */
+    flex-wrap: wrap;
+}
+
+.SubHeader-rightPane {
+    grid-area: right;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.SubHeader-middlePane {
+    grid-area: middle;
+    text-align: center;
+}
+
+.SubHeader-bottomPane {
+    grid-area: bottom;
+    margin-bottom: 16px;
+}
+
+.SubHeader-leftPane {
+    grid-area: left;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+}
+
+.SubHeader-filterContainer {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}

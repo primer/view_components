@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::SubHeader, {}],
     [Primer::OpenProject::ZenModeButton, {}],
     [Primer::OpenProject::InputGroup, {}, proc { |component|
       component.with_text_input(name: "a name", label: "My input group", value: "Copyable value")

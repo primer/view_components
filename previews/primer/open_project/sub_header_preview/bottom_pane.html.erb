@@ -1,0 +1,12 @@
+<%= render(Primer::OpenProject::SubHeader.new) do |component| %>
+  <% component.with_filter_input(name: "filter", label: "Filter") %>
+  <% component.with_filter_component do %>
+    <!-- Render any custom filter component that you want -->
+    <%= render(Primer::Beta::IconButton.new(icon: "filter", "aria-label": "Filter")) %>
+  <% end %>
+  <% component.with_bottom_pane_component do %>
+    <!-- Render any custom component that you want -->
+    <!-- The component will be shown in a second row below the rest, spanning the whole width -->
+    <%= render(Primer::BaseComponent.new(tag: :div, bg: :accent, p: 3)) { 'Render any custom content here (e.g a filter area)' } %>
+  <% end %>
+<% end %>

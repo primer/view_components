@@ -1,0 +1,12 @@
+<%= render(Primer::OpenProject::SubHeader.new) do |component| %>
+  <% component.with_filter_input(name: "filter", label: "Filter") %>
+
+  <% component.with_action_component do %>
+    <%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: "Dialog")) do |d| %>
+      <% d.with_show_button { "Show Dialog" } %>
+      <% d.with_body do %>
+        Hello world!
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

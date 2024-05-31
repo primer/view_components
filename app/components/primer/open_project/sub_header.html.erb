@@ -1,0 +1,25 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <div class="SubHeader-leftPane">
+    <%= render @filter_container do %>
+      <%= filter_input %>
+      <%= render @mobile_filter_cancel do
+        I18n.t("button_cancel")
+      end if @mobile_filter_cancel.present? %>
+    <% end if @filter_container.present? %>
+    <%= render @mobile_filter_trigger if @mobile_filter_trigger.present? %>
+    <%= filter_button %>
+  </div>
+  <div class="SubHeader-middlePane" data-targets="<%= HIDDEN_FILTER_TARGET_SELECTOR %>">
+    <%= text %>
+  </div>
+  <div class="SubHeader-rightPane" data-targets="<%= HIDDEN_FILTER_TARGET_SELECTOR %>">
+    <% actions.each do |action| %>
+      <%= action %>
+    <% end %>
+  </div>
+  <% if bottom_pane_component.present? %>
+    <div class="SubHeader-bottomPane">
+      <%= bottom_pane_component %>
+    </div>
+  <% end %>
+<% end %>
