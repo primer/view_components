@@ -12640,7 +12640,7 @@
   {
     "fully_qualified_name": "Primer::Beta::IconButton",
     "description": "Use `IconButton` to render Icon-only buttons without the default button styles.\n\n`IconButton` will always render with a tooltip unless the tag is `:summary`.",
-    "accessibility_docs": "`IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.\nThe `aria-label` should describe the action to be invoked rather than the icon itself. For instance,\nif your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be\n`\"Search\"` instead of `\"Magnifying glass\"`.\nEither `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.\nEither `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.\n[Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)",
+    "accessibility_docs": "`IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.\nThe `aria-label` should describe the action to be invoked rather than the icon itself. For instance,\nif your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be\n`\"Search\"` instead of `\"Magnifying glass\"`.\nEither `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.\nEither `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.\n[Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)\n\nAdditional markup is required if setting the `tag` argument to either `:a` or `:summary`.\n\n* `:a` requires you to pass in an `href` attribute\n* `:summary` requires you to wrap the component in a `<details>` element",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -12780,6 +12780,32 @@
       {
         "preview_path": "primer/beta/icon_button/danger",
         "name": "danger",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/link_as_button",
+        "name": "link_as_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/summary_as_button",
+        "name": "summary_as_button",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
