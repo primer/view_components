@@ -146,7 +146,7 @@ GEM
       racc (~> 1.4)
     octicons (19.9.0)
     parallel (1.24.0)
-    parser (3.3.1.0)
+    parser (3.3.2.0)
       ast (~> 2.4.1)
       racc
     pry (0.14.2)
@@ -199,7 +199,7 @@ GEM
     rexml (3.2.8)
       strscan (>= 3.0.9)
     rouge (4.2.1)
-    rubocop (1.64.0)
+    rubocop (1.64.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
