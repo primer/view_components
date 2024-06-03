@@ -121,7 +121,7 @@ module Primer
         format_style: nil,
         lang: nil,
         title: nil,
-        no_title: nil,
+        no_title: false,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
