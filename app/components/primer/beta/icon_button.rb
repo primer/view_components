@@ -14,6 +14,11 @@ module Primer
     #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
     #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
     #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
+    #
+    #   Additional markup is required if setting the `tag` argument to either `:a` or `:summary`.
+    #
+    #   * `:a` requires you to pass in an `href` attribute
+    #   * `:summary` requires you to wrap the component in a `<details>` element
     class IconButton < Primer::Component
       status :beta
 
