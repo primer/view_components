@@ -139,7 +139,7 @@ module Primer
         @system_arguments[:threshold] = threshold if threshold.present?
         @system_arguments[:precision] = precision if precision.present?
         @system_arguments[:title] = title if title.present?
-        @system_arguments[:"no-title"] = no_title if no_title.present?
+        @system_arguments[:"no-title"] = no_title if no_title
         @system_arguments[:lang] = lang if lang.present?
         @system_arguments[:format] = fetch_or_fallback(FORMAT_OPTIONS, format, FORMAT_DEFAULT) if format.present?
         @system_arguments[:"format-style"] = format_style if format_style.present?
