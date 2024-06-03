@@ -284,7 +284,7 @@ module Primer
 
       # @label No Title Attribute
       # @snapshot
-      def no_title_attribute()
+      def no_title_attribute
         render(Primer::Beta::RelativeTime.new(datetime: Time.utc(2020, 1, 1, 0, 0, 0), no_title: true))
       end
 
