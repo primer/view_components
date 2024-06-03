@@ -290,7 +290,7 @@ module Primer
 
       # @label Link With Tooltip
       # @snapshot
-      def link_with_tooltip()
+      def link_with_tooltip
         render_with_template
       end
     end
