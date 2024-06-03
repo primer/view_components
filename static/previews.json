@@ -3923,6 +3923,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/link_as_button",
+        "name": "link_as_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/icon_button/summary_as_button",
+        "name": "summary_as_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
