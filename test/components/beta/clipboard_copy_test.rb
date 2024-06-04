@@ -40,4 +40,10 @@ class PrimerBetaClipboardCopyTest < Minitest::Test
       assert_selector("svg.octicon.octicon-check.color-fg-success", visible: false)
     end
   end
+
+  def test_renders_aria_live_region
+    render_inline Primer::Beta::ClipboardCopy.new(value: "my-branch-name", "aria-label": "Copy branch name to clipboard")
+
+    assert_selector("[data-clipboard-copy-feedback]")
+  end
 end

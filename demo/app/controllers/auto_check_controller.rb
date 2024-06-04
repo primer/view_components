@@ -3,8 +3,6 @@
 # For auto-check previews
 # :nocov:
 class AutoCheckController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def error
     render partial: "auto_check/error_message",
       locals: { input_value: params[:value] },

@@ -66,7 +66,7 @@ module Primer
       def test_csrf_token
         render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo", csrf_token: "abc123"))
 
-        assert_selector("[csrf]")
+        assert_selector("[data-csrf]")
       end
     end
   end

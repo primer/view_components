@@ -11630,7 +11630,7 @@
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopy",
     "description": "Use `ClipboardCopy` to copy element text content or input values to the clipboard.\n\nThis component by itself is not styled as a button, and can therefore only be used in limited circumstances.\nIf you're looking for a button, consider using {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}\ninstead.",
-    "accessibility_docs": "Always set an accessible label to help the user interact with the component.",
+    "accessibility_docs": "Always set an accessible label to help the user interact with the component.\n\nThis component has a built-in `aria-live` region that announces \"Copied!\" when the copy element is pressed.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": true,
@@ -11797,7 +11797,7 @@
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopyButton",
     "description": "`ClipboardCopyButton` uses the `ClipboardCopy` component to copy text to the clipboard,\nstyled as a Primer button. It can be used wherever a button is desired, and works well\nwith components like `ButtonGroup`.",
-    "accessibility_docs": null,
+    "accessibility_docs": "This component has a built-in `aria-live` region that announces \"Copied!\" when the copy button is pressed.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,

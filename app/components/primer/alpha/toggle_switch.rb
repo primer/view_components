@@ -56,10 +56,6 @@ module Primer
         }
 
         @system_arguments[:src] = @src if @src
-
-        return unless @src && @csrf_token
-
-        @system_arguments[:csrf] = @csrf_token
       end
 
       def on?
@@ -72,6 +68,22 @@ module Primer
 
       def disabled?
         !enabled?
+      end
+
+      private
+
+      def before_render
+        @csrf_token ||= view_context.form_authenticity_token(
+          form_options: {
+            method: :post,
+            action: @src
+          }
+        )
+
+        @system_arguments[:data] = merge_data(
+          @system_arguments,
+          { data: { csrf: @csrf_token } }
+        )
       end
     end
   end

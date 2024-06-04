@@ -47,19 +47,12 @@ module Forms
       wait_for_toggle_switch_spinner
 
       assert_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
-      assert_selector(".FormControl-inlineValidation", text: "Bad CSRF token")
+      assert_selector(".FormControl-inlineValidation", text: "Something went wrong.")
 
-      page.evaluate_script(<<~JAVASCRIPT)
-        document
-          .querySelector('toggle-switch#error-toggle')
-          .setAttribute('csrf', 'let_me_in');
-      JAVASCRIPT
-
-      find("#error-toggle").click
+      find("#success-toggle").click
       wait_for_toggle_switch_spinner
 
-      refute_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
-      refute_selector("#error-toggle", text: "Bad CSRF token")
+      refute_selector("#success-toggle [data-target='toggle-switch.errorIcon']")
     end
 
     def test_action_menu_form_input
