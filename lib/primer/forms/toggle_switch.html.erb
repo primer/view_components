@@ -10,13 +10,5 @@
 
     <div><%= render(Caption.new(input: @input)) %></div>
   </span>
-  <%
-    csrf = @input.csrf || @view_context.form_authenticity_token(
-      form_options: {
-        method: :post,
-        action: @input.src
-      }
-    )
-  %>
-  <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src, csrf: csrf, **@input.input_arguments)) %>
+  <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src, csrf_token: @input.csrf, **@input.input_arguments)) %>
 <% end %>

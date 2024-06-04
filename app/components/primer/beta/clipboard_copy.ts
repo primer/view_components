@@ -37,12 +37,26 @@ document.addEventListener('clipboard-copy', ({target}) => {
   if (!target.hasAttribute('data-view-component')) return
 
   const currentTimeout = clipboardCopyElementTimers.get(target)
+  const clipboardCopyLiveRegion = target.parentNode?.querySelector<HTMLElement>('[data-clipboard-copy-feedback]')
+  const copiedAnnouncement = 'Copied!'
 
   if (currentTimeout) {
     clearTimeout(currentTimeout)
     clipboardCopyElementTimers.delete(target)
   } else {
     showCheck(target)
+    if (clipboardCopyLiveRegion) {
+      if (clipboardCopyLiveRegion.textContent === copiedAnnouncement) {
+        /* This is a hack due to the way the aria live API works.
+        A screen reader will not read a live region again
+        if the text is the same. Adding a space character tells
+        the browser that the live region has updated,
+        which will cause it to read again, but with no audible difference. */
+        clipboardCopyLiveRegion.textContent = `${copiedAnnouncement}\u00A0`
+      } else {
+        clipboardCopyLiveRegion.textContent = copiedAnnouncement
+      }
+    }
   }
 
   clipboardCopyElementTimers.set(

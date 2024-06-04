@@ -52,7 +52,7 @@ module Primer
       end
 
       def with_csrf_token
-        render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, csrf_token: "let_me_in"))
+        render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path))
       end
 
       def with_bad_csrf_token
