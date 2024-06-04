@@ -44,4 +44,52 @@ class PrimerBetaSpinnerTest < Minitest::Test
   def test_status
     assert_component_state(Primer::Beta::Spinner, :beta)
   end
+
+  def test_adds_default_sr_span
+    render_inline(Primer::Beta::Spinner.new)
+
+    assert_selector("span.sr-only", text: "Loading")
+  end
+
+  def test_adds_custom_sr_span
+    render_inline(Primer::Beta::Spinner.new(sr_text: "Custom Loading"))
+
+    assert_selector("span.sr-only", text: "Custom Loading")
+  end
+
+  def test_no_custom_sr_span_with_aria_label
+    render_inline(Primer::Beta::Spinner.new("aria-label": "Aria label"))
+
+    assert_no_selector("span.sr-only")
+  end
+
+  def test_no_custom_sr_span_with_aria_label_hash
+    render_inline(Primer::Beta::Spinner.new(aria: { label: "Aria label"}))
+
+    assert_no_selector("span.sr-only")
+  end
+
+  def test_no_custom_sr_span_with_aria_labelledby
+    render_inline(Primer::Beta::Spinner.new("aria-labelledby": "my_id"))
+
+    assert_no_selector("span.sr-only")
+  end
+
+  def test_no_custom_sr_span_with_aria_labelledby_hash
+    render_inline(Primer::Beta::Spinner.new(aria: { labelledby: "my_id"}))
+
+    assert_no_selector("span.sr-only")
+  end
+
+  def test_adds_img_role_with_aria_label
+    render_inline(Primer::Beta::Spinner.new("aria-label": "Aria label"))
+
+    assert_selector("svg[role=img]")
+  end
+
+  def test_adds_aria_hidden_with_no_aria_label
+    render_inline(Primer::Beta::Spinner.new)
+
+    assert_selector("svg[aria-hidden=true]")
+  end
 end
