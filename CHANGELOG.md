@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.33.2
+
+### Patch Changes
+
+- [#2868](https://github.com/primer/view_components/pull/2868) [`18a0037`](https://github.com/opf/primer_view_components/commit/18a00375a85ff6286c8245f7d6936a4a30243b8f) Thanks [@lumaxis](https://github.com/lumaxis)! - Remove non-existing argument in Banner preview
+
+- [#2869](https://github.com/primer/view_components/pull/2869) [`18d5f21`](https://github.com/opf/primer_view_components/commit/18d5f21f9423d261244dc906aff2909f0b769e9d) Thanks [@smockle](https://github.com/smockle)! - fix: Allow breadcrumb items to wrap.
+
 ## 0.33.1
 
 ### Patch Changes
