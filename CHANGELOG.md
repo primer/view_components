@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.33.1
+
+### Patch Changes
+
+- [#119](https://github.com/opf/primer_view_components/pull/119) [`dfdc857`](https://github.com/opf/primer_view_components/commit/dfdc857ce0a92fb57cad72f79c22a1d9440b9138) Thanks [@dominic-braeunlein](https://github.com/dominic-braeunlein)! - Fix Tab Nav vertical spacing in Page Header
+
 ## 0.33.0
 
 ### Minor Changes
