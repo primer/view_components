@@ -228,7 +228,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       end
     end
 
-    assert_selector(".PageHeader--noBorder")
+    assert_selector(".PageHeader.PageHeader--withTabNav")
     assert_selector(".PageHeader-tabNav")
     assert_selector(".PageHeader-tabNav .tabnav-tab")
   end
