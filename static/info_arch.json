@@ -14523,6 +14523,12 @@
         "description": "Provide a custom title to the element."
       },
       {
+        "name": "no_title",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Removes the `title` attribute provided on the element by default."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -14592,6 +14598,32 @@
         "preview_path": "primer/beta/relative_time/count_down_timer",
         "name": "count_down_timer",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/relative_time/no_title_attribute",
+        "name": "no_title_attribute",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/relative_time/link_with_tooltip",
+        "name": "link_with_tooltip",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
