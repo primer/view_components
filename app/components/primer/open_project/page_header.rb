@@ -209,7 +209,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :tab_nav, lambda { |**system_arguments, &block|
-        @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--noBorder")
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--withTabNav")
 
         system_arguments = deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div

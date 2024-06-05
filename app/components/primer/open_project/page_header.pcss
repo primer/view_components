@@ -8,9 +8,10 @@
   flex-flow: column;
 }
 
-.PageHeader--noBorder {
+.PageHeader--withTabNav {
   border-bottom: none;
   padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .PageHeader-contextBar {
@@ -46,6 +47,10 @@
   flex: 1 100%;
 }
 
+.PageHeader--withTabNav .PageHeader-description {
+  margin-bottom: var(--space-xlarge);
+}
+
 .PageHeader-actions {
   justify-content: flex-end;
   display: flex;
@@ -64,9 +69,4 @@
 
 .PageHeader-parentLink {
   flex: 1 1 auto;
-}
-
-.PageHeader-tabNav {
-  margin-top: var(--stack-gap-normal);
-  margin-bottom: 0;
 }
