@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gemspec
-rails_version = (ENV["RAILS_VERSION"] || "7.1.3.2").to_s
+rails_version = (ENV["RAILS_VERSION"] || "7.1.3.4").to_s
 
 gem "rack-cors"
 gem "rake", "~> 13.2"
@@ -67,7 +67,8 @@ group :development do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-console", "~> 0.9.1"
   gem "sprockets"
-  gem "sprockets-rails"
+  # locked to ~> 3.4.0 because of https://github.com/rails/sprockets-rails/issues/524
+  gem "sprockets-rails", "~> 3.4.0"
   gem "thor"
   gem "timecop"
   gem "yard", "~> 0.9.36"
