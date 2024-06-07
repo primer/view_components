@@ -68,6 +68,16 @@ class PrimerBreadcrumbsTest < Minitest::Test
     assert_selector("li.breadcrumb-item-selected a[aria-current='page']", text: "About")
   end
 
+  def test_renders_target_attribute
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
+      component.with_item(href: "/", target: "_blank") { "Home" }
+      component.with_item(href: "/about") { "About" }
+    end
+
+    assert_selector(".breadcrumb-item a[target='_blank']", text: "Home")
+    assert_selector(".breadcrumb-item a[target='_self']", text: "About")
+  end
+
   def test_status
     assert_component_state(Primer::Beta::Breadcrumbs, :beta)
   end

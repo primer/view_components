@@ -48,8 +48,9 @@ module Primer
       class Item < Primer::Component
         attr_accessor :selected, :href
 
-        def initialize(href:, **system_arguments)
+        def initialize(href:, target: "_self", **system_arguments)
           @href = href
+          @target = target
           @system_arguments = deny_tag_argument(**system_arguments)
           @selected = false
 
@@ -58,7 +59,7 @@ module Primer
         end
 
         def call
-          link_arguments = { href: @href }
+          link_arguments = { href: @href, target: @target }
 
           if selected
             link_arguments[:"aria-current"] = "page"
