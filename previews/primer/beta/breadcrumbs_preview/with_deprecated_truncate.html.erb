@@ -1,0 +1,14 @@
+<%# erblint:counter DeprecatedComponentsCounter 1 %>
+<% texts = [
+          "Breadcrumb Item 1",
+          "Breadcrumb Item 2 with a really long, long, long name",
+          "Breadcrumb Item 3 with an extremely long, long, long name"
+        ] %>
+
+<%= render(Primer::Beta::Breadcrumbs.new) do |breadcrumbs| %>
+  <% texts.each_with_index do |text, i| %>
+    <% breadcrumbs.with_item(href: "##{i}") do %>
+      <%= render(Primer::Truncate.new(inline: true, max_width: 135)) { text } %>
+    <% end %>
+  <% end %>
+<% end %>

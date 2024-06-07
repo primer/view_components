@@ -10,7 +10,7 @@ module Primer
       # @param aria_label text
       # @param disabled toggle
       # @param inactive toggle
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @param icon [Symbol] octicon
       # @param show_tooltip toggle
       def playground(
@@ -22,8 +22,13 @@ module Primer
         inactive: false,
         icon: :plus,
         aria_label: "Button",
-        show_tooltip: true
+        show_tooltip: true,
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::IconButton.new(
                  scheme: scheme,
                  size: size,
@@ -33,7 +38,8 @@ module Primer
                  inactive: inactive,
                  icon: icon,
                  "aria-label": aria_label,
-                 show_tooltip: show_tooltip
+                 show_tooltip: show_tooltip,
+                 href: href
                ))
       end
 
@@ -41,7 +47,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @snapshot
       def default(
         size: :medium,
@@ -49,8 +55,13 @@ module Primer
         tag: :button,
         disabled: false,
         icon: :star,
-        aria_label: "Button"
+        aria_label: "Button",
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::IconButton.new(
                  scheme: :default,
                  size: size,
@@ -58,7 +69,8 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  icon: icon,
-                 "aria-label": aria_label
+                 "aria-label": aria_label,
+                 href: href
                ))
       end
 
@@ -66,7 +78,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @snapshot
       def invisible(
         size: :medium,
@@ -74,8 +86,13 @@ module Primer
         tag: :button,
         disabled: false,
         icon: :x,
-        aria_label: "Button"
+        aria_label: "Button",
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::IconButton.new(
                  scheme: :invisible,
                  size: size,
@@ -83,7 +100,8 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  icon: icon,
-                 "aria-label": aria_label
+                 "aria-label": aria_label,
+                 href: href
                ))
       end
 
@@ -91,7 +109,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @snapshot
       def primary(
         size: :medium,
@@ -99,8 +117,13 @@ module Primer
         tag: :button,
         disabled: false,
         icon: :x,
-        aria_label: "Button"
+        aria_label: "Button",
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::IconButton.new(
                  scheme: :primary,
                  size: size,
@@ -108,7 +131,8 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  icon: icon,
-                 "aria-label": aria_label
+                 "aria-label": aria_label,
+                 href: href
                ))
       end
 
@@ -116,7 +140,7 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param tag select [a, summary, button]
+      # @param tag select [a, button]
       # @snapshot
       def danger(
         size: :medium,
@@ -124,8 +148,13 @@ module Primer
         tag: :button,
         disabled: false,
         icon: :trash,
-        aria_label: "Button"
+        aria_label: "Button",
+        href: nil
       )
+        # Sets default href to `a`, to ensure it's keyboard interactive and proper markup
+        if tag == :a && href.nil?
+          href = "#"
+        end
         render(Primer::Beta::IconButton.new(
                  scheme: :danger,
                  size: size,
@@ -133,8 +162,60 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  icon: icon,
+                 "aria-label": aria_label,
+                 href: href
+               ))
+      end
+
+      # @label Link as button
+      # @param size select [small, medium, large]
+      # @param aria_label text
+      # @param disabled toggle
+      # @param href text
+      # @snapshot
+      def link_as_button(
+        size: :medium,
+        id: "button-preview",
+        tag: :a,
+        href: "#",
+        disabled: false,
+        icon: :star,
+        aria_label: "Link"
+      )
+        render(Primer::Beta::IconButton.new(
+                 scheme: :default,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 href: href,
+                 disabled: disabled,
+                 icon: icon,
                  "aria-label": aria_label
                ))
+      end
+
+      # @label Summary as button
+      # @param size select [small, medium, large]
+      # @param aria_label text
+      # @param disabled toggle
+      # @snapshot
+      def summary_as_button(
+        size: :medium,
+        id: "button-preview",
+        tag: :summary,
+        disabled: false,
+        icon: :star,
+        aria_label: "Button"
+      )
+        render_with_template(locals: {
+                              scheme: :default,
+                              size: size,
+                              id: id,
+                              tag: tag,
+                              disabled: disabled,
+                              icon: icon,
+                              "aria-label": aria_label
+                             })
       end
     end
   end
