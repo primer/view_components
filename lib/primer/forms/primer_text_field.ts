@@ -1,15 +1,24 @@
+/* eslint-disable custom-elements/expose-class-on-global */
+
 import '@github/auto-check-element'
+import type {AutoCheckErrorEvent, AutoCheckSuccessEvent} from '@github/auto-check-element'
 import {controller, target} from '@github/catalyst'
 
-// eslint-disable-next-line custom-elements/expose-class-on-global
+declare global {
+  interface HTMLElementEventMap {
+    'auto-check-success': AutoCheckSuccessEvent
+    'auto-check-error': AutoCheckErrorEvent
+  }
+}
 @controller
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-class PrimerTextFieldElement extends HTMLElement {
+export class PrimerTextFieldElement extends HTMLElement {
   @target inputElement: HTMLInputElement
   @target validationElement: HTMLElement
   @target validationMessageElement: HTMLElement
   @target validationSuccessIcon: HTMLElement
   @target validationErrorIcon: HTMLElement
+  @target leadingVisual: HTMLElement
+  @target leadingSpinner: HTMLElement
 
   #abortController: AbortController | null
 
@@ -19,7 +28,7 @@ class PrimerTextFieldElement extends HTMLElement {
 
     this.addEventListener(
       'auto-check-success',
-      async (event: any) => {
+      async (event: AutoCheckSuccessEvent) => {
         const message = await event.detail.response.text()
         if (message && message.length > 0) {
           this.setSuccess(message)
@@ -32,7 +41,7 @@ class PrimerTextFieldElement extends HTMLElement {
 
     this.addEventListener(
       'auto-check-error',
-      async (event: any) => {
+      async (event: AutoCheckErrorEvent) => {
         const errorMessage = await event.detail.response.text()
         this.setError(errorMessage)
       },
@@ -84,5 +93,15 @@ class PrimerTextFieldElement extends HTMLElement {
     this.toggleValidationStyling(true)
     this.setValidationMessage(message)
     this.validationElement.hidden = false
+  }
+
+  showLeadingSpinner(): void {
+    this.leadingSpinner?.removeAttribute('hidden')
+    this.leadingVisual?.setAttribute('hidden', '')
+  }
+
+  hideLeadingSpinner(): void {
+    this.leadingSpinner?.setAttribute('hidden', '')
+    this.leadingVisual?.removeAttribute('hidden')
   }
 }
