@@ -7629,18 +7629,6 @@
         "description": "One of `:left` or `:right`. - Defaults to left"
       },
       {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "{{link_to_system_arguments_docs}} for the body wrapper."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "{{link_to_system_arguments_docs}} for the `TabContainer` wrapper."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -10939,6 +10927,19 @@
         "preview_path": "primer/beta/breadcrumbs/with_deprecated_truncate",
         "name": "with_deprecated_truncate",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/breadcrumbs/with_link_target",
+        "name": "with_link_target",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
