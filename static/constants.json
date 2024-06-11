@@ -1220,6 +1220,7 @@
   },
   "Primer::Beta::Spinner": {
     "DEFAULT_SIZE": "medium",
+    "DEFAULT_SR_TEXT": "Loading",
     "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
     "SIZE_MAPPINGS": {
       "small": 16,

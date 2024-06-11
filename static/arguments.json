@@ -4277,12 +4277,6 @@
         "description": "Custom element styles."
       },
       {
-        "name": "sr_text",
-        "type": "String",
-        "default": "Loading",
-        "description": "Screen reader only text, added unless aria-label is set."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
