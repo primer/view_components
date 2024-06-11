@@ -7,8 +7,8 @@ module Primer
       # @label Playground
       #
       # @param size [Symbol] select [small, medium, large]
-      def playground(size: :medium)
-        render(Primer::Beta::Spinner.new(size: size))
+      def playground(size: :medium, sr_text: "Loading content...")
+        render(Primer::Beta::Spinner.new(size: size, sr_text: sr_text))
       end
 
       # @label Default Options
