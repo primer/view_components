@@ -1,8 +1,12 @@
 <%= render(FormControl.new(input: @input, tag: :"primer-text-field")) do %>
   <%= content_tag(:div, **@field_wrap_arguments) do %>
-    <% if @input.leading_visual %>
+    <%# leading spinner implies a leading visual %>
+    <% if @input.leading_visual || @input.leading_spinner? %>
       <span class="FormControl-input-leadingVisualWrap">
-        <%= render(Primer::Beta::Octicon.new(**@input.leading_visual)) %>
+        <%= render(Primer::Beta::Octicon.new(**@input.leading_visual, data: { target: "primer-text-field.leadingVisual" })) %>
+        <% if @input.leading_spinner? %>
+          <%= render(Primer::Beta::Spinner.new(size: :small, hidden: true, data: { target: "primer-text-field.leadingSpinner" })) %>
+        <% end %>
       </span>
     <% end %>
     <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "auto-check", csrf: auto_check_authenticity_token, src: @input.auto_check_src) do %>
