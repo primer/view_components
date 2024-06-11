@@ -508,6 +508,8 @@ module Alpha
       visit_preview(:with_deferred_content)
 
       click_on_invoker_button
+      # wait for items to load
+      assert_selector "action-menu ul li"
       click_on_fourth_item
 
       assert_selector "dialog[open]"
@@ -537,6 +539,40 @@ module Alpha
       click_on_second_item
 
       # clicking item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+    end
+
+    def test_single_select_item_checked_via_keyboard_enter
+      visit_preview(:single_select)
+
+      focus_on_invoker_button
+
+      # open menu, "click" on first item
+      keyboard.type(:enter, :enter)
+
+      # activating item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Fast forward", visible: :hidden
+
+      focus_on_invoker_button
+
+      keyboard.type(:enter, :down, :enter)
+      assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
+    end
+
+    def test_single_select_item_checked_via_keyboard_space
+      visit_preview(:single_select)
+
+      focus_on_invoker_button
+
+      # open menu, "click" on first item
+      keyboard.type(:enter, :space)
+
+      # activating item closes menu, so checked item is hidden
+      assert_selector "[aria-checked=true]", text: "Fast forward", visible: :hidden
+
+      focus_on_invoker_button
+
+      keyboard.type(:enter, :down, :space)
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
     end
 
@@ -581,6 +617,40 @@ module Alpha
       assert_selector "[aria-checked=true]", text: "broccolinisoup"
     end
 
+    def test_multi_select_items_checked_via_keyboard_enter
+      visit_preview(:multiple_select)
+
+      focus_on_invoker_button
+
+      # open menu, select first item
+      keyboard.type(:enter, :enter)
+
+      assert_selector "[aria-checked=true]", text: "langermank"
+
+      # select second item
+      keyboard.type(:down, :enter)
+
+      assert_selector "[aria-checked=true]", text: "langermank"
+      assert_selector "[aria-checked=true]", text: "jonrohan"
+    end
+
+    def test_multi_select_items_checked_via_keyboard_space
+      visit_preview(:multiple_select)
+
+      focus_on_invoker_button
+
+      # open menu, select first item
+      keyboard.type(:enter, :space)
+
+      assert_selector "[aria-checked=true]", text: "langermank"
+
+      # select second item
+      keyboard.type(:down, :space)
+
+      assert_selector "[aria-checked=true]", text: "langermank"
+      assert_selector "[aria-checked=true]", text: "jonrohan"
+    end
+
     def test_multi_select_items_can_be_unchecked
       visit_preview(:multiple_select)
 
@@ -588,7 +658,6 @@ module Alpha
       click_on_second_item
       click_on_third_item
 
-      # clicking item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "jonrohan"
       assert_selector "[aria-checked=true]", text: "broccolinisoup"
 
