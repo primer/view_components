@@ -8144,6 +8144,12 @@
         "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}} component."
       },
       {
+        "name": "leading_spinner",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If `true`, a leading spinner will be included in the markup. The spinner can be shown via the `showLeadingSpinner()` JavaScript method, and hidden via `hideLeadingSpinner()`. If this argument is `true`, a leading visual must also be provided."
+      },
+      {
         "name": "show_clear_button",
         "type": "Boolean",
         "default": "N/A",
