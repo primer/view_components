@@ -40,7 +40,7 @@ module Primer
                                        with_leading_action: with_leading_action,
                                        with_actions: with_actions,
                                        breadcrumb_items: breadcrumb_items,
-                                       with_tab_nav: with_tab_nav})
+                                       with_tab_nav: with_tab_nav })
       end
 
       # @label Large title
@@ -71,8 +71,8 @@ module Primer
           component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
 
           component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|
-             button.with_leading_visual_icon(icon: "star")
-             "Star"
+            button.with_leading_visual_icon(icon: "star")
+            "Star"
           end
           component.with_action_menu(menu_arguments: { anchor_align: :end },
                                      button_arguments: { button_block: callback }) do |menu|
@@ -122,7 +122,6 @@ module Primer
           end
         end
       end
-
 
       # @label With a single action
       # The single action will not be transformed into a menu on mobile, but remains in a smaller variant
@@ -180,10 +179,59 @@ module Primer
           header.with_description { "Last updated 5 minutes ago by XYZ." }
           header.with_tab_nav(label: "label") do |nav|
             Array.new(3) do |i|
-              nav.with_tab(selected: i.zero? , href: "#") do |tab|
+              nav.with_tab(selected: i.zero?, href: "#") do |tab|
                 tab.with_text { "Tab #{i + 1}" }
               end
             end
+          end
+        end
+      end
+
+      # @label With a SegmentedControl
+      def segmented_control
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Here's a segmented control" }
+          component.with_breadcrumbs(["Baz"])
+
+          component.with_action_segmented_control("aria-label": "Segmented control") do |control|
+            control.with_item(label: "Preview", icon: :eye, selected: true)
+            control.with_item(label: "Raw", icon: :"file-code")
+          end
+
+          component.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|
+            button.with_leading_visual_icon(icon: "star")
+            "Star"
+          end
+
+          callback = lambda do |button|
+            button.with_leading_visual_icon(icon: :gear)
+            "Settings"
+          end
+
+          component.with_action_menu(menu_arguments: { anchor_align: :end },
+                                     button_arguments: { button_block: callback }) do |menu|
+            menu.with_item(label: "Subitem 1") do |item|
+              item.with_leading_visual_icon(icon: :paste)
+            end
+            menu.with_item(label: "Subitem 2") do |item|
+              item.with_leading_visual_icon(icon: :log)
+            end
+          end
+        end
+      end
+
+      # @label With mobile icons-only SegmentedControl
+      def segmented_control_mobile_icons
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Here's a segmented control" }
+          component.with_breadcrumbs(["Baz"])
+
+          component.with_action_segmented_control(
+            "aria-label": "Segmented control",
+            mobile_system_arguments: { hide_labels: true }
+          ) do |control|
+            control.with_item(label: "Preview", icon: :eye, selected: true)
+            control.with_item(label: "Raw", icon: :"file-code")
           end
         end
       end
