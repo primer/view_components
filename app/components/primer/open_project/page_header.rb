@@ -141,6 +141,21 @@ module Primer
             component.new(**system_arguments)
           },
         },
+        segmented_control: {
+          renders: lambda { |**system_arguments, &block|
+            deny_tag_argument(**system_arguments)
+
+            system_arguments = set_action_arguments(system_arguments, scheme: DEFAULT_ACTION_SCHEME)
+            mobile_args = system_arguments.delete(:mobile_system_arguments) || {}
+            @mobile_segmented_control = Primer::Alpha::SegmentedControl.new(**system_arguments,
+                                                                            **mobile_args,
+                                                                            mr: 2,
+                                                                            display: %i[flex none])
+            @mobile_segmented_control_block = block
+
+            Primer::Alpha::SegmentedControl.new(**system_arguments)
+          },
+        },
       }
 
       # Optional leading action prepend the title
@@ -252,7 +267,7 @@ module Primer
 
       def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
-        system_arguments[:display] = [:none, :flex]
+        system_arguments[:display] = %i[none flex]
         system_arguments[:size] = :medium
         system_arguments[:scheme] = scheme unless scheme.nil?
         system_arguments[:classes] = class_names(

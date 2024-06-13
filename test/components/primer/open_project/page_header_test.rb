@@ -233,6 +233,20 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-tabNav .tabnav-tab")
   end
 
+  def test_renders_segmented_control
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_elements)
+      header.with_action_segmented_control("aria-label": "Segmented control") do |control|
+        control.with_item(tag: :a, href: "#", label: "Preview", icon: :eye, selected: true)
+        control.with_item(tag: :a, href: "#", label: "Raw", icon: :"file-code")
+      end
+    end
+
+    assert_selector(".PageHeader-action")
+    assert_selector(".PageHeader-action.SegmentedControl")
+  end
+
   private
 
   def breadcrumb_elements
