@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.34.0
+
+### Minor Changes
+
+- [#128](https://github.com/opf/primer_view_components/pull/128) [`7b7955d`](https://github.com/opf/primer_view_components/commit/7b7955d41b0f4b0dcdc6bb4176fce383c5beae6a) Thanks [@oliverguenther](https://github.com/oliverguenther)! - Allow segmented control action in page header
+
 ## 0.33.2
 
 ### Patch Changes
