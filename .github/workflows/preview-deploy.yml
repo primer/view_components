@@ -36,21 +36,21 @@ jobs:
     - name: Install lib deps
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '3.3'
         bundler-cache: true
       env:
         BUNDLE_GEMFILE: Gemfile
     - name: Install demo app deps
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '3.3'
         bundler-cache: true
       env:
         BUNDLE_GEMFILE: demo/Gemfile
     - name: Install Kuby deps
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '3.3'
         bundler-cache: true
       env:
         BUNDLE_GEMFILE: demo/gemfiles/kuby.gemfile
