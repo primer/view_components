@@ -10,7 +10,12 @@
 .tabnav-tabs {
   display: flex;
   margin-bottom: calc(var(--borderWidth-thin) * -1);
-  overflow: auto;
+  overflow: hidden;
+}
+
+.tabnav::part(tablist-wrapper) {
+  margin-bottom: var(--stack-gap-normal);
+  border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .tabnav-tab {
@@ -65,6 +70,11 @@
     color: inherit;
   }
 }
+
+tab-container .tabnav-tab {
+  margin-bottom: -1px;
+}
+
 
 /* Tabnav extras
 **

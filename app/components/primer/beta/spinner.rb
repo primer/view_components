@@ -12,6 +12,7 @@ module Primer
         DEFAULT_SIZE => 32,
         :large => 64
       }.freeze
+      DEFAULT_SR_TEXT = "Loading"
 
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -22,7 +23,7 @@ module Primer
       # @param size [Symbol] <%= one_of(Primer::Beta::Spinner::SIZE_MAPPINGS) %>
       # @param style [String] Custom element styles.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **system_arguments)
+      def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, sr_text: DEFAULT_SR_TEXT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :svg
         @system_arguments[:style] ||= style
@@ -31,6 +32,19 @@ module Primer
         @system_arguments[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
         @system_arguments[:viewBox] = "0 0 16 16"
         @system_arguments[:fill] = :none
+        @system_arguments[:aria] ||= {}
+        @sr_text = sr_text
+
+        if no_aria_label?
+          @system_arguments[:aria][:hidden] = true
+        else
+          @system_arguments[:role] = "img"
+        end
+      end
+
+      def no_aria_label?
+        !@system_arguments[:aria][:label] && !@system_arguments[:"aria-label"] &&
+            !@system_arguments[:aria][:labelledby] && !@system_arguments[:"aria-labelledby"]
       end
     end
   end

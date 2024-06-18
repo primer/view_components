@@ -2463,18 +2463,6 @@
         "description": "One of `:left` or `:right`. - Defaults to left"
       },
       {
-        "name": "body_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the body wrapper."
-      },
-      {
-        "name": "wrapper_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -2763,6 +2751,12 @@
         "type": "Hash",
         "default": "N/A",
         "description": "Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon](/components/beta/octicon) component."
+      },
+      {
+        "name": "leading_spinner",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "If `true`, a leading spinner will be included in the markup. The spinner can be shown via the `showLeadingSpinner()` JavaScript method, and hidden via `hideLeadingSpinner()`. If this argument is `true`, a leading visual must also be provided."
       },
       {
         "name": "show_clear_button",
@@ -4253,6 +4247,12 @@
         "type": "string",
         "default": "`nil`",
         "description": "Provide a custom title to the element."
+      },
+      {
+        "name": "no_title",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Removes the `title` attribute provided on the element by default."
       },
       {
         "name": "system_arguments",

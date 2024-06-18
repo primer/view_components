@@ -86,4 +86,20 @@ class PrimerAlphaTextFieldTest < Minitest::Test
       assert_selector "svg.octicon.octicon-search.FormControl-input-leadingVisual"
     end
   end
+
+  def test_renders_a_spinner
+    render_inline(
+      Primer::Alpha::TextField.new(**@default_params, leading_visual: { icon: :search }, leading_spinner: true)
+    )
+
+    assert_selector "svg[data-target='primer-text-field.leadingSpinner']", visible: :hidden
+  end
+
+  def test_enforces_leading_visual_when_spinner_requested
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::Alpha::TextField.new(**@default_params, leading_spinner: true))
+    end
+
+    assert_includes error.message, "must also specify a leading visual"
+  end
 end

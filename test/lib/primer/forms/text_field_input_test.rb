@@ -58,4 +58,18 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
 
     assert_selector "svg.octicon.octicon-search.FormControl-input-leadingVisual"
   end
+
+  def test_enforces_leading_visual_when_spinner_requested
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        primer_form_with(url: "/foo") do |f|
+          render_inline_form(f) do |text_field_form|
+            text_field_form.text_field(name: :foo, label: "Foo", leading_spinner: true)
+          end
+        end
+      end
+    end
+
+    assert_includes error.message, "must also specify a leading visual"
+  end
 end

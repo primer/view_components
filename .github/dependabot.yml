@@ -11,6 +11,10 @@ updates:
       - "actions"
     schedule:
       interval: "weekly"
+    groups:
+      all-actions:
+        update-types:
+        - "patch"
 
   # NPM
   - package-ecosystem: "npm"
@@ -21,6 +25,16 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "npm"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+        update-types:
+        - "patch"
+      development-dependencies:
+        dependency-type: "development"
+        update-types:
+        - "patch"
+
   - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
@@ -29,6 +43,11 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "npm"
+    groups:
+      all-demo:
+        update-types:
+        - "patch"
+
 
   # Bundler
   - package-ecosystem: "bundler"
@@ -39,6 +58,15 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "bundler"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+        update-types:
+        - "patch"
+      development-dependencies:
+        dependency-type: "development"
+        update-types:
+        - "patch"
   - package-ecosystem: "bundler"
     directory: "/demo"
     schedule:
@@ -47,3 +75,7 @@ updates:
       - "dependencies"
       - "skip changeset"
       - "bundler"
+    groups:
+      all-demo:
+        update-types:
+        - "patch"

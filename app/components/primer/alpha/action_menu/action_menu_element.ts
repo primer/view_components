@@ -151,21 +151,9 @@ export class ActionMenuElement extends HTMLElement {
     return false
   }
 
-  #isKeyboardActivation(event: Event): boolean {
-    return this.#isKeyboardActivationViaEnter(event) || this.#isKeyboardActivationViaSpace(event)
-  }
-
-  #isKeyboardActivationViaEnter(event: Event): boolean {
+  #isAnchorActivationViaSpace(event: Event): boolean {
     return (
-      event instanceof KeyboardEvent &&
-      event.type === 'keydown' &&
-      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-      event.key === 'Enter'
-    )
-  }
-
-  #isKeyboardActivationViaSpace(event: Event): boolean {
-    return (
+      event.target instanceof HTMLAnchorElement &&
       event instanceof KeyboardEvent &&
       event.type === 'keydown' &&
       !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
@@ -173,12 +161,11 @@ export class ActionMenuElement extends HTMLElement {
     )
   }
 
-  #isMouseActivation(event: Event): boolean {
-    return event instanceof MouseEvent && event.type === 'click'
-  }
-
   #isActivation(event: Event): boolean {
-    return this.#isMouseActivation(event) || this.#isKeyboardActivation(event)
+    // Some browsers fire MouseEvents (Firefox) and others fire PointerEvents (Chrome). Activating an item via
+    // enter or space counterintuitively fires one of these rather than a KeyboardEvent. Since PointerEvent
+    // inherits from MouseEvent, it is enough to check for MouseEvent here.
+    return (event instanceof MouseEvent && event.type === 'click') || this.#isAnchorActivationViaSpace(event)
   }
 
   handleEvent(event: Event) {
@@ -237,20 +224,14 @@ export class ActionMenuElement extends HTMLElement {
         }
       }
 
-      this.#activateItem(event, item)
-      this.#handleItemActivated(item)
-
-      // Pressing the space key on a button or link will cause the page to scroll unless preventDefault()
-      // is called. While calling preventDefault() appears to have no effect on link navigation, it skips
-      // form submission. The code below therefore only calls preventDefault() if the button has been
-      // activated by the space key, and manually submits the form if the button is a submit button.
-      if (this.#isKeyboardActivationViaSpace(event)) {
+      // Pressing the space key on a link will cause the page to scroll unless preventDefault() is called.
+      // We then click it manually to navigate.
+      if (this.#isAnchorActivationViaSpace(event)) {
         event.preventDefault()
-
-        if (item.getAttribute('type') === 'submit') {
-          item.closest('form')?.submit()
-        }
+        ;(item as HTMLElement).click()
       }
+
+      this.#handleItemActivated(item)
 
       return
     }
@@ -335,31 +316,12 @@ export class ActionMenuElement extends HTMLElement {
     }
 
     this.#updateInput()
+
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
         detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)},
       }),
     )
-  }
-
-  #activateItem(event: Event, item: Element) {
-    const eventWillActivateByDefault =
-      (event instanceof MouseEvent && event.type === 'click') ||
-      (event instanceof KeyboardEvent &&
-        event.type === 'keydown' &&
-        !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
-        event.key === 'Enter')
-
-    // if the event will result in activating the current item by default, i.e. is a
-    // mouse click or keyboard enter, bail out
-    if (eventWillActivateByDefault) return
-
-    // otherwise, event will not result in activation by default, so we stop it and
-    // simulate a click
-    /* eslint-disable-next-line no-restricted-syntax */
-    event.stopPropagation()
-    const elem = item as HTMLElement
-    elem.click()
   }
 
   #handleIncludeFragmentReplaced() {

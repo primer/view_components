@@ -38,6 +38,15 @@ module Primer
       def with_deprecated_truncate
         render_with_template
       end
+
+      # @label With a specific link target
+      def with_link_target(number_of_links: 2)
+        render(Primer::Beta::Breadcrumbs.new) do |component|
+          Array.new(number_of_links&.to_i || 3) do |i|
+            component.with_item(href: "##{i}", target: "_blank") { "Breadcrumb Item #{i + 1}" }
+          end
+        end
+      end
     end
   end
 end
