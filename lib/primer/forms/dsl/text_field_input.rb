@@ -7,10 +7,12 @@ module Primer
       class TextFieldInput < Input
         attr_reader(
           *%i[
-            name label show_clear_button leading_visual clear_button_id
+            name label show_clear_button leading_visual leading_spinner clear_button_id
             visually_hide_label inset monospace field_wrap_classes auto_check_src
           ]
         )
+
+        alias leading_spinner? leading_spinner
 
         def initialize(name:, label:, **system_arguments)
           @name = name
@@ -18,6 +20,7 @@ module Primer
 
           @show_clear_button = system_arguments.delete(:show_clear_button)
           @leading_visual = system_arguments.delete(:leading_visual)
+          @leading_spinner = !!system_arguments.delete(:leading_spinner)
           @clear_button_id = system_arguments.delete(:clear_button_id)
           @inset = system_arguments.delete(:inset)
           @monospace = system_arguments.delete(:monospace)
@@ -28,6 +31,10 @@ module Primer
               "FormControl-input-leadingVisual",
               @leading_visual[:classes]
             )
+          end
+
+          if @leading_spinner && !@leading_visual
+            raise ArgumentError, "text fields that request a leading spinner must also specify a leading visual"
           end
 
           super(**system_arguments)

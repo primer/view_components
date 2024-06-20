@@ -23,6 +23,7 @@ module Primer
       # @param inset toggle
       # @param monospace toggle
       # @param leading_visual_icon octicon
+      # @param leading_spinner toggle
       # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
       def playground(
         name: "my-text-field",
@@ -42,6 +43,7 @@ module Primer
         inset: false,
         monospace: false,
         leading_visual_icon: nil,
+        leading_spinner: false,
         input_width: nil
       )
         system_arguments = {
@@ -61,12 +63,21 @@ module Primer
           placeholder: placeholder,
           inset: inset,
           monospace: monospace,
+          leading_spinner: leading_spinner,
           input_width: input_width
         }
 
         if leading_visual_icon
           system_arguments[:leading_visual] = {
             icon: leading_visual_icon,
+            size: :small
+          }
+        end
+
+        # You're required to specify a leading visual if a leading spinner is requested
+        if leading_spinner && !leading_visual_icon
+          system_arguments[:leading_visual] = {
+            icon: :search,
             size: :small
           }
         end

@@ -1,0 +1,13 @@
+<% time = Time.utc(2020, 1, 1, 0, 0, 0) %>
+
+<%= render(Primer::Beta::Link.new(href: "#", id: "link")) do |link| %>
+  <% link.with_tooltip(id: "tool-tip", text: time.to_s) %>
+  <%= render(Primer::Beta::RelativeTime.new(id: "relative-time", datetime: time, no_title: true)) %>
+<% end %>
+
+<script>
+  // When `<relative-time>`’s `title` changes, update `<tool-tip>` text.
+  document.getElementById("relative-time").addEventListener("relative-time-updated", ({newTitle}) => {
+    document.getElementById("tool-tip").textContent = newTitle
+  })
+</script>

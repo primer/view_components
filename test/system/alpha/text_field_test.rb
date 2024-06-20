@@ -4,6 +4,8 @@ require "system/test_case"
 
 module Alpha
   class IntegrationTextFieldTest < System::TestCase
+    include Primer::JsTestHelpers
+
     def test_clear_button
       visit_preview(:show_clear_button)
 
@@ -57,6 +59,26 @@ module Alpha
 
       assert_selector "input[data-target*='primer-text-field.inputElement']"
       assert_selector "input[data-target*='custom-component.inputElement']"
+    end
+
+    def test_show_and_hide_leading_spinner
+      visit_preview(:playground, leading_spinner: true)
+
+      evaluate_multiline_script(<<~JS)
+        const textField = document.querySelector('primer-text-field')
+        textField.showLeadingSpinner()
+      JS
+
+      assert_selector "[data-target='primer-text-field.leadingSpinner']"
+      refute_selector "[data-target='primer-text-field.leadingVisual']"
+
+      evaluate_multiline_script(<<~JS)
+        const textField = document.querySelector('primer-text-field')
+        textField.hideLeadingSpinner()
+      JS
+
+      assert_selector "[data-target='primer-text-field.leadingVisual']"
+      refute_selector "[data-target='primer-text-field.leadingSpinner']"
     end
   end
 end
