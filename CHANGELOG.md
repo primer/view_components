@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.35.0
+
+### Minor Changes
+
+- [#2884](https://github.com/primer/view_components/pull/2884) [`85f6a01`](https://github.com/opf/primer_view_components/commit/85f6a0193e6d7e8f5f1319d7454da16e1dd191ef) Thanks [@owenniblock](https://github.com/owenniblock)! - Adds default sr-only text to spinner component
+
+- [#2855](https://github.com/primer/view_components/pull/2855) [`05159ca`](https://github.com/opf/primer_view_components/commit/05159caa06f59bc679ce2dffcd2f7a69ff9871c8) Thanks [@keithamus](https://github.com/keithamus)! - Upgrade @github/tab-container, using shadowdom
+
+- [#2887](https://github.com/primer/view_components/pull/2887) [`5589bcf`](https://github.com/opf/primer_view_components/commit/5589bcfb50cf580690b4d8f46eb9f3ff031544ee) Thanks [@HDinger](https://github.com/HDinger)! - Add support for `target` attribute on links of Primer::Beta::Breadcrumbs
+
+- [#2895](https://github.com/primer/view_components/pull/2895) [`bb1a15b`](https://github.com/opf/primer_view_components/commit/bb1a15bc5109c76aee0608cdd9a087866df9424e) Thanks [@camertron](https://github.com/camertron)! - Add a leading spinner to the TextField component.
+
+### Patch Changes
+
+- [#2872](https://github.com/primer/view_components/pull/2872) [`5445f2e`](https://github.com/opf/primer_view_components/commit/5445f2e89e20326099fbe5d44b1b16a2c5cedcc3) Thanks [@smockle](https://github.com/smockle)! - chore: Update '@github/relative-time-element' from 4.4.0 to 4.4.1
+
+- [#2885](https://github.com/primer/view_components/pull/2885) [`37727e3`](https://github.com/opf/primer_view_components/commit/37727e34aabe6ae39450e56815d6efead3a803c4) Thanks [@camertron](https://github.com/camertron)! - Fix ActionMenu item activation by using PointerEvent instead of MouseEvent and KeyboardEvent.
+
+- [#2904](https://github.com/primer/view_components/pull/2904) [`96307bf`](https://github.com/opf/primer_view_components/commit/96307bf3c82f1f70d21b95c5a24759fcb1d70d23) Thanks [@camertron](https://github.com/camertron)! - Fix CSS issue causing scrollbars to appear in tabs
+
 ## 0.34.0
 
 ### Minor Changes
