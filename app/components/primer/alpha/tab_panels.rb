@@ -26,7 +26,7 @@ module Primer
         Primer::Alpha::Navigation::Tab.new(
           selected: selected,
           with_panel: true,
-          list: true,
+          list: false,
           panel_id: "panel-#{id}",
           **system_arguments
         )
@@ -43,23 +43,14 @@ module Primer
 
       # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the tabs.
       # @param align [Symbol] <%= one_of(Primer::TabNavHelper::EXTRA_ALIGN_OPTIONS) %> - Defaults to <%= Primer::TabNavHelper::EXTRA_ALIGN_DEFAULT %>
-      # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
-      # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
         @align = EXTRA_ALIGN_DEFAULT
-        @wrapper_arguments = wrapper_arguments
 
-        @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments[:tag] = :div
+        @system_arguments = { **deny_tag_argument(**system_arguments), **deny_tag_argument(**wrapper_arguments) }
+        @system_arguments[:tag] = :"tab-container"
         @system_arguments[:classes] = tab_nav_classes(@system_arguments[:classes])
-
-        @body_arguments = deny_tag_argument(**body_arguments)
-        @body_arguments[:tag] = :ul
-        @body_arguments[:classes] = tab_nav_body_classes(@body_arguments[:classes])
-
-        @body_arguments[:role] = :tablist
-        @body_arguments[:"aria-label"] = label
+        @system_arguments[:"aria-label"] = label
       end
 
       def before_render

@@ -18,7 +18,7 @@ module Primer
         Primer::Alpha::Navigation::Tab.new(
           selected: selected,
           with_panel: true,
-          list: true,
+          list: false,
           icon_classes: "UnderlineNav-octicon",
           panel_id: "panel-#{id}",
           **system_arguments
@@ -43,24 +43,16 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, align: ALIGN_DEFAULT, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
         @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
-        @wrapper_arguments = wrapper_arguments
+        @wrapper_arguments = deny_tag_argument(**wrapper_arguments)
+        @wrapper_arguments[:tag] = :div
 
         @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments[:tag] = :div
+        @system_arguments[:tag] = :"tab-container"
         @system_arguments[:classes] = underline_nav_classes(@system_arguments[:classes], @align)
+        @system_arguments[:"aria-label"] = label
 
         @body_arguments = deny_tag_argument(**body_arguments)
-        @body_arguments[:tag] = :ul
-        @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
-
-        @body_arguments[:role] = :tablist
-        @body_arguments[:"aria-label"] = label
-      end
-
-      private
-
-      def body
-        Primer::BaseComponent.new(**@body_arguments)
+        @body_arguments[:tag] = :div
       end
     end
   end
