@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.26.1
+
+### Patch Changes
+
+- [#2909](https://github.com/primer/view_components/pull/2909) [`e74e20a`](https://github.com/primer/view_components/commit/e74e20aa11c3531c350ebd6665cb2415b07b6f47) Thanks [@camertron](https://github.com/camertron)! - Revert tab-container-element upgrade
+
 ## 0.26.0
 
 ### Minor Changes
