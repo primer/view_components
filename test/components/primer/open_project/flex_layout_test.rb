@@ -33,11 +33,8 @@ class PrimerOpenProjectFlexLayoutTest < Minitest::Test
   end
 
   def test_does_not_render_if_no_items_provided
-    error = assert_raises(ArgumentError) do
-      render_inline(Primer::OpenProject::FlexLayout.new)
-    end
-
-    assert_equal(error.message, "You have to provide either rows, columns or boxes as a slot")
+    render_inline(Primer::OpenProject::FlexLayout.new)
+    assert_no_selector(".d-flex.flex-row")
   end
 
   def test_does_not_render_if_rows_and_columns_are_mixed

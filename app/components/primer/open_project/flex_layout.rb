@@ -29,7 +29,7 @@ module Primer
 
       def render?
         # no slot provided
-        raise ArgumentError, "You have to provide either rows, columns or boxes as a slot" if rows.empty? && columns.empty? && boxes.empty?
+        return false if rows.empty? && columns.empty? && boxes.empty?
 
         if [rows, columns, boxes].count { |arr| !arr.empty? } == 1
           # only rows or columns or boxes are used
