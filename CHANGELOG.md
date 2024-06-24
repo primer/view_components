@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.35.1
+
+### Patch Changes
+
+- [#133](https://github.com/opf/primer_view_components/pull/133) [`650d1e6`](https://github.com/opf/primer_view_components/commit/650d1e6420e14843c65c09a9e2bb60a2f868ffc1) Thanks [@oliverguenther](https://github.com/oliverguenther)! - Don't raise on empty flex_layout
+
 ## 0.35.0
 
 ### Minor Changes
