@@ -384,6 +384,12 @@
         "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
+        "name": "overlay_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments to pass to the underlying [Overlay](/components/alpha/overlay)"
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
