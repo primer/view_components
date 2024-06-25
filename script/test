@@ -13,7 +13,7 @@ if ! [ $# -eq 0 ]; then
     LINE=$(head -n $LINE $TEST | tail -1)
     NAME=$(echo "$LINE" | sed "s/.*def //")
 
-    if ! [[ "$NAME" == "test_"* ]]; then
+    if ! [[ "$NAME" == "test_"* ]] && ! [[ "$NAME" == "bench_"* ]]; then
       echo
       echo "ERROR: Line provided does not define a test case"
       exit 1
