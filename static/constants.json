@@ -21,6 +21,7 @@
   "Primer::Alpha::ActionList": {
     "LIST_BOX_ITEM_ROLE": "option",
     "DEFAULT_MENU_ITEM_ROLE": "menuitem",
+    "DEFAULT_ARIA_SELECTION_VARIANT": "checked",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
     "DEFAULT_SELECT_VARIANT": "none",
@@ -42,6 +43,10 @@
       "multiple",
       "multiple_checkbox",
       "none"
+    ],
+    "ARIA_SELECTION_VARIANT_OPTIONS": [
+      "selected",
+      "checked"
     ],
     "SELECT_VARIANT_ROLE_MAP": {
       "single": "menuitemradio",

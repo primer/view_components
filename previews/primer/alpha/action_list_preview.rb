@@ -524,6 +524,7 @@ module Primer
       # @snapshot
       def listbox(
         role: "listbox",
+        aria_selection_variant: :selected,
         scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
         show_dividers: false
       )

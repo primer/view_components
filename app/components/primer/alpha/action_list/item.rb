@@ -295,7 +295,7 @@ module Primer
           if @list.allows_selection?
             @content_arguments[:aria] = merge_aria(
               @content_arguments,
-              { aria: @list.acts_as_listbox? ? {selected: active?} : { checked: active? } }
+              { aria: @list.aria_selection_variant == :selected ? {selected: active?} : { checked: active? } }
             )
           end
 
