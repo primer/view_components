@@ -275,8 +275,8 @@ module Primer
                                         ActionList::LIST_BOX_ITEM_ROLE
                                       elsif @list.allows_selection?
                                         ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
-                                      elsif  @list.acts_as_menu?
-                                        ActionList::DEFAULT_LIST_BOX_ROLE
+                                      elsif @list.acts_as_menu?
+                                        ActionList::DEFAULT_MENU_ITEM_ROLE
                                       end
 
           @system_arguments[:role] = @list.acts_as_menu? ? :none : nil
