@@ -16,7 +16,7 @@ module Primer
 
       MENU_ROLE = :menu
       DEFAULT_MENU_ITEM_ROLE = :menuitem
-
+      LIST_BOX_ITEM_ROLE = :option
       DEFAULT_SCHEME = :full
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => nil,
