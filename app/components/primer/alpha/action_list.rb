@@ -25,6 +25,11 @@ module Primer
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
       DEFAULT_SELECT_VARIANT = :none
+      DEFAULT_ARIA_SELECTION_VARIANT = :checked
+      ARIA_SELECTION_VARIANT_OPTIONS = [
+        :selected,
+        DEFAULT_ARIA_SELECTION_VARIANT,
+      ].freeze
       SELECT_VARIANT_OPTIONS = [
         :single,
         :multiple,
@@ -115,7 +120,7 @@ module Primer
         }
       }
 
-      attr_reader :id, :select_variant, :role
+      attr_reader :id, :select_variant, :role, :aria_selection_variant
 
       # @param id [String] HTML ID value.
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
@@ -145,6 +150,7 @@ module Primer
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
         @select_variant = select_variant
+        @system_arguments[:aria_selection_variant] = @aria_selection_variant
         @system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
