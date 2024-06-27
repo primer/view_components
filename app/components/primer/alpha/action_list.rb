@@ -238,7 +238,7 @@ module Primer
       end
 
       def acts_as_listbox?
-        @system_arguments[:role] == :listbox
+        @system_arguments[:role] == "listbox"
       end
 
       def acts_as_menu?
