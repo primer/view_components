@@ -150,7 +150,7 @@ module Primer
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
         @select_variant = select_variant
-        @system_arguments[:aria_selection_variant] = @aria_selection_variant
+        @aria_selection_variant = @aria_selection_variant
         @system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
