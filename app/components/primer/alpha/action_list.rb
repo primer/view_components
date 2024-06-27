@@ -229,6 +229,10 @@ module Primer
         single_select? || multi_select?
       end
 
+      def acts_as_listbox?
+        @system_arguments[:role] == :listbox
+      end
+
       def acts_as_menu?
         @system_arguments[:role] == :menu || @system_arguments[:role] == :group
       end

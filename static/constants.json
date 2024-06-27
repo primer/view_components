@@ -19,6 +19,7 @@
   "Primer::Alpha::ActionBar::Item": {
   },
   "Primer::Alpha::ActionList": {
+    "LIST_BOX_ITEM_ROLE": "option",
     "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
