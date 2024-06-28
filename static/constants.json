@@ -19,9 +19,12 @@
   "Primer::Alpha::ActionBar::Item": {
   },
   "Primer::Alpha::ActionList": {
-    "LIST_BOX_ITEM_ROLE": "option",
-    "DEFAULT_MENU_ITEM_ROLE": "menuitem",
+    "ARIA_SELECTION_VARIANT_OPTIONS": [
+      "selected",
+      "checked"
+    ],
     "DEFAULT_ARIA_SELECTION_VARIANT": "checked",
+    "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
     "DEFAULT_SELECT_VARIANT": "none",
@@ -29,6 +32,7 @@
     "FormWrapper": "Primer::Alpha::ActionList::FormWrapper",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
+    "LIST_BOX_ITEM_ROLE": "option",
     "MENU_ROLE": "menu",
     "SCHEME_MAPPINGS": {
       "full": null,
@@ -43,10 +47,6 @@
       "multiple",
       "multiple_checkbox",
       "none"
-    ],
-    "ARIA_SELECTION_VARIANT_OPTIONS": [
-      "selected",
-      "checked"
     ],
     "SELECT_VARIANT_ROLE_MAP": {
       "single": "menuitemradio",

@@ -247,6 +247,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "aria_selection_variant",
+        "type": "Symbol",
+        "default": "`:checked`",
+        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+      },
+      {
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
@@ -382,6 +388,13 @@
       {
         "name": "role",
         "description": "Returns the value of attribute role.",
+        "parameters": [
+
+        ]
+      },
+      {
+        "name": "aria_selection_variant",
+        "description": "Returns the value of attribute aria_selection_variant.",
         "parameters": [
 
         ]
@@ -789,6 +802,19 @@
       {
         "preview_path": "primer/alpha/action_list/long_label_show_tooltip_with_truncate_label",
         "name": "long_label_show_tooltip_with_truncate_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/action_list/listbox",
+        "name": "listbox",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -1973,6 +1999,12 @@
             "type": "Symbol",
             "default": "`:none`",
             "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
+          },
+          {
+            "name": "aria_selection_variant",
+            "type": "Symbol",
+            "default": "`:checked`",
+            "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
           },
           {
             "name": "form_arguments",

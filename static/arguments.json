@@ -105,6 +105,12 @@
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
       },
       {
+        "name": "aria_selection_variant",
+        "type": "Symbol",
+        "default": "`:checked`",
+        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+      },
+      {
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
@@ -440,6 +446,12 @@
         "type": "Symbol",
         "default": "`:none`",
         "description": "How items may be selected in the list. One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
+      },
+      {
+        "name": "aria_selection_variant",
+        "type": "Symbol",
+        "default": "`:checked`",
+        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
       },
       {
         "name": "form_arguments",
