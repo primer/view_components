@@ -519,6 +519,25 @@ module Primer
           end
         end
       end
+
+      # @label Listbox
+      def listbox(
+        role: "listbox",
+        aria_selection_variant: :selected,
+        scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
+        show_dividers: false
+      )
+        render(Primer::Alpha::ActionList.new(
+                 role: role,
+                 scheme: scheme,
+                 show_dividers: show_dividers
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", href: "/", active: true)
+          component.with_item(label: "Item two", href: "/") 
+          component.with_item(label: "Item three", href: "/")
+        end
+      end
     end
   end
 end

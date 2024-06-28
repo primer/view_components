@@ -16,7 +16,7 @@ module Primer
 
       MENU_ROLE = :menu
       DEFAULT_MENU_ITEM_ROLE = :menuitem
-
+      LIST_BOX_ITEM_ROLE = :option
       DEFAULT_SCHEME = :full
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => nil,
@@ -24,6 +24,11 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+      DEFAULT_ARIA_SELECTION_VARIANT = :checked
+      ARIA_SELECTION_VARIANT_OPTIONS = [
+        :selected,
+        DEFAULT_ARIA_SELECTION_VARIANT,
+      ].freeze
       DEFAULT_SELECT_VARIANT = :none
       SELECT_VARIANT_OPTIONS = [
         :single,
@@ -115,7 +120,7 @@ module Primer
         }
       }
 
-      attr_reader :id, :select_variant, :role
+      attr_reader :id, :select_variant, :role, :aria_selection_variant
 
       # @param id [String] HTML ID value.
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
@@ -123,6 +128,7 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %> `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
       # @param select_variant [Symbol] How items may be selected in the list. <%= one_of(Primer::Alpha::ActionList::SELECT_VARIANT_OPTIONS) %>
+      # @param aria_selection_variant [Symbol] Specifies which aria selection to use.  <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?
       # @param form_arguments [Hash] Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an <%= link_to_component(Primer::Alpha::ActionMenu) %> instead of using this feature directly.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
@@ -131,6 +137,7 @@ module Primer
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
+        aria_selection_variant: DEFAULT_ARIA_SELECTION_VARIANT,
         select_variant: DEFAULT_SELECT_VARIANT,
         form_arguments: {},
         **system_arguments
@@ -143,6 +150,7 @@ module Primer
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
         @select_variant = select_variant
+        @aria_selection_variant = aria_selection_variant
         @system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
@@ -227,6 +235,10 @@ module Primer
 
       def allows_selection?
         single_select? || multi_select?
+      end
+
+      def acts_as_listbox?
+        @system_arguments[:role] == "listbox"
       end
 
       def acts_as_menu?
