@@ -24,12 +24,13 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
-      DEFAULT_SELECT_VARIANT = :none
       DEFAULT_ARIA_SELECTION_VARIANT = :checked
       ARIA_SELECTION_VARIANT_OPTIONS = [
         :selected,
         DEFAULT_ARIA_SELECTION_VARIANT,
       ].freeze
+      
+      DEFAULT_SELECT_VARIANT = :none
       SELECT_VARIANT_OPTIONS = [
         :single,
         :multiple,
