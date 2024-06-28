@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.27.0
+
+### Minor Changes
+
+- [#2922](https://github.com/primer/view_components/pull/2922) [`fb5917d`](https://github.com/primer/view_components/commit/fb5917dc9e6246af85a8199e6e47f73e2db3ba70) Thanks [@camertron](https://github.com/camertron)! - Change ActionMenu to accept and forward overlay arguments
+
+### Patch Changes
+
+- [#2925](https://github.com/primer/view_components/pull/2925) [`6c730c4`](https://github.com/primer/view_components/commit/6c730c4b8eeb050cf706d4843a87f2740e379a49) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Update ActionList such that if role='listbox' is passed in the items render as options
+
+- [#2924](https://github.com/primer/view_components/pull/2924) [`235544d`](https://github.com/primer/view_components/commit/235544d3f0770717c16532e6f0801d6249f6a884) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Add a valid selector to focus-group
+
 ## 0.26.1
 
 ### Patch Changes
