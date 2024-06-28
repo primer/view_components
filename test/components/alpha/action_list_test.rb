@@ -187,7 +187,7 @@ module Primer
           component.with_item(label: "Item 1")
         end
 
-        assert_selector("ul.ActionListWrap[role=menu]") do |list|
+        assert_selector("ul.ActionListWrap[role=listbox]") do |list|
           list.assert_selector("li.ActionListItem button[role=option]")
         end
       end
