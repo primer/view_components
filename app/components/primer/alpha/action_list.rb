@@ -29,7 +29,6 @@ module Primer
         :selected,
         DEFAULT_ARIA_SELECTION_VARIANT,
       ].freeze
-      
       DEFAULT_SELECT_VARIANT = :none
       SELECT_VARIANT_OPTIONS = [
         :single,
