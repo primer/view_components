@@ -279,7 +279,7 @@ module Primer
                                         ActionList::DEFAULT_MENU_ITEM_ROLE
                                       end
 
-          @system_arguments[:role] = @list.acts_as_menu? ? :none : nil
+          @system_arguments[:role] = @list.acts_as_menu? || @list.acts_as_listbox? ? :none : nil
 
           @description_wrapper_arguments = {
             classes: class_names(
