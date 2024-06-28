@@ -521,7 +521,6 @@ module Primer
       end
 
       # @label Listbox
-      # @snapshot
       def listbox(
         role: "listbox",
         aria_selection_variant: :selected,
