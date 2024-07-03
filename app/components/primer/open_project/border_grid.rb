@@ -9,8 +9,8 @@ module Primer
       # Use to render a block inside the grid
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :rows, lambda { |**system_arguments|
-        Primer::OpenProject::BorderGrid::Cell.new(**system_arguments)
+      renders_many :rows, lambda { |**system_arguments, &block|
+        Primer::OpenProject::BorderGrid::Cell.new(**system_arguments, &block)
       }
 
       # @param spacious [Boolean] Whether to add margin to the bottom of the component.

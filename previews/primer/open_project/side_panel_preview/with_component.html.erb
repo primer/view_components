@@ -1,0 +1,12 @@
+<%=
+  render(Primer::Alpha::Layout.new) do |component|
+    component.with_main do
+      "Main content"
+    end
+    component.with_sidebar(row_placement: :start, col_placement: :end) do
+      render(Primer::OpenProject::SidePanel.new) do |panel|
+        panel.with_section(Primer::OpenProject::SidePanelPreview::MyComponent.new)
+      end
+    end
+  end
+%>

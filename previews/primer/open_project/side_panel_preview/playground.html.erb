@@ -1,0 +1,25 @@
+<%=
+  render(Primer::Alpha::Layout.new) do |component|
+    component.with_main do
+      "Main content"
+    end
+
+    component.with_sidebar(row_placement: :start, col_placement: :end) do
+      render(Primer::OpenProject::SidePanel.new) do |panel|
+        panel.with_section do |section|
+          section.with_title { "Attributes" }
+          section.with_counter(count: counter)
+          section.with_description { description } if show_description
+
+          section.with_action_icon(icon: :pencil, 'aria-label': 'Edit') if show_action
+          section.with_footer_button(tag: :a, href: '#') do |button|
+            button.with_leading_visual_icon(icon: :pencil)
+            "Additional action"
+          end if show_footer_action
+
+          "Section content"
+        end
+      end
+    end
+  end
+%>
