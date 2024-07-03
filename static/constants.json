@@ -19,6 +19,11 @@
   "Primer::Alpha::ActionBar::Item": {
   },
   "Primer::Alpha::ActionList": {
+    "ARIA_SELECTION_VARIANT_OPTIONS": [
+      "selected",
+      "checked"
+    ],
+    "DEFAULT_ARIA_SELECTION_VARIANT": "checked",
     "DEFAULT_MENU_ITEM_ROLE": "menuitem",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
@@ -27,6 +32,7 @@
     "FormWrapper": "Primer::Alpha::ActionList::FormWrapper",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
+    "LIST_BOX_ITEM_ROLE": "option",
     "MENU_ROLE": "menu",
     "SCHEME_MAPPINGS": {
       "full": null,
