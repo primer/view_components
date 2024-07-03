@@ -182,6 +182,16 @@ module Primer
         end
       end
 
+      def test_uses_correct_item_role_when_role_set_to_option
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, role: "listbox")) do |component|
+          component.with_item(label: "Item 1")
+        end
+
+        assert_selector("ul.ActionListWrap[role=listbox]") do |list|
+          list.assert_selector("li.ActionListItem button[role=option]")
+        end
+      end
+
       def test_uses_correct_item_role_when_role_set_to_menu
         render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, role: :menu)) do |component|
           component.with_item(label: "Item 1")

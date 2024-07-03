@@ -9,7 +9,7 @@ jobs:
   release-candidate:
     name: npm
     if: ${{ github.repository == 'opf/primer_view_components' }}
-    uses: primer/.github/.github/workflows/release_candidate.yml@v2.1.0
+    uses: primer/.github/.github/workflows/release_candidate.yml@v2.1.1
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}

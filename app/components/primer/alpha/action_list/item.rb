@@ -271,13 +271,15 @@ module Primer
           end
 
           @content_arguments[:role] = role ||
-                                      if @list.allows_selection?
+                                      if @list.acts_as_listbox?
+                                        ActionList::LIST_BOX_ITEM_ROLE
+                                      elsif @list.allows_selection?
                                         ActionList::SELECT_VARIANT_ROLE_MAP[@list.select_variant]
                                       elsif @list.acts_as_menu?
                                         ActionList::DEFAULT_MENU_ITEM_ROLE
                                       end
 
-          @system_arguments[:role] = @list.acts_as_menu? ? :none : nil
+          @system_arguments[:role] = @list.acts_as_menu? || @list.acts_as_listbox? ? :none : nil
 
           @description_wrapper_arguments = {
             classes: class_names(
@@ -293,7 +295,7 @@ module Primer
           if @list.allows_selection?
             @content_arguments[:aria] = merge_aria(
               @content_arguments,
-              { aria: { checked: active? } }
+              { aria: @list.aria_selection_variant == :selected ? {selected: active?} : { checked: active? } }
             )
           end
 
