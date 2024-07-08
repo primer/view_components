@@ -62,7 +62,7 @@ module Primer
       # @label With a caption
       def with_caption
         render(Primer::OpenProject::InputGroup.new) do |menu|
-          menu.with_text_input(name: 'a name', label: 'My input group', value: "Copyable value")
+          menu.with_text_input(name: "a name", label: "My input group", value: "Copyable value")
           menu.with_trailing_action_clipboard_copy_button(id: "button", value: "Copyable value", aria: { label: "Copy some text" })
           menu.with_caption { "Some caption" }
         end

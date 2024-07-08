@@ -45,7 +45,7 @@ class PrimerOpenProjectInputGroupTest < Minitest::Test
 
   def test_renders_caption
     render_inline(Primer::OpenProject::InputGroup.new) do |menu|
-      menu.with_text_input(name: 'a name', label: 'My input group', value: "Copyable value")
+      menu.with_text_input(name: "a name", label: "My input group", value: "Copyable value")
       menu.with_trailing_action_clipboard_copy_button(id: "button", value: "Copyable value", aria: { label: "Copy some text" })
       menu.with_caption { "Some caption" }
     end
@@ -54,8 +54,8 @@ class PrimerOpenProjectInputGroupTest < Minitest::Test
   end
 
   def test_does_not_render_caption_from_system_argument
-    render_inline(Primer::OpenProject::InputGroup.new(caption: 'Some caption')) do |menu|
-      menu.with_text_input(name: 'a name', label: 'My input group', value: "Copyable value")
+    render_inline(Primer::OpenProject::InputGroup.new(caption: "Some caption")) do |menu|
+      menu.with_text_input(name: "a name", label: "My input group", value: "Copyable value")
       menu.with_trailing_action_clipboard_copy_button(id: "button", value: "Copyable value", aria: { label: "Copy some text" })
     end
 
