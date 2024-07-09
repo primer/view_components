@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= render(Primer::Beta::Text.new(tag: :div, display: :flex, align_items: :flex_end)) do %>
+  <%= render(Primer::BaseComponent.new(tag: :div, display: :flex, align_items: :flex_end)) do %>
     <%= text_input %>
     <%= trailing_action %>
   <% end %>
