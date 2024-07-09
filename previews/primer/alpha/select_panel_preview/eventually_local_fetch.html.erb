@@ -1,0 +1,11 @@
+<%= render(Primer::Alpha::SelectPanel.new(
+  src: select_panel_items_path,
+  select_variant: :multiple,
+  fetch_strategy: :eventually_local,
+  open_on_load:
+)) do |panel| %>
+  <% panel.with_show_button { "Sci-fi equipment" } %>
+  <% panel.with_footer(show_divider: true) do %>
+    I'm a footer!
+  <% end %>
+<% end %>

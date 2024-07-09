@@ -1,0 +1,18 @@
+<%= render(Primer::Alpha::SelectPanel.new(
+  select_variant: :multiple,
+  fetch_strategy: :local,
+  dynamic_label: true,
+  dynamic_label_prefix: "Item",
+  dynamic_aria_label_prefix: "Selected item",
+  open_on_load:
+)) do |panel| %>
+  <% panel.with_show_button { "Choose item" } %>
+  <% panel.with_item(label: "Item 1") %>
+  <% panel.with_item(label: "Item 2") %>
+  <% panel.with_item(label: "Item 3") %>
+  <% panel.with_item(label: "Item 4") %>
+  <% panel.with_footer(show_divider: true) do %>
+    <%= render(Primer::Beta::Button.new(scheme: :default)) { "Cancel" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Save" } %>
+  <% end %>
+<% end %>

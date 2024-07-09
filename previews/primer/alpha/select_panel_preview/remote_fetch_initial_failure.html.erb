@@ -1,0 +1,7 @@
+<%= render(Primer::Alpha::SelectPanel.new(
+  src: select_panel_items_path(fail: "true"),
+  fetch_strategy: :remote,
+  open_on_load:
+)) do |panel| %>
+  <% panel.with_show_button { "Sci-fi equipment" } %>
+<% end %>
