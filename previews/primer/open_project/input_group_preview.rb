@@ -22,12 +22,14 @@ module Primer
       # @param visually_hide_label toggle
       # @param readonly toggle
       # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
+      # @param caption [String]
       def playground(
         trailing_action: :clipboardCopy,
         value: "Copyable value",
         visually_hide_label: false,
         readonly: true,
-        input_width: :medium
+        input_width: :medium,
+        caption: "Some caption"
       )
         render(Primer::OpenProject::InputGroup.new(input_width: input_width)) do |menu|
           menu.with_text_input(name: "Test", label: "My input group", visually_hide_label: visually_hide_label, value: value, readonly: readonly)
@@ -40,6 +42,8 @@ module Primer
           else
             menu.with_trailing_action_clipboard_copy_button(id: "button-3", value: value, aria: { label: "Copy some text" })
           end
+
+          menu.with_caption { caption }
         end
       end
 
