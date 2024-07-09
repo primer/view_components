@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.36.2
+
+### Patch Changes
+
+- [#143](https://github.com/opf/primer_view_components/pull/143) [`934431c`](https://github.com/opf/primer_view_components/commit/934431c7850843e664ae143a5266efdc6fbea04a) Thanks [@akabiru](https://github.com/akabiru)! - Remove wrapping flex container that reduced the spacing between the text input against the caption'
+
 ## 0.36.1
 
 ### Patch Changes
