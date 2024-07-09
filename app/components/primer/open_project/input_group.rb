@@ -47,6 +47,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :text_input, lambda { |readonly: true, **system_arguments|
         deny_single_argument(:input_width, "Set the `input_width` on the `InputGroup`", **system_arguments)
+        deny_single_argument(:caption, "Set the `caption` on the `InputGroup`", **system_arguments)
         system_arguments[:input_width] = @system_arguments[:input_width]
 
         system_arguments[:classes] = class_names(
@@ -65,12 +66,19 @@ module Primer
         Primer::Alpha::TextField.new(**system_arguments)
       }
 
+      renders_one :caption, lambda { |**system_arguments|
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "FormControl-caption"
+        )
+
+        Primer::Beta::Text.new(**system_arguments)
+      }
+
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
-        @system_arguments[:display] = :flex
-        @system_arguments[:align_items] = :flex_end
 
         @system_arguments[:input_width] = fetch_or_fallback(
           Primer::OpenProject::InputGroup::INPUT_WIDTH_OPTIONS,
