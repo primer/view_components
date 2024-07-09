@@ -16670,6 +16670,13 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ]
+      },
+      {
+        "name": "caption",
+        "description": null,
+        "parameters": [
+
+        ]
       }
     ],
     "methods": [
@@ -16718,6 +16725,19 @@
       {
         "preview_path": "primer/open_project/input_group/small_input_width",
         "name": "small_input_width",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/input_group/with_caption",
+        "name": "with_caption",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
