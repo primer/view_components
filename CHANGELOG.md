@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.36.1
+
+### Patch Changes
+
+- [#140](https://github.com/opf/primer_view_components/pull/140) [`56c285c`](https://github.com/opf/primer_view_components/commit/56c285cee825e9f8fb3f2c8b0ca79924566b2819) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Space between title and tabs in page header component is increased.
+  [56060] spacing between title and tabs in page headers is too small
+
+- [#142](https://github.com/opf/primer_view_components/pull/142) [`55abb63`](https://github.com/opf/primer_view_components/commit/55abb63a52d115c51ab8aedbcecc49679443dee5) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Space between title and tabs in page header component is increased.
+  [56060] Spacing between title and tabs in page headers is too small
+
+- [#71](https://github.com/opf/primer_view_components/pull/71) [`1a73dd4`](https://github.com/opf/primer_view_components/commit/1a73dd4275db9514a735ea0a6b59d2640abc4109) Thanks [@akabiru](https://github.com/akabiru)! - `Primer::OpenProject::InputGroup` component text input group broke when provided with a caption.
+  Split out the caption into it's own flex container so it's isolated from the text input + trailing input action.
+
 ## 0.36.0
 
 ### Minor Changes
