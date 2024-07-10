@@ -55,6 +55,10 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
         end
+
+        def render?
+          title? && content?
+        end
       end
     end
   end

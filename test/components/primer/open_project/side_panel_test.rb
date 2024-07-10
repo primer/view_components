@@ -24,7 +24,9 @@ class PrimerOpenProjectSidePanelTest < Minitest::Test
       end
 
       component.with_section do |section|
-        "Section content"
+        section.with_title { "Second" }
+
+        "Content"
       end
     end
 
@@ -47,5 +49,18 @@ class PrimerOpenProjectSidePanelTest < Minitest::Test
     assert_selector(".SidePanel-sectionCounter", count: 1)
     assert_selector(".SidePanel .Button--iconOnly", count: 1)
     assert_selector(".SidePanel-sectionFooter.Button--link", count: 1)
+  end
+
+  def test_no_renders_empty_section
+    render_inline(Primer::OpenProject::SidePanel.new) do |component|
+      component.with_section do |section|
+        section.with_description { "test "}
+      end
+    end
+
+    assert_selector(".SidePanel")
+    assert_no_selector(".SidePanel section")
+    assert_no_selector(".SidePanel-sectionDescription", count: 1)
+    assert_no_selector(".SidePanel-sectionCounter", count: 1)
   end
 end
