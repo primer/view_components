@@ -39,22 +39,33 @@ class PrimerOpenProjectSidePanelTest < Minitest::Test
   end
 
   def test_renders_component
+    clazz = Class.new(ViewComponent::Base) do
+      def self.name
+        "CustomComponent"
+      end
+
+      def call
+        render(Primer::OpenProject::SidePanel::Section.new) do |section|
+          section.with_title { "My custom component" }
+
+          "custom content"
+        end
+      end
+    end
+
     render_inline(Primer::OpenProject::SidePanel.new) do |component|
-      component.with_section(Primer::OpenProject::SidePanelPreview::MyComponent.new)
+      component.with_section(clazz.new)
     end
 
     assert_selector(".SidePanel")
     assert_selector(".SidePanel section", count: 1)
-    assert_selector(".SidePanel-sectionDescription", count: 1)
-    assert_selector(".SidePanel-sectionCounter", count: 1)
-    assert_selector(".SidePanel .Button--iconOnly", count: 1)
-    assert_selector(".SidePanel-sectionFooter.Button--link", count: 1)
+    assert_text("custom content")
   end
 
   def test_no_renders_empty_section
     render_inline(Primer::OpenProject::SidePanel.new) do |component|
       component.with_section do |section|
-        section.with_description { "test "}
+        section.with_description { "test " }
       end
     end
 
