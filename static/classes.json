@@ -534,23 +534,20 @@
   "SegmentedControl-item": [
     "Primer::Alpha::SegmentedControl"
   ],
-  "SidePanel-action": [
-    "Primer::OpenProject::SidePanel"
+  "SidePanel-sectionAction": [
+    "Primer::OpenProject::SidePanel::Section"
   ],
   "SidePanel-sectionContent": [
-    "Primer::OpenProject::SidePanel"
+    "Primer::OpenProject::SidePanel::Section"
   ],
   "SidePanel-sectionCounter": [
-    "Primer::OpenProject::SidePanel"
+    "Primer::OpenProject::SidePanel::Section"
   ],
   "SidePanel-sectionDescription": [
-    "Primer::OpenProject::SidePanel"
-  ],
-  "SidePanel-sectionFooter": [
-    "Primer::OpenProject::SidePanel"
+    "Primer::OpenProject::SidePanel::Section"
   ],
   "SidePanel-sectionHeader": [
-    "Primer::OpenProject::SidePanel"
+    "Primer::OpenProject::SidePanel::Section"
   ],
   "State": [
     "Primer::Beta::State"
