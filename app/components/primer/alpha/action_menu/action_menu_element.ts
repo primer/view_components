@@ -12,17 +12,6 @@ type SelectedItem = {
 const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
-export type ItemActivatedEvent = {
-  item: Element
-  checked: boolean
-}
-
-declare global {
-  interface HTMLElementEventMap {
-    itemActivated: CustomEvent<ItemActivatedEvent>
-  }
-}
-
 @controller
 export class ActionMenuElement extends HTMLElement {
   @target

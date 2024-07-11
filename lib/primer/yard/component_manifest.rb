@@ -67,6 +67,8 @@ module Primer
         Primer::Alpha::ToggleSwitch => { js: true },
         Primer::Alpha::Overlay => { js: true },
         Primer::Alpha::ActionMenu => { js: true },
+        Primer::Alpha::SelectPanel => { js: true },
+        Primer::Alpha::SelectPanel::ItemList => { js: true, examples: false },
 
         # Examples can be seen in the NavList docs
         Primer::Alpha::NavList => { js: true },

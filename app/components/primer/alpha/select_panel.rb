@@ -2,8 +2,84 @@
 
 module Primer
   module Alpha
-    # A select panel is a dropdown that displays a filterable list of items. The list of items can be fetched dynamically
-    # from a remote URL or provided statically, and the component allows selecting single items or multiple items.
+    # Select panels allow for selecting from a large number of options and can be thought of as a more capable
+    # version of the traditional HTML `<select>` element.
+    #
+    # Select panels:
+    #
+    # 1. feature an input field at the top that allows an end user to filter the list of results.
+    # 1. can render their items statically or dynamically by fetching results from the server.
+    # 1. allow selecting a single item or multiple items.
+    # 1. permit leading visuals like Octicons, avatars, and custom SVGs.
+    # 1. can be used as form inputs in Rails forms.
+    #
+    # ## Static list items
+    #
+    # The Rails `SelectPanel` component allows items to be provided statically or loaded dynamically from the
+    # server. Providing items statically is done using a fetch strategy of `:local` in combination with the
+    # `item` slot:
+    #
+    # ```erb
+    # <%= render(Primer::Alpha::SelectPanel.new(fetch_strategy: :local))) do |panel| %>
+    #   <% panel.with_show_button { "Select item" } %>
+    #   <% panel.with_item(label: "Item 1") %>
+    #   <% panel.with_item(label: "Item 2") %>
+    # <% end %>
+    # ```
+    #
+    # ## Dynamic list items
+    #
+    # List items can also be fetched dynamically from the server and will require creating a Rails controller action
+    # to respond with the list of items in addition to rendering the `SelectPanel` instance. Render the instance as
+    # normal, providing your desired [fetch strategy](#fetch-strategies):
+    #
+    # ```erb
+    # <%= render(
+    #   Primer::Alpha::SelectPanel.new(
+    #     fetch_strategy: :remote,
+    #     src: search_items_path  # a Rails URL helper
+    #   )
+    # ) %>
+    # ```
+    #
+    # Define a controller action to serve the list of items. The `SelectPanel` component passes any filter text in
+    # the `q=` URL parameter.
+    #
+    # ```ruby
+    # class SearchItemsController < ApplicationController
+    #   def show
+    #     # NOTE: params[:q] may be nil since there is no filter string available
+    #     # when the panel is first opened
+    #     @results = SomeModel.search(params[:q] || "")
+    #   end
+    # end
+    # ```
+    #
+    # Responses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't
+    # available by default in Rails, so you may have to register it eg. in an initializer:
+    #
+    # ```ruby
+    # Mime::Type.register("text/fragment+html", :html_fragment)
+    # ```
+    #
+    # Render a `Primer::Alpha::SelectPanel::ItemList` in the action's template, search_items/show.html_fragment.erb:
+    #
+    # ```erb
+    # <%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>
+    #   <% @results.each do |result| %>
+    #     <% list.with_item(label: result.title) do |item| %>
+    #       <% item.with_description(result.description) %>
+    #     <% end %>
+    #   <% end %>
+    # <% end %>
+    # ```
+    #
+    # ### Selection consistency
+    #
+    # The `SelectPanel` component automatically "remembers" which items have been selected across item fetch requests,
+    # meaning the controller that renders dynamic list items does not (and should not) remember these selections or
+    # persist them until the user has confirmed them, either by submitting the form or otherwise indicating completion.
+    # The `SelectPanel` component does not include unconfirmed selection data in requests.
     #
     # ## Fetch strategies
     #
@@ -22,62 +98,11 @@ module Primer
     # ## Customizing filter behavior
     #
     # If the fetch strategy is `:remote`, then filtering is handled server-side. The server should render a
-    # `Primer::Alpha::SelectPanel::ItemList (an alias of `<%= link_to_component(Primer::Alpha::ActionList) %>)
+    # `Primer::Alpha::SelectPanel::ItemList` (an alias of <%= link_to_component(Primer::Alpha::ActionList) %>)
     # in the response containing the filtered list of items. The component achieves remote fetching via the
     # [remote-input-element](https://github.com/github/remote-input-element), which sends a request to the
     # server with the filter string in the `q=` parameter. Responses must be HTML fragments, eg. have a content
-    # type of `text/html+fragment`. You can either name the template eg. show.html_fragment.erb or respond to
-    # that content type directly using Rails' `respond_to` method. Here's an example Rails controller action
-    # that accepts the query parameter and renders an HTML fragment:
-    #
-    # ```ruby
-    # class SearchItemsController < ApplicationController
-    #   def show
-    #     # NOTE: params[:q] may be nil since there is no filter string available
-    #     # when the panel is first opened
-    #     results = SomeModel.search(params[:q] || "")
-    #
-    #     respond_to do |format|
-    #       format.html_fragment do
-    #         # this assumes the template exists in a file named search_items/show.html.erb
-    #         render(
-    #           "search_items/show",
-    #           locals: { results: results },
-    #           layout: false,
-    #           formats: [:html]
-    #         )
-    #       end
-    #     end
-    #   end
-    # end
-    # ```
-    #
-    # It is also possible to respond to requests with different content types using the same template:
-    #
-    # ```ruby
-    # respond_to do |format|
-    #   format.any(:html, :html_fragment) do
-    #     render(
-    #       "search_items/show",
-    #       locals: { results: results },
-    #       layout: false,
-    #       formats: [:html, :html_fragment]
-    #     )
-    #   end
-    # end
-    # ```
-    #
-    # The search_items/show.html.erb (or show.html_fragment.erb) template might look like this:
-    #
-    # ```erb
-    # <%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>
-    #   <% results.each do |result| %>
-    #     <% list.with_item(label: result.title) do |item| %>
-    #       <% item.with_description(result.description) %>
-    #     <% end %>
-    #   <% end %>
-    # <% end %>
-    # ```
+    # type of `text/html+fragment`.
     #
     # ### Local filtering
     #
@@ -92,6 +117,134 @@ module Primer
     #
     # The element's default filter function uses the value of the `data-filter-string` attribute, falling back to the
     # element's `innerText` property. It performs a case-insensitive substring match against the filter string.
+    #
+    # ### `SelectPanel`s as form inputs
+    #
+    # `SelectPanel`s can be used as form inputs. They behave very similarly to how HTML `<select>` boxes behave, and
+    # play nicely with Rails' built-in form mechanisms. Pass arguments via the `form_arguments:` argument, including
+    # the Rails form builder object and the name of the field:
+    #
+    # ```erb
+    # <% form_with(model: Address.new) do |f| %>
+    #   <%= render(Primer::Alpha::SelectPanel.new(form_arguments: { builder: f, name: "country" })) do |menu| %>
+    #     <% countries.each do |country|
+    #       <% menu.with_item(label: country.name, data: { value: country.code }) %>
+    #     <% end %>
+    #   <% end %>
+    # <% end %>
+    # ```
+    #
+    # The value of the `data: { value: ... }` argument is sent to the server on submit, keyed using the name provided above
+    # (eg. `"country"`). If no value is provided for an item, the value of that item is the item's label.  Here's the
+    # corresponding `AddressesController` that might be written to handle the form above:
+    #
+    # ```ruby
+    # class AddressesController < ApplicationController
+    #   def create
+    #     puts "You chose #{address_params[:country]} as your country"
+    #   end
+    #
+    #   private
+    #
+    #   def address_params
+    #     params.require(:address).permit(:country)
+    #   end
+    # end
+    # ```
+    #
+    # If items are provided dynamically, things become a bit more complicated. The `form_for` or `form_with` method call
+    # happens in the view that renders the `SelectPanel`, which means the form builder object but isn't available in the
+    # view that renders the list items. In such a case, it can be useful to create an instance of the form builder maually:
+    #
+    # ```erb
+    # <% builder = ActionView::Helpers::FormBuilder.new(
+    #   "address",  # the name of the model, used to wrap input names, eg 'address[country_code]'
+    #   nil,        # object (eg. the Address instance, which we can omit)
+    #   self,       # template
+    #   {}          # options
+    # ) %>
+    # <%= render(Primer::Alpha::SelectPanel::ItemList.new(
+    #   form_arguments: { builder: builder, name: "country" }
+    # )) do |list| %>
+    #   <% countries.each do |country| %>
+    #     <% menu.with_item(label: country.name, data: { value: country.code }) %>
+    #   <% end %>
+    # <% end %>
+    # ```
+    #
+    # ### JavaScript API
+    #
+    # `SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.
+    #
+    # #### Query methods
+    #
+    # * `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.
+    # * `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.
+    # * `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.
+    # * `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.
+    #
+    # NOTE: Item IDs are special values provided by the user that are attached to `SelectPanel` list items as the `data-item-id`
+    # HTML attribute. Item IDs can be provided by passing an `item_id:` attribute when adding items to the panel, eg:
+    #
+    # ```erb
+    # <%= render(Primer::Alpha::SelectPanel.new) do |panel| %>
+    #   <% panel.with_item(item_id: "my-id") %>
+    # <% end %>
+    # ```
+    #
+    # The same is true when rendering `ItemList`s:
+    #
+    # ```erb
+    # <%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>
+    #   <% list.with_item(item_id: "my-id") %>
+    # <% end %>
+    # ```
+    #
+    # #### State methods
+    #
+    # * `showItem(item: Element)`: Shows the item, i.e. makes it visible.
+    # * `hideItem(item: Element)`: Hides the item, i.e. makes it invisible.
+    # * `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
+    # * `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
+    # * `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.
+    # * `uncheckItem(item: Element)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.
+    #
+    # #### Events
+    #
+    # |Name                 |Type                                       |Bubbles |Cancelable |
+    # |:--------------------|:------------------------------------------|:-------|:----------|
+    # |`itemActivated`      |`CustomEvent<ItemActivatedEvent>`          |Yes     |No         |
+    # |`beforeItemActivated`|`CustomEvent<ItemActivatedEvent>`          |Yes     |Yes        |
+    # |`dialog:open`        |`CustomEvent<{dialog: HTMLDialogElement}>` |No      |No         |
+    # |`panelClosed`        |`CustomEvent<{panel: SelectPanelElement}>` |Yes     |No         |
+    #
+    # _Item activation_
+    #
+    # The `<select-panel>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.
+    #
+    # ```typescript
+    # document.querySelector("select-panel").addEventListener(
+    #   "itemActivated",
+    #   (event: CustomEvent<ItemActivatedEvent>) => {
+    #     event.detail.item     // Element: the <li> item that was activated
+    #     event.detail.checked  // boolean: whether or not the result of the activation checked the item
+    #   }
+    # )
+    # ```
+    #
+    # The `beforeItemActivated` event fires before an item is activated. Canceling this event will prevent the item
+    # from being activated.
+    #
+    # ```typescript
+    # document.querySelector("select-panel").addEventListener(
+    #   "beforeItemActivated",
+    #   (event: CustomEvent<ItemActivatedEvent>) => {
+    #     event.detail.item      // Element: the <li> item that was activated
+    #     event.detail.checked   // boolean: whether or not the result of the activation checked the item
+    #     event.preventDefault() // Cancel the event to prevent activation (eg. checking/unchecking)
+    #   }
+    # )
+    # ```
     class SelectPanel < Primer::Component
       status :alpha
 
@@ -114,31 +267,43 @@ module Primer
         :none,
       ].freeze
 
-      # @return [String] The URL to fetch search results from.
+      # The URL to fetch search results from.
+      #
+      # @return [String]
       attr_reader :src
 
-      # @return [String] The unique ID of the panel.
+      # The unique ID of the panel.
+      #
+      # @return [String]
       attr_reader :panel_id
 
-      # @return [String] The unique ID of the panel body.
+      # The unique ID of the panel body.
+      #
+      # @return [String]
       attr_reader :body_id
 
-      # @return [Symbol] <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>
+      # <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>
+      #
+      # @return [Symbol]
       attr_reader :select_variant
 
-      # @return [Symbol] <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
+      # <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
+      #
+      # @return [Symbol]
       attr_reader :fetch_strategy
 
-      # @!visibility private
+      # Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
+      #
+      # @return [Boolean]
       attr_reader :preload
 
-      # @return [Boolean] Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
       alias preload? preload
 
-      # @!visibility private
+      # Whether or not to show the filter input.
+      #
+      # @return [Boolean]
       attr_reader :show_filter
 
-      # @return [Boolean] Whether or not to show the filter input.
       alias show_filter? show_filter
 
       # @param src [String] The URL to fetch search results from.
@@ -153,9 +318,12 @@ module Primer
       # @param dynamic_label_prefix [String] If provided, the prefix is prepended to the dynamic label and displayed in the show button.
       # @param dynamic_aria_label_prefix [String] If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button.
       # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
-      # @param list_arguments [Hash] Arguments to pass to the underlying `Primer::Alpha::ActionList` component. Only has an effect for the local fetch strategy.
+      # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
+      # @param form_arguments [Hash] Form arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
+      # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
+      # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
       def initialize(
         src: nil,
         title: "Menu",
@@ -170,8 +338,11 @@ module Primer
         dynamic_aria_label_prefix: nil,
         body_id: nil,
         list_arguments: {},
+        form_arguments: {},
         show_filter: true,
         open_on_load: false,
+        anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
+        anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
         **system_arguments
       )
         if src.present?
@@ -194,6 +365,8 @@ module Primer
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
+        @system_arguments[:"anchor-align"] = fetch_or_fallback(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS, anchor_align, Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN)
+        @system_arguments[:"anchor-side"] = Primer::Alpha::Overlay::ANCHOR_SIDE_MAPPINGS[fetch_or_fallback(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS, anchor_side, Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE)]
 
         @title = title
         @system_arguments[:tag] = :"select-panel"
@@ -225,6 +398,7 @@ module Primer
 
         @list = Primer::Alpha::SelectPanel::ItemList.new(
           **list_arguments,
+          form_arguments: form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
           body_id: @body_id,

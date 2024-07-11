@@ -3,6 +3,7 @@ import {controller, target} from '@github/catalyst'
 import {announceFromElement, announce} from '../aria_live'
 import type {IncludeFragmentElement} from '@github/include-fragment-element'
 import type {PrimerTextFieldElement} from 'lib/primer/forms/primer_text_field'
+import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import '@oddbird/popover-polyfill'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
@@ -152,6 +153,14 @@ export class SelectPanelElement extends HTMLElement {
     return Array.from(this.#selectedItems.values())
   }
 
+  get align(): AnchorAlignment {
+    return (this.getAttribute('anchor-align') || 'start') as AnchorAlignment
+  }
+
+  get side(): AnchorSide {
+    return (this.getAttribute('anchor-side') || 'outside-bottom') as AnchorSide
+  }
+
   updateAnchorPosition() {
     // If the selectPanel is removed from the screen on resize close the dialog
     if (this && this.offsetParent === null) {
@@ -160,8 +169,8 @@ export class SelectPanelElement extends HTMLElement {
 
     if (this.invokerElement) {
       const {top, left} = getAnchoredPosition(this.dialog, this.invokerElement, {
-        align: 'start',
-        side: 'outside-bottom',
+        align: this.align,
+        side: this.side,
         anchorOffset: 4,
       })
       this.dialog.style.top = `${top}px`

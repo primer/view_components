@@ -37,7 +37,6 @@ module Primer
                   if slot_method.base_docstring.to_s.present?
                     render_erb_ignoring_markdown_code_fences(slot_method.base_docstring)
                   end,
-                # rubocop:enable Style/IfUnlessModifier
                 "parameters" => serialize_params(param_tags, component)
               }
             end
@@ -54,11 +53,13 @@ module Primer
 
             method_docs = mtds.map do |mtd|
               param_tags = mtd.tags(:param)
+              return_tag = mtd.tags(:return)
 
               {
                 "name" => mtd.name,
                 "description" => render_erb_ignoring_markdown_code_fences(mtd.base_docstring),
-                "parameters" => serialize_params(param_tags, component)
+                "parameters" => serialize_params(param_tags, component),
+                "return_types" => return_tag.first&.types || [],
               }
             end
 
