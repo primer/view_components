@@ -1,0 +1,12 @@
+<% title = system_arguments.delete(:title) %>
+<% simulate_no_results = system_arguments.delete(:simulate_no_results) %>
+<% simulate_failure = system_arguments.delete(:simulate_failure) %>
+
+<%= render(Primer::Alpha::SelectPanel.new(
+  src: select_panel_items_path(show_results: !simulate_no_results, fail: simulate_failure),
+  select_variant: :single,
+  fetch_strategy: :remote,
+  **system_arguments
+)) do |panel| %>
+  <% panel.with_show_button { title } %>
+<% end %>
