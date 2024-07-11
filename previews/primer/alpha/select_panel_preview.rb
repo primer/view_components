@@ -4,6 +4,11 @@ module Primer
   module Alpha
     # @label SelectPanel
     class SelectPanelPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      def playground(open_on_load: false)
+      end
+
       # @label Default
       #
       # @param open_on_load toggle

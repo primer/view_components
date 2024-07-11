@@ -35,5 +35,7 @@ class AutoCompleteTestController < ApplicationController
     ].select { |fruit| fruit.downcase.include?(params["q"].downcase) }
     @visual_type = params[:visual]
     @version = params[:version]
+
+    render :index, formats: [:html, :html_fragment]
   end
 end

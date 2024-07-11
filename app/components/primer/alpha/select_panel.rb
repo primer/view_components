@@ -22,30 +22,55 @@ module Primer
     # ## Customizing filter behavior
     #
     # If the fetch strategy is `:remote`, then filtering is handled server-side. The server should render a
-    # <%= link_to_component(Primer::Alpha::ActionList) %> in the response containing the filtered list of items. The
-    # component achieves remote fetching via [remote-input-element](https://github.com/github/remote-input-element),
-    # which sends a request to the server with the filter string as a parameter. Specifically, `remote-input-element`
-    # will append `q=` to the query string, so the server should expect a query parameter named `q`. Also, responses
-    # must be HTML fragments, eg. have a content type of `text/html+fragment`. Here's an example Rails controller action
+    # `Primer::Alpha::SelectPanel::ItemList (an alias of `<%= link_to_component(Primer::Alpha::ActionList) %>)
+    # in the response containing the filtered list of items. The component achieves remote fetching via the
+    # [remote-input-element](https://github.com/github/remote-input-element), which sends a request to the
+    # server with the filter string in the `q=` parameter. Responses must be HTML fragments, eg. have a content
+    # type of `text/html+fragment`. You can either name the template eg. show.html_fragment.erb or respond to
+    # that content type directly using Rails' `respond_to` method. Here's an example Rails controller action
     # that accepts the query parameter and renders an HTML fragment:
     #
     # ```ruby
     # class SearchItemsController < ApplicationController
     #   def show
-    #     # NOTE: params[:q] may be nil since there is no filter string available when the panel is first opened
+    #     # NOTE: params[:q] may be nil since there is no filter string available
+    #     # when the panel is first opened
     #     results = SomeModel.search(params[:q] || "")
     #
     #     respond_to do |format|
-    #       format.html_fragment { render "search_items/show", locals: { results: results }, layout: false }
+    #       format.html_fragment do
+    #         # this assumes the template exists in a file named search_items/show.html.erb
+    #         render(
+    #           "search_items/show",
+    #           locals: { results: results },
+    #           layout: false,
+    #           formats: [:html]
+    #         )
+    #       end
     #     end
     #   end
     # end
     # ```
     #
-    # The search_items/show.html_fragment.erb template might look like this:
+    # It is also possible to respond to requests with different content types using the same template:
+    #
+    # ```ruby
+    # respond_to do |format|
+    #   format.any(:html, :html_fragment) do
+    #     render(
+    #       "search_items/show",
+    #       locals: { results: results },
+    #       layout: false,
+    #       formats: [:html, :html_fragment]
+    #     )
+    #   end
+    # end
+    # ```
+    #
+    # The search_items/show.html.erb (or show.html_fragment.erb) template might look like this:
     #
     # ```erb
-    # <%= render(Primer::Alpha::ActionList.new) do |list| %>
+    # <%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>
     #   <% results.each do |result| %>
     #     <% list.with_item(label: result.title) do |item| %>
     #       <% item.with_description(result.description) %>
@@ -57,10 +82,10 @@ module Primer
     # ### Local filtering
     #
     # If the fetch strategy is `:local` or `:eventually_local`, filtering is performed client-side. Filter behavior can
-    # be customized in JavaScript by setting the filterFn attribute on the instance of `SelectPanelElement`, eg:
+    # be customized in JavaScript by setting the `filterFn` attribute on the instance of `SelectPanelElement`, eg:
     #
     # ```javascript
-    # document.querySelector("select-panel").filterFn = (item: HTMLElement, query: string) => {
+    # document.querySelector("select-panel").filterFn = (item: HTMLElement, query: string): boolean => {
     #   // return true if the item should be displayed, false otherwise
     # }
     # ```
@@ -69,6 +94,9 @@ module Primer
     # element's `innerText` property. It performs a case-insensitive substring match against the filter string.
     class SelectPanel < Primer::Component
       status :alpha
+
+      # The component that should be used to render the list of items in the body of a SelectPanel.
+      ItemList = Primer::Alpha::ActionList
 
       DEFAULT_PRELOAD = false
 
@@ -89,17 +117,11 @@ module Primer
       # @return [String] The URL to fetch search results from.
       attr_reader :src
 
-      # @return [String] The title of the panel.
-      attr_reader :title
-
       # @return [String] The unique ID of the panel.
       attr_reader :panel_id
 
       # @return [String] The unique ID of the panel body.
       attr_reader :body_id
-
-      # @return [Boolean] Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
-      attr_reader :preload
 
       # @return [Symbol] <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>
       attr_reader :select_variant
@@ -107,13 +129,16 @@ module Primer
       # @return [Symbol] <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
       attr_reader :fetch_strategy
 
-      # @return [String] The label to display when no results are found.
-      attr_reader :no_results_label
+      # @!visibility private
+      attr_reader :preload
 
-      # @return [Boolean] Whether or not to show the filter input.
+      # @return [Boolean] Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
+      alias preload? preload
+
+      # @!visibility private
       attr_reader :show_filter
 
-      alias preload? preload
+      # @return [Boolean] Whether or not to show the filter input.
       alias show_filter? show_filter
 
       # @param src [String] The URL to fetch search results from.
@@ -127,8 +152,8 @@ module Primer
       # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
       # @param dynamic_label_prefix [String] If provided, the prefix is prepended to the dynamic label and displayed in the show button.
       # @param dynamic_aria_label_prefix [String] If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button.
-      # @param body_id [String] The unique ID of the panel body.
-      # @param list_arguments [Hash] Arguments to pass to the underlying `Primer::Alpha::ActionList` component.
+      # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
+      # @param list_arguments [Hash] Arguments to pass to the underlying `Primer::Alpha::ActionList` component. Only has an effect for the local fetch strategy.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       def initialize(
@@ -198,13 +223,13 @@ module Primer
           style: "position: absolute;",
         )
 
-        @list = Primer::Alpha::ActionList.new(
+        @list = Primer::Alpha::SelectPanel::ItemList.new(
           **list_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
           body_id: @body_id,
           role: "listbox",
-          aria_selection_variant:  @select_variant == :multiple ? :checked : :selected,
+          aria_selection_variant: @select_variant == :multiple ? :checked : :selected,
           aria: {
             label: "#{title} options"
           },
@@ -212,13 +237,29 @@ module Primer
         )
       end
 
-      delegate :with_item, :items, :with_avatar_item, to: :@list
+      # @!parse
+      #   # Adds an item to the list. Note that this method only has an effect for the local fetch strategy.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>'s `item` slot.
+      #   def with_item(**system_arguments)
+      #   end
+      #
+      #   # Adds an avatar item to the list. Note that this method only has an effect for the local fetch strategy.
+      #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>'s `item` slot.
+      #   def with_avatar_item
+      #   end
 
-      renders_one :footer, lambda { |**system_arguments|
-        Primer::Alpha::Dialog::Footer.new(**system_arguments)
-      }
+      delegate :with_item, :with_avatar_item, to: :@list
+
+      # Renders content in a footer region below the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Dialog::Footer) %>.
+      renders_one :footer, Primer::Alpha::Dialog::Footer
 
       # Renders content underneath the title at the top of the panel.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Dialog::Header) %>'s `subtitle` slot.
       renders_one :subtitle
 
       # Adds a show button (i.e. a button) that will open the panel when clicked.
@@ -235,7 +276,14 @@ module Primer
         Primer::Beta::Button.new(**system_arguments)
       }
 
+      # Customizable content for the error message that appears when items are fetched for the first time. This message
+      # appears in place of the list of items.
+      # For more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).
       renders_one :preload_error_content
+
+      # Customizable content for the error message that appears when items are fetched as the result of a filter
+      # operation. This message appears as a banner above the previously fetched list of items.
+      # For more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).
       renders_one :error_content
 
       private

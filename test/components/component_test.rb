@@ -128,7 +128,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
-    [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }]
+    [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }],
+    [Primer::Alpha::SelectPanel, {}]
   ].freeze
 
   def test_registered_components
