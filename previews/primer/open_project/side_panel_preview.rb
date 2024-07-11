@@ -26,6 +26,7 @@ module Primer
       end
 
       # @label Default
+      # @snapshot
       def default
       end
 
