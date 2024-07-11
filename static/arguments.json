@@ -5054,6 +5054,33 @@
     ]
   },
   {
+    "component": "OpenProject::SidePanel",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSidePanel",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/side_panel.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/side_panel/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::SidePanel::Section",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSidePanelSection",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/side_panel/section.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/side_panel/section/default/",
+    "parameters": [
+
+    ]
+  },
+  {
     "component": "OpenProject::SubHeader",
     "status": "open_project",
     "a11y_reviewed": false,

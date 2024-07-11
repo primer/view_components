@@ -1480,6 +1480,26 @@
   },
   "Primer::OpenProject::PageHeader::Menu": {
   },
+  "Primer::OpenProject::SidePanel": {
+    "Section": "Primer::OpenProject::SidePanel::Section"
+  },
+  "Primer::OpenProject::SidePanel::Section": {
+    "DEFAULT_TAG": "section",
+    "TAG_OPTIONS": [
+      "section",
+      "div",
+      "span"
+    ],
+    "TITLE_TAG_FALLBACK": "h4",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::OpenProject::SubHeader": {
     "HIDDEN_FILTER_TARGET_SELECTOR": "sub-header.hiddenItemsOnExpandedFilter",
     "SHOWN_FILTER_TARGET_SELECTOR": "sub-header.shownItemsOnExpandedFilter"

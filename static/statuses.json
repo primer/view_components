@@ -123,6 +123,8 @@
   "Primer::OpenProject::PageHeader": "open_project",
   "Primer::OpenProject::PageHeader::Dialog": "open_project",
   "Primer::OpenProject::PageHeader::Menu": "open_project",
+  "Primer::OpenProject::SidePanel": "open_project",
+  "Primer::OpenProject::SidePanel::Section": "open_project",
   "Primer::OpenProject::SubHeader": "open_project",
   "Primer::OpenProject::ZenModeButton": "open_project",
   "Primer::Tooltip": "deprecated",

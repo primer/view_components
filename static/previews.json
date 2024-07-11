@@ -6308,6 +6308,53 @@
     ]
   },
   {
+    "name": "side_panel",
+    "component": "OpenProject::SidePanel",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/side_panel",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/side_panel/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/side_panel/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/side_panel/with_component",
+        "name": "with_component",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "spinner",
     "component": "Spinner",
     "status": "beta",
