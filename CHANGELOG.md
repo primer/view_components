@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.37.0
+
+### Minor Changes
+
+- [#138](https://github.com/opf/primer_view_components/pull/138) [`67ef659`](https://github.com/opf/primer_view_components/commit/67ef6594fe323296fce4f12f4541b1a1ab528d05) Thanks [@oliverguenther](https://github.com/oliverguenther)! - Introduce `Primer::OpenProject::SidePanel` and `Primer::OpenProject::SidePanel::Section`
+
 ## 0.36.2
 
 ### Patch Changes
