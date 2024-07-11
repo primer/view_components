@@ -8,6 +8,14 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::SidePanel, {}, proc { |component|
+      component.with_section do |section|
+        section.with_title { "First" }
+        section.with_description do
+          "Description"
+        end
+      end
+    }],
     [Primer::OpenProject::SubHeader, {}],
     [Primer::OpenProject::ZenModeButton, {}],
     [Primer::OpenProject::InputGroup, {}, proc { |component|
@@ -180,7 +188,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::BorderGrid::Cell",
       "Primer::OpenProject::GridLayout::Area",
       "Primer::OpenProject::PageHeader::Menu",
-      "Primer::OpenProject::PageHeader::Dialog"
+      "Primer::OpenProject::PageHeader::Dialog",
+      "Primer::OpenProject::SidePanel::Section"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
