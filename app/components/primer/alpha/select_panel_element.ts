@@ -616,7 +616,7 @@ export class SelectPanelElement extends HTMLElement {
     let atLeastOneResult = false
 
     if (this.#performFilteringLocally()) {
-      const query = this.filterInputTextField.value
+      const query = this.filterInputTextField?.value ?? ''
       const filter = this.filterFn || this.#defaultFilterFn
 
       for (const item of this.items) {
