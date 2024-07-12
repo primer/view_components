@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.37.1
+
+### Patch Changes
+
+- [#146](https://github.com/opf/primer_view_components/pull/146) [`1b2cd04`](https://github.com/opf/primer_view_components/commit/1b2cd047cb43682add044a71f7f00c4a6d1d3d02) Thanks [@HDinger](https://github.com/HDinger)! - Fix some spacings inside Primer::OpenProject::SidePanel::Section
+
 ## 0.37.0
 
 ### Minor Changes
