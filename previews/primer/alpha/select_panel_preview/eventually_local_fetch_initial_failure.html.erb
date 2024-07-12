@@ -1,7 +1,12 @@
+<% subject_id = SecureRandom.hex %>
+
 <%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
   src: select_panel_items_path(fail: "true"),
   fetch_strategy: :eventually_local,
   open_on_load:
 )) do |panel| %>
   <% panel.with_show_button { "Sci-fi equipment" } %>
 <% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

@@ -1,7 +1,7 @@
 import {getAnchoredPosition} from '@primer/behaviors'
 import {controller, target} from '@github/catalyst'
 import {announceFromElement, announce} from '../aria_live'
-import type {IncludeFragmentElement} from '@github/include-fragment-element'
+import {IncludeFragmentElement} from '@github/include-fragment-element'
 import type {PrimerTextFieldElement} from 'lib/primer/forms/primer_text_field'
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import '@oddbird/popover-polyfill'
@@ -212,24 +212,13 @@ export class SelectPanelElement extends HTMLElement {
     if (this.includeFragment) {
       this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
       this.includeFragment.addEventListener('error', this, {signal})
+      this.includeFragment.addEventListener('loadend', this, {signal})
     } else {
       const mutationObserver = new MutationObserver(() => {
         if (this.includeFragment) {
           this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
           this.includeFragment.addEventListener('error', this, {signal})
-          mutationObserver.disconnect()
-        }
-      })
-
-      mutationObserver.observe(this, {childList: true, subtree: true})
-    }
-
-    if (this.remoteInput) {
-      this.remoteInput.addEventListener('loadstart', this, {signal})
-    } else {
-      const mutationObserver = new MutationObserver(() => {
-        if (this.remoteInput) {
-          this.remoteInput.addEventListener('loadstart', this, {signal})
+          this.includeFragment.addEventListener('loadend', this, {signal})
           mutationObserver.disconnect()
         }
       })
@@ -499,9 +488,9 @@ export class SelectPanelElement extends HTMLElement {
 
     // The include fragment will have been removed from the DOM by the time
     // the include-fragment-replaced event has been dispatched, so we have to
-    // check for the event type manually here because this.includeFragment
+    // check for the type of the event target manually, since this.includeFragment
     // will be null.
-    if (event.target === this.includeFragment || event.type === 'include-fragment-replaced') {
+    if (event.target instanceof IncludeFragmentElement) {
       this.#handleIncludeFragmentEvent(event)
     }
   }
@@ -515,6 +504,11 @@ export class SelectPanelElement extends HTMLElement {
 
       case 'loadstart': {
         this.#toggleIncludeFragmentElements(false)
+        break
+      }
+
+      case 'loadend': {
+        this.dispatchEvent(new CustomEvent('loadend'))
         break
       }
 
@@ -579,6 +573,7 @@ export class SelectPanelElement extends HTMLElement {
         this.#filterInputTextFieldElement.hideLeadingSpinner()
         if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
         if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
+        this.dispatchEvent(new CustomEvent('loadend'))
         break
       }
     }

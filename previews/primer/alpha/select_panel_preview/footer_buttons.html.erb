@@ -1,4 +1,7 @@
+<% subject_id = SecureRandom.hex %>
+
 <%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
   select_variant: :multiple,
   fetch_strategy: :local,
   dynamic_label: true,
@@ -16,3 +19,5 @@
     <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Save" } %>
   <% end %>
 <% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

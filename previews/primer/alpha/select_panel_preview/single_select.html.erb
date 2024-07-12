@@ -1,4 +1,7 @@
+<% subject_id = SecureRandom.hex %>
+
 <%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
   select_variant: :single,
   fetch_strategy: :local,
   open_on_load:
@@ -12,3 +15,5 @@
     I'm a footer!
   <% end %>
 <% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

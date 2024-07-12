@@ -1,4 +1,7 @@
+<% subject_id = SecureRandom.hex %>
+
 <%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
   # passing a uuid here causes the request to succeed the first time and fail all subsequent times
   src: select_panel_items_path(fail: "true", uuid: SecureRandom.uuid),
   fetch_strategy: :remote,
@@ -6,3 +9,5 @@
 )) do |panel| %>
   <% panel.with_show_button { "Sci-fi equipment" } %>
 <% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

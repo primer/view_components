@@ -1,4 +1,7 @@
+<% subject_id = SecureRandom.hex %>
+
 <%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
   id: "with_avatar_items",
   title: "Select users",
   select_variant: :single,
@@ -18,4 +21,4 @@
   <% panel.with_item(label: "Item 6") %>
 <% end %>
 
-
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

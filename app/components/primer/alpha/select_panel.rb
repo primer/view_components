@@ -374,7 +374,7 @@ module Primer
 
         @system_arguments[:data] = merge_data(
           system_arguments, {
-            data: { select_variant: select_variant, open_on_load: open_on_load }.tap do |data|
+            data: { select_variant: @select_variant, fetch_strategy: @fetch_strategy, open_on_load: open_on_load }.tap do |data|
               data[:dynamic_label] = dynamic_label if dynamic_label
               data[:dynamic_label_prefix] = dynamic_label_prefix if dynamic_label_prefix.present?
               data[:dynamic_aria_label_prefix] = dynamic_aria_label_prefix if dynamic_aria_label_prefix.present?
