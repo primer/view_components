@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class SelectPanelItemsController < ApplicationController
   SELECT_PANEL_ITEMS = [
     { value: 1, selected: true, title: "Phaser", description: "The iconic handheld laser beam" },
@@ -34,12 +35,12 @@ class SelectPanelItemsController < ApplicationController
     query = (params[:q] || "").downcase
 
     results = if show_results
-      SELECT_PANEL_ITEMS.select do |item|
-        [item[:title], item[:description]].join(" ").downcase.include?(query)
-      end
-    else
-      []
-    end
+                SELECT_PANEL_ITEMS.select do |item|
+                  [item[:title], item[:description]].join(" ").downcase.include?(query)
+                end
+              else
+                []
+              end
 
     clean_up_old_uuids(uuid)
 
