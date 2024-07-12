@@ -4,7 +4,7 @@
   data: { interaction_subject: subject_id },
   select_variant: :multiple,
   fetch_strategy: :local,
-  open_on_load:
+  open_on_load: open_on_load
 )) do |panel| %>
   <% panel.with_show_button { "Panel" } %>
   <% panel.with_footer(show_divider: true) do %>
