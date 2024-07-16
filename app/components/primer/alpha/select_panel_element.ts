@@ -836,7 +836,7 @@ export class SelectPanelElement extends HTMLElement {
     )
   }
 
-  #show() {
+  show() {
     this.updateAnchorPosition()
     this.dialog.showModal()
     const event = new CustomEvent('dialog:open', {
@@ -845,7 +845,7 @@ export class SelectPanelElement extends HTMLElement {
     this.dispatchEvent(event)
   }
 
-  #hide() {
+  hide() {
     this.dialog.close()
     this.dispatchEvent(
       new CustomEvent('panelClosed', {

@@ -176,6 +176,11 @@ module Primer
     #
     # `SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.
     #
+    # #### Utility methods
+    #
+    # * `show()`: Manually open the panel. Under normal circumstances, a show button is used to show the panel, but this method exists to support unusual use-cases.
+    # * `hide()`: Manually hides (closes) the panel.
+    #
     # #### Query methods
     #
     # * `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.
