@@ -241,7 +241,7 @@ export class SelectPanelElement extends HTMLElement {
 
     if (this.dialog) {
       if (this.getAttribute('data-open-on-load') === 'true') {
-        this.#show()
+        this.show()
       }
 
       this.#dialogIntersectionObserver.observe(this.dialog)
@@ -249,7 +249,7 @@ export class SelectPanelElement extends HTMLElement {
       const mutationObserver = new MutationObserver(() => {
         if (this.dialog) {
           if (this.getAttribute('data-open-on-load') === 'true') {
-            this.#show()
+            this.show()
           }
 
           this.#dialogIntersectionObserver.observe(this.dialog)
@@ -484,7 +484,7 @@ export class SelectPanelElement extends HTMLElement {
         (event as MouseEvent).clientX <= rect.left + rect.width
 
       if (!clickWasInsideDialog) {
-        this.#hide()
+        this.hide()
       }
     }
 
@@ -739,9 +739,9 @@ export class SelectPanelElement extends HTMLElement {
     event.stopPropagation()
 
     if (this.open) {
-      this.#hide()
+      this.hide()
     } else {
-      this.#show()
+      this.show()
     }
   }
 
@@ -753,7 +753,7 @@ export class SelectPanelElement extends HTMLElement {
       dialog_controller.abort()
       this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
       if (this.open) {
-        this.#hide()
+        this.hide()
       }
       const activeElement = this.ownerDocument.activeElement
       const lostFocus = this.ownerDocument.activeElement === this.ownerDocument.body
@@ -777,7 +777,7 @@ export class SelectPanelElement extends HTMLElement {
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
         if (this.open) {
-          this.#hide()
+          this.hide()
         }
       })
     }
