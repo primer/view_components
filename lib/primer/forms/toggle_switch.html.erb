@@ -7,8 +7,7 @@
     <%= content_tag(:div, data: { target: "toggle-switch-input.validationElement" }, **@input.validation_arguments) do %>
       <%= content_tag(:span, @input.validation_messages.first, data: { target: "toggle-switch-input.validationMessageElement" }, **@input.validation_message_arguments) %>
     <% end %>
-
-    <div><%= render(Caption.new(input: @input)) %></div>
   </span>
   <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src, csrf_token: @input.csrf, **@input.input_arguments)) %>
 <% end %>
+<div><%= render(Caption.new(input: @input)) %></div>
