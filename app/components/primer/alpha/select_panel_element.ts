@@ -72,7 +72,7 @@ export class SelectPanelElement extends HTMLElement {
   @target ariaLiveContainer: HTMLElement
   @target noResults: HTMLElement
   @target fragmentErrorElement: HTMLElement
-  @target errorBannerElement: HTMLElement
+  @target bannerErrorElement: HTMLElement
   @target bodySpinner: HTMLElement
 
   filterFn?: FilterFn
@@ -245,6 +245,7 @@ export class SelectPanelElement extends HTMLElement {
       }
 
       this.#dialogIntersectionObserver.observe(this.dialog)
+      this.dialog.addEventListener('close', this, {signal})
     } else {
       const mutationObserver = new MutationObserver(() => {
         if (this.dialog) {
@@ -254,6 +255,8 @@ export class SelectPanelElement extends HTMLElement {
 
           this.#dialogIntersectionObserver.observe(this.dialog)
           mutationObserver.disconnect()
+
+          this.dialog.addEventListener('close', this, {signal})
         }
       })
 
@@ -355,11 +358,14 @@ export class SelectPanelElement extends HTMLElement {
 
   #checkSelectedItems() {
     for (const item of this.items) {
-      const value = item.getAttribute('data-value')
+      const itemContent = this.#getItemContent(item)
+      if (!itemContent) continue
+
+      const value = itemContent.getAttribute('data-value')
 
       if (value) {
         if (this.#selectedItems.has(value)) {
-          item.setAttribute(this.ariaSelectionType, 'true')
+          itemContent.setAttribute(this.ariaSelectionType, 'true')
         }
       }
     }
@@ -367,14 +373,16 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #addSelectedItem(item: SelectPanelItem) {
-    const button = item.querySelector('button')!
-    const value = item.getAttribute('data-value')
+    const itemContent = this.#getItemContent(item)
+    if (!itemContent) return
+
+    const value = itemContent.getAttribute('data-value')
 
     if (value) {
       this.#selectedItems.set(value, {
         value,
-        label: button.querySelector('.ActionListItem-label')?.textContent?.trim(),
-        inputName: button.getAttribute('data-input-name'),
+        label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
+        inputName: itemContent.getAttribute('data-input-name'),
         element: item,
       })
     }
@@ -437,7 +445,18 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     if (targetIsCloseButton && eventIsActivation) {
-      // #hide will automatically be called by dialog event triggered from `data-close-dialog-id`
+      // hide() will automatically be called by dialog event triggered from `data-close-dialog-id`
+      return
+    }
+
+    if (event.target === this.dialog && event.type === 'close') {
+      this.dispatchEvent(
+        new CustomEvent('panelClosed', {
+          detail: {panel: this},
+          bubbles: true,
+        }),
+      )
+
       return
     }
 
@@ -623,10 +642,10 @@ export class SelectPanelElement extends HTMLElement {
 
       for (const item of this.items) {
         if (filter(item, query)) {
-          this.showItem(item)
+          this.#showItem(item)
           atLeastOneResult = true
         } else {
-          this.hideItem(item)
+          this.#hideItem(item)
         }
       }
     } else {
@@ -666,7 +685,7 @@ export class SelectPanelElement extends HTMLElement {
       return true
     }
 
-    return !this.errorBannerElement.hasAttribute('hidden')
+    return !this.bannerErrorElement.hasAttribute('hidden')
   }
 
   #setErrorState(type: ErrorStateType) {
@@ -674,10 +693,10 @@ export class SelectPanelElement extends HTMLElement {
 
     if (type === ErrorStateType.BODY) {
       this.fragmentErrorElement?.removeAttribute('hidden')
-      this.errorBannerElement.setAttribute('hidden', '')
+      this.bannerErrorElement.setAttribute('hidden', '')
     } else {
-      errorElement = this.errorBannerElement
-      this.errorBannerElement?.removeAttribute('hidden')
+      errorElement = this.bannerErrorElement
+      this.bannerErrorElement?.removeAttribute('hidden')
       this.fragmentErrorElement?.setAttribute('hidden', '')
     }
 
@@ -690,7 +709,7 @@ export class SelectPanelElement extends HTMLElement {
 
   #clearErrorState() {
     this.fragmentErrorElement?.setAttribute('hidden', '')
-    this.errorBannerElement.setAttribute('hidden', '')
+    this.bannerErrorElement.setAttribute('hidden', '')
   }
 
   #maybeAnnounce() {
@@ -847,12 +866,6 @@ export class SelectPanelElement extends HTMLElement {
 
   hide() {
     this.dialog.close()
-    this.dispatchEvent(
-      new CustomEvent('panelClosed', {
-        detail: {panel: this},
-        bubbles: true,
-      }),
-    )
   }
 
   #setDynamicLabel() {
@@ -979,13 +992,13 @@ export class SelectPanelElement extends HTMLElement {
     }
   }
 
-  hideItem(item: SelectPanelItem | null) {
+  #hideItem(item: SelectPanelItem | null) {
     if (item) {
       item.setAttribute('hidden', 'hidden')
     }
   }
 
-  showItem(item: SelectPanelItem | null) {
+  #showItem(item: SelectPanelItem | null) {
     if (item) {
       item.removeAttribute('hidden')
     }

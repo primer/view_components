@@ -7,10 +7,11 @@
   open_on_load: open_on_load
 )) do |panel| %>
   <% panel.with_show_button { "Choose item" } %>
-  <% panel.with_item(label: "Item 1") %>
-  <% panel.with_item(label: "Item 2") %>
-  <% panel.with_item(label: "Item 3") %>
-  <% panel.with_item(label: "Item 4") %>
+  <% panel.with_item(label: "Item 1", item_id: :item1) %>
+  <% panel.with_item(label: "Item 2", item_id: :item2) %>
+  <% panel.with_item(label: "Item 3", item_id: :item3) %>
+  <% panel.with_item(label: "Item 4", item_id: :item4) %>
+  <% panel.with_item(label: "Disabled", disabled: true, item_id: :disabled) %>
 <% end %>
 
 <%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

@@ -326,7 +326,7 @@ module Primer
       # @label In Scoll container
       #
       def in_scroll_container
-        render_with_template()
+        render_with_template
       end
 
 

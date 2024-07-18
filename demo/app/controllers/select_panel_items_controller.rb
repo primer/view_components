@@ -3,9 +3,9 @@
 # :nodoc:
 class SelectPanelItemsController < ApplicationController
   SELECT_PANEL_ITEMS = [
-    { value: 1, selected: true, title: "Phaser", description: "The iconic handheld laser beam" },
-    { value: 2, title: "Photon torpedo", description: "Starship-mounted missile" },
-    { value: 3, title: "Bat'leth", description: "The Klingon warrior's preferred means of achieving honor" },
+    { value: 1, title: "Photon torpedo", description: "Starship-mounted missile" },
+    { value: 2, title: "Bat'leth", description: "The Klingon warrior's preferred means of achieving honor" },
+    { value: 3, selected: true, title: "Phaser", description: "The iconic handheld laser beam" },
     { value: 4, title: "Lightsaber", description: "An elegant weapon for a more civilized age", recent: true },
     { value: 5, title: "Proton pack", description: "Ghostbusting equipment" },
     { value: 6, title: "Sonic screwdriver", description: "The Time Lord's multi-purpose tool" },

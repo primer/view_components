@@ -37,7 +37,7 @@ module Primer
     # <%= render(
     #   Primer::Alpha::SelectPanel.new(
     #     fetch_strategy: :remote,
-    #     src: search_items_path  # a Rails URL helper
+    #     src: search_items_path  # perhaps a Rails URL helper
     #   )
     # ) %>
     # ```
@@ -207,8 +207,6 @@ module Primer
     #
     # #### State methods
     #
-    # * `showItem(item: Element)`: Shows the item, i.e. makes it visible.
-    # * `hideItem(item: Element)`: Hides the item, i.e. makes it invisible.
     # * `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
     # * `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
     # * `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.
