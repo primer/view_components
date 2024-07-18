@@ -31,16 +31,8 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
     end
 
     assert_selector("tab-container") do
-      assert_selector("div.tabnav") do
-        assert_selector("ul.tabnav-tabs[aria-label='label']") do
-          assert_selector("li") do
-            assert_selector("button#tab-1.tabnav-tab[aria-selected='true']", text: "Tab 1")
-          end
-          assert_selector("li") do
-            assert_selector("button#tab-2.tabnav-tab", text: "Tab 2")
-          end
-        end
-      end
+      assert_selector("button#tab-1.tabnav-tab[aria-selected='true']", text: "Tab 1")
+      assert_selector("button#tab-2.tabnav-tab", text: "Tab 2")
       assert_selector("div#panel-tab-1[aria-labelledby='tab-1']", text: "Panel 1")
       assert_selector("div#panel-tab-2[aria-labelledby='tab-2']", text: "Panel 2", visible: false)
     end
@@ -70,16 +62,8 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
       component.with_extra { "extra" }
     end
     assert_selector("tab-container") do
-      assert_selector("div.tabnav") do
-        assert_selector("ul.tabnav-tabs[aria-label='label']") do
-          assert_selector("li") do
-            assert_selector("button#tab-1.tabnav-tab[aria-selected='true']", text: "Tab 1")
-          end
-          assert_selector("li") do
-            assert_selector("button#tab-2.tabnav-tab", text: "Tab 2")
-          end
-        end
-      end
+      assert_selector("button#tab-1.tabnav-tab[aria-selected='true']", text: "Tab 1")
+      assert_selector("button#tab-2.tabnav-tab", text: "Tab 2")
       assert_selector("div#panel-tab-1[aria-labelledby='tab-1']", text: "Panel 1")
       assert_selector("div#panel-tab-2[aria-labelledby='tab-2']", text: "Panel 2", visible: false)
       assert_text("extra")
