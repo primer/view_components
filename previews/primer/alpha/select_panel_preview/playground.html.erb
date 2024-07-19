@@ -11,6 +11,9 @@
   **system_arguments
 )) do |panel| %>
   <% panel.with_show_button { title } %>
+  <% if subtitle %>
+    <% panel.with_subtitle { subtitle } %>
+  <% end %>
 <% end %>
 
 <%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

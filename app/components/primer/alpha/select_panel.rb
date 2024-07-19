@@ -404,7 +404,6 @@ module Primer
           form_arguments: form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
-          body_id: @body_id,
           role: "listbox",
           aria_selection_variant: @select_variant == :multiple ? :checked : :selected,
           aria: {

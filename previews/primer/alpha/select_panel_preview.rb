@@ -20,6 +20,7 @@ module Primer
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
       def playground(
         title: "Sci-fi equipment",
+        subtitle: "Various tools from your favorite shows",
         size: :auto,
         simulate_failure: false,
         simulate_no_results: false,
@@ -33,6 +34,7 @@ module Primer
         anchor_side: :outside_bottom
       )
         render_with_template(locals: {
+          subtitle: subtitle,
           system_arguments: {
             title: title,
             size: size,
