@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-import {test, expect, Page} from '@playwright/test'
+import {test, expect} from '@playwright/test'
 import {getPreviewURLs} from './helpers'
 import type {ComponentPreviews} from './helpers'
 
@@ -22,7 +21,7 @@ const themes = [
   'dark',
   'dark_dimmed',
   'dark_high_contrast',
-  'dark_colorblind'
+  'dark_colorblind',
 ]
 
 test.describe('generate snapshots', () => {
@@ -39,6 +38,11 @@ test.describe('generate snapshots', () => {
 
               await new Promise(resolve => setTimeout(resolve, 100))
               await page.keyboard.press('Enter')
+
+              const subject = await page.evaluate(() => document.querySelector('[data-interaction-subject]'))
+              if (subject) {
+                await page.waitForSelector('[data-interaction-subject][data-ready=true]')
+              }
 
               // Wait a bit for animations etc to resolve
               await new Promise(resolve => setTimeout(resolve, 100))
