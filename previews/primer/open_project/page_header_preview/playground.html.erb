@@ -1,5 +1,10 @@
-<%= render Primer::OpenProject::PageHeader.new do |header| %>
-  <%= header.with_title(variant: variant) { title } %>
+<%= render Primer::OpenProject::PageHeader.new(state: in_edit_state ? :edit : :show) do |header| %>
+  <%=  header.with_title(variant: variant) do |t| %>
+    <% if in_edit_state %>
+      <%= t.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar") %>
+    <% end %>
+    <%= title %>
+  <% end %>
   <%= header.with_description { description } %>
   <%= header.with_leading_action(icon: with_leading_action, href: '#', 'aria-label': "A leading action") if with_leading_action && with_leading_action != :none %>
   <%= header.with_breadcrumbs(breadcrumb_items) %>

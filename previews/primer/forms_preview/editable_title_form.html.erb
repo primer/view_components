@@ -1,0 +1,13 @@
+<%= primer_form_with(
+      model: nil,
+      method: :put,
+      url: "/foo"
+    ) do |f|
+  render(::PageHeader::EditableTitleForm.new(
+    f,
+    cancel_url: "/bar",
+    input_name: "input_name",
+    label: "My label",
+    placeholder: "Title"
+  ))
+end %>

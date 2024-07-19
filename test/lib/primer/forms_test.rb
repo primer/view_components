@@ -328,4 +328,12 @@ class Primer::FormsTest < Minitest::Test
     assert_includes ids, caption_id
     assert_includes ids, validation_id
   end
+
+  def test_page_header_editable_form
+    render_preview(:editable_title_form)
+
+    assert_selector "button[type=submit]"
+    assert_selector "a[name=cancel]"
+    assert_selector "primer-text-field.FormControl"
+  end
 end

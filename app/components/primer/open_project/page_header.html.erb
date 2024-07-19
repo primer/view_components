@@ -20,7 +20,7 @@
   <div class="PageHeader-titleBar">
     <%= leading_action %>
     <%= title %>
-    <% if actions.any? %>
+    <% if actions.any? && show_state? %>
       <div class="PageHeader-actions">
         <% actions.each do |action| %>
           <%= action %>

@@ -34,6 +34,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::OpenProject::BorderGrid, {}, proc { |component|
       component.with_row { "Foo" }
     }],
+    [Primer::OpenProject::PageHeader::Title, {}, proc { "Hello world" }],
     [Primer::OpenProject::PageHeader, {}, proc { |component|
       component.with_title { "Foo" }
       component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
@@ -189,6 +190,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::GridLayout::Area",
       "Primer::OpenProject::PageHeader::Menu",
       "Primer::OpenProject::PageHeader::Dialog",
+      "Primer::OpenProject::PageHeader::Title",
       "Primer::OpenProject::SidePanel::Section"
     ]
 
