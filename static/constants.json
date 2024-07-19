@@ -597,6 +597,22 @@
   },
   "Primer::Alpha::Select": {
   },
+  "Primer::Alpha::SelectPanel": {
+    "DEFAULT_FETCH_STRATEGY": "remote",
+    "DEFAULT_PRELOAD": false,
+    "DEFAULT_SELECT_VARIANT": "single",
+    "FETCH_STRATEGIES": [
+      "remote",
+      "eventually_local",
+      "local"
+    ],
+    "ItemList": "Primer::Alpha::ActionList",
+    "SELECT_VARIANT_OPTIONS": [
+      "single",
+      "multiple",
+      "none"
+    ]
+  },
   "Primer::Alpha::SubmitButton": {
   },
   "Primer::Alpha::TabContainer": {
