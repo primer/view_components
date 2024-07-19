@@ -20,6 +20,7 @@ module Primer
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
       def playground(
         title: "Sci-fi equipment",
+        subtitle: "Various tools from your favorite shows",
         size: :auto,
         simulate_failure: false,
         simulate_no_results: false,
@@ -33,6 +34,7 @@ module Primer
         anchor_side: :outside_bottom
       )
         render_with_template(locals: {
+          subtitle: subtitle,
           system_arguments: {
             title: title,
             size: size,
@@ -215,6 +217,22 @@ module Primer
       # @param open_on_load toggle
       def eventually_local_fetch_initial_failure(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
+      end
+
+      # @label Single-select form
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def single_select_form(open_on_load: false, route_format: :html)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
+      end
+
+      # @label Multi-select form
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def multiselect_form(open_on_load: false, route_format: :html)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
       end
     end
   end

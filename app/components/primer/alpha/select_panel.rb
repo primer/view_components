@@ -37,7 +37,7 @@ module Primer
     # <%= render(
     #   Primer::Alpha::SelectPanel.new(
     #     fetch_strategy: :remote,
-    #     src: search_items_path  # a Rails URL helper
+    #     src: search_items_path  # perhaps a Rails URL helper
     #   )
     # ) %>
     # ```
@@ -122,13 +122,14 @@ module Primer
     #
     # `SelectPanel`s can be used as form inputs. They behave very similarly to how HTML `<select>` boxes behave, and
     # play nicely with Rails' built-in form mechanisms. Pass arguments via the `form_arguments:` argument, including
-    # the Rails form builder object and the name of the field:
+    # the Rails form builder object and the name of the field. Each list item must also have a value specified in
+    # `content_arguments: { data: { value: } }`.
     #
     # ```erb
     # <% form_with(model: Address.new) do |f| %>
     #   <%= render(Primer::Alpha::SelectPanel.new(form_arguments: { builder: f, name: "country" })) do |menu| %>
     #     <% countries.each do |country|
-    #       <% menu.with_item(label: country.name, data: { value: country.code }) %>
+    #       <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>
     #     <% end %>
     #   <% end %>
     # <% end %>
@@ -207,8 +208,6 @@ module Primer
     #
     # #### State methods
     #
-    # * `showItem(item: Element)`: Shows the item, i.e. makes it visible.
-    # * `hideItem(item: Element)`: Hides the item, i.e. makes it invisible.
     # * `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.
     # * `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.
     # * `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.
@@ -406,7 +405,6 @@ module Primer
           form_arguments: form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
-          body_id: @body_id,
           role: "listbox",
           aria_selection_variant: @select_variant == :multiple ? :checked : :selected,
           aria: {

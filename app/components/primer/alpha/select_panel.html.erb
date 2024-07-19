@@ -36,7 +36,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <div data-target="select-panel.errorBannerElement" hidden>
+      <div data-target="select-panel.bannerErrorElement" hidden>
         <%= render Primer::Alpha::Banner.new(scheme: :danger, full: true, mt: 2) do %>
           <% if error_content? %>
             <%= error_content %>
