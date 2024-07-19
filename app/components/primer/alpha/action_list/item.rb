@@ -40,7 +40,9 @@ module Primer
 
         # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
         # for layout options.
-        renders_one :description
+        renders_one :description, -> (test_selector: nil) do
+          Primer::BaseComponent.new(tag: "span", test_selector: test_selector) { content }
+        end
 
         # An icon, avatar, SVG, or custom content that will render to the left of the label.
         #
