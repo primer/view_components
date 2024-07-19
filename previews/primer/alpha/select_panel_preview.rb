@@ -218,6 +218,22 @@ module Primer
       def eventually_local_fetch_initial_failure(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
+
+      # @label Single-select form
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def single_select_form(open_on_load: false, route_format: :html)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
+      end
+
+      # @label Multi-select form
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def multiselect_form(open_on_load: false, route_format: :html)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
+      end
     end
   end
 end

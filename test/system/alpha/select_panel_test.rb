@@ -76,6 +76,14 @@ module Alpha
       find("input").fill_in(with: query)
     end
 
+    def assert_announces(message:)
+      yield
+
+      assert_selector "[data-target='select-panel.ariaLiveContainer']" do |element|
+        assert_includes element.text, message
+      end
+    end
+
     ########## TESTS ############
 
     def test_invoker_opens_panel
@@ -685,6 +693,88 @@ module Alpha
         ["Photon torpedo", "Phaser"].each do |item_text|
           assert_includes page.evaluate_script("document.activeElement").text, item_text
           keyboard.type(:down)
+        end
+      end
+    end
+
+    def test_single_select_form
+      visit_preview(:single_select_form, route_format: :json)
+
+      click_on_invoker_button
+      click_on_second_item
+
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "item2", response.dig(*%w(form_params item))
+    end
+
+    def test_single_select_form_submits_pre_selected_item
+      visit_preview(:single_select_form, route_format: :json)
+
+      # the first item has been pre-selected, so there's no need to select any items
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "item1", response.dig(*%w(form_params item))
+    end
+
+    def test_multi_select_form
+      visit_preview(:multiselect_form, route_format: :json)
+
+      click_on_invoker_button
+      click_on_second_item
+      keyboard.type(:escape) # close panel
+
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+
+      # first item is pre-selected
+      assert_equal ["item1", "item2"], response.dig(*%w(form_params item))
+    end
+
+    ########## ANNOUNCEMENT TESTS ############
+
+    def test_ev_loc_announces_items
+      visit_preview(:eventually_local_fetch)
+
+      assert_announces(message: "8 results tab for results") do
+        wait_for_items_to_load do
+          click_on_invoker_button
+        end
+      end
+    end
+
+    def test_remote_fetch_announces_items
+      visit_preview(:remote_fetch)
+
+      assert_announces(message: "8 results tab for results") do
+        wait_for_items_to_load do
+          click_on_invoker_button
+        end
+      end
+    end
+
+    def test_ev_loc_announces_no_results
+      visit_preview(:eventually_local_fetch_no_results)
+
+      assert_announces(message: "No results found") do
+        wait_for_items_to_load do
+          click_on_invoker_button
+        end
+      end
+    end
+
+    def test_remote_fetch_announces_no_results
+      visit_preview(:remote_fetch_no_results)
+
+      assert_announces(message: "No results found") do
+        wait_for_items_to_load do
+          click_on_invoker_button
         end
       end
     end

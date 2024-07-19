@@ -122,13 +122,14 @@ module Primer
     #
     # `SelectPanel`s can be used as form inputs. They behave very similarly to how HTML `<select>` boxes behave, and
     # play nicely with Rails' built-in form mechanisms. Pass arguments via the `form_arguments:` argument, including
-    # the Rails form builder object and the name of the field:
+    # the Rails form builder object and the name of the field. Each list item must also have a value specified in
+    # `content_arguments: { data: { value: } }`.
     #
     # ```erb
     # <% form_with(model: Address.new) do |f| %>
     #   <%= render(Primer::Alpha::SelectPanel.new(form_arguments: { builder: f, name: "country" })) do |menu| %>
     #     <% countries.each do |country|
-    #       <% menu.with_item(label: country.name, data: { value: country.code }) %>
+    #       <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>
     #     <% end %>
     #   <% end %>
     # <% end %>

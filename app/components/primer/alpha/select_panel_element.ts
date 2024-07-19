@@ -194,70 +194,64 @@ export class SelectPanelElement extends HTMLElement {
     this.#softDisableItems()
     updateWhenVisible(this)
 
-    if (this.remoteInput) {
-      this.remoteInput.addEventListener('loadstart', this, {signal})
-      this.remoteInput.addEventListener('loadend', this, {signal})
-    } else {
-      const mutationObserver = new MutationObserver(() => {
-        if (this.remoteInput) {
-          this.remoteInput.addEventListener('loadstart', this, {signal})
-          this.remoteInput.addEventListener('loadend', this, {signal})
-          mutationObserver.disconnect()
-        }
-      })
+    this.#waitForCondition(
+      () => Boolean(this.remoteInput),
+      () => {
+        this.remoteInput.addEventListener('loadstart', this, {signal})
+        this.remoteInput.addEventListener('loadend', this, {signal})
+      },
+    )
 
-      mutationObserver.observe(this, {childList: true, subtree: true})
-    }
-
-    if (this.includeFragment) {
-      this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
-      this.includeFragment.addEventListener('error', this, {signal})
-      this.includeFragment.addEventListener('loadend', this, {signal})
-    } else {
-      const mutationObserver = new MutationObserver(() => {
-        if (this.includeFragment) {
-          this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
-          this.includeFragment.addEventListener('error', this, {signal})
-          this.includeFragment.addEventListener('loadend', this, {signal})
-          mutationObserver.disconnect()
-        }
-      })
-
-      mutationObserver.observe(this, {childList: true, subtree: true})
-    }
+    this.#waitForCondition(
+      () => Boolean(this.includeFragment),
+      () => {
+        this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
+        this.includeFragment.addEventListener('error', this, {signal})
+        this.includeFragment.addEventListener('loadend', this, {signal})
+      },
+    )
 
     this.#dialogIntersectionObserver = new IntersectionObserver(entries => {
       for (const entry of entries) {
         const elem = entry.target
         if (entry.isIntersecting && elem === this.dialog) {
           this.updateAnchorPosition()
-
-          if (this.#fetchStrategy === FetchStrategy.LOCAL) {
-            this.#updateItemVisibility()
-          }
         }
       }
     })
 
-    if (this.dialog) {
-      if (this.getAttribute('data-open-on-load') === 'true') {
-        this.show()
-      }
+    this.#waitForCondition(
+      () => Boolean(this.dialog),
+      () => {
+        if (this.getAttribute('data-open-on-load') === 'true') {
+          this.show()
+        }
 
-      this.#dialogIntersectionObserver.observe(this.dialog)
-      this.dialog.addEventListener('close', this, {signal})
+        this.#dialogIntersectionObserver.observe(this.dialog)
+        this.dialog.addEventListener('close', this, {signal})
+      },
+    )
+
+    if (this.#fetchStrategy === FetchStrategy.LOCAL) {
+      this.#waitForCondition(
+        () => this.items.length > 0,
+        () => {
+          this.#updateItemVisibility()
+          this.#updateInput()
+        },
+      )
+    }
+  }
+
+  // Waits for condition to return true. If it returns false initially, this function creates a
+  // MutationObserver that calls body() whenever the contents of the component change.
+  #waitForCondition(condition: () => boolean, body: () => void) {
+    if (condition()) {
+      body()
     } else {
       const mutationObserver = new MutationObserver(() => {
-        if (this.dialog) {
-          if (this.getAttribute('data-open-on-load') === 'true') {
-            this.show()
-          }
-
-          this.#dialogIntersectionObserver.observe(this.dialog)
-          mutationObserver.disconnect()
-
-          this.dialog.addEventListener('close', this, {signal})
-        }
+        body()
+        mutationObserver.disconnect()
       })
 
       mutationObserver.observe(this, {childList: true, subtree: true})
@@ -656,7 +650,10 @@ export class SelectPanelElement extends HTMLElement {
     this.#maybeAnnounce()
 
     for (const item of this.items) {
-      const value = item.getAttribute('data-value')
+      const itemContent = this.#getItemContent(item)
+      if (!itemContent) continue
+
+      const value = itemContent.getAttribute('data-value')
 
       if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
         this.#addSelectedItem(item)
@@ -846,6 +843,7 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     this.#updateInput()
+    this.#updateTabIndices()
 
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
