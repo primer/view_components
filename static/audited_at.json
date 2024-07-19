@@ -52,6 +52,7 @@
   "Primer::Alpha::SegmentedControl": "2023-02-01",
   "Primer::Alpha::SegmentedControl::Item": "2023-02-01",
   "Primer::Alpha::Select": "",
+  "Primer::Alpha::SelectPanel": "",
   "Primer::Alpha::SubmitButton": "",
   "Primer::Alpha::TabContainer": "",
   "Primer::Alpha::TabNav": "",
