@@ -216,6 +216,10 @@ export class SelectPanelElement extends HTMLElement {
         const elem = entry.target
         if (entry.isIntersecting && elem === this.dialog) {
           this.updateAnchorPosition()
+
+          if (this.#fetchStrategy === FetchStrategy.LOCAL) {
+            this.#updateItemVisibility()
+          }
         }
       }
     })

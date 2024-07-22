@@ -250,10 +250,22 @@ module Primer
     # )
     # ```
     class SelectPanel < Primer::Component
-      status :alpha
-
       # The component that should be used to render the list of items in the body of a SelectPanel.
-      ItemList = Primer::Alpha::ActionList
+      class ItemList < Primer::Alpha::ActionList
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
+        def initialize(**system_arguments)
+          select_variant = system_arguments[:select_variant] || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
+
+          super(
+            p: 2,
+            role: "listbox",
+            aria_selection_variant: select_variant == :single ? :selected : :checked,
+            **system_arguments
+          )
+        end
+      end
+
+      status :alpha
 
       DEFAULT_PRELOAD = false
 
@@ -328,6 +340,7 @@ module Primer
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         src: nil,
         title: "Menu",
