@@ -250,8 +250,10 @@ export class SelectPanelElement extends HTMLElement {
       body()
     } else {
       const mutationObserver = new MutationObserver(() => {
-        body()
-        mutationObserver.disconnect()
+        if (condition()) {
+          body()
+          mutationObserver.disconnect()
+        }
       })
 
       mutationObserver.observe(this, {childList: true, subtree: true})
