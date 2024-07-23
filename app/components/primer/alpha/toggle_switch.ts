@@ -1,10 +1,11 @@
-import {controller, target} from '@github/catalyst'
+import {controller, target, attr} from '@github/catalyst'
 
 @controller
 class ToggleSwitchElement extends HTMLElement {
   @target switch: HTMLElement
   @target loadingSpinner: HTMLElement
   @target errorIcon: HTMLElement
+  @attr turbo = false
 
   private toggling = false
 
@@ -158,13 +159,19 @@ class ToggleSwitchElement extends HTMLElement {
 
     let response
 
+    const requestHeaders: {[key: string]: string} = {
+      'Requested-With': 'XMLHttpRequest',
+    }
+
+    if (this.turbo) {
+      requestHeaders['Accept'] = 'text/vnd.turbo-stream.html'
+    }
+
     try {
       response = await fetch(this.src, {
         credentials: 'same-origin',
         method: 'POST',
-        headers: {
-          'Requested-With': 'XMLHttpRequest',
-        },
+        headers: requestHeaders,
         body,
       })
     } catch (error) {
@@ -174,12 +181,19 @@ class ToggleSwitchElement extends HTMLElement {
     if (!response.ok) {
       throw new Error(await response.text())
     }
+
+    if (window.Turbo && this.turbo) {
+      window.Turbo.renderStreamMessage(await response.text())
+    }
   }
 }
 
 declare global {
   interface Window {
     ToggleSwitchElement: typeof ToggleSwitchElement
+    Turbo: {
+      renderStreamMessage: (message: string) => void
+    }
   }
 }
 
