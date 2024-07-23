@@ -195,6 +195,18 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
+    end
+
+    def test_single_select_remote_fetch_item_checked
+      visit_preview(:playground)
+
+      click_on_invoker_button
+      click_on_first_item
+
+      # clicking item closes panel, so checked item is hidden
+      assert_selector "[aria-selected=true]", text: "Photon torpedo", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_checked_via_keyboard_enter
@@ -212,6 +224,7 @@ module Alpha
 
       keyboard.type(:enter, :tab, :down, :enter)
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_checked_via_keyboard_space
@@ -229,6 +242,7 @@ module Alpha
 
       keyboard.type(:enter, :tab, :down, :space)
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_unchecks_previously_checked_item
@@ -239,12 +253,14 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 3", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
 
       click_on_invoker_button
       click_on_second_item
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_selected_item_cannot_be_unchecked
@@ -258,6 +274,7 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
+      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_disabled_item_cannot_be_checked
@@ -282,6 +299,7 @@ module Alpha
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Item 2"
       assert_selector "[aria-checked=true]", text: "Item 3"
+      refute_selector "[aria-selected]", visible: :hidden
     end
 
     def test_multi_select_items_checked_via_keyboard_enter
@@ -301,6 +319,8 @@ module Alpha
       assert_selector "[aria-checked=true]", count: 2
       assert_selector "[aria-checked=true]", text: "Item 1"
       assert_selector "[aria-checked=true]", text: "Item 2"
+
+      refute_selector "[aria-selected]", visible: :hidden
     end
 
     def test_multi_select_items_checked_via_keyboard_space
@@ -320,6 +340,8 @@ module Alpha
       assert_selector "[aria-checked=true]", count: 2
       assert_selector "[aria-checked=true]", text: "Item 1"
       assert_selector "[aria-checked=true]", text: "Item 2"
+
+      refute_selector "[aria-selected]", visible: :hidden
     end
 
     def test_multi_select_items_can_be_unchecked
@@ -480,6 +502,17 @@ module Alpha
       keyboard.type(:escape)
 
       assert page.evaluate_script("window.panelClosed")
+    end
+
+    ########### LOCAL FETCH TESTS ############
+
+    def test_local_fetch_no_results
+      visit_preview(:local_fetch_no_results)
+
+      click_on_invoker_button
+
+      refute_selector "select-panel ul li"
+      assert_selector "select-panel", text: "No results"
     end
 
     ########## EVENTUALLY LOCAL TESTS ############

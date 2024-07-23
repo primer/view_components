@@ -1,8 +1,6 @@
 <% unless results.empty? %>
   <%= render(Primer::Alpha::SelectPanel::ItemList.new(
-    select_variant: :multiple,
-    p: 2,
-    role: "listbox",
+    select_variant: (params[:select_variant] || :multiple).to_sym,
     aria: {
       label: "options",
     },

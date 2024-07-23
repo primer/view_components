@@ -5,7 +5,11 @@
 
 <%= render(Primer::Alpha::SelectPanel.new(
   data: { interaction_subject: subject_id },
-  src: select_panel_items_path(show_results: !simulate_no_results, fail: simulate_failure),
+  src: select_panel_items_path(
+    select_variant: :single,
+    show_results: !simulate_no_results,
+    fail: simulate_failure
+  ),
   select_variant: :single,
   fetch_strategy: :remote,
   **system_arguments
