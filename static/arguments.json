@@ -2467,6 +2467,28 @@
         "type": "Symbol",
         "default": "`:outside_bottom`",
         "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "SelectPanel::ItemList",
+    "status": "alpha",
+    "a11y_reviewed": true,
+    "short_name": "SelectPanelItemList",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/select_panel/item_list.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select_panel/item_list/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)."
       }
     ]
   },

@@ -53,6 +53,7 @@
   "Primer::Alpha::SegmentedControl::Item": "alpha",
   "Primer::Alpha::Select": "alpha",
   "Primer::Alpha::SelectPanel": "alpha",
+  "Primer::Alpha::SelectPanel::ItemList": "alpha",
   "Primer::Alpha::SubmitButton": "alpha",
   "Primer::Alpha::TabContainer": "alpha",
   "Primer::Alpha::TabNav": "alpha",

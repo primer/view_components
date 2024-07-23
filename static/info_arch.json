@@ -7630,6 +7630,12 @@
         "type": "Symbol",
         "default": "`:outside_bottom`",
         "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -8080,7 +8086,64 @@
       }
     ],
     "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Alpha::SelectPanel::ItemList",
+        "description": "The component that should be used to render the list of items in the body of a SelectPanel.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": true,
+        "component": "SelectPanel::ItemList",
+        "status": "alpha",
+        "a11y_reviewed": true,
+        "short_name": "SelectPanelItemList",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/select_panel/item_list.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select_panel/item_list/default/",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}."
+          }
+        ],
+        "slots": [
+          {
+            "name": "heading",
+            "description": "Heading text rendered above the list of items.",
+            "parameters": [
+              {
+                "name": "component_klass",
+                "type": "Class",
+                "default": "N/A",
+                "description": "The class to use instead of the default {{#link_to_component}}Primer::Alpha::ActionList::Heading{{/link_to_component}}."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by `component_klass`."
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
+            "parameters": [
 
+            ]
+          }
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      }
     ]
   },
   {
