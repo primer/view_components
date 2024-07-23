@@ -182,7 +182,8 @@ class ToggleSwitchElement extends HTMLElement {
       throw new Error(await response.text())
     }
 
-    if (window.Turbo && this.turbo) {
+    const contentType = response.headers.get('Content-Type')
+    if (window.Turbo && this.turbo && contentType?.startsWith('text/vnd.turbo-stream.html')) {
       window.Turbo.renderStreamMessage(await response.text())
     }
   }
