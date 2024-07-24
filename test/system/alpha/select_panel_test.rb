@@ -72,6 +72,14 @@ module Alpha
       assert_selector "select-panel[data-ready=true]", wait: 5
     end
 
+    def wait_for_dialog_ready
+      begin
+        assert_selector "dialog[data-ready]"
+      rescue Minitest::Assertion
+        # if we've waited this long, assume everything is fine
+      end
+    end
+
     def filter_results(query:)
       find("input").fill_in(with: query)
     end
@@ -255,15 +263,29 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, "click" on first item
-      keyboard.type(:enter, :tab, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on first item
+      keyboard.type(:tab, :enter)
 
       # activating item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 1", visible: :hidden
 
       focus_on_invoker_button
 
-      keyboard.type(:enter, :tab, :down, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on second item
+      keyboard.type(:tab, :down, :enter)
+
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
       refute_selector "[aria-checked]", visible: :hidden
     end
@@ -273,15 +295,29 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, "click" on first item
-      keyboard.type(:enter, :tab, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on first item
+      keyboard.type(:tab, :space)
 
       # activating item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 1", visible: :hidden
 
       focus_on_invoker_button
 
-      keyboard.type(:enter, :tab, :down, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" second item
+      keyboard.type(:tab, :down, :space)
+
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
       refute_selector "[aria-checked]", visible: :hidden
     end
@@ -348,8 +384,14 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, select first item
-      keyboard.type(:enter, :tab, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # select first item
+      keyboard.type(:tab, :enter)
 
       assert_selector "[aria-checked=true]", count: 1
       assert_selector "[aria-checked=true]", text: "Item 1"
@@ -369,8 +411,14 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, select first item
-      keyboard.type(:enter, :tab, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # select first item
+      keyboard.type(:tab, :space)
 
       assert_selector "[aria-checked=true]", count: 1
       assert_selector "[aria-checked=true]", text: "Item 1"

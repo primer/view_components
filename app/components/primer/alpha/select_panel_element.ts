@@ -212,15 +212,22 @@ export class SelectPanelElement extends HTMLElement {
     )
 
     this.#dialogIntersectionObserver = new IntersectionObserver(entries => {
-      // Focus on the filter input when the dialog opens to work around a Safari limitation
-      // that prevents the autofocus attribute from working as it does in other browsers
-      if (this.filterInputTextField) {
-        this.filterInputTextField.focus()
-      }
-
       for (const entry of entries) {
         const elem = entry.target
         if (entry.isIntersecting && elem === this.dialog) {
+          // Focus on the filter input when the dialog opens to work around a Safari limitation
+          // that prevents the autofocus attribute from working as it does in other browsers
+          if (this.filterInputTextField) {
+            if (document.activeElement !== this.filterInputTextField) {
+              this.filterInputTextField.focus()
+            }
+          }
+
+          // signal that any focus hijinks are finished (thanks Safari)
+          // eslint-disable-next-line no-console
+          console.log('Setting data-ready')
+          this.dialog.setAttribute('data-ready', 'true')
+
           this.updateAnchorPosition()
 
           if (this.#fetchStrategy === FetchStrategy.LOCAL) {
@@ -233,12 +240,12 @@ export class SelectPanelElement extends HTMLElement {
     this.#waitForCondition(
       () => Boolean(this.dialog),
       () => {
+        this.#dialogIntersectionObserver.observe(this.dialog)
+        this.dialog.addEventListener('close', this, {signal})
+
         if (this.getAttribute('data-open-on-load') === 'true') {
           this.show()
         }
-
-        this.#dialogIntersectionObserver.observe(this.dialog)
-        this.dialog.addEventListener('close', this, {signal})
       },
     )
 
@@ -456,6 +463,9 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     if (event.target === this.dialog && event.type === 'close') {
+      // Remove data-ready so it can be set the next time the panel is opened
+      this.dialog.removeAttribute('data-ready')
+
       this.dispatchEvent(
         new CustomEvent('panelClosed', {
           detail: {panel: this},
