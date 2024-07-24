@@ -212,6 +212,12 @@ export class SelectPanelElement extends HTMLElement {
     )
 
     this.#dialogIntersectionObserver = new IntersectionObserver(entries => {
+      // Focus on the filter input when the dialog opens to work around a Safari limitation
+      // that prevents the autofocus attribute from working as it does in other browsers
+      if (this.filterInputTextField) {
+        this.filterInputTextField.focus()
+      }
+
       for (const entry of entries) {
         const elem = entry.target
         if (entry.isIntersecting && elem === this.dialog) {
@@ -610,22 +616,23 @@ export class SelectPanelElement extends HTMLElement {
       const key = (event as KeyboardEvent).key
 
       if (key === 'ArrowDown') {
-        const item = this.focusableItem || this.visibleItems[0]
+        const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
 
         if (item) {
-          item.focus()
+          this.#getItemContent(item)!.focus()
           event.preventDefault()
         }
       } else if (key === 'Home') {
-        const item = this.visibleItems[0]
+        const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          item.focus()
+          this.#getItemContent(item)!.focus()
           event.preventDefault()
         }
       } else if (key === 'End') {
         if (this.visibleItems.length > 0) {
-          this.visibleItems[this.visibleItems.length - 1].focus()
+          const item = this.visibleItems[this.visibleItems.length - 1] as HTMLLIElement
+          this.#getItemContent(item)!.focus()
           event.preventDefault()
         }
       }

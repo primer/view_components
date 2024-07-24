@@ -196,7 +196,7 @@ module Alpha
 
       keyboard.type(:down)
 
-      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.tag_name, "button"
       assert_equal active_element.text, "Item 1"
     end
 
@@ -209,7 +209,7 @@ module Alpha
 
       keyboard.type(:home)
 
-      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.tag_name, "button"
       assert_equal active_element.text, "Item 1"
     end
 
@@ -222,7 +222,7 @@ module Alpha
 
       keyboard.type(:end)
 
-      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.tag_name, "button"
       assert_equal active_element.text, "Item 4"
     end
 
