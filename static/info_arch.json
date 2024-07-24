@@ -17312,6 +17312,9 @@
         "description": "Returns the value of attribute css_class.",
         "parameters": [
 
+        ],
+        "return_types": [
+
         ]
       }
     ],
@@ -17654,6 +17657,9 @@
         "description": "transform anchor tag strings to {href, text} objects\ne.g \"\\u003ca href=\\\"/admin\\\"\\u003eAdministration\\u003c/a\\u003e\"",
         "parameters": [
 
+        ],
+        "return_types": [
+
         ]
       },
       {
@@ -17661,6 +17667,9 @@
         "description": "Check if the item is an anchor tag string e.g \"\\u003ca href=\\\"/admin\\\"\\u003eAdministration\\u003c/a\\u003e\"",
         "parameters": [
 
+        ],
+        "return_types": [
+          "Boolean"
         ]
       }
     ],
