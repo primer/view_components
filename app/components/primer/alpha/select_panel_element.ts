@@ -224,8 +224,6 @@ export class SelectPanelElement extends HTMLElement {
           }
 
           // signal that any focus hijinks are finished (thanks Safari)
-          // eslint-disable-next-line no-console
-          console.log('Setting data-ready')
           this.dialog.setAttribute('data-ready', 'true')
 
           this.updateAnchorPosition()
