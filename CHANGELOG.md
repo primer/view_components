@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.39.0
+
+### Minor Changes
+
+- [#2963](https://github.com/primer/view_components/pull/2963) [`37ee0f7`](https://github.com/opf/primer_view_components/commit/37ee0f7b0ef2d0de95ac337e43c1382a7f19e103) Thanks [@camertron](https://github.com/camertron)! - Add defaults to SelectPanel::ItemLists; fix issue showing no results label for local fetch strategy
+
 ## 0.38.0
 
 ### Minor Changes
