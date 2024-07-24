@@ -606,12 +606,14 @@
       "eventually_local",
       "local"
     ],
-    "ItemList": "Primer::Alpha::ActionList",
+    "ItemList": "Primer::Alpha::SelectPanel::ItemList",
     "SELECT_VARIANT_OPTIONS": [
       "single",
       "multiple",
       "none"
     ]
+  },
+  "Primer::Alpha::SelectPanel::ItemList": {
   },
   "Primer::Alpha::SubmitButton": {
   },
