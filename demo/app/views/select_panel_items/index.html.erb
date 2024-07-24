@@ -1,0 +1,17 @@
+<% unless results.empty? %>
+  <%= render(Primer::Alpha::SelectPanel::ItemList.new(
+    select_variant: :multiple,
+    p: 2,
+    role: "listbox",
+    aria: {
+      label: "options",
+    },
+    )) do |list| %>
+    <% results.each do |result| %>
+      <% list.with_item(content_arguments: { data: { value: result[:value] } }, active: result[:selected] || false) do |item| %>
+        <% item.with_description { result[:description] } %>
+        <%= result[:title] %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

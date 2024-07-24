@@ -131,9 +131,7 @@ module Primer
     #
     # ### JavaScript API
     #
-    # `ActionList`s render an `<action-list>` custom element that exposes behavior to the client. For all these methods,
-    # `itemId` refers to the value of the `item_id:` argument (see below) that is used to populate the `data-item-id` HTML
-    # attribute.
+    # `ActionMenu`s render an `<action-menu>` custom element that exposes behavior to the client.
     #
     # #### Query methods
     #
@@ -141,6 +139,15 @@ module Primer
     # * `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.
     # * `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.
     # * `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.
+    #
+    # NOTE: Item IDs are special values provided by the user that are attached to `ActionMenu` items as the `data-item-id`
+    # HTML attribute. Item IDs can be provided by passing an `item_id:` attribute when adding items to the list, eg:
+    #
+    # ```erb
+    # <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
+    #   <% menu.with_item(item_id: "my-id") %>
+    # <% end %>
+    # ```
     #
     # #### State methods
     #
@@ -156,9 +163,9 @@ module Primer
     # The `<action-menu>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.
     #
     # ```typescript
-    # document.querySelector("action-menu").addEventListener("itemActivated", (event: ItemActivatedEvent) => {
-    #   event.item  // Element: the <li> item that was activated
-    #   event.checked  // boolean: whether or not the result of the activation checked the item
+    # document.querySelector("action-menu").addEventListener("itemActivated", (event: CustomEvent<ItemActivatedEvent>) => {
+    #   event.detail.item     // Element: the <li> item that was activated
+    #   event.detail.checked  // boolean: whether or not the result of the activation checked the item
     # })
     # ```
     class ActionMenu < Primer::Component

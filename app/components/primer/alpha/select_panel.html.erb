@@ -1,0 +1,100 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <dialog-helper>
+    <%= show_button %>
+    <%= render(@dialog) do %>
+      <%= render Primer::Alpha::Dialog::Header.new(id: "#{@panel_id}-dialog", title: @title) do |header| %>
+        <% if subtitle? %>
+          <% header.with_subtitle do %>
+            <%= subtitle %>
+          <% end %>
+        <% end %>
+        <% if show_filter? %>
+          <% header.with_filter do %>
+            <%= render(Primer::BaseComponent.new(
+              tag: :"remote-input",
+              aria: { owns: @body_id },
+              **(@fetch_strategy == :remote ? { src: @src } : {}),
+              data: {
+                target: "select-panel.remoteInput"
+              }
+            )) do %>
+              <%= render(Primer::Alpha::TextField.new(
+                id: "#{@panel_id}-filter",
+                name: :filter,
+                label: "Filter",
+                type: :search,
+                leading_visual: { icon: :search },
+                leading_spinner: true,
+                autofocus: true,
+                visually_hide_label: true,
+                data: { target: "select-panel.filterInputTextField" },
+                label_arguments: {
+                  position: :absolute
+                }
+              )) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div data-target="select-panel.bannerErrorElement" hidden>
+        <%= render Primer::Alpha::Banner.new(scheme: :danger, full: true, mt: 2) do %>
+          <% if error_content? %>
+            <%= error_content %>
+          <% else %>
+            <h2 class="f5">Sorry, something went wrong.</h2>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render Primer::Alpha::Dialog::Body.new(mt: 2, p: 0) do %>
+        <focus-group direction="vertical" mnemonics retain>
+          <div class="sr-only" aria-live="polite" aria-atomic="true" data-target="select-panel.ariaLiveContainer"></div>
+          <%= render(Primer::BaseComponent.new(
+            tag: :div,
+            data: {
+              fetch_strategy: @fetch_strategy,
+              target: "select-panel.list"
+            }
+          )) do %>
+            <div id="<%= @body_id %>">
+              <% if @src.present? %>
+                <%= render(Primer::ConditionalWrapper.new(condition: @fetch_strategy == :eventually_local, tag: "include-fragment", data: { target: "select-panel.includeFragment" }, src: @src, loading: preload? ? "eager" : "lazy", accept: "text/fragment+html")) do %>
+                  <%= render(Primer::BaseComponent.new(
+                    tag: :div,
+                    id: "#{@panel_id}-list",
+                    mt: 2,
+                    mb: 2,
+                    aria: { disabled: true, busy: true },
+                    display: :flex,
+                    align_items: :center,
+                    justify_content: :center,
+                    text_align: :center
+                  )) do %>
+                    <div data-hide-on-error>
+                      <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }, data: { target: "select-panel.bodySpinner" }) %>
+                    </div>
+                    <div data-show-on-error hidden data-target="select-panel.fragmentErrorElement">
+                      <% if preload_error_content? %>
+                        <%= preload_error_content %>
+                      <% else %>
+                        <div class="pt-2 pb-2">
+                          <%= render Primer::Beta::Octicon.new(icon: :alert, color: :danger) %>
+                          <h2 class="f5">Sorry, something went wrong.</h2>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= render(@list) %>
+              <% end %>
+            </div>
+            <div data-target="select-panel.noResults" class="color-border-muted text-center" hidden>
+              <h2 class="v-align-middle m-3 f5"><%= @no_results_label %></h2>
+            </div>
+          <% end %>
+        </focus-group>
+      <% end %>
+      <%= footer %>
+    <% end %>
+  </dialog-helper>
+<% end %>

@@ -50,7 +50,8 @@
         "filenames/match-regex": 0,
         "import/no-namespace": 0,
         "no-shadow": 0,
-        "no-unused-vars": [
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
           "error",
           {
             "ignoreRestSiblings": true

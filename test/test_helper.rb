@@ -31,3 +31,6 @@ require "active_model/railtie"
 require "primer/view_components"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
+
+# used by SelectPanel
+Mime::Type.register "text/fragment+html", :html_fragment
