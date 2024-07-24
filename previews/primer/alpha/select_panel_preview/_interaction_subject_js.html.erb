@@ -1,0 +1,25 @@
+<script type="application/javascript">
+  function ready(fn) {
+    if (document.readyState !== 'loading') {
+      fn()
+    } else {
+      document.addEventListener('DOMContentLoaded', fn)
+    }
+  }
+
+  ready(() => {
+    const subject = document.querySelector("[data-interaction-subject='<%= subject_id %>']")
+    if (!subject) return
+
+    const fetchStrategy = subject.getAttribute('data-fetch-strategy')
+
+    if (fetchStrategy === 'local') {
+      subject.setAttribute('data-ready', 'true')
+      return
+    }
+
+    subject.addEventListener('loadend', (event) => {
+      event.target.setAttribute('data-ready', 'true')
+    })
+  })
+</script>

@@ -2353,6 +2353,124 @@
     ]
   },
   {
+    "component": "SelectPanel",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "SelectPanel",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/select_panel.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select_panel/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL to fetch search results from."
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "default": "`\"Menu\"`",
+        "description": "The title that appears at the top of the panel."
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The unique ID of the panel."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:small`",
+        "description": "The size of the panel. One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:single`",
+        "description": "One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
+      },
+      {
+        "name": "fetch_strategy",
+        "type": "Symbol",
+        "default": "`:remote`",
+        "description": "One of `:eventually_local`, `:local`, or `:remote`."
+      },
+      {
+        "name": "no_results_label",
+        "type": "String",
+        "default": "`\"No results found\"`",
+        "description": "The label to display when no results are found."
+      },
+      {
+        "name": "preload",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened."
+      },
+      {
+        "name": "dynamic_label",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to display the text of the currently selected item in the show button."
+      },
+      {
+        "name": "dynamic_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
+      },
+      {
+        "name": "dynamic_aria_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button."
+      },
+      {
+        "name": "body_id",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a \"-body\" suffix."
+      },
+      {
+        "name": "list_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments to pass to the underlying [ActionList](/components/alpha/actionlist) component. Only has an effect for the local fetch strategy."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Form arguments to pass to the underlying [ActionList](/components/alpha/actionlist) component. Only has an effect for the local fetch strategy."
+      },
+      {
+        "name": "show_filter",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether or not to show the filter input."
+      },
+      {
+        "name": "open_on_load",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Open the panel when the page loads."
+      },
+      {
+        "name": "anchor_align",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "The anchor alignment of the Overlay. One of `:center`, `:end`, or `:start`."
+      },
+      {
+        "name": "anchor_side",
+        "type": "Symbol",
+        "default": "`:outside_bottom`",
+        "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+      }
+    ]
+  },
+  {
     "component": "SubmitButton",
     "status": "alpha",
     "a11y_reviewed": false,

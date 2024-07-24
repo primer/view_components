@@ -1,0 +1,16 @@
+<% subject_id = SecureRandom.hex %>
+
+<%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
+  src: select_panel_items_path(show_results: "false"),
+  select_variant: :multiple,
+  fetch_strategy: :remote,
+  open_on_load: open_on_load
+)) do |panel| %>
+  <% panel.with_show_button { "Sci-fi equipment" } %>
+  <% panel.with_footer(show_divider: true) do %>
+    I'm a footer!
+  <% end %>
+<% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>
