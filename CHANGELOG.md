@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.38.0
+
+### Minor Changes
+
+- [#2941](https://github.com/primer/view_components/pull/2941) [`f3b640e`](https://github.com/opf/primer_view_components/commit/f3b640e3ce13979aa187c4fa6ff4e31f5717d720) Thanks [@camertron](https://github.com/camertron)! - Upstream the SelectPanel component from dotcom
+
+### Patch Changes
+
+- [#2954](https://github.com/primer/view_components/pull/2954) [`15fb8c4`](https://github.com/opf/primer_view_components/commit/15fb8c4e214142a6bc09a98b7fc70a5f917e68f9) Thanks [@camertron](https://github.com/camertron)! - Small SelectPanel fixes; lots of SelectPanel tests.
+
+- [#2951](https://github.com/primer/view_components/pull/2951) [`ac15e65`](https://github.com/opf/primer_view_components/commit/ac15e654ae185541ab7924c98bef67c6917f4d21) Thanks [@HDinger](https://github.com/HDinger)! - Always align group headers of a `Primer::Alpha::ActionMenu` at the beginning of the line
+
+- [#2952](https://github.com/primer/view_components/pull/2952) [`98900f3`](https://github.com/opf/primer_view_components/commit/98900f3a8afb9fe45cfb4a850c7be13d1061feba) Thanks [@camertron](https://github.com/camertron)! - Fix wrapping behavior of toggle switch label
+
+- [#2961](https://github.com/primer/view_components/pull/2961) [`b662625`](https://github.com/opf/primer_view_components/commit/b662625bab5e48102c0fad8fff4e2eb0523c1fad) Thanks [@camertron](https://github.com/camertron)! - Ensure condition is checked when mutations occur in SelectPanelElement.
+
 ## 0.37.1
 
 ### Patch Changes
