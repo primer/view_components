@@ -606,12 +606,31 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #handleSearchFieldEvent(event: Event) {
-    if (event.type === 'keydown' && (event as KeyboardEvent).key === 'ArrowDown') {
-      if (this.focusableItem) {
-        this.focusableItem.focus()
-        event.preventDefault()
+    if (event.type === 'keydown') {
+      const key = (event as KeyboardEvent).key
+
+      if (key === 'ArrowDown') {
+        const item = this.focusableItem || this.visibleItems[0]
+
+        if (item) {
+          item.focus()
+          event.preventDefault()
+        }
+      } else if (key === 'Home') {
+        const item = this.visibleItems[0]
+
+        if (item) {
+          item.focus()
+          event.preventDefault()
+        }
+      } else if (key === 'End') {
+        if (this.visibleItems.length > 0) {
+          this.visibleItems[this.visibleItems.length - 1].focus()
+          event.preventDefault()
+        }
       }
     }
+
     if (event.type !== 'input') return
 
     // remote-input-element does not trigger another loadstart event if a request is
@@ -952,6 +971,7 @@ export class SelectPanelElement extends HTMLElement {
       element => element.parentElement! as SelectPanelItem,
     )
   }
+
   get focusableItem(): HTMLElement | undefined {
     for (const item of this.items) {
       const itemContent = this.#getItemContent(item)

@@ -84,6 +84,10 @@ module Alpha
       end
     end
 
+    def active_element
+      page.evaluate_script("document.activeElement")
+    end
+
     ########## TESTS ############
 
     def test_invoker_opens_panel
@@ -143,9 +147,7 @@ module Alpha
 
       click_on_invoker_button
 
-      active_element = page.evaluate_script("document.activeElement")
-
-      assert active_element.tag_name, "Alert"
+      assert_equal active_element.tag_name, "input"
       assert_includes active_element["class"], "FormControl-input"
     end
 
@@ -161,7 +163,7 @@ module Alpha
 
       keyboard.type(:tab)
 
-      assert_includes page.evaluate_script("document.activeElement").text, "Item 2"
+      assert_includes active_element.text, "Item 2"
     end
 
     def test_remembers_selections_on_filter
@@ -183,6 +185,45 @@ module Alpha
       end
 
       assert_selector "[aria-checked=true]", count: 2
+    end
+
+    def test_pressing_down_arrow_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:down)
+
+      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.text, "Item 1"
+    end
+
+    def test_pressing_home_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:home)
+
+      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.text, "Item 1"
+    end
+
+    def test_pressing_end_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:end)
+
+      assert_equal active_element.tag_name, "li"
+      assert_equal active_element.text, "Item 4"
     end
 
     ########## SINGLE SELECT TESTS ############
@@ -650,15 +691,14 @@ module Alpha
       # tab to list
       keyboard.type(:tab)
 
-      active_element = page.evaluate_script("document.activeElement")
-      assert active_element.tag_name == "button"
+      assert_equal active_element.tag_name, "button"
       assert_includes active_element["class"], "ActionListContent"
 
       # tab out of list
       keyboard.type(:tab)
 
       # focus is no longer on the list
-      assert page.evaluate_script("document.activeElement").tag_name == "body"
+      assert_equal active_element.tag_name, "body"
     end
 
     def test_arrowing_through_items
@@ -668,7 +708,7 @@ module Alpha
       keyboard.type(:tab)  # tab to list
 
       1.upto(4) do |i|
-        assert page.evaluate_script("document.activeElement").text == "Item #{i}"
+        assert_equal active_element.text, "Item #{i}"
         keyboard.type(:down)
       end
     end
@@ -681,11 +721,11 @@ module Alpha
       # tab to list and down to 4th item
       keyboard.type(:tab, :down, :down, :down)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 4"
+      assert_equal active_element.text, "Item 4"
 
       keyboard.type(:down)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 1"
+      assert_equal active_element.text, "Item 1"
     end
 
     def test_arrowing_up_on_first_item_wraps_to_bottom
@@ -696,11 +736,11 @@ module Alpha
       # tab to list and down to 4th item
       keyboard.type(:tab)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 1"
+      assert_equal active_element.text, "Item 1"
 
       keyboard.type(:up)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 4"
+      assert_equal active_element.text, "Item 4"
     end
 
     def test_arrowing_skips_filtered_items
@@ -724,7 +764,7 @@ module Alpha
       # Note that the controller renders items in a predictable order.
       2.times do |i|
         ["Photon torpedo", "Phaser"].each do |item_text|
-          assert_includes page.evaluate_script("document.activeElement").text, item_text
+          assert_includes active_element.text, item_text
           keyboard.type(:down)
         end
       end
