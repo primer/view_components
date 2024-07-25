@@ -72,6 +72,14 @@ module Alpha
       assert_selector "select-panel[data-ready=true]", wait: 5
     end
 
+    def wait_for_dialog_ready
+      begin
+        assert_selector "dialog[data-ready]"
+      rescue Minitest::Assertion
+        # if we've waited this long, assume everything is fine
+      end
+    end
+
     def filter_results(query:)
       find("input").fill_in(with: query)
     end
@@ -82,6 +90,10 @@ module Alpha
       assert_selector "[data-target='select-panel.ariaLiveContainer']" do |element|
         assert_includes element.text, message
       end
+    end
+
+    def active_element
+      page.evaluate_script("document.activeElement")
     end
 
     ########## TESTS ############
@@ -143,9 +155,7 @@ module Alpha
 
       click_on_invoker_button
 
-      active_element = page.evaluate_script("document.activeElement")
-
-      assert active_element.tag_name, "Alert"
+      assert_equal active_element.tag_name, "input"
       assert_includes active_element["class"], "FormControl-input"
     end
 
@@ -161,7 +171,7 @@ module Alpha
 
       keyboard.type(:tab)
 
-      assert_includes page.evaluate_script("document.activeElement").text, "Item 2"
+      assert_includes active_element.text, "Item 2"
     end
 
     def test_remembers_selections_on_filter
@@ -183,6 +193,63 @@ module Alpha
       end
 
       assert_selector "[aria-checked=true]", count: 2
+    end
+
+    def test_pressing_down_arrow_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:down)
+
+      assert_equal active_element.tag_name, "button"
+      assert_equal active_element.text, "Item 1"
+    end
+
+    def test_pressing_home_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:home)
+
+      assert_equal active_element.tag_name, "button"
+      assert_equal active_element.text, "Item 1"
+    end
+
+    def test_pressing_end_in_filter_input_focuses_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:end)
+
+      assert_equal active_element.tag_name, "button"
+      assert_equal active_element.text, "Item 4"
+    end
+
+    def test_pressing_enter_in_filter_input_checks_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      # nothing is checked initially
+      refute_selector "[aria-checked=true]"
+      refute_selector "[aria-selected=true]"
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:enter)
+
+      # pressing enter in the filter input does not close the panel
+      assert_selector "[aria-checked=true]", text: "Item 1"
+      refute_selector "[aria-selected]"
     end
 
     ########## SINGLE SELECT TESTS ############
@@ -214,15 +281,29 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, "click" on first item
-      keyboard.type(:enter, :tab, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on first item
+      keyboard.type(:tab, :enter)
 
       # activating item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 1", visible: :hidden
 
       focus_on_invoker_button
 
-      keyboard.type(:enter, :tab, :down, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on second item
+      keyboard.type(:tab, :down, :enter)
+
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
       refute_selector "[aria-checked]", visible: :hidden
     end
@@ -232,15 +313,29 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, "click" on first item
-      keyboard.type(:enter, :tab, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" on first item
+      keyboard.type(:tab, :space)
 
       # activating item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 1", visible: :hidden
 
       focus_on_invoker_button
 
-      keyboard.type(:enter, :tab, :down, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # "click" second item
+      keyboard.type(:tab, :down, :space)
+
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
       refute_selector "[aria-checked]", visible: :hidden
     end
@@ -307,8 +402,14 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, select first item
-      keyboard.type(:enter, :tab, :enter)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # select first item
+      keyboard.type(:tab, :enter)
 
       assert_selector "[aria-checked=true]", count: 1
       assert_selector "[aria-checked=true]", text: "Item 1"
@@ -328,8 +429,14 @@ module Alpha
 
       focus_on_invoker_button
 
-      # open panel, select first item
-      keyboard.type(:enter, :tab, :space)
+      # open panel
+      keyboard.type(:enter)
+
+      # wait for the panel to adjust focus (to work around a Safari issue)
+      wait_for_dialog_ready
+
+      # select first item
+      keyboard.type(:tab, :space)
 
       assert_selector "[aria-checked=true]", count: 1
       assert_selector "[aria-checked=true]", text: "Item 1"
@@ -650,15 +757,14 @@ module Alpha
       # tab to list
       keyboard.type(:tab)
 
-      active_element = page.evaluate_script("document.activeElement")
-      assert active_element.tag_name == "button"
+      assert_equal active_element.tag_name, "button"
       assert_includes active_element["class"], "ActionListContent"
 
       # tab out of list
       keyboard.type(:tab)
 
       # focus is no longer on the list
-      assert page.evaluate_script("document.activeElement").tag_name == "body"
+      assert_equal active_element.tag_name, "body"
     end
 
     def test_arrowing_through_items
@@ -668,7 +774,7 @@ module Alpha
       keyboard.type(:tab)  # tab to list
 
       1.upto(4) do |i|
-        assert page.evaluate_script("document.activeElement").text == "Item #{i}"
+        assert_equal active_element.text, "Item #{i}"
         keyboard.type(:down)
       end
     end
@@ -681,11 +787,11 @@ module Alpha
       # tab to list and down to 4th item
       keyboard.type(:tab, :down, :down, :down)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 4"
+      assert_equal active_element.text, "Item 4"
 
       keyboard.type(:down)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 1"
+      assert_equal active_element.text, "Item 1"
     end
 
     def test_arrowing_up_on_first_item_wraps_to_bottom
@@ -696,11 +802,11 @@ module Alpha
       # tab to list and down to 4th item
       keyboard.type(:tab)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 1"
+      assert_equal active_element.text, "Item 1"
 
       keyboard.type(:up)
 
-      assert page.evaluate_script("document.activeElement").text == "Item 4"
+      assert_equal active_element.text, "Item 4"
     end
 
     def test_arrowing_skips_filtered_items
@@ -724,7 +830,7 @@ module Alpha
       # Note that the controller renders items in a predictable order.
       2.times do |i|
         ["Photon torpedo", "Phaser"].each do |item_text|
-          assert_includes page.evaluate_script("document.activeElement").text, item_text
+          assert_includes active_element.text, item_text
           keyboard.type(:down)
         end
       end
