@@ -623,7 +623,13 @@ export class SelectPanelElement extends HTMLElement {
     if (event.type === 'keydown') {
       const key = (event as KeyboardEvent).key
 
-      if (key === 'ArrowDown') {
+      if (key === 'Enter') {
+        const item = this.visibleItems[0] as HTMLLIElement | null
+
+        if (item) {
+          this.#handleItemActivated(item, false)
+        }
+      } else if (key === 'ArrowDown') {
         const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
 
         if (item) {
@@ -823,7 +829,7 @@ export class SelectPanelElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(item: SelectPanelItem) {
+  #handleItemActivated(item: SelectPanelItem, shouldClose: boolean = true) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -832,7 +838,7 @@ export class SelectPanelElement extends HTMLElement {
     // works fine.
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
-        if (this.open) {
+        if (this.open && shouldClose) {
           this.hide()
         }
       })

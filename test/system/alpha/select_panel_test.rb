@@ -234,6 +234,24 @@ module Alpha
       assert_equal active_element.text, "Item 4"
     end
 
+    def test_pressing_enter_in_filter_input_checks_first_item
+      visit_preview(:default)
+
+      click_on_invoker_button
+
+      # nothing is checked initially
+      refute_selector "[aria-checked=true]"
+      refute_selector "[aria-selected=true]"
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:enter)
+
+      # pressing enter in the filter input does not close the panel
+      assert_selector "[aria-checked=true]", text: "Item 1"
+      refute_selector "[aria-selected]"
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
