@@ -58,6 +58,10 @@ module Primer
       def with_bad_csrf_token
         render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, csrf_token: "i_am_a_criminal"))
       end
+
+      def with_turbo
+        render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, turbo: true))
+      end
     end
   end
 end

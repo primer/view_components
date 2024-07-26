@@ -88,6 +88,20 @@ module Alpha
       assert_equal "XMLHttpRequest", ToggleSwitchController.last_request.headers["HTTP_REQUESTED_WITH"]
     end
 
+    def test_fetch_made_with_turbo
+      visit_preview(:with_turbo)
+
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector(".ToggleSwitch--checked")
+
+      wait_for_request
+
+      assert_equal "text/vnd.turbo-stream.html", ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
+    end
+
+
+
     private
 
     def wait_for_spinner
