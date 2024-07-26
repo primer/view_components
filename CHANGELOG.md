@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.30.0
+
+### Minor Changes
+
+- [#2964](https://github.com/primer/view_components/pull/2964) [`91f5a57`](https://github.com/primer/view_components/commit/91f5a57e1b2df25844b96971b08d2a5a8370255f) Thanks [@klaustopher](https://github.com/klaustopher)! - Add `turbo: true` as an parameter for the `ToggleSwitch` component and treat the respoonse (when it has the correct MIME type) as a [Turbo Stream](https://turbo.hotwired.dev/handbook/streams). The new `turbo` paramater defaults to false
+  and with that the HTTP response is simply ignored as is the current behavior.
+
+- [#2966](https://github.com/primer/view_components/pull/2966) [`05172fa`](https://github.com/primer/view_components/commit/05172fa681df5a65c14e4f4a863c22eef7f28970) Thanks [@camertron](https://github.com/camertron)! - Ensure Down, Home, and End behave as expected when a SelectPanel's input field has focus
+
+### Patch Changes
+
+- [#2972](https://github.com/primer/view_components/pull/2972) [`9b675a7`](https://github.com/primer/view_components/commit/9b675a78408e1e262850029ee730ad0cd6ac0d23) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Replace `align-items` with `align-self` and apply it on `ActionList` group headings directly.
+
 ## 0.29.0
 
 ### Minor Changes
