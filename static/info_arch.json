@@ -17829,6 +17829,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/create_action",
+        "name": "create_action",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/single_action",
         "name": "single_action",
         "snapshot": "false",
