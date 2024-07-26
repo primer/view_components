@@ -111,28 +111,34 @@ module Primer
       # The missing label will be resolved automatically when included into the core
       def zen_mode_button_actions
         render(Primer::OpenProject::PageHeader.new) do |component|
-          component.with_title { "Great news" }
+          component.with_title { "Great user" }
           component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
 
           # The missing label will be resolved automatically when included into the core
           component.with_action_zen_mode_button
-          component.with_action_button(mobile_icon: "plus", mobile_label: "Meeting", scheme: :primary) do |button|
-            button.with_leading_visual_icon(icon: "plus")
-            "Meeting"
+          component.with_action_button(mobile_icon: "person", mobile_label: "Profile") do |button|
+            button.with_leading_visual_icon(icon: "person")
+            "Profile"
           end
         end
+      end
+
+      # @label With a create action
+      # Create action usually belong into the Primer::OpenProject::SubHeader
+      def create_action
+        render_with_template(locals: {})
       end
 
       # @label With a single action
       # The single action will not be transformed into a menu on mobile, but remains in a smaller variant
       def single_action
         render(Primer::OpenProject::PageHeader.new) do |component|
-          component.with_title { "Great news" }
+          component.with_title { "Great user" }
           component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
 
-          component.with_action_button(mobile_icon: "plus", mobile_label: "Meeting", scheme: :primary) do |button|
-            button.with_leading_visual_icon(icon: "plus")
-            "Meeting"
+          component.with_action_button(mobile_icon: "person", mobile_label: "Profile") do |button|
+            button.with_leading_visual_icon(icon: "person")
+            "Profile"
           end
         end
       end
