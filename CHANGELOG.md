@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.39.1
+
+### Patch Changes
+
+- [#154](https://github.com/opf/primer_view_components/pull/154) [`8bf5ac3`](https://github.com/opf/primer_view_components/commit/8bf5ac30202c291af00334faf0b7f7cd28a10849) Thanks [@HDinger](https://github.com/HDinger)! - Update previews for Primer::OpenProject::PageHeader
+
 ## 0.39.0
 
 ### Minor Changes
