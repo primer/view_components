@@ -9335,6 +9335,12 @@
         "description": "Which side of the toggle switch to render the status label. One of `:end` or `:start`."
       },
       {
+        "name": "turbo",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to request a turbo stream and render the response as such."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -9491,6 +9497,20 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_bad_csrf_token",
         "name": "with_bad_csrf_token",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/toggle_switch/with_turbo",
+        "name": "with_turbo",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
