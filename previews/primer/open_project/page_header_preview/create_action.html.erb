@@ -1,0 +1,21 @@
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |component|
+    component.with_title { "Users" }
+    component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+  end
+%>
+
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |component|
+    component.with_filter_input(name: "filter", label: "Filter")
+    component.with_filter_button do |button|
+      button.with_trailing_visual_counter(count: "15")
+      "Filter"
+    end
+
+    component.with_action_button(scheme: :primary) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      "User"
+    end
+  end
+%>
