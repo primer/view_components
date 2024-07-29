@@ -68,6 +68,12 @@ module Primer
 
         assert_selector("[data-csrf]")
       end
+
+      def test_turbo
+        render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo", turbo: true))
+
+        assert_selector("[data-turbo]")
+      end
     end
   end
 end

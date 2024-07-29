@@ -642,7 +642,6 @@ nav-list {
   /* with children */
   &:not(:empty) {
     display: flex;
-    align-items: flex-start;
     padding-inline: var(--actionListContent-paddingBlock);
     padding-block: var(--base-size-8);
     font-size: var(--text-body-size-small);
@@ -669,6 +668,7 @@ nav-list {
     font-size: var(--text-body-size-small);
     font-weight: var(--base-text-weight-semibold);
     color: var(--fgColor-muted);
+    align-self: flex-start;
   }
 }
 

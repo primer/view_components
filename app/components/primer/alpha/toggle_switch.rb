@@ -26,12 +26,14 @@ module Primer
       # @param enabled [Boolean] Whether or not the toggle switch responds to user input.
       # @param size [Symbol] What size toggle switch to render. <%= one_of(Primer::Alpha::ToggleSwitch::SIZE_OPTIONS) %>
       # @param status_label_position [Symbol] Which side of the toggle switch to render the status label. <%= one_of(Primer::Alpha::ToggleSwitch::STATUS_LABEL_POSITION_OPTIONS) %>
+      # @param turbo [Boolean] Whether or not to request a turbo stream and render the response as such.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src: nil, csrf_token: nil, checked: false, enabled: true, size: SIZE_DEFAULT, status_label_position: STATUS_LABEL_POSITION_DEFAULT, **system_arguments)
+      def initialize(src: nil, csrf_token: nil, checked: false, enabled: true, size: SIZE_DEFAULT, status_label_position: STATUS_LABEL_POSITION_DEFAULT, turbo: false, **system_arguments)
         @src = src
         @csrf_token = csrf_token
         @checked = checked
         @enabled = enabled
+        @turbo = turbo
         @system_arguments = system_arguments
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)
@@ -82,7 +84,7 @@ module Primer
 
         @system_arguments[:data] = merge_data(
           @system_arguments,
-          { data: { csrf: @csrf_token } }
+          { data: { csrf: @csrf_token, turbo: @turbo } }
         )
       end
     end
