@@ -7823,6 +7823,20 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/toggle_switch/with_turbo",
+        "name": "with_turbo",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },

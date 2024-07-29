@@ -215,6 +215,17 @@ export class SelectPanelElement extends HTMLElement {
       for (const entry of entries) {
         const elem = entry.target
         if (entry.isIntersecting && elem === this.dialog) {
+          // Focus on the filter input when the dialog opens to work around a Safari limitation
+          // that prevents the autofocus attribute from working as it does in other browsers
+          if (this.filterInputTextField) {
+            if (document.activeElement !== this.filterInputTextField) {
+              this.filterInputTextField.focus()
+            }
+          }
+
+          // signal that any focus hijinks are finished (thanks Safari)
+          this.dialog.setAttribute('data-ready', 'true')
+
           this.updateAnchorPosition()
 
           if (this.#fetchStrategy === FetchStrategy.LOCAL) {
@@ -227,12 +238,12 @@ export class SelectPanelElement extends HTMLElement {
     this.#waitForCondition(
       () => Boolean(this.dialog),
       () => {
+        this.#dialogIntersectionObserver.observe(this.dialog)
+        this.dialog.addEventListener('close', this, {signal})
+
         if (this.getAttribute('data-open-on-load') === 'true') {
           this.show()
         }
-
-        this.#dialogIntersectionObserver.observe(this.dialog)
-        this.dialog.addEventListener('close', this, {signal})
       },
     )
 
@@ -450,6 +461,9 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     if (event.target === this.dialog && event.type === 'close') {
+      // Remove data-ready so it can be set the next time the panel is opened
+      this.dialog.removeAttribute('data-ready')
+
       this.dispatchEvent(
         new CustomEvent('panelClosed', {
           detail: {panel: this},
@@ -606,12 +620,38 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #handleSearchFieldEvent(event: Event) {
-    if (event.type === 'keydown' && (event as KeyboardEvent).key === 'ArrowDown') {
-      if (this.focusableItem) {
-        this.focusableItem.focus()
-        event.preventDefault()
+    if (event.type === 'keydown') {
+      const key = (event as KeyboardEvent).key
+
+      if (key === 'Enter') {
+        const item = this.visibleItems[0] as HTMLLIElement | null
+
+        if (item) {
+          this.#handleItemActivated(item, false)
+        }
+      } else if (key === 'ArrowDown') {
+        const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
+
+        if (item) {
+          this.#getItemContent(item)!.focus()
+          event.preventDefault()
+        }
+      } else if (key === 'Home') {
+        const item = this.visibleItems[0] as HTMLLIElement | null
+
+        if (item) {
+          this.#getItemContent(item)!.focus()
+          event.preventDefault()
+        }
+      } else if (key === 'End') {
+        if (this.visibleItems.length > 0) {
+          const item = this.visibleItems[this.visibleItems.length - 1] as HTMLLIElement
+          this.#getItemContent(item)!.focus()
+          event.preventDefault()
+        }
       }
     }
+
     if (event.type !== 'input') return
 
     // remote-input-element does not trigger another loadstart event if a request is
@@ -789,7 +829,7 @@ export class SelectPanelElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(item: SelectPanelItem) {
+  #handleItemActivated(item: SelectPanelItem, shouldClose: boolean = true) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -798,7 +838,7 @@ export class SelectPanelElement extends HTMLElement {
     // works fine.
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
-        if (this.open) {
+        if (this.open && shouldClose) {
           this.hide()
         }
       })
@@ -952,6 +992,7 @@ export class SelectPanelElement extends HTMLElement {
       element => element.parentElement! as SelectPanelItem,
     )
   }
+
   get focusableItem(): HTMLElement | undefined {
     for (const item of this.items) {
       const itemContent = this.#getItemContent(item)
