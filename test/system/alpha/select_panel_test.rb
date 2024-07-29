@@ -252,6 +252,18 @@ module Alpha
       refute_selector "[aria-selected]"
     end
 
+    def test_pressing_enter_in_filter_input_navigates_if_first_item_is_link
+      visit_preview(:list_of_links)
+
+      click_on_invoker_button
+
+      assert_equal active_element.tag_name, "input"
+
+      keyboard.type(:enter)
+
+      assert_current_path "https://github.com"
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
