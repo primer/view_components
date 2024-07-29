@@ -71,7 +71,7 @@ class ToolTipElement extends HTMLElement {
         --tooltip-left: var(--tool-tip-position-left, 0);
         padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
         font: var(--text-body-shorthand-small);
-        color: var(--tooltip-fgColor, --fgColor-onEmphasis) !important;
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
         text-align: center;
         text-decoration: none;
         text-shadow: none;
@@ -79,7 +79,7 @@ class ToolTipElement extends HTMLElement {
         letter-spacing: normal;
         word-wrap: break-word;
         white-space: pre;
-        background: var(--tooltip-bgColor, --bgColor-emphasis) !important;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
         border-radius: var(--borderRadius-medium);
         border: 0 !important;
         opacity: 0;
