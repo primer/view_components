@@ -38,8 +38,8 @@ module Primer
         }
         TRUNCATION_BEHAVIOR_OPTIONS = TRUNCATION_BEHAVIOR_MAPPINGS.keys.freeze
 
-        # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
-        # for layout options.
+        # Description content that complements the item's label, with optional test_selector.
+        # See `ActionList`'s `description_scheme` argument for layout options.
         renders_one :description, -> (test_selector: nil) do
           Primer::BaseComponent.new(tag: "span", classes: "ActionListItem-description", test_selector: test_selector) { content }
         end
