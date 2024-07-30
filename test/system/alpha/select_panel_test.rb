@@ -182,17 +182,42 @@ module Alpha
       end
 
       # Phaser should already be selected
-      assert_selector "[aria-checked=true]", count: 1
+      assert_selector "[aria-checked=true]", text: "Phaser"
 
       click_on "Photon torpedo"
 
-      assert_selector "[aria-checked=true]", count: 2
+      assert_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
 
       wait_for_items_to_load do
         filter_results(query: "ph")
       end
 
       assert_selector "[aria-checked=true]", count: 2
+    end
+
+    def test_single_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
+      # playground is single-select
+      visit_preview(:playground)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-selected=true]", text: "Phaser"
+
+      click_on "Photon torpedo"
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      # server will render this item checked, but since the user has already made selections,
+      # the server-rendered selections should be ignored
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
     end
 
     def test_pressing_down_arrow_in_filter_input_focuses_first_item

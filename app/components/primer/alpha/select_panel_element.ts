@@ -84,6 +84,7 @@ export class SelectPanelElement extends HTMLElement {
   #selectedItems: Map<string, SelectedItem> = new Map()
   #loadingDelayTimeoutId: number | null = null
   #loadingAnnouncementTimeoutId: number | null = null
+  #userHasMadeSelection: boolean = false
 
   get open(): boolean {
     return this.dialog.open
@@ -368,6 +369,8 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #checkSelectedItems() {
+    if (this.#selectedItems.size === 0) return
+
     for (const item of this.items) {
       const itemContent = this.#getItemContent(item)
       if (!itemContent) continue
@@ -377,9 +380,13 @@ export class SelectPanelElement extends HTMLElement {
       if (value) {
         if (this.#selectedItems.has(value)) {
           itemContent.setAttribute(this.ariaSelectionType, 'true')
+          continue
         }
       }
+
+      itemContent.setAttribute(this.ariaSelectionType, 'false')
     }
+
     this.#updateInput()
   }
 
@@ -696,14 +703,20 @@ export class SelectPanelElement extends HTMLElement {
     this.#updateTabIndices()
     this.#maybeAnnounce()
 
-    for (const item of this.items) {
-      const itemContent = this.#getItemContent(item)
-      if (!itemContent) continue
+    // If the user has not yet made any selections, allow server to determine which
+    // items are checked/unchecked
+    if (!this.#userHasMadeSelection) {
+      for (const item of this.items) {
+        const itemContent = this.#getItemContent(item)
+        if (!itemContent) continue
 
-      const value = itemContent.getAttribute('data-value')
+        const value = itemContent.getAttribute('data-value')
 
-      if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
-        this.#addSelectedItem(item)
+        if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+          this.#addSelectedItem(item)
+        } else {
+          this.#removeSelectedItem(item)
+        }
       }
     }
 
@@ -888,6 +901,8 @@ export class SelectPanelElement extends HTMLElement {
         this.#removeSelectedItem(item)
       }
     }
+
+    this.#userHasMadeSelection = true
 
     this.#updateInput()
     this.#updateTabIndices()
