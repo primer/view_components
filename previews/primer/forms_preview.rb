@@ -48,7 +48,5 @@ module Primer
     def example_toggle_switch_form; end
 
     def auto_complete_form; end
-
-    def editable_title_form; end
   end
 end

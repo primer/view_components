@@ -18,13 +18,29 @@ module Primer
             url: update_path,
             **system_arguments
           ) do |f|
-            render(::PageHeader::EditableTitleForm.new(
-              f,
-              cancel_url: cancel_path,
-              input_name: input_name,
-              label: label,
-              placeholder: placeholder
-            ))
+            render_inline_form(f) do |query_form|
+              query_form.group(layout: :horizontal) do |group|
+                group.text_field(
+                  name: input_name,
+                  placeholder: placeholder,
+                  label: label,
+                  visually_hide_label: true,
+                  required: true,
+                  autofocus: true
+                )
+
+                group.submit(name: :submit, label: I18n.t("button_save"), scheme: :primary)
+
+                group.button(
+                  name: :cancel,
+                  scheme: :secondary,
+                  label: I18n.t(:button_cancel),
+                  tag: :a,
+                  data: { "turbo-stream": true },
+                  href: cancel_path
+                )
+              end
+            end
           end
         }
 
