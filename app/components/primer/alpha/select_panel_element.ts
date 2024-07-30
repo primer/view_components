@@ -369,8 +369,6 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #checkSelectedItems() {
-    if (this.#selectedItems.size === 0) return
-
     for (const item of this.items) {
       const itemContent = this.#getItemContent(item)
       if (!itemContent) continue
@@ -644,7 +642,7 @@ export class SelectPanelElement extends HTMLElement {
         const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          item.focus()
           event.preventDefault()
         }
       } else if (key === 'Home') {
