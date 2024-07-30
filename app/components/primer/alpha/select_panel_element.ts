@@ -396,7 +396,7 @@ export class SelectPanelElement extends HTMLElement {
 
     const value = itemContent.getAttribute('data-value')
 
-    if (value) {
+    if (value && !this.#selectedItems.has(value)) {
       this.#selectedItems.set(value, {
         value,
         label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
@@ -406,8 +406,11 @@ export class SelectPanelElement extends HTMLElement {
     }
   }
 
-  #removeSelectedItem(item: Element) {
-    const value = item.getAttribute('data-value')
+  #removeSelectedItem(item: SelectPanelItem) {
+    const itemContent = this.#getItemContent(item)
+    if (!itemContent) return
+
+    const value = itemContent.getAttribute('data-value')
 
     if (value) {
       this.#selectedItems.delete(value)
@@ -710,9 +713,7 @@ export class SelectPanelElement extends HTMLElement {
         const itemContent = this.#getItemContent(item)
         if (!itemContent) continue
 
-        const value = itemContent.getAttribute('data-value')
-
-        if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+        if (this.isItemChecked(item)) {
           this.#addSelectedItem(item)
         } else {
           this.#removeSelectedItem(item)
@@ -885,7 +886,7 @@ export class SelectPanelElement extends HTMLElement {
 
       for (const checkedItem of this.querySelectorAll(`[${this.ariaSelectionType}]`)) {
         if (checkedItem !== itemContent) {
-          this.#removeSelectedItem(checkedItem)
+          this.#removeSelectedItem(checkedItem.parentElement as SelectPanelItem)
           checkedItem.setAttribute(this.ariaSelectionType, 'false')
         }
       }

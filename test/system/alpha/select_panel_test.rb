@@ -196,30 +196,6 @@ module Alpha
       assert_selector "[aria-checked=true]", count: 2
     end
 
-    def test_single_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
-      # playground is single-select
-      visit_preview(:playground)
-
-      wait_for_items_to_load do
-        click_on_invoker_button
-      end
-
-      # Phaser should already be selected
-      assert_selector "[aria-selected=true]", text: "Phaser"
-
-      click_on "Photon torpedo"
-      click_on_invoker_button
-
-      wait_for_items_to_load do
-        filter_results(query: "ph")
-      end
-
-      # server will render this item checked, but since the user has already made selections,
-      # the server-rendered selections should be ignored
-      refute_selector "[aria-selected=true]", text: "Phaser"
-      assert_selector "[aria-selected=true]", text: "Photon torpedo"
-    end
-
     def test_pressing_down_arrow_in_filter_input_focuses_first_item
       visit_preview(:default)
 
@@ -419,6 +395,30 @@ module Alpha
       refute_selector "[aria-selected=true]"
     end
 
+    def test_single_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
+      # playground is single-select
+      visit_preview(:playground)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-selected=true]", text: "Phaser"
+
+      click_on "Photon torpedo"
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      # server will render this item checked, but since the user has already made selections,
+      # the server-rendered selections should be ignored
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
+    end
+
     ########## MULTISELECT TESTS ############
 
     def test_multi_select_items_checked
@@ -512,6 +512,31 @@ module Alpha
       click_on_item_by_id("disabled")
 
       refute_selector "[aria-checked=true]"
+    end
+
+    def test_multi_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
+      # remote_fetch is multi-select
+      visit_preview(:remote_fetch)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-checked=true]", text: "Phaser"
+
+      # check torpedo, uncheck phaser
+      click_on "Photon torpedo"
+      click_on "Phaser"
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      # server will render phaser checked, but since the user has already made selections,
+      # the server-rendered selections should be ignored
+      refute_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
 
     ########## JAVASCRIPT API TESTS ############
