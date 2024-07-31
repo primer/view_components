@@ -14,8 +14,9 @@ module ERBLint
             " https://primer.style/design/components/action-menu/rails/alpha"
           DETAILS_MENU_RUBY_PATTERN = /tag:?\s+:"details-menu"/.freeze
 
+          # Allow custom pattern matching for ERB nodes
           class ConfigSchema < LinterConfig
-            property :custom_erb_pattern, accepts: array_of?(String),
+            property :custom_erb_pattern, accepts: array_of?(Regexp),
               default: -> { [] }
           end
           self.config_schema = ConfigSchema
