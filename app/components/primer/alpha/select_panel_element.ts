@@ -896,6 +896,8 @@ export class SelectPanelElement extends HTMLElement {
       }
     }
 
+    this.#checkSelectedItems()
+
     this.#userHasMadeSelection = true
 
     this.#updateInput()
