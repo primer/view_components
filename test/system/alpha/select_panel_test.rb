@@ -419,6 +419,33 @@ module Alpha
       assert_selector "[aria-selected=true]", text: "Photon torpedo"
     end
 
+    def test_single_select_remembers_only_one_checked_item_and_ignores_checked_items_from_server
+      # playground is single-select
+      visit_preview(:playground)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-selected=true]", text: "Phaser"
+
+      wait_for_items_to_load do
+        filter_results(query: "light")
+      end
+
+      click_on "Lightsaber"
+
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "")
+      end
+
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Lightsaber"
+    end
+
     ########## MULTISELECT TESTS ############
 
     def test_multi_select_items_checked
