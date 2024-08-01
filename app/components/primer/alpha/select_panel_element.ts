@@ -84,7 +84,6 @@ export class SelectPanelElement extends HTMLElement {
   #selectedItems: Map<string, SelectedItem> = new Map()
   #loadingDelayTimeoutId: number | null = null
   #loadingAnnouncementTimeoutId: number | null = null
-  #userHasMadeSelection: boolean = false
 
   get open(): boolean {
     return this.dialog.open
@@ -378,11 +377,8 @@ export class SelectPanelElement extends HTMLElement {
       if (value) {
         if (this.#selectedItems.has(value)) {
           itemContent.setAttribute(this.ariaSelectionType, 'true')
-          continue
         }
       }
-
-      itemContent.setAttribute(this.ariaSelectionType, 'false')
     }
 
     this.#updateInput()
@@ -394,7 +390,7 @@ export class SelectPanelElement extends HTMLElement {
 
     const value = itemContent.getAttribute('data-value')
 
-    if (value && !this.#selectedItems.has(value)) {
+    if (value) {
       this.#selectedItems.set(value, {
         value,
         label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
@@ -404,11 +400,8 @@ export class SelectPanelElement extends HTMLElement {
     }
   }
 
-  #removeSelectedItem(item: SelectPanelItem) {
-    const itemContent = this.#getItemContent(item)
-    if (!itemContent) return
-
-    const value = itemContent.getAttribute('data-value')
+  #removeSelectedItem(item: Element) {
+    const value = item.getAttribute('data-value')
 
     if (value) {
       this.#selectedItems.delete(value)
@@ -704,18 +697,14 @@ export class SelectPanelElement extends HTMLElement {
     this.#updateTabIndices()
     this.#maybeAnnounce()
 
-    // If the user has not yet made any selections, allow server to determine which
-    // items are checked/unchecked
-    if (!this.#userHasMadeSelection) {
-      for (const item of this.items) {
-        const itemContent = this.#getItemContent(item)
-        if (!itemContent) continue
+    for (const item of this.items) {
+      const itemContent = this.#getItemContent(item)
+      if (!itemContent) continue
 
-        if (this.isItemChecked(item)) {
-          this.#addSelectedItem(item)
-        } else {
-          this.#removeSelectedItem(item)
-        }
+      const value = itemContent.getAttribute('data-value')
+
+      if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+        this.#addSelectedItem(item)
       }
     }
 
@@ -876,12 +865,17 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
-      this.#selectedItems.clear()
-
       // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
       if (checked) {
         this.#addSelectedItem(item)
         itemContent?.setAttribute(this.ariaSelectionType, 'true')
+      }
+
+      for (const checkedItem of this.querySelectorAll(`[${this.ariaSelectionType}]`)) {
+        if (checkedItem !== itemContent) {
+          this.#removeSelectedItem(checkedItem)
+          checkedItem.setAttribute(this.ariaSelectionType, 'false')
+        }
       }
 
       this.#setDynamicLabel()
@@ -895,10 +889,6 @@ export class SelectPanelElement extends HTMLElement {
         this.#removeSelectedItem(item)
       }
     }
-
-    this.#checkSelectedItems()
-
-    this.#userHasMadeSelection = true
 
     this.#updateInput()
     this.#updateTabIndices()
