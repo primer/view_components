@@ -989,9 +989,14 @@
         "slots": [
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
@@ -5547,9 +5552,14 @@
           },
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
@@ -14687,9 +14697,14 @@
           },
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
