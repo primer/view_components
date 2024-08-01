@@ -38,9 +38,13 @@ module Primer
         }
         TRUNCATION_BEHAVIOR_OPTIONS = TRUNCATION_BEHAVIOR_MAPPINGS.keys.freeze
 
-        # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
-        # for layout options.
-        renders_one :description
+        # Description content that complements the item's label, with optional test_selector.
+        # See `ActionList`'s `description_scheme` argument for layout options.
+        #
+        # @param test_selector [String] The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element.
+        renders_one :description, -> (test_selector: nil) do
+          Primer::BaseComponent.new(tag: "span", classes: "ActionListItem-description", test_selector: test_selector) { content }
+        end
 
         # An icon, avatar, SVG, or custom content that will render to the left of the label.
         #
