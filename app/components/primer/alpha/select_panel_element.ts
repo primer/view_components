@@ -638,20 +638,23 @@ export class SelectPanelElement extends HTMLElement {
         const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
 
         if (item) {
-          item.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       } else if (key === 'Home') {
         const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       } else if (key === 'End') {
         if (this.visibleItems.length > 0) {
           const item = this.visibleItems[this.visibleItems.length - 1] as HTMLLIElement
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       }
