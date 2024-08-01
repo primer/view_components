@@ -701,7 +701,11 @@ export class SelectPanelElement extends HTMLElement {
 
       const value = itemContent.getAttribute('data-value')
 
-      if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+      if (this.selectVariant === 'single' && this.selectedItems.length !== 0) {
+        if (this.selectedItems[0].value !== value) {
+          itemContent.setAttribute(this.ariaSelectionType, 'false')
+        }
+      } else if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
         this.#addSelectedItem(item)
       }
     }
