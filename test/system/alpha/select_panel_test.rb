@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 require "system/test_case"
@@ -182,11 +183,12 @@ module Alpha
       end
 
       # Phaser should already be selected
-      assert_selector "[aria-checked=true]", count: 1
+      assert_selector "[aria-checked=true]", text: "Phaser"
 
       click_on "Photon torpedo"
 
-      assert_selector "[aria-checked=true]", count: 2
+      assert_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
 
       wait_for_items_to_load do
         filter_results(query: "ph")
@@ -382,6 +384,100 @@ module Alpha
       refute_selector "[aria-selected=true]"
     end
 
+    def test_single_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
+      # playground is single-select
+      visit_preview(:playground)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-selected=true]", text: "Phaser"
+
+      click_on "Photon torpedo"
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      # server will render this item checked, but since the user has already made selections,
+      # the server-rendered selections should be ignored
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
+    end
+
+    def test_single_select_remembers_only_one_checked_item_and_ignores_checked_items_from_server
+      # playground is single-select
+      visit_preview(:playground)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-selected=true]", text: "Phaser"
+
+      wait_for_items_to_load do
+        filter_results(query: "light")
+      end
+
+      click_on "Lightsaber"
+
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "")
+      end
+
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Lightsaber"
+    end
+
+    def test_single_select_handles_all_options_unselected_by_default
+      # playground is single-select
+      visit_preview(:playground, select_items: false)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should note already be selected
+      refute_selector "[aria-selected=true]", text: "Phaser"
+
+      wait_for_items_to_load do
+        filter_results(query: "light")
+      end
+
+      click_on "Lightsaber"
+
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "")
+      end
+
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Lightsaber"
+
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      click_on "Phaser"
+
+      click_on_invoker_button
+
+      wait_for_items_to_load do
+        filter_results(query: "")
+      end
+
+      assert_selector "[aria-selected=true]", text: "Phaser"
+      refute_selector "[aria-selected=true]", text: "Lightsaber"
+    end
+
     ########## MULTISELECT TESTS ############
 
     def test_multi_select_items_checked
@@ -476,6 +572,32 @@ module Alpha
 
       refute_selector "[aria-checked=true]"
     end
+
+    def test_multi_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
+      # remote_fetch is multi-select
+      visit_preview(:remote_fetch)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Phaser should already be selected
+      assert_selector "[aria-checked=true]", text: "Phaser"
+
+      # check torpedo, uncheck phaser
+      click_on "Photon torpedo"
+      click_on "Phaser"
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      # server will render phaser checked, but since the user has already made selections,
+      # the server-rendered selections should be ignored
+      refute_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+    end
+    
 
     ########## JAVASCRIPT API TESTS ############
 

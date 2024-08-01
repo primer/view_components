@@ -84,6 +84,7 @@ export class SelectPanelElement extends HTMLElement {
   #selectedItems: Map<string, SelectedItem> = new Map()
   #loadingDelayTimeoutId: number | null = null
   #loadingAnnouncementTimeoutId: number | null = null
+  #hasLoadedData = false
 
   get open(): boolean {
     return this.dialog.open
@@ -399,9 +400,11 @@ export class SelectPanelElement extends HTMLElement {
     }
   }
 
-  #removeSelectedItem(item: Element) {
-    const value = item.getAttribute('data-value')
+  #removeSelectedItem(item: SelectPanelItem) {
+    const itemContent = this.#getItemContent(item)
+    if (!itemContent) return
 
+    const value = itemContent.getAttribute('data-value')
     if (value) {
       this.#selectedItems.delete(value)
     }
@@ -700,12 +703,12 @@ export class SelectPanelElement extends HTMLElement {
       if (!itemContent) continue
 
       const value = itemContent.getAttribute('data-value')
-
-      if (this.selectVariant === 'single' && this.selectedItems.length !== 0) {
-        if (this.selectedItems[0].value !== value) {
+      if (this.#hasLoadedData) {
+        if (value && !this.#selectedItems.has(value)) {
           itemContent.setAttribute(this.ariaSelectionType, 'false')
         }
       } else if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+        this.#hasLoadedData = true
         this.#addSelectedItem(item)
       }
     }
@@ -867,17 +870,16 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
+      const element = this.selectedItems[0]?.element
+      if (element) {
+        this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
+      }
+      this.#selectedItems.clear()
+
       // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
       if (checked) {
         this.#addSelectedItem(item)
         itemContent?.setAttribute(this.ariaSelectionType, 'true')
-      }
-
-      for (const checkedItem of this.querySelectorAll(`[${this.ariaSelectionType}]`)) {
-        if (checkedItem !== itemContent) {
-          this.#removeSelectedItem(checkedItem)
-          checkedItem.setAttribute(this.ariaSelectionType, 'false')
-        }
       }
 
       this.#setDynamicLabel()
