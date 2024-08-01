@@ -597,7 +597,6 @@ module Alpha
       refute_selector "[aria-checked=true]", text: "Phaser"
       assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
-    
 
     ########## JAVASCRIPT API TESTS ############
 
