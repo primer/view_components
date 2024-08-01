@@ -380,7 +380,7 @@ module Primer
                  aria: { label: "List heading" }
                )) do |component|
           component.with_item(label: "Default item", href: "/") do |item|
-            item.with_description.with_content("This is a description")
+            item.with_description(test_selector: "some-selector").with_content("This is a description")
           end
         end
       end

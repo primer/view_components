@@ -42,6 +42,12 @@ class SelectPanelItemsController < ApplicationController
                 []
               end
 
+    if unselect_items?
+      results.map! do |result|
+        result.merge(selected: false)
+      end
+    end
+
     clean_up_old_uuids(uuid)
 
     respond_to do |format|
@@ -83,5 +89,13 @@ class SelectPanelItemsController < ApplicationController
 
   def key_for(uuid)
     "#{COOKIE_PREFIX}#{uuid}"
+  end
+
+  def select_items?
+    params.fetch(:select_items, "true") == "true"
+  end
+
+  def unselect_items?
+    !select_items?
   end
 end

@@ -29,6 +29,16 @@ module Primer
         assert_selector(".ActionListItem-description", text: "Bruce Banner")
       end
 
+      def test_item_description_test_selector
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |component|
+          component.with_item(label: "Item 1", href: "/item1") do |item|
+            item.with_description(test_selector: "foo") { "My description" }
+          end
+        end
+
+        assert_selector(".ActionListItem-description[data-test-selector='foo']", text: "My description")
+      end
+
       def test_item_trailing_visual_text
         render_preview(:item, params: { trailing_visual_text: "trailing visual text" })
 
