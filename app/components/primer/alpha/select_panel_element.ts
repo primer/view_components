@@ -466,6 +466,7 @@ export class SelectPanelElement extends HTMLElement {
     if (event.target === this.dialog && event.type === 'close') {
       // Remove data-ready so it can be set the next time the panel is opened
       this.dialog.removeAttribute('data-ready')
+      this.invokerElement?.setAttribute('aria-expanded', 'false')
 
       this.dispatchEvent(
         new CustomEvent('panelClosed', {
@@ -908,6 +909,7 @@ export class SelectPanelElement extends HTMLElement {
   show() {
     this.updateAnchorPosition()
     this.dialog.showModal()
+    this.invokerElement?.setAttribute('aria-expanded', 'true')
     const event = new CustomEvent('dialog:open', {
       detail: {dialog: this.dialog},
     })
