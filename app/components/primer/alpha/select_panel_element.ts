@@ -633,10 +633,10 @@ export class SelectPanelElement extends HTMLElement {
           this.#handleItemActivated(item, false)
         }
       } else if (key === 'ArrowDown') {
-        const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
+        const item = (this.focusableItem || this.#getItemContent(this.visibleItems[0])) as HTMLLIElement
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          item.focus()
           event.preventDefault()
         }
       } else if (key === 'Home') {
