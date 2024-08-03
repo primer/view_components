@@ -15364,9 +15364,9 @@
       },
       {
         "name": "prefix",
-        "type": "sring",
+        "type": "String",
         "default": "`nil`",
-        "description": "What to prefix the relative ime display with."
+        "description": "What to prefix the relative time display with."
       },
       {
         "name": "second",
@@ -15418,7 +15418,7 @@
       },
       {
         "name": "threshold",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
       },
@@ -15442,13 +15442,13 @@
       },
       {
         "name": "lang",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "The language to use."
       },
       {
         "name": "title",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "Provide a custom title to the element."
       },
