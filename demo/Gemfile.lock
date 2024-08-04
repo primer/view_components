@@ -67,6 +67,7 @@ GEM
     docker-remote (0.8.0)
     domain_name (0.6.20240107)
     drb (2.2.1)
+    dry-cli (1.1.0)
     dry-inflector (0.3.0)
     ejson (1.4.1)
     erubi (1.13.0)
@@ -264,6 +265,8 @@ GEM
     rack (3.1.7)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
+    rack-proxy (0.7.7)
+      rack
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -335,6 +338,13 @@ GEM
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
+    vite_rails (3.0.17)
+      railties (>= 5.1, < 8)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.7.0)
+      dry-cli (>= 0.7, < 2)
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -379,6 +389,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   view_component (>= 3.11.0)
+  vite_rails
 
 BUNDLED WITH
    2.5.5

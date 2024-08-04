@@ -9,29 +9,31 @@ fi
 # Gems
 bundle config set --local path 'vendor/bundle'
 bundle install
-npm install
+npm install --ignore-scripts
 
 # Set up demo
 pushd demo
 bundle config set --local path 'vendor/bundle'
 bundle install
-npm install
+npm install --ignore-scripts
 popd
+
+npm run build:css
 
 while [[ "$#" > 0 ]]; do case $1 in
   -d|--debug) debug="1"; shift;;
 esac; done
 
 if [ -n "$debug" ]; then
-  mkdir -p tmp/pids
-  overmind start --processes js,css > tmp/lookbook.log 2>&1 &
-  echo $! > tmp/pids/lookbook.pid
+  # start vite and css processes in the background
+  overmind start --daemonize --processes vite,css
 
   # ensure we cleanup tmp files and overmind
   function cleanup {
     echo "Shutting down..."
-    kill $(cat tmp/pids/lookbook.pid) &>/dev/null
-    rm -f tmp/pids/lookbook.pid tmp/lookbook.log .overmind.sock /tmp/overmind.sock
+    popd
+    overmind stop
+    rm .overmind.sock
   }
 
   trap cleanup EXIT

@@ -48,3 +48,4 @@ tmp/
 # Simplecov folder
 coverage/
 demo/public/assets/
+demo/public/vite-dev/

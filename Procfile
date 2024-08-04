@@ -1,3 +1,3 @@
-rails: cd demo; bin/rails s -p 4000
-js: npx chokidar "app/components/**/*.ts" "lib/primer/forms/**/*.ts" -i "app/components/**/*.d.ts" -i "lib/primer/forms/**/*.d.ts" -c "npm run build:js"
+vite: cd demo; bin/vite dev
 css: npx chokidar "app/components/**/*.pcss" -c "npm run build:css"
+web: cd demo; bin/rails s -p 4000
