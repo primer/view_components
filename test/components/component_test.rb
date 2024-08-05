@@ -190,6 +190,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::GridLayout::Area",
       "Primer::OpenProject::PageHeader::Menu",
       "Primer::OpenProject::PageHeader::Dialog",
+      "Primer::OpenProject::PageHeader::Title",
       "Primer::OpenProject::SidePanel::Section"
     ]
 

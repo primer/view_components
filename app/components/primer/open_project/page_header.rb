@@ -4,9 +4,6 @@ module Primer
   module OpenProject
     # A ViewComponent PageHeader inspired by the primer react variant
     class PageHeader < Primer::Component
-      HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
-      HEADING_TAG_FALLBACK = :h1
-
       DEFAULT_HEADER_VARIANT = :medium
       HEADER_VARIANT_OPTIONS = [
         DEFAULT_HEADER_VARIANT,
@@ -27,21 +24,24 @@ module Primer
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
 
+      STATE_DEFAULT = :show
+      STATE_EDIT = :edit
+      STATE_OPTIONS = [STATE_DEFAULT, STATE_EDIT].freeze
+
       status :open_project
 
       # The title of the page header
       #
       # @param tag [Symbol] <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :title, lambda { |tag: HEADING_TAG_FALLBACK, variant: DEFAULT_HEADER_VARIANT, **system_arguments|
-        system_arguments[:tag] = fetch_or_fallback(HEADING_TAG_OPTIONS, tag, HEADING_TAG_FALLBACK)
+      renders_one :title, lambda { |variant: DEFAULT_HEADER_VARIANT, **system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "PageHeader-title",
           "PageHeader-title--#{variant}"
         )
 
-        Primer::BaseComponent.new(**system_arguments)
+        Primer::OpenProject::PageHeader::Title.new(state: @state, **system_arguments)
       }
 
       # Optional description below the title row
@@ -235,7 +235,7 @@ module Primer
 
       # @param mobile_menu_label [String] The tooltip label of the mobile menu
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(mobile_menu_label: I18n.t("label_more"), **system_arguments)
+      def initialize(mobile_menu_label: I18n.t("label_more"), state: STATE_DEFAULT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @mobile_menu_label = mobile_menu_label
 
@@ -245,6 +245,8 @@ module Primer
             @system_arguments[:classes],
             "PageHeader"
           )
+
+        @state = fetch_or_fallback(STATE_OPTIONS, state, STATE_DEFAULT)
 
         @mobile_action_menu = Primer::Alpha::ActionMenu.new(
           display: MOBILE_ACTIONS_DISPLAY,
@@ -261,6 +263,10 @@ module Primer
 
       def render_mobile_menu?
         actions.count > 1
+      end
+
+      def show_state?
+        @state == STATE_DEFAULT
       end
 
       private

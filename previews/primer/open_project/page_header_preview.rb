@@ -24,13 +24,15 @@ module Primer
       # @param with_leading_action [Symbol] octicon
       # @param with_actions [Boolean]
       # @param with_tab_nav [Boolean]
+      # @param in_edit_state [Boolean]
       def playground(
         variant: :medium,
         title: "Hello",
         description: "Last updated 5 minutes ago by XYZ.",
         with_leading_action: :"none",
         with_actions: true,
-        with_tab_nav: false
+        with_tab_nav: false,
+        in_edit_state: false
       )
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
 
@@ -40,7 +42,8 @@ module Primer
                                        with_leading_action: with_leading_action,
                                        with_actions: with_actions,
                                        breadcrumb_items: breadcrumb_items,
-                                       with_tab_nav: with_tab_nav })
+                                       with_tab_nav: with_tab_nav,
+                                       in_edit_state: in_edit_state })
       end
 
       # @label Large title
@@ -50,6 +53,18 @@ module Primer
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title(variant: :large) { "Hello" }
           header.with_description { "Last updated 5 minutes ago by XYZ." }
+          header.with_breadcrumbs(breadcrumb_items)
+        end
+      end
+
+      # @label Editable title
+      def editable_title
+        breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
+        render(Primer::OpenProject::PageHeader.new(state: :edit)) do |header|
+          header.with_title do |title|
+            title.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar")
+            "Hello"
+          end
           header.with_breadcrumbs(breadcrumb_items)
         end
       end

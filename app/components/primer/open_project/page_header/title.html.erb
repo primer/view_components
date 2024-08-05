@@ -1,0 +1,7 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% if show_state? %>
+      <%= content %>
+  <% elsif editable_form.present? %>
+     <%= editable_form %>
+  <% end %>
+<% end %>

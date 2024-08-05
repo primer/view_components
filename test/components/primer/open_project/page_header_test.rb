@@ -247,6 +247,27 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-action.SegmentedControl")
   end
 
+  def test_renders_editable_title
+    render_inline(Primer::OpenProject::PageHeader.new(state: :edit)) do |header|
+      header.with_title do |title|
+        title.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar")
+        "Hello"
+      end
+
+      header.with_breadcrumbs(breadcrumb_elements)
+    end
+
+    assert_no_selector(".PageHeader-action")
+    assert_no_text("Hello")
+
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-breadcrumbs")
+    assert_selector("form")
+    assert_selector("primer-text-field")
+    assert_selector(".FormField-input.Button--primary")
+    assert_selector(".FormField-input.Button--secondary")
+  end
+
   private
 
   def breadcrumb_elements
