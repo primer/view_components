@@ -874,7 +874,8 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
-      const element = this.selectedItems[0]?.element
+      const value = this.selectedItems[0]?.value
+      const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
       if (element) {
         this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
       }
