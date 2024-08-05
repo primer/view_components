@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.41.0
+
+### Minor Changes
+
+- [#149](https://github.com/opf/primer_view_components/pull/149) [`63cd602`](https://github.com/opf/primer_view_components/commit/63cd6022bc2dda79b602ebefcffe6f1e0ed1436f) Thanks [@HDinger](https://github.com/HDinger)! - Add support for an editable state of Primer::OpenProject::PageHeader
+
 ## 0.40.0
 
 ### Minor Changes
