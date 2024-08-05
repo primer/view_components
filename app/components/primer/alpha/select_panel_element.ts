@@ -321,7 +321,7 @@ export class SelectPanelElement extends HTMLElement {
         }
 
         // <li> elements should not themselves be tabbable
-        item.setAttribute('tabindex', '-1')
+        item.removeAttribute('tabindex')
       }
     }
 
