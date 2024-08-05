@@ -41,9 +41,12 @@ module Primer
         # Description content that complements the item's label, with optional test_selector.
         # See `ActionList`'s `description_scheme` argument for layout options.
         #
+        # @param legacy_content [String] Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { "My description" }` or `component.with_description.with_content("My description")`.
         # @param test_selector [String] The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element.
-        renders_one :description, -> (test_selector: nil) do
-          Primer::BaseComponent.new(tag: "span", classes: "ActionListItem-description", test_selector: test_selector) { content }
+        renders_one :description, -> (legacy_content = nil, test_selector: nil) do
+          Primer::BaseComponent.new(tag: "span", classes: "ActionListItem-description", test_selector: test_selector).tap do |desc|
+            desc.with_content(legacy_content) if legacy_content
+          end
         end
 
         # An icon, avatar, SVG, or custom content that will render to the left of the label.
