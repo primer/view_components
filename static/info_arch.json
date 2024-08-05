@@ -992,6 +992,12 @@
             "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
               {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
+              {
                 "name": "test_selector",
                 "type": "String",
                 "default": "N/A",
@@ -5554,6 +5560,12 @@
             "name": "description",
             "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
               {
                 "name": "test_selector",
                 "type": "String",
@@ -14699,6 +14711,12 @@
             "name": "description",
             "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
               {
                 "name": "test_selector",
                 "type": "String",
