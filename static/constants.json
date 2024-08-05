@@ -1479,6 +1479,24 @@
       "medium",
       "large"
     ],
+    "MOBILE_ACTIONS_DISPLAY": [
+      "flex",
+      "none"
+    ],
+    "Menu": "Primer::OpenProject::PageHeader::Menu",
+    "STATE_DEFAULT": "show",
+    "STATE_EDIT": "edit",
+    "STATE_OPTIONS": [
+      "show",
+      "edit"
+    ],
+    "Title": "Primer::OpenProject::PageHeader::Title"
+  },
+  "Primer::OpenProject::PageHeader::Dialog": {
+  },
+  "Primer::OpenProject::PageHeader::Menu": {
+  },
+  "Primer::OpenProject::PageHeader::Title": {
     "HEADING_TAG_FALLBACK": "h1",
     "HEADING_TAG_OPTIONS": [
       "h1",
@@ -1487,16 +1505,7 @@
       "h4",
       "h5",
       "h6"
-    ],
-    "MOBILE_ACTIONS_DISPLAY": [
-      "flex",
-      "none"
-    ],
-    "Menu": "Primer::OpenProject::PageHeader::Menu"
-  },
-  "Primer::OpenProject::PageHeader::Dialog": {
-  },
-  "Primer::OpenProject::PageHeader::Menu": {
+    ]
   },
   "Primer::OpenProject::SidePanel": {
     "Section": "Primer::OpenProject::SidePanel::Section"

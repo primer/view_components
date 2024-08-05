@@ -5200,6 +5200,22 @@
     ]
   },
   {
+    "component": "OpenProject::PageHeader::Title",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderTitle",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/title.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/title/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::SidePanel",
     "status": "open_project",
     "a11y_reviewed": false,

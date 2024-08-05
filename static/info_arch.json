@@ -17797,6 +17797,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/editable_title",
+        "name": "editable_title",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/actions",
         "name": "actions",
         "snapshot": "false",
@@ -18013,6 +18026,46 @@
     ],
     "slots": [
 
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::PageHeader::Title",
+    "description": "A Helper class to create a Title inside the PageHeader title slot\nIt should not be used standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::PageHeader::Title",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectPageHeaderTitle",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/page_header/title.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/page_header/title/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "editable_form",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
     ],
     "methods": [
 
