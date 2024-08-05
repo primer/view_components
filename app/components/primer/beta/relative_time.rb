@@ -86,7 +86,7 @@ module Primer
 
       # @param datetime [Time] The time to be formatted.
       # @param tense [Symbol] Which tense to use. <%= one_of(Primer::Beta::RelativeTime::TENSE_OPTIONS) %>
-      # @param prefix [sring] What to prefix the relative ime display with.
+      # @param prefix [String] What to prefix the relative time display with.
       # @param second [Symbol] What format seconds should take. <%= one_of(Primer::Beta::RelativeTime::SECOND_OPTIONS) %>
       # @param minute [Symbol] What format minues should take. <%= one_of(Primer::Beta::RelativeTime::MINUTE_OPTIONS) %>
       # @param hour [Symbol] What format hours should take. <%= one_of(Primer::Beta::RelativeTime::HOUR_OPTIONS) %>
@@ -95,12 +95,12 @@ module Primer
       # @param month [Symbol] What format months should take. <%= one_of(Primer::Beta::RelativeTime::MONTH_OPTIONS) %>
       # @param year [Symbol] What format years should take. <%= one_of(Primer::Beta::RelativeTime::YEAR_OPTIONS) %>
       # @param time_zone_name [Symbol] What format the time zone should take. <%= one_of(Primer::Beta::RelativeTime::TIMEZONENAME_OPTIONS) %>
-      # @param threshold [string] The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.
+      # @param threshold [String] The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.
       # @param precision [Symbol] The precision elapsed time should display. <%= one_of(Primer::Beta::RelativeTime::PRECISION_OPTIONS) %>
       # @param format [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_OPTIONS) %>
       # @param format_style [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_STYLE_OPTIONS) %>
-      # @param lang [string] The language to use.
-      # @param title [string] Provide a custom title to the element.
+      # @param lang [String] The language to use.
+      # @param title [String] Provide a custom title to the element.
       # @param no_title [Boolean] Removes the `title` attribute provided on the element by default.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
