@@ -372,6 +372,28 @@ module Alpha
       refute_selector "[aria-checked]", visible: :hidden
     end
 
+    def test_single_select_item_unchecks_previously_checked_item_after_filtering
+      visit_preview(:playground)
+
+      click_on_invoker_button
+
+      # clicking item closes panel, so checked item is hidden
+      assert_selector "[aria-selected=true]", text: "Phaser"
+      refute_selector "[aria-checked]"
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      click_on "Photon torpedo"
+
+      click_on_invoker_button
+      # clicking item closes panel, so checked item is hidden
+      assert_selector "[aria-selected=false]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
+      refute_selector "[aria-checked]"
+    end
+
     def test_single_selected_item_cannot_be_unchecked
       visit_preview(:single_select)
 

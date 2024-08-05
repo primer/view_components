@@ -11,7 +11,6 @@ type SelectedItem = {
   label: string | null | undefined
   value: string | null | undefined
   inputName: string | null | undefined
-  element: SelectPanelItem
 }
 
 const validSelectors = ['[role="option"]']
@@ -396,7 +395,6 @@ export class SelectPanelElement extends HTMLElement {
         value,
         label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
         inputName: itemContent.getAttribute('data-input-name'),
-        element: item,
       })
     }
   }
@@ -874,10 +872,13 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
-      const element = this.selectedItems[0]?.element
+      const value = this.selectedItems[0]?.value
+      const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
+
       if (element) {
         this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
       }
+
       this.#selectedItems.clear()
 
       // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
