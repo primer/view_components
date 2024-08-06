@@ -461,7 +461,7 @@ module Primer
 
         system_arguments[:aria] = merge_aria(
           system_arguments,
-          { aria: { controls: "#{@panel_id}-dialog" } }
+          { aria: { controls: "#{@panel_id}-dialog", "haspopup": "dialog", "expanded": "false" } }
         )
 
         Primer::Beta::Button.new(**system_arguments)
