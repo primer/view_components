@@ -54,6 +54,7 @@ const updateWhenVisible = (() => {
     })
     resizeObserver.observe(el.ownerDocument.documentElement)
     el.addEventListener('dialog:close', () => {
+      el.invokerElement?.setAttribute('aria-expanded', 'false')
       anchors.delete(el)
     })
     el.addEventListener('dialog:open', () => {
