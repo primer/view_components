@@ -401,6 +401,7 @@ module Primer
 
         @dialog = Primer::BaseComponent.new(
           id: "#{@panel_id}-dialog",
+          "aria-labelledby": "#{@panel_id}-dialog-title",
           tag: :dialog,
           data: { target: "select-panel.dialog" },
           classes: class_names(
