@@ -38,6 +38,12 @@ class DetailsMenuMigrationTest < ErblintTestCase
     assert_match(/.<details-menu> has been deprecated./, @linter.offenses.first.message)
   end
 
+  def test_does_not_warn_if_no_details_menu_used
+    @file = "<% component.with_body('foo') %>"
+    @linter.run(processed_source)
+    assert_equal 0, @linter.offenses.count
+  end
+
   def test_does_not_warn_if_inline_disable_comment
     @file = <<~HTML
       <%= render SomeComponent.new(tag: :"details-menu") do %><%# erblint:disable Primer::Accessibility::DetailsMenuMigration %>
