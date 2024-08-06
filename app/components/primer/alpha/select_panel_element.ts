@@ -11,7 +11,6 @@ type SelectedItem = {
   label: string | null | undefined
   value: string | null | undefined
   inputName: string | null | undefined
-  element: SelectPanelItem
 }
 
 const validSelectors = ['[role="option"]']
@@ -382,6 +381,7 @@ export class SelectPanelElement extends HTMLElement {
         }
       }
     }
+
     this.#updateInput()
   }
 
@@ -396,7 +396,6 @@ export class SelectPanelElement extends HTMLElement {
         value,
         label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
         inputName: itemContent.getAttribute('data-input-name'),
-        element: item,
       })
     }
   }
@@ -632,7 +631,8 @@ export class SelectPanelElement extends HTMLElement {
         const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          this.#handleItemActivated(item, false)
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.click()
         }
       } else if (key === 'ArrowDown') {
         const item = (this.focusableItem || this.#getItemContent(this.visibleItems[0])) as HTMLLIElement
@@ -645,13 +645,15 @@ export class SelectPanelElement extends HTMLElement {
         const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       } else if (key === 'End') {
         if (this.visibleItems.length > 0) {
           const item = this.visibleItems[this.visibleItems.length - 1] as HTMLLIElement
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       }
@@ -838,7 +840,7 @@ export class SelectPanelElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(item: SelectPanelItem, shouldClose: boolean = true) {
+  #handleItemActivated(item: SelectPanelItem) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -847,7 +849,7 @@ export class SelectPanelElement extends HTMLElement {
     // works fine.
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
-        if (this.open && shouldClose) {
+        if (this.open) {
           this.hide()
         }
       })
@@ -872,10 +874,13 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
-      const element = this.selectedItems[0]?.element
+      const value = this.selectedItems[0]?.value
+      const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
+
       if (element) {
         this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
       }
+
       this.#selectedItems.clear()
 
       // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.

@@ -237,6 +237,14 @@ module Primer
       def multiselect_form(open_on_load: false, route_format: :html)
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
       end
+
+      # @label List of links
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def list_of_links(open_on_load: false)
+        render_with_template(locals: { open_on_load: open_on_load })
+      end
     end
   end
 end
