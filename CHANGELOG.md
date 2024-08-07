@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 0.31.0
+
+### Minor Changes
+
+- [#2984](https://github.com/primer/view_components/pull/2984) [`c56f325`](https://github.com/primer/view_components/commit/c56f3254128999ed69cdaeefb5a48cd08636fca0) Thanks [@camertron](https://github.com/camertron)! - Add ability to attach a test selector to ActionList items
+
+### Patch Changes
+
+- [#2995](https://github.com/primer/view_components/pull/2995) [`0647fed`](https://github.com/primer/view_components/commit/0647fedd4c0a9c23c5312f8e753a346e3ac42960) Thanks [@camertron](https://github.com/camertron)! - Allow ActionList item content to be supplied by positional arg
+
+- [#2979](https://github.com/primer/view_components/pull/2979) [`ae6e3d7`](https://github.com/primer/view_components/commit/ae6e3d73d5bc70492a151845e4d35c48f5510fa5) Thanks [@langermank](https://github.com/langermank)! - Prep for high contrast theme updates
+
+- [#2986](https://github.com/primer/view_components/pull/2986) [`4d8ec0c`](https://github.com/primer/view_components/commit/4d8ec0c67c748d07ff3c2b69d6bdaff408461d8e) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Fixes Alpha::SelectPanel remote loading bug where items from the server were overriding the users selections. Additionally, update the #removeSelectedItem function to grab the data-value from the correct element.
+
+- [#2987](https://github.com/primer/view_components/pull/2987) [`82f0267`](https://github.com/primer/view_components/commit/82f026711246f6f5409e79e4cffb74cc5145b39c) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Ensure focus is set on SelectPanel item when arrowing down from input
+
+- [#2997](https://github.com/primer/view_components/pull/2997) [`0d0b5bc`](https://github.com/primer/view_components/commit/0d0b5bcf2d2fd9f328f69545f850d825d2cc435b) Thanks [@camertron](https://github.com/camertron)! - Prevent an empty list of custom regexes in the DetailsMenuMigration linter from reporting false-positives
+
+- [#2978](https://github.com/primer/view_components/pull/2978) [`fac1ec9`](https://github.com/primer/view_components/commit/fac1ec9aed4c05d1034bb04d24c1380c9ef06c97) Thanks [@camertron](https://github.com/camertron)! - Ensure pressing 'Enter' in SelectPanel filter input causes navigation if first item is link.
+
+- [#2996](https://github.com/primer/view_components/pull/2996) [`53abaa6`](https://github.com/primer/view_components/commit/53abaa6a14ace48cf5d016edf58cf60930cd764e) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Remove tabindex="-1" from li elements labelled as role="none" since tabindex's remove/negate role presentation
+
+- [#2989](https://github.com/primer/view_components/pull/2989) [`36a044a`](https://github.com/primer/view_components/commit/36a044a28f6070e422681c8765693d1c21411fea) Thanks [@JoyceZhu](https://github.com/JoyceZhu)! - Add `aria-haspopup` and `aria-expanded` to `SelectPanel` state
+
+- [#2994](https://github.com/primer/view_components/pull/2994) [`3bf8fd4`](https://github.com/primer/view_components/commit/3bf8fd4142a7647bd4cc2798f7e62bf1046092b4) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Add aria-labelledby on the SelectPanel dialog
+
+- [#2985](https://github.com/primer/view_components/pull/2985) [`868b49e`](https://github.com/primer/view_components/commit/868b49ee1e8d82066be91a6ffe97d948c1d7dc43) Thanks [@jamieshark](https://github.com/jamieshark)! - Adds custom config for DetailsMenuMigration linter.
+
+- [#2988](https://github.com/primer/view_components/pull/2988) [`a5eefd9`](https://github.com/primer/view_components/commit/a5eefd9b5c7b8e6463b64ce6f7b3c46f65897759) Thanks [@gjtorikian](https://github.com/gjtorikian)! - Fix documentation comments in relative_time.rb
+
 ## 0.30.0
 
 ### Minor Changes
