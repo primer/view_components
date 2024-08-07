@@ -22,5 +22,13 @@ class CustomWidthFieldsForm < ApplicationForm
       city_list.option(label: "Bellevue", value: "bellevue")
       city_list.option(label: "Seattle", value: "seattle")
     end
+
+    f.text_field(
+      name: :lots_of_text,
+      label: "Lots of text",
+      required: true,
+      caption: "What else do you need?",
+      input_width: :small
+    )
   end
 end
