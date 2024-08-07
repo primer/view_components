@@ -7,10 +7,43 @@ class Primer::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_custom_width_fields
-    render_inline Primer::FormTestComponent.new(form_class: CustomWidthFieldsForm)
+    custom_width_form = Class.new(ApplicationForm) do
+      form do |f|
+        f.text_field(
+          name: :ultimate_answer,
+          label: "Ultimate answer",
+          required: true,
+          caption: "The answer to life, the universe, and everything",
+          input_width: :medium
+        )
+
+        f.select_list(
+          name: "cities",
+          label: "Cool cities",
+          caption: "Select your favorite!",
+          include_blank: true,
+          input_width: :small
+        ) do |city_list|
+          city_list.option(label: "Lopez Island", value: "lopez_island")
+          city_list.option(label: "Bellevue", value: "bellevue")
+          city_list.option(label: "Seattle", value: "seattle")
+        end
+
+        f.text_field(
+          name: :lots_of_text,
+          label: "Lots of text",
+          required: true,
+          caption: "What else do you need?",
+          input_width: :large
+        )
+      end
+    end
+
+    render_inline Primer::FormTestComponent.new(form_class: custom_width_form)
 
     assert_selector "div.FormControl-input-width--medium"
     assert_selector "div.FormControl-input-width--small"
+    assert_selector "div.FormControl-input-width--large"
   end
 
   def test_renders_correct_form_structure
