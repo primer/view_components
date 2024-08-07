@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.41.1
+
+### Patch Changes
+
+- [#159](https://github.com/opf/primer_view_components/pull/159) [`f2517d6`](https://github.com/opf/primer_view_components/commit/f2517d65708cff07bef5714e1af28c15fc49915e) Thanks [@oliverguenther](https://github.com/oliverguenther)! - Allow input_width on text_area
+
 ## 0.41.0
 
 ### Minor Changes
