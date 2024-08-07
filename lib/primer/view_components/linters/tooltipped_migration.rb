@@ -10,7 +10,7 @@ module ERBLint
           include LinterRegistry
           include Helpers::RuleHelpers
 
-          MIGRATE_TO_NEWER_TOOLTIP = ".tooltipped has been deprecated. There are major accessibility concerns with using this tooltip so please take action. See https://primer.style/guides/rails/migration-guides/primer-css-tooltipped."
+          MIGRATE_TO_NEWER_TOOLTIP = ".tooltipped has been deprecated. Due to major accessibility concerns with using this tooltip, please migrate to a Primer Tooltip component or rework the design to eliminate the tooltip. See https://primer.style/guides/rails/migration-guides/primer-css-tooltipped."
           TOOLTIPPED_RUBY_PATTERN = /classes:.*tooltipped|class:.*tooltipped/.freeze
 
           def run(processed_source)
