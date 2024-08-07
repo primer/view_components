@@ -56,6 +56,10 @@ module Alpha
       click_on_item(4)
     end
 
+    def close_dialog
+      find("[data-close-dialog-id][aria-label=Close]").click
+    end
+
     def focus_on_invoker_button
       page.evaluate_script(<<~JS)
         document.querySelector('action-menu button[aria-controls]').focus()
@@ -338,6 +342,19 @@ module Alpha
 
       # opening the dialog should close the menu
       refute_selector "action-menu ul li"
+    end
+
+    def test_open_then_closing_dialog_restores_focus
+      visit_preview(:opens_dialog)
+
+      click_on_invoker_button
+      click_on_second_item
+
+      assert_selector "dialog[open]"
+
+      close_dialog
+
+      assert_equal page.evaluate_script("document.activeElement").text, "Menu"
     end
 
     def test_opens_dialog_on_keydown
