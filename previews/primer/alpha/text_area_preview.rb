@@ -16,6 +16,7 @@ module Primer
       # @param disabled toggle
       # @param invalid toggle
       # @param validation_message text
+      # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
       def playground(
         name: "my-text-area",
         id: "my-text-area",
@@ -26,7 +27,8 @@ module Primer
         full_width: true,
         disabled: false,
         invalid: false,
-        validation_message: nil
+        validation_message: nil,
+        input_width: nil
       )
         system_arguments = {
           name: name,
@@ -38,7 +40,8 @@ module Primer
           full_width: full_width,
           disabled: disabled,
           invalid: invalid,
-          validation_message: validation_message
+          validation_message: validation_message,
+          input_width: input_width
         }
 
         render(Primer::Alpha::TextArea.new(**system_arguments))
