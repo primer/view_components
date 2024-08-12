@@ -401,6 +401,7 @@ module Primer
 
         @dialog = Primer::BaseComponent.new(
           id: "#{@panel_id}-dialog",
+          "aria-labelledby": "#{@panel_id}-dialog-title",
           tag: :dialog,
           data: { target: "select-panel.dialog" },
           classes: class_names(
@@ -460,7 +461,7 @@ module Primer
 
         system_arguments[:aria] = merge_aria(
           system_arguments,
-          { aria: { controls: "#{@panel_id}-dialog" } }
+          { aria: { controls: "#{@panel_id}-dialog", "haspopup": "dialog", "expanded": "false" } }
         )
 
         Primer::Beta::Button.new(**system_arguments)
