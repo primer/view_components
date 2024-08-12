@@ -28,11 +28,7 @@
         <%= render(Primer::BaseComponent.new(tag: :span, **@label_arguments)) do %>
           <%= @label || content %>
         <% end %>
-        <% if description? %>
-          <span class="ActionListItem-description">
-            <%= description %>
-          </span>
-        <% end %>
+      <%= description if description? %>
       <% end %>
       <% if trailing_visual %>
         <span class="ActionListItem-visual ActionListItem-visual--trailing">

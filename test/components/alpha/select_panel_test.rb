@@ -87,6 +87,14 @@ module Primer
         assert_selector "select-panel action-list ul[id='#{panel_id}-list'][role=listbox]"
       end
 
+      def test_aria_labelledby_dialog
+        render_preview(:default)
+
+        dialog_labelledby_id = page.find_css("dialog").first.attributes["aria-labelledby"].value
+        header_id = page.find_css("select-panel h1").first.attributes["id"].value
+        assert_equal dialog_labelledby_id, header_id
+      end
+
       def test_renders_close_button
         render_preview(:default)
 

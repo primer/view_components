@@ -989,9 +989,20 @@
         "slots": [
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
@@ -5547,9 +5558,20 @@
           },
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
@@ -8074,6 +8096,19 @@
       {
         "preview_path": "primer/alpha/select_panel/multiselect_form",
         "name": "multiselect_form",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/list_of_links",
+        "name": "list_of_links",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
@@ -14687,9 +14722,20 @@
           },
           {
             "name": "description",
-            "description": "Description content that complements the item's label. See `ActionList`'s `description_scheme` argument\nfor layout options.",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
             "parameters": [
-
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
             ]
           },
           {
@@ -15349,9 +15395,9 @@
       },
       {
         "name": "prefix",
-        "type": "sring",
+        "type": "String",
         "default": "`nil`",
-        "description": "What to prefix the relative ime display with."
+        "description": "What to prefix the relative time display with."
       },
       {
         "name": "second",
@@ -15403,7 +15449,7 @@
       },
       {
         "name": "threshold",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
       },
@@ -15427,13 +15473,13 @@
       },
       {
         "name": "lang",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "The language to use."
       },
       {
         "name": "title",
-        "type": "string",
+        "type": "String",
         "default": "`nil`",
         "description": "Provide a custom title to the element."
       },

@@ -11,7 +11,6 @@ type SelectedItem = {
   label: string | null | undefined
   value: string | null | undefined
   inputName: string | null | undefined
-  element: SelectPanelItem
 }
 
 const validSelectors = ['[role="option"]']
@@ -54,6 +53,7 @@ const updateWhenVisible = (() => {
     })
     resizeObserver.observe(el.ownerDocument.documentElement)
     el.addEventListener('dialog:close', () => {
+      el.invokerElement?.setAttribute('aria-expanded', 'false')
       anchors.delete(el)
     })
     el.addEventListener('dialog:open', () => {
@@ -84,6 +84,7 @@ export class SelectPanelElement extends HTMLElement {
   #selectedItems: Map<string, SelectedItem> = new Map()
   #loadingDelayTimeoutId: number | null = null
   #loadingAnnouncementTimeoutId: number | null = null
+  #hasLoadedData = false
 
   get open(): boolean {
     return this.dialog.open
@@ -306,7 +307,7 @@ export class SelectPanelElement extends HTMLElement {
         }
 
         // <li> elements should not themselves be tabbable
-        item.setAttribute('tabindex', '-1')
+        item.removeAttribute('tabindex')
       }
     } else {
       for (const item of this.items) {
@@ -320,7 +321,7 @@ export class SelectPanelElement extends HTMLElement {
         }
 
         // <li> elements should not themselves be tabbable
-        item.setAttribute('tabindex', '-1')
+        item.removeAttribute('tabindex')
       }
     }
 
@@ -380,6 +381,7 @@ export class SelectPanelElement extends HTMLElement {
         }
       }
     }
+
     this.#updateInput()
   }
 
@@ -394,14 +396,15 @@ export class SelectPanelElement extends HTMLElement {
         value,
         label: itemContent.querySelector('.ActionListItem-label')?.textContent?.trim(),
         inputName: itemContent.getAttribute('data-input-name'),
-        element: item,
       })
     }
   }
 
-  #removeSelectedItem(item: Element) {
-    const value = item.getAttribute('data-value')
+  #removeSelectedItem(item: SelectPanelItem) {
+    const itemContent = this.#getItemContent(item)
+    if (!itemContent) return
 
+    const value = itemContent.getAttribute('data-value')
     if (value) {
       this.#selectedItems.delete(value)
     }
@@ -463,6 +466,7 @@ export class SelectPanelElement extends HTMLElement {
     if (event.target === this.dialog && event.type === 'close') {
       // Remove data-ready so it can be set the next time the panel is opened
       this.dialog.removeAttribute('data-ready')
+      this.invokerElement?.setAttribute('aria-expanded', 'false')
 
       this.dispatchEvent(
         new CustomEvent('panelClosed', {
@@ -627,26 +631,29 @@ export class SelectPanelElement extends HTMLElement {
         const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          this.#handleItemActivated(item, false)
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.click()
         }
       } else if (key === 'ArrowDown') {
-        const item = (this.focusableItem || this.visibleItems[0]) as HTMLLIElement
+        const item = (this.focusableItem || this.#getItemContent(this.visibleItems[0])) as HTMLLIElement
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          item.focus()
           event.preventDefault()
         }
       } else if (key === 'Home') {
         const item = this.visibleItems[0] as HTMLLIElement | null
 
         if (item) {
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       } else if (key === 'End') {
         if (this.visibleItems.length > 0) {
           const item = this.visibleItems[this.visibleItems.length - 1] as HTMLLIElement
-          this.#getItemContent(item)!.focus()
+          const itemContent = this.#getItemContent(item)
+          if (itemContent) itemContent.focus()
           event.preventDefault()
         }
       }
@@ -700,8 +707,12 @@ export class SelectPanelElement extends HTMLElement {
       if (!itemContent) continue
 
       const value = itemContent.getAttribute('data-value')
-
-      if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+      if (this.#hasLoadedData) {
+        if (value && !this.#selectedItems.has(value)) {
+          itemContent.setAttribute(this.ariaSelectionType, 'false')
+        }
+      } else if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
+        this.#hasLoadedData = true
         this.#addSelectedItem(item)
       }
     }
@@ -829,7 +840,7 @@ export class SelectPanelElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(item: SelectPanelItem, shouldClose: boolean = true) {
+  #handleItemActivated(item: SelectPanelItem) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -838,7 +849,7 @@ export class SelectPanelElement extends HTMLElement {
     // works fine.
     if (this.selectVariant !== 'multiple') {
       setTimeout(() => {
-        if (this.open && shouldClose) {
+        if (this.open) {
           this.hide()
         }
       })
@@ -863,17 +874,19 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
+      const value = this.selectedItems[0]?.value
+      const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
+
+      if (element) {
+        this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
+      }
+
+      this.#selectedItems.clear()
+
       // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
       if (checked) {
         this.#addSelectedItem(item)
         itemContent?.setAttribute(this.ariaSelectionType, 'true')
-      }
-
-      for (const checkedItem of this.querySelectorAll(`[${this.ariaSelectionType}]`)) {
-        if (checkedItem !== itemContent) {
-          this.#removeSelectedItem(checkedItem)
-          checkedItem.setAttribute(this.ariaSelectionType, 'false')
-        }
       }
 
       this.#setDynamicLabel()
@@ -902,6 +915,7 @@ export class SelectPanelElement extends HTMLElement {
   show() {
     this.updateAnchorPosition()
     this.dialog.showModal()
+    this.invokerElement?.setAttribute('aria-expanded', 'true')
     const event = new CustomEvent('dialog:open', {
       detail: {dialog: this.dialog},
     })

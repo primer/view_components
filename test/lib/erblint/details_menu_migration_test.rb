@@ -38,6 +38,12 @@ class DetailsMenuMigrationTest < ErblintTestCase
     assert_match(/.<details-menu> has been deprecated./, @linter.offenses.first.message)
   end
 
+  def test_does_not_warn_if_no_details_menu_used
+    @file = "<% component.with_body('foo') %>"
+    @linter.run(processed_source)
+    assert_equal 0, @linter.offenses.count
+  end
+
   def test_does_not_warn_if_inline_disable_comment
     @file = <<~HTML
       <%= render SomeComponent.new(tag: :"details-menu") do %><%# erblint:disable Primer::Accessibility::DetailsMenuMigration %>
@@ -45,5 +51,28 @@ class DetailsMenuMigrationTest < ErblintTestCase
     @linter.run_and_update_offense_status(processed_source)
     offenses = @linter.offenses.reject(&:disabled?)
     assert_equal 0, offenses.count
+  end
+
+  def test_accepts_custom_regex_pattern
+    @linter.config.custom_erb_pattern = [/render[\s\(]GitHub::MenuComponent/]
+    @file = <<~HTML
+      <%= render GitHub::MenuComponent.new do %>
+    HTML
+    @linter.run(processed_source)
+    assert_equal 1, @linter.offenses.count
+    assert_match(/.<details-menu> has been deprecated./, @linter.offenses.first.message)
+  end
+
+  def test_accepts_multiple_custom_regex_pattern
+    @linter.config.custom_erb_pattern = [/render[\s\(]GitHub::MenuComponent/, /SomeOtherComponent/]
+    @file = <<~HTML
+      <%= render GitHub::MenuComponent.new do %>
+      <% end %>
+      <%= render SomeOtherComponent.new do %>
+      <% end %>
+    HTML
+    @linter.run(processed_source)
+    assert_equal 2, @linter.offenses.count
+    assert_match(/.<details-menu> has been deprecated./, @linter.offenses.first.message)
   end
 end
