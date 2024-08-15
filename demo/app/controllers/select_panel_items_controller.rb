@@ -5,7 +5,7 @@ class SelectPanelItemsController < ApplicationController
   SELECT_PANEL_ITEMS = [
     { value: 1, title: "Photon torpedo", description: "Starship-mounted missile" },
     { value: 2, title: "Bat'leth", description: "The Klingon warrior's preferred means of achieving honor" },
-    { value: 3, selected: true, title: "Phaser", description: "The iconic handheld laser beam" },
+    { value: 3, title: "Phaser", description: "The iconic handheld laser beam" },
     { value: 4, title: "Lightsaber", description: "An elegant weapon for a more civilized age", recent: true },
     { value: 5, title: "Proton pack", description: "Ghostbusting equipment" },
     { value: 6, title: "Sonic screwdriver", description: "The Time Lord's multi-purpose tool" },
@@ -42,9 +42,13 @@ class SelectPanelItemsController < ApplicationController
                 []
               end
 
-    if unselect_items?
-      results.map! do |result|
-        result.merge(selected: false)
+    if allows_selection?
+      results = results.map(&:dup)
+      results.each do |result|
+        if selected_items.any? { |item| result[:title].downcase.include?(item) }
+          result.merge!(selected: true)
+          break if single_select?
+        end
       end
     end
 
@@ -91,11 +95,23 @@ class SelectPanelItemsController < ApplicationController
     "#{COOKIE_PREFIX}#{uuid}"
   end
 
-  def select_items?
-    params.fetch(:select_items, "true") == "true"
+  def selected_items
+    params.fetch(:selected_items, "").downcase.split(",").map(&:strip)
   end
 
-  def unselect_items?
-    !select_items?
+  def select_variant
+    @select_variant ||= params.fetch(:select_variant, Primer::Alpha::SelectPanel::DEFAULT_SELECT_VARIANT).to_sym
+  end
+
+  def single_select?
+    select_variant == :single
+  end
+
+  def multi_select?
+    select_variant == :multiple
+  end
+
+  def allows_selection?
+    single_select? || multi_select?
   end
 end

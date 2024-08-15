@@ -18,7 +18,7 @@ module Primer
       # @param open_on_load toggle
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
-      # @param select_items toggle
+      # @param selected_items text
       def playground(
         title: "Sci-fi equipment",
         subtitle: "Various tools from your favorite shows",
@@ -33,11 +33,11 @@ module Primer
         open_on_load: false,
         anchor_align: :start,
         anchor_side: :outside_bottom,
-        select_items: true
+        selected_items: "Phaser"
       )
         render_with_template(locals: {
           subtitle: subtitle,
-          select_items: select_items,
+          selected_items: selected_items,
           system_arguments: {
             title: title,
             size: size,
@@ -65,8 +65,6 @@ module Primer
         })
       end
 
-      # @!group Fetch strategies
-
       # @label Local fetch
       #
       # @snapshot interactive
@@ -87,8 +85,9 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param selected_items text
+      def remote_fetch(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
       end
 
       # @label Local fetch (no results)
@@ -114,8 +113,6 @@ module Primer
       def remote_fetch_no_results(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
-
-      # @!endgroup
 
       # @label Single select
       #

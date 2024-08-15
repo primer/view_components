@@ -712,10 +712,11 @@ export class SelectPanelElement extends HTMLElement {
           itemContent.setAttribute(this.ariaSelectionType, 'false')
         }
       } else if (value && !this.#selectedItems.has(value) && this.isItemChecked(item)) {
-        this.#hasLoadedData = true
         this.#addSelectedItem(item)
       }
     }
+
+    this.#hasLoadedData = true
 
     if (!this.noResults) return
 
@@ -859,7 +860,8 @@ export class SelectPanelElement extends HTMLElement {
     // interfere with events fired by menu items whose behavior is specified outside the library.
     if (this.selectVariant !== 'multiple' && this.selectVariant !== 'single') return
 
-    const checked = !this.isItemChecked(item)
+    const currentlyChecked = this.isItemChecked(item)
+    const checked = !currentlyChecked
 
     const activationSuccess = this.dispatchEvent(
       new CustomEvent('beforeItemActivated', {
@@ -874,22 +876,24 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
-      const value = this.selectedItems[0]?.value
-      const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
+      if (!currentlyChecked) {
+        const value = this.selectedItems[0]?.value
+        const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
 
-      if (element) {
-        this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
+        if (element) {
+          this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
+        }
+
+        this.#selectedItems.clear()
+
+        // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
+        if (checked) {
+          this.#addSelectedItem(item)
+          itemContent?.setAttribute(this.ariaSelectionType, 'true')
+        }
+
+        this.#setDynamicLabel()
       }
-
-      this.#selectedItems.clear()
-
-      // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
-      if (checked) {
-        this.#addSelectedItem(item)
-        itemContent?.setAttribute(this.ariaSelectionType, 'true')
-      }
-
-      this.#setDynamicLabel()
     } else {
       // multi-select mode allows unchecking a checked item
       itemContent?.setAttribute(this.ariaSelectionType, `${checked}`)
