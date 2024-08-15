@@ -242,6 +242,14 @@ module Primer
       def list_of_links(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
+
+      # @label No values
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def no_values(open_on_load: false)
+        render_with_template(locals: { open_on_load: open_on_load })
+      end
     end
   end
 end

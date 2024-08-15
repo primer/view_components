@@ -112,6 +112,6 @@ class SelectPanelItemsController < ApplicationController
   end
 
   def allows_selection?
-    single_select? || multi_select?
+    Primer::Alpha::SelectPanel::SELECT_VARIANT_OPTIONS.include?(select_variant)
   end
 end

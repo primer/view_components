@@ -266,6 +266,18 @@ module Alpha
       assert_current_path "https://github.com"
     end
 
+    def test_selecting_without_data_values
+      visit_preview(:no_values)
+
+      click_on_invoker_button
+      click_on_first_item
+      assert_selector "[aria-selected=true]", text: "Item 1", count: 1, visible: :hidden
+
+      click_on_invoker_button
+      click_on_second_item
+      assert_selector "[aria-selected=true]", text: "Item 2", count: 1, visible: :hidden
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
