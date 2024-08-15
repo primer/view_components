@@ -159,7 +159,7 @@ module Primer
     #
     # ```erb
     # <% builder = ActionView::Helpers::FormBuilder.new(
-    #   "address",  # the name of the model, used to wrap input names, eg 'address[country_code]'
+    #   "address",  # the name of the model, used to wrap input names, eg 'address[country]'
     #   nil,        # object (eg. the Address instance, which we can omit)
     #   self,       # template
     #   {}          # options
@@ -168,7 +168,7 @@ module Primer
     #   form_arguments: { builder: builder, name: "country" }
     # )) do |list| %>
     #   <% countries.each do |country| %>
-    #     <% menu.with_item(label: country.name, data: { value: country.code }) %>
+    #     <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>
     #   <% end %>
     # <% end %>
     # ```
@@ -326,7 +326,7 @@ module Primer
       # @param title [String] The title that appears at the top of the panel.
       # @param id [String] The unique ID of the panel.
       # @param size [Symbol] The size of the panel. <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>
-      # @param select_variant [Symbol] <%= one_of(Primer::Alpha::ActionList::SELECT_VARIANT_OPTIONS) %>
+      # @param select_variant [Symbol] <%= one_of(Primer::Alpha::SelectPanel::SELECT_VARIANT_OPTIONS) %>
       # @param fetch_strategy [Symbol] <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
       # @param no_results_label [String] The label to display when no results are found.
       # @param preload [Boolean] Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
