@@ -876,17 +876,14 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
+      // disallow unchecking checked item in single-select mode
       if (!currentlyChecked) {
-        const value = this.selectedItems[0]?.value
-        const element = this.visibleItems.find(el => this.#getItemContent(el)?.getAttribute('data-value') === value)
-
-        if (element) {
-          this.#getItemContent(element)?.setAttribute(this.ariaSelectionType, 'false')
+        for (const el of this.items) {
+          this.#getItemContent(el)?.setAttribute(this.ariaSelectionType, 'false')
         }
 
         this.#selectedItems.clear()
 
-        // Only check, never uncheck here. Single-select mode does not allow unchecking a checked item.
         if (checked) {
           this.#addSelectedItem(item)
           itemContent?.setAttribute(this.ariaSelectionType, 'true')
