@@ -46,7 +46,7 @@ class SelectPanelItemsController < ApplicationController
       results = results.map(&:dup)
       results.each do |result|
         if selected_items.any? { |item| result[:title].downcase.include?(item) }
-          result.merge!(selected: true)
+          result[:selected] = true
           break if single_select?
         end
       end
