@@ -38,6 +38,7 @@
     "lint:eslint": "eslint 'app/components/**/*.ts'",
     "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
+    "build": "script/build-assets",
     "build:js": "script/build-assets js",
     "build:css": "script/build-assets css"
   },
