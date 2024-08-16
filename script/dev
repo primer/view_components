@@ -18,8 +18,6 @@ bundle check || bundle install
 npm install --ignore-scripts
 popd
 
-npm run build:css
-
 while [[ "$#" > 0 ]]; do case $1 in
   -d|--debug) debug="1"; shift;;
 esac; done

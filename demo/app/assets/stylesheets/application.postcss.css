@@ -1,0 +1,72 @@
+@import "component_preview.css";
+@import "../../../../app/components/primer/primer.pcss";
+
+@import "@primer/primitives/dist/css/base/size/size.css";
+@import "@primer/primitives/dist/css/base/typography/typography.css";
+@import "@primer/primitives/dist/css/functional/size/border.css";
+@import "@primer/primitives/dist/css/functional/size/breakpoints.css";
+@import "@primer/primitives/dist/css/functional/size/size-coarse.css";
+@import "@primer/primitives/dist/css/functional/size/size-fine.css";
+@import "@primer/primitives/dist/css/functional/size/size.css";
+@import "@primer/primitives/dist/css/functional/size/viewport.css";
+@import "@primer/primitives/dist/css/functional/typography/typography.css";
+@import "@primer/primitives/dist/css/functional/themes/dark-colorblind.css";
+@import "@primer/primitives/dist/css/functional/themes/dark-dimmed.css";
+@import "@primer/primitives/dist/css/functional/themes/dark-high-contrast.css";
+@import "@primer/primitives/dist/css/functional/themes/dark-tritanopia.css";
+@import "@primer/primitives/dist/css/functional/themes/dark.css";
+@import "@primer/primitives/dist/css/functional/themes/light-colorblind.css";
+@import "@primer/primitives/dist/css/functional/themes/light-high-contrast.css";
+@import "@primer/primitives/dist/css/functional/themes/light-tritanopia.css";
+@import "@primer/primitives/dist/css/functional/themes/light.css";
+@import "@primer/css/dist/base.css";
+@import "@primer/css/dist/buttons.css";
+@import "@primer/css/dist/layout.css";
+@import "@primer/css/dist/utilities.css";
+@import "@primer/css/dist/markdown.css";
+
+:root,[data-color-mode="light"][data-light-theme*="light"],[data-color-mode="dark"][data-dark-theme*="light"] {
+  color-scheme: light
+}
+
+@media(prefers-color-scheme: light) {
+  [data-color-mode="auto"][data-light-theme*="light"] {
+      color-scheme:light
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  [data-color-mode="auto"][data-dark-theme*="light"] {
+      color-scheme:light
+  }
+}
+
+[data-color-mode="light"][data-light-theme*="dark"],[data-color-mode="dark"][data-dark-theme*="dark"] {
+  color-scheme: dark
+}
+
+@media(prefers-color-scheme: light) {
+  [data-color-mode="auto"][data-light-theme*="dark"] {
+      color-scheme:dark
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  [data-color-mode="auto"][data-dark-theme*="dark"] {
+      color-scheme:dark
+  }
+}
+
+[data-color-mode] {
+  color: var(--fgColor-default, var(--color-fg-default));
+  background-color: var(--bgColor-default, var(--color-canvas-default))
+}
+
+@media(forced-colors: active) {
+  body {
+      --color-accent-emphasis: Highlight;
+      --color-fg-on-emphasis: LinkText;
+      --fgColor-onEmphasis: LinkText;
+      --fgColor-accent: Highlight
+  }
+}

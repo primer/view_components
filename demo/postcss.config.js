@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     require('postcss-import'),
     require('postcss-mixins')({
-      mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
+      mixinsDir: path.join(__dirname, '../lib/postcss_mixins/')
     }),
     require('postcss-preset-env')({
       stage: 2,

@@ -1,3 +1,3 @@
 vite: cd demo; bin/vite dev
-css: npx chokidar "app/components/**/*.pcss" -c "npm run build:css"
+css: cd demo; npm run build:css -- --watch
 web: cd demo; bin/rails s -p 4000
