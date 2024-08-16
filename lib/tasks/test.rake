@@ -29,6 +29,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:components) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList[
@@ -37,6 +38,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:component_css) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList[
