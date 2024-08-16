@@ -97,11 +97,19 @@ export class PrimerTextFieldElement extends HTMLElement {
 
   showLeadingSpinner(): void {
     this.leadingSpinner?.removeAttribute('hidden')
+    const spinnerScreenreaderText = this.leadingSpinner?.nextElementSibling
+    if (spinnerScreenreaderText?.classList.contains('spinnerScreenreaderText')) {
+      spinnerScreenreaderText.removeAttribute('hidden')
+    }
     this.leadingVisual?.setAttribute('hidden', '')
   }
 
   hideLeadingSpinner(): void {
     this.leadingSpinner?.setAttribute('hidden', '')
+    const spinnerScreenreaderText = this.leadingSpinner?.nextElementSibling
+    if (spinnerScreenreaderText?.classList.contains('spinnerScreenreaderText')) {
+      spinnerScreenreaderText.setAttribute('hidden', '')
+    }
     this.leadingVisual?.removeAttribute('hidden')
   }
 }
