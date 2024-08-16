@@ -49,4 +49,5 @@ tmp/
 coverage/
 demo/public/assets/
 demo/public/vite-dev/
+demo/public/vite/
 demo/app/assets/builds/
