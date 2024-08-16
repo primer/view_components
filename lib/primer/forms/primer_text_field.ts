@@ -10,6 +10,8 @@ declare global {
     'auto-check-error': AutoCheckErrorEvent
   }
 }
+
+const SCREENREADER_TEXT_CLASSNAME = 'spinner-screenreader-text'
 @controller
 export class PrimerTextFieldElement extends HTMLElement {
   @target inputElement: HTMLInputElement
@@ -97,19 +99,13 @@ export class PrimerTextFieldElement extends HTMLElement {
 
   showLeadingSpinner(): void {
     this.leadingSpinner?.removeAttribute('hidden')
-    const spinnerScreenreaderText = this.leadingSpinner?.nextElementSibling
-    if (spinnerScreenreaderText?.classList.contains('spinnerScreenreaderText')) {
-      spinnerScreenreaderText.removeAttribute('hidden')
-    }
+    this.leadingSpinner?.querySelector(SCREENREADER_TEXT_CLASSNAME)?.removeAttribute('hidden')
     this.leadingVisual?.setAttribute('hidden', '')
   }
 
   hideLeadingSpinner(): void {
     this.leadingSpinner?.setAttribute('hidden', '')
-    const spinnerScreenreaderText = this.leadingSpinner?.nextElementSibling
-    if (spinnerScreenreaderText?.classList.contains('spinnerScreenreaderText')) {
-      spinnerScreenreaderText.setAttribute('hidden', '')
-    }
+    this.leadingSpinner?.querySelector(SCREENREADER_TEXT_CLASSNAME)?.setAttribute('hidden', '')
     this.leadingVisual?.removeAttribute('hidden')
   }
 }

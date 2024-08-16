@@ -13,7 +13,7 @@
             <%= render(Primer::BaseComponent.new(
               tag: :"remote-input",
               aria: { owns: @body_id },
-              **(@fetch_strategy == :local ? {} : { src: @src }),
+              **(@fetch_strategy == :remote ? { src: @src } : {}),
               data: {
                 target: "select-panel.remoteInput"
               }
