@@ -8,13 +8,13 @@ fi
 
 # Gems
 bundle config set --local path 'vendor/bundle'
-bundle install
+bundle check || bundle install
 npm install --ignore-scripts
 
 # Set up demo
 pushd demo
 bundle config set --local path 'vendor/bundle'
-bundle install
+bundle check || bundle install
 npm install --ignore-scripts
 popd
 
