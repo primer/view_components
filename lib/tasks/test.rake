@@ -47,6 +47,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:lib) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
