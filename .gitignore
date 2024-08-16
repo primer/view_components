@@ -48,6 +48,7 @@ tmp/
 # Simplecov folder
 coverage/
 demo/public/assets/
+demo/public/vite-test/
 demo/public/vite-dev/
 demo/public/vite/
 demo/app/assets/builds/
