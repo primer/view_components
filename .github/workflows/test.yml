@@ -251,7 +251,7 @@ jobs:
         bundle install
     - name: Install Overmind
       run: |
-        apt-get install tmux
+        sudo apt-get install tmux
         gem install overmind
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
