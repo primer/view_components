@@ -100,7 +100,17 @@ module Alpha
       assert_equal "text/vnd.turbo-stream.html", ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
     end
 
+    def test_fetch_made_without_turbo
+      visit_preview(:default)
 
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector(".ToggleSwitch--checked")
+
+      wait_for_request
+
+      assert_equal "*/*", ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
+    end
 
     private
 
