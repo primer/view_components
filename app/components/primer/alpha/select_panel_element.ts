@@ -547,6 +547,7 @@ export class SelectPanelElement extends HTMLElement {
       }
 
       case 'loadend': {
+        this.#filterInputTextFieldElement.hideLeadingSpinner()
         this.dispatchEvent(new CustomEvent('loadend'))
         break
       }
