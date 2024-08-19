@@ -8,6 +8,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::SuccessDialog, {}],
+    [Primer::OpenProject::SuccessMessage, {}],
     [Primer::OpenProject::SidePanel, {}, proc { |component|
       component.with_section do |section|
         section.with_title { "First" }

@@ -621,6 +621,9 @@
   "Subhead-heading--medium": [
     "Primer::Beta::Subhead"
   ],
+  "SuccessMessage": [
+    "Primer::OpenProject::SuccessMessage"
+  ],
   "TimelineItem": [
     "Primer::Beta::TimelineItem"
   ],
