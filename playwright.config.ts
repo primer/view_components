@@ -43,7 +43,7 @@ const config: PlaywrightTestConfig = {
   ],
 
   webServer: {
-    command: 'cd demo; bin/rails s -p 4000',
+    command: 'overmind start',
     port: 4000
   }
 }

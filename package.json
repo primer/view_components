@@ -92,7 +92,9 @@
     "stylelint": "^16.1.0",
     "stylelint-config-standard": "^36.0.0",
     "tslib": "^2.4.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^5.3.5",
+    "vite-plugin-ruby": "^5.0.0"
   },
   "prettier": "@github/prettier-config",
   "browserslist": "extends @github/browserslist-config"
