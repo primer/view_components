@@ -251,6 +251,9 @@
   "FormControl-checkbox-wrap": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-error": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-horizontalGroup": [
     "Primer::Alpha::TextField"
   ],
@@ -266,10 +269,25 @@
   "FormControl-input": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-input-trailingAction--divider": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-input-wrap": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-inset": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-label": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-large": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-medium": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-monospace": [
     "Primer::Alpha::TextField"
   ],
   "FormControl-radio-group-wrap": [
@@ -284,13 +302,22 @@
   "FormControl-select-wrap": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-small": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-spacingWrapper": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-success": [
     "Primer::Alpha::TextField"
   ],
   "FormControl-textarea": [
     "Primer::Alpha::TextField"
   ],
   "FormControl-toggleSwitchInput": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-warning": [
     "Primer::Alpha::TextField"
   ],
   "Label": [
@@ -345,6 +372,12 @@
     "Primer::Alpha::Layout"
   ],
   "Layout-divider": [
+    "Primer::Alpha::Layout"
+  ],
+  "Layout-divider--flowRow-hidden": [
+    "Primer::Alpha::Layout"
+  ],
+  "Layout-divider--flowRow-shallow": [
     "Primer::Alpha::Layout"
   ],
   "Layout-main": [
@@ -414,9 +447,6 @@
   "Popover-message": [
     "Primer::Beta::Popover"
   ],
-  "Popover-message--bottom": [
-    "Primer::Beta::Popover"
-  ],
   "Popover-message--bottom-left": [
     "Primer::Beta::Popover"
   ],
@@ -426,25 +456,7 @@
   "Popover-message--large": [
     "Primer::Beta::Popover"
   ],
-  "Popover-message--left": [
-    "Primer::Beta::Popover"
-  ],
-  "Popover-message--left-bottom": [
-    "Primer::Beta::Popover"
-  ],
-  "Popover-message--left-top": [
-    "Primer::Beta::Popover"
-  ],
   "Popover-message--no-caret": [
-    "Primer::Beta::Popover"
-  ],
-  "Popover-message--right": [
-    "Primer::Beta::Popover"
-  ],
-  "Popover-message--right-bottom": [
-    "Primer::Beta::Popover"
-  ],
-  "Popover-message--right-top": [
     "Primer::Beta::Popover"
   ],
   "Popover-message--top-left": [
@@ -589,6 +601,12 @@
     "Primer::Alpha::ToggleSwitch"
   ],
   "Truncate": [
+    "Primer::Beta::Truncate"
+  ],
+  "Truncate-text--expandable": [
+    "Primer::Beta::Truncate"
+  ],
+  "Truncate-text--primary": [
     "Primer::Beta::Truncate"
   ],
   "UnderlineNav": [
