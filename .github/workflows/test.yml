@@ -249,6 +249,10 @@ jobs:
         cd demo
         npm ci
         bundle install
+    - name: Install Overmind
+      run: |
+        sudo apt-get install tmux
+        gem install overmind
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
