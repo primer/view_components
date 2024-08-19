@@ -718,16 +718,18 @@ module Alpha
       refute_selector "li[data-item-id=item1] [aria-selected=true]"
     end
 
-    def test_fires_event_on_activation
+    def test_fires_event_before_activation
       visit_preview(:single_select)
 
       evaluate_multiline_script(<<~JS)
         window.activatedItemText = null
         window.activatedItemChecked = false
+        window.activatedItemValue = null
 
-        document.querySelector('select-panel').addEventListener('itemActivated', (event) => {
+        document.querySelector('select-panel').addEventListener('beforeItemActivated', (event) => {
           window.activatedItemText = event.detail.item.innerText
           window.activatedItemChecked = event.detail.checked
+          window.activatedItemValue = event.detail.value
         })
       JS
 
@@ -736,6 +738,30 @@ module Alpha
 
       assert page.evaluate_script("window.activatedItemChecked")
       assert_equal "Item 1", page.evaluate_script("window.activatedItemText")
+      assert_equal "1", page.evaluate_script("window.activatedItemValue")
+    end
+
+    def test_fires_event_on_activation
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.activatedItemText = null
+        window.activatedItemChecked = false
+        window.activatedItemValue = null
+
+        document.querySelector('select-panel').addEventListener('itemActivated', (event) => {
+          window.activatedItemText = event.detail.item.innerText
+          window.activatedItemChecked = event.detail.checked
+          window.activatedItemValue = event.detail.value
+        })
+      JS
+
+      click_on_invoker_button
+      click_on_first_item
+
+      assert page.evaluate_script("window.activatedItemChecked")
+      assert_equal "Item 1", page.evaluate_script("window.activatedItemText")
+      assert_equal "1", page.evaluate_script("window.activatedItemValue")
     end
 
     def test_cancelling_before_item_activated_event_prevents_selection

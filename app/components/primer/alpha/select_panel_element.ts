@@ -867,8 +867,12 @@ export class SelectPanelElement extends HTMLElement {
     const activationSuccess = this.dispatchEvent(
       new CustomEvent('beforeItemActivated', {
         bubbles: true,
-        detail: {item, checked},
         cancelable: true,
+        detail: {
+          item,
+          checked,
+          value: this.#getItemContent(item)?.getAttribute('data-value'),
+        },
       }),
     )
 
@@ -909,7 +913,11 @@ export class SelectPanelElement extends HTMLElement {
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
         bubbles: true,
-        detail: {item, checked},
+        detail: {
+          item,
+          checked,
+          value: this.#getItemContent(item)?.getAttribute('data-value'),
+        },
       }),
     )
   }
