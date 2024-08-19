@@ -259,7 +259,8 @@ export class ActionMenuElement extends HTMLElement {
       const activeElement = this.ownerDocument.activeElement
       const lostFocus = this.ownerDocument.activeElement === this.ownerDocument.body
       const focusInClosedMenu = this.contains(activeElement)
-      if (lostFocus || focusInClosedMenu) {
+      const focusInDialog = dialog.contains(activeElement)
+      if (lostFocus || focusInClosedMenu || focusInDialog) {
         setTimeout(() => {
           // if the activeElement has changed after a task, then it's likely
           // that other JS has tried to shift focus. We should respect that
