@@ -266,6 +266,18 @@ module Alpha
       assert_current_path "https://github.com"
     end
 
+    def test_selecting_without_data_values
+      visit_preview(:no_values)
+
+      click_on_invoker_button
+      click_on_first_item
+      assert_selector "[aria-selected=true]", text: "Item 1", count: 1, visible: :hidden
+
+      click_on_invoker_button
+      click_on_second_item
+      assert_selector "[aria-selected=true]", text: "Item 2", count: 1, visible: :hidden
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
@@ -471,7 +483,7 @@ module Alpha
 
     def test_single_select_handles_all_options_unselected_by_default
       # playground is single-select
-      visit_preview(:playground, select_items: false)
+      visit_preview(:playground, selected_items: "")
 
       wait_for_items_to_load do
         click_on_invoker_button
@@ -629,6 +641,18 @@ module Alpha
       # server will render phaser checked, but since the user has already made selections,
       # the server-rendered selections should be ignored
       refute_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+    end
+
+    def test_multi_select_allows_server_to_check_multiple_items
+      # "ph" should match two items, i.e. the server should respond with two checked items
+      visit_preview(:remote_fetch, selected_items: "ph")
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      assert_selector "[aria-checked=true]", text: "Phaser"
       assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
 

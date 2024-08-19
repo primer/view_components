@@ -5,8 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "primer" %>
-    <%= javascript_include_tag "primer_view_components", type: "module" %>
+    <%= vite_client_tag %>
+    <%= vite_typescript_tag "application" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>

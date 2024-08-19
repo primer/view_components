@@ -84,8 +84,9 @@ module Primer
 
         @system_arguments[:data] = merge_data(
           @system_arguments,
-          { data: { csrf: @csrf_token, turbo: @turbo } }
+          { data: { csrf: @csrf_token } }
         )
+        @system_arguments[:data][:turbo] = true if @turbo
       end
     end
   end
