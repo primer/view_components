@@ -14,6 +14,16 @@ module Primer
       system_arguments[:"data-#{val}"] || system_arguments.dig(:data, val.to_sym)
     end
 
+    def extract_data(val, system_arguments)
+      if system_arguments.include?(:"data-#{val}")
+        system_arguments.delete(:"data-#{val}")
+      else
+        if system_arguments.include?(:data) && system_arguments[:data][val.to_sym]
+          system_arguments[:data].delete(val.to_sym)
+        end
+      end
+    end
+
     # Merges hashes that contain "aria-*" keys and nested aria: hashes. Removes keys from
     # each hash and returns them in the new hash.
     #
