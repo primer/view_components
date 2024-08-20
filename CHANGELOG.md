@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.32.0
+
+### Minor Changes
+
+- [#3009](https://github.com/primer/view_components/pull/3009) [`8f06f7a`](https://github.com/primer/view_components/commit/8f06f7a61bccf684db56ff8ddd275447db10c409) Thanks [@camertron](https://github.com/camertron)! - Include value in event metadata when SelectPanel items are activated
+
+### Patch Changes
+
+- [#2983](https://github.com/primer/view_components/pull/2983) [`5d68193`](https://github.com/primer/view_components/commit/5d681938247c4a957d62b05c2560fef24195ff51) Thanks [@keithamus](https://github.com/keithamus)! - Ensure ActionMenu restores focus on close of a dialog, if a menu item opened that dialog
+
+- [#3010](https://github.com/primer/view_components/pull/3010) [`ebab85a`](https://github.com/primer/view_components/commit/ebab85a3a3d2644079aaf495fd1e6689b89f713b) Thanks [@camertron](https://github.com/camertron)! - Fixes several SelectPanel bugs:
+
+  1. If multiple server-rendered items are checked, the panel will only show one item checked.
+  2. If no `data-value` attributes are provided, panels in single-select mode will allow multiple items to be checked.
+
+- [#3011](https://github.com/primer/view_components/pull/3011) [`9507093`](https://github.com/primer/view_components/commit/9507093d6e9a1f7b04c25d66d51bdbb5da805fdd) Thanks [@JoyceZhu](https://github.com/JoyceZhu)! - Remove "loading" screenreader-only text after Spinner load for
+  `eventually_local` SelectPanels
+
+- [#3012](https://github.com/primer/view_components/pull/3012) [`adcdddd`](https://github.com/primer/view_components/commit/adcdddd1c1d0524c4d2f6d57980052914d680dc8) Thanks [@orhantoy](https://github.com/orhantoy)! - Fix a bug where all requests from the `ToggleSwitch` view component are being made with a Turbo Accept header.
+  This started happening after the change in #2964 because `data-turbo=false` gets interpreted as a truthy value.
+
 ## 0.31.0
 
 ### Minor Changes
