@@ -7,13 +7,13 @@ module Primer
     # We decided to wrap the Blankslate, because we don't want to have to adapt
     # lots of different usages if Primer decides to change the Blankslate
     # in a way that does not go well with our "misuse".
-    class SuccessMessage < Primer::Component
+    class ConfirmationMessage < Primer::Component
       status :open_project
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:tag] = "success-message"
+        @system_arguments[:tag] = "confirmation-message"
         @system_arguments[:icon] ||= :"check-circle"
 
         @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)

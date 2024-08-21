@@ -2,7 +2,7 @@
 <dialog-helper>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <div class="successDialog-contents">
-      <%= success_message %>
+      <%= confirmation_message %>
       <% if additional_content.present? %>
         <%= additional_content %>
       <% end %>

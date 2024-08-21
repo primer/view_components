@@ -2,15 +2,15 @@
 
 module Primer
   module OpenProject
-    # @label SuccessMessage
-    class SuccessMessagePreview < ViewComponent::Preview
+    # @label ConfirmationMessage
+    class ConfirmationMessagePreview < ViewComponent::Preview
       # @label Playground
       #
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def playground(narrow: false, spacious: false, border: false)
-        render Primer::OpenProject::SuccessMessage.new(narrow: narrow, spacious: spacious, border: border) do |component|
+        render Primer::OpenProject::ConfirmationMessage.new(narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("Title")
           component.with_description { "Description" }
         end
@@ -23,7 +23,7 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def with_custom_icon(icon: :rocket, narrow: false, spacious: false, border: false)
-        render Primer::OpenProject::SuccessMessage.new(icon: icon, narrow: narrow, spacious: spacious, border: border) do |component|
+        render Primer::OpenProject::ConfirmationMessage.new(icon: icon, narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content("Title")
           component.with_description { "Description" }
         end

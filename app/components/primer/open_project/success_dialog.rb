@@ -17,7 +17,7 @@ module Primer
       # @param description [String] the description for the success message
       # @param icon [Symbol] Octicon icon to use at top of the success message.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :success_message, lambda { |**system_arguments|
+      renders_one :confirmation_message, lambda { |**system_arguments|
         arguments = {}
         arguments[:heading] = system_arguments.delete(:heading)
         arguments[:description] = system_arguments.delete(:description)
@@ -25,7 +25,7 @@ module Primer
         arguments[:border] = false
         arguments[:p] = 0
 
-        Primer::OpenProject::SuccessMessage.new(**arguments)
+        Primer::OpenProject::ConfirmationMessage.new(**arguments)
       }
 
       # Optional additional_content like a form input or toast.

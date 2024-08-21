@@ -239,6 +239,9 @@
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
   ],
+  "ConfirmationMessage": [
+    "Primer::OpenProject::ConfirmationMessage"
+  ],
   "Counter": [
     "Primer::Beta::Counter"
   ],
@@ -620,9 +623,6 @@
   ],
   "Subhead-heading--medium": [
     "Primer::Beta::Subhead"
-  ],
-  "SuccessMessage": [
-    "Primer::OpenProject::SuccessMessage"
   ],
   "TimelineItem": [
     "Primer::Beta::TimelineItem"

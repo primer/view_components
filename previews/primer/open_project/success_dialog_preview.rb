@@ -22,7 +22,7 @@ module Primer
           else
             dialog.with_show_button(disabled: disable_button) { button_text }
           end
-          dialog.with_success_message do |message|
+          dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2) { heading }
             message.with_description { description }
           end
@@ -48,7 +48,7 @@ module Primer
           else
             dialog.with_show_button(disabled: disable_button) { button_text }
           end
-          dialog.with_success_message do |message|
+          dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2) { heading }
             message.with_description { description }
           end
@@ -75,7 +75,7 @@ module Primer
           else
             dialog.with_show_button(disabled: disable_button) { button_text }
           end
-          dialog.with_success_message do |message|
+          dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2) { heading }
             message.with_description { description }
           end
