@@ -15,9 +15,10 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = "confirmation-message"
         @system_arguments[:icon] ||= :"check-circle"
+        @system_arguments[:icon_color] ||= :success
 
         @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)
-        @blankslate.with_visual_icon(icon: @system_arguments[:icon], size: :medium, color: :success)
+        @blankslate.with_visual_icon(icon: @system_arguments[:icon], size: :medium, color: @system_arguments[:icon_color])
       end
 
       delegate :description?, :description, :with_description, :with_description_content,
