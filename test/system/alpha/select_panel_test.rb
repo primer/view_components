@@ -266,6 +266,18 @@ module Alpha
       assert_current_path "https://github.com"
     end
 
+    def test_selecting_without_data_values
+      visit_preview(:no_values)
+
+      click_on_invoker_button
+      click_on_first_item
+      assert_selector "[aria-selected=true]", text: "Item 1", count: 1, visible: :hidden
+
+      click_on_invoker_button
+      click_on_second_item
+      assert_selector "[aria-selected=true]", text: "Item 2", count: 1, visible: :hidden
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
@@ -471,7 +483,7 @@ module Alpha
 
     def test_single_select_handles_all_options_unselected_by_default
       # playground is single-select
-      visit_preview(:playground, select_items: false)
+      visit_preview(:playground, selected_items: "")
 
       wait_for_items_to_load do
         click_on_invoker_button
@@ -632,6 +644,18 @@ module Alpha
       assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
 
+    def test_multi_select_allows_server_to_check_multiple_items
+      # "ph" should match two items, i.e. the server should respond with two checked items
+      visit_preview(:remote_fetch, selected_items: "ph")
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      assert_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+    end
+
     ########## JAVASCRIPT API TESTS ############
 
     def test_disable_item_via_js_api
@@ -694,16 +718,18 @@ module Alpha
       refute_selector "li[data-item-id=item1] [aria-selected=true]"
     end
 
-    def test_fires_event_on_activation
+    def test_fires_event_before_activation
       visit_preview(:single_select)
 
       evaluate_multiline_script(<<~JS)
         window.activatedItemText = null
         window.activatedItemChecked = false
+        window.activatedItemValue = null
 
-        document.querySelector('select-panel').addEventListener('itemActivated', (event) => {
+        document.querySelector('select-panel').addEventListener('beforeItemActivated', (event) => {
           window.activatedItemText = event.detail.item.innerText
           window.activatedItemChecked = event.detail.checked
+          window.activatedItemValue = event.detail.value
         })
       JS
 
@@ -712,6 +738,30 @@ module Alpha
 
       assert page.evaluate_script("window.activatedItemChecked")
       assert_equal "Item 1", page.evaluate_script("window.activatedItemText")
+      assert_equal "1", page.evaluate_script("window.activatedItemValue")
+    end
+
+    def test_fires_event_on_activation
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.activatedItemText = null
+        window.activatedItemChecked = false
+        window.activatedItemValue = null
+
+        document.querySelector('select-panel').addEventListener('itemActivated', (event) => {
+          window.activatedItemText = event.detail.item.innerText
+          window.activatedItemChecked = event.detail.checked
+          window.activatedItemValue = event.detail.value
+        })
+      JS
+
+      click_on_invoker_button
+      click_on_first_item
+
+      assert page.evaluate_script("window.activatedItemChecked")
+      assert_equal "Item 1", page.evaluate_script("window.activatedItemText")
+      assert_equal "1", page.evaluate_script("window.activatedItemValue")
     end
 
     def test_cancelling_before_item_activated_event_prevents_selection

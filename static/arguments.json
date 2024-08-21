@@ -2388,7 +2388,7 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:single`",
-        "description": "One of `:multiple`, `:multiple_checkbox`, `:none`, or `:single`."
+        "description": "One of `:multiple`, `:none`, or `:single`."
       },
       {
         "name": "fetch_strategy",
