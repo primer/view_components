@@ -207,7 +207,7 @@ export class ActionMenuElement extends HTMLElement {
       if (dialogInvoker) {
         const dialog = this.ownerDocument.getElementById(dialogInvoker.getAttribute('data-show-dialog-id') || '')
 
-        if (dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
+        if (dialog && this.contains(dialogInvoker)) {
           this.#handleDialogItemActivated(event, dialog)
           return
         }
@@ -243,20 +243,33 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #handleDialogItemActivated(event: Event, dialog: HTMLElement) {
-    this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
+    if (this.contains(dialog)) {
+      this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = 'none'
+    }
     const dialog_controller = new AbortController()
     const {signal} = dialog_controller
     const handleDialogClose = () => {
       dialog_controller.abort()
-      this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
-      if (this.#isOpen()) {
-        this.#hide()
+      if (this.contains(dialog)) {
+        this.querySelector<HTMLElement>('.ActionListWrap')!.style.display = ''
+        if (this.#isOpen()) {
+          this.#hide()
+        }
       }
       const activeElement = this.ownerDocument.activeElement
       const lostFocus = this.ownerDocument.activeElement === this.ownerDocument.body
       const focusInClosedMenu = this.contains(activeElement)
-      if (lostFocus || focusInClosedMenu) {
-        setTimeout(() => this.invokerElement?.focus(), 0)
+      const focusInDialog = dialog.contains(activeElement)
+      if (lostFocus || focusInClosedMenu || focusInDialog) {
+        setTimeout(() => {
+          // if the activeElement has changed after a task, then it's likely
+          // that other JS has tried to shift focus. We should respect that
+          // focus shift as long as it's not back at the document.
+          const newActiveElement = this.ownerDocument.activeElement
+          if (newActiveElement === activeElement || newActiveElement === this.ownerDocument.body) {
+            this.invokerElement?.focus()
+          }
+        }, 0)
       }
     }
     // a modal <dialog> element will close all popovers

@@ -12,7 +12,16 @@ namespace :test do
     :performance
   ]
 
+  namespace :build do
+    task :css do
+      Dir.chdir("demo/") do
+        system "npm run build:css"
+      end
+    end
+  end
+
   Rake::TestTask.new(:single) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
@@ -20,6 +29,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:components) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList[
@@ -28,6 +38,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:component_css) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList[
@@ -36,6 +47,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:lib) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
@@ -45,6 +57,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:system) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList["test/system/**/*_test.rb"]
@@ -61,6 +74,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:accessibility) do |t|
+    t.deps = "test:build:css"
     t.warning = false
     t.libs << "test"
     t.test_files = FileList["test/accessibility_test.rb"]

@@ -74,6 +74,8 @@ GEM
     crass (1.0.6)
     css_parser (1.17.1)
       addressable
+    cssbundling-rails (1.4.1)
+      railties (>= 6.0.0)
     cuprite (0.15)
       capybara (~> 3.0)
       ferrum (~> 0.14.0)
@@ -82,6 +84,7 @@ GEM
       reline (>= 0.3.8)
     docile (1.4.0)
     drb (2.2.1)
+    dry-cli (1.1.0)
     erb_lint (0.5.0)
       activesupport
       better_html (>= 2.0.1)
@@ -267,6 +270,13 @@ GEM
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
+    vite_rails (3.0.17)
+      railties (>= 5.1, < 8)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.8.0)
+      dry-cli (>= 0.7, < 2)
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -298,6 +308,7 @@ DEPENDENCIES
   benchmark-ips (~> 2.13.0)
   bootsnap (>= 1.4.2)
   capybara (~> 3.40.0)
+  cssbundling-rails (~> 1.4)
   cuprite (~> 0.15)
   debug
   erb_lint (~> 0.5.0)
@@ -326,6 +337,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
+  vite_rails (~> 3.0)
   webmock
   webpacker (~> 5.0)
   yard (~> 0.9.36)
