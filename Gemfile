@@ -53,7 +53,7 @@ group :development do
   gem "allocation_stats", "~> 0.1"
   gem "benchmark-ips", "~> 2.13.0"
   gem "capybara", "~> 3.40.0"
-  gem "cuprite", "~> 0.15.1"
+  gem "cuprite", "~> 0.15"
   gem "debug"
   gem "erb_lint", "~> 0.5.0"
   gem "erblint-github", "~> 0.5.1"
