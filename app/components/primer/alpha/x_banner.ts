@@ -1,18 +1,26 @@
 import {controller, target} from '@github/catalyst'
 
+declare global {
+  interface HTMLElementEventMap {
+    dismiss: CustomEvent<void>
+  }
+}
+
 @controller
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 
   dismiss() {
-    const parentElement = this.parentElement
-    if (!parentElement) return
-
     if (this.#dismissScheme === 'remove') {
+      const parentElement = this.parentElement
+      if (!parentElement) return
+
       parentElement.removeChild(this)
     } else {
       this.hide()
     }
+
+    this.dispatchEvent(new CustomEvent('dismiss'))
   }
 
   show() {
