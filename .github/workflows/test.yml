@@ -20,7 +20,11 @@ env:
 jobs:
   accessibility:
     name: Accessibility
-    runs-on: ubuntu-latest
+    runs-on:
+      labels:
+        - runs-on
+        - runner=16cpu-linux-x64
+        - run-id=${{ github.run_id }}
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
@@ -42,7 +46,11 @@ jobs:
       run: bundle exec rake test:accessibility
   components:
     name: Components
-    runs-on: ubuntu-latest
+    runs-on:
+      labels:
+        - runs-on
+        - runner=16cpu-linux-x64
+        - run-id=${{ github.run_id }}
     strategy:
       fail-fast: false
       matrix:
@@ -90,7 +98,11 @@ jobs:
           RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
     name: Lib
-    runs-on: ubuntu-latest
+    runs-on:
+      labels:
+        - runs-on
+        - runner=16cpu-linux-x64
+        - run-id=${{ github.run_id }}
     strategy:
       fail-fast: false
       matrix:
@@ -286,7 +298,11 @@ jobs:
       run: exit 1
   selectors:
     name: CSS coverage
-    runs-on: ubuntu-latest
+    runs-on:
+      labels:
+        - runs-on
+        - runner=16cpu-linux-x64
+        - run-id=${{ github.run_id }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
