@@ -30,7 +30,7 @@ module Alpha
       evaluate_multiline_script(<<~JS)
         window.bannerDismissed = false
 
-        document.querySelector('x-banner').addEventListener('dismiss', () => {
+        document.querySelector('x-banner').addEventListener('banner:dismiss', () => {
           window.bannerDismissed = true
         })
       JS
