@@ -1,0 +1,8 @@
+<%= render @dialog do |dialog| %>
+  <% dialog.with_body do %>
+    <%= feedback_message %>
+    <% if additional_content.present? %>
+      <%= additional_content %>
+    <% end %>
+  <% end %>
+<% end %>

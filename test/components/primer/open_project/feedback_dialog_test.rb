@@ -2,11 +2,11 @@
 
 require "components/test_helper"
 
-class PrimerOpenProjectSuccessDialogTest < Minitest::Test
+class PrimerOpenProjectFeedbackDialogTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline(Primer::SuccessDialog.new)
+    render_inline(Primer::FeedbackDialog.new)
 
     assert_text("Add a test here")
   end

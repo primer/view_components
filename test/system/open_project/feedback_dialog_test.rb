@@ -2,10 +2,10 @@
 
 require "system/test_case"
 
-class IntegrationOpenProjectSuccessDialogTest < System::TestCase
+class IntegrationOpenProjectFeedbackDialogTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".success-dialog")
+    assert_selector(".FeedbackMessageDialog")
   end
 end
