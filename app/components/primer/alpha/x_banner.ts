@@ -2,7 +2,7 @@ import {controller, target} from '@github/catalyst'
 
 declare global {
   interface HTMLElementEventMap {
-    dismiss: CustomEvent<void>
+    'banner:dismiss': CustomEvent<void>
   }
 }
 
@@ -20,7 +20,7 @@ class XBannerElement extends HTMLElement {
       this.hide()
     }
 
-    this.dispatchEvent(new CustomEvent('dismiss'))
+    this.dispatchEvent(new CustomEvent('banner:dismiss'))
   }
 
   show() {
