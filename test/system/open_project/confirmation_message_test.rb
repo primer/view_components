@@ -6,6 +6,6 @@ class IntegrationOpenProjectConfirmationMessageTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".confirmation-message")
+    assert_selector(".ConfirmationMessage")
   end
 end

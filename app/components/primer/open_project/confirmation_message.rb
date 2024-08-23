@@ -11,14 +11,19 @@ module Primer
       status :open_project
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
+      def initialize(icon_arguments: {}, **system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:tag] = "confirmation-message"
-        @system_arguments[:icon] ||= :"check-circle"
-        @system_arguments[:icon_color] ||= :success
+        @icon_arguments = icon_arguments
+        @system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "ConfirmationMessage"
+        )
+
+        @icon_arguments[:icon] ||= :"check-circle"
+        @icon_arguments[:color] ||= :success
 
         @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)
-        @blankslate.with_visual_icon(icon: @system_arguments[:icon], size: :medium, color: @system_arguments[:icon_color])
+        @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
       end
 
       delegate :description?, :description, :with_description, :with_description_content,
@@ -29,6 +34,10 @@ module Primer
 
       def before_render
         content
+      end
+
+      def render?
+        heading.present?
       end
     end
   end
