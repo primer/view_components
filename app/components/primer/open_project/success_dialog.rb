@@ -25,7 +25,7 @@ module Primer
         arguments[:border] = false
         arguments[:p] = 0
 
-        Primer::OpenProject::ConfirmationMessage.new(**arguments)
+        Primer::OpenProject::FeedbackMessage.new(**arguments)
       }
 
       # Optional additional_content like a form input or toast.

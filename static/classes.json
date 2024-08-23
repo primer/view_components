@@ -239,8 +239,8 @@
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
   ],
-  "ConfirmationMessage": [
-    "Primer::OpenProject::ConfirmationMessage"
+  "FeedbackMessage": [
+    "Primer::OpenProject::FeedbackMessage"
   ],
   "Counter": [
     "Primer::Beta::Counter"

@@ -2,11 +2,11 @@
 
 require "components/test_helper"
 
-class PrimerOpenProjectConfirmationMessageTest < Minitest::Test
+class PrimerOpenProjectFeedbackMessageTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline(Primer::OpenProject::ConfirmationMessage.new) do |component|
+    render_inline(Primer::OpenProject::FeedbackMessage.new) do |component|
       component.with_heading(tag: :h2).with_content("Some title")
       component.with_description { "Some description" }
     end
@@ -19,13 +19,13 @@ class PrimerOpenProjectConfirmationMessageTest < Minitest::Test
   end
 
   def test_does_not_render_if_no_heading_provided
-    render_inline(Primer::OpenProject::ConfirmationMessage.new)
+    render_inline(Primer::OpenProject::FeedbackMessage.new)
 
     refute_component_rendered
   end
 
   def test_custom_icon
-    render_inline(Primer::OpenProject::ConfirmationMessage.new(icon_arguments: { icon: "plus", color: :danger, classes: "test-class" })) do |component|
+    render_inline(Primer::OpenProject::FeedbackMessage.new(icon_arguments: { icon: "plus", color: :danger, classes: "test-class" })) do |component|
       component.with_heading(tag: :h2).with_content("Some title")
     end
 

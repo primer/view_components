@@ -2,10 +2,10 @@
 
 require "system/test_case"
 
-class IntegrationOpenProjectConfirmationMessageTest < System::TestCase
+class IntegrationOpenProjectFeedbackMessageTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".ConfirmationMessage")
+    assert_selector(".FeedbackMessage")
   end
 end
