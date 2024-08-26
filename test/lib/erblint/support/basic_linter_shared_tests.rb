@@ -55,6 +55,8 @@ module Primer
     end
 
     def test_does_not_warn_if_wrong_tag
+      skip if linter_class::TAGS.empty?
+
       @file = <<~HTML
         <a-random-tag class="#{default_class}" #{required_attributes}>#{linter_class.name.demodulize}</a-random-tag>"
       HTML
