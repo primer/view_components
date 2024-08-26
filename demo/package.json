@@ -11,7 +11,7 @@
     "webpack-dev-server": "^5.0.4"
   },
   "devDependencies": {
-    "vite": "^5.3.5",
+    "vite": "^5.4.2",
     "vite-plugin-ruby": "^5.0.0"
   },
   "scripts": {
