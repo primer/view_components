@@ -20,8 +20,17 @@ module Primer
       end
 
       # @label Playground
-      def playground
-        # ToDo
+      # @param icon [Symbol] octicon
+      # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
+      # @param show_description toggle
+      # @param show_additional_content toggle
+      # @param custom_footer toggle
+      def playground(icon: :"check-circle", icon_color: :success, show_description: true, show_additional_content: false, custom_footer: false)
+        render_with_template(locals: { icon: icon,
+                                       icon_color: icon_color,
+                                       show_description: show_description,
+                                       show_additional_content: show_additional_content,
+                                       custom_footer: custom_footer })
       end
 
       # @label With additional content
@@ -42,7 +51,7 @@ module Primer
 
       # @label With custom footer
       def custom_footer
-        # ToDo
+        render_with_template(locals: {})
       end
     end
   end

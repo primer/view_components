@@ -1,0 +1,10 @@
+<%= render(Primer::OpenProject::FeedbackDialog.new(id: "my-dialog")) do |dialog| %>
+  <% dialog.with_show_button { "Click me" } %>
+  <% dialog.with_feedback_message do |message| %>
+    <% message.with_heading(tag: :h2).with_content("Action successful") %>
+  <% end %>
+  <% dialog.with_footer do %>
+    <%= render(Primer::Beta::Button.new("data-close-dialog-id": "my-dialog")) { "Cancel" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Accept" } %>
+  <%  end %>
+<% end %>

@@ -30,19 +30,21 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
+      renders_one :footer
+
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "FeedbackMessageDialog"
+          "FeedbackDialog"
         )
+        @system_arguments[:id] ||= self.class.generate_id
 
         @dialog = Primer::Alpha::Dialog.new(title: nil, subtitle: nil, **@system_arguments)
       end
 
       delegate :header?, :header, :with_header, :with_header_content,
-               :footer?, :footer, :with_footer, :with_footer_content,
                :show_button?, :show_button, :with_show_button, :with_show_button_content,
                to: :@dialog
 
