@@ -8,7 +8,7 @@ module Primer
       # @snapshot
       def default
         render Primer::OpenProject::FeedbackMessage.new do |component|
-          component.with_heading(tag: :h2).with_content("Success")
+          component.with_heading(tag: :h2) { "Success" }
           component.with_description { "You successfully created your first FeedbackMessage component" }
         end
       end
@@ -31,7 +31,7 @@ module Primer
       # @label With custom icon
       def with_custom_icon
         render Primer::OpenProject::FeedbackMessage.new(icon_arguments: { icon: :"op-enterprise-addons", classes: "upsale-colored" }) do |component|
-          component.with_heading(tag: :h2).with_content("You are a hero")
+          component.with_heading(tag: :h2) { "You are a hero" }
           component.with_description { "Thanks for supporting an open source project!" }
         end
       end
@@ -39,7 +39,7 @@ module Primer
       # @label With custom color
       def with_custom_color
         render Primer::OpenProject::FeedbackMessage.new(icon_arguments: { icon: :"x-circle", color: :danger }) do |component|
-          component.with_heading(tag: :h2).with_content("Ups, something went wrong")
+          component.with_heading(tag: :h2) { "Ups, something went wrong" }
           component.with_description { "Please try again or contact your administrator." }
         end
       end

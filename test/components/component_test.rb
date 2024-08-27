@@ -8,8 +8,14 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::OpenProject::FeedbackDialog, {}],
-    [Primer::OpenProject::FeedbackMessage, {}],
+    [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
+      component.with_feedback_message do |feedback|
+        feedback.with_heading(tag: :h2) { "You are a hero" }
+      end
+    }],
+    [Primer::OpenProject::FeedbackMessage, {}, proc { |component|
+      component.with_heading(tag: :h2) { "Foo" }
+    }],
     [Primer::OpenProject::SidePanel, {}, proc { |component|
       component.with_section do |section|
         section.with_title { "First" }

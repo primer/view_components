@@ -23,6 +23,11 @@ module Primer
       renders_one :additional_content, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "FeedbackDialog-additionalContent"
+        )
+
         system_arguments[:display] ||= :flex
         system_arguments[:align_items] ||= :center
         system_arguments[:justify_content] ||= :center

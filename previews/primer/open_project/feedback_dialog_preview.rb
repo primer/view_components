@@ -13,7 +13,7 @@ module Primer
         render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_feedback_message do |message|
-            message.with_heading(tag: :h2).with_content("Success")
+            message.with_heading(tag: :h2) { "Success" }
             message.with_description { "Great! Everything worked well." }
           end
         end
@@ -43,7 +43,7 @@ module Primer
         render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_feedback_message(icon_arguments: { icon: :"x-circle", color: :danger }) do |message|
-            message.with_heading(tag: :h2).with_content("Ups, something went wrong")
+            message.with_heading(tag: :h2) { "Ups, something went wrong" }
             message.with_description { "Please try again or contact your administrator if the issue persists." }
           end
         end
