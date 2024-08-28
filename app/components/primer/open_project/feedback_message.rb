@@ -10,8 +10,10 @@ module Primer
     class FeedbackMessage < Primer::Component
       status :open_project
 
+      # @param icon_arguments [Hash] special arguments for the icon
+      # @param loading [Boolean] Show a loading spinner instead of an icon
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon_arguments: {}, **system_arguments)
+      def initialize(icon_arguments: {}, loading: false, **system_arguments)
         @system_arguments = system_arguments
         @icon_arguments = icon_arguments
         @system_arguments[:classes] = class_names(
@@ -23,7 +25,12 @@ module Primer
         @icon_arguments[:color] ||= :success
 
         @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)
-        @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
+
+        if loading
+          @blankslate.with_visual_spinner(size: :medium)
+        else
+          @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
+        end
       end
 
       delegate :description?, :description, :with_description, :with_description_content,

@@ -34,4 +34,13 @@ class PrimerOpenProjectFeedbackMessageTest < Minitest::Test
     # Check for default octicon and color
     assert_selector ".octicon-plus.blankslate-icon.color-fg-danger.test-class"
   end
+
+  def test_renders_loading_spinner
+    render_inline(Primer::OpenProject::FeedbackMessage.new(loading: true)) do |dialog|
+      dialog.with_heading(tag: :h2) { "Ups, something went wrong" }
+    end
+
+    assert_selector("h2", text: "Ups, something went wrong")
+    assert_selector(".blankslate-image.anim-rotate")
+  end
 end

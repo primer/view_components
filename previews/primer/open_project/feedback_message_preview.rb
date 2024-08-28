@@ -43,6 +43,13 @@ module Primer
           component.with_description { "Please try again or contact your administrator." }
         end
       end
+
+      # @label With loading spinner
+      def loading_spinner
+        render(Primer::OpenProject::FeedbackMessage.new(loading: true)) do |component|
+          component.with_heading(tag: :h2) { "Please wait, your request is being processed." }
+        end
+      end
     end
   end
 end

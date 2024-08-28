@@ -59,4 +59,17 @@ class PrimerOpenProjectFeedbackDialogTest < Minitest::Test
       assert_selector(".octicon-x-circle.blankslate-icon")
     end
   end
+
+  def test_renders_loading_spinner
+    render_inline(Primer::OpenProject::FeedbackDialog.new) do |dialog|
+      dialog.with_feedback_message(loading: true) do |message|
+        message.with_heading(tag: :h2) { "Ups, something went wrong" }
+      end
+    end
+
+    assert_selector("dialog.FeedbackDialog") do
+      assert_selector(".Overlay-body h2", text: "Ups, something went wrong")
+      assert_selector(".blankslate-image.anim-rotate")
+    end
+  end
 end

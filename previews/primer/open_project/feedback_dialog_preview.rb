@@ -53,6 +53,16 @@ module Primer
       def custom_footer
         render_with_template(locals: {})
       end
+
+      # @label With loading spinner
+      def loading_spinner
+        render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
+          dialog.with_show_button { "Click me" }
+          dialog.with_feedback_message(loading: true) do |message|
+            message.with_heading(tag: :h2) { "Please wait, your request is being processed." }
+          end
+        end
+      end
     end
   end
 end
