@@ -1,4 +1,4 @@
-<% link_content = capture do %>
+<%= render Primer::ConditionalWrapper.new(condition: tooltip?, tag: :span, position: :relative) do %>
   <%= render(Primer::BaseComponent.new(**@system_arguments)) do -%>
     <% if leading_visual %>
       <span class="Link-visual Link-leadingVisual">
@@ -12,13 +12,5 @@
       </span>
     <% end %>
   <% end -%>
-<% end %>
-
-<% if tooltip.present? %>
-  <%= render Primer::BaseComponent.new(tag: :span, position: :relative) do %>
-    <%= link_content %>
-    <%= tooltip %>
-  <% end %>
-<% else %>
-  <%= link_content %>
+  <%= tooltip %>
 <% end %>
