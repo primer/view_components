@@ -100,16 +100,18 @@ class PrimerBetaLinkTest < Minitest::Test
     end
 
     assert_selector("a[href='http://google.com']")
-    assert_selector(".Link-visual.Link-leadingVisual .octicon-plus")
+    assert_selector(".octicon-plus")
   end
 
   def test_renders_trailing_visual_icon
     render_inline(Primer::Beta::Link.new(href: "http://google.com")) do |component|
-      component.with_trailing_visual_icon(icon: "plus")
+      component.with_leading_visual_icon(icon: "plus")
+      component.with_trailing_visual_icon(icon: "alert")
       "content"
     end
 
     assert_selector("a[href='http://google.com']")
-    assert_selector(".Link-visual.Link-trailingVisual .octicon-plus")
+    assert_selector("a span:first-child .octicon-plus")
+    assert_selector("a span:nth-child(2) .octicon-alert")
   end
 end

@@ -1,13 +1,13 @@
 <%= render Primer::ConditionalWrapper.new(condition: tooltip?, trim: true, tag: :span, position: :relative) do %>
   <%= render(Primer::BaseComponent.new(trim: true, **@system_arguments)) do %>
     <% if leading_visual %>
-      <span class="Link-visual Link-leadingVisual">
+      <span>
         <%= leading_visual %>
       </span>
     <% end %>
     <%= content %>
     <% if trailing_visual %>
-      <span class="Link-visual Link-trailingVisual">
+      <span>
         <%= trailing_visual %>
       </span>
     <% end %>
