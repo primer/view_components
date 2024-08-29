@@ -411,6 +411,7 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #setTextFieldLoadingSpinnerTimer() {
+    if (!this.#filterInputTextFieldElement) return
     if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
     if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
 
@@ -419,7 +420,7 @@ export class SelectPanelElement extends HTMLElement {
     }, 2000) as unknown as number
 
     this.#loadingDelayTimeoutId = setTimeout(() => {
-      this.#filterInputTextFieldElement.showLeadingSpinner()
+      this.#filterInputTextFieldElement?.showLeadingSpinner()
     }, 1000) as unknown as number
   }
 
@@ -547,7 +548,7 @@ export class SelectPanelElement extends HTMLElement {
       }
 
       case 'loadend': {
-        this.#filterInputTextFieldElement.hideLeadingSpinner()
+        this.#filterInputTextFieldElement?.hideLeadingSpinner()
         this.dispatchEvent(new CustomEvent('loadend'))
         break
       }
@@ -610,7 +611,7 @@ export class SelectPanelElement extends HTMLElement {
       }
 
       case 'loadend': {
-        this.#filterInputTextFieldElement.hideLeadingSpinner()
+        this.#filterInputTextFieldElement?.hideLeadingSpinner()
         if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
         if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
         this.dispatchEvent(new CustomEvent('loadend'))
@@ -799,8 +800,8 @@ export class SelectPanelElement extends HTMLElement {
     }
   }
 
-  get #filterInputTextFieldElement(): PrimerTextFieldElement {
-    return this.filterInputTextField.closest('primer-text-field') as PrimerTextFieldElement
+  get #filterInputTextFieldElement(): PrimerTextFieldElement | null {
+    return this.filterInputTextField?.closest('primer-text-field') as PrimerTextFieldElement | null
   }
 
   #performFilteringLocally(): boolean {

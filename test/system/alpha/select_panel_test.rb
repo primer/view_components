@@ -952,6 +952,20 @@ module Alpha
       refute_selector "[data-target='select-panel.fragmentErrorElement']"
     end
 
+    def test_filter_input_gate
+      visit_preview(:playground, show_filter: false)
+
+      click_on_invoker_button
+      refute_selector "li[data-item-id=item1] [aria-disabled=true]"
+
+      evaluate_multiline_script(<<~JS)
+        const panel = document.querySelector('select-panel')
+        panel.disableItem(panel.getItemById('item1'))
+      JS
+
+      assert_selector "li[data-item-id=item1] [aria-disabled=true]"
+    end
+
     ########## TAB INDEX TESTS ############
 
     def test_tab_indices
