@@ -144,12 +144,5 @@ module Primer
     def should_raise_aria_error?
       !Rails.env.production? && raise_on_invalid_aria? && !ENV["PRIMER_WARNINGS_DISABLED"]
     end
-
-    def trimmed_content
-      return content unless content.present?
-
-      # strip unsets `html_safe`, so we have to set it back again to guarantee that HTML blocks won't break
-      content.html_safe? ? content.strip.html_safe : content.strip # rubocop:disable Rails/OutputSafety
-    end
   end
 end
