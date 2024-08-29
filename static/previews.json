@@ -4631,6 +4631,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/link/with_leading_icon",
+        "name": "with_leading_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/link/with_trailing_icon",
+        "name": "with_trailing_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
