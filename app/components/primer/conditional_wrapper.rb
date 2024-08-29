@@ -14,7 +14,9 @@ module Primer
     end
 
     def call
-      return trimmed_content(trim: @trim) unless @condition
+      unless @condition
+        return @trim ? trimmed_content : content
+      end
 
       BaseComponent.new(trim: @trim, **@base_component_arguments).render_in(self) { content }
     end

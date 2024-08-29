@@ -170,7 +170,7 @@ module Primer
       if SELF_CLOSING_TAGS.include?(@tag)
         tag(@tag, @content_tag_args.merge(@result))
       else
-        content_tag(@tag, trimmed_content(trim: @trim), @content_tag_args.merge(@result))
+        content_tag(@tag, @trim ? trimmed_content : content, @content_tag_args.merge(@result))
       end
     end
   end
