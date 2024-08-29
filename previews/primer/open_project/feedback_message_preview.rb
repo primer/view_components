@@ -18,13 +18,16 @@ module Primer
       #
       # @param icon [Symbol] octicon
       # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
+      # @param loading_state [Boolean] toggle
+      # @param title [String]
+      # @param description [String]
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
-      def playground(icon: "check-circle", icon_color: :success, text: "Some description below...", title: "Yeah!", narrow: false, spacious: false, border: false)
-        render Primer::OpenProject::FeedbackMessage.new(icon_arguments: { icon: icon, color: icon_color}, narrow: narrow, spacious: spacious, border: border) do |component|
+      def playground(icon: "check-circle", icon_color: :success, loading_state: false, title: "Yeah!", description: "Some description below...", narrow: false, spacious: false, border: false)
+        render Primer::OpenProject::FeedbackMessage.new(icon_arguments: { icon: icon, color: icon_color}, loading: loading_state, narrow: narrow, spacious: spacious, border: border) do |component|
           component.with_heading(tag: :h2).with_content(title)
-          component.with_description { text }
+          component.with_description { description }
         end
       end
 

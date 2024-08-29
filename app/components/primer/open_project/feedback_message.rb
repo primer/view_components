@@ -24,13 +24,9 @@ module Primer
         @icon_arguments[:icon] ||= :"check-circle"
         @icon_arguments[:color] ||= :success
 
-        @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)
+        @loading = loading
 
-        if loading
-          @blankslate.with_visual_spinner(size: :medium)
-        else
-          @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
-        end
+        @blankslate = Primer::Beta::Blankslate.new(**@system_arguments)
       end
 
       delegate :description?, :description, :with_description, :with_description_content,
@@ -40,6 +36,12 @@ module Primer
       private
 
       def before_render
+        if @loading
+          @blankslate.with_visual_image(src: asset_path("loading_indicator.svg"), alt: I18n.t(:label_loading))
+        else
+          @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
+        end
+
         content
       end
 

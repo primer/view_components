@@ -69,7 +69,7 @@ class PrimerOpenProjectFeedbackDialogTest < Minitest::Test
 
     assert_selector("dialog.FeedbackDialog") do
       assert_selector(".Overlay-body h2", text: "Ups, something went wrong")
-      assert_selector(".blankslate-image.anim-rotate")
+      assert_selector("img.blankslate-image[src^='/assets/loading_indicator']")
     end
   end
 end

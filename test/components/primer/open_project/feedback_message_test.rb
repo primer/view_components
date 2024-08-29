@@ -41,6 +41,6 @@ class PrimerOpenProjectFeedbackMessageTest < Minitest::Test
     end
 
     assert_selector("h2", text: "Ups, something went wrong")
-    assert_selector(".blankslate-image.anim-rotate")
+    assert_selector("img.blankslate-image[src^='/assets/loading_indicator']")
   end
 end
