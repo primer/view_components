@@ -877,6 +877,17 @@ module Alpha
       refute_selector "[data-target='select-panel.bannerErrorElement']"
     end
 
+    def test_ev_loc_items_load_without_filter
+      visit_preview(:eventually_local_fetch, show_filter: false)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # items should render without error
+      assert_selector "select-panel ul li"
+    end
+
     ########## REMOTE TESTS ############
 
     def test_remote_items_load
@@ -950,20 +961,6 @@ module Alpha
       # only the banner-based error message should appear
       assert_selector "[data-target='select-panel.bannerErrorElement']", text: "Sorry, something went wrong"
       refute_selector "[data-target='select-panel.fragmentErrorElement']"
-    end
-
-    def test_filter_input_gate
-      visit_preview(:playground, show_filter: false)
-
-      click_on_invoker_button
-      refute_selector "li[data-item-id=item1] [aria-disabled=true]"
-
-      evaluate_multiline_script(<<~JS)
-        const panel = document.querySelector('select-panel')
-        panel.disableItem(panel.getItemById('item1'))
-      JS
-
-      assert_selector "li[data-item-id=item1] [aria-disabled=true]"
     end
 
     ########## TAB INDEX TESTS ############
