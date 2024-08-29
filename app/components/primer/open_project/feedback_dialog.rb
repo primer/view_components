@@ -31,6 +31,7 @@ module Primer
         system_arguments[:display] ||= :flex
         system_arguments[:align_items] ||= :center
         system_arguments[:justify_content] ||= :center
+        system_arguments[:mb] ||= 3
 
         Primer::BaseComponent.new(**system_arguments)
       }

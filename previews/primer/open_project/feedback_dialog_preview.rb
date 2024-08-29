@@ -8,7 +8,7 @@ module Primer
     # @label FeedbackDialog
     class FeedbackDialogPreview < ViewComponent::Preview
       # @label Default
-      # @snapshot
+      # @snapshot interactive
       def default
         render(Primer::OpenProject::FeedbackDialog.new(title: "Success dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
