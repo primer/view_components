@@ -151,12 +151,15 @@ module Primer
     # | :- | :- | :- |
     # | classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
+    # | trim | Boolean | Calls `strip` on the content to remove trailing and leading white spaces. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
 
       @system_arguments = validate_arguments(tag: tag, **system_arguments)
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
+
+      @trim = !!@system_arguments.delete(:trim)
 
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
@@ -167,7 +170,7 @@ module Primer
       if SELF_CLOSING_TAGS.include?(@tag)
         tag(@tag, @content_tag_args.merge(@result))
       else
-        content_tag(@tag, content, @content_tag_args.merge(@result))
+        content_tag(@tag, @trim ? trimmed_content : content, @content_tag_args.merge(@result))
       end
     end
   end
