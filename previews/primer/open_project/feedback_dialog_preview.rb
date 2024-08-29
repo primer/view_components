@@ -10,7 +10,7 @@ module Primer
       # @label Default
       # @snapshot
       def default
-        render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
+        render(Primer::OpenProject::FeedbackDialog.new(title: "Success dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_feedback_message do |message|
             message.with_heading(tag: :h2) { "Success" }
@@ -40,7 +40,7 @@ module Primer
 
       # @label With custom icon
       def custom_icon
-        render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
+        render(Primer::OpenProject::FeedbackDialog.new(title: "Error message")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_feedback_message(icon_arguments: { icon: :"x-circle", color: :danger }) do |message|
             message.with_heading(tag: :h2) { "Ups, something went wrong" }
@@ -56,7 +56,7 @@ module Primer
 
       # @label With loading spinner
       def loading_spinner
-        render(Primer::OpenProject::FeedbackDialog.new) do |dialog|
+        render(Primer::OpenProject::FeedbackDialog.new(title: "Waiting...")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_feedback_message(loading: true) do |message|
             message.with_heading(tag: :h2) { "Please wait, your request is being processed." }

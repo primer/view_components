@@ -46,7 +46,7 @@ module Primer
         )
         @system_arguments[:id] ||= self.class.generate_id
 
-        @dialog = Primer::Alpha::Dialog.new(title: nil, subtitle: nil, **@system_arguments)
+        @dialog = Primer::Alpha::Dialog.new(title: @system_arguments[:title], subtitle: nil, visually_hide_title: true, **@system_arguments)
       end
 
       delegate :header?, :header, :with_header, :with_header_content,
