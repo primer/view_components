@@ -39,14 +39,13 @@
                 data: { target: "select-panel.filterInputTextField" },
                 label_arguments: {
                   position: :absolute
-                },
+                }
               )) %>
               <%= render(Primer::Alpha::ActionList::Divider.new(mb: 0)) %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-
       <%= render Primer::Alpha::Dialog::Body.new(mt: show_filter? ? 0 : 2, p: 0) do %>
         <focus-group direction="vertical" mnemonics retain>
           <div class="sr-only" aria-live="polite" aria-atomic="true" data-target="select-panel.ariaLiveContainer"></div>
