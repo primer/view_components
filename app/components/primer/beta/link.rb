@@ -30,6 +30,32 @@ module Primer
         Primer::Alpha::Tooltip.new(**system_arguments)
       }
 
+      # Leading visuals appear to the left of the link text.
+      #
+      # Use:
+      #
+      # - `leading_visual_icon` which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
+      #
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
+      renders_one :leading_visual, types: {
+        icon: lambda { |**system_arguments|
+          Primer::Beta::Octicon.new(**system_arguments)
+        }
+      }
+
+      # Trailing visuals appear to the right of the link text.
+      #
+      # Use:
+      #
+      # - `trailing_visual_icon` which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
+      #
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
+      renders_one :trailing_visual, types: {
+        icon: lambda { |**system_arguments|
+          Primer::Beta::Octicon.new(**system_arguments)
+        }
+      }
+
       # @param href [String] URL to be used for the Link. Required. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Link::SCHEME_MAPPINGS.keys) %>
       # @param muted [Boolean] Uses light gray for Link color, and blue on hover.
@@ -53,20 +79,6 @@ module Primer
 
       def before_render
         raise ArgumentError, "href is required" if @system_arguments[:href].nil? && !Rails.env.production?
-      end
-
-      def call
-        if tooltip.present?
-          render Primer::BaseComponent.new(tag: :span, position: :relative) do
-            render(Primer::BaseComponent.new(**@system_arguments)) do
-              content
-            end.to_s + tooltip.to_s
-          end
-        else
-          render(Primer::BaseComponent.new(**@system_arguments)) do
-            content
-          end
-        end
       end
     end
   end
