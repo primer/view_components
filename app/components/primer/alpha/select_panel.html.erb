@@ -10,6 +10,15 @@
         <% end %>
         <% if show_filter? %>
           <% header.with_filter do %>
+            <div data-target="select-panel.bannerErrorElement" hidden>
+              <%= render Primer::Alpha::Banner.new(scheme: :danger, mb: 2) do %>
+                <% if error_content? %>
+                  <%= error_content %>
+                <% else %>
+                  <h2 class="f5">Sorry, something went wrong.</h2>
+                <% end %>
+              <% end %>
+            </div>
             <%= render(Primer::BaseComponent.new(
               tag: :"remote-input",
               aria: { owns: @body_id },
@@ -37,15 +46,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <div data-target="select-panel.bannerErrorElement" hidden>
-        <%= render Primer::Alpha::Banner.new(scheme: :danger, full: true, mt: 2) do %>
-          <% if error_content? %>
-            <%= error_content %>
-          <% else %>
-            <h2 class="f5">Sorry, something went wrong.</h2>
-          <% end %>
-        <% end %>
-      </div>
+
       <%= render Primer::Alpha::Dialog::Body.new(mt: show_filter? ? 0 : 2, p: 0) do %>
         <focus-group direction="vertical" mnemonics retain>
           <div class="sr-only" aria-live="polite" aria-atomic="true" data-target="select-panel.ariaLiveContainer"></div>
