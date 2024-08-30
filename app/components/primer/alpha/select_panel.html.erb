@@ -68,7 +68,8 @@
                     display: :flex,
                     align_items: :center,
                     justify_content: :center,
-                    text_align: :center
+                    text_align: :center,
+                    classes: "SelectPanel-loadingPanel"
                   )) do %>
                     <div data-hide-on-error>
                       <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }, data: { target: "select-panel.bodySpinner" }) %>
