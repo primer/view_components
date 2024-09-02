@@ -582,6 +582,9 @@
   "SubHeader": [
     "Primer::OpenProject::SubHeader"
   ],
+  "SubHeader--expandedSearch": [
+    "Primer::OpenProject::SubHeader"
+  ],
   "SubHeader-bottomPane": [
     "Primer::OpenProject::SubHeader"
   ],

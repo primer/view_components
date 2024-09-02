@@ -182,6 +182,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".InputGroup-input-width--large",
       ".InputGroup-input-width--xlarge",
       ".InputGroup-input-width--xxlarge",
+    ],
+    Primer::OpenProject::SubHeader => [
+      ".SubHeader--expandedSearch",
     ]
   }.freeze
 
