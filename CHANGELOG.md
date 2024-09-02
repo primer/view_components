@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.43.1
+
+### Patch Changes
+
+- [#168](https://github.com/opf/primer_view_components/pull/168) [`f76f468`](https://github.com/opf/primer_view_components/commit/f76f46844877f73ea9940f490dc99cd21550c49e) Thanks [@HDinger](https://github.com/HDinger)! - Bottom pane of Primer::OpenProject::SubHeader remains full width when the search box is extended
+
 ## 0.43.0
 
 ### Minor Changes
