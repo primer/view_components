@@ -15,7 +15,7 @@ class SubHeaderElement extends HTMLElement {
       item.classList.remove('d-none')
     }
 
-    this.classList.add('d-flex')
+    this.classList.add('SubHeader--expandedSearch')
 
     this.filterInput.focus()
   }
@@ -29,7 +29,7 @@ class SubHeaderElement extends HTMLElement {
       item.classList.add('d-none')
     }
 
-    this.classList.remove('d-flex')
+    this.classList.remove('SubHeader--expandedSearch')
   }
 }
 
