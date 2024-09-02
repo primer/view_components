@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.33.0
+
+### Minor Changes
+
+- [#3026](https://github.com/primer/view_components/pull/3026) [`5be0a0f`](https://github.com/primer/view_components/commit/5be0a0f1e60e02cb5140e159fd6b68dfd25194fa) Thanks [@camertron](https://github.com/camertron)! - Fire an event when banners are dismissed
+
+- [#3023](https://github.com/primer/view_components/pull/3023) [`3fb46ed`](https://github.com/primer/view_components/commit/3fb46ed1130f4a31e238b583de79db9d862c06a7) Thanks [@langermank](https://github.com/langermank)! - Bump `primer/primitives` v9
+
+- [#3022](https://github.com/primer/view_components/pull/3022) [`01cbbea`](https://github.com/primer/view_components/commit/01cbbea74f1b102cfffed69b83b464394c8019b9) Thanks [@camertron](https://github.com/camertron)! - Add a linter for migrating from SelectMenu -> SelectPanel
+
+### Patch Changes
+
+- [#3027](https://github.com/primer/view_components/pull/3027) [`5a205cd`](https://github.com/primer/view_components/commit/5a205cd63543c119b985e83e2800b8c2548cc051) Thanks [@camertron](https://github.com/camertron)! - Remove SelectPanel's backdrop
+
+- [#3021](https://github.com/primer/view_components/pull/3021) [`8a16336`](https://github.com/primer/view_components/commit/8a16336d254321f43969c9ed5b72861dc4c53c2e) Thanks [@camertron](https://github.com/camertron)! - When hiding a `Spinner`, also hide its screen reader text
+
+- [#3040](https://github.com/primer/view_components/pull/3040) [`612307d`](https://github.com/primer/view_components/commit/612307dd374352ccd71c8f82dbe7f065db54b9d4) Thanks [@camertron](https://github.com/camertron)! - Revert leading/trailing visuals for link component
+
+- [#3038](https://github.com/primer/view_components/pull/3038) [`6b4983e`](https://github.com/primer/view_components/commit/6b4983e1ecc29e7cf80cb68f0d274346882123b7) Thanks [@jamieshark](https://github.com/jamieshark)! - SelectPanel: check for filter input when loading remote items.
+
 ## 0.32.0
 
 ### Minor Changes
