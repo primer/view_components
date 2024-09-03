@@ -388,10 +388,7 @@ module Primer
         @title = title
         @system_arguments[:tag] = :"select-panel"
         @system_arguments[:preload] = true if @src.present? && preload?
-        @system_arguments[:classes] = class_names(
-          system_arguments[:classes],
-          "SelectPanel"
-        )
+
         @system_arguments[:data] = merge_data(
           system_arguments, {
             data: { select_variant: @select_variant, fetch_strategy: @fetch_strategy, open_on_load: open_on_load }.tap do |data|
