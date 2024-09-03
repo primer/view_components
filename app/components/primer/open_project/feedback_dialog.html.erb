@@ -1,0 +1,15 @@
+<%= render @dialog do |dialog| %>
+  <% dialog.with_body do %>
+    <%= feedback_message %>
+    <% if additional_content.present? %>
+      <%= additional_content %>
+    <% end %>
+  <% end %>
+  <% dialog.with_footer do %>
+    <% if footer.present? %>
+      <%= footer %>
+    <% else %>
+      <%= render(Primer::Beta::Button.new("data-close-dialog-id": @system_arguments[:id])) { I18n.t("button_close") } %>
+    <% end %>
+  <% end %>
+<% end %>

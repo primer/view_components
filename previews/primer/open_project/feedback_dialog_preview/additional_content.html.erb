@@ -1,0 +1,9 @@
+<%= render(Primer::OpenProject::FeedbackDialog.new) do |dialog| %>
+  <% dialog.with_show_button { "Click me" } %>
+  <% dialog.with_feedback_message do |message| %>
+    <% message.with_heading(tag: :h2).with_content("Action successful") %>
+  <% end %>
+  <% dialog.with_additional_content do %>
+    <% render(Primer::Beta::Text.new) { "You can render whatever component you want here." } %>
+  <%  end %>
+<% end %>
