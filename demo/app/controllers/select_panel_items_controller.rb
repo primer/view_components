@@ -37,7 +37,7 @@ class SelectPanelItemsController < ApplicationController
     results = if show_results
                 SELECT_PANEL_ITEMS.select do |item|
                   [item[:title], item[:description]].join(" ").downcase.include?(query)
-                end
+                end.take(params[:limit_items].to_i)
               else
                 []
               end
