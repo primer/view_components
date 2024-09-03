@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.44.0
+
+### Minor Changes
+
+- [#167](https://github.com/opf/primer_view_components/pull/167) [`1049ebf`](https://github.com/opf/primer_view_components/commit/1049ebf66abb16efc271212a45d6cc655abd301f) Thanks [@HDinger](https://github.com/HDinger)! - Add `FeedbackDialog` and `FeedbackMessage` components to display different kinds of user feedback
+
 ## 0.43.1
 
 ### Patch Changes
