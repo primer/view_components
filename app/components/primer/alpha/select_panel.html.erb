@@ -2,7 +2,7 @@
   <dialog-helper>
     <%= show_button %>
     <%= render(@dialog) do %>
-      <%= render Primer::Alpha::Dialog::Header.new(id: "#{@panel_id}-dialog", title: @title) do |header| %>
+      <%= render Primer::Alpha::Dialog::Header.new(id: "#{@panel_id}-dialog", title: @title, show_divider: show_filter?) do |header| %>
         <% if subtitle? %>
           <% header.with_subtitle do %>
             <%= subtitle %>
@@ -41,7 +41,6 @@
                   position: :absolute
                 }
               )) %>
-              <%= render(Primer::Alpha::ActionList::Divider.new(mb: 0)) %>
             <% end %>
           <% end %>
         <% end %>
