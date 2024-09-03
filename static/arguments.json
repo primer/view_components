@@ -5040,6 +5040,50 @@
     ]
   },
   {
+    "component": "OpenProject::FeedbackDialog",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFeedbackDialog",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/feedback_dialog.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_dialog/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::FeedbackMessage",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFeedbackMessage",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/feedback_message.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_message/default/",
+    "parameters": [
+      {
+        "name": "icon_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "special arguments for the icon"
+      },
+      {
+        "name": "loading",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Show a loading spinner instead of an icon"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::FlexLayout",
     "status": "open_project",
     "a11y_reviewed": false,

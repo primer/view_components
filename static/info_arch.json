@@ -17295,6 +17295,275 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::FeedbackDialog",
+    "description": "A pre-configured dialog which includes the FeedbackMessage",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::FeedbackDialog",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFeedbackDialog",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/feedback_dialog.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_dialog/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "feedback_message",
+        "description": "A feedback message with some defaults that are necessary for rendering nicely",
+        "parameters": [
+          {
+            "name": "heading",
+            "type": "String",
+            "default": "N/A",
+            "description": "the heading for the success message"
+          },
+          {
+            "name": "description",
+            "type": "String",
+            "default": "N/A",
+            "description": "the description for the success message"
+          },
+          {
+            "name": "icon_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "the system_arguments for the icon"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "additional_content",
+        "description": "Optional additional_content like a form input or toast.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "footer",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/feedback_dialog/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_dialog/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_dialog/additional_content",
+        "name": "additional_content",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_dialog/custom_icon",
+        "name": "custom_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_dialog/custom_footer",
+        "name": "custom_footer",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_dialog/loading_spinner",
+        "name": "loading_spinner",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::FeedbackMessage",
+    "description": "A view component for messages, inspired by the Primer Blankslate,\nwhich serves a different use-case (messages for when data is missing).\nWe decided to wrap the Blankslate, because we don't want to have to adapt\nlots of different usages if Primer decides to change the Blankslate\nin a way that does not go well with our \"misuse\".",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::FeedbackMessage",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFeedbackMessage",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/feedback_message.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_message/default/",
+    "parameters": [
+      {
+        "name": "icon_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "special arguments for the icon"
+      },
+      {
+        "name": "loading",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Show a loading spinner instead of an icon"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/feedback_message/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_message/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_message/with_custom_icon",
+        "name": "with_custom_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_message/with_custom_color",
+        "name": "with_custom_color",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_message/loading_spinner",
+        "name": "loading_spinner",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::FlexLayout",
     "description": "A layouting component used to arrange multiple components next / below each other",
     "accessibility_docs": null,

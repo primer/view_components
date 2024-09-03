@@ -118,6 +118,8 @@
   "Primer::OpenProject::BorderGrid": "open_project",
   "Primer::OpenProject::BorderGrid::Cell": "open_project",
   "Primer::OpenProject::DragHandle": "open_project",
+  "Primer::OpenProject::FeedbackDialog": "open_project",
+  "Primer::OpenProject::FeedbackMessage": "open_project",
   "Primer::OpenProject::FlexLayout": "open_project",
   "Primer::OpenProject::GridLayout": "open_project",
   "Primer::OpenProject::GridLayout::Area": "open_project",

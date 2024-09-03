@@ -1422,6 +1422,10 @@
       "medium"
     ]
   },
+  "Primer::OpenProject::FeedbackDialog": {
+  },
+  "Primer::OpenProject::FeedbackMessage": {
+  },
   "Primer::OpenProject::FlexLayout": {
   },
   "Primer::OpenProject::GridLayout": {
