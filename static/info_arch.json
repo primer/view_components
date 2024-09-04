@@ -17557,6 +17557,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/open_project/feedback_message/secondary_action",
+        "name": "secondary_action",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
