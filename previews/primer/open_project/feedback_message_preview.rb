@@ -53,6 +53,14 @@ module Primer
           component.with_heading(tag: :h2) { "Please wait, your request is being processed." }
         end
       end
+
+      # @label With secondary action
+      def secondary_action
+        render(Primer::OpenProject::FeedbackMessage.new(loading: true)) do |component|
+          component.with_heading(tag: :h2) { "Please wait, your request is being processed." }
+          component.with_secondary_action(href: "#").with_content("Skip")
+        end
+      end
     end
   end
 end

@@ -31,6 +31,8 @@ module Primer
 
       delegate :description?, :description, :with_description, :with_description_content,
                :heading?, :heading, :with_heading, :with_heading_content,
+               :primary_action?, :primary_action, :with_primary_action, :with_primary_action_content,
+               :secondary_action?, :secondary_action, :with_secondary_action, :with_secondary_action_content,
                to: :@blankslate
 
       private
