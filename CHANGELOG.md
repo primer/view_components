@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.44.1
+
+### Patch Changes
+
+- [#172](https://github.com/opf/primer_view_components/pull/172) [`2a500c9`](https://github.com/opf/primer_view_components/commit/2a500c95c359033253dec429da012b675da60099) Thanks [@HDinger](https://github.com/HDinger)! - Delegate calls for `primary_action` and `secondary_action` from FeedbackMessage to the `Blankslate`
+
 ## 0.44.0
 
 ### Minor Changes
