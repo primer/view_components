@@ -7,7 +7,7 @@
           <%= private_leading_action_icon %>
         </span>
       <% end %>
-      <% if list.select_variant == :single || list.select_variant == :multiple %>
+      <% if href.blank? && (list.select_variant == :single || list.select_variant == :multiple) %>
         <span class="ActionListItem-visual ActionListItem-action--leading">
           <%= render(Primer::Beta::Octicon.new(icon: :check, classes: "ActionListItem-singleSelectCheckmark")) %>
         </span>
