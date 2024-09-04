@@ -92,7 +92,7 @@ class PrimerAlphaTextFieldTest < Minitest::Test
       Primer::Alpha::TextField.new(**@default_params, leading_visual: { icon: :search }, leading_spinner: true)
     )
 
-    assert_selector "svg[data-target='primer-text-field.leadingSpinner']", visible: :hidden
+    assert_selector "[data-target='primer-text-field.leadingSpinner']", visible: :hidden
   end
 
   def test_enforces_leading_visual_when_spinner_requested

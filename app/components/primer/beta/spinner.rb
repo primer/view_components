@@ -40,6 +40,9 @@ module Primer
         else
           @system_arguments[:role] = "img"
         end
+
+        @target = extract_data(:target, @system_arguments)
+        @hidden = @system_arguments.delete(:hidden)
       end
 
       def no_aria_label?

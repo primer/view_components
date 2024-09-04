@@ -77,8 +77,9 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def eventually_local_fetch(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param show_filter toggle
+      def eventually_local_fetch(open_on_load: false, show_filter: true)
+        render_with_template(locals: { open_on_load: open_on_load, show_filter: show_filter })
       end
 
       # @label Remote fetch
