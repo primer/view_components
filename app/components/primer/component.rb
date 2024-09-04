@@ -141,6 +141,10 @@ module Primer
       !Rails.env.production? && raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
     end
 
+    def shouldnt_raise_error?
+      !should_raise_error?
+    end
+
     def should_raise_aria_error?
       !Rails.env.production? && raise_on_invalid_aria? && !ENV["PRIMER_WARNINGS_DISABLED"]
     end
