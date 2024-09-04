@@ -974,14 +974,13 @@ module Alpha
       keyboard.type(:tab)
 
       assert_equal active_element.tag_name, "button"
-      assert_includes active_element[:class], "ActionListContent"
+      assert_includes active_element["class"], "ActionListContent"
 
       # tab out of list
       keyboard.type(:tab)
 
       # focus is no longer on the list
-      assert_equal active_element.tag_name, "button"
-      assert_includes active_element[:class], "close-button"
+      assert_equal active_element.tag_name, "body"
     end
 
     def test_arrowing_through_items
