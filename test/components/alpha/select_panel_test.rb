@@ -101,6 +101,40 @@ module Primer
         panel_id = page.find_css("select-panel").first.attributes["id"].value
         assert_selector "select-panel button[data-close-dialog-id='#{panel_id}-dialog']"
       end
+
+      def test_raises_if_role_given
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new(role: :listbox))
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
+
+      def test_raises_if_role_given_to_item_slot
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+              panel.with_item(role: :option)
+            end
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
+
+      def test_raises_if_role_given_to_avatar_item_slot
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+              panel.with_avatar_item(src: "camertron.jpg", username: "camertron", role: :option)
+            end
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
     end
   end
 end
