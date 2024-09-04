@@ -273,4 +273,12 @@ class RubocopPrimerOcticonTest < CopTestCase
 
     assert_correction "primer_octicon(:icon, size: :medium)"
   end
+
+  def test_no_args
+    investigate(cop, <<-RUBY)
+      octicon
+    RUBY
+
+    assert_correction "primer_octicon"
+  end
 end
