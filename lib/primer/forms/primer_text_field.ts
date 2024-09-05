@@ -57,6 +57,7 @@ export class PrimerTextFieldElement extends HTMLElement {
   clearContents() {
     this.inputElement.value = ''
     this.inputElement.focus()
+    this.inputElement.dispatchEvent(new Event('input', { bubbles: true, cancelable: true}))
   }
 
   clearError(): void {
