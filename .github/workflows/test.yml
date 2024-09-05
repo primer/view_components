@@ -76,7 +76,6 @@ jobs:
       run: |
         npm ci
         bundle config unset deployment
-        bundle update
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
@@ -124,7 +123,6 @@ jobs:
       run: |
         npm ci
         bundle config unset deployment
-        bundle update
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
@@ -167,7 +165,6 @@ jobs:
     - name: Build
       run: |
         bundle config unset deployment
-        bundle update
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
