@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.44.2
+
+### Patch Changes
+
+- [#178](https://github.com/opf/primer_view_components/pull/178) [`3429d42`](https://github.com/opf/primer_view_components/commit/3429d42114df30550f588a94f6e5577f6f3b710c) Thanks [@HDinger](https://github.com/HDinger)! - Remove OpenStruct from primer_octicon cop
+
+- [#175](https://github.com/opf/primer_view_components/pull/175) [`015b6dc`](https://github.com/opf/primer_view_components/commit/015b6dc1bcc18878e173ca4a524a91d57756d654) Thanks [@HDinger](https://github.com/HDinger)! - Precompile loading svg
+
 ## 0.44.1
 
 ### Patch Changes
