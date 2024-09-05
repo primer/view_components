@@ -882,6 +882,9 @@ export class SelectPanelElement extends HTMLElement {
     const itemContent = this.#getItemContent(item)
 
     if (this.selectVariant === 'single') {
+      // Don't check anything if we have an href
+      if (itemContent?.getAttribute('href')) return
+      
       // disallow unchecking checked item in single-select mode
       if (!currentlyChecked) {
         for (const el of this.items) {
