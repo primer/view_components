@@ -91,6 +91,9 @@
           }
         ],
         "restartPolicy": "Always",
+        "containerGroupSubnetId": {
+          "id": "/subscriptions/550eb99d-d0c7-4651-a337-f53fa6520c4f/resourceGroups/primer/providers/Microsoft.Network/virtualNetworks/primer-view-components/subnets/main",
+        },
         "ipAddress": {
           "ports": [
             {
@@ -98,7 +101,7 @@
               "port": 80
             }
           ],
-          "type": "Public",
+          "type": "Private",
           "dnsNameLabel": "[parameters('appName')]"
         },
         "osType": "Linux"
