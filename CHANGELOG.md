@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.44.3
+
+### Patch Changes
+
+- [#180](https://github.com/opf/primer_view_components/pull/180) [`259491b`](https://github.com/opf/primer_view_components/commit/259491b418f1179537cee5caee5f306af30b83d8) Thanks [@HDinger](https://github.com/HDinger)! - Allow FeedbackMessage to show no icon at all
+
+- [#182](https://github.com/opf/primer_view_components/pull/182) [`e0f7e87`](https://github.com/opf/primer_view_components/commit/e0f7e871f24a52901915e2310bf2445f0ab46f72) Thanks [@HDinger](https://github.com/HDinger)! - Upgrade Vite; stop updating bundle in CI
+
 ## 0.44.2
 
 ### Patch Changes
