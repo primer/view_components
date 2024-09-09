@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.44.3
+
+### Patch Changes
+
+- [#180](https://github.com/opf/primer_view_components/pull/180) [`259491b`](https://github.com/opf/primer_view_components/commit/259491b418f1179537cee5caee5f306af30b83d8) Thanks [@HDinger](https://github.com/HDinger)! - Allow FeedbackMessage to show no icon at all
+
+- [#182](https://github.com/opf/primer_view_components/pull/182) [`e0f7e87`](https://github.com/opf/primer_view_components/commit/e0f7e871f24a52901915e2310bf2445f0ab46f72) Thanks [@HDinger](https://github.com/HDinger)! - Upgrade Vite; stop updating bundle in CI
+
+## 0.44.2
+
+### Patch Changes
+
+- [#178](https://github.com/opf/primer_view_components/pull/178) [`3429d42`](https://github.com/opf/primer_view_components/commit/3429d42114df30550f588a94f6e5577f6f3b710c) Thanks [@HDinger](https://github.com/HDinger)! - Remove OpenStruct from primer_octicon cop
+
+- [#175](https://github.com/opf/primer_view_components/pull/175) [`015b6dc`](https://github.com/opf/primer_view_components/commit/015b6dc1bcc18878e173ca4a524a91d57756d654) Thanks [@HDinger](https://github.com/HDinger)! - Precompile loading svg
+
+## 0.44.1
+
+### Patch Changes
+
+- [#172](https://github.com/opf/primer_view_components/pull/172) [`2a500c9`](https://github.com/opf/primer_view_components/commit/2a500c95c359033253dec429da012b675da60099) Thanks [@HDinger](https://github.com/HDinger)! - Delegate calls for `primary_action` and `secondary_action` from FeedbackMessage to the `Blankslate`
+
 ## 0.44.0
 
 ### Minor Changes

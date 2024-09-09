@@ -36,11 +36,21 @@ class PrimerOpenProjectFeedbackMessageTest < Minitest::Test
   end
 
   def test_renders_loading_spinner
-    render_inline(Primer::OpenProject::FeedbackMessage.new(loading: true)) do |dialog|
-      dialog.with_heading(tag: :h2) { "Ups, something went wrong" }
+    render_inline(Primer::OpenProject::FeedbackMessage.new(loading: true)) do |component|
+      component.with_heading(tag: :h2) { "Ups, something went wrong" }
     end
 
     assert_selector("h2", text: "Ups, something went wrong")
     assert_selector("img.blankslate-image[src^='/assets/loading_indicator']")
+  end
+
+  def test_renders_secondary_action
+    render_inline(Primer::OpenProject::FeedbackMessage.new) do |component|
+      component.with_heading(tag: :h2) { "Secondary Action" }
+      component.with_secondary_action(href: "/blubs").with_content("Skip")
+    end
+
+    assert_selector("h2", text: "Secondary Action")
+    assert_selector("a[href='/blubs']", text: "Skip")
   end
 end

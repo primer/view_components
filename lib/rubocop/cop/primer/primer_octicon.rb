@@ -200,7 +200,7 @@ module RuboCop
         def kwargs(node)
           return node.arguments.last if node.arguments.size > 1
 
-          OpenStruct.new(keys: [], pairs: [], type: :hash)
+          RuboCop::AST::HashNode.new("hash")
         end
 
         def icon(node)
