@@ -42,13 +42,15 @@ module ERBLint
 
         tags.each do |tag|
           next if tag.closing?
-          next if self.class::TAGS&.none?(tag.name)
+          next if self.class::TAGS.present? && self.class::TAGS&.none?(tag.name)
 
           classes = tag.attributes["class"]&.value&.split(" ") || []
           tag_tree[tag][:offense] = false
 
           next if (classes & self.class::DISALLOWED_CLASSES).any?
-          next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
+          next unless self.class::CLASSES.blank? || classes.any? do |klass|
+            self.class::CLASSES.any? { |matcher| matcher === klass } # rubocop:disable Style/CaseEquality
+          end
 
           args = map_arguments(tag, tag_tree[tag])
           correction = correction(args)

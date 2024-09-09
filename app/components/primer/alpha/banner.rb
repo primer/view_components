@@ -4,6 +4,12 @@ module Primer
   module Alpha
     # Use `Banner` to highlight important information.
     #
+    # ### Events
+    #
+    # |Name      |Type                |Bubbles |Cancelable |
+    # |:---------|:-------------------|:-------|:----------|
+    # |`dismiss` |`CustomEvent<void>` |No      |No         |
+    #
     # @accessibility
     #  ### Improve discoverability with a heading and landmark
     #  Banners are made visually prominent with icons and colors to immediately draw attention.

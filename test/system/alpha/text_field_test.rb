@@ -80,5 +80,23 @@ module Alpha
       assert_selector "[data-target='primer-text-field.leadingVisual']"
       refute_selector "[data-target='primer-text-field.leadingSpinner']"
     end
+
+    def test_shows_and_hides_screenreader_text
+      visit_preview(:playground, leading_spinner: true)
+
+      evaluate_multiline_script(<<~JS)
+        const textField = document.querySelector('primer-text-field')
+        textField.showLeadingSpinner()
+      JS
+
+      assert_selector "[data-target='primer-text-field.leadingSpinner'] .sr-only", text: "Loading"
+
+      evaluate_multiline_script(<<~JS)
+        const textField = document.querySelector('primer-text-field')
+        textField.hideLeadingSpinner()
+      JS
+
+      refute_selector "[data-target='primer-text-field.leadingSpinner'] .sr-only"
+    end
   end
 end

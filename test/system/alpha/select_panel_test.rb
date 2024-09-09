@@ -877,6 +877,17 @@ module Alpha
       refute_selector "[data-target='select-panel.bannerErrorElement']"
     end
 
+    def test_ev_loc_items_load_without_filter
+      visit_preview(:eventually_local_fetch, show_filter: false)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # items should render without error
+      assert_selector "select-panel ul li"
+    end
+
     ########## REMOTE TESTS ############
 
     def test_remote_items_load

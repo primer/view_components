@@ -1,7 +1,9 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-<% end %>
-<% if no_aria_label? %>
-  <span class="spinner-screenreader-text sr-only"><%= @sr_text %></span>
+<%= render(Primer::BaseComponent.new(tag: :span, hidden: @hidden, data: { target: @target })) do %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <% end %>
+  <% if no_aria_label? %>
+    <span class="sr-only"><%= @sr_text %></span>
+  <% end %>
 <% end %>
