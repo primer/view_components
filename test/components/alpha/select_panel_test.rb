@@ -111,6 +111,56 @@ module Primer
           assert_includes error.message, "Hiding the filter input with a remote fetch strategy is not permitted"
         end
       end
+
+      def test_raises_if_role_given
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new(role: :listbox))
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
+
+      def test_raises_if_role_given_to_item_slot
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+              panel.with_item(role: :option)
+            end
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
+
+      def test_does_not_raise_if_no_role_given_to_item_slot
+        render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+          panel.with_item(label: "Foo")
+        end
+
+        assert_selector "select-panel"
+      end
+
+      def test_raises_if_role_given_to_avatar_item_slot
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+              panel.with_avatar_item(src: "camertron.jpg", username: "camertron", role: :option)
+            end
+          end
+
+          assert_includes error.message, "Please avoid passing the `role:` argument"
+        end
+      end
+
+      def test_does_not_raise_if_role_not_given_to_avatar_item_slot
+        render_inline(Primer::Alpha::SelectPanel.new) do |panel|
+          panel.with_avatar_item(src: "camertron.jpg", username: "camertron")
+        end
+
+        assert_selector(".avatar-small")
+      end
     end
   end
 end
