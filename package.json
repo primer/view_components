@@ -84,7 +84,7 @@
     "postcss": "^8.4.16",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.0.0",
-    "postcss-mixins": "^10.0.0",
+    "postcss-mixins": "^11.0.1",
     "postcss-preset-env": "^10.0.2",
     "prettier": "^3.3.2",
     "rollup": "^2.79.1",
