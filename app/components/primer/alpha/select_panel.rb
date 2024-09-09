@@ -250,10 +250,28 @@ module Primer
     # )
     # ```
     class SelectPanel < Primer::Component
+      # @private
+      module Utils
+        def raise_if_role_given!(**system_arguments)
+          return if shouldnt_raise_error?
+          return unless system_arguments.include?(:role)
+
+          raise(
+            "Please avoid passing the `role:` argument to `SelectPanel` and its subcomponents. "\
+            "The component will automatically apply the correct roles where necessary."
+          )
+        end
+      end
+
+      include Utils
+
       # The component that should be used to render the list of items in the body of a SelectPanel.
       class ItemList < Primer::Alpha::ActionList
+        include Utils
+
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
         def initialize(**system_arguments)
+          raise_if_role_given!(**system_arguments)
           select_variant = system_arguments[:select_variant] || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
 
           super(
@@ -262,6 +280,16 @@ module Primer
             aria_selection_variant: select_variant == :single ? :selected : :checked,
             **system_arguments
           )
+        end
+
+        def with_item(**system_arguments)
+          raise_if_role_given!(**system_arguments)
+          super
+        end
+
+        def with_avatar_item(**system_arguments)
+          raise_if_role_given!(**system_arguments)
+          super
         end
       end
 
@@ -362,6 +390,8 @@ module Primer
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
         **system_arguments
       )
+        raise_if_role_given!(**system_arguments)
+
         if src.present?
           url = URI(src)
           query = url.query || ""
@@ -419,12 +449,9 @@ module Primer
           form_arguments: form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
-          role: "listbox",
-          aria_selection_variant: @select_variant == :multiple ? :checked : :selected,
           aria: {
             label: "#{title} options"
-          },
-          p: 2
+          }
         )
       end
 
