@@ -43,6 +43,7 @@ module Primer
         system_arguments[:placeholder] ||= I18n.t("button_filter")
         system_arguments[:leading_visual] ||= { icon: :search }
         system_arguments[:visually_hide_label] ||= true
+        system_arguments[:input_width] ||= :medium
 
         system_arguments[:data] ||= {}
         system_arguments[:data][:target]= "sub-header.filterInput"
