@@ -35,10 +35,9 @@ class SelectPanelItemsController < ApplicationController
     query = (params[:q] || "").downcase
 
     results = if show_results
-                res = SELECT_PANEL_ITEMS.select do |item|
+                SELECT_PANEL_ITEMS.select do |item|
                   [item[:title], item[:description]].join(" ").downcase.include?(query)
                 end
-                params.fetch(:limit_items, -1).to_i >= 0 ? res.take(params[:limit_items].to_i) : res
               else
                 []
               end

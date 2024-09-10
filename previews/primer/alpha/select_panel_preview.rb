@@ -18,7 +18,6 @@ module Primer
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
       # @param selected_items text
-      # @param limit_items number
       def playground(
         title: "Sci-fi equipment",
         subtitle: "Various tools from your favorite shows",
@@ -32,13 +31,11 @@ module Primer
         open_on_load: false,
         anchor_align: :start,
         anchor_side: :outside_bottom,
-        selected_items: "Phaser",
-        limit_items: 10
+        selected_items: "Phaser"
       )
         render_with_template(locals: {
           subtitle: subtitle,
           selected_items: selected_items,
-          limit_items: limit_items,
           system_arguments: {
             title: title,
             size: size,
