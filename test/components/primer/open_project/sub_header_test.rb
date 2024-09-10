@@ -92,4 +92,43 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     assert_selector(".SubHeader .MyCustomButton")
     assert_selector(".SubHeader .SubHeader-bottomPane .ABottomPane")
   end
+
+  def test_renders_a_clear_button_when_show_clear_button_is_set
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_input(
+        name: "filter",
+        label: "Filter",
+        show_clear_button: true,
+        value: "value is set"
+      )
+    end
+
+    assert_selector(".SubHeader")
+    assert_selector(
+      ".SubHeader-filterInput"\
+      "[data-action=\"input:sub-header#toggleFilterInputClearButton\n"\
+                     "focus:sub-header#toggleFilterInputClearButton\n\"]"
+    )
+    assert_selector(".FormControl-input-trailingAction[data-action=\"click:primer-text-field#clearContents\"]")
+  end
+
+  def test_does_not_render_input_events_when_show_clear_button_is_not_set
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_input(
+        name: "filter",
+        label: "Filter",
+        show_clear_button: false,
+        value: "value is set"
+      )
+    end
+
+    assert_selector(".SubHeader")
+    assert_selector(".SubHeader-filterInput")
+    assert_no_selector(
+      ".SubHeader-filterInput"\
+      "[data-action=\"input:sub-header#toggleFilterInputClearButton\n"\
+                     "focus:sub-header#toggleFilterInputClearButton\n\"]"
+    )
+    assert_no_selector(".FormControl-input-trailingAction[data-action=\"click:primer-text-field#clearContents\"]")
+  end
 end

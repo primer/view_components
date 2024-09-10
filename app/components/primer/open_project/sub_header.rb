@@ -38,7 +38,8 @@ module Primer
       renders_one :filter_input, lambda { |name:, label:, **system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "SubHeader-filterInput"
+          "SubHeader-filterInput",
+          "SubHeader-filterInput_hiddenClearButton"
         )
         system_arguments[:placeholder] ||= I18n.t("button_filter")
         system_arguments[:leading_visual] ||= { icon: :search }
@@ -47,10 +48,25 @@ module Primer
         system_arguments[:data] ||= {}
         system_arguments[:data][:target]= "sub-header.filterInput"
 
+        system_arguments[:show_clear_button] = true if system_arguments[:show_clear_button].nil?
+
+        if system_arguments[:show_clear_button]
+          system_arguments[:data] = merge_data(
+            system_arguments,
+            {
+              data: {
+                action: <<~JS
+                  input:sub-header#toggleFilterInputClearButton
+                  focus:sub-header#toggleFilterInputClearButton
+                JS
+              }
+            }
+          )
+        end
 
         @mobile_filter_trigger = Primer::Beta::IconButton.new(icon: system_arguments[:leading_visual][:icon],
                                                               display: [:inline_flex, :none],
-                                                              aria: {label: label },
+                                                              aria: { label: label },
                                                               "data-action": "click:sub-header#expandFilterInput",
                                                               "data-targets": HIDDEN_FILTER_TARGET_SELECTOR)
 

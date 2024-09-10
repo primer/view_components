@@ -185,6 +185,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     ],
     Primer::OpenProject::SubHeader => [
       ".SubHeader--expandedSearch",
+      ".SubHeader-filterInput_hiddenClearButton"
     ]
   }.freeze
 

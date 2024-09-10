@@ -11,10 +11,23 @@ module Primer
       # @param show_filter_input toggle
       # @param show_filter_button toggle
       # @param show_action_button toggle
+      # @param show_clear_button toggle
       # @param text text
-      def playground(show_filter_input: true, show_filter_button: true, show_action_button: true, text: nil)
+      # @param value text
+      def playground(
+        show_filter_input: true,
+        show_clear_button: true,
+        show_filter_button: true,
+        show_action_button: true,
+        text: nil,
+        value: nil
+      )
         render(Primer::OpenProject::SubHeader.new) do |component|
-          component.with_filter_input(name: "filter", label: "Filter") if show_filter_input
+          component.with_filter_input(
+            name: "filter",
+            label: "Filter",
+            show_clear_button: show_clear_button,
+            value: value) if show_filter_input
           component.with_filter_button do |button|
             button.with_trailing_visual_counter(count: "15")
             "Filter"

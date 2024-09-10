@@ -591,6 +591,9 @@
   "SubHeader-filterContainer": [
     "Primer::OpenProject::SubHeader"
   ],
+  "SubHeader-filterInput_hiddenClearButton": [
+    "Primer::OpenProject::SubHeader"
+  ],
   "SubHeader-leftPane": [
     "Primer::OpenProject::SubHeader"
   ],
