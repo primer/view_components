@@ -13,7 +13,7 @@ module Alpha
       assert_equal find("input[type=text]").value, "foobar"
 
       evaluate_multiline_script(<<~JS)
-        window.inputTriggeredV = false
+        window.inputTriggered = false
 
         document.querySelector('input[type=text]').addEventListener('input', (_event) => {
           window.inputTriggered = true
