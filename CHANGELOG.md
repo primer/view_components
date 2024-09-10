@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.46.1
+
+### Patch Changes
+
+- [#186](https://github.com/opf/primer_view_components/pull/186) [`4d5d599`](https://github.com/opf/primer_view_components/commit/4d5d5994e2995a5a3e159521c5accb0525e7c7b8) Thanks [@HDinger](https://github.com/HDinger)! - Do not overwrite custom data attributes
+
 ## 0.46.0
 
 ### Minor Changes
