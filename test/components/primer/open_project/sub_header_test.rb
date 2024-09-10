@@ -106,8 +106,7 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     assert_selector(".SubHeader")
     assert_selector(
       ".SubHeader-filterInput"\
-      "[data-action=\"input:sub-header#toggleFilterInputClearButton\n"\
-                     "focus:sub-header#toggleFilterInputClearButton\n\"]"
+      "[data-action=\" input:sub-header#toggleFilterInputClearButton focus:sub-header#toggleFilterInputClearButton\"]"
     )
     assert_selector(".FormControl-input-trailingAction[data-action=\"click:primer-text-field#clearContents\"]")
   end
@@ -126,8 +125,7 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     assert_selector(".SubHeader-filterInput")
     assert_no_selector(
       ".SubHeader-filterInput"\
-      "[data-action=\"input:sub-header#toggleFilterInputClearButton\n"\
-                     "focus:sub-header#toggleFilterInputClearButton\n\"]"
+      "[data-action=\" input:sub-header#toggleFilterInputClearButton focus:sub-header#toggleFilterInputClearButton\"]"
     )
     assert_no_selector(".FormControl-input-trailingAction[data-action=\"click:primer-text-field#clearContents\"]")
   end
