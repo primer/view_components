@@ -506,6 +506,10 @@ module Primer
         Primer::Beta::Button.new(**system_arguments)
       }
 
+      # Customizable content for the loading message that appears when items are being fetched. This message
+      # appears in place of the default `Primer::Beta::Spinner`.
+      renders_one :loading_content
+
       # Customizable content for the error message that appears when items are fetched for the first time. This message
       # appears in place of the list of items.
       # For more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).
