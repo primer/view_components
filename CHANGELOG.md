@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.46.0
+
+### Minor Changes
+
+- [#174](https://github.com/opf/primer_view_components/pull/174) [`95adbb8`](https://github.com/opf/primer_view_components/commit/95adbb8f59be14e0db515e944b8f9c81f0ea778b) Thanks [@dombesz](https://github.com/dombesz)! - Toggle the visibility of the clear button on the SubHeader component's filter input based on its content.
+
+### Patch Changes
+
+- [#184](https://github.com/opf/primer_view_components/pull/184) [`1a72661`](https://github.com/opf/primer_view_components/commit/1a72661224108a9af87644d5e826579a03c8615c) Thanks [@HDinger](https://github.com/HDinger)! - Increase default width of the filter input in the SubHeader
+
 ## 0.45.0
 
 ### Minor Changes
