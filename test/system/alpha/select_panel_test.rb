@@ -1052,6 +1052,8 @@ module Alpha
       end
     end
 
+    ########## FORM TESTS ############
+
     def test_single_select_form
       visit_preview(:single_select_form, route_format: :json)
 
