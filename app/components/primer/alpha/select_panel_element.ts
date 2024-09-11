@@ -738,6 +738,8 @@ export class SelectPanelElement extends HTMLElement {
       return true
     }
 
+    if (!this.bannerErrorElement) return false
+
     return !this.bannerErrorElement.hasAttribute('hidden')
   }
 
