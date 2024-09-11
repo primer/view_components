@@ -17,6 +17,7 @@ module Primer
       # @param open_on_load toggle
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      # @param banner_variant [Symbol] select [danger, warning]
       # @param selected_items text
       def playground(
         title: "Sci-fi equipment",
@@ -31,6 +32,7 @@ module Primer
         open_on_load: false,
         anchor_align: :start,
         anchor_side: :outside_bottom,
+        banner_variant: :danger,
         selected_items: "Phaser"
       )
         render_with_template(locals: {
@@ -47,7 +49,8 @@ module Primer
             dynamic_aria_label_prefix: dynamic_aria_label_prefix,
             open_on_load: open_on_load,
             anchor_align: anchor_align,
-            anchor_side: anchor_side
+            anchor_side: anchor_side,
+            banner_variant: banner_variant
           }
         })
       end

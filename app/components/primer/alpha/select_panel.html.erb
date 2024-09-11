@@ -11,11 +11,11 @@
         <% if show_filter? %>
           <% header.with_filter do %>
             <div data-target="select-panel.bannerErrorElement" hidden>
-              <%= render Primer::Alpha::Banner.new(scheme: :danger, mb: 2) do %>
+              <%= render Primer::Alpha::Banner.new(scheme: @banner_variant, mb: 2) do %>
                 <% if error_content? %>
                   <%= error_content %>
                 <% else %>
-                  <h2 class="f6 text-normal">Sorry, something went wrong.</h2>
+                  <h2 class="f6 text-normal <%= @banner_variant == :warning ? "fgColor-attention" : "fgColor-danger" %>">Sorry, something went wrong.</h2>
                 <% end %>
               <% end %>
             </div>

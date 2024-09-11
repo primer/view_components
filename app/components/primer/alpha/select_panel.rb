@@ -311,6 +311,12 @@ module Primer
         :none,
       ].freeze
 
+      DEFAULT_BANNER_VARIANT = :danger
+      BANNER_VARIANT_OPTIONS = [
+        DEFAULT_BANNER_VARIANT,
+        :warning
+      ].freeze
+
       # The URL to fetch search results from.
       #
       # @return [String]
@@ -330,6 +336,11 @@ module Primer
       #
       # @return [Symbol]
       attr_reader :select_variant
+
+      # <%= one_of(Primer::Alpha::SelectPanel::BANNER_VARIANT_OPTIONS) %>
+      #
+      # @return [Symbol]
+      attr_reader :banner_variant
 
       # <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
       #
@@ -368,6 +379,7 @@ module Primer
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param banner_variant [Symbol] The scheme for the error banner <%= one_of(Primer::Alpha::SelectPanel::BANNER_VARIANT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         src: nil,
@@ -388,6 +400,7 @@ module Primer
         open_on_load: false,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        banner_variant: DEFAULT_BANNER_VARIANT,
         **system_arguments
       )
         raise_if_role_given!(**system_arguments)
@@ -409,6 +422,7 @@ module Primer
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
+        @banner_variant = fetch_or_fallback(BANNER_VARIANT_OPTIONS, banner_variant, DEFAULT_BANNER_VARIANT)
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
