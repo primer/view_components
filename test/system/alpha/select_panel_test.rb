@@ -671,6 +671,23 @@ module Alpha
       assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
 
+    def test_banner_variant_is_passed_to_banner_component
+      visit_preview(:remote_fetch_filter_failure, banner_variant: :warning)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      assert_selector "select-panel ul li"
+
+      wait_for_items_to_load do
+        filter_results(query: "foobar")
+      end
+
+      assert_selector "[data-target='select-panel.bannerErrorElement'] .Banner--warning", text: "Sorry, something went wrong"
+      assert_selector ".Banner-message .fgColor-attention", text: "Sorry, something went wrong"
+    end
+
     ########## JAVASCRIPT API TESTS ############
 
     def test_disable_item_via_js_api

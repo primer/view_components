@@ -200,17 +200,8 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      # @param banner_variant [Symbol] select [danger, warning]
-      def remote_fetch_initial_failure(
-        open_on_load: false,
-        banner_variant: :danger
-      )
-        render_with_template(locals: {
-          open_on_load: open_on_load,
-          system_arguments: {
-            banner_variant: banner_variant
-          }
-        })
+      def remote_fetch_initial_failure(open_on_load: false)
+        render_with_template(locals: {open_on_load: open_on_load})
       end
 
       # @label Remote fetch filter failure
@@ -234,17 +225,8 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      # @param banner_variant [Symbol] select [danger, warning]
-      def eventually_local_fetch_initial_failure(
-        open_on_load: false,
-        banner_variant: :danger
-      )
-        render_with_template(locals: {
-          open_on_load: open_on_load,
-          system_arguments: {
-            banner_variant: banner_variant
-          }
-        })
+      def eventually_local_fetch_initial_failure(open_on_load: false)
+        render_with_template(locals: {open_on_load: open_on_load})
       end
 
       # @label Single-select form
