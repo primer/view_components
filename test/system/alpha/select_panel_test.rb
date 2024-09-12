@@ -82,6 +82,21 @@ module Alpha
     end
 
     def filter_results(query:)
+      input = find("input")
+
+      # If the query is an empty string or nil, using fill_in does not
+      # trigger the right type of input event, which in turn prevents
+      # the remote-input element from firing its remote-input-success
+      # event. Instead we have to focus on the input field, select all
+      # the text, and press backspace. Doing so fires the right type of
+      # event and clears the input.
+      if query.blank?
+        old_active_element = active_element
+        input.evaluate_script("this.focus()")
+        keyboard.type([:control, "a"], :backspace)
+        old_active_element.evaluate_script("this.focus()")
+      end
+
       find("input").fill_in(with: query)
     end
 
@@ -1050,6 +1065,19 @@ module Alpha
           keyboard.type(:down)
         end
       end
+    end
+
+    def test_can_tab_to_first_item_after_filtering
+      visit_preview(:local_fetch)
+
+      click_on_invoker_button
+
+      filter_results(query: "2")
+      assert_selector "select-panel ul li", count: 1
+
+      filter_results(query: "")
+      keyboard.type(:tab)
+      assert_equal active_element.text, "Item 1"
     end
 
     ########## FORM TESTS ############
