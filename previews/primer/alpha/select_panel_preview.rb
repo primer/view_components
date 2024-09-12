@@ -216,7 +216,7 @@ module Primer
         render_with_template(locals: {
           open_on_load: open_on_load,
           system_arguments: {
-            banner_variant: banner_variant
+            banner_variant: banner_variant.to_sym
           }
         })
       end
