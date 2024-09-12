@@ -11,6 +11,7 @@ IGNORED_SELECTORS = {
   Primer::Alpha::ActionMenu => ["ActionListItem-multiSelectIcon", "copy-link", "quote-reply"],
   Primer::Alpha::AutoComplete => ["form-control", "ActionList"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
+  Primer::Alpha::SelectPanel => ["ActionListItem-multiSelectIcon"],
   Primer::Beta::ButtonGroup => ["ButtonGroup"],
   Primer::Beta::CloseButton => ["close-button"],
   Primer::Beta::Details => ["details-overlay"],
