@@ -47,7 +47,7 @@ module Primer
             dynamic_aria_label_prefix: dynamic_aria_label_prefix,
             open_on_load: open_on_load,
             anchor_align: anchor_align,
-            anchor_side: anchor_side,
+            anchor_side: anchor_side
           }
         })
       end
@@ -201,7 +201,7 @@ module Primer
       # @snapshot interactive
       # @param open_on_load toggle
       def remote_fetch_initial_failure(open_on_load: false)
-        render_with_template(locals: {open_on_load: open_on_load})
+        render_with_template(locals: { open_on_load: open_on_load })
       end
 
       # @label Remote fetch filter failure
@@ -226,7 +226,7 @@ module Primer
       # @snapshot interactive
       # @param open_on_load toggle
       def eventually_local_fetch_initial_failure(open_on_load: false)
-        render_with_template(locals: {open_on_load: open_on_load})
+        render_with_template(locals: { open_on_load: open_on_load })
       end
 
       # @label Single-select form
