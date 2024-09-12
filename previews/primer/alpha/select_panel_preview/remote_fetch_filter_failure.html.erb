@@ -5,7 +5,8 @@
   # passing a uuid here causes the request to succeed the first time and fail all subsequent times
   src: select_panel_items_path(fail: "true", uuid: SecureRandom.uuid),
   fetch_strategy: :remote,
-  open_on_load: open_on_load
+  open_on_load: open_on_load,
+  **system_arguments
 )) do |panel| %>
   <% panel.with_show_button { "Sci-fi equipment" } %>
 <% end %>

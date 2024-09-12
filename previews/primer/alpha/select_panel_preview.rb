@@ -17,7 +17,6 @@ module Primer
       # @param open_on_load toggle
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
-      # @param banner_variant [Symbol] select [danger, warning]
       # @param selected_items text
       def playground(
         title: "Sci-fi equipment",
@@ -32,7 +31,6 @@ module Primer
         open_on_load: false,
         anchor_align: :start,
         anchor_side: :outside_bottom,
-        banner_variant: :danger,
         selected_items: "Phaser"
       )
         render_with_template(locals: {
@@ -50,7 +48,6 @@ module Primer
             open_on_load: open_on_load,
             anchor_align: anchor_align,
             anchor_side: anchor_side,
-            banner_variant: banner_variant
           }
         })
       end
@@ -203,24 +200,51 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch_initial_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_variant [Symbol] select [danger, warning]
+      def remote_fetch_initial_failure(
+        open_on_load: false,
+        banner_variant: :danger
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          system_arguments: {
+            banner_variant: banner_variant
+          }
+        })
       end
 
       # @label Remote fetch filter failure
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch_filter_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_variant [Symbol] select [danger, warning]
+      def remote_fetch_filter_failure(
+        open_on_load: false,
+        banner_variant: :danger
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          system_arguments: {
+            banner_variant: banner_variant
+          }
+        })
       end
 
       # @label Eventually local fetch initial failure
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def eventually_local_fetch_initial_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_variant [Symbol] select [danger, warning]
+      def eventually_local_fetch_initial_failure(
+        open_on_load: false,
+        banner_variant: :danger
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          system_arguments: {
+            banner_variant: banner_variant
+          }
+        })
       end
 
       # @label Single-select form

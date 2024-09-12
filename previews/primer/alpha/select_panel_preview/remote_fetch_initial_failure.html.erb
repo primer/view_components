@@ -4,7 +4,8 @@
   data: { interaction_subject: subject_id },
   src: select_panel_items_path(fail: "true"),
   fetch_strategy: :remote,
-  open_on_load: open_on_load
+  open_on_load: open_on_load,
+  **system_arguments
 )) do |panel| %>
   <% panel.with_show_button { "Sci-fi equipment" } %>
 <% end %>
