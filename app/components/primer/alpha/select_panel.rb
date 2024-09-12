@@ -454,6 +454,18 @@ module Primer
             label: "#{title} options"
           }
         )
+
+        return if @show_filter || @fetch_strategy != :remote
+        return if shouldnt_raise_error?
+
+        raise(
+          "Hiding the filter input with a remote fetch strategy is not permitted, "\
+          "since such a combinaton of options will cause the component to only "\
+          "fetch items from the server once when the panel opens for the first time; "\
+          "this is what the `:eventually_local` fetch strategy is designed to do. "\
+          "Consider passing `show_filter: true` or use the `:eventually_local` fetch "\
+          "strategy instead."
+        )
       end
 
       # @!parse

@@ -18,7 +18,7 @@ module Primer
       end
 
       def test_does_not_render_a_filter_input
-        render_inline(Primer::Alpha::SelectPanel.new(show_filter: false))
+        render_inline(Primer::Alpha::SelectPanel.new(fetch_strategy: :local, show_filter: false))
 
         refute_selector("primer-text-field")
       end
@@ -100,6 +100,16 @@ module Primer
 
         panel_id = page.find_css("select-panel").first.attributes["id"].value
         assert_selector "select-panel button[data-close-dialog-id='#{panel_id}-dialog']"
+      end
+
+      def test_raises_if_remote_strategy_and_hidden_filter_used_together
+        with_raise_on_invalid_options(true) do
+          error = assert_raises do
+            render_inline(Primer::Alpha::SelectPanel.new(fetch_strategy: :remote, show_filter: false))
+          end
+
+          assert_includes error.message, "Hiding the filter input with a remote fetch strategy is not permitted"
+        end
       end
 
       def test_raises_if_role_given

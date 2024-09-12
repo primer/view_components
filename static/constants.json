@@ -611,7 +611,8 @@
       "single",
       "multiple",
       "none"
-    ]
+    ],
+    "Utils": "Primer::Alpha::SelectPanel::Utils"
   },
   "Primer::Alpha::SelectPanel::ItemList": {
   },
