@@ -3,7 +3,7 @@
 # :nodoc:
 class CheckBoxGroupForm < ApplicationForm
   form do |check_form|
-    check_form.check_box_group(label: "I like to eat, eat, eat:") do |check_group|
+    check_form.check_box_group(label: "I like to eat, eat, eat:", caption: "Nom nom nom") do |check_group|
       check_group.check_box(
         name: "long_a",
         label: "Ey-ples and ba-naynays",
