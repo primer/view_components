@@ -216,6 +216,7 @@ module Primer
         render_with_template(locals: {
           open_on_load: open_on_load,
           system_arguments: {
+            # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
             banner_variant: banner_variant.to_sym
           }
         })
