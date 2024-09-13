@@ -314,11 +314,7 @@ export class SelectPanelElement extends HTMLElement {
         const itemContent = this.#getItemContent(item)
         if (!itemContent) continue
 
-        if (!this.isItemHidden(item) && !setZeroTabIndex) {
-          setZeroTabIndex = true
-        } else {
-          itemContent.setAttribute('tabindex', '-1')
-        }
+        itemContent.setAttribute('tabindex', '-1')
 
         // <li> elements should not themselves be tabbable
         item.removeAttribute('tabindex')
@@ -741,6 +737,8 @@ export class SelectPanelElement extends HTMLElement {
     if (this.fragmentErrorElement && !this.fragmentErrorElement.hasAttribute('hidden')) {
       return true
     }
+
+    if (!this.bannerErrorElement) return false
 
     return !this.bannerErrorElement.hasAttribute('hidden')
   }

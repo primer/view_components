@@ -64,7 +64,7 @@ class Primer::Forms::RadioButtonGroupInputTest < Minitest::Test
     refute_selector "input[type=radio][invalid]"
 
     # should have a validation message
-    validation_id = page.find("fieldset")["aria-describedby"]
+    validation_id = page.find("fieldset")["aria-describedby"].split(" ").find { |id| id.start_with?("validation-") }
     assert_selector ".FormControl-inlineValidation[id='#{validation_id}']", text: /Channel can['’]t be blank/
 
     # first radio button should have focus

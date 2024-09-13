@@ -272,12 +272,13 @@ module Primer
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
         def initialize(**system_arguments)
           raise_if_role_given!(**system_arguments)
-          select_variant = system_arguments[:select_variant] || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
+          select_variant = system_arguments.delete(:select_variant) || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
 
           super(
             p: 2,
             role: "listbox",
             aria_selection_variant: select_variant == :single ? :selected : :checked,
+            select_variant: select_variant == :multiple ? :multiple_checkbox : :single,
             **system_arguments
           )
         end
