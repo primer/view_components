@@ -34,7 +34,7 @@ class SelectPanelItemsController < ApplicationController
     if params.fetch(:very_slow, "false") == "true"
       # Sleep for a long time to simulate a very slow request
       sleep 360
-    end 
+    end
 
     show_results = params.fetch(:show_results, "true") == "true"
     query = (params[:q] || "").downcase
