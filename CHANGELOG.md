@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.47.0
+
+### Minor Changes
+
+- [#3062](https://github.com/primer/view_components/pull/3062) [`b45ef04`](https://github.com/opf/primer_view_components/commit/b45ef044eb08788c7abff7cbd962da6d0ca56aa5) Thanks [@dombesz](https://github.com/dombesz)! - Trigger an input event when the primer-text-field clear button is pressed.
+
+### Patch Changes
+
+- [#3054](https://github.com/primer/view_components/pull/3054) [`4434ec0`](https://github.com/opf/primer_view_components/commit/4434ec03af760a950060f58549243aa2842be045) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Disallow passing `role:` argument
+
+- [#3077](https://github.com/primer/view_components/pull/3077) [`66488a3`](https://github.com/opf/primer_view_components/commit/66488a30da6cccdf58367d0b20262af5afa597a1) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Fix tab index issue in multi-select mode
+
+- [#3044](https://github.com/primer/view_components/pull/3044) [`b57b63a`](https://github.com/opf/primer_view_components/commit/b57b63ab909a3afebd291f91d8e59db5ee9c0998) Thanks [@jamieshark](https://github.com/jamieshark)! - SelectPanel - design bug fixes. Adds a divider below the filter, adjusts min height for loading and error states, moves banner error above input filter."
+
+- [#3053](https://github.com/primer/view_components/pull/3053) [`871c818`](https://github.com/opf/primer_view_components/commit/871c8184c8d3b70565052b419eec04ead2a894e0) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Raise an error when remote fetch + hidden filter argument combo
+
+- [#3058](https://github.com/primer/view_components/pull/3058) [`269b02f`](https://github.com/opf/primer_view_components/commit/269b02f221145af4acfb6fa8b4e15ef66c781b4c) Thanks [@langermank](https://github.com/langermank)! - `Label` padding updates to match PRC
+
+- [#3057](https://github.com/primer/view_components/pull/3057) [`96b42db`](https://github.com/opf/primer_view_components/commit/96b42db2e0c0402008d2e00851e481d993b1506e) Thanks [@owenniblock](https://github.com/owenniblock)! - Don't select SelectPanel::Item when item is a link
+
 ## 0.46.1
 
 ### Patch Changes
