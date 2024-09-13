@@ -33,7 +33,7 @@ class SelectPanelItemsController < ApplicationController
 
     if params.fetch(:very_slow, "false") == "true"
       # Sleep for a long time to simulate a very slow request
-      sleep 360
+      sleep 30
     end
 
     show_results = params.fetch(:show_results, "true") == "true"
