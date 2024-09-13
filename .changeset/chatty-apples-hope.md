@@ -2,4 +2,5 @@
 '@primer/view-components': minor
 ---
 
-Adds the ability to replace SelectPanel loading content with custom content using loading_content
+[SelectPanel] replace loading label using parameter loading_label
+[SelectPanel] show additional loading content with loading_description

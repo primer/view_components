@@ -91,12 +91,21 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
       end
 
-      # @label Custom loading content
+      # @label Custom loading label
       #
       # @snapshot interactive
       # @param open_on_load toggle
       # @param selected_items text
-      def custom_loading_content(open_on_load: false, selected_items: "Phaser")
+      def custom_loading_label(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
+      end
+
+      # @label Custom loading description
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      def custom_loading_description(open_on_load: false, selected_items: "Phaser")
         render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
       end
 

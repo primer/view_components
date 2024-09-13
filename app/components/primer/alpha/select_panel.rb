@@ -388,6 +388,8 @@ module Primer
         open_on_load: false,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        loading_label: "Loading content...",
+        loading_description: nil,
         **system_arguments
       )
         raise_if_role_given!(**system_arguments)
@@ -409,6 +411,12 @@ module Primer
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
+        @loading_label = loading_label
+        @loading_description_id = nil
+        unless loading_description.nil?
+          @loading_description_id = "#{@panel_id}-loading-description"
+        end
+        @loading_description = loading_description
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
@@ -505,10 +513,6 @@ module Primer
 
         Primer::Beta::Button.new(**system_arguments)
       }
-
-      # Customizable content for the loading message that appears when items are being fetched. This message
-      # appears in place of the default `Primer::Beta::Spinner`.
-      renders_one :loading_content
 
       # Customizable content for the error message that appears when items are fetched for the first time. This message
       # appears in place of the list of items.

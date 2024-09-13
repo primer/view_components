@@ -70,11 +70,8 @@
                     text_align: :center
                   )) do %>
                     <div data-hide-on-error>
-                      <% if loading_content? %>
-                        <%= loading_content %>
-                      <% else %>
-                        <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }, data: { target: "select-panel.bodySpinner" }) %>
-                      <% end %>
+                      <%= render Primer::Beta::Spinner.new(aria: { label: @loading_label, describedby: @loading_description_id }, data: { target: "select-panel.bodySpinner" }) %>
+                      <div id="<%= @loading_description_id %>" aria-hidden="true"><%= @loading_description %></div>
                     </div>
                     <div data-show-on-error hidden data-target="select-panel.fragmentErrorElement">
                       <% if preload_error_content? %>
