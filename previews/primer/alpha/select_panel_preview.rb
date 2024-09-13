@@ -208,8 +208,18 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch_filter_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_scheme [Symbol] select [danger, warning]
+      def remote_fetch_filter_failure(
+        open_on_load: false,
+        banner_scheme: :danger
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          system_arguments: {
+            # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
+            banner_scheme: banner_scheme.to_sym
+          }
+        })
       end
 
       # @label Eventually local fetch initial failure
