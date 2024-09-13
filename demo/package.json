@@ -7,8 +7,7 @@
     "@primer/primitives": "^9.1.0",
     "@rails/actioncable": "^7.2.100",
     "@rails/ujs": "^7.1.400",
-    "turbolinks": "^5.2.0",
-    "webpack-dev-server": "^5.0.4"
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "vite": "^5.4.3",
