@@ -546,6 +546,12 @@
   "SegmentedControl-item": [
     "Primer::Alpha::SegmentedControl"
   ],
+  "SelectPanel-emptyPanel": [
+    "Primer::Alpha::SelectPanel"
+  ],
+  "SelectPanel-loadingPanel": [
+    "Primer::Alpha::SelectPanel"
+  ],
   "SidePanel-sectionAction": [
     "Primer::OpenProject::SidePanel::Section"
   ],

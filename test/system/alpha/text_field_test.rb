@@ -12,8 +12,20 @@ module Alpha
       find("input[type=text]").fill_in(with: "foobar")
       assert_equal find("input[type=text]").value, "foobar"
 
+      evaluate_multiline_script(<<~JS)
+        window.inputTriggered = false
+
+        document.querySelector('input[type=text]').addEventListener('input', (_event) => {
+          window.inputTriggered = true
+        })
+      JS
+
+      refute page.evaluate_script("window.inputTriggered")
+
       find("button").click
       assert_equal find("input[type=text]").value, ""
+
+      assert page.evaluate_script("window.inputTriggered")
     end
 
     def test_auto_check_error

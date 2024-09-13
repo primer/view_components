@@ -70,32 +70,32 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.3"
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby_version }}
-          bundler-cache: true
-          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-          cache: 'npm'
-      - name: Build
-        run: |
-          npm ci
-          bundle config unset deployment
-          bundle install --jobs 4 --retry 3
-        env:
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
-      - name: Test
-        run: |
-          bundle exec rake test:components
-          bundle exec rake test:coverage
-        env:
-          COVERAGE: 1
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: Build
+      run: |
+        npm ci
+        bundle config unset deployment
+        bundle install --jobs 4 --retry 3
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:components
+        bundle exec rake test:coverage
+      env:
+        COVERAGE: 1
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
     name: Lib
     runs-on:
@@ -122,32 +122,32 @@ jobs:
           - rails_version: "main"
             ruby_version: "3.3"
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby_version }}
-          bundler-cache: true
-          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-          cache: 'npm'
-      - name: Build
-        run: |
-          npm ci
-          bundle config unset deployment
-          bundle install --jobs 4 --retry 3
-        env:
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
-      - name: Test
-        run: |
-          bundle exec rake test:lib
-          bundle exec rake test:coverage
-        env:
-          COVERAGE: 1
-          RUBY_VERSION: ${{ matrix.ruby_version }}
-          RAILS_VERSION: ${{ matrix.rails_version }}
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: Build
+      run: |
+        npm ci
+        bundle config unset deployment
+        bundle install --jobs 4 --retry 3
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:lib
+        bundle exec rake test:coverage
+      env:
+        COVERAGE: 1
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
   performance:
     name: Performance
     runs-on: ubuntu-latest
