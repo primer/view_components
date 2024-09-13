@@ -11,7 +11,7 @@
         <% if show_filter? %>
           <% header.with_filter do %>
             <div data-target="select-panel.bannerErrorElement" hidden>
-              <%= render Primer::Alpha::Banner.new(classes: scheme: @banner_scheme, mb: 2) do %>
+              <%= render Primer::Alpha::Banner.new(scheme: @banner_scheme, mb: 2) do %>
                 <% if error_content? %>
                   <%= error_content %>
                 <% else %>
