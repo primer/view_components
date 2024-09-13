@@ -415,7 +415,7 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
         if loading_description.present?
-          @loading_description_id = "{@panel_id}-loading-description"
+          @loading_description_id = "#{@panel_id}-loading-description"
         end
         @loading_description = loading_description
 
