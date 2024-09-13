@@ -678,7 +678,7 @@ module Alpha
 
       # Check that there's a loading label, but no description
       assert_selector "svg[aria-label='Custom loading content... please wait...']"
-      refute_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby]"
+      refute_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
     end
 
     def test_custom_loading_description
@@ -687,8 +687,8 @@ module Alpha
       click_on_invoker_button
 
       # Check that there's a loading label and description
-      assert_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby]"
-      assert_selector "div", text: "This is a custom loading description"
+      assert_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
+      assert_selector "div", text: "This is a custom loading description", id: "select-panel-loading-description"
     end
 
     ########## JAVASCRIPT API TESTS ############

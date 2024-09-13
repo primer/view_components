@@ -1,6 +1,7 @@
 <% subject_id = SecureRandom.hex %>
 
 <%= render(Primer::Alpha::SelectPanel.new(
+  id: "select-panel",
   data: { interaction_subject: subject_id },
   src: select_panel_items_path(
     select_variant: :multiple,
