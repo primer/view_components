@@ -7654,6 +7654,12 @@
         "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
       },
       {
+        "name": "banner_scheme",
+        "type": "Symbol",
+        "default": "`:danger`",
+        "description": "The scheme for the error banner One of `:danger` or `:warning`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -7746,6 +7752,16 @@
       {
         "name": "select_variant",
         "description": "One of `:multiple`, `:none`, or `:single`.",
+        "parameters": [
+
+        ],
+        "return_types": [
+          "Symbol"
+        ]
+      },
+      {
+        "name": "banner_scheme",
+        "description": "One of `:danger` or `:warning`.",
         "parameters": [
 
         ],
