@@ -413,7 +413,7 @@ module Primer
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
         @loading_label = loading_label
         @loading_description_id = nil
-        unless loading_description.nil?
+        if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
         end
         @loading_description = loading_description
