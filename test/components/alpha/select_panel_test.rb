@@ -96,6 +96,9 @@ module Primer
       end
 
       def test_custom_loading_label
+        # We're using a longish (30 sec) timeout to simulate a slow request
+        # So that the loading label is visible for a while
+        # If it turns out that this is flaky, we'll need to bake in a way to always show the loading content
         render_preview(:custom_loading_label)
   
         # Check that there's a loading label, but no description
@@ -104,6 +107,9 @@ module Primer
       end
   
       def test_custom_loading_description
+        # We're using a longish (30 sec) timeout to simulate a slow request
+        # So that the loading label is visible for a while
+        # If it turns out that this is flaky, we'll need to bake in a way to always show the loading content
         render_preview(:custom_loading_description)
   
         # Check that there's a loading label and description
