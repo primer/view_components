@@ -598,6 +598,11 @@
   "Primer::Alpha::Select": {
   },
   "Primer::Alpha::SelectPanel": {
+    "BANNER_SCHEME_OPTIONS": [
+      "danger",
+      "warning"
+    ],
+    "DEFAULT_BANNER_SCHEME": "danger",
     "DEFAULT_FETCH_STRATEGY": "remote",
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "single",

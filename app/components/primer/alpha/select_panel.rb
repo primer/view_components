@@ -312,6 +312,12 @@ module Primer
         :none,
       ].freeze
 
+      DEFAULT_BANNER_SCHEME = :danger
+      BANNER_SCHEME_OPTIONS = [
+        DEFAULT_BANNER_SCHEME,
+        :warning
+      ].freeze
+
       # The URL to fetch search results from.
       #
       # @return [String]
@@ -331,6 +337,11 @@ module Primer
       #
       # @return [Symbol]
       attr_reader :select_variant
+
+      # <%= one_of(Primer::Alpha::SelectPanel::BANNER_SCHEME_OPTIONS) %>
+      #
+      # @return [Symbol]
+      attr_reader :banner_scheme
 
       # <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
       #
@@ -369,6 +380,7 @@ module Primer
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param banner_scheme [Symbol] The scheme for the error banner <%= one_of(Primer::Alpha::SelectPanel::BANNER_SCHEME_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         src: nil,
@@ -389,8 +401,12 @@ module Primer
         open_on_load: false,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+<<<<<<< add-loading-content-slot
         loading_label: "Loading content...",
         loading_description: nil,
+=======
+        banner_scheme: DEFAULT_BANNER_SCHEME,
+>>>>>>> main
         **system_arguments
       )
         raise_if_role_given!(**system_arguments)
@@ -412,12 +428,16 @@ module Primer
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
+<<<<<<< add-loading-content-slot
         @loading_label = loading_label
         @loading_description_id = nil
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
         end
         @loading_description = loading_description
+=======
+        @banner_scheme = fetch_or_fallback(BANNER_SCHEME_OPTIONS, banner_scheme, DEFAULT_BANNER_SCHEME)
+>>>>>>> main
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
