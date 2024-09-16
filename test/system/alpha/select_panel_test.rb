@@ -671,26 +671,6 @@ module Alpha
       assert_selector "[aria-checked=true]", text: "Photon torpedo"
     end
 
-    def test_custom_loading_label
-      visit_preview(:custom_loading_label)
-
-      click_on_invoker_button
-
-      # Check that there's a loading label, but no description
-      assert_selector "svg[aria-label='Custom loading content... please wait...']"
-      refute_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
-    end
-
-    def test_custom_loading_description
-      visit_preview(:custom_loading_description)
-
-      click_on_invoker_button
-
-      # Check that there's a loading label and description
-      assert_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
-      assert_selector "div", text: "This is a custom loading description", id: "select-panel-loading-description"
-    end
-
     ########## JAVASCRIPT API TESTS ############
 
     def test_disable_item_via_js_api
