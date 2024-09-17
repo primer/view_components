@@ -165,7 +165,7 @@ export class SelectPanelElement extends HTMLElement {
   updateAnchorPosition() {
     // If the selectPanel is removed from the screen on resize close the dialog
     if (this && this.offsetParent === null) {
-      this.dialog.close()
+      this.hide()
     }
 
     if (this.invokerElement) {
@@ -464,6 +464,8 @@ export class SelectPanelElement extends HTMLElement {
       // Remove data-ready so it can be set the next time the panel is opened
       this.dialog.removeAttribute('data-ready')
       this.invokerElement?.setAttribute('aria-expanded', 'false')
+      // When we close the dialog, clear the filter input
+      this.filterInputTextField.value = ''
 
       this.dispatchEvent(
         new CustomEvent('panelClosed', {
@@ -935,8 +937,6 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   hide() {
-    // When we close the dialog, clear the filter input
-    this.filterInputTextField.value = ''
     this.dialog.close()
   }
 
