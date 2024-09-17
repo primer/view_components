@@ -401,12 +401,9 @@ module Primer
         open_on_load: false,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
-<<<<<<< add-loading-content-slot
         loading_label: "Loading content...",
         loading_description: nil,
-=======
         banner_scheme: DEFAULT_BANNER_SCHEME,
->>>>>>> main
         **system_arguments
       )
         raise_if_role_given!(**system_arguments)
@@ -428,16 +425,13 @@ module Primer
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
-<<<<<<< add-loading-content-slot
         @loading_label = loading_label
         @loading_description_id = nil
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
         end
         @loading_description = loading_description
-=======
         @banner_scheme = fetch_or_fallback(BANNER_SCHEME_OPTIONS, banner_scheme, DEFAULT_BANNER_SCHEME)
->>>>>>> main
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
