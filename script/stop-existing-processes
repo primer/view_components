@@ -1,0 +1,17 @@
+#! /bin/bash
+
+overmind stop
+rm .overmind.sock
+
+pidfiles=(demo/tmp/pids/css.pid demo/tmp/pids/vite.pid demo/tmp/pids/server.pid)
+
+for pidfile in "${pidfiles[@]}"
+do
+  if [ -f $pidfile ]; then
+    pid=$(cat $pidfile)
+    name=$(basename "$pidfile" .pid)
+    echo "Stopping existing $name process with pid $pid"
+    kill -9 $pid
+    rm $pidfile
+  fi
+done

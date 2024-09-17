@@ -23,15 +23,15 @@ const config: PlaywrightTestConfig = {
     baseURL: 'http://127.0.0.1:4000',
     browserName: 'chromium',
     headless: true,
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
   },
   expect: {
     toHaveScreenshot: {
-      animations: 'disabled'
+      animations: 'disabled',
     },
     toMatchSnapshot: {
-      threshold: 0.1
-    }
+      threshold: 0.1,
+    },
   },
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
@@ -39,13 +39,13 @@ const config: PlaywrightTestConfig = {
   reporter: [
     ['line'],
     ['html', {open: 'never', outputFolder: path.join(__dirname, '.playwright/report')}],
-    ['json', {outputFile: path.join(__dirname, '.playwright', 'results.json')}]
+    ['json', {outputFile: path.join(__dirname, '.playwright', 'results.json')}],
   ],
 
   webServer: {
-    command: 'overmind start',
-    port: 4000
-  }
+    command: 'script/dev',
+    port: 4000,
+  },
 }
 
 export default config
