@@ -108,7 +108,7 @@
         "name": "aria_selection_variant",
         "type": "Symbol",
         "default": "`:checked`",
-        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+        "description": "Specifies which aria selection to use. One of `:checked` or `:selected`."
       },
       {
         "name": "form_arguments",
@@ -451,7 +451,7 @@
         "name": "aria_selection_variant",
         "type": "Symbol",
         "default": "`:checked`",
-        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+        "description": "Specifies which aria selection to use. One of `:checked` or `:selected`."
       },
       {
         "name": "form_arguments",
