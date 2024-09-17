@@ -1,5 +1,6 @@
 <% subject_id = SecureRandom.hex %>
 
+<%# We set src and fetch_strategy: :local here to make the loading spinner and description remain visible %>
 <%= render(Primer::Alpha::SelectPanel.new(
   id: "select-panel",
   data: { interaction_subject: subject_id },
