@@ -31,11 +31,6 @@ class SelectPanelItemsController < ApplicationController
       mark_seen_uuid(uuid) if uuid
     end
 
-    if params.fetch(:very_slow, "false") == "true"
-      # Sleep for a long time to simulate a very slow request
-      sleep 30
-    end
-
     show_results = params.fetch(:show_results, "true") == "true"
     query = (params[:q] || "").downcase
 

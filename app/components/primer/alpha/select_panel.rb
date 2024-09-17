@@ -380,6 +380,8 @@ module Primer
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param loading_label [String] The aria-label to use when the panel is loading, defaults to 'Loading content...'.
+      # @param loading_description [String] The description to use when the panel is loading. If not provided, no description will be used.
       # @param banner_scheme [Symbol] The scheme for the error banner <%= one_of(Primer::Alpha::SelectPanel::BANNER_SCHEME_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
