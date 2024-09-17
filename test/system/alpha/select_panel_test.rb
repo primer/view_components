@@ -435,6 +435,24 @@ module Alpha
       refute_selector "[aria-checked]", visible: :hidden
     end
 
+    def test_single_select_clears_input_on_close
+      visit_preview(:single_select)
+
+      click_on_invoker_button
+
+      filter_results(query: "it")
+
+      # keyboard.type(:enter)
+      click_on "Item 1"
+
+      assert_selector "[aria-selected=true]", text: "Item 1", visible: :hidden
+
+      click_on_invoker_button
+
+      # Check that the input value is empty
+      assert_selector "select-panel input", text: ""
+    end
+
     def test_single_select_disabled_item_cannot_be_checked
       visit_preview(:single_select)
 

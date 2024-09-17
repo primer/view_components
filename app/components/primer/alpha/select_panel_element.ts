@@ -935,6 +935,8 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   hide() {
+    // When we close the dialog, clear the filter input
+    this.filterInputTextField.value = ''
     this.dialog.close()
   }
 
