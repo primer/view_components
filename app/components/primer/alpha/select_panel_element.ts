@@ -2,7 +2,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 import {controller, target} from '@github/catalyst'
 import {announceFromElement, announce} from '../aria_live'
 import {IncludeFragmentElement} from '@github/include-fragment-element'
-import type {PrimerTextFieldElement} from 'lib/primer/forms/primer_text_field'
+import type {PrimerTextFieldElement} from 'app/lib/primer/forms/primer_text_field'
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import '@oddbird/popover-polyfill'
 
