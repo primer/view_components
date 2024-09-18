@@ -1046,6 +1046,37 @@ module Alpha
       refute_selector "[data-target='select-panel.fragmentErrorElement']"
     end
 
+    def test_remote_fetch_clears_input_on_close
+      visit_preview(:remote_fetch)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      wait_for_items_to_load do
+        filter_results(query: "ph")
+      end
+
+      assert_selector "[role=option]", text: "Photon torpedo"
+      assert_selector "[role=option]", text: "Phaser"
+      assert_no_selector "[role=option]", text: "Bat'leth"
+      assert_no_selector "[role=option]", text: "Lightsaber"
+
+      click_on_x_button
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Check that the input value is empty
+      assert_selector "select-panel input", text: ""
+      # Check that the items are reset
+      assert_selector "[role=option]", text: "Photon torpedo"
+      assert_selector "[role=option]", text: "Phaser"
+      assert_selector "[role=option]", text: "Bat'leth"
+      assert_selector "[role=option]", text: "Lightsaber"
+    end
+
     ########## TAB INDEX TESTS ############
 
     def test_tab_indices
