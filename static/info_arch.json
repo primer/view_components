@@ -7654,6 +7654,18 @@
         "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
       },
       {
+        "name": "loading_label",
+        "type": "String",
+        "default": "`\"Loading content...\"`",
+        "description": "The aria-label to use when the panel is loading, defaults to 'Loading content...'."
+      },
+      {
+        "name": "loading_description",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The description to use when the panel is loading. If not provided, no description will be used."
+      },
+      {
         "name": "banner_scheme",
         "type": "Symbol",
         "default": "`:danger`",
@@ -7891,6 +7903,32 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch",
         "name": "remote_fetch",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/custom_loading_label",
+        "name": "custom_loading_label",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/custom_loading_description",
+        "name": "custom_loading_description",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
