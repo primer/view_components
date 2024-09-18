@@ -47,12 +47,10 @@ jobs:
           demo/**/*.rb
           test/**/*.rb
     - uses: ruby/setup-ruby@v1
-      if: steps.changed-files.outputs.any_changed == 'true'
       with:
         ruby-version: '3.3'
         bundler-cache: true
     - name: Lint with Rubocop
-      if: steps.changed-files.outputs.any_changed == 'true'
       run: script/rubocop --format github
 
   erblint:
@@ -66,7 +64,6 @@ jobs:
         files: |
           app/components/**/*.erb
     - uses: ruby/setup-ruby@v1
-      if: steps.changed-files.outputs.any_changed == 'true'
       with:
         ruby-version: '3.3'
         bundler-cache: true
