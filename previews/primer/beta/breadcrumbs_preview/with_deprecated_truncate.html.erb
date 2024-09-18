@@ -8,7 +8,9 @@
 <%= render(Primer::Beta::Breadcrumbs.new) do |breadcrumbs| %>
   <% texts.each_with_index do |text, i| %>
     <% breadcrumbs.with_item(href: "##{i}") do %>
-      <%= render(Primer::Truncate.new(inline: true, max_width: 135)) { text } # rubocop:disable Migrations/TruncateComponent %>
+      <%=
+        render(Primer::Truncate.new(inline: true, max_width: 135)) { text } # rubocop:disable Migrations/TruncateComponent
+      %>
     <% end %>
   <% end %>
 <% end %>
