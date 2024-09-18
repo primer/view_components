@@ -3,6 +3,6 @@
     <% component.with_tab(href: "#", selected: i.zero?) { "Item #{i + 1}" } %>
   <% end %>
   <% component.with_actions do %>
-    <%= render(Primer::ButtonComponent.new) { "Button" } %>
+    <%= render(Primer::Beta::Button.new) { "Button" } %>
   <% end %>
 <% end %>

@@ -12,7 +12,7 @@ module Minitest
 
     module ClassMethods
       def run_one_method(klass, method_name)
-        result = super(klass, method_name)
+        result = super
 
         return result if !should_retry?(result.failures) || result.skipped?
 
