@@ -1061,20 +1061,20 @@ module Alpha
       assert_selector "[role=option]", text: "Phaser"
       assert_no_selector "[role=option]", text: "Bat'leth"
       assert_no_selector "[role=option]", text: "Lightsaber"
-
-      click_on_x_button
+      assert_selector "[role=option]", count: 2
 
       wait_for_items_to_load do
-        click_on_invoker_button
+        click_on_x_button
       end
 
       # Check that the input value is empty
-      assert_selector "select-panel input", text: ""
+      assert_selector "select-panel input", text: "", visible: :hidden
       # Check that the items are reset
-      assert_selector "[role=option]", text: "Photon torpedo"
-      assert_selector "[role=option]", text: "Phaser"
-      assert_selector "[role=option]", text: "Bat'leth"
-      assert_selector "[role=option]", text: "Lightsaber"
+      assert_selector "[role=option]", text: "Photon torpedo", visible: :hidden
+      assert_selector "[role=option]", text: "Phaser", visible: :hidden
+      assert_selector "[role=option]", text: "Bat'leth", visible: :hidden
+      assert_selector "[role=option]", text: "Lightsaber", visible: :hidden
+      assert_selector "[role=option]", count: 8, visible: :hidden
     end
 
     ########## TAB INDEX TESTS ############
