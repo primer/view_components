@@ -1,5 +1,11 @@
 {
   "explorer.fileNesting.patterns": {
     "*.rb": "${basename}.rb, ${basename}.html.erb, ${basename}.ts, ${basename}_element.ts, ${basename}.pcss, ${basename}.css*"
-  }
+  },
+  "stylelint.reportNeedlessDisables": true,
+  "stylelint.validate": [
+    "css",
+    "postcss",
+    "pcss"
+  ]
 }

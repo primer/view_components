@@ -30,7 +30,9 @@
     "wingrunr21.vscode-ruby",
     "mutantdino.resourcemonitor",
     "vunguyentuan.vscode-postcss",
-    "DavidAnson.vscode-markdownlint"
+    "DavidAnson.vscode-markdownlint",
+    "stylelint.vscode-stylelint",
+    "hex-ci.stylelint-plus"
   ],
   "forwardPorts": [4000],
   "appPort": [4000],
