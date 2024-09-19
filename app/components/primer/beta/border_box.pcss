@@ -59,7 +59,7 @@
   & .Box-btn-octicon {
     &.btn-octicon {
       padding: var(--stack-padding-spacious);
-      margin: calc(var(--stack-gap-spacious) * -1) calc(var(--stack-gap-spacious) * -1);
+      margin: calc(var(--stack-gap-spacious) * -1);
     }
   }
 
@@ -277,8 +277,8 @@
 .Box-btn-octicon {
   /* Increase specificity when btn-octicon is used because comes after .Box in the cascade */
   &.btn-octicon {
-    padding: var(--control-medium-paddingInline-spacious) var(--control-medium-paddingInline-spacious);
-    margin: calc(var(--controlStack-small-gap-spacious) * -1) calc(var(--controlStack-small-gap-spacious) * -1);
+    padding: var(--control-medium-paddingInline-spacious);
+    margin: calc(var(--controlStack-small-gap-spacious) * -1);
     line-height: 1.5; /* override btn-octicon line-height */
   }
 }

@@ -1,6 +1,5 @@
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["@primer/stylelint-config/plugins/no-deprecated-colors"],
   "ignoreFiles": ["app/**/*.css", "**/*.js", "**/*.ts"],
   "rules": {
     "media-feature-range-notation": null,
@@ -17,7 +16,6 @@
       {
         "ignoreAtRules": ["mixin", "define-mixin"]
       }
-    ],
-    "primer/no-deprecated-colors": true
+    ]
   }
 }
