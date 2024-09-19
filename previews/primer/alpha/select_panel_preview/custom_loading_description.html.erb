@@ -1,0 +1,23 @@
+<% subject_id = SecureRandom.hex %>
+
+<%# We set src and fetch_strategy: :local here to make the loading spinner and description remain visible %>
+<%= render(Primer::Alpha::SelectPanel.new(
+  id: "select-panel",
+  data: { interaction_subject: subject_id },
+  src: select_panel_items_path(
+    select_variant: :multiple,
+    selected_items: selected_items,
+  ),
+  select_variant: :multiple,
+  fetch_strategy: :local,
+  open_on_load: open_on_load,
+  loading_label: "Custom loading content... please wait...",
+  loading_description: "This is a custom loading description"
+)) do |panel| %>
+  <% panel.with_show_button { "Sci-fi equipment" } %>
+  <% panel.with_footer(show_divider: true) do %>
+    I'm a footer!
+  <% end %>
+<% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>
