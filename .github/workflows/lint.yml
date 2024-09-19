@@ -47,14 +47,11 @@ jobs:
           demo/**/*.rb
           test/**/*.rb
     - uses: ruby/setup-ruby@v1
-      if: steps.changed-files.outputs.any_changed == 'true'
       with:
         ruby-version: '3.3'
         bundler-cache: true
     - name: Lint with Rubocop
-      if: steps.changed-files.outputs.any_changed == 'true'
-      run: |
-        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }} --format github
+      run: script/rubocop --format github
 
   erblint:
     runs-on: ubuntu-latest
@@ -67,14 +64,11 @@ jobs:
         files: |
           app/components/**/*.erb
     - uses: ruby/setup-ruby@v1
-      if: steps.changed-files.outputs.any_changed == 'true'
       with:
         ruby-version: '3.3'
         bundler-cache: true
     - name: Lint with ERB Lint
-      if: steps.changed-files.outputs.any_changed == 'true'
-      run: |
-        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }} --format github
+      run: script/erblint --format github
 
   eslint:
     runs-on: ubuntu-latest
