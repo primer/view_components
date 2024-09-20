@@ -65,7 +65,7 @@
                     mb: 2,
                     aria: { disabled: true, busy: true },
                     display: :flex,
-                    align_items: :center,
+                    align_items: :flex_start,
                     justify_content: :center,
                     text_align: :center,
                     classes: "SelectPanel-loadingPanel"
@@ -92,7 +92,7 @@
                 <%= render(@list) %>
               <% end %>
             </div>
-            <div data-target="select-panel.noResults" class="color-border-muted text-center d-flex flex-items-center flex-justify-center SelectPanel-emptyPanel" hidden>
+            <div data-target="select-panel.noResults" class="color-border-muted text-center d-flex flex-items-start flex-justify-center SelectPanel-emptyPanel" hidden>
               <h2 class="v-align-middle m-3 f5"><%= @no_results_label %></h2>
             </div>
           <% end %>
