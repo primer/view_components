@@ -28,6 +28,7 @@
     height: var(--control-small-size);
 
     & .Button {
+      /* stylelint-disable-next-line primer/spacing */
       padding-inline: calc(var(--control-xsmall-paddingInline-normal) - var(--segmentedControl-item-padding));
     }
   }
@@ -56,11 +57,12 @@
 .SegmentedControl-item {
   position: relative;
   display: inline-flex;
-  justify-content: center;
+  height: var(--control-medium-size);
+  /* stylelint-disable-next-line primer/spacing */
+  padding: var(--segmentedControl-item-padding);
   border: var(--borderWidth-thin) solid transparent;
   border-radius: var(--borderRadius-medium);
-  height: var(--control-medium-size);
-  padding: var(--segmentedControl-item-padding);
+  justify-content: center;
 
   /* button color overrides */
   & .Button--invisible {
@@ -109,7 +111,9 @@
     &::before {
       position: absolute;
       inset: 0 0 0 -1px;
+      /* stylelint-disable-next-line primer/spacing */
       margin-top: var(--control-medium-paddingBlock);
+      /* stylelint-disable-next-line primer/spacing */
       margin-bottom: var(--control-medium-paddingBlock);
       content: '';
       border-left: var(--borderWidth-thin) solid var(--borderColor-default);
@@ -118,17 +122,21 @@
 
   /* Button ----------------------------------------- */
   & .Button {
-    height: 100%;
     width: 100%;
-    border: 0;
-    font-weight: var(--base-text-weight-normal);
-    border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
-    padding-inline: calc(var(--control-medium-paddingInline-normal) - var(--segmentedControl-item-padding));
     min-width: fit-content;
+    height: 100%;
+    font-weight: var(--base-text-weight-normal);
+    border: 0;
+    /* stylelint-disable-next-line primer/borders */
+    border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 2);
+    /* stylelint-disable-next-line primer/spacing */
+    padding-inline: calc(var(--control-medium-paddingInline-normal) - var(--segmentedControl-item-padding));
 
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
     &:focus-visible {
-      outline-offset: calc(var(--segmentedControl-item-padding) - var(--borderWidth-thin));
+      /* stylelint-disable-next-line primer/borders */
       border-radius: calc(var(--borderRadius-medium) - var(--segmentedControl-item-padding) / 1);
+      outline-offset: calc(var(--segmentedControl-item-padding) - var(--borderWidth-thin));
     }
   }
 
@@ -143,9 +151,9 @@
 
   /* use ellipsis with the assumption that icon only variant will be used when not enough space is available */
   & .Button-label {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

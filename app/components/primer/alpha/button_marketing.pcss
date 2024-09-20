@@ -9,13 +9,15 @@
   /* stylelint-disable-next-line primer/typography */
   font-size: 1rem;
   font-weight: var(--base-text-weight-semibold);
+  /* stylelint-disable-next-line primer/typography */
   line-height: 1;
+  /* stylelint-disable-next-line primer/colors */
   color: var(--bgColor-default);
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 15%) 0%, rgba(255, 255, 255, 0%) 100%),
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%),
     var(--color-mktg-btn-bg) !important;
   border: 0;
 
@@ -34,7 +36,7 @@
     content: '';
 
     /* stylelint-disable-next-line primer/colors */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 15%) 0%, rgba(255, 255, 255, 0%) 100%) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%) !important;
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.2s;
@@ -43,6 +45,7 @@
 
   &:hover {
     text-decoration: none;
+    /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: var(--color-mktg-btn-shadow-hover) !important;
   }
 
@@ -88,6 +91,7 @@
 .btn-muted-mktg {
   color: var(--fgColor-default) !important;
   background: none !important;
+  /* stylelint-disable-next-line primer/box-shadow */
   box-shadow: var(--color-mktg-btn-shadow-outline);
 
   &::before {
@@ -95,6 +99,7 @@
   }
 
   &:hover {
+    /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: var(--color-mktg-btn-shadow-hover-muted) !important;
   }
 
@@ -119,6 +124,7 @@
   }
 
   &:hover {
+    /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: var(--color-mktg-btn-shadow-hover-muted) !important;
   }
 }
@@ -128,11 +134,11 @@
   color: #fff;
 
   /* stylelint-disable-next-line primer/colors */
-  background: linear-gradient(180deg, rgba(52, 183, 89, 15%) 0%, rgba(46, 164, 79, 0%) 100%), rgb(46, 164, 79) !important;
+  background: linear-gradient(180deg, rgba(52, 183, 89, 0.15) 0%, rgba(46, 164, 79, 0) 100%), rgb(46, 164, 79) !important;
 
   &::before {
     /* stylelint-disable-next-line primer/colors */
-    background: linear-gradient(180deg, rgba(52, 183, 89, 15%) 0%, rgba(46, 164, 79, 0%) 100%) !important;
+    background: linear-gradient(180deg, rgba(52, 183, 89, 0.15) 0%, rgba(46, 164, 79, 0) 100%) !important;
   }
 
   /* fallback :focus state */

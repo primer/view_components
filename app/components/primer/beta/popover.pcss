@@ -1,3 +1,5 @@
+/* stylelint-disable primer/spacing */
+
 /* Popover */
 
 .Popover {
@@ -29,6 +31,7 @@
   &::before {
     top: -16px;
     margin-left: -9px;
+    /* stylelint-disable-next-line primer/borders */
     border: 8px solid transparent;
     border-bottom-color: var(--borderColor-default);
   }
@@ -36,6 +39,7 @@
   &::after {
     top: -14px;
     margin-left: -8px;
+    /* stylelint-disable-next-line primer/borders */
     border: 7px solid transparent;
     border-bottom-color: var(--overlay-bgColor);
   }
@@ -83,11 +87,11 @@
   }
 
   &::before {
-    right: 20px;
+    right: var(--base-size-20);
   }
 
   &::after {
-    right: 21px;
+    right: var(--base-size-20);
   }
 }
 
@@ -99,12 +103,12 @@
 
   &::before,
   &::after {
-    left: 24px;
+    left: var(--base-size-24);
     margin-left: 0;
   }
 
   &::after {
-    left: 25px;
+    left: var(--base-size-24);
   }
 }
 
@@ -167,7 +171,7 @@
 .Popover-message--left-top {
   &::before,
   &::after {
-    top: 24px;
+    top: var(--base-size-24);
   }
 }
 
@@ -180,11 +184,11 @@
   }
 
   &::before {
-    bottom: 16px;
+    bottom: var(--base-size-16);
   }
 
   &::after {
-    bottom: 17px;
+    bottom: var(--base-size-16);
   }
 }
 

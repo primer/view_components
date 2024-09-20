@@ -125,8 +125,7 @@
   }
 
   &.Layout--gutter-none {
-    /* stylelint-disable-next-line length-zero-no-unit */
-    --Layout-gutter: 0px; /* Neds px in value */
+    --Layout-gutter: 0px;
   }
 
   &.Layout--gutter-condensed {
@@ -207,6 +206,7 @@
       display: block;
       grid-column: 2;
       width: 1px;
+      /* stylelint-disable-next-line primer/spacing */
       margin-right: -1px;
       background: var(--borderColor-default);
     }

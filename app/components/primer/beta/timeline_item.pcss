@@ -3,7 +3,9 @@
 .TimelineItem {
   position: relative;
   display: flex;
+  /* stylelint-disable-next-line primer/spacing */
   padding: var(--stack-padding-normal) 0;
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: var(--stack-gap-normal);
 
   /* The Timeline */
@@ -20,6 +22,7 @@
 
   &:target .TimelineItem-badge {
     border-color: var(--borderColor-accent-emphasis);
+    /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: 0 0 0.2em var(--borderColor-accent-muted);
   }
 }
@@ -30,7 +33,9 @@
   display: flex;
   width: var(--control-medium-size);
   height: var(--control-medium-size);
+  /* stylelint-disable-next-line primer/spacing */
   margin-right: var(--controlStack-medium-gap-condensed);
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: calc(var(--control-medium-size) / -2 + 1px);
   color: var(--fgColor-muted);
   align-items: center;
@@ -57,6 +62,7 @@
 
 .TimelineItem-avatar {
   position: absolute;
+  /* stylelint-disable-next-line primer/spacing */
   left: -72px;
   z-index: 1;
 }
@@ -66,7 +72,9 @@
   z-index: 1;
   height: var(--stack-gap-spacious);
   margin: 0;
+  /* stylelint-disable-next-line primer/spacing */
   margin-bottom: calc(var(--stack-gap-normal) * -1);
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: -56px;
   background-color: var(--bgColor-default);
   border: 0;
@@ -79,6 +87,7 @@
 
   /* TimelineItem--condensed is often grouped. (commits) */
   &:last-child {
+    /* stylelint-disable-next-line primer/spacing */
     padding-bottom: var(--stack-gap-normal);
   }
 

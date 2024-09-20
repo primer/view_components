@@ -6,20 +6,20 @@
 /* Stacked label (default) */
 .autocomplete-label-stacked {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: var(--base-size-6);
 }
 
 /* Inline label (non-default) */
 .autocomplete-label-inline {
   display: inline;
-  margin-right: 6px;
+  margin-right: var(--base-size-6);
 }
 
 /* Switch to stacked at smaller viewport */
 @media (max-width: 543.98px) {
   .autocomplete-label-inline {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: var(--base-size-6);
   }
 }
 
@@ -32,7 +32,7 @@
 /* Wrapper and conditional styles for when an icon is added */
 .autocomplete-embedded-icon-wrap {
   display: inline-flex;
-  padding: 4px 8px;
+  padding: var(--base-size-4) var(--base-size-8);
   align-items: center;
 
   &:focus-within {
@@ -43,7 +43,7 @@
 
   & .form-control {
     padding: 0;
-    margin-left: 8px;
+    margin-left: var(--base-size-8);
     border: none;
     box-shadow: none;
 
@@ -66,7 +66,7 @@
   min-width: 100%;
   max-height: 20em;
   overflow-y: auto;
-  font-size: 13px;
+  font-size: var(--text-codeBlock-size);
   list-style: none;
   background: var(--overlay-bgColor);
   border: var(--borderWidth-thin) solid var(--borderColor-default);
@@ -80,7 +80,7 @@
 .autocomplete-item {
   display: block;
   width: 100%;
-  padding: 4px 8px;
+  padding: var(--base-size-4) var(--base-size-8);
   overflow: hidden;
   font-weight: var(--base-text-weight-semibold);
   color: var(--fgColor-default);

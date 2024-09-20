@@ -13,27 +13,29 @@
   },
   "onCreateCommand": ".devcontainer/on-create-command.sh",
   "postCreateCommand": ".devcontainer/post-create-command.sh",
-  "settings": {
-    "files.watcherExclude": {
-      "**/vendor": true,
-      "**/.git": true,
-      "**/tmp": true,
-      "**/node_modules": true
-    }
+  "customizations": {
+    "settings": {
+      "files.watcherExclude": {
+        "**/vendor": true,
+        "**/.git": true,
+        "**/tmp": true,
+        "**/node_modules": true
+      }
+    },
+    "extensions": [
+      "castwide.solargraph",
+      "kaiwood.endwise",
+      "manuelpuyol.erb-linter",
+      "misogi.ruby-rubocop",
+      "rebornix.ruby",
+      "wingrunr21.vscode-ruby",
+      "mutantdino.resourcemonitor",
+      "vunguyentuan.vscode-postcss",
+      "DavidAnson.vscode-markdownlint",
+      "stylelint.vscode-stylelint",
+      "hex-ci.stylelint-plus"
+    ]
   },
-  "extensions": [
-    "castwide.solargraph",
-    "kaiwood.endwise",
-    "manuelpuyol.erb-linter",
-    "misogi.ruby-rubocop",
-    "rebornix.ruby",
-    "wingrunr21.vscode-ruby",
-    "mutantdino.resourcemonitor",
-    "vunguyentuan.vscode-postcss",
-    "DavidAnson.vscode-markdownlint",
-    "stylelint.vscode-stylelint",
-    "hex-ci.stylelint-plus"
-  ],
   "forwardPorts": [4000],
   "appPort": [4000],
   "portsAttributes": {
