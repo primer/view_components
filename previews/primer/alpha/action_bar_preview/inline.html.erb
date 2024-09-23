@@ -1,6 +1,6 @@
 
 <%= render(Primer::BaseComponent.new(tag: :div, flex_items: :center, display: :flex)) do %>
-  <%= render(Primer::Beta::Heading.new(tag: :h1, font_size: 3, mr: 2)) { "Title" }%>
+  <%= render(Primer::Beta::Heading.new(tag: :h1, font_size: 3, mr: 2)) { "Title" } %>
   <%= render(Primer::Alpha::ActionBar.new) do |component| %>
     <% component.with_item_icon_button(icon: :search, label: "Search") %>
     <% component.with_item_icon_button(icon: :pencil, label: "Edit") %>

@@ -1,0 +1,4 @@
+#! /bin/bash
+
+./script/stop-existing-processes
+exec npx playwright test --workers 6
