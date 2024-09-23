@@ -41,9 +41,8 @@
   font-size: var(--text-caption-size);
   font-weight: var(--base-text-weight-semibold);
   line-height: var(--text-caption-lineHeight);
-  /* stylelint-disable-next-line primer/colors */
-  color: var(--control-borderColor-danger);
-  fill: var(--control-borderColor-danger);
+  color: var(--control-danger-fgColor-rest);
+  fill: var(--control-danger-fgColor-rest);
   flex-direction: row;
   align-items: flex-start;
   gap: var(--base-size-4);
@@ -54,9 +53,8 @@
 }
 
 .FormControl-inlineValidation--success {
-  /* stylelint-disable-next-line primer/colors */
-  color: var(--control-borderColor-success);
-  fill: var(--control-borderColor-success);
+  color: var(--fgColor-success);
+  fill: var(--fgColor-success);
 }
 
 .FormControl-inlineValidation--visual {
@@ -162,7 +160,7 @@
   transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
   transition-property: color, background-color, box-shadow, border-color;
   padding-inline: var(--control-medium-paddingInline-condensed);
-  padding-block: calc(var(--control-medium-paddingBlock, var(--base-size-6)) - var(--borderWidth-thin, 1px));
+  padding-block: calc(var(--control-medium-paddingBlock) - var(--borderWidth-thin));
 
   &[disabled] {
     &::placeholder {
