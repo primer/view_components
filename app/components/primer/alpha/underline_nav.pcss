@@ -5,11 +5,13 @@
   min-height: var(--base-size-48);
   overflow-x: auto;
   overflow-y: hidden;
+  /* stylelint-disable-next-line primer/box-shadow */
   box-shadow: inset 0 -1px 0 var(--borderColor-muted);
   -webkit-overflow-scrolling: auto;
   justify-content: space-between;
 
   & .Counter {
+    /* stylelint-disable-next-line primer/spacing */
     margin-left: var(--control-medium-gap);
     color: var(--fgColor-default);
     background-color: var(--bgColor-neutral-muted, var(--color-neutral-muted));
@@ -31,8 +33,10 @@
 .UnderlineNav-item {
   position: relative;
   display: flex;
+  /* stylelint-disable-next-line primer/spacing */
   padding: 0 var(--control-medium-paddingInline-condensed);
   font-size: var(--text-body-size-medium);
+  /* stylelint-disable-next-line primer/typography */
   line-height: 30px;
   color: var(--fgColor-default);
   text-align: center;
@@ -87,9 +91,9 @@
     /* current/selected underline */
     &::after {
       position: absolute;
-      z-index: 1; /* raise above full-width flash banner */
       right: 50%;
-      bottom: calc(50% - 25px); /* 48px total height / 2 (24px) + 1px */
+      bottom: calc(50% - var(--base-size-24)); /* 48px total height / 2 (24px) + 1px */
+      z-index: 1; /* raise above full-width flash banner */
       width: 100%;
       height: 2px;
       content: '';
@@ -123,6 +127,7 @@
 
 .UnderlineNav-octicon {
   display: inline !important;
+  /* stylelint-disable-next-line primer/spacing */
   margin-right: var(--control-medium-gap);
   color: var(--fgColor-muted);
   fill: var(--fgColor-muted);

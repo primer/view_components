@@ -22,11 +22,8 @@ const resizeObserver = new ResizeObserver(entries => {
 
 // These are definitely used, but eslint is dumb apparently
 
-// eslint-disable-next-line no-unused-vars
 enum ItemType {
-  // eslint-disable-next-line no-unused-vars
   Item,
-  // eslint-disable-next-line no-unused-vars
   Divider,
 }
 
@@ -164,7 +161,6 @@ class ActionBarElement extends HTMLElement {
     return this.moreMenu.querySelectorAll('[role="menu"] > li')
   }
 
-  // eslint-disable-next-line no-unused-vars
   #eachItem(callback: (item: HTMLElement, index: number, type: ItemType) => boolean): void {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i]

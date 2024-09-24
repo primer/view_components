@@ -25,7 +25,6 @@ jobs:
     - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
-        node-version: 16
         cache: 'npm'
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
@@ -83,7 +82,6 @@ jobs:
     - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
-        node-version: 16
         cache: 'npm'
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
@@ -105,10 +103,9 @@ jobs:
     - uses: actions/setup-node@v4
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
-        node-version: 16
         cache: 'npm'
     - name: Lint with Stylelint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} -f "github"
+        npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} --custom-formatter=stylelint-actions-formatters
