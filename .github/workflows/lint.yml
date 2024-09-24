@@ -117,4 +117,4 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} -f "stylelint-actions-formatters"
+        npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} --custom-formatter=stylelint-actions-formatters
