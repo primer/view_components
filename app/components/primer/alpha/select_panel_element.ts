@@ -70,9 +70,10 @@ export class SelectPanelElement extends HTMLElement {
   @target remoteInput: HTMLElement
   @target list: HTMLElement
   @target ariaLiveContainer: HTMLElement
-  @target noResults: HTMLElement
-  @target fragmentErrorElement: HTMLElement
-  @target bannerErrorElement: HTMLElement
+  @target noItemsMessage: HTMLElement
+  @target noMatchesMessage: HTMLElement
+  @target bodyErrorMessage: HTMLElement
+  @target bannerErrorMessage: HTMLElement
   @target bodySpinner: HTMLElement
 
   filterFn?: FilterFn
@@ -558,7 +559,7 @@ export class SelectPanelElement extends HTMLElement {
       case 'error': {
         this.#toggleIncludeFragmentElements(true)
 
-        const errorElement = this.fragmentErrorElement
+        const errorElement = this.bodyErrorMessage
         // check if the errorElement is visible in the dom
         if (errorElement && !errorElement.hasAttribute('hidden')) {
           announceFromElement(errorElement, {element: this.ariaLiveContainer, assertive: true})
@@ -686,9 +687,9 @@ export class SelectPanelElement extends HTMLElement {
     if (!this.list) return
 
     let atLeastOneResult = false
+    const query = this.filterInputTextField?.value ?? ''
 
     if (this.#performFilteringLocally()) {
-      const query = this.filterInputTextField?.value ?? ''
       const filter = this.filterFn || this.#defaultFilterFn
 
       for (const item of this.items) {
@@ -704,7 +705,6 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     this.#updateTabIndices()
-    this.#maybeAnnounce()
 
     for (const item of this.items) {
       const itemContent = this.#getItemContent(item)
@@ -722,43 +722,53 @@ export class SelectPanelElement extends HTMLElement {
 
     this.#hasLoadedData = true
 
-    if (!this.noResults) return
-
     if (this.#inErrorState()) {
-      this.noResults.setAttribute('hidden', '')
+      this.noMatchesMessage?.setAttribute('hidden', '')
+      this.noItemsMessage?.setAttribute('hidden', '')
       return
     }
 
     if (atLeastOneResult) {
-      this.noResults.setAttribute('hidden', '')
+      this.noMatchesMessage?.setAttribute('hidden', '')
+      this.noItemsMessage?.setAttribute('hidden', '')
+
       // TODO can we change this to search for `@panelId-list`
       this.list?.querySelector('.ActionListWrap')?.removeAttribute('hidden')
     } else {
+      if (query === '') {
+        this.noMatchesMessage?.setAttribute('hidden', '')
+        this.noItemsMessage?.removeAttribute('hidden')
+      } else {
+        this.noMatchesMessage?.removeAttribute('hidden')
+        this.noItemsMessage?.setAttribute('hidden', '')
+      }
+
       this.list?.querySelector('.ActionListWrap')?.setAttribute('hidden', '')
-      this.noResults.removeAttribute('hidden')
     }
+
+    this.#maybeAnnounce()
   }
 
   #inErrorState(): boolean {
-    if (this.fragmentErrorElement && !this.fragmentErrorElement.hasAttribute('hidden')) {
+    if (this.bodyErrorMessage && !this.bodyErrorMessage.hasAttribute('hidden')) {
       return true
     }
 
-    if (!this.bannerErrorElement) return false
+    if (!this.bannerErrorMessage) return false
 
-    return !this.bannerErrorElement.hasAttribute('hidden')
+    return !this.bannerErrorMessage.hasAttribute('hidden')
   }
 
   #setErrorState(type: ErrorStateType) {
-    let errorElement = this.fragmentErrorElement
+    let errorElement = this.bodyErrorMessage
 
     if (type === ErrorStateType.BODY) {
-      this.fragmentErrorElement?.removeAttribute('hidden')
-      this.bannerErrorElement.setAttribute('hidden', '')
+      this.bodyErrorMessage?.removeAttribute('hidden')
+      this.bannerErrorMessage.setAttribute('hidden', '')
     } else {
-      errorElement = this.bannerErrorElement
-      this.bannerErrorElement?.removeAttribute('hidden')
-      this.fragmentErrorElement?.setAttribute('hidden', '')
+      errorElement = this.bannerErrorMessage
+      this.bannerErrorMessage?.removeAttribute('hidden')
+      this.bodyErrorMessage?.setAttribute('hidden', '')
     }
 
     // check if the errorElement is visible in the dom
@@ -769,8 +779,8 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #clearErrorState() {
-    this.fragmentErrorElement?.setAttribute('hidden', '')
-    this.bannerErrorElement.setAttribute('hidden', '')
+    this.bodyErrorMessage?.setAttribute('hidden', '')
+    this.bannerErrorMessage.setAttribute('hidden', '')
   }
 
   #maybeAnnounce() {
@@ -783,7 +793,14 @@ export class SelectPanelElement extends HTMLElement {
           element: this.ariaLiveContainer,
         })
       } else {
-        const noResultsEl = this.noResults
+        const noResultsEl = (() => {
+          if (this.noMatchesMessage && !this.noMatchesMessage.hasAttribute('hidden')) {
+            return this.noMatchesMessage
+          }
+
+          return this.noItemsMessage
+        })()
+
         if (noResultsEl) {
           announceFromElement(noResultsEl, {element: this.ariaLiveContainer})
         }

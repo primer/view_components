@@ -19,6 +19,14 @@
   <% if subtitle %>
     <% panel.with_subtitle { subtitle } %>
   <% end %>
+  <% if no_results_label %>
+    <% panel.with_no_items_message do |message| %>
+      <% message.with_title { no_results_label } %>
+    <% end %>
+    <% panel.with_no_matches_message do |message| %>
+      <% message.with_title { no_results_label } %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>

@@ -294,6 +294,31 @@ module Primer
         end
       end
 
+      # The message rendered in place of the list of items if an error occurrs when fetching items for the first time.
+      class BodyErrorMessage < Primer::Component
+        renders_one :title
+        renders_one :description
+      end
+
+      # The message rendered in place of the list of items if there are no items and no filter text.
+      class NoItemsMessage < Primer::Component
+        renders_one :title
+        renders_one :description
+      end
+
+      # The message rendered in place of the list of items if there are no items that match the filter text.
+      class NoMatchesMessage < Primer::Component
+        renders_one :title
+        renders_one :description
+      end
+
+      # The message rendered above the filter input when an error occurs when fetching items as the result of a filter operation.
+      class BannerErrorMessage < Primer::Component
+        def initialize(scheme: DEFAULT_BANNER_SCHEME)
+          @scheme = scheme
+        end
+      end
+
       status :alpha
 
       DEFAULT_PRELOAD = false
@@ -368,7 +393,6 @@ module Primer
       # @param size [Symbol] The size of the panel. <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>
       # @param select_variant [Symbol] <%= one_of(Primer::Alpha::SelectPanel::SELECT_VARIANT_OPTIONS) %>
       # @param fetch_strategy [Symbol] <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
-      # @param no_results_label [String] The label to display when no results are found.
       # @param preload [Boolean] Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.
       # @param dynamic_label [Boolean] Whether or not to display the text of the currently selected item in the show button.
       # @param dynamic_label_prefix [String] If provided, the prefix is prepended to the dynamic label and displayed in the show button.
@@ -391,7 +415,6 @@ module Primer
         size: :small,
         select_variant: DEFAULT_SELECT_VARIANT,
         fetch_strategy: DEFAULT_FETCH_STRATEGY,
-        no_results_label: "No results found",
         preload: DEFAULT_PRELOAD,
         dynamic_label: false,
         dynamic_label_prefix: nil,
@@ -405,7 +428,7 @@ module Primer
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
         loading_label: "Loading content...",
         loading_description: nil,
-        banner_scheme: DEFAULT_BANNER_SCHEME,
+        banner_scheme: nil,
         **system_arguments
       )
         raise_if_role_given!(**system_arguments)
@@ -422,7 +445,6 @@ module Primer
         @preload = fetch_or_fallback_boolean(preload, DEFAULT_PRELOAD)
         @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
         @fetch_strategy = fetch_or_fallback(FETCH_STRATEGIES, fetch_strategy, DEFAULT_FETCH_STRATEGY)
-        @no_results_label = no_results_label
         @show_filter = show_filter
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
@@ -433,7 +455,7 @@ module Primer
           @loading_description_id = "#{@panel_id}-loading-description"
         end
         @loading_description = loading_description
-        @banner_scheme = fetch_or_fallback(BANNER_SCHEME_OPTIONS, banner_scheme, DEFAULT_BANNER_SCHEME)
+        @banner_scheme = banner_scheme
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
@@ -534,12 +556,21 @@ module Primer
       # Customizable content for the error message that appears when items are fetched for the first time. This message
       # appears in place of the list of items.
       # For more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).
-      renders_one :preload_error_content
+      renders_one :body_error_message, BodyErrorMessage
 
       # Customizable content for the error message that appears when items are fetched as the result of a filter
       # operation. This message appears as a banner above the previously fetched list of items.
       # For more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).
-      renders_one :error_content
+      renders_one :banner_error_message, -> (scheme: nil) {
+        scheme ||= @banner_scheme || DEFAULT_BANNER_SCHEME
+
+        BannerErrorMessage.new(
+          scheme: fetch_or_fallback(BANNER_SCHEME_OPTIONS, scheme, DEFAULT_BANNER_SCHEME)
+        )
+      }
+
+      renders_one :no_items_message, NoItemsMessage
+      renders_one :no_matches_message, NoMatchesMessage
 
       private
 

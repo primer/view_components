@@ -36,12 +36,12 @@ module Primer
         render_with_template(locals: {
           subtitle: subtitle,
           selected_items: selected_items,
+          no_results_label: no_results_label,
           system_arguments: {
             title: title,
             size: size,
             simulate_failure: simulate_failure,
             simulate_no_results: simulate_no_results,
-            no_results_label: no_results_label,
             dynamic_label: dynamic_label,
             dynamic_label_prefix: dynamic_label_prefix,
             dynamic_aria_label_prefix: dynamic_aria_label_prefix,

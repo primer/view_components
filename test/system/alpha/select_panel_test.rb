@@ -293,6 +293,25 @@ module Alpha
       assert_selector "[aria-selected=true]", text: "Item 2", count: 1, visible: :hidden
     end
 
+    def test_no_items_message
+      visit_preview(:local_fetch_no_results)
+
+      click_on_invoker_button
+
+      assert_selector "select-panel", text: "No items found."
+      refute_selector "select-panel", text: "No matches found."
+    end
+
+    def test_no_matches_message
+      visit_preview(:local_fetch_no_results)
+
+      click_on_invoker_button
+      filter_results(query: "foobar")
+
+      assert_selector "select-panel", text: "No matches found."
+      refute_selector "select-panel", text: "No items found."
+    end
+
     ########## SINGLE SELECT TESTS ############
 
     def test_single_select_item_checked
@@ -736,7 +755,7 @@ module Alpha
         filter_results(query: "foobar")
       end
 
-      assert_selector "[data-target='select-panel.bannerErrorElement'] .Banner--warning", text: "Sorry, something went wrong"
+      assert_selector "[data-target='select-panel.bannerErrorMessage'] .Banner--warning", text: "Sorry, something went wrong"
     end
 
     ########## JAVASCRIPT API TESTS ############
@@ -899,17 +918,6 @@ module Alpha
       assert page.evaluate_script("window.panelClosed")
     end
 
-    ########### LOCAL FETCH TESTS ############
-
-    def test_local_fetch_no_results
-      visit_preview(:local_fetch_no_results)
-
-      click_on_invoker_button
-
-      refute_selector "select-panel ul li"
-      assert_selector "select-panel", text: "No results"
-    end
-
     ########## EVENTUALLY LOCAL TESTS ############
 
     def test_ev_loc_items_load
@@ -930,7 +938,7 @@ module Alpha
       end
 
       refute_selector "select-panel ul li"
-      assert_selector "select-panel", text: "No results"
+      assert_selector "select-panel", text: "No items found."
     end
 
     def test_ev_loc_no_results_after_filter
@@ -945,7 +953,7 @@ module Alpha
       filter_results(query: "foobar")
 
       refute_selector "select-panel ul li"
-      assert_selector "select-panel", text: "No results"
+      assert_selector "select-panel", text: "No matches found."
     end
 
     def test_ev_loc_initial_failure
@@ -956,8 +964,8 @@ module Alpha
       end
 
       refute_selector "select-panel ul li"
-      assert_selector "[data-target='select-panel.fragmentErrorElement']", text: "Sorry, something went wrong"
-      refute_selector "[data-target='select-panel.bannerErrorElement']"
+      assert_selector "[data-target='select-panel.bodyErrorMessage']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.bannerErrorMessage']"
     end
 
     def test_ev_loc_items_load_without_filter
@@ -991,7 +999,7 @@ module Alpha
       end
 
       refute_selector "select-panel ul li"
-      assert_selector "select-panel", text: "No results"
+      assert_selector "select-panel", text: "No items found."
     end
 
     def test_remote_no_results_after_filter
@@ -1008,7 +1016,7 @@ module Alpha
       end
 
       refute_selector "select-panel ul li"
-      assert_selector "select-panel", text: "No results"
+      assert_selector "select-panel", text: "No matches found."
     end
 
     def test_remote_initial_failure
@@ -1021,8 +1029,8 @@ module Alpha
       refute_selector "select-panel ul li"
 
       # only the error message in the list body should appear
-      assert_selector "[data-target='select-panel.fragmentErrorElement']", text: "Sorry, something went wrong"
-      refute_selector "[data-target='select-panel.bannerErrorElement']"
+      assert_selector "[data-target='select-panel.bodyErrorMessage']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.bannerErrorMessage']"
     end
 
     def test_remote_filter_failure
@@ -1042,8 +1050,8 @@ module Alpha
       assert_selector "select-panel ul li"
 
       # only the banner-based error message should appear
-      assert_selector "[data-target='select-panel.bannerErrorElement']", text: "Sorry, something went wrong"
-      refute_selector "[data-target='select-panel.fragmentErrorElement']"
+      assert_selector "[data-target='select-panel.bannerErrorMessage']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.bodyErrorMessage']"
     end
 
     def test_remote_fetch_clears_input_on_close
@@ -1246,7 +1254,7 @@ module Alpha
     def test_ev_loc_announces_no_results
       visit_preview(:eventually_local_fetch_no_results)
 
-      assert_announces(message: "No results found") do
+      assert_announces(message: "No items found.") do
         wait_for_items_to_load do
           click_on_invoker_button
         end
@@ -1256,7 +1264,7 @@ module Alpha
     def test_remote_fetch_announces_no_results
       visit_preview(:remote_fetch_no_results)
 
-      assert_announces(message: "No results found") do
+      assert_announces(message: "No items found.") do
         wait_for_items_to_load do
           click_on_invoker_button
         end
