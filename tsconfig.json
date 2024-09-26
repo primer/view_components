@@ -19,7 +19,7 @@
   },
   "include": [
     "app/components/primer/*.ts",
-    "lib/primer/forms/*.ts"
+    "app/lib/primer/forms/*.ts"
   ],
   "exclude": [
     "demo/**/*",

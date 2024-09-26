@@ -1,23 +1,26 @@
+/* stylelint-disable primer/spacing */
+
 /* flash */
 
 /* Default flash */
 .flash:not(.Banner) {
   position: relative;
   padding: var(--base-size-20) var(--control-medium-paddingInline-spacious);
-  border-style: solid;
-  border-width: var(--borderWidth-thin);
-  border-radius: var(--borderRadius-medium);
 
   /* Default color */
   color: var(--fgColor-default);
   background-image: linear-gradient(var(--bgColor-accent-muted), var(--bgColor-accent-muted));
   border-color: var(--borderColor-accent-muted);
+  border-style: solid;
+  border-width: var(--borderWidth-thin);
+  border-radius: var(--borderRadius-medium);
 
   & .octicon {
-    color: var(--fgColor-accent);
     margin-right: var(--base-size-12);
+    color: var(--fgColor-accent);
   }
 
+  /* stylelint-disable-next-line selector-max-type */
   & p:last-child {
     margin-bottom: 0;
   }

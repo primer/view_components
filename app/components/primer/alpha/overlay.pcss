@@ -1,16 +1,16 @@
+/* stylelint-disable selector-max-type, selector-no-qualifying-type */
 anchored-position[popover] {
-  border-width: 0;
-  padding: 0;
   position: absolute;
   min-width: 192px;
+  padding: 0;
   overflow: visible;
+  border-width: 0;
 }
 
 anchored-position:not(.Overlay) {
   background: none;
 }
 
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .Overlay[popover]:not(:popover-open) {
   display: none
 }
