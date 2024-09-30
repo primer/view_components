@@ -7,7 +7,7 @@ module Primer
       # @label Playground
       #
       def playground()
-        render(Primer::Alpha::Stack.new(justify: :center)) do |component|
+        render(Primer::Alpha::Stack.new(justify: :center, gap: :spacious, direction: :horizontal, wrap: :wrap, padding: :condensed, align: :end)) do |component|
             "Hello World!"
           end
       end
