@@ -53,6 +53,22 @@ module Primer
 
       DEFAULT_TAG = :div
 
+      BREAKPOINTS = [nil, :narrow, :regular, :wide, :wide]
+
+
+      def self.get_responsive_attributes(property, values, options = [], default = nil, optionsMap = Hash.new { |h, k| k })
+
+        if !values.is_a?(Array)
+          { property => fetch_or_fallback(options, optionsMap[values], default)}
+        else
+          values.take(BREAKPOINTS.size).each_with_object({}).with_index do |(value, memo), i|
+            property_with_breakpoint = [property, BREAKPOINTS[i]].compact.join("-")
+            memo[property_with_breakpoint] = fetch_or_fallback(options, optionsMap[value])
+          end
+        end
+      end
+    
+
       def initialize(
         tag: DEFAULT_TAG,
         justify: DEFAULT_JUSTIFY,
@@ -71,14 +87,12 @@ module Primer
         @system_arguments[:data] = merge_data(
           @system_arguments, {
             data: {
-              justify: JUSTIFY_MAPPING[
-                fetch_or_fallback(JUSTIFY_OPTIONS, justify, DEFAULT_JUSTIFY)
-              ],
-              gap: fetch_or_fallback(GAP_OPTIONS, gap, DEFAULT_GAP),
-              direction: fetch_or_fallback(DIRECTION_OPTIONS, direction, DEFAULT_DIRECTION),
-              align: fetch_or_fallback(ALIGN_OPTIONS, align, DEFAULT_ALIGN),
-              wrap: fetch_or_fallback(WRAP_OPTIONS, wrap, DEFAULT_WRAP),
-              padding: fetch_or_fallback(PADDING_OPTIONS, padding, DEFAULT_PADDING)
+              **get_responsive_attributes('justify', justify, JUSTIFY_OPTIONS, DEFAULT_JUSTIFY, JUSTIFY_MAPPING),
+              **get_responsive_attributes('gap', gap, GAP_OPTIONS, DEFAULT_GAP),
+              **get_responsive_attributes('direction', direction, DIRECTION_OPTIONS, DEFAULT_DIRECTION),
+              **get_responsive_attributes('align', align, ALIGN_OPTIONS, DEFAULT_ALIGN),
+              **get_responsive_attributes('wrap', align, WRAP_OPTIONS, DEFAULT_WRAP),
+              **get_responsive_attributes('padding', padding, PADDING_OPTIONS, DEFAULT_PADDING),
             }
           }
         )
