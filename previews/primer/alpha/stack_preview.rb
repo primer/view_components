@@ -27,7 +27,9 @@ module Primer
             direction: direction,
             wrap: wrap,
             padding: padding,
-            align: align
+            align: align,
+            border: true,
+            border_color: :success_emphasis
         )) do
           "Hello World!"
         end
