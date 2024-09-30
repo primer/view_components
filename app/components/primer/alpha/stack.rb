@@ -12,41 +12,76 @@ module Primer
         :space_between => "space-between",
         :space_evenly => "space-evenly"
       }.freeze
+      JUSTIFY_OPTIONS = JUSTIFY_MAPPING.keys.freeze
+
       DEFAULT_DIRECTION = :vertical
-      DIRECTION_OPTIONS = [DEFAULT_DIRECTION, :none, :condensed, :normal, :spacious].freeze
+      DIRECTION_OPTIONS = [
+        DEFAULT_DIRECTION,
+        :horizontal
+      ].freeze
+
       DEFAULT_ALIGN = :stretch
-      ALIGN_OPTIONS = [DEFAULT_ALIGN, :start, :center, :end, :baseline].freeze
+      ALIGN_OPTIONS = [
+        DEFAULT_ALIGN,
+        :start,
+        :center,
+        :end,
+        :baseline
+      ].freeze
+
       DEFAULT_WRAP = :nowrap
-      WRAP_OPTIONS = [DEFAULT_WRAP, :wrap].freeze
+      WRAP_OPTIONS = [
+        DEFAULT_WRAP,
+        :wrap
+      ].freeze
+
       DEFAULT_PADDING = :none
-      PADDING_OPTIONS = [DEFAULT_PADDING, :condensed, :normal, :spacious].freeze
+      PADDING_OPTIONS = [
+        DEFAULT_PADDING,
+        :condensed,
+        :normal,
+        :spacious
+      ].freeze
+
       DEFAULT_GAP = nil
-      GAP_OPTIONS = [DEFAULT_GAP, :condensed, :normal, :spacious].freeze
+      GAP_OPTIONS = [
+        DEFAULT_GAP,
+        :condensed,
+        :normal,
+        :spacious
+      ].freeze
 
       DEFAULT_TAG = :div
-      # TODO
-      TAG_OPTIONS = [DEFAULT_TAG].freeze
-
 
       def initialize(
+        tag: DEFAULT_TAG,
         justify: DEFAULT_JUSTIFY,
         gap: nil,
         direction: DEFAULT_DIRECTION,
         align: DEFAULT_ALIGN,
         wrap: DEFAULT_WRAP,
         padding: DEFAULT_PADDING,
-        tag: DEFAULT_TAG,
         **system_arguments
       )
         @system_arguments = system_arguments
+
+        @system_arguments[:tag] = tag
         @system_arguments[:classes] = class_names(@system_arguments.delete(:classes), "Stack")
-        @system_arguments[:"data-justify"] = fetch_or_fallback(JUSTIFY_MAPPING, justify, DEFAULT_JUSTIFY)
-        @system_arguments[:"data-gap"] = fetch_or_fallback(GAP_OPTIONS, gap, DEFAULT_GAP)
-        @system_arguments[:"data-direction"] = fetch_or_fallback(DIRECTION_OPTIONS, direction, DEFAULT_DIRECTION)
-        @system_arguments[:"data-align"] = fetch_or_fallback(ALIGN_OPTIONS, align, DEFAULT_ALIGN)
-        @system_arguments[:"data-wrap"] = fetch_or_fallback(WRAP_OPTIONS, wrap, DEFAULT_WRAP)
-        @system_arguments[:"data-padding"] = fetch_or_fallback(PADDING_OPTIONS, padding, DEFAULT_PADDING)
-        @system_arguments[:"tag"] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+
+        @system_arguments[:data] = merge_data(
+          @system_arguments, {
+            data: {
+              justify: JUSTIFY_MAPPING[
+                fetch_or_fallback(JUSTIFY_OPTIONS, justify, DEFAULT_JUSTIFY)
+              ],
+              gap: fetch_or_fallback(GAP_OPTIONS, gap, DEFAULT_GAP),
+              direction: fetch_or_fallback(DIRECTION_OPTIONS, direction, DEFAULT_DIRECTION),
+              align: fetch_or_fallback(ALIGN_OPTIONS, align, DEFAULT_ALIGN),
+              wrap: fetch_or_fallback(WRAP_OPTIONS, wrap, DEFAULT_WRAP),
+              padding: fetch_or_fallback(PADDING_OPTIONS, padding, DEFAULT_PADDING)
+            }
+          }
+        )
       end
     end
   end

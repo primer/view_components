@@ -6,10 +6,31 @@ module Primer
     class StackPreview < ViewComponent::Preview
       # @label Playground
       #
-      def playground()
-        render(Primer::Alpha::Stack.new(justify: :center, gap: :spacious, direction: :horizontal, wrap: :wrap, padding: :condensed, align: :end)) do |component|
-            "Hello World!"
-          end
+      # @param justify [Symbol] select [start, center, end, space_between, space_evenly]
+      # @param gap [Symbol] select [condensed, normal, spacious]
+      # @param direction [Symbol] select [vertical, horizontal]
+      # @param align [Symbol] select [stretch, start, center, end, baseline]
+      # @param wrap [Symbol] select [nowrap, wrap]
+      # @param padding [Symbol] select [none, condensed, normal, spacious]
+      def playground(
+        justify: :start,
+        gap: nil,
+        direction: :vertical,
+        align: :stretch,
+        wrap: :nowrap,
+        padding: :none
+      )
+        render(
+          Primer::Alpha::Stack.new(
+            justify: justify,
+            gap: gap,
+            direction: direction,
+            wrap: wrap,
+            padding: padding,
+            align: align
+        )) do
+          "Hello World!"
+        end
       end
     end
   end
