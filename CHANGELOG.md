@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.47.1
+
+### Patch Changes
+
+- [#190](https://github.com/opf/primer_view_components/pull/190) [`26f5a9b`](https://github.com/opf/primer_view_components/commit/26f5a9b3ee90b0c2c86ab7c3ced4866783c8e3dd) Thanks [@HDinger](https://github.com/HDinger)! - Introduce spacing below the PageHeader description again
+
 ## 0.47.0
 
 ### Minor Changes
