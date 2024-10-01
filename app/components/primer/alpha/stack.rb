@@ -2,8 +2,7 @@
 
 module Primer
   module Alpha
-    # A wrapper for CSS's flexbox layout mechanism that provides a more accessible API
-    # and built-in responsiveness.
+    # Stack is a layout component that creates responsive horizontal and vertical flows.
     class Stack < Primer::Component
       DEFAULT_TAG = :div
 

@@ -2,7 +2,7 @@
 
 module Primer
   module Alpha
-    # TODO: docs this
+    # StackItem is a layout component designed to be used as the child of a Stack.
     class StackItem < Primer::Component
       DEFAULT_TAG = :div
 
