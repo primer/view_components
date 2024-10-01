@@ -6,6 +6,23 @@ module Primer
     class StackItem < Primer::Component
       DEFAULT_TAG = :div
 
+      # StackItem's grow argument. Used internally.
+      class GrowArg < Primer::Alpha::ResponsiveArg
+        attr_reader :values
+        DEFAULT = false
+        OPTIONS = [
+          DEFAULT,
+          true
+        ].freeze
+
+        def initialize(values)
+          @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
+        end
+        def self.arg_name
+          :grow
+        end
+      end
+
       # @param tag [Symbol] Customize the element type of the rendered container.
       # @param grow [Boolean] Allow item to keep size or expand to fill the available space.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -22,7 +39,9 @@ module Primer
 
         @system_arguments[:data] = merge_data(
           @system_arguments, {
-            data: { grow: grow }
+            data: {
+              **GrowArg.for(grow).to_data_attributes
+            }
           }
         )
       end

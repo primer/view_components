@@ -6,60 +6,8 @@ module Primer
     class Stack < Primer::Component
       DEFAULT_TAG = :div
 
-      # Base class for responsive Stack arguments. Used internally.
-      class ResponsiveArg
-        # The primer/react Stack component defines three breakpoints, but PVC uses five.
-        # We define this array as an index-based mapping between the two systems. The first
-        # element is the default and results in eg. { "justify" => "start" }, while the
-        # other breakpoints result in keys with breakpoint suffixes, eg.
-        # { "justify-narrow" => "start" }.
-        BREAKPOINTS = [nil, :narrow, :regular, :wide, :wide]
-
-        include FetchOrFallbackHelper
-
-        class << self
-          def for(values)
-            cache[[values, arg_name].hash] ||= new(values)
-          end
-
-          private
-
-          def cache
-            Thread.current[:pvc_stack_cache] ||= {}
-          end
-        end
-
-        def arg_name
-          raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
-        end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(self.class.arg_name, values)
-        end
-
-        private
-
-        def data_attributes_for(property, values)
-          values.take(BREAKPOINTS.size).each_with_object({}).with_index do |(value, memo), i|
-            next unless value
-            property_with_breakpoint = [property, BREAKPOINTS[i]].compact.join("-")
-            memo[property_with_breakpoint] = value
-          end
-        end
-
-        def fetch_or_fallback_all(allowed_values, given_values, default_value)
-          Array(given_values).map do |given_value|
-            fetch_or_fallback(allowed_values, given_value, default_value)
-          end
-        end
-
-        def values
-          raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
-        end
-      end
-
       # Stack's justify argument. Used internally.
-      class JustifyArg < ResponsiveArg
+      class JustifyArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = :start
         MAPPING = {
@@ -83,7 +31,7 @@ module Primer
       end
 
       # Stack's direction argument. Used internally.
-      class DirectionArg < ResponsiveArg
+      class DirectionArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = :vertical
         OPTIONS = [
@@ -101,7 +49,7 @@ module Primer
       end
 
       # Stack's align argument. Used internally.
-      class AlignArg < ResponsiveArg
+      class AlignArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = :stretch
         OPTIONS = [
@@ -122,7 +70,7 @@ module Primer
       end
 
       # Stack's wrap argument. Used internally.
-      class WrapArg < ResponsiveArg
+      class WrapArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = :nowrap
         OPTIONS = [
@@ -140,7 +88,7 @@ module Primer
       end
 
       # Stack's padding argument. Used internally.
-      class PaddingArg < ResponsiveArg
+      class PaddingArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = :none
         OPTIONS = [
@@ -160,7 +108,7 @@ module Primer
       end
 
       # Stack's gap argument. Used internally.
-      class GapArg < ResponsiveArg
+      class GapArg < Primer::Alpha::ResponsiveArg
         attr_reader :values
         DEFAULT = nil
         OPTIONS = [
