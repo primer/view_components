@@ -7,7 +7,7 @@ module Primer
       DEFAULT_TAG = :div
 
       # Stack's justify argument. Used internally.
-      class JustifyArg < Primer::Alpha::ResponsiveArg
+      class JustifyArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = :start
         MAPPING = {
@@ -31,7 +31,7 @@ module Primer
       end
 
       # Stack's direction argument. Used internally.
-      class DirectionArg < Primer::Alpha::ResponsiveArg
+      class DirectionArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = :vertical
         OPTIONS = [
@@ -49,7 +49,7 @@ module Primer
       end
 
       # Stack's align argument. Used internally.
-      class AlignArg < Primer::Alpha::ResponsiveArg
+      class AlignArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = :stretch
         OPTIONS = [
@@ -70,7 +70,7 @@ module Primer
       end
 
       # Stack's wrap argument. Used internally.
-      class WrapArg < Primer::Alpha::ResponsiveArg
+      class WrapArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = :nowrap
         OPTIONS = [
@@ -88,7 +88,7 @@ module Primer
       end
 
       # Stack's padding argument. Used internally.
-      class PaddingArg < Primer::Alpha::ResponsiveArg
+      class PaddingArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = :none
         OPTIONS = [
@@ -108,7 +108,7 @@ module Primer
       end
 
       # Stack's gap argument. Used internally.
-      class GapArg < Primer::Alpha::ResponsiveArg
+      class GapArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = nil
         OPTIONS = [

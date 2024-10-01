@@ -7,7 +7,7 @@ module Primer
       DEFAULT_TAG = :div
 
       # StackItem's grow argument. Used internally.
-      class GrowArg < Primer::Alpha::ResponsiveArg
+      class GrowArg < Primer::ResponsiveArg
         attr_reader :values
         DEFAULT = false
         OPTIONS = [
@@ -18,6 +18,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :grow
         end

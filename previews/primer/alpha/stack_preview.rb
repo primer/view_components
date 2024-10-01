@@ -39,7 +39,7 @@ module Primer
       # @param padding_regular [Symbol] select {{ Primer::Alpha::Stack::PaddingArg::OPTIONS }}
       # @param padding_wide [Symbol] select {{ Primer::Alpha::Stack::PaddingArg::OPTIONS }}
       def playground(
-        tag: :div,
+        tag: Primer::Alpha::StackItem::DEFAULT_TAG,
         justify: Primer::Alpha::Stack::JustifyArg::DEFAULT,
         justify_narrow: Primer::Alpha::Stack::JustifyArg::DEFAULT,
         justify_regular: Primer::Alpha::Stack::JustifyArg::DEFAULT,

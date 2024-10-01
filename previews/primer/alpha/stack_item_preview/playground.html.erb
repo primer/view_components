@@ -1,5 +1,11 @@
-<div class="d-flex border color-border-success-emphasis">
-  <%= render(Primer::Alpha::StackItem.new(**system_arguments, border: true, border_color: :danger_emphasis)) do %>
-    Hello, world!
+<div class="d-flex">
+  <%= render(Primer::Alpha::StackItem.new(**system_arguments, p: 3, m: 1, bg: :success, border_radius: 2)) do %>
+    Adjust this item
+  <% end %>
+  <%= render(Primer::Alpha::StackItem.new(p: 3, m: 1, bg: :accent, border_radius: 2)) do %>
+    Fixed width
+  <% end %>
+  <%= render(Primer::Alpha::StackItem.new(p: 3, m: 1, bg: :attention, border_radius: 2)) do %>
+    Fixed width
   <% end %>
 </div>
