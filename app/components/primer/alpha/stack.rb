@@ -20,7 +20,7 @@ module Primer
 
         class << self
           def for(values)
-            cache[values.hash] ||= new(values)
+            cache[[values, arg_name].hash] ||= new(values)
           end
 
           private
@@ -30,10 +30,19 @@ module Primer
           end
         end
 
+        def arg_name()
+          raise NotImplementedError, "Subclasses must implement #{__method__} method"
+        end
+
+        def to_data_attributes()
+          @data_attributes ||= data_attributes_for(self.class.arg_name, values)
+        end
+
         private
 
         def data_attributes_for(property, values)
           values.take(BREAKPOINTS.size).each_with_object({}).with_index do |(value, memo), i|
+            next unless value
             property_with_breakpoint = [property, BREAKPOINTS[i]].compact.join("-")
             memo[property_with_breakpoint] = value
           end
@@ -44,10 +53,15 @@ module Primer
             fetch_or_fallback(allowed_values, given_value, default_value)
           end
         end
+
+        def values()
+          raise NotImplementedError, "Subclasses must implement #{__method__} method"
+        end
       end
 
       # Stack's justify argument. Used internally.
       class JustifyArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = :start
         MAPPING = {
           DEFAULT => "start",
@@ -63,14 +77,14 @@ module Primer
             MAPPING[value]
           end
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:justify, @values)
+        def self.arg_name
+          :justify
         end
       end
 
       # Stack's direction argument. Used internally.
       class DirectionArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = :vertical
         OPTIONS = [
           DEFAULT,
@@ -80,14 +94,14 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:direction, @values)
+        def self.arg_name
+          :direction
         end
       end
 
       # Stack's align argument. Used internally.
       class AlignArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = :stretch
         OPTIONS = [
           DEFAULT,
@@ -100,14 +114,14 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:align, @values)
+        def self.arg_name
+          :align
         end
       end
 
       # Stack's wrap argument. Used internally.
       class WrapArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = :nowrap
         OPTIONS = [
           DEFAULT,
@@ -117,14 +131,14 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:wrap, @values)
+        def self.arg_name
+          :wrap
         end
       end
 
       # Stack's padding argument. Used internally.
       class PaddingArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = :none
         OPTIONS = [
           DEFAULT,
@@ -136,14 +150,14 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:padding, @values)
+        def self.arg_name
+          :padding
         end
       end
 
       # Stack's gap argument. Used internally.
       class GapArg < ResponsiveArg
+        attr_reader :values
         DEFAULT = nil
         OPTIONS = [
           DEFAULT,
@@ -155,9 +169,8 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
-
-        def to_data_attributes
-          @data_attributes ||= data_attributes_for(:wrap, @values)
+        def self.arg_name
+          :gap
         end
       end
 
