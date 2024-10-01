@@ -13,47 +13,73 @@ class PrimerStackTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_renders_as_a_different_html_tag_when_prop_is_passed
-    render_inline(Primer::Alpha::Stack.new(tag: :span)) do
+  def test_attaches_stack_class
+    render_inline(Primer::Alpha::Stack.new) do
       "content"
     end
 
-    assert_selector("span")
+    assert_selector(".Stack")
   end
 
+  def test_uses_div_as_default_tag
+    render_inline(Primer::Alpha::Stack.new) do
+      "content"
+    end
+
+    assert_selector("div.Stack")
+  end
+
+  def test_allows_customizing_tag
+    render_inline(Primer::Alpha::Stack.new(tag: :a)) do
+      "content"
+    end
+
+    assert_selector("a.Stack")
+  end
+
+  # Responsive arg tests, i.e. Stack.new(justify: [:center, :center, ...])
   Primer::Alpha::ResponsiveArg.descendants.each do |descendant|
     # TODO: fix this (StackItem's arg)
     next unless descendant.arg_name != :grow
     descendant::OPTIONS.each do |option|
       next unless option
-      define_method("test_renders_responsive_prop_#{descendant.arg_name}_with_#{option}_option") do
-        render_inline(Primer::Alpha::Stack.new(descendant.arg_name => [option]*(5))) do
-          "content"
-        end
 
-        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
-        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}-narrow=\"#{option.to_s.dasherize}\"]")
-        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}-regular=\"#{option.to_s.dasherize}\"]")
-        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}-wide=\"#{option.to_s.dasherize}\"]")
+      define_method("test_renders_responsive_arg_#{descendant.arg_name}_with_#{option}_option") do
+        # create a Stack for rendering, eg. Stack.new(:justify, [five-element responsive values array])
+        stack = Primer::Alpha::Stack.new(
+          descendant.arg_name => [option] * Primer::Alpha::Stack::ResponsiveArg::BREAKPOINTS.size
+        )
+
+        render_inline(stack) { "content" }
+
+        dasherized_arg = descendant.arg_name.to_s.dasherize
+        dasherized_option = option.to_s.dasherize
+
+        assert_selector(".Stack[data-#{dasherized_arg}=\"#{dasherized_option}\"]")
+        assert_selector(".Stack[data-#{dasherized_arg}-narrow=\"#{dasherized_option}\"]")
+        assert_selector(".Stack[data-#{dasherized_arg}-regular=\"#{dasherized_option}\"]")
+        assert_selector(".Stack[data-#{dasherized_arg}-wide=\"#{dasherized_option}\"]")
       end
     end
   end
 
-  Primer::Alpha::ResponsiveArg.descendants.each do |descendant|
+  # Static arg tests, i.e. Stack.new(justify: :center)
+  Primer::Alpha::Stack::ResponsiveArg.descendants.each do |descendant|
     # TODO: fix this (StackItem's arg)
     next unless descendant.arg_name != :grow
     descendant::OPTIONS.each do |option|
       next unless option
-      define_method("test_renders_static_prop_#{descendant.arg_name}_with_#{option}_option") do
+
+      define_method("test_renders_static_arg_#{descendant.arg_name}_with_#{option}_option") do
         render_inline(Primer::Alpha::Stack.new(descendant.arg_name => option)) do
           "content"
         end
 
-        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
+        assert_selector(".Stack[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
       end
     end
   end
-  
+
   def test_status
     assert_component_state(Primer::Alpha::Stack, :alpha)
   end

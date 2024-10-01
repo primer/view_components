@@ -13,12 +13,28 @@ class PrimerStackItemTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_renders_as_a_different_html_tag_when_prop_is_passed
-    render_inline(Primer::Alpha::StackItem.new(tag: :span)) do
+  def test_attaches_stack_item_class
+    render_inline(Primer::Alpha::StackItem.new) do
       "content"
     end
 
-    assert_selector("span")
+    assert_selector(".StackItem")
+  end
+
+  def test_uses_div_as_default_tag
+    render_inline(Primer::Alpha::StackItem.new) do
+      "content"
+    end
+
+    assert_selector("div.StackItem")
+  end
+
+  def test_allows_customizing_tag
+    render_inline(Primer::Alpha::StackItem.new(tag: :a)) do
+      "content"
+    end
+
+    assert_selector("a.StackItem")
   end
 
   def test_renders_static_prop_grow_with_true_option 

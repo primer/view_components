@@ -2,8 +2,7 @@
 
 module Primer
   module Alpha
-    # A wrapper for CSS's flexbox layout mechanism that provides a more accessible API
-    # and built-in responsiveness.
+    # Stack is a layout component that creates responsive horizontal and vertical flows.
     class Stack < Primer::Component
       DEFAULT_TAG = :div
 
@@ -25,6 +24,7 @@ module Primer
             MAPPING[value]
           end
         end
+
         def self.arg_name
           :justify
         end
@@ -42,6 +42,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :direction
         end
@@ -62,6 +63,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :align
         end
@@ -79,6 +81,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :wrap
         end
@@ -98,6 +101,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :padding
         end
@@ -117,6 +121,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :gap
         end

@@ -26,11 +26,11 @@ module Primer
         end
       end
 
-      def arg_name()
-        raise NotImplementedError, "Subclasses must implement #{__method__} method"
+      def arg_name
+        raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
       end
 
-      def to_data_attributes()
+      def to_data_attributes
         @data_attributes ||= data_attributes_for(self.class.arg_name, values)
       end
 
@@ -50,8 +50,8 @@ module Primer
         end
       end
 
-      def values()
-        raise NotImplementedError, "Subclasses must implement #{__method__} method"
+      def values
+        raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
       end
     end
   end
