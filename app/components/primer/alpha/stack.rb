@@ -172,12 +172,12 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         tag: DEFAULT_TAG,
-        justify: DEFAULT_JUSTIFY,
-        gap: nil,
-        direction: DEFAULT_DIRECTION,
-        align: DEFAULT_ALIGN,
-        wrap: DEFAULT_WRAP,
-        padding: DEFAULT_PADDING,
+        justify: JustifyArg::DEFAULT,
+        gap: GapArg::DEFAULT,
+        direction: DirectionArg::DEFAULT,
+        align: AlignArg::DEFAULT,
+        wrap: WrapArg::DEFAULT,
+        padding: PaddingArg::DEFAULT,
         **system_arguments
       )
         @system_arguments = system_arguments
