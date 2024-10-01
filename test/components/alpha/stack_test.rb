@@ -47,7 +47,7 @@ class PrimerStackTest < Minitest::Test
       define_method("test_renders_responsive_arg_#{descendant.arg_name}_with_#{option}_option") do
         # create a Stack for rendering, eg. Stack.new(:justify, [five-element responsive values array])
         stack = Primer::Alpha::Stack.new(
-          descendant.arg_name => [option] * Primer::Alpha::Stack::ResponsiveArg::BREAKPOINTS.size
+          descendant.arg_name => [option] * Primer::Alpha::ResponsiveArg::BREAKPOINTS.size
         )
 
         render_inline(stack) { "content" }
@@ -64,7 +64,7 @@ class PrimerStackTest < Minitest::Test
   end
 
   # Static arg tests, i.e. Stack.new(justify: :center)
-  Primer::Alpha::Stack::ResponsiveArg.descendants.each do |descendant|
+  Primer::Alpha::ResponsiveArg.descendants.each do |descendant|
     # TODO: fix this (StackItem's arg)
     next unless descendant.arg_name != :grow
     descendant::OPTIONS.each do |option|
@@ -77,6 +77,19 @@ class PrimerStackTest < Minitest::Test
 
         assert_selector(".Stack[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
       end
+    end
+  end
+
+  Primer::Alpha::ResponsiveArg.descendants.each do |descendant|
+    # TODO: fix this (StackItem's arg)
+    next unless descendant.arg_name != :grow 
+    next unless descendant::DEFAULT
+    define_method("test_renders_static_arg_#{descendant.arg_name}_with_default_option") do
+      render_inline(Primer::Alpha::Stack.new()) do
+        "content"
+      end
+
+      assert_selector(".Stack[data-#{descendant.arg_name.to_s.dasherize}=\"#{descendant::DEFAULT.to_s.dasherize}\"]")
     end
   end
 
