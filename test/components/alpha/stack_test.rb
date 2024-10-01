@@ -39,10 +39,19 @@ class PrimerStackTest < Minitest::Test
     end
   end
 
-  # iterate over
-  def test_renders_static_props
-  end
+  Primer::Alpha::Stack::ResponsiveArg.descendants.each do |descendant|
+    descendant::OPTIONS.each do |option|
+      next unless option
+      define_method("test_renders_static_prop_#{descendant.arg_name}_with_#{option}_option") do
+        render_inline(Primer::Alpha::Stack.new(descendant.arg_name => option)) do
+          "content"
+        end
 
+        assert_selector("div[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
+      end
+    end
+  end
+  
   def test_status
     assert_component_state(Primer::Alpha::Stack, :alpha)
   end
