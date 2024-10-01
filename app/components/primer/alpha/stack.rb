@@ -30,11 +30,11 @@ module Primer
           end
         end
 
-        def arg_name()
-          raise NotImplementedError, "Subclasses must implement #{__method__} method"
+        def arg_name
+          raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
         end
 
-        def to_data_attributes()
+        def to_data_attributes
           @data_attributes ||= data_attributes_for(self.class.arg_name, values)
         end
 
@@ -54,8 +54,8 @@ module Primer
           end
         end
 
-        def values()
-          raise NotImplementedError, "Subclasses must implement #{__method__} method"
+        def values
+          raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
         end
       end
 
@@ -77,6 +77,7 @@ module Primer
             MAPPING[value]
           end
         end
+
         def self.arg_name
           :justify
         end
@@ -94,6 +95,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :direction
         end
@@ -114,6 +116,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :align
         end
@@ -131,6 +134,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :wrap
         end
@@ -150,6 +154,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :padding
         end
@@ -169,6 +174,7 @@ module Primer
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT)
         end
+
         def self.arg_name
           :gap
         end
