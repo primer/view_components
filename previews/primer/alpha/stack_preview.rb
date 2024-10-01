@@ -6,6 +6,7 @@ module Primer
     class StackPreview < ViewComponent::Preview
       # @label Playground
       #
+      # @param tag text
       # @param justify [Symbol] select [start, center, end, space_between, space_evenly]
       # @param gap [Symbol] select [condensed, normal, spacious]
       # @param direction [Symbol] select [vertical, horizontal]
@@ -13,6 +14,7 @@ module Primer
       # @param wrap [Symbol] select [nowrap, wrap]
       # @param padding [Symbol] select [none, condensed, normal, spacious]
       def playground(
+        tag: :div,
         justify: :start,
         gap: nil,
         direction: :vertical,
@@ -22,6 +24,7 @@ module Primer
       )
         render(
           Primer::Alpha::Stack.new(
+            tag: tag,
             justify: justify,
             gap: gap,
             direction: direction,
