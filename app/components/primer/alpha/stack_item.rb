@@ -6,6 +6,9 @@ module Primer
     class StackItem < Primer::Component
       DEFAULT_TAG = :div
 
+      # @param tag [Symbol] Customize the element type of the rendered container.
+      # @param grow [Boolean] Allow item to keep size or expand to fill the available space.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(tag: DEFAULT_TAG, grow: false, **system_arguments)
         @tag = tag
         @grow = grow
