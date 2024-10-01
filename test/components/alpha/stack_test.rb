@@ -13,15 +13,13 @@ class PrimerStackTest < Minitest::Test
     assert_text("content")
   end
 
-  # iterate over all responsive props and assert that they are rendered
-  def test_renders_responsive_props
-    render_inline(Primer::Box.new) do
+  def test_renders_as_a_different_html_tag_when_prop_is_passed
+    render_inline(Primer::Alpha::Stack.new(tag: :span)) do
       "content"
     end
 
-    assert_selector("div")
+    assert_selector("span")
   end
-
 
   Primer::Alpha::Stack::ResponsiveArg.descendants.each do |descendant|
     descendant::OPTIONS.each do |option|
