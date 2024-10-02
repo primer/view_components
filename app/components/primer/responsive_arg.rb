@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: should this "live" here?
 module Primer
   # Base class for responsive Stack and StackItem arguments. Used internally.
   class ResponsiveArg

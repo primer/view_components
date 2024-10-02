@@ -64,32 +64,29 @@ class PrimerStackTest < Minitest::Test
   end
 
   # Static arg tests, i.e. Stack.new(justify: :center)
-  Primer::ResponsiveArg.descendants.each do |descendant|
-    # TODO: fix this (StackItem's arg)
-    next unless descendant.arg_name != :grow
-    descendant::OPTIONS.each do |option|
+  Primer::Alpha::Stack::ARG_CLASSES.each do |arg_class|
+    arg_class::OPTIONS.each do |option|
       next unless option
 
-      define_method("test_renders_static_arg_#{descendant.arg_name}_with_#{option}_option") do
-        render_inline(Primer::Alpha::Stack.new(descendant.arg_name => option)) do
+      define_method("test_renders_static_arg_#{arg_class.arg_name}_with_#{option}_option") do
+        render_inline(Primer::Alpha::Stack.new(arg_class.arg_name => option)) do
           "content"
         end
 
-        assert_selector(".Stack[data-#{descendant.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
+        assert_selector(".Stack[data-#{arg_class.arg_name.to_s.dasherize}=\"#{option.to_s.dasherize}\"]")
       end
     end
   end
 
-  Primer::ResponsiveArg.descendants.each do |descendant|
-    # TODO: fix this (StackItem's arg)
-    next unless descendant.arg_name != :grow
-    next unless descendant::DEFAULT
-    define_method("test_renders_static_arg_#{descendant.arg_name}_with_default_option") do
+  Primer::Alpha::Stack::ARG_CLASSES.each do |arg_class|
+    next unless arg_class::DEFAULT
+
+    define_method("test_renders_static_arg_#{arg_class.arg_name}_with_default_option") do
       render_inline(Primer::Alpha::Stack.new) do
         "content"
       end
 
-      assert_selector(".Stack[data-#{descendant.arg_name.to_s.dasherize}=\"#{descendant::DEFAULT.to_s.dasherize}\"]")
+      assert_selector(".Stack[data-#{arg_class.arg_name.to_s.dasherize}=\"#{arg_class::DEFAULT.to_s.dasherize}\"]")
     end
   end
 

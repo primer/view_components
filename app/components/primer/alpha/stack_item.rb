@@ -24,6 +24,8 @@ module Primer
         end
       end
 
+      ARG_CLASSES = [GrowArg].freeze
+
       # @param tag [Symbol] Customize the element type of the rendered container.
       # @param grow [Boolean] Allow item to keep size or expand to fill the available space.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

@@ -127,6 +127,15 @@ module Primer
         end
       end
 
+      ARG_CLASSES = [
+        JustifyArg,
+        DirectionArg,
+        AlignArg,
+        WrapArg,
+        PaddingArg,
+        GapArg
+      ].freeze
+
 
       # @param tag [Symbol] Customize the element type of the rendered container.
       # @param gap [Symbol] Specify the gap between children elements in the stack. <%= one_of(Primer::Alpha::Stack::GapArg::OPTIONS) %>
