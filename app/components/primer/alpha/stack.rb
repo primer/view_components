@@ -20,7 +20,7 @@ module Primer
         OPTIONS = MAPPING.keys.freeze
 
         def initialize(values)
-          @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT).map do |value|
+          @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT) do |value|
             MAPPING[value]
           end
         end

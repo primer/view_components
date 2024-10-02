@@ -3,12 +3,13 @@
 module Primer
   # Base class for responsive Stack and StackItem arguments. Used internally.
   class ResponsiveArg
+    # TODO: rewrite
     # The primer/react Stack component defines three breakpoints, but PVC uses five.
     # We define this array as an index-based mapping between the two systems. The first
     # element is the default and results in eg. { "justify" => "start" }, while the
     # other breakpoints result in keys with breakpoint suffixes, eg.
-    # { "justify-narrow" => "start" }.
-    BREAKPOINTS = [nil, :narrow, :regular, :wide, :wide]
+    # { "justify-narrow" => "start" }. 
+    BREAKPOINTS = [:narrow, :regular, :wide].freeze
 
     include FetchOrFallbackHelper
 
@@ -37,16 +38,26 @@ module Primer
     private
 
     def data_attributes_for(property, values)
-      values.take(BREAKPOINTS.size).each_with_object({}).with_index do |(value, memo), i|
-        next unless value
-        property_with_breakpoint = [property, BREAKPOINTS[i]].compact.join("-")
-        memo[property_with_breakpoint] = value
+      if values.is_a?(Hash)
+        values.slice(*BREAKPOINTS).each_with_object({}) do |(key, value), memo|
+          next unless value
+          property_with_breakpoint = "#{property}-#{key}"
+          memo[property_with_breakpoint] = value
+        end
+      else
+        {property => values}
       end
     end
 
-    def fetch_or_fallback_all(allowed_values, given_values, default_value)
-      Array(given_values).map do |given_value|
-        fetch_or_fallback(allowed_values, given_value, default_value)
+    def fetch_or_fallback_all(options, values, default)
+      if values.is_a?(Hash)
+        values.each_with_object({}) do |(key, value), memo|
+          value = block_given? ? yield(value) : value
+          memo[key] = fetch_or_fallback(options, value, default)
+        end
+      else
+        value = block_given? ? yield(values) : values
+        fetch_or_fallback(options, value, default)
       end
     end
 

@@ -69,55 +69,25 @@ module Primer
           system_arguments: {
             tag: tag,
 
-            justify: [
-              justify,
-              justify_narrow,
-              justify_regular,
-              justify_wide,
-              justify_wide
-            ],
+            justify: get_control_values(justify, justify_narrow, justify_regular, justify_wide),
 
-            gap: [
-              gap,
-              gap_narrow,
-              gap_regular,
-              gap_wide,
-              gap_wide
-            ],
+            gap: get_control_values(gap, gap_narrow, gap_regular, gap_wide),
 
-            direction: [
-              direction,
-              direction_narrow,
-              direction_regular,
-              direction_wide,
-              direction_wide
-            ],
+            direction: get_control_values(direction, direction_narrow, direction_regular, direction_wide),
 
-            wrap: [
-              wrap,
-              wrap_narrow,
-              wrap_regular,
-              wrap_wide,
-              wrap_wide
-            ],
+            wrap: get_control_values(wrap, wrap_narrow, wrap_regular, wrap_wide),
 
-            padding: [
-              padding,
-              padding_narrow,
-              padding_regular,
-              padding_wide,
-              padding_wide
-            ],
+            padding: get_control_values(padding, padding_narrow, padding_regular, padding_wide),
 
-            align: [
-              align,
-              align_narrow,
-              align_regular,
-              align_wide,
-              align_wide
-            ],
+            align: get_control_values(align, align_narrow, align_regular, align_wide),
           }
         })
+      end
+      
+      private
+
+      def get_control_values(normal, narrow, regular, wide)
+        [narrow, regular, wide].any? ? : {narrow:, regular:, wide:} : normal
       end
     end
   end
