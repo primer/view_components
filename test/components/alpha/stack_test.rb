@@ -38,21 +38,20 @@ class PrimerStackTest < Minitest::Test
   end
 
   # Responsive arg tests, i.e. Stack.new(justify: [:center, :center, ...])
-  Primer::ResponsiveArg.descendants.each do |descendant|
-    # TODO: fix this (StackItem's arg)
-    next unless descendant.arg_name != :grow
-    descendant::OPTIONS.each do |option|
+  Primer::Alpha::Stack::ARG_CLASSES.each do |arg_class|
+    next unless arg_class.arg_name != :grow
+    arg_class::OPTIONS.each do |option|
       next unless option
 
-      define_method("test_renders_responsive_arg_#{descendant.arg_name}_with_#{option}_option") do
+      define_method("test_renders_responsive_arg_#{arg_class.arg_name}_with_#{option}_option") do
         # create a Stack for rendering, eg. Stack.new(:justify, [five-element responsive values array])
         stack = Primer::Alpha::Stack.new(
-          descendant.arg_name => [option] * Primer::ResponsiveArg::BREAKPOINTS.size
+          arg_class.arg_name => [option] * Primer::ResponsiveArg::BREAKPOINTS.size
         )
 
         render_inline(stack) { "content" }
 
-        dasherized_arg = descendant.arg_name.to_s.dasherize
+        dasherized_arg = arg_class.arg_name.to_s.dasherize
         dasherized_option = option.to_s.dasherize
 
         assert_selector(".Stack[data-#{dasherized_arg}=\"#{dasherized_option}\"]")
