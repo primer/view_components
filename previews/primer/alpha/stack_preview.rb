@@ -68,26 +68,20 @@ module Primer
         render_with_template(locals: {
           system_arguments: {
             tag: tag,
-
-            justify: get_control_values(justify, justify_narrow, justify_regular, justify_wide),
-
-            gap: get_control_values(gap, gap_narrow, gap_regular, gap_wide),
-
-            direction: get_control_values(direction, direction_narrow, direction_regular, direction_wide),
-
-            wrap: get_control_values(wrap, wrap_narrow, wrap_regular, wrap_wide),
-
-            padding: get_control_values(padding, padding_narrow, padding_regular, padding_wide),
-
-            align: get_control_values(align, align_narrow, align_regular, align_wide),
+            justify: control_values_for(justify, justify_narrow, justify_regular, justify_wide),
+            gap: control_values_for(gap, gap_narrow, gap_regular, gap_wide),
+            direction: control_values_for(direction, direction_narrow, direction_regular, direction_wide),
+            wrap: control_values_for(wrap, wrap_narrow, wrap_regular, wrap_wide),
+            padding: control_values_for(padding, padding_narrow, padding_regular, padding_wide),
+            align: control_values_for(align, align_narrow, align_regular, align_wide),
           }
         })
       end
-      
+
       private
 
-      def get_control_values(normal, narrow, regular, wide)
-        [narrow, regular, wide].any? ? : {narrow:, regular:, wide:} : normal
+      def control_values_for(normal, narrow, regular, wide)
+        [narrow, regular, wide].any? ? { narrow: narrow, regular: regular, wide: wide } : normal
       end
     end
   end

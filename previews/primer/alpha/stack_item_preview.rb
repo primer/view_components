@@ -25,15 +25,15 @@ module Primer
         render_with_template(locals: {
           system_arguments: {
             tag: tag,
-            grow: get_control_values(grow, grow_narrow, grow_regular, grow_wide)
+            grow: control_values_for(grow, grow_narrow, grow_regular, grow_wide)
           }
         })
       end
 
       private
-      
-      def get_control_values(normal, narrow, regular, wide)
-        [narrow, regular, wide].any? ? {narrow:, regular:, wide:} : normal
+
+      def control_values_for(normal, narrow, regular, wide)
+        [narrow, regular, wide].any? ? { narrow: narrow, regular: regular, wide: wide} : normal
       end
     end
   end

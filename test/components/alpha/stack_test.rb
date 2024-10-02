@@ -37,16 +37,17 @@ class PrimerStackTest < Minitest::Test
     assert_selector("a.Stack")
   end
 
-  # Responsive arg tests, i.e. Stack.new(justify: [:center, :center, ...])
+  # Responsive arg tests, i.e. Stack.new(justify: { narrow: :center, ... })
   Primer::Alpha::Stack::ARG_CLASSES.each do |arg_class|
-    next unless arg_class.arg_name != :grow
     arg_class::OPTIONS.each do |option|
       next unless option
 
       define_method("test_renders_responsive_arg_#{arg_class.arg_name}_with_#{option}_option") do
-        # create a Stack for rendering, eg. Stack.new(:justify, [five-element responsive values array])
+        # create a Stack for rendering, eg. Stack.new(justify: { ... })
         stack = Primer::Alpha::Stack.new(
-          arg_class.arg_name => [option] * Primer::ResponsiveArg::BREAKPOINTS.size
+          arg_class.arg_name => Primer::ResponsiveArg::BREAKPOINTS.each_with_object({}) do |breakpoint, memo|
+            memo[breakpoint] = option
+          end
         )
 
         render_inline(stack) { "content" }
@@ -54,7 +55,6 @@ class PrimerStackTest < Minitest::Test
         dasherized_arg = arg_class.arg_name.to_s.dasherize
         dasherized_option = option.to_s.dasherize
 
-        assert_selector(".Stack[data-#{dasherized_arg}=\"#{dasherized_option}\"]")
         assert_selector(".Stack[data-#{dasherized_arg}-narrow=\"#{dasherized_option}\"]")
         assert_selector(".Stack[data-#{dasherized_arg}-regular=\"#{dasherized_option}\"]")
         assert_selector(".Stack[data-#{dasherized_arg}-wide=\"#{dasherized_option}\"]")
