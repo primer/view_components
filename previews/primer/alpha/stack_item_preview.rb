@@ -24,6 +24,7 @@ module Primer
       )
         render_with_template(locals: {
           system_arguments: {
+            tag: tag,
             grow: [
               grow,
               grow_narrow,
