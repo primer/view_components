@@ -25,9 +25,11 @@ module Primer
       end
     end
 
+    # :nocov:
     def arg_name
       raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
     end
+    # :nocov:
 
     def to_data_attributes
       @data_attributes ||= data_attributes_for(self.class.arg_name, values)
@@ -49,8 +51,10 @@ module Primer
       end
     end
 
+    # :nocov:
     def values
       raise NotImplementedError, "Subclasses must implement the `#{__method__}' method"
     end
+    # :nocov:
   end
 end
