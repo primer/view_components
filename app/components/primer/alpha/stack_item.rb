@@ -11,6 +11,7 @@ module Primer
         attr_reader :values
         DEFAULT = false
         OPTIONS = [
+          nil,
           DEFAULT,
           true
         ].freeze

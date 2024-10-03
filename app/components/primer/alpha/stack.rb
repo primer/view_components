@@ -17,7 +17,7 @@ module Primer
           :space_between => "space-between",
           :space_evenly => "space-evenly"
         }.freeze
-        OPTIONS = MAPPING.keys.freeze
+        OPTIONS = [nil, *MAPPING.keys.freeze]
 
         def initialize(values)
           @values = fetch_or_fallback_all(OPTIONS, values, DEFAULT) do |value|
@@ -35,6 +35,7 @@ module Primer
         attr_reader :values
         DEFAULT = :vertical
         OPTIONS = [
+          nil,
           DEFAULT,
           :horizontal
         ].freeze
@@ -53,6 +54,7 @@ module Primer
         attr_reader :values
         DEFAULT = :stretch
         OPTIONS = [
+          nil,
           DEFAULT,
           :start,
           :center,
@@ -74,6 +76,7 @@ module Primer
         attr_reader :values
         DEFAULT = :nowrap
         OPTIONS = [
+          nil,
           DEFAULT,
           :wrap
         ].freeze
@@ -92,6 +95,7 @@ module Primer
         attr_reader :values
         DEFAULT = :none
         OPTIONS = [
+          nil,
           DEFAULT,
           :condensed,
           :normal,
