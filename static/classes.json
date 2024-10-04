@@ -501,6 +501,12 @@
   "SelectPanel-loadingPanel": [
     "Primer::Alpha::SelectPanel"
   ],
+  "Stack": [
+    "Primer::Alpha::Stack"
+  ],
+  "StackItem": [
+    "Primer::Alpha::StackItem"
+  ],
   "State": [
     "Primer::Beta::State"
   ],

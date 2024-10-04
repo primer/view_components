@@ -621,6 +621,30 @@
   },
   "Primer::Alpha::SelectPanel::ItemList": {
   },
+  "Primer::Alpha::Stack": {
+    "ARG_CLASSES": [
+      "Primer::Alpha::Stack::JustifyArg",
+      "Primer::Alpha::Stack::DirectionArg",
+      "Primer::Alpha::Stack::AlignArg",
+      "Primer::Alpha::Stack::WrapArg",
+      "Primer::Alpha::Stack::PaddingArg",
+      "Primer::Alpha::Stack::GapArg"
+    ],
+    "AlignArg": "Primer::Alpha::Stack::AlignArg",
+    "DEFAULT_TAG": "div",
+    "DirectionArg": "Primer::Alpha::Stack::DirectionArg",
+    "GapArg": "Primer::Alpha::Stack::GapArg",
+    "JustifyArg": "Primer::Alpha::Stack::JustifyArg",
+    "PaddingArg": "Primer::Alpha::Stack::PaddingArg",
+    "WrapArg": "Primer::Alpha::Stack::WrapArg"
+  },
+  "Primer::Alpha::StackItem": {
+    "ARG_CLASSES": [
+      "Primer::Alpha::StackItem::GrowArg"
+    ],
+    "DEFAULT_TAG": "div",
+    "GrowArg": "Primer::Alpha::StackItem::GrowArg"
+  },
   "Primer::Alpha::SubmitButton": {
   },
   "Primer::Alpha::TabContainer": {
