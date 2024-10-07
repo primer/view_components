@@ -21,4 +21,8 @@ Please ensure these items are checked before merging.
 - [ ] No noticeable regressions have been introduced as a result of changes in this release
 - [ ] Release notes accurately describe the changes made
 
+### 🚢 Post ship reminders
+
+- [ ] Deploy lookbook via chat ops. `...`
+
 Please also leave any testing notes as a comment on this pull request. In particular, describing any issues encountered during your testing. This is helpful in providing historical context to maintainers.
