@@ -190,10 +190,9 @@ module Primer
         if items.length > 1
           link_arguments = {}
           parent_item = items[items.length - 2]
-          parsed_parent_item = anchor_tag_string?(parent_item) ? anchor_string_to_object(parent_item) : parent_item
 
           link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
-          link_arguments[:href] = parsed_parent_item[:href]
+          link_arguments[:href] = parent_item[:href]
           link_arguments[:target] = "_top"
 
           link_arguments[:classes] = class_names(link_arguments[:classes], "PageHeader-parentLink")
@@ -203,14 +202,12 @@ module Primer
             render(Primer::Beta::Octicon.new(icon: "arrow-left",
                                              "aria-label": I18n.t("button_back"),
                                              mr: 2)
-            ) + content_tag(:span, parsed_parent_item[:text])
+            ) + content_tag(:span, parent_item[:text])
           end
         end
 
         render(Primer::Beta::Breadcrumbs.new(**system_arguments)) do |breadcrumbs|
           items.each do |item|
-            item = anchor_string_to_object(item) if anchor_tag_string?(item)
-
             if item.is_a?(String)
               breadcrumbs.with_item(href: "#", font_weight: selected_item_font_weight) { item }
             else
@@ -330,21 +327,6 @@ module Primer
           @mobile_action = component.new(**system_arguments.deep_merge(mobile_options))
           @mobile_action_block = block
         end
-      end
-
-      # transform anchor tag strings to {href, text} objects
-      # e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
-      def anchor_string_to_object(html_string)
-        # Parse the HTML
-        doc = Nokogiri::HTML.fragment(html_string)
-        # Extract href and text
-        anchor = doc.at("a")
-        { href: anchor["href"], text: anchor.text }
-      end
-
-      # Check if the item is an anchor tag string e.g "\u003ca href=\"/admin\"\u003eAdministration\u003c/a\u003e"
-      def anchor_tag_string?(item)
-        item.is_a?(String) && item.start_with?("\u003c")
       end
     end
   end
