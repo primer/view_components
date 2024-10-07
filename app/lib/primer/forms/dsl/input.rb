@@ -246,6 +246,10 @@ module Primer
           @input_arguments[:id]
         end
 
+        def value
+          @input_arguments[:value]
+        end
+
         # :nocov:
         def name
           raise_for_abstract_method!(__method__)
