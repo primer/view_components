@@ -10,12 +10,15 @@ module Primer
     def initialize(condition:, **base_component_arguments)
       @condition = condition
       @base_component_arguments = base_component_arguments
+      @trim = !!@base_component_arguments.delete(:trim)
     end
 
     def call
-      return content unless @condition
+      unless @condition
+        return @trim ? trimmed_content : content
+      end
 
-      BaseComponent.new(**@base_component_arguments).render_in(self) { content }
+      BaseComponent.new(trim: @trim, **@base_component_arguments).render_in(self) { content }
     end
   end
 end
