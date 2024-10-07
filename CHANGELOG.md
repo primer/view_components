@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.35.0
+
+### Minor Changes
+
+- [#3074](https://github.com/primer/view_components/pull/3074) [`25109d0`](https://github.com/primer/view_components/commit/25109d0a9686e8dcc8b81a08ba11cd648178aa57) Thanks [@owenniblock](https://github.com/owenniblock)! - [SelectPanel] replace loading label using parameter loading_label
+  [SelectPanel] show additional loading content with loading_description
+
+- [#3072](https://github.com/primer/view_components/pull/3072) [`18b2074`](https://github.com/primer/view_components/commit/18b2074e4a6e77ea47bd0e78c93358aaeefce842) Thanks [@camertron](https://github.com/camertron)! - [Forms] Fix position of caption for checkbox and radio groups
+
+- [#3071](https://github.com/primer/view_components/pull/3071) [`e043069`](https://github.com/primer/view_components/commit/e043069782f1a88970c09feb0fe05566e21b18ce) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Use checkboxes for multi-select
+
+- [#3126](https://github.com/primer/view_components/pull/3126) [`89052ca`](https://github.com/primer/view_components/commit/89052ca71fd7f54ffe4cda87393475428c196ded) Thanks [@francinelucca](https://github.com/francinelucca)! - Introduce the Stack and StackItem components.
+
+- [#3083](https://github.com/primer/view_components/pull/3083) [`5907105`](https://github.com/primer/view_components/commit/590710582e7c29b3d6bc8b142c1e9b8f95709c68) Thanks [@jamieshark](https://github.com/jamieshark)! - [SelectPanel] Adds banner scheme as param.
+
+### Patch Changes
+
+- [#3103](https://github.com/primer/view_components/pull/3103) [`6033c86`](https://github.com/primer/view_components/commit/6033c865d5448c31f0698bcdc9422a0a9581dda0) Thanks [@owenniblock](https://github.com/owenniblock)! - Moves the loading and "no results" messages on the SelectPanel to the top of the container.
+
+- [#3095](https://github.com/primer/view_components/pull/3095) [`26f1fbc`](https://github.com/primer/view_components/commit/26f1fbcacade2c05fabb42d8231ac22fbc1e3b52) Thanks [@owenniblock](https://github.com/owenniblock)! - Clear input on SelectPanel when dialog closed
+
 ## 0.34.0
 
 ### Minor Changes
