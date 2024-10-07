@@ -51,7 +51,8 @@ module ERBLint
                 if @config.custom_erb_pattern.empty?
                   nil
                 else
-                  Regexp.new(@config.custom_erb_pattern.join("|"), true)
+                  regexes = @config.custom_erb_pattern.map { |pattern| Regexp.new(pattern, true) }
+                  Regexp.new(regexes.join("|"), true)
                 end
             end
 
