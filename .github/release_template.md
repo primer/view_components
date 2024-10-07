@@ -23,6 +23,6 @@ Please ensure these items are checked before merging.
 
 ### 🚢 Post ship reminders
 
-- [ ] Deploy lookbook via chat ops. `...`
+- [ ] Deploy lookbook via chat ops in the #primer-rails-ops channel. `.deploy primer-lookbook to production`
 
 Please also leave any testing notes as a comment on this pull request. In particular, describing any issues encountered during your testing. This is helpful in providing historical context to maintainers.
