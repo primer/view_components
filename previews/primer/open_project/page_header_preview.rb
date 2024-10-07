@@ -182,7 +182,7 @@ module Primer
       def non_bold_breadcrumbs
         breadcrumb_items = [
           { href: "/foo", text: "Foo" },
-          "\u003ca href=\"/foo/bar\"\u003eBar\u003c/a\u003e",
+          { href: "/foo/bar", text: "Bar" },
           "Test: <b>Baz</b>".html_safe
         ]
         render(Primer::OpenProject::PageHeader.new) do |header|
