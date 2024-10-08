@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.48.0
+
+### Minor Changes
+
+- [#193](https://github.com/opf/primer_view_components/pull/193) [`95cee35`](https://github.com/opf/primer_view_components/commit/95cee353d512e84823761faaba377dedf1c2cc38) Thanks [@HDinger](https://github.com/HDinger)! - Remove support for anchor strings in PageHeader breadcrumbs
+
+### Patch Changes
+
+- [#192](https://github.com/opf/primer_view_components/pull/192) [`b57b85c`](https://github.com/opf/primer_view_components/commit/b57b85c39aa17c90fc19fc6902163e30a4c95906) Thanks [@HDinger](https://github.com/HDinger)! - Avoid overlapping tabs in PageHeader tabNav
+
 ## 0.47.1
 
 ### Patch Changes
