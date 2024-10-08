@@ -4,7 +4,7 @@ module Primer
   # :nodoc:
   module AttributesHelper
     PLURAL_ARIA_ATTRIBUTES = %i[describedby labelledby].freeze
-    PLURAL_DATA_ATTRIBUTES = %i[target targets].freeze
+    PLURAL_DATA_ATTRIBUTES = %i[target targets action].freeze
 
     def aria(val, system_arguments)
       system_arguments[:"aria-#{val}"] || system_arguments.dig(:aria, val.to_sym)
