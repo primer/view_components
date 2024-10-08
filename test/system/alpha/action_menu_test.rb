@@ -600,9 +600,9 @@ module Alpha
       # activating item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Fast forward", visible: :hidden
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      keyboard.type(:enter, :down, :space)
+      keyboard.type(:down, :space)
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
     end
 
