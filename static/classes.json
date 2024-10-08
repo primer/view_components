@@ -483,6 +483,9 @@
   "PageHeader-parentLink": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader-tabNavBar": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "PageHeader-title": [
     "Primer::OpenProject::PageHeader"
   ],
