@@ -54,11 +54,14 @@ module Primer
       private
 
       def tag_attributes
+        attrs = { name: @input.name }
+        attrs[:value] = @input.value if @input.value
+
         case @type
         when :submit
-          ButtonAttributeGenerator.submit_tag_attributes(@input.label, name: @input.name)
+          ButtonAttributeGenerator.submit_tag_attributes(@input.label, **attrs)
         else
-          ButtonAttributeGenerator.button_tag_attributes(@input.label, name: @input.name)
+          ButtonAttributeGenerator.button_tag_attributes(@input.label, **attrs)
         end
       end
     end
