@@ -1,4 +1,9 @@
+let dialogScrollGutterSet = false
 function dialogInvokerButtonHandler(event: Event) {
+  if (!dialogScrollGutterSet) {
+    document.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - document.body.clientWidth}px`)
+    dialogScrollGutterSet = true
+  }
   const target = event.target as HTMLElement
   const button = target?.closest('button')
 
@@ -76,10 +81,6 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
-    this.ownerDocument.body.style.setProperty(
-      '--dialog-scrollgutter',
-      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
-    )
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
