@@ -8,6 +8,12 @@
 
 /* Overlay */
 
+@property --dialog-scrollgutter {
+  initial-value: 0;
+  inherits: false;
+  syntax: "<length>";
+}
+
 /* TODO: One day this can be :has(:modal), when it is better supported */
 body.has-modal {
   padding-right: var(--dialog-scrollgutter) !important;
