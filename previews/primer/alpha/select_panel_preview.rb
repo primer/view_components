@@ -279,6 +279,13 @@ module Primer
       def no_values(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
+
+      # @label Scroll container
+      #
+      # @param open_on_load toggle
+      def scroll_container(open_on_load: false)
+        render_with_template(locals: { open_on_load: open_on_load })
+      end
     end
   end
 end
