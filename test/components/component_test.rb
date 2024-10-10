@@ -129,7 +129,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
     [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }],
-    [Primer::Alpha::SelectPanel, {}]
+    [Primer::Alpha::SelectPanel, {}],
+    [Primer::Alpha::Stack, {}],
+    [Primer::Alpha::StackItem, {}]
   ].freeze
 
   def test_registered_components
@@ -155,7 +157,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",
-      "Primer::Navigation::TabComponent"
+      "Primer::Navigation::TabComponent",
+      "Primer::ResponsiveArg"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

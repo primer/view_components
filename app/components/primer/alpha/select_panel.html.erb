@@ -65,7 +65,7 @@
                     text_align: :center,
                     classes: "SelectPanel-loadingPanel"
                   )) do %>
-                    <div data-hide-on-error>
+                    <div data-hide-on-error class="pt-2">
                       <%= render Primer::Beta::Spinner.new(aria: { label: @loading_label, describedby: @loading_description_id }, data: { target: "select-panel.bodySpinner" }) %>
                       <% if @loading_description.present? %>
                         <div id="<%= @loading_description_id %>" aria-hidden="true"><%= @loading_description %></div>

@@ -136,10 +136,6 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.0.1)
-      actionpack (>= 6.0.0)
-      activesupport (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)
@@ -368,7 +364,6 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   foreman
   hotwire-livereload (~> 1.4)
-  importmap-rails
   kind-rb (~> 0.1)
   kuby-azure (~> 0.4.0)
   kuby-core (~> 0.20)

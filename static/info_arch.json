@@ -8249,6 +8249,178 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::Alpha::Stack",
+    "description": "Stack is a layout component that creates responsive horizontal and vertical flows.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "Stack",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Stack",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/stack.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/stack/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "Customize the element type of the rendered container."
+      },
+      {
+        "name": "gap",
+        "type": "Symbol",
+        "default": "`GapArg::DEFAULT`",
+        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:normal`, or `:spacious`."
+      },
+      {
+        "name": "direction",
+        "type": "Symbol",
+        "default": "`:vertical`",
+        "description": "Specify the direction for the stack container. One of `nil`, `:horizontal`, or `:vertical`."
+      },
+      {
+        "name": "align",
+        "type": "Symbol",
+        "default": "`:stretch`",
+        "description": "Specify the alignment between items in the cross-axis of the direction. One of `nil`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`."
+      },
+      {
+        "name": "wrap",
+        "type": "Symbol",
+        "default": "`:nowrap`",
+        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, or `:wrap`."
+      },
+      {
+        "name": "justify",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "Specify how items will be distributed in the stacking direction. One of `nil`, `:center`, `:end`, `:space_between`, `:space_evenly`, or `:start`."
+      },
+      {
+        "name": "padding",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "Specify the padding of the stack container. One of `nil`, `:condensed`, `:none`, `:normal`, or `:spacious`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/alpha/stack/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::Alpha::StackItem",
+    "description": "StackItem is a layout component designed to be used as the child of a Stack.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "StackItem",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "StackItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/stack_item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/stack_item/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "Customize the element type of the rendered container."
+      },
+      {
+        "name": "grow",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Allow item to keep size or expand to fill the available space."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/alpha/stack_item/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack_item/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::Alpha::SubmitButton",
     "description": "A submit button input rendered using the HTML `<button type=\"submit\">` tag.\n\nThis component wraps the Primer button component and supports the same slots and arguments.",
     "accessibility_docs": null,

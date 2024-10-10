@@ -6250,6 +6250,74 @@
     ]
   },
   {
+    "name": "stack",
+    "component": "Stack",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/stack",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/stack/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "stack_item",
+    "component": "StackItem",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/stack_item",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/stack_item/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack_item/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "state",
     "component": "State",
     "status": "beta",
