@@ -104,6 +104,7 @@ module Primer
       # @param position [Symbol] The position of the dialog. <%= one_of(Primer::Alpha::Dialog::POSITION_OPTIONS) %>
       # @param position_narrow [Symbol] The position of the dialog when narrow. <%= one_of(Primer::Alpha::Dialog::POSITION_NARROW_OPTIONS) %>
       # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
+      # @param disable_scroll [Boolean] When true, disables scrolling the page when the dialog is open.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
@@ -113,6 +114,7 @@ module Primer
         position_narrow: DEFAULT_POSITION_NARROW,
         visually_hide_title: false,
         id: self.class.generate_id,
+        disable_scroll: true,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -124,6 +126,7 @@ module Primer
         @position = position
         @position_narrow = position_narrow
         @visually_hide_title = visually_hide_title
+        @disable_scroll = disable_scroll
 
         @system_arguments[:tag] = "dialog"
         @system_arguments[:id] = @id
@@ -143,7 +146,8 @@ module Primer
           "Overlay--motion-scaleFade",
           POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, @position, DEFAULT_POSITION)],
           POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, @position_narrow, DEFAULT_POSITION_NARROW)],
-          system_arguments[:classes]
+          system_arguments[:classes],
+          "Overlay--disableScroll" => @disable_scroll
         )
       end
 

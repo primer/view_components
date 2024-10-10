@@ -235,8 +235,9 @@ module Primer
       # @param visually_hide_title [Boolean] toggle
       # @param button_text [String] text
       # @param body_text [String] text
+      # @param disable_scroll [Boolean] toggle
       # @snapshot interactive
-      def scroll_container(title: "Test Dialog", subtitle: nil, position: :center, size: :medium, button_text: "Show Dialog", body_text: "Content", position_narrow: :fullscreen, visually_hide_title: false)
+      def scroll_container(title: "Test Dialog", subtitle: nil, position: :center, size: :medium, button_text: "Show Dialog", body_text: "Content", position_narrow: :fullscreen, visually_hide_title: false, disable_scroll: true)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,
@@ -245,7 +246,8 @@ module Primer
                                button_text: button_text,
                                body_text: body_text,
                                position_narrow: position_narrow,
-                               visually_hide_title: visually_hide_title
+                               visually_hide_title: visually_hide_title,
+                               disable_scroll: disable_scroll
                              })
       end
 

@@ -96,7 +96,6 @@ export class DialogHelperElement extends HTMLElement {
 
   #handleDialogOpenAttribute() {
     if (!this.dialog) return
-    this.ownerDocument.body.classList.toggle('has-modal', this.dialog.matches(':modal'))
     // We don't want to show the Dialog component as non-modal
     if (this.dialog.matches('[open]:not(:modal)')) {
       // eslint-disable-next-line no-restricted-syntax
