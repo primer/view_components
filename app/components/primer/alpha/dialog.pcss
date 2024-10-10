@@ -8,10 +8,17 @@
 
 /* Overlay */
 
+/*
+  Remove these disables when we can upgrade to the latest version of @primer/stylelint-config.
+  See: https://github.com/3846masa/stylelint-browser-compat/pull/807
+*/
+
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 body:has(:modal) {
   padding-right: var(--dialog-scrollgutter) !important;
 }
 
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 body:has(dialog:modal.Overlay--disableScroll) {
   overflow: hidden !important;
 }
