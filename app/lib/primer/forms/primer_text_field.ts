@@ -106,4 +106,8 @@ export class PrimerTextFieldElement extends HTMLElement {
     this.leadingSpinner?.setAttribute('hidden', '')
     this.leadingVisual?.removeAttribute('hidden')
   }
+
+  isLoading(): boolean {
+    return !this.leadingSpinner?.hasAttribute('hidden')
+  }
 }

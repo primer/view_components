@@ -732,9 +732,9 @@ export class SelectPanelElement extends HTMLElement {
       this.noMatchesMessage?.setAttribute('hidden', '')
       this.noItemsMessage?.setAttribute('hidden', '')
 
-      // TODO can we change this to search for `@panelId-list`
+      // TODO can we change this to search for `@panelId-list`?
       this.list?.querySelector('.ActionListWrap')?.removeAttribute('hidden')
-    } else {
+    } else if (!this.#isLoading()) {
       if (query === '') {
         this.noMatchesMessage?.setAttribute('hidden', '')
         this.noItemsMessage?.removeAttribute('hidden')
@@ -747,6 +747,10 @@ export class SelectPanelElement extends HTMLElement {
     }
 
     this.#maybeAnnounce()
+  }
+
+  #isLoading(): boolean {
+    return Boolean(this.bodySpinner) || (this.#filterInputTextFieldElement?.isLoading() ?? false)
   }
 
   #inErrorState(): boolean {
