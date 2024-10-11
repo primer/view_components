@@ -8,8 +8,22 @@
 
 /* Overlay */
 
+/* The --dialog-scrollgutter property is used only on the body element to
+ * simulate scrollbar-gutter:stable. This property is not and should not
+ * be used elsewhere in the DOM. There is a performance penalty to
+ * setting inherited properties which can cause a large style recalc to
+ * occur, so it benefits us to prevent inheritance for this property.
+ * See https://web.dev/blog/at-property-performance
+ */
+@property --dialog-scrollgutter {
+  initial-value: 0;
+  inherits: false;
+  syntax: "<length>";
+}
+
 /* TODO: One day this can be :has(:modal), when it is better supported */
 body.has-modal {
+  /* stylelint-disable-next-line csstools/value-no-unknown-custom-properties */
   padding-right: var(--dialog-scrollgutter) !important;
   overflow: hidden !important;
 }
@@ -350,6 +364,7 @@ dialog.Overlay:not([open]) {
   &:hover,
   &:focus {
     background-color: var(--button-default-bgColor-hover);
+    /* stylelint-disable-next-line primer/colors */
     border: var(--borderWidth-thin) solid var(--control-bgColor-hover);
   }
 
