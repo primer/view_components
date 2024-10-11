@@ -8,13 +8,27 @@
 
 /* Overlay */
 
+/* The --dialog-scrollgutter property is used only on the body element to
+ * simulate scrollbar-gutter:stable. This property is not and should not
+ * be used elsewhere in the DOM. There is a performance penalty to
+ * setting inherited properties which can cause a large style recalc to
+ * occur, so it benefits us to prevent inheritance for this property.
+ * See https://web.dev/blog/at-property-performance
+ */
+@property --dialog-scrollgutter {
+  initial-value: 0;
+  inherits: false;
+  syntax: "<length>";
+}
+
 /*
-  Remove these disables when we can upgrade to the latest version of @primer/stylelint-config.
-  See: https://github.com/3846masa/stylelint-browser-compat/pull/807
+  Remove these no-unsupported-browser-features disables when we can upgrade to the latest
+  version of @primer/stylelint-config. See: https://github.com/3846masa/stylelint-browser-compat/pull/807
 */
 
 /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 body:has(:modal) {
+  /* stylelint-disable-next-line csstools/value-no-unknown-custom-properties */
   padding-right: var(--dialog-scrollgutter) !important;
 }
 
