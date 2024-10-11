@@ -27,9 +27,7 @@
     "app/components/primer/**/*.css.json",
     "app/components/primer/**/*.d.ts",
     "app/lib/primer/forms/**/*.js",
-    "app/lib/primer/forms/**/*.d.ts",
-    "lib/primer/forms/**/*.js",
-    "lib/primer/forms/**/*.d.ts"
+    "app/lib/primer/forms/**/*.d.ts"
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",

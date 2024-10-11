@@ -90,6 +90,9 @@ let PrimerTextFieldElement = class PrimerTextFieldElement extends HTMLElement {
         this.leadingSpinner?.setAttribute('hidden', '');
         this.leadingVisual?.removeAttribute('hidden');
     }
+    isLoading() {
+        return !this.leadingSpinner?.hasAttribute('hidden');
+    }
 };
 _PrimerTextFieldElement_abortController = new WeakMap();
 __decorate([
