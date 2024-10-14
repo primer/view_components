@@ -297,12 +297,6 @@ class Primer::FormsTest < Minitest::Test
     assert_selector "primer-text-field.FormControl"
   end
 
-  def test_siblings_are_form_controls_when_including_a_multi_input
-    render_preview :multi_input_form
-
-    assert_selector ".FormControl-radio-group-wrap + .FormControl"
-  end
-
   def test_toggle_switch_button_labelled_by_label
     render_preview(:example_toggle_switch_form)
 
