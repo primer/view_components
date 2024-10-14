@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.32.0",
+  "version": "0.34.0",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -26,8 +26,8 @@
     "app/components/primer/**/*.css",
     "app/components/primer/**/*.css.json",
     "app/components/primer/**/*.d.ts",
-    "lib/primer/forms/**/*.js",
-    "lib/primer/forms/**/*.d.ts"
+    "app/lib/primer/forms/**/*.js",
+    "app/lib/primer/forms/**/*.d.ts"
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
@@ -66,7 +66,7 @@
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.3.6",
     "@primer/primitives": "^9.0.2",
-    "@primer/stylelint-config": "^12.7.2",
+    "@primer/stylelint-config": "^13.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
@@ -78,23 +78,22 @@
     "eslint-plugin-custom-elements": "^0.0.8",
     "eslint-plugin-github": "^5.0.1",
     "eslint-plugin-prettier": "^5.0.0",
-    "markdownlint-cli2": "^0.13.0",
+    "markdownlint-cli2": "^0.14.0",
     "mocha": "^10.0.0",
     "playwright": "^1.35.1",
     "postcss": "^8.4.16",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.0.0",
-    "postcss-mixins": "^10.0.0",
+    "postcss-mixins": "^11.0.1",
     "postcss-preset-env": "^10.0.2",
     "prettier": "^3.3.2",
     "rollup": "^2.79.1",
     "rollup-plugin-terser": "^7.0.2",
-    "stylelint": "^16.1.0",
-    "stylelint-config-standard": "^36.0.0",
+    "stylelint-actions-formatters": "^16.3.1",
     "tslib": "^2.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.5",
-    "vite-plugin-ruby": "^5.0.0"
+    "vite": "^5.4.3",
+    "vite-plugin-ruby": "^5.1.0"
   },
   "prettier": "@github/prettier-config",
   "browserslist": "extends @github/browserslist-config"

@@ -3,12 +3,14 @@
 /* Outer wrapper */
 .tabnav {
   margin-top: 0;
+  /* stylelint-disable-next-line primer/spacing */
   margin-bottom: var(--stack-gap-normal);
   border-bottom: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .tabnav-tabs {
   display: flex;
+  /* stylelint-disable-next-line primer/spacing */
   margin-bottom: calc(var(--borderWidth-thin) * -1);
   overflow: hidden;
 }
@@ -16,8 +18,10 @@
 .tabnav-tab {
   display: inline-block;
   flex-shrink: 0;
+  /* stylelint-disable-next-line primer/spacing */
   padding: var(--base-size-8) var(--control-medium-paddingInline-spacious);
   font-size: var(--text-body-size-medium);
+  /* stylelint-disable-next-line primer/typography */
   line-height: 23px;
   color: var(--fgColor-muted);
   text-decoration: none;
@@ -56,11 +60,13 @@
   }
 
   & .octicon {
+    /* stylelint-disable-next-line primer/spacing */
     margin-right: var(--control-small-gap);
     color: var(--fgColor-muted);
   }
 
   & .Counter {
+    /* stylelint-disable-next-line primer/spacing */
     margin-left: var(--control-small-gap);
     color: inherit;
   }
@@ -73,18 +79,20 @@
 
 .tabnav-extra {
   display: inline-block;
+  /* stylelint-disable-next-line primer/spacing */
   padding-top: 10px;
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: 10px;
   font-size: var(--text-body-size-small);
   color: var(--fgColor-muted);
 
   & > .octicon {
-    margin-right: 2px;
+    margin-right: var(--base-size-2);
   }
 }
 
-/* When tabnav-extra are anchors
-** stylelint-disable-next-line selector-no-qualifying-type */
+/* When tabnav-extra are anchors */
+/* stylelint-disable-next-line selector-no-qualifying-type, selector-max-type */
 a.tabnav-extra:hover {
   color: var(--fgColor-accent);
   text-decoration: none;
@@ -96,5 +104,6 @@ a.tabnav-extra:hover {
 ** the buttons to be floated or inline-block. */
 
 .tabnav-btn {
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: var(--controlStack-medium-gap-condensed);
 }

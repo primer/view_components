@@ -1,0 +1,5 @@
+<%= render(Primer::Box.new(**@system_arguments)) do %>
+  <% @inputs.each do |input| %>
+    <%= render(input.to_component) %>
+  <% end %>
+<% end %>

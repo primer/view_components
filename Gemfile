@@ -29,8 +29,6 @@ end
 
 # Use Puma as the app server
 gem "puma", "~> 6.4.2"
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 5.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
@@ -55,8 +53,8 @@ group :development do
   gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.15"
   gem "debug"
-  gem "erb_lint", "~> 0.5.0"
-  gem "erblint-github", "~> 0.5.1"
+  gem "erb_lint", "~> 0.6"
+  gem "erblint-github", "~> 1.0"
   gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
@@ -65,7 +63,7 @@ group :development do
   gem "rubocop-github", "~> 0.20.0"
   gem "rubocop-performance"
   gem "rubocop-rails"
-  gem "rubocop-rails-accessibility", "~> 0.2.0"
+  gem "rubocop-rails-accessibility", "~> 1.0"
   gem "selenium-webdriver", "~> 4.18"
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-console", "~> 0.9.1"

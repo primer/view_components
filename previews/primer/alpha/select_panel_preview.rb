@@ -14,7 +14,6 @@ module Primer
       # @param dynamic_label toggle
       # @param dynamic_label_prefix text
       # @param dynamic_aria_label_prefix text
-      # @param show_filter toggle
       # @param open_on_load toggle
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
@@ -29,7 +28,6 @@ module Primer
         dynamic_label: false,
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
-        show_filter: true,
         open_on_load: false,
         anchor_align: :start,
         anchor_side: :outside_bottom,
@@ -47,7 +45,6 @@ module Primer
             dynamic_label: dynamic_label,
             dynamic_label_prefix: dynamic_label_prefix,
             dynamic_aria_label_prefix: dynamic_aria_label_prefix,
-            show_filter: show_filter,
             open_on_load: open_on_load,
             anchor_align: anchor_align,
             anchor_side: anchor_side
@@ -59,9 +56,11 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def default(open_on_load: false)
+      # @param show_filter toggle
+      def default(open_on_load: false, show_filter: true)
         render_with_template(template: "primer/alpha/select_panel_preview/local_fetch", locals: {
-          open_on_load: open_on_load
+          open_on_load: open_on_load,
+          show_filter: show_filter
         })
       end
 
@@ -69,8 +68,9 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def local_fetch(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param show_filter toggle
+      def local_fetch(open_on_load: false, show_filter: true)
+        render_with_template(locals: { open_on_load: open_on_load, show_filter: show_filter })
       end
 
       # @label Eventually local fetch
@@ -88,6 +88,24 @@ module Primer
       # @param open_on_load toggle
       # @param selected_items text
       def remote_fetch(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
+      end
+
+      # @label Custom loading label
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      def custom_loading_label(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
+      end
+
+      # @label Custom loading description
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      def custom_loading_description(open_on_load: false, selected_items: "Phaser")
         render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
       end
 
@@ -208,8 +226,18 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch_filter_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_scheme [Symbol] select [danger, warning]
+      def remote_fetch_filter_failure(
+        open_on_load: false,
+        banner_scheme: :danger
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          system_arguments: {
+            # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
+            banner_scheme: banner_scheme.to_sym
+          }
+        })
       end
 
       # @label Eventually local fetch initial failure

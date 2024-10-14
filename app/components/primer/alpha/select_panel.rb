@@ -250,18 +250,47 @@ module Primer
     # )
     # ```
     class SelectPanel < Primer::Component
+      # @private
+      module Utils
+        def raise_if_role_given!(**system_arguments)
+          return if shouldnt_raise_error?
+          return unless system_arguments.include?(:role)
+
+          raise(
+            "Please avoid passing the `role:` argument to `SelectPanel` and its subcomponents. "\
+            "The component will automatically apply the correct roles where necessary."
+          )
+        end
+      end
+
+      include Utils
+
       # The component that should be used to render the list of items in the body of a SelectPanel.
       class ItemList < Primer::Alpha::ActionList
+        include Utils
+
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
         def initialize(**system_arguments)
-          select_variant = system_arguments[:select_variant] || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
+          raise_if_role_given!(**system_arguments)
+          select_variant = system_arguments.delete(:select_variant) || Primer::Alpha::ActionList::DEFAULT_SELECT_VARIANT
 
           super(
             p: 2,
             role: "listbox",
             aria_selection_variant: select_variant == :single ? :selected : :checked,
+            select_variant: select_variant == :multiple ? :multiple_checkbox : :single,
             **system_arguments
           )
+        end
+
+        def with_item(**system_arguments)
+          raise_if_role_given!(**system_arguments)
+          super
+        end
+
+        def with_avatar_item(**system_arguments)
+          raise_if_role_given!(**system_arguments)
+          super
         end
       end
 
@@ -283,6 +312,12 @@ module Primer
         :none,
       ].freeze
 
+      DEFAULT_BANNER_SCHEME = :danger
+      BANNER_SCHEME_OPTIONS = [
+        DEFAULT_BANNER_SCHEME,
+        :warning
+      ].freeze
+
       # The URL to fetch search results from.
       #
       # @return [String]
@@ -302,6 +337,11 @@ module Primer
       #
       # @return [Symbol]
       attr_reader :select_variant
+
+      # <%= one_of(Primer::Alpha::SelectPanel::BANNER_SCHEME_OPTIONS) %>
+      #
+      # @return [Symbol]
+      attr_reader :banner_scheme
 
       # <%= one_of(Primer::Alpha::SelectPanel::FETCH_STRATEGIES) %>
       #
@@ -340,6 +380,9 @@ module Primer
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+      # @param loading_label [String] The aria-label to use when the panel is loading, defaults to 'Loading content...'.
+      # @param loading_description [String] The description to use when the panel is loading. If not provided, no description will be used.
+      # @param banner_scheme [Symbol] The scheme for the error banner <%= one_of(Primer::Alpha::SelectPanel::BANNER_SCHEME_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         src: nil,
@@ -360,8 +403,13 @@ module Primer
         open_on_load: false,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        loading_label: "Loading content...",
+        loading_description: nil,
+        banner_scheme: DEFAULT_BANNER_SCHEME,
         **system_arguments
       )
+        raise_if_role_given!(**system_arguments)
+
         if src.present?
           url = URI(src)
           query = url.query || ""
@@ -379,6 +427,13 @@ module Primer
         @dynamic_label = dynamic_label
         @dynamic_label_prefix = dynamic_label_prefix
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
+        @loading_label = loading_label
+        @loading_description_id = nil
+        if loading_description.present?
+          @loading_description_id = "#{@panel_id}-loading-description"
+        end
+        @loading_description = loading_description
+        @banner_scheme = fetch_or_fallback(BANNER_SCHEME_OPTIONS, banner_scheme, DEFAULT_BANNER_SCHEME)
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:id] = @panel_id
@@ -419,12 +474,21 @@ module Primer
           form_arguments: form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
-          role: "listbox",
-          aria_selection_variant: @select_variant == :multiple ? :checked : :selected,
           aria: {
             label: "#{title} options"
-          },
-          p: 2
+          }
+        )
+
+        return if @show_filter || @fetch_strategy != :remote
+        return if shouldnt_raise_error?
+
+        raise(
+          "Hiding the filter input with a remote fetch strategy is not permitted, "\
+          "since such a combinaton of options will cause the component to only "\
+          "fetch items from the server once when the panel opens for the first time; "\
+          "this is what the `:eventually_local` fetch strategy is designed to do. "\
+          "Consider passing `show_filter: true` or use the `:eventually_local` fetch "\
+          "strategy instead."
         )
       end
 

@@ -2,7 +2,7 @@
   <dialog-helper>
     <%= show_button %>
     <%= render(@dialog) do %>
-      <%= render Primer::Alpha::Dialog::Header.new(id: "#{@panel_id}-dialog", title: @title) do |header| %>
+      <%= render Primer::Alpha::Dialog::Header.new(id: "#{@panel_id}-dialog", title: @title, show_divider: show_filter?) do |header| %>
         <% if subtitle? %>
           <% header.with_subtitle do %>
             <%= subtitle %>
@@ -10,6 +10,15 @@
         <% end %>
         <% if show_filter? %>
           <% header.with_filter do %>
+            <div data-target="select-panel.bannerErrorElement" hidden>
+              <%= render Primer::Alpha::Banner.new(scheme: @banner_scheme, mb: 2) do %>
+                <% if error_content? %>
+                  <%= error_content %>
+                <% else %>
+                  <h2 class="f6 text-normal">Sorry, something went wrong.</h2>
+                <% end %>
+              <% end %>
+            </div>
             <%= render(Primer::BaseComponent.new(
               tag: :"remote-input",
               aria: { owns: @body_id },
@@ -36,16 +45,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <div data-target="select-panel.bannerErrorElement" hidden>
-        <%= render Primer::Alpha::Banner.new(scheme: :danger, full: true, mt: 2) do %>
-          <% if error_content? %>
-            <%= error_content %>
-          <% else %>
-            <h2 class="f5">Sorry, something went wrong.</h2>
-          <% end %>
-        <% end %>
-      </div>
-      <%= render Primer::Alpha::Dialog::Body.new(mt: 2, p: 0) do %>
+      <%= render Primer::Alpha::Dialog::Body.new(mt: show_filter? ? 0 : 2, p: 0) do %>
         <focus-group direction="vertical" mnemonics retain>
           <div class="sr-only" aria-live="polite" aria-atomic="true" data-target="select-panel.ariaLiveContainer"></div>
           <%= render(Primer::BaseComponent.new(
@@ -65,12 +65,16 @@
                     mb: 2,
                     aria: { disabled: true, busy: true },
                     display: :flex,
-                    align_items: :center,
+                    align_items: :flex_start,
                     justify_content: :center,
-                    text_align: :center
+                    text_align: :center,
+                    classes: "SelectPanel-loadingPanel"
                   )) do %>
-                    <div data-hide-on-error>
-                      <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }, data: { target: "select-panel.bodySpinner" }) %>
+                    <div data-hide-on-error class="pt-2">
+                      <%= render Primer::Beta::Spinner.new(aria: { label: @loading_label, describedby: @loading_description_id }, data: { target: "select-panel.bodySpinner" }) %>
+                      <% if @loading_description.present? %>
+                        <div id="<%= @loading_description_id %>" aria-hidden="true"><%= @loading_description %></div>
+                      <% end %>
                     </div>
                     <div data-show-on-error hidden data-target="select-panel.fragmentErrorElement">
                       <% if preload_error_content? %>
@@ -78,7 +82,7 @@
                       <% else %>
                         <div class="pt-2 pb-2">
                           <%= render Primer::Beta::Octicon.new(icon: :alert, color: :danger) %>
-                          <h2 class="f5">Sorry, something went wrong.</h2>
+                          <h2 class="f5 mt-2">Sorry, something went wrong.</h2>
                         </div>
                       <% end %>
                     </div>
@@ -88,7 +92,7 @@
                 <%= render(@list) %>
               <% end %>
             </div>
-            <div data-target="select-panel.noResults" class="color-border-muted text-center" hidden>
+            <div data-target="select-panel.noResults" class="pt-2 color-border-muted text-center d-flex flex-items-start flex-justify-center SelectPanel-emptyPanel" hidden>
               <h2 class="v-align-middle m-3 f5"><%= @no_results_label %></h2>
             </div>
           <% end %>

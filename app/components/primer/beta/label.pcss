@@ -10,13 +10,14 @@
 .label, /* TODO: Deprecate */
 .Label {
   display: inline-block;
-  padding: 0 7px;
+  padding: 0 var(--base-size-6);
   font-size: var(--text-body-size-small);
   font-weight: var(--base-text-weight-medium);
+  /* stylelint-disable-next-line primer/typography */
   line-height: 18px;
   white-space: nowrap;
   border: var(--borderWidth-thin) solid var(--borderColor-default);
-  border-radius: 2em;
+  border-radius: var(--borderRadius-full);
 
   &:hover {
     text-decoration: none;
@@ -26,8 +27,8 @@
 /* Large 24px */
 
 .Label--large {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 0 var(--base-size-8);
+  /* stylelint-disable-next-line primer/typography */
   line-height: 22px;
 }
 
@@ -37,7 +38,9 @@
 ** Can be used with different font-sizes */
 .Label--inline {
   display: inline;
+  /* stylelint-disable-next-line primer/spacing */
   padding: 0.12em 0.5em;
+  /* stylelint-disable-next-line primer/typography */
   font-size: 85%;
 }
 

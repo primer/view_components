@@ -108,7 +108,7 @@
         "name": "aria_selection_variant",
         "type": "Symbol",
         "default": "`:checked`",
-        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+        "description": "Specifies which aria selection to use. One of `:checked` or `:selected`."
       },
       {
         "name": "form_arguments",
@@ -451,7 +451,7 @@
         "name": "aria_selection_variant",
         "type": "Symbol",
         "default": "`:checked`",
-        "description": "Specifies which aria selection to use. <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?"
+        "description": "Specifies which aria selection to use. One of `:checked` or `:selected`."
       },
       {
         "name": "form_arguments",
@@ -2469,6 +2469,24 @@
         "description": "The side to anchor the Overlay to. One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
       },
       {
+        "name": "loading_label",
+        "type": "String",
+        "default": "`\"Loading content...\"`",
+        "description": "The aria-label to use when the panel is loading, defaults to 'Loading content...'."
+      },
+      {
+        "name": "loading_description",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The description to use when the panel is loading. If not provided, no description will be used."
+      },
+      {
+        "name": "banner_scheme",
+        "type": "Symbol",
+        "default": "`:danger`",
+        "description": "The scheme for the error banner One of `:danger` or `:warning`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -2489,6 +2507,92 @@
         "type": "Hash",
         "default": "N/A",
         "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)."
+      }
+    ]
+  },
+  {
+    "component": "Stack",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "Stack",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/stack.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/stack/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "Customize the element type of the rendered container."
+      },
+      {
+        "name": "gap",
+        "type": "Symbol",
+        "default": "`GapArg::DEFAULT`",
+        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:normal`, or `:spacious`."
+      },
+      {
+        "name": "direction",
+        "type": "Symbol",
+        "default": "`:vertical`",
+        "description": "Specify the direction for the stack container. One of `nil`, `:horizontal`, or `:vertical`."
+      },
+      {
+        "name": "align",
+        "type": "Symbol",
+        "default": "`:stretch`",
+        "description": "Specify the alignment between items in the cross-axis of the direction. One of `nil`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`."
+      },
+      {
+        "name": "wrap",
+        "type": "Symbol",
+        "default": "`:nowrap`",
+        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, or `:wrap`."
+      },
+      {
+        "name": "justify",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "Specify how items will be distributed in the stacking direction. One of `nil`, `:center`, `:end`, `:space_between`, `:space_evenly`, or `:start`."
+      },
+      {
+        "name": "padding",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "Specify the padding of the stack container. One of `nil`, `:condensed`, `:none`, `:normal`, or `:spacious`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "StackItem",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "StackItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/stack_item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/stack_item/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "Customize the element type of the rendered container."
+      },
+      {
+        "name": "grow",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Allow item to keep size or expand to fill the available space."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
       }
     ]
   },
