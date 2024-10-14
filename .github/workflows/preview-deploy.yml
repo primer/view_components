@@ -62,9 +62,9 @@ jobs:
       with:
         # excluding a client secret here will cause a login via OpenID Connect (OIDC),
         # which prevents us from having to rotate client credentials, etc
-        client-id: "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
-        tenant-id: "398a6654-997b-47e9-b12b-9515b896b4de"
-        subscription-id: "550eb99d-d0c7-4651-a337-f53fa6520c4f"
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
@@ -96,7 +96,7 @@ jobs:
       uses: azure/arm-deploy@a1361c2c2cd398621955b16ca32e01c65ea340f5
       with:
         resourceGroupName: primer
-        subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         template: ./.github/workflows/demo-preview-template.json
         deploymentName: ${{env.DEPLOYMENT_NAME}}
         parameters: appName="${{env.APP_NAME}}"
