@@ -17,6 +17,11 @@ module Primer
         @form = form
         @layout = layout
         @system_arguments = system_arguments
+
+        @system_arguments[:classes] = class_names(
+          @system_arguments.delete(:classes),
+          "FormControl-horizontalGroup" => horizontal?
+        )
       end
 
       def horizontal?

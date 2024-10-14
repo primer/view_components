@@ -246,6 +246,10 @@ module Primer
           @input_arguments[:id]
         end
 
+        def value
+          @input_arguments[:value]
+        end
+
         # :nocov:
         def name
           raise_for_abstract_method!(__method__)
@@ -305,7 +309,7 @@ module Primer
         def caption_template_name
           return nil unless name
 
-          @caption_template_name ||= if respond_to?(:value)
+          @caption_template_name ||= if respond_to?(:value) && value.present?
                                        :"#{name}_#{value}"
                                      else
                                        name.to_sym
