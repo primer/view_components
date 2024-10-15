@@ -34,7 +34,7 @@
     "prepare": "script/build-assets",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint --rd -q 'app/components/**/*.pcss'",
-    "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
+    "lint:stylelint:fix": "npm run lint:stylelint --  --fix",
     "lint:eslint": "eslint 'app/components/**/*.ts'",
     "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
