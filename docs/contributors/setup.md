@@ -29,7 +29,7 @@ To minimize the number of restarts, we recommend checking the component in Lookb
 In your `Gemfile`, change:
 
 ```ruby
-gem "oppenproject-primer_view_components"
+gem "openproject-primer_view_components"
 ```
 
 to
