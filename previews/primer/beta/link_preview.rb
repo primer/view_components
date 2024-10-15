@@ -9,8 +9,14 @@ module Primer
       # @param underline [Boolean]
       # @param muted [Boolean]
       # @param scheme [Symbol] select [default, primary, secondary]
-      def playground(scheme: :default, muted: false, underline: true)
-        render(Primer::Beta::Link.new(href: "#", scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
+      # @param leading_visual_icon [Symbol] octicon
+      # @param trailing_visual_icon [Symbol] octicon
+      def playground(scheme: :default, muted: false, underline: true, leading_visual_icon: nil, trailing_visual_icon: nil)
+        render(Primer::Beta::Link.new(href: "#", scheme: scheme, muted: muted, underline: underline)) do |link|
+          link.with_leading_visual_icon(icon: leading_visual_icon) if leading_visual_icon && leading_visual_icon != :none
+          link.with_trailing_visual_icon(icon: trailing_visual_icon) if trailing_visual_icon && trailing_visual_icon != :none
+          "This is a link!"
+        end
       end
 
       # @label Default Options
@@ -66,6 +72,22 @@ module Primer
         render(Primer::Beta::Link.new(href: "#", scheme: :secondary, muted: true)) { "This is a muted secondary link color." }
       end
       # @!endgroup
+
+      # @label With leading icon
+      def with_leading_icon
+        render(Primer::Beta::Link.new(href: "#")) do |component|
+          component.with_leading_visual_icon(icon: :"mark-github")
+          "Link with leading icon"
+        end
+      end
+
+      # @label With trailing icon
+      def with_trailing_icon
+        render(Primer::Beta::Link.new(href: "#")) do |component|
+          component.with_trailing_visual_icon(icon: :"link-external")
+          "Link with trailing icon"
+        end
+      end
     end
   end
 end
