@@ -50,14 +50,10 @@ module Primer
           false
         end
 
-        private
-
-        def caption_template_name
-          @caption_template_name ||= if @scheme == :array
-                                       :"#{name}_#{value}"
-                                     else
-                                       name.to_sym
-                                     end
+        def values_disambiguate_template_names?
+          # Check boxes submitted as an array all have the same name, so we return true here
+          # to ensure different caption templates can be attached to individual check box inputs.
+          @scheme == :array
         end
       end
     end
