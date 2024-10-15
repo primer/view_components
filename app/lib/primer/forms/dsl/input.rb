@@ -300,6 +300,14 @@ module Primer
           ""
         end
 
+        # Whether or not the `value:` argument should be used to determine the caption template
+        # for a given field. This is useful in especially radio button groups where each option
+        # has the same name but a different value. Check box groups where the values are submitted
+        # as an array also use this feature, since each check box also has the same name.
+        def values_disambiguate_template_names?
+          false
+        end
+
         private
 
         def input_data
@@ -309,7 +317,7 @@ module Primer
         def caption_template_name
           return nil unless name
 
-          @caption_template_name ||= if respond_to?(:value) && value.present?
+          @caption_template_name ||= if values_disambiguate_template_names? && respond_to?(:value) && value.present?
                                        :"#{name}_#{value}"
                                      else
                                        name.to_sym

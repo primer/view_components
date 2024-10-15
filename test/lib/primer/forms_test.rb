@@ -61,10 +61,13 @@ class Primer::FormsTest < Minitest::Test
     assert_selector ".FormControl-caption .color-fg-danger", text: "Check only if you are cool."
     assert_selector ".FormControl-caption .color-fg-danger", text: "A young thing."
     assert_selector ".FormControl-caption .color-fg-danger", text: "No longer a spring chicken."
+    assert_selector ".FormControl-caption", text: "Lopez caption"
+    assert_selector ".FormControl-caption", text: "Bellevue caption"
+    assert_selector ".FormControl-caption", text: "Seattle caption"
   end
 
-  def test_the_input_is_described_by_the_caption_when_caption_templates_are_used
-    num_inputs = 4
+  def test_inputs_are_described_by_their_captions_when_caption_templates_are_used
+    num_inputs = 7
     render_preview :caption_template_form
 
     caption_ids = page
