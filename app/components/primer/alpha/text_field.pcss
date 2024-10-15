@@ -301,6 +301,7 @@
         width: var(--borderWidth-thin);
         height: var(--base-size-16);
         content: '';
+        /* stylelint-disable-next-line primer/colors */
         background: var(--borderColor-default);
       }
     }
@@ -598,6 +599,7 @@ input[type='checkbox'].FormControl-checkbox {
     height: var(--base-size-16);
     visibility: hidden;
     content: '';
+    /* stylelint-disable-next-line primer/colors */
     background-color: var(--control-checked-fgColor-rest);
     transition: visibility 0s linear 230ms;
     clip-path: inset(var(--base-size-16) 0 0 0);
@@ -643,18 +645,20 @@ input[type='checkbox'].FormControl-checkbox {
 
     &:disabled {
       cursor: not-allowed;
+      /* stylelint-disable-next-line primer/colors */
       background-color: var(--control-fgColor-disabled);
+      /* stylelint-disable-next-line primer/colors */
       border-color: var(--control-fgColor-disabled);
       opacity: 1;
 
       &::before {
+        /* stylelint-disable-next-line primer/colors */
         background-color: var(--control-checked-fgColor-rest);
       }
     }
 
     /* Windows High Contrast mode */
     @media (forced-colors: active) {
-      /* stylelint-disable-next-line primer/colors */
       background-color: canvastext;
       border-color: canvastext;
     }
@@ -706,6 +710,7 @@ input[type='radio'].FormControl-radio {
 
     &[disabled], &:disabled {
       cursor: not-allowed;
+      /* stylelint-disable-next-line primer/colors */
       border-color: var(--control-fgColor-disabled);
 
       & ~ .FormControl-radio-labelWrap {
@@ -723,7 +728,6 @@ input[type='radio'].FormControl-radio {
 
   /* Windows High Contrast mode */
   @media (forced-colors: active) {
-    /* stylelint-disable-next-line primer/colors */
     background-color: canvastext;
     border-color: canvastext;
   }

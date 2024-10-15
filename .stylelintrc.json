@@ -16,6 +16,18 @@
       {
         "ignoreAtRules": ["mixin", "define-mixin"]
       }
+    ],
+    "plugin/browser-compat": [
+      true,
+      {
+        "severity": "warning",
+        "allow": {
+          "features": ["properties.scrollbar-width"],
+          "flagged": false,
+          "partialImplementation": true,
+          "prefix": true
+        }
+      }
     ]
   }
 }
