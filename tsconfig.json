@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "./",
+    "declarationDir": "./app",
     "strictPropertyInitialization": false,
     "strict": true,
     "baseUrl": ".",
