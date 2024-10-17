@@ -3307,6 +3307,12 @@
         "description": "If true will hide the heading title, while still making it available to Screen Readers."
       },
       {
+        "name": "disable_scroll",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "When true, disables scrolling the page when the dialog is open."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -8177,6 +8183,19 @@
         "preview_path": "primer/alpha/select_panel/no_values",
         "name": "no_values",
         "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

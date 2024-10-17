@@ -975,6 +975,12 @@
         "description": "If true will hide the heading title, while still making it available to Screen Readers."
       },
       {
+        "name": "disable_scroll",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "When true, disables scrolling the page when the dialog is open."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
