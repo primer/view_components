@@ -21,9 +21,11 @@
   syntax: "<length>";
 }
 
-/* TODO: One day this can be :has(:modal), when it is better supported */
-body.has-modal {
+body:has(:modal) {
   padding-right: var(--dialog-scrollgutter) !important;
+}
+
+body:has(dialog:modal.Overlay--disableScroll) {
   overflow: hidden !important;
 }
 

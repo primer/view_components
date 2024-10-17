@@ -1,16 +1,21 @@
-<%= render(Primer::Alpha::Dialog.new(
-  id: "dialog-one",
-  title: title,
-  subtitle: subtitle,
-  size: size,
-  position: position,
-  position_narrow: position_narrow,
-  visually_hide_title: visually_hide_title,
-  disable_scroll: disable_scroll
-)) do |d| %>
-  <% d.with_show_button { button_text } %>
-  <% d.with_body { body_text } %>
+<% subject_id = SecureRandom.hex %>
+
+<%= render(Primer::Alpha::SelectPanel.new(
+  data: { interaction_subject: subject_id },
+  fetch_strategy: :local,
+  open_on_load: open_on_load,
+)) do |panel| %>
+  <% panel.with_show_button { "Panel" } %>
+  <% panel.with_item(label: "Item 1") %>
+  <% panel.with_item(label: "Item 2") %>
+  <% panel.with_item(label: "Item 3") %>
+  <% panel.with_item(label: "Item 4") %>
+  <% panel.with_footer(show_divider: true) do %>
+    I'm a footer!
+  <% end %>
 <% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>
 
 <!-- just some lorem ipsum -->
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut etiam sit amet nisl purus in. Amet risus nullam eget felis. Consectetur adipiscing elit ut aliquam purus sit amet luctus. Non quam lacus suspendisse faucibus interdum. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Ipsum nunc aliquet bibendum enim facilisis gravida. Egestas pretium aenean pharetra magna. Amet mattis vulputate enim nulla aliquet. Diam vel quam elementum pulvinar etiam non. Tempor orci eu lobortis elementum. Arcu non odio euismod lacinia at quis risus sed.</p>
