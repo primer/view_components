@@ -54,7 +54,8 @@ class DetailsMenuMigrationTest < ErblintTestCase
   end
 
   def test_accepts_custom_regex_pattern
-    @linter.config.custom_erb_pattern = [/render[\s\(]GitHub::MenuComponent/]
+    @linter.config.custom_erb_pattern = ["render[\s\(]GitHub::MenuComponent"]
+
     @file = <<~HTML
       <%= render GitHub::MenuComponent.new do %>
     HTML
@@ -64,7 +65,8 @@ class DetailsMenuMigrationTest < ErblintTestCase
   end
 
   def test_accepts_multiple_custom_regex_pattern
-    @linter.config.custom_erb_pattern = [/render[\s\(]GitHub::MenuComponent/, /SomeOtherComponent/]
+    @linter.config.custom_erb_pattern = ["render[\s\(]GitHub::MenuComponent", "SomeOtherComponent"]
+
     @file = <<~HTML
       <%= render GitHub::MenuComponent.new do %>
       <% end %>
