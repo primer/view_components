@@ -128,7 +128,7 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %> `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
       # @param select_variant [Symbol] How items may be selected in the list. <%= one_of(Primer::Alpha::ActionList::SELECT_VARIANT_OPTIONS) %>
-      # @param aria_selection_variant [Symbol] Specifies which aria selection to use.  <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %?
+      # @param aria_selection_variant [Symbol] Specifies which aria selection to use.  <%= one_of(Primer::Alpha::ActionList::ARIA_SELECTION_VARIANT_OPTIONS) %>
       # @param form_arguments [Hash] Allows an `ActionList` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission. *NOTE*: Consider using an <%= link_to_component(Primer::Alpha::ActionMenu) %> instead of using this feature directly.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(

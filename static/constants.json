@@ -598,6 +598,11 @@
   "Primer::Alpha::Select": {
   },
   "Primer::Alpha::SelectPanel": {
+    "BANNER_SCHEME_OPTIONS": [
+      "danger",
+      "warning"
+    ],
+    "DEFAULT_BANNER_SCHEME": "danger",
     "DEFAULT_FETCH_STRATEGY": "remote",
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "single",
@@ -615,6 +620,30 @@
     "Utils": "Primer::Alpha::SelectPanel::Utils"
   },
   "Primer::Alpha::SelectPanel::ItemList": {
+  },
+  "Primer::Alpha::Stack": {
+    "ARG_CLASSES": [
+      "Primer::Alpha::Stack::JustifyArg",
+      "Primer::Alpha::Stack::DirectionArg",
+      "Primer::Alpha::Stack::AlignArg",
+      "Primer::Alpha::Stack::WrapArg",
+      "Primer::Alpha::Stack::PaddingArg",
+      "Primer::Alpha::Stack::GapArg"
+    ],
+    "AlignArg": "Primer::Alpha::Stack::AlignArg",
+    "DEFAULT_TAG": "div",
+    "DirectionArg": "Primer::Alpha::Stack::DirectionArg",
+    "GapArg": "Primer::Alpha::Stack::GapArg",
+    "JustifyArg": "Primer::Alpha::Stack::JustifyArg",
+    "PaddingArg": "Primer::Alpha::Stack::PaddingArg",
+    "WrapArg": "Primer::Alpha::Stack::WrapArg"
+  },
+  "Primer::Alpha::StackItem": {
+    "ARG_CLASSES": [
+      "Primer::Alpha::StackItem::GrowArg"
+    ],
+    "DEFAULT_TAG": "div",
+    "GrowArg": "Primer::Alpha::StackItem::GrowArg"
   },
   "Primer::Alpha::SubmitButton": {
   },

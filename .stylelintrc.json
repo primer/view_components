@@ -1,6 +1,5 @@
 {
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["@primer/stylelint-config/plugins/no-deprecated-colors"],
+  "extends": ["@primer/stylelint-config"],
   "ignoreFiles": ["app/**/*.css", "**/*.js", "**/*.ts"],
   "rules": {
     "media-feature-range-notation": null,
@@ -18,6 +17,17 @@
         "ignoreAtRules": ["mixin", "define-mixin"]
       }
     ],
-    "primer/no-deprecated-colors": true
+    "plugin/browser-compat": [
+      true,
+      {
+        "severity": "warning",
+        "allow": {
+          "features": ["properties.scrollbar-width"],
+          "flagged": false,
+          "partialImplementation": true,
+          "prefix": true
+        }
+      }
+    ]
   }
 }

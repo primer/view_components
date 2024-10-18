@@ -54,6 +54,8 @@
   "Primer::Alpha::Select": "alpha",
   "Primer::Alpha::SelectPanel": "alpha",
   "Primer::Alpha::SelectPanel::ItemList": "alpha",
+  "Primer::Alpha::Stack": "alpha",
+  "Primer::Alpha::StackItem": "alpha",
   "Primer::Alpha::SubmitButton": "alpha",
   "Primer::Alpha::TabContainer": "alpha",
   "Primer::Alpha::TabNav": "alpha",

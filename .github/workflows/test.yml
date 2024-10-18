@@ -56,8 +56,6 @@ jobs:
           - rails_version: "7.1.3"
             ruby_version: "3.3"
           - rails_version: "main"
-            ruby_version: "3.1"
-          - rails_version: "main"
             ruby_version: "3.2"
           - rails_version: "main"
             ruby_version: "3.3"
@@ -104,8 +102,6 @@ jobs:
           - rails_version: "7.1.3"
             ruby_version: "3.3"
           - rails_version: "main"
-            ruby_version: "3.1"
-          - rails_version: "main"
             ruby_version: "3.2"
           - rails_version: "main"
             ruby_version: "3.3"
@@ -151,8 +147,6 @@ jobs:
             ruby_version: "3.2"
           - rails_version: "7.1.3"
             ruby_version: "3.3"
-          - rails_version: "main"
-            ruby_version: "3.1"
           - rails_version: "main"
             ruby_version: "3.2"
           - rails_version: "main"
@@ -258,7 +252,7 @@ jobs:
     - name: Run Playwright tests
       id: playwright-run
       continue-on-error: true
-      run: npx playwright test --workers 6
+      run: ./script/run-playwright
     - id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v5
       with:

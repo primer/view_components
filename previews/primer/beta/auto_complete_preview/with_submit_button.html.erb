@@ -1,20 +1,20 @@
 <div class="d-flex flex-items-start flex-column flex-sm-row flex-sm-items-end" style="gap: .5rem">
-    <%= render(
-        Primer::Beta::AutoComplete.new(
-            label_text: label_text,
-            input_id: input_id,
-            list_id: list_id,
-            src: autocomplete_index_path,
-            show_clear_button: show_clear_button,
-            visually_hide_label: visually_hide_label,
-            placeholder: placeholder,
-            size: size,
-            full_width: full_width,
-            disabled: disabled,
-            invalid: invalid,
-            input_name: input_name
-    )) do |component| %>
-        <% component.with_leading_visual_icon(icon: :search) %>
-    <% end %>
-    <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
+  <%= render(
+    Primer::Beta::AutoComplete.new(
+      label_text: label_text,
+      input_id: input_id,
+      list_id: list_id,
+      src: autocomplete_index_path,
+      show_clear_button: show_clear_button,
+      visually_hide_label: visually_hide_label,
+      placeholder: placeholder,
+      size: size,
+      full_width: full_width,
+      disabled: disabled,
+      invalid: invalid,
+      input_name: input_name
+  )) do |component| %>
+    <% component.with_leading_visual_icon(icon: :search) %>
+  <% end %>
+  <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Submit" } %>
 </div>

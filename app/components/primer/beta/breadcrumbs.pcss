@@ -1,13 +1,16 @@
 .breadcrumb-item {
   display: inline-block;
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: -0.35em;
   list-style: none;
 
   &::after {
     display: inline-block;
     height: 0.8em;
+    /* stylelint-disable-next-line primer/spacing */
     margin: 0 0.5em;
     content: '';
+    /* stylelint-disable-next-line primer/borders */
     border-right: 0.1em solid var(--borderColor-neutral-emphasis);
     transform: rotate(15deg) translateY(0.0625em);
   }
@@ -24,8 +27,9 @@
   }
 }
 
+/* stylelint-disable-next-line selector-max-type */
 .breadcrumb-item-selected a {
   color: var(--fgColor-default);
-  cursor: default !important;
   text-decoration: none !important;
+  cursor: default !important;
 }

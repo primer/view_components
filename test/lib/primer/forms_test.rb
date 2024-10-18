@@ -61,10 +61,13 @@ class Primer::FormsTest < Minitest::Test
     assert_selector ".FormControl-caption .color-fg-danger", text: "Check only if you are cool."
     assert_selector ".FormControl-caption .color-fg-danger", text: "A young thing."
     assert_selector ".FormControl-caption .color-fg-danger", text: "No longer a spring chicken."
+    assert_selector ".FormControl-caption", text: "Lopez caption"
+    assert_selector ".FormControl-caption", text: "Bellevue caption"
+    assert_selector ".FormControl-caption", text: "Seattle caption"
   end
 
-  def test_the_input_is_described_by_the_caption_when_caption_templates_are_used
-    num_inputs = 4
+  def test_inputs_are_described_by_their_captions_when_caption_templates_are_used
+    num_inputs = 7
     render_preview :caption_template_form
 
     caption_ids = page
@@ -295,12 +298,6 @@ class Primer::FormsTest < Minitest::Test
     render_preview :single_text_field_form
 
     assert_selector "primer-text-field.FormControl"
-  end
-
-  def test_siblings_are_form_controls_when_including_a_multi_input
-    render_preview :multi_input_form
-
-    assert_selector ".FormControl-radio-group-wrap + .FormControl"
   end
 
   def test_toggle_switch_button_labelled_by_label

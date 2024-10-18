@@ -1,20 +1,25 @@
+/* stylelint-disable selector-max-compound-selectors */
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable max-nesting-depth */
 :root {
   --actionListContent-paddingBlock: var(--control-medium-paddingBlock);
 }
 
 /* ActionList */
 
+/* stylelint-disable-next-line selector-max-type */
 action-list {
   display: block;
 }
 
+/* stylelint-disable-next-line selector-max-type */
 nav-list {
   display: block;
 }
 
 .ActionListHeader {
-  margin-left: var(--base-size-8);
   margin-bottom: var(--base-size-16);
+  margin-left: var(--base-size-8);
 }
 
 /* <ul> */
@@ -32,24 +37,28 @@ nav-list {
 .ActionListWrap--divided {
   & .ActionListItem-label::before {
     position: absolute;
+    /* stylelint-disable-next-line primer/spacing */
     top: calc(-1 * var(--actionListContent-paddingBlock));
     display: block;
     width: 100%;
     height: 1px;
     content: '';
-    background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
+    /* stylelint-disable-next-line primer/colors */
+    background: var(--borderColor-muted);
   }
 
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
   & .ActionListItem-descriptionWrap--inline {
     &::before {
       position: absolute;
+      /* stylelint-disable-next-line primer/spacing */
       top: calc(-1 * var(--actionListContent-paddingBlock));
       display: block;
       width: 100%;
       height: var(--borderWidth-thin);
       content: '';
-      background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
+      /* stylelint-disable-next-line primer/colors */
+      background: var(--borderColor-muted);
     }
 
     /* unset the default label pseudo */
@@ -290,7 +299,9 @@ nav-list {
   position: relative;
   display: grid;
   width: 100%;
+  /* stylelint-disable-next-line primer/spacing */
   padding-block: var(--actionListContent-paddingBlock);
+  /* stylelint-disable-next-line primer/spacing */
   padding-inline: var(--control-medium-paddingInline-condensed);
   color: var(--control-fgColor-rest);
   text-align: left;
@@ -308,6 +319,7 @@ nav-list {
 
   /* column-gap persists with empty grid-areas, margin applies only when children exist */
   & > :not(:last-child) {
+    /* stylelint-disable-next-line primer/spacing */
     margin-right: var(--control-medium-gap);
   }
 
@@ -492,7 +504,7 @@ nav-list {
 
     & .ActionListItem-multiSelectIconRect {
       fill: var(--bgColor-default);
-      border: var(--borderWidth-thin, 1px) solid var(--control-borderColor-rest);
+      border: var(--borderWidth-thin) solid var(--control-borderColor-rest);
     }
   }
 
@@ -539,6 +551,7 @@ nav-list {
 
 /* have leading visual svg filled with chosen color */
 
+/* stylelint-disable-next-line selector-max-type */
 .ActionListItem-visual--leading svg {
   fill: currentcolor;
 }
@@ -642,13 +655,14 @@ nav-list {
   /* with children */
   &:not(:empty) {
     display: flex;
-    padding-inline: var(--actionListContent-paddingBlock);
-    padding-block: var(--base-size-8);
     font-size: var(--text-body-size-small);
-    line-height: var(--text-body-lineHeight-small);
     font-weight: var(--base-text-weight-semibold);
+    line-height: var(--text-body-lineHeight-small);
     color: var(--fgColor-muted);
     flex-direction: column;
+    /* stylelint-disable-next-line primer/spacing */
+    padding-inline: var(--actionListContent-paddingBlock);
+    padding-block: var(--base-size-8);
   }
 
   /* no children */
@@ -656,11 +670,13 @@ nav-list {
     display: block;
     height: var(--borderWidth-thin);
     padding: 0;
+    /* stylelint-disable-next-line primer/spacing */
     margin-block-start: calc(var(--base-size-8) - var(--borderWidth-thin));
     margin-block-end: var(--base-size-8);
     margin-inline: calc(-1 * var(--base-size-8));
     list-style: none;
-    background: var(--borderColor-muted, var(--color-action-list-item-inline-divider));
+    /* stylelint-disable-next-line primer/colors */
+    background: var(--borderColor-muted);
     border: 0;
   }
 
@@ -673,6 +689,7 @@ nav-list {
 }
 
 .ActionList-sectionDivider--filled {
+  /* stylelint-disable-next-line primer/spacing */
   margin-block-start: calc(var(--base-size-8) - var(--borderWidth-thin));
   margin-block-end: var(--base-size-8);
   margin-inline: calc(-1 * var(--base-size-8));

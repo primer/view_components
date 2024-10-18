@@ -11,7 +11,7 @@
         <% if show_filter? %>
           <% header.with_filter do %>
             <div data-target="select-panel.bannerErrorElement" hidden>
-              <%= render Primer::Alpha::Banner.new(scheme: :danger, mb: 2) do %>
+              <%= render Primer::Alpha::Banner.new(scheme: @banner_scheme, mb: 2) do %>
                 <% if error_content? %>
                   <%= error_content %>
                 <% else %>
@@ -65,13 +65,16 @@
                     mb: 2,
                     aria: { disabled: true, busy: true },
                     display: :flex,
-                    align_items: :center,
+                    align_items: :flex_start,
                     justify_content: :center,
                     text_align: :center,
                     classes: "SelectPanel-loadingPanel"
                   )) do %>
-                    <div data-hide-on-error>
-                      <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }, data: { target: "select-panel.bodySpinner" }) %>
+                    <div data-hide-on-error class="pt-2">
+                      <%= render Primer::Beta::Spinner.new(aria: { label: @loading_label, describedby: @loading_description_id }, data: { target: "select-panel.bodySpinner" }) %>
+                      <% if @loading_description.present? %>
+                        <div id="<%= @loading_description_id %>" aria-hidden="true"><%= @loading_description %></div>
+                      <% end %>
                     </div>
                     <div data-show-on-error hidden data-target="select-panel.fragmentErrorElement">
                       <% if preload_error_content? %>
@@ -89,7 +92,7 @@
                 <%= render(@list) %>
               <% end %>
             </div>
-            <div data-target="select-panel.noResults" class="color-border-muted text-center d-flex flex-items-center flex-justify-center SelectPanel-emptyPanel" hidden>
+            <div data-target="select-panel.noResults" class="pt-2 color-border-muted text-center d-flex flex-items-start flex-justify-center SelectPanel-emptyPanel" hidden>
               <h2 class="v-align-middle m-3 f5"><%= @no_results_label %></h2>
             </div>
           <% end %>

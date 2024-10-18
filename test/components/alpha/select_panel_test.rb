@@ -95,6 +95,22 @@ module Primer
         assert_equal dialog_labelledby_id, header_id
       end
 
+      def test_custom_loading_label
+        render_preview(:custom_loading_label)
+
+        # Check that there's a loading label, but no description
+        assert_selector "svg[aria-label='Custom loading content... please wait...']"
+        refute_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
+      end
+
+      def test_custom_loading_description
+        render_preview(:custom_loading_description)
+
+        # Check that there's a loading label and description
+        assert_selector "svg[aria-label='Custom loading content... please wait...'][aria-describedby='select-panel-loading-description']"
+        assert_selector "div", text: "This is a custom loading description", id: "select-panel-loading-description"
+      end
+
       def test_renders_close_button
         render_preview(:default)
 
