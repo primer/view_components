@@ -356,8 +356,6 @@
   },
   "Primer::Alpha::Image": {
   },
-  "Primer::Alpha::ImageCrop": {
-  },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
     "FIRST_IN_SOURCE_OPTIONS": [
