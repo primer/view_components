@@ -27,16 +27,14 @@
     "app/components/primer/**/*.css.json",
     "app/components/primer/**/*.d.ts",
     "app/lib/primer/forms/**/*.js",
-    "app/lib/primer/forms/**/*.d.ts",
-    "lib/primer/forms/**/*.js",
-    "lib/primer/forms/**/*.d.ts"
+    "app/lib/primer/forms/**/*.d.ts"
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
     "prepare": "script/build-assets",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
-    "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
-    "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
+    "lint:stylelint": "stylelint --rd -q 'app/components/**/*.pcss'",
+    "lint:stylelint:fix": "npm run lint:stylelint --  --fix",
     "lint:eslint": "eslint 'app/components/**/*.ts'",
     "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
@@ -68,7 +66,7 @@
     "@playwright/test": "^1.35.1",
     "@primer/css": "21.3.6",
     "@primer/primitives": "^9.0.2",
-    "@primer/stylelint-config": "^13.0.1",
+    "@primer/stylelint-config": "^13.1.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^7.0.1",

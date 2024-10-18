@@ -42,6 +42,10 @@ module Primer
         def supports_validation?
           false
         end
+
+        def values_disambiguate_template_names?
+          true
+        end
       end
     end
   end
