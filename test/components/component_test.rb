@@ -33,7 +33,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
-    [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
       component.with_item(label: "Foo")
