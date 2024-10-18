@@ -54,24 +54,6 @@ module Primer
         assert_selector "select-panel .Overlay-footer", text: "I'm a footer!"
       end
 
-      def test_renders_custom_preload_error_content
-        render_inline(Primer::Alpha::SelectPanel.new(fetch_strategy: :eventually_local, src: "/foo")) do |panel|
-          panel.with_preload_error_content { "Foobar" }
-        end
-
-        banner_element = page.find_css("select-panel [data-target='select-panel.fragmentErrorElement']")
-        assert_includes banner_element.text, "Foobar"
-      end
-
-      def test_renders_custom_error_content
-        render_inline(Primer::Alpha::SelectPanel.new) do |panel|
-          panel.with_error_content { "Foobar" }
-        end
-
-        banner_element = page.find_css("select-panel [data-target='select-panel.bannerErrorElement']").first
-        assert_includes banner_element.text, "Foobar"
-      end
-
       def test_invoker_controls_dialog
         render_preview(:default)
 
@@ -176,6 +158,92 @@ module Primer
         end
 
         assert_selector(".avatar-small")
+      end
+
+      def test_renders_default_body_error
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo"))
+
+        assert_selector "select-panel [data-target='select-panel.bodyErrorMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "Sorry, something went wrong.", visible: :hidden
+          message_el.assert_selector "h3", text: "Try again or if the problem persists, contact support.", visible: :hidden
+        end
+      end
+
+      def test_renders_custom_body_error
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo")) do |panel|
+          panel.with_body_error_message do |message|
+            message.with_title { "Foobar" }
+            message.with_description { "Barbaz" }
+          end
+        end
+
+        assert_selector "select-panel [data-target='select-panel.bodyErrorMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "Foobar", visible: :hidden
+          message_el.assert_selector "h3", text: "Barbaz", visible: :hidden
+        end
+      end
+
+      def test_renders_default_banner_error
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo"))
+
+        assert_selector "select-panel [data-target='select-panel.bannerErrorMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector ".Banner", text: "Sorry, something went wrong.", visible: :hidden
+        end
+      end
+
+      def test_renders_custom_banner_error
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo")) do |panel|
+          panel.with_banner_error_message { "Foobarbazboo" }
+        end
+
+        assert_selector "select-panel [data-target='select-panel.bannerErrorMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector ".Banner", text: "Foobarbazboo", visible: :hidden
+        end
+      end
+
+      def test_renders_default_no_items_message
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo"))
+
+        assert_selector "select-panel [data-target='select-panel.noItemsMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "No items found.", visible: :hidden
+        end
+      end
+
+      def test_renders_custom_no_items_message
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo")) do |panel|
+          panel.with_no_items_message do |message|
+            message.with_title { "Foobar" }
+            message.with_description { "Barbaz" }
+          end
+        end
+
+        assert_selector "select-panel [data-target='select-panel.noItemsMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "Foobar", visible: :hidden
+          message_el.assert_selector "h3", text: "Barbaz", visible: :hidden
+        end
+      end
+
+      def test_renders_default_no_matches_message
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo"))
+
+        assert_selector "select-panel [data-target='select-panel.noMatchesMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "No matches found.", visible: :hidden
+          message_el.assert_selector "h3", text: "Try adjusting your search terms.", visible: :hidden
+        end
+      end
+
+      def test_renders_custom_no_matches_message
+        render_inline(Primer::Alpha::SelectPanel.new(src: "/foo")) do |panel|
+          panel.with_no_matches_message do |message|
+            message.with_title { "Foobar" }
+            message.with_description { "Barbaz" }
+          end
+        end
+
+        assert_selector "select-panel [data-target='select-panel.noMatchesMessage']", visible: :hidden do |message_el|
+          message_el.assert_selector "h2", text: "Foobar", visible: :hidden
+          message_el.assert_selector "h3", text: "Barbaz", visible: :hidden
+        end
       end
     end
   end
