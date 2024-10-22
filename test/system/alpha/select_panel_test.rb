@@ -1046,6 +1046,25 @@ module Alpha
       refute_selector "[data-target='select-panel.fragmentErrorElement']"
     end
 
+    def test_no_results_filter_failure
+      visit_preview(:remote_fetch_filter_failure, show_results: false)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # no items on initial load
+      assert_selector "select-panel", text: "No results found"
+
+      wait_for_items_to_load do
+        filter_results(query: "foobar")
+      end
+
+      # only the banner-based error message should appear
+      assert_selector "[data-target='select-panel.bannerErrorElement']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.fragmentErrorElement']"
+    end
+
     def test_remote_fetch_clears_input_on_close
       visit_preview(:remote_fetch)
 
