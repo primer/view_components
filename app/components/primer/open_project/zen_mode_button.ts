@@ -12,7 +12,13 @@ class ZenModeButtonElement extends HTMLElement {
   }
 
   triggerZenMode() {
-    const event = new CustomEvent('toggleZenMode')
+    // Create a new custom event
+    const event = new CustomEvent('toggleZenMode', {
+      detail: {
+        active: !this.inZenMode,
+      },
+    })
+    // Dispatch the custom event
     window.dispatchEvent(event)
   }
 
