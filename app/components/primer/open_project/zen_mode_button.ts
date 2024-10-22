@@ -5,6 +5,17 @@ class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
   inZenMode = false
 
+  // eslint-disable-next-line custom-elements/no-constructor
+  constructor() {
+    super()
+    this.button.addEventListener('click', this.triggerZenMode.bind(this))
+  }
+
+  triggerZenMode() {
+    const event = new CustomEvent('toggleZenMode')
+    window.dispatchEvent(event)
+  }
+
   private deactivateZenMode() {
     this.inZenMode = false
     this.button.setAttribute('aria-pressed', 'false')
