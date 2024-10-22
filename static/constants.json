@@ -2,6 +2,7 @@
   "Primer::Alpha::ActionBar": {
     "DEFAULT_SIZE": "medium",
     "Divider": "Primer::Alpha::ActionBar::Divider",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionBar::GeneratedSlotMethods",
     "Item": "Primer::Alpha::ActionBar::Item",
     "SIZE_MAPPINGS": {
       "medium": null,
@@ -15,8 +16,10 @@
     ]
   },
   "Primer::Alpha::ActionBar::Divider": {
+    "GeneratedSlotMethods": "Primer::Alpha::ActionBar::Divider::GeneratedSlotMethods"
   },
   "Primer::Alpha::ActionBar::Item": {
+    "GeneratedSlotMethods": "Primer::Alpha::ActionBar::Item::GeneratedSlotMethods"
   },
   "Primer::Alpha::ActionList": {
     "ARIA_SELECTION_VARIANT_OPTIONS": [
@@ -30,6 +33,7 @@
     "DEFAULT_SELECT_VARIANT": "none",
     "Divider": "Primer::Alpha::ActionList::Divider",
     "FormWrapper": "Primer::Alpha::ActionList::FormWrapper",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionList::GeneratedSlotMethods",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
     "LIST_BOX_ITEM_ROLE": "option",
@@ -56,6 +60,7 @@
   },
   "Primer::Alpha::ActionList::Divider": {
     "DEFAULT_SCHEME": "subtle",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionList::Divider::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "subtle": null,
       "filled": "ActionList-sectionDivider--filled"
@@ -67,6 +72,7 @@
   },
   "Primer::Alpha::ActionList::FormWrapper": {
     "DEFAULT_HTTP_METHOD": "get",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionList::FormWrapper::GeneratedSlotMethods",
     "HTTP_METHOD_OPTIONS": [
       "get",
       "post",
@@ -78,6 +84,7 @@
   },
   "Primer::Alpha::ActionList::Heading": {
     "DEFAULT_SCHEME": "subtle",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionList::Heading::GeneratedSlotMethods",
     "HEADING_LEVELS": [
       1,
       2,
@@ -110,6 +117,7 @@
       "inline",
       "block"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::ActionList::Item::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": null,
       "danger": "ActionListItem--danger"
@@ -146,6 +154,7 @@
   "Primer::Alpha::ActionMenu": {
     "DEFAULT_PRELOAD": false,
     "DEFAULT_SELECT_VARIANT": "none",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::GeneratedSlotMethods",
     "Group": "Primer::Alpha::ActionMenu::Group",
     "Heading": "Primer::Alpha::ActionMenu::Heading",
     "List": "Primer::Alpha::ActionMenu::List",
@@ -157,11 +166,14 @@
     ]
   },
   "Primer::Alpha::ActionMenu::Group": {
+    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::Group::GeneratedSlotMethods"
   },
   "Primer::Alpha::ActionMenu::Heading": {
+    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::Heading::GeneratedSlotMethods"
   },
   "Primer::Alpha::ActionMenu::List": {
     "DEFAULT_ITEM_TAG": "button",
+    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::List::GeneratedSlotMethods",
     "ITEM_TAG_OPTIONS": [
       "a",
       "clipboard-copy",
@@ -169,11 +181,14 @@
     ]
   },
   "Primer::Alpha::ActionMenu::ListWrapper": {
+    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::ListWrapper::GeneratedSlotMethods"
   },
   "Primer::Alpha::AutoComplete": {
+    "GeneratedSlotMethods": "Primer::Alpha::AutoComplete::GeneratedSlotMethods",
     "Item": "Primer::Alpha::AutoComplete::Item"
   },
   "Primer::Alpha::AutoComplete::Item": {
+    "GeneratedSlotMethods": "Primer::Alpha::AutoComplete::Item::GeneratedSlotMethods"
   },
   "Primer::Alpha::Banner": {
     "DEFAULT_DISMISS_LABEL": "Dismiss",
@@ -191,6 +206,7 @@
       "remove",
       "hide"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::Banner::GeneratedSlotMethods",
     "LEGACY_SCHEME_MAPPINGS": {
       "default": "",
       "warning": "flash-warn",
@@ -213,6 +229,7 @@
     "DEFAULT_TAG": "button",
     "DEFAULT_TYPE": "button",
     "DEFAULT_VARIANT": "default",
+    "GeneratedSlotMethods": "Primer::Alpha::ButtonMarketing::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "btn-signup-mktg",
@@ -243,8 +260,10 @@
     ]
   },
   "Primer::Alpha::CheckBox": {
+    "GeneratedSlotMethods": "Primer::Alpha::CheckBox::GeneratedSlotMethods"
   },
   "Primer::Alpha::CheckBoxGroup": {
+    "GeneratedSlotMethods": "Primer::Alpha::CheckBoxGroup::GeneratedSlotMethods"
   },
   "Primer::Alpha::Dialog": {
     "Body": "Primer::Alpha::Dialog::Body",
@@ -252,6 +271,7 @@
     "DEFAULT_POSITION_NARROW": "inherit",
     "DEFAULT_SIZE": "medium",
     "Footer": "Primer::Alpha::Dialog::Footer",
+    "GeneratedSlotMethods": "Primer::Alpha::Dialog::GeneratedSlotMethods",
     "Header": "Primer::Alpha::Dialog::Header",
     "POSITION_MAPPINGS": {
       "center": "",
@@ -295,11 +315,14 @@
     ]
   },
   "Primer::Alpha::Dialog::Body": {
+    "GeneratedSlotMethods": "Primer::Alpha::Dialog::Body::GeneratedSlotMethods"
   },
   "Primer::Alpha::Dialog::Footer": {
+    "GeneratedSlotMethods": "Primer::Alpha::Dialog::Footer::GeneratedSlotMethods"
   },
   "Primer::Alpha::Dialog::Header": {
     "DEFAULT_VARIANT": "medium",
+    "GeneratedSlotMethods": "Primer::Alpha::Dialog::Header::GeneratedSlotMethods",
     "VARIANT_MAPPINGS": {
       "medium": "",
       "large": "Overlay-header--large"
@@ -310,6 +333,7 @@
     ]
   },
   "Primer::Alpha::Dropdown": {
+    "GeneratedSlotMethods": "Primer::Alpha::Dropdown::GeneratedSlotMethods",
     "Menu": "Primer::Alpha::Dropdown::Menu"
   },
   "Primer::Alpha::Dropdown::Menu": {
@@ -327,6 +351,7 @@
       "ne",
       "s"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::Dropdown::Menu::GeneratedSlotMethods",
     "Item": "Primer::Alpha::Dropdown::Menu::Item",
     "SCHEME_DEFAULT": "default",
     "SCHEME_MAPPINGS": {
@@ -339,6 +364,7 @@
       "button",
       "summary"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::Dropdown::Menu::Item::GeneratedSlotMethods",
     "TAG_DEFAULT": "a",
     "TAG_OPTIONS": [
       "a",
@@ -347,14 +373,19 @@
     ]
   },
   "Primer::Alpha::FormButton": {
+    "GeneratedSlotMethods": "Primer::Alpha::FormButton::GeneratedSlotMethods"
   },
   "Primer::Alpha::FormControl": {
+    "GeneratedSlotMethods": "Primer::Alpha::FormControl::GeneratedSlotMethods"
   },
   "Primer::Alpha::HellipButton": {
+    "GeneratedSlotMethods": "Primer::Alpha::HellipButton::GeneratedSlotMethods"
   },
   "Primer::Alpha::HiddenTextExpander": {
+    "GeneratedSlotMethods": "Primer::Alpha::HiddenTextExpander::GeneratedSlotMethods"
   },
   "Primer::Alpha::Image": {
+    "GeneratedSlotMethods": "Primer::Alpha::Image::GeneratedSlotMethods"
   },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
@@ -375,6 +406,7 @@
       "spacious",
       "default"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::Layout::GeneratedSlotMethods",
     "Main": "Primer::Alpha::Layout::Main",
     "SIDEBAR_COL_PLACEMENT_DEFAULT": "start",
     "SIDEBAR_COL_PLACEMENT_OPTIONS": [
@@ -412,6 +444,7 @@
     "Sidebar": "Primer::Alpha::Layout::Sidebar"
   },
   "Primer::Alpha::Layout::Main": {
+    "GeneratedSlotMethods": "Primer::Alpha::Layout::Main::GeneratedSlotMethods",
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
@@ -426,6 +459,7 @@
     ]
   },
   "Primer::Alpha::Layout::Sidebar": {
+    "GeneratedSlotMethods": "Primer::Alpha::Layout::Sidebar::GeneratedSlotMethods",
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
@@ -435,6 +469,7 @@
     ]
   },
   "Primer::Alpha::Menu": {
+    "GeneratedSlotMethods": "Primer::Alpha::Menu::GeneratedSlotMethods",
     "HEADING_TAG_FALLBACK": "h2",
     "HEADING_TAG_OPTIONS": [
       "h1",
@@ -446,29 +481,37 @@
     ]
   },
   "Primer::Alpha::MultiInput": {
+    "GeneratedSlotMethods": "Primer::Alpha::MultiInput::GeneratedSlotMethods"
   },
   "Primer::Alpha::NavList": {
     "Divider": "Primer::Alpha::NavList::Divider",
+    "GeneratedSlotMethods": "Primer::Alpha::NavList::GeneratedSlotMethods",
     "Group": "Primer::Alpha::NavList::Group",
     "Heading": "Primer::Alpha::NavList::Heading",
     "Item": "Primer::Alpha::NavList::Item"
   },
   "Primer::Alpha::NavList::Divider": {
+    "GeneratedSlotMethods": "Primer::Alpha::NavList::Divider::GeneratedSlotMethods"
   },
   "Primer::Alpha::NavList::Group": {
+    "GeneratedSlotMethods": "Primer::Alpha::NavList::Group::GeneratedSlotMethods"
   },
   "Primer::Alpha::NavList::Heading": {
+    "GeneratedSlotMethods": "Primer::Alpha::NavList::Heading::GeneratedSlotMethods"
   },
   "Primer::Alpha::NavList::Item": {
+    "GeneratedSlotMethods": "Primer::Alpha::NavList::Item::GeneratedSlotMethods"
   },
   "Primer::Alpha::Navigation::Tab": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
       true,
       "page"
     ],
-    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
+    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page",
+    "GeneratedSlotMethods": "Primer::Alpha::Navigation::Tab::GeneratedSlotMethods"
   },
   "Primer::Alpha::OcticonSymbols": {
+    "GeneratedSlotMethods": "Primer::Alpha::OcticonSymbols::GeneratedSlotMethods"
   },
   "Primer::Alpha::Overlay": {
     "ALIGN_CONTENT_MAPPINGS": {
@@ -521,6 +564,7 @@
     "DEFAULT_POPOVER": "auto",
     "DEFAULT_SIZE": "auto",
     "Footer": "Primer::Alpha::Overlay::Footer",
+    "GeneratedSlotMethods": "Primer::Alpha::Overlay::GeneratedSlotMethods",
     "Header": "Primer::Alpha::Overlay::Header",
     "PADDING_MAPPINGS": {
       "normal": null,
@@ -559,11 +603,14 @@
     ]
   },
   "Primer::Alpha::Overlay::Body": {
+    "GeneratedSlotMethods": "Primer::Alpha::Overlay::Body::GeneratedSlotMethods"
   },
   "Primer::Alpha::Overlay::Footer": {
+    "GeneratedSlotMethods": "Primer::Alpha::Overlay::Footer::GeneratedSlotMethods"
   },
   "Primer::Alpha::Overlay::Header": {
     "DEFAULT_SIZE": "medium",
+    "GeneratedSlotMethods": "Primer::Alpha::Overlay::Header::GeneratedSlotMethods",
     "SIZE_MAPPINGS": {
       "medium": null,
       "large": "Overlay-header--large"
@@ -574,12 +621,15 @@
     ]
   },
   "Primer::Alpha::RadioButton": {
+    "GeneratedSlotMethods": "Primer::Alpha::RadioButton::GeneratedSlotMethods"
   },
   "Primer::Alpha::RadioButtonGroup": {
+    "GeneratedSlotMethods": "Primer::Alpha::RadioButtonGroup::GeneratedSlotMethods"
   },
   "Primer::Alpha::SegmentedControl": {
     "DEFAULT_SIZE": "medium",
     "FULL_WIDTH_DEFAULT": false,
+    "GeneratedSlotMethods": "Primer::Alpha::SegmentedControl::GeneratedSlotMethods",
     "HIDE_LABELS_DEFAULT": false,
     "Item": "Primer::Alpha::SegmentedControl::Item",
     "SIZE_MAPPINGS": {
@@ -592,8 +642,10 @@
     ]
   },
   "Primer::Alpha::SegmentedControl::Item": {
+    "GeneratedSlotMethods": "Primer::Alpha::SegmentedControl::Item::GeneratedSlotMethods"
   },
   "Primer::Alpha::Select": {
+    "GeneratedSlotMethods": "Primer::Alpha::Select::GeneratedSlotMethods"
   },
   "Primer::Alpha::SelectPanel": {
     "BANNER_SCHEME_OPTIONS": [
@@ -609,6 +661,7 @@
       "eventually_local",
       "local"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::SelectPanel::GeneratedSlotMethods",
     "ItemList": "Primer::Alpha::SelectPanel::ItemList",
     "SELECT_VARIANT_OPTIONS": [
       "single",
@@ -618,6 +671,7 @@
     "Utils": "Primer::Alpha::SelectPanel::Utils"
   },
   "Primer::Alpha::SelectPanel::ItemList": {
+    "GeneratedSlotMethods": "Primer::Alpha::SelectPanel::ItemList::GeneratedSlotMethods"
   },
   "Primer::Alpha::Stack": {
     "ARG_CLASSES": [
@@ -632,6 +686,7 @@
     "DEFAULT_TAG": "div",
     "DirectionArg": "Primer::Alpha::Stack::DirectionArg",
     "GapArg": "Primer::Alpha::Stack::GapArg",
+    "GeneratedSlotMethods": "Primer::Alpha::Stack::GeneratedSlotMethods",
     "JustifyArg": "Primer::Alpha::Stack::JustifyArg",
     "PaddingArg": "Primer::Alpha::Stack::PaddingArg",
     "WrapArg": "Primer::Alpha::Stack::WrapArg"
@@ -641,14 +696,18 @@
       "Primer::Alpha::StackItem::GrowArg"
     ],
     "DEFAULT_TAG": "div",
+    "GeneratedSlotMethods": "Primer::Alpha::StackItem::GeneratedSlotMethods",
     "GrowArg": "Primer::Alpha::StackItem::GrowArg"
   },
   "Primer::Alpha::SubmitButton": {
+    "GeneratedSlotMethods": "Primer::Alpha::SubmitButton::GeneratedSlotMethods"
   },
   "Primer::Alpha::TabContainer": {
+    "GeneratedSlotMethods": "Primer::Alpha::TabContainer::GeneratedSlotMethods"
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
+    "GeneratedSlotMethods": "Primer::Alpha::TabNav::GeneratedSlotMethods",
     "TAG_DEFAULT": "nav",
     "TAG_OPTIONS": [
       "nav",
@@ -657,6 +716,7 @@
   },
   "Primer::Alpha::TabPanels": {
     "BODY_TAG_DEFAULT": "ul",
+    "GeneratedSlotMethods": "Primer::Alpha::TabPanels::GeneratedSlotMethods",
     "TAG_DEFAULT": "nav",
     "TAG_OPTIONS": [
       "nav",
@@ -664,10 +724,13 @@
     ]
   },
   "Primer::Alpha::TextArea": {
+    "GeneratedSlotMethods": "Primer::Alpha::TextArea::GeneratedSlotMethods"
   },
   "Primer::Alpha::TextField": {
+    "GeneratedSlotMethods": "Primer::Alpha::TextField::GeneratedSlotMethods"
   },
   "Primer::Alpha::ToggleSwitch": {
+    "GeneratedSlotMethods": "Primer::Alpha::ToggleSwitch::GeneratedSlotMethods",
     "SIZE_DEFAULT": "medium",
     "SIZE_MAPPINGS": {
       "medium": null,
@@ -699,6 +762,7 @@
       "se",
       "sw"
     ],
+    "GeneratedSlotMethods": "Primer::Alpha::Tooltip::GeneratedSlotMethods",
     "TYPE_FALLBACK": "description",
     "TYPE_OPTIONS": [
       "label",
@@ -707,6 +771,7 @@
   },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
+    "GeneratedSlotMethods": "Primer::Alpha::UnderlineNav::GeneratedSlotMethods",
     "TAG_DEFAULT": "nav",
     "TAG_OPTIONS": [
       "nav",
@@ -714,8 +779,10 @@
     ]
   },
   "Primer::Alpha::UnderlinePanels": {
+    "GeneratedSlotMethods": "Primer::Alpha::UnderlinePanels::GeneratedSlotMethods"
   },
   "Primer::BaseComponent": {
+    "GeneratedSlotMethods": "Primer::BaseComponent::GeneratedSlotMethods",
     "SELF_CLOSING_TAGS": [
       "area",
       "base",
@@ -736,6 +803,7 @@
   "Primer::Beta::AutoComplete": {
     "DEFAULT_SIZE": "medium",
     "DEFAULT_WIDTH": "auto",
+    "GeneratedSlotMethods": "Primer::Beta::AutoComplete::GeneratedSlotMethods",
     "Item": "Primer::Beta::AutoComplete::Item",
     "SIZE_MAPPINGS": {
       "small": "FormControl-small",
@@ -773,11 +841,13 @@
     "DESCRIPTION_VARIANT_OPTIONS": [
       "inline",
       "block"
-    ]
+    ],
+    "GeneratedSlotMethods": "Primer::Beta::AutoComplete::Item::GeneratedSlotMethods"
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
     "DEFAULT_SIZE": 20,
+    "GeneratedSlotMethods": "Primer::Beta::Avatar::GeneratedSlotMethods",
     "SHAPE_OPTIONS": [
       "circle",
       "square"
@@ -806,6 +876,7 @@
     ],
     "DEFAULT_BODY_TAG": "div",
     "DEFAULT_TAG": "div",
+    "GeneratedSlotMethods": "Primer::Beta::AvatarStack::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "div",
       "span"
@@ -814,6 +885,7 @@
   "Primer::Beta::BaseButton": {
     "DEFAULT_TAG": "button",
     "DEFAULT_TYPE": "button",
+    "GeneratedSlotMethods": "Primer::Beta::BaseButton::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "button",
       "a",
@@ -827,6 +899,7 @@
     ]
   },
   "Primer::Beta::Blankslate": {
+    "GeneratedSlotMethods": "Primer::Beta::Blankslate::GeneratedSlotMethods",
     "VISUAL_OPTIONS": [
       "icon",
       "spinner",
@@ -836,6 +909,7 @@
   "Primer::Beta::BorderBox": {
     "DEFAULT_PADDING": "default",
     "DEFAULT_ROW_SCHEME": "default",
+    "GeneratedSlotMethods": "Primer::Beta::BorderBox::GeneratedSlotMethods",
     "Header": "Primer::Beta::BorderBox::Header",
     "PADDING_MAPPINGS": {
       "default": "",
@@ -851,6 +925,7 @@
     }
   },
   "Primer::Beta::BorderBox::Header": {
+    "GeneratedSlotMethods": "Primer::Beta::BorderBox::Header::GeneratedSlotMethods",
     "TITLE_TAG_FALLBACK": "h2",
     "TITLE_TAG_OPTIONS": [
       "h1",
@@ -870,10 +945,12 @@
       "label": "Breadcrumb"
     },
     "FONT_SIZE_MESSAGE": "Breadcrumbs do not support the font_size system argument.",
+    "GeneratedSlotMethods": "Primer::Beta::Breadcrumbs::GeneratedSlotMethods",
     "Item": "Primer::Beta::Breadcrumbs::Item",
     "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
+    "GeneratedSlotMethods": "Primer::Beta::Breadcrumbs::Item::GeneratedSlotMethods"
   },
   "Primer::Beta::Button": {
     "ALIGN_CONTENT_MAPPINGS": {
@@ -887,6 +964,7 @@
     "DEFAULT_ALIGN_CONTENT": "center",
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
+    "GeneratedSlotMethods": "Primer::Beta::Button::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "Button--secondary",
       "primary": "Button--primary",
@@ -915,18 +993,24 @@
     ]
   },
   "Primer::Beta::ButtonGroup": {
+    "GeneratedSlotMethods": "Primer::Beta::ButtonGroup::GeneratedSlotMethods",
     "MenuButton": "Primer::Beta::ButtonGroup::MenuButton"
   },
   "Primer::Beta::ButtonGroup::MenuButton": {
+    "GeneratedSlotMethods": "Primer::Beta::ButtonGroup::MenuButton::GeneratedSlotMethods"
   },
   "Primer::Beta::ClipboardCopy": {
+    "GeneratedSlotMethods": "Primer::Beta::ClipboardCopy::GeneratedSlotMethods"
   },
   "Primer::Beta::ClipboardCopyBaseButton": {
+    "GeneratedSlotMethods": "Primer::Beta::ClipboardCopyBaseButton::GeneratedSlotMethods"
   },
   "Primer::Beta::ClipboardCopyButton": {
+    "GeneratedSlotMethods": "Primer::Beta::ClipboardCopyButton::GeneratedSlotMethods"
   },
   "Primer::Beta::CloseButton": {
     "DEFAULT_TYPE": "button",
+    "GeneratedSlotMethods": "Primer::Beta::CloseButton::GeneratedSlotMethods",
     "TYPE_OPTIONS": [
       "button",
       "submit"
@@ -938,6 +1022,7 @@
       "gray",
       "light_gray"
     ],
+    "GeneratedSlotMethods": "Primer::Beta::Counter::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Counter--primary",
@@ -959,6 +1044,7 @@
       "details-dialog",
       "div"
     ],
+    "GeneratedSlotMethods": "Primer::Beta::Details::GeneratedSlotMethods",
     "NO_OVERLAY": "none",
     "OVERLAY_MAPPINGS": {
       "none": "",
@@ -968,6 +1054,7 @@
   },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
+    "GeneratedSlotMethods": "Primer::Beta::Flash::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "",
       "warning": "flash-warn",
@@ -976,6 +1063,7 @@
     }
   },
   "Primer::Beta::Heading": {
+    "GeneratedSlotMethods": "Primer::Beta::Heading::GeneratedSlotMethods",
     "TAG_FALLBACK": "h2",
     "TAG_OPTIONS": [
       "h1",
@@ -988,6 +1076,7 @@
   },
   "Primer::Beta::IconButton": {
     "DEFAULT_SCHEME": "default",
+    "GeneratedSlotMethods": "Primer::Beta::IconButton::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "Button--secondary",
       "primary": "Button--primary",
@@ -1018,6 +1107,7 @@
       "large",
       "inline"
     ],
+    "GeneratedSlotMethods": "Primer::Beta::Label::GeneratedSlotMethods",
     "INLINE_CLASS": "Label--inline",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -1067,6 +1157,7 @@
   },
   "Primer::Beta::Link": {
     "DEFAULT_SCHEME": "default",
+    "GeneratedSlotMethods": "Primer::Beta::Link::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Link--primary",
@@ -1075,6 +1166,7 @@
   },
   "Primer::Beta::Markdown": {
     "DEFAULT_TAG": "div",
+    "GeneratedSlotMethods": "Primer::Beta::Markdown::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "div",
       "article",
@@ -1083,19 +1175,25 @@
   },
   "Primer::Beta::NavList": {
     "Divider": "Primer::Beta::NavList::Divider",
+    "GeneratedSlotMethods": "Primer::Beta::NavList::GeneratedSlotMethods",
     "Group": "Primer::Beta::NavList::Group",
     "Heading": "Primer::Beta::NavList::Heading",
     "Item": "Primer::Beta::NavList::Item"
   },
   "Primer::Beta::NavList::Divider": {
+    "GeneratedSlotMethods": "Primer::Beta::NavList::Divider::GeneratedSlotMethods"
   },
   "Primer::Beta::NavList::Group": {
+    "GeneratedSlotMethods": "Primer::Beta::NavList::Group::GeneratedSlotMethods"
   },
   "Primer::Beta::NavList::Heading": {
+    "GeneratedSlotMethods": "Primer::Beta::NavList::Heading::GeneratedSlotMethods"
   },
   "Primer::Beta::NavList::Item": {
+    "GeneratedSlotMethods": "Primer::Beta::NavList::Item::GeneratedSlotMethods"
   },
   "Primer::Beta::Octicon": {
+    "GeneratedSlotMethods": "Primer::Beta::Octicon::GeneratedSlotMethods",
     "SIZE_DEFAULT": "small",
     "SIZE_MAPPINGS": {
       "xsmall": 12,
@@ -1126,9 +1224,11 @@
       "top_left": "Popover-message--top-left",
       "top_right": "Popover-message--top-right"
     },
-    "DEFAULT_HEADING_TAG": "h4"
+    "DEFAULT_HEADING_TAG": "h4",
+    "GeneratedSlotMethods": "Primer::Beta::Popover::GeneratedSlotMethods"
   },
   "Primer::Beta::ProgressBar": {
+    "GeneratedSlotMethods": "Primer::Beta::ProgressBar::GeneratedSlotMethods",
     "SIZE_DEFAULT": "default",
     "SIZE_MAPPINGS": {
       "default": "",
@@ -1166,6 +1266,7 @@
       "short",
       "narrow"
     ],
+    "GeneratedSlotMethods": "Primer::Beta::RelativeTime::GeneratedSlotMethods",
     "HOUR_DEFAULT": null,
     "HOUR_MAPPINGS": {
       "": null,
@@ -1274,6 +1375,7 @@
     "DEFAULT_SIZE": "medium",
     "DEFAULT_SR_TEXT": "Loading",
     "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
+    "GeneratedSlotMethods": "Primer::Beta::Spinner::GeneratedSlotMethods",
     "SIZE_MAPPINGS": {
       "small": 16,
       "medium": 32,
@@ -1292,6 +1394,7 @@
       "red": "State--closed",
       "purple": "State--merged"
     },
+    "GeneratedSlotMethods": "Primer::Beta::State::GeneratedSlotMethods",
     "NEW_SCHEME_MAPPINGS": {
       "open": "State--open",
       "closed": "State--closed",
@@ -1334,6 +1437,7 @@
   "Primer::Beta::Subhead": {
     "DEFAULT_HEADING_SIZE": "large",
     "DEFAULT_HEADING_TAG": "div",
+    "GeneratedSlotMethods": "Primer::Beta::Subhead::GeneratedSlotMethods",
     "HEADING_SIZE_MAP": {
       "large": "Subhead-heading--large",
       "medium": "Subhead-heading--medium"
@@ -1353,25 +1457,33 @@
     ]
   },
   "Primer::Beta::Text": {
-    "DEFAULT_TAG": "span"
+    "DEFAULT_TAG": "span",
+    "GeneratedSlotMethods": "Primer::Beta::Text::GeneratedSlotMethods"
   },
   "Primer::Beta::TimelineItem": {
-    "Badge": "Primer::Beta::TimelineItem::Badge"
+    "Badge": "Primer::Beta::TimelineItem::Badge",
+    "GeneratedSlotMethods": "Primer::Beta::TimelineItem::GeneratedSlotMethods"
   },
   "Primer::Beta::TimelineItem::Badge": {
+    "GeneratedSlotMethods": "Primer::Beta::TimelineItem::Badge::GeneratedSlotMethods"
   },
   "Primer::Beta::Truncate": {
+    "GeneratedSlotMethods": "Primer::Beta::Truncate::GeneratedSlotMethods",
     "TruncateText": "Primer::Beta::Truncate::TruncateText"
   },
   "Primer::Beta::Truncate::TruncateText": {
+    "GeneratedSlotMethods": "Primer::Beta::Truncate::TruncateText::GeneratedSlotMethods"
   },
   "Primer::BlankslateComponent": {
+    "GeneratedSlotMethods": "Primer::BlankslateComponent::GeneratedSlotMethods"
   },
   "Primer::Box": {
+    "GeneratedSlotMethods": "Primer::Box::GeneratedSlotMethods"
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
+    "GeneratedSlotMethods": "Primer::ButtonComponent::GeneratedSlotMethods",
     "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -1399,11 +1511,14 @@
     ]
   },
   "Primer::ConditionalWrapper": {
+    "GeneratedSlotMethods": "Primer::ConditionalWrapper::GeneratedSlotMethods"
   },
   "Primer::Content": {
+    "GeneratedSlotMethods": "Primer::Content::GeneratedSlotMethods"
   },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
+    "GeneratedSlotMethods": "Primer::IconButton::GeneratedSlotMethods",
     "SCHEME_MAPPINGS": {
       "default": "",
       "danger": "btn-octicon-danger"
@@ -1433,9 +1548,11 @@
     ],
     "DEFAULT_SIDE": "right",
     "DEFAULT_SIDEBAR_COL": 3,
+    "GeneratedSlotMethods": "Primer::LayoutComponent::GeneratedSlotMethods",
     "MAX_COL": 12
   },
   "Primer::Navigation::TabComponent": {
+    "GeneratedSlotMethods": "Primer::Navigation::TabComponent::GeneratedSlotMethods"
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
@@ -1458,10 +1575,12 @@
       "s",
       "se"
     ],
+    "GeneratedSlotMethods": "Primer::Tooltip::GeneratedSlotMethods",
     "MULTILINE_DEFAULT": false
   },
   "Primer::Truncate": {
     "DEFAULT_TAG": "div",
+    "GeneratedSlotMethods": "Primer::Truncate::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "div",
       "span",
