@@ -5,21 +5,15 @@ class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
   inZenMode = false
 
-  // eslint-disable-next-line custom-elements/no-constructor
-  constructor() {
-    super()
-    this.button.addEventListener('click', this.triggerZenMode.bind(this))
-  }
-
-  triggerZenMode() {
+  isZenModeActivated() {
     // Create a new custom event
     const event = new CustomEvent('toggleZenMode', {
       detail: {
-        active: !this.inZenMode,
+        active: this.inZenMode,
       },
     })
     // Dispatch the custom event
-    window.dispatchEvent(event)
+    this.button.dispatchEvent(event)
   }
 
   private deactivateZenMode() {
@@ -44,6 +38,7 @@ class ZenModeButtonElement extends HTMLElement {
     } else {
       this.activateZenMode()
     }
+    this.isZenModeActivated()
   }
 }
 
