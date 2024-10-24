@@ -11,7 +11,7 @@ module Primer
         HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
         HEADING_TAG_FALLBACK = :h1
 
-        renders_one :editable_form, lambda { |model: nil, update_path:, cancel_path:, input_name: :title, method: :put, label: I18n.t(:label_title), placeholder: I18n.t(:label_title), **system_arguments|
+        renders_one :editable_form, lambda { |model: false, update_path:, cancel_path:, input_name: :title, method: :put, label: I18n.t(:label_title), placeholder: I18n.t(:label_title), **system_arguments|
           primer_form_with(
             model: model,
             method: method,
