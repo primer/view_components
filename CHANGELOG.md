@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.48.1
+
+### Patch Changes
+
+- [#196](https://github.com/opf/primer_view_components/pull/196) [`40b8fda`](https://github.com/opf/primer_view_components/commit/40b8fdaaa49c5a27d44a46f36b5d76106822baed) Thanks [@HDinger](https://github.com/HDinger)! - Change default for model in PageHeader title form to "false"
+
 ## 0.48.0
 
 ### Minor Changes
