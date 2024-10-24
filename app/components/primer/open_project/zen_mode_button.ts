@@ -5,6 +5,17 @@ class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
   inZenMode = false
 
+  dispatchZenModeStatus() {
+    // Create a new custom event
+    const event = new CustomEvent('zenModeToggled', {
+      detail: {
+        active: this.inZenMode,
+      },
+    })
+    // Dispatch the custom event
+    window.dispatchEvent(event)
+  }
+
   private deactivateZenMode() {
     this.inZenMode = false
     this.button.setAttribute('aria-pressed', 'false')
@@ -27,6 +38,7 @@ class ZenModeButtonElement extends HTMLElement {
     } else {
       this.activateZenMode()
     }
+    this.dispatchZenModeStatus()
   }
 }
 
