@@ -251,7 +251,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_editable_title
     render_inline(Primer::OpenProject::PageHeader.new(state: :edit)) do |header|
       header.with_title do |title|
-        title.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar")
+        title.with_editable_form(update_path: "/foo", cancel_path: "/bar")
         "Hello"
       end
 
