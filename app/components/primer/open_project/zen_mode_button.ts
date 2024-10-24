@@ -5,15 +5,15 @@ class ZenModeButtonElement extends HTMLElement {
   @target button: HTMLElement
   inZenMode = false
 
-  isZenModeActivated() {
+  dispatchZenModeStatus() {
     // Create a new custom event
-    const event = new CustomEvent('toggleZenMode', {
+    const event = new CustomEvent('zenModeToggled', {
       detail: {
         active: this.inZenMode,
       },
     })
     // Dispatch the custom event
-    this.button.dispatchEvent(event)
+    window.dispatchEvent(event)
   }
 
   private deactivateZenMode() {
@@ -38,7 +38,7 @@ class ZenModeButtonElement extends HTMLElement {
     } else {
       this.activateZenMode()
     }
-    this.isZenModeActivated()
+    this.dispatchZenModeStatus()
   }
 }
 
