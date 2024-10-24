@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.48.1
+
+### Patch Changes
+
+- [`7478ded`](https://github.com/opf/primer_view_components/commit/7478ded485a72f0a35754e4d01b6b1a2a62cc7dc) Thanks [@HDinger](https://github.com/HDinger)! - Change default for model in PageHeader title form to "false"
+
+- [#195](https://github.com/opf/primer_view_components/pull/195) [`4e2d051`](https://github.com/opf/primer_view_components/commit/4e2d051f0ed93a95a690468184987caeebd4246d) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [58256] Add a click event listener for the button so we can listen to this event and make whatever changes that we want
+
 ## 0.48.0
 
 ### Minor Changes
