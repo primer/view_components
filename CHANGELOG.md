@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.48.2
+
+### Patch Changes
+
+- [#199](https://github.com/opf/primer_view_components/pull/199) [`a33a660`](https://github.com/opf/primer_view_components/commit/a33a6604f33b0c973785a06aee35ddc60d9ed681) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [58256] Send an event when zen mode is activated and user press on escape button
+
 ## 0.48.1
 
 ### Patch Changes
