@@ -151,9 +151,9 @@ Kuby.define("ViewComponentsStorybook") do
 
     kubernetes do
       provider :azure do
-        subscription_id "550eb99d-d0c7-4651-a337-f53fa6520c4f"
-        tenant_id "398a6654-997b-47e9-b12b-9515b896b4de"
-        client_id "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+        subscription_id ENV["AZURE_SUBSCRIPTION_ID"]
+        tenant_id ENV["AZURE_TENANT_ID"]
+        client_id ENV["AZURE_CLIENT_ID"]
 
         resource_group_name "primer"
         resource_name "primer"

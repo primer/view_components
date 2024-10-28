@@ -975,6 +975,12 @@
         "description": "If true will hide the heading title, while still making it available to Screen Readers."
       },
       {
+        "name": "disable_scroll",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "When true, disables scrolling the page when the dialog is open."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -1336,34 +1342,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether or not to lazily load the image."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "ImageCrop",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ImageCrop",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image_crop.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image_crop/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The path of the image to crop."
-      },
-      {
-        "name": "rounded",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "If the crop mask should be a circle. Defaults to true."
       },
       {
         "name": "system_arguments",
