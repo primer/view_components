@@ -752,8 +752,8 @@ export class SelectPanelElement extends HTMLElement {
   #setErrorState(type: ErrorStateType) {
     let errorElement = this.fragmentErrorElement
 
-    if (type === ErrorStateType.BODY) {
-      this.fragmentErrorElement?.removeAttribute('hidden')
+    if (type === ErrorStateType.BODY && this.fragmentErrorElement) {
+      this.fragmentErrorElement.removeAttribute('hidden')
       this.bannerErrorElement.setAttribute('hidden', '')
     } else {
       errorElement = this.bannerErrorElement
