@@ -52,7 +52,7 @@ namespace :utilities do
 
       # Look for a replacement key
       Primer::Classify::Utilities::REPLACEMENT_KEYS.each do |k, v|
-        next unless classname.match?(Regexp.new(k))
+        next unless classname.start_with?(k)
 
         key = v
         classname.sub!(Regexp.new("#{k}-"), "")
