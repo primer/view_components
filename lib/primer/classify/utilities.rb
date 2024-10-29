@@ -190,7 +190,7 @@ module Primer
 
         def infer_selector_key(selector)
           REPLACEMENT_KEYS.each do |k, v|
-            return v.to_sym if selector.starts_with?(k)
+            return v.to_sym if selector.start_with?(k)
           end
           selector.split("-").first.to_sym
         end
