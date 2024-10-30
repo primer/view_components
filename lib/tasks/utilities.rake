@@ -55,7 +55,7 @@ namespace :utilities do
         next unless classname.start_with?(k)
 
         key = v
-        classname.sub!(Regexp.new("#{k}-"), "")
+        classname.sub!(Regexp.new("\A#{k}-"), "")
       end
 
       # If we didn't find a replacement, grab the first text before hyphen
