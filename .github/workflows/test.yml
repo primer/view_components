@@ -191,6 +191,11 @@ jobs:
       run: |
         npm ci
         cd demo && npm ci
+    - name: Precompile assets
+      run: |
+        cd demo
+        bundle
+        bin/rails assets:precompile
     - name: Test
       run: |
         USE_BROWSER=chrome bundle exec rake test:system
@@ -214,6 +219,11 @@ jobs:
       run: |
         npm ci
         cd demo && npm ci
+    - name: Precompile assets
+      run: |
+        cd demo
+        bundle
+        bin/rails assets:precompile
     - name: Test
       run: |
         USE_BROWSER=firefox bundle exec rake test:system
