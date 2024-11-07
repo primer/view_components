@@ -201,7 +201,7 @@ jobs:
   #       USE_BROWSER=chrome bundle exec rake test:system
   system_firefox:
     name: System (Firefox)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
