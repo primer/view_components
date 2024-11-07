@@ -219,11 +219,11 @@ jobs:
       run: |
         npm ci
         cd demo && npm ci
-    - name: Precompile assets
-      run: |
-        cd demo
-        bundle
-        bin/rails assets:precompile
+    # - name: Precompile assets
+    #   run: |
+    #     cd demo
+    #     bundle
+    #     bin/rails assets:precompile
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
       with:
