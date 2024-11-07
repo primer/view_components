@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.35.1
+
+### Patch Changes
+
+- [#3177](https://github.com/primer/view_components/pull/3177) [`308a56b`](https://github.com/primer/view_components/commit/308a56b3a7fe3e29bb12aec0c3cf05a3bb7e32f4) Thanks [@mathias](https://github.com/mathias)! - Switch Ruby match from Regexps to String's starts_with method
+
+- [#3186](https://github.com/primer/view_components/pull/3186) [`4d46a3a`](https://github.com/primer/view_components/commit/4d46a3a146d8cc1a56d8472f049c329dfb0ac432) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Don't clear selection if input field doesn't exist
+
+- [#3179](https://github.com/primer/view_components/pull/3179) [`93297d2`](https://github.com/primer/view_components/commit/93297d249420656b90c968201c6a57505260e2ed) Thanks [@langermank](https://github.com/langermank)! - Update the primer/primitives dependency to be 9.x || 10.x and move it to peer
+
 ## 0.35.0
 
 ### Minor Changes
