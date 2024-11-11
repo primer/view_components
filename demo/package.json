@@ -6,12 +6,12 @@
     "@primer/css": "^21.3.6",
     "@primer/primitives": "^9.1.2",
     "@rails/actioncable": "^7.2.100",
-    "@rails/ujs": "^7.1.400",
+    "@rails/ujs": "^7.1.500",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "vite": "^5.4.8",
-    "vite-plugin-ruby": "^5.1.0"
+    "vite": "^5.4.11",
+    "vite-plugin-ruby": "^5.1.1"
   },
   "scripts": {
     "build:css": "postcss --config ../ ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
