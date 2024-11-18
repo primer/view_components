@@ -278,7 +278,7 @@ module Alpha
 
       keyboard.type(:enter)
 
-      assert_current_path "https://github.com"
+      assert_current_path "https://primer.style"
     end
 
     def test_selecting_without_data_values
