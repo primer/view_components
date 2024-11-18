@@ -3,23 +3,26 @@
 .avatar {
   display: inline-block;
   overflow: hidden; /* Ensure page layout in Firefox should images fail to load */
+  /* stylelint-disable-next-line primer/typography */
   line-height: 1;
   vertical-align: middle;
   background-color: var(--avatar-bgColor); /* adds opaque bg to transparent avatars */
   border-radius: var(--borderRadius-medium);
   flex-shrink: 0;
+  /* stylelint-disable-next-line primer/box-shadow */
   box-shadow: 0 0 0 1px var(--avatar-borderColor);
 }
 
 .avatar-link {
   float: left;
+  /* stylelint-disable-next-line primer/typography */
   line-height: 1;
 }
 
 /* User for example on /stars and /user for grids of avatars */
 .avatar-group-item {
   display: inline-block;
-  margin-bottom: 3px;
+  margin-bottom: var(--base-size-4);
 }
 
 /* Border radius */

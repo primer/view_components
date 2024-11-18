@@ -18,6 +18,8 @@ bundle check || bundle install
 npm install --ignore-scripts
 popd
 
+./script/stop-existing-processes
+
 while [[ "$#" > 0 ]]; do case $1 in
   -d|--debug) debug="1"; shift;;
 esac; done

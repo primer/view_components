@@ -91,6 +91,24 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
       end
 
+      # @label Custom loading label
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      def custom_loading_label(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
+      end
+
+      # @label Custom loading description
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      def custom_loading_description(open_on_load: false, selected_items: "Phaser")
+        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items })
+      end
+
       # @label Local fetch (no results)
       #
       # @snapshot interactive
@@ -208,8 +226,21 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def remote_fetch_filter_failure(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param banner_scheme [Symbol] select [danger, warning]
+      # @param show_results toggle
+      def remote_fetch_filter_failure(
+        open_on_load: false,
+        banner_scheme: :danger,
+        show_results: true
+      )
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          show_results: show_results,
+          system_arguments: {
+            # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
+            banner_scheme: banner_scheme.to_sym
+          }
+        })
       end
 
       # @label Eventually local fetch initial failure
@@ -249,6 +280,13 @@ module Primer
       # @snapshot interactive
       # @param open_on_load toggle
       def no_values(open_on_load: false)
+        render_with_template(locals: { open_on_load: open_on_load })
+      end
+
+      # @label Scroll container
+      #
+      # @param open_on_load toggle
+      def scroll_container(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
     end

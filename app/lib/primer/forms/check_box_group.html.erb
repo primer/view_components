@@ -1,0 +1,20 @@
+<div class="FormControl-check-group-wrap">
+  <%= content_tag(:fieldset, **@input.input_arguments) do %>
+    <% if @input.label %>
+      <%= content_tag(:legend, **@input.label_arguments) do %>
+        <%= @input.label %>
+      <% end %>
+    <% end %>
+    <div class="mb-2">
+      <%= render(Caption.new(input: @input)) %>
+    </div>
+    <%= render(SpacingWrapper.new) do %>
+      <% @input.check_boxes.each do |check_box| %>
+        <%= render(check_box.to_component) %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="mt-2">
+    <%= render(ValidationMessage.new(input: @input)) %>
+  </div>
+</div>

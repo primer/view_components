@@ -4,12 +4,12 @@
     <% message.with_heading(tag: :h2).with_content("Awesome!") %>
     <% message.with_description { "Great! Everything worked well." } if show_description %>
   <% end %>
-  <%  if show_additional_content %>
+  <% if show_additional_content %>
     <% dialog.with_additional_content(display: :inline) do %>
       <%= render(Primer::Alpha::Banner.new) { "Some additional content below" } %>
       <% end %>
   <% end %>
-  <%  if custom_footer %>
+  <% if custom_footer %>
     <% dialog.with_footer do %>
       <%= render(Primer::Beta::Button.new("data-close-dialog-id": "my-dialog")) { "Cancel" } %>
       <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Accept" } %>

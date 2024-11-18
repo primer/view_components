@@ -1,3 +1,6 @@
+/* stylelint-disable primer/spacing */
+/* stylelint-disable primer/typography */
+
 /* BorderBox */
 
 /* TODO: Rename to BorderBox to match PVC */
@@ -59,7 +62,7 @@
   & .Box-btn-octicon {
     &.btn-octicon {
       padding: var(--stack-padding-spacious);
-      margin: calc(var(--stack-gap-spacious) * -1) calc(var(--stack-gap-spacious) * -1);
+      margin: calc(var(--stack-gap-spacious) * -1);
     }
   }
 
@@ -120,6 +123,7 @@
   &.Box-row--unread,
   /* .unread to be deprecated with .Box-row-unread */
   &.unread {
+    /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: inset 2px 0 0 var(--borderColor-accent-emphasis);
   }
 
@@ -277,8 +281,8 @@
 .Box-btn-octicon {
   /* Increase specificity when btn-octicon is used because comes after .Box in the cascade */
   &.btn-octicon {
-    padding: var(--control-medium-paddingInline-spacious) var(--control-medium-paddingInline-spacious);
-    margin: calc(var(--controlStack-small-gap-spacious) * -1) calc(var(--controlStack-small-gap-spacious) * -1);
-    line-height: 1.5; /* override btn-octicon line-height */
+    padding: var(--control-medium-paddingInline-spacious);
+    margin: calc(var(--controlStack-small-gap-spacious) * -1);
+    line-height: var(--text-title-lineHeight-large); /* override btn-octicon line-height */
   }
 }

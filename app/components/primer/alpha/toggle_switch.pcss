@@ -71,8 +71,8 @@
 }
 
 .ToggleSwitch-track[aria-pressed='true'][disabled] {
-  background-color: var(--controlTrack-bgColor-disabled);
   color: var(--control-checked-fgColor-disabled);
+  background-color: var(--controlTrack-bgColor-disabled);
   border-color: transparent;
 }
 
@@ -134,6 +134,7 @@
 }
 
 .ToggleSwitch-lineIcon {
+  /* stylelint-disable-next-line primer/typography */
   line-height: 0;
   color: var(--control-checked-fgColor-rest);
   transition-duration: 80ms;
@@ -143,6 +144,7 @@
 }
 
 .ToggleSwitch-circleIcon {
+  /* stylelint-disable-next-line primer/typography */
   line-height: 0;
   color: var(--controlTrack-fgColor-rest);
   transition-duration: 80ms;
@@ -173,14 +175,15 @@
 .ToggleSwitch-status {
   position: relative;
   font-size: var(--text-body-size-medium);
-  line-height: 1.5;
+  line-height: var(--text-title-lineHeight-large);
   color: var(--fgColor-default);
   text-align: right;
 }
 
 .ToggleSwitch-statusIcon {
-  width: var(--base-size-16);
   display: flex;
+  width: var(--base-size-16);
+  /* stylelint-disable-next-line primer/spacing */
   margin-top: 0.063rem;
 }
 

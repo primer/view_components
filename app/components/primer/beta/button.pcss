@@ -1,3 +1,7 @@
+/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable selector-max-type */
+/* stylelint-disable primer/spacing */
+
 /* CSS for Button  */
 
 /* temporary, pre primitives release */
@@ -9,26 +13,26 @@
 /* base button */
 .Button {
   position: relative;
+  display: inline-flex;
+  min-width: max-content;
+  height: var(--control-medium-size);
+  padding: 0 var(--control-medium-paddingInline-normal);
   font-size: var(--text-body-size-medium);
   font-weight: var(--base-text-weight-medium);
+  color: var(--button-default-fgColor-rest);
+  text-align: center;
   cursor: pointer;
+  flex-direction: row;
   user-select: none;
   background-color: transparent;
   border: var(--borderWidth-thin) solid;
   border-color: transparent;
   border-radius: var(--borderRadius-medium);
-  color: var(--button-default-fgColor-rest);
   transition: var(--duration-fast) var(--easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
-  text-align: center;
-  height: var(--control-medium-size);
-  padding: 0 var(--control-medium-paddingInline-normal);
-  display: inline-flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: var(--base-size-4);
-  min-width: max-content;
 
   /* mobile friendly sizing */
   @media (pointer: coarse) {
@@ -100,9 +104,9 @@ summary.Button {
 }
 
 .Button-label {
-  grid-area: text;
-  white-space: nowrap;
   line-height: var(--text-body-lineHeight-medium);
+  white-space: nowrap;
+  grid-area: text;
 }
 
 .Button-leadingVisual {
@@ -124,11 +128,11 @@ summary.Button {
 /* sizes */
 
 .Button--small {
-  font-size: var(--text-body-size-small);
+  min-width: var(--control-small-size);
   height: var(--control-small-size);
   padding: 0 var(--control-small-paddingInline-condensed);
+  font-size: var(--text-body-size-small);
   gap: var(--control-small-gap);
-  min-width: var(--control-small-size);
 
   & .Button-label {
     line-height: var(--text-body-lineHeight-small);
@@ -171,7 +175,7 @@ summary.Button {
   & .Button-content {
     flex: 1 1 auto;
     align-self: stretch;
-    padding-block: calc(var(--control-medium-paddingBlock) - 2px);
+    padding-block: calc(var(--control-medium-paddingBlock) - var(--base-size-2));
   }
 
   & .Button-label {
@@ -183,7 +187,7 @@ summary.Button {
     min-height: var(--control-small-size);
 
     & .Button-content {
-      padding-block: calc(var(--control-small-paddingBlock) - 2px);
+      padding-block: calc(var(--control-small-paddingBlock) - var(--base-size-2));
     }
   }
 
@@ -193,7 +197,7 @@ summary.Button {
     padding-inline: var(--control-large-paddingInline-spacious);
 
     & .Button-content {
-      padding-block: calc(var(--control-large-paddingBlock) - 2px);
+      padding-block: calc(var(--control-large-paddingBlock) - var(--base-size-2));
     }
   }
 }
@@ -242,9 +246,9 @@ summary.Button {
   &:disabled,
   &[aria-disabled='true'] {
     color: var(--button-primary-fgColor-disabled);
+    fill: var(--button-primary-fgColor-disabled);
     background-color: var(--button-primary-bgColor-disabled);
     border-color: var(--button-primary-borderColor-disabled);
-    fill: var(--button-primary-fgColor-disabled);
   }
 
   & .Counter {
@@ -279,9 +283,9 @@ summary.Button {
   &:disabled,
   &[aria-disabled='true'] {
     color: var(--control-fgColor-disabled);
+    fill: var(--control-fgColor-disabled);
     background-color: var(--button-default-bgColor-disabled);
     border-color: var(--button-default-borderColor-disabled);
-    fill: var(--control-fgColor-disabled);
   }
 }
 
@@ -304,9 +308,9 @@ summary.Button {
   &:disabled,
   &[aria-disabled='true'] {
     color: var(--button-invisible-fgColor-disabled);
+    fill: var(--button-invisible-fgColor-disabled);
     background-color: var(--button-invisible-bgColor-disabled);
     border-color: var(--button-invisible-borderColor-disabled);
-    fill: var(--button-invisible-fgColor-disabled);
   }
 
   /* if button has no visuals, use link blue for text */
@@ -324,14 +328,14 @@ summary.Button {
 }
 
 .Button--link {
-  color: var(--fgColor-link);
-  fill: var(--fgColor-link);
   display: inline-block;
-  font-size: inherit;
-  border: none;
+  min-width: fit-content;
   height: unset;
   padding: 0;
-  min-width: fit-content;
+  font-size: inherit;
+  color: var(--fgColor-link);
+  fill: var(--fgColor-link);
+  border: none;
 
   &:hover:not(:disabled, .Button--inactive) {
     text-decoration: underline;
@@ -345,9 +349,9 @@ summary.Button {
   &:disabled,
   &[aria-disabled='true'] {
     color: var(--control-fgColor-disabled);
+    fill: var(--control-fgColor-disabled);
     background-color: transparent;
     border-color: transparent;
-    fill: var(--control-fgColor-disabled);
   }
 
   & .Button-label {
@@ -410,9 +414,9 @@ summary.Button {
 
 .Button--iconOnly {
   display: inline-grid;
-  place-content: center;
-  padding: unset;
   width: var(--control-medium-size);
+  padding: unset;
+  place-content: center;
 
   &.Button--small {
     width: var(--control-small-size);
@@ -425,8 +429,8 @@ summary.Button {
 
 /* `disabled` takes precedence over `inactive` */
 .Button--inactive:not([aria-disabled='true'], :disabled) {
-  background-color: var(--button-inactive-bgColor);
-  border: 0;
   color: var(--button-inactive-fgColor);
   cursor: default;
+  background-color: var(--button-inactive-bgColor);
+  border: 0;
 }
