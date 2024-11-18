@@ -1,3 +1,22 @@
+GIT
+  remote: https://github.com/getkuby/kuby-core.git
+  revision: 20df458e8e9679d52f7da8f7e0f756d9a087b21e
+  ref: 20df458e8e9679d52f7da8f7e0f756d9a087b21e
+  specs:
+    kuby-core (0.20.1)
+      colorize (~> 0.8)
+      docker-remote (~> 0.8)
+      gli (~> 2.21)
+      helm-cli (~> 0.3)
+      krane (~> 2.0)
+      kube-dsl (~> 0.7)
+      kubernetes-cli (~> 0.4)
+      kuby-cert-manager (~> 0.4)
+      kuby-crdb (~> 0.2)
+      railties (>= 5.1)
+      rake
+      rouge (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,19 +142,6 @@ GEM
       kube-dsl (~> 0.1)
     kuby-cert-manager (0.4.0)
       kube-dsl (~> 0.1)
-    kuby-core (0.20.1)
-      colorize (~> 0.8)
-      docker-remote (~> 0.8)
-      gli (~> 2.21)
-      helm-cli (~> 0.3)
-      krane (~> 2.0)
-      kube-dsl (~> 0.7)
-      kubernetes-cli (~> 0.4)
-      kuby-cert-manager (~> 0.4)
-      kuby-crdb (~> 0.2)
-      railties (>= 5.1)
-      rake
-      rouge (~> 3.0)
     kuby-crdb (0.2.0)
       kube-dsl (~> 0.7)
     kuby-kind (0.2.1)
@@ -228,7 +234,7 @@ PLATFORMS
 DEPENDENCIES
   kind-rb (~> 0.1)
   kuby-azure (~> 0.4.0)
-  kuby-core (~> 0.20)
+  kuby-core!
   kuby-kind (~> 0.2)
   pry-byebug
 
