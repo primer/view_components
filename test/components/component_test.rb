@@ -71,7 +71,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
-    [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
       component.with_item(label: "Foo")
@@ -167,7 +166,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Banner, {}],
     [Primer::Alpha::FormControl, { label: "Foo" }],
     [Primer::Alpha::ActionMenu, {}, proc { |component| component.with_item(label: "Do something", value: "") }],
-    [Primer::Alpha::SelectPanel, {}]
+    [Primer::Alpha::SelectPanel, {}],
+    [Primer::Alpha::Stack, {}],
+    [Primer::Alpha::StackItem, {}]
   ].freeze
 
   def test_registered_components
@@ -194,6 +195,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::Content",
       "Primer::Navigation::TabComponent",
+      "Primer::ResponsiveArg",
       "Primer::OpenProject::BorderGrid::Cell",
       "Primer::OpenProject::GridLayout::Area",
       "Primer::OpenProject::PageHeader::Menu",

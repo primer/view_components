@@ -1,5 +1,5 @@
 <%= render Primer::OpenProject::PageHeader.new(state: in_edit_state ? :edit : :show) do |header| %>
-  <%=  header.with_title(variant: variant) do |t| %>
+  <%= header.with_title(variant: variant) do |t| %>
     <% if in_edit_state %>
       <%= t.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar") %>
     <% end %>
@@ -20,7 +20,7 @@
     <% end %>
   <% end %>
   <% if with_tab_nav %>
-    <% header.with_tab_nav(label: "label") do |nav|%>
+    <% header.with_tab_nav(label: "label") do |nav| %>
       <% nav.with_tab(selected: true, href: "#") { "Tab 1" } %>
       <% nav.with_tab(href: "#") { "Tab 2" } %>
       <% nav.with_tab(href: "#") { "Tab 3" } %>

@@ -4339,53 +4339,6 @@
     ]
   },
   {
-    "name": "image_crop",
-    "component": "ImageCrop",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/image_crop",
-    "examples": [
-      {
-        "preview_path": "primer/alpha/image_crop/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/loading",
-        "name": "loading",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
     "name": "input_group",
     "component": "OpenProject::InputGroup",
     "status": "open_project",
@@ -6577,6 +6530,32 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select_panel/custom_loading_label",
+        "name": "custom_loading_label",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/custom_loading_description",
+        "name": "custom_loading_description",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select_panel/local_fetch_no_results",
         "name": "local_fetch_no_results",
         "snapshot": "interactive",
@@ -6822,6 +6801,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6895,6 +6887,74 @@
         "preview_path": "primer/beta/spinner/default",
         "name": "default",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "stack",
+    "component": "Stack",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/stack",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/stack/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "stack_item",
+    "component": "StackItem",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/stack_item",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/stack_item/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/stack_item/playground",
+        "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

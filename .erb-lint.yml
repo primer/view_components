@@ -27,7 +27,7 @@ linters:
         Enabled: false
         Exclude:
           - app/components/primer/layout_component.html.erb
-      Primer/Migrations/IconButtonComponent:
+      Migrations/IconButtonComponent:
         Enabled: true
-      Primer/Migrations/TruncateComponent:
+      Migrations/TruncateComponent:
         Enabled: true

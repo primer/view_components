@@ -5,12 +5,15 @@
 .state, /* TODO: Deprecate */
 .State {
   display: inline-block;
-  padding: 5px var(--control-medium-paddingInline-normal);
+  /* stylelint-disable-next-line primer/spacing */
+  padding: var(--base-size-4) var(--control-medium-paddingInline-normal);
   font-size: var(--text-body-size-medium);
   font-weight: var(--base-text-weight-medium);
+  /* stylelint-disable-next-line primer/typography */
   line-height: var(--control-medium-lineBoxHeight);
   text-align: center;
   white-space: nowrap;
+  /* stylelint-disable-next-line primer/borders */
   border-radius: 2em;
 }
 
@@ -44,8 +47,10 @@
 /* Small 24px */
 
 .State--small {
+  /* stylelint-disable-next-line primer/spacing */
   padding: 0 10px;
   font-size: var(--text-body-size-small);
+  /* stylelint-disable-next-line primer/typography */
   line-height: var(--base-size-24);
 
   & .octicon {

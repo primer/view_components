@@ -26,9 +26,11 @@
   left: 0;
   z-index: 100;
   width: 160px;
+  /* stylelint-disable-next-line primer/spacing */
   padding-top: var(--control-small-paddingBlock);
+  /* stylelint-disable-next-line primer/spacing */
   padding-bottom: var(--control-small-paddingBlock);
-  margin-top: 2px;
+  margin-top: var(--base-size-2);
   list-style: none;
   background-color: var(--overlay-bgColor);
   background-clip: padding-box;
@@ -45,16 +47,20 @@
 
   /* caret border */
   &::before {
+    /* stylelint-disable-next-line primer/borders */
     border: 8px solid transparent;
     border-bottom-color: var(--borderColor-default);
   }
 
   /* caret background (should match dropdown background) */
   &::after {
+    /* stylelint-disable-next-line primer/borders */
     border: 7px solid transparent;
+    /* stylelint-disable-next-line primer/colors */
     border-bottom-color: var(--overlay-bgColor);
   }
 
+  /* stylelint-disable-next-line selector-max-type */
   & > ul {
     list-style: none;
   }
@@ -64,6 +70,7 @@
   width: auto;
 
   & .dropdown-item {
+    /* stylelint-disable-next-line primer/spacing */
     padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
     overflow: visible;
     text-overflow: inherit;
@@ -73,8 +80,8 @@
 /* Dropdown items (can be links or buttons) */
 .dropdown-item {
   display: block;
-  padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed)
-    var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
+  /* stylelint-disable-next-line primer/spacing */
+  padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed) var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   overflow: hidden;
   color: var(--fgColor-default);
   text-overflow: ellipsis;
@@ -116,11 +123,13 @@
 .dropdown-divider {
   display: block;
   height: 0;
+  /* stylelint-disable-next-line primer/spacing */
   margin: var(--stack-gap-condensed) 0;
   border-top: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .dropdown-header {
+  /* stylelint-disable-next-line primer/spacing */
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   font-size: var(--text-body-size-small);
   color: var(--fgColor-muted);
@@ -141,10 +150,12 @@
   left: auto;
   width: auto;
   margin-top: 0;
-  margin-right: 8px;
+  margin-right: var(--base-size-8);
 
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     top: 10px;
+    /* stylelint-disable-next-line primer/spacing */
     right: -16px;
     left: auto;
     border-color: transparent;
@@ -152,10 +163,12 @@
   }
 
   &::after {
-    top: 11px;
+    top: var(--base-size-12);
+    /* stylelint-disable-next-line primer/spacing */
     right: -14px;
     left: auto;
     border-color: transparent;
+    /* stylelint-disable-next-line primer/colors */
     border-left-color: var(--overlay-bgColor);
   }
 }
@@ -165,19 +178,23 @@
   left: 100%;
   width: auto;
   margin-top: 0;
-  margin-left: 8px;
+  margin-left: var(--base-size-8);
 
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     top: 10px;
+    /* stylelint-disable-next-line primer/spacing */
     left: -16px;
     border-color: transparent;
     border-right-color: var(--borderColor-default);
   }
 
   &::after {
-    top: 11px;
+    top: var(--base-size-12);
+    /* stylelint-disable-next-line primer/spacing */
     left: -14px;
     border-color: transparent;
+    /* stylelint-disable-next-line primer/colors */
     border-right-color: var(--overlay-bgColor);
   }
 }
@@ -186,7 +203,7 @@
   top: auto;
   bottom: 100%;
   left: 0;
-  margin-bottom: 3px;
+  margin-bottom: var(--base-size-4);
 
   &::before,
   &::after {
@@ -195,20 +212,29 @@
   }
 
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     bottom: -8px;
-    left: 9px;
+    left: var(--base-size-8);
+    /* stylelint-disable-next-line primer/borders */
     border-top: 8px solid var(--borderColor-default);
+    /* stylelint-disable-next-line primer/borders */
     border-right: 8px solid transparent;
     border-bottom: 0;
+    /* stylelint-disable-next-line primer/borders */
     border-left: 8px solid transparent;
   }
 
   &::after {
+    /* stylelint-disable-next-line primer/spacing */
     bottom: -7px;
+    /* stylelint-disable-next-line primer/spacing */
     left: 10px;
+    /* stylelint-disable-next-line primer/borders, primer/colors */
     border-top: 7px solid var(--overlay-bgColor);
+    /* stylelint-disable-next-line primer/borders */
     border-right: 7px solid transparent;
     border-bottom: 0;
+    /* stylelint-disable-next-line primer/borders */
     border-left: 7px solid transparent;
   }
 }
@@ -219,12 +245,14 @@
   transform: translateX(50%);
 
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     top: -16px;
     right: 50%;
     transform: translateX(50%);
   }
 
   &::after {
+    /* stylelint-disable-next-line primer/spacing */
     top: -14px;
     right: 50%;
     transform: translateX(50%);
@@ -236,13 +264,16 @@
   left: auto;
 
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     top: -16px;
-    right: 9px;
+    right: var(--base-size-8);
     left: auto;
   }
 
   &::after {
+    /* stylelint-disable-next-line primer/spacing */
     top: -14px;
+    /* stylelint-disable-next-line primer/spacing */
     right: 10px;
     left: auto;
   }
@@ -250,12 +281,15 @@
 
 .dropdown-menu-se {
   &::before {
+    /* stylelint-disable-next-line primer/spacing */
     top: -16px;
-    left: 9px;
+    left: var(--base-size-8);
   }
 
   &::after {
+    /* stylelint-disable-next-line primer/spacing */
     top: -14px;
+    /* stylelint-disable-next-line primer/spacing */
     left: 10px;
   }
 }

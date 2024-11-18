@@ -3,6 +3,7 @@
 bundle exec erblint \
     app/**/*.html.erb \
     lib/**/*.html.erb \
-    demo/app/**/*.html.erb \
+    previews/**/*.html.erb \
     test/**/*.html.erb \
+    demo/app/**/*.html.erb \
     ${@}

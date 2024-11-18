@@ -16,7 +16,7 @@ module ERBLint
 
           # Allow custom pattern matching for ERB nodes
           class ConfigSchema < LinterConfig
-            property :custom_erb_pattern, accepts: array_of?(Regexp),
+            property :custom_erb_pattern, accepts: array_of?(String),
               default: -> { [] }
           end
           self.config_schema = ConfigSchema
@@ -51,7 +51,8 @@ module ERBLint
                 if @config.custom_erb_pattern.empty?
                   nil
                 else
-                  Regexp.new(@config.custom_erb_pattern.join("|"), true)
+                  regexes = @config.custom_erb_pattern.map { |pattern| Regexp.new(pattern, true) }
+                  Regexp.new(regexes.join("|"), true)
                 end
             end
 

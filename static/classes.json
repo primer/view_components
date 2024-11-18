@@ -570,6 +570,12 @@
   "SidePanel-sectionHeader": [
     "Primer::OpenProject::SidePanel::Section"
   ],
+  "Stack": [
+    "Primer::Alpha::Stack"
+  ],
+  "StackItem": [
+    "Primer::Alpha::StackItem"
+  ],
   "State": [
     "Primer::Beta::State"
   ],

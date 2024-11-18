@@ -1,3 +1,9 @@
+/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable selector-max-type */
+/* stylelint-disable max-nesting-depth */
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable primer/spacing */
+
 /* FormControl */
 
 /* groups label, field, caption and inline error message */
@@ -33,10 +39,10 @@
 .FormControl-inlineValidation {
   display: flex;
   font-size: var(--text-caption-size);
-  line-height: var(--text-caption-lineHeight);
   font-weight: var(--base-text-weight-semibold);
-  color: var(--control-borderColor-danger);
-  fill: var(--control-borderColor-danger);
+  line-height: var(--text-caption-lineHeight);
+  color: var(--control-danger-fgColor-rest);
+  fill: var(--control-danger-fgColor-rest);
   flex-direction: row;
   align-items: flex-start;
   gap: var(--base-size-4);
@@ -47,8 +53,8 @@
 }
 
 .FormControl-inlineValidation--success {
-  color: var(--control-borderColor-success);
-  fill: var(--control-borderColor-success);
+  color: var(--fgColor-success);
+  fill: var(--fgColor-success);
 }
 
 .FormControl-inlineValidation--visual {
@@ -60,7 +66,7 @@
 .FormControl-spacingWrapper {
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: var(--stack-gap-normal);
 }
 
 .FormControl-horizontalGroup {
@@ -80,8 +86,8 @@
     cursor: not-allowed;
     background-color: var(--control-bgColor-disabled);
     border-color: var(--control-borderColor-disabled);
-    opacity: 1;
     box-shadow: none;
+    opacity: 1;
     -webkit-text-fill-color: var(--control-fgColor-disabled);
   }
 
@@ -154,7 +160,7 @@
   transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
   transition-property: color, background-color, box-shadow, border-color;
   padding-inline: var(--control-medium-paddingInline-condensed);
-  padding-block: calc(var(--control-medium-paddingBlock, 6px) - var(--borderWidth-thin, 1px));
+  padding-block: calc(var(--control-medium-paddingBlock) - var(--borderWidth-thin));
 
   &[disabled] {
     &::placeholder {
@@ -324,6 +330,7 @@
         width: var(--borderWidth-thin);
         height: var(--base-size-16);
         content: '';
+        /* stylelint-disable-next-line primer/colors */
         background: var(--borderColor-default);
       }
     }
@@ -397,8 +404,8 @@
   // sizes */
   &.FormControl-input-wrap--small {
     & .FormControl-input-leadingVisualWrap {
-      top: calc(var(--control-medium-paddingInline-condensed) - 0.125rem); /* 6px */
-      left: calc(var(--control-medium-paddingInline-condensed) - 0.125rem); /* 6px */
+      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
+      left: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
     }
 
     /*
@@ -501,8 +508,8 @@
     }
 
     & .FormControl-input-trailingAction {
-      top: calc(var(--control-medium-paddingInline-condensed) - 0.125rem); /* 6px */
-      right: calc(var(--control-medium-paddingInline-condensed) - 0.125rem); /* 6px */
+      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
+      right: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
       width: var(--control-small-size);
       height: var(--control-small-size);
 
@@ -610,7 +617,7 @@ input[type='checkbox'].FormControl-checkbox {
   width: var(--base-size-16);
   height: var(--base-size-16);
   margin: 0;
-  margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
+  margin-top: var(--base-size-2); /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--control-borderColor-emphasis);
   border-radius: var(--borderRadius-small);
@@ -623,6 +630,7 @@ input[type='checkbox'].FormControl-checkbox {
     height: var(--base-size-16);
     visibility: hidden;
     content: '';
+    /* stylelint-disable-next-line primer/colors */
     background-color: var(--control-checked-fgColor-rest);
     transition: visibility 0s linear 230ms;
     clip-path: inset(var(--base-size-16) 0 0 0);
@@ -632,10 +640,7 @@ input[type='checkbox'].FormControl-checkbox {
     mask-size: 75%;
     mask-repeat: no-repeat;
     mask-position: center;
-
-    @media screen and (prefers-reduced-motion: no-preference) {
-      animation: checkmarkOut 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards; /* slightly snappier animation out */
-    }
+    animation: checkmarkOut 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards; /* slightly snappier animation out */
   }
 
   /* extend touch target */
@@ -660,19 +665,19 @@ input[type='checkbox'].FormControl-checkbox {
     &::before {
       visibility: visible;
       transition: visibility 0s linear 0s;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards 80ms;
-      }
+      animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards 80ms;
     }
 
     &:disabled {
       cursor: not-allowed;
+      /* stylelint-disable-next-line primer/colors */
       background-color: var(--control-fgColor-disabled);
+      /* stylelint-disable-next-line primer/colors */
       border-color: var(--control-fgColor-disabled);
       opacity: 1;
 
       &::before {
+        /* stylelint-disable-next-line primer/colors */
         background-color: var(--control-checked-fgColor-rest);
       }
     }
@@ -703,7 +708,7 @@ input[type='radio'].FormControl-radio {
   width: var(--base-size-16);
   height: var(--base-size-16);
   margin: 0;
-  margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
+  margin-top: var(--base-size-2); /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--control-borderColor-emphasis);
   border-radius: var(--borderRadius-full);
@@ -725,10 +730,12 @@ input[type='radio'].FormControl-radio {
 
   &:checked {
     border-color: var(--control-checked-borderColor-rest, var(--color-accent-fg));
+    /* stylelint-disable-next-line primer/borders */
     border-width: var(--base-size-4);
 
     &[disabled], &:disabled {
       cursor: not-allowed;
+      /* stylelint-disable-next-line primer/colors */
       border-color: var(--control-fgColor-disabled);
 
       & ~ .FormControl-radio-labelWrap {
