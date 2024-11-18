@@ -1555,12 +1555,15 @@
     "GeneratedSlotMethods": "Primer::Navigation::TabComponent::GeneratedSlotMethods"
   },
   "Primer::OpenProject::BorderGrid": {
-    "Cell": "Primer::OpenProject::BorderGrid::Cell"
+    "Cell": "Primer::OpenProject::BorderGrid::Cell",
+    "GeneratedSlotMethods": "Primer::OpenProject::BorderGrid::GeneratedSlotMethods"
   },
   "Primer::OpenProject::BorderGrid::Cell": {
+    "GeneratedSlotMethods": "Primer::OpenProject::BorderGrid::Cell::GeneratedSlotMethods"
   },
   "Primer::OpenProject::DragHandle": {
     "DEFAULT_SIZE": "small",
+    "GeneratedSlotMethods": "Primer::OpenProject::DragHandle::GeneratedSlotMethods",
     "SIZE_OPTIONS": [
       "xsmall",
       "small",
@@ -1568,16 +1571,21 @@
     ]
   },
   "Primer::OpenProject::FeedbackDialog": {
+    "GeneratedSlotMethods": "Primer::OpenProject::FeedbackDialog::GeneratedSlotMethods"
   },
   "Primer::OpenProject::FeedbackMessage": {
+    "GeneratedSlotMethods": "Primer::OpenProject::FeedbackMessage::GeneratedSlotMethods"
   },
   "Primer::OpenProject::FlexLayout": {
+    "GeneratedSlotMethods": "Primer::OpenProject::FlexLayout::GeneratedSlotMethods"
   },
   "Primer::OpenProject::GridLayout": {
-    "Area": "Primer::OpenProject::GridLayout::Area"
+    "Area": "Primer::OpenProject::GridLayout::Area",
+    "GeneratedSlotMethods": "Primer::OpenProject::GridLayout::GeneratedSlotMethods"
   },
   "Primer::OpenProject::GridLayout::Area": {
     "DEFAULT_TAG": "div",
+    "GeneratedSlotMethods": "Primer::OpenProject::GridLayout::Area::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "div",
       "span"
@@ -1585,6 +1593,7 @@
   },
   "Primer::OpenProject::InputGroup": {
     "DEFAULT_INPUT_WIDTH": "auto",
+    "GeneratedSlotMethods": "Primer::OpenProject::InputGroup::GeneratedSlotMethods",
     "INPUT_WIDTH_MAPPINGS": {
       "auto": "InputGroup-input-width--auto",
       "small": "InputGroup-input-width--small",
@@ -1624,6 +1633,7 @@
       "none"
     ],
     "Dialog": "Primer::OpenProject::PageHeader::Dialog",
+    "GeneratedSlotMethods": "Primer::OpenProject::PageHeader::GeneratedSlotMethods",
     "HEADER_VARIANT_OPTIONS": [
       "medium",
       "large"
@@ -1642,10 +1652,13 @@
     "Title": "Primer::OpenProject::PageHeader::Title"
   },
   "Primer::OpenProject::PageHeader::Dialog": {
+    "GeneratedSlotMethods": "Primer::OpenProject::PageHeader::Dialog::GeneratedSlotMethods"
   },
   "Primer::OpenProject::PageHeader::Menu": {
+    "GeneratedSlotMethods": "Primer::OpenProject::PageHeader::Menu::GeneratedSlotMethods"
   },
   "Primer::OpenProject::PageHeader::Title": {
+    "GeneratedSlotMethods": "Primer::OpenProject::PageHeader::Title::GeneratedSlotMethods",
     "HEADING_TAG_FALLBACK": "h1",
     "HEADING_TAG_OPTIONS": [
       "h1",
@@ -1657,10 +1670,12 @@
     ]
   },
   "Primer::OpenProject::SidePanel": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SidePanel::GeneratedSlotMethods",
     "Section": "Primer::OpenProject::SidePanel::Section"
   },
   "Primer::OpenProject::SidePanel::Section": {
     "DEFAULT_TAG": "section",
+    "GeneratedSlotMethods": "Primer::OpenProject::SidePanel::Section::GeneratedSlotMethods",
     "TAG_OPTIONS": [
       "section",
       "div",
@@ -1677,10 +1692,12 @@
     ]
   },
   "Primer::OpenProject::SubHeader": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::GeneratedSlotMethods",
     "HIDDEN_FILTER_TARGET_SELECTOR": "sub-header.hiddenItemsOnExpandedFilter",
     "SHOWN_FILTER_TARGET_SELECTOR": "sub-header.shownItemsOnExpandedFilter"
   },
   "Primer::OpenProject::ZenModeButton": {
+    "GeneratedSlotMethods": "Primer::OpenProject::ZenModeButton::GeneratedSlotMethods",
     "ZEN_MODE_BUTTON_ICON": "screen-full",
     "ZEN_MODE_BUTTON_LABEL": "Translation missing: en.label_zen_mode"
   },
