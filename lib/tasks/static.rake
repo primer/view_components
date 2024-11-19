@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 namespace :static do
-  task dump: [:dump_statuses, :dump_constants, :dump_audited_at, :dump_previews, :dump_arguments, :dump_info_arch]
+  task dump: %i(
+    dump_statuses
+    dump_constants
+    dump_audited_at
+    dump_previews
+    dump_form_previews
+    dump_arguments
+    dump_info_arch
+  )
 
   task dump_statuses: :init_pvc do
     Primer::Static.dump(:statuses)
@@ -17,6 +25,10 @@ namespace :static do
 
   task dump_previews: :init_pvc do
     Primer::Static.dump(:previews)
+  end
+
+  task dump_form_previews: :init_pvc do
+    Primer::Static.dump(:form_previews)
   end
 
   task dump_arguments: ["docs:build_yard_registry", :init_pvc] do

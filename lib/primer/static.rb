@@ -15,6 +15,7 @@ module Primer
       audited_at: "audited_at.json",
       arguments: "arguments.json",
       previews: "previews.json",
+      form_previews: "form_previews.json",
       info_arch: "info_arch.json"
     }.freeze
 
@@ -48,6 +49,13 @@ module Primer
     # to each preview and its name.
     def self.generate_previews
       Static::GeneratePreviews.call
+    end
+
+    # Returns an array of hashes, one per example form, that contains some metadata and
+    # an array of all the form's previews. The preview data contains the Lookbook URL
+    # to each preview and its name.
+    def self.generate_form_previews
+      Static::GenerateFormPreviews.call
     end
 
     # Returns an array of hashes, one per Primer component, that contains all the data needed
