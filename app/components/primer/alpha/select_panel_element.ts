@@ -1,9 +1,10 @@
 import {getAnchoredPosition} from '@primer/behaviors'
 import {controller, target} from '@github/catalyst'
-import {announceFromElement, announce} from '../aria_live'
 import {IncludeFragmentElement} from '@github/include-fragment-element'
 import type {PrimerTextFieldElement} from 'app/lib/primer/forms/primer_text_field'
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
+import type {LiveRegionElement} from '@primer/live-region-element'
+import '@primer/live-region-element'
 import '@oddbird/popover-polyfill'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
@@ -69,11 +70,11 @@ export class SelectPanelElement extends HTMLElement {
   @target filterInputTextField: HTMLInputElement
   @target remoteInput: HTMLElement
   @target list: HTMLElement
-  @target ariaLiveContainer: HTMLElement
   @target noResults: HTMLElement
   @target fragmentErrorElement: HTMLElement
   @target bannerErrorElement: HTMLElement
   @target bodySpinner: HTMLElement
+  @target liveRegion: LiveRegionElement
 
   filterFn?: FilterFn
 
@@ -412,7 +413,7 @@ export class SelectPanelElement extends HTMLElement {
     if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
 
     this.#loadingAnnouncementTimeoutId = setTimeout(() => {
-      announce('Loading', {element: this.ariaLiveContainer})
+      this.liveRegion.announce('Loading')
     }, 2000) as unknown as number
 
     this.#loadingDelayTimeoutId = setTimeout(() => {
@@ -564,7 +565,7 @@ export class SelectPanelElement extends HTMLElement {
         const errorElement = this.fragmentErrorElement
         // check if the errorElement is visible in the dom
         if (errorElement && !errorElement.hasAttribute('hidden')) {
-          announceFromElement(errorElement, {element: this.ariaLiveContainer, assertive: true})
+          this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
           return
         }
 
@@ -766,7 +767,7 @@ export class SelectPanelElement extends HTMLElement {
 
     // check if the errorElement is visible in the dom
     if (errorElement && !errorElement.hasAttribute('hidden')) {
-      announceFromElement(errorElement, {element: this.ariaLiveContainer, assertive: true})
+      this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
       return
     }
   }
@@ -778,17 +779,15 @@ export class SelectPanelElement extends HTMLElement {
 
   #maybeAnnounce() {
     if (this.open && this.list) {
-      const items = this.items
+      const items = this.visibleItems
 
       if (items.length > 0) {
         const instructions = 'tab for results'
-        announce(`${items.length} result${items.length === 1 ? '' : 's'} ${instructions}`, {
-          element: this.ariaLiveContainer,
-        })
+        this.liveRegion.announce(`${items.length} result${items.length === 1 ? '' : 's'} ${instructions}`)
       } else {
         const noResultsEl = this.noResults
         if (noResultsEl) {
-          announceFromElement(noResultsEl, {element: this.ariaLiveContainer})
+          this.liveRegion.announceFromElement(noResultsEl)
         }
       }
     }
