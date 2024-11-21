@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.35.2
+
+### Patch Changes
+
+- [#3204](https://github.com/primer/view_components/pull/3204) [`f24feab`](https://github.com/primer/view_components/commit/f24feab6546fe1ae6be5938fbd42fb1daebf3951) Thanks [@joshblack](https://github.com/joshblack)! - Update caret styles for Popover to correctly position caret in different orientations
+
+- [#3187](https://github.com/primer/view_components/pull/3187) [`a91aa93`](https://github.com/primer/view_components/commit/a91aa93f0c75171e6f469b355c2ef747698d2280) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Fix result count in screen reader announcements
+
 ## 0.35.1
 
 ### Patch Changes
