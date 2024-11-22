@@ -1,6 +1,8 @@
 import {controller, target} from '@github/catalyst'
 import '@oddbird/popover-polyfill'
 import type {IncludeFragmentElement} from '@github/include-fragment-element'
+import AnchoredPositionElement from '../../anchored_position'
+import {observeMutationsUntilConditionMet} from '../../utils'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -17,10 +19,14 @@ export class ActionMenuElement extends HTMLElement {
   @target
   includeFragment: IncludeFragmentElement
 
+  @target
+  overlay: AnchoredPositionElement
+
   #abortController: AbortController
   #originalLabel = ''
   #inputName = ''
   #invokerBeingClicked = false
+  #intersectionObserver: IntersectionObserver
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -106,6 +112,37 @@ export class ActionMenuElement extends HTMLElement {
         signal,
       })
     }
+
+    // The code below updates the menu (i.e. overlay) position whenever the invoker button
+    // changes position within its scroll container.
+    //
+    // See: https://github.com/primer/view_components/issues/3175
+
+    const scrollUpdater = () => {
+      if (this.#isOpen()) {
+        this.overlay?.update()
+      }
+    }
+
+    this.#intersectionObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        const elem = entry.target
+        if (elem === this.invokerElement) {
+          if (entry.isIntersecting) {
+            // eslint-disable-next-line github/prefer-observers
+            window.addEventListener('scroll', scrollUpdater, {capture: true})
+          } else {
+            window.removeEventListener('scroll', scrollUpdater, {capture: true})
+          }
+        }
+      }
+    })
+
+    observeMutationsUntilConditionMet(
+      this,
+      () => Boolean(this.invokerElement),
+      () => this.#intersectionObserver.observe(this.invokerElement!),
+    )
   }
 
   disconnectedCallback() {
