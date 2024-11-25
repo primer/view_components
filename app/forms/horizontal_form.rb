@@ -3,6 +3,8 @@
 # :nodoc:
 class HorizontalForm < ApplicationForm
   form do |my_form|
+    my_form.hidden(name: :token, value: "abc123")
+
     my_form.group(layout: :horizontal) do |name_group|
       name_group.text_field(
         name: :first_name,

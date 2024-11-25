@@ -27,6 +27,10 @@ module Primer
         def supports_validation?
           false
         end
+
+        def hidden?
+          true
+        end
       end
     end
   end
