@@ -231,10 +231,6 @@ dialog.Overlay:not([open]) {
     padding-bottom: var(--stack-padding-condensed);
     /* stylelint-disable-next-line primer/box-shadow */
     box-shadow: inset 0 calc(var(--borderWidth-thin) * -1) var(--borderColor-default);
-
-    & + .Overlay-body {
-      padding-top: var(--stack-padding-normal);
-    }
   }
 
   &.Overlay-header--large {
@@ -296,7 +292,6 @@ dialog.Overlay:not([open]) {
 /* generic body content slot */
 .Overlay-body {
   padding: var(--stack-padding-normal);
-  padding-top: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   font-size: var(--text-body-size-medium);
