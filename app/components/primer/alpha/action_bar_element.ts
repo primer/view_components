@@ -36,14 +36,6 @@ class ActionBarElement extends HTMLElement {
   #focusZoneAbortController: AbortController | null = null
 
   connectedCallback() {
-    // Calculate the width of all the items before hiding anything
-    for (const item of this.items) {
-      const width = item.getBoundingClientRect().width
-      const marginLeft = parseInt(window.getComputedStyle(item)?.marginLeft, 10)
-      const marginRight = parseInt(window.getComputedStyle(item)?.marginRight, 10)
-      item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
-    }
-
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
