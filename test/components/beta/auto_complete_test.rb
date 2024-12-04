@@ -138,4 +138,10 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
       assert_includes(err.message, "Set @input_name on the component initializer instead with `input_name`.")
     end
   end
+
+  def test_results_container_scrollable
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
+
+    assert_selector("anchored-position.overflow-y-auto")
+  end
 end
