@@ -15,7 +15,7 @@ class PrimerBetaLinkTest < Minitest::Test
   def test_renders_no_additional_whitespace
     result = render_inline(Primer::Beta::Link.new(href: "http://joe-jonas-shirtless.com")) { "content" }
 
-    assert_match(%r{^<a[^>]+><span[^>]+>content</span></a>$}, result.to_s)
+    assert_match(%r{^<a[^>]+>content</a>$}, result.to_s)
   end
 
   def test_renders_without_trailing_newline
