@@ -1,9 +1,6 @@
 require:
   - rubocop/cop/primer
 
-Primer/SystemArgumentInsteadOfClass:
-  Enabled: true
-
 Primer/NoTagMemoize:
   Enabled: false
 
