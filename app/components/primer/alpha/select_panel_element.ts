@@ -6,6 +6,7 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import type {LiveRegionElement} from '@primer/live-region-element'
 import '@primer/live-region-element'
 import '@oddbird/popover-polyfill'
+import {observeMutationsUntilConditionMet} from '../utils'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -196,7 +197,8 @@ export class SelectPanelElement extends HTMLElement {
     this.#softDisableItems()
     updateWhenVisible(this)
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.remoteInput),
       () => {
         this.remoteInput.addEventListener('loadstart', this, {signal})
@@ -204,7 +206,8 @@ export class SelectPanelElement extends HTMLElement {
       },
     )
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.includeFragment),
       () => {
         this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
@@ -237,7 +240,8 @@ export class SelectPanelElement extends HTMLElement {
       }
     })
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.dialog),
       () => {
         this.#dialogIntersectionObserver.observe(this.dialog)
@@ -250,30 +254,14 @@ export class SelectPanelElement extends HTMLElement {
     )
 
     if (this.#fetchStrategy === FetchStrategy.LOCAL) {
-      this.#waitForCondition(
+      observeMutationsUntilConditionMet(
+        this,
         () => this.items.length > 0,
         () => {
           this.#updateItemVisibility()
           this.#updateInput()
         },
       )
-    }
-  }
-
-  // Waits for condition to return true. If it returns false initially, this function creates a
-  // MutationObserver that calls body() whenever the contents of the component change.
-  #waitForCondition(condition: () => boolean, body: () => void) {
-    if (condition()) {
-      body()
-    } else {
-      const mutationObserver = new MutationObserver(() => {
-        if (condition()) {
-          body()
-          mutationObserver.disconnect()
-        }
-      })
-
-      mutationObserver.observe(this, {childList: true, subtree: true})
     }
   }
 
