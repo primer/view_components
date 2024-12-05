@@ -57,9 +57,6 @@ Primer/NoTagMemoize:
   Include:
     - "app/components/**/*"
 
-Primer/SystemArgumentInsteadOfClass:
-  Enabled: true
-
 Lint/MissingSuper:
   Enabled: false
 
