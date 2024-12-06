@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.50.0
+
+### Minor Changes
+
+- [#3041](https://github.com/primer/view_components/pull/3041) [`14dd0d3`](https://github.com/opf/primer_view_components/commit/14dd0d3c4cbf2e6ce46f4d80ed94ccc06374299e) Thanks [@HDinger](https://github.com/HDinger)! - Support leading and trailing icons for Links
+
+- [#3219](https://github.com/primer/view_components/pull/3219) [`633bd05`](https://github.com/opf/primer_view_components/commit/633bd05ea6675e2b54b1cd025d86462a810e6e94) Thanks [@camertron](https://github.com/camertron)! - Removing the validate classname check that forces system arguments instead of utility classes
+
+### Patch Changes
+
+- [#3217](https://github.com/primer/view_components/pull/3217) [`0bbb076`](https://github.com/opf/primer_view_components/commit/0bbb076a978f1029d3f1724bda821ee136be408b) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing AutoComplete elements to overflow their container
+
+- [#3205](https://github.com/primer/view_components/pull/3205) [`79ca4f9`](https://github.com/opf/primer_view_components/commit/79ca4f91a67ac79623584a89d4afe5931ae0bbd6) Thanks [@camertron](https://github.com/camertron)! - Ensure `full_width:` option is respected by the auto_complete input
+
+- [#3202](https://github.com/primer/view_components/pull/3202) [`a574b0e`](https://github.com/opf/primer_view_components/commit/a574b0e2becdc057c23aa6e26230851f90976605) Thanks [@camertron](https://github.com/camertron)! - Prevent hidden inputs from taking up space on the page
+
+- [#3216](https://github.com/primer/view_components/pull/3216) [`23dd4fa`](https://github.com/opf/primer_view_components/commit/23dd4fa4308c91abef13e8e23876ab12ea79db2e) Thanks [@keithamus](https://github.com/keithamus)! - Remove redundant code for better performance.
+
 ## 0.49.2
 
 ### Patch Changes
