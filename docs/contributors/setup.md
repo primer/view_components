@@ -16,6 +16,7 @@
 Starting from view_components root directory
 
 1. `script/setup` - Setups up the whole project, but also bundle installs dependencies for the demo app.
+2. `script/dev` - run the Lookbook.
 2. Visit [localhost:4000/](localhost:4000/).
 3. Have a look at the documentation on [how to add a component](./adding-components.md) , if you are planning on new components.
 
