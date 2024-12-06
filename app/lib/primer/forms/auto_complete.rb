@@ -40,7 +40,8 @@ module Primer
             input_name: all_args[:name],
             input_id: all_args[:id],
             label_text: @input.label,
-            list_id: "#{all_args[:id]}-list"
+            list_id: "#{all_args[:id]}-list",
+            full_width: @input.full_width?
           )
       end
 

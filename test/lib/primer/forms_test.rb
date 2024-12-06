@@ -212,6 +212,12 @@ class Primer::FormsTest < Minitest::Test
     assert_selector ".FormControl-horizontalGroup .FormControl", count: 2
   end
 
+  def test_hidden_items_wrapped_in_display_none
+    render_preview :horizontal_form
+
+    assert_selector ".d-none input[type=hidden]", visible: :hidden
+  end
+
   def test_renders_multi_input
     render_preview :multi_input_form
 

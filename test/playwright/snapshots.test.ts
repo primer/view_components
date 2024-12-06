@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {test, expect} from '@playwright/test'
-import {getPreviewURLs} from './helpers'
-import type {ComponentPreviews} from './helpers'
+import {getPreviewURLs, getFormPreviewURLs} from './helpers'
+import type {ComponentPreview, FormPreview} from './helpers'
 
-const previewsJson: ComponentPreviews[] = getPreviewURLs()
+const previewsJson: ComponentPreview[] = getPreviewURLs()
+const formPreviewsJson: FormPreview[] = getFormPreviewURLs()
 
 test.beforeEach(async ({page}, testInfo) => {
   testInfo.snapshotSuffix = ''
@@ -12,6 +13,11 @@ test.beforeEach(async ({page}, testInfo) => {
 test('Preview Json exists', () => {
   expect(previewsJson).toBeDefined()
   expect(previewsJson.length).toBeGreaterThan(0)
+})
+
+test('Form Preview Json exists', () => {
+  expect(formPreviewsJson).toBeDefined()
+  expect(formPreviewsJson.length).toBeGreaterThan(0)
 })
 
 const themes = [
@@ -25,7 +31,7 @@ const themes = [
 ]
 
 test.describe('generate snapshots', () => {
-  for (const preview of previewsJson) {
+  for (const preview of [...previewsJson, ...formPreviewsJson] as Array<ComponentPreview | FormPreview>) {
     for (const example of preview.examples) {
       if (example.snapshot !== 'false') {
         if (example.snapshot === 'interactive') {

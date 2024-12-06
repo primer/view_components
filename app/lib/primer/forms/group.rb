@@ -18,9 +18,12 @@ module Primer
         @layout = layout
         @system_arguments = system_arguments
 
+        @system_arguments[:display] = :none if inputs.all?(&:hidden?)
+
         @system_arguments[:classes] = class_names(
           @system_arguments.delete(:classes),
-          "FormControl-horizontalGroup" => horizontal?
+          "FormControl-horizontalGroup" => horizontal?,
+          "FormControl-spacingWrapper" => !horizontal? && inputs.size > 1
         )
       end
 
