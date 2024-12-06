@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.50.1
+
+### Patch Changes
+
+- [#3220](https://github.com/primer/view_components/pull/3220) [`688a4a2`](https://github.com/opf/primer_view_components/commit/688a4a263deb4be70763b9ba39cae854896b44ce) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove SystemArgumentInsteadOfClass linter and fix bug with whitespace in rendered class
+
 ## 0.50.0
 
 ### Minor Changes
