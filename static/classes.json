@@ -422,6 +422,9 @@
   "Link--underline": [
     "Primer::Beta::Link"
   ],
+  "Link-content": [
+    "Primer::Beta::Link"
+  ],
   "Overlay": [
     "Primer::Alpha::Dialog",
     "Primer::Alpha::Overlay"

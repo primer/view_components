@@ -44,6 +44,7 @@ module Primer
         system_arguments[:"allow-out-of-bounds"] = ""
         system_arguments[:id] = @list_id
         system_arguments[:popover] = ""
+        system_arguments[:overflow_y] = :auto
         system_arguments[:classes] = class_names(
           "ActionListWrap ActionListWrap--inset",
           @overlay_classes,

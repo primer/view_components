@@ -36,4 +36,28 @@ class Primer::Forms::AutoCompleteInputTest < Minitest::Test
     # no rails error markup
     refute_selector ".field_with_errors", visible: :all
   end
+
+  def test_full_width_by_default
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |auto_complete_form|
+          auto_complete_form.auto_complete(name: :foo, label: "Foo", src: "/foo")
+        end
+      end
+    end
+
+    assert_selector ".FormControl--fullWidth"
+  end
+
+  def test_full_width_can_be_disabled
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |auto_complete_form|
+          auto_complete_form.auto_complete(name: :foo, label: "Foo", src: "/foo", full_width: false)
+        end
+      end
+    end
+
+    refute_selector ".FormControl--fullWidth"
+  end
 end

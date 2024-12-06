@@ -88,9 +88,9 @@ module Primer
       def before_render
         @system_arguments[:tag] = render_overflow_menu? ? :"action-bar" : :div
         @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "overflow-visible": !render_overflow_menu?
+          @system_arguments[:classes]
         )
+        @system_arguments[:overflow] = :visible if render_overflow_menu?
         content
       end
     end

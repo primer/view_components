@@ -49,9 +49,7 @@ module Primer
             case key
             when :classes
               # insert :classes first to avoid huge doc diffs
-              if (class_names = validated_class_names(val))
-                result.unshift(class_names)
-              end
+              result.unshift(val)
               next
             when :style
               style = val
@@ -104,29 +102,6 @@ module Primer
       def validate(key, val, brk)
         brk_str = Primer::Classify::Utilities::BREAKPOINTS[brk]
         Primer::Classify::Utilities.validate(key, val, brk_str)
-      end
-
-      def validated_class_names(classes)
-        return if classes.blank?
-
-        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
-          invalid_class_names =
-            classes.split.each_with_object([]) do |class_name, memo|
-              memo << class_name if Primer::Classify::Validation.invalid?(class_name)
-            end
-
-          if invalid_class_names.any?
-            raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) "\
-              "instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. "\
-              "This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning."
-          end
-        end
-
-        classes
-      end
-
-      def raise_on_invalid_options?
-        Rails.application.config.primer_view_components.raise_on_invalid_options
       end
     end
   end
