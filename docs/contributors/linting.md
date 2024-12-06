@@ -18,7 +18,7 @@ inherit_gem:
 You can also modify that configuration enabling/disabling the cops you want:
 
 ```yml
-Primer/SystemArgumentInsteadOfClass:
+Primer/NoTagMemoize:
   Enabled: false
 ```
 
