@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.36.2
+
+### Patch Changes
+
+- [#3224](https://github.com/primer/view_components/pull/3224) [`3140ad9`](https://github.com/primer/view_components/commit/3140ad99f59b2345a43774c369bcc35d7ddd04d3) Thanks [@camertron](https://github.com/camertron)! - Update check box styles for ActionList to match the rest of Primer
+
+- [#3207](https://github.com/primer/view_components/pull/3207) [`5880922`](https://github.com/primer/view_components/commit/5880922a563af6d51dc912616861cf3010a1d24a) Thanks [@camertron](https://github.com/camertron)! - Fix ActionMenu position issue when container is scrollable
+
 ## 0.36.1
 
 ### Patch Changes
