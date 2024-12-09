@@ -7,7 +7,7 @@ module Primer
       class TextFieldInput < Input
         attr_reader(
           *%i[
-            name label show_clear_button leading_visual leading_spinner clear_button_id
+            name label show_clear_button leading_visual leading_spinner trailing_visual clear_button_id
             visually_hide_label inset monospace field_wrap_classes auto_check_src
           ]
         )
@@ -20,6 +20,7 @@ module Primer
 
           @show_clear_button = system_arguments.delete(:show_clear_button)
           @leading_visual = system_arguments.delete(:leading_visual)
+          @trailing_visual = system_arguments.delete(:trailing_visual)
           @leading_spinner = !!system_arguments.delete(:leading_spinner)
           @clear_button_id = system_arguments.delete(:clear_button_id)
           @inset = system_arguments.delete(:inset)
@@ -30,6 +31,13 @@ module Primer
             @leading_visual[:classes] = class_names(
               "FormControl-input-leadingVisual",
               @leading_visual[:classes]
+            )
+          end
+
+          if @trailing_visual
+            @trailing_visual[:classes] = class_names(
+              "FormControl-input-trailingVisual",
+              @trailing_visual[:classes]
             )
           end
 
@@ -48,6 +56,14 @@ module Primer
         alias inset? inset
         alias monospace? monospace
 
+        def trailing_visual?
+          !!@trailing_visual
+        end
+
+        def leading_visual?
+          !!@leading_visual
+        end
+
         def to_component
           TextField.new(input: self)
         end
@@ -58,10 +74,6 @@ module Primer
 
         def focusable?
           true
-        end
-
-        def leading_visual?
-          !!@leading_visual
         end
 
         def validation_arguments
