@@ -29,11 +29,6 @@ module Primer
         end
 
         def inherited(base)
-          form_path = Utils.const_source_location(base.name)
-          return unless form_path
-
-          base.template_root_path = File.join(File.dirname(form_path), base.name.demodulize.underscore)
-
           base.renders_template "after_content.html.erb" do
             base.instance_variable_set(:@has_after_content, true)
           end

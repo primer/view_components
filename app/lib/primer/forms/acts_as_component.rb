@@ -50,8 +50,6 @@ module Primer
       TemplateGlob = Struct.new(:glob_pattern, :method_name, :on_compile_callback)
       TemplateParams = Struct.new(:source, :identifier, :type, :format, keyword_init: true)
 
-      attr_accessor :template_root_path
-
       def renders_templates(glob_pattern, method_name = nil, &block)
         template_globs << TemplateGlob.new(glob_pattern, method_name, block)
       end
@@ -69,6 +67,15 @@ module Primer
       end
 
       private
+
+      def template_root_path
+        return @template_root_path if defined?(@template_root_path)
+
+        form_path = Utils.const_source_location(self.name)
+        @template_root_path = if form_path
+          File.join(File.dirname(form_path), self.name.demodulize.underscore)
+        end
+      end
 
       def template_globs
         @template_globs ||= []
