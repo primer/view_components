@@ -1075,15 +1075,15 @@ module Alpha
       end
 
       # no items on initial load
-      assert_selector "select-panel", text: "No results found"
+      assert_selector "select-panel", text: "No items found"
 
       wait_for_items_to_load do
         filter_results(query: "foobar")
       end
 
       # only the banner-based error message should appear
-      assert_selector "[data-target='select-panel.bannerErrorElement']", text: "Sorry, something went wrong"
-      refute_selector "[data-target='select-panel.fragmentErrorElement']"
+      assert_selector "[data-target='select-panel.bannerErrorMessage']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.bodyErrorMessage']"
     end
 
     def test_remote_fetch_clears_input_on_close

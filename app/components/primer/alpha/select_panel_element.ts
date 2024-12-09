@@ -759,7 +759,10 @@ export class SelectPanelElement extends HTMLElement {
   #setErrorState(type: ErrorStateType) {
     let errorElement = this.bodyErrorMessage
 
-    if (type === ErrorStateType.BODY) {
+    // If the error type is BODY but the body error message element doesn't exist,
+    // that means the no items/results message is showing, so the error needs to be
+    // shown in banner form instead.
+    if (type === ErrorStateType.BODY && this.bodyErrorMessage) {
       this.bodyErrorMessage?.removeAttribute('hidden')
       this.bannerErrorMessage.setAttribute('hidden', '')
     } else {
