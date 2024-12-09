@@ -87,7 +87,6 @@ export class SelectPanelElement extends HTMLElement {
   #inputName = ''
   #selectedItems: Map<string, SelectedItem> = new Map()
   #loadingDelayTimeoutId: number | null = null
-  #loadingAnnouncementTimeoutId: number | null = null
   #hasLoadedData = false
 
   get open(): boolean {
@@ -400,14 +399,18 @@ export class SelectPanelElement extends HTMLElement {
   #setTextFieldLoadingSpinnerTimer() {
     if (!this.#filterInputTextFieldElement) return
     if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
-    if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
-
-    this.#loadingAnnouncementTimeoutId = setTimeout(() => {
-      this.liveRegion.announce('Loading')
-    }, 2000) as unknown as number
 
     this.#loadingDelayTimeoutId = setTimeout(() => {
       this.#filterInputTextFieldElement?.showLeadingSpinner()
+      this.liveRegion.announce('Loading')
+    }, 1000) as unknown as number
+  }
+
+  #setBodyLoadingTimer() {
+    if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
+
+    this.#loadingDelayTimeoutId = setTimeout(() => {
+      this.liveRegion.announce('Loading')
     }, 1000) as unknown as number
   }
 
@@ -599,8 +602,11 @@ export class SelectPanelElement extends HTMLElement {
           this.#clearErrorState()
           this.bodySpinner?.removeAttribute('hidden')
 
-          if (this.bodySpinner) break
-          this.#setTextFieldLoadingSpinnerTimer()
+          if (this.bodySpinner) {
+            this.#setBodyLoadingTimer()
+          } else {
+            this.#setTextFieldLoadingSpinnerTimer()
+          }
         }
 
         break
@@ -608,7 +614,6 @@ export class SelectPanelElement extends HTMLElement {
 
       case 'loadend': {
         this.#filterInputTextFieldElement?.hideLeadingSpinner()
-        if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
         if (this.#loadingDelayTimeoutId) clearTimeout(this.#loadingDelayTimeoutId)
         this.dispatchEvent(new CustomEvent('loadend'))
         break
