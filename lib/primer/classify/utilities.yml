@@ -1877,3 +1877,66 @@
   - flex-md-shrink-0
   - flex-lg-shrink-0
   - flex-xl-shrink-0
+:overflow:
+  :auto:
+  - overflow-auto
+  - overflow-sm-auto
+  - overflow-lg-auto
+  - overflow-xl-auto
+  :hidden:
+  - overflow-hidden
+  - overflow-sm-hidden
+  - overflow-lg-hidden
+  - overflow-xl-hidden
+  :scroll:
+  - overflow-scroll
+  - overflow-sm-scroll
+  - overflow-lg-scroll
+  - overflow-xl-scroll
+  :visible:
+  - overflow-visible
+  - overflow-sm-visible
+  - overflow-lg-visible
+  - overflow-xl-visible
+:overflow_x:
+  :auto:
+  - overflow-x-auto
+  - overflow-sm-x-auto
+  - overflow-lg-x-auto
+  - overflow-xl-x-auto
+  :hidden:
+  - overflow-x-hidden
+  - overflow-sm-x-hidden
+  - overflow-lg-x-hidden
+  - overflow-xl-x-hidden
+  :scroll:
+  - overflow-x-scroll
+  - overflow-sm-x-scroll
+  - overflow-lg-x-scroll
+  - overflow-xl-x-scroll
+  :visible:
+  - overflow-x-visible
+  - overflow-sm-x-visible
+  - overflow-lg-x-visible
+  - overflow-xl-x-visible
+:overflow_y:
+  :auto:
+  - overflow-y-auto
+  - overflow-sm-y-auto
+  - overflow-lg-y-auto
+  - overflow-xl-y-auto
+  :hidden:
+  - overflow-y-hidden
+  - overflow-sm-y-hidden
+  - overflow-lg-y-hidden
+  - overflow-xl-y-hidden
+  :scroll:
+  - overflow-y-scroll
+  - overflow-sm-y-scroll
+  - overflow-lg-y-scroll
+  - overflow-xl-y-scroll
+  :visible:
+  - overflow-y-visible
+  - overflow-sm-y-visible
+  - overflow-lg-y-visible
+  - overflow-xl-y-visible

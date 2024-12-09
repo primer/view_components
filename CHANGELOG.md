@@ -1,5 +1,92 @@
 # CHANGELOG
 
+## 0.36.1
+
+### Patch Changes
+
+- [#3220](https://github.com/primer/view_components/pull/3220) [`688a4a2`](https://github.com/primer/view_components/commit/688a4a263deb4be70763b9ba39cae854896b44ce) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove SystemArgumentInsteadOfClass linter and fix bug with whitespace in rendered class
+
+## 0.36.0
+
+### Minor Changes
+
+- [#3041](https://github.com/primer/view_components/pull/3041) [`14dd0d3`](https://github.com/primer/view_components/commit/14dd0d3c4cbf2e6ce46f4d80ed94ccc06374299e) Thanks [@HDinger](https://github.com/HDinger)! - Support leading and trailing icons for Links
+
+- [#3219](https://github.com/primer/view_components/pull/3219) [`633bd05`](https://github.com/primer/view_components/commit/633bd05ea6675e2b54b1cd025d86462a810e6e94) Thanks [@camertron](https://github.com/camertron)! - Removing the validate classname check that forces system arguments instead of utility classes
+
+### Patch Changes
+
+- [#3217](https://github.com/primer/view_components/pull/3217) [`0bbb076`](https://github.com/primer/view_components/commit/0bbb076a978f1029d3f1724bda821ee136be408b) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing AutoComplete elements to overflow their container
+
+- [#3205](https://github.com/primer/view_components/pull/3205) [`79ca4f9`](https://github.com/primer/view_components/commit/79ca4f91a67ac79623584a89d4afe5931ae0bbd6) Thanks [@camertron](https://github.com/camertron)! - Ensure `full_width:` option is respected by the auto_complete input
+
+- [#3202](https://github.com/primer/view_components/pull/3202) [`a574b0e`](https://github.com/primer/view_components/commit/a574b0e2becdc057c23aa6e26230851f90976605) Thanks [@camertron](https://github.com/camertron)! - Prevent hidden inputs from taking up space on the page
+
+- [#3216](https://github.com/primer/view_components/pull/3216) [`23dd4fa`](https://github.com/primer/view_components/commit/23dd4fa4308c91abef13e8e23876ab12ea79db2e) Thanks [@keithamus](https://github.com/keithamus)! - Remove redundant code for better performance.
+
+## 0.35.2
+
+### Patch Changes
+
+- [#3204](https://github.com/primer/view_components/pull/3204) [`f24feab`](https://github.com/primer/view_components/commit/f24feab6546fe1ae6be5938fbd42fb1daebf3951) Thanks [@joshblack](https://github.com/joshblack)! - Update caret styles for Popover to correctly position caret in different orientations
+
+- [#3187](https://github.com/primer/view_components/pull/3187) [`a91aa93`](https://github.com/primer/view_components/commit/a91aa93f0c75171e6f469b355c2ef747698d2280) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Fix result count in screen reader announcements
+
+## 0.35.1
+
+### Patch Changes
+
+- [#3177](https://github.com/primer/view_components/pull/3177) [`308a56b`](https://github.com/primer/view_components/commit/308a56b3a7fe3e29bb12aec0c3cf05a3bb7e32f4) Thanks [@mathias](https://github.com/mathias)! - Switch Ruby match from Regexps to String's starts_with method
+
+- [#3186](https://github.com/primer/view_components/pull/3186) [`4d46a3a`](https://github.com/primer/view_components/commit/4d46a3a146d8cc1a56d8472f049c329dfb0ac432) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Don't clear selection if input field doesn't exist
+
+- [#3179](https://github.com/primer/view_components/pull/3179) [`93297d2`](https://github.com/primer/view_components/commit/93297d249420656b90c968201c6a57505260e2ed) Thanks [@langermank](https://github.com/langermank)! - Update the primer/primitives dependency to be 9.x || 10.x and move it to peer
+
+## 0.35.0
+
+### Minor Changes
+
+- [#3158](https://github.com/primer/view_components/pull/3158) [`683abd2`](https://github.com/primer/view_components/commit/683abd2bc83feed08b80a1e2856ffcbb6cf33408) Thanks [@jonrohan](https://github.com/jonrohan)! - Delete Primer::Alpha::ImageCrop
+
+- [#3074](https://github.com/primer/view_components/pull/3074) [`25109d0`](https://github.com/primer/view_components/commit/25109d0a9686e8dcc8b81a08ba11cd648178aa57) Thanks [@owenniblock](https://github.com/owenniblock)! - [SelectPanel] replace loading label using parameter loading_label
+  [SelectPanel] show additional loading content with loading_description
+
+- [#3072](https://github.com/primer/view_components/pull/3072) [`18b2074`](https://github.com/primer/view_components/commit/18b2074e4a6e77ea47bd0e78c93358aaeefce842) Thanks [@camertron](https://github.com/camertron)! - [Forms] Fix position of caption for checkbox and radio groups
+
+- [#3145](https://github.com/primer/view_components/pull/3145) [`a6bacb5`](https://github.com/primer/view_components/commit/a6bacb59755382b77a0c56cf862d404090fe1af8) Thanks [@camertron](https://github.com/camertron)! - Add option to Dialog to permit/disable page scrolling
+
+- [#3160](https://github.com/primer/view_components/pull/3160) [`3cb826a`](https://github.com/primer/view_components/commit/3cb826a363d159f60089684bb9c4f4adf9481007) Thanks [@camertron](https://github.com/camertron)! - Bump primer/css
+
+- [#3149](https://github.com/primer/view_components/pull/3149) [`b9cce66`](https://github.com/primer/view_components/commit/b9cce66038a01ffa50a8f771f0b7d7312e567f88) Thanks [@camertron](https://github.com/camertron)! - Allow form groups to accept system arguments
+
+- [#3071](https://github.com/primer/view_components/pull/3071) [`e043069`](https://github.com/primer/view_components/commit/e043069782f1a88970c09feb0fe05566e21b18ce) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Use checkboxes for multi-select
+
+- [#3126](https://github.com/primer/view_components/pull/3126) [`89052ca`](https://github.com/primer/view_components/commit/89052ca71fd7f54ffe4cda87393475428c196ded) Thanks [@francinelucca](https://github.com/francinelucca)! - Introduce the Stack and StackItem components.
+
+- [#3083](https://github.com/primer/view_components/pull/3083) [`5907105`](https://github.com/primer/view_components/commit/590710582e7c29b3d6bc8b142c1e9b8f95709c68) Thanks [@jamieshark](https://github.com/jamieshark)! - [SelectPanel] Adds banner scheme as param.
+
+### Patch Changes
+
+- [#3103](https://github.com/primer/view_components/pull/3103) [`6033c86`](https://github.com/primer/view_components/commit/6033c865d5448c31f0698bcdc9422a0a9581dda0) Thanks [@owenniblock](https://github.com/owenniblock)! - Moves the loading and "no results" messages on the SelectPanel to the top of the container.
+
+- [#3141](https://github.com/primer/view_components/pull/3141) [`37e78c0`](https://github.com/primer/view_components/commit/37e78c05e5e4ac1c8d482468b77a94b495aef6b3) Thanks [@camertron](https://github.com/camertron)! - Allow setting custom values on submit buttons.
+
+- [#3153](https://github.com/primer/view_components/pull/3153) [`cc1ce7a`](https://github.com/primer/view_components/commit/cc1ce7adcc6f2d984711f8e5b5d2c92201254250) Thanks [@camertron](https://github.com/camertron)! - Fix problem introduced by #3141 that causes template captions not to render for certain input types if the input is configured with a `value:`.
+
+- [#3076](https://github.com/primer/view_components/pull/3076) [`7e7a60f`](https://github.com/primer/view_components/commit/7e7a60f4ba36b835b774c640e64d5de19f68fd61) Thanks [@HDinger](https://github.com/HDinger)! - Add "action" to the list of data attributes that accept multiple values in the `merge_data` helper
+
+- [#3139](https://github.com/primer/view_components/pull/3139) [`b650344`](https://github.com/primer/view_components/commit/b6503447d255dc8d86128e30136ea9e18436760a) Thanks [@jamieshark](https://github.com/jamieshark)! - Adjusts config for DetailsMenuMigration linter to take in an array of strings instead of array of regexp
+
+- [#3168](https://github.com/primer/view_components/pull/3168) [`82c2b0a`](https://github.com/primer/view_components/commit/82c2b0a7c762596e6cafe4e99d93f2faf17e65ac) Thanks [@camertron](https://github.com/camertron)! - [SelectPanel] Fix issue causing no error banner to appear when there are no matches
+
+- [#3095](https://github.com/primer/view_components/pull/3095) [`26f1fbc`](https://github.com/primer/view_components/commit/26f1fbcacade2c05fabb42d8231ac22fbc1e3b52) Thanks [@owenniblock](https://github.com/owenniblock)! - Clear input on SelectPanel when dialog closed
+
+- [#3152](https://github.com/primer/view_components/pull/3152) [`3611f9c`](https://github.com/primer/view_components/commit/3611f9c671c7f3a3bd2922d7c2e30440d02c4677) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix bug where checkboxes were broken with prefers-reduced-motion
+
+- [#3159](https://github.com/primer/view_components/pull/3159) [`5bc179d`](https://github.com/primer/view_components/commit/5bc179db314d22d049c42e989d23dacff6cda18c) Thanks [@camertron](https://github.com/camertron)! - Increase space between form elements
+
+- [#3144](https://github.com/primer/view_components/pull/3144) [`978e867`](https://github.com/primer/view_components/commit/978e8678301907dbaf8a61fcc966179c0736493f) Thanks [@keithamus](https://github.com/keithamus)! - Remove dialog-scrollgutter setting from hot-path, for improved performance
+
 ## 0.34.0
 
 ### Minor Changes

@@ -42,7 +42,7 @@
       <% end %>
       <%= render Primer::Alpha::Dialog::Body.new(mt: show_filter? ? 0 : 2, p: 0) do %>
         <focus-group direction="vertical" mnemonics retain>
-          <div class="sr-only" aria-live="polite" aria-atomic="true" data-target="select-panel.ariaLiveContainer"></div>
+          <live-region data-target="select-panel.liveRegion"></live-region>
           <%= render(Primer::BaseComponent.new(
             tag: :div,
             data: {

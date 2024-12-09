@@ -56,6 +56,28 @@ module Alpha
       click_on_item(4)
     end
 
+    def retry_block(max_attempts: 3)
+      attempts = 1
+
+      begin
+        yield
+      rescue Minitest::Assertion => e
+        raise e if attempts >= max_attempts
+        attempts += 1
+        retry
+      end
+    end
+
+    def open_panel_via_keyboard
+      retry_block do
+        focus_on_invoker_button
+
+        # open menu, "click" on first item
+        keyboard.type(:enter)
+        assert_selector "anchored-position:popover-open" # wait for menu to open
+      end
+    end
+
     def close_dialog
       find("[data-close-dialog-id][aria-label=Close]").click
     end
@@ -111,22 +133,22 @@ module Alpha
     def test_action_js_keydown
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       accept_alert do
         # open menu, "click" on first item
-        keyboard.type(:enter, :enter)
+        keyboard.type(:enter)
       end
     end
 
     def test_action_js_keydown_space
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       accept_alert do
         # open menu, "click" on first item
-        keyboard.type(:enter, :space)
+        keyboard.type(:space)
       end
     end
 
@@ -143,31 +165,29 @@ module Alpha
     def test_action_js_disabled_keydown
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       assert_no_alert do
         # open menu, "click" on first item
-        keyboard.type(:enter, :enter)
+        keyboard.type(:enter)
       end
     end
 
     def test_action_js_disabled_keydown_space
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       assert_no_alert do
         # open menu, "click" on first item
-        keyboard.type(:enter, :space)
+        keyboard.type(:space)
       end
     end
 
     def test_action_keydown_on_icon_button
       visit_preview(:with_icon_button)
 
-      focus_on_invoker_button
-
-      keyboard.type(:enter)
+      open_panel_via_keyboard
 
       assert_selector "anchored-position"
     end
@@ -184,10 +204,10 @@ module Alpha
     def test_action_anchor_keydown
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :enter)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :enter)
 
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
@@ -195,10 +215,10 @@ module Alpha
     def test_action_anchor_keydown_space
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :space)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :space)
 
       assert_selector ".action-menu-landing-page", text: "Hello world!"
     end
@@ -216,10 +236,10 @@ module Alpha
     def test_action_anchor_disabled_keydown
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :enter)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :enter)
 
       # assert no navigation took place
       refute_selector ".action-menu-landing-page", text: "Hello world!"
@@ -228,10 +248,10 @@ module Alpha
     def test_action_anchor_disabled_keydown_space
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :space)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :space)
 
       # assert no navigation took place
       refute_selector ".action-menu-landing-page", text: "Hello world!"
@@ -252,11 +272,11 @@ module Alpha
     def test_action_clipboard_copy_keydown
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       clipboard_text = capture_clipboard do
-        # open menu, arrow down to third item, "click" third item
-        keyboard.type(:enter, :down, :down, :enter)
+        # arrow down to third item, "click" third item
+        keyboard.type(:down, :down, :enter)
       end
 
       assert_equal clipboard_text, "Text to copy"
@@ -265,11 +285,11 @@ module Alpha
     def test_action_clipboard_copy_keydown_space
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       clipboard_text = capture_clipboard do
         # open menu, arrow down to third item, "click" third item
-        keyboard.type(:enter, :down, :down, :space)
+        keyboard.type(:down, :down, :space)
       end
 
       assert_equal clipboard_text, "Text to copy"
@@ -290,11 +310,11 @@ module Alpha
     def test_action_clipboard_copy_disabled_keydown
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       clipboard_text = capture_clipboard do
-        # open menu, arrow down to third item, "click" third item
-        keyboard.type(:enter, :down, :down, :enter)
+        # arrow down to third item, "click" third item
+        keyboard.type(:down, :down, :enter)
       end
 
       assert_nil clipboard_text
@@ -303,11 +323,11 @@ module Alpha
     def test_action_clipboard_copy_disabled_keydown_space
       visit_preview(:with_actions, disable_items: true)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
       clipboard_text = capture_clipboard do
-        # open menu, arrow down to third item, "click" third item
-        keyboard.type(:enter, :down, :down, :space)
+        # arrow down to third item, "click" third item
+        keyboard.type(:down, :down, :space)
       end
 
       assert_nil clipboard_text
@@ -316,10 +336,7 @@ module Alpha
     def test_first_item_is_focused_on_invoker_keydown
       visit_preview(:with_actions)
 
-      focus_on_invoker_button
-
-      # open menu
-      keyboard.type(:enter)
+      open_panel_via_keyboard
 
       assert_equal page.evaluate_script("document.activeElement").text, "Alert"
     end
@@ -360,10 +377,10 @@ module Alpha
     def test_opens_dialog_on_keydown
       visit_preview(:opens_dialog)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :enter)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :enter)
 
       assert_selector "dialog#my-dialog"
     end
@@ -371,10 +388,10 @@ module Alpha
     def test_opens_dialog_on_keydown_space
       visit_preview(:opens_dialog)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, arrow down to second item, "click" second item
-      keyboard.type(:enter, :down, :space)
+      # arrow down to second item, "click" second item
+      keyboard.type(:down, :space)
 
       assert_selector "dialog#my-dialog"
     end
@@ -463,10 +480,10 @@ module Alpha
     def test_single_select_items_can_submit_forms_on_enter
       visit_preview(:single_select_form_items, route_format: :json)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, "click" first item
-      keyboard.type(:enter, :enter)
+      # "click" first item
+      keyboard.type(:enter)
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
@@ -476,10 +493,10 @@ module Alpha
     def test_single_select_items_can_submit_forms_on_keydown_space
       visit_preview(:single_select_form_items, route_format: :json)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, "click" first item
-      keyboard.type(:enter, :space)
+      # "click" first item
+      keyboard.type(:space)
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
@@ -512,9 +529,7 @@ module Alpha
     def test_deferred_loading_on_keydown
       visit_preview(:with_deferred_content)
 
-      focus_on_invoker_button
-
-      keyboard.type(:enter)
+      open_panel_via_keyboard
 
       # wait for menu to load
       assert_selector "action-menu ul li", text: "Copy link"
@@ -562,34 +577,32 @@ module Alpha
     def test_single_select_item_checked_via_keyboard_enter
       visit_preview(:single_select)
 
-      focus_on_invoker_button
-
-      # open menu, "click" on first item
-      keyboard.type(:enter, :enter)
+      open_panel_via_keyboard
+      keyboard.type(:enter)
 
       # activating item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Fast forward", visible: :hidden
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
+      keyboard.type(:down, :enter)
 
-      keyboard.type(:enter, :down, :enter)
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
     end
 
     def test_single_select_item_checked_via_keyboard_space
       visit_preview(:single_select)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, "click" on first item
-      keyboard.type(:enter, :space)
+      # "click" on first item
+      keyboard.type(:space)
 
       # activating item closes menu, so checked item is hidden
       assert_selector "[aria-checked=true]", text: "Fast forward", visible: :hidden
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      keyboard.type(:enter, :down, :space)
+      keyboard.type(:down, :space)
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
     end
 
@@ -637,10 +650,10 @@ module Alpha
     def test_multi_select_items_checked_via_keyboard_enter
       visit_preview(:multiple_select)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, select first item
-      keyboard.type(:enter, :enter)
+      # select first item
+      keyboard.type(:enter)
 
       assert_selector "[aria-checked=true]", text: "langermank"
 
@@ -654,10 +667,10 @@ module Alpha
     def test_multi_select_items_checked_via_keyboard_space
       visit_preview(:multiple_select)
 
-      focus_on_invoker_button
+      open_panel_via_keyboard
 
-      # open menu, select first item
-      keyboard.type(:enter, :space)
+      # select first item
+      keyboard.type(:space)
 
       assert_selector "[aria-checked=true]", text: "langermank"
 

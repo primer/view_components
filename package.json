@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.34.0",
+  "version": "0.36.1",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -27,16 +27,14 @@
     "app/components/primer/**/*.css.json",
     "app/components/primer/**/*.d.ts",
     "app/lib/primer/forms/**/*.js",
-    "app/lib/primer/forms/**/*.d.ts",
-    "lib/primer/forms/**/*.js",
-    "lib/primer/forms/**/*.d.ts"
+    "app/lib/primer/forms/**/*.d.ts"
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
     "prepare": "script/build-assets",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
-    "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
-    "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
+    "lint:stylelint": "stylelint --rd -q 'app/components/**/*.pcss'",
+    "lint:stylelint:fix": "npm run lint:stylelint --  --fix",
     "lint:eslint": "eslint 'app/components/**/*.ts'",
     "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
@@ -55,8 +53,12 @@
     "@github/relative-time-element": "^4.0.0",
     "@github/remote-input-element": "^0.4.0",
     "@github/tab-container-element": "^3.1.2",
+    "@primer/live-region-element": "^0.7.1",
     "@oddbird/popover-polyfill": "^0.4.0",
     "@primer/behaviors": "^1.3.4"
+  },
+  "peerDependencies": {
+    "@primer/primitives": "9.x || 10.x"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
@@ -66,9 +68,8 @@
     "@github/markdownlint-github": "^0.6.0",
     "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.35.1",
-    "@primer/css": "21.3.6",
-    "@primer/primitives": "^9.0.2",
-    "@primer/stylelint-config": "^13.0.1",
+    "@primer/css": "21.5.1",
+    "@primer/stylelint-config": "^13.1.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
@@ -80,7 +81,7 @@
     "eslint-plugin-custom-elements": "^0.0.8",
     "eslint-plugin-github": "^5.0.1",
     "eslint-plugin-prettier": "^5.0.0",
-    "markdownlint-cli2": "^0.14.0",
+    "markdownlint-cli2": "^0.16.0",
     "mocha": "^10.0.0",
     "playwright": "^1.35.1",
     "postcss": "^8.4.16",

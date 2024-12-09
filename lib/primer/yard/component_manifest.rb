@@ -14,7 +14,6 @@ module Primer
         Primer::Alpha::HellipButton => {},
         Primer::Alpha::Image => {},
         Primer::Alpha::OcticonSymbols => {},
-        Primer::Alpha::ImageCrop => { js: true },
         Primer::IconButton => { js: true },
         Primer::Beta::AutoComplete => { js: true },
         Primer::Beta::AutoComplete::Item => {},

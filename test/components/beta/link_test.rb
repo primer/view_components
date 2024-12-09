@@ -92,4 +92,26 @@ class PrimerBetaLinkTest < Minitest::Test
 
     assert_selector("a[href='http://google.com'] + tool-tip", text: "Tooltip text", visible: false)
   end
+
+  def test_renders_leading_visual_icon
+    render_inline(Primer::Beta::Link.new(href: "http://google.com")) do |component|
+      component.with_leading_visual_icon(icon: "plus")
+      "content"
+    end
+
+    assert_selector("a[href='http://google.com']")
+    assert_selector(".octicon-plus")
+  end
+
+  def test_renders_trailing_visual_icon
+    render_inline(Primer::Beta::Link.new(href: "http://google.com")) do |component|
+      component.with_leading_visual_icon(icon: "plus")
+      component.with_trailing_visual_icon(icon: "alert")
+      "content"
+    end
+
+    assert_selector("a[href='http://google.com']")
+    assert_selector("a svg:first-child.octicon-plus")
+    assert_selector("a svg:nth-child(2).octicon-alert")
+  end
 end

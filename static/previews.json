@@ -3979,53 +3979,6 @@
     ]
   },
   {
-    "name": "image_crop",
-    "component": "ImageCrop",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/image_crop",
-    "examples": [
-      {
-        "preview_path": "primer/alpha/image_crop/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/loading",
-        "name": "loading",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
     "name": "label",
     "component": "Label",
     "status": "beta",
@@ -6204,6 +6157,19 @@
         "preview_path": "primer/alpha/select_panel/no_values",
         "name": "no_values",
         "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

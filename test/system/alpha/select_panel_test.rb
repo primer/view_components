@@ -100,11 +100,24 @@ module Alpha
       find("input").fill_in(with: query)
     end
 
-    def assert_announces(message:)
+    def assert_announces(message:, politeness: :polite)
       yield
 
-      assert_selector "[data-target='select-panel.ariaLiveContainer']" do |element|
-        assert_includes element.text, message
+      attempts = 0
+      max_attempts = 3
+
+      begin
+        attempts += 1
+
+        region_text = page.evaluate_script(%Q|
+          document.querySelector("[data-target='select-panel.liveRegion']")?.shadowRoot?.querySelector('##{politeness}')?.textContent ?? ""
+        |)
+
+        assert_includes region_text, message
+      rescue Minitest::Assertion => e
+        raise e if attempts >= max_attempts
+        sleep 1
+        retry
       end
     end
 
@@ -278,7 +291,7 @@ module Alpha
 
       keyboard.type(:enter)
 
-      assert_current_path "https://github.com"
+      assert_current_path "https://primer.style"
     end
 
     def test_selecting_without_data_values
@@ -1054,6 +1067,25 @@ module Alpha
       refute_selector "[data-target='select-panel.bodyErrorMessage']"
     end
 
+    def test_no_results_filter_failure
+      visit_preview(:remote_fetch_filter_failure, show_results: false)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # no items on initial load
+      assert_selector "select-panel", text: "No results found"
+
+      wait_for_items_to_load do
+        filter_results(query: "foobar")
+      end
+
+      # only the banner-based error message should appear
+      assert_selector "[data-target='select-panel.bannerErrorElement']", text: "Sorry, something went wrong"
+      refute_selector "[data-target='select-panel.fragmentErrorElement']"
+    end
+
     def test_remote_fetch_clears_input_on_close
       visit_preview(:remote_fetch)
 
@@ -1267,6 +1299,50 @@ module Alpha
       assert_announces(message: "No items found.") do
         wait_for_items_to_load do
           click_on_invoker_button
+        end
+      end
+    end
+
+    def test_announces_correct_result_count
+      visit_preview(:local_fetch)
+
+      assert_announces(message: "4 results") do
+        click_on_invoker_button
+      end
+    end
+
+    def test_announces_correct_result_count_after_filtering
+      visit_preview(:local_fetch)
+
+      click_on_invoker_button
+
+      assert_announces(message: "1 result") do
+        filter_results(query: "2")
+      end
+    end
+
+    def test_announces_error_on_initial_failure
+      visit_preview(:remote_fetch_initial_failure)
+
+      assert_announces(message: "Sorry, something went wrong", politeness: :assertive) do
+        wait_for_items_to_load do
+          click_on_invoker_button
+        end
+      end
+    end
+
+    def test_announces_error_on_filter_failure
+      visit_preview(:remote_fetch_filter_failure)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      assert_selector "select-panel ul li"
+
+      assert_announces(message: "Sorry, something went wrong", politeness: :assertive) do
+        wait_for_items_to_load do
+          filter_results(query: "foobar")
         end
       end
     end

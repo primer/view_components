@@ -3307,6 +3307,12 @@
         "description": "If true will hide the heading title, while still making it available to Screen Readers."
       },
       {
+        "name": "disable_scroll",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "When true, disables scrolling the page when the dialog is open."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -4609,101 +4615,6 @@
     ],
     "previews": [
 
-    ],
-    "subcomponents": [
-
-    ]
-  },
-  {
-    "fully_qualified_name": "Primer::Alpha::ImageCrop",
-    "description": "A client-side mechanism to crop images.",
-    "accessibility_docs": null,
-    "is_form_component": false,
-    "is_published": true,
-    "requires_js": true,
-    "component": "ImageCrop",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ImageCrop",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image_crop.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image_crop/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The path of the image to crop."
-      },
-      {
-        "name": "rounded",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "If the crop mask should be a circle. Defaults to true."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "{{link_to_system_arguments_docs}}"
-      }
-    ],
-    "slots": [
-      {
-        "name": "loading",
-        "description": "A loading indicator that is shown while the image is loading.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "{{link_to_system_arguments_docs}}"
-          }
-        ]
-      }
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-      {
-        "preview_path": "primer/alpha/image_crop/playground",
-        "name": "playground",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/image_crop/loading",
-        "name": "loading",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
     ],
     "subcomponents": [
 
@@ -8177,6 +8088,19 @@
         "preview_path": "primer/alpha/select_panel/no_values",
         "name": "no_values",
         "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/scroll_container",
+        "name": "scroll_container",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

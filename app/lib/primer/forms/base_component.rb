@@ -61,14 +61,6 @@ module Primer
         self.class.compile! unless self.class.instance_methods(false).include?(:render_template)
         render_template
       end
-
-      def content_tag_if(condition, tag, **kwargs, &block)
-        if condition
-          content_tag(tag, **kwargs, &block)
-        else
-          capture(&block)
-        end
-      end
     end
   end
 end

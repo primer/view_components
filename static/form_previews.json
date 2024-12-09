@@ -1,0 +1,113 @@
+[
+  {
+    "name": "forms",
+    "lookup_path": "primer/forms",
+    "examples": [
+      {
+        "preview_path": "primer/forms/single_text_field_form",
+        "name": "single_text_field_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/multi_text_field_form",
+        "name": "multi_text_field_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/text_field_and_checkbox_form",
+        "name": "text_field_and_checkbox_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/horizontal_form",
+        "name": "horizontal_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/composed_form",
+        "name": "composed_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/submit_button_form",
+        "name": "submit_button_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/radio_button_group_form",
+        "name": "radio_button_group_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/check_box_group_form",
+        "name": "check_box_group_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/array_check_box_group_form",
+        "name": "array_check_box_group_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/select_form",
+        "name": "select_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/action_menu_form",
+        "name": "action_menu_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/radio_button_with_nested_form",
+        "name": "radio_button_with_nested_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/check_box_with_nested_form",
+        "name": "check_box_with_nested_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/caption_template_form",
+        "name": "caption_template_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/after_content_form",
+        "name": "after_content_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/invalid_form",
+        "name": "invalid_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/multi_input_form",
+        "name": "multi_input_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/name_with_question_mark_form",
+        "name": "name_with_question_mark_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/immediate_validation_form",
+        "name": "immediate_validation_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/example_toggle_switch_form",
+        "name": "example_toggle_switch_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/auto_complete_form",
+        "name": "auto_complete_form",
+        "snapshot": "true"
+      }
+    ]
+  }
+]

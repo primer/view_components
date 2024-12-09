@@ -1,10 +1,12 @@
 import {getAnchoredPosition} from '@primer/behaviors'
 import {controller, target} from '@github/catalyst'
-import {announceFromElement, announce} from '../aria_live'
 import {IncludeFragmentElement} from '@github/include-fragment-element'
 import type {PrimerTextFieldElement} from 'app/lib/primer/forms/primer_text_field'
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
+import type {LiveRegionElement} from '@primer/live-region-element'
+import '@primer/live-region-element'
 import '@oddbird/popover-polyfill'
+import {observeMutationsUntilConditionMet} from '../utils'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -75,6 +77,7 @@ export class SelectPanelElement extends HTMLElement {
   @target bodyErrorMessage: HTMLElement
   @target bannerErrorMessage: HTMLElement
   @target bodySpinner: HTMLElement
+  @target liveRegion: LiveRegionElement
 
   filterFn?: FilterFn
 
@@ -196,7 +199,8 @@ export class SelectPanelElement extends HTMLElement {
     this.#softDisableItems()
     updateWhenVisible(this)
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.remoteInput),
       () => {
         this.remoteInput.addEventListener('loadstart', this, {signal})
@@ -204,7 +208,8 @@ export class SelectPanelElement extends HTMLElement {
       },
     )
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.includeFragment),
       () => {
         this.includeFragment.addEventListener('include-fragment-replaced', this, {signal})
@@ -237,7 +242,8 @@ export class SelectPanelElement extends HTMLElement {
       }
     })
 
-    this.#waitForCondition(
+    observeMutationsUntilConditionMet(
+      this,
       () => Boolean(this.dialog),
       () => {
         this.#dialogIntersectionObserver.observe(this.dialog)
@@ -250,30 +256,14 @@ export class SelectPanelElement extends HTMLElement {
     )
 
     if (this.#fetchStrategy === FetchStrategy.LOCAL) {
-      this.#waitForCondition(
+      observeMutationsUntilConditionMet(
+        this,
         () => this.items.length > 0,
         () => {
           this.#updateItemVisibility()
           this.#updateInput()
         },
       )
-    }
-  }
-
-  // Waits for condition to return true. If it returns false initially, this function creates a
-  // MutationObserver that calls body() whenever the contents of the component change.
-  #waitForCondition(condition: () => boolean, body: () => void) {
-    if (condition()) {
-      body()
-    } else {
-      const mutationObserver = new MutationObserver(() => {
-        if (condition()) {
-          body()
-          mutationObserver.disconnect()
-        }
-      })
-
-      mutationObserver.observe(this, {childList: true, subtree: true})
     }
   }
 
@@ -413,7 +403,7 @@ export class SelectPanelElement extends HTMLElement {
     if (this.#loadingAnnouncementTimeoutId) clearTimeout(this.#loadingAnnouncementTimeoutId)
 
     this.#loadingAnnouncementTimeoutId = setTimeout(() => {
-      announce('Loading', {element: this.ariaLiveContainer})
+      this.liveRegion.announce('Loading')
     }, 2000) as unknown as number
 
     this.#loadingDelayTimeoutId = setTimeout(() => {
@@ -466,10 +456,13 @@ export class SelectPanelElement extends HTMLElement {
       this.dialog.removeAttribute('data-ready')
       this.invokerElement?.setAttribute('aria-expanded', 'false')
       // When we close the dialog, clear the filter input
-      const fireSearchEvent = this.filterInputTextField.value.length > 0
-      this.filterInputTextField.value = ''
-      if (fireSearchEvent) {
-        this.filterInputTextField.dispatchEvent(new Event('input'))
+
+      if (this.filterInputTextField) {
+        const fireSearchEvent = this.filterInputTextField.value.length > 0
+        this.filterInputTextField.value = ''
+        if (fireSearchEvent) {
+          this.filterInputTextField.dispatchEvent(new Event('input'))
+        }
       }
 
       this.dispatchEvent(
@@ -562,7 +555,7 @@ export class SelectPanelElement extends HTMLElement {
         const errorElement = this.bodyErrorMessage
         // check if the errorElement is visible in the dom
         if (errorElement && !errorElement.hasAttribute('hidden')) {
-          announceFromElement(errorElement, {element: this.ariaLiveContainer, assertive: true})
+          this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
           return
         }
 
@@ -777,7 +770,7 @@ export class SelectPanelElement extends HTMLElement {
 
     // check if the errorElement is visible in the dom
     if (errorElement && !errorElement.hasAttribute('hidden')) {
-      announceFromElement(errorElement, {element: this.ariaLiveContainer, assertive: true})
+      this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
       return
     }
   }
@@ -789,13 +782,11 @@ export class SelectPanelElement extends HTMLElement {
 
   #maybeAnnounce() {
     if (this.open && this.list) {
-      const items = this.items
+      const items = this.visibleItems
 
       if (items.length > 0) {
         const instructions = 'tab for results'
-        announce(`${items.length} result${items.length === 1 ? '' : 's'} ${instructions}`, {
-          element: this.ariaLiveContainer,
-        })
+        this.liveRegion.announce(`${items.length} result${items.length === 1 ? '' : 's'} ${instructions}`)
       } else {
         const noResultsEl = (() => {
           if (this.noMatchesMessage && !this.noMatchesMessage.hasAttribute('hidden')) {
@@ -806,7 +797,7 @@ export class SelectPanelElement extends HTMLElement {
         })()
 
         if (noResultsEl) {
-          announceFromElement(noResultsEl, {element: this.ariaLiveContainer})
+          this.liveRegion.announceFromElement(noResultsEl)
         }
       }
     }
