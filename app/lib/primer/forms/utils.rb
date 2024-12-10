@@ -14,6 +14,9 @@ module Primer
       # for the file in the configured autoload paths. Doing so relies on Rails' autoloading
       # conventions, so it should work ok. Zeitwerk also has this information but lacks a
       # public API to map constants to source files.
+      #
+      # Now that the Ruby bug above has been fixed and released, this method should be used only
+      # as a fallback for older Rubies.
       def const_source_location(class_name)
         return nil unless class_name
 
@@ -24,6 +27,8 @@ module Primer
         # NOTE: underscore respects namespacing, i.e. will convert Foo::Bar to foo/bar.
         class_path = "#{class_name.underscore}.rb"
 
+        # Prefer Zeitwerk-managed paths, falling back to ActiveSupport::Dependencies if Zeitwerk
+        # is disabled or not in use (i.e. the case for older Rails versions).
         autoload_paths = if Rails.respond_to?(:autoloaders) && Rails.autoloaders.zeitwerk_enabled?
           Rails.autoloaders.main.dirs
         else
