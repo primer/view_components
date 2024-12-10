@@ -1,0 +1,11 @@
+<div data-show-on-error hidden data-target="select-panel.bodyErrorMessage" class="p-3">
+  <%= render Primer::Beta::Octicon.new(icon: :alert, color: :danger) %>
+  <h2 class="f5 mt-2">
+    <%= title %>
+  </h2>
+  <% if description? %>
+    <h3 class="f6 text-normal color-fg-muted mt-1">
+      <%= description %>
+    </h3>
+  <% end %>
+</div>
