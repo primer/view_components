@@ -1,0 +1,28 @@
+<%= render @dialog do |dialog| %>
+  <danger-confirmation-dialog-form-helper>
+    <%= render(@form_wrapper) do %>
+      <scrollable-region data-labelled-by="<%= labelledby %>">
+        <%= render(Primer::Alpha::Dialog::Body.new) do %>
+          <%= confirmation_message %>
+          <% if additional_details? %>
+            <%= additional_details %>
+          <% end %>
+          <%= render(Primer::BaseComponent.new(tag: :div, display: :flex, justify_content: :center)) do %>
+            <%= render(Primer::Alpha::CheckBox.new(
+                name: "confirm_dangerous_action",
+                label: "I understand that this deletion cannot be reversed",
+                id: "#{dialog_id}-checkbox",
+                data: {
+                  target: "danger-confirmation-dialog-form-helper.checkbox",
+                  action: "change:danger-confirmation-dialog-form-helper#toggle"
+                })) %>
+          <% end %>
+        <% end %>
+      </scrollable-region>
+      <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
+        <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { I18n.t("button_close") } %>
+        <%= render(Primer::Beta::Button.new(scheme: :danger, data: { "submit-dialog-id": dialog_id })) { I18n.t("button_delete_permanently") } %>
+      <% end %>
+    <% end %>
+  </danger-confirmation-dialog-form-helper>
+<% end %>

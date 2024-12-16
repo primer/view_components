@@ -1,0 +1,12 @@
+<%= render(Primer::OpenProject::DangerConfirmationDialog.new(id: "my-dialog")) do |dialog| %>
+  <% dialog.with_show_button { "Click me" } %>
+  <% dialog.with_confirmation_message(icon_arguments: { icon: icon, color: icon_color }, loading: loading_state) do |message| %>
+    <% message.with_heading(tag: :h2).with_content("Proceed with danger?") %>
+    <% message.with_description_content("This action is not reversible and may cause permanent damage.") if show_description %>
+  <% end %>
+  <% if show_additional_details %>
+    <% dialog.with_additional_details(display: :inline) do %>
+      <%= render(Primer::Alpha::Banner.new) { "Some additional content below" } %>
+    <% end %>
+  <% end %>
+<% end %>
