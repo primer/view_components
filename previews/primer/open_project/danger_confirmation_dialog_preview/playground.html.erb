@@ -5,7 +5,7 @@
     <% message.with_description_content("This action is not reversible and may cause permanent damage.") if show_description %>
   <% end %>
   <% if show_additional_details %>
-    <% dialog.with_additional_details(display: :inline) do %>
+    <% dialog.with_additional_details do %>
       <%= render(Primer::Alpha::Banner.new) { "Some additional content below" } %>
     <% end %>
   <% end %>
