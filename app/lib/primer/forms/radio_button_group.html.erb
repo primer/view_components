@@ -1,5 +1,5 @@
 <div class="FormControl-radio-group-wrap">
-  <%= content_tag(:fieldset, **@input.input_arguments) do %>
+  <%= content_tag(:fieldset, role: 'radiogroup', **@input.input_arguments) do %>
     <% if @input.label %>
       <%= content_tag(:legend, **@input.label_arguments) do %>
         <%= @input.label %>
