@@ -21,6 +21,28 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
     end
   end
 
+  def test_does_not_render_if_no_confirmation_message_provided
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
+        dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      end
+    end
+
+    assert_equal "DangerConfirmationDialog requires a confirmation_message", error.message
+  end
+
+  def test_does_not_render_if_no_confirmation_checkbox_provided
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
+        dialog.with_confirmation_message do |message|
+          message.with_heading(tag: :h2) { "Danger" }
+        end
+      end
+    end
+
+    assert_equal "DangerConfirmationDialog requires a confirmation_checkbox", error.message
+  end
+
   def test_renders_without_form_by_default
     render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
       dialog.with_confirmation_message do |message|

@@ -84,6 +84,13 @@ module Primer
                :show_button?, :show_button, :with_show_button, :with_show_button_content,
                to: :@dialog
 
+      def render?
+        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_message" unless confirmation_message?
+        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_checkbox" unless confirmation_checkbox?
+
+        confirmation_message? && confirmation_checkbox?
+      end
+
       private
 
       def before_render
