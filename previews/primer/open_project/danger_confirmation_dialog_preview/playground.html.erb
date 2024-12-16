@@ -9,4 +9,5 @@
       <%= render(Primer::Alpha::Banner.new) { "Some additional content below" } %>
     <% end %>
   <% end %>
+  <% dialog.with_confirmation_checkbox_content(checkbox_text) %>
 <% end %>

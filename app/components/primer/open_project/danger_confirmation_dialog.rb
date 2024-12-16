@@ -25,6 +25,19 @@ module Primer
         FeedbackMessage.new(icon_arguments: icon_arguments, **system_arguments)
       }
 
+      # A checkbox that the user is required to check in order to continue with the destructive action.
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :confirmation_checkbox, lambda { |**system_arguments|
+        system_arguments[:display] ||= :flex
+        system_arguments[:align_items] ||= :center
+        system_arguments[:justify_content] ||= :center
+
+        checkbox_id = "#{dialog_id}-checkbox"
+
+        Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckbox.new(checkbox_id: checkbox_id, **system_arguments)
+      }
+
       # Optional additional_details such as grid displaying a list of items to be deleted
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

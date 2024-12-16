@@ -10,12 +10,13 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
       assert_selector(".Overlay-body h2", text: "Danger")
       assert_selector(".octicon-alert.blankslate-icon")
-      assert_selector(".FormControl-checkbox + * > .FormControl-label", text: "I understand that this deletion cannot be reversed")
+      assert_selector(".FormControl-checkbox + * > .FormControl-label", text: "I confirm this deletion")
       assert_selector(".Overlay-footer .Button", count: 2)
     end
   end
@@ -25,6 +26,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -39,6 +41,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -51,11 +54,12 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
     end
 
     assert_selector("dialog#danger-dialog.DangerConfirmationDialog") do
       assert_selector("input#danger-dialog-checkbox")
-      assert_selector("label[for='danger-dialog-checkbox']", text: "I understand that this deletion cannot be reversed")
+      assert_selector("label[for='danger-dialog-checkbox']", text: "I confirm this deletion")
     end
   end
 
@@ -65,6 +69,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
         message.with_heading(tag: :h2) { "Danger" }
       end
       dialog.with_additional_details { "Additional important information." }
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
