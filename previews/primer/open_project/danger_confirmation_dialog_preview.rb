@@ -22,13 +22,11 @@ module Primer
       # @label Playground
       # @param icon [Symbol] octicon
       # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
-      # @param loading_state [Boolean] toggle
       # @param show_description toggle
       # @param show_additional_details toggle
-      def playground(icon: :"alert", icon_color: :danger, loading_state: false, show_description: true, show_additional_details: false)
+      def playground(icon: :"alert", icon_color: :danger, show_description: true, show_additional_details: false)
         render_with_template(locals: { icon: icon,
                                        icon_color: icon_color,
-                                       loading_state: loading_state,
                                        show_description: show_description,
                                        show_additional_details: show_additional_details })
       end
