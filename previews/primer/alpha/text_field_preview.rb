@@ -172,6 +172,12 @@ module Primer
         render(Primer::Alpha::TextField.new(monospace: true, name: "my-text-field", label: "My text field"))
       end
 
+      # @label With trailing visual
+      # @snapshot
+      def with_trailing_visual
+        render(Primer::Alpha::TextField.new(trailing_visual: { icon: :search }, name: "my-text-field", label: "My text field"))
+      end
+
       # @label With leading visual
       # @snapshot
       def with_leading_visual
