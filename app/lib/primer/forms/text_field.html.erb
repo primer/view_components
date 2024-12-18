@@ -21,7 +21,12 @@
       <span class="FormControl-input-trailingVisualWrap">
         <% if @input.trailing_visual %>
           <%= render(Primer::Beta::Octicon.new(**@input.trailing_visual, data: { target: "primer-text-field.trailingVisual" })) %>
+          </span>
         <% end %>
+    <% end %>
+    <% if @input.trailing_text %>
+      <span class="FormControl-input-trailingTextWrap">
+        <span class="FormControl-input-trailingText"><%= @input.trailing_text %></span>
       </span>
     <% end %>
   <% end %>

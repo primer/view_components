@@ -178,6 +178,12 @@ module Primer
         render(Primer::Alpha::TextField.new(trailing_visual: { icon: :search }, name: "my-text-field", label: "My text field"))
       end
 
+      # @label With trailing text
+      # @snapshot
+      def with_trailing_text
+        render(Primer::Alpha::TextField.new(trailing_text: "minutes", name: "my-text-field", label: "My text field"))
+      end
+
       # @label With leading visual
       # @snapshot
       def with_leading_visual

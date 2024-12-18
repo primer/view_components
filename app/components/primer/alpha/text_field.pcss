@@ -271,6 +271,26 @@
       user-select: none;
     }
   }
+  & .FormControl-input-trailingTextWrap {
+    position: absolute;
+    top: var(--base-size-8);
+    right: var(--base-size-8);
+    width: auto;
+    max-width: 25%;
+    padding-left: var(--base-size-8);
+    display: flex;
+    align-items: center;
+    height: var(--base-size-16);
+    color: var(--fgColor-muted);
+    pointer-events: none;
+
+    /* text */
+    & .FormControl-input-trailingText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 
   /* TODO: replace with new Button component */
   & .FormControl-input-trailingAction {
@@ -367,6 +387,12 @@
       padding-inline-end: calc(
               var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap)
       ); /* 32px */
+    }
+  }
+
+  &.FormControl-input-wrap--trailingText {
+    & .FormControl-input {
+      padding-inline-end: 25%
     }
   }
 
@@ -493,6 +519,12 @@
         padding-inline-end: calc(
                 var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap)
         ); /* 36px */
+      }
+    }
+
+    &.FormControl-input-wrap--trailingText {
+      & .FormControl-input.FormControl-large {
+        padding-inline-end: 25%;
       }
     }
 
