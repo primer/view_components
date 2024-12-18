@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 module Primer
   module Forms
-    # :nodoc:
     class TextField < BaseComponent
       delegate :builder, :form, to: :@input
 
@@ -25,10 +22,8 @@ module Primer
             INPUT_WRAP_SIZE[input.size],
             "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
             "FormControl-input-wrap--trailingVisual": @input.trailing_visual?,
-            "FormControl-input-wrap--leadingVisual": @input.leading_visual?,
-            "FormControl-input-wrap--trailingText": @input.trailing_text?
+            "FormControl-input-wrap--leadingVisual": @input.leading_visual?
           ),
-
           hidden: @input.hidden?
         }
       end
@@ -43,6 +38,30 @@ module Primer
             )
           end
       end
+
+      def trailing_visual_render
+        visual = @input.trailing_visual
+        return unless visual
+
+        content = ActiveSupport::SafeBuffer.new # Use SafeBuffer for safe HTML concatenation
+
+        # Render icon if specified
+        content << render(Primer::Beta::Octicon.new(icon: visual[:icon])) if visual[:icon]
+
+        # Render label if specified
+        content << render(Primer::Beta::Label.new()) { visual[:label] } if visual[:label]
+
+        # Render counter if specified
+        content << render(Primer::Beta::Counter.new(count: visual[:counter])) if visual[:counter]
+
+        # Render text if specified
+        content << content_tag(:span, visual[:text], class: "FormControl-input-trailingText") if visual[:text]
+
+        # Wrap in the trailing visual container
+        content_tag(:span, content, class: "FormControl-input-trailingVisualWrap")
+      end
+
+
     end
   end
 end

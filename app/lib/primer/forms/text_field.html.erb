@@ -17,15 +17,8 @@
         <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
       </button>
     <% end %>
-    <% if @input.trailing_visual%>
-      <span class="FormControl-input-trailingVisualWrap">
-        <%= render(Primer::Beta::Octicon.new(**@input.trailing_visual, data: { target: "primer-text-field.trailingVisual" })) %>
-      </span>
-    <% end %>
-    <% if @input.trailing_text %>
-      <span class="FormControl-input-trailingTextWrap">
-        <span class="FormControl-input-trailingText"><%= @input.trailing_text %></span>
-      </span>
+    <% if @input.trailing_visual %>
+      <%= trailing_visual_render %>
     <% end %>
   <% end %>
 <% end %>

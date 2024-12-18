@@ -172,16 +172,28 @@ module Primer
         render(Primer::Alpha::TextField.new(monospace: true, name: "my-text-field", label: "My text field"))
       end
 
-      # @label With trailing visual
+      # @label With trailing icon
       # @snapshot
-      def with_trailing_visual
+      def with_trailing_icon
         render(Primer::Alpha::TextField.new(trailing_visual: { icon: :search }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With trailing text
       # @snapshot
       def with_trailing_text
-        render(Primer::Alpha::TextField.new(trailing_text: "minutes", name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new( trailing_visual: { text: "Foobarbaz" }, name: "my-text-field", label: "My text field"))
+      end
+
+      # @label With trailing counter
+      # @snapshot
+      def with_trailing_counter
+        render(Primer::Alpha::TextField.new( trailing_visual: { counter: 5 }, name: "my-text-field", label: "My text field"))
+      end
+
+      # @label With trailing label
+      # @snapshot
+      def with_trailing_label
+        render(Primer::Alpha::TextField.new( trailing_visual: { label: "Hello" }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With leading visual

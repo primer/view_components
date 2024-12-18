@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Primer
   module Forms
     module Dsl
@@ -8,7 +6,7 @@ module Primer
         attr_reader(
           *%i[
             name label show_clear_button leading_visual leading_spinner trailing_visual clear_button_id
-            visually_hide_label inset monospace field_wrap_classes auto_check_src trailing_text
+            visually_hide_label inset monospace field_wrap_classes auto_check_src
           ]
         )
 
@@ -20,8 +18,7 @@ module Primer
 
           @show_clear_button = system_arguments.delete(:show_clear_button)
           @leading_visual = system_arguments.delete(:leading_visual)
-          @trailing_visual = system_arguments.delete(:trailing_visual)
-          @trailing_text = system_arguments.delete(:trailing_text)
+          @trailing_visual = build_trailing_visual(system_arguments.delete(:trailing_visual))
           @leading_spinner = !!system_arguments.delete(:leading_spinner)
           @clear_button_id = system_arguments.delete(:clear_button_id)
           @inset = system_arguments.delete(:inset)
@@ -32,13 +29,6 @@ module Primer
             @leading_visual[:classes] = class_names(
               "FormControl-input-leadingVisual",
               @leading_visual[:classes]
-            )
-          end
-
-          if @trailing_visual
-            @trailing_visual[:classes] = class_names(
-              "FormControl-input-trailingVisual",
-              @trailing_visual[:classes]
             )
           end
 
@@ -63,6 +53,17 @@ module Primer
 
         def leading_visual?
           !!@leading_visual
+        end
+
+        def build_trailing_visual(trailing_visual)
+          return nil unless trailing_visual
+
+          icon = trailing_visual[:icon]
+          text = trailing_visual[:text]
+          counter = trailing_visual[:counter]
+          label = trailing_visual[:label]
+
+          { icon: icon, text: text, counter: counter, label: label }.compact
         end
 
         def to_component
@@ -107,10 +108,6 @@ module Primer
           else
             super
           end
-        end
-
-        def trailing_text?
-          !!@trailing_text
         end
       end
     end
