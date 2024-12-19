@@ -265,12 +265,12 @@
     gap: var(--base-size-4);
     color: var(--fgColor-muted);
     pointer-events: none;
-    &:has( .FormControl-input-trailingText) {
+    &:has( .FormControl-input-trailingVisualText) {
       width: auto;
       max-width: 25%;
       padding-left: var(--base-size-8);
 
-      & .FormControl-input-trailingText {
+      & .FormControl-input-trailingVisualText {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -371,7 +371,7 @@
     & .FormControl-input {
       padding-inline-end: calc(var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap));
     }
-    &:has(.FormControl-input-trailingText) .FormControl-input {
+    &:has(.FormControl-input-trailingVisualText) .FormControl-input {
       padding-inline-end: 25%
     }
   }
@@ -499,7 +499,7 @@
       & .FormControl-input {
         padding-inline-end: calc(var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap));
       }
-      &:has(.FormControl-input-trailingText) .FormControl-input {
+      &:has(.FormControl-input-trailingVisualText) .FormControl-input {
         padding-inline-end: 25%
       }
     }

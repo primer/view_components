@@ -181,7 +181,7 @@ module Primer
       # @label With trailing text
       # @snapshot
       def with_trailing_text
-        render(Primer::Alpha::TextField.new( trailing_visual: { text: "Foobarbaz" }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new( trailing_visual: { text: "minute" }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With trailing counter

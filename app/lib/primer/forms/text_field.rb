@@ -46,16 +46,16 @@ module Primer
         content = ActiveSupport::SafeBuffer.new # Use SafeBuffer for safe HTML concatenation
 
         # Render icon if specified
-        content << render(Primer::Beta::Octicon.new(icon: visual[:icon])) if visual[:icon]
+        content << render(Primer::Beta::Octicon.new(icon: visual[:icon], classes: "FormControl-input-trailingVisualIcon")) if visual[:icon]
 
         # Render label if specified
-        content << render(Primer::Beta::Label.new()) { visual[:label] } if visual[:label]
+        content << render(Primer::Beta::Label.new(classes: "FormControl-input-trailingVisualLabel")) { visual[:label] } if visual[:label]
 
         # Render counter if specified
-        content << render(Primer::Beta::Counter.new(count: visual[:counter])) if visual[:counter]
+        content << render(Primer::Beta::Counter.new(count: visual[:counter], classes: "FormControl-input-trailingVisualCounter")) if visual[:counter]
 
         # Render text if specified
-        content << content_tag(:span, visual[:text], class: "FormControl-input-trailingText") if visual[:text]
+        content << content_tag(:span, visual[:text], class: "FormControl-input-trailingVisualText") if visual[:text]
 
         # Wrap in the trailing visual container
         content_tag(:span, content, class: "FormControl-input-trailingVisualWrap")
