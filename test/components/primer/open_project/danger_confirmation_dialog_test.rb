@@ -56,6 +56,20 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
     end
   end
 
+  def test_renders_button_type_buttons_by_default
+    render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+    end
+
+    assert_selector("dialog.DangerConfirmationDialog") do
+      refute_selector("button[type='submit']")
+      assert_selector("button[type='button']", count: 3)
+    end
+  end
+
   def test_renders_form_with_form_arguments
     render_inline(Primer::OpenProject::DangerConfirmationDialog.new(
       form_arguments: { action: "/my-action", method: :delete }
@@ -68,6 +82,22 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
 
     assert_selector("dialog.DangerConfirmationDialog") do
       assert_selector("form[action='/my-action'][method='delete']")
+    end
+  end
+
+  def test_renders_submit_type_button_with_form_arguments
+    render_inline(Primer::OpenProject::DangerConfirmationDialog.new(
+      form_arguments: { action: "/my-action", method: :delete }
+    )) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+    end
+
+    assert_selector("dialog.DangerConfirmationDialog") do
+      assert_selector("button[type='submit']")
+      assert_selector("button[type='button']", count: 2)
     end
   end
 

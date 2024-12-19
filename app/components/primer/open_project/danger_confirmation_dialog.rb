@@ -66,7 +66,8 @@ module Primer
         **system_arguments
       )
         form_arguments = deny_tag_argument(**form_arguments)
-        @form_wrapper = Primer::ConditionalWrapper.new(condition: form_arguments.any?, **form_arguments.merge(tag: "form"))
+        @show_form = form_arguments.any?
+        @form_wrapper = Primer::ConditionalWrapper.new(condition: @show_form, **form_arguments.merge(tag: "form"))
 
         @dialog_id = id.to_s
 
@@ -83,6 +84,10 @@ module Primer
       delegate :labelledby, :header?, :header, :with_header, :with_header_content,
                :show_button?, :show_button, :with_show_button, :with_show_button_content,
                to: :@dialog
+
+      def show_form?
+        @show_form
+      end
 
       def render?
         raise ArgumentError, "DangerConfirmationDialog requires a confirmation_message" unless confirmation_message?
