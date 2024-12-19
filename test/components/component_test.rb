@@ -14,7 +14,7 @@ class PrimerComponentTest < Minitest::Test
       end
       component.with_confirmation_check_box { "Really do this?" }
     }],
-    [Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox, {}],
+    [Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox, { check_box_name: "foo" }],
     [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
       component.with_feedback_message do |feedback|
         feedback.with_heading(tag: :h2) { "You are a hero" }
@@ -208,7 +208,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::PageHeader::Menu",
       "Primer::OpenProject::PageHeader::Dialog",
       "Primer::OpenProject::PageHeader::Title",
-      "Primer::OpenProject::SidePanel::Section"
+      "Primer::OpenProject::SidePanel::Section",
+      "Primer::OpenProject::DangerConfirmationDialog::FormWrapper"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

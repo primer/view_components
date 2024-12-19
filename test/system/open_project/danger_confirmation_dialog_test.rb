@@ -44,7 +44,22 @@ class IntegrationOpenProjectDangerConfirmationDialogTest < System::TestCase
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal "fast_forward", response["value"]
+      assert_equal "1", response.dig("form_params", "confirm_dangerous_action")
+    end
+  end
+
+  def test_submit_button_submits_form_builder_form
+    visit_preview(:with_form_builder_form, route_format: :json)
+
+    click_button("Click me")
+
+    assert_selector(".DangerConfirmationDialog") do
+      check("I understand that this deletion cannot be reversed")
+      find("button[type='submit']").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "1", response.dig("form_params", "confirm_very_dangerous_action")
     end
   end
 end

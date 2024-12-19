@@ -12,7 +12,7 @@
       </scrollable-region>
       <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
         <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { I18n.t("button_close") } %>
-        <%= render(Primer::Beta::Button.new(type: (show_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { I18n.t("button_delete_permanently") } %>
+        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { I18n.t("button_delete_permanently") } %>
       <% end %>
     <% end %>
   </danger-confirmation-dialog-form-helper>

@@ -70,18 +70,38 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
     end
   end
 
-  def test_renders_form_with_form_arguments
-    render_inline(Primer::OpenProject::DangerConfirmationDialog.new(
-      form_arguments: { action: "/my-action", method: :delete }
-    )) do |dialog|
-      dialog.with_confirmation_message do |message|
-        message.with_heading(tag: :h2) { "Danger" }
+  def test_raises_argument_error_with_invalid_form_arguments
+    error = assert_raises do
+      render_in_view_context do
+        form_with(url: "/my-action", method: :delete) do |f|
+          render(Primer::OpenProject::DangerConfirmationDialog.new(form_arguments: { builder: f, action: "/my-action" })) do |dialog|
+            dialog.with_confirmation_message do |message|
+              message.with_heading(tag: :h2) { "Danger" }
+            end
+            dialog.with_confirmation_check_box { "I confirm this deletion" }
+          end
+        end
       end
-      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
+    assert_equal "Pass in either a :builder or :action argument, not both.", error.message
+  end
+
+  def test_renders_form_with_form_arguments
+    render_inline(Primer::OpenProject::DangerConfirmationDialog.new(
+       form_arguments: { action: "/my-action", method: :delete, name: "custom_check" }
+     )) do |dialog|
+       dialog.with_confirmation_message do |message|
+         message.with_heading(tag: :h2) { "Danger" }
+       end
+       dialog.with_confirmation_check_box { "I confirm this deletion" }
+     end
+
     assert_selector("dialog.DangerConfirmationDialog") do
-      assert_selector("form[action='/my-action'][method='delete']")
+      assert_selector("form[action='/my-action']") do
+        assert_selector("input[type='hidden'][name='_method'][value='delete']", visible: false)
+        assert_selector("input[type='checkbox'][name='custom_check']")
+      end
     end
   end
 
@@ -93,6 +113,24 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
         message.with_heading(tag: :h2) { "Danger" }
       end
       dialog.with_confirmation_check_box { "I confirm this deletion" }
+    end
+
+    assert_selector("dialog.DangerConfirmationDialog") do
+      assert_selector("button[type='submit']")
+      assert_selector("button[type='button']", count: 2)
+    end
+  end
+
+  def test_renders_submit_type_button_with_form_builder_form_arguments
+    render_in_view_context do
+      form_with(url: "/my-action", method: :delete) do |f|
+        render(Primer::OpenProject::DangerConfirmationDialog.new(form_arguments: { builder: f })) do |dialog|
+          dialog.with_confirmation_message do |message|
+            message.with_heading(tag: :h2) { "Danger" }
+          end
+          dialog.with_confirmation_check_box { "I confirm this deletion" }
+        end
+      end
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do

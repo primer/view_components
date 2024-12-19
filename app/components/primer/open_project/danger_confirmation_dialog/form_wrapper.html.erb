@@ -1,0 +1,7 @@
+<% if renders_form? %>
+  <%= form_with(url: @action, method: @http_method, **@form_arguments) do %>
+    <%= content %>
+  <% end %>
+<% else %>
+  <%= content %>
+<% end %>

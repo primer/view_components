@@ -40,23 +40,14 @@ module Primer
                                        check_box_text: check_box_text })
       end
 
+      # @label With form using FormBuilder
+      def with_form_builder_form(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
+
       # @label With form
       def with_form(route_format: :html)
-        render(Primer::OpenProject::DangerConfirmationDialog.new(
-          title: "Delete dialog",
-          form_arguments: {
-            method: :post,
-            action: generic_form_submission_path(format: route_format),
-            novalidate: true
-          }
-        )) do |dialog|
-          dialog.with_show_button { "Click me" }
-          dialog.with_confirmation_message do |message|
-            message.with_heading(tag: :h2).with_content("Permanently delete?")
-            message.with_description_content("This action is not reversible. Please proceed with caution.")
-          end
-          dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
-        end
+        render_with_template(locals: { route_format: route_format })
       end
 
       # @label With additional details
