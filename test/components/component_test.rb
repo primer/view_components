@@ -12,9 +12,9 @@ class PrimerComponentTest < Minitest::Test
       component.with_confirmation_message do |confirmation|
         confirmation.with_heading(tag: :h2) { "Live dangerously?" }
       end
-      component.with_confirmation_checkbox { "Really do this?" }
+      component.with_confirmation_check_box { "Really do this?" }
     }],
-    [Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckbox, {}],
+    [Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox, {}],
     [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
       component.with_feedback_message do |feedback|
         feedback.with_heading(tag: :h2) { "You are a hero" }

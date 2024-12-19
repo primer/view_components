@@ -28,14 +28,14 @@ module Primer
       # A checkbox that the user is required to check in order to continue with the destructive action.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :confirmation_checkbox, lambda { |**system_arguments|
+      renders_one :confirmation_check_box, lambda { |**system_arguments|
         system_arguments[:display] ||= :flex
         system_arguments[:align_items] ||= :center
         system_arguments[:justify_content] ||= :center
 
-        checkbox_id = "#{dialog_id}-checkbox"
+        check_box_id = "#{dialog_id}-check_box"
 
-        Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckbox.new(checkbox_id: checkbox_id, **system_arguments)
+        Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox.new(check_box_id: check_box_id, **system_arguments)
       }
 
       # Optional additional_details such as grid displaying a list of items to be deleted
@@ -91,9 +91,9 @@ module Primer
 
       def render?
         raise ArgumentError, "DangerConfirmationDialog requires a confirmation_message" unless confirmation_message?
-        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_checkbox" unless confirmation_checkbox?
+        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_check_box" unless confirmation_check_box?
 
-        confirmation_message? && confirmation_checkbox?
+        confirmation_message? && confirmation_check_box?
       end
 
       private

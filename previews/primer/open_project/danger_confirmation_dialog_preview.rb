@@ -16,7 +16,7 @@ module Primer
             message.with_heading(tag: :h2) { "Permanently delete?" }
             message.with_description_content("This action is not reversible. Please proceed with caution.")
           end
-          dialog.with_confirmation_checkbox_content("I understand that this deletion cannot be reversed")
+          dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
         end
       end
 
@@ -25,19 +25,19 @@ module Primer
       # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
       # @param show_description toggle
       # @param show_additional_details toggle
-      # @param checkbox_text [String]
+      # @param check_box_text [String]
       def playground(
         icon: :"alert",
         icon_color: :danger,
         show_description: true,
         show_additional_details: false,
-        checkbox_text: "I understand that this deletion cannot be reversed"
+        check_box_text: "I understand that this deletion cannot be reversed"
       )
         render_with_template(locals: { icon: icon,
                                        icon_color: icon_color,
                                        show_description: show_description,
                                        show_additional_details: show_additional_details,
-                                       checkbox_text: checkbox_text })
+                                       check_box_text: check_box_text })
       end
 
       # @label With form
@@ -52,7 +52,7 @@ module Primer
             message.with_heading(tag: :h2).with_content("Permanently delete?")
             message.with_description_content("This action is not reversible. Please proceed with caution.")
           end
-          dialog.with_confirmation_checkbox_content("I understand that this deletion cannot be reversed")
+          dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
         end
       end
 
@@ -69,7 +69,7 @@ module Primer
             message.with_heading(tag: :h2) { "Permanently delete?" }
             message.with_description_content("This action is not reversible and will remove all containing sub-tiems. Please proceed with caution.")
           end
-          dialog.with_confirmation_checkbox_content("I understand that this deletion cannot be reversed")
+          dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
         end
       end
     end

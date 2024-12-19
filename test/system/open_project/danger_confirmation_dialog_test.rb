@@ -22,7 +22,7 @@ class IntegrationOpenProjectDangerConfirmationDialogTest < System::TestCase
     end
   end
 
-  def test_submit_button_enabled_when_confirmation_checkbox_checked
+  def test_submit_button_enabled_when_confirmation_check_box_checked
     visit_preview(:default)
 
     click_button("Click me")

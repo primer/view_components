@@ -5,22 +5,22 @@ module Primer
     class DangerConfirmationDialog
       # This component is part of `Primer::OpenProject::DangerConfirmationDialog`
       # and should not be used as a standalone component.
-      class ConfirmationCheckbox < Primer::Component
+      class ConfirmationCheckBox < Primer::Component
 
-        # @param checkbox_id [String] The id of the checkbox input.
+        # @param check_box_id [String] The id of the check_box input.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(checkbox_id: self.class.generate_id, **system_arguments)
+        def initialize(check_box_id: self.class.generate_id, **system_arguments)
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :div
           @system_arguments[:classes] = class_names(
             system_arguments[:classes],
-            "DangerConfirmationDialog-confirmationCheckbox"
+            "DangerConfirmationDialog-confirmationCheckBox"
           )
 
-          @checkbox_arguments = {}
-          @checkbox_arguments[:id] = checkbox_id
-          @checkbox_arguments[:name] = "confirm_dangerous_action"
-          @checkbox_arguments[:data] = {
+          @check_box_arguments = {}
+          @check_box_arguments[:id] = check_box_id
+          @check_box_arguments[:name] = "confirm_dangerous_action"
+          @check_box_arguments[:data] = {
             target: "danger-confirmation-dialog-form-helper.checkbox",
             action: "change:danger-confirmation-dialog-form-helper#toggle"
           }
@@ -28,7 +28,7 @@ module Primer
 
         def call
           render(Primer::BaseComponent.new(**@system_arguments)) do
-            render(Primer::Alpha::CheckBox.new(**@checkbox_arguments.merge(label: trimmed_content)))
+            render(Primer::Alpha::CheckBox.new(**@check_box_arguments.merge(label: trimmed_content)))
           end
         end
       end

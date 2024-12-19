@@ -10,7 +10,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -24,14 +24,14 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
   def test_does_not_render_if_no_confirmation_message_provided
     error = assert_raises(ArgumentError) do
       render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
-        dialog.with_confirmation_checkbox { "I confirm this deletion" }
+        dialog.with_confirmation_check_box { "I confirm this deletion" }
       end
     end
 
     assert_equal "DangerConfirmationDialog requires a confirmation_message", error.message
   end
 
-  def test_does_not_render_if_no_confirmation_checkbox_provided
+  def test_does_not_render_if_no_confirmation_check_box_provided
     error = assert_raises(ArgumentError) do
       render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
         dialog.with_confirmation_message do |message|
@@ -40,7 +40,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       end
     end
 
-    assert_equal "DangerConfirmationDialog requires a confirmation_checkbox", error.message
+    assert_equal "DangerConfirmationDialog requires a confirmation_check_box", error.message
   end
 
   def test_renders_without_form_by_default
@@ -48,7 +48,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -61,7 +61,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -77,7 +77,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -92,7 +92,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
@@ -106,12 +106,12 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog#danger-dialog.DangerConfirmationDialog") do
-      assert_selector("input#danger-dialog-checkbox")
-      assert_selector("label[for='danger-dialog-checkbox']", text: "I confirm this deletion")
+      assert_selector("input#danger-dialog-check_box")
+      assert_selector("label[for='danger-dialog-check_box']", text: "I confirm this deletion")
     end
   end
 
@@ -121,7 +121,7 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
         message.with_heading(tag: :h2) { "Danger" }
       end
       dialog.with_additional_details { "Additional important information." }
-      dialog.with_confirmation_checkbox { "I confirm this deletion" }
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
     end
 
     assert_selector("dialog.DangerConfirmationDialog") do
