@@ -32,4 +32,19 @@ class IntegrationOpenProjectDangerConfirmationDialogTest < System::TestCase
       assert_selector("button[data-submit-dialog-id]:enabled")
     end
   end
+
+  def test_submit_button_submits_form
+    visit_preview(:with_form, route_format: :json)
+
+    click_button("Click me")
+
+    assert_selector(".DangerConfirmationDialog") do
+      check("I understand that this deletion cannot be reversed")
+      find("button[type='submit']").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "fast_forward", response["value"]
+    end
+  end
 end

@@ -41,12 +41,15 @@ module Primer
       end
 
       # @label With form
-      def with_form
-        render(Primer::OpenProject::DangerConfirmationDialog.new(form_arguments: {
-          method: :post,
-          action: "/my-controller/my-action",
-          novalidate: true
-        })) do |dialog|
+      def with_form(route_format: :html)
+        render(Primer::OpenProject::DangerConfirmationDialog.new(
+          title: "Delete dialog",
+          form_arguments: {
+            method: :post,
+            action: generic_form_submission_path(format: route_format),
+            novalidate: true
+          }
+        )) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2).with_content("Permanently delete?")
