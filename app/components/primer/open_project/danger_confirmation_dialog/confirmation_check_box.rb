@@ -32,6 +32,12 @@ module Primer
             render(Primer::Alpha::CheckBox.new(**@check_box_arguments.merge(label: trimmed_content)))
           end
         end
+
+        def render?
+          raise ArgumentError, "ConfirmationCheckBox requires a content block" unless trimmed_content.present?
+
+          true
+        end
       end
     end
   end

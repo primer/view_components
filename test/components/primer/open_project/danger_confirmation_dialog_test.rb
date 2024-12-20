@@ -43,6 +43,19 @@ class PrimerOpenProjectDangerConfirmationDialogTest < Minitest::Test
     assert_equal "DangerConfirmationDialog requires a confirmation_check_box", error.message
   end
 
+  def test_does_not_render_if_no_confirmation_check_box_content_provided
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
+        dialog.with_confirmation_message do |message|
+          message.with_heading(tag: :h2) { "Danger" }
+        end
+        dialog.with_confirmation_check_box
+      end
+    end
+
+    assert_equal "ConfirmationCheckBox requires a content block", error.message
+  end
+
   def test_renders_without_form_by_default
     render_inline(Primer::OpenProject::DangerConfirmationDialog.new) do |dialog|
       dialog.with_confirmation_message do |message|
