@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 0.51.0
+
+### Minor Changes
+
+- [#214](https://github.com/opf/primer_view_components/pull/214) [`0d265ad`](https://github.com/opf/primer_view_components/commit/0d265ad5384099a1a3a8833cc25bee72d1c15684) Thanks [@myabc](https://github.com/myabc)! - [59468] Initial implementation of Danger Confirmation Dialog
+  This is an opinionated dialog that requires the user to confirm that they wish to perform a "potentially dangerous" action by clicking a checkbox. The submit button is disabled until the checkbox is clicked. A "potentially dangerous" action could be a destructive action that cannot be easily reverted, such as bulk delete.
+
+### Patch Changes
+
+- [#3224](https://github.com/primer/view_components/pull/3224) [`3140ad9`](https://github.com/opf/primer_view_components/commit/3140ad99f59b2345a43774c369bcc35d7ddd04d3) Thanks [@camertron](https://github.com/camertron)! - Update check box styles for ActionList to match the rest of Primer
+
+- [#3236](https://github.com/primer/view_components/pull/3236) [`eea9da6`](https://github.com/opf/primer_view_components/commit/eea9da6639c3fe81f328e7da8904d89df6b2467b) Thanks [@camertron](https://github.com/camertron)! - Improve template path detection for forms
+
+- [#3235](https://github.com/primer/view_components/pull/3235) [`c765093`](https://github.com/opf/primer_view_components/commit/c765093790d53940b3d7810085441d3706d17229) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Adds `role="radiogroup"` on `fieldset` in radio group component
+
+- [#3207](https://github.com/primer/view_components/pull/3207) [`5880922`](https://github.com/opf/primer_view_components/commit/5880922a563af6d51dc912616861cf3010a1d24a) Thanks [@camertron](https://github.com/camertron)! - Fix ActionMenu position issue when container is scrollable
+
 ## 0.50.1
 
 ### Patch Changes
