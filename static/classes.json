@@ -263,6 +263,9 @@
   "FormControl-check-group-wrap": [
     "Primer::Alpha::TextField"
   ],
+  "FormControl-checkbox": [
+    "Primer::Alpha::TextField"
+  ],
   "FormControl-checkbox-wrap": [
     "Primer::Alpha::TextField"
   ],
@@ -303,6 +306,9 @@
     "Primer::Alpha::TextField"
   ],
   "FormControl-monospace": [
+    "Primer::Alpha::TextField"
+  ],
+  "FormControl-radio": [
     "Primer::Alpha::TextField"
   ],
   "FormControl-radio-group-wrap": [
