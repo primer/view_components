@@ -67,6 +67,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-spacingWrapper",
       ".FormControl-horizontalGroup",
       ".FormControl-inlineValidation--success",
+      ".FormControl-checkbox",
+      ".FormControl-radio",
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",

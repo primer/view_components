@@ -224,6 +224,12 @@ module Primer
         @system_arguments[:"data-dynamic-label"] = "" if dynamic_label
         @system_arguments[:"data-dynamic-label-prefix"] = dynamic_label_prefix if dynamic_label_prefix.present?
 
+        overlay_arguments[:data] = merge_data(
+          overlay_arguments, data: {
+            target: "action-menu.overlay"
+          }
+        )
+
         @overlay = Primer::Alpha::Overlay.new(
           id: "#{@menu_id}-overlay",
           title: "Menu",
