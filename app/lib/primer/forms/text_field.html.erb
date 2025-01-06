@@ -17,8 +17,10 @@
         <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
       </button>
     <% end %>
-    <% if @input.trailing_visual %>
-      <%= trailing_visual_render %>
+    <% if (component = @input.trailing_visual_component) %>
+      <div class="FormControl-input-trailingVisualWrap">
+        <%= render(component) %>
+      </div>
     <% end %>
   <% end %>
 <% end %>
