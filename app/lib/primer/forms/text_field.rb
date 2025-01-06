@@ -39,26 +39,40 @@ module Primer
           end
       end
 
-      def trailing_visual_render
+      def trailing_visual_component
+        return @trailing_visual_component if defined?(@trailing_visual_component)
         visual = @input.trailing_visual
-        return unless visual
-
-        content = ActiveSupport::SafeBuffer.new # Use SafeBuffer for safe HTML concatenation
 
         # Render icon if specified
-        content << render(Primer::Beta::Octicon.new(icon: visual[:icon], classes: "FormControl-input-trailingVisualIcon")) if visual[:icon]
+        @trailing_visual_component = if (icon_arguments = visual[:icon])
+          icon_arguments[:classes] = class_names(
+            icon_arguments.delete(:classes),
+            "FormControl-input-trailingVisualIcon"
+          )
 
-        # Render label if specified
-        content << render(Primer::Beta::Label.new(classes: "FormControl-input-trailingVisualLabel")) { visual[:label] } if visual[:label]
+          Primer::Beta::Octicon.new(**icon_arguments)
+        elsif (label_arguments = visual[:label])
+          # Render label if specified
+          label_arguments[:classes] = class_names(
+            label_arguments.delete(:classes),
+            "FormControl-input-trailingVisualLabel"
+          )
 
-        # Render counter if specified
-        content << render(Primer::Beta::Counter.new(count: visual[:counter], classes: "FormControl-input-trailingVisualCounter")) if visual[:counter]
+          text = label_arguments.delete(:text)
+          Primer::Beta::Label.new(**label_arguments).with_content(text)
+        elsif (counter_arguments = visual[:counter])
+          # Render counter if specified
+          counter_arguments[:classes] = class_names(
+            counter_arguments.delete(:classes),
+            "FormControl-input-trailingVisualCounter"
+          )
 
-        # Render text if specified
-        content << content_tag(:span, visual[:text], class: "FormControl-input-trailingVisualText") if visual[:text]
-
-        # Wrap in the trailing visual container
-        content_tag(:span, content, class: "FormControl-input-trailingVisualWrap")
+          Primer::Beta::Counter.new(**counter_arguments))
+        elsif (truncate_arguments = visual[:text])
+          # Render text if specified
+          text = truncate_arguments.delete(:text)
+          Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
+        end
       end
 
 
