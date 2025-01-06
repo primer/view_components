@@ -18,7 +18,7 @@ module Primer
 
           @show_clear_button = system_arguments.delete(:show_clear_button)
           @leading_visual = system_arguments.delete(:leading_visual)
-          @trailing_visual = build_trailing_visual(system_arguments.delete(:trailing_visual))
+          @trailing_visual = system_arguments.delete(:trailing_visual)
           @leading_spinner = !!system_arguments.delete(:leading_spinner)
           @clear_button_id = system_arguments.delete(:clear_button_id)
           @inset = system_arguments.delete(:inset)
@@ -53,17 +53,6 @@ module Primer
 
         def leading_visual?
           !!@leading_visual
-        end
-
-        def build_trailing_visual(trailing_visual)
-          return nil unless trailing_visual
-
-          icon = trailing_visual[:icon]
-          text = trailing_visual[:text]
-          counter = trailing_visual[:counter]
-          label = trailing_visual[:label]
-
-          { icon: icon, text: text, counter: counter, label: label }.compact
         end
 
         def to_component

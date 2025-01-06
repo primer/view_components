@@ -67,15 +67,17 @@ module Primer
             "FormControl-input-trailingVisualCounter"
           )
 
-          Primer::Beta::Counter.new(**counter_arguments))
+          Primer::Beta::Counter.new(**counter_arguments)
         elsif (truncate_arguments = visual[:text])
           # Render text if specified
+          truncate_arguments[:classes] = class_names(
+            truncate_arguments.delete(:classes),
+            "FormControl-input-trailingVisualText"
+          )
           text = truncate_arguments.delete(:text)
           Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
         end
       end
-
-
     end
   end
 end
