@@ -29,6 +29,10 @@ module Primer
         def call
           render(Primer::BaseComponent.new(**@system_arguments)) { content }
         end
+
+        def active?
+          false
+        end
       end
     end
   end
