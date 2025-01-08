@@ -4,9 +4,9 @@
     <% message.with_heading(tag: :h2).with_content("Awesome!") %>
     <% message.with_description { "Great! Everything worked well." } if show_description %>
   <% end %>
-  <% if show_additional_content %>
-    <% dialog.with_additional_content(display: :inline) do %>
-      <%= render(Primer::Alpha::Banner.new) { "Some additional content below" } %>
+  <% if show_additional_details %>
+    <% dialog.with_additional_details(display: :inline) do %>
+      <%= render(Primer::Alpha::Banner.new) { "Some additional details below" } %>
       <% end %>
   <% end %>
   <% if custom_footer %>

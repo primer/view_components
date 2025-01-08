@@ -19,16 +19,16 @@ class PrimerOpenProjectFeedbackDialogTest < Minitest::Test
     end
   end
 
-  def test_renders_additional_content
+  def test_renders_additional_details
     render_inline(Primer::OpenProject::FeedbackDialog.new) do |dialog|
       dialog.with_feedback_message do |message|
         message.with_heading(tag: :h2) { "Success" }
       end
-      dialog.with_additional_content { "Some additional content" }
+      dialog.with_additional_details { "Some additional details" }
     end
 
     assert_selector("dialog.FeedbackDialog") do
-      assert_selector(".FeedbackDialog-additionalContent", text: "Some additional content")
+      assert_selector(".FeedbackDialog-additionalDetails", text: "Some additional details")
     end
   end
 
