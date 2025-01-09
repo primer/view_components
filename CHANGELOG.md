@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.36.3
+
+### Patch Changes
+
+- [#3254](https://github.com/primer/view_components/pull/3254) [`1bb7ad7`](https://github.com/primer/view_components/commit/1bb7ad71239ee6b6ef158dac7f1aad3bd76ea404) Thanks [@camertron](https://github.com/camertron)! - Fix `NoMethodError` when checking if `ActionList::Divider`s are active
+
+- [#3253](https://github.com/primer/view_components/pull/3253) [`3a63cf0`](https://github.com/primer/view_components/commit/3a63cf01377ccb71654f69e7840c5bc52fe802b2) Thanks [@joshblack](https://github.com/joshblack)! - Add top spacing to Dialog::Body to avoid it being glued to the divider
+
 ## 0.36.2
 
 ### Patch Changes
