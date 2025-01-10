@@ -12,7 +12,7 @@ class BenchUtilities < Minitest::Benchmark
     # warm up
     Primer::Classify::Utilities.supported_selector?("m-1")
 
-    assert_allocations "3.0" => 4, "3.1" => 4, "3.2" => 4, "3.3" => 4 do
+    assert_allocations "3.0" => 4, "3.1" => 4, "3.2" => 4, "3.3" => 4, "3.4" => 4 do
       Primer::Classify::Utilities.supported_selector?("m-1")
     end
   end
@@ -21,7 +21,7 @@ class BenchUtilities < Minitest::Benchmark
     # warm up
     Primer::Classify::Utilities.supported_selector?("foo")
 
-    assert_allocations "3.0" => 0, "3.1" => 0, "3.2" => 0, "3.3" => 0 do
+    assert_allocations "3.0" => 0, "3.1" => 0, "3.2" => 0, "3.3" => 0, "3.4" => 0 do
       Primer::Classify::Utilities.supported_selector?("foo")
     end
   end
