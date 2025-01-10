@@ -36,7 +36,7 @@ module Primer
       end
 
       # @label With additional details
-      def additional_details
+      def with_additional_details
         render_with_template(locals: {})
       end
 
@@ -52,7 +52,7 @@ module Primer
       end
 
       # @label With custom footer
-      def custom_footer
+      def with_custom_footer
         render_with_template(locals: {})
       end
 
