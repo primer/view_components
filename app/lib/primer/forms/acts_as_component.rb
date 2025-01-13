@@ -66,30 +66,45 @@ module Primer
         @compiled = true
       end
 
-      private
-
       def template_root_path
         return @template_root_path if defined?(@template_root_path)
 
         form_path = Utils.const_source_location(self.name)
-        @template_root_path = if form_path
-          File.join(File.dirname(form_path), self.name.demodulize.underscore)
+        @template_root_path =
+          if form_path
+            File.join(File.dirname(form_path), self.name.demodulize.underscore)
+          end
+      end
+
+      def base_template_path
+        return @base_template_path if defined?(@base_path)
+        base_path = Utils.const_source_location(self.name)
+
+        if base_path
+          @base_template_path = File.dirname(base_path)
+        else
+          warn "Could not identify the template for #{self}"
         end
       end
+
+      private
 
       def template_globs
         @template_globs ||= []
       end
 
       def compile_templates_in(template_glob)
-        pattern = if Pathname(template_glob.glob_pattern).absolute?
-                    template_glob.glob_pattern
-                  else
-                    # skip compilation for anonymous form classes, as in tests
-                    return unless template_root_path
+        pattern = template_glob.glob_pattern
+        pattern = pattern.gsub("%{base_template_path}", base_template_path) if base_template_path
+        pattern =
+          if Pathname(pattern).absolute?
+            pattern
+          else
+            # skip compilation for anonymous form classes, as in tests
+            return unless template_root_path
 
-                    File.join(template_root_path, template_glob.glob_pattern)
-                  end
+            File.join(template_root_path, pattern)
+          end
 
         template_paths = Dir.glob(pattern)
 
@@ -117,11 +132,11 @@ module Primer
         handler = ActionView::Template.handler_for_extension("erb")
         template = File.read(path)
         template_params = TemplateParams.new({
-                                               source: template,
-                                               identifier: __FILE__,
-                                               type: "text/html",
-                                               format: "text/html"
-                                             })
+          source: template,
+          identifier: __FILE__,
+          type: "text/html",
+          format: "text/html"
+        })
 
         # change @output_buffer ivar to output_buffer method call
         BufferRewriter.rewrite(
