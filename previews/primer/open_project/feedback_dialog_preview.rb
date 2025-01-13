@@ -24,19 +24,19 @@ module Primer
       # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
       # @param loading_state [Boolean] toggle
       # @param show_description toggle
-      # @param show_additional_content toggle
+      # @param show_additional_details toggle
       # @param custom_footer toggle
-      def playground(icon: :"check-circle", icon_color: :success, loading_state: false, show_description: true, show_additional_content: false, custom_footer: false)
+      def playground(icon: :"check-circle", icon_color: :success, loading_state: false, show_description: true, show_additional_details: false, custom_footer: false)
         render_with_template(locals: { icon: icon,
                                        icon_color: icon_color,
                                        loading_state: loading_state,
                                        show_description: show_description,
-                                       show_additional_content: show_additional_content,
+                                       show_additional_details: show_additional_details,
                                        custom_footer: custom_footer })
       end
 
-      # @label With additional content
-      def additional_content
+      # @label With additional details
+      def with_additional_details
         render_with_template(locals: {})
       end
 
@@ -52,7 +52,7 @@ module Primer
       end
 
       # @label With custom footer
-      def custom_footer
+      def with_custom_footer
         render_with_template(locals: {})
       end
 

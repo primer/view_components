@@ -17,15 +17,15 @@ module Primer
         Primer::OpenProject::FeedbackMessage.new(icon_arguments: icon_arguments, **system_arguments)
       }
 
-      # Optional additional_content like a form input or toast.
+      # Optional additional_details like a form input or toast.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :additional_content, lambda { |**system_arguments|
+      renders_one :additional_details, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "FeedbackDialog-additionalContent"
+          "FeedbackDialog-additionalDetails"
         )
 
         system_arguments[:display] ||= :flex
