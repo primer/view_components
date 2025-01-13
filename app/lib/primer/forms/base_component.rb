@@ -7,18 +7,11 @@ module Primer
       include Primer::ClassNameHelper
       extend ActsAsComponent
 
-      def self.compile!
-        base_path = Utils.const_source_location(self.name)
-
-        unless base_path
-          warn "Could not identify the template for #{base}"
-          return
-        end
-
-        dir = File.dirname(base_path)
-        renders_template File.join(dir, "#{self.name.demodulize.underscore}.html.erb"), :render_template
-
-        super
+      def self.inherited(base)
+        base.renders_template(
+          File.join("%{base_template_path}", "#{base.name.demodulize.underscore}.html.erb"),
+          :render_template
+        )
       end
 
       delegate :required?, :disabled?, :hidden?, to: :@input
