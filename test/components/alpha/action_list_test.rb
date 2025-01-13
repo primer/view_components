@@ -226,6 +226,7 @@ module Primer
         error = assert_raises ArgumentError do
           render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" }, select_variant: :single)) do |component|
             component.with_item(label: "Item 1", active: true)
+            component.with_divider
             component.with_item(label: "Item 2", active: true)
           end
         end
