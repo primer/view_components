@@ -1561,6 +1561,17 @@
   "Primer::OpenProject::BorderGrid::Cell": {
     "GeneratedSlotMethods": "Primer::OpenProject::BorderGrid::Cell::GeneratedSlotMethods"
   },
+  "Primer::OpenProject::DangerConfirmationDialog": {
+    "ConfirmationCheckBox": "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox",
+    "FormWrapper": "Primer::OpenProject::DangerConfirmationDialog::FormWrapper",
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::GeneratedSlotMethods"
+  },
+  "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox": {
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox::GeneratedSlotMethods"
+  },
+  "Primer::OpenProject::DangerConfirmationDialog::FormWrapper": {
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::FormWrapper::GeneratedSlotMethods"
+  },
   "Primer::OpenProject::DragHandle": {
     "DEFAULT_SIZE": "small",
     "GeneratedSlotMethods": "Primer::OpenProject::DragHandle::GeneratedSlotMethods",

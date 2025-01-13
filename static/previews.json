@@ -3109,6 +3109,92 @@
     ]
   },
   {
+    "name": "danger_confirmation_dialog",
+    "component": "OpenProject::DangerConfirmationDialog",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/danger_confirmation_dialog",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form_builder_form",
+        "name": "with_form_builder_form",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form",
+        "name": "with_form",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/with_additional_details",
+        "name": "with_additional_details",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_confirmation_dialog/custom_icon",
+        "name": "custom_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "details",
     "component": "Details",
     "status": "beta",
@@ -5009,6 +5095,32 @@
         "preview_path": "primer/beta/link/color_scheme_secondary_muted",
         "name": "color_scheme_secondary_muted",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/link/with_leading_icon",
+        "name": "with_leading_icon",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/link/with_trailing_icon",
+        "name": "with_trailing_icon",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
