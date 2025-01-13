@@ -5117,7 +5117,7 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash"
+        "description": "Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "id",
