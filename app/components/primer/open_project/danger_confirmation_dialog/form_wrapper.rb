@@ -5,6 +5,8 @@ module Primer
     class DangerConfirmationDialog
       # Utility component for wrapping DangerConfirmationDialog in a form
       class FormWrapper < Primer::Component
+        status :open_project
+
         def initialize(builder: nil, action: nil, **form_arguments)
           raise ArgumentError, "Pass in either a :builder or :action argument, not both." if builder && action
 
