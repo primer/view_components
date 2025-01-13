@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.52.0
+
+### Minor Changes
+
+- [#219](https://github.com/opf/primer_view_components/pull/219) [`e3a93b7`](https://github.com/opf/primer_view_components/commit/e3a93b72299395d039758b1fda8ec78d51687127) Thanks [@myabc](https://github.com/myabc)! - [#60359] Harmonise FeedbackDialog slot naming: renames the `additional_content` slot to `additional_details` to make Feedback Dialog consistent with the newly introduced Danger Confirmation Dialog.
+
 ## 0.51.0
 
 ### Minor Changes
