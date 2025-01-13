@@ -181,25 +181,25 @@ module Primer
       # @label With trailing text
       # @snapshot
       def with_trailing_text
-        render(Primer::Alpha::TextField.new( trailing_visual: { text: { text: "minute" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "minute" } }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With trailing long text
       # @snapshot
       def with_trailing_long_text
-        render(Primer::Alpha::TextField.new( trailing_visual: { text: { text: "Long trailing text" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "Long trailing text" } }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With trailing counter
       # @snapshot
       def with_trailing_counter
-        render(Primer::Alpha::TextField.new( trailing_visual: { counter: { counter: 5 } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { counter: { count: 5 } }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With trailing label
       # @snapshot
       def with_trailing_label
-        render(Primer::Alpha::TextField.new( trailing_visual: { label: { text: "Hello" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field", label: "My text field"))
       end
 
       # @label With leading visual

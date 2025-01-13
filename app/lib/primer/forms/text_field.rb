@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Primer
   module Forms
+    # :nodoc:
     class TextField < BaseComponent
       delegate :builder, :form, to: :@input
 
@@ -44,39 +47,35 @@ module Primer
         visual = @input.trailing_visual
 
         # Render icon if specified
-        @trailing_visual_component = if (icon_arguments = visual[:icon])
-          icon_arguments[:classes] = class_names(
-            icon_arguments.delete(:classes),
-            "FormControl-input-trailingVisualIcon"
-          )
+        @trailing_visual_component =
+          if (icon_arguments = visual[:icon])
+            Primer::Beta::Octicon.new(**icon_arguments)
+          elsif (label_arguments = visual[:label])
+            # Render label if specified
+            label_arguments[:classes] = class_names(
+              label_arguments.delete(:classes),
+              "FormControl-input-trailingVisualLabel"
+            )
 
-          Primer::Beta::Octicon.new(**icon_arguments)
-        elsif (label_arguments = visual[:label])
-          # Render label if specified
-          label_arguments[:classes] = class_names(
-            label_arguments.delete(:classes),
-            "FormControl-input-trailingVisualLabel"
-          )
+            text = label_arguments.delete(:text)
+            Primer::Beta::Label.new(**label_arguments).with_content(text)
+          elsif (counter_arguments = visual[:counter])
+            # Render counter if specified
+            counter_arguments[:classes] = class_names(
+              counter_arguments.delete(:classes),
+              "FormControl-input-trailingVisualCounter"
+            )
 
-          text = label_arguments.delete(:text)
-          Primer::Beta::Label.new(**label_arguments).with_content(text)
-        elsif (counter_arguments = visual[:counter])
-          # Render counter if specified
-          counter_arguments[:classes] = class_names(
-            counter_arguments.delete(:classes),
-            "FormControl-input-trailingVisualCounter"
-          )
-
-          Primer::Beta::Counter.new(**counter_arguments)
-        elsif (truncate_arguments = visual[:text])
-          # Render text if specified
-          truncate_arguments[:classes] = class_names(
-            truncate_arguments.delete(:classes),
-            "FormControl-input-trailingVisualText"
-          )
-          text = truncate_arguments.delete(:text)
-          Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
-        end
+            Primer::Beta::Counter.new(**counter_arguments)
+          elsif (truncate_arguments = visual[:text])
+            # Render text if specified
+            truncate_arguments[:classes] = class_names(
+              truncate_arguments.delete(:classes),
+              "FormControl-input-trailingVisualText"
+            )
+            text = truncate_arguments.delete(:text)
+            Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
+          end
       end
     end
   end

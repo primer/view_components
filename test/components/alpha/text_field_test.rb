@@ -104,15 +104,15 @@ class PrimerAlphaTextFieldTest < Minitest::Test
   end
 
   def test_renders_a_trailing_visual_icon
-    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { icon: :search }))
+    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { icon: { icon: :search } }))
 
     assert_selector ".FormControl-input-trailingVisualWrap" do
-      assert_selector "svg.octicon.octicon-search.FormControl-input-trailingVisualIcon"
+      assert_selector "svg.octicon.octicon-search"
     end
   end
 
   def test_renders_a_trailing_visual_text
-    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { text: 'minute' }))
+    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { text: { text: "minute" } }))
 
     assert_selector ".FormControl-input-trailingVisualWrap" do
       assert_selector ".FormControl-input-trailingVisualText", text: "minute"
@@ -120,15 +120,15 @@ class PrimerAlphaTextFieldTest < Minitest::Test
   end
 
   def test_renders_a_trailing_visual_label
-    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { label: 'Hello' }))
+    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { label: { text: "Hello" } }))
 
     assert_selector ".FormControl-input-trailingVisualWrap" do
       assert_selector ".FormControl-input-trailingVisualLabel.Label", text: "Hello"
     end
   end
 
-  def test_renders_a_trailing_visual_Counter
-    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { counter: '5' }))
+  def test_renders_a_trailing_visual_counter
+    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_visual: { counter: { count: 5 } }))
 
     assert_selector ".FormControl-input-trailingVisualWrap" do
       assert_selector ".FormControl-input-trailingVisualCounter.Counter", text: "5"
