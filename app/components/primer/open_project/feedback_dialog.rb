@@ -6,10 +6,12 @@ module Primer
     class FeedbackDialog < Primer::Component
       status :open_project
 
-      # A feedback message with some defaults that are necessary for rendering nicely
+      # A feedback message with some defaults that are necessary for rendering nicely.
       #
-      # @param heading [String] the heading for the success message
-      # @param description [String] the description for the success message
+      # To render the message heading (required), call the `with_heading` method, which accepts a `:tag` argument, along with the arguments accepted by <%= link_to_component(Primer::Beta::Heading) %>.
+      #
+      # To render the message description, call the `with_description` method, which accepts <%= link_to_system_arguments_docs %>
+      #
       # @param icon_arguments [Hash] the system_arguments for the icon
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :feedback_message, lambda { |icon_arguments: {}, **system_arguments|
@@ -17,7 +19,7 @@ module Primer
         Primer::OpenProject::FeedbackMessage.new(icon_arguments: icon_arguments, **system_arguments)
       }
 
-      # Optional additional_details like a form input or toast.
+      # Optional additional details, like a form input or toast.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :additional_details, lambda { |**system_arguments|
