@@ -121,6 +121,8 @@
 ** .FormControl
 ** ├─ .FormControl-label
 ** │  ├─ .FormControl-input-wrap
+** │  │  ├─ .FormControl-input-trailingVisualWrap
+** │  │  │  ├─ .FormControl-input-trailingVisual
 ** │  │  ├─ .FormControl-input-leadingVisualWrap
 ** │  │  │  ├─ .FormControl-input-leadingVisual
 ** │  │  ├─ .FormControl-input
@@ -253,6 +255,32 @@
     }
   }
 
+  & .FormControl-input-trailingVisualWrap {
+    position: absolute;
+    top: var(--base-size-8);
+    right: var(--base-size-8);
+    display: flex;
+    height: var(--base-size-16);
+    align-items: center;
+    gap: var(--base-size-4);
+    color: var(--fgColor-muted);
+    pointer-events: none;
+
+    &:has( .FormControl-input-trailingVisualText) {
+      max-width: 25%;
+      padding-left: var(--base-size-8);
+    }
+
+    &:has( .FormControl-input-trailingVisualLabel) {
+      max-width: 25%;
+      padding-left: var(--base-size-8);
+    }
+
+    & .FormControl-input-trailingVisualLabel {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
   /* TODO: replace with new Button component */
   & .FormControl-input-trailingAction {
     position: absolute;
@@ -320,7 +348,7 @@
   /*
 	┌──32px──┬────────────────────┐
 	╎  ┌───┐   ┌────────────────┐ ╎
-	╎   16px    16px                ╎
+	╎   16px    16px              ╎
 	╎  └───┘   └────────────────┘ ╎
 	└───────8px───────────────────┘
 	*/
@@ -333,10 +361,34 @@
     }
   }
 
+  /* if trailingVisual is present */
+
   /*
 	┌──────────────────┬──32px──┐
 	╎  ┌──────────────┐  ┌────┐ ╎
-	╎   24px               24px   ╎
+	╎   24px               24px ╎
+	╎  └──────────────┘  └────┘ ╎
+	└──────────────────┴────────┘
+  */
+
+  &.FormControl-input-wrap--trailingVisual {
+    & .FormControl-input {
+      padding-inline-end: calc(var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap));
+    }
+
+    &:has(.FormControl-input-trailingVisualText) .FormControl-input {
+      padding-inline-end: 25%
+    }
+
+    &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
+      padding-inline-end: 25%
+    }
+  }
+
+  /*
+	┌──────────────────┬──32px──┐
+	╎  ┌──────────────┐  ┌────┐ ╎
+	╎   24px               24px ╎
 	╎  └──────────────┘  └────┘ ╎
 	└──────────────────┴────────┘
   */
@@ -376,6 +428,11 @@
     & .FormControl-input-leadingVisualWrap {
       top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
       left: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
+    }
+
+    & .FormControl-input-trailingVisualWrap {
+      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
+      right: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
     }
 
     /*
@@ -428,6 +485,11 @@
       left: var(--control-medium-paddingInline-normal);
     }
 
+    & .FormControl-input-trailingVisualWrap {
+      top: var(--control-medium-paddingInline-normal);
+      right: var(--control-medium-paddingInline-normal);
+    }
+
     /*
     ┌──36px──┬───12px padding──────┐
     ╎  ┌───┐   ┌────────────────┐ ╎
@@ -444,6 +506,31 @@
       }
     }
 
+    &.FormControl-input-wrap--trailingVisual {
+      & .FormControl-input {
+        padding-inline-end: calc(var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap));
+      }
+
+      &:has(.FormControl-input-trailingVisualText) .FormControl-input {
+        padding-inline-end: 25%
+      }
+
+      &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
+        padding-inline-end: 25%
+      }
+    }
+
+    &.FormControl-input-wrap--trailingText {
+      & .FormControl-input.FormControl-large {
+        padding-inline-end: 25%;
+      }
+    }
+
+    &.FormControl-input-wrap--trailingLabel {
+      & .FormControl-input.FormControl-large {
+        padding-inline-end: 25%;
+      }
+    }
     /*
     ┌──────────────────┬──36px──┐
     ╎  ┌──────────────┐  ┌────┐ ╎
