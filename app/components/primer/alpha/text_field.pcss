@@ -270,6 +270,14 @@
       max-width: 25%;
       padding-left: var(--base-size-8);
     }
+    &:has( .FormControl-input-trailingVisualLabel) {
+      max-width: 25%;
+      padding-left: var(--base-size-8);
+    }
+      .FormControl-input-trailingVisualLabel {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
   }
   /* TODO: replace with new Button component */
   & .FormControl-input-trailingAction {
@@ -367,6 +375,9 @@
     }
 
     &:has(.FormControl-input-trailingVisualText) .FormControl-input {
+      padding-inline-end: 25%
+    }
+    &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
       padding-inline-end: 25%
     }
   }
@@ -500,6 +511,9 @@
       &:has(.FormControl-input-trailingVisualText) .FormControl-input {
         padding-inline-end: 25%
       }
+      &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
+        padding-inline-end: 25%
+      }
     }
 
     &.FormControl-input-wrap--trailingText {
@@ -507,7 +521,11 @@
         padding-inline-end: 25%;
       }
     }
-
+    &.FormControl-input-wrap--trailingLabel {
+      & .FormControl-input.FormControl-large {
+        padding-inline-end: 25%;
+      }
+    }
     /*
     ┌──────────────────┬──36px──┐
     ╎  ┌──────────────┐  ┌────┐ ╎
