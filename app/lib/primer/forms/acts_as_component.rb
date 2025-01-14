@@ -77,7 +77,7 @@ module Primer
       end
 
       def base_template_path
-        return @base_template_path if defined?(@base_path)
+        return @base_template_path if defined?(@base_template_path)
         base_path = Utils.const_source_location(self.name)
 
         if base_path
