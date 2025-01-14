@@ -82,7 +82,7 @@
     "eslint-plugin-github": "^5.0.1",
     "eslint-plugin-prettier": "^5.0.0",
     "markdownlint-cli2": "^0.16.0",
-    "mocha": "^10.0.0",
+    "mocha": "^11.0.1",
     "playwright": "^1.35.1",
     "postcss": "^8.4.16",
     "postcss-cli": "^11.0.0",
