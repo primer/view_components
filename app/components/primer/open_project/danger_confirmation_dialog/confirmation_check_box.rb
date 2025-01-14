@@ -6,6 +6,7 @@ module Primer
       # This component is part of `Primer::OpenProject::DangerConfirmationDialog`
       # and should not be used as a standalone component.
       class ConfirmationCheckBox < Primer::Component
+        status :open_project
 
         # @param check_box_id [String] The id of the check_box input.
         # @param check_box_name [String] The name of the check_box input.

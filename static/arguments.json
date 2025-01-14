@@ -5106,6 +5106,73 @@
     ]
   },
   {
+    "component": "OpenProject::DangerConfirmationDialog",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectDangerConfirmationDialog",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/danger_confirmation_dialog.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/danger_confirmation_dialog/default/",
+    "parameters": [
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash"
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The id of the dialog."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::DangerConfirmationDialog::ConfirmationCheckBox",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectDangerConfirmationDialogConfirmationCheckBox",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/danger_confirmation_dialog/confirmation_check_box.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/danger_confirmation_dialog/confirmation_check_box/default/",
+    "parameters": [
+      {
+        "name": "check_box_id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The id of the check_box input."
+      },
+      {
+        "name": "check_box_name",
+        "type": "String",
+        "default": "N/A",
+        "description": "The name of the check_box input."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::DangerConfirmationDialog::FormWrapper",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectDangerConfirmationDialogFormWrapper",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/danger_confirmation_dialog/form_wrapper.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/danger_confirmation_dialog/form_wrapper/default/",
+    "parameters": [
+
+    ]
+  },
+  {
     "component": "OpenProject::DragHandle",
     "status": "open_project",
     "a11y_reviewed": false,

@@ -14,6 +14,11 @@
         "snapshot": "true"
       },
       {
+        "preview_path": "primer/forms/custom_width_fields_form",
+        "name": "custom_width_fields_form",
+        "snapshot": "false"
+      },
+      {
         "preview_path": "primer/forms/text_field_and_checkbox_form",
         "name": "text_field_and_checkbox_form",
         "snapshot": "true"
