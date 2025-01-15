@@ -17453,7 +17453,7 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash"
+        "description": "Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "id",
@@ -17471,20 +17471,8 @@
     "slots": [
       {
         "name": "confirmation_message",
-        "description": "A confirmation message with some defaults that are necessary for rendering nicely.",
+        "description": "A confirmation message with some defaults that are necessary for rendering nicely.\n\nTo render the message heading (required), call the `with_heading` method, which accepts a `:tag` argument, along with the arguments accepted by {{#link_to_component}}Primer::Beta::Heading{{/link_to_component}}.\n\nTo render the message description, call the `with_description` method, which accepts {{link_to_system_arguments_docs}}",
         "parameters": [
-          {
-            "name": "heading",
-            "type": "String",
-            "default": "N/A",
-            "description": "the heading for the success message"
-          },
-          {
-            "name": "description",
-            "type": "String",
-            "default": "N/A",
-            "description": "the description for the success message"
-          },
           {
             "name": "icon_arguments",
             "type": "Hash",
@@ -17501,7 +17489,7 @@
       },
       {
         "name": "confirmation_check_box",
-        "description": "A checkbox that the user is required to check in order to continue with the destructive action.",
+        "description": "A checkbox that the user is required to check in order to continue with the destructive action.\n\nTo render the checkbox label (required), pass a block that returns a String.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -17513,7 +17501,7 @@
       },
       {
         "name": "additional_details",
-        "description": "Optional additional_details such as grid displaying a list of items to be deleted",
+        "description": "Optional additional details, such as grid displaying a list of items to be deleted",
         "parameters": [
           {
             "name": "system_arguments",
@@ -17778,20 +17766,8 @@
     "slots": [
       {
         "name": "feedback_message",
-        "description": "A feedback message with some defaults that are necessary for rendering nicely",
+        "description": "A feedback message with some defaults that are necessary for rendering nicely.\n\nTo render the message heading (required), call the `with_heading` method, which accepts a `:tag` argument, along with the arguments accepted by {{#link_to_component}}Primer::Beta::Heading{{/link_to_component}}.\n\nTo render the message description, call the `with_description` method, which accepts {{link_to_system_arguments_docs}}",
         "parameters": [
-          {
-            "name": "heading",
-            "type": "String",
-            "default": "N/A",
-            "description": "the heading for the success message"
-          },
-          {
-            "name": "description",
-            "type": "String",
-            "default": "N/A",
-            "description": "the description for the success message"
-          },
           {
             "name": "icon_arguments",
             "type": "Hash",
@@ -17808,7 +17784,7 @@
       },
       {
         "name": "additional_details",
-        "description": "Optional additional_details like a form input or toast.",
+        "description": "Optional additional details, like a form input or toast.",
         "parameters": [
           {
             "name": "system_arguments",

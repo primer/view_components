@@ -12,8 +12,10 @@ module Primer
 
       # A confirmation message with some defaults that are necessary for rendering nicely.
       #
-      # @param heading [String] the heading for the success message
-      # @param description [String] the description for the success message
+      # To render the message heading (required), call the `with_heading` method, which accepts a `:tag` argument, along with the arguments accepted by <%= link_to_component(Primer::Beta::Heading) %>.
+      #
+      # To render the message description, call the `with_description` method, which accepts <%= link_to_system_arguments_docs %>
+      #
       # @param icon_arguments [Hash] the system_arguments for the icon
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :confirmation_message, lambda { |icon_arguments: {}, **system_arguments|
@@ -27,6 +29,8 @@ module Primer
 
       # A checkbox that the user is required to check in order to continue with the destructive action.
       #
+      # To render the checkbox label (required), pass a block that returns a String.
+      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :confirmation_check_box, lambda { |**system_arguments|
         system_arguments[:display] ||= :flex
@@ -38,7 +42,7 @@ module Primer
         Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox.new(check_box_id: check_box_id, check_box_name: @check_box_name, **system_arguments)
       }
 
-      # Optional additional_details such as grid displaying a list of items to be deleted
+      # Optional additional details, such as grid displaying a list of items to be deleted
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :additional_details, lambda { |**system_arguments|
@@ -57,11 +61,7 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @param form_arguments [Hash] Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash
-      # to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself.
-      # `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails
-      # `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included
-      # in the params sent to the server on form submission.
+      # @param form_arguments [Hash] Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param id [String] The id of the dialog.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
