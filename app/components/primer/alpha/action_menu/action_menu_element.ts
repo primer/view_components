@@ -358,6 +358,7 @@ export class ActionMenuElement extends HTMLElement {
 
     this.dispatchEvent(
       new CustomEvent('itemActivated', {
+        bubbles: true,
         detail: {item: item.parentElement, checked: this.isItemChecked(item.parentElement)},
       }),
     )
