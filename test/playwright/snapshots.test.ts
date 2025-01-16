@@ -59,7 +59,7 @@ test.describe('generate snapshots', () => {
           }
         }
 
-        test(example.preview_path, async ({page}) => {
+        test(`${example.preview_path}-aria-snapshots`, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
           const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
           expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.yml'])
