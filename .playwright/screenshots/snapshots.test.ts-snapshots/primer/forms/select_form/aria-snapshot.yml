@@ -1,0 +1,15 @@
+- text: Cool cities
+- combobox "Cool cities":
+  - option [selected]
+  - option "Lopez Island"
+  - option "Bellevue"
+  - option "Seattle"
+- text: Select your favorite! Places you've been
+- listbox "Places you've been":
+  - option "Lima, Peru"
+  - option "Tokyo, Japan"
+  - option "Reykjavík, Iceland"
+  - option "Chiang Mai, Thailand"
+  - option "Queenstown, New Zealand"
+- text: Select all that apply
+- button "Submit"

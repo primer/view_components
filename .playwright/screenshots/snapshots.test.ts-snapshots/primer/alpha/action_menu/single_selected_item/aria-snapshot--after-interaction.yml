@@ -1,0 +1,5 @@
+- button "Menu"
+- menu "Menu":
+  - menuitemradio "Copy link"
+  - menuitemradio "Quote reply" [checked]
+  - menuitemradio "Reference in new issue"

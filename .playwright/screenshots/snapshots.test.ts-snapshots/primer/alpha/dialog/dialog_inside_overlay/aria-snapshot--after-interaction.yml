@@ -1,0 +1,7 @@
+- button "Show overlay"
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+  - button "Cancel"

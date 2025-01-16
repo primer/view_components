@@ -1,0 +1,13 @@
+- 'button "Selected item: Choose item" [expanded]': "Item: Choose item"
+- dialog "Menu":
+  - heading "Menu" [level=1]
+  - button "Close"
+  - text: Filter
+  - searchbox "Filter"
+  - listbox "Menu options":
+    - option "Leading SVG visual":
+      - img
+      - text: Leading SVG visual
+    - option "A Custom content"
+    - option "Visual icons"
+  - text: 3 results tab for results

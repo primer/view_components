@@ -1,0 +1,10 @@
+- button "Sci-fi equipment" [expanded]
+- dialog "Menu":
+  - heading "Menu" [level=1]
+  - button "Close"
+  - text: Filter
+  - searchbox "Filter"
+  - img "Custom loading content... please wait..."
+  - text: No results found
+  - heading "No results found" [level=2]
+  - text: I'm a footer!

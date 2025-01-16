@@ -1,0 +1,7 @@
+- button "Menu"
+- menu "Menu":
+  - menuitem "Copy link"
+  - menuitem "Quote reply"
+  - menuitem "Reference in new issue"
+  - menuitem "Edit Change settings"
+  - menuitem "Delete Sayonara"

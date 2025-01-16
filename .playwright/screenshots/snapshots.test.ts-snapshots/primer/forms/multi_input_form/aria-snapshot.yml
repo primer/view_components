@@ -1,0 +1,12 @@
+- radiogroup "Country":
+  - text: Country
+  - radio "USA": US
+  - text: USA
+  - radio "Canada": CA
+  - text: Canada
+- text: Region
+- combobox "Region":
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
