@@ -63,7 +63,7 @@ test.describe('generate snapshots', () => {
           await page.goto(`/rails/view_components/${example.preview_path}`)
 
           const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.yml'])
+          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot.yml'])
         })
 
         if (example.snapshot === 'interactive') {
@@ -84,8 +84,8 @@ test.describe('generate snapshots', () => {
             // Wait a bit for animations etc to resolve
             await new Promise(resolve => setTimeout(resolve, 100))
 
-            const focusedScreenshot = await page.screenshot({animations: 'disabled'})
-            expect(focusedScreenshot).toMatchSnapshot([example.preview_path, `default-interacted.yml`])
+            const interactedScreenshot = await page.locator('#component-preview').ariaSnapshot()
+            expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'default-interacted.yml'])
           })
         }
 
@@ -93,7 +93,7 @@ test.describe('generate snapshots', () => {
           await page.goto(`/rails/view_components/${example.preview_path}`)
 
           const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.yml'])
+          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot-interacted.yml'])
         })
 
         test(example.preview_path, async ({page}) => {
