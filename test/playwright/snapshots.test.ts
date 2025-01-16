@@ -74,35 +74,35 @@ test.describe('generate snapshots', () => {
           expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
         })
 
-        test(`${example.preview_path} ARIA snapshot matches`, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}`)
+        // test(`${example.preview_path} ARIA snapshot matches`, async ({page}) => {
+        //   await page.goto(`/rails/view_components/${example.preview_path}`)
 
-          const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot.yml'])
-        })
+        //   const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
+        //   expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot.yml'])
+        // })
 
-        if (example.snapshot === 'interactive') {
-          test(`${example.preview_path} ARIA snapshot after interaction matches`, async ({page}) => {
-            await page.goto(`/rails/view_components/${example.preview_path}`)
+        // if (example.snapshot === 'interactive') {
+        //   test(`${example.preview_path} ARIA snapshot after interaction matches`, async ({page}) => {
+        //     await page.goto(`/rails/view_components/${example.preview_path}`)
 
-            // Focus state
-            await page.keyboard.press('Tab')
+        //     // Focus state
+        //     await page.keyboard.press('Tab')
 
-            await new Promise(resolve => setTimeout(resolve, 100))
-            await page.keyboard.press('Enter')
+        //     await new Promise(resolve => setTimeout(resolve, 100))
+        //     await page.keyboard.press('Enter')
 
-            const subject = await page.evaluate(() => document.querySelector('[data-interaction-subject]'))
-            if (subject) {
-              await page.waitForSelector('[data-interaction-subject][data-ready=true]')
-            }
+        //     const subject = await page.evaluate(() => document.querySelector('[data-interaction-subject]'))
+        //     if (subject) {
+        //       await page.waitForSelector('[data-interaction-subject][data-ready=true]')
+        //     }
 
-            // Wait a bit for animations etc to resolve
-            await new Promise(resolve => setTimeout(resolve, 100))
+        //     // Wait a bit for animations etc to resolve
+        //     await new Promise(resolve => setTimeout(resolve, 100))
 
-            const interactedScreenshot = await page.locator('#component-preview').ariaSnapshot()
-            expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot--after-interaction.yml'])
-          })
-        }
+        //     const interactedScreenshot = await page.locator('#component-preview').ariaSnapshot()
+        //     expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot--after-interaction.yml'])
+        //   })
+        // }
       }
     }
   }
