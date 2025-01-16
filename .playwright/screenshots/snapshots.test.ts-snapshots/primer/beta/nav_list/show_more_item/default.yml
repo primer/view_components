@@ -1,0 +1,112 @@
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: light
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: light_colorblind
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: light_high_contrast
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: dark
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: dark_dimmed
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: dark_high_contrast
+- navigation "My favorite foods":
+  - heading "My favorite foods" [level=3]
+  - list "My favorite foods":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more foods"
+  - heading "My favorite snacks" [level=3]
+  - list "My favorite snacks":
+    - listitem:
+      - link "Popplers"
+    - listitem:
+      - link "Slurm"
+  - button "Show more snacks"
+- text: dark_colorblind

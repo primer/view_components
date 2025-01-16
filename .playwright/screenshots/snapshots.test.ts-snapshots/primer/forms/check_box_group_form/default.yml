@@ -1,0 +1,63 @@
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox "Ey-ples and ba-naynays Ey-ples and ba-naynays Ey-ples and ba-naynays Ey-ples and ba-naynays Ey-ples and ba-naynays Ey-ples and ba-naynays Ey-ples and ba-naynays": "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox "Eye-ples and ba-nainais Eye-ples and ba-nainais Eye-ples and ba-nainais Eye-ples and ba-nainais Eye-ples and ba-nainais Eye-ples and ba-nainais Eye-ples and ba-nainais": "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox "Oh-ples and ba-nonos Oh-ples and ba-nonos Oh-ples and ba-nonos Oh-ples and ba-nonos Oh-ples and ba-nonos Oh-ples and ba-nonos Oh-ples and ba-nonos": long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: light
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: light_colorblind
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: light_high_contrast
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: dark
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: dark_dimmed
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: dark_high_contrast
+- group "I like to eat, eat, eat:":
+  - text: "I like to eat, eat, eat: Nom nom nom"
+  - checkbox: "1"
+  - text: Ey-ples and ba-naynays Long "A" sound
+  - checkbox: "1"
+  - text: Eye-ples and ba-nainais Long "I" sound
+  - checkbox: long_o
+  - text: Oh-ples and ba-nonos Long "O" sound
+- text: dark_colorblind

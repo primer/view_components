@@ -1,0 +1,29 @@
+- text: Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: light Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: light_colorblind Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: light_high_contrast Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: dark Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: dark_dimmed Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: dark_high_contrast Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"
+- text: dark_colorblind

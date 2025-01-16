@@ -1,0 +1,63 @@
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: light
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: light_colorblind
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: light_high_contrast
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: dark
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: dark_dimmed
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: dark_high_contrast
+- toolbar:
+  - button "Search"
+  - button "Edit"
+  - button "Archive"
+  - button "Heart"
+  - button "Bookmark"
+  - button "Mention"
+  - button "Attach"
+- text: dark_colorblind

@@ -1,0 +1,21 @@
+- button "Main menu"
+- button "secondary menu"
+- text: light
+- button "Main menu"
+- button "secondary menu"
+- text: light_colorblind
+- button "Main menu"
+- button "secondary menu"
+- text: light_high_contrast
+- button "Main menu"
+- button "secondary menu"
+- text: dark
+- button "Main menu"
+- button "secondary menu"
+- text: dark_dimmed
+- button "Main menu"
+- button "secondary menu"
+- text: dark_high_contrast
+- button "Main menu"
+- button "secondary menu"
+- text: dark_colorblind

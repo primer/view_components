@@ -1,0 +1,63 @@
+- group:
+  - checkbox "Capital Capital Capital Capital Capital Capital Capital": capital
+  - text: Capital
+  - checkbox "Most-populous Most-populous Most-populous Most-populous Most-populous Most-populous Most-populous": populous
+  - text: Most-populous
+  - checkbox "Custom Custom Custom Custom Custom Custom Custom": custom
+  - text: Custom Custom cities
+  - textbox "Custom cities Custom cities Custom cities Custom cities Custom cities Custom cities Custom cities"
+- text: light
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: light_colorblind
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: light_high_contrast
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: dark
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: dark_dimmed
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: dark_high_contrast
+- group:
+  - checkbox: capital
+  - text: Capital
+  - checkbox: populous
+  - text: Most-populous
+  - checkbox: custom
+  - text: Custom Custom cities
+  - textbox
+- text: dark_colorblind

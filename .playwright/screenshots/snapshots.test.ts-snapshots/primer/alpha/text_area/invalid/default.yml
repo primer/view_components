@@ -1,0 +1,15 @@
+- text: Tell me about yourself
+- textbox "Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself"
+- text: light Tell me about yourself
+- textbox
+- text: light_colorblind Tell me about yourself
+- textbox
+- text: light_high_contrast Tell me about yourself
+- textbox
+- text: dark Tell me about yourself
+- textbox
+- text: dark_dimmed Tell me about yourself
+- textbox
+- text: dark_high_contrast Tell me about yourself
+- textbox
+- text: dark_colorblind

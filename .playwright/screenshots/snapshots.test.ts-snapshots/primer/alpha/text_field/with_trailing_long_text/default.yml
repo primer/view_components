@@ -1,0 +1,15 @@
+- text: My text field
+- textbox "My text field My text field My text field My text field My text field My text field My text field"
+- text: Long trailing text light My text field
+- textbox
+- text: Long trailing text light_colorblind My text field
+- textbox
+- text: Long trailing text light_high_contrast My text field
+- textbox
+- text: Long trailing text dark My text field
+- textbox
+- text: Long trailing text dark_dimmed My text field
+- textbox
+- text: Long trailing text dark_high_contrast My text field
+- textbox
+- text: Long trailing text dark_colorblind

@@ -1,0 +1,22 @@
+- text: My text field
+- textbox "My text field My text field My text field My text field My text field My text field My text field"
+- button "Clear"
+- text: light My text field
+- textbox
+- button "Clear"
+- text: light_colorblind My text field
+- textbox
+- button "Clear"
+- text: light_high_contrast My text field
+- textbox
+- button "Clear"
+- text: dark My text field
+- textbox
+- button "Clear"
+- text: dark_dimmed My text field
+- textbox
+- button "Clear"
+- text: dark_high_contrast My text field
+- textbox
+- button "Clear"
+- text: dark_colorblind

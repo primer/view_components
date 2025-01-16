@@ -1,0 +1,42 @@
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: light
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: light_colorblind
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: light_high_contrast
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: dark
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: dark_dimmed
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: dark_high_contrast
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Content
+- text: dark_colorblind

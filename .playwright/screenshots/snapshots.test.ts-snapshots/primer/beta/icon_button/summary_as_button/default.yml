@@ -1,0 +1,14 @@
+- group
+- text: light
+- group
+- text: light_colorblind
+- group
+- text: light_high_contrast
+- group
+- text: dark
+- group
+- text: dark_dimmed
+- group
+- text: dark_high_contrast
+- group
+- text: dark_colorblind

@@ -1,0 +1,57 @@
+- text: First name
+- textbox "First name First name First name First name First name First name First name"
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox "Last name Last name Last name Last name Last name Last name Last name"
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox "I'm green I'm green I'm green I'm green I'm green I'm green I'm green"
+- button "Submit" [disabled]
+- button "Click me"
+- text: light First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: light_colorblind First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: light_high_contrast First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: dark First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: dark_dimmed First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: dark_high_contrast First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. I'm green
+- textbox
+- button "Submit" [disabled]
+- button "Click me"
+- text: dark_colorblind

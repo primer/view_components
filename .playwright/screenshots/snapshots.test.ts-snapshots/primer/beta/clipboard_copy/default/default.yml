@@ -1,0 +1,14 @@
+- button "Copy text to the system clipboard"
+- text: light
+- button "Copy text to the system clipboard"
+- text: light_colorblind
+- button "Copy text to the system clipboard"
+- text: light_high_contrast
+- button "Copy text to the system clipboard"
+- text: dark
+- button "Copy text to the system clipboard"
+- text: dark_dimmed
+- button "Copy text to the system clipboard"
+- text: dark_high_contrast
+- button "Copy text to the system clipboard"
+- text: dark_colorblind

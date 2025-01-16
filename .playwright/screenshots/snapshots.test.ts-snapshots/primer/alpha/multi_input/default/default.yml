@@ -1,0 +1,98 @@
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox "Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference":
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox "Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference Dietary preference":
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: light
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: light_colorblind
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: light_high_contrast
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: dark
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: dark_dimmed
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: dark_high_contrast
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox:
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox:
+  - option "Steak" [selected]
+  - option "Salmon"
+- text: dark_colorblind

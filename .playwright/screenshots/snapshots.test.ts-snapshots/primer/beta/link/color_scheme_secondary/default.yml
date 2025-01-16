@@ -1,0 +1,14 @@
+- link "This is a secondary link color."
+- text: light
+- link "This is a secondary link color."
+- text: light_colorblind
+- link "This is a secondary link color."
+- text: light_high_contrast
+- link "This is a secondary link color."
+- text: dark
+- link "This is a secondary link color."
+- text: dark_dimmed
+- link "This is a secondary link color."
+- text: dark_high_contrast
+- link "This is a secondary link color."
+- text: dark_colorblind

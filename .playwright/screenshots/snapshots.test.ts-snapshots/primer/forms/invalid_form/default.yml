@@ -1,0 +1,29 @@
+- text: First name
+- textbox "First name First name First name First name First name First name First name"
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox "Last name Last name Last name Last name Last name Last name Last name"
+- text: That doesn't look right Bueller. Bueller. Bueller. light First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. light_colorblind First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. light_high_contrast First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. dark First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. dark_dimmed First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. dark_high_contrast First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: That doesn't look right Bueller. Bueller. Bueller. dark_colorblind

@@ -1,0 +1,14 @@
+- button [disabled] [pressed]
+- text: light
+- button [disabled] [pressed]
+- text: light_colorblind
+- button [disabled] [pressed]
+- text: light_high_contrast
+- button [disabled] [pressed]
+- text: dark
+- button [disabled] [pressed]
+- text: dark_dimmed
+- button [disabled] [pressed]
+- text: dark_high_contrast
+- button [disabled] [pressed]
+- text: dark_colorblind

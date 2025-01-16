@@ -257,7 +257,7 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Generating component snapshots
-        file_pattern: .playwright/screenshots/**/*.png
+        file_pattern: .playwright/screenshots/**/*.png .playwright/screenshots/**/*.yml
     - name: "Changes detected"
       if: steps.auto-commit.outputs.changes_detected == 'true'
       uses: phulsechinmay/rewritable-pr-comment@v0.3.0

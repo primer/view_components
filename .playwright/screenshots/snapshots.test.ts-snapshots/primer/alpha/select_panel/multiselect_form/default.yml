@@ -1,0 +1,28 @@
+- button "Panel"
+- separator
+- button "Submit"
+- text: light
+- button "Panel"
+- separator
+- button "Submit"
+- text: light_colorblind
+- button "Panel"
+- separator
+- button "Submit"
+- text: light_high_contrast
+- button "Panel"
+- separator
+- button "Submit"
+- text: dark
+- button "Panel"
+- separator
+- button "Submit"
+- text: dark_dimmed
+- button "Panel"
+- separator
+- button "Submit"
+- text: dark_high_contrast
+- button "Panel"
+- separator
+- button "Submit"
+- text: dark_colorblind

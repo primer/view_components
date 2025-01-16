@@ -1,0 +1,14 @@
+- button "This button has a long label and will wrap"
+- text: light
+- button "This button has a long label and will wrap"
+- text: light_colorblind
+- button "This button has a long label and will wrap"
+- text: light_high_contrast
+- button "This button has a long label and will wrap"
+- text: dark
+- button "This button has a long label and will wrap"
+- text: dark_dimmed
+- button "This button has a long label and will wrap"
+- text: dark_high_contrast
+- button "This button has a long label and will wrap"
+- text: dark_colorblind

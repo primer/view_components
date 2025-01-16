@@ -1,0 +1,15 @@
+- text: My text field
+- textbox "My text field My text field My text field My text field My text field My text field My text field"
+- text: With a caption light My text field
+- textbox
+- text: With a caption light_colorblind My text field
+- textbox
+- text: With a caption light_high_contrast My text field
+- textbox
+- text: With a caption dark My text field
+- textbox
+- text: With a caption dark_dimmed My text field
+- textbox
+- text: With a caption dark_high_contrast My text field
+- textbox
+- text: With a caption dark_colorblind

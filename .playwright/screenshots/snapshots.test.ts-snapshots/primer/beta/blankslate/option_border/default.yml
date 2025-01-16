@@ -1,0 +1,21 @@
+- heading "Title" [level=2]
+- paragraph: Description
+- text: light
+- heading "Title" [level=2]
+- paragraph: Description
+- text: light_colorblind
+- heading "Title" [level=2]
+- paragraph: Description
+- text: light_high_contrast
+- heading "Title" [level=2]
+- paragraph: Description
+- text: dark
+- heading "Title" [level=2]
+- paragraph: Description
+- text: dark_dimmed
+- heading "Title" [level=2]
+- paragraph: Description
+- text: dark_high_contrast
+- heading "Title" [level=2]
+- paragraph: Description
+- text: dark_colorblind

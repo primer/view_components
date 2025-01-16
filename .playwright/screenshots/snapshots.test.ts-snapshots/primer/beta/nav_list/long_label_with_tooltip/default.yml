@@ -1,0 +1,63 @@
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: light
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: light_colorblind
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: light_high_contrast
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: dark
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: dark_dimmed
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: dark_high_contrast
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+- text: dark_colorblind

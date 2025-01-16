@@ -1,0 +1,14 @@
+- button "Default"
+- text: light
+- button "Default"
+- text: light_colorblind
+- button "Default"
+- text: light_high_contrast
+- button "Default"
+- text: dark
+- button "Default"
+- text: dark_dimmed
+- button "Default"
+- text: dark_high_contrast
+- button "Default"
+- text: dark_colorblind

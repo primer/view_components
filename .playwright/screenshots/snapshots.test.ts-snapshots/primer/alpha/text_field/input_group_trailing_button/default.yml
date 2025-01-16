@@ -1,0 +1,22 @@
+- text: What is your current status?
+- textbox "What is your current status? What is your current status? What is your current status? What is your current status? What is your current status? What is your current status? What is your current status?": Some value
+- button "Emoji"
+- text: light What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: light_colorblind What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: light_high_contrast What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: dark What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: dark_dimmed What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: dark_high_contrast What is your current status?
+- textbox "What's happening?": Some value
+- button "Emoji"
+- text: dark_colorblind

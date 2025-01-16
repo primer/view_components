@@ -1,0 +1,21 @@
+- button "Button 1"
+- link "Button 2"
+- text: light
+- button "Button 1"
+- link "Button 2"
+- text: light_colorblind
+- button "Button 1"
+- link "Button 2"
+- text: light_high_contrast
+- button "Button 1"
+- link "Button 2"
+- text: dark
+- button "Button 1"
+- link "Button 2"
+- text: dark_dimmed
+- button "Button 1"
+- link "Button 2"
+- text: dark_high_contrast
+- button "Button 1"
+- link "Button 2"
+- text: dark_colorblind

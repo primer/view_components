@@ -1,0 +1,14 @@
+- button "Tooltip west"
+- text: light
+- button "Tooltip west"
+- text: light_colorblind
+- button "Tooltip west"
+- text: light_high_contrast
+- button "Tooltip west"
+- text: dark
+- button "Tooltip west"
+- text: dark_dimmed
+- button "Tooltip west"
+- text: dark_high_contrast
+- button "Tooltip west"
+- text: dark_colorblind

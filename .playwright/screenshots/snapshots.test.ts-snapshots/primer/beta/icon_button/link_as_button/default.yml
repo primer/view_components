@@ -1,0 +1,14 @@
+- link "Link"
+- text: light
+- link "Link"
+- text: light_colorblind
+- link "Link"
+- text: light_high_contrast
+- link "Link"
+- text: dark
+- link "Link"
+- text: dark_dimmed
+- link "Link"
+- text: dark_high_contrast
+- link "Link"
+- text: dark_colorblind

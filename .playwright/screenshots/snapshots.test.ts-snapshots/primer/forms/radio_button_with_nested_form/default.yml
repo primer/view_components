@@ -1,0 +1,91 @@
+- radiogroup:
+  - radio "Online advertisement Online advertisement Online advertisement Online advertisement Online advertisement Online advertisement Online advertisement": online
+  - text: Online advertisement Facebook maybe?
+  - radio "Radio advertisement Radio advertisement Radio advertisement Radio advertisement Radio advertisement Radio advertisement Radio advertisement": radio
+  - text: Radio advertisement We love us some NPR
+  - radio "From a friend From a friend From a friend From a friend From a friend From a friend From a friend": friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox "First Name First Name First Name First Name First Name First Name First Name"
+  - text: Last Name
+  - textbox "Last Name Last Name Last Name Last Name Last Name Last Name Last Name"
+  - text: Describe this wonderful person in loving detail
+  - textbox "Describe this wonderful person in loving detail Describe this wonderful person in loving detail Describe this wonderful person in loving detail Describe this wonderful person in loving detail Describe this wonderful person in loving detail Describe this wonderful person in loving detail Describe this wonderful person in loving detail"
+- text: light
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: light_colorblind
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: light_high_contrast
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: dark
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: dark_dimmed
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: dark_high_contrast
+- radiogroup:
+  - radio: online
+  - text: Online advertisement Facebook maybe?
+  - radio: radio
+  - text: Radio advertisement We love us some NPR
+  - radio: friend
+  - text: From a friend Wow, what a good person First Name
+  - textbox
+  - text: Last Name
+  - textbox
+  - text: Describe this wonderful person in loving detail
+  - textbox
+- text: dark_colorblind

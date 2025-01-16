@@ -1,0 +1,15 @@
+- text: Select a fruit
+- combobox "Select a fruit Select a fruit Select a fruit Select a fruit Select a fruit Select a fruit Select a fruit"
+- text: light Select a fruit
+- combobox "Placeholder text"
+- text: light_colorblind Select a fruit
+- combobox "Placeholder text"
+- text: light_high_contrast Select a fruit
+- combobox "Placeholder text"
+- text: dark Select a fruit
+- combobox "Placeholder text"
+- text: dark_dimmed Select a fruit
+- combobox "Placeholder text"
+- text: dark_high_contrast Select a fruit
+- combobox "Placeholder text"
+- text: dark_colorblind

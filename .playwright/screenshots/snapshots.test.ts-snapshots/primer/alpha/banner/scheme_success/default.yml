@@ -1,0 +1,14 @@
+- paragraph: This is a success banner!
+- text: light
+- paragraph: This is a success banner!
+- text: light_colorblind
+- paragraph: This is a success banner!
+- text: light_high_contrast
+- paragraph: This is a success banner!
+- text: dark
+- paragraph: This is a success banner!
+- text: dark_dimmed
+- paragraph: This is a success banner!
+- text: dark_high_contrast
+- paragraph: This is a success banner!
+- text: dark_colorblind

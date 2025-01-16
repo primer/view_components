@@ -1,0 +1,57 @@
+- text: File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed light File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed light_colorblind File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed light_high_contrast File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed dark File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed dark_dimmed File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed dark_high_contrast File view
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"
+- text: Change the way the file is viewed dark_colorblind

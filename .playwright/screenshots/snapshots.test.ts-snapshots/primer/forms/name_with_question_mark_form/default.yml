@@ -1,0 +1,28 @@
+- checkbox "Enabled Enabled Enabled Enabled Enabled Enabled Enabled": "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: light
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: light_colorblind
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: light_high_contrast
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: dark
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: dark_dimmed
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: dark_high_contrast
+- checkbox: "1"
+- text: Enabled
+- paragraph: The caption for Enabled?
+- text: dark_colorblind

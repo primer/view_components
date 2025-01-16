@@ -1,0 +1,14 @@
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: light
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: light_colorblind
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: light_high_contrast
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: dark
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: dark_dimmed
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: dark_high_contrast
+- 'button "Selected item: Choose item"': "Item: Choose item"
+- text: dark_colorblind

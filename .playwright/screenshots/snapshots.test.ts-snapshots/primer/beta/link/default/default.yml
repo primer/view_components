@@ -1,0 +1,14 @@
+- link "This is a link!"
+- text: light
+- link "This is a link!"
+- text: light_colorblind
+- link "This is a link!"
+- text: light_high_contrast
+- link "This is a link!"
+- text: dark
+- link "This is a link!"
+- text: dark_dimmed
+- link "This is a link!"
+- text: dark_high_contrast
+- link "This is a link!"
+- text: dark_colorblind

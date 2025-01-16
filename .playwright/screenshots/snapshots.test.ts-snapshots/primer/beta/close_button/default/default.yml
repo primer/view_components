@@ -1,0 +1,14 @@
+- button "Close"
+- text: light
+- button "Close"
+- text: light_colorblind
+- button "Close"
+- text: light_high_contrast
+- button "Close"
+- text: dark
+- button "Close"
+- text: dark_dimmed
+- button "Close"
+- text: dark_high_contrast
+- button "Close"
+- text: dark_colorblind

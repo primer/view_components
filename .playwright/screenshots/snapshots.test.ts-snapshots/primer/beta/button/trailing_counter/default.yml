@@ -1,0 +1,14 @@
+- button "Star ( )": Star ()
+- text: light
+- button "Star ( )": Star ()
+- text: light_colorblind
+- button "Star ( )": Star ()
+- text: light_high_contrast
+- button "Star ( )": Star ()
+- text: dark
+- button "Star ( )": Star ()
+- text: dark_dimmed
+- button "Star ( )": Star ()
+- text: dark_high_contrast
+- button "Star ( )": Star ()
+- text: dark_colorblind

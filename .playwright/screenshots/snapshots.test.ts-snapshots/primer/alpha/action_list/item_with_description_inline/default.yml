@@ -1,0 +1,28 @@
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: light
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: light_colorblind
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: light_high_contrast
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: dark
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: dark_dimmed
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: dark_high_contrast
+- list "List heading":
+  - listitem:
+    - link "Default item This is a description"
+- text: dark_colorblind

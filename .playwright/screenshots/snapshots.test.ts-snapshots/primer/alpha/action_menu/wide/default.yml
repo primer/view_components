@@ -1,0 +1,14 @@
+- button "A wider menu"
+- text: light
+- button "A wider menu"
+- text: light_colorblind
+- button "A wider menu"
+- text: light_high_contrast
+- button "A wider menu"
+- text: dark
+- button "A wider menu"
+- text: dark_dimmed
+- button "A wider menu"
+- text: dark_high_contrast
+- button "A wider menu"
+- text: dark_colorblind

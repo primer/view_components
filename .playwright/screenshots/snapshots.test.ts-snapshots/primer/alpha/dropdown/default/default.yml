@@ -1,0 +1,21 @@
+- group:
+  - button "Dropdown"
+- text: light
+- group:
+  - button "Dropdown"
+- text: light_colorblind
+- group:
+  - button "Dropdown"
+- text: light_high_contrast
+- group:
+  - button "Dropdown"
+- text: dark
+- group:
+  - button "Dropdown"
+- text: dark_dimmed
+- group:
+  - button "Dropdown"
+- text: dark_high_contrast
+- group:
+  - button "Dropdown"
+- text: dark_colorblind

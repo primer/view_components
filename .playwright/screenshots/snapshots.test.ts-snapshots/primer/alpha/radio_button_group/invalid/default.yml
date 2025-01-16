@@ -1,0 +1,63 @@
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio "Bears Bears Bears Bears Bears Bears Bears": bears
+  - text: Bears
+  - radio "Beets Beets Beets Beets Beets Beets Beets": beets
+  - text: Beets
+  - radio "Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica": bsg
+  - text: Battlestar Galactica
+- text: Please select an option light
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option light_colorblind
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option light_high_contrast
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option dark
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option dark_dimmed
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option dark_high_contrast
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio: bears
+  - text: Bears
+  - radio: beets
+  - text: Beets
+  - radio: bsg
+  - text: Battlestar Galactica
+- text: Please select an option dark_colorblind

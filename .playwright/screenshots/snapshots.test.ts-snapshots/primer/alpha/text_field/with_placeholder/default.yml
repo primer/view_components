@@ -1,0 +1,15 @@
+- text: My text field
+- textbox "My text field My text field My text field My text field My text field My text field My text field"
+- text: light My text field
+- textbox "with a placeholder"
+- text: light_colorblind My text field
+- textbox "with a placeholder"
+- text: light_high_contrast My text field
+- textbox "with a placeholder"
+- text: dark My text field
+- textbox "with a placeholder"
+- text: dark_dimmed My text field
+- textbox "with a placeholder"
+- text: dark_high_contrast My text field
+- textbox "with a placeholder"
+- text: dark_colorblind

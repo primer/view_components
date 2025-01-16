@@ -1,0 +1,14 @@
+- radio "Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica Battlestar Galactica": bsg2
+- text: Battlestar Galactica light
+- radio: bsg2
+- text: Battlestar Galactica light_colorblind
+- radio: bsg2
+- text: Battlestar Galactica light_high_contrast
+- radio: bsg2
+- text: Battlestar Galactica dark
+- radio: bsg2
+- text: Battlestar Galactica dark_dimmed
+- radio: bsg2
+- text: Battlestar Galactica dark_high_contrast
+- radio: bsg2
+- text: Battlestar Galactica dark_colorblind

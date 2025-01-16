@@ -1,0 +1,14 @@
+- button "i"
+- text: light
+- button "i"
+- text: light_colorblind
+- button "i"
+- text: light_high_contrast
+- button "i"
+- text: dark
+- button "i"
+- text: dark_dimmed
+- button "i"
+- text: dark_high_contrast
+- button "i"
+- text: dark_colorblind

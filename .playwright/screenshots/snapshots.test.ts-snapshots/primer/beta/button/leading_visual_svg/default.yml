@@ -1,0 +1,28 @@
+- button "Button":
+  - img
+  - text: Button
+- text: light
+- button "Button":
+  - img
+  - text: Button
+- text: light_colorblind
+- button "Button":
+  - img
+  - text: Button
+- text: light_high_contrast
+- button "Button":
+  - img
+  - text: Button
+- text: dark
+- button "Button":
+  - img
+  - text: Button
+- text: dark_dimmed
+- button "Button":
+  - img
+  - text: Button
+- text: dark_high_contrast
+- button "Button":
+  - img
+  - text: Button
+- text: dark_colorblind

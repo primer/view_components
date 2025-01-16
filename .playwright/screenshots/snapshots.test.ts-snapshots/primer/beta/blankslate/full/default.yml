@@ -1,0 +1,35 @@
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: light
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: light_colorblind
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: light_high_contrast
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: dark
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: dark_dimmed
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: dark_high_contrast
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- paragraph: Millions of teams trust GitHub to keep their work safe
+- link "Fix issue"
+- link "Learn more about vulnerabilities"
+- text: dark_colorblind

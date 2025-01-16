@@ -1,0 +1,91 @@
+- radiogroup "Country":
+  - text: Country
+  - radio "USA USA USA USA USA USA USA": US
+  - text: USA
+  - radio "Canada Canada Canada Canada Canada Canada Canada": CA
+  - text: Canada
+- text: Region
+- combobox "Region Region Region Region Region Region Region":
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: light
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: light_colorblind
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: light_high_contrast
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: dark
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: dark_dimmed
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: dark_high_contrast
+- radiogroup "Country":
+  - text: Country
+  - radio: US
+  - text: USA
+  - radio: CA
+  - text: Canada
+- text: Region
+- combobox:
+  - option "California" [selected]
+  - option "Washington"
+  - option "Oregon"
+- button "Submit"
+- text: dark_colorblind

@@ -1,0 +1,127 @@
+- text: First name
+- textbox "First name First name First name First name First name First name First name"
+- text: Be honest!
+- checkbox "Are you cool? Are you cool? Are you cool? Are you cool? Are you cool? Are you cool? Are you cool?": "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio "10-15 10-15 10-15 10-15 10-15 10-15 10-15": young
+  - text: 10-15 A young thing.
+  - radio "16-21 16-21 16-21 16-21 16-21 16-21 16-21": middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox "Lopez Island Lopez Island Lopez Island Lopez Island Lopez Island Lopez Island Lopez Island": lopez
+  - text: Lopez Island Lopez caption
+  - checkbox "Bellevue Bellevue Bellevue Bellevue Bellevue Bellevue Bellevue": bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox "Seattle Seattle Seattle Seattle Seattle Seattle Seattle": seattle
+  - text: Seattle Seattle caption
+- text: light First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: light_colorblind First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: light_high_contrast First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: dark First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: dark_dimmed First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: dark_high_contrast First name
+- textbox
+- text: Be honest!
+- checkbox: "1"
+- text: Are you cool? Check only if you are cool.
+- radiogroup:
+  - radio: young
+  - text: 10-15 A young thing.
+  - radio: middle_aged
+  - text: 16-21 No longer a spring chicken.
+- group "Cool places":
+  - text: Cool places
+  - checkbox: lopez
+  - text: Lopez Island Lopez caption
+  - checkbox: bellevue
+  - text: Bellevue Bellevue caption
+  - checkbox: seattle
+  - text: Seattle Seattle caption
+- text: dark_colorblind

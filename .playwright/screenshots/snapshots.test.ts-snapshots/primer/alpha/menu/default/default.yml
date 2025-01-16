@@ -1,0 +1,42 @@
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: light
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: light_colorblind
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: light_high_contrast
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: dark
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: dark_dimmed
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: dark_high_contrast
+- navigation:
+  - heading "Heading" [level=2]
+  - link "Item 1"
+  - link "With Icon"
+  - link "With Icon and Counter 25"
+- text: dark_colorblind

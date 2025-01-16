@@ -1,0 +1,14 @@
+- button "Click to copy!"
+- text: light
+- button "Click to copy!"
+- text: light_colorblind
+- button "Click to copy!"
+- text: light_high_contrast
+- button "Click to copy!"
+- text: dark
+- button "Click to copy!"
+- text: dark_dimmed
+- button "Click to copy!"
+- text: dark_high_contrast
+- button "Click to copy!"
+- text: dark_colorblind

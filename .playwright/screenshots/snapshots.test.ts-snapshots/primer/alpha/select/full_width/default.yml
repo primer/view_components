@@ -1,0 +1,43 @@
+- text: Favorite place to visit
+- combobox "Favorite place to visit Favorite place to visit Favorite place to visit Favorite place to visit Favorite place to visit Favorite place to visit Favorite place to visit":
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: light Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: light_colorblind Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: light_high_contrast Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: dark Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: dark_dimmed Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: dark_high_contrast Favorite place to visit
+- combobox:
+  - option "Lopez Island" [selected]
+  - option "Shaw Island"
+  - option "Orcas Island"
+  - option "San Juan Island"
+- text: dark_colorblind

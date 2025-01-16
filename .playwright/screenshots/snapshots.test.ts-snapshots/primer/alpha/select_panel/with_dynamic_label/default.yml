@@ -1,0 +1,14 @@
+- 'button "Item: Choose item"'
+- text: light
+- 'button "Item: Choose item"'
+- text: light_colorblind
+- 'button "Item: Choose item"'
+- text: light_high_contrast
+- 'button "Item: Choose item"'
+- text: dark
+- 'button "Item: Choose item"'
+- text: dark_dimmed
+- 'button "Item: Choose item"'
+- text: dark_high_contrast
+- 'button "Item: Choose item"'
+- text: dark_colorblind

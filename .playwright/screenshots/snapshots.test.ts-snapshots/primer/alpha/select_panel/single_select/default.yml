@@ -1,0 +1,14 @@
+- button "Choose item"
+- text: light
+- button "Choose item"
+- text: light_colorblind
+- button "Choose item"
+- text: light_high_contrast
+- button "Choose item"
+- text: dark
+- button "Choose item"
+- text: dark_dimmed
+- button "Choose item"
+- text: dark_high_contrast
+- button "Choose item"
+- text: dark_colorblind

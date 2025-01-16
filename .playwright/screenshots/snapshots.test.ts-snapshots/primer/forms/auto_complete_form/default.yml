@@ -1,0 +1,29 @@
+- text: Fruit
+- combobox "Fruit Fruit Fruit Fruit Fruit Fruit Fruit"
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: light Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: light_colorblind Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: light_high_contrast Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: dark Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: dark_dimmed Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: dark_high_contrast Fruit
+- combobox
+- text: Something went wrong Please enter your favorite fruit
+- button "Submit"
+- text: dark_colorblind

@@ -1,0 +1,14 @@
+- button "Favorite character"
+- text: light
+- button "Favorite character"
+- text: light_colorblind
+- button "Favorite character"
+- text: light_high_contrast
+- button "Favorite character"
+- text: dark
+- button "Favorite character"
+- text: dark_dimmed
+- button "Favorite character"
+- text: dark_high_contrast
+- button "Favorite character"
+- text: dark_colorblind

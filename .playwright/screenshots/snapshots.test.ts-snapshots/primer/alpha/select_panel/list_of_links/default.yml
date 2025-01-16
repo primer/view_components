@@ -1,0 +1,14 @@
+- button "Panel"
+- text: light
+- button "Panel"
+- text: light_colorblind
+- button "Panel"
+- text: light_high_contrast
+- button "Panel"
+- text: dark
+- button "Panel"
+- text: dark_dimmed
+- button "Panel"
+- text: dark_high_contrast
+- button "Panel"
+- text: dark_colorblind

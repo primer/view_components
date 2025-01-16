@@ -1,0 +1,42 @@
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox "First name First name First name First name First name First name First name"
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox "Last name Last name Last name Last name Last name Last name Last name"
+- text: Bueller. Bueller. Bueller. light
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. light_colorblind
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. light_high_contrast
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. dark
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. dark_dimmed
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. dark_high_contrast
+- paragraph: Each of these fields comes from its own form definition.
+- text: First name
+- textbox
+- text: That which we call a rose by any other name would smell as sweet. Last name
+- textbox
+- text: Bueller. Bueller. Bueller. dark_colorblind

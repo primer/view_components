@@ -1,0 +1,14 @@
+- button "Sci-fi equipment"
+- text: light
+- button "Sci-fi equipment"
+- text: light_colorblind
+- button "Sci-fi equipment"
+- text: light_high_contrast
+- button "Sci-fi equipment"
+- text: dark
+- button "Sci-fi equipment"
+- text: dark_dimmed
+- button "Sci-fi equipment"
+- text: dark_high_contrast
+- button "Sci-fi equipment"
+- text: dark_colorblind

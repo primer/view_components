@@ -1,0 +1,14 @@
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: light
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: light_colorblind
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: light_high_contrast
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: dark
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: dark_dimmed
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: dark_high_contrast
+- heading "It looks like we have discovered a vulnerability" [level=2]
+- text: dark_colorblind

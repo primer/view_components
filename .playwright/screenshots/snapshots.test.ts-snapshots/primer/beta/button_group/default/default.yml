@@ -1,0 +1,28 @@
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: light
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: light_colorblind
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: light_high_contrast
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: dark
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: dark_dimmed
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: dark_high_contrast
+- button "Button 1"
+- button "Button 2"
+- button "Button 3"
+- text: dark_colorblind

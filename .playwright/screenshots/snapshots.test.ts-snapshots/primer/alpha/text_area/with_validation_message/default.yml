@@ -1,0 +1,15 @@
+- text: Tell me about yourself
+- textbox "Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself Tell me about yourself"
+- text: An error occurred! light Tell me about yourself
+- textbox
+- text: An error occurred! light_colorblind Tell me about yourself
+- textbox
+- text: An error occurred! light_high_contrast Tell me about yourself
+- textbox
+- text: An error occurred! dark Tell me about yourself
+- textbox
+- text: An error occurred! dark_dimmed Tell me about yourself
+- textbox
+- text: An error occurred! dark_high_contrast Tell me about yourself
+- textbox
+- text: An error occurred! dark_colorblind

@@ -1,0 +1,42 @@
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: light
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: light_colorblind
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: light_high_contrast
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: dark
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: dark_dimmed
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: dark_high_contrast
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1
+- text: dark_colorblind

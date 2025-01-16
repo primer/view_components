@@ -1,0 +1,14 @@
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. light
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. light_colorblind
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. light_high_contrast
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. dark
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. dark_dimmed
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. dark_high_contrast
+- heading "Activity feed" [level=4]
+- text: This is the Popover body. dark_colorblind

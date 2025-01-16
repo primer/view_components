@@ -1,0 +1,14 @@
+- heading "This is a title" [level=3]
+- text: This is a subtitle light
+- heading "This is a title" [level=3]
+- text: This is a subtitle light_colorblind
+- heading "This is a title" [level=3]
+- text: This is a subtitle light_high_contrast
+- heading "This is a title" [level=3]
+- text: This is a subtitle dark
+- heading "This is a title" [level=3]
+- text: This is a subtitle dark_dimmed
+- heading "This is a title" [level=3]
+- text: This is a subtitle dark_high_contrast
+- heading "This is a title" [level=3]
+- text: This is a subtitle dark_colorblind

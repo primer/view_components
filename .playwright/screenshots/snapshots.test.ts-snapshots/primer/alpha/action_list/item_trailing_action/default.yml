@@ -1,0 +1,35 @@
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: light
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: light_colorblind
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: light_high_contrast
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: dark
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: dark_dimmed
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: dark_high_contrast
+- list "List heading":
+  - listitem:
+    - link "Default item"
+    - button "Button tooltip"
+- text: dark_colorblind

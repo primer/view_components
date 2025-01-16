@@ -1,0 +1,14 @@
+- button "Tooltip northeast"
+- text: light
+- button "Tooltip northeast"
+- text: light_colorblind
+- button "Tooltip northeast"
+- text: light_high_contrast
+- button "Tooltip northeast"
+- text: dark
+- button "Tooltip northeast"
+- text: dark_dimmed
+- button "Tooltip northeast"
+- text: dark_high_contrast
+- button "Tooltip northeast"
+- text: dark_colorblind

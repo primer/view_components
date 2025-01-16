@@ -1,0 +1,70 @@
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: light
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: light_colorblind
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: light_high_contrast
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: dark
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: dark_dimmed
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: dark_high_contrast
+- navigation "With icons and counters":
+  - list:
+    - listitem:
+      - link "Tab 1"
+    - listitem:
+      - link "Tab 2"
+    - listitem:
+      - link "Tab 3"
+  - button "Extra Button"
+- text: dark_colorblind

@@ -1,0 +1,71 @@
+- text: Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. light Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. light_colorblind Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. light_high_contrast Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. dark Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. dark_dimmed Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. dark_high_contrast Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet. dark_colorblind
