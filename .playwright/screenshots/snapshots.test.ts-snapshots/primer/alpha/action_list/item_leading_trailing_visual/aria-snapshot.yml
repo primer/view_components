@@ -1,0 +1,3 @@
+- list "List heading":
+  - listitem:
+    - link "Item with trailing visual"

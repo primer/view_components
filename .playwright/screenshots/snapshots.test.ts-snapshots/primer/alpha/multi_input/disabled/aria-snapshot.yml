@@ -1,0 +1,13 @@
+- emphasis:
+  - paragraph: This select list controls which field is visible.
+- text: Dietary preference
+- combobox "Dietary preference":
+  - option "Meatatarian" [selected]
+  - option "Vegetarian"
+- separator
+- emphasis:
+  - paragraph: This is the multi input.
+- text: Dietary preference
+- combobox "Dietary preference":
+  - option "Steak" [selected]
+  - option "Salmon"

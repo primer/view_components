@@ -1,0 +1,5 @@
+- list "Billing duration":
+  - listitem:
+    - button "Monthly"
+  - listitem:
+    - button "Yearly -8%"

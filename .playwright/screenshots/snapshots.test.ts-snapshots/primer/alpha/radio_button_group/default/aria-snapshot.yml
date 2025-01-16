@@ -1,0 +1,8 @@
+- 'radiogroup "Question: what kind of bear is best?"':
+  - text: "Question: what kind of bear is best?"
+  - radio "Bears": bears
+  - text: Bears
+  - radio "Beets": beets
+  - text: Beets
+  - radio "Battlestar Galactica": bsg
+  - text: Battlestar Galactica

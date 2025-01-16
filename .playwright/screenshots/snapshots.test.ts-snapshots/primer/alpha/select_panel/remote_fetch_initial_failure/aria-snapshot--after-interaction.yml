@@ -1,0 +1,8 @@
+- button "Sci-fi equipment" [expanded]
+- dialog "Menu":
+  - heading "Menu" [level=1]
+  - button "Close"
+  - text: Filter
+  - searchbox "Filter"
+  - heading "Sorry, something went wrong." [level=2]
+  - text: Sorry, something went wrong.

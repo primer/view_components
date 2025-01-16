@@ -1,0 +1,7 @@
+- text: Will have error
+- textbox "Will have error"
+- text: Every time this checks with the server, it returns an error Will not error
+- textbox "Will not error"
+- text: This message will go away once you type something Will not have an error when it checks the server Random error or success
+- textbox "Random error or success"
+- text: Server checks will randomly respond with errors or success

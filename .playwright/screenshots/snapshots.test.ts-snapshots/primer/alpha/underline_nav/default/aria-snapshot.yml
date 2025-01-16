@@ -1,0 +1,9 @@
+- navigation "Default with nav element":
+  - list:
+    - listitem:
+      - link "Item 1"
+    - listitem:
+      - link "Item 2"
+    - listitem:
+      - link "Item 3"
+  - button "Button"
