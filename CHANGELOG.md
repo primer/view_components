@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.36.4
+
+### Patch Changes
+
+- [#3260](https://github.com/primer/view_components/pull/3260) [`87b0ddb`](https://github.com/primer/view_components/commit/87b0ddbfc7368156d04c68bd7fccbe407c9c03e4) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Add more support for ruby 3.4 in tests
+
+- [#3267](https://github.com/primer/view_components/pull/3267) [`7378b29`](https://github.com/primer/view_components/commit/7378b29bc2e0341e12c6921c246667b8a3ab820c) Thanks [@camertron](https://github.com/camertron)! - Add trailing visuals to the text field
+
+- [#3265](https://github.com/primer/view_components/pull/3265) [`3c2454a`](https://github.com/primer/view_components/commit/3c2454a304baa045e4234375d19713427f467395) Thanks [@myabc](https://github.com/myabc)! - Fix incorrect classname keys when generating `lib/primer/classify/utilities.yml` with `bundle exec rake utilities:build`.
+
+- [#3268](https://github.com/primer/view_components/pull/3268) [`43e621e`](https://github.com/primer/view_components/commit/43e621eff9b48352ae5580f4864a98e18c2d2dc9) Thanks [@camertron](https://github.com/camertron)! - Ensure ActionMenu's itemActivated event bubbles
+
+- [#3266](https://github.com/primer/view_components/pull/3266) [`73d64d9`](https://github.com/primer/view_components/commit/73d64d975bff0f360e20bcc477af427cf1c7e797) Thanks [@camertron](https://github.com/camertron)! - Fix memory leak in forms framework causing form templates to be compiled on each render in development
+
+- [#3257](https://github.com/primer/view_components/pull/3257) [`9f87ab1`](https://github.com/primer/view_components/commit/9f87ab122fbe7a85552b3124c4efbcec060e9af4) Thanks [@joelhawksley](https://github.com/joelhawksley)! - add support for Ruby 3.4 in test suite
+
 ## 0.36.3
 
 ### Patch Changes
