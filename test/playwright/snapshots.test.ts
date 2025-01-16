@@ -59,7 +59,7 @@ test.describe('generate snapshots', () => {
           }
         }
 
-        test(`${example.preview_path}-aria-snapshots`, async ({page}) => {
+        test(`${example.preview_path} ARIA snapshots`, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}`)
 
           const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
@@ -67,7 +67,7 @@ test.describe('generate snapshots', () => {
         })
 
         if (example.snapshot === 'interactive') {
-          test(`${example.preview_path}-aria-snapshots-interactive`, async ({page}) => {
+          test(`${example.preview_path} ARIA snapshots after interaction`, async ({page}) => {
             await page.goto(`/rails/view_components/${example.preview_path}`)
 
             // Focus state
@@ -85,16 +85,9 @@ test.describe('generate snapshots', () => {
             await new Promise(resolve => setTimeout(resolve, 100))
 
             const interactedScreenshot = await page.locator('#component-preview').ariaSnapshot()
-            expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'default-interacted.yml'])
+            expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot--after-interaction.yml'])
           })
         }
-
-        test(`${example.preview_path}-aria-snapshots`, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}`)
-
-          const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot-interacted.yml'])
-        })
 
         test(example.preview_path, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}`)
