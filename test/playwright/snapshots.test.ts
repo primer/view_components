@@ -61,6 +61,12 @@ test.describe('generate snapshots', () => {
 
         test(example.preview_path, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
+          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.yml'])
+        })
+
+        test(example.preview_path, async ({page}) => {
+          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
           const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
           expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
 
