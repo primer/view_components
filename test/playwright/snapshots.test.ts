@@ -59,7 +59,22 @@ test.describe('generate snapshots', () => {
           }
         }
 
-        test(`${example.preview_path} ARIA snapshots`, async ({page}) => {
+        test(example.preview_path, async ({page}) => {
+          await page.goto(`/rails/view_components/${example.preview_path}?theme=all`)
+          const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
+
+          // Focus state
+          await page.keyboard.press('Tab')
+
+          // Wait a bit for animations etc to resolve
+          await new Promise(resolve => setTimeout(resolve, 100))
+
+          const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+          expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
+        })
+
+        test(`${example.preview_path} ARIA snapshot matches`, async ({page}) => {
           await page.goto(`/rails/view_components/${example.preview_path}`)
 
           const defaultScreenshot = await page.locator('#component-preview').ariaSnapshot()
@@ -67,7 +82,7 @@ test.describe('generate snapshots', () => {
         })
 
         if (example.snapshot === 'interactive') {
-          test(`${example.preview_path} ARIA snapshots after interaction`, async ({page}) => {
+          test(`${example.preview_path} ARIA snapshot after interaction matches`, async ({page}) => {
             await page.goto(`/rails/view_components/${example.preview_path}`)
 
             // Focus state
@@ -88,21 +103,6 @@ test.describe('generate snapshots', () => {
             expect(interactedScreenshot).toMatchSnapshot([example.preview_path, 'aria-snapshot--after-interaction.yml'])
           })
         }
-
-        test(example.preview_path, async ({page}) => {
-          await page.goto(`/rails/view_components/${example.preview_path}`)
-          const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-          expect(defaultScreenshot).toMatchSnapshot([example.preview_path, 'default.png'])
-
-          // Focus state
-          await page.keyboard.press('Tab')
-
-          // Wait a bit for animations etc to resolve
-          await new Promise(resolve => setTimeout(resolve, 100))
-
-          const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-          expect(focusedScreenshot).toMatchSnapshot([example.preview_path, 'focused.png'])
-        })
       }
     }
   }
