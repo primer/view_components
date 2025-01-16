@@ -263,9 +263,9 @@ jobs:
       uses: phulsechinmay/rewritable-pr-comment@v0.3.0
       with:
         message: |
-          ### ⚠️ Visual or Semantic markup differences found
+          ### ⚠️ Visual or ARIA snapshot differences found
 
-          Our visual and semantic markup comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+          Our visual and ARIA snapshot tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
 
           [Review differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&file-filters%5B%5D=.yml&show-viewed-files=false)
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
