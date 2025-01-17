@@ -1,0 +1,4 @@
+- text: Favorite city
+- button "Select..."
+- text: Select your favorite!
+- button "Submit"

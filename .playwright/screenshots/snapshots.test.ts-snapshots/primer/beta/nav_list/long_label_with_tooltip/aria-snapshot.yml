@@ -1,0 +1,8 @@
+- navigation "List heading":
+  - list:
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"
+    - listitem:
+      - button "Really really long label that may wrap, truncate, or appear as a tooltip"

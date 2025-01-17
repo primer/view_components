@@ -230,7 +230,7 @@ jobs:
       run: |
         USE_BROWSER=firefox bundle exec rake test:system
   visual:
-    name: Visual Regressions
+    name: Visual and Semantic Markup Regressions
     if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -269,17 +269,18 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Generating component snapshots
-        file_pattern: .playwright/screenshots/**/*.png
+        file_pattern: .playwright/screenshots/**/*.png .playwright/screenshots/**/*.yml
     - name: "Changes detected"
       if: steps.auto-commit.outputs.changes_detected == 'true'
       uses: phulsechinmay/rewritable-pr-comment@v0.3.0
       with:
         message: |
-          ### ⚠️ Visual differences found
+          ### ⚠️ Visual or Semantic markup differences found
 
-          Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+          Our visual and semantic markup comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
 
-          [Review visual differences](https://github.com/opf/primer_view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+
+          [Review differences](https://github.com/opf/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&file-filters%5B%5D=.yml&show-viewed-files=false)
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         COMMENT_IDENTIFIER: 'visual-comparison-diff'
     - uses: actions/upload-artifact@v4

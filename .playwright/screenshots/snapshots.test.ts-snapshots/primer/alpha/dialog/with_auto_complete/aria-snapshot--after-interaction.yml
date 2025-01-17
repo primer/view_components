@@ -1,0 +1,6 @@
+- button "Show Dialog"
+- dialog "Test Dialog":
+  - heading "Test Dialog" [level=1]
+  - button "Close"
+  - text: Search
+  - combobox "Search"
