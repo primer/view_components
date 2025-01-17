@@ -1,0 +1,7 @@
+- button "Click me"
+- dialog "Success dialog":
+  - heading "Success dialog" [level=1]
+  - button "Close"
+  - heading "Success" [level=2]
+  - paragraph: Great! Everything worked well.
+  - 'button "Translation missing: en.button_close"'

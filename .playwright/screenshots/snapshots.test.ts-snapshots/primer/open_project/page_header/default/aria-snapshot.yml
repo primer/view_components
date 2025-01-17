@@ -1,0 +1,10 @@
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Grandparent"
+    - listitem:
+      - link "Parent"
+    - listitem:
+      - link "Hello"
+- heading "Hello" [level=1]
+- text: Last updated 5 minutes ago by XYZ.
