@@ -1,9 +1,0 @@
-# frozen_string_literal: true
-
-require "erblint_test_case"
-
-class ArgumentMappers<%= component_short_name %>Test < ErblintTestCase
-  def test_add_tests
-    raise StandardError, "Add tests for your argument mapper"
-  end
-end

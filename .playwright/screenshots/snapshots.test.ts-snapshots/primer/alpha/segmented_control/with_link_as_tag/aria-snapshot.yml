@@ -1,7 +1,0 @@
-- list "File view":
-  - listitem:
-    - link "Preview"
-  - listitem:
-    - link "Raw"
-  - listitem:
-    - link "Blame"

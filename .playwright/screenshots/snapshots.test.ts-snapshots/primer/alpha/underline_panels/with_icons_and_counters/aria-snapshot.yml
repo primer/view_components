@@ -1,5 +1,0 @@
-- tablist "Test navigation":
-  - tab "Tab 1 5" [selected]
-  - tab "Tab 2 10"
-  - tab "Tab 3 15"
-- tabpanel "Tab 1 5": Panel 1

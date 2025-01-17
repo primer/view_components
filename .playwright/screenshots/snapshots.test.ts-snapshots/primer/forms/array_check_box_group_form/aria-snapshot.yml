@@ -1,8 +1,0 @@
-- group "Cool places":
-  - text: Cool places
-  - checkbox "Lopez Island": lopez
-  - text: Lopez Island Vacation getaway
-  - checkbox "Bellevue": bellevue
-  - text: Bellevue Beautiful view
-  - checkbox "Seattle": seattle
-  - text: Seattle The emerald city

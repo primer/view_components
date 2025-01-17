@@ -1,8 +1,0 @@
-.devcontainer/
-.vscode/
-.yardoc/
-node_modules/
-pkg/
-test/
-!test/previews/
-vendor/bundle

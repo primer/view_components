@@ -1,6 +1,0 @@
-- text: Favorite place to visit
-- combobox "Favorite place to visit" [disabled]:
-  - option "Lopez Island" [selected]
-  - option "Shaw Island"
-  - option "Orcas Island"
-  - option "San Juan Island"

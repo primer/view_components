@@ -1,8 +1,0 @@
-- toolbar:
-  - button "Search"
-  - button "Edit"
-  - button "Archive"
-  - button "Heart"
-  - button "Bookmark"
-  - button "Mention"
-  - button "Attach"

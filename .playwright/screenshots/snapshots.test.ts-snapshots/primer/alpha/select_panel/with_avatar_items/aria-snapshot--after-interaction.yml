@@ -1,9 +1,0 @@
-- button "Choose users" [expanded]
-- dialog "Select users":
-  - heading "Select users" [level=1]
-  - button "Close"
-  - text: Filter
-  - searchbox "Filter"
-  - listbox "Select users options":
-    - option "hulk_smash"
-  - text: 1 result tab for results

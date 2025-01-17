@@ -1,5 +1,0 @@
-/* CSS for <%= class_name %>  */
-
-.<%= class_name %> {
-
-}

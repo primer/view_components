@@ -1,8 +1,0 @@
-- navigation "Breadcrumb":
-  - list:
-    - listitem:
-      - link "Breadcrumb Item 1"
-    - listitem:
-      - link "Breadcrumb Item 2 with a really long, long, long name"
-    - listitem:
-      - link "Breadcrumb Item 3 with an extremely long, long, long name"

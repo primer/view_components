@@ -1,8 +1,0 @@
-- heading "Action List" [level=3]
-- list "Action List":
-  - listitem:
-    - link "Item one"
-  - listitem:
-    - link "Item two"
-  - listitem:
-    - link "Item three"

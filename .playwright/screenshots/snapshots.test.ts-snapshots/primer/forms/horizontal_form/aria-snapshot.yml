@@ -1,9 +1,0 @@
-- text: First name
-- textbox "First name"
-- text: What your friends call you. Last name
-- textbox "Last name"
-- text: What the principal calls you. Dietary restrictions
-- textbox "Dietary restrictions"
-- text: Any allergies?
-- checkbox "Send me gobs of email!": "1"
-- text: Send me gobs of email! Check this if you enjoy getting spam.

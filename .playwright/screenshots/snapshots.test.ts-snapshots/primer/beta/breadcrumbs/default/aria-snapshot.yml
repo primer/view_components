@@ -1,6 +1,0 @@
-- navigation "Breadcrumb":
-  - list:
-    - listitem:
-      - link "Breadcrumb Item 1"
-    - listitem:
-      - link "Breadcrumb Item 2"

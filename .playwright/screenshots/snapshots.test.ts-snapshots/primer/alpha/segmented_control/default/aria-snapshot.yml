@@ -1,7 +1,0 @@
-- list "File view":
-  - listitem:
-    - button "Preview"
-  - listitem:
-    - button "Raw"
-  - listitem:
-    - button "Blame"

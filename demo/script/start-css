@@ -1,4 +1,0 @@
-#! /bin/bash
-
-echo $$ > tmp/pids/css.pid
-exec npm run build:css -- --watch

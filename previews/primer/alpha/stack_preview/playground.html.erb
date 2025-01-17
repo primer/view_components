@@ -1,5 +1,0 @@
-<%= render(Primer::Alpha::Stack.new(**system_arguments)) do %>
-  <%= render(Primer::BaseComponent.new(tag: :div, p: 3, bg: :success, border_radius: 2)) { "First" } %>
-  <%= render(Primer::BaseComponent.new(tag: :div, p: 3, bg: :accent, border_radius: 2)) { "Second" } %>
-  <%= render(Primer::BaseComponent.new(tag: :div, p: 3, bg: :attention, border_radius: 2)) { "Third" } %>
-<% end %>

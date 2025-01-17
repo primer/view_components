@@ -1,5 +1,0 @@
-- button "Menu"
-- menu "Menu":
-  - menuitemcheckbox "langermank Katie Langerman" [checked]
-  - menuitemcheckbox "jonrohan Jon Rohan"
-  - menuitemcheckbox "broccolinisoup Armağan Ersöz" [checked]

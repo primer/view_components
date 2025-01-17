@@ -1,8 +1,0 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <ol>
-    <% items.each_with_index do |item, index| %>
-      <% item.selected = index == items.length - 1 %>
-      <%= item %>
-    <% end %>
-  </ol>
-<% end %>

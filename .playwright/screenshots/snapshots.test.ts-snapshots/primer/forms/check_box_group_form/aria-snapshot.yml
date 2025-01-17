@@ -1,8 +1,0 @@
-- group "I like to eat, eat, eat:":
-  - text: "I like to eat, eat, eat: Nom nom nom"
-  - checkbox "Ey-ples and ba-naynays": "1"
-  - text: Ey-ples and ba-naynays Long "A" sound
-  - checkbox "Eye-ples and ba-nainais": "1"
-  - text: Eye-ples and ba-nainais Long "I" sound
-  - checkbox "Oh-ples and ba-nonos": long_o
-  - text: Oh-ples and ba-nonos Long "O" sound

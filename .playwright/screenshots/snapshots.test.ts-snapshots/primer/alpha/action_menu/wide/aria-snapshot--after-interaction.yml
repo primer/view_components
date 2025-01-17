@@ -1,4 +1,0 @@
-- button "A wider menu"
-- menu "A wider menu":
-  - menuitemradio "Default This is an example for wide ActionMenus Recommended" [checked]
-  - menuitemradio "Extended It allows for extended descriptions with extra afforance for additional visuals"

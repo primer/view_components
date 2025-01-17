@@ -1,8 +1,0 @@
-<%= render(SpacingWrapper.new) do %>
-  <% inputs.each do |input| %>
-    <%= render(input.to_component) %>
-  <% end %>
-<% end %>
-<% if after_content? %>
-  <%= render_after_content %>
-<% end %>

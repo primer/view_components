@@ -1,5 +1,0 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if @first_in_source == :main %><%= main %><% end %>
-  <%= sidebar %>
-  <% if @first_in_source == :sidebar %><%= main %><% end %>
-<% end %>

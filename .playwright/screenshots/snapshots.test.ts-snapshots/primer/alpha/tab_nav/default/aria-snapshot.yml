@@ -1,8 +1,0 @@
-- navigation "Default":
-  - list:
-    - listitem:
-      - link "Tab 1"
-    - listitem:
-      - link "Tab 2"
-    - listitem:
-      - link "Tab 3"

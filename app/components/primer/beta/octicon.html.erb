@@ -1,7 +1,0 @@
-<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <% if @use_symbol %>
-    <use href="#octicon_<%= [@icon.symbol, @icon.height].join("_") %>"></use>
-  <% else %>
-    <%= @icon.path.html_safe %>
-  <% end %>
-<% end %>

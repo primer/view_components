@@ -1,5 +1,0 @@
-- 'button "Menu: Quote reply"'
-- 'menu "Menu: Quote reply"':
-  - menuitemradio "Copy link Recommended"
-  - menuitemradio "Quote reply" [checked]
-  - menuitemradio "Reference in new issue"

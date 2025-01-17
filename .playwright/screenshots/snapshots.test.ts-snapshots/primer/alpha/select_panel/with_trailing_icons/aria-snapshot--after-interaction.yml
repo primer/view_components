@@ -1,9 +1,0 @@
-- 'button "Selected item: Choose item" [expanded]': "Item: Choose item"
-- dialog "Menu":
-  - heading "Menu" [level=1]
-  - button "Close"
-  - text: Filter
-  - searchbox "Filter"
-  - listbox "Menu options":
-    - option "Visual icons"
-  - text: 1 result tab for results

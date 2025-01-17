@@ -1,9 +1,0 @@
-- button "Panel" [expanded]
-- dialog "Menu":
-  - heading "Menu" [level=1]
-  - button "Close"
-  - text: Filter
-  - searchbox "Filter"
-  - text: No results found
-  - heading "No results found" [level=2]
-  - text: I'm a footer!

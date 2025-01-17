@@ -1,6 +1,0 @@
-- group:
-  - button "Dropdown"
-  - menu:
-    - menuitem "Item 1"
-    - menuitem "Item 2"
-    - menuitem "Item 3"

@@ -1,9 +1,0 @@
-- navigation "Workflow results":
-  - heading "Workflows" [level=3]
-  - list "Workflows":
-    - listitem:
-      - link "Build and Test"
-      - 'button "Build and test: re-run workflow"'
-    - listitem:
-      - link "Publish"
-      - 'button "Publish: re-run workflow"'

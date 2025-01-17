@@ -1,4 +1,0 @@
-#! /bin/bash
-
-echo $$ > tmp/pids/vite.pid
-exec bin/vite dev

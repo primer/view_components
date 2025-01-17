@@ -1,6 +1,0 @@
-- paragraph: Each of these fields comes from its own form definition.
-- text: First name
-- textbox "First name"
-- text: That which we call a rose by any other name would smell as sweet. Last name
-- textbox "Last name"
-- text: Bueller. Bueller. Bueller.

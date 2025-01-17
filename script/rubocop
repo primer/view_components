@@ -1,9 +1,0 @@
-#! /bin/bash
-
-bundle exec rubocop \
-    app/**/*.rb \
-    lib/**/*.rb \
-    previews/**/*.rb \
-    test/**/*.rb \
-    demo/app/**/*.rb \
-    ${@}

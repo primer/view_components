@@ -1,9 +1,0 @@
-- text: File view
-- list "File view":
-  - listitem:
-    - button "Preview"
-  - listitem:
-    - button "Raw"
-  - listitem:
-    - button "Blame"
-- text: Change the way the file is viewed
