@@ -1,0 +1,8 @@
+- text: File view Change the way the file is viewed
+- list "File view":
+  - listitem:
+    - button "Preview"
+  - listitem:
+    - button "Raw"
+  - listitem:
+    - button "Blame"

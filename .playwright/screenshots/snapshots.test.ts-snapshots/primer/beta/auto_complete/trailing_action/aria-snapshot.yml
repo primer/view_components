@@ -1,0 +1,3 @@
+- text: Select a fruit
+- combobox "Select a fruit"
+- button "Clear"

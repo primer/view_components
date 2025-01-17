@@ -1,0 +1,3 @@
+- text: My input group
+- textbox "My input group": Copyable value
+- button "Copy some text"

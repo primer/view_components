@@ -1,0 +1,5 @@
+- tablist "Test navigation":
+  - tab "Tab 1" [selected]
+  - tab "Tab 2"
+  - tab "Tab 3"
+- tabpanel "Tab 1": Panel 1

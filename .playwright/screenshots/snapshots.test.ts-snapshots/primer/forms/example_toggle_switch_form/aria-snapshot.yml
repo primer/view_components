@@ -1,0 +1,11 @@
+- text: Good example
+- button "Good example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.
+- separator
+- text: Bad example
+- button "Bad example"
+- text: My
+- emphasis: favorite
+- text: caption lorem ipsum dolor sit amet.

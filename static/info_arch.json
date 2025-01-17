@@ -9361,6 +9361,71 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_field/with_trailing_icon",
+        "name": "with_trailing_icon",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_trailing_text",
+        "name": "with_trailing_text",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_trailing_long_text",
+        "name": "with_trailing_long_text",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_trailing_counter",
+        "name": "with_trailing_counter",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_trailing_label",
+        "name": "with_trailing_label",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_field/with_leading_visual",
         "name": "with_leading_visual",
         "snapshot": "true",

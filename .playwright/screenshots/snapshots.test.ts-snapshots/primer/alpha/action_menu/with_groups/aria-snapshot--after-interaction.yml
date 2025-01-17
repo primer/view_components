@@ -1,0 +1,20 @@
+- button "Favorite character"
+- menu "Favorite character":
+  - text: Battlestar Galactica
+  - group "Battlestar Galactica":
+    - menuitem "William Adama"
+    - menuitem "Kara \"Starbuck\" Thrace"
+    - menuitem "Sharon \"Boomer\" Valerii"
+    - menuitem "Gaius Baltar"
+  - text: Star Trek
+  - group "Star Trek":
+    - menuitem "Capt. Jean-luc Picard"
+    - menuitem "Capt. Kathryn M. Janeway"
+    - menuitem "Capt. Benjamin L. Sisko"
+    - menuitem "Capt. James T. Kirk"
+  - text: Star Wars
+  - group "Star Wars":
+    - menuitem "Leia Organa"
+    - menuitem "Luke Skywalker"
+    - menuitem "Han Solo"
+    - menuitem "Chewbacca"
