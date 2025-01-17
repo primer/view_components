@@ -42,6 +42,8 @@ Kuby.define("ViewComponentsStorybook") do
         password ENV["AZURE_ACR_PASSWORD"]
       end
 
+      setup_phase.base_image = "ruby:3.3"
+
       image_url ENV["IMAGE_URL"] || "primer.azurecr.io/primer/view_components_storybook"
 
       # Run bundler, npm, etc in this directory.
