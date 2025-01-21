@@ -1,7 +1,7 @@
 - button "Button"
 - button "Button"
 - button "Button"
-- button "Button ( )": Button ()
-- button "Button ( )": Button ()
-- button "Button ( )": Button ()
+- button "Button ( 15 )"
+- button "Button ( 15 )"
+- button "Button ( 15 )"
 - button "Button with tooltip"
