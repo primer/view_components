@@ -160,7 +160,8 @@ class ToggleSwitchElement extends HTMLElement {
     let response
 
     const requestHeaders: {[key: string]: string} = {
-      'Requested-With': 'fetch',
+      'Requested-With': 'XMLHttpRequest',
+      'X-Requested-With': 'XMLHttpRequest'
     }
 
     if (this.turbo) {
