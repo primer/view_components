@@ -22,6 +22,15 @@ module Primer
         system_arguments[:tag] = :summary
         system_arguments[:role] = "button"
 
+        system_arguments[:data] = merge_data(
+          system_arguments, {
+            data: {
+              target: "details-toggle.summaryTarget",
+              action: "click:details-toggle#toggle",
+            }
+          }
+        )
+
         if disabled?
           # rubocop:disable Primer/ComponentNameMigration
           Primer::ButtonComponent.new(**system_arguments, disabled: true)
@@ -56,6 +65,13 @@ module Primer
           system_arguments[:classes],
           OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, NO_OVERLAY)],
           "details-reset" => reset
+        )
+        @system_arguments[:data] = merge_data(
+          @system_arguments, {
+            data: {
+              target: "details-toggle.detailsTarget",
+            }
+          }
         )
         @disabled = disabled
         @summary_info = nil

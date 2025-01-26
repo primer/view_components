@@ -142,4 +142,20 @@ class PrimerBetaDetailsTest < Minitest::Test
   def test_status
     assert_component_state(Primer::Beta::Details, :beta)
   end
+
+  def test_renders_details_catalyst_element_and_data_attributes
+    render_inline(Primer::Beta::Details.new) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("details-toggle")
+    assert_selector("details[data-target='details-toggle.detailsTarget']")
+    assert_selector("summary[data-target='details-toggle.summaryTarget']")
+    assert_selector("summary[data-action='click:details-toggle#toggle']")
+  end
 end
