@@ -14,19 +14,40 @@ module Primer
         :default => "details-overlay",
         :dark => "details-overlay details-overlay-dark"
       }.freeze
+      ARIA_LABEL_OPEN_DEFAULT = "Collapse"
+      ARIA_LABEL_CLOSED_DEFAULT = "Expand"
 
       attr_reader :disabled
       alias disabled? disabled
 
+      # Use the Summary slot as the target for toggling the Details content open/closed.
+      #
+      # @param button [Boolean] Whether or not to render the summary element as a button.
+      # @param aria_label_open [String] Defaults to "Collapse". Value to announce when details element is open.
+      # @param aria_label_closed [String] Defaults to "Expand". Value to announce when details element is closed.
       renders_one :summary, lambda { |button: true, **system_arguments|
         system_arguments[:tag] = :summary
         system_arguments[:role] = "button"
+
+        aria_label_closed = system_arguments[:aria_label_closed] || ARIA_LABEL_CLOSED_DEFAULT
+        aria_label_open = system_arguments[:aria_label_open] || ARIA_LABEL_OPEN_DEFAULT
 
         system_arguments[:data] = merge_data(
           system_arguments, {
             data: {
               target: "details-toggle.summaryTarget",
               action: "click:details-toggle#toggle",
+              aria_label_closed: aria_label_closed,
+              aria_label_open: aria_label_open,
+            }
+          }
+        )
+
+        system_arguments[:aria] = merge_aria(
+          system_arguments, {
+            aria: {
+              label: aria_label_closed,
+              expanded: false,
             }
           }
         )

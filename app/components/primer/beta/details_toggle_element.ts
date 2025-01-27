@@ -3,7 +3,7 @@ import {controller, target} from '@github/catalyst'
 /**
  * A companion Catalyst element for the Details view component. This element
  * ensures the <details> and <summary> elements markup is properly accessible by
- * updating the aria-label and aria-expanded attributes.
+ * updating the aria-label and aria-expanded attributes on click.
  *
  * aria-label values default to "Expand" and "Collapse". To override those
  * values, use the `data-aria-label-open` and `data-aria-label-closed`
