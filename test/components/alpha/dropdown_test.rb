@@ -27,6 +27,7 @@ class PrimerAlphaDropdownTest < Minitest::Test
 
     assert_selector("details.dropdown") do
       assert_selector("summary.btn", text: "Button")
+      assert_selector("summary.btn[aria-label='Open']")
       assert_selector("details-menu.dropdown-menu", visible: false) do
         assert_selector(".dropdown-item", text: "Item", visible: false)
       end
@@ -96,6 +97,22 @@ class PrimerAlphaDropdownTest < Minitest::Test
       assert_selector("summary.btn") do
         assert_selector(".octicon.octicon-triangle-down")
       end
+    end
+  end
+
+  def test_accepts_custom_values_for_button_aria_label
+    render_inline(Primer::Alpha::Dropdown.new(with_caret: true)) do |component|
+      component.with_button(aria_label_closed: "Open me", aria_label_open: "Close me") { "Button" }
+      component.with_menu do |menu|
+        menu.with_item { "Item" }
+      end
+    end
+
+    assert_selector("details.dropdown") do
+      assert_selector("summary.btn", text: "Button")
+      assert_selector("summary.btn[aria-label='Open me']")
+      assert_selector("summary[data-aria-label-open='Close me']")
+      assert_selector("summary[data-aria-label-closed='Open me']")
     end
   end
 end
