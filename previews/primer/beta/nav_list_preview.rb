@@ -160,7 +160,8 @@ module Primer
         end
       end
 
-      def long_label_truncate_no_tooltip(truncate_label: :truncate)
+      # @param truncate_label [Symbol] select [none, truncate, show_tooltip]
+      def long_label_truncate_no_tooltip(truncate_label: :none)
         render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component|
           component.with_item(
             label: "Really really long label that may wrap, truncate, or appear as a tooltip",
