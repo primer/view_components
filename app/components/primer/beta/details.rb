@@ -20,6 +20,9 @@ module Primer
       attr_reader :disabled
       alias disabled? disabled
 
+      attr_reader :open
+      alias open? open
+
       # Use the Summary slot as the target for toggling the Details content open/closed.
       #
       # @param button [Boolean] Whether or not to render the summary element as a button.
@@ -46,8 +49,8 @@ module Primer
         system_arguments[:aria] = merge_aria(
           system_arguments, {
             aria: {
-              label: aria_label_closed,
-              expanded: false,
+              label: open? ? aria_label_open : aria_label_closed,
+              expanded: open?,
             }
           }
         )
@@ -94,6 +97,8 @@ module Primer
             }
           }
         )
+        # https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#open
+        @open = !!@system_arguments[:open]
         @disabled = disabled
         @summary_info = nil
       end

@@ -178,4 +178,19 @@ class PrimerBetaDetailsTest < Minitest::Test
     assert_selector("summary[data-aria-label-open='Collapse']")
     assert_selector("summary[data-target='details-toggle.summaryTarget']")
   end
+
+  def test_renders_correct_aria_attributes_when_details_open_true
+    render_inline(Primer::Beta::Details.new(open: true)) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("details[open]")
+    assert_selector("summary[aria-label='Collapse']")
+    assert_selector("summary[aria-expanded=true]")
+  end
 end
