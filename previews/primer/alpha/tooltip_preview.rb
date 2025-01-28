@@ -65,7 +65,7 @@ module Primer
 
       # @label Tooltip with Primer::Beta::Link
       def tooltip_with_link(direction: :s, tooltip_text: "You can press a button")
-        render(Primer::Beta::Link.new(href: "#link-with-tooltip", id: "link-with-tooltip")) do |component|
+        render(Primer::Beta::Link.new(href: "#link-with-tooltip", id: "link-with-tooltip", underline: true)) do |component|
           component.with_tooltip(text: tooltip_text, direction: direction)
           "Button"
         end
