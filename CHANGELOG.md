@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.52.3
+
+### Patch Changes
+
+- [#3270](https://github.com/primer/view_components/pull/3270) [`fa16aec`](https://github.com/opf/primer_view_components/commit/fa16aec26afb654a627c5c7ed68812f1fa807d0a) Thanks [@khiga8](https://github.com/khiga8)! - Ensure counter content is exposed to screen reader users
+
 ## 0.52.2
 
 ### Patch Changes
