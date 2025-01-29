@@ -12187,6 +12187,12 @@
         "description": "One of `:button`, `:reset`, or `:submit`."
       },
       {
+        "name": "inactive",
+        "type": "Boolean",
+        "default": "N/A",
+        "description": "Whether the button looks visually disabled, but can still accept all the same interactions as an enabled button."
+      },
+      {
         "name": "disabled",
         "type": "Boolean",
         "default": "`false`",
