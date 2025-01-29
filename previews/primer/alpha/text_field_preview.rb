@@ -197,7 +197,7 @@ module Primer
       end
 
       # @label With trailing label
-      # @snapshot
+      # @snapshot 
       def with_trailing_label
         render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field-15", label: "My text field"))
       end
@@ -205,7 +205,7 @@ module Primer
       # @label With leading visual
       # @snapshot
       def with_leading_visual
-        render(Primer::Alpha::TextField.new(leading_visual: { icon: :search }, name: "my-text-field-16", label: "My text field"))
+        render(Primer::Alpha::TextField.new(leading_visual: { icon: :search, "aria-label": "Search" }, name: "my-text-field-16", label: "My text field"))
       end
 
       # @label With validation message
