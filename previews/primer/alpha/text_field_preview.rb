@@ -115,122 +115,122 @@ module Primer
       # @label With caption
       # @snapshot
       def with_caption
-        render(Primer::Alpha::TextField.new(caption: "With a caption", name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(caption: "With a caption", name: "my-text-field-1", label: "My text field"))
       end
 
       # @label Visually hidden label
       # @snapshot
       def visually_hide_label
-        render(Primer::Alpha::TextField.new(visually_hide_label: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(visually_hide_label: true, name: "my-text-field-2", label: "My text field"))
       end
 
       # @label Show clear button
       # @snapshot
       def show_clear_button
-        render(Primer::Alpha::TextField.new(show_clear_button: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(show_clear_button: true, name: "my-text-field-3", label: "My text field"))
       end
 
       # @label Full width
       # @snapshot
       def full_width
-        render(Primer::Alpha::TextField.new(full_width: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(full_width: true, name: "my-text-field-4", label: "My text field"))
       end
 
       # @label Not full width
       # @snapshot
       def not_full_width
-        render(Primer::Alpha::TextField.new(full_width: false, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(full_width: false, name: "my-text-field-5", label: "My text field"))
       end
 
       # @label Disabled
       # @snapshot
       def disabled
-        render(Primer::Alpha::TextField.new(disabled: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(disabled: true, name: "my-text-field-6", label: "My text field"))
       end
 
       # @label Invalid
       # @snapshot
       def invalid
-        render(Primer::Alpha::TextField.new(invalid: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(invalid: true, name: "my-text-field-7", label: "My text field"))
       end
 
       # @label With placeholder
       # @snapshot
       def with_placeholder
-        render(Primer::Alpha::TextField.new(placeholder: "with a placeholder", name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(placeholder: "with a placeholder", name: "my-text-field-8", label: "My text field"))
       end
 
       # @label Inset
       # @snapshot
       def inset
-        render(Primer::Alpha::TextField.new(inset: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(inset: true, name: "my-text-field-9", label: "My text field"))
       end
 
       # @label Monospace
       # @snapshot
       def monospace
-        render(Primer::Alpha::TextField.new(monospace: true, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(monospace: true, name: "my-text-field-10", label: "My text field"))
       end
 
       # @label With trailing icon
       # @snapshot
       def with_trailing_icon
-        render(Primer::Alpha::TextField.new(trailing_visual: { icon: { icon: :search } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { icon: { icon: :search } }, name: "my-text-field-11", label: "My text field"))
       end
 
       # @label With trailing text
       # @snapshot
       def with_trailing_text
-        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "minute" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "minute" } }, name: "my-text-field-12", label: "My text field"))
       end
 
       # @label With trailing long text
       # @snapshot
       def with_trailing_long_text
-        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "Long trailing text" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { text: { text: "Long trailing text" } }, name: "my-text-field-13", label: "My text field"))
       end
 
       # @label With trailing counter
       # @snapshot
       def with_trailing_counter
-        render(Primer::Alpha::TextField.new(trailing_visual: { counter: { count: 5 } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { counter: { count: 5 } }, name: "my-text-field-14", label: "My text field"))
       end
 
       # @label With trailing label
       # @snapshot
       def with_trailing_label
-        render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field-15", label: "My text field"))
       end
 
       # @label With leading visual
       # @snapshot
       def with_leading_visual
-        render(Primer::Alpha::TextField.new(leading_visual: { icon: :search }, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(leading_visual: { icon: :search }, name: "my-text-field-16", label: "My text field"))
       end
 
       # @label With validation message
       # @snapshot
       def with_validation_message
-        render(Primer::Alpha::TextField.new(validation_message: "An error occurred!", name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(validation_message: "An error occurred!", name: "my-text-field-17", label: "My text field"))
       end
       #
       # @!endgroup
 
-      # @!group Auto check
+      # @!group Auto check 
       #
       # @label Auto check request ok
       def with_auto_check_ok
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_ok_path, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_ok_path, name: "my-text-field-18", label: "My text field"))
       end
 
       # @label Auto check request accepted
       def with_auto_check_accepted
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_accepted_path, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_accepted_path, name: "my-text-field-19", label: "My text field"))
       end
 
       # @label Auto check request error
       def with_auto_check_error
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_error_path, name: "my-text-field", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_error_path, name: "my-text-field-20", label: "My text field"))
       end
       #
       # @!endgroup
