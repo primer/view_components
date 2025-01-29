@@ -34,7 +34,7 @@ class IntegrationOpenProjectDangerConfirmationDialogTest < System::TestCase
   end
 
   def test_submit_button_submits_form
-    visit_preview(:with_form, route_format: :json)
+    visit_preview(:with_form_test, route_format: :json)
 
     click_button("Click me")
 
@@ -49,7 +49,7 @@ class IntegrationOpenProjectDangerConfirmationDialogTest < System::TestCase
   end
 
   def test_submit_button_submits_form_builder_form
-    visit_preview(:with_form_builder_form, route_format: :json)
+    visit_preview(:with_form_builder_form_test, route_format: :json)
 
     click_button("Click me")
 

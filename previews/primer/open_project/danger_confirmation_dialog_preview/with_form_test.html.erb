@@ -1,6 +1,6 @@
 <%= render(Primer::OpenProject::DangerConfirmationDialog.new(
     title: "Delete dialog",
-    form_arguments: { action: "" } # Use the correct form action here.
+    form_arguments: { action: generic_form_submission_path(route_format) }
   )) do |dialog| %>
   <% dialog.with_show_button { "Click me" } %>
   <% dialog.with_confirmation_message do |message|

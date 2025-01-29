@@ -72,6 +72,18 @@ module Primer
           dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
         end
       end
+
+      # @label With form using FormBuilder for testing puposes
+      # @hidden
+      def with_form_builder_form_test(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
+
+      # @label With form for testing purposes
+      # @hidden
+      def with_form_test(route_format: :html)
+        render_with_template(locals: { route_format: route_format })
+      end
     end
   end
 end
