@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.52.4
+
+### Patch Changes
+
+- [#232](https://github.com/opf/primer_view_components/pull/232) [`3cf8fe4`](https://github.com/opf/primer_view_components/commit/3cf8fe408dfe9995f90af3a08f5e04c21f3ed30a) Thanks [@HDinger](https://github.com/HDinger)! - Allow custom texts for cancel and confirm button in DangerConfirmationDialog
+
+- [#231](https://github.com/opf/primer_view_components/pull/231) [`10cf9d2`](https://github.com/opf/primer_view_components/commit/10cf9d20660815b4ba78bc8bb7b9e18f3a60ce88) Thanks [@HDinger](https://github.com/HDinger)! - Fix form preview of DangerConfirmationDialog
+
 ## 0.52.3
 
 ### Patch Changes
