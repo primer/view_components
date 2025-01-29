@@ -25,18 +25,24 @@ module Primer
       # @param icon_color [Symbol] select [default, muted, subtle, accent, success, attention, severe, danger, open, closed, done, sponsors, on_emphasis, inherit]
       # @param show_description toggle
       # @param show_additional_details toggle
+      # @param confirm_button_text [String]
+      # @param cancel_button_text [String]
       # @param check_box_text [String]
       def playground(
         icon: :"alert",
         icon_color: :danger,
         show_description: true,
         show_additional_details: false,
+        confirm_button_text: "Understood",
+        cancel_button_text: "NO!",
         check_box_text: "I understand that this deletion cannot be reversed"
       )
         render_with_template(locals: { icon: icon,
                                        icon_color: icon_color,
                                        show_description: show_description,
                                        show_additional_details: show_additional_details,
+                                       confirm_button_text: confirm_button_text,
+                                       cancel_button_text: cancel_button_text,
                                        check_box_text: check_box_text })
       end
 

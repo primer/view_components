@@ -11,8 +11,8 @@
         <% end %>
       </scrollable-region>
       <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
-        <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { I18n.t("button_cancel") } %>
-        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { I18n.t("button_delete_permanently") } %>
+        <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { @cancel_button_text } %>
+        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { @confirm_button_text } %>
       <% end %>
     <% end %>
   </danger-confirmation-dialog-form-helper>
