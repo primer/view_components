@@ -143,6 +143,12 @@ export class ActionMenuElement extends HTMLElement {
       () => Boolean(this.invokerElement),
       () => this.#intersectionObserver.observe(this.invokerElement!),
     )
+
+    // If there's no include fragment, then no async fetching will occur and we can
+    // mark the component as ready.
+    if (!this.includeFragment) {
+      this.setAttribute('data-ready', 'true')
+    }
   }
 
   disconnectedCallback() {
@@ -367,6 +373,9 @@ export class ActionMenuElement extends HTMLElement {
   #handleIncludeFragmentReplaced() {
     if (this.#firstItem) this.#firstItem.focus()
     this.#softDisableItems()
+
+    // async items have loaded, so component is ready
+    this.setAttribute('data-ready', 'true')
   }
 
   // Close when focus leaves menu
@@ -387,6 +396,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #setDynamicLabel() {
+    if (this.selectVariant !== 'single') return
     if (!this.dynamicLabel) return
     const invokerLabel = this.invokerLabel
     if (!invokerLabel) return
