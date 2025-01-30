@@ -164,11 +164,6 @@ module Primer
                              })
       end
 
-      # @label In an ActionMenu
-      def in_an_action_menu
-        render_with_template(locals: {})
-      end
-
       def in_a_sticky_container
         render_with_template(locals: {})
       end
