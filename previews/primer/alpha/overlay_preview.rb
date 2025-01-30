@@ -164,7 +164,8 @@ module Primer
                              })
       end
 
-      def overlay_with_header_filter
+      # @label In an ActionMenu
+      def in_an_action_menu
         render_with_template(locals: {})
       end
 
