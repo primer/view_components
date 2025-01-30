@@ -1,0 +1,2 @@
+vite: cd demo; bin/vite build -- --watch
+css: cd demo; exec npm run build:css -- --watch

@@ -5,6 +5,15 @@
 #/ 1. `script/test 'GLOB'` runs all tests for matching glob.
 #/     * make sure to wrap the `GLOB` in single quotes `''`.
 
+status=`overmind status --socket ./overmind-test.sock`
+
+if [[ $? > 0 || "$status" =~ dead ]]; then
+  echo "It looks like one or more supporting processes are not running. While not essential, you may want to run ./script/test-setup to start these processes."
+else
+  # tell vite-ruby we're using prod-ready assets instead of the dev server or dev build
+  export VITE_RUBY_MODE="production"
+fi
+
 if ! [ $# -eq 0 ]; then
   export TEST=$(echo "$1" | cut -d ":" -f 1)
 

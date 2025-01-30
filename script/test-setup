@@ -1,0 +1,3 @@
+#!/bin/bash
+
+overmind start --daemonize --procfile Procfile.test --socket ./overmind-test.sock
