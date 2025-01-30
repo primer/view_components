@@ -1,0 +1,4 @@
+#!/bin/bash
+
+overmind stop --socket ./overmind-test.sock
+rm ./overmind-test.sock

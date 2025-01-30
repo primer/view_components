@@ -15,7 +15,11 @@ namespace :test do
   namespace :build do
     task :css do
       Dir.chdir("demo/") do
-        system "npm run build:css"
+        # if vite is running in prod mode, we're probably running tests, see script/test-setup
+        if ENV["VITE_RUBY_MODE"] != "production"
+          system "npm run build:css"
+          system "bin/vite build"
+        end
       end
     end
   end
