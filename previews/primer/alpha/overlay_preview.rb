@@ -164,37 +164,6 @@ module Primer
                              })
       end
 
-      # @label In an ActionMenu
-      def in_an_action_menu
-        render_with_template(locals: {})
-      end
-
-      # @label Dialog with header and footer
-      #
-      def dialog_with_header_footer
-        render(Primer::Alpha::Overlay.new(title: "Dialog", role: :dialog, size: :large, padding: :condensed)) do |d|
-          d.with_header(title: "Large Dialog Header", divider: true)
-          d.with_show_button { "Show Overlay" }
-          d.with_footer { "Large Dialog Footer" }
-          d.with_body { "This is a long body for the overlay dialog. <br>".html_safe * 20 }
-        end
-      end
-
-      def overlay_with_header_filter
-        render_with_template(locals: {})
-      end
-
-      def overlay_with_header_subtitle
-        render(Primer::Alpha::Overlay.new(title: "Dialog", role: :dialog, size: :large, padding: :condensed)) do |d|
-          d.with_header(title: "Large Dialog Header", divider: true) do |h|
-            h.with_subtitle {"A subtitle"}
-          end
-          d.with_show_button { "Show Overlay" }
-          d.with_footer { "Large Dialog Footer" }
-          d.with_body { "This is a long body for the overlay dialog. <br>".html_safe * 20 }
-        end
-      end
-
       def in_a_sticky_container
         render_with_template(locals: {})
       end
