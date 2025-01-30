@@ -88,6 +88,9 @@ module Primer
         return if ids.empty?
 
         @input_arguments[:aria][:describedby] = ids.join(" ")
+        if required?
+          binding.pry
+        end
       end
     end
   end
