@@ -3,7 +3,7 @@
 module Primer
   module OpenProject
     # A pre-configured dialog for destructive/"potentially dangerous" actions
-    class DangerConfirmationDialog < Primer::Component
+    class DangerDialog < Primer::Component
       status :open_project
 
       # The dialog's ID value.
@@ -39,7 +39,7 @@ module Primer
 
         check_box_id = "#{dialog_id}-check_box"
 
-        Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox.new(check_box_id: check_box_id, check_box_name: @check_box_name, **system_arguments)
+        Primer::OpenProject::DangerDialog::ConfirmationCheckBox.new(check_box_id: check_box_id, check_box_name: @check_box_name, **system_arguments)
       }
 
       # Optional additional details, such as grid displaying a list of items to be deleted
@@ -50,7 +50,7 @@ module Primer
         system_arguments[:tag] = :div
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "DangerConfirmationDialog-additionalDetails"
+          "DangerDialog-additionalDetails"
         )
 
         system_arguments[:display] ||= :flex
@@ -82,7 +82,7 @@ module Primer
         @system_arguments[:id] = @dialog_id
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "DangerConfirmationDialog"
+          "DangerDialog"
         )
 
         @dialog = Primer::Alpha::Dialog.new(title: @system_arguments[:title], subtitle: nil, visually_hide_title: true, **@system_arguments)
@@ -93,8 +93,8 @@ module Primer
                to: :@dialog
 
       def render?
-        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_message" unless confirmation_message?
-        raise ArgumentError, "DangerConfirmationDialog requires a confirmation_check_box" unless confirmation_check_box?
+        raise ArgumentError, "DangerDialog requires a confirmation_message" unless confirmation_message?
+        raise ArgumentError, "DangerDialog requires a confirmation_check_box" unless confirmation_check_box?
 
         confirmation_message? && confirmation_check_box?
       end

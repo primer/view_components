@@ -3109,13 +3109,13 @@
     ]
   },
   {
-    "name": "danger_confirmation_dialog",
-    "component": "OpenProject::DangerConfirmationDialog",
+    "name": "danger_dialog",
+    "component": "OpenProject::DangerDialog",
     "status": "open_project",
-    "lookup_path": "primer/open_project/danger_confirmation_dialog",
+    "lookup_path": "primer/open_project/danger_dialog",
     "examples": [
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/default",
+        "preview_path": "primer/open_project/danger_dialog/default",
         "name": "default",
         "snapshot": "interactive",
         "skip_rules": {
@@ -3128,7 +3128,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/playground",
+        "preview_path": "primer/open_project/danger_dialog/playground",
         "name": "playground",
         "snapshot": "false",
         "skip_rules": {
@@ -3141,7 +3141,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form_builder_form",
+        "preview_path": "primer/open_project/danger_dialog/with_form_builder_form",
         "name": "with_form_builder_form",
         "snapshot": "false",
         "skip_rules": {
@@ -3154,7 +3154,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form",
+        "preview_path": "primer/open_project/danger_dialog/with_form",
         "name": "with_form",
         "snapshot": "false",
         "skip_rules": {
@@ -3167,7 +3167,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/with_additional_details",
+        "preview_path": "primer/open_project/danger_dialog/with_additional_details",
         "name": "with_additional_details",
         "snapshot": "false",
         "skip_rules": {
@@ -3180,7 +3180,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/custom_icon",
+        "preview_path": "primer/open_project/danger_dialog/custom_icon",
         "name": "custom_icon",
         "snapshot": "false",
         "skip_rules": {
@@ -3193,7 +3193,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form_builder_form_test",
+        "preview_path": "primer/open_project/danger_dialog/with_form_builder_form_test",
         "name": "with_form_builder_form_test",
         "snapshot": "false",
         "skip_rules": {
@@ -3206,7 +3206,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_confirmation_dialog/with_form_test",
+        "preview_path": "primer/open_project/danger_dialog/with_form_test",
         "name": "with_form_test",
         "snapshot": "false",
         "skip_rules": {

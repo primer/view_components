@@ -2,8 +2,8 @@
 
 module Primer
   module OpenProject
-    class DangerConfirmationDialog
-      # Utility component for wrapping DangerConfirmationDialog in a form
+    class DangerDialog
+      # Utility component for wrapping DangerDialog in a form
       class FormWrapper < Primer::Component
         status :open_project
 

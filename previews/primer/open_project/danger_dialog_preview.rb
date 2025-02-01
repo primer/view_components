@@ -5,12 +5,12 @@
 
 module Primer
   module OpenProject
-    # @label DangerConfirmationDialog
-    class DangerConfirmationDialogPreview < ViewComponent::Preview
+    # @label DangerDialog
+    class DangerDialogPreview < ViewComponent::Preview
       # @label Default
       # @snapshot interactive
       def default
-        render(Primer::OpenProject::DangerConfirmationDialog.new(title: "Delete dialog")) do |dialog|
+        render(Primer::OpenProject::DangerDialog.new(title: "Delete dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2) { "Permanently delete?" }
@@ -63,7 +63,7 @@ module Primer
 
       # @label With custom icon
       def custom_icon
-        render(Primer::OpenProject::DangerConfirmationDialog.new(title: "Delete dialog")) do |dialog|
+        render(Primer::OpenProject::DangerDialog.new(title: "Delete dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_confirmation_message(icon_arguments: { icon: :"alert-fill" }) do |message|
             message.with_heading(tag: :h2) { "Permanently delete?" }

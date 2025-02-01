@@ -3,7 +3,7 @@ import {controller, target} from '@github/catalyst'
 const SUBMIT_BUTTON_SELECTOR = 'input[type=submit],button[type=submit],button[data-submit-dialog-id]'
 
 @controller
-class DangerConfirmationDialogFormHelperElement extends HTMLElement {
+class DangerDialogFormHelperElement extends HTMLElement {
   @target checkbox: HTMLInputElement
 
   get submitButton() {
@@ -26,11 +26,11 @@ class DangerConfirmationDialogFormHelperElement extends HTMLElement {
 
 declare global {
   interface Window {
-    DangerConfirmationDialogFormHelperElement: typeof DangerConfirmationDialogFormHelperElement
+    DangerDialogFormHelperElement: typeof DangerDialogFormHelperElement
   }
 }
 
-if (!window.customElements.get('danger-confirmation-dialog-form-helper')) {
-  window.DangerConfirmationDialogFormHelperElement = DangerConfirmationDialogFormHelperElement
-  window.customElements.define('danger-confirmation-dialog-form-helper', DangerConfirmationDialogFormHelperElement)
+if (!window.customElements.get('danger-dialog-form-helper')) {
+  window.DangerDialogFormHelperElement = DangerDialogFormHelperElement
+  window.customElements.define('danger-dialog-form-helper', DangerDialogFormHelperElement)
 }

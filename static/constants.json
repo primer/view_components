@@ -1561,16 +1561,16 @@
   "Primer::OpenProject::BorderGrid::Cell": {
     "GeneratedSlotMethods": "Primer::OpenProject::BorderGrid::Cell::GeneratedSlotMethods"
   },
-  "Primer::OpenProject::DangerConfirmationDialog": {
-    "ConfirmationCheckBox": "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox",
-    "FormWrapper": "Primer::OpenProject::DangerConfirmationDialog::FormWrapper",
-    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::GeneratedSlotMethods"
+  "Primer::OpenProject::DangerDialog": {
+    "ConfirmationCheckBox": "Primer::OpenProject::DangerDialog::ConfirmationCheckBox",
+    "FormWrapper": "Primer::OpenProject::DangerDialog::FormWrapper",
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerDialog::GeneratedSlotMethods"
   },
-  "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox": {
-    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox::GeneratedSlotMethods"
+  "Primer::OpenProject::DangerDialog::ConfirmationCheckBox": {
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerDialog::ConfirmationCheckBox::GeneratedSlotMethods"
   },
-  "Primer::OpenProject::DangerConfirmationDialog::FormWrapper": {
-    "GeneratedSlotMethods": "Primer::OpenProject::DangerConfirmationDialog::FormWrapper::GeneratedSlotMethods"
+  "Primer::OpenProject::DangerDialog::FormWrapper": {
+    "GeneratedSlotMethods": "Primer::OpenProject::DangerDialog::FormWrapper::GeneratedSlotMethods"
   },
   "Primer::OpenProject::DragHandle": {
     "DEFAULT_SIZE": "small",

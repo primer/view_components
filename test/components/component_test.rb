@@ -8,13 +8,13 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::OpenProject::DangerConfirmationDialog, {}, proc { |component|
+    [Primer::OpenProject::DangerDialog, {}, proc { |component|
       component.with_confirmation_message do |confirmation|
         confirmation.with_heading(tag: :h2) { "Live dangerously?" }
       end
       component.with_confirmation_check_box { "Really do this?" }
     }],
-    [Primer::OpenProject::DangerConfirmationDialog::ConfirmationCheckBox, { check_box_name: "foo" }, proc { "Foo" }],
+    [Primer::OpenProject::DangerDialog::ConfirmationCheckBox, { check_box_name: "foo" }, proc { "Foo" }],
     [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
       component.with_feedback_message do |feedback|
         feedback.with_heading(tag: :h2) { "You are a hero" }
@@ -209,7 +209,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::PageHeader::Dialog",
       "Primer::OpenProject::PageHeader::Title",
       "Primer::OpenProject::SidePanel::Section",
-      "Primer::OpenProject::DangerConfirmationDialog::FormWrapper"
+      "Primer::OpenProject::DangerDialog::FormWrapper"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

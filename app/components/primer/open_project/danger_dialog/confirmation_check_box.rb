@@ -2,8 +2,8 @@
 
 module Primer
   module OpenProject
-    class DangerConfirmationDialog
-      # This component is part of `Primer::OpenProject::DangerConfirmationDialog`
+    class DangerDialog
+      # This component is part of `Primer::OpenProject::DangerDialog`
       # and should not be used as a standalone component.
       class ConfirmationCheckBox < Primer::Component
         status :open_project
@@ -16,15 +16,15 @@ module Primer
           @system_arguments[:tag] = :div
           @system_arguments[:classes] = class_names(
             system_arguments[:classes],
-            "DangerConfirmationDialog-confirmationCheckBox"
+            "DangerDialog-confirmationCheckBox"
           )
 
           @check_box_arguments = {}
           @check_box_arguments[:id] = check_box_id
           @check_box_arguments[:name] = check_box_name
           @check_box_arguments[:data] = {
-            target: "danger-confirmation-dialog-form-helper.checkbox",
-            action: "change:danger-confirmation-dialog-form-helper#toggle"
+            target: "danger-dialog-form-helper.checkbox",
+            action: "change:danger-dialog-form-helper#toggle"
           }
         end
 
