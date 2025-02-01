@@ -13,7 +13,19 @@ module Primer
         render(Primer::OpenProject::DangerDialog.new(title: "Delete dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_confirmation_message do |message|
-            message.with_heading(tag: :h2) { "Permanently delete?" }
+            message.with_heading(tag: :h2) { "Delete this item?" }
+            message.with_description_content("Do you want to continue?")
+          end
+        end
+      end
+
+      # @label With confirmation check box
+      # @snapshot interactive
+      def with_confirmation_check_box
+        render(Primer::OpenProject::DangerDialog.new(title: "Delete dialog")) do |dialog|
+          dialog.with_show_button { "Click me" }
+          dialog.with_confirmation_message do |message|
+            message.with_heading(tag: :h2) { "Permanently delete this item?" }
             message.with_description_content("This action is not reversible. Please proceed with caution.")
           end
           dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")
@@ -66,7 +78,7 @@ module Primer
         render(Primer::OpenProject::DangerDialog.new(title: "Delete dialog")) do |dialog|
           dialog.with_show_button { "Click me" }
           dialog.with_confirmation_message(icon_arguments: { icon: :"alert-fill" }) do |message|
-            message.with_heading(tag: :h2) { "Permanently delete?" }
+            message.with_heading(tag: :h2) { "Permanently delete this item?" }
             message.with_description_content("This action is not reversible and will remove all containing sub-tiems. Please proceed with caution.")
           end
           dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed")

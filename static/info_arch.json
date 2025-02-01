@@ -17560,7 +17560,7 @@
       },
       {
         "name": "confirmation_check_box",
-        "description": "A checkbox that the user is required to check in order to continue with the destructive action.\n\nTo render the checkbox label (required), pass a block that returns a String.",
+        "description": "An optional checkbox that the user is required to check in order to continue with the destructive action.\n\nTo render the checkbox label (required), pass a block that returns a String.",
         "parameters": [
           {
             "name": "system_arguments",
@@ -17599,6 +17599,19 @@
       {
         "preview_path": "primer/open_project/danger_dialog/default",
         "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/danger_dialog/with_confirmation_check_box",
+        "name": "with_confirmation_check_box",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [

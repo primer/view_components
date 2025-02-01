@@ -3,16 +3,18 @@
 require "system/test_case"
 
 class IntegrationOpenProjectDangerDialogTest < System::TestCase
-  def test_renders_component
+  def test_submit_button_enabled_on_dialog_open_default
     visit_preview(:default)
 
     click_button("Click me")
 
-    assert_selector(".DangerDialog")
+    assert_selector(".DangerDialog") do
+      assert_selector("button[data-submit-dialog-id]:enabled")
+    end
   end
 
-  def test_submit_button_disabled_on_dialog_open
-    visit_preview(:default)
+  def test_submit_button_disabled_on_dialog_open_with_confirmation_checkbox
+    visit_preview(:with_confirmation_check_box)
 
     click_button("Click me")
 
@@ -23,7 +25,7 @@ class IntegrationOpenProjectDangerDialogTest < System::TestCase
   end
 
   def test_submit_button_enabled_when_confirmation_check_box_checked
-    visit_preview(:default)
+    visit_preview(:with_confirmation_check_box)
 
     click_button("Click me")
 

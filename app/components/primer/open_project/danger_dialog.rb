@@ -27,7 +27,7 @@ module Primer
         FeedbackMessage.new(icon_arguments: icon_arguments, **system_arguments)
       }
 
-      # A checkbox that the user is required to check in order to continue with the destructive action.
+      # An optional checkbox that the user is required to check in order to continue with the destructive action.
       #
       # To render the checkbox label (required), pass a block that returns a String.
       #
@@ -94,9 +94,8 @@ module Primer
 
       def render?
         raise ArgumentError, "DangerDialog requires a confirmation_message" unless confirmation_message?
-        raise ArgumentError, "DangerDialog requires a confirmation_check_box" unless confirmation_check_box?
 
-        confirmation_message? && confirmation_check_box?
+        confirmation_message?
       end
 
       private

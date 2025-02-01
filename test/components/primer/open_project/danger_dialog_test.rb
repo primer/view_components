@@ -5,7 +5,21 @@ require "components/test_helper"
 class PrimerOpenProjectDangerDialogTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_renders
+  def test_renders_default
+    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+    end
+
+    assert_selector("dialog.DangerDialog") do
+      assert_selector(".Overlay-body h2", text: "Danger")
+      assert_selector(".octicon-alert.blankslate-icon")
+      assert_selector(".Overlay-footer .Button", count: 2)
+    end
+  end
+
+  def test_renders_with_confirmation_check_box
     render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
@@ -23,24 +37,10 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_does_not_render_if_no_confirmation_message_provided
     error = assert_raises(ArgumentError) do
-      render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
-        dialog.with_confirmation_check_box { "I confirm this deletion" }
-      end
+      render_inline(Primer::OpenProject::DangerDialog.new)
     end
 
     assert_equal "DangerDialog requires a confirmation_message", error.message
-  end
-
-  def test_does_not_render_if_no_confirmation_check_box_provided
-    error = assert_raises(ArgumentError) do
-      render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
-        dialog.with_confirmation_message do |message|
-          message.with_heading(tag: :h2) { "Danger" }
-        end
-      end
-    end
-
-    assert_equal "DangerDialog requires a confirmation_check_box", error.message
   end
 
   def test_does_not_render_if_no_confirmation_check_box_content_provided

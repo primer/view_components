@@ -4,7 +4,7 @@ const SUBMIT_BUTTON_SELECTOR = 'input[type=submit],button[type=submit],button[da
 
 @controller
 class DangerDialogFormHelperElement extends HTMLElement {
-  @target checkbox: HTMLInputElement
+  @target checkbox: HTMLInputElement | undefined
 
   get submitButton() {
     return this.querySelector<HTMLInputElement | HTMLButtonElement>(SUBMIT_BUTTON_SELECTOR)!
@@ -15,11 +15,15 @@ class DangerDialogFormHelperElement extends HTMLElement {
   }
 
   toggle(): void {
-    this.submitButton.disabled = !this.checkbox.checked
+    if (this.checkbox) {
+      this.submitButton.disabled = !this.checkbox.checked
+    }
   }
 
   #reset(): void {
-    this.checkbox.checked = false
+    if (this.checkbox) {
+      this.checkbox.disabled = false
+    }
     this.toggle()
   }
 }
