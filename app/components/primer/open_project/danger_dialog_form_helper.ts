@@ -11,6 +11,7 @@ class DangerDialogFormHelperElement extends HTMLElement {
   }
 
   connectedCallback() {
+    this.style.display = 'contents'
     this.#reset()
   }
 
