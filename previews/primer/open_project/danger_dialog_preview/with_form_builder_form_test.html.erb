@@ -1,13 +1,17 @@
-<%= form_with(url: generic_form_submission_path(route_format)) do |f| %>
+<%= primer_form_with(url: generic_form_submission_path(route_format)) do |f| %>
   <%= render(Primer::OpenProject::DangerDialog.new(
         title: "Delete dialog",
-        form_arguments: { builder: f, name: "confirm_very_dangerous_action" }
+        form_arguments: { builder: f }
       )) do |dialog| %>
     <% dialog.with_show_button { "Click me" } %>
     <% dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2).with_content("Permanently delete this item?")
         message.with_description_content("This action is not reversible. Please proceed with caution.")
        end %>
-    <% dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed") %>
+    <% dialog.with_additional_details do %>
+      <%= render(Primer::Box.new(flex: 1, border: true, border_radius: 2, p: 3)) do %>
+        <%= render(Primer::OpenProject::DangerDialogPreview::DeletionForm.new(f)) %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
