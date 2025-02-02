@@ -1,0 +1,10 @@
+- button "Click me"
+- dialog "Delete dialog":
+  - heading "Delete dialog" [level=1]
+  - button "Close"
+  - heading "Permanently delete this item?" [level=2]
+  - paragraph: This action is not reversible. Please proceed with caution.
+  - checkbox "I understand that this deletion cannot be reversed": "1"
+  - text: I understand that this deletion cannot be reversed
+  - 'button "Translation missing: en.button_cancel"'
+  - 'button "Translation missing: en.button_delete_permanently" [disabled]'
