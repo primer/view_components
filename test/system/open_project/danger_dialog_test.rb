@@ -29,7 +29,8 @@ class IntegrationOpenProjectDangerDialogTest < System::TestCase
 
     click_button("Click me")
 
-    assert_selector(".DangerDialog") do
+    assert_selector(".DangerDialog")
+    within(".DangerDialog") do
       check("I understand that this deletion cannot be reversed")
       assert_selector("button[data-submit-dialog-id]:enabled")
     end
@@ -40,14 +41,15 @@ class IntegrationOpenProjectDangerDialogTest < System::TestCase
 
     click_button("Click me")
 
-    assert_selector(".DangerDialog") do
+    assert_selector(".DangerDialog")
+    within(".DangerDialog") do
       check("I understand that this deletion cannot be reversed")
       find("button[type='submit']").click
-
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "1", response.dig("form_params", "confirm_dangerous_action")
     end
+
+    # for some reason the JSON response is wrapped in HTML, I have no idea why
+    response = JSON.parse(find("pre").text)
+    assert_equal "1", response.dig("form_params", "confirm_dangerous_action")
   end
 
   def test_submit_button_submits_form_builder_form
@@ -56,13 +58,14 @@ class IntegrationOpenProjectDangerDialogTest < System::TestCase
     click_button("Click me")
 
     assert_selector(".DangerDialog")
-
-    fill_in "Reason for deletion", with: "Superfluous"
-    within_fieldset "Notify" do
-      check "Creator"
-      check "Assignee"
+    within(".DangerDialog") do
+      fill_in "Reason for deletion", with: "Superfluous"
+      within_fieldset "Notify" do
+        check "Creator"
+        check "Assignee"
+      end
+      find("button[type='submit']").click
     end
-    find("button[type='submit']").click
 
     # for some reason the JSON response is wrapped in HTML, I have no idea why
     form_params = JSON.parse(find("pre").text)["form_params"]
