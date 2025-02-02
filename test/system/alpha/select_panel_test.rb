@@ -7,6 +7,7 @@ module Alpha
   class IntegrationSelectPanelTest < System::TestCase
     include Primer::KeyboardTestHelpers
     include Primer::JsTestHelpers
+    include Primer::JsonResponseTestHelpers
 
     ###### HELPER METHODS ######
 
@@ -1221,9 +1222,8 @@ module Alpha
 
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "item2", response.dig(*%w(form_params item))
+      assert_json_response
+      assert_equal "item2", json_response.dig(*%w(form_params item))
     end
 
     def test_single_select_form_submits_pre_selected_item
@@ -1232,9 +1232,8 @@ module Alpha
       # the first item has been pre-selected, so there's no need to select any items
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "item1", response.dig(*%w(form_params item))
+      assert_json_response
+      assert_equal "item1", json_response.dig(*%w(form_params item))
     end
 
     def test_multi_select_form
@@ -1246,11 +1245,10 @@ module Alpha
 
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      assert_json_response
 
       # first item is pre-selected
-      assert_equal ["item1", "item2"], response.dig(*%w(form_params item))
+      assert_equal ["item1", "item2"], json_response.dig(*%w(form_params item))
     end
 
     def test_remote_single_select_form_pre_selection
