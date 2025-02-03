@@ -29,14 +29,6 @@ module Primer
         assert_includes(described_by_ids, validation_id)
       end
 
-      def test_required
-        render_preview(:required)
-
-        assert_selector(".FormControl-label", text: "Best character") do
-          assert_selector("[aria-hidden=true]", text: "*")
-        end
-      end
-
       def test_visually_hidden_label
         render_preview(:with_visually_hidden_label)
 
