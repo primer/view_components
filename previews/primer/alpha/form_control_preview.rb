@@ -74,19 +74,6 @@ module Primer
         )
       end
 
-      # @label Required
-      def required
-        render_with_template(
-          template: "primer/alpha/form_control_preview/playground",
-          locals: {
-            system_arguments: {
-              label: "Best character",
-              required: true
-            }
-          }
-        )
-      end
-
       # @label With visually hidden label
       def with_visually_hidden_label
         render_with_template(
