@@ -36,6 +36,17 @@ class IntegrationOpenProjectDangerDialogTest < System::TestCase
     end
   end
 
+  def test_playground_custom_button_text
+    visit_preview(:playground, confirm_button_text: "Löschen", cancel_button_text: "Abbrechen")
+
+    click_button("Click me")
+    assert_selector(".DangerDialog")
+    within(".DangerDialog") do
+      assert_selector("button[data-submit-dialog-id]", text: "Löschen")
+      assert_selector("button[data-close-dialog-id]", text: "Abbrechen")
+    end
+  end
+
   def test_submit_button_submits_form
     visit_preview(:with_form_test, route_format: :json)
 

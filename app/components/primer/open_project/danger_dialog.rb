@@ -77,6 +77,9 @@ module Primer
         @form_wrapper = FormWrapper.new(**form_arguments)
         @dialog_id = id.to_s
 
+        @confirm_button_text = confirm_button_text
+        @cancel_button_text = cancel_button_text
+
         @system_arguments = system_arguments
         @system_arguments[:id] = @dialog_id
         @system_arguments[:classes] = class_names(

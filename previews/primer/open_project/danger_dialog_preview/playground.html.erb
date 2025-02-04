@@ -1,4 +1,5 @@
 <%= render(Primer::OpenProject::DangerDialog.new(id: "my-dialog",
+                                                 title: "My dialog",
                                                  confirm_button_text: confirm_button_text,
                                                  cancel_button_text: cancel_button_text)) do |dialog| %>
   <% dialog.with_show_button { "Click me" } %>
