@@ -5,4 +5,4 @@
   - heading "Delete this item?" [level=2]
   - paragraph: Do you want to continue?
   - 'button "Translation missing: en.button_cancel"'
-  - 'button "Translation missing: en.button_delete_permanently"'
+  - 'button "Translation missing: en.button_delete"'
