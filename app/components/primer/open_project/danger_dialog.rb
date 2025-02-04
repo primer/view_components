@@ -63,6 +63,8 @@ module Primer
 
       # @param form_arguments [Hash] Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param id [String] The id of the dialog.
+      # @param confirm_button_text [String] The text of the confirm button. Will default to `I18n.t("button_delete")`, or `I18n.t("button_delete_permanently")` if `confirmation_check_box` slot has been passed to the component.
+      # @param cancel_button_text [String] The text of the cancel button. Will default to `I18n.t("button_cancel")`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         form_arguments: {},

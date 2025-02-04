@@ -5132,6 +5132,18 @@
         "description": "The id of the dialog."
       },
       {
+        "name": "confirm_button_text",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The text of the confirm button. Will default to `I18n.t(\"button_delete\")`, or `I18n.t(\"button_delete_permanently\")` if `confirmation_check_box` slot has been passed to the component."
+      },
+      {
+        "name": "cancel_button_text",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The text of the cancel button. Will default to `I18n.t(\"button_cancel\")`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
