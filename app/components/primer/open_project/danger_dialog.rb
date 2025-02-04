@@ -63,12 +63,14 @@ module Primer
 
       # @param form_arguments [Hash] Allows the dialog to submit a form. Pass EITHER the `builder:` option to this hash to reuse an existing Rails form, or `action:` if you prefer the component to render the form tag itself. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which is created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param id [String] The id of the dialog.
+      # @param title [String] The title of the dialog. Although visually hidden, a label is rendered for assistive technologies.
       # @param confirm_button_text [String] The text of the confirm button. Will default to `I18n.t("button_delete")`, or `I18n.t("button_delete_permanently")` if `confirmation_check_box` slot has been passed to the component.
       # @param cancel_button_text [String] The text of the cancel button. Will default to `I18n.t("button_cancel")`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         form_arguments: {},
         id: self.class.generate_id,
+        title:,
         confirm_button_text: nil,
         cancel_button_text: nil,
         **system_arguments
@@ -87,7 +89,7 @@ module Primer
           "DangerDialog"
         )
 
-        @dialog = Primer::Alpha::Dialog.new(title: @system_arguments[:title], subtitle: nil, visually_hide_title: true, **@system_arguments)
+        @dialog = Primer::Alpha::Dialog.new(title: title, subtitle: nil, visually_hide_title: true, **@system_arguments)
       end
 
       delegate :labelledby, :header?, :header, :with_header, :with_header_content,
