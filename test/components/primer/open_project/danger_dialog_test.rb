@@ -19,6 +19,19 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     end
   end
 
+  def test_renders_default_button_text
+    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+    end
+
+    assert_selector("dialog.DangerDialog") do
+      assert_selector(".Overlay-footer .Button", text: "en.button_cancel")
+      assert_selector(".Overlay-footer .Button", text: "en.button_delete")
+    end
+  end
+
   def test_renders_with_confirmation_check_box
     render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
       dialog.with_confirmation_message do |message|
@@ -32,6 +45,20 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
       assert_selector(".octicon-alert.blankslate-icon")
       assert_selector(".FormControl-checkbox + * > .FormControl-label", text: "I confirm this deletion")
       assert_selector(".Overlay-footer .Button", count: 2)
+    end
+  end
+
+  def test_renders_with_confirmation_check_box_button_text
+    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
+    end
+
+    assert_selector("dialog.DangerDialog") do
+      assert_selector(".Overlay-footer .Button", text: "en.button_cancel")
+      assert_selector(".Overlay-footer .Button", text: "en.button_delete_permanently")
     end
   end
 

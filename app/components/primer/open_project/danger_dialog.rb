@@ -67,16 +67,13 @@ module Primer
       def initialize(
         form_arguments: {},
         id: self.class.generate_id,
-        confirm_button_text: I18n.t("button_delete_permanently"),
-        cancel_button_text: I18n.t("button_cancel"),
+        confirm_button_text: nil,
+        cancel_button_text: nil,
         **system_arguments
       )
         @check_box_name = form_arguments.delete(:name) || "confirm_dangerous_action"
         @form_wrapper = FormWrapper.new(**form_arguments)
         @dialog_id = id.to_s
-
-        @confirm_button_text = confirm_button_text
-        @cancel_button_text = cancel_button_text
 
         @system_arguments = system_arguments
         @system_arguments[:id] = @dialog_id
@@ -101,7 +98,8 @@ module Primer
       private
 
       def before_render
-        content
+        @confirm_button_text ||= confirmation_check_box? ? I18n.t("button_delete_permanently") : I18n.t("button_delete")
+        @cancel_button_text ||= I18n.t("button_cancel")
       end
     end
   end
