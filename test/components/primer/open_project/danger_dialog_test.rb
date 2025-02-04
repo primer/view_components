@@ -6,7 +6,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_default
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -20,7 +20,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_default_button_text
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -34,6 +34,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_renders_default_with_custom_button_text
     render_inline(Primer::OpenProject::DangerDialog.new(
+      title: "Danger action",
       confirm_button_text: "Do it!",
       cancel_button_text: "Don't do it!"
     )) do |dialog|
@@ -49,7 +50,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_with_confirmation_check_box
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -65,7 +66,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_with_confirmation_check_box_button_text
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -80,6 +81,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_renders_with_confirmation_check_box_custom_button_text
     render_inline(Primer::OpenProject::DangerDialog.new(
+      title: "Danger confirmation action",
       confirm_button_text: "Do it FOREVER!",
       cancel_button_text: "Nah"
     )) do |dialog|
@@ -97,7 +99,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_does_not_render_if_no_confirmation_message_provided
     error = assert_raises(ArgumentError) do
-      render_inline(Primer::OpenProject::DangerDialog.new)
+      render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action"))
     end
 
     assert_equal "DangerDialog requires a confirmation_message", error.message
@@ -105,7 +107,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_does_not_render_if_no_confirmation_check_box_content_provided
     error = assert_raises(ArgumentError) do
-      render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+      render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
         dialog.with_confirmation_message do |message|
           message.with_heading(tag: :h2) { "Danger" }
         end
@@ -117,7 +119,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_without_form_by_default
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -130,7 +132,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_button_type_buttons_by_default
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -147,7 +149,10 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     error = assert_raises do
       render_in_view_context do
         form_with(url: "/my-action", method: :delete) do |f|
-          render(Primer::OpenProject::DangerDialog.new(form_arguments: { builder: f, action: "/my-action" })) do |dialog|
+          render(Primer::OpenProject::DangerDialog.new(
+            title: "Danger confirmation action",
+            form_arguments: { builder: f, action: "/my-action" })
+          ) do |dialog|
             dialog.with_confirmation_message do |message|
               message.with_heading(tag: :h2) { "Danger" }
             end
@@ -162,7 +167,8 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_renders_form_with_form_arguments
     render_inline(Primer::OpenProject::DangerDialog.new(
-       form_arguments: { action: "/my-action", method: :delete, name: "custom_check" }
+      title: "Danger confirmation action",
+      form_arguments: { action: "/my-action", method: :delete, name: "custom_check" }
      )) do |dialog|
        dialog.with_confirmation_message do |message|
          message.with_heading(tag: :h2) { "Danger" }
@@ -180,6 +186,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
 
   def test_renders_submit_type_button_with_form_arguments
     render_inline(Primer::OpenProject::DangerDialog.new(
+      title: "Danger confirmation action",
       form_arguments: { action: "/my-action", method: :delete }
     )) do |dialog|
       dialog.with_confirmation_message do |message|
@@ -197,7 +204,10 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   def test_renders_submit_type_button_with_form_builder_form_arguments
     render_in_view_context do
       form_with(url: "/my-action", method: :delete) do |f|
-        render(Primer::OpenProject::DangerDialog.new(form_arguments: { builder: f })) do |dialog|
+        render(Primer::OpenProject::DangerDialog.new(
+          title: "Danger confirmation action",
+          form_arguments: { builder: f })
+        ) do |dialog|
           dialog.with_confirmation_message do |message|
             message.with_heading(tag: :h2) { "Danger" }
           end
@@ -213,7 +223,9 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_provided_id
-    render_inline(Primer::OpenProject::DangerDialog.new(id: "danger-dialog")) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(
+      id: "danger-dialog", title: "Danger confirmation action"
+    )) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end
@@ -227,7 +239,7 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
   end
 
   def test_renders_additional_details
-    render_inline(Primer::OpenProject::DangerDialog.new) do |dialog|
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger confirmation action")) do |dialog|
       dialog.with_confirmation_message do |message|
         message.with_heading(tag: :h2) { "Danger" }
       end

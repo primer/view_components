@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::FeedbackDialog.new(id: "my-dialog")) do |dialog| %>
+<%= render(Primer::OpenProject::FeedbackDialog.new(id: "my-dialog", title: "My dialog")) do |dialog| %>
   <% dialog.with_show_button { "Click me" } %>
   <% dialog.with_feedback_message(icon_arguments: { icon: icon, color: icon_color }, loading: loading_state) do |message| %>
     <% message.with_heading(tag: :h2).with_content("Awesome!") %>

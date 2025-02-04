@@ -17533,6 +17533,12 @@
         "description": "The id of the dialog."
       },
       {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "The title of the dialog. Although visually hidden, a label is rendered for assistive technologies."
+      },
+      {
         "name": "confirm_button_text",
         "type": "String",
         "default": "`nil`",
@@ -17878,6 +17884,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/feedback_dialog.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_dialog/default/",
     "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "The title of the dialog. Although visually hidden, a label is rendered for assistive technologies."
+      },
       {
         "name": "system_arguments",
         "type": "Hash",

@@ -8,14 +8,14 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::OpenProject::DangerDialog, {}, proc { |component|
+    [Primer::OpenProject::DangerDialog, { title: "Danger action" }, proc { |component|
       component.with_confirmation_message do |confirmation|
         confirmation.with_heading(tag: :h2) { "Live dangerously?" }
       end
       component.with_confirmation_check_box { "Really do this?" }
     }],
     [Primer::OpenProject::DangerDialog::ConfirmationCheckBox, { check_box_name: "foo" }, proc { "Foo" }],
-    [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
+    [Primer::OpenProject::FeedbackDialog, { title: "Useful feedback" }, proc { |component|
       component.with_feedback_message do |feedback|
         feedback.with_heading(tag: :h2) { "You are a hero" }
       end

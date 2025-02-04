@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::FeedbackDialog.new(id: "my-dialog")) do |dialog| %>
+<%= render(Primer::OpenProject::FeedbackDialog.new(id: "my-dialog", title: "Custom footer")) do |dialog| %>
   <% dialog.with_show_button { "Click me" } %>
   <% dialog.with_feedback_message do |message| %>
     <% message.with_heading(tag: :h2).with_content("Action successful") %>

@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::DangerDialog.new) do |dialog| %>
+<%= render(Primer::OpenProject::DangerDialog.new(title: "Delete work packages")) do |dialog| %>
   <% dialog.with_show_button { "Click me" } %>
   <% dialog.with_confirmation_message do |message| %>
     <% message.with_heading(tag: :h2).with_content("Delete 5 work packages?") %>
