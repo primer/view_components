@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.53.1
+
+### Patch Changes
+
+- [#236](https://github.com/opf/primer_view_components/pull/236) [`de1a205`](https://github.com/opf/primer_view_components/commit/de1a205fc5ddfec39373bf579c2a8b2417ad9ca3) Thanks [@myabc](https://github.com/myabc)! - Fix regression: callers unable to set custom button text
+
+- [#237](https://github.com/opf/primer_view_components/pull/237) [`c2c98cf`](https://github.com/opf/primer_view_components/commit/c2c98cfc4bfc6cf62f116016a04015d7404d0a63) Thanks [@myabc](https://github.com/myabc)! - Make DangerDialog title param required: Axe will raise accessibility violations in the absence of a title. We want to ensure best a11y practice, so this change makes it a required param and documents it.
+
+  This is a BREAKING change.
+
+- [#237](https://github.com/opf/primer_view_components/pull/237) [`694bdae`](https://github.com/opf/primer_view_components/commit/694bdae3523774a92632ce7c53c235cdadf29e3f) Thanks [@myabc](https://github.com/myabc)! - Make FeedbackDialog title param required: Axe will raise accessibility violations in the absence of a title. We want to ensure best a11y practice, so this change makes it a required param and documents it.
+
+  This is a BREAKING change.
+
 ## 0.53.0
 
 ### Minor Changes
