@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.53.0
+
+### Minor Changes
+
+- [#234](https://github.com/opf/primer_view_components/pull/234) [`cdb335c`](https://github.com/opf/primer_view_components/commit/cdb335ce1d5caad3cde8d4ee945461516f229577) Thanks [@myabc](https://github.com/myabc)! - [#60588] Implementation of Danger Dialog, a generalised dialog for "potentially dangerous" actions such as item deletion.
+  There are two variants:
+
+  1. **the default (or "warning") variant**, requiring the user to click the dialog confirmation button to continue.
+  2. **the second confirmation variant**, which requires the user to check a check box AND click confirm to continue with the operation.
+
+  This is a BREAKING change, which renames `DangerConfirmationDialog` to `DangerDialog`. Callers will need to update the class name and consider which behaviour they wish to present to the end user. The confirmation variant behaviour is enabled by defining a `confirmation_check_box` slot.
+
+### Patch Changes
+
+- [#234](https://github.com/opf/primer_view_components/pull/234) [`de20e6d`](https://github.com/opf/primer_view_components/commit/de20e6d74e1a5f4a97799d4664eed51e17e729cf) Thanks [@myabc](https://github.com/myabc)! - Fix DangerDialog body scroll behaviour: the dialog's body scroll behaviour should be in parity with that of the underlying `Primer::Alpha::Dialog` component.
+
 ## 0.52.4
 
 ### Patch Changes
