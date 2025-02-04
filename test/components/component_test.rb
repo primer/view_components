@@ -15,7 +15,7 @@ class PrimerComponentTest < Minitest::Test
       component.with_confirmation_check_box { "Really do this?" }
     }],
     [Primer::OpenProject::DangerDialog::ConfirmationCheckBox, { check_box_name: "foo" }, proc { "Foo" }],
-    [Primer::OpenProject::FeedbackDialog, {}, proc { |component|
+    [Primer::OpenProject::FeedbackDialog, { title: "Useful feedback" }, proc { |component|
       component.with_feedback_message do |feedback|
         feedback.with_heading(tag: :h2) { "You are a hero" }
       end

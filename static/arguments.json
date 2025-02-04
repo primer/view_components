@@ -5221,6 +5221,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/feedback_dialog/default/",
     "parameters": [
       {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "The title of the dialog. Although visually hidden, a label is rendered for assistive technologies."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",

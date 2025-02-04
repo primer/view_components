@@ -40,8 +40,9 @@ module Primer
 
       renders_one :footer
 
+      # @param title [String] The title of the dialog. Although visually hidden, a label is rendered for assistive technologies.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
+      def initialize(title:, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
@@ -49,7 +50,7 @@ module Primer
         )
         @system_arguments[:id] ||= self.class.generate_id
 
-        @dialog = Primer::Alpha::Dialog.new(title: @system_arguments[:title], subtitle: nil, visually_hide_title: true, **@system_arguments)
+        @dialog = Primer::Alpha::Dialog.new(title: title, subtitle: nil, visually_hide_title: true, **@system_arguments)
       end
 
       delegate :header?, :header, :with_header, :with_header_content,
