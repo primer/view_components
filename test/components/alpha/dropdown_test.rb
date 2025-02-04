@@ -108,11 +108,11 @@ class PrimerAlphaDropdownTest < Minitest::Test
       end
     end
 
-    assert_selector("details.dropdown") do
-      assert_selector("summary.btn", text: "Button")
-      assert_selector("summary.btn[aria-label='Open me']")
-      assert_selector("summary[data-aria-label-open='Close me']")
-      assert_selector("summary[data-aria-label-closed='Open me']")
+    assert_selector("details.dropdown") do |dropdown|
+      dropdown.assert_selector("summary.btn", text: "Button")
+      dropdown.assert_selector("summary.btn[aria-label='Open me']")
+      dropdown.assert_selector("summary[data-aria-label-open='Close me']")
+      dropdown.assert_selector("summary[data-aria-label-closed='Open me']")
     end
   end
 end
