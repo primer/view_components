@@ -1,0 +1,19 @@
+<%= render @dialog do |dialog| %>
+  <danger-dialog-form-helper>
+    <%= render(@form_wrapper) do %>
+      <scrollable-region data-labelled-by="<%= labelledby %>">
+        <%= render(Primer::Alpha::Dialog::Body.new) do %>
+          <%= confirmation_message %>
+          <% if additional_details? %>
+            <%= additional_details %>
+          <% end %>
+          <%= confirmation_check_box %>
+        <% end %>
+      </scrollable-region>
+      <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
+        <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { @cancel_button_text } %>
+        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { @confirm_button_text } %>
+      <% end %>
+    <% end %>
+  </danger-dialog-form-helper>
+<% end %>

@@ -1,0 +1,18 @@
+<!-- Use the correct form URL here. -->
+<%= primer_form_with(url: "") do |f| %>
+  <%= render(Primer::OpenProject::DangerDialog.new(
+        title: "Delete dialog",
+        form_arguments: { builder: f }
+      )) do |dialog| %>
+    <% dialog.with_show_button { "Click me" } %>
+    <% dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2).with_content("Permanently delete this item?")
+        message.with_description_content("This action is not reversible. Please confirm the following details before deletion.")
+       end %>
+    <% dialog.with_additional_details do %>
+      <%= render(Primer::Box.new(flex: 1, border: true, border_radius: 2, p: 3)) do %>
+        <%= render(Primer::OpenProject::DangerDialogPreview::DeletionForm.new(f)) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

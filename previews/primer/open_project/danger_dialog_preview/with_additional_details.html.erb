@@ -1,0 +1,40 @@
+<%= render(Primer::OpenProject::DangerDialog.new) do |dialog| %>
+  <% dialog.with_show_button { "Click me" } %>
+  <% dialog.with_confirmation_message do |message| %>
+    <% message.with_heading(tag: :h2).with_content("Delete 5 work packages?") %>
+  <% end %>
+  <% dialog.with_additional_details do %>
+    <%= render(Primer::Beta::BorderBox.new(spacious: false)) do |grid| %>
+      <% 5.times do %>
+        <% grid.with_row do %>
+          <%= render(Primer::OpenProject::FlexLayout.new) do |flex|
+            flex.with_column(mr: 2) do
+              render(Primer::Beta::Text.new) do
+                %w(EPIC FEATURE IDEA).sample
+              end
+            end
+            flex.with_column(mr: 2) do
+              work_package_id = rand(999_999)
+              render(Primer::Beta::Link.new(
+                href: "/work_packages/#{work_package_id}"),
+                title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat.",
+                target: :_blank,
+                font_size: :small,
+                color: :muted
+              ) { "##{work_package_id}" }
+            end
+            flex.with_column do
+              render(Primer::Beta::Label.new(scheme: :accent, size: :medium, inline: true)) do
+                ["New", "Confirmed", "In specification"].sample
+              end
+            end
+          end %>
+          <%= render(Primer::Beta::Text.new) do %>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat.
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% dialog.with_confirmation_check_box_content("I understand that this deletion cannot be reversed") %>
+<% end %>
