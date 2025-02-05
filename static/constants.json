@@ -333,6 +333,8 @@
     ]
   },
   "Primer::Alpha::Dropdown": {
+    "ARIA_LABEL_CLOSED_DEFAULT": "Open",
+    "ARIA_LABEL_OPEN_DEFAULT": "Close",
     "GeneratedSlotMethods": "Primer::Alpha::Dropdown::GeneratedSlotMethods",
     "Menu": "Primer::Alpha::Dropdown::Menu"
   },
@@ -1037,6 +1039,8 @@
     ]
   },
   "Primer::Beta::Details": {
+    "ARIA_LABEL_CLOSED_DEFAULT": "Expand",
+    "ARIA_LABEL_OPEN_DEFAULT": "Collapse",
     "BODY_TAG_DEFAULT": "div",
     "BODY_TAG_OPTIONS": [
       "ul",
