@@ -1254,6 +1254,12 @@
         "description": "When set to `true`, the form control will take up all the horizontal space allowed by its container."
       },
       {
+        "name": "label_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "HTML attributes to attach to the `<label>` element that labels the input."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
