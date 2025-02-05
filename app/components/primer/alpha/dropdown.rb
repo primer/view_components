@@ -7,12 +7,20 @@ module Primer
     class Dropdown < Primer::Component
       status :alpha
 
+      ARIA_LABEL_OPEN_DEFAULT = "Close"
+      ARIA_LABEL_CLOSED_DEFAULT = "Open"
+
       # Required trigger for the dropdown. Has the same arguments as <%= link_to_component(Primer::ButtonComponent) %>,
       # but it is locked as a `summary` tag.
+      #
+      # @param aria_label_open [String] Defaults to "Close". Value to announce when menu is open.
+      # @param aria_label_closed [String] Defaults to "Open". Value to announce when menu is closed.
       renders_one :button, lambda { |**system_arguments|
         @button_arguments = system_arguments
         @button_arguments[:button] = true
         @button_arguments[:dropdown] = @with_caret
+        @button_arguments[:aria_label_open] = system_arguments[:aria_label_open] || ARIA_LABEL_OPEN_DEFAULT
+        @button_arguments[:aria_label_closed] = system_arguments[:aria_label_closed] || ARIA_LABEL_CLOSED_DEFAULT
 
         Primer::Content.new
       }

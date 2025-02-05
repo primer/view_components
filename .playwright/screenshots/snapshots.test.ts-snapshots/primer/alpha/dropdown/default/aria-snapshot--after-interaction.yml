@@ -1,5 +1,5 @@
 - group:
-  - button "Dropdown"
+  - button "Close" [expanded]: Dropdown
   - menu:
     - menuitem "Item 1"
     - menuitem "Item 2"

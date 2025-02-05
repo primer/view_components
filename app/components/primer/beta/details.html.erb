@@ -1,8 +1,10 @@
-<% if disabled? %>
-  <%= summary %>
-<% else %>
-  <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+<details-toggle>
+  <% if disabled? %>
     <%= summary %>
-    <%= body %>
+  <% else %>
+    <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+      <%= summary %>
+      <%= body %>
+    <% end %>
   <% end %>
-<% end %>
+</details-toggle>

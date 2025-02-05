@@ -3843,7 +3843,18 @@
         "name": "button",
         "description": "Required trigger for the dropdown. Has the same arguments as {{#link_to_component}}Primer::ButtonComponent{{/link_to_component}},\nbut it is locked as a `summary` tag.",
         "parameters": [
-
+          {
+            "name": "aria_label_open",
+            "type": "String",
+            "default": "N/A",
+            "description": "Defaults to \"Close\". Value to announce when menu is open."
+          },
+          {
+            "name": "aria_label_closed",
+            "type": "String",
+            "default": "N/A",
+            "description": "Defaults to \"Open\". Value to announce when menu is closed."
+          }
         ]
       },
       {
@@ -13358,9 +13369,26 @@
     "slots": [
       {
         "name": "summary",
-        "description": null,
+        "description": "Use the Summary slot as the target for toggling the Details content open/closed.",
         "parameters": [
-
+          {
+            "name": "button",
+            "type": "Boolean",
+            "default": "N/A",
+            "description": "Whether or not to render the summary element as a button."
+          },
+          {
+            "name": "aria_label_open",
+            "type": "String",
+            "default": "N/A",
+            "description": "Defaults to \"Collapse\". Value to announce when details element is open."
+          },
+          {
+            "name": "aria_label_closed",
+            "type": "String",
+            "default": "N/A",
+            "description": "Defaults to \"Expand\". Value to announce when details element is closed."
+          }
         ]
       },
       {
@@ -13396,6 +13424,26 @@
       {
         "name": "disabled?",
         "description": "Returns the value of attribute disabled.",
+        "parameters": [
+
+        ],
+        "return_types": [
+
+        ]
+      },
+      {
+        "name": "open",
+        "description": "Returns the value of attribute open.",
+        "parameters": [
+
+        ],
+        "return_types": [
+
+        ]
+      },
+      {
+        "name": "open?",
+        "description": "Returns the value of attribute open.",
         "parameters": [
 
         ],
@@ -13447,6 +13495,19 @@
       {
         "preview_path": "primer/beta/details/without_button",
         "name": "without_button",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/details/open",
+        "name": "open",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

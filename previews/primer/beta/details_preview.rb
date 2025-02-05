@@ -58,6 +58,18 @@ module Primer
           component.with_body { "Body" }
         end
       end
+
+      # @label Open
+      #
+      # @param overlay [Symbol] select [none, default, dark]
+      # @param reset [Boolean] toggle
+      # @param disabled [Boolean] toggle
+      def open(reset: false, overlay: :default, disabled: false)
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay, disabled: disabled, open: true) do |component|
+          component.with_summary { "Click me" }
+          component.with_body { "Body" }
+        end
+      end
     end
   end
 end
