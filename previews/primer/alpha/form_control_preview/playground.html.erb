@@ -1,3 +1,13 @@
+<div>
+  <strong>NOTE: </strong>The <pre style="display: inline">FormControl </pre>component cannot automatically connect
+  the label to the provided input. Please take care to pass the <pre style="display: inline">for:</pre> attribute
+  to <pre style="display: inline">FormControl</pre>, eg:
+  <pre style="display: inline">Primer::Alpha::FormControl.new(label_arguments: { for: "field-name-or-id" })</pre>.
+  - Your friendly neighborhood accessibility team.
+</div>
+
+<br/>
+
 <%= form_with(url: "/foo") do |f| %>
   <%= render(Primer::Alpha::FormControl.new(**system_arguments, label_arguments: { for: "bar" })) do |component| %>
     <% component.with_input do |input_arguments| %>
