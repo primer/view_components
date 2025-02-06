@@ -8,6 +8,7 @@ module Primer
 
       def initialize(input:)
         @input = input
+        @input.label_arguments[:id] = label_id
 
         @input.input_arguments[:form_arguments] = {
           name: @input.name,
@@ -19,6 +20,10 @@ module Primer
         unless @input.input_arguments.include?(:dynamic_label)
           @input.input_arguments[:dynamic_label] = true
         end
+      end
+
+      def label_id
+        @label_id ||= "label-#{@input.base_id}"
       end
     end
   end
