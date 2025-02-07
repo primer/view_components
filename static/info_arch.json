@@ -14757,7 +14757,7 @@
       },
       {
         "name": "render_outer_list?",
-        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>",
+        "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a `<ul>`",
         "parameters": [
 
         ],
