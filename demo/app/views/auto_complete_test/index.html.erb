@@ -1,4 +1,5 @@
 <%# erblint:counter DeprecatedComponentsCounter 2 %>
+<% if @fruit_list.size > 0 %>
 <% @fruit_list.each do |fruit| %>
   <% if params['version'] == "alpha" %>
     <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>
@@ -11,5 +12,10 @@
       <% end %>
       <%= fruit %>
     <% end %>
+  <% end %>
+<% end %>
+<% else %>
+  <%= render(Primer::Beta::AutoComplete::Item.new(role: "none", "aria-hidden": true, value: "", disabled: true)) do %>
+      No results!
   <% end %>
 <% end %>

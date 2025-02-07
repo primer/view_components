@@ -45,14 +45,13 @@ module Primer
         # @param description_variant [Hash] Changes the description style. Allowed values are :inline, :block
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(value:, selected: false, disabled: false, description_variant: DEFAULT_DESCRIPTION_VARIANT, **system_arguments)
+        def initialize(value:, selected: false, disabled: false, description_variant: DEFAULT_DESCRIPTION_VARIANT, role: :option, **system_arguments)
           @description_variant = fetch_or_fallback(
             DESCRIPTION_VARIANT_OPTIONS, description_variant, DEFAULT_DESCRIPTION_VARIANT
           )
-
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :div
-          @system_arguments[:role] = :option
+          @system_arguments[:role] = role
           @system_arguments[:"data-autocomplete-value"] = value
 
           @system_arguments[:"aria-selected"] = true if selected
