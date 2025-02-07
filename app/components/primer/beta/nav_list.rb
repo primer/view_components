@@ -168,7 +168,7 @@ module Primer
         end
       end
 
-      # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a <ul>
+      # Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a `<ul>`
       def render_outer_list?
         items.any? { |item| !group?(item) }
       end
