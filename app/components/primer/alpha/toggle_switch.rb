@@ -28,23 +28,12 @@ module Primer
       # @param status_label_position [Symbol] Which side of the toggle switch to render the status label. <%= one_of(Primer::Alpha::ToggleSwitch::STATUS_LABEL_POSITION_OPTIONS) %>
       # @param turbo [Boolean] Whether or not to request a turbo stream and render the response as such.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(
-        src: nil,
-        csrf_token: nil,
-        checked: false,
-        enabled: true,
-        size: SIZE_DEFAULT,
-        status_label_position: STATUS_LABEL_POSITION_DEFAULT,
-        turbo: false,
-        button_arguments: {},
-        **system_arguments
-      )
+      def initialize(src: nil, csrf_token: nil, checked: false, enabled: true, size: SIZE_DEFAULT, status_label_position: STATUS_LABEL_POSITION_DEFAULT, turbo: false, **system_arguments)
         @src = src
         @csrf_token = csrf_token
         @checked = checked
         @enabled = enabled
         @turbo = turbo
-        @button_arguments = button_arguments
         @system_arguments = system_arguments
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)
