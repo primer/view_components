@@ -62,6 +62,11 @@ module Primer
       def with_turbo
         render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, turbo: true))
       end
+
+      def with_button_arguments
+        button_arguments = { id: 'foo', data: { turbo_permanent: true } }
+        render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, button_arguments: button_arguments))
+      end
     end
   end
 end
