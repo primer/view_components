@@ -18403,6 +18403,65 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::Heading",
+    "description": "This is a generic Heading component specifically for the use in the OpenProject context\nUse it for any Heading you need **inside** the page context.\nDo not use for a page header, we have Primer::OpenProject::PageHeader for that",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::Heading",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectHeading",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/heading.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/heading/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/heading/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/heading/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::InputGroup",
     "description": "`InputGroup` is composed of a text field input with a trailing action",
     "accessibility_docs": null,

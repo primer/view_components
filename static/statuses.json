@@ -127,6 +127,7 @@
   "Primer::OpenProject::FlexLayout": "open_project",
   "Primer::OpenProject::GridLayout": "open_project",
   "Primer::OpenProject::GridLayout::Area": "open_project",
+  "Primer::OpenProject::Heading": "open_project",
   "Primer::OpenProject::InputGroup": "open_project",
   "Primer::OpenProject::PageHeader": "open_project",
   "Primer::OpenProject::PageHeader::Dialog": "open_project",

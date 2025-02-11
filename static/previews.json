@@ -4297,6 +4297,40 @@
     ]
   },
   {
+    "name": "heading",
+    "component": "OpenProject::Heading",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/heading",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/heading/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/heading/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "hellip_button",
     "component": "HellipButton",
     "status": "alpha",

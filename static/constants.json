@@ -1602,6 +1602,9 @@
       "span"
     ]
   },
+  "Primer::OpenProject::Heading": {
+    "GeneratedSlotMethods": "Primer::OpenProject::Heading::GeneratedSlotMethods"
+  },
   "Primer::OpenProject::InputGroup": {
     "DEFAULT_INPUT_WIDTH": "auto",
     "GeneratedSlotMethods": "Primer::OpenProject::InputGroup::GeneratedSlotMethods",
