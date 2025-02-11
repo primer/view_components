@@ -41,7 +41,8 @@ module Primer
         format_style: nil,
         datetime: Time.utc(2020, 1, 1, 0, 0, 0),
         lang: nil,
-        title: nil
+        title: nil,
+        no_title: true
       )
         render(Primer::Beta::RelativeTime.new(
                  tense: tense,
@@ -60,7 +61,8 @@ module Primer
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
-                 title: title
+                 title: title,
+                 no_title: no_title
                ))
       end
 
@@ -98,7 +100,8 @@ module Primer
         format_style: nil,
         datetime: Time.now.utc,
         lang: nil,
-        title: nil
+        title: nil,
+        no_title: true
       )
         render(Primer::Beta::RelativeTime.new(
                  tense: tense,
@@ -117,7 +120,8 @@ module Primer
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
-                 title: title
+                 title: title,
+                 no_title: no_title
                ))
       end
 
@@ -153,7 +157,8 @@ module Primer
         format_style: nil,
         datetime: Time.now.iso8601,
         lang: nil,
-        title: nil
+        title: nil,
+        no_title: true
       )
         render(Primer::Beta::RelativeTime.new(
                  tense: tense,
@@ -172,7 +177,8 @@ module Primer
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
-                 title: title
+                 title: title,
+                 no_title: no_title
                ))
       end
 
@@ -210,7 +216,8 @@ module Primer
         format_style: nil,
         datetime: Time.now.iso8601,
         lang: nil,
-        title: nil
+        title: nil,
+        no_title: true
       )
         render(Primer::Beta::RelativeTime.new(
                  tense: tense,
@@ -229,7 +236,8 @@ module Primer
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
-                 title: title
+                 title: title,
+                 no_title: no_title
                ))
       end
 
@@ -261,7 +269,8 @@ module Primer
         format_style: nil,
         datetime: Time.utc(2038, 1, 19, 0o3, 14, 8),
         lang: nil,
-        title: nil
+        title: nil,
+        no_title: true
       )
         render(Primer::Beta::RelativeTime.new(
                  tense: tense,
@@ -278,7 +287,8 @@ module Primer
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
-                 title: title
+                 title: title,
+                 no_title: no_title
                ))
       end
 
