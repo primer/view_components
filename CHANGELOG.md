@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.54.0
+
+### Minor Changes
+
+- [#239](https://github.com/opf/primer_view_components/pull/239) [`2724f0c`](https://github.com/opf/primer_view_components/commit/2724f0c3f22b6266bf82dfbfe1b577622e3e26f0) Thanks [@HDinger](https://github.com/HDinger)! - Create `Primer::OpenProject::Heading` for OpenProject specific (content) headers. At the same time, increase font-weight for `Primer::OpenProject::PageHeader` to gain more visibility in the page structure
+
 ## 0.53.1
 
 ### Patch Changes
