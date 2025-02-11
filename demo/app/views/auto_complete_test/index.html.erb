@@ -1,21 +1,21 @@
 <%# erblint:counter DeprecatedComponentsCounter 2 %>
-<% if @fruit_list.size > 0 %>
-<% @fruit_list.each do |fruit| %>
-  <% if params['version'] == "alpha" %>
-    <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>
-  <% else %>
-    <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) do |component| %>
-      <% if @visual_type == "leading" %>
-        <% component.with_leading_visual_icon(icon: :"mark-github") %>
-      <% elsif @visual_type == "trailing" %>
-        <% component.with_trailing_visual_icon(icon: :"mark-github") %>
+<% if @fruit_list.length > 0 %>
+  <% @fruit_list.each do |fruit| %>
+    <% if params['version'] == "alpha" %>
+      <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>
+    <% else %>
+      <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) do |component| %>
+        <% if @visual_type == "leading" %>
+          <% component.with_leading_visual_icon(icon: :"mark-github") %>
+        <% elsif @visual_type == "trailing" %>
+          <% component.with_trailing_visual_icon(icon: :"mark-github") %>
+        <% end %>
+        <%= fruit %>
       <% end %>
-      <%= fruit %>
     <% end %>
   <% end %>
-<% end %>
 <% else %>
-  <%= render(Primer::Beta::AutoComplete::Item.new(role: "none", "aria-hidden": true, value: "", disabled: true)) do %>
-      No results!
+  <%= render(Primer::Beta::AutoComplete::NoResultItem.new) do %>
+    No results!
   <% end %>
 <% end %>
