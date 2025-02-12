@@ -205,7 +205,9 @@ export class ActionMenuElement extends HTMLElement {
     const eventIsActivation = this.#isActivation(event)
 
     if (event.type === 'toggle' && (event as ToggleEvent).newState === 'open') {
-      this.#firstItem?.focus({preventScroll: true})
+      window.requestAnimationFrame(() => {
+        this.#firstItem?.focus()
+      })
     }
 
     if (targetIsInvoker && event.type === 'mousedown') {
@@ -371,7 +373,10 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #handleIncludeFragmentReplaced() {
-    if (this.#firstItem) this.#firstItem.focus()
+    window.requestAnimationFrame(() => {
+      this.#firstItem?.focus()
+    })
+
     this.#softDisableItems()
 
     // async items have loaded, so component is ready
