@@ -373,10 +373,7 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #handleIncludeFragmentReplaced() {
-    window.requestAnimationFrame(() => {
-      this.#firstItem?.focus()
-    })
-
+    this.#firstItem?.focus()
     this.#softDisableItems()
 
     // async items have loaded, so component is ready
