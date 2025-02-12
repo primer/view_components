@@ -205,7 +205,9 @@ export class ActionMenuElement extends HTMLElement {
     const eventIsActivation = this.#isActivation(event)
 
     if (event.type === 'toggle' && (event as ToggleEvent).newState === 'open') {
-      this.#firstItem?.focus()
+      window.requestAnimationFrame(() => {
+        this.#firstItem?.focus({preventScroll: true})
+      })
     }
 
     if (targetIsInvoker && event.type === 'mousedown') {
