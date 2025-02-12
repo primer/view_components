@@ -9598,6 +9598,12 @@
         "description": "Whether or not to request a turbo stream and render the response as such."
       },
       {
+        "name": "autofocus",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "Whether switch should be autofocused when rendered."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -9768,6 +9774,20 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_turbo",
         "name": "with_turbo",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/toggle_switch/with_autofocus",
+        "name": "with_autofocus",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
