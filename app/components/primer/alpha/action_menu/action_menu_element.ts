@@ -247,10 +247,10 @@ export class ActionMenuElement extends HTMLElement {
     if (targetIsItem && eventIsActivation) {
       if (this.#potentiallyDisallowActivation(event)) return
 
-      const dialogInvoker = item.closest('[data-show-dialog-id]')
+      const dialogInvoker = item.closest<HTMLButtonElement>('button[commandfor][command=show-modal]')
 
       if (dialogInvoker) {
-        const dialog = this.ownerDocument.getElementById(dialogInvoker.getAttribute('data-show-dialog-id') || '')
+        const dialog = dialogInvoker.commandForElement
 
         if (dialog && this.contains(dialogInvoker)) {
           this.#handleDialogItemActivated(event, dialog)

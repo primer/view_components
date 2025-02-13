@@ -4,7 +4,7 @@
   <% component.with_item(
     label: "Show dialog",
     tag: :button,
-    content_arguments: { "data-show-dialog-id": "my-dialog" },
+    content_arguments: { "type": :button, "commandfor": "my-dialog", "command": "show-modal" },
     value: "",
     scheme: :danger
   ) %>
@@ -15,7 +15,7 @@
     Are you sure you want to delete this?
   <% end %>
   <%= render(Primer::Alpha::Dialog::Footer.new()) do %>
-    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
+    <%= render(Primer::Beta::Button.new(data: { "type": :button, "commandfor": "my-dialog", "command": "close" })) { "Cancel" } %>
     <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Delete" } %>
   <% end %>
 <% end %>

@@ -1,3 +1,5 @@
+import 'invokers-polyfill'
+
 function dialogInvokerButtonHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
@@ -7,6 +9,8 @@ function dialogInvokerButtonHandler(event: Event) {
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
   if (dialogId) {
+    // eslint-disable-next-line no-console
+    console.warn('data-show-dialog-id is deprecated. Please use `commandfor` and `command=show-modal`')
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
       dialog.showModal()
@@ -59,6 +63,8 @@ function dialogInvokerButtonHandler(event: Event) {
 
   dialogId = button.getAttribute('data-close-dialog-id') || button.getAttribute('data-submit-dialog-id')
   if (dialogId) {
+    // eslint-disable-next-line no-console
+    console.warn('data-close-dialog-id is deprecated. Please use `commandfor` and `command=close`')
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement && dialog.open) {
       dialog.close()

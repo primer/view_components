@@ -1,5 +1,6 @@
 import {focusTrap} from '@primer/behaviors'
 import {getFocusableChild} from '@primer/behaviors/utils'
+import 'invokers-polyfill'
 
 function focusIfNeeded(elem: HTMLElement | undefined | null) {
   if (document.activeElement !== elem) {
@@ -18,6 +19,8 @@ function clickHandler(event: Event) {
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
   if (dialogId) {
+    // eslint-disable-next-line no-console
+    console.warn('data-show-dialog-id is deprecated. Please use `commandfor` and `command=show-modal`')
     /* eslint-disable-next-line no-restricted-syntax */
     event.stopPropagation()
     const dialog = document.getElementById(dialogId)
@@ -36,6 +39,8 @@ function clickHandler(event: Event) {
 
   dialogId = button.getAttribute('data-close-dialog-id') || button.getAttribute('data-submit-dialog-id')
   if (dialogId) {
+    // eslint-disable-next-line no-console
+    console.warn('data-close-dialog-id is deprecated. Please use `commandfor` and `command=show-modal`')
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof ModalDialogElement) {
       const dialogIndex = overlayStack.findIndex(ele => ele.id === dialogId)

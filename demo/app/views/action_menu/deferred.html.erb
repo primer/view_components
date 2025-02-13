@@ -5,7 +5,7 @@
   <% list.with_item(
     label: "Show dialog",
     tag: :button,
-    content_arguments: { "data-show-dialog-id": "my-dialog" },
+    content_arguments: { "type": :button, "commandfor": "my-dialog", "command": "show-modal" },
     value: "",
     scheme: :danger
   ) %>

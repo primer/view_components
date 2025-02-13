@@ -9,12 +9,12 @@ module Alpha
     def click_on_initial_dialog_close_button
       # this simulates capybara's #trigger method, which isn't supported with selenium drivers
       page.evaluate_script(<<~JS)
-        document.querySelector("button[data-close-dialog-id='dialog-one']").dispatchEvent(new Event('click'))
+        document.querySelector("button[commandfor='dialog-one'][command=close]").dispatchEvent(new Event('click'))
       JS
     end
 
     def click_on_nested_dialog_close_button
-      find("button[data-close-dialog-id='dialog-two']").click
+      find("button[commandfor='dialog-two'][command=close]").click
     end
 
     def click_on_nested_dialog_button
