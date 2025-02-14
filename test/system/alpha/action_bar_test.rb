@@ -44,7 +44,10 @@ class IntegrationAlphaActionBarTest < System::TestCase
 
       # We want to ensure that we're within the ActionMenu assert_selector("action-bar") do
       keyboard.type(:enter)
-      assert_equal page.evaluate_script("document.activeElement.classList.contains('ActionListContent')"), true
+
+      assert_selector ".ActionListContent" do |content|
+        page.evaluate_script("document.activeElement === arguments[0]", content)
+      end
     end
 
     def test_escape_in_overflow_menu_sets_focus_back
@@ -58,7 +61,9 @@ class IntegrationAlphaActionBarTest < System::TestCase
       assert_equal page.evaluate_script("!!document.activeElement.closest('action-menu')"), true
 
       keyboard.type(:enter)
-      assert_equal page.evaluate_script("document.activeElement.classList.contains('ActionListContent')"), true
+      assert_selector ".ActionListContent" do |content|
+        page.evaluate_script("document.activeElement === arguments[0]", content)
+      end
 
       keyboard.type(:escape)
 
@@ -75,7 +80,10 @@ class IntegrationAlphaActionBarTest < System::TestCase
       keyboard.type(:tab, :left)
 
       keyboard.type(:enter)
-      assert_equal page.evaluate_script("document.activeElement.classList.contains('ActionListContent')"), true
+
+      assert_selector ".ActionListContent" do |content|
+        page.evaluate_script("document.activeElement === arguments[0]", content)
+      end
 
       mouse.click(x: 0, y: 0)
       keyboard.type(:tab)

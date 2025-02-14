@@ -3081,6 +3081,12 @@
         "description": "Whether or not to request a turbo stream and render the response as such."
       },
       {
+        "name": "autofocus",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "Whether switch should be autofocused when rendered."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
