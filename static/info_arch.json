@@ -14520,7 +14520,7 @@
   {
     "fully_qualified_name": "Primer::Beta::Markdown",
     "description": "Use `Markdown` to wrap markdown content.",
-    "accessibility_docs": null,
+    "accessibility_docs": "This component is purely presentational. Consumers should handle accessibility expectations, such as ensuring that an overflowing, scrollable code block or table is keyboard accessible.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
