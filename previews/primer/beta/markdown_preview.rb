@@ -47,7 +47,7 @@ module Primer
 
       <h6>Header 6</h6>
 
-      <table tabindex="0">
+      <table>
         <thead>
           <tr>
             <th>What</th>
@@ -147,7 +147,7 @@ module Primer
 
       <p>Tables should have bold headings and alternating shaded rows.</p>
 
-      <table tabindex="0">
+      <table>
         <thead>
           <tr>
             <th>Artist</th>
