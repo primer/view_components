@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.37.0
+
+### Minor Changes
+
+- [#3292](https://github.com/primer/view_components/pull/3292) [`66637a4`](https://github.com/primer/view_components/commit/66637a4869431a53bcb39b24b907da7b930729ed) Thanks [@ktravers](https://github.com/ktravers)! - Improve Details component accessibility by setting aria-label and aria-expanded attributes correctly on initial render and when toggled open/closed.
+
+### Patch Changes
+
+- [#3327](https://github.com/primer/view_components/pull/3327) [`e3e29b0`](https://github.com/primer/view_components/commit/e3e29b0e983b494fce7bdd95390908d4583ede16) Thanks [@acbreton](https://github.com/acbreton)! - Add preventScroll to focus call in Action Menu
+
+- [#3319](https://github.com/primer/view_components/pull/3319) [`42db9dd`](https://github.com/primer/view_components/commit/42db9dd724b0edd3806fdc0661f248d87b0d8f5f) Thanks [@ktravers](https://github.com/ktravers)! - Adds optional autofocus to ToggleSwitch
+
+- [#3291](https://github.com/primer/view_components/pull/3291) [`aeaeb96`](https://github.com/primer/view_components/commit/aeaeb9632f651bbfbb45c630a1d088b1fe3303b8) Thanks [@francinelucca](https://github.com/francinelucca)! - fix(ToggleSwitch): add X-Requested-With header
+
+- [#3318](https://github.com/primer/view_components/pull/3318) [`081e5dd`](https://github.com/primer/view_components/commit/081e5dd9f2912dc3b7070f2af5c235c31b5a306c) Thanks [@kendallgassner](https://github.com/kendallgassner)! - [ActionMenuForm] Add aria-describedby to the ActionMenuForm's button so that the label is describing the button
+
+- [#3316](https://github.com/primer/view_components/pull/3316) [`4552438`](https://github.com/primer/view_components/commit/45524387a016bb8dab7555bd40ff4dd2e84f3bb2) Thanks [@camertron](https://github.com/camertron)! - Correct accessibility issues in FormControl examples and address missing aria attributes
+
+- [#3303](https://github.com/primer/view_components/pull/3303) [`7fbd8da`](https://github.com/primer/view_components/commit/7fbd8da673f4a4c9459712379c240a923784f42d) Thanks [@camertron](https://github.com/camertron)! - Do not populate dynamic label with active item in multi-select mode
+
 ## 0.36.5
 
 ### Patch Changes
