@@ -1,3 +1,27 @@
+import 'dialog-toggle-events-polyfill'
+
+function dialogBeforeToggleHandler(event: Event) {
+  const {target, newState} = event as ToggleEvent
+  if (!(target instanceof HTMLDialogElement)) return
+  if (newState !== 'open') return
+  const {body} = target.ownerDocument
+  body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - body.clientWidth}px`)
+}
+
+function dialogToggleHandler(event: Event) {
+  const {target, newState} = event as ToggleEvent
+  if (!(target instanceof HTMLDialogElement)) return
+  if (newState !== 'open') return
+  if (target.closest('dialog-helper')?.dialog !== target) return
+  // We don't want to show the Dialog component as non-modal
+  if (target.matches('[open]:not(:modal)')) {
+    // eslint-disable-next-line no-restricted-syntax
+    target.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
+    target.close()
+    target.showModal()
+  }
+}
+
 function dialogInvokerButtonHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
@@ -76,33 +100,12 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
-    this.ownerDocument.body.style.setProperty(
-      '--dialog-scrollgutter',
-      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
-    )
-    new MutationObserver(records => {
-      for (const record of records) {
-        if (record.target === this.dialog) {
-          this.#handleDialogOpenAttribute()
-        }
-      }
-    }).observe(this, {subtree: true, attributeFilter: ['open']})
-    this.#handleDialogOpenAttribute()
+    document.addEventListener('beforetoggle', dialogBeforeToggleHandler, true)
+    document.addEventListener('toggle', dialogToggleHandler, true)
   }
 
   disconnectedCallback() {
     this.#abortController?.abort()
-  }
-
-  #handleDialogOpenAttribute() {
-    if (!this.dialog) return
-    // We don't want to show the Dialog component as non-modal
-    if (this.dialog.matches('[open]:not(:modal)')) {
-      // eslint-disable-next-line no-restricted-syntax
-      this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
-      this.dialog.close()
-      this.dialog.showModal()
-    }
   }
 
   handleEvent(event: MouseEvent) {
