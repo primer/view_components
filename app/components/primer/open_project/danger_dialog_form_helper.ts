@@ -6,12 +6,21 @@ const SUBMIT_BUTTON_SELECTOR = 'input[type=submit],button[type=submit],button[da
 class DangerDialogFormHelperElement extends HTMLElement {
   @target checkbox: HTMLInputElement | undefined
 
+  get form() {
+    return this.querySelector('form')
+  }
+
   get submitButton() {
     return this.querySelector<HTMLInputElement | HTMLButtonElement>(SUBMIT_BUTTON_SELECTOR)!
   }
 
   connectedCallback() {
+    // makes the custom element behave as if it doesn't exist in the DOM structure, passing all
+    // styles directly to its children.
     this.style.display = 'contents'
+    if (this.form) {
+      this.form.style.display = 'contents'
+    }
     this.#reset()
   }
 
