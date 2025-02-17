@@ -107,7 +107,7 @@ export class DialogHelperElement extends HTMLElement {
     document.addEventListener('beforetoggle', dialogBeforeToggleHandler, true)
     document.addEventListener('toggle', dialogToggleHandler, true)
     const {dialog} = this
-    if (dialog.open) forceDialogToOpenAsModal(dialog)
+    if (dialog?.open) forceDialogToOpenAsModal(dialog)
   }
 
   disconnectedCallback() {
