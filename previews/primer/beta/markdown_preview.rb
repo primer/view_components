@@ -181,7 +181,7 @@ module Primer
 
       <p>If a table is too wide, it should condense down and/or scroll horizontally.</p>
 
-      <table>
+      <table tabindex="0">
         <thead>
           <tr>
             <th>Artist</th>
@@ -237,13 +237,13 @@ module Primer
 
       <pre><code>var foo = \"bar\";</code></pre>
 
-      <pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.</code></pre>
+      <pre tabindex="0"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. They should also have a tabindex=0 to ensure keyboard accessibility. This line should be long enough to demonstrate this.</code></pre>
 
-      <pre><code>var foo = \"The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.\";</code></pre>
+      <pre tabindex="0"><code>var foo = \"The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.\";</code></pre>
 
       <p>Inline code inside table cells should still be distinguishable.</p>
 
-      <table>
+      <table tabindex="0">
         <thead>
           <tr>
             <th>Language</th>
