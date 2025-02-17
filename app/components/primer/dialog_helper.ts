@@ -14,11 +14,15 @@ function dialogToggleHandler(event: Event) {
   if (newState !== 'open') return
   if (target.closest('dialog-helper')?.dialog !== target) return
   // We don't want to show the Dialog component as non-modal
-  if (target.matches('[open]:not(:modal)')) {
+  forceDialogToOpenAsModal(target)
+}
+
+function forceDialogToOpenAsModal(dialog: HTMLDialogElement) {
+  if (dialog.matches('[open]:not(:modal)')) {
     // eslint-disable-next-line no-restricted-syntax
-    target.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
-    target.close()
-    target.showModal()
+    dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
+    dialog.close()
+    dialog.showModal()
   }
 }
 
@@ -102,6 +106,8 @@ export class DialogHelperElement extends HTMLElement {
     document.addEventListener('click', this, {signal})
     document.addEventListener('beforetoggle', dialogBeforeToggleHandler, true)
     document.addEventListener('toggle', dialogToggleHandler, true)
+    const {dialog} = this
+    if (dialog.open) forceDialogToOpenAsModal(dialog)
   }
 
   disconnectedCallback() {
