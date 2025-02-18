@@ -3,7 +3,7 @@
 # :nocov:
 class AutoCompleteTestController < ApplicationController
   layout false
-  
+
   FRUIT = [
       "Apples",
       "Apricots",
