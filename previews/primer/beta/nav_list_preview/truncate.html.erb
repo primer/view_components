@@ -2,7 +2,7 @@
   <div style="margin-bottom:1rem">
     <%= render(
       Primer::Alpha::Banner.new(
-        scheme: :warning, 
+        scheme: :warning,
         description: 'If you must use truncation, ensure that users can still access the truncated content in an accessible manner, as truncation should be used sparingly.'
       )
     ) { "Inaccessible pattern" } %>
@@ -11,15 +11,15 @@
 
 <%= render(Primer::Beta::NavList.new(aria: { label: "List heading" })) do |component| %>
   <% component.with_item(
-    label: "Really really long label that may wrap, truncate, or appear as a tooltip", 
+    label: "Really really long label that may wrap, truncate, or appear as a tooltip",
     truncate_label: truncate_label
   ) %>
   <% component.with_item(
-    label: "Really really long label that may wrap, truncate, or appear as a tooltip", 
-    truncate_label: truncate_label) 
-  %>
+    label: "Really really long label that may wrap, truncate, or appear as a tooltip",
+    truncate_label: truncate_label
+  ) %>
   <% component.with_item(
-    label: "Really really long label that may wrap, truncate, or appear as a tooltip", 
+    label: "Really really long label that may wrap, truncate, or appear as a tooltip",
     truncate_label: truncate_label
   ) %>
 <% end %>
