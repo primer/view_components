@@ -1,5 +1,3 @@
-require_relative "item"
-
 module Primer 
   module Beta
     class AutoComplete
