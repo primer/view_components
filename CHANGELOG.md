@@ -8,7 +8,7 @@
 
 ### Patch Changes
 
-- [#3327](https://github.com/primer/view_components/pull/3327) [`e3e29b0`](https://github.com/primer/view_components/commit/e3e29b0e983b494fce7bdd95390908d4583ede16) Thanks [@acbreton](https://github.com/acbreton)! - Add preventScroll to focus call in Action Menu
+- [#3327](https://github.com/primer/view_components/pull/3327) [`e3e29b0`](https://github.com/primer/view_components/commit/e3e29b0e983b494fce7bdd95390908d4583ede16) Thanks [@acbreton](https://github.com/acbreton)! - Prevent scroll when opening `ActionMenu`s.
 
 - [#3319](https://github.com/primer/view_components/pull/3319) [`42db9dd`](https://github.com/primer/view_components/commit/42db9dd724b0edd3806fdc0661f248d87b0d8f5f) Thanks [@ktravers](https://github.com/ktravers)! - Adds optional autofocus to ToggleSwitch
 
