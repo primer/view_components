@@ -30,6 +30,18 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     assert_selector("dialog[aria-modal=true]")
   end
 
+  def test_renders_aria_describedby
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+    end
+
+    dialog_labelledby_id = page.find_css("dialog").first.attributes["aria-describedby"].value
+    feedback_message_id = page.find_css(".FeedbackMessage").first.attributes["id"].value
+    assert_equal dialog_labelledby_id, feedback_message_id
+  end
+
   def test_renders_default_button_text
     render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
       dialog.with_confirmation_message do |message|
