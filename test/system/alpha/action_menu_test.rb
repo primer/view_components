@@ -84,7 +84,7 @@ module Alpha
     end
 
     def close_dialog
-      find("[data-close-dialog-id][aria-label=Close]").click
+      find("[commandfor][command=close][aria-label=Close]").click
     end
 
     def focus_on_invoker_button

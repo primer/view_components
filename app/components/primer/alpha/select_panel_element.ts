@@ -6,6 +6,7 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import type {LiveRegionElement} from '@primer/live-region-element'
 import '@primer/live-region-element'
 import '@oddbird/popover-polyfill'
+import 'invokers-polyfill'
 import {observeMutationsUntilConditionMet} from '../utils'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
@@ -144,7 +145,7 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   get closeButton(): HTMLButtonElement | null {
-    return this.querySelector('button[data-close-dialog-id]')
+    return this.querySelector('button[commandfor][command="close"]')
   }
 
   get invokerLabel(): HTMLElement | null {
@@ -483,10 +484,10 @@ export class SelectPanelElement extends HTMLElement {
     if (targetIsItem && eventIsActivation) {
       if (this.#potentiallyDisallowActivation(event)) return
 
-      const dialogInvoker = item.closest('[data-show-dialog-id]')
+      const dialogInvoker = item.closest<HTMLButtonElement>('button[commandfor][command="show-modal"]')
 
       if (dialogInvoker) {
-        const dialog = this.ownerDocument.getElementById(dialogInvoker.getAttribute('data-show-dialog-id') || '')
+        const dialog = dialogInvoker.commandForElement
 
         if (dialog && this.contains(dialogInvoker) && this.contains(dialog)) {
           this.#handleDialogItemActivated(event, dialog)

@@ -115,7 +115,7 @@ module Primer
         render_preview(:default)
 
         panel_id = page.find_css("select-panel").first.attributes["id"].value
-        assert_selector "select-panel button[data-close-dialog-id='#{panel_id}-dialog']"
+        assert_selector "select-panel button[commandfor='#{panel_id}-dialog'][command=close]"
       end
 
       def test_raises_if_remote_strategy_and_hidden_filter_used_together

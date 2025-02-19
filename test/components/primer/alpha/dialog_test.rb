@@ -24,13 +24,13 @@ module Primer
           component.with_show_button { "Show" }
         end
 
-        assert_selector("[data-show-dialog-id]")
+        assert_selector("[commandfor][command='show-modal']")
       end
 
       def test_renders_icon_show_button
         render_preview :playground, params: { icon: :ellipsis }
 
-        assert_selector("button[data-show-dialog-id] svg.octicon.octicon-ellipsis")
+        assert_selector("button[commandfor][command='show-modal'] svg.octicon.octicon-ellipsis")
       end
 
       def test_raises_on_missing_title

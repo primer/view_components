@@ -38,7 +38,7 @@ module Alpha
     end
 
     def click_on_x_button
-      find("[data-close-dialog-id]").click
+      find("[commandfor][command=close]").click
     end
 
     def click_on_item(idx)
