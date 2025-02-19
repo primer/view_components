@@ -1,5 +1,5 @@
 - button "Click me"
-- dialog "Delete dialog":
+- alertdialog "Delete dialog":
   - heading "Delete dialog" [level=1]
   - button "Close"
   - heading "Delete this item?" [level=2]
