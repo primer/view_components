@@ -62,6 +62,10 @@ module Primer
       def with_turbo
         render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, turbo: true))
       end
+
+      def with_autofocus
+        render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.toggle_switch_index_path, autofocus: true))
+      end
     end
   end
 end
