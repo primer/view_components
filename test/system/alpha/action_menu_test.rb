@@ -75,6 +75,11 @@ module Alpha
         # open menu, "click" on first item
         keyboard.type(:enter)
         assert_selector "anchored-position:popover-open" # wait for menu to open
+
+        # make sure the first list item is the active element
+        assert_selector "button[role=menuitem], button[role=menuitemradio], button[role=menuitemcheckbox]" do |button|
+          page.evaluate_script("document.activeElement === arguments[0]", button)
+        end
       end
     end
 
