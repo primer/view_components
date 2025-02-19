@@ -95,17 +95,17 @@ module Primer
       <p>And an unordered task list:</p>
 
       <ul>
-        <li><input type=\"checkbox\" checked> Create a sample markdown document</li>
-        <li><input type=\"checkbox\"> Add task lists to it</li>
-        <li><input type=\"checkbox\"> Take a vacation</li>
+        <li><input id="checkbox-1" type=\"checkbox\" checked><label for="checkbox-1">Create a sample markdown document</label></li>
+        <li><input id="checkbox-2" type=\"checkbox\"><label for="checkbox-2">Add task lists to it</label></li>
+        <li><input id="checkbox-3" type=\"checkbox\"><label for="checkbox-3">Take a vacation</label></li>
       </ul>
 
       <p>And a \"mixed\" task list:</p>
 
       <ul>
-        <li><input type=\"checkbox\"> Steal underpants</li>
+        <li><input id="checkbox-4" type=\"checkbox\"><label for="checkbox-4">Steal underpants</label></li>
         <li>?</li>
-        <li><input type=\"checkbox\"> Profit!</li>
+        <li><input id="checkbox-5" type=\"checkbox\"> <label for="checkbox-5">Profit!</label></li></li>
       </ul>
 
       And a nested list:
@@ -181,7 +181,7 @@ module Primer
 
       <p>If a table is too wide, it should condense down and/or scroll horizontally.</p>
 
-      <table>
+      <table tabindex="0">
         <thead>
           <tr>
             <th>Artist</th>
@@ -237,13 +237,13 @@ module Primer
 
       <pre><code>var foo = \"bar\";</code></pre>
 
-      <pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.</code></pre>
+      <pre tabindex="0"><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. They should also have a tabindex=0 to ensure keyboard accessibility. This line should be long enough to demonstrate this.</code></pre>
 
-      <pre><code>var foo = \"The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.\";</code></pre>
+      <pre tabindex="0"><code>var foo = \"The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.\";</code></pre>
 
       <p>Inline code inside table cells should still be distinguishable.</p>
 
-      <table>
+      <table tabindex="0">
         <thead>
           <tr>
             <th>Language</th>

@@ -1,6 +1,6 @@
 <%= render(FormControl.new(input: @input)) do %>
   <%= render(Primer::Alpha::ActionMenu.new(**@input.input_arguments)) do |menu| %>
-    <% menu.with_show_button { "Select..." } %>
+    <% menu.with_show_button("aria-describedby": @label_id) { "Select..." } %>
     <% @input.block.call(menu) if @input.block %>
   <% end %>
 <% end %>
