@@ -22,9 +22,6 @@ class DangerDialogFormHelperElement extends HTMLElement {
   }
 
   #reset(): void {
-    if (this.checkbox) {
-      this.checkbox.disabled = false
-    }
     this.toggle()
   }
 }
