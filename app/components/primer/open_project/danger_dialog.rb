@@ -82,12 +82,15 @@ module Primer
         @confirm_button_text = confirm_button_text
         @cancel_button_text = cancel_button_text
 
+        deny_single_argument(:role, "`role` will always be set to `alertdialog`.", **system_arguments)
+
         @system_arguments = system_arguments
         @system_arguments[:id] = @dialog_id
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "DangerDialog"
         )
+        @system_arguments[:role] = "alertdialog"
 
         @dialog = Primer::Alpha::Dialog.new(title: title, subtitle: nil, visually_hide_title: true, **@system_arguments)
       end

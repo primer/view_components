@@ -19,6 +19,17 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     end
   end
 
+  def test_renders_alertdialog_role
+    render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+    end
+
+    assert_selector("dialog[role=alertdialog]")
+    assert_selector("dialog[aria-modal=true]")
+  end
+
   def test_renders_default_button_text
     render_inline(Primer::OpenProject::DangerDialog.new(title: "Danger action")) do |dialog|
       dialog.with_confirmation_message do |message|
@@ -95,6 +106,14 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
       assert_selector(".Overlay-footer .Button", text: "Nah")
       assert_selector(".Overlay-footer .Button", text: "Do it FOREVER!")
     end
+  end
+
+  def test_does_not_render_if_role_argument_provided
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::OpenProject::DangerDialog.new(title: "Invalid action", role: "button"))
+    end
+
+    assert_equal "`role` is an invalid argument. `role` will always be set to `alertdialog`.", error.message
   end
 
   def test_does_not_render_if_no_confirmation_message_provided
