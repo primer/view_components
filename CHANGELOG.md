@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.54.1
+
+### Patch Changes
+
+- [#246](https://github.com/opf/primer_view_components/pull/246) [`26fdce6`](https://github.com/opf/primer_view_components/commit/26fdce6b70caf96e46d5867e52ab23b6360b45f6) Thanks [@myabc](https://github.com/myabc)! - DangerDialog now uses the "alertdialog" ARIA role
+
+- [#245](https://github.com/opf/primer_view_components/pull/245) [`27b6af1`](https://github.com/opf/primer_view_components/commit/27b6af1cf733cb3e4ab2816a970d96d558b1dc0a) Thanks [@myabc](https://github.com/myabc)! - Fix broken FeedbackDialog aria-describedby value - was referencing non-existent id.
+
+- [#243](https://github.com/opf/primer_view_components/pull/243) [`79986c4`](https://github.com/opf/primer_view_components/commit/79986c435adbfed95fe2128f03949e37a920039d) Thanks [@myabc](https://github.com/myabc)! - Fix DangerDialog body scroll behaviour when containing a form: the dialog's confirm and cancel buttons should now always be visible in the viewport, never scrolling with the other dialog content.
+
+- [#245](https://github.com/opf/primer_view_components/pull/245) [`27b6af1`](https://github.com/opf/primer_view_components/commit/27b6af1cf733cb3e4ab2816a970d96d558b1dc0a) Thanks [@myabc](https://github.com/myabc)! - Fix broken DangerDialog aria-describedby value - was referencing non-existent id.
+
 ## 0.54.0
 
 ### Minor Changes
