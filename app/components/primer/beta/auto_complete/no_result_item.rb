@@ -10,6 +10,7 @@ module Primer
               system_arguments
             ),
             value: "",
+            disabled: true,
             'data-no-result-found': true,
             **system_arguments
           )
