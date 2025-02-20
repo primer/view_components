@@ -20,6 +20,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :confirmation_message, lambda { |icon_arguments: {}, **system_arguments|
         system_arguments[:border] = false
+        system_arguments[:id] = "#{dialog_id}-description"
 
         icon_arguments[:icon] ||= :"alert"
         icon_arguments[:color] ||= :danger

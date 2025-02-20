@@ -16,6 +16,8 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :feedback_message, lambda { |icon_arguments: {}, **system_arguments|
         system_arguments[:border] = false
+        system_arguments[:id] = "#{@system_arguments[:id]}-description"
+
         Primer::OpenProject::FeedbackMessage.new(icon_arguments: icon_arguments, **system_arguments)
       }
 
