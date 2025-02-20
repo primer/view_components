@@ -1229,6 +1229,7 @@ module Alpha
     def test_single_select_form_submits_pre_selected_item
       visit_preview(:single_select_form, route_format: :json)
 
+      assert_selector "input[type='text'][name='item'][value='item1']"
       # the first item has been pre-selected, so there's no need to select any items
       click_on "Submit"
 
