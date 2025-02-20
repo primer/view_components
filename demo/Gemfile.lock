@@ -118,10 +118,10 @@ GEM
     helm-rb (0.3.0-arm64-darwin)
     helm-rb (0.3.0-x86_64-darwin)
     helm-rb (0.3.0-x86_64-linux)
-    hotwire-livereload (1.4.1)
-      actioncable (>= 6.0.0)
+    hotwire-livereload (2.0.0)
+      actioncable (>= 7.0.0)
       listen (>= 3.0.0)
-      railties (>= 6.0.0)
+      railties (>= 7.0.0)
     htmlbeautifier (1.4.3)
     htmlentities (4.3.4)
     http (5.2.0)
@@ -255,7 +255,7 @@ GEM
     psych (5.2.0)
       stringio
     public_suffix (6.0.1)
-    puma (6.5.0)
+    puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
@@ -365,7 +365,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   cssbundling-rails (~> 1.4)
   foreman
-  hotwire-livereload (~> 1.4)
+  hotwire-livereload (~> 2.0)
   kind-rb (~> 0.1)
   kuby-azure (~> 0.4.0)
   kuby-core (~> 0.20)
@@ -374,7 +374,7 @@ DEPENDENCIES
   lookbook (~> 2.3.4)
   openproject-primer_view_components!
   pry-byebug
-  puma (~> 6.5.0)
+  puma (~> 6.6.0)
   rack-cors
   railties (= 7.1.3.2)
   rake (~> 13.2)

@@ -73,7 +73,7 @@ module Primer
       # @label With caption
       # @snapshot
       def with_caption
-        render(Primer::Alpha::Select.new(caption: "With a caption", name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(caption: "With a caption", name: "my-select-list-1", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -84,7 +84,7 @@ module Primer
       # @label Visually hidden label
       # @snapshot
       def visually_hide_label
-        render(Primer::Alpha::Select.new(visually_hide_label: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(visually_hide_label: true, name: "my-select-list-2", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -95,7 +95,7 @@ module Primer
       # @label Full width
       # @snapshot
       def full_width
-        render(Primer::Alpha::Select.new(full_width: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(full_width: true, name: "my-select-list-3", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -106,7 +106,7 @@ module Primer
       # @label Not full width
       # @snapshot
       def not_full_width
-        render(Primer::Alpha::Select.new(full_width: false, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(full_width: false, name: "my-select-list-4", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -117,7 +117,7 @@ module Primer
       # @label Disabled
       # @snapshot
       def disabled
-        render(Primer::Alpha::Select.new(disabled: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(disabled: true, name: "my-select-list-5", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")
@@ -128,7 +128,7 @@ module Primer
       # @label Invalid
       # @snapshot
       def invalid
-        render(Primer::Alpha::Select.new(invalid: true, name: "my-select-list", label: "Favorite place to visit")) do |component|
+        render(Primer::Alpha::Select.new(invalid: true, name: "my-select-list-6", label: "Favorite place to visit")) do |component|
           component.option(label: "Lopez Island", value: "lopez")
           component.option(label: "Shaw Island", value: "shaw")
           component.option(label: "Orcas Island", value: "orcas")

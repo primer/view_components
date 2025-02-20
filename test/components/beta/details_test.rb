@@ -95,7 +95,7 @@ class PrimerBetaDetailsTest < Minitest::Test
     refute_selector("img", text: "Body", visible: false)
   end
 
-  def test_passes_props_to_button
+  def test_passes_props_to_summary_button
     render_inline(Primer::Beta::Details.new) do |component|
       component.with_summary(size: :small, scheme: :primary) do
         "Summary"
@@ -106,6 +106,22 @@ class PrimerBetaDetailsTest < Minitest::Test
     end
 
     assert_selector("summary.btn.btn-sm.btn-primary")
+  end
+
+  def test_accepts_custom_values_for_summary_aria_label
+    render_inline(Primer::Beta::Details.new) do |component|
+      component.with_summary(aria_label_closed: "Open me", aria_label_open: "Close me") do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("summary")
+    assert_selector("summary[aria-label='Open me']")
+    assert_selector("summary[data-aria-label-open='Close me']")
+    assert_selector("summary[data-aria-label-closed='Open me']")
   end
 
   def test_prevents_rendering_without_slots
@@ -141,5 +157,40 @@ class PrimerBetaDetailsTest < Minitest::Test
 
   def test_status
     assert_component_state(Primer::Beta::Details, :beta)
+  end
+
+  def test_renders_details_catalyst_element_and_data_attributes
+    render_inline(Primer::Beta::Details.new) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("details-toggle")
+    assert_selector("details[data-target='details-toggle.detailsTarget']")
+    assert_selector("summary[aria-label='Expand']")
+    assert_selector("summary[aria-expanded=false]")
+    assert_selector("summary[data-action='click:details-toggle#toggle']")
+    assert_selector("summary[data-aria-label-closed='Expand']")
+    assert_selector("summary[data-aria-label-open='Collapse']")
+    assert_selector("summary[data-target='details-toggle.summaryTarget']")
+  end
+
+  def test_renders_correct_aria_attributes_when_details_open_true
+    render_inline(Primer::Beta::Details.new(open: true)) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("details[open]")
+    assert_selector("summary[aria-label='Collapse']")
+    assert_selector("summary[aria-expanded=true]")
   end
 end

@@ -75,6 +75,11 @@ module Alpha
         # open menu, "click" on first item
         keyboard.type(:enter)
         assert_selector "anchored-position:popover-open" # wait for menu to open
+
+        # make sure the first list item is the active element
+        assert_selector "button[role=menuitem], button[role=menuitemradio], button[role=menuitemcheckbox]" do |button|
+          page.evaluate_script("document.activeElement === arguments[0]", button)
+        end
       end
     end
 
@@ -436,7 +441,9 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal %w[fast_forward recursive], response["value"]
+
+      # "ours" is pre-selected
+      assert_equal %w[fast_forward recursive ours], response["value"]
     end
 
     def test_multiple_select_form_uses_label_if_no_value_provided
@@ -453,7 +460,14 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      assert_equal %w[fast_forward Resolve], response["value"]
+
+      # "ours" is pre-selected
+      assert_equal %w[fast_forward ours Resolve], response["value"]
+    end
+
+    def test_multiple_select_does_not_set_dynamic_label_for_preselected_item
+      visit_preview(:multiple_select_form, route_format: :json)
+      assert_selector("action-menu[data-ready='true'] button[aria-controls]", exact_text: "Strategy")
     end
 
     def test_individual_items_can_submit_post_requests_via_forms
