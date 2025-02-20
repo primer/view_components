@@ -13,7 +13,8 @@
     dynamic_label_prefix: "Item",
     form_arguments: {
       name: :item,
-      builder: builder
+      builder: builder,
+      default_value: 3,
     }
   )) do |panel| %>
     <% panel.with_show_button { "Sci-fi equipment" } %>
