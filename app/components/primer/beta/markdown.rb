@@ -3,6 +3,7 @@
 module Primer
   module Beta
     # Use `Markdown` to wrap markdown content.
+    # @accessibility This component is purely presentational. Consumers should handle accessibility expectations, such as ensuring that an overflowing, scrollable code block or table is keyboard accessible.
     class Markdown < Primer::Component
       status :beta
 

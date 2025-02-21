@@ -1154,6 +1154,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/auto_complete/no_results",
+        "name": "no_results",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3118,6 +3131,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/details/open",
+        "name": "open",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -4987,58 +5013,6 @@
       {
         "preview_path": "primer/alpha/overlay/middle_of_page_with_relative_container",
         "name": "middle_of_page_with_relative_container",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/in_an_action_menu",
-        "name": "in_an_action_menu",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/dialog_with_header_footer",
-        "name": "dialog_with_header_footer",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/overlay_with_header_filter",
-        "name": "overlay_with_header_filter",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/overlay_with_header_subtitle",
-        "name": "overlay_with_header_subtitle",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -7394,6 +7368,20 @@
       {
         "preview_path": "primer/alpha/toggle_switch/with_turbo",
         "name": "with_turbo",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region",
+            "button-name"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/toggle_switch/with_autofocus",
+        "name": "with_autofocus",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

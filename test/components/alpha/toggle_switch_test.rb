@@ -80,6 +80,12 @@ module Primer
 
         assert_selector("[data-turbo]")
       end
+
+      def test_autofocus
+        render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo", autofocus: true))
+
+        assert_selector(".ToggleSwitch-track[autofocus]")
+      end
     end
   end
 end

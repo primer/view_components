@@ -1254,6 +1254,12 @@
         "description": "When set to `true`, the form control will take up all the horizontal space allowed by its container."
       },
       {
+        "name": "label_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "HTML attributes to attach to the `<label>` element that labels the input."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -3075,6 +3081,12 @@
         "description": "Whether or not to request a turbo stream and render the response as such."
       },
       {
+        "name": "autofocus",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "Whether switch should be autofocused when rendered."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -3363,6 +3375,17 @@
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
       }
+    ]
+  },
+  {
+    "component": "AutoComplete::NoResultItem",
+    "status": "beta",
+    "a11y_reviewed": false,
+    "short_name": "AutoCompleteNoResultItem",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
+    "parameters": [
+
     ]
   },
   {

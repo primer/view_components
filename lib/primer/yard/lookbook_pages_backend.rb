@@ -165,6 +165,12 @@ module Primer
     class LookbookPagesBackend < Backend
       attr_reader :registry, :manifest
 
+      IGNORED_COMPONENTS = [
+        Primer::Alpha::FormControl
+      ]
+
+      IGNORED_COMPONENTS.freeze
+
       def initialize(registry, manifest)
         @registry = registry
         @manifest = manifest
@@ -172,6 +178,8 @@ module Primer
 
       def generate
         each_component do |component_ref|
+          next if IGNORED_COMPONENTS.include?(component_ref.klass)
+
           page_for(component_ref).generate
         end
         generate_system_args_docs

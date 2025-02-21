@@ -86,16 +86,17 @@ module Primer
         Primer::Alpha::ActionList::Item => { examples: false },
 
         # Forms
-        Primer::Alpha::TextField => { form_component: true },
-        Primer::Alpha::TextArea => { form_component: true, published: false },
-        Primer::Alpha::Select => { form_component: true, published: false },
-        Primer::Alpha::MultiInput => { form_component: true, js: true, published: false },
-        Primer::Alpha::RadioButton => { form_component: true, published: false },
-        Primer::Alpha::RadioButtonGroup => { form_component: true, published: false },
-        Primer::Alpha::CheckBox => { form_component: true, published: false },
-        Primer::Alpha::CheckBoxGroup => { form_component: true, published: false },
-        Primer::Alpha::SubmitButton => { form_component: true, published: false },
-        Primer::Alpha::FormButton => { form_component: true, published: false }
+        Primer::Alpha::FormControl => { form_component: true },
+        Primer::Alpha::TextField => { form_component: true, js: true },
+        Primer::Alpha::TextArea => { form_component: true },
+        Primer::Alpha::Select => { form_component: true },
+        Primer::Alpha::MultiInput => { form_component: true, js: true },
+        Primer::Alpha::RadioButton => { form_component: true },
+        Primer::Alpha::RadioButtonGroup => { form_component: true },
+        Primer::Alpha::CheckBox => { form_component: true },
+        Primer::Alpha::CheckBoxGroup => { form_component: true },
+        Primer::Alpha::SubmitButton => { form_component: true },
+        Primer::Alpha::FormButton => { form_component: true }
       }.freeze
 
       include Enumerable

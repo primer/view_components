@@ -333,6 +333,8 @@
     ]
   },
   "Primer::Alpha::Dropdown": {
+    "ARIA_LABEL_CLOSED_DEFAULT": "Open",
+    "ARIA_LABEL_OPEN_DEFAULT": "Close",
     "GeneratedSlotMethods": "Primer::Alpha::Dropdown::GeneratedSlotMethods",
     "Menu": "Primer::Alpha::Dropdown::Menu"
   },
@@ -805,6 +807,7 @@
     "DEFAULT_WIDTH": "auto",
     "GeneratedSlotMethods": "Primer::Beta::AutoComplete::GeneratedSlotMethods",
     "Item": "Primer::Beta::AutoComplete::Item",
+    "NoResultItem": "Primer::Beta::AutoComplete::NoResultItem",
     "SIZE_MAPPINGS": {
       "small": "FormControl-small",
       "medium": "FormControl-medium",
@@ -843,6 +846,9 @@
       "block"
     ],
     "GeneratedSlotMethods": "Primer::Beta::AutoComplete::Item::GeneratedSlotMethods"
+  },
+  "Primer::Beta::AutoComplete::NoResultItem": {
+    "GeneratedSlotMethods": "Primer::Beta::AutoComplete::NoResultItem::GeneratedSlotMethods"
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
@@ -1037,6 +1043,8 @@
     ]
   },
   "Primer::Beta::Details": {
+    "ARIA_LABEL_CLOSED_DEFAULT": "Expand",
+    "ARIA_LABEL_OPEN_DEFAULT": "Collapse",
     "BODY_TAG_DEFAULT": "div",
     "BODY_TAG_OPTIONS": [
       "ul",

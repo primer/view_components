@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle
+pushd demo; bundle; popd
+overmind start --daemonize --procfile Procfile.test --socket ./overmind-test.sock

@@ -1,0 +1,16 @@
+<% if @fruit_list.length > 0 %>
+  <% @fruit_list.each do |fruit| %>
+    <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) do |component| %>
+    <% if @visual_type == "leading" %>
+        <% component.with_leading_visual_icon(icon: :"mark-github") %>
+    <% elsif @visual_type == "trailing" %>
+        <% component.with_trailing_visual_icon(icon: :"mark-github") %>
+    <% end %>
+    <%= fruit %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render(Primer::Beta::AutoComplete::NoResultItem.new) do %>
+    No results!
+  <% end %>
+<% end %>
