@@ -10,6 +10,11 @@ on:
       # For `skip-label` only.
       - "labeled"
       - "unlabeled"
+  merge_group:
+    branches:
+      - main
+    types:
+      - checks_requested
 
 permissions:
   contents: read
@@ -19,7 +24,7 @@ permissions:
 jobs:
   label:
     name: Labeler
-    if: github.event.action != 'labeled' && github.event.action != 'unlabeled'
+    if: github.event_name == 'pull_request' && github.event.action != 'labeled' && github.event.action != 'unlabeled'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
@@ -33,6 +38,8 @@ jobs:
     env:
       SKIP_LABEL: "skip changeset"
     steps:
+      - if: github.event_name == 'merge_group'
+        run: echo "passed"; exit 0;
       - if: "contains(github.event.pull_request.labels.*.name, 'skip changeset')"
         run: echo "passed"; exit 0;
       - if: "!contains(github.event.pull_request.labels.*.name, 'skip changeset')"
@@ -44,7 +51,7 @@ jobs:
         run: script/check-for-changeset
 
   semver-label:
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'primer/view_components' && github.event_name == 'pull_request' }}
     name: semver label
     runs-on: ubuntu-latest
     steps:
