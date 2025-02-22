@@ -1,8 +1,7 @@
 name: Assign Release Conductor
 
 on:
-  push:
-  workflow_dispatch:
+  pull_request:
 
 jobs:
   pagerduty:
@@ -24,11 +23,9 @@ jobs:
       - name: Get Release PR
         id: release-pr
         run: |
-          PR_NUMBER=$(gh pr list --head changeset-release/main --json number --jq '.[].number')
-          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
-          echo "assignees=$(gh pr view $PR_NUMBER --json assignees --jq ".assignees[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
-          echo "reviews=$(gh pr view $PR_NUMBER --json reviewRequests  --jq ".reviewRequests[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+          echo "assignees=$(gh pr view ${{ github.event.number }} --json assignees --jq ".assignees[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+          echo "reviews=$(gh pr view ${{ github.event.number }} --json reviewRequests  --jq ".reviewRequests[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
       - name: Reset Assignees & Reviewers
         run: |
-          gh pr edit ${{ steps.release-pr.outputs.number }} --remove-reviewer "${{ steps.release-pr.outputs.reviews }}" --remove-assignee "${{ steps.release-pr.outputs.assignees }}"
-          gh pr edit ${{ steps.release-pr.outputs.number }} --add-reviewer ${{ needs.pagerduty.outputs.user }} --add-assignee ${{ needs.pagerduty.outputs.user }}
+          gh pr edit ${{ github.event.number }} --remove-reviewer "${{ steps.release-pr.outputs.reviews }}" --remove-assignee "${{ steps.release-pr.outputs.assignees }}"
+          gh pr edit ${{ github.event.number }} --add-reviewer ${{ needs.pagerduty.outputs.user }} --add-assignee ${{ needs.pagerduty.outputs.user }}
