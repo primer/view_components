@@ -39,13 +39,13 @@ jobs:
       SKIP_LABEL: "skip changeset"
       CHECK_FOR_CHANGESET: ${{ github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')}}
     steps:
-      - if: ${{ fromJSON($CHECK_FOR_CHANGESET) != true }}
+      - if: ${{ env.CHECK_FOR_CHANGESET != true }}
         run: echo "passed"; exit 0;
-      - if: ${{ fromJSON($CHECK_FOR_CHANGESET) == true }}
+      - if: ${{ env.CHECK_FOR_CHANGESET == true }}
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - if: ${{ fromJSON($CHECK_FOR_CHANGESET) == true }}
+      - if: ${{ env.CHECK_FOR_CHANGESET == true }}
         name: "Check for changeset"
         run: script/check-for-changeset
 
