@@ -5,13 +5,13 @@ on:
 
 jobs:
   pagerduty:
-  - name: PagerDuty Oncall
-    id: pagerduty
-    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@release_conductor_script
-    with:
-      schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
-      token: ${{ secrets.PAGERDUTY_TOKEN_SHARED }}
-  - run: echo ${{ steps.pagerduty.outputs.user }} is the Release conductor
+    - name: PagerDuty Oncall
+      id: pagerduty
+      uses: primer/.github/.github/workflows/pagerduty_oncall.yml@release_conductor_script
+      with:
+        schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
+        token: ${{ secrets.PAGERDUTY_TOKEN_SHARED }}
+    - run: echo ${{ steps.pagerduty.outputs.user }} is the Release conductor
 
       # - name: Get Release PR
       #   id: release-pr
