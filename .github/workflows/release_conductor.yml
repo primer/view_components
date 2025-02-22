@@ -21,6 +21,8 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - run: echo ${{ needs.pagerduty.outputs.user }} is the Release conductor
       - name: Get Release PR
         id: release-pr
