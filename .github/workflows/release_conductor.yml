@@ -1,4 +1,4 @@
-name: Get Oncall username
+name: Assign Release Conductor
 
 on:
   push:
@@ -17,19 +17,14 @@ jobs:
     needs: pagerduty
     steps:
       - run: echo ${{ needs.pagerduty.outputs.user }} is the Release conductor
-
-      # - name: Get Release PR
-      #   id: release-pr
-      #   run: |
-      #     PR_NUMBER=$(gh pr list -R ${{ matrix.repo }} --head changeset-release/main --json number --jq '.[].number')
-      #     echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
-      #     echo "assignees=$(gh pr view $PR_NUMBER -R ${{ matrix.repo }} --json assignees --jq ".assignees[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
-      #     echo "reviews=$(gh pr view $PR_NUMBER -R ${{ matrix.repo }} --json reviewRequests  --jq ".reviewRequests[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
-      #   env:
-      #     GH_TOKEN: ${{ steps.app-token.outputs.token }}
-      # - name: Reset Assignees & Reviewers
-      #   run: |
-      #     gh pr edit ${{ steps.release-pr.outputs.number }} -R ${{ matrix.repo }} --remove-reviewer "${{ steps.release-pr.outputs.reviews }}" --remove-assignee "${{ steps.release-pr.outputs.assignees }}"
-      #     gh pr edit ${{ steps.release-pr.outputs.number }} -R ${{ matrix.repo }} --add-reviewer ${{ steps.pagerduty.outputs.user }} --add-assignee ${{ steps.pagerduty.outputs.user }}
-      #   env:
-      #     GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: Get Release PR
+        id: release-pr
+        run: |
+          PR_NUMBER=$(gh pr list --head changeset-release/main --json number --jq '.[].number')
+          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "assignees=$(gh pr view $PR_NUMBER --json assignees --jq ".assignees[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+          echo "reviews=$(gh pr view $PR_NUMBER --json reviewRequests  --jq ".reviewRequests[].login" | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+      - name: Reset Assignees & Reviewers
+        run: |
+          gh pr edit ${{ steps.release-pr.outputs.number }} --remove-reviewer "${{ steps.release-pr.outputs.reviews }}" --remove-assignee "${{ steps.release-pr.outputs.assignees }}"
+          gh pr edit ${{ steps.release-pr.outputs.number }} --add-reviewer ${{ needs.pagerduty.outputs.user }} --add-assignee ${{ needs.pagerduty.outputs.user }}
