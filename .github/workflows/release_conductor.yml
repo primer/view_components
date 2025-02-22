@@ -6,13 +6,14 @@ on:
 jobs:
   pagerduty:
     if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'changeset-release/main'
-    name: PagerDuty Oncall
-    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@release_conductor_script
+    name: Lookup who is oncall from pagerduty
+    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@v2.2.0
     with:
       schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
     secrets:
       token: ${{ secrets.PAGERDUTY_TOKEN_SHARED }}
   update-assignee:
+    name: Update assignee and review requests
     runs-on: ubuntu-latest
     needs: pagerduty
     steps:
