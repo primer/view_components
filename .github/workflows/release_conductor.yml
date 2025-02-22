@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+
 jobs:
   pagerduty:
     name: PagerDuty Oncall
@@ -16,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: pagerduty
     env:
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - run: echo ${{ needs.pagerduty.outputs.user }} is the Release conductor
       - name: Get Release PR
