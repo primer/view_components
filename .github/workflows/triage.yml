@@ -42,11 +42,11 @@ jobs:
         run: echo "passed"; exit 0;
       - if: "contains(github.event.pull_request.labels.*.name, 'skip changeset')"
         run: echo "passed"; exit 0;
-      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changeset')"
+      - if: "!(contains(github.event.pull_request.labels.*.name, 'skip changeset') && github.event_name == 'merge_group')"
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - if: "!contains(github.event.pull_request.labels.*.name, 'skip changeset')"
+      - if: "!(contains(github.event.pull_request.labels.*.name, 'skip changeset') && github.event_name == 'merge_group')"
         name: "Check for changeset"
         run: script/check-for-changeset
 
