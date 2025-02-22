@@ -2,6 +2,7 @@ name: Get Oncall username
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   pagerduty:
