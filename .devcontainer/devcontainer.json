@@ -47,6 +47,7 @@
     "memory": "8gb"
   },
   "features": {
-    "sshd": "latest"
+    "sshd": "latest",
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   }
 }
