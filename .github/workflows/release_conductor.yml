@@ -6,7 +6,7 @@ on:
 jobs:
   pagerduty:
     name: PagerDuty Oncall
-    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@release_conductor_script
+    uses: primer/.github/.github/actions/pagerduty/action.yml@release_conductor_script
     with:
       schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
     secrets:
