@@ -37,16 +37,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SKIP_LABEL: "skip changeset"
+      CHECK_FOR_CHANGESET: ${{ github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')}}
     steps:
-      - if: github.event_name == 'merge_group'
+      - if: ${{ $CHECK_FOR_CHANGESET != true }}
         run: echo "passed"; exit 0;
-      - if: "contains(github.event.pull_request.labels.*.name, 'skip changeset')"
-        run: echo "passed"; exit 0;
-      - if: "!(contains(github.event.pull_request.labels.*.name, 'skip changeset') && github.event_name == 'merge_group')"
+      - if: ${{ $CHECK_FOR_CHANGESET == true }}
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - if: "!(contains(github.event.pull_request.labels.*.name, 'skip changeset') && github.event_name == 'merge_group')"
+      - if: ${{ $CHECK_FOR_CHANGESET == true }}
         name: "Check for changeset"
         run: script/check-for-changeset
 
