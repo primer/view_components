@@ -4,9 +4,6 @@ on:
   push:
   workflow_dispatch:
 
-permissions:
-  pull-requests: write
-
 jobs:
   pagerduty:
     name: PagerDuty Oncall
