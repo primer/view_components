@@ -1,4 +1,4 @@
-name: Assign Release Condu
+name: Assign Release Conductor
 
 on:
   push:
