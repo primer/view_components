@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get "/healthz", to: "health#index"
 
     get "/auto_complete", to: "auto_complete_test#index", as: :autocomplete_index
+    get "/auto_complete_no_results", to: "auto_complete_test#no_results", as: :autocomplete_no_results
 
     resources :toggle_switch, only: [:create]
     resources :nav_list_items, only: [:index]
