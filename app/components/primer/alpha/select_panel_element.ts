@@ -533,7 +533,6 @@ export class SelectPanelElement extends HTMLElement {
     switch (event.type) {
       case 'include-fragment-replaced': {
         this.#updateItemVisibility()
-        // this.#updateInput()
         break
       }
 
