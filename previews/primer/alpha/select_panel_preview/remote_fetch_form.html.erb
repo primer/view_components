@@ -1,6 +1,6 @@
 <% subject_id = SecureRandom.hex %>
 
-<%= form_with(url: generic_form_submission_path(format: :html)) do |builder| %>
+<%= form_with(url: generic_form_submission_path(format: route_format)) do |builder| %>
   <%= render(Primer::Alpha::SelectPanel.new(
     data: { interaction_subject: subject_id },
     select_variant: :single,
