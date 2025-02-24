@@ -1,0 +1,18 @@
+- 'button "Item: Sci-fi equipment" [expanded]'
+- dialog "Menu":
+  - heading "Menu" [level=1]
+  - button "Close"
+  - text: Filter
+  - searchbox "Filter"
+  - listbox "options":
+    - option "Photon torpedo Starship-mounted missile"
+    - option "Bat'leth The Klingon warrior's preferred means of achieving honor"
+    - option "Phaser The iconic handheld laser beam" [selected]
+    - option "Lightsaber An elegant weapon for a more civilized age"
+    - option "Proton pack Ghostbusting equipment"
+    - option "Sonic screwdriver The Time Lord's multi-purpose tool"
+    - option "Tricorder Handheld sensor device"
+    - option "TARDIS Time and relative dimension in space"
+  - text: 8 results tab for results I'm a footer!
+- separator
+- button "Submit"
