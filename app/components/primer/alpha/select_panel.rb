@@ -412,6 +412,7 @@ module Primer
 
         @form_builder = form_arguments[:builder]
         @default_value = form_arguments[:default_value]  
+        @default_values = form_arguments[:default_values]  
         @input_name = form_arguments[:name]
 
         if loading_description.present?

@@ -1,0 +1,32 @@
+<% subject_id = SecureRandom.hex %>
+
+<%= form_with(url: generic_form_submission_path(format: :html)) do |builder| %>
+  <%= render(Primer::Alpha::SelectPanel.new(
+    data: { interaction_subject: subject_id },
+    select_variant: :multiple,
+    fetch_strategy: :local,
+    open_on_load: open_on_load,
+    form_arguments: {
+      name: :item,
+      builder: builder,
+      default_values: ['item2', 'item3'],
+    }
+  )) do |panel| %>
+    <% panel.with_show_button { "Panel" } %>
+    <% panel.with_item(label: "Item 1", content_arguments: { data: { value: "item1" } }) %>
+    <% panel.with_item(label: "Item 2", content_arguments: { data: { value: "item2" } }, active: true) %>
+    <% panel.with_item(label: "Item 3", content_arguments: { data: { value: "item3" } }, active: true) %>
+    <% panel.with_item(label: "Item 4", content_arguments: { data: { value: "item4" } }) %>
+    <% panel.with_footer(show_divider: true) do %>
+        I'm a footer!
+    <% end %>
+  <% end %>
+
+  <hr>
+
+  <%= render(Primer::Beta::Button.new(type: :submit, scheme: :primary)) do %>
+    Submit
+  <% end %>
+<% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>
