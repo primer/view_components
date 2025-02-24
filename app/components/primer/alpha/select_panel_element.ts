@@ -969,7 +969,7 @@ export class SelectPanelElement extends HTMLElement {
         input.value = (selectedItem.value || selectedItem.label || '').trim()
         if (selectedItem.inputName) input.name = selectedItem.inputName
         input.removeAttribute('disabled')
-      } else {
+      } else if (this.#hasLoadedData) {
         input.setAttribute('disabled', 'disabled')
       }
     } else if (this.selectVariant !== 'none') {
