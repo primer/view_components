@@ -62,7 +62,10 @@ module Primer
           system_arguments[:classes]
         )
         system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
-        system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
+        system_arguments[:data] = (system_arguments[:data] || {})
+        system_arguments[:type] = :button
+        system_arguments[:commandfor] = @system_arguments[:id]
+        system_arguments[:command] = "show-modal"
         if icon.present?
           Primer::Beta::IconButton.new(icon: icon, **system_arguments)
         else
