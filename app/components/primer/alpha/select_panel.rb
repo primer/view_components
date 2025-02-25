@@ -411,8 +411,8 @@ module Primer
         @loading_description_id = nil
 
         @form_builder = form_arguments[:builder]
-        @default_value = form_arguments[:default_value]  
-        @default_values = form_arguments[:default_values]  
+        @value = form_arguments[:value]
+        @inputs = form_arguments[:inputs]
         @input_name = form_arguments[:name]
 
         if loading_description.present?
@@ -532,8 +532,12 @@ module Primer
         content
       end
 
+      def required_inputs_arguments_given?
+        @inputs.present? && @inputs.length > 0 ? true : false
+      end
+
       def required_form_arguments_given?
-         @input_name && @form_builder 
+         (@input_name || required_inputs_arguments_given?) && @form_builder
       end
 
       def acts_as_form_input?

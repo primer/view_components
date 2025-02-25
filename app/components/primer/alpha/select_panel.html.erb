@@ -1,12 +1,14 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if acts_as_form_input? %>
     <span data-select-panel-inputs="true">
-      <% if @default_values.present? && @default_values.length > 0 ? true : false %>
-        <% for value in @default_values %>
-          <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true, value: value) %>
+      <% if required_inputs_arguments_given? %>
+        <% for input in @inputs %>
+          <% if input[:name].present? && input[:value].present? %>
+            <%= @form_builder.hidden_field(input[:name], multiple: multi_select?, skip_default_ids: true, value: input[:value]) %>
+          <% end %>
         <% end %>
       <% else %>
-        <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true, value: @default_value) %>
+        <%= @form_builder.hidden_field(@input_name, multiple: multi_select?, skip_default_ids: true, value: @value) %>
       <% end %>
     </span>
   <% end %>

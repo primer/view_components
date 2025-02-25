@@ -7,9 +7,16 @@
     fetch_strategy: :local,
     open_on_load: open_on_load,
     form_arguments: {
-      name: :item,
       builder: builder,
-      default_values: ['item2', 'item3'],
+      inputs: [
+        {
+          name: :item,
+          value: 'item2'
+        },
+        {
+          name: :item,
+          value: 'item3'
+        }],
     }
   )) do |panel| %>
     <% panel.with_show_button { "Panel" } %>
