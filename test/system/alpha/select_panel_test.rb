@@ -1261,7 +1261,6 @@ module Alpha
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
-      puts "Response Text: #{response}"
       assert_equal "3", response.dig(*%w(form_params item))
     end
 
