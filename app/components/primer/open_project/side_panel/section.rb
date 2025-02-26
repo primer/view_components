@@ -21,7 +21,18 @@ module Primer
           icon: lambda { |**system_arguments, &block|
             system_arguments[:scheme] ||= :invisible
             Primer::Beta::IconButton.new(**system_arguments, &block)
-          }
+          },
+          menu: lambda { |**system_arguments, &block|
+            deny_tag_argument(**system_arguments)
+
+            button_arguments = system_arguments.delete(:button_arguments) || {}
+            button_arguments[:scheme] ||= :invisible
+            raise ArgumentError.new("button_arguments must contain an icon:") if button_arguments[:icon].blank?
+
+            Primer::Alpha::ActionMenu.new(**system_arguments).tap do |menu|
+              menu.with_show_button(**button_arguments)
+            end
+          },
         }
 
         renders_one :description, lambda { |**system_arguments, &block|

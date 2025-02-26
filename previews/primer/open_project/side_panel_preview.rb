@@ -33,6 +33,10 @@ module Primer
       # @label With custom component
       def with_component
       end
+
+      # @label With action menu
+      def with_action_menu
+      end
     end
   end
 end

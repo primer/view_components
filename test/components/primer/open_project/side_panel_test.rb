@@ -62,6 +62,24 @@ class PrimerOpenProjectSidePanelTest < Minitest::Test
     assert_text("custom content")
   end
 
+  def test_renders_action_menu
+    render_inline(Primer::OpenProject::SidePanel.new) do |component|
+      component.with_section do |section|
+        section.with_title { "Section with menu" }
+        section.with_action_menu(button_arguments: { icon: :pencil, "aria-label": "Menu" }) do |menu|
+          menu.with_item { "Menu item" }
+        end
+
+        "Section content"
+      end
+    end
+
+    assert_selector(".SidePanel")
+    assert_selector(".SidePanel section", count: 1)
+    assert_selector(".SidePanel action-menu")
+    assert_selector("li.ActionListItem", count: 1)
+  end
+
   def test_no_renders_empty_section
     render_inline(Primer::OpenProject::SidePanel.new) do |component|
       component.with_section do |section|
