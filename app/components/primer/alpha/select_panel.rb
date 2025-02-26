@@ -152,7 +152,6 @@ module Primer
     #   end
     # end
     # ```
-    #
     # ### JavaScript API
     #
     # `SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.
