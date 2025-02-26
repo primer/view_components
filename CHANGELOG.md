@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.56.0
+
+### Minor Changes
+
+- [#252](https://github.com/opf/primer_view_components/pull/252) [`b8822ba`](https://github.com/opf/primer_view_components/commit/b8822ba460e35c362b0ba927c4a77a2fd7ad26ca) Thanks [@oliverguenther](https://github.com/oliverguenther)! - Allow ActionMenu as sidepanel section action
+
 ## 0.55.0
 
 ### Minor Changes
