@@ -19175,6 +19175,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/open_project/side_panel/with_action_menu",
+        "name": "with_action_menu",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
