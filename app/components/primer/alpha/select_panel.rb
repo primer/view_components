@@ -540,10 +540,6 @@ module Primer
          (@input_name || required_inputs_arguments_given?) && @form_builder
       end
 
-      def acts_as_form_input?
-        required_form_arguments_given?
-      end
-
       def multi_select?
         select_variant == :multiple
       end

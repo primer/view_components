@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if acts_as_form_input? %>
+  <% if required_form_arguments_given? %>
     <span data-select-panel-inputs="true">
       <% if required_inputs_arguments_given? %>
         <% @inputs.each do |input| %>
