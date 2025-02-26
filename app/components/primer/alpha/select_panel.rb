@@ -533,7 +533,7 @@ module Primer
       end
 
       def required_inputs_arguments_given?
-        @inputs.present? && @inputs.length > 0 ? true : false
+        @inputs.present? && @inputs.length > 0
       end
 
       def required_form_arguments_given?

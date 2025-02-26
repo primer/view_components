@@ -276,7 +276,7 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
       end
 
-      # @label Multi-select form (with defaults)
+      # @label Multi-select form (with default local)
       #
       # @snapshot interactive
       # @param open_on_load toggle
