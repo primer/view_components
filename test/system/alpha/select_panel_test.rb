@@ -1280,7 +1280,7 @@ module Alpha
       assert_equal "2", response.dig(*%w(form_params item))
     end
 
-    def test_multi_select_default_values_form_pre_selection
+    def test_multi_select_default_local_values_form_pre_selection
       visit_preview(:multiselect_form_with_defaults, route_format: :json)
       
       click_on "Submit"
@@ -1289,7 +1289,7 @@ module Alpha
       
     end
 
-    def test_multi_select_default_values_form
+    def test_multi_select_default_local_values_form
       visit_preview(:multiselect_form_with_defaults, route_format: :json)
       
       click_on_invoker_button
