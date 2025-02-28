@@ -532,11 +532,13 @@ module Primer
       end
 
       def required_inputs_arguments_given?
-        @inputs.present? && @inputs.length > 0
+        @inputs.present? &&
+          @inputs.length > 0 &&
+            @inputs.each { |input| input[:name].present? && input[:value].present? }
       end
 
       def required_form_arguments_given?
-         (@input_name || required_inputs_arguments_given?) && @form_builder
+        (@input_name || required_inputs_arguments_given?) && @form_builder
       end
 
       def multi_select?
