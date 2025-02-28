@@ -177,6 +177,19 @@ module Primer
 
         assert_selector(".avatar-small")
       end
+
+      def test_renders_form_default_values
+        render_preview(:multiselect_form_with_defaults)
+
+        assert_selector("input[value='item2']", visible: :all)
+        assert_selector("input[value='item3']", visible: :all)
+      end
+
+      def test_renders_form_default_value
+        render_preview(:remote_fetch_form)
+
+        assert_selector("input[value='3']", visible: :all)
+      end
     end
   end
 end
