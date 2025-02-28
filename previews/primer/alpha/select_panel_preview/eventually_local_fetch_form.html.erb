@@ -1,0 +1,35 @@
+<% subject_id = SecureRandom.hex %>
+
+<%= form_with(url: generic_form_submission_path(format: route_format)) do |builder| %>
+  <%= render(Primer::Alpha::SelectPanel.new(
+    data: { interaction_subject: subject_id },
+    src: select_panel_items_path(
+        select_variant: :single,
+        selected_items: "Phaser",
+    ),
+    select_variant: :single,
+    show_filter: show_filter,
+    fetch_strategy: :eventually_local,
+    form_arguments: {
+      builder: builder,
+      name: :item,
+      inputs: [{
+        name: "item",
+        value: "3"
+      }]
+    }
+  )) do |panel| %>
+    <% panel.with_show_button { "Sci-fi equipment" } %>
+    <% panel.with_footer(show_divider: true) do %>
+        I'm a footer!
+    <% end %>
+  <% end %>
+
+  <hr>
+
+  <%= render(Primer::Beta::Button.new(type: :submit, scheme: :primary)) do %>
+    Submit
+  <% end %>
+<% end %>
+
+<%= render partial: "primer/alpha/select_panel_preview/interaction_subject_js", locals: { subject_id: subject_id } %>
