@@ -3,10 +3,10 @@
     <span data-select-panel-inputs="true">
       <% if required_inputs_arguments_given? %>
         <% @inputs.each do |input| %>
-            name = input[:name]
-            value = input[:value]
-          <% if input[:name].present? && input[:value].present? %>
-            <%= @form_builder.hidden_field(input[:name], multiple: multi_select?, skip_default_ids: true, value: input[:value]) %>
+          <% name = input[:name] %>
+          <% value = input[:value] %>
+          <% if name.present? && value.present? %>
+            <%= @form_builder.hidden_field(name, multiple: multi_select?, skip_default_ids: true, value: value) %>
           <% end %>
         <% end %>
       <% else %>
