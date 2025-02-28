@@ -268,6 +268,16 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items, route_format: route_format })
       end
 
+      # @label Eventually local fetch form
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      # @param show_filter toggle
+      def eventually_local_fetch_form(open_on_load: false, route_format: :html, selected_items: "Phaser", show_filter: true)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format, selected_items: selected_items, show_filter: show_filter })
+      end
+
       # @label Multi-select form
       #
       # @snapshot interactive
