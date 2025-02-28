@@ -1,4 +1,3 @@
-- text: name = input[:name] value = input[:value] name = input[:name] value = input[:value]
 - button "Panel" [expanded]
 - dialog "Menu":
   - heading "Menu" [level=1]
