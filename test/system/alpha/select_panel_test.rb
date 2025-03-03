@@ -1280,6 +1280,30 @@ module Alpha
       assert_equal "2", response.dig(*%w(form_params item))
     end
 
+    def test_eventually_local_form_multi_select_pre_selection
+      visit_preview(:eventually_local_fetch_multiselect_form, route_format: :json)
+
+      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+      assert_selector "input[type='hidden'][name='item'][value='4']", visible: :hidden
+
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert_equal ["3", "4"], response.dig(*%w(form_params item))
+    end
+
+    def test_remote_form_multi_select_pre_selection
+      visit_preview(:eventually_local_fetch_multiselect_form, route_format: :json)
+
+      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+      assert_selector "input[type='hidden'][name='item'][value='4']", visible: :hidden
+
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert_equal ["3", "4"], response.dig(*%w(form_params item))
+    end
+
     def test_multi_select_default_local_values_form_pre_selection
       visit_preview(:multiselect_form_with_defaults, route_format: :json)
       
