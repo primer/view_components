@@ -1306,6 +1306,36 @@ module Alpha
       assert_equal ["item2", "item1"], response.dig(*%w(form_params item))
     end
 
+    def test_eventually_local_form_single_select_pre_selection
+      visit_preview(:eventually_local_fetch_form, route_format: :json)
+
+      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert_equal "3", response.dig(*%w(form_params item))
+    end
+
+    def test_eventually_local_form_selection_updates
+      visit_preview(:eventually_local_fetch_form, route_format: :json)
+
+      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+      assert_selector "button", text: "Item: Phaser"
+
+      click_on_invoker_button
+      click_on_first_item
+      
+      assert_selector "button", text: "Item: Photon torpedo"
+      assert_selector "input[type='hidden'][name='item'][value='1']", visible: :hidden    
+      refute_selector "button", text: "Item: Phaser"
+      refute_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert_equal "1", response.dig(*%w(form_params item))
+    end
+
     ########## ANNOUNCEMENT TESTS ############
 
     def test_ev_loc_announces_items

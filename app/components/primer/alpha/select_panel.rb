@@ -534,7 +534,7 @@ module Primer
       def required_inputs_arguments_given?
         @inputs.present? &&
           @inputs.length > 0 &&
-            @inputs.each { |input| input[:name].present? && input[:value].present? }
+            @inputs.all? { |input| input[:name].present? && input[:value].present? }
       end
 
       def required_form_arguments_given?
