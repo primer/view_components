@@ -9,17 +9,16 @@
     ),
     select_variant: :single,
     show_filter: show_filter,
+    dynamic_label: true,
+    dynamic_label_prefix: "Item",
     fetch_strategy: :eventually_local,
     form_arguments: {
       builder: builder,
       name: :item,
-      inputs: [{
-        name: "item",
-        value: "3"
-      }]
+      value: 3
     }
   )) do |panel| %>
-    <% panel.with_show_button { "Sci-fi equipment" } %>
+    <% panel.with_show_button { "Phaser" } %>
     <% panel.with_footer(show_divider: true) do %>
         I'm a footer!
     <% end %>

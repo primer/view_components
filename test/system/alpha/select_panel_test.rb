@@ -1306,6 +1306,18 @@ module Alpha
       assert_equal ["item2", "item1"], response.dig(*%w(form_params item))
     end
 
+    def test_eventually_local_form_single_select_pre_selection
+      visit_preview(:eventually_local_fetch_form, route_format: :json)
+
+      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+      # the first item has been pre-selected, so there's no need to select any items
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "3", response.dig(*%w(form_params item))
+    end
+
     ########## ANNOUNCEMENT TESTS ############
 
     def test_ev_loc_announces_items
