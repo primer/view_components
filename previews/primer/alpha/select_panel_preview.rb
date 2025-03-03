@@ -276,6 +276,29 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
       end
 
+<<<<<<< Updated upstream
+=======
+      # @label Eventually local fetch (multi-select form)
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      # @param show_filter toggle
+      def eventually_local_fetch_multiselect_form(open_on_load: false, route_format: :html, selected_items: "Phaser", show_filter: true)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format, selected_items: selected_items, show_filter: show_filter })
+      end
+
+      # @label Remote fetch (multi-select form)
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param selected_items text
+      # @param show_filter toggle
+      def remote_fetch_multiselect_form(open_on_load: false, route_format: :html, selected_items: "Phaser", show_filter: true)
+        render_with_template(locals: { open_on_load: open_on_load, route_format: route_format, selected_items: selected_items, show_filter: show_filter })
+      end
+
+>>>>>>> Stashed changes
       # @label Multi-select form (with default local)
       #
       # @snapshot interactive
