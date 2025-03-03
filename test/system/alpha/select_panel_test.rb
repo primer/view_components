@@ -1317,7 +1317,7 @@ module Alpha
     end
 
     def test_eventually_local_form_multi_select_pre_selection
-      visit_preview(:eventually_local_fetch_multi_select_form, route_format: :json)
+      visit_preview(:eventually_local_fetch_multiselect_form, route_format: :json)
 
       assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
       assert_selector "input[type='hidden'][name='item'][value='4']", visible: :hidden
@@ -1338,10 +1338,11 @@ module Alpha
       click_on_first_item
       
       assert_selector "button", text: "Item: Photon torpedo"
-      assert_selector "input[type='hidden'][name='item'][value='1']", visible: :hidden
-      
+      assert_selector "input[type='hidden'][name='item'][value='1']", visible: :hidden    
       refute_selector "button", text: "Item: Phaser"
       refute_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
+
+      click_on "Submit"
 
       response = JSON.parse(find("pre").text)
       assert_equal "1", response.dig(*%w(form_params item))
