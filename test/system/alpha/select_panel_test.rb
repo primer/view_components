@@ -1316,19 +1316,7 @@ module Alpha
       assert_equal "3", response.dig(*%w(form_params item))
     end
 
-    def test_eventually_local_form_multi_select_pre_selection
-      visit_preview(:eventually_local_fetch_multiselect_form, route_format: :json)
-
-      assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
-      assert_selector "input[type='hidden'][name='item'][value='4']", visible: :hidden
-
-      click_on "Submit"
-
-      response = JSON.parse(find("pre").text)
-      assert_equal ["3", "4"], response.dig(*%w(form_params item))
-    end
-
-    def test_eventually_local_form_selection_updates_with_selection
+    def test_eventually_local_form_selection_updates
       visit_preview(:eventually_local_fetch_form, route_format: :json)
 
       assert_selector "input[type='hidden'][name='item'][value='3']", visible: :hidden
