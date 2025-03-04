@@ -34,6 +34,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Reset Assignees & Reviewers
+        if: ${{ ! contains( steps.release-pr.outputs.assignees, needs.pagerduty.outputs.user ) }}
         run: |
           gh pr edit ${{ github.event.number }} --remove-reviewer "${{ steps.release-pr.outputs.reviews }}" --remove-assignee "${{ steps.release-pr.outputs.assignees }}"
           gh pr edit ${{ github.event.number }} --add-reviewer ${{ needs.pagerduty.outputs.user }} --add-assignee ${{ needs.pagerduty.outputs.user }}
