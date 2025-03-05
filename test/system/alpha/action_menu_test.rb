@@ -409,8 +409,7 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "fast_forward", response["value"]
     end
 
@@ -422,8 +421,7 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "Resolve", response["value"]
     end
 
@@ -439,8 +437,7 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
 
       # "ours" is pre-selected
       assert_equal %w[fast_forward recursive ours], response["value"]
@@ -458,8 +455,7 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
 
       # "ours" is pre-selected
       assert_equal %w[fast_forward ours Resolve], response["value"]
@@ -476,7 +472,7 @@ module Alpha
       click_on_invoker_button
       click_on_fourth_item
 
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "bar", response["value"]
     end
 
@@ -486,8 +482,7 @@ module Alpha
       click_on_invoker_button
       click_on_first_item
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "group-by-repository", response["value"]
     end
 
@@ -499,8 +494,7 @@ module Alpha
       # "click" first item
       keyboard.type(:enter)
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "group-by-repository", response["value"]
     end
 
@@ -512,8 +506,7 @@ module Alpha
       # "click" first item
       keyboard.type(:space)
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "group-by-repository", response["value"]
     end
 
@@ -523,8 +516,7 @@ module Alpha
       click_on_invoker_button
       click_on_first_item
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "query", response.dig("other_params", "query")
     end
 
