@@ -81,7 +81,7 @@
     "eslint-plugin-custom-elements": "^0.0.8",
     "eslint-plugin-github": "^5.0.1",
     "eslint-plugin-prettier": "^5.0.0",
-    "markdownlint-cli2": "^0.16.0",
+    "markdownlint-cli2": "^0.17.2",
     "mocha": "^11.0.1",
     "playwright": "^1.49.1",
     "postcss": "^8.4.16",
