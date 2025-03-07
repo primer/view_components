@@ -6,6 +6,8 @@ module Primer
       # A `Dialog::Header` is a compositional component, used to render the
       # Header of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.
       class Header < Primer::Component
+        include ViewComponent::SlotableDefault
+
         status :alpha
         audited_at "2022-10-10"
 
@@ -42,6 +44,8 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
+        renders_one :close_button
+
         # @param id [String] The HTML element's ID value.
         # @param title [String] Describes the content of the dialog.
         # @param subtitle [String] Provides additional context for the dialog, also setting the `aria-describedby` attribute.
@@ -71,6 +75,10 @@ module Primer
             { "Overlay-header--divided": show_divider },
             system_arguments[:classes]
           )
+        end
+
+        def default_close_button
+          Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @id)
         end
       end
     end

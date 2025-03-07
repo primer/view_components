@@ -1,0 +1,9 @@
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, visually_hide_title: false)) do |dialog| %>
+  <% dialog.with_header(show_divider: show_divider) do |header| %>
+    <% header.with_close_button(bg: :danger) do %>
+      <%= render(Primer::Beta::CloseButton.new(bg: :accent, classes: "Overlay-closeButton", data: { close_dialog_id: dialog.id })) %>
+    <% end %>
+  <% end %>
+  <% dialog.with_show_button_content(button_text) %>
+  <% dialog.with_body_content("Hello World") %>
+<% end %>
