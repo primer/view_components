@@ -1221,8 +1221,7 @@ module Alpha
 
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "item2", response.dig(*%w(form_params item))
     end
 
@@ -1232,8 +1231,7 @@ module Alpha
       # the first item has been pre-selected, so there's no need to select any items
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
       assert_equal "item1", response.dig(*%w(form_params item))
     end
 
@@ -1246,8 +1244,7 @@ module Alpha
 
       click_on "Submit"
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      response = JSON.parse(page.document.text)
 
       # first item is pre-selected
       assert_equal ["item1", "item2"], response.dig(*%w(form_params item))
