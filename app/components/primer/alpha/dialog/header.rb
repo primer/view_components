@@ -16,6 +16,14 @@ module Primer
         }.freeze
         VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
+        DEFAULT_CLOSE_SCHEME = :close
+        CLOSE_SCHEMES = [
+          DEFAULT_CLOSE_SCHEME,
+          :none
+        ].freeze
+
+        DEFAULT_CLOSE_LABEL = "Close"
+
         # Optional filter slot for adding a filter input to the header.
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -48,6 +56,8 @@ module Primer
         # @param show_divider [Boolean] Show a divider between the header and body.
         # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
         # @param variant [Symbol] <%= one_of(Primer::Alpha::Dialog::Header::VARIANT_OPTIONS) %>
+        # @param close_scheme [Symbol] Whether the component can be closed with an "x" button. <%= one_of(Primer::Alpha::Banner::CLOSE_SCHEMES) %>
+        # @param close_label [String] The aria-label text of the close "x" button.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           id:,
@@ -56,12 +66,16 @@ module Primer
           show_divider: false,
           visually_hide_title: false,
           variant: DEFAULT_VARIANT,
+          close_scheme: DEFAULT_CLOSE_SCHEME,
+          close_label: DEFAULT_CLOSE_LABEL,
           **system_arguments
         )
           @id = id
           @title = title
           @subtitle = subtitle
           @visually_hide_title = visually_hide_title
+          @close_scheme = close_scheme
+          @close_label = close_label
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :div
 

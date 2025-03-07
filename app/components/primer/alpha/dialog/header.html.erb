@@ -12,9 +12,17 @@
         <%= subtitle %>
       <% end %>
     </div>
-    <div class="Overlay-actionWrap">
-      <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @id) %>
-    </div>
+    <% if @close_scheme != :none %>
+      <div class="Overlay-actionWrap">
+        <%= render(
+          Primer::Beta::CloseButton.new(
+            classes: "Overlay-closeButton",
+            aria: { label: @close_label },
+            data: { close_dialog_id: @id }
+          )
+        ) %>
+      </div>
+    <% end %>
   </div>
   <%= filter %>
 <% end %>
