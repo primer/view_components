@@ -5,7 +5,7 @@ PATH
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 18.0.0)
-      view_component (>= 3.1, < 4.0)
+      view_component (>= 3.14, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -363,6 +363,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-23
+  arm64-darwin-24
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-darwin-21
@@ -396,7 +397,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (>= 3.11.0)
+  view_component (>= 3.14.0)
   vite_rails (~> 3.0)
 
 BUNDLED WITH
