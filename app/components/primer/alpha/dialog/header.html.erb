@@ -12,9 +12,11 @@
         <%= subtitle %>
       <% end %>
     </div>
-    <div class="Overlay-actionWrap">
-      <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @id) %>
-    </div>
+    <% if close_button? %>
+      <div class="Overlay-actionWrap">
+        <%= close_button %>
+      </div>
+    <% end %>
   </div>
   <%= filter %>
 <% end %>
