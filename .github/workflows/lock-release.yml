@@ -21,6 +21,7 @@ jobs:
         with:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
           owner: primer
+          repository: view_components
           private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
       - run: |
           echo "Locking release: ${{ inputs.action }}"
