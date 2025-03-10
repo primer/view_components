@@ -26,6 +26,6 @@ jobs:
       - uses: octokit/request-action@v2.x
         with:
           route: PUT /repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }}
-          enforcement: enabled
+          enforcement: active
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
