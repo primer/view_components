@@ -31,7 +31,29 @@ jobs:
             --method PUT \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }} \
+            /repos/primer/view_components/rulesets/3882651 \
+            -f "enforcement=${enforcement}"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: Toggle Rule > Update Before Merging
+        run: |
+          enforcement=$([ "${{ github.event.inputs.action }}" == "lock" ] && echo "active" || echo "disabled")
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/primer/view_components/rulesets/4085821 \
+            -f "enforcement=${enforcement}"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: Toggle Rule > Merge Queue
+        run: |
+          enforcement=$([ "${{ github.event.inputs.action }}" == "lock" ] && echo "disabled" || echo "active")
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/primer/view_components/rulesets/4085136 \
             -f "enforcement=${enforcement}"
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
