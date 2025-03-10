@@ -23,20 +23,9 @@ jobs:
           owner: primer
           repositories: view_components
           private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
-      - run: |
-          echo "Locking release: ${{ inputs.action }}"
-          curl -L \
-            -X PUT \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }} \
-            -d '{"enforcement":"active"}'
-  # gh api \
-  #   --method PUT \
-  #   -H "Accept: application/vnd.github+json" \
-  #   -H "X-GitHub-Api-Version: 2022-11-28" \
-  #   /repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }} \
-  #   -f "enforcement=enabled"
+      - uses: octokit/request-action@v2
+        with:
+          route: PUT /repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }}
+          enforcement: enabled
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
