@@ -23,7 +23,7 @@ jobs:
           owner: primer
           repositories: view_components
           private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
-      - uses: octokit/request-action@v2
+      - uses: octokit/request-action@v2.x
         with:
           route: PUT /repos/primer/view_components/rulesets/${{ vars.RELEASE_CONDUCTOR_RULE_ID }}
           enforcement: enabled
