@@ -1,0 +1,19 @@
+name: Lock Release Pull Request
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Lock or unlock the release?'
+        required: true
+        type: choice
+        options:
+          - lock
+          - unlock
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Locking release: ${{ inputs.action }}"
