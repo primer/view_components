@@ -37,6 +37,7 @@ module Primer
       }
     }.freeze
 
+    # rubocop:disable Style/ClassMethodsDefinitions
     class << self
       def ignore_preview?(preview_class)
         IGNORED_PREVIEWS.include?(preview_class)
