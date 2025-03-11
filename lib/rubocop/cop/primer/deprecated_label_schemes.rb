@@ -14,6 +14,8 @@ module RuboCop
       # good
       # Primer::Beta::Label.new(scheme: :accent)
       class DeprecatedLabelSchemes < BaseCop
+        extend AutoCorrector
+
         INVALID_MESSAGE = <<~STR
           Avoid using deprecated schemes: https://primer.style/view-components/deprecated#labelcomponent.
         STR
@@ -44,14 +46,10 @@ module RuboCop
 
             next unless DEPRECATIONS.key?(value)
 
-            add_offense(pair.value, message: INVALID_MESSAGE)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            replacement = DEPRECATIONS[node.value.to_sym]
-            corrector.replace(node, replacement)
+            add_offense(pair.value, message: INVALID_MESSAGE) do |corrector|
+              replacement = DEPRECATIONS[node.value.to_sym]
+              corrector.replace(node, replacement)
+            end
           end
         end
 

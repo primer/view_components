@@ -20,6 +20,8 @@ module RuboCop
       # good
       # Primer::Beta::Label.new(inline: true)
       class DeprecatedLabelVariants < BaseCop
+        extend AutoCorrector
+
         def on_send(node)
           return unless label_node?(node)
           return unless node.arguments?
@@ -35,18 +37,14 @@ module RuboCop
             next unless pair.value.type == :sym || pair.value.type == :str
             next if pair.key.value != :variant
 
-            case pair.value.value
-            when :large, "large"
-              add_offense(pair, message: "Avoid using `variant: :large` with `LabelComponent`. Use `size: :large` instead.")
-            when :inline, "inline"
-              add_offense(pair, message: "Avoid using `variant: :inline` with `LabelComponent`. Use `inline: true` instead.")
+            message = if [:large, "large"].include?(pair.value.value)
+                        "Avoid using `variant: :large` with `LabelComponent`. Use `size: :large` instead."
+            elsif [:inline, "inline"].include?(pair.value.value)
+              "Avoid using `variant: :inline` with `LabelComponent`. Use `inline: true` instead."
             end
-          end
-        end
 
-        def autocorrect(node)
-          lambda do |corrector|
-            replacement =
+            add_offense(pair, message: message) do |corrector|
+              replacement =
               case node.value.value
               when :large, "large"
                 "size: :large"
@@ -54,7 +52,8 @@ module RuboCop
                 "inline: true"
               end
 
-            corrector.replace(node, replacement)
+              corrector.replace(node, replacement)
+            end
           end
         end
 

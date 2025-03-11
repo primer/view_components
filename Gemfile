@@ -59,7 +59,7 @@ group :development do
   gem "matrix", "~> 0.4.2"
   gem "mocha"
   gem "pry"
-  gem "rubocop"
+  gem "rubocop", "~> 1.73"
   gem "rubocop-github", "~> 0.20.0"
   gem "rubocop-performance"
   gem "rubocop-rails"
