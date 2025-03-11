@@ -21,11 +21,8 @@
   syntax: "<length>";
 }
 
-body:has(:modal) {
-  padding-right: var(--dialog-scrollgutter) !important;
-}
-
 body:has(dialog:modal.Overlay--disableScroll) {
+  padding-right: var(--dialog-scrollgutter) !important;
   overflow: hidden !important;
 }
 
