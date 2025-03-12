@@ -1,18 +1,18 @@
 - text: First name
 - textbox "First name"
 - text: Be honest!
-- checkbox "Are you cool?": "1"
+- checkbox "Are you cool?"
 - text: Are you cool? Check only if you are cool.
 - radiogroup:
-  - radio "10-15": young
+  - radio "10-15"
   - text: 10-15 A young thing.
-  - radio "16-21": middle_aged
+  - radio "16-21"
   - text: 16-21 No longer a spring chicken.
 - group "Cool places":
   - text: Cool places
-  - checkbox "Lopez Island": lopez
+  - checkbox "Lopez Island"
   - text: Lopez Island Lopez caption
-  - checkbox "Bellevue": bellevue
+  - checkbox "Bellevue"
   - text: Bellevue Bellevue caption
-  - checkbox "Seattle": seattle
+  - checkbox "Seattle"
   - text: Seattle Seattle caption
