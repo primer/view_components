@@ -5,5 +5,5 @@
 - text: What the principal calls you. Dietary restrictions
 - textbox "Dietary restrictions"
 - text: Any allergies?
-- checkbox "Send me gobs of email!": "1"
+- checkbox "Send me gobs of email!"
 - text: Send me gobs of email! Check this if you enjoy getting spam.
