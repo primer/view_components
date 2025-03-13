@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.56.1
+
+### Patch Changes
+
+- [#254](https://github.com/opf/primer_view_components/pull/254) [`82bda69`](https://github.com/opf/primer_view_components/commit/82bda69ad3df79d4373603de3dee5b2ab8758a67) Thanks [@HDinger](https://github.com/HDinger)! - Do not close dialogs when clicking on the backdrop if the dialog contains a form
+
 ## 0.56.0
 
 ### Minor Changes
