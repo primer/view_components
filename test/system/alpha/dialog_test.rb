@@ -89,6 +89,15 @@ module Alpha
       refute_selector "dialog[open]"
     end
 
+    def test_outside_click_does_not_close_dialog_with_form
+      visit_preview(:with_form)
+
+      click_button("Show Dialog")
+      mouse.click(x: 0, y: 0)
+
+      assert_selector "dialog[open]"
+    end
+
     def test_outside_menu_click_does_not_close_dialog
       visit_preview(:with_auto_complete)
 

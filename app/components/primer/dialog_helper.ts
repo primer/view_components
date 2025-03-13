@@ -111,6 +111,9 @@ export class DialogHelperElement extends HTMLElement {
     // The click target _must_ be the dialog element itself, and not elements underneath or inside.
     if (target !== dialog || !dialog?.open) return
 
+    // If the dialog contains a form, do not close the dialog when clicking outside of the dialog
+    if (dialog.querySelector('form')) return
+
     const rect = dialog.getBoundingClientRect()
     const clickWasInsideDialog =
       rect.top <= event.clientY &&
