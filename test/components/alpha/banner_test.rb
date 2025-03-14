@@ -14,6 +14,7 @@ class PrimerBannerTest < Minitest::Test
     refute_selector(".Banner--error")
     refute_selector(".Banner--warning")
     refute_selector(".Banner--success")
+    refute_selector(".Banner--upsell")
     refute_selector(".Banner--full")
     refute_selector(".Banner--fullWhenNarrow")
     assert_selector(".octicon")
@@ -58,6 +59,13 @@ class PrimerBannerTest < Minitest::Test
     assert_selector(".flash.flash-success", text: "foo") # legacy
   end
 
+  def test_renders_upsell_scheme
+    render_inline(Primer::Alpha::Banner.new(scheme: :upsell)) { "foo" }
+
+    assert_selector(".Banner.Banner--upsell", text: "foo")
+    assert_selector(".flash.flash-upsell", text: "foo") # legacy
+  end
+
   def test_renders_default_icon
     render_inline(Primer::Alpha::Banner.new) { "foo" }
 
@@ -80,6 +88,12 @@ class PrimerBannerTest < Minitest::Test
     render_inline(Primer::Alpha::Banner.new(scheme: :success)) { "foo" }
 
     assert_selector(".octicon.octicon-check-circle")
+  end
+
+  def test_renders_default_upsell_icon
+    render_inline(Primer::Alpha::Banner.new(scheme: :upsell)) { "foo" }
+
+    assert_selector(".octicon.octicon-info")
   end
 
   def test_uses_default_if_scheme_does_not_exist
