@@ -16,7 +16,7 @@ module RuboCop
       #
       # good
       # @system_arguments[:tag] = :h2
-      class NoTagMemoize < RuboCop::Cop::Cop
+      class NoTagMemoize < RuboCop::Cop::Base
         INVALID_MESSAGE = <<~STR
           Avoid `[:tag] ||=`. Instead, try one of the following:
             - Don't allow consumers to update the tag by having a fixed tag (e.g. `system_arguments[:tag] = :div`)
