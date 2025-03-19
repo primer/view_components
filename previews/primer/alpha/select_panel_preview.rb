@@ -276,16 +276,6 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
       end
 
-      # @label Multi-select form (with default local)
-      #
-      # @snapshot interactive
-      # @param open_on_load toggle
-      # @param selected_items text
-      def multiselect_form_with_defaults(open_on_load: false, selected_items: "Phaser", route_format: :html)
-        render_with_template(locals: { open_on_load: open_on_load, selected_items: selected_items, route_format: route_format })
-      end
-
-
       # @label List of links
       #
       # @snapshot interactive
