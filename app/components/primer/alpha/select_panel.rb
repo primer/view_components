@@ -376,6 +376,7 @@ module Primer
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
         body_id: nil,
+        remote_form_arguments: false,
         list_arguments: {},
         form_arguments: {},
         show_filter: true,
@@ -409,10 +410,12 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
 
-        @form_builder = form_arguments[:builder]
-        @value = form_arguments[:value]
-        @inputs = form_arguments[:inputs]
-        @input_name = form_arguments[:name]
+        @form_builder = form_arguments[:builder] if remote_form_arguments
+        @value = form_arguments[:value] if remote_form_arguments
+        @inputs = form_arguments[:inputs] if remote_form_arguments
+        @input_name = form_arguments[:name] if remote_form_arguments
+
+        @list_form_arguments = remote_form_arguments ? {} : form_arguments
 
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
@@ -456,6 +459,7 @@ module Primer
 
         @list = Primer::Alpha::SelectPanel::ItemList.new(
           **list_arguments,
+          form_arguments: @list_form_arguments, 
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
           aria: {
