@@ -412,7 +412,6 @@ module Primer
 
         @form_builder = form_arguments[:builder] if remote_form_arguments
         @value = form_arguments[:value] if remote_form_arguments
-        @inputs = form_arguments[:inputs] if remote_form_arguments
         @input_name = form_arguments[:name] if remote_form_arguments
 
         @list_form_arguments = remote_form_arguments ? {} : form_arguments
@@ -535,14 +534,8 @@ module Primer
         content
       end
 
-      def required_inputs_arguments_given?
-        @inputs.present? &&
-          @inputs.length > 0 &&
-            @inputs.each { |input| input[:name].present? && input[:value].present? }
-      end
-
       def required_form_arguments_given?
-        (@input_name || required_inputs_arguments_given?) && @form_builder
+        @input_name  && @form_builder
       end
 
       def multi_select?
