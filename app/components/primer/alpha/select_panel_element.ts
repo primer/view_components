@@ -959,7 +959,7 @@ export class SelectPanelElement extends HTMLElement {
 
   #updateInput() {
     if (this.selectVariant === 'single') {
-      const input = this.querySelector(`[data-select-panel-inputs=true] input`) as HTMLInputElement
+      const input = this.querySelector(`[data-list-inputs=true] input`) as HTMLInputElement
       if (!input) return
 
       const selectedItem = this.selectedItems[0]
@@ -968,12 +968,12 @@ export class SelectPanelElement extends HTMLElement {
         input.value = (selectedItem.value || selectedItem.label || '').trim()
         if (selectedItem.inputName) input.name = selectedItem.inputName
         input.removeAttribute('disabled')
-      } else if (this.#hasLoadedData) {
+      } else {
         input.setAttribute('disabled', 'disabled')
       }
     } else if (this.selectVariant !== 'none') {
       // multiple select variant
-      const inputList = this.querySelector('[data-select-panel-inputs=true]')
+      const inputList = this.querySelector('[data-list-inputs=true]')
       if (!inputList) return
 
       const inputs = inputList.querySelectorAll('input')
@@ -984,7 +984,7 @@ export class SelectPanelElement extends HTMLElement {
 
       for (const selectedItem of this.selectedItems) {
         const newInput = document.createElement('input')
-        newInput.setAttribute('data-select-panel-input', 'true')
+        newInput.setAttribute('data-list-input', 'true')
         newInput.type = 'hidden'
         newInput.autocomplete = 'off'
         newInput.name = selectedItem.inputName || this.#inputName
