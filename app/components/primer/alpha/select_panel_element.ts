@@ -976,7 +976,6 @@ export class SelectPanelElement extends HTMLElement {
     } else if (this.selectVariant !== 'none') {
       // multiple select variant
       const isRemoteInput = !!this.querySelector('[data-select-panel-inputs=true]')
-      console.log(isRemoteInput)
       const inputList =
         this.querySelector('[data-select-panel-inputs=true]') ?? this.querySelector('[data-list-inputs=true]')
       if (!inputList) return
