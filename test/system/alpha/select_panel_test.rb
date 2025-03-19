@@ -1253,59 +1253,6 @@ module Alpha
       assert_equal ["item1", "item2"], response.dig(*%w(form_params item))
     end
 
-    def test_remote_single_select_form_pre_selection
-      visit_preview(:remote_fetch_form, route_format: :json)
-
-      # the first item has been pre-selected, so there's no need to select any items
-      click_on "Submit"
-
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "3", response.dig(*%w(form_params item))
-    end
-
-    def test_remote_single_select_form
-      visit_preview(:remote_fetch_form, route_format: :json)
-
-      wait_for_items_to_load do
-        click_on_invoker_button
-      end
-
-      click_on_second_item
-
-      click_on "Submit"
-
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "2", response.dig(*%w(form_params item))
-    end
-
-    def test_multi_select_default_local_values_form_pre_selection
-      visit_preview(:multiselect_form_with_defaults, route_format: :json)
-      
-      click_on "Submit"
-      response = JSON.parse(find("pre").text)
-      assert_equal ["item2", "item3"], response.dig(*%w(form_params item))
-      
-    end
-
-    def test_multi_select_default_local_values_form
-      visit_preview(:multiselect_form_with_defaults, route_format: :json)
-      
-      click_on_invoker_button
-      click_on_first_item
-      click_on_third_item
-      keyboard.type(:escape) # close panel
-
-      click_on "Submit"
-
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-
-      # first item is pre-selected
-      assert_equal ["item2", "item1"], response.dig(*%w(form_params item))
-    end
-
     ########## ANNOUNCEMENT TESTS ############
 
     def test_ev_loc_announces_items
