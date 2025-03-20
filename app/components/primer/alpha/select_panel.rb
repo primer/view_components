@@ -355,6 +355,8 @@ module Primer
       # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
       # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
       # @param form_arguments [Hash] Form arguments
+
+      # @param use_experimental_remote_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
