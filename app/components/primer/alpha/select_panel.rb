@@ -356,7 +356,7 @@ module Primer
       # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
       # @param form_arguments [Hash] Form arguments
 
-      # @param use_experimental_remote_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values.
+      # @param use_experimental_non_local_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
@@ -378,7 +378,7 @@ module Primer
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
         body_id: nil,
-        use_experimental_remote_form: false,
+        use_experimental_non_local_form: false,
         list_arguments: {},
         form_arguments: {},
         show_filter: true,
@@ -412,13 +412,13 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
 
-        if use_experimental_remote_form
+        if use_experimental_non_local_form
           @form_builder = form_arguments[:builder]
           @value = form_arguments[:value]
           @input_name = form_arguments[:name]
         end
 
-        @list_form_arguments = use_experimental_remote_form ? {} : form_arguments
+        @list_form_arguments = use_experimental_non_local_form ? {} : form_arguments
 
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
