@@ -410,9 +410,11 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
 
-        @form_builder = form_arguments[:builder] if use_experimental_remote_form
-        @value = form_arguments[:value] if use_experimental_remote_form
-        @input_name = form_arguments[:name] if use_experimental_remote_form
+        if use_experimental_remote_form
+          @form_builder = form_arguments[:builder]
+          @value = form_arguments[:value]
+          @input_name = form_arguments[:name]
+        end
 
         @list_form_arguments = use_experimental_remote_form ? {} : form_arguments
 
