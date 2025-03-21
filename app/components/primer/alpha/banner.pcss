@@ -13,7 +13,7 @@
   grid-template-columns: min-content 1fr minmax(0, auto) min-content;
   grid-template-rows: min-content;
 
-  /* `sm` breakpoint variantion */
+  /* `sm` breakpoint variation */
   @media (max-width: 543.98px) {
     grid-template-areas:
       'visual message close'
@@ -105,6 +105,16 @@
 
     & .Banner-visual .octicon {
       color: var(--fgColor-success);
+    }
+  }
+
+  &.Banner--upsell {
+    color: var(--fgColor-default);
+    background-image: linear-gradient(var(--bgColor-done-muted), var(--bgColor-done-muted));
+    border-color: var(--borderColor-done-muted);
+
+    & .Banner-visual .octicon {
+      color: var(--fgColor-done);
     }
   }
 
