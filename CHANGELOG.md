@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.57.0
+
+### Minor Changes
+
+- [#3321](https://github.com/primer/view_components/pull/3321) [`de2397d`](https://github.com/opf/primer_view_components/commit/de2397d9e181a764cbedc292ac7d3487ad79f763) Thanks [@kendallgassner](https://github.com/kendallgassner)! - [Primer::Beta::Autocomplete] Added a new component to render inside the the Autocomplete dropdown: Primer::Beta::AutoComplete::NoResultItem. This new component can be used to display a message to indicate that there are no available results. This component is marked upas role='presentation' as the autocomplete component already uses aria-live to announce if there are no results.
+
+### Patch Changes
+
+- [#3377](https://github.com/primer/view_components/pull/3377) [`9626afb`](https://github.com/opf/primer_view_components/commit/9626afbd904c713bdd0037b7cc3b7f78205b7408) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing bug in the select panel that pushes the page when any `:modal` is open.
+
 ## 0.56.1
 
 ### Patch Changes
