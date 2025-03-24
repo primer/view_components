@@ -10771,6 +10771,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/auto_complete/no_results",
+        "name": "no_results",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -10824,6 +10837,70 @@
             "default": "N/A",
             "description": "{{link_to_system_arguments_docs}}"
           }
+        ],
+        "slots": [
+          {
+            "name": "leading_visual",
+            "description": "The leading visual rendered before the link.",
+            "parameters": [
+              {
+                "name": "kwargs",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}} or {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}"
+              }
+            ]
+          },
+          {
+            "name": "trailing_visual",
+            "description": "The trailing visual rendered after the link.",
+            "parameters": [
+              {
+                "name": "kwargs",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}, {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}, or {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}"
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "description": "Optional description",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "{{link_to_system_arguments_docs}}"
+              }
+            ]
+          }
+        ],
+        "methods": [
+
+        ],
+        "previews": [
+
+        ],
+        "subcomponents": [
+
+        ]
+      },
+      {
+        "fully_qualified_name": "Primer::Beta::AutoComplete::NoResultItem",
+        "description": "",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "AutoComplete::NoResultItem",
+        "status": "beta",
+        "a11y_reviewed": false,
+        "short_name": "AutoCompleteNoResultItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
+        "parameters": [
+
         ],
         "slots": [
           {
@@ -14853,8 +14930,8 @@
         }
       },
       {
-        "preview_path": "primer/beta/nav_list/long_label_with_tooltip",
-        "name": "long_label_with_tooltip",
+        "preview_path": "primer/beta/nav_list/truncate",
+        "name": "truncate",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -14868,19 +14945,6 @@
       {
         "preview_path": "primer/beta/nav_list/long_label_wrap",
         "name": "long_label_wrap",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/beta/nav_list/long_label_truncate_no_tooltip",
-        "name": "long_label_truncate_no_tooltip",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

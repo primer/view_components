@@ -68,6 +68,7 @@
   "Primer::BaseComponent": "beta",
   "Primer::Beta::AutoComplete": "beta",
   "Primer::Beta::AutoComplete::Item": "beta",
+  "Primer::Beta::AutoComplete::NoResultItem": "beta",
   "Primer::Beta::Avatar": "beta",
   "Primer::Beta::AvatarStack": "beta",
   "Primer::Beta::BaseButton": "beta",
