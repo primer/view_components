@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    openproject-primer_view_components (0.56.1)
+    openproject-primer_view_components (0.57.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
@@ -63,6 +63,7 @@ GEM
       addressable
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
+    date (3.4.1)
     docker-remote (0.8.0)
     domain_name (0.6.20240107)
     drb (2.2.1)
