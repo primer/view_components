@@ -282,6 +282,12 @@ module Primer
       def inset
         render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: UrlHelpers.autocomplete_index_path, show_clear_button: false, inset: true))
       end
+
+
+      def no_results
+        render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, width: :auto, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id", inset: false, monospace: false, src: UrlHelpers.autocomplete_no_results_path))
+      end
+
     end
   end
 end
