@@ -4,7 +4,7 @@ Date: 2021-02-19
 
 ## Status
 
-Accepted
+Accepted and adopted
 
 ## Context
 
