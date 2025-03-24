@@ -4,7 +4,7 @@ Date: 2022-08-17
 
 ## Status
 
-Accepted
+Accepted and Adopted
 
 ## Context
 
