@@ -177,6 +177,12 @@ module Primer
 
         assert_selector(".avatar-small")
       end
+
+      def test_renders_form_default_value
+        render_preview(:remote_fetch_form)
+
+        assert_selector("input[value='3']", visible: :all)
+      end
     end
   end
 end

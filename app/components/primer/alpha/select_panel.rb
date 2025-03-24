@@ -152,27 +152,6 @@ module Primer
     #   end
     # end
     # ```
-    #
-    # If items are provided dynamically, things become a bit more complicated. The `form_for` or `form_with` method call
-    # happens in the view that renders the `SelectPanel`, which means the form builder object but isn't available in the
-    # view that renders the list items. In such a case, it can be useful to create an instance of the form builder maually:
-    #
-    # ```erb
-    # <% builder = ActionView::Helpers::FormBuilder.new(
-    #   "address",  # the name of the model, used to wrap input names, eg 'address[country]'
-    #   nil,        # object (eg. the Address instance, which we can omit)
-    #   self,       # template
-    #   {}          # options
-    # ) %>
-    # <%= render(Primer::Alpha::SelectPanel::ItemList.new(
-    #   form_arguments: { builder: builder, name: "country" }
-    # )) do |list| %>
-    #   <% countries.each do |country| %>
-    #     <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>
-    #   <% end %>
-    # <% end %>
-    # ```
-    #
     # ### JavaScript API
     #
     # `SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.
@@ -375,7 +354,9 @@ module Primer
       # @param dynamic_aria_label_prefix [String] If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button.
       # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
       # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
-      # @param form_arguments [Hash] Form arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
+      # @param form_arguments [Hash] Form arguments
+
+      # @param use_experimental_non_local_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
@@ -397,6 +378,7 @@ module Primer
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
         body_id: nil,
+        use_experimental_non_local_form: false,
         list_arguments: {},
         form_arguments: {},
         show_filter: true,
@@ -429,6 +411,15 @@ module Primer
         @dynamic_aria_label_prefix = dynamic_aria_label_prefix
         @loading_label = loading_label
         @loading_description_id = nil
+
+        if use_experimental_non_local_form
+          @form_builder = form_arguments[:builder]
+          @value = form_arguments[:value]
+          @input_name = form_arguments[:name]
+        end
+
+        @list_form_arguments = use_experimental_non_local_form ? {} : form_arguments
+
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
         end
@@ -471,7 +462,7 @@ module Primer
 
         @list = Primer::Alpha::SelectPanel::ItemList.new(
           **list_arguments,
-          form_arguments: form_arguments,
+          form_arguments: @list_form_arguments, 
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
           aria: {
@@ -545,6 +536,14 @@ module Primer
 
       def before_render
         content
+      end
+
+      def required_form_arguments_given?
+        @input_name  && @form_builder
+      end
+
+      def multi_select?
+        select_variant == :multiple
       end
     end
   end
