@@ -22,22 +22,22 @@ Any new Primer ViewComponent behaviours should be authored using Catalyst.
 
 ## Considered Options
 
-- Don't use Catalyst in PVC.
-  - Pros:
+* Don't use Catalyst in PVC.
+  * Pros:
     Developers who don't have Catalyst experience don't need to learn how the library works.
-    - The bundle size doesn't need to increase by 1kb.
-  - Cons:
-    - Migrating components from the github.com codebase would need to be converted to Web Components without Catalyst.
-- Use another JavaScript behaviour library or strategy than Catalyst.
-  - Pros:
-    - The bundle size doesn't need to increase by 1kb.
-  - Cons:
-    - Migrating components from the github.com codebase would need to be converted to Web Components without Catalyst.
-    - PVC JavaScript behaviours would differ from how GitHub engineers write JavaScript behaviours today.
+    * The bundle size doesn't need to increase by 1kb.
+  * Cons:
+    * Migrating components from the github.com codebase would need to be converted to Web Components without Catalyst.
+* Use another JavaScript behaviour library or strategy than Catalyst.
+  * Pros:
+    * The bundle size doesn't need to increase by 1kb.
+  * Cons:
+    * Migrating components from the github.com codebase would need to be converted to Web Components without Catalyst.
+    * PVC JavaScript behaviours would differ from how GitHub engineers write JavaScript behaviours today.
 
 ## Consequences
 
 <!-- What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.-->
 
-- The Primer ViewComponents JS bundle gets larger.
-- Developers unfamiliar with Catalyst need to get familiar with the library.
+* The Primer ViewComponents JS bundle gets larger.
+* Developers unfamiliar with Catalyst need to get familiar with the library.
