@@ -4,7 +4,7 @@ Date: 2022-08-17
 
 ## Status
 
-Accepted
+Accepted and Adopted
 
 ## Context
 
@@ -38,16 +38,16 @@ In our github.com production bundle we have a few options:
 
 Pros:
 
-- Doesn't require us to change already established norms.
-- Has storybook site
+* Doesn't require us to change already established norms.
+* Has storybook site
 
 Cons:
 
-- Requires extra releases in both libraries when iterating on component architecture.
-- Cognitive disassociation between Primer::ViewComponent and .PrimerCssComponent
-- Uses old SCSS technology
+* Requires extra releases in both libraries when iterating on component architecture.
+* Cognitive disassociation between Primer::ViewComponent and .PrimerCssComponent
+* Uses old SCSS technology
 
 ## Consequences
 
-- This might make sharing CSS with Primer React more difficult, as it will now be located in a Rails-specific repository.
-- The source of truth for CSS will be split across PVC and PCSS, at least in the short term.
+* This might make sharing CSS with Primer React more difficult, as it will now be located in a Rails-specific repository.
+* The source of truth for CSS will be split across PVC and PCSS, at least in the short term.
