@@ -15,6 +15,10 @@ module Primer
       def default
         render(Primer::OpenProject::CollapsibleBorderBox.new) do |component|
           component.with_body { "Body" }
+          component.with_row { "Row 1" }
+          component.with_row { "Row 2" }
+          component.with_row { "Row 3" }
+          component.with_footer { "Footer" }
         end
       end
     end
