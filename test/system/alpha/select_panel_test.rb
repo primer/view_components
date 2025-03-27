@@ -1253,6 +1253,33 @@ module Alpha
       assert_equal ["item1", "item2"], response.dig(*%w(form_params item))
     end
 
+    def test_remote_single_select_form_pre_selection
+      visit_preview(:remote_fetch_form, route_format: :json)
+
+      # the first item has been pre-selected, so there's no need to select any items
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "3", response.dig(*%w(form_params item))
+    end
+
+    def test_remote_single_select_form
+      visit_preview(:remote_fetch_form, route_format: :json)
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      click_on_second_item
+
+      click_on "Submit"
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+      assert_equal "2", response.dig(*%w(form_params item))
+    end
+
     ########## ANNOUNCEMENT TESTS ############
 
     def test_ev_loc_announces_items
