@@ -70,7 +70,6 @@ module Primer
         :warning => "flash-warn",
         :danger => "flash-error",
         :success => "flash-success",
-        :upsell => "flash-upsell",
       }.freeze
 
       DEFAULT_ICONS = {

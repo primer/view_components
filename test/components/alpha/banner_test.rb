@@ -63,7 +63,6 @@ class PrimerBannerTest < Minitest::Test
     render_inline(Primer::Alpha::Banner.new(scheme: :upsell)) { "foo" }
 
     assert_selector(".Banner.Banner--upsell", text: "foo")
-    assert_selector(".flash.flash-upsell", text: "foo") # legacy
   end
 
   def test_renders_default_icon
