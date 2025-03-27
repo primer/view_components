@@ -13,7 +13,7 @@ module Primer
       # end
 
       def default
-        render(Primer::OpenProject::CollapsibleBorderBox.new) do |component|
+        render(Primer::OpenProject::CollapsibleBorderBox.new(title: "Test", count: 2)) do |component|
           component.with_body { "Body" }
           component.with_row { "Row 1" }
           component.with_row { "Row 2" }

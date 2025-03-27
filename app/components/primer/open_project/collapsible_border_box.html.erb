@@ -1,1 +1,18 @@
-<%= render(@border_box) %>
+<%=
+  render(@border_box) do |box|
+    box.with_header do
+      render(Primer::BaseComponent.new(
+        tag: "collapsible-border-box-trigger",
+        data: {
+                action: "click:collapsible-border-box#toggle"
+      })) do
+        render(Primer::OpenProject::FlexLayout.new) do |flex|
+          flex.with_column(mr: 2) { @title }
+          flex.with_column(mr: 2) { render(Primer::Beta::Counter.new(count: @count)) }
+          flex.with_column { render(Primer::Beta::Octicon.new(icon: "chevron-up", classes: "up-icon")) }
+          flex.with_column { render(Primer::Beta::Octicon.new(icon: "chevron-down", classes: "down-icon", display: :none)) }
+        end
+      end
+    end
+  end
+%>
