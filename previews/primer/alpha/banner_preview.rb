@@ -11,7 +11,7 @@ module Primer
       # @param dismiss_scheme [Symbol] select [none, remove, hide]
       # @param dismiss_label text
       # @param icon [Symbol] octicon
-      # @param scheme [Symbol] select [default, warning, danger, success]
+      # @param scheme [Symbol] select [default, warning, danger, success, upsell]
       # @param content text
       # @param description text
       def playground(full: false, full_when_narrow: false, dismiss_scheme: Primer::Alpha::Banner::DEFAULT_DISMISS_SCHEME,  dismiss_label: Primer::Alpha::Banner::DEFAULT_DISMISS_LABEL, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, content: "This is a banner!", description: nil)
@@ -49,6 +49,12 @@ module Primer
       def scheme_warning
         render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
       end
+
+      # @label Upsell
+      # @snapshot
+      def scheme_upsell
+        render(Primer::Alpha::Banner.new(scheme: :upsell)) { "This is a upsell banner!" }
+      end
       #
       # @!endgroup
 
@@ -78,7 +84,7 @@ module Primer
       # @param full toggle
       # @param dismiss_scheme [Symbol] select [none, remove, hide]
       # @param icon [Symbol] octicon
-      # @param scheme [Symbol] select [default, warning, danger, success]
+      # @param scheme [Symbol] select [default, warning, danger, success, upsell]
       # @param content text
       # @snapshot
       def with_action_button(full: false, dismiss_scheme: Primer::Alpha::Banner::DEFAULT_DISMISS_SCHEME, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, content: "This is a banner with an action!")
@@ -91,7 +97,7 @@ module Primer
       # @param full toggle
       # @param dismiss_scheme [Symbol] select [none, remove, hide]
       # @param icon [Symbol] octicon
-      # @param scheme [Symbol] select [default, warning, danger, success]
+      # @param scheme [Symbol] select [default, warning, danger, success, upsell]
       # @param content text
       # @snapshot
       def with_action_content(full: false, dismiss_scheme: Primer::Alpha::Banner::DEFAULT_DISMISS_SCHEME, icon: :people, scheme: Primer::Alpha::Banner::DEFAULT_SCHEME, content: "Did you know? Comments can be edited.")
