@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.58.0
+
+### Minor Changes
+
+- [#3396](https://github.com/primer/view_components/pull/3396) [`8e9802a`](https://github.com/opf/primer_view_components/commit/8e9802a1fdb2831512aa357f1cfbac0dad8c4aff) Thanks [@kendallgassner](https://github.com/kendallgassner)! - [SelectPanel] Add in the ability to add form_arugments when using remote fetching
+
 ## 0.57.0
 
 ### Minor Changes
