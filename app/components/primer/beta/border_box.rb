@@ -89,6 +89,10 @@ module Primer
       end
 
       def render?
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~@@@@@@@@@@@@#############&@(^(&#*@&#(@*&(#*~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts rows.any?
+        puts body.present?
+        puts footer.present?
         rows.any? || header.present? || body.present? || footer.present?
       end
 
