@@ -14,6 +14,8 @@ module RuboCop
       # good
       # ButtonComponent.new(size: :small)
       class DeprecatedButtonArguments < BaseCop
+        extend AutoCorrector
+
         INVALID_MESSAGE = <<~STR
           `variant` is deprecated. Use `size` instead.
         STR
@@ -37,11 +39,7 @@ module RuboCop
 
           return if pair.nil?
 
-          add_offense(pair.key, message: INVALID_MESSAGE)
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
+          add_offense(pair.key, message: INVALID_MESSAGE) do |corrector|
             corrector.replace(node, DEPRECATIONS[node.value])
           end
         end

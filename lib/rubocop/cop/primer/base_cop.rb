@@ -8,7 +8,7 @@ module RuboCop
   module Cop
     module Primer
       # :nodoc:
-      class BaseCop < RuboCop::Cop::Cop
+      class BaseCop < RuboCop::Cop::Base
         # We only verify SystemArguments if it's a `.new` call on a component or
         # a ViewHeleper call.
         def valid_node?(node)
