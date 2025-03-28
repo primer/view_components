@@ -1,0 +1,8 @@
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, visually_hide_title: false)) do |dialog| %>
+  <% dialog.with_header(show_divider: show_divider, close_scheme: :none) %>
+  <% dialog.with_show_button_content(button_text) %>
+  <% dialog.with_body_content("Hello World") %>
+  <% dialog.with_footer do %>
+    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Close" } %>
+  <% end %>
+<% end %>
