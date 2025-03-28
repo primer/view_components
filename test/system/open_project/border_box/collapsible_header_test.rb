@@ -6,6 +6,6 @@ class IntegrationOpenProjectBorderBox::CollapsibleHeaderTest < System::TestCase
   def test_renders_component
     visit_preview(:default)
 
-    assert_selector(".border-box/collapsible-header")
+    assert_selector(".CollapsibleHeader")
   end
 end
