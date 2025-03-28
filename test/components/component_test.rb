@@ -9,7 +9,6 @@ class PrimerComponentTest < Minitest::Test
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
     [Primer::OpenProject::BorderBox::CollapsibleHeader, {}],
-    [Primer::OpenProject::CollapsibleBorderBox, {}],
     [Primer::OpenProject::Heading, { tag: :h2 }],
     [Primer::OpenProject::DangerDialog, { title: "Danger action" }, proc { |component|
       component.with_confirmation_message do |confirmation|
