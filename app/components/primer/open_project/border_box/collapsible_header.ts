@@ -42,6 +42,10 @@ class CollapsibleHeaderElement extends HTMLElement {
     this.arrowDown.classList.remove('d-none')
     this.arrowUp.classList.add('d-none')
     this.description.classList.add('d-none')
+
+    this.container.style.borderBottomLeftRadius = '0'
+    this.container.style.borderBottomRightRadius = '0'
+    this.container.style.borderBottomWidth = '3px'
   }
 
   private expandAll() {
@@ -54,6 +58,10 @@ class CollapsibleHeaderElement extends HTMLElement {
     this.arrowDown.classList.add('d-none')
     this.arrowUp.classList.remove('d-none')
     this.description.classList.remove('d-none')
+
+    this.container.style.borderBottomLeftRadius = '0.375rem'
+    this.container.style.borderBottomRightRadius = '0.375rem'
+    this.container.style.borderBottomWidth = '1px'
   }
 }
 
