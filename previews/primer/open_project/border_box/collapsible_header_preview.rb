@@ -9,40 +9,43 @@ module Primer
       # @label BorderBox::CollapsibleHeader
       class CollapsibleHeaderPreview < ViewComponent::Preview
         # @label Playground
-        # @param string_example text
-        # @param boolean_example toggle
-        # @param email_example email
-        # @param number_example number
-        # @param url_example url
-        # @param tel_example tel
-        # @param textarea_example textarea
-        # @param select_example select [one, two, three]
-        # @param select_custom_labels select [[One label, one], [Two label, two], [Three label, three]]
-        # With empty option (`~` in YAML)
-        # @param select_empty_option select [~, one, two, three]
-        # def playground(string_example: "Some value", boolean_example: false, select_example: :one)
-        #   render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example))
-        # end
+        # @param title [String]
+        # @param description [String]
+        # @param collapsed toggle
+        # @param count [Numeric]
+        def playground(
+          title: "Title text",
+          description: "Long description text...",
+          count: 42,
+          collapsed: false
+        )
+          render_with_template(locals: {
+            title: title,
+            description: description,
+            count: count,
+            collapsed: collapsed
+          })
+        end
 
         # @label Default
         def default
           render_with_template
         end
 
-        # @label with count
-        # def playground(string_example: "Some value", boolean_example: false, select_example: :one)
-        #
-        # end
-        #
-        # @label with description
-        # def playground(string_example: "Some value", boolean_example: false, select_example: :one)
-        #
-        # end
-        #
-        # @label with collapsed
-        # def playground(string_example: "Some value", boolean_example: false, select_example: :one)
-        #
-        # end
+        # @label With counter
+        def with_count
+          render_with_template
+        end
+
+        # @label With description text
+        def with_description
+          render_with_template
+        end
+
+        # @label Collapsed initially
+        def collapsed
+          render_with_template
+        end
       end
     end
   end

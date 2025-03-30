@@ -39,7 +39,7 @@ module Primer
         end
 
         def render?
-          raise ArgumentError, "this component must be called inside the header of a `Primer::Beta::BorderBox`" unless @box.present? && @box.is_a?(Primer::Beta::BorderBox)
+          raise ArgumentError, "This component must be called inside the header of a `Primer::Beta::BorderBox`" unless @box.present? && @box.is_a?(Primer::Beta::BorderBox)
           true
         end
       end

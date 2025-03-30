@@ -1,6 +1,6 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
-    <%= flex.with_row(tag: "collapsible-header") do %>
+    <%= flex.with_row do %>
       <%= render(Primer::Beta::Text.new(mr: 2) ) { @title } %>
       <% if @count.present? %>
         <%= render(Primer::Beta::Counter.new(count: @count, mr: 2)) %>

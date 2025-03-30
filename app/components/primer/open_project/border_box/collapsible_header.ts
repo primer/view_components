@@ -1,8 +1,8 @@
-import { attr, controller, target } from '@github/catalyst'
+import {attr, controller, target} from '@github/catalyst'
 
 @controller
 class CollapsibleHeaderElement extends HTMLElement {
-  container = null
+  container: HTMLElement
   @target arrowDown: HTMLElement
   @target arrowUp: HTMLElement
   @target description: HTMLElement
@@ -13,17 +13,21 @@ class CollapsibleHeaderElement extends HTMLElement {
   constructor() {
     super()
 
-    this.container = this.closest('.Box')
+    const found = this.closest('.Box')
+    if (!found) {
+      throw new Error("Container element '.Box' not found")
+    }
+    this.container = found as HTMLElement
   }
 
   connectedCallback() {
-    if (this.collapsed) {
+    if (Boolean(this.collapsed) === true) {
       this.hideAll()
     }
   }
 
   public toggle() {
-    if (this.collapsed) {
+    if (Boolean(this.collapsed) === true) {
       this.collapsed = false
       this.expandAll()
     } else {
@@ -35,13 +39,15 @@ class CollapsibleHeaderElement extends HTMLElement {
   private hideAll() {
     const rows = this.container.querySelectorAll('.Box-row, .Box-body, .Box-footer')
 
-    rows.forEach(row => {
-      row.classList.add('d-none')
-    })
+    for (const row of rows) {
+      (row as HTMLElement).classList.add('d-none');
+    }
 
     this.arrowDown.classList.remove('d-none')
     this.arrowUp.classList.add('d-none')
-    this.description.classList.add('d-none')
+    if (this.description !== undefined) {
+      this.description.classList.add('d-none')
+    }
 
     this.container.style.borderBottomLeftRadius = '0'
     this.container.style.borderBottomRightRadius = '0'
@@ -51,13 +57,15 @@ class CollapsibleHeaderElement extends HTMLElement {
   private expandAll() {
     const rows = this.container.querySelectorAll('.Box-row, .Box-body, .Box-footer')
 
-    rows.forEach(row => {
-      row.classList.remove('d-none')
-    })
+    for (const row of rows) {
+      (row as HTMLElement).classList.remove('d-none');
+    }
 
     this.arrowDown.classList.add('d-none')
     this.arrowUp.classList.remove('d-none')
-    this.description.classList.remove('d-none')
+    if (this.description !== undefined) {
+      this.description.classList.remove('d-none')
+    }
 
     this.container.style.borderBottomLeftRadius = '0.375rem'
     this.container.style.borderBottomRightRadius = '0.375rem'
