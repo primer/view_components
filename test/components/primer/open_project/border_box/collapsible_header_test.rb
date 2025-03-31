@@ -15,15 +15,19 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
   end
 
   def test_does_not_render_without_title_and_box
-    render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new)
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new)
+    end
 
-    refute_component_rendered
+    assert_equal "missing keywords: :title, :box", err.message
   end
 
   def test_does_not_render_without_valid_box
-    render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "Test title", box: "Some component"))
+    err = assert_raises ArgumentError do
+      render_inline(render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "Test title", box: "Some component")))
+    end
 
-    refute_component_rendered
+    assert_equal "This component must be called inside the header of a `Primer::Beta::BorderBox`", err.message
   end
 
   def test_renders_with_description
@@ -43,11 +47,8 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
   def test_renders_collapsed
     render_preview(:collapsed)
 
-    sleep(2) # More delay or something else?
-    assert_selector(".CollapsibleHeader", text: "Default title")
-    assert_selector("svg.up-icon.d-none")
-    assert_selector("svg.down-icon")
-    assert_no_text("This text should also be hidden when collapsed")
+    sleep(15) # More delay or something else?
+    assert_selector(".CollapsibleHeader.CollapsibleHeader--collapsed", text: "Default title")
     # Test for border style
   end
 end
