@@ -5,3 +5,13 @@
     display: flex;
     align-items: center;
 }
+
+.Box:has(.CollapsibleHeader--collapsed) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-width: var(--borderWidth-thicker);
+
+    .Box-row, .Box-body, .Box-footer {
+        display: none;
+    }
+}

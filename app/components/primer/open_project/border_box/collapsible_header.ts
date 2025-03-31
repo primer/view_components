@@ -7,7 +7,8 @@ class CollapsibleHeaderElement extends HTMLElement {
   @target arrowUp: HTMLElement
   @target description: HTMLElement
 
-  @attr collapsed: boolean
+  @attr collapsed: string
+  private _collapsed: boolean
 
   // eslint-disable-next-line custom-elements/no-constructor
   constructor() {
@@ -21,55 +22,44 @@ class CollapsibleHeaderElement extends HTMLElement {
   }
 
   connectedCallback() {
-    if (Boolean(this.collapsed) === true) {
+    if (this.collapsed === "true") {
+      this._collapsed = true
       this.hideAll()
+    } else {
+      this._collapsed = false
     }
   }
 
   public toggle() {
-    if (Boolean(this.collapsed) === true) {
-      this.collapsed = false
+    if (this._collapsed) {
+      this._collapsed = false
       this.expandAll()
     } else {
-      this.collapsed = true
+      this._collapsed = true
       this.hideAll()
     }
   }
 
   private hideAll() {
-    const rows = this.container.querySelectorAll('.Box-row, .Box-body, .Box-footer')
-
-    for (const row of rows) {
-      (row as HTMLElement).classList.add('d-none');
-    }
-
     this.arrowDown.classList.remove('d-none')
     this.arrowUp.classList.add('d-none')
+
     if (this.description !== undefined) {
       this.description.classList.add('d-none')
     }
 
-    this.container.style.borderBottomLeftRadius = '0'
-    this.container.style.borderBottomRightRadius = '0'
-    this.container.style.borderBottomWidth = '3px'
+    this.classList.add('CollapsibleHeader--collapsed')
   }
 
   private expandAll() {
-    const rows = this.container.querySelectorAll('.Box-row, .Box-body, .Box-footer')
-
-    for (const row of rows) {
-      (row as HTMLElement).classList.remove('d-none');
-    }
-
     this.arrowDown.classList.add('d-none')
     this.arrowUp.classList.remove('d-none')
+
     if (this.description !== undefined) {
       this.description.classList.remove('d-none')
     }
 
-    this.container.style.borderBottomLeftRadius = '0.375rem'
-    this.container.style.borderBottomRightRadius = '0.375rem'
-    this.container.style.borderBottomWidth = '1px'
+    this.classList.remove('CollapsibleHeader--collapsed')
   }
 }
 
