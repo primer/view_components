@@ -28,21 +28,25 @@ module Primer
         end
 
         # @label Default
+        # @snapshot
         def default
           render_with_template
         end
 
         # @label With counter
+        # @snapshot
         def with_count
           render_with_template
         end
 
         # @label With description text
+        # @snapshot
         def with_description
           render_with_template
         end
 
         # @label Collapsed initially
+        # @snapshot
         def collapsed
           render_with_template
         end
