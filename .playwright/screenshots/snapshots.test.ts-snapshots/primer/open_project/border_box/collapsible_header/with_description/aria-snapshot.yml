@@ -1,0 +1,6 @@
+- text: Default title This is the description text... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Body
+- list "Default title This is the description text... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.":
+  - listitem: Row 1
+  - listitem: Row 2
+  - listitem: Row 3
+- text: Footer
