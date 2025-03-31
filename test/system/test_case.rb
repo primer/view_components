@@ -10,7 +10,7 @@ module System
   class TestCase < ActionDispatch::SystemTestCase
     driven_by Primer::DriverTestHelpers.driver_name, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
-    def visit_preview(scenario_name, params = {}, module_prefix: nil)
+    def visit_preview(scenario_name, module_prefix: nil, **params)
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
 
       component = begin

@@ -9,8 +9,8 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
     render_preview(:default)
 
     assert_selector(".CollapsibleHeader", text: "Default title")
-    assert_selector("svg.up-icon")
-    assert_selector("svg.down-icon.d-none")
+    assert_selector("svg.octicon.octicon-chevron-up")
+    assert_selector("svg.octicon.octicon-chevron-down.d-none")
     # Test for border style
   end
 

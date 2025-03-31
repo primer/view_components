@@ -12,10 +12,10 @@ module Primer
         # @param title [String]
         # @param description [String]
         # @param collapsed toggle
-        # @param count [Numeric]
+        # @param count [Integer]
         def playground(
           title: "Title text",
-          description: "Long description text...",
+          description: "Long description text goes here.",
           count: 42,
           collapsed: false
         )

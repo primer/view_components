@@ -22,7 +22,7 @@ class CollapsibleHeaderElement extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.collapsed === "true") {
+    if (this.collapsed === 'true') {
       this._collapsed = true
       this.hideAll()
     } else {

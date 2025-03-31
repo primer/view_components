@@ -5,8 +5,8 @@
       <% if @count.present? %>
         <%= render(Primer::Beta::Counter.new(count: @count, mr: 2)) %>
       <% end %>
-      <%= render(Primer::Beta::Octicon.new(icon: "chevron-up", classes: "up-icon", data: { target: "collapsible-header.arrowUp" })) %>
-      <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", classes: "down-icon", display: :none, data: { target: "collapsible-header.arrowDown" })) %>
+      <%= render(Primer::Beta::Octicon.new(icon: "chevron-up", data: { target: "collapsible-header.arrowUp" })) %>
+      <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", display: :none, data: { target: "collapsible-header.arrowDown" })) %>
     <% end %>
     <%= flex.with_row do %>
       <% if @description.present? %>
