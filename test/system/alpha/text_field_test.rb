@@ -50,6 +50,9 @@ module Alpha
 
       find("input[type=text]").fill_in(with: "foobar")
 
+      # tab away from input to trigger input validation
+      find("body").send_keys(:tab)
+
       assert_selector ".FormControl-inlineValidation.FormControl-inlineValidation--success" do |message|
         assert_match "The name foobar is available.", message.text
       end
