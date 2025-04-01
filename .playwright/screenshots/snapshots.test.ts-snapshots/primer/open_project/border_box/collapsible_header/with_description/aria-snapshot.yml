@@ -1,5 +1,5 @@
-- text: Default title This is the description text... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Body
-- list "Default title This is the description text... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.":
+- text: Backlog This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda. Body
+- list "Backlog This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.":
   - listitem: Row 1
   - listitem: Row 2
   - listitem: Row 3
