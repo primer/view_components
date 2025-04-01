@@ -61,21 +61,23 @@ module Primer
         DEFAULT_SCHEME => "",
         :warning => "Banner--warning",
         :danger => "Banner--error",
-        :success => "Banner--success"
+        :success => "Banner--success",
+        :upsell => "Banner--upsell"
       }.freeze
 
       LEGACY_SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "",
         :warning => "flash-warn",
         :danger => "flash-error",
-        :success => "flash-success"
+        :success => "flash-success",
       }.freeze
 
       DEFAULT_ICONS = {
         default: :bell,
         warning: :alert,
         danger: :stop,
-        success: :"check-circle"
+        success: :"check-circle",
+        upsell: :info,
       }.freeze
 
       DEFAULT_DISMISS_SCHEME = :none
