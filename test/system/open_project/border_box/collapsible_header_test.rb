@@ -14,7 +14,7 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
 
     assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
     assert_no_selector(".octicon.octicon-chevron-down.d-none")
-    assert_no_text("This text should also be hidden when collapsed")
+    assert_no_text("This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.")
   end
 
   def test_click_behaviour

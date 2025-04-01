@@ -2,7 +2,6 @@ import {attr, controller, target} from '@github/catalyst'
 
 @controller
 class CollapsibleHeaderElement extends HTMLElement {
-  container: HTMLElement
   @target arrowDown: HTMLElement
   @target arrowUp: HTMLElement
   @target description: HTMLElement
@@ -14,11 +13,9 @@ class CollapsibleHeaderElement extends HTMLElement {
   constructor() {
     super()
 
-    const found = this.closest('.Box')
-    if (!found) {
-      throw new Error("Container element '.Box' not found")
+    if (!this.closest('.Box')) {
+      throw new Error('No surrounding BorderBox found')
     }
-    this.container = found as HTMLElement
   }
 
   connectedCallback() {

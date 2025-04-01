@@ -22,7 +22,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             system_arguments[:classes],
             "CollapsibleHeader",
-            "CollapsibleHeader--collapsed" => collapsed?
+            "CollapsibleHeader--collapsed" => @collapsed
           )
           @system_arguments[:data] = merge_data(
             @system_arguments, {
@@ -40,12 +40,12 @@ module Primer
         end
 
         def render?
+          raise ArgumentError, "Title must be present" unless @title.present?
+          raise ArgumentError, "Description cannot be a blank string" unless @description.present? || @description.nil?
+          raise ArgumentError, "Count cannot be a blank string" unless @count.present? || @count.nil?
           raise ArgumentError, "This component must be called inside the header of a `Primer::Beta::BorderBox`" unless @box.present? && @box.is_a?(Primer::Beta::BorderBox)
-          true
-        end
 
-        def collapsed?
-          @collapsed
+          true
         end
       end
     end
