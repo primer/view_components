@@ -35,6 +35,9 @@ module Alpha
 
       find("input[type=text]").fill_in(with: "foobar")
 
+      # tab away from input to trigger input validation
+      find("body").send_keys(:tab)
+
       assert_selector ".FormControl-inlineValidation", text: "The name foobar is already taken."
       assert_selector ".FormControl-inlineValidation--visual .octicon-alert-fill"
       refute_selector ".FormControl-inlineValidation--visual .octicon-check-circle-fill"
