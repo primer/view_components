@@ -20,15 +20,23 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
   def test_click_behaviour
     visit_preview(:default, module_prefix: "border_box")
 
+    # First, make sure it is not collapsed
     assert_no_selector(".CollapsibleHeader--collapsed")
-    # assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
+    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
     assert_no_selector(".octicon.octicon-chevron-up.d-none")
 
+    # Collapse it
     find('.CollapsibleHeader').click
 
-
     assert_selector(".CollapsibleHeader--collapsed")
-    # assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
+    assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
     assert_no_selector(".octicon.octicon-chevron-down.d-none")
+
+    # Expand it again
+    find('.CollapsibleHeader').click
+
+    assert_no_selector(".CollapsibleHeader--collapsed")
+    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
+    assert_no_selector(".octicon.octicon-chevron-up.d-none")
   end
 end
