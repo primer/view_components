@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.59.0
+
+### Minor Changes
+
+- [#260](https://github.com/opf/primer_view_components/pull/260) [`8efeaf4`](https://github.com/opf/primer_view_components/commit/8efeaf41dad48f1c535099ae5e33c3949846e309) Thanks [@mrmir](https://github.com/mrmir)! - Create a `BorderBox::CollapsibleHeader` component
+
 ## 0.58.0
 
 ### Minor Changes
