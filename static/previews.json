@@ -2958,6 +2958,79 @@
     ]
   },
   {
+    "name": "collapsible_header",
+    "component": "OpenProject::BorderBox::CollapsibleHeader",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/border_box/collapsible_header",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/with_count",
+        "name": "with_count",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/with_description",
+        "name": "with_description",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/collapsed",
+        "name": "collapsed",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "counter",
     "component": "Counter",
     "status": "beta",

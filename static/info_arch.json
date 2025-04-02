@@ -17447,6 +17447,104 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::BorderBox::CollapsibleHeader",
+    "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
+    "accessibility_docs": "Add any accessibility considerations",
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::BorderBox::CollapsibleHeader",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectBorderBoxCollapsibleHeader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/border_box/collapsible_header.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_box/collapsible_header/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/with_count",
+        "name": "with_count",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/with_description",
+        "name": "with_description",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/border_box/collapsible_header/collapsed",
+        "name": "collapsed",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::BorderGrid",
     "description": "A set of blocks that are shown below each other with separator lines in between",
     "accessibility_docs": null,

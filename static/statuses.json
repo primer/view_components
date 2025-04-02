@@ -117,6 +117,7 @@
   "Primer::IconButton": "deprecated",
   "Primer::LayoutComponent": "deprecated",
   "Primer::Navigation::TabComponent": "deprecated",
+  "Primer::OpenProject::BorderBox::CollapsibleHeader": "open_project",
   "Primer::OpenProject::BorderGrid": "open_project",
   "Primer::OpenProject::BorderGrid::Cell": "open_project",
   "Primer::OpenProject::DangerDialog": "open_project",

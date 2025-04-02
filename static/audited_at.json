@@ -117,6 +117,7 @@
   "Primer::IconButton": "",
   "Primer::LayoutComponent": "",
   "Primer::Navigation::TabComponent": "",
+  "Primer::OpenProject::BorderBox::CollapsibleHeader": "",
   "Primer::OpenProject::BorderGrid": "",
   "Primer::OpenProject::BorderGrid::Cell": "",
   "Primer::OpenProject::DangerDialog": "",
