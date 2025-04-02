@@ -14,6 +14,8 @@ module RuboCop
       # good
       # Component.new(foo: :bar)
       class DeprecatedArguments < BaseCop
+        extend AutoCorrector
+
         INVALID_MESSAGE = <<~STR
           Avoid using deprecated arguments: https://primer.style/view-components/deprecated.
         STR
@@ -283,15 +285,11 @@ module RuboCop
             key, value = extract_kv_from(pair)
             next unless DEPRECATED.key?(key) && DEPRECATED[key].key?(value)
 
-            add_offense(pair, message: INVALID_MESSAGE)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            key, value = extract_kv_from(node)
-            replacement = DEPRECATED[key][value]
-            corrector.replace(node, replacement) if replacement.present?
+            add_offense(pair, message: INVALID_MESSAGE) do |corrector|
+              key, value = extract_kv_from(node)
+              replacement = DEPRECATED[key][value]
+              corrector.replace(node, replacement) if replacement.present?
+            end
           end
         end
 
