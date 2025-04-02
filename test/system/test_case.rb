@@ -10,7 +10,7 @@ module System
   class TestCase < ActionDispatch::SystemTestCase
     driven_by Primer::DriverTestHelpers.driver_name, screen_size: [1400, 1400], options: { process_timeout: 240, timeout: 240 }
 
-    def visit_preview(scenario_name, params = {})
+    def visit_preview(scenario_name, module_prefix: nil, **params)
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
 
       component = begin
@@ -25,7 +25,10 @@ module System
       component_name = component_name.gsub(/^Beta|^Alpha|^OpenProject/, "") if match
       component_uri = component_name.underscore
 
-      url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{scenario_name}"
+      url = +"/rails/view_components/primer/#{status_path}"
+      url << "#{module_prefix}/" if module_prefix.present?
+      url << "#{component_uri}/#{scenario_name}"
+
       query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
       url << "?#{query_string}" if query_string.present?
 

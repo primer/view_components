@@ -114,7 +114,8 @@
     "Primer::OpenProject::BorderGrid"
   ],
   "Box": [
-    "Primer::Beta::BorderBox"
+    "Primer::Beta::BorderBox",
+    "Primer::OpenProject::BorderBox::CollapsibleHeader"
   ],
   "Box--blue": [
     "Primer::Beta::BorderBox"
@@ -238,6 +239,9 @@
   ],
   "ButtonGroup": [
     "Primer::Beta::ButtonGroup"
+  ],
+  "CollapsibleHeader": [
+    "Primer::OpenProject::BorderBox::CollapsibleHeader"
   ],
   "Counter": [
     "Primer::Beta::Counter"
