@@ -9,16 +9,11 @@ class CollapsibleHeaderElement extends HTMLElement {
   @attr collapsed: string
   private _collapsed: boolean
 
-  // eslint-disable-next-line custom-elements/no-constructor
-  constructor() {
-    super()
-
+  connectedCallback() {
     if (!this.closest('.Box')) {
       throw new Error('No surrounding BorderBox found')
     }
-  }
 
-  connectedCallback() {
     if (this.collapsed === 'true') {
       this._collapsed = true
       this.hideAll()
