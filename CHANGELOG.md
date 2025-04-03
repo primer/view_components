@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.59.1
+
+### Patch Changes
+
+- [#263](https://github.com/opf/primer_view_components/pull/263) [`ff7912f`](https://github.com/opf/primer_view_components/commit/ff7912f632d83d973e5b1da506fc2fe74f59ee74) Thanks [@HDinger](https://github.com/HDinger)! - CollapsibleHeader checks for surrounding Box only when being connected
+
 ## 0.59.0
 
 ### Minor Changes
