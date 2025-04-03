@@ -3,9 +3,8 @@
 module Primer
   module OpenProject
     module BorderBox
-      # Add a general description of component here
-      # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-      # @accessibility Add any accessibility considerations
+      # A component to be used inside Primer::Beta::BorderBox.
+      # It will toggle the visibility of the complete Box body
       class CollapsibleHeader < Primer::Component
         status :open_project
 
