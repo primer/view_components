@@ -17448,8 +17448,8 @@
   },
   {
     "fully_qualified_name": "Primer::OpenProject::BorderBox::CollapsibleHeader",
-    "description": "Add a general description of component here\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
-    "accessibility_docs": "Add any accessibility considerations",
+    "description": "A component to be used inside Primer::Beta::BorderBox.\nIt will toggle the visibility of the complete Box body",
+    "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
