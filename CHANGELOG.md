@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.40.0
+
+### Minor Changes
+
+- [#3387](https://github.com/primer/view_components/pull/3387) [`67d6aef`](https://github.com/primer/view_components/commit/67d6aefc565689c579cc46188aa46102d64699ff) Thanks [@BigDadBear](https://github.com/BigDadBear)! - Adding upsell scheme to Primer::Alpha::Banner
+
+- [#3397](https://github.com/primer/view_components/pull/3397) [`626df16`](https://github.com/primer/view_components/commit/626df16c5d80e41f6cae777f1428ee15a901fe94) Thanks [@khiga8](https://github.com/khiga8)! - [SelectPanel] Add in the ability to add form_arugments when using remote fetching
+
 ## 0.39.0
 
 ### Minor Changes
