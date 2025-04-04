@@ -4,7 +4,7 @@ import {attr, controller, target} from '@github/catalyst'
 class CollapsibleHeaderElement extends HTMLElement {
   @target arrowDown: HTMLElement
   @target arrowUp: HTMLElement
-  @target description: HTMLElement
+  @target description: HTMLElement | undefined
 
   @attr collapsed: string
   private _collapsed: boolean
@@ -33,23 +33,19 @@ class CollapsibleHeaderElement extends HTMLElement {
   }
 
   private hideAll() {
-    this.arrowDown.classList.remove('d-none')
-    this.arrowUp.classList.add('d-none')
+    this.arrowDown?.classList.remove('d-none')
+    this.arrowUp?.classList.add('d-none')
 
-    if (this.description !== undefined) {
-      this.description.classList.add('d-none')
-    }
+    this.description?.classList.add('d-none')
 
     this.classList.add('CollapsibleHeader--collapsed')
   }
 
   private expandAll() {
-    this.arrowDown.classList.add('d-none')
-    this.arrowUp.classList.remove('d-none')
+    this.arrowDown?.classList.add('d-none')
+    this.arrowUp?.classList.remove('d-none')
 
-    if (this.description !== undefined) {
-      this.description.classList.remove('d-none')
-    }
+    this.description?.classList.remove('d-none')
 
     this.classList.remove('CollapsibleHeader--collapsed')
   }
