@@ -43,7 +43,7 @@
     "build:css": "script/build-assets css"
   },
   "dependencies": {
-    "@github/auto-check-element": "^5.2.0",
+    "@github/auto-check-element": "^6.0.0",
     "@github/auto-complete-element": "^3.8.0",
     "@github/catalyst": "^1.6.0",
     "@github/clipboard-copy-element": "^1.3.0",
