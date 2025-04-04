@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.59.2
+
+### Patch Changes
+
+- [#265](https://github.com/opf/primer_view_components/pull/265) [`aa134f6`](https://github.com/opf/primer_view_components/commit/aa134f6be67b0e2e0e1f6e87d78b29a6ee8f34db) Thanks [@HDinger](https://github.com/HDinger)! - Safeguard CollapsibleHeader class toggling
+
 ## 0.59.1
 
 ### Patch Changes
