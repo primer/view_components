@@ -33,6 +33,9 @@ module Primer
         # @!macro [new] form_full_width_arguments
         #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`.
 
+        # @!macro [new] form_input_width_arguments
+        #   @param input_width [Symbol] The width of the field. <%= one_of(Primer::Forms::Dsl::Input::INPUT_WIDTH_OPTIONS) %>
+
         # @!macro [new] form_system_arguments
         #   @param system_arguments [Hash] A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details.
 
@@ -48,6 +51,7 @@ module Primer
         DEFAULT_INPUT_WIDTH = :auto
         INPUT_WIDTH_MAPPINGS = {
           DEFAULT_INPUT_WIDTH => "FormControl-input-width--auto",
+          :xsmall => "FormControl-input-width--xsmall",
           :small => "FormControl-input-width--small",
           :medium => "FormControl-input-width--medium",
           :large => "FormControl-input-width--large",

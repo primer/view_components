@@ -21,7 +21,7 @@ module Primer
       # @param value [String]
       # @param visually_hide_label toggle
       # @param readonly toggle
-      # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
+      # @param input_width [Symbol] select [auto, xsmall, small, medium, large, xlarge, xxlarge]
       # @param caption [String]
       def playground(
         trailing_action: :clipboardCopy,

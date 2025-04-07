@@ -9,6 +9,7 @@ module Primer
       DEFAULT_INPUT_WIDTH = :auto
       INPUT_WIDTH_MAPPINGS = {
         DEFAULT_INPUT_WIDTH => "InputGroup-input-width--auto",
+        :xsmall => "InputGroup-input-width--xsmall",
         :small => "InputGroup-input-width--small",
         :medium => "InputGroup-input-width--medium",
         :large => "InputGroup-input-width--large",

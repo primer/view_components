@@ -18,7 +18,7 @@ module Primer
       # @param disabled toggle
       # @param invalid toggle
       # @param validation_message text
-      # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
+      # @param input_width [Symbol] select [auto, xsmall, small, medium, large, xlarge, xxlarge]
       def playground(
         name: "my-select-list",
         id: "my-select-list",

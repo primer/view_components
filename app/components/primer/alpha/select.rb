@@ -21,6 +21,7 @@ module Primer
       #
       # @macro form_size_arguments
       # @macro form_input_arguments
+      # @macro form_input_width_arguments
       #
       # @param multiple [Boolean] If set to true, the selection will allow multiple choices.
       # @param include_blank [Boolean, String] If set to true, an empty option will be created. If set to a string, the string will be used as the option's content and the value will be empty.
