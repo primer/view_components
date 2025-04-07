@@ -28,6 +28,15 @@
         caption: "What else do you need?",
         input_width: :small
       )
+
+      f.text_field(
+        name: :hours,
+        label: "hours",
+        type: :number,
+        required: true,
+        trailing_visual: { text: { text: "min" } },
+        input_width: :xsmall
+      )
     end
   end
 %>

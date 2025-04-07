@@ -19,6 +19,7 @@ module Primer
       #
       # @macro form_full_width_arguments
       # @macro form_input_arguments
+      # @macro form_input_width_arguments
     end
   end
 end

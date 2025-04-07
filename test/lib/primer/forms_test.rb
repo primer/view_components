@@ -36,11 +36,21 @@ class Primer::FormsTest < Minitest::Test
           caption: "What else do you need?",
           input_width: :large
         )
+
+        f.text_field(
+          name: :hours,
+          label: "hours",
+          type: :number,
+          required: true,
+          trailing_visual: { text: { text: "min" } },
+          input_width: :xsmall
+        )
       end
     end
 
     render_inline Primer::FormTestComponent.new(form_class: custom_width_form)
 
+    assert_selector "div.FormControl-input-width--xsmall"
     assert_selector "div.FormControl-input-width--medium"
     assert_selector "div.FormControl-input-width--small"
     assert_selector "div.FormControl-input-width--large"

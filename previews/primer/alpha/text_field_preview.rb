@@ -24,7 +24,7 @@ module Primer
       # @param monospace toggle
       # @param leading_visual_icon octicon
       # @param leading_spinner toggle
-      # @param input_width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
+      # @param input_width [Symbol] select [auto, xsmall, small, medium, large, xlarge, xxlarge]
       def playground(
         name: "my-text-field",
         id: "my-text-field",
@@ -200,7 +200,7 @@ module Primer
       end
 
       # @label With trailing label
-      # @snapshot 
+      # @snapshot
       def with_trailing_label
         render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field-15", label: "My text field"))
       end
@@ -219,7 +219,7 @@ module Primer
       #
       # @!endgroup
 
-      # @!group Auto check 
+      # @!group Auto check
       #
       # @label Auto check request ok
       def with_auto_check_ok
