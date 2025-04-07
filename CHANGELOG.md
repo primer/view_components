@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.60.0
+
+### Minor Changes
+
+- [#3387](https://github.com/primer/view_components/pull/3387) [`67d6aef`](https://github.com/opf/primer_view_components/commit/67d6aefc565689c579cc46188aa46102d64699ff) Thanks [@BigDadBear](https://github.com/BigDadBear)! - Adding upsell scheme to Primer::Alpha::Banner
+
+### Patch Changes
+
+- [#267](https://github.com/opf/primer_view_components/pull/267) [`edde0fe`](https://github.com/opf/primer_view_components/commit/edde0fe2a0c31b7264400885e1d48f913f8ce898) Thanks [@HDinger](https://github.com/HDinger)! - Add `xsmall` to the inpu_witdh options
+
 ## 0.59.2
 
 ### Patch Changes
