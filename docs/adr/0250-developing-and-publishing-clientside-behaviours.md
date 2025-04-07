@@ -4,7 +4,7 @@ Date: 2021-02-19
 
 ## Status
 
-Accepted
+Accepted and adopted
 
 ## Context
 
@@ -12,10 +12,10 @@ We want to ship client side behavioural elements with Primer View Components to 
 
 Doing so requires us to align to a set of constraints for the Browser ecosystem, as well as the ecosystems that consumers of Primer View Components have:
 
-- We need to produce a JavaScript based artefact, as this is the language browsers use for client side behaviours.
-- The artefact should be easily consumable by existing tool chains of our consumers, which may or may not be the Rails Asset Pipeline.
-- The setup process should be uncomplicated and familiar to consumers; by using existing Rails paradigms, or JavaScript ecosystem paradigms or tools such as npm.
-- Client side behaviours should be well tested and offer the same level of quality the existing non-behavioural components do.
+* We need to produce a JavaScript based artefact, as this is the language browsers use for client side behaviours.
+* The artefact should be easily consumable by existing tool chains of our consumers, which may or may not be the Rails Asset Pipeline.
+* The setup process should be uncomplicated and familiar to consumers; by using existing Rails paradigms, or JavaScript ecosystem paradigms or tools such as npm.
+* Client side behaviours should be well tested and offer the same level of quality the existing non-behavioural components do.
 
 ## Decision
 
