@@ -1623,6 +1623,7 @@
     "GeneratedSlotMethods": "Primer::OpenProject::InputGroup::GeneratedSlotMethods",
     "INPUT_WIDTH_MAPPINGS": {
       "auto": "InputGroup-input-width--auto",
+      "xsmall": "InputGroup-input-width--xsmall",
       "small": "InputGroup-input-width--small",
       "medium": "InputGroup-input-width--medium",
       "large": "InputGroup-input-width--large",
@@ -1631,6 +1632,7 @@
     },
     "INPUT_WIDTH_OPTIONS": [
       "auto",
+      "xsmall",
       "small",
       "medium",
       "large",

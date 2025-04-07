@@ -2317,6 +2317,12 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       },
       {
+        "name": "input_width",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The width of the field. One of `:auto`, `:large`, `:medium`, `:small`, `:xlarge`, `:xsmall`, or `:xxlarge`."
+      },
+      {
         "name": "multiple",
         "type": "Boolean",
         "default": "N/A",
@@ -2855,6 +2861,12 @@
         "type": "Hash",
         "default": "N/A",
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
+      },
+      {
+        "name": "input_width",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The width of the field. One of `:auto`, `:large`, `:medium`, `:small`, `:xlarge`, `:xsmall`, or `:xxlarge`."
       }
     ]
   },
@@ -2985,6 +2997,12 @@
         "type": "Hash",
         "default": "N/A",
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
+      },
+      {
+        "name": "input_width",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The width of the field. One of `:auto`, `:large`, `:medium`, `:small`, `:xlarge`, `:xsmall`, or `:xxlarge`."
       },
       {
         "name": "placeholder",
