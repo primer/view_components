@@ -2483,7 +2483,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+        "description": "One of `:danger`, `:default`, `:success`, `:upsell`, or `:warning`."
       },
       {
         "name": "system_arguments",
@@ -2573,6 +2573,19 @@
       {
         "preview_path": "primer/alpha/banner/scheme_warning",
         "name": "scheme_warning",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/banner/scheme_upsell",
+        "name": "scheme_upsell",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
@@ -7451,10 +7464,94 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/select_panel/default/",
     "parameters": [
       {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL to fetch search results from."
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "default": "`\"Menu\"`",
+        "description": "The title that appears at the top of the panel."
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The unique ID of the panel."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:small`",
+        "description": "The size of the panel. One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:single`",
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "fetch_strategy",
+        "type": "Symbol",
+        "default": "`:remote`",
+        "description": "One of `:eventually_local`, `:local`, or `:remote`."
+      },
+      {
+        "name": "no_results_label",
+        "type": "String",
+        "default": "`\"No results found\"`",
+        "description": "The label to display when no results are found."
+      },
+      {
+        "name": "preload",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened."
+      },
+      {
+        "name": "dynamic_label",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to display the text of the currently selected item in the show button."
+      },
+      {
+        "name": "dynamic_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
+      },
+      {
+        "name": "dynamic_aria_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button."
+      },
+      {
+        "name": "body_id",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a \"-body\" suffix."
+      },
+      {
+        "name": "list_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}} component. Only has an effect for the local fetch strategy."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag."
+      },
+      {
         "name": "use_experimental_non_local_form",
         "type": "Boolean",
         "default": "`false`",
-        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values."
+        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923."
       },
       {
         "name": "show_filter",

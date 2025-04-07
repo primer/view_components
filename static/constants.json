@@ -197,7 +197,8 @@
       "default": "bell",
       "warning": "alert",
       "danger": "stop",
-      "success": "check-circle"
+      "success": "check-circle",
+      "upsell": "info"
     },
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "div",
@@ -217,7 +218,8 @@
       "default": "",
       "warning": "Banner--warning",
       "danger": "Banner--error",
-      "success": "Banner--success"
+      "success": "Banner--success",
+      "upsell": "Banner--upsell"
     },
     "TAG_OPTIONS": [
       "div",

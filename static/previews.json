@@ -1557,6 +1557,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/banner/scheme_upsell",
+        "name": "scheme_upsell",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/banner/dismissible",
         "name": "dismissible",
         "snapshot": "true",
