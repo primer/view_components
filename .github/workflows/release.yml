@@ -36,7 +36,7 @@ jobs:
       # Use the primer GitHub App for authentication.
       # See: https://github.com/organizations/primer/settings/apps/primer
       - name: Get App Token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         id: get-access-token
         with:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
