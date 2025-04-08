@@ -19,7 +19,7 @@ jobs:
     steps:
       - run: echo ${{ needs.pagerduty.outputs.user }} is the Release conductor
       - name: Get App Token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         id: app-token
         with:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
