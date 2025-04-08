@@ -43,7 +43,7 @@
     "build:css": "script/build-assets css"
   },
   "dependencies": {
-    "@github/auto-check-element": "^5.2.0",
+    "@github/auto-check-element": "^6.0.0",
     "@github/auto-complete-element": "^3.8.0",
     "@github/catalyst": "^1.6.0",
     "@github/clipboard-copy-element": "^1.3.0",
@@ -95,7 +95,7 @@
     "stylelint-actions-formatters": "^16.3.1",
     "tslib": "^2.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.4.3",
+    "vite": "^6.2.5",
     "vite-plugin-ruby": "^5.1.0"
   },
   "prettier": "@github/prettier-config",
