@@ -44,6 +44,7 @@ GEM
     ansi (1.5.0)
     ast (2.4.2)
     base64 (0.2.0)
+    benchmark (0.4.0)
     benchmark-ips (2.13.0)
     better_html (2.1.1)
       actionview (>= 6.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   activemodel (= 7.1.3.2)
   activesupport (= 7.1.3.2)
   allocation_stats (~> 0.1)
+  benchmark
   benchmark-ips (~> 2.13.0)
   bootsnap (>= 1.4.2)
   capybara (~> 3.40.0)
