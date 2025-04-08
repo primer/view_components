@@ -12,6 +12,12 @@ module Primer
       def playground(loading: :eager)
         render(Primer::Alpha::IncludeFragment.new(loading: loading, src: UrlHelpers.include_fragment_deferred_path)) { "Loading..." }
       end
+
+      # @label Default options
+      # @snapshot
+      def default
+        render(Primer::Alpha::IncludeFragment.new(loading: :eager, src: UrlHelpers.include_fragment_deferred_path)) { "Loading..." }
+      end
     end
   end
 end
