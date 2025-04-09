@@ -60,10 +60,10 @@ module Primer
           @system_arguments[:data] = merge_data(
             @system_arguments, {
             data: {
-              action: "click:collapsible-header#toggle",
-              collapsed: @collapsed
+              action: "click:collapsible-header#toggle"
             } }
           )
+          @system_arguments[:data][:collapsed] = true if @collapsed
         end
 
         private

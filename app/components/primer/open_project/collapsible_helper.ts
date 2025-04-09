@@ -6,25 +6,19 @@ export abstract class CollapsibleHelperElement extends HTMLElement {
   @target arrowUp: HTMLElement
   @targets collapsibleElements: HTMLElement[]
 
-  @attr collapsed: string
-  private _collapsed: boolean
-
-  connectedCallback() {
-    if (this.collapsed === 'true') {
-      this._collapsed = true
-      this.hideAll()
-    } else {
-      this._collapsed = false
-    }
-  }
+  @attr collapsed = false
 
   toggle() {
-    if (this._collapsed) {
-      this._collapsed = false
-      this.expandAll()
-    } else {
-      this._collapsed = true
-      this.hideAll()
+    this.collapsed = !this.collapsed
+  }
+
+  attributeChangedCallback(name: string) {
+    if (name === 'data-collapsed') {
+      if (this.collapsed) {
+        this.hideAll()
+      } else {
+        this.expandAll()
+      }
     }
   }
 

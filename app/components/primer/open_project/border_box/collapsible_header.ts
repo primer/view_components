@@ -7,8 +7,6 @@ class CollapsibleHeaderElement extends CollapsibleHelperElement {
     if (!this.closest('.Box')) {
       throw new Error('No surrounding BorderBox found')
     }
-
-    super.connectedCallback()
   }
 
   get baseClass(): string {

@@ -59,13 +59,8 @@ module Primer
           "CollapsibleSection--collapsed" => @collapsed
         )
 
-        @system_arguments[:data] = merge_data(
-          @system_arguments, {
-          data: {
-            collapsed: @collapsed
-          }
-        }
-        )
+        @system_arguments[:data] ||= {}
+        @system_arguments[:data][:collapsed] = true if @collapsed
       end
 
       private
