@@ -58,7 +58,6 @@ group :development do
   gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
-  gem "pry"
   gem "rubocop"
   gem "rubocop-github", "~> 0.20.0"
   gem "rubocop-performance"
