@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gemspec
-rails_version = (ENV["RAILS_VERSION"] || "7.1.3.2").to_s
+rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "rack-cors"
 gem "rake", "~> 13.2"
