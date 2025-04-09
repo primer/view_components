@@ -16,6 +16,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :title, lambda { |tag: TITLE_TAG_FALLBACK, **system_arguments, &block|
         system_arguments[:tag] = fetch_or_fallback(TITLE_TAG_OPTIONS, tag, TITLE_TAG_FALLBACK)
+        system_arguments[:id] = @title_id
         system_arguments[:font_size] ||= 3
         system_arguments[:mr] ||= 2
 
@@ -47,13 +48,18 @@ module Primer
         Primer::BaseComponent.new(tag: :div, **system_arguments)
       }
 
+      # @param id [String] The unique ID of the collapsible section.
       # @param collapsed [Boolean] Whether the section is collapsed on initial render.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(collapsed: false, **system_arguments)
+      def initialize(id: self.class.generate_id, collapsed: false, **system_arguments)
+        @section_id = id
+        @title_id = "#{@section_id}-title"
+        @content_id = "#{@section_id}-content"
         @collapsed = collapsed
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "collapsible-section"
+        @system_arguments[:id] = @section_id
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "CollapsibleSection",
