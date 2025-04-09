@@ -49,7 +49,7 @@ end
 # development dependencies
 group :development do
   gem "allocation_stats", "~> 0.1"
-  gem "benchmark-ips", "~> 2.13.0"
+  gem "benchmark-ips", "~> 2"
   gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.15"
   gem "debug"
