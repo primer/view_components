@@ -243,6 +243,9 @@
   "CollapsibleHeader": [
     "Primer::OpenProject::BorderBox::CollapsibleHeader"
   ],
+  "CollapsibleSection": [
+    "Primer::OpenProject::CollapsibleSection"
+  ],
   "Counter": [
     "Primer::Beta::Counter"
   ],

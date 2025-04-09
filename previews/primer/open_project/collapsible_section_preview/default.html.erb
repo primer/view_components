@@ -1,0 +1,11 @@
+<%= render(Primer::OpenProject::CollapsibleSection.new) do |section| %>
+  <% section.with_title { "Wednesday 11" } %>
+  <% section.with_collapsible_content do %>
+    <%= render(Primer::Beta::BorderBox.new) do |component|
+      component.with_header { "Header" }
+      component.with_body { "Body" }
+      component.with_row { "Row one" }
+      component.with_row { "Row two" }
+    end %>
+  <% end %>
+<% end %>

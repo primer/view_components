@@ -35,7 +35,7 @@ module Primer
           system_arguments[:data] = merge_data(
             system_arguments, {
             data: {
-                target: "collapsible-header.description"
+                target: "collapsible-header.collapsibleElements"
               }
             }
           )
