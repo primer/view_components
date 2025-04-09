@@ -19,9 +19,3 @@ declare global {
     CollapsibleHeaderElement: typeof CollapsibleHeaderElement
   }
 }
-
-if (!window.customElements.get('collapsible-header')) {
-  window.CollapsibleHeaderElement = CollapsibleHeaderElement
-  // eslint-disable-next-line custom-elements/extends-correct-class
-  window.customElements.define('collapsible-header', CollapsibleHeaderElement)
-}

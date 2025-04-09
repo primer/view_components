@@ -13,9 +13,3 @@ declare global {
     CollapsibleSectionElement: typeof CollapsibleSectionElement
   }
 }
-
-if (!window.customElements.get('collapsible-section')) {
-  window.CollapsibleSectionElement = CollapsibleSectionElement
-  // eslint-disable-next-line custom-elements/extends-correct-class
-  window.customElements.define('collapsible-section', CollapsibleSectionElement)
-}
