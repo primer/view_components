@@ -39,6 +39,7 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.assets.check_precompiled_asset = false
+  config.secret_key_base = "test"
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
