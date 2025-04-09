@@ -308,6 +308,7 @@ DEPENDENCIES
   activemodel (= 8.0.2)
   activesupport (= 8.0.2)
   allocation_stats (~> 0.1)
+  benchmark
   benchmark-ips (~> 2)
   bootsnap (>= 1.4.2)
   capybara (~> 3.40.0)
