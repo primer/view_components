@@ -13,44 +13,30 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
     assert_selector("svg.octicon.octicon-chevron-down.d-none")
   end
 
-  def test_does_not_render_without_title_and_box
+  def test_does_not_render_without_box
     err = assert_raises ArgumentError do
       render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new)
     end
 
-    assert_equal "missing keywords: :title, :box", err.message
-  end
-
-  def test_does_not_render_with_empty_title
-    err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "", box: "Some component"))
-    end
-
-    assert_equal "Title must be present", err.message
+    assert_equal "missing keyword: :box", err.message
   end
 
   def test_does_not_render_without_valid_box
     err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "Test title", box: "Some component"))
+      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: "Some component")) do |header|
+        header.with_title { "Test title" }
+      end
     end
 
     assert_equal "This component must be called inside the header of a `Primer::Beta::BorderBox`", err.message
   end
 
-  def test_does_not_render_with_empty_description
+  def test_does_not_render_with_empty_title
     err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "Test title", box: "Some component", description: ""))
+      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: "Some component"))
     end
 
-    assert_equal "Description cannot be a blank string", err.message
-  end
-
-  def test_does_not_render_with_empty_count
-    err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: "Test title", box: "Some component", count: ""))
-    end
-
-    assert_equal "Count cannot be a blank string", err.message
+    assert_equal "Title must be present", err.message
   end
 
   def test_renders_with_description
