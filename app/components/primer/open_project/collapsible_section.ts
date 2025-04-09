@@ -3,7 +3,7 @@ import {CollapsibleHelperElement} from './collapsible_helper'
 
 @controller
 class CollapsibleSectionElement extends CollapsibleHelperElement {
-  get baseClass(): string | void {
+  get baseClass(): string {
     return 'CollapsibleSection'
   }
 }

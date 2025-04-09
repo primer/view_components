@@ -1,8 +1,7 @@
-import {attr, controller, target, targets} from '@github/catalyst'
+import {attr, target, targets} from '@github/catalyst'
 
-@controller
 // eslint-disable-next-line custom-elements/expose-class-on-global
-export class CollapsibleHelperElement extends HTMLElement {
+export abstract class CollapsibleHelperElement extends HTMLElement {
   @target arrowDown: HTMLElement
   @target arrowUp: HTMLElement
   @targets collapsibleElements: HTMLElement[]
@@ -51,13 +50,5 @@ export class CollapsibleHelperElement extends HTMLElement {
     this.classList.remove(`${this.baseClass}--collapsed`)
   }
 
-  get baseClass(): string | void {
-    throw new Error('A baseClass has to be defined')
-  }
-}
-
-declare global {
-  interface Window {
-    CollapsibleHelperElement: typeof CollapsibleHelperElement
-  }
+  abstract get baseClass(): string
 }

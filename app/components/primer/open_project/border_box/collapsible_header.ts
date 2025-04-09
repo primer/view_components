@@ -11,7 +11,7 @@ class CollapsibleHeaderElement extends CollapsibleHelperElement {
     super.connectedCallback()
   }
 
-  get baseClass(): string | void {
+  get baseClass(): string {
     return 'CollapsibleHeader'
   }
 }
