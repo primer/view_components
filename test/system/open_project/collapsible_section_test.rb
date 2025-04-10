@@ -12,8 +12,8 @@ class IntegrationOpenProjectCollapsibleSectionTest < System::TestCase
   def test_renders_collapsed
     visit_preview(:collapsed)
 
-    assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-down.d-none")
+    assert_selector(".octicon.octicon-chevron-up", visible: false)
+    assert_selector(".octicon.octicon-chevron-down", visible: true)
     assert_no_text("How did you hear about us?")
   end
 

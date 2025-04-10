@@ -23,22 +23,23 @@ export abstract class CollapsibleHelperElement extends HTMLElement {
   }
 
   hideAll() {
-    this.arrowDown?.classList.remove('d-none')
-    this.arrowUp?.classList.add('d-none')
+    // For whatever reason, setting `hidden` directly does not work on the SVGs
+    this.arrowDown.removeAttribute('hidden')
+    this.arrowUp.setAttribute('hidden', '')
 
     for (const el of this.collapsibleElements) {
-      el.classList.add('d-none')
+      el.hidden = true
     }
 
     this.classList.add(`${this.baseClass}--collapsed`)
   }
 
   expandAll() {
-    this.arrowDown?.classList.add('d-none')
-    this.arrowUp?.classList.remove('d-none')
+    this.arrowUp.removeAttribute('hidden')
+    this.arrowDown.setAttribute('hidden', '')
 
     for (const el of this.collapsibleElements) {
-      el.classList.remove('d-none')
+      el.hidden = false
     }
 
     this.classList.remove(`${this.baseClass}--collapsed`)

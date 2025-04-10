@@ -12,7 +12,7 @@
         <% end %>
         <%= header.with_column do %>
           <%= render(Primer::Beta::Octicon.new(icon: "chevron-up", data: { target: "collapsible-section.arrowUp" })) %>
-          <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", display: :none, data: { target: "collapsible-section.arrowDown" })) %>
+          <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", hidden: true, data: { target: "collapsible-section.arrowDown" })) %>
         <% end %>
         <%= header.with_column(flex: 1, text_align: :right) do %>
           <%= additional_information %>

@@ -9,8 +9,8 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
     render_preview(:default)
 
     assert_selector(".CollapsibleHeader", text: "Backlog")
-    assert_selector("svg.octicon.octicon-chevron-up")
-    assert_selector("svg.octicon.octicon-chevron-down.d-none")
+    assert_selector("svg.octicon.octicon-chevron-up", visible: true)
+    assert_selector("svg.octicon.octicon-chevron-down", visible: false)
   end
 
   def test_does_not_render_without_box
@@ -44,7 +44,7 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
 
     assert_selector(".CollapsibleHeader .color-fg-subtle",
                     text: "This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.")
-    assert_no_selector(".CollapsibleHeader .color-fg-subtle.d-none")
+    assert_selector(".CollapsibleHeader .color-fg-subtle", visible: true)
   end
 
   def test_renders_with_count

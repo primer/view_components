@@ -12,8 +12,8 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
   def test_renders_collapsed
     visit_preview(:collapsed, module_prefix: "border_box")
 
-    assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-down.d-none")
+    assert_selector(".octicon.octicon-chevron-up", visible: false)
+    assert_selector(".octicon.octicon-chevron-down", visible: true)
     assert_no_text("This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.")
   end
 
@@ -22,21 +22,21 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
 
     # First, make sure it is not collapsed
     assert_no_selector(".CollapsibleHeader--collapsed")
-    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-up.d-none")
+    assert_selector(".octicon.octicon-chevron-down", visible: false)
+    assert_selector(".octicon.octicon-chevron-up", visible: true)
 
     # Collapse it
     find('.CollapsibleHeader').click
 
     assert_selector(".CollapsibleHeader--collapsed")
-    assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-down.d-none")
+    assert_selector(".octicon.octicon-chevron-up", visible: false)
+    assert_selector(".octicon.octicon-chevron-down", visible: true)
 
     # Expand it again
     find('.CollapsibleHeader').click
 
     assert_no_selector(".CollapsibleHeader--collapsed")
-    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-up.d-none")
+    assert_selector(".octicon.octicon-chevron-down", visible: false)
+    assert_selector(".octicon.octicon-chevron-up", visible: true)
   end
 end
