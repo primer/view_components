@@ -10,7 +10,7 @@ module Primer
       # @label Playground
       # @param caption [String] text
       # @param show_additional_information [Boolean] toggle
-      def playground(caption: "Today", show_additional_information: false)
+      def playground(caption: "(optional)", show_additional_information: false)
         render_with_template(
           template: "primer/open_project/collapsible_section_preview/playground",
           locals: { caption: caption, show_additional_information: show_additional_information}

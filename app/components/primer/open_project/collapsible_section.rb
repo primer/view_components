@@ -2,12 +2,10 @@
 
 module Primer
   module OpenProject
-    # Add a general description of component here
-    # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
+    # A component consisting of a title and collapsible content.
+    # Clicking the title will hide the collapsible content
     class CollapsibleSection < Primer::Component
       status :open_project
-
 
       TITLE_TAG_FALLBACK = :h2
       TITLE_TAG_OPTIONS = [:h1, TITLE_TAG_FALLBACK, :h3, :h4, :h5, :h6, :span].freeze

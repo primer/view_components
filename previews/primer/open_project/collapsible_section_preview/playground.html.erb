@@ -1,5 +1,5 @@
 <%= render(Primer::OpenProject::CollapsibleSection.new) do |section| %>
-  <% section.with_title { "Wednesday 11" } %>
+  <% section.with_title { "Advanced settings" } %>
 
   <% if caption.present? %>
     <% section.with_caption { caption } %>
@@ -7,16 +7,16 @@
 
   <% if show_additional_information %>
     <% section.with_additional_information do %>
-      <%= render(Primer::Beta::Text.new) { "6h 30min" } %>
+      <%=render(Primer::Beta::Link.new(href: "#")) do |component|
+        component.with_trailing_visual_icon(icon: :"link-external")
+        "More information"
+      end %>
     <% end %>
   <% end %>
 
   <% section.with_collapsible_content do %>
-    <%= render(Primer::Beta::BorderBox.new) do |component|
-      component.with_header { "Header" }
-      component.with_body { "Body" }
-      component.with_row { "Row one" }
-      component.with_row { "Row two" }
-    end %>
+    <%= primer_form_with(url: "/foo") do |f| %>
+      <%= render(ArrayCheckBoxGroupForm.new(f)) %>
+    <% end %>
   <% end %>
 <% end %>
