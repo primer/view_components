@@ -1,7 +1,7 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
     <%= flex.with_row(mb: 3,
-                      classes: "CollapsibleSection--clickArea",
+                      classes: "CollapsibleSection--triggerArea",
                       data: { action: "click:collapsible-section#toggle" }) do %>
       <%= render(Primer::OpenProject::FlexLayout.new(display: :flex, align_items: :center)) do |header| %>
         <%= header.with_column do %>

@@ -16,10 +16,22 @@ class PrimerOpenProjectCollapsibleSectionTest < Minitest::Test
     assert_text("HIDE ME")
   end
 
-  def test_does_not_render_without_title_and_content
-    render_inline(Primer::OpenProject::CollapsibleSection.new)
+  def test_does_not_render_without_title
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::CollapsibleSection.new)
+    end
 
-    refute_selector ".CollapsibleSection"
+    assert_equal "Title must be present", err.message
+  end
+
+  def test_does_not_render_without_content
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::CollapsibleSection.new) do |component|
+        component.with_title { "Hello world" }
+      end
+    end
+
+    assert_equal "Collapsible content must be present", err.message
   end
 
   def test_renders_with_caption

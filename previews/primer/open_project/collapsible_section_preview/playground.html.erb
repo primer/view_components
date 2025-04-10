@@ -7,7 +7,7 @@
 
   <% if show_additional_information %>
     <% section.with_additional_information do %>
-      <%=render(Primer::Beta::Link.new(href: "#")) do |component|
+      <%= render(Primer::Beta::Link.new(href: "/")) do |component|
         component.with_trailing_visual_icon(icon: :"link-external")
         "More information"
       end %>

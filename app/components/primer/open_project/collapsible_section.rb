@@ -17,7 +17,7 @@ module Primer
       renders_one :title, lambda { |tag: TITLE_TAG_FALLBACK, **system_arguments, &block|
         system_arguments[:tag] = fetch_or_fallback(TITLE_TAG_OPTIONS, tag, TITLE_TAG_FALLBACK)
         system_arguments[:font_size] ||= 3
-        system_arguments[:mr] = 2
+        system_arguments[:mr] ||= 2
 
         Primer::OpenProject::Heading.new(**system_arguments, &block)
       }
@@ -27,7 +27,8 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :caption, lambda { |**system_arguments, &block|
         system_arguments[:color] ||= :subtle
-        system_arguments[:mr] = 2
+        system_arguments[:mr] ||= 2
+        system_arguments[:display] ||= [:none, :block]
 
         Primer::Beta::Text.new(**system_arguments, &block)
       }
@@ -51,7 +52,7 @@ module Primer
       def initialize(collapsed: false, **system_arguments)
         @collapsed = collapsed
 
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "collapsible-section"
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
@@ -66,7 +67,10 @@ module Primer
       private
 
       def render?
-        title? && collapsible_content?
+        raise ArgumentError, "Title must be present" unless title.present?
+        raise ArgumentError, "Collapsible content must be present" unless collapsible_content.present?
+
+        true
       end
     end
   end

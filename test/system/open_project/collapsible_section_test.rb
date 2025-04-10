@@ -22,26 +22,26 @@ class IntegrationOpenProjectCollapsibleSectionTest < System::TestCase
 
     # First, make sure it is not collapsed
     assert_no_selector(".CollapsibleSection--collapsed")
-    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-up.d-none")
+    assert_selector(".octicon.octicon-chevron-down", visible: false)
+    assert_selector(".octicon.octicon-chevron-up", visible: true)
 
     assert_text("How did you hear about us?")
 
     # Collapse it
-    find('.CollapsibleSection--clickArea').click
+    find('.CollapsibleSection--triggerArea').click
 
     assert_selector(".CollapsibleSection--collapsed")
-    assert_selector(".octicon.octicon-chevron-up.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-down.d-none")
+    assert_selector(".octicon.octicon-chevron-up", visible: false)
+    assert_selector(".octicon.octicon-chevron-down", visible: true)
 
     assert_no_text("How did you hear about us?")
 
     # Expand it again
-    find('.CollapsibleSection--clickArea').click
+    find('.CollapsibleSection--triggerArea').click
 
     assert_no_selector(".CollapsibleSection--collapsed")
-    assert_selector(".octicon.octicon-chevron-down.d-none", visible: false)
-    assert_no_selector(".octicon.octicon-chevron-up.d-none")
+    assert_selector(".octicon.octicon-chevron-down", visible: false)
+    assert_selector(".octicon.octicon-chevron-up", visible: true)
 
     assert_text("How did you hear about us?")
   end
