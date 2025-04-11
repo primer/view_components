@@ -5,7 +5,10 @@
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
   "types": "app/components/primer/primer.d.ts",
-  "repository": "opf/primer_view_components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opf/primer_view_components.git"
+  },
   "keywords": [
     "rails",
     "view_components",
