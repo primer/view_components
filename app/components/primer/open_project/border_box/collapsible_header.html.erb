@@ -1,16 +1,16 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
     <%= flex.with_row do %>
-      <%= render(Primer::Beta::Text.new(mr: 2) ) { @title } %>
-      <% if @count.present? %>
-        <%= render(Primer::Beta::Counter.new(count: @count, mr: 2, scheme: :primary)) %>
+      <%= title %>
+      <% if count? %>
+        <%= count %>
       <% end %>
       <%= render(Primer::Beta::Octicon.new(icon: "chevron-up", data: { target: "collapsible-header.arrowUp" })) %>
       <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", display: :none, data: { target: "collapsible-header.arrowDown" })) %>
     <% end %>
     <%= flex.with_row do %>
-      <% if @description.present? %>
-        <%= render(Primer::Beta::Text.new(color: :subtle, data: { target: "collapsible-header.description" }) ) { @description } %>
+      <% if description? %>
+        <%= description %>
       <% end %>
     <% end %>
   <% end %>

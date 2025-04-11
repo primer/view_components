@@ -8,11 +8,45 @@ module Primer
       class CollapsibleHeader < Primer::Component
         status :open_project
 
+        # Required title
+        #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(title:, count: nil, description: nil, collapsed: false, box:, **system_arguments)
-          @title = title
-          @count = count
-          @description = description
+        renders_one :title, lambda { |**system_arguments, &block|
+          system_arguments[:mr] ||= 2
+
+          Primer::Beta::Text.new(**system_arguments, &block)
+        }
+
+        # Optional count
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :count, lambda { |**system_arguments|
+          system_arguments[:mr] ||= 2
+          system_arguments[:scheme] ||= :primary
+
+          Primer::Beta::Counter.new(**system_arguments)
+        }
+
+        # Optional description
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :description, lambda { |**system_arguments, &block|
+          system_arguments[:color] ||= :subtle
+          system_arguments[:data] = merge_data(
+            system_arguments, {
+            data: {
+                target: "collapsible-header.description"
+              }
+            }
+          )
+
+          Primer::Beta::Text.new(**system_arguments, &block)
+        }
+
+
+        # @param collapsed [Boolean] Whether the header is collapsed on initial render.
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        def initialize(collapsed: false, box:, **system_arguments)
           @collapsed = collapsed
           @box = box
           @system_arguments = system_arguments
@@ -39,9 +73,7 @@ module Primer
         end
 
         def render?
-          raise ArgumentError, "Title must be present" unless @title.present?
-          raise ArgumentError, "Description cannot be a blank string" unless @description.present? || @description.nil?
-          raise ArgumentError, "Count cannot be a blank string" unless @count.present? || @count.nil?
+          raise ArgumentError, "Title must be present" unless title?
           raise ArgumentError, "This component must be called inside the header of a `Primer::Beta::BorderBox`" unless @box.present? && @box.is_a?(Primer::Beta::BorderBox)
 
           true
