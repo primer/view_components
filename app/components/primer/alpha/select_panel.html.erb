@@ -62,7 +62,7 @@
           )) do %>
             <div id="<%= @body_id %>">
               <% if @src.present? %>
-                <%= render(Primer::ConditionalWrapper.new(condition: @fetch_strategy == :eventually_local, tag: "include-fragment", data: { target: "select-panel.includeFragment" }, src: @src, loading: preload? ? "eager" : "lazy", accept: "text/fragment+html")) do %>
+                <%= render(Primer::ConditionalWrapper.new(condition: @fetch_strategy == :eventually_local, component: Primer::Alpha::IncludeFragment, data: { target: "select-panel.includeFragment" }, src: @src, loading: preload? ? "eager" : "lazy", accept: "text/fragment+html")) do %>
                   <%= render(Primer::BaseComponent.new(
                     tag: :div,
                     id: "#{@panel_id}-list",

@@ -21,4 +21,12 @@ class PrimerConditionalWrapperTest < Minitest::Test
     refute_selector ".foo .inner"
     assert_selector ".inner", text: "Some content"
   end
+
+  def test_wraps_content_in_custom_component
+    render_inline(Primer::ConditionalWrapper.new(condition: true, component: Primer::Alpha::IncludeFragment, classes: "foo")) do |component|
+      component.content_tag(:span, class: "inner") { "Some content" }
+    end
+
+    assert_selector "include-fragment.foo .inner", text: "Some content"
+  end
 end
