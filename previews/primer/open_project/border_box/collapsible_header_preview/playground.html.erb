@@ -2,8 +2,8 @@
   <% component.with_header do %>
     <%= render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component,
                                                                      collapsed: collapsed)) do |header| %>
-      <% header.with_title(font_weight: :bold) { title } %>
-      <% header.with_count(scheme: :primary, count: count) %>
+      <% header.with_title { title } %>
+      <% header.with_count(count: count) %>
       <% header.with_description { description } %>
     <% end %>
   <% end %>

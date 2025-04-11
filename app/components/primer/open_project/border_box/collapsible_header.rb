@@ -22,6 +22,7 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :count, lambda { |**system_arguments|
           system_arguments[:mr] ||= 2
+          system_arguments[:scheme] ||= :primary
 
           Primer::Beta::Counter.new(**system_arguments)
         }
