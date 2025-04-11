@@ -8,6 +8,10 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::OpenProject::CollapsibleSection, {}, proc { |component|
+      component.with_title { "Hello world" }
+      component.with_collapsible_content { "Collapse me!" }
+    }],
     [Primer::OpenProject::BorderBox::CollapsibleHeader, { box: Primer::Beta::BorderBox.new }, proc { |component|
       component.with_title { "Hello world" }
     }],

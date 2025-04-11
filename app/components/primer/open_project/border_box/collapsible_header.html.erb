@@ -6,7 +6,7 @@
         <%= count %>
       <% end %>
       <%= render(Primer::Beta::Octicon.new(icon: "chevron-up", data: { target: "collapsible-header.arrowUp" })) %>
-      <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", display: :none, data: { target: "collapsible-header.arrowDown" })) %>
+      <%= render(Primer::Beta::Octicon.new(icon: "chevron-down", hidden: true, data: { target: "collapsible-header.arrowDown" })) %>
     <% end %>
     <%= flex.with_row do %>
       <% if description? %>

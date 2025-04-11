@@ -2,41 +2,47 @@
 
 require "system/test_case"
 
-class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
+class IntegrationOpenProjectCollapsibleSectionTest < System::TestCase
   def test_renders_component
-    visit_preview(:default, module_prefix: "border_box")
+    visit_preview(:default)
 
-    assert_selector(".CollapsibleHeader")
+    assert_selector(".CollapsibleSection")
   end
 
   def test_renders_collapsed
-    visit_preview(:collapsed, module_prefix: "border_box")
+    visit_preview(:collapsed)
 
     assert_selector(".octicon.octicon-chevron-up", visible: false)
     assert_selector(".octicon.octicon-chevron-down", visible: true)
-    assert_no_text("This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.")
+    assert_no_text("How did you hear about us?")
   end
 
   def test_click_behaviour
-    visit_preview(:default, module_prefix: "border_box")
+    visit_preview(:default)
 
     # First, make sure it is not collapsed
-    assert_no_selector(".CollapsibleHeader--collapsed")
+    assert_no_selector(".CollapsibleSection--collapsed")
     assert_selector(".octicon.octicon-chevron-down", visible: false)
     assert_selector(".octicon.octicon-chevron-up", visible: true)
 
-    # Collapse it
-    find('.CollapsibleHeader').click
+    assert_text("How did you hear about us?")
 
-    assert_selector(".CollapsibleHeader--collapsed")
+    # Collapse it
+    find('.CollapsibleSection--triggerArea').click
+
+    assert_selector(".CollapsibleSection--collapsed")
     assert_selector(".octicon.octicon-chevron-up", visible: false)
     assert_selector(".octicon.octicon-chevron-down", visible: true)
 
-    # Expand it again
-    find('.CollapsibleHeader').click
+    assert_no_text("How did you hear about us?")
 
-    assert_no_selector(".CollapsibleHeader--collapsed")
+    # Expand it again
+    find('.CollapsibleSection--triggerArea').click
+
+    assert_no_selector(".CollapsibleSection--collapsed")
     assert_selector(".octicon.octicon-chevron-down", visible: false)
     assert_selector(".octicon.octicon-chevron-up", visible: true)
+
+    assert_text("How did you hear about us?")
   end
 end

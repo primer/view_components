@@ -1,0 +1,22 @@
+<%= render(Primer::OpenProject::CollapsibleSection.new) do |section| %>
+  <% section.with_title { "Advanced settings" } %>
+
+  <% if caption.present? %>
+    <% section.with_caption { caption } %>
+  <% end %>
+
+  <% if show_additional_information %>
+    <% section.with_additional_information do %>
+      <%= render(Primer::Beta::Link.new(href: "/")) do |component|
+        component.with_trailing_visual_icon(icon: :"link-external")
+        "More information"
+      end %>
+    <% end %>
+  <% end %>
+
+  <% section.with_collapsible_content do %>
+    <%= primer_form_with(url: "/foo") do |f| %>
+      <%= render(ArrayCheckBoxGroupForm.new(f)) %>
+    <% end %>
+  <% end %>
+<% end %>
