@@ -14,7 +14,6 @@ module Primer
       end
 
       # @label Default options
-      # @snapshot
       def default
         render(Primer::Alpha::IncludeFragment.new(loading: :eager, src: UrlHelpers.include_fragment_deferred_path)) { "Loading..." }
       end

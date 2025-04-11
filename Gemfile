@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gemspec
-rails_version = (ENV["RAILS_VERSION"] || "7.1.3.2").to_s
+rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "rack-cors"
 gem "rake", "~> 13.2"
@@ -33,7 +33,7 @@ gem "puma", "~> 6.4.2"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.3.5" unless rails_version.to_f < 7
+gem "lookbook", "~> 2.3.8"
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 gem "kramdown", "~> 2.4"
@@ -49,7 +49,8 @@ end
 # development dependencies
 group :development do
   gem "allocation_stats", "~> 0.1"
-  gem "benchmark-ips", "~> 2.13.0"
+  gem "benchmark"
+  gem "benchmark-ips", "~> 2"
   gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.15"
   gem "debug"
@@ -58,7 +59,6 @@ group :development do
   gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
-  gem "pry"
   gem "rubocop"
   gem "rubocop-github", "~> 0.20.0"
   gem "rubocop-performance"
@@ -71,5 +71,5 @@ group :development do
   gem "sprockets-rails"
   gem "thor"
   gem "timecop"
-  gem "yard", "~> 0.9.36"
+  gem "yard", "~> 0.9.37"
 end
