@@ -1574,6 +1574,19 @@
   "Primer::OpenProject::BorderGrid::Cell": {
     "GeneratedSlotMethods": "Primer::OpenProject::BorderGrid::Cell::GeneratedSlotMethods"
   },
+  "Primer::OpenProject::CollapsibleSection": {
+    "GeneratedSlotMethods": "Primer::OpenProject::CollapsibleSection::GeneratedSlotMethods",
+    "TITLE_TAG_FALLBACK": "h2",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "span"
+    ]
+  },
   "Primer::OpenProject::DangerDialog": {
     "ConfirmationCheckBox": "Primer::OpenProject::DangerDialog::ConfirmationCheckBox",
     "FormWrapper": "Primer::OpenProject::DangerDialog::FormWrapper",

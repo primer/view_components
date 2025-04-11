@@ -120,6 +120,7 @@
   "Primer::OpenProject::BorderBox::CollapsibleHeader": "open_project",
   "Primer::OpenProject::BorderGrid": "open_project",
   "Primer::OpenProject::BorderGrid::Cell": "open_project",
+  "Primer::OpenProject::CollapsibleSection": "open_project",
   "Primer::OpenProject::DangerDialog": "open_project",
   "Primer::OpenProject::DangerDialog::ConfirmationCheckBox": "open_project",
   "Primer::OpenProject::DangerDialog::FormWrapper": "open_project",

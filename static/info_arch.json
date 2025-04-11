@@ -17824,6 +17824,163 @@
     ]
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::CollapsibleSection",
+    "description": "A component consisting of a title and collapsible content.\nClicking the title will hide the collapsible content",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::CollapsibleSection",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectCollapsibleSection",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/collapsible_section.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/collapsible_section/default/",
+    "parameters": [
+      {
+        "name": "collapsed",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the section is collapsed on initial render."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "title",
+        "description": "Required Title",
+        "parameters": [
+          {
+            "name": "tag",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "Customize the element type of the rendered title container."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "description": "Optional caption",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "additional_information",
+        "description": "Optional right-side content",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      },
+      {
+        "name": "collapsible_content",
+        "description": "Required collapsible content",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/collapsible_section/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/with_additional_information",
+        "name": "with_additional_information",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/with_caption",
+        "name": "with_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/collapsed",
+        "name": "collapsed",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::DangerDialog",
     "description": "A pre-configured dialog for destructive/\"potentially dangerous\" actions",
     "accessibility_docs": null,

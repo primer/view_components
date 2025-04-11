@@ -5181,6 +5181,28 @@
     ]
   },
   {
+    "component": "OpenProject::CollapsibleSection",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectCollapsibleSection",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/collapsible_section.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/collapsible_section/default/",
+    "parameters": [
+      {
+        "name": "collapsed",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the section is collapsed on initial render."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "OpenProject::DangerDialog",
     "status": "open_project",
     "a11y_reviewed": false,

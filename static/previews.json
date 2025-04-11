@@ -3044,6 +3044,79 @@
     ]
   },
   {
+    "name": "collapsible_section",
+    "component": "OpenProject::CollapsibleSection",
+    "status": "open_project",
+    "lookup_path": "primer/open_project/collapsible_section",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/collapsible_section/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/default",
+        "name": "default",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/with_additional_information",
+        "name": "with_additional_information",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/with_caption",
+        "name": "with_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/collapsible_section/collapsed",
+        "name": "collapsed",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "counter",
     "component": "Counter",
     "status": "beta",
