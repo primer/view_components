@@ -7,6 +7,7 @@ module Alpha
     include Primer::ClipboardTestHelpers
     include Primer::JsTestHelpers
     include Primer::KeyboardTestHelpers
+    include Primer::JsonResponseTestHelpers
 
     ###### HELPER METHODS ######
 
@@ -409,9 +410,8 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "fast_forward", response["value"]
+      assert_json_response
+      assert_equal "fast_forward", json_response["value"]
     end
 
     def test_single_select_form_uses_label_if_no_value_provided
@@ -422,9 +422,8 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "Resolve", response["value"]
+      assert_json_response
+      assert_equal "Resolve", json_response["value"]
     end
 
     def test_multiple_select_form_submission
@@ -439,11 +438,10 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      assert_json_response
 
       # "ours" is pre-selected
-      assert_equal %w[fast_forward recursive ours], response["value"]
+      assert_equal %w[fast_forward recursive ours], json_response["value"]
     end
 
     def test_multiple_select_form_uses_label_if_no_value_provided
@@ -458,11 +456,10 @@ module Alpha
 
       find("input[type=submit]").click
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
+      assert_json_response
 
       # "ours" is pre-selected
-      assert_equal %w[fast_forward ours Resolve], response["value"]
+      assert_equal %w[fast_forward ours Resolve], json_response["value"]
     end
 
     def test_multiple_select_does_not_set_dynamic_label_for_preselected_item
@@ -476,8 +473,8 @@ module Alpha
       click_on_invoker_button
       click_on_fourth_item
 
-      response = JSON.parse(find("pre").text)
-      assert_equal "bar", response["value"]
+      assert_json_response
+      assert_equal "bar", json_response["value"]
     end
 
     def test_single_select_items_can_submit_forms
@@ -486,9 +483,8 @@ module Alpha
       click_on_invoker_button
       click_on_first_item
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "group-by-repository", response["value"]
+      assert_json_response
+      assert_equal "group-by-repository", json_response["value"]
     end
 
     def test_single_select_items_can_submit_forms_on_enter
@@ -499,9 +495,8 @@ module Alpha
       # "click" first item
       keyboard.type(:enter)
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "group-by-repository", response["value"]
+      assert_json_response
+      assert_equal "group-by-repository", json_response["value"]
     end
 
     def test_single_select_items_can_submit_forms_on_keydown_space
@@ -512,9 +507,8 @@ module Alpha
       # "click" first item
       keyboard.type(:space)
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "group-by-repository", response["value"]
+      assert_json_response
+      assert_equal "group-by-repository", json_response["value"]
     end
 
     def test_single_select_items_can_submit_forms_with_multiple_fields
@@ -523,9 +517,8 @@ module Alpha
       click_on_invoker_button
       click_on_first_item
 
-      # for some reason the JSON response is wrapped in HTML, I have no idea why
-      response = JSON.parse(find("pre").text)
-      assert_equal "query", response.dig("other_params", "query")
+      assert_json_response
+      assert_equal "query", json_response.dig("other_params", "query")
     end
 
     def test_deferred_loading
