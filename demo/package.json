@@ -10,7 +10,7 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "vite": "^6.2.5",
+    "vite": "^6.2.6",
     "vite-plugin-ruby": "^5.1.1"
   },
   "scripts": {
