@@ -1,8 +1,8 @@
 import {controller} from '@github/catalyst'
-import {CollapsibleHelperElement} from '../collapsible_helper'
+import {CollapsibleElement} from '../collapsible'
 
 @controller
-class CollapsibleHeaderElement extends CollapsibleHelperElement {
+class CollapsibleHeaderElement extends CollapsibleElement {
   connectedCallback() {
     if (!this.closest('.Box')) {
       throw new Error('No surrounding BorderBox found')

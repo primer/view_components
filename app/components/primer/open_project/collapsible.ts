@@ -1,9 +1,9 @@
 import {attr, target, targets} from '@github/catalyst'
 
 // eslint-disable-next-line custom-elements/expose-class-on-global
-export abstract class CollapsibleHelperElement extends HTMLElement {
-  @target arrowDown: HTMLElement
-  @target arrowUp: HTMLElement
+export abstract class CollapsibleElement extends HTMLElement {
+  @target arrowDown: Element
+  @target arrowUp: Element
   @targets collapsibleElements: HTMLElement[]
 
   @attr collapsed = false

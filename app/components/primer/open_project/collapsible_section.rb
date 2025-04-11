@@ -47,7 +47,7 @@ module Primer
         Primer::BaseComponent.new(tag: :div, **system_arguments)
       }
 
-
+      # @param collapsed [Boolean] Whether the section is collapsed on initial render.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(collapsed: false, **system_arguments)
         @collapsed = collapsed

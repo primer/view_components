@@ -1,7 +1,7 @@
 <%= render(Primer::OpenProject::CollapsibleSection.new(collapsed: true)) do |section| %>
   <% section.with_title { "Final question" } %>
   <% section.with_collapsible_content do %>
-    <%= render(Primer::Alpha::Banner.new(mb: 2)) { "Please take one minute time to answer this question" } %>
+    <%= render(Primer::Alpha::Banner.new(mb: 3)) { "Please take one minute time to answer this question" } %>
     <%= primer_form_with(url: "/foo") do |f| %>
       <%= render(RadioButtonGroupForm.new(f)) %>
     <% end %>
