@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.61.0
+
+### Minor Changes
+
+- [#271](https://github.com/opf/primer_view_components/pull/271) [`48864f0`](https://github.com/opf/primer_view_components/commit/48864f03e3cae09c10913b3a54242f0ea53f9ef6) Thanks [@mrmir](https://github.com/mrmir)! - Update CollapsibleHeader to use slots for greater flexibility
+
+- [#270](https://github.com/opf/primer_view_components/pull/270) [`2d8bb5b`](https://github.com/opf/primer_view_components/commit/2d8bb5bf226f935caaadc2ef16f2a37d279d1acb) Thanks [@HDinger](https://github.com/HDinger)! - Add a CollapsibleSection component
+
 ## 0.60.0
 
 ### Minor Changes
