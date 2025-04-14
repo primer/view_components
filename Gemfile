@@ -28,7 +28,7 @@ end
 # rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
-gem "puma", "~> 6.4.2"
+gem "puma", "~> 6.6.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
