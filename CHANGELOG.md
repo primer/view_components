@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.61.1
+
+### Patch Changes
+
+- [#276](https://github.com/opf/primer_view_components/pull/276) [`6026f93`](https://github.com/opf/primer_view_components/commit/6026f93ba8dc9e93eca7ecd1f7b1374a58c1e677) Thanks [@HDinger](https://github.com/HDinger)! - Stabilise initally collapsed state for CollapsibleSection and CollapsibleHeader
+
+- [#275](https://github.com/opf/primer_view_components/pull/275) [`40d6367`](https://github.com/opf/primer_view_components/commit/40d6367377c104c814510ea931aa73653760e56c) Thanks [@HDinger](https://github.com/HDinger)! - Avoid useless space below collapsed CollapsibleSection
+
 ## 0.61.0
 
 ### Minor Changes
