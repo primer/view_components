@@ -302,6 +302,38 @@ module Primer
       def with_header_filter
         render_with_template(locals: {})
       end
+
+      # @label With custom label for close button of header
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      # @param close_label [String] text
+      def with_header_close_button_label(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true, close_label: "Close me!")
+        render_with_template(locals: {
+          title: title,
+          subtitle: subtitle,
+          button_text: button_text,
+          show_divider: show_divider,
+          close_label: close_label
+        })
+      end
+
+      # @label Without custom label for close button of header
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      def without_header_close_button_label(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+        render_with_template(locals: {
+          title: title,
+          subtitle: subtitle,
+          button_text: button_text,
+          show_divider: show_divider
+        })
+      end
     end
   end
 end
