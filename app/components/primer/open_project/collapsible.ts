@@ -24,8 +24,8 @@ export abstract class CollapsibleElement extends HTMLElement {
 
   hideAll() {
     // For whatever reason, setting `hidden` directly does not work on the SVGs
-    this.arrowDown.removeAttribute('hidden')
-    this.arrowUp.setAttribute('hidden', '')
+    this.arrowDown?.removeAttribute('hidden')
+    this.arrowUp?.setAttribute('hidden', '')
 
     for (const el of this.collapsibleElements) {
       el.hidden = true
@@ -35,8 +35,8 @@ export abstract class CollapsibleElement extends HTMLElement {
   }
 
   expandAll() {
-    this.arrowUp.removeAttribute('hidden')
-    this.arrowDown.setAttribute('hidden', '')
+    this.arrowUp?.removeAttribute('hidden')
+    this.arrowDown?.setAttribute('hidden', '')
 
     for (const el of this.collapsibleElements) {
       el.hidden = false

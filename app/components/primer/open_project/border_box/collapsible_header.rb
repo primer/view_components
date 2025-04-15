@@ -39,6 +39,7 @@ module Primer
               }
             }
           )
+          system_arguments[:hidden] = @collapsed
 
           Primer::Beta::Text.new(**system_arguments, &block)
         }
