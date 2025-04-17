@@ -1,10 +1,11 @@
 - heading "Feedback" [level=2]
-- paragraph: Please take one minute time to answer this question
-- radiogroup "How did you hear about us?":
-  - text: How did you hear about us? We love our listeners
-  - radio "Online advertisement": online
-  - text: Online advertisement Facebook maybe?
-  - radio "Radio advertisement": radio
-  - text: Radio advertisement We love us some NPR
-  - radio "From a friend": friend
-  - text: From a friend Wow, what a good person
+- region "Feedback":
+  - paragraph: Please take one minute time to answer this question
+  - radiogroup "How did you hear about us?":
+    - text: How did you hear about us? We love our listeners
+    - radio "Online advertisement": online
+    - text: Online advertisement Facebook maybe?
+    - radio "Radio advertisement": radio
+    - text: Radio advertisement We love us some NPR
+    - radio "From a friend": friend
+    - text: From a friend Wow, what a good person
