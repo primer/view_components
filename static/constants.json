@@ -391,6 +391,9 @@
   "Primer::Alpha::Image": {
     "GeneratedSlotMethods": "Primer::Alpha::Image::GeneratedSlotMethods"
   },
+  "Primer::Alpha::IncludeFragment": {
+    "GeneratedSlotMethods": "Primer::Alpha::IncludeFragment::GeneratedSlotMethods"
+  },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
     "FIRST_IN_SOURCE_OPTIONS": [

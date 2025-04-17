@@ -1358,6 +1358,34 @@
     ]
   },
   {
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "IncludeFragment",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/include_fragment.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/include_fragment/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL from which to retrieve an HTML element fragment."
+      },
+      {
+        "name": "loading",
+        "type": "Symbol",
+        "default": "`:eager`",
+        "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Layout",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -4949,13 +4977,19 @@
         "name": "condition",
         "type": "Boolean",
         "default": "N/A",
-        "description": "Whether or not to wrap the content in a `Primer::BaseComponent`."
+        "description": "Whether or not to wrap the content in a component."
+      },
+      {
+        "name": "component",
+        "type": "Class",
+        "default": "`Primer::BaseComponent`",
+        "description": "The component class to use as a wrapper, defaults to `Primer::BaseComponent`"
       },
       {
         "name": "base_component_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments to pass to `Primer::BaseComponent`."
+        "description": "The arguments to pass to the component."
       }
     ]
   },

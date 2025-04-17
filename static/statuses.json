@@ -30,6 +30,7 @@
   "Primer::Alpha::HellipButton": "alpha",
   "Primer::Alpha::HiddenTextExpander": "alpha",
   "Primer::Alpha::Image": "alpha",
+  "Primer::Alpha::IncludeFragment": "alpha",
   "Primer::Alpha::Layout": "alpha",
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",

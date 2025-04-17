@@ -4683,6 +4683,40 @@
     ]
   },
   {
+    "name": "include_fragment",
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/include_fragment",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/include_fragment/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/include_fragment/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "input_group",
     "component": "OpenProject::InputGroup",
     "status": "open_project",
