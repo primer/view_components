@@ -150,6 +150,18 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load })
       end
 
+      # @label No filter
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      # @param show_filter toggle
+      def no_filter(open_on_load: false, show_filter: false)
+        render_with_template(template: "primer/alpha/select_panel_preview/local_fetch", locals: {
+          open_on_load: open_on_load,
+          show_filter: show_filter
+        })
+      end
+
       # @!group Dynamic label
 
       # @label With dynamic label
