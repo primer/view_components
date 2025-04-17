@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.63.0
+
+### Minor Changes
+
+- [#3428](https://github.com/primer/view_components/pull/3428) [`1ab1b06`](https://github.com/opf/primer_view_components/commit/1ab1b06509763ea60fc89770754edf06229b4f63) Thanks [@manuelpuyol](https://github.com/manuelpuyol)! - Create IncludeFragment component. Allow ConditionalWrapper to render components other than BaseComponent
+
+### Patch Changes
+
+- [#3429](https://github.com/primer/view_components/pull/3429) [`6ea9fd5`](https://github.com/opf/primer_view_components/commit/6ea9fd5dc90c1964ab3882faf1733c6b49c80e21) Thanks [@manuelpuyol](https://github.com/manuelpuyol)! - Create IncludeFragment linter to migrate <include-fragment> uses
+
 ## 0.62.0
 
 ### Minor Changes
