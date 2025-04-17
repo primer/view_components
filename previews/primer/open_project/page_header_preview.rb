@@ -62,7 +62,7 @@ module Primer
         breadcrumb_items = [{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]
         render(Primer::OpenProject::PageHeader.new(state: :edit)) do |header|
           header.with_title do |title|
-            title.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar")
+            title.with_editable_form(update_path: "/foo", cancel_path: "/bar")
             "Hello"
           end
           header.with_breadcrumbs(breadcrumb_items)
