@@ -57,7 +57,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.1.9)
-    bootsnap (1.18.3)
+    bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
     capybara (3.40.0)
@@ -77,7 +77,7 @@ GEM
     crass (1.0.6)
     css_parser (1.21.1)
       addressable
-    cssbundling-rails (1.4.1)
+    cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
     cuprite (0.15)
       capybara (~> 3.0)
@@ -145,9 +145,9 @@ GEM
     minitest (5.25.5)
     mocha (2.3.0)
       ruby2_keywords (>= 0.0.5)
-    msgpack (1.7.2)
+    msgpack (1.8.0)
     mutex_m (0.3.0)
-    nio4r (2.7.3)
+    nio4r (2.7.4)
     nokogiri (1.18.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -165,10 +165,10 @@ GEM
       date
       stringio
     public_suffix (5.0.5)
-    puma (6.4.2)
+    puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.12)
+    rack (3.1.13)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-proxy (0.7.7)
@@ -206,7 +206,7 @@ GEM
     regexp_parser (2.9.2)
     reline (0.6.1)
       io-console (~> 0.5)
-    rexml (3.3.7)
+    rexml (3.4.1)
     rouge (4.5.1)
     rubocop (1.66.1)
       json (~> 2.3)
@@ -236,10 +236,11 @@ GEM
       rubocop (>= 1.0.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    rubyzip (2.3.2)
+    rubyzip (2.4.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.20.1)
+    selenium-webdriver (4.31.0)
       base64 (~> 0.2)
+      logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -290,7 +291,7 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.9.1)
-    websocket (1.2.10)
+    websocket (1.2.11)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -323,7 +324,7 @@ DEPENDENCIES
   matrix (~> 0.4.2)
   mocha
   openproject-primer_view_components!
-  puma (~> 6.4.2)
+  puma (~> 6.6.0)
   rack-cors
   railties (= 8.0.2)
   rake (~> 13.2)
@@ -332,7 +333,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rails-accessibility (~> 1.0)
-  selenium-webdriver (~> 4.18)
+  selenium-webdriver (~> 4.31)
   simplecov (~> 0.22.0)
   simplecov-console (~> 0.9.1)
   sourcemap (~> 0.1)

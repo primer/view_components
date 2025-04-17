@@ -61,6 +61,7 @@ class PrimerComponentTest < Minitest::Test
       component.with_title { "Foo" }
       component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
     }],
+    [Primer::Alpha::IncludeFragment, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
       component.with_item_icon_button(icon: :pencil, label: "Edit")
