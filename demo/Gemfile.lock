@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    openproject-primer_view_components (0.62.0)
+    openproject-primer_view_components (0.63.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       openproject-octicons (>= 19.23.0)
