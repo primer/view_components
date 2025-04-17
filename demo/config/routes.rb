@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     post "/action_menu/form_action", to: "action_menu#form_action", as: :action_menu_form_action
     get "/action_menu/deferred", to: "action_menu#deferred", as: :action_menu_deferred
     get "/action_menu/deferred_preload", to: "action_menu#deferred_preload", as: :action_menu_deferred_preload
+
+    get "/include_fragment/deferred", to: "include_fragment#deferred", as: :include_fragment_deferred
   end
 
   scope path: Rails.env.production? ? "/view-components/lookbook/" : "/lookbook" do

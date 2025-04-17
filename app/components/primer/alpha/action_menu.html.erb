@@ -3,7 +3,7 @@
     <%= render(@overlay) do |overlay| %>
       <% overlay.with_body(padding: :none) do %>
         <% if @src.present? %>
-          <include-fragment src="<%= @src %>" loading="<%= preload? ? "eager" : "lazy" %>" data-target="action-menu.includeFragment">
+          <%= render(Primer::Alpha::IncludeFragment.new(src: @src, loading: preload? ? :eager : :lazy, "data-target": "action-menu.includeFragment")) do %>
             <%= render(Primer::Alpha::ActionMenu::List.new(id: "#{@menu_id}-list", menu_id: @menu_id)) do |list| %>
               <% list.with_item(
                 aria: { disabled: true },
@@ -18,7 +18,7 @@
                 <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }) %>
               <% end %>
             <% end %>
-          </include-fragment>
+          <% end %>
         <% else %>
           <%= render(@list) %>
         <% end %>
