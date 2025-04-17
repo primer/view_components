@@ -1,7 +1,7 @@
 <%= render Primer::OpenProject::PageHeader.new(state: in_edit_state ? :edit : :show) do |header| %>
   <%= header.with_title(variant: variant) do |t| %>
     <% if in_edit_state %>
-      <%= t.with_editable_form(model: nil, update_path: "/foo", cancel_path: "/bar") %>
+      <%= t.with_editable_form(update_path: "/foo", cancel_path: "/bar") %>
     <% end %>
     <%= title %>
   <% end %>
