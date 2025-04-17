@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.42.1
+
+### Patch Changes
+
+- [#3447](https://github.com/primer/view_components/pull/3447) [`c2b88cb`](https://github.com/primer/view_components/commit/c2b88cb1d75e86fc0b410e3fc597e48326f471a5) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Add a new custom label for close button in dialog header
+
 ## 0.42.0
 
 ### Minor Changes
