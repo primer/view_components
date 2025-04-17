@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.62.0
+
+### Minor Changes
+
+- [#3433](https://github.com/primer/view_components/pull/3433) [`1b583f4`](https://github.com/opf/primer_view_components/commit/1b583f449b5d433e9db006d43b6ac680f9a07b3b) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Clean up warnings when running tests, limit Ruby support to >= 3.2 and Rails support to >= 7.1.
+
+- [#3406](https://github.com/primer/view_components/pull/3406) [`5176617`](https://github.com/opf/primer_view_components/commit/5176617e71cee7fcd14bfaddd6fa18910d4fbc79) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Use auto-check-element v6, which only validates on blur vs. every keystroke.
+
 ## 0.61.1
 
 ### Patch Changes
