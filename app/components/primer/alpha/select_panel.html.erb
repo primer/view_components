@@ -50,7 +50,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <%= render Primer::Alpha::Dialog::Body.new(mt: show_filter? ? 0 : 2, p: 0) do %>
+      <%= render Primer::Alpha::Dialog::Body.new(p: 0) do %>
         <focus-group direction="vertical" mnemonics retain>
           <live-region data-target="select-panel.liveRegion"></live-region>
           <%= render(Primer::BaseComponent.new(
