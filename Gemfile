@@ -36,7 +36,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "lookbook", "~> 2.3.8"
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
-gem "kramdown", "~> 2.4"
+gem "kramdown", "~> 2.5"
 gem "sourcemap", "~> 0.1"
 
 gem "cssbundling-rails", "~> 1.4"

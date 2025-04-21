@@ -115,8 +115,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.7.2)
-    kramdown (2.4.0)
-      rexml
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -318,7 +318,7 @@ DEPENDENCIES
   debug
   erb_lint (~> 0.6)
   erblint-github (~> 1.0)
-  kramdown (~> 2.4)
+  kramdown (~> 2.5)
   listen (~> 3.9)
   lookbook (~> 2.3.8)
   matrix (~> 0.4.2)
