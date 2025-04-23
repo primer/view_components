@@ -34,6 +34,12 @@ class PrimerAlphaIncludeFragmentTest < Minitest::Test
     assert_selector("include-fragment[src='/some/path']")
   end
 
+  def test_renders_accept
+    render_inline(Primer::Alpha::IncludeFragment.new(accept: "text/fragment+html"))
+
+    assert_selector("include-fragment[accept='text/fragment+html']")
+  end
+
   def test_renders_with_nonce
     Primer::CurrentAttributes.nonce = "nonce-value"
     render_inline(Primer::Alpha::IncludeFragment.new)

@@ -13,12 +13,14 @@ module Primer
 
       # @param src [String] The URL  from which to retrieve an HTML element fragment.
       # @param loading [Symbol] <%= one_of([:lazy, :eager]) %>
+      # @param accept [String] What to send as the Accept header.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src: nil, loading: nil, **system_arguments)
+      def initialize(src: nil, loading: nil, accept: nil, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = "include-fragment"
         @system_arguments[:loading] = loading
         @system_arguments[:src] = src
+        @system_arguments[:accept] = accept if accept
 
         if loading
           @system_arguments[:loading] = fetch_or_fallback(ALLOWED_LOADING_VALUES, loading.to_sym, DEFAULT_LOADING)
