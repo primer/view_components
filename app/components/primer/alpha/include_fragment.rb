@@ -21,7 +21,7 @@ module Primer
         @system_arguments[:src] = src
 
         if loading
-          @system_arguments[:loading] = fetch_or_fallback(ALLOWED_LOADING_VALUES, loading, DEFAULT_LOADING)
+          @system_arguments[:loading] = fetch_or_fallback(ALLOWED_LOADING_VALUES, loading.to_sym, DEFAULT_LOADING)
         end
 
         if Primer::CurrentAttributes.nonce
