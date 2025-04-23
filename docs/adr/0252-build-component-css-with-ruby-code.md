@@ -1,4 +1,4 @@
-# 252. Build component css with ruby code
+# Build component css with ruby code
 
 Date: 2022-08-17
 
