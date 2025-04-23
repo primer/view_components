@@ -4,7 +4,8 @@ Date: 2022-04-12
 
 ## Status
 
-Accepted and adopted
+Status: Accepted ✅\
+Implementation: Adopted ✅
 
 ## Context
 
