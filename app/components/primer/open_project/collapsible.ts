@@ -10,7 +10,7 @@ export abstract class CollapsibleElement extends HTMLElement {
   @attr collapsed = false
 
   connectedCallback() {
-    this.triggerElement.addEventListener('keydown', (event) => {
+    this.triggerElement.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault()
         this.toggle()
