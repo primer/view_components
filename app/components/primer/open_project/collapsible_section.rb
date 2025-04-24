@@ -16,7 +16,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :title, lambda { |tag: TITLE_TAG_FALLBACK, **system_arguments, &block|
         system_arguments[:tag] = fetch_or_fallback(TITLE_TAG_OPTIONS, tag, TITLE_TAG_FALLBACK)
-        system_arguments[:id] = @title_id
         system_arguments[:font_size] ||= 3
         system_arguments[:mr] ||= 2
 

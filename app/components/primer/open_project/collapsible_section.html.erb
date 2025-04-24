@@ -1,6 +1,9 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
     <%= flex.with_row(classes: "CollapsibleSection--triggerArea",
+                      id: @title_id,
+                      tabindex: 0,
+                      role: "button",
                       data: {
                         action: "click:collapsible-section#toggle",
                         target: "collapsible-section.triggerElement"
