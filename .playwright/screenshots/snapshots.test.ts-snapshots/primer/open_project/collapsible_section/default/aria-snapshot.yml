@@ -1,4 +1,5 @@
-- heading "Feedback" [level=2]
+- button "Feedback" [expanded]:
+  - heading "Feedback" [level=2]
 - region "Feedback":
   - paragraph: Please take one minute time to answer this question
   - radiogroup "How did you hear about us?":
