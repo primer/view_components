@@ -4,8 +4,10 @@ Date: 2021-02-19
 
 ## Status
 
-Status: Accepted ✅\
-Implementation: Adopted ✅
+| Stage    | State      |
+| -------- | ----------- |
+| Status | Accepted ✅ |
+| Implementation | Adopted ✅ |
 
 ## Context
 
