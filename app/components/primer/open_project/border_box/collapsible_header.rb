@@ -34,9 +34,10 @@ module Primer
           system_arguments[:color] ||= :subtle
           system_arguments[:data] = merge_data(
             system_arguments, {
-            data: {
-                targets: "collapsible-header.collapsibleElements"
-              }
+            role: "region",
+            id: @content_id,
+            data: { targets: "collapsible-header.collapsibleElements" },
+            aria: { labelledby: @title_id }
             }
           )
           system_arguments[:hidden] = @collapsed
@@ -44,25 +45,22 @@ module Primer
           Primer::Beta::Text.new(**system_arguments, &block)
         }
 
-
+        # @param id [String] The unique ID of the collapsible header.
         # @param collapsed [Boolean] Whether the header is collapsed on initial render.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(collapsed: false, box:, **system_arguments)
+        def initialize(id: self.class.generate_id, collapsed: false, box:, **system_arguments)
           @collapsed = collapsed
           @box = box
+          @header_id = id
+          @title_id = "#{@header_id}-title"
+          @content_id = "#{@header_id}-content"
           @system_arguments = system_arguments
-
+          @system_arguments[:id] = @header_id
           @system_arguments[:tag] = "collapsible-header"
           @system_arguments[:classes] = class_names(
             system_arguments[:classes],
             "CollapsibleHeader",
             "CollapsibleHeader--collapsed" => @collapsed
-          )
-          @system_arguments[:data] = merge_data(
-            @system_arguments, {
-            data: {
-              action: "click:collapsible-header#toggle"
-            } }
           )
           @system_arguments[:data][:collapsed] = true if @collapsed
         end

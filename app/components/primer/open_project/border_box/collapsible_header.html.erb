@@ -1,5 +1,18 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
+  <%= render(Primer::OpenProject::FlexLayout.new(
+    data: {
+      target: "collapsible-header.triggerElement",
+      action: "click:collapsible-header#toggle"
+    },
+    tabindex: 0,
+    role: "button",
+    id: @title_id,
+    aria: {
+      expanded: !@collapsed,
+      controls: @content_id
+    },
+    classes: "collapsible-header--triggerArea"
+  )) do |flex| %>
     <%= flex.with_row do %>
       <%= title %>
       <% if count? %>
