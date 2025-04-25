@@ -10,10 +10,6 @@ export abstract class CollapsibleElement extends HTMLElement {
   @attr collapsed = false
 
   connectedCallback() {
-    if (!this.triggerElement) {
-      throw new Error("No trigger element found");
-    }
-
     this.triggerElement.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault()

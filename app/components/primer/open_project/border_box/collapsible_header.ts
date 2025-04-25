@@ -4,6 +4,7 @@ import {CollapsibleElement} from '../collapsible'
 @controller
 class CollapsibleHeaderElement extends CollapsibleElement {
   connectedCallback() {
+    super.connectedCallback()
     if (!this.closest('.Box')) {
       throw new Error('No surrounding BorderBox found')
     }
