@@ -1,7 +1,2 @@
-- button "Backlog" [expanded]
-- text: Body
-- list "Backlog":
-  - listitem: Row 1
-  - listitem: Row 2
-  - listitem: Row 3
-- text: Footer
+- button "Backlog"
+- list "Backlog"
