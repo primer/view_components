@@ -35,6 +35,7 @@ module Primer
           system_arguments[:data] = merge_data(
             system_arguments, {
             role: "region",
+            hidden: @collapsed,
             id: @content_id,
             data: { targets: "collapsible-header.collapsibleElements" },
             aria: { labelledby: @title_id }
@@ -62,13 +63,16 @@ module Primer
             "CollapsibleHeader",
             "CollapsibleHeader--collapsed" => @collapsed
           )
-          @system_arguments[:data] = merge_data(
-            @system_arguments, {
-            data: {
-              collapsed: @collapsed
+          if @collapsed
+            @system_arguments[:data] = merge_data(
+              @system_arguments, {
+              data: {
+                collapsed: @collapsed
+              }
             }
-          }
-          )
+            )
+          end
+
         end
 
         private
