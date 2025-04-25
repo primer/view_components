@@ -62,7 +62,13 @@ module Primer
             "CollapsibleHeader",
             "CollapsibleHeader--collapsed" => @collapsed
           )
-          @system_arguments[:data][:collapsed] = true if @collapsed
+          @system_arguments[:data] = merge_data(
+            @system_arguments, {
+            data: {
+              collapsed: @collapsed
+            }
+          }
+          )
         end
 
         private
