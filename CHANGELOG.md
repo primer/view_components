@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.43.0
+
+### Minor Changes
+
+- [#3466](https://github.com/primer/view_components/pull/3466) [`57f6c41`](https://github.com/primer/view_components/commit/57f6c41025de70dfcd6880dab7e881d182e3cbd9) Thanks [@manuelpuyol](https://github.com/manuelpuyol)! - Create Primer::CurrentAttributes allowing apps to set request specific context to components. Update IncludeFragment to add data-nonce when a current nonce is present.
+
+### Patch Changes
+
+- [#3447](https://github.com/primer/view_components/pull/3447) [`c2b88cb`](https://github.com/primer/view_components/commit/c2b88cb1d75e86fc0b410e3fc597e48326f471a5) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Add a new custom label for close button in dialog header
+
+- [#3450](https://github.com/primer/view_components/pull/3450) [`5e86bf4`](https://github.com/primer/view_components/commit/5e86bf422b13a3818def5ceab464f8e362f9021b) Thanks [@francinelucca](https://github.com/francinelucca)! - Fix(SelectPanel): incorrect padding when no filter
+
 ## 0.42.0
 
 ### Minor Changes
