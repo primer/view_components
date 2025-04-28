@@ -26,14 +26,14 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
     assert_selector(".octicon.octicon-chevron-up", visible: true)
 
     # Collapse it
-    find('.CollapsibleHeader').click
+    find('.collapsible-header--triggerArea').click
 
     assert_selector(".CollapsibleHeader--collapsed")
     assert_selector(".octicon.octicon-chevron-up", visible: false)
     assert_selector(".octicon.octicon-chevron-down", visible: true)
 
     # Expand it again
-    find('.CollapsibleHeader').click
+    find('.collapsible-header--triggerArea').click
 
     assert_no_selector(".CollapsibleHeader--collapsed")
     assert_selector(".octicon.octicon-chevron-down", visible: false)
