@@ -36,7 +36,6 @@ module Primer
             system_arguments, {
             role: "region",
             hidden: @collapsed,
-            id: @content_id,
             data: { targets: "collapsible-header.collapsibleElements" },
             aria: { labelledby: @title_id }
             }
@@ -54,7 +53,6 @@ module Primer
           @box = box
           @header_id = id
           @title_id = "#{@header_id}-title"
-          @content_id = "#{@header_id}-content"
           @system_arguments = system_arguments
           @system_arguments[:id] = @header_id
           @system_arguments[:tag] = "collapsible-header"
