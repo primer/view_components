@@ -129,6 +129,20 @@ module Primer
           assert_selector(".Overlay-footer.Overlay-footer--divided")
         end
       end
+
+      def test_renders_header_with_close_label
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog")) do |component|
+          component.with_body { "content" }
+          component.with_header(close_label: "Close me!") { "header" }
+        end
+
+        assert_selector("dialog") do
+          assert_selector(".Overlay-header") do
+            assert_selector(".Overlay-actionWrap")
+            assert_selector("button[data-close-dialog-id][aria-label='Close me!']")
+          end
+        end
+      end
     end
   end
 end
