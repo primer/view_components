@@ -5,7 +5,7 @@
                       tabindex: 0,
                       role: "button",
                       data: {
-                        action: "click:collapsible-section#toggle",
+                        action: "click:collapsible-section#toggle keydown:collapsible-section#handleKeydown",
                         target: "collapsible-section.triggerElement"
                       },
                       aria: { expanded: !@collapsed, controls: @content_id }) do %>
