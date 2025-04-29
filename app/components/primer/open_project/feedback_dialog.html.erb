@@ -1,10 +1,15 @@
 <%= render @dialog do |dialog| %>
+  <% unless header.present? %>
+    <% dialog.with_header(close_label: I18n.t("button_close")) %>
+  <% end %>
+
   <% dialog.with_body do %>
     <%= feedback_message %>
     <% if additional_details.present? %>
       <%= additional_details %>
     <% end %>
   <% end %>
+
   <% dialog.with_footer do %>
     <% if footer.present? %>
       <%= footer %>

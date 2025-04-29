@@ -1,4 +1,8 @@
 <%= render @dialog do |dialog| %>
+  <% unless header.present? %>
+    <% dialog.with_header(close_label: I18n.t("button_close")) %>
+  <% end %>
+
   <danger-dialog-form-helper>
     <%= render(@form_wrapper) do %>
       <scrollable-region data-labelled-by="<%= labelledby %>">
