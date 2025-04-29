@@ -9,14 +9,13 @@ export abstract class CollapsibleElement extends HTMLElement {
 
   @attr collapsed = false
 
-  connectedCallback() {
-    this.triggerElement.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        this.toggle()
-      }
-    })
+  handleKeydown(event: KeyboardEvent) {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault()
+      this.toggle()
+    }
   }
+
   toggle() {
     this.collapsed = !this.collapsed
   }
