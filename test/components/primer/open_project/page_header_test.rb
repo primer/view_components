@@ -99,7 +99,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       header.with_breadcrumbs(breadcrumb_elements)
 
       header.with_action_link(mobile_icon: "link", mobile_label: "Link to", href: "https://community.openproject.com") { "Link to.." }
-      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "op-kebab-vertical", "aria-label": "Some actions" })  do |menu, button|
+      header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { icon: "kebab-horizontal", "aria-label": "Some actions" })  do |menu, button|
         menu.with_item(label: "Subitem 1") do |item|
           item.with_leading_visual_icon(icon: :paste)
         end
