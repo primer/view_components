@@ -323,6 +323,7 @@
     "GeneratedSlotMethods": "Primer::Alpha::Dialog::Footer::GeneratedSlotMethods"
   },
   "Primer::Alpha::Dialog::Header": {
+    "DEFAULT_CLOSE_LABEL": "Close",
     "DEFAULT_VARIANT": "medium",
     "GeneratedSlotMethods": "Primer::Alpha::Dialog::Header::GeneratedSlotMethods",
     "VARIANT_MAPPINGS": {
@@ -392,6 +393,11 @@
     "GeneratedSlotMethods": "Primer::Alpha::Image::GeneratedSlotMethods"
   },
   "Primer::Alpha::IncludeFragment": {
+    "ALLOWED_LOADING_VALUES": [
+      "lazy",
+      "eager"
+    ],
+    "DEFAULT_LOADING": "eager",
     "GeneratedSlotMethods": "Primer::Alpha::IncludeFragment::GeneratedSlotMethods"
   },
   "Primer::Alpha::Layout": {

@@ -3646,6 +3646,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header_close_button_label",
+        "name": "with_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/without_header_close_button_label",
+        "name": "without_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -3698,6 +3724,12 @@
             "type": "Symbol",
             "default": "`:medium`",
             "description": "One of `:large` or `:medium`."
+          },
+          {
+            "name": "close_label",
+            "type": "String",
+            "default": "`Close`",
+            "description": "The aria-label text of the close \"x\" button."
           },
           {
             "name": "system_arguments",
@@ -4702,8 +4734,14 @@
       {
         "name": "loading",
         "type": "Symbol",
-        "default": "`:eager`",
+        "default": "`nil`",
         "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "accept",
+        "type": "String",
+        "default": "`nil`",
+        "description": "What to send as the Accept header."
       },
       {
         "name": "system_arguments",

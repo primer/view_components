@@ -3717,6 +3717,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header_close_button_label",
+        "name": "with_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/without_header_close_button_label",
+        "name": "without_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },

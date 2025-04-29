@@ -1071,6 +1071,12 @@
         "description": "One of `:large` or `:medium`."
       },
       {
+        "name": "close_label",
+        "type": "String",
+        "default": "`Close`",
+        "description": "The aria-label text of the close \"x\" button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -1374,8 +1380,14 @@
       {
         "name": "loading",
         "type": "Symbol",
-        "default": "`:eager`",
+        "default": "`nil`",
         "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "accept",
+        "type": "String",
+        "default": "`nil`",
+        "description": "What to send as the Accept header."
       },
       {
         "name": "system_arguments",
