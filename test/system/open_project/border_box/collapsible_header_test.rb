@@ -20,23 +20,34 @@ class IntegrationOpenProjectCollapsibleHeaderTest < System::TestCase
   def test_click_behaviour
     visit_preview(:default, module_prefix: "border_box")
 
+    trigger = find('.CollapsibleHeader--triggerArea')
+
     # First, make sure it is not collapsed
     assert_no_selector(".CollapsibleHeader--collapsed")
     assert_selector(".octicon.octicon-chevron-down", visible: false)
     assert_selector(".octicon.octicon-chevron-up", visible: true)
 
+    # Check aria-expanded is true when expanded
+    assert_equal "true", trigger[:'aria-expanded']
+
     # Collapse it
-    find('.CollapsibleHeader').click
+    trigger.click
 
     assert_selector(".CollapsibleHeader--collapsed")
     assert_selector(".octicon.octicon-chevron-up", visible: false)
     assert_selector(".octicon.octicon-chevron-down", visible: true)
 
+    assert_equal "false", trigger[:'aria-expanded']
+
     # Expand it again
-    find('.CollapsibleHeader').click
+    trigger.click
 
     assert_no_selector(".CollapsibleHeader--collapsed")
     assert_selector(".octicon.octicon-chevron-down", visible: false)
     assert_selector(".octicon.octicon-chevron-up", visible: true)
+
+    # aria-expanded should be true again
+    trigger = find('.CollapsibleHeader--triggerArea')
+    assert_equal "true", trigger[:'aria-expanded']
   end
 end

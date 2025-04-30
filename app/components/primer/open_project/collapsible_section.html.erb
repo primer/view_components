@@ -1,7 +1,14 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::OpenProject::FlexLayout.new) do |flex| %>
     <%= flex.with_row(classes: "CollapsibleSection--triggerArea",
-                      data: { action: "click:collapsible-section#toggle" }) do %>
+                      id: @title_id,
+                      tabindex: 0,
+                      role: "button",
+                      data: {
+                        action: "click:collapsible-section#toggle keydown:collapsible-section#toggleViaKeyboard",
+                        target: "collapsible-section.triggerElement"
+                      },
+                      aria: { expanded: !@collapsed, controls: @content_id }) do %>
       <%= render(Primer::OpenProject::FlexLayout.new(display: :flex, align_items: :center)) do |header| %>
         <%= header.with_column do %>
           <%= title %>
@@ -18,7 +25,12 @@
         <% end %>
       <% end %>
     <% end %>
-    <%= flex.with_row(hidden: @collapsed, mt: 3, data: { targets: "collapsible-section.collapsibleElements" }) do %>
+    <%= flex.with_row(hidden: @collapsed,
+                      mt: 3,
+                      role: "region",
+                      id: @content_id,
+                      data: { targets: "collapsible-section.collapsibleElements" },
+                      aria: { labelledby: @title_id }) do %>
       <%= collapsible_content %>
     <% end %>
   <% end %>

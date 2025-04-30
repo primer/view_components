@@ -47,13 +47,17 @@ module Primer
         Primer::BaseComponent.new(tag: :div, **system_arguments)
       }
 
+      # @param id [String] The unique ID of the collapsible section.
       # @param collapsed [Boolean] Whether the section is collapsed on initial render.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(collapsed: false, **system_arguments)
+      def initialize(id: self.class.generate_id, collapsed: false, **system_arguments)
+        @title_id = "#{id}-title"
+        @content_id = "#{id}-content"
         @collapsed = collapsed
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "collapsible-section"
+        @system_arguments[:id] = id
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "CollapsibleSection",

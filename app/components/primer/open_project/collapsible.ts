@@ -4,9 +4,17 @@ import {attr, target, targets} from '@github/catalyst'
 export abstract class CollapsibleElement extends HTMLElement {
   @target arrowDown: Element
   @target arrowUp: Element
+  @target triggerElement: HTMLElement
   @targets collapsibleElements: HTMLElement[]
 
   @attr collapsed = false
+
+  toggleViaKeyboard(event: KeyboardEvent) {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault()
+      this.toggle()
+    }
+  }
 
   toggle() {
     this.collapsed = !this.collapsed
@@ -26,6 +34,7 @@ export abstract class CollapsibleElement extends HTMLElement {
     // For whatever reason, setting `hidden` directly does not work on the SVGs
     this.arrowDown?.removeAttribute('hidden')
     this.arrowUp?.setAttribute('hidden', '')
+    this.triggerElement.setAttribute('aria-expanded', 'false')
 
     for (const el of this.collapsibleElements) {
       el.hidden = true
@@ -37,6 +46,7 @@ export abstract class CollapsibleElement extends HTMLElement {
   expandAll() {
     this.arrowUp?.removeAttribute('hidden')
     this.arrowDown?.setAttribute('hidden', '')
+    this.triggerElement.setAttribute('aria-expanded', 'true')
 
     for (const el of this.collapsibleElements) {
       el.hidden = false

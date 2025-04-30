@@ -1,4 +1,5 @@
-- text: Backlog 42 Body
+- button "Backlog 42" [expanded]
+- text: Body
 - list "Backlog 42":
   - listitem: Row 1
   - listitem: Row 2

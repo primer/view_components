@@ -1,5 +1,8 @@
-- heading "Wednesday 11" [level=2]
-- text: Today Header Body
-- list "Header":
-  - listitem: Row one
-  - listitem: Row two
+- button "Wednesday 11 Today" [expanded]:
+  - heading "Wednesday 11" [level=2]
+  - text: Today
+- region "Wednesday 11 Today":
+  - text: Header Body
+  - list "Header":
+    - listitem: Row one
+    - listitem: Row two

@@ -1,1 +1,2 @@
-- heading "Final question" [level=2]
+- button "Final question":
+  - heading "Final question" [level=2]

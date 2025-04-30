@@ -1,4 +1,5 @@
-- text: Backlog Body
+- button "Backlog" [expanded]
+- text: Body
 - list "Backlog":
   - listitem: Row 1
   - listitem: Row 2
