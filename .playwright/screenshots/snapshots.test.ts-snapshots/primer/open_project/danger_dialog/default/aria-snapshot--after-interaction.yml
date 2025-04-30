@@ -1,7 +1,7 @@
 - button "Click me"
 - alertdialog "Delete dialog":
   - heading "Delete dialog" [level=1]
-  - button "Close"
+  - 'button "Translation missing: en.button_close"'
   - heading "Delete this item?" [level=2]
   - paragraph: Do you want to continue?
   - 'button "Translation missing: en.button_cancel"'
