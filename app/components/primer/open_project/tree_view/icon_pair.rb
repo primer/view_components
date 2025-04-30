@@ -18,7 +18,7 @@ module Primer
 
         # The collapsed icon.
         #
-        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
         renders_one :collapsed_icon, lambda { |**system_arguments|
           Icon.new(**system_arguments)
         }
