@@ -226,11 +226,7 @@ jobs:
     name: Visual and Semantic Markup Regressions
     if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 20
-    runs-on:
-      labels:
-        - runs-on
-        - runner=16cpu-linux-x64
-        - run-id=${{ github.run_id }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
