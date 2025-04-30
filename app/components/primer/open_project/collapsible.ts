@@ -9,7 +9,7 @@ export abstract class CollapsibleElement extends HTMLElement {
 
   @attr collapsed = false
 
-  handleKeydown(event: KeyboardEvent) {
+  toggleViaKeyboard(event: KeyboardEvent) {
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault()
       this.toggle()

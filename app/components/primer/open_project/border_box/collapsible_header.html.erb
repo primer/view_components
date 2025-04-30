@@ -2,7 +2,7 @@
   <%= render(Primer::OpenProject::FlexLayout.new(
     data: {
       target: "collapsible-header.triggerElement",
-      action: "click:collapsible-header#toggle keydown:collapsible-header#handleKeydown"
+      action: "click:collapsible-header#toggle keydown:collapsible-header#toggleViaKeyboard"
     },
     tabindex: 0,
     role: "button",
