@@ -29,7 +29,7 @@ IGNORED_SELECTORS = {
 # ensure all of the classes used by components are valid, checking against the
 # available selectors in component-specific CSS
 class ComponentSelectorUseTest < System::TestCase
-  parallelize workers: 4
+  parallelize workers: 3
 
   extend Primer::RenderPreview
   include Primer::RenderPreview

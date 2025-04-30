@@ -309,9 +309,5 @@ jobs:
         env:
           # Disable CSS minification for tests
           CI: 'false'
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
       - name: Test CSS
         run: bundle exec rake test:component_css
