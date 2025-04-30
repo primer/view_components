@@ -243,6 +243,9 @@
   "CollapsibleHeader": [
     "Primer::OpenProject::BorderBox::CollapsibleHeader"
   ],
+  "CollapsibleHeader--triggerArea": [
+    "Primer::OpenProject::BorderBox::CollapsibleHeader"
+  ],
   "CollapsibleSection--triggerArea": [
     "Primer::OpenProject::CollapsibleSection"
   ],

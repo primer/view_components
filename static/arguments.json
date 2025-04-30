@@ -5175,6 +5175,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/border_box/collapsible_header/default/",
     "parameters": [
       {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The unique ID of the collapsible header."
+      },
+      {
         "name": "collapsed",
         "type": "Boolean",
         "default": "`false`",
@@ -5234,6 +5240,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/collapsible_section.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/collapsible_section/default/",
     "parameters": [
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "The unique ID of the collapsible section."
+      },
       {
         "name": "collapsed",
         "type": "Boolean",
