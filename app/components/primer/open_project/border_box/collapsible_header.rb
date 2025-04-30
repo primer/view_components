@@ -32,14 +32,6 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :description, lambda { |**system_arguments, &block|
           system_arguments[:color] ||= :subtle
-          system_arguments[:data] = merge_data(
-            system_arguments, {
-            role: "region",
-            hidden: @collapsed,
-            data: { targets: "collapsible-header.collapsibleElements" },
-            aria: { labelledby: @title_id }
-            }
-          )
           system_arguments[:hidden] = @collapsed
 
           Primer::Beta::Text.new(**system_arguments, &block)
@@ -51,10 +43,8 @@ module Primer
         def initialize(id: self.class.generate_id, collapsed: false, box:, **system_arguments)
           @collapsed = collapsed
           @box = box
-          @header_id = id
-          @title_id = "#{@header_id}-title"
           @system_arguments = system_arguments
-          @system_arguments[:id] = @header_id
+          @system_arguments[:id] = id
           @system_arguments[:tag] = "collapsible-header"
           @system_arguments[:classes] = class_names(
             system_arguments[:classes],

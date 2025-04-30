@@ -51,14 +51,13 @@ module Primer
       # @param collapsed [Boolean] Whether the section is collapsed on initial render.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(id: self.class.generate_id, collapsed: false, **system_arguments)
-        @section_id = id
-        @title_id = "#{@section_id}-title"
-        @content_id = "#{@section_id}-content"
+        @title_id = "#{id}-title"
+        @content_id = "#{id}-content"
         @collapsed = collapsed
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "collapsible-section"
-        @system_arguments[:id] = @section_id
+        @system_arguments[:id] = id
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "CollapsibleSection",
