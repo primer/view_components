@@ -1,0 +1,8 @@
+- tree:
+  - treeitem "src" [expanded] [level=1] [selected]:
+    - text: src
+    - group:
+      - treeitem "button.rb" [level=2]
+      - treeitem "icon_button.rb" [level=2]
+      - treeitem "tree_view" [level=2]
+  - treeitem "action_menu.rb" [level=1]

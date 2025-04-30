@@ -1,0 +1,5 @@
+- tree:
+  - treeitem "src" [expanded] [level=1] [selected]:
+    - text: src
+    - group:
+      - treeitem "No items" [level=1]
