@@ -4,6 +4,9 @@ module Primer
   module OpenProject
     # @label TreeView
     class TreeViewPreview < ViewComponent::Preview
+      # @label Default
+      #
+      # @snapshot interactive
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
       # @param select_strategy [Symbol] select [self, descendants]
@@ -30,11 +33,20 @@ module Primer
       end
 
       # @label Empty
+      #
+      # @snapshot interactive
       def empty
+      end
+
+      # @label Loading failure
+      #
+      # @snapshot interactive
+      def loading_failure
       end
 
       # @label Loading spinner
       #
+      # @snapshot interactive
       # @param simulate_failure [Boolean] toggle
       # @param simulate_empty [Boolean] toggle
       def loading_spinner(simulate_failure: false, simulate_empty: false)
@@ -46,6 +58,7 @@ module Primer
 
       # @label Loading skeleton
       #
+      # @snapshot interactive
       # @param simulate_failure [Boolean] toggle
       # @param simulate_empty [Boolean] toggle
       def loading_skeleton(simulate_failure: false, simulate_empty: false)

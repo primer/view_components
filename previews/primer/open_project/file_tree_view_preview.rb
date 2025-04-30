@@ -4,6 +4,9 @@ module Primer
   module OpenProject
     # @label FileTreeView
     class FileTreeViewPreview < ViewComponent::Preview
+      # @label Default
+      #
+      # @snapshot interactive
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
       def default(expanded: false, select_variant: :none)
