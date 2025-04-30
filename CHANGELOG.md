@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.64.1
+
+### Patch Changes
+
+- [#272](https://github.com/opf/primer_view_components/pull/272) [`4610128`](https://github.com/opf/primer_view_components/commit/46101288ffb9643f5db73a1a219c8e579b42b5e8) Thanks [@myabc](https://github.com/myabc)! - [#62754] Improve accessibility of collapsible section and collapsible header components
+
+- [#286](https://github.com/opf/primer_view_components/pull/286) [`eb00ae3`](https://github.com/opf/primer_view_components/commit/eb00ae3372cd4e4399d10a002d4e1cc69d84b697) Thanks [@HDinger](https://github.com/HDinger)! - Provide a default string for the close button on DangerDialog and FeedbackDialog
+
 ## 0.64.0
 
 ### Minor Changes
