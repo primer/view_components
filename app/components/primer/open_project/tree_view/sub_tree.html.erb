@@ -1,0 +1,21 @@
+<% if defer? %>
+  <%= loader %>
+<% else %>
+  <% unless no_items_message? %>
+    <% with_no_items_message { "No items" }  # set the default %>
+  <% end %>
+
+  <%= render(@container) do %>
+    <% if nodes.empty? %>
+      <%= render(Primer::OpenProject::TreeView::Node.new(path: path, data: { "no-items": true })) do |node| %>
+        <% node.with_text_content do %>
+          <%= no_items_message %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% nodes.each do |node| %>
+        <%= node %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

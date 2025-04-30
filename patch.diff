@@ -1,0 +1,4691 @@
+diff --git a/.changeset/four-worms-melt.md b/.changeset/four-worms-melt.md
+new file mode 100644
+index 000000000..541be945b
+--- /dev/null
++++ b/.changeset/four-worms-melt.md
+@@ -0,0 +1,5 @@
++---
++'@openproject/primer-view-components': minor
++---
++
++Introduce the TreeView component
+diff --git a/app/components/primer/beta/spinner.html.erb b/app/components/primer/beta/spinner.html.erb
+index cf3e319c0..b8f734031 100644
+--- a/app/components/primer/beta/spinner.html.erb
++++ b/app/components/primer/beta/spinner.html.erb
+@@ -1,4 +1,4 @@
+-<%= render(Primer::BaseComponent.new(tag: :span, hidden: @hidden, data: { target: @target })) do %>
++<%= render(Primer::BaseComponent.new(tag: :span, hidden: @hidden, data: { target: @target }, **@wrapper_arguments)) do %>
+   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+     <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+     <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+diff --git a/app/components/primer/beta/spinner.rb b/app/components/primer/beta/spinner.rb
+index 68aa9b316..961b6f740 100644
+--- a/app/components/primer/beta/spinner.rb
++++ b/app/components/primer/beta/spinner.rb
+@@ -43,6 +43,8 @@ module Primer
+ 
+         @target = extract_data(:target, @system_arguments)
+         @hidden = @system_arguments.delete(:hidden)
++
++        @wrapper_arguments = @system_arguments.delete(:wrapper_arguments) || {}
+       end
+ 
+       def no_aria_label?
+diff --git a/app/components/primer/open_project/file_tree_view.rb b/app/components/primer/open_project/file_tree_view.rb
+new file mode 100644
+index 000000000..ab1c64387
+--- /dev/null
++++ b/app/components/primer/open_project/file_tree_view.rb
+@@ -0,0 +1,15 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class FileTreeView < TreeView
++      def with_file(**system_arguments, &block)
++        with_leaf(**system_arguments, component_klass: FileNode, &block)
++      end
++
++      def with_directory(**system_arguments, &block)
++        with_sub_tree(**system_arguments, component_klass: DirectoryNode, &block)
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/file_tree_view/directory_node.html.erb b/app/components/primer/open_project/file_tree_view/directory_node.html.erb
+new file mode 100644
+index 000000000..13c4f0c3a
+--- /dev/null
++++ b/app/components/primer/open_project/file_tree_view/directory_node.html.erb
+@@ -0,0 +1,5 @@
++<% with_leading_visual_icons do |icons| %>
++  <% icons.with_expanded_icon(icon: :"file-directory-open-fill", **@expanded_icon_arguments) %>
++  <% icons.with_collapsed_icon(icon: :"file-directory-fill", **@collapsed_icon_arguments) %>
++<% end %>
++<%= render_parent %>
+diff --git a/app/components/primer/open_project/file_tree_view/directory_node.rb b/app/components/primer/open_project/file_tree_view/directory_node.rb
+new file mode 100644
+index 000000000..6e8359d73
+--- /dev/null
++++ b/app/components/primer/open_project/file_tree_view/directory_node.rb
+@@ -0,0 +1,24 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class FileTreeView
++      class DirectoryNode < TreeView::SubTreeNode
++        def initialize(icon_arguments: nil, expanded_icon_arguments: nil, collapsed_icon_arguments: nil, **system_arguments)
++          @expanded_icon_arguments = expanded_icon_arguments || icon_arguments || {}
++          @collapsed_icon_arguments = collapsed_icon_arguments || icon_arguments || {}
++
++          super(**system_arguments)
++        end
++
++        def with_file(**system_arguments, &block)
++          with_leaf(**system_arguments, component_klass: FileNode, &block)
++        end
++
++        def with_directory(**system_arguments, &block)
++          with_sub_tree(**system_arguments, component_klass: DirectoryNode, &block)
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/file_tree_view/file_node.html.erb b/app/components/primer/open_project/file_tree_view/file_node.html.erb
+new file mode 100644
+index 000000000..6483e01e4
+--- /dev/null
++++ b/app/components/primer/open_project/file_tree_view/file_node.html.erb
+@@ -0,0 +1,2 @@
++<% with_leading_visual_icon(icon: :file, **@icon_arguments) %>
++<%= render_parent %>
+diff --git a/app/components/primer/open_project/file_tree_view/file_node.rb b/app/components/primer/open_project/file_tree_view/file_node.rb
+new file mode 100644
+index 000000000..10076431a
+--- /dev/null
++++ b/app/components/primer/open_project/file_tree_view/file_node.rb
+@@ -0,0 +1,14 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class FileTreeView
++      class FileNode < TreeView::LeafNode
++        def initialize(icon_arguments: {}, **system_arguments)
++          @icon_arguments = icon_arguments
++          super(**system_arguments)
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/skeleton_box.html.erb b/app/components/primer/open_project/skeleton_box.html.erb
+new file mode 100644
+index 000000000..06b347029
+--- /dev/null
++++ b/app/components/primer/open_project/skeleton_box.html.erb
+@@ -0,0 +1 @@
++<%= render(Primer::BaseComponent.new(**@system_arguments)) %>
+diff --git a/app/components/primer/open_project/skeleton_box.pcss b/app/components/primer/open_project/skeleton_box.pcss
+new file mode 100644
+index 000000000..08edcbd97
+--- /dev/null
++++ b/app/components/primer/open_project/skeleton_box.pcss
+@@ -0,0 +1,30 @@
++@keyframes shimmer {
++  from {
++    mask-position: 200%;
++  }
++
++  to {
++    mask-position: 0%;
++  }
++}
++
++.SkeletonBox {
++  display: block;
++  height: 1rem;
++  background-color: var(--bgColor-muted);
++  border-radius: var(--borderRadius-small);
++  animation: shimmer;
++
++  @media (prefers-reduced-motion: no-preference) {
++    mask-image: linear-gradient(75deg, #000 30%, rgba(0, 0, 0, 0.65) 80%);
++    mask-size: 200%;
++    animation: shimmer;
++    animation-duration: 1s;
++    animation-iteration-count: infinite;
++  }
++
++  @media (forced-colors: active) {
++    outline: 1px solid transparent;
++    outline-offset: -1px;
++  }
++}
+diff --git a/app/components/primer/open_project/skeleton_box.rb b/app/components/primer/open_project/skeleton_box.rb
+new file mode 100644
+index 000000000..b10a72dcf
+--- /dev/null
++++ b/app/components/primer/open_project/skeleton_box.rb
+@@ -0,0 +1,27 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    # A SkeletonBox provides a placeholder for non-text, non-Avatar elements (e.g., hero images)
++    # that are still loading. You can adjust width and height to match the content's dimensions.
++    class SkeletonBox < Primer::Component
++      # @param height [String] Any valid CSS height.
++      # @param width [String] Any valid CSS width.
++      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
++      def initialize(height: nil, width: nil, **system_arguments)
++        @system_arguments = deny_tag_argument(**system_arguments)
++
++        styles = []
++        styles << "width: #{width}" if width
++        styles << "height: #{height}" if height
++
++        @system_arguments[:tag] = :div
++        @system_arguments[:style] = styles.join("; ") if styles.present?
++        @system_arguments[:classes] = class_names(
++          @system_arguments.delete(:classes),
++          "SkeletonBox"
++        )
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view.html.erb b/app/components/primer/open_project/tree_view.html.erb
+new file mode 100644
+index 000000000..287b59d9e
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view.html.erb
+@@ -0,0 +1,7 @@
++<tree-view>
++  <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
++    <% nodes.each do |node| %>
++      <%= node %>
++    <% end %>
++  <% end %>
++</tree-view>
+diff --git a/app/components/primer/open_project/tree_view.pcss b/app/components/primer/open_project/tree_view.pcss
+new file mode 100644
+index 000000000..6dfbeed8c
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view.pcss
+@@ -0,0 +1,320 @@
++/* stylelint-disable selector-max-type -- Copied from primer/react */
++
++.TreeViewRootUlStyles {
++  padding: 0;
++  margin: 0;
++  list-style: none;
++
++  /*
++   * WARNING: This is a performance optimization.
++   *
++   * We define styles for the tree items at the root level of the tree
++   * to avoid recomputing the styles for each item when the tree updates.
++   * We're sacrificing maintainability for performance because TreeView
++   * needs to be performant enough to handle large trees (thousands of items).
++   *
++   * This is intended to be a temporary solution until we can improve the
++   * performance of our styling patterns.
++   *
++   * Do NOT copy this pattern without understanding the tradeoffs.
++   */
++  & .TreeViewItem {
++    outline: none;
++
++    &:focus-visible > div {
++      box-shadow: var(--boxShadow-thick) var(--fgColor-accent);
++
++      @media (forced-colors: active) {
++        outline: 2px solid HighlightText;
++        /* stylelint-disable-next-line declaration-property-value-no-unknown -- Copied from primer/react */
++        outline-offset: -2;
++      }
++    }
++
++    &[data-has-leading-action] {
++      --has-leading-action: 1;
++    }
++  }
++
++  & .TreeViewItemContainer {
++    --level: 1;
++    --toggle-width: 1rem;
++    --min-item-height: 2rem;
++
++    position: relative;
++    display: grid;
++    width: 100%;
++    font-size: var(--text-body-size-medium);
++    color: var(--fgColor-default);
++    cursor: pointer;
++    border-radius: var(--borderRadius-medium);
++    grid-template-columns: var(--spacer-width) var(--leading-action-width) var(--toggle-width) 1fr;
++    grid-template-areas: 'spacer leadingAction toggle content';
++
++    --leading-action-width: calc(var(--has-leading-action, 0) * 1.5rem);
++    --spacer-width: calc(calc(var(--level) - 1) * (var(--toggle-width) / 2));
++
++    &:hover {
++      background-color: var(--control-transparent-bgColor-hover);
++
++      @media (forced-colors: active) {
++        outline: 2px solid transparent;
++        outline-offset: -2px;
++      }
++    }
++
++    @media (pointer: coarse) {
++      --toggle-width: 1.5rem;
++      --min-item-height: 2.75rem;
++    }
++
++    &:has(.TreeViewFailureMessage):hover {
++      cursor: default;
++      background-color: transparent;
++
++      @media (forced-colors: active) {
++        outline: none;
++      }
++    }
++  }
++
++  &:where([data-omit-spacer='true']) .TreeViewItemContainer {
++    grid-template-columns: 0 0 0 1fr;
++  }
++
++  & .TreeViewItem[aria-current='true'] > .TreeViewItemContainer {
++    background-color: var(--control-transparent-bgColor-selected);
++
++    /* Current item indicator */
++    /* stylelint-disable-next-line selector-max-specificity -- Copied from primer/react */
++    &::after {
++      position: absolute;
++      top: calc(50% - var(--base-size-12));
++      left: calc(-1 * var(--base-size-8));
++      width: 0.25rem;
++      height: 1.5rem;
++      content: '';
++
++      /*
++       * Use fgColor accent for consistency across all themes. Using the "correct" variable,
++       * --bgColor-accent-emphasis, causes vrt failures for dark high contrast mode
++       */
++      /* stylelint-disable-next-line primer/colors */
++      background-color: var(--fgColor-accent);
++      border-radius: var(--borderRadius-medium);
++
++      @media (forced-colors: active) {
++        background-color: HighlightText;
++      }
++    }
++  }
++
++  /* stylelint-disable-next-line no-duplicate-selectors -- Copied from primer/react */
++  & .TreeViewItem {
++    &[aria-checked='true'] {
++      /* stylelint-disable-next-line selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
++      & > .TreeViewItemContainer .FormControl-checkbox {
++        background: var(--control-checked-bgColor-rest);
++        border-color: var(--control-checked-borderColor-rest);
++        transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
++
++        /* stylelint-disable-next-line max-nesting-depth, selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
++        &::before {
++          visibility: visible;
++          transition: visibility 0s linear 0s;
++          animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards 80ms;
++        }
++      }
++    }
++
++    &[aria-checked='mixed'] {
++      /* stylelint-disable-next-line selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
++      & > .TreeViewItemContainer .FormControl-checkbox {
++        background: var(--control-checked-bgColor-rest);
++        border-color: var(--control-checked-borderColor-rest);
++        transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
++
++        /* stylelint-disable-next-line max-nesting-depth, selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
++        &::before {
++          visibility: visible;
++          mask-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMiIgdmlld0JveD0iMCAwIDEwIDIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMCAxQzAgMC40NDc3MTUgMC40NDc3MTUgMCAxIDBIOUM5LjU1MjI5IDAgMTAgMC40NDc3MTUgMTAgMUMxMCAxLjU1MjI4IDkuNTUyMjkgMiA5IDJIMUMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K');
++          animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards 80ms;
++          clip-path: none;
++        }
++      }
++    }
++  }
++
++  & .TreeViewItemToggle {
++    display: flex;
++    height: 100%;
++
++    /* The toggle should appear vertically centered for single-line items, but remain at the top for items that wrap
++    across more lines. */
++    /* stylelint-disable-next-line primer/spacing */
++    padding-top: calc(var(--min-item-height) / 2 - var(--base-size-12) / 2);
++    color: var(--fgColor-muted);
++    grid-area: toggle;
++    justify-content: center;
++    align-items: flex-start;
++  }
++
++  & .TreeViewItemToggleHover:hover {
++    background-color: var(--control-transparent-bgColor-hover);
++  }
++
++  & .TreeViewItemToggleEnd {
++    border-top-left-radius: var(--borderRadius-medium);
++    border-bottom-left-radius: var(--borderRadius-medium);
++  }
++
++  & .TreeViewItemContent {
++    display: flex;
++    height: 100%;
++    padding: 0 var(--base-size-8);
++
++    /* The dynamic top and bottom padding to maintain the minimum item height for single line items */
++    /* stylelint-disable-next-line primer/spacing */
++    padding-top: calc((var(--min-item-height) - var(--custom-line-height, 1.3rem)) / 2);
++    /* stylelint-disable-next-line primer/spacing */
++    padding-bottom: calc((var(--min-item-height) - var(--custom-line-height, 1.3rem)) / 2);
++    line-height: var(--custom-line-height, var(--text-body-lineHeight-medium, 1.4285));
++    grid-area: content;
++    gap: var(--stack-gap-condensed);
++
++    & .TreeViewItemCheckbox {
++      position: relative;
++      color: var(--control-fgColor-rest);
++      text-align: left;
++      user-select: none;
++      background-color: transparent;
++      border: none;
++      border-radius: var(--borderRadius-medium);
++      transition: background 33.333ms linear;
++      touch-action: manipulation;
++      /* stylelint-disable-next-line plugin/browser-compat -- Copied from primer/react */
++      -webkit-tap-highlight-color: transparent;
++    }
++  }
++
++  & .TreeViewItemContentText {
++    flex: 1 1 auto;
++    width: 0;
++  }
++
++  &:where([data-truncate-text='true']) .TreeViewItemContentText {
++    overflow: hidden;
++    text-overflow: ellipsis;
++    white-space: nowrap;
++  }
++
++  &:where([data-truncate-text='false']) .TreeViewItemContentText {
++    /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- Copied from primer/react */
++    word-break: break-word;
++  }
++
++  & .TreeViewItemVisual {
++    display: flex;
++
++    /* The visual icons should appear vertically centered for single-line items, but remain at the top for items that wrap
++    across more lines. */
++    height: var(--custom-line-height, 1.3rem);
++    color: var(--fgColor-muted);
++    align-items: center;
++  }
++
++  & .TreeViewItemLeadingAction {
++    display: flex;
++    color: var(--fgColor-muted);
++    grid-area: leadingAction;
++
++    & > button {
++      flex-shrink: 1;
++    }
++  }
++
++  & .TreeViewItemLevelLine {
++    width: 100%;
++    height: 100%;
++
++    /*
++     * On devices without hover, the nesting indicator lines
++     * appear at all times.
++     */
++    border-color: var(--borderColor-muted);
++    border-right: var(--borderWidth-thin) solid;
++  }
++
++  /*
++   * On devices with :hover support, the nesting indicator lines
++   * fade in when the user mouses over the entire component,
++   * or when there's focus inside the component. This makes
++   * sure the component remains simple when not in use.
++   */
++  @media (hover: hover) {
++    .TreeViewItemLevelLine {
++      border-color: transparent;
++    }
++
++    &:hover .TreeViewItemLevelLine,
++    &:focus-within .TreeViewItemLevelLine {
++      border-color: var(--borderColor-muted);
++    }
++  }
++
++  & .TreeViewVisuallyHidden {
++    position: absolute;
++    width: 1px;
++    height: 1px;
++    padding: 0;
++    /* stylelint-disable-next-line primer/spacing */
++    margin: -1px;
++    overflow: hidden;
++    clip: rect(0, 0, 0, 0);
++    white-space: nowrap;
++    border-width: 0;
++  }
++}
++
++.TreeViewSkeletonItemContainerStyle {
++  display: flex;
++  align-items: center;
++  column-gap: 0.5rem;
++  height: 2rem;
++
++  @media (pointer: coarse) {
++    height: 2.75rem;
++  }
++
++  &:nth-of-type(5n + 1) {
++    --tree-item-loading-width: 67%;
++  }
++
++  &:nth-of-type(5n + 2) {
++    --tree-item-loading-width: 47%;
++  }
++
++  &:nth-of-type(5n + 3) {
++    --tree-item-loading-width: 73%;
++  }
++
++  &:nth-of-type(5n + 4) {
++    --tree-item-loading-width: 64%;
++  }
++
++  &:nth-of-type(5n + 5) {
++    --tree-item-loading-width: 50%;
++  }
++}
++
++.TreeItemSkeletonTextStyles {
++  width: var(--tree-item-loading-width, 67%);
++}
++
++.TreeViewFailureMessage {
++  display: grid;
++  grid-template-columns: auto 1fr;
++  gap: 0.5rem;
++  width: 100%;
++  align-items: center;
++}
+diff --git a/app/components/primer/open_project/tree_view.rb b/app/components/primer/open_project/tree_view.rb
+new file mode 100644
+index 000000000..e816784c5
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view.rb
+@@ -0,0 +1,367 @@
++# frozen_string_literal: true
++
++# The TreeView component is made up of a number of smaller components, quite a few more than have been created
++# to construct complex components in the past. The current architecture was designed to achieve reusability for
++# certain features like loading indicators, different icons for expanded and collapsed sub trees, etc. The
++# following describes how the components fit together at a high level, using React-like syntax. Each element
++# in the diagram corresponds to one of three types of object:
++#
++# 1. Elements with TitleCase tags represent components in the Primer::OpenProject::TreeView namespace, eg. <LeafNode>.
++# 2. Elements with dasherized-tags are web components/custom elements, eg. <tree-view>.
++# 3. Elements with lowercase tags are regular 'ol HTML elements, eg. <ul>.
++#
++# ### Overall structure
++#
++# <TreeView>
++#   <tree-view>
++#     <ul role="tree">
++#       <LeafNode>
++#         <Node>
++#           <li role="treeitem">
++#             ...
++#           </li>
++#         </Node>
++#       </LeafNode>
++#
++#       <SubTreeNode>
++#         <tree-view-sub-tree-node>
++#           <li role="treeitem">
++#
++#             <SubTreeContainer>
++#               <ul role="group">
++#                 <SubTree>
++#                   <LeafNode>
++#                     <Node>
++#                       <li role="treeitem">
++#                         ...
++#                       </li>
++#                     </Node>
++#                   </LeafNode>
++#
++#                   <SubTreeNode>
++#                     <tree-view-sub-tree-node>
++#                       <Node>
++#                         <li role="treeitem">
++#                           ...
++#                         </li>
++#                       </Node>
++#                       <SubTreeContainer>
++#                         <ul role="group">
++#                           ...
++#                         </ul>
++#                       </SubTreeContainer>
++#                     </tree-view-sub-tree-node>
++#                   </SubTreeNode>
++#                 </SubTree>
++#               </ul>
++#             </SubTreeContainer>
++#
++#           </li>
++#         </tree-view-sub-tree-node>
++#       </SubTreeNode>
++#     </ul>
++#   </tree-view>
++# </TreeView>
++#
++# ### Leading visuals
++#
++# TreeView nodes (i.e. both leaf and sub tree nodes) support leading and trailing visuals. At the time of this
++# writing, only octicons are supported. The single icon case is achieved by using a standard slot, but the
++# component also supports rendering distinct icons for both the expanded and collapsed states. An overview of the
++# markup for this more complicated multi-icon feature is described below.
++#
++# <LeafNode>
++#   <Node>
++#     <li role="treeitem">
++#       <Visual>
++#         <IconPair>
++#           <tree-view-icon-pair>
++#             <Icon slot="expanded_icon">
++#               <Primer::Beta::Octicon />
++#             </Icon>
++#             <Icon slot="collapsed_icon">
++#               <Primer::Beta::Octicon />
++#             </Icon>
++#           </tree-view-icon-pair>
++#         </IconPair>
++#       </Visual>
++#     </li>
++#   </Node>
++# </LeafNode>
++#
++# ### Loaders
++#
++# TreeViews support two types of loader: a loading spinner and a loading skeleton.
++#
++# #### Loading spinner
++#
++# <SubTree>
++#   <SpinnerLoader>
++#     <tree-view-include-fragment>
++#       <SubTreeContainer>
++#         <Node>
++#           <Primer::Beta::Spinner />
++#         </Node>
++#         <Node>
++#           <LoadingFailureMessage />
++#         </Node>
++#       </SubTreeContainer>
++#     </tree-view-include-fragment>
++#   </SpinnerLoader>
++# </SubTree>
++#
++# #### Loading skeleton
++#
++# <SubTree>
++#   <SkeletonLoader>
++#     <tree-view-include-fragment>
++#       <SubTreeContainer>
++#         <Node>
++#           <span>
++#             <Primer::Alpha::SkeletonBox width="16px" />
++#             <Primer::Alpha::SkeletonBox width="100%" />
++#           </span>
++#           <span>
++#             ...
++#           </span>
++#           ...
++#         </Node>
++#         <Node>
++#           <LoadingFailureMessage />
++#         </Node>
++#       </SubTreeContainer>
++#     </tree-view-include-fragment>
++#   </SkeletonLoader>
++# </SubTree>
++
++module Primer
++  module OpenProject
++    # TreeView is a hierarchical list of items that may have a parent-child relationship where children
++    # can be toggled into view by expanding or collapsing their parent item.
++    #
++    # ## Terminology
++    #
++    # Consider the following tree structure:
++    #
++    # src
++    # ├ button.rb
++    # └ action_list
++    #   ├ item.rb
++    #   └ header.rb
++    #
++    # 1. **Node**. A node is an item in the tree. Nodes can either be "leaf" nodes (i.e. have no children), or "sub-tree"
++    # nodes, which do have children. In the example above, button.rb, item.rb, and header.rb are all leaf nodes, while
++    # action_list is a sub-tree node.
++    # 2. **Path**. A node's path is like its ID. It's an array of strings containing the current node's label and all the
++    # labels of its ancestors, in order. In the example above, header.rb's path is ["src", "action_list", "header.rb"].
++    #
++    # ## Static nodes
++    #
++    # The `TreeView` component allows items to be provided statically or loaded dynamically from the server.
++    # Providing items statically is done using the `leaf` and `sub_tree` slots:
++    #
++    # ```erb
++    # <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
++    #   <% tree.with_sub_tree(label: "Directory") do |sub_tree| %>
++    #     <% sub_tree.with_leaf(label: "File 1")
++    #   <% end %>
++    #   <% tree.with_leaf(label: "File 2") %>
++    # <% end %>
++    # ```
++    #
++    # ## Dynamic nodes
++    #
++    # Tree nodes can also be fetched dynamically from the server and will require creating a Rails controller action
++    # to respond with the list of nodes. Unlike other Primer components, `TreeView` allows the programmer to specify
++    # loading behavior on a per-sub-tree basis, i.e. each sub-tree must specify how its nodes are loaded. To load nodes
++    # dynamically for a given sub-tree, configure it with either a loading spinner or a loading skeleton, and provide
++    # the URL to fetch nodes from:
++    #
++    # ```erb
++    # <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
++    #   <% tree.with_sub_tree(label: "Directory") do |sub_tree| %>
++    #     <% sub_tree.with_loading_spinner(src: tree_view_items_path) %>
++    #   <% end %>
++    # <% end %>
++    # ```
++    #
++    # Define a controller action to serve the list of nodes. The `TreeView` component automatically includes the
++    # sub-tree's path as a GET parameter, encoded as a JSON array.
++    #
++    # ```ruby
++    # class TreeViewItemsController < ApplicationController
++    #   def show
++    #     @path = JSON.parse(params[:path])
++    #     @results = get_tree_items(starting_at: path)
++    #   end
++    # end
++    # ```
++    #
++    # Responses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't
++    # available by default in Rails, so you may have to register it eg. in an initializer:
++    #
++    # ```ruby
++    # Mime::Type.register("text/fragment+html", :html_fragment)
++    # ```
++    #
++    # Render a `Primer::OpenProject::TreeView::SubTree` in the action's template, tree_view_items/show.html_fragment.erb:
++    #
++    # ```erb
++    # <%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path)) do |tree| %>
++    #   <% tree.with_leaf(...) %>
++    #   <% tree.with_sub_tree(...) do |sub_tree| %>
++    #     ...
++    #   <% end %>
++    # <% end %>
++    # ```
++    #
++    # ### JavaScript API
++    #
++    # `TreeView`s render a `<tree-view>` custom element that exposes behavior to the client.
++    #
++    # |Name                                                              |Notes                                                                                                                                             |
++    # |:-----------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|
++    # |`getNodePath(node: Element): string[]`                            |Returns the path to the given node.                                                                                                               |
++    # |`getNodeType(node: Element): TreeViewNodeType | null`             |Returns either `"leaf"` or `"sub-tree"`.                                                                                                          |
++    # |`markCurrentAtPath(path: string[])`                               |Marks the node as the "current" node, which appears visually distinct from other nodes.                                                           |
++    # |`get currentNode(): HTMLLIElement | null`                         |Returns the current node.                                                                                                                         |
++    # |`expandAtPath(path: string[])`                                    |Expands the sub-tree at `path`.                                                                                                                   |
++    # |`collapseAtPath(path: string[])`                                  |Collapses the sub-tree at `path`.                                                                                                                 |
++    # |`toggleAtPath(path: string[])`                                    |If the sub-tree at `path` is collapsed, this function expands it, and vice-versa.                                                                 |
++    # |`checkAtPath(path: string[])`                                     |If the node at `path` has a checkbox, this function checks it.                                                                                    |
++    # |`uncheckAtPath(path: string[])`                                   |If the node at `path` has a checkbox, this function unchecks it.                                                                                  |
++    # |`toggleCheckedAtPath(path: string[])`                             |If the sub-tree at `path` is checked, this function unchecks it, and vice-versa.                                                                  |
++    # |`checkedValueAtPath(path: string[]): TreeViewCheckedValue`        |Returns `"true"` (all child nodes are checked), `"false"` (no child nodes are checked), or `"mixed"` (some child nodes are checked, some are not).|
++    # |`nodeAtPath(path: string[], selector?: string): Element | null`   |Returns the node for the given `path`, either a leaf node or sub-tree node.                                                                       |
++    # |`subTreeAtPath(path: string[]): TreeViewSubTreeNodeElement | null`|Returns the sub-tree at the given `path`, if it exists.                                                                                           |
++    # |`leafAtPath(path: string[]): HTMLLIElement | null`                |Returns the leaf node at the given `path`, if it exists.                                                                                          |
++    # |`getNodeCheckedValue(node: Element): TreeViewCheckedValue`        |The same as `checkedValueAtPath`, but accepts a node instead of a path.                                                                           |
++    #
++    # #### Events
++    #
++    # The events enumerated below include node information by way of the `TreeViewNodeInfo` object, which has the
++    # following signature:
++    #
++    # ```typescript
++    # type TreeViewNodeType = 'leaf' | 'sub-tree'
++    # type TreeViewCheckedValue = 'true' | 'false' | 'mixed'
++    #
++    # type TreeViewNodeInfo = {
++    #   node: Element
++    #   type: TreeViewNodeType
++    #   path: string[]
++    #   checkedValue: TreeViewCheckedValue
++    #   previousCheckedValue: TreeViewCheckedValue
++    # }
++    # ```
++    #
++    # |Name                         |Type                                       |Bubbles |Cancelable |
++    # |:----------------------------|:------------------------------------------|:-------|:----------|
++    # |`treeViewNodeActivated`      |`CustomEvent<TreeViewNodeInfo>`            |Yes     |No         |
++    # |`treeViewBeforeNodeActivated`|`CustomEvent<TreeViewNodeInfo>`            |Yes     |Yes        |
++    # |`treeViewNodeExpanded`       |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |
++    # |`treeViewNodeCollapsed`      |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |
++    # |`treeViewNodeChecked`        |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |Yes        |
++    # |`treeViewBeforeNodeChecked`  |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |No         |
++    #
++    # _Item activation_
++    #
++    # The `<tree-view>` element fires an `treeViewNodeActivated` event whenever a node is activated (eg. clicked)
++    # via the mouse or keyboard.
++    #
++    # The `treeViewBeforeNodeActivated` event fires before a node is activated. Canceling this event will prevent the
++    # node from being activated.
++    #
++    # ```typescript
++    # document.querySelector("select-panel").addEventListener(
++    #   "treeViewBeforeNodeActivated",
++    #   (event: CustomEvent<TreeViewNodeInfo>) => {
++    #     event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)
++    #   }
++    # )
++    # ```
++    #
++    # _Item checking/unchecking_
++    #
++    # The `tree-view` element fires a `treeViewNodeChecked` event whenever a node is checked or unchecked.
++    #
++    # The `treeViewBeforeNodeChecked` event fires before a node is checked or unchecked. Canceling this event will
++    # prevent the check/uncheck operation.
++    #
++    # ```typescript
++    # document.querySelector("select-panel").addEventListener(
++    #   "treeViewBeforeNodeChecked",
++    #   (event: CustomEvent<TreeViewNodeInfo[]>) => {
++    #     event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)
++    #   }
++    # )
++    # ```
++    #
++    # Because checking or unchecking a sub-tree results in the checking or unchecking of all its children recursively,
++    # both the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`
++    # objects, which contain entries for every modified node in the tree.
++    class TreeView < Primer::Component
++      # @!parse
++      #   # Adds an leaf node to the tree. Leaf nodes are nodes that do not have children.
++      #   #
++      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %>
++      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %>, or whatever class is passed as the `component_klass` argument.
++      #   def with_leaf(**system_arguments, &block)
++      #   end
++
++      # @!parse
++      #   # Adds a sub-tree node to the tree. Sub-trees are nodes that have children, which can be both leaf nodes and other sub-trees.
++      #   #
++      #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::OpenProject::TreeView::SubTreeNode) %>
++      #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::OpenProject::TreeView::SubTreeNode) %>, or whatever class is passed as the `component_klass` argument.
++      #   def with_sub_tree(**system_arguments, &block)
++      #   end
++
++      renders_many :nodes, types: {
++        leaf: {
++          renders: lambda { |component_klass: LeafNode, label:, **system_arguments|
++            component_klass.new(
++              **system_arguments,
++              path: [label],
++              label: label
++            )
++          },
++
++          as: :leaf
++        },
++
++        sub_tree: {
++          renders: lambda { |component_klass: SubTreeNode, label:, **system_arguments|
++            component_klass.new(
++              **system_arguments,
++              path: [label],
++              label: label
++            )
++          },
++
++          as: :sub_tree
++        }
++      }
++
++      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
++      def initialize(**system_arguments)
++        @system_arguments = deny_tag_argument(**system_arguments)
++
++        @system_arguments[:tag] = :ul
++        @system_arguments[:role] = :tree
++        @system_arguments[:classes] = class_names(
++          @system_arguments.delete(:classes),
++          "TreeViewRootUlStyles"
++        )
++      end
++
++      private
++
++      def before_render
++        if (first_node = nodes.first)
++          first_node.merge_system_arguments!(tabindex: 0)
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/icon.html.erb b/app/components/primer/open_project/tree_view/icon.html.erb
+new file mode 100644
+index 000000000..44278cd05
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/icon.html.erb
+@@ -0,0 +1 @@
++<%= render(Primer::Beta::Octicon.new(**@system_arguments)) %>
+diff --git a/app/components/primer/open_project/tree_view/icon.rb b/app/components/primer/open_project/tree_view/icon.rb
+new file mode 100644
+index 000000000..92a81176f
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/icon.rb
+@@ -0,0 +1,22 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # An icon for a `TreeView` node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class Icon < Primer::Component
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
++        def initialize(**system_arguments)
++          @system_arguments = system_arguments
++          @system_arguments[:focusable] = "false"
++          @system_arguments[:display] = :inline_block
++          @system_arguments[:overflow] = :visible
++          @system_arguments[:style] = "vertical-align: text-bottom;"
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/icon_pair.html.erb b/app/components/primer/open_project/tree_view/icon_pair.html.erb
+new file mode 100644
+index 000000000..adf3294f6
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/icon_pair.html.erb
+@@ -0,0 +1,13 @@
++<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
++  <% if expanded_icon? %>
++    <div data-target="tree-view-icon-pair.expandedIcon" <%= expanded? ? "" : "hidden" %>>
++      <%= expanded_icon %>
++    </div>
++  <% end %>
++
++  <% if collapsed_icon? %>
++    <div data-target="tree-view-icon-pair.collapsedIcon" <%= expanded? ? "hidden" : "" %>>
++      <%= collapsed_icon %>
++    </div>
++  <% end %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/icon_pair.rb b/app/components/primer/open_project/tree_view/icon_pair.rb
+new file mode 100644
+index 000000000..7c1a768d4
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/icon_pair.rb
+@@ -0,0 +1,42 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A pair of icons for a `TreeView` sub-tree that displays distinct icons when the sub-tree is
++      # expanded and collapsed.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class IconPair < Primer::Component
++        # The expanded icon.
++        #
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
++        renders_one :expanded_icon, lambda { |**system_arguments|
++          Icon.new(**system_arguments)
++        }
++
++        # The collapsed icon.
++        #
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon
++        renders_one :collapsed_icon, lambda { |**system_arguments|
++          Icon.new(**system_arguments)
++        }
++
++        # Whether or not this icon is expanded.
++        #
++        # @return [Boolean]
++        attr_reader :expanded
++        alias expanded? expanded
++
++        # @param expanded [Boolean] If true, the expanded icon is shown and the collapsed icon is hidden, etc.
++        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
++        def initialize(expanded: false, **system_arguments)
++          @expanded = expanded
++          @system_arguments = deny_tag_argument(**system_arguments)
++          @system_arguments[:tag] = :"tree-view-icon-pair"
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/leading_action.html.erb b/app/components/primer/open_project/tree_view/leading_action.html.erb
+new file mode 100644
+index 000000000..6e5fa638c
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/leading_action.html.erb
+@@ -0,0 +1,3 @@
++<div class="TreeViewItemLeadingAction" aria-hidden="true">
++  <%= render(@action) %>
++</div>
+diff --git a/app/components/primer/open_project/tree_view/leading_action.rb b/app/components/primer/open_project/tree_view/leading_action.rb
+new file mode 100644
+index 000000000..913c02bfc
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/leading_action.rb
+@@ -0,0 +1,18 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # The leading action for `TreeView` nodes.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class LeadingAction < Primer::Component
++        # @param action [ViewComponent::Base] A component or other renderable to use as the action button etc.
++        def initialize(action:)
++          @action = action
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/leaf_node.html.erb b/app/components/primer/open_project/tree_view/leaf_node.html.erb
+new file mode 100644
+index 000000000..79e176dd2
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/leaf_node.html.erb
+@@ -0,0 +1,18 @@
++<%= render(@node) do |node| %>
++  <% if leading_action? %>
++    <% node.with_leading_action do %>
++      <%= leading_action %>
++    <% end %>
++  <% end %>
++  <% if leading_visual? %>
++    <% node.with_leading_visual do %>
++      <%= leading_visual %>
++    <% end %>
++  <% end %>
++  <% if trailing_visual? %>
++    <% node.with_trailing_visual do %>
++      <%= trailing_visual %>
++    <% end %>
++  <% end %>
++  <% node.with_text_content { @label } %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/leaf_node.rb b/app/components/primer/open_project/tree_view/leaf_node.rb
+new file mode 100644
+index 000000000..37436cd16
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/leaf_node.rb
+@@ -0,0 +1,96 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A `TreeView` leaf node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class LeafNode < Primer::Component
++        # @!parse
++        #   # Adds a leading visual icon rendered to the left of the node's label.
++        #   #
++        #   # @param label [String] A label describing the visual, displayed only to screen readers.
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
++        #   def with_leading_visual_icon(label: nil, **system_arguments, &block)
++        #   end
++
++        renders_one :leading_visual, types: {
++          icon: lambda { |label: nil, **system_arguments|
++            merge_system_arguments!(
++              aria: { describedby: leading_visual_label_id }
++            )
++
++            Visual.new(
++              id: leading_visual_label_id,
++              visual: Icon.new(**system_arguments),
++              label: label
++            )
++          }
++        }
++
++        # @!parse
++        #   # Adds a leading action rendered to the left of the node's label and any leading visuals or checkboxes.
++        #   #
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
++        #   def with_leading_action_button(**system_arguments, &block)
++        #   end
++
++        renders_one :leading_action, types: {
++          button: lambda { |**system_arguments|
++            LeadingAction.new(
++              action: Primer::Beta::IconButton.new(
++                scheme: :invisible,
++                **system_arguments
++              )
++            )
++          }
++        }
++
++        # @!parse
++        #   # Adds a trailing visual icon rendered to the right of the node's label.
++        #   #
++        #   # @param label [String] A label describing the visual, displayed only to screen readers.
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
++        #   def with_trailing_visual_icon(label: nil, **system_arguments, &block)
++        #   end
++
++        renders_one :trailing_visual, types: {
++          icon: lambda { |label: nil, **system_arguments|
++            Visual.new(
++              id: nil,
++              visual: Icon.new(**system_arguments),
++              label: label
++            )
++          }
++        }
++
++        delegate :current?, :merge_system_arguments!, to: :@node
++
++        # @param label [String] The node's label, i.e. it's textual content.
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Node) %>.
++        def initialize(label:, **system_arguments)
++          @label = label
++          @system_arguments = system_arguments
++          @system_arguments[:data] = merge_data(
++            @system_arguments,
++            data: { "node-type": "leaf" }
++          )
++
++          @node = Primer::OpenProject::TreeView::Node.new(**@system_arguments)
++        end
++
++        private
++
++        def base_id
++          @base_id ||= self.class.generate_id
++        end
++
++        def leading_visual_label_id
++          @leading_visual_id ||= "#{base_id}-leading-visual-label"
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/loading_failure_message.html.erb b/app/components/primer/open_project/tree_view/loading_failure_message.html.erb
+new file mode 100644
+index 000000000..15ad02d28
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/loading_failure_message.html.erb
+@@ -0,0 +1,13 @@
++<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
++  <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", color: :danger)) %>
++  <span><%= @text %></span>
++  <div></div> <!-- spacer -->
++  <%= render(Primer::Beta::Button.new(
++    size: :small,
++    scheme: :default,
++    style: "justify-self: start",
++    **@retry_button_arguments
++  )) do %>
++    <%= @retry_button_label %>
++  <% end %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/loading_failure_message.rb b/app/components/primer/open_project/tree_view/loading_failure_message.rb
+new file mode 100644
+index 000000000..8102c40f6
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/loading_failure_message.rb
+@@ -0,0 +1,31 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A `TreeView` loading failure message.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class LoadingFailureMessage < Primer::Component
++        DEFAULT_TEXT = "Something went wrong"
++        DEFAULT_RETRY_BUTTON_LABEL = "Retry"
++
++        # @param text [String] The failure message to display.
++        # @param retry_button_label [String] The text shown on the retry button.
++        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
++        def initialize(text: DEFAULT_TEXT, retry_button_label: DEFAULT_RETRY_BUTTON_LABEL, **system_arguments)
++          @text = text
++          @retry_button_label = retry_button_label
++          @retry_button_arguments = system_arguments.delete(:retry_button_arguments)
++          @system_arguments = deny_tag_argument(**system_arguments)
++          @system_arguments[:tag] = :div
++          @system_arguments[:classes] = class_names(
++            @system_arguments.delete(:classes),
++            "TreeViewFailureMessage"
++          )
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/node.html.erb b/app/components/primer/open_project/tree_view/node.html.erb
+new file mode 100644
+index 000000000..dbad69a47
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/node.html.erb
+@@ -0,0 +1,32 @@
++<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
++  <div class="TreeViewItemContainer" style="--level: <%= level %>;">
++    <div style="grid-area: spacer; display: flex;">
++      <div style="width: 100%; display: flex;">
++        <% (0...(level - 1)).each do %>
++          <div class="TreeViewItemLevelLine"></div>
++        <% end %>
++      </div>
++    </div>
++    <% if toggle? %>
++      <%= toggle %>
++    <% end %>
++    <% if leading_action? %>
++      <%= leading_action %>
++    <% end %>
++    <div id="<%= content_id %>" class="TreeViewItemContent">
++      <% if @select_variant == :multiple %>
++        <div aria-hidden="true" class="TreeViewItemCheckbox" tabindex="-1">
++          <div class="FormControl-checkbox"></div>
++        </div>
++      <% end %>
++      <% if leading_visual? %>
++        <%= leading_visual %>
++      <% end %>
++      <span class="TreeViewItemContentText"><%= text_content %></span>
++      <% if trailing_visual? %>
++        <%= trailing_visual %>
++      <% end %>
++    </div>
++  </div>
++  <%= content %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/node.rb b/app/components/primer/open_project/tree_view/node.rb
+new file mode 100644
+index 000000000..442ace057
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/node.rb
+@@ -0,0 +1,155 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A generic `TreeView` node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class Node < Primer::Component
++        # Generic leading action slot
++        renders_one :leading_action
++
++        # Generic leading visual slot
++        renders_one :leading_visual
++
++        # Generic trailing visual slot
++        renders_one :trailing_visual
++
++        # Generic toggle button slot
++        renders_one :toggle
++
++        # Generic text content slot (for node's label)
++        renders_one :text_content
++
++        # Wether or not this node is the current node.
++        #
++        # @return [Boolean]
++        attr_reader :current
++        alias current? current
++
++        # This node's checked state.
++        #
++        # @return [String]
++        attr_reader :checked
++
++        # This node's select variant (i.e. check box variant).
++        #
++        # @return [Symbol]
++        attr_reader :select_variant
++
++        DEFAULT_SELECT_VARIANT = :none
++        SELECT_VARIANT_OPTIONS = [
++          :multiple,
++          DEFAULT_SELECT_VARIANT
++        ].freeze
++
++        DEFAULT_CHECKED_STATE = false
++        CHECKED_STATES = [
++          DEFAULT_CHECKED_STATE,
++          true,
++          "mixed"
++        ]
++
++        # @param path [Array<String>] The node's "path," i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path.
++        # @param current [Boolean] Whether or not this node is the current node. The current node is styled differently than regular nodes and is the first element that receives focus when tabbing to the `TreeView` component.
++        # @param select_variant [Symbol] Controls the type of checkbox that appears. <%= one_of(Primer::OpenProject::TreeView::Node::SELECT_VARIANT_OPTIONS) %>
++        # @param checked [Boolean | String] The checked state of the node's checkbox. <%= one_of(Primer::OpenProject::TreeView::Node::CHECKED_STATES) %>
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
++        def initialize(
++          path:,
++          current: false,
++          select_variant: DEFAULT_SELECT_VARIANT,
++          checked: DEFAULT_CHECKED_STATE,
++          **system_arguments
++        )
++          @system_arguments = deny_tag_argument(**system_arguments)
++
++          @path = path
++          @current = current
++          @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
++          @checked = fetch_or_fallback(CHECKED_STATES, checked, DEFAULT_CHECKED_STATE)
++
++          @system_arguments[:tag] = :li
++          @system_arguments[:role] = :treeitem
++          @system_arguments[:tabindex] = current? ? 0 : -1
++          @system_arguments[:classes] = class_names(
++            @system_arguments.delete(:classes),
++            "TreeViewItem"
++          )
++
++          @system_arguments[:aria] = merge_aria(
++            @system_arguments, {
++              aria: {
++                level: level,
++                selected: false,
++                checked: checked,
++                labelledby: content_id
++              }
++            }
++          )
++
++          @system_arguments[:data] = merge_data(
++            @system_arguments,
++            { data: { path: @path.to_json } }
++          )
++
++          return unless current?
++
++          @system_arguments[:aria] = merge_aria(
++            @system_arguments,
++            { aria: { current: true } }
++          )
++        end
++
++        # The numeric depth of this node.
++        #
++        # @return [Integer] This node's depth.
++        def level
++          @level ||= @path.size
++        end
++
++        # Merges the given arguments into the current hash of system arguments provided when the component was
++        # initially constructed. This method can be used to add additional arguments just before rendering.
++        #
++        # @param other_arguments [Hash] The other hash of system arguments to merge into the current one.
++        def merge_system_arguments!(**other_arguments)
++          @system_arguments[:aria] = merge_aria(
++            @system_arguments,
++            other_arguments
++          )
++
++          @system_arguments[:data] = merge_data(
++            @system_arguments,
++            other_arguments
++          )
++
++          @system_arguments.merge!(**other_arguments)
++        end
++
++        private
++
++        def before_render
++          if leading_visual?
++          end
++
++          if leading_action?
++            @system_arguments[:data] = merge_data(
++              @system_arguments,
++              { data: { "has-leading-action": true } }
++            )
++          end
++        end
++
++        def content_id
++          @content_id ||= "#{base_id}-content"
++        end
++
++        def base_id
++          @base_id ||= self.class.generate_id
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/skeleton_loader.html.erb b/app/components/primer/open_project/tree_view/skeleton_loader.html.erb
+new file mode 100644
+index 000000000..b0d1061a9
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/skeleton_loader.html.erb
+@@ -0,0 +1,23 @@
++<% unless loading_failure_message? %>
++  <% with_loading_failure_message  # set the default %>
++<% end %>
++
++<%= render(Primer::BaseComponent.new(tag: :"tree-view-include-fragment", src: @src, loading: :lazy, data: { target: "tree-view-sub-tree-node.subTree tree-view-sub-tree-node.includeFragment", path: @container.path.to_json }, hidden: @container.expanded?, accept: "text/fragment+html")) do %>
++  <%= render(@container) do %>
++    <%= render(Primer::OpenProject::TreeView::Node.new(path: [*@container.path, :loader])) do |node| %>
++      <% node.with_text_content do %>
++        <div data-target="tree-view-sub-tree-node.loadingIndicator">
++          <% @count.times do %>
++            <span class="TreeViewSkeletonItemContainerStyle TreeViewItemSkeleton">
++              <%= render(Primer::OpenProject::SkeletonBox.new(width: "16px")) %>
++              <%= render(Primer::OpenProject::SkeletonBox.new(width: "100%", classes: "TreeItemSkeletonTextStyles")) %>
++            </span>
++          <% end %>
++        </div>
++        <div data-target="tree-view-sub-tree-node.loadingFailureMessage" hidden>
++          <%= loading_failure_message %>
++        </div>
++      <% end %>
++    <% end %>
++  <% end %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/skeleton_loader.rb b/app/components/primer/open_project/tree_view/skeleton_loader.rb
+new file mode 100644
+index 000000000..f61ae1185
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/skeleton_loader.rb
+@@ -0,0 +1,36 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # Renders a loading skeleton for a `TreeView` sub-tree node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class SkeletonLoader < Primer::Component
++        # The failure message that appears if loading nodes from the server fails.
++        #
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::LoadingFailureMessage) %>.
++        renders_one :loading_failure_message, lambda { |**system_arguments|
++          system_arguments[:retry_button_arguments] ||= {}
++          system_arguments[:retry_button_arguments][:data] = merge_data(
++            system_arguments[:retry_button_arguments],
++            data: { target: "tree-view-sub-tree-node.retryButton" }
++          )
++
++          LoadingFailureMessage.new(**system_arguments)
++        }
++
++        # @param src [String] The URL to fetch nodes from.
++        # @param count [Integer] The number of skeleton nodes to render.
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SubTreeContainer) %>.
++        def initialize(src:, count: 3, **system_arguments)
++          @src = src
++          @count = count
++
++          @container = SubTreeContainer.new(**system_arguments, expanded: true)
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/spinner_loader.html.erb b/app/components/primer/open_project/tree_view/spinner_loader.html.erb
+new file mode 100644
+index 000000000..d2f5b6ca4
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/spinner_loader.html.erb
+@@ -0,0 +1,20 @@
++<% unless loading_failure_message? %>
++  <% with_loading_failure_message  # set the default %>
++<% end %>
++
++<%= render(Primer::BaseComponent.new(tag: :"tree-view-include-fragment", src: @src, loading: :lazy, data: { target: "tree-view-sub-tree-node.subTree tree-view-sub-tree-node.includeFragment", path: @container.path.to_json }, hidden: @container.expanded?, accept: "text/fragment+html")) do %>
++  <%= render(@container) do %>
++    <%= render(Primer::OpenProject::TreeView::Node.new(path: [*@container.path, :loader], data: { target: "tree-view-sub-tree-node.loadingIndicator" })) do |node| %>
++      <% node.with_text_content { "Loading..." } %>
++      <% node.with_leading_visual do %>
++        <%= render(Primer::Beta::Spinner.new(size: :small, wrapper_arguments: { classes: "TreeViewItemVisual" })) %>
++      <% end %>
++    <% end %>
++
++    <%= render(Primer::OpenProject::TreeView::Node.new(path: [*@container.path, :failure_msg], data: { target: "tree-view-sub-tree-node.loadingFailureMessage" }, hidden: true)) do |node| %>
++      <% node.with_text_content do %>
++        <%= loading_failure_message %>
++      <% end %>
++    <% end %>
++  <% end %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/spinner_loader.rb b/app/components/primer/open_project/tree_view/spinner_loader.rb
+new file mode 100644
+index 000000000..8dd9a6599
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/spinner_loader.rb
+@@ -0,0 +1,33 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # Renders a loading spinner for a `TreeView` sub-tree node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class SpinnerLoader < Primer::Component
++        # The failure message that appears if loading nodes from the server fails.
++        #
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::LoadingFailureMessage) %>.
++        renders_one :loading_failure_message, lambda { |**system_arguments|
++          system_arguments[:retry_button_arguments] ||= {}
++          system_arguments[:retry_button_arguments][:data] = merge_data(
++            system_arguments[:retry_button_arguments],
++            data: { target: "tree-view-sub-tree-node.retryButton" }
++          )
++
++          LoadingFailureMessage.new(**system_arguments)
++        }
++
++        # @param src [String] The URL to fetch nodes from.
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SubTreeContainer) %>.
++        def initialize(src:, **system_arguments)
++          @src = src
++          @container = SubTreeContainer.new(**system_arguments, expanded: true)
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/sub_tree.html.erb b/app/components/primer/open_project/tree_view/sub_tree.html.erb
+new file mode 100644
+index 000000000..ed6b91db7
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree.html.erb
+@@ -0,0 +1,21 @@
++<% if defer? %>
++  <%= loader %>
++<% else %>
++  <% unless no_items_message? %>
++    <% with_no_items_message { "No items" }  # set the default %>
++  <% end %>
++
++  <%= render(@container) do %>
++    <% if nodes.empty? %>
++      <%= render(Primer::OpenProject::TreeView::Node.new(path: path, data: { "no-items": true })) do |node| %>
++        <% node.with_text_content do %>
++          <%= no_items_message %>
++        <% end %>
++      <% end %>
++    <% else %>
++      <% nodes.each do |node| %>
++        <%= node %>
++      <% end %>
++    <% end %>
++  <% end %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/sub_tree.rb b/app/components/primer/open_project/tree_view/sub_tree.rb
+new file mode 100644
+index 000000000..0b5dc22a5
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree.rb
+@@ -0,0 +1,106 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A `TreeView` sub-tree.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class SubTree < Primer::Component
++        # @!parse
++        #   # Adds an leaf node to the tree. Leaf nodes are nodes that do not have children.
++        #   #
++        #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %>
++        #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %>, or whatever class is passed as the `component_klass` argument.
++        #   def with_leaf(**system_arguments, &block)
++        #   end
++
++        # @!parse
++        #   # Adds a sub-tree node to the tree. Sub-trees are nodes that have children, which can be both leaf nodes and other sub-trees.
++        #   #
++        #   # @param component_klass [Class] The class to use instead of the default <%= link_to_component(Primer::OpenProject::TreeView::SubTreeNode) %>
++        #   # @param system_arguments [Hash] These arguments are forwarded to <%= link_to_component(Primer::OpenProject::TreeView::SubTreeNode) %>, or whatever class is passed as the `component_klass` argument.
++        #   def with_sub_tree(**system_arguments, &block)
++        #   end
++
++        renders_many :nodes, types: {
++          leaf: {
++            renders: lambda { |component_klass: LeafNode, label:, **system_arguments|
++              component_klass.new(
++                **system_arguments,
++                path: [*path, label],
++                label: label
++              )
++            },
++
++            as: :leaf
++          },
++
++          sub_tree: {
++            renders: lambda { |component_klass: SubTreeNode, label:, **system_arguments|
++              component_klass.new(
++                **system_arguments,
++                path: [*path, label],
++                label: label
++              )
++            },
++
++            as: :sub_tree
++          }
++        }
++
++        # @!parse
++        #   # Adds a loader to this sub-tree that displays a spinner animation while nodes are fetched from the server.
++        #   #
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SpinnerLoader) %>.
++        #   def with_loading_spinner(**system_arguments, &block)
++        #   end
++
++        # @!parse
++        #   # Adds a loader to this sub-tree that displays a skeleton animation while nodes are fetched from the server.
++        #   #
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SkeletonLoader) %>.
++        #   def with_loading_spinner(**system_arguments, &block)
++        #   end
++
++        renders_one :loader, types: {
++          spinner: {
++            renders: lambda { |**system_arguments|
++              SpinnerLoader.new(**system_arguments, path: path)
++            },
++
++            as: :loading_spinner
++          },
++
++          skeleton: {
++            renders: lambda { |**system_arguments|
++              SkeletonLoader.new(**system_arguments, path: path)
++            },
++
++            as: :loading_skeleton
++          }
++        }
++
++        # The message to display if this sub-tree contains no children.
++        renders_one :no_items_message
++
++        delegate :path, :expanded?, to: :@container
++
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SubTreeContainer) %>.
++        def initialize(**system_arguments)
++          system_arguments[:data] = merge_data(
++            system_arguments,
++            { data: { target: "tree-view-sub-tree-node.subTree" } }
++          )
++
++          @container = SubTreeContainer.new(**system_arguments)
++        end
++
++        def defer?
++          loader?
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/sub_tree_container.html.erb b/app/components/primer/open_project/tree_view/sub_tree_container.html.erb
+new file mode 100644
+index 000000000..160f493cc
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree_container.html.erb
+@@ -0,0 +1,3 @@
++<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
++  <%= content %>
++<% end %>
+diff --git a/app/components/primer/open_project/tree_view/sub_tree_container.rb b/app/components/primer/open_project/tree_view/sub_tree_container.rb
+new file mode 100644
+index 000000000..b6d9514c7
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree_container.rb
+@@ -0,0 +1,39 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class SubTreeContainer < Primer::Component
++        # The path to this node
++        #
++        # @return [Array<String>]
++        attr_reader :path
++
++        # Whether or not this sub-tree node renders expanded.
++        #
++        # @return [Boolean]
++        attr_reader :expanded
++
++        alias expanded? expanded
++
++        # @param path [Array<String>] The path to this node.
++        # @param expanded [Boolean] Whether or not this sub-tree node renders expanded.
++        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
++        def initialize(path:, expanded: false, **system_arguments)
++          @system_arguments = deny_tag_argument(**system_arguments)
++          @path = path
++          @expanded = expanded
++
++          @system_arguments[:tag] = :ul
++          @system_arguments[:role] = :group
++          @system_arguments[:p] = 0
++          @system_arguments[:m] = 0
++          @system_arguments[:style] = "list-style: none;"
++          @system_arguments[:hidden] = !expanded?
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/sub_tree_node.html.erb b/app/components/primer/open_project/tree_view/sub_tree_node.html.erb
+new file mode 100644
+index 000000000..669b3de36
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree_node.html.erb
+@@ -0,0 +1,49 @@
++<tree-view-sub-tree-node>
++  <%= render(@node) do |node| %>
++    <% if leading_action? %>
++      <% node.with_leading_action do %>
++        <%= leading_action %>
++      <% end %>
++    <% end %>
++    <% if leading_visual? %>
++      <% node.with_leading_visual do %>
++        <%= leading_visual %>
++      <% end %>
++    <% end %>
++    <% if trailing_visual? %>
++      <% node.with_trailing_visual do %>
++        <%= trailing_visual %>
++      <% end %>
++    <% end %>
++
++    <% node.with_text_content { @label } %>
++
++    <% node.with_toggle do %>
++      <div
++        data-target="tree-view-sub-tree-node.toggleButton"
++        class="TreeViewItemToggle TreeViewItemToggleHover TreeViewItemToggleEnd">
++        <%= render(
++          Primer::Beta::Octicon.new(
++            icon: :"chevron-down",
++            size: :xsmall,
++            data: { target: "tree-view-sub-tree-node.expandedToggleIcon" },
++            hidden: !@sub_tree.expanded?,
++            style: "pointer-events: none;"
++          )
++        ) %>
++
++        <%= render(
++          Primer::Beta::Octicon.new(
++            icon: :"chevron-right",
++            size: :xsmall,
++            data: { target: "tree-view-sub-tree-node.collapsedToggleIcon" },
++            hidden: @sub_tree.expanded?,
++            style: "pointer-events: none;"
++          )
++        ) %>
++      </div>
++    <% end %>
++
++    <%= render(@sub_tree) %>
++  <% end %>
++</tree-view-sub-tree-node>
+diff --git a/app/components/primer/open_project/tree_view/sub_tree_node.rb b/app/components/primer/open_project/tree_view/sub_tree_node.rb
+new file mode 100644
+index 000000000..a1150c203
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/sub_tree_node.rb
+@@ -0,0 +1,172 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A `TreeView` sub-tree node.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class SubTreeNode < Primer::Component
++        DEFAULT_SELECT_STRATEGY = :descendants
++        SELECT_STRATEGIES = [
++          :self,
++          DEFAULT_SELECT_STRATEGY
++        ]
++
++        # @!parse
++        #   # Adds a leading visual icon rendered to the left of the node's label.
++        #   #
++        #   # @param label [String] A label describing the visual, displayed only to screen readers.
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
++        #   def with_leading_visual_icon(label: nil, **system_arguments, &block)
++        #   end
++
++        # @!parse
++        #   # Adds a pair of leading visual icon rendered to the left of the node's label.
++        #   #
++        #   # @param label [String] A label describing the visual, displayed only to screen readers.
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::IconPair) %>.
++        #   def with_leading_visual_icons(label: nil, **system_arguments, &block)
++        #   end
++
++        renders_one :leading_visual, types: {
++          icon: lambda { |label: nil, **system_arguments|
++            merge_system_arguments!(
++              aria: { describedby: leading_visual_label_id }
++            )
++
++            Visual.new(
++              id: leading_visual_label_id,
++              label: label,
++              visual: Icon.new(**system_arguments)
++            )
++          },
++
++          icons: lambda { |label: nil, **system_arguments|
++            merge_system_arguments!(
++              aria: { describedby: leading_visual_label_id }
++            )
++
++            system_arguments[:data] = merge_data(
++              system_arguments,
++              { data: { target: "tree-view-sub-tree-node.iconPair" } }
++            )
++
++            Visual.new(
++              id: leading_visual_label_id,
++              label: label,
++              visual: IconPair.new(
++                **system_arguments,
++                expanded: @sub_tree.expanded?,
++              )
++            )
++          }
++        }
++
++        # @!parse
++        #   # Adds a leading action rendered to the left of the node's label and any leading visuals or checkboxes.
++        #   #
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
++        #   def with_leading_action_button(**system_arguments, &block)
++        #   end
++
++        renders_one :leading_action, types: {
++          button: lambda { |**system_arguments|
++            LeadingAction.new(
++              action: Primer::Beta::IconButton.new(
++                scheme: :invisible,
++                **system_arguments
++              )
++            )
++          }
++        }
++
++        # @!parse
++        #   # Adds a trailing visual icon rendered to the right of the node's label.
++        #   #
++        #   # @param label [String] A label describing the visual, displayed only to screen readers.
++        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Icon) %>.
++        #   def with_trailing_visual_icon(label: nil, **system_arguments, &block)
++        #   end
++
++        renders_one :trailing_visual, types: {
++          icon: lambda { |**system_arguments|
++            label = system_arguments.delete(:label)
++
++            Visual.new(
++              id: nil,
++              visual: Icon.new(**system_arguments),
++              label: label
++            )
++          }
++        }
++
++        delegate :with_leaf, :with_sub_tree, :with_loading_spinner, :with_loading_skeleton, to: :@sub_tree
++        delegate :current?, :merge_system_arguments!, to: :@node
++
++        # @param label [String] The node's label, i.e. it's textual content.
++        # @param path [Array<String>] The node's "path," i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path.
++        # @param expanded [Boolean] Whether or not this sub-tree should be rendered expanded.
++        # @param select_strategy [Symbol] What should happen when this sub-tree node is checked. <%= one_of(Primer::OpenProject::TreeView::SubTreeNode::SELECT_STRATEGIES) %>
++        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::Node) %>.
++        def initialize(label:, path:, expanded: false, select_strategy: DEFAULT_SELECT_STRATEGY, **system_arguments)
++          @label = label
++          @system_arguments = system_arguments
++          @select_strategy = fetch_or_fallback(SELECT_STRATEGIES, select_strategy, DEFAULT_SELECT_STRATEGY)
++
++          @system_arguments[:aria] = merge_aria(
++            @system_arguments,
++            { aria: { expanded: expanded } }
++          )
++
++          @system_arguments[:data] = merge_data(
++            @system_arguments, {
++              data: {
++                target: "tree-view-sub-tree-node.node",
++                "node-type": "sub-tree"
++              }
++            }
++          )
++
++          sub_tree_arguments = @system_arguments.delete(:sub_tree_arguments) || {}
++
++          @sub_tree = SubTree.new(
++            expanded: expanded,
++            path: path,
++            **sub_tree_arguments
++          )
++
++          @node = Primer::OpenProject::TreeView::Node.new(**@system_arguments, path: @sub_tree.path)
++
++          return if @node.select_variant == :none
++
++          @node.merge_system_arguments!(
++            data: {
++              "select-strategy": @select_strategy
++            }
++          )
++        end
++
++        def render_in(*args, &block)
++          super.tap do
++            # check this _after_ rendering so @sub_tree's slots are defined
++            if @node.select_variant != :none && @sub_tree.defer?
++              raise ArgumentError, "TreeView does not currently support select variants for sub-trees loaded asynchronously."
++            end
++          end
++        end
++
++        private
++
++        def base_id
++          @base_id ||= self.class.generate_id
++        end
++
++        def leading_visual_label_id
++          @leading_visual_id ||= "#{base_id}-leading-visual-label"
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/open_project/tree_view/tree_view.ts b/app/components/primer/open_project/tree_view/tree_view.ts
+new file mode 100644
+index 000000000..e4d4aa067
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/tree_view.ts
+@@ -0,0 +1,257 @@
++import {controller} from '@github/catalyst'
++import {TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
++import {useRovingTabIndex} from './tree_view_roving_tab_index'
++import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
++
++@controller
++export class TreeViewElement extends HTMLElement {
++  #abortController: AbortController
++
++  connectedCallback() {
++    const {signal} = (this.#abortController = new AbortController())
++    this.addEventListener('click', this, {signal})
++    this.addEventListener('focusin', this, {signal})
++    this.addEventListener('keydown', this, {signal})
++
++    useRovingTabIndex(this)
++  }
++
++  disconnectedCallback() {
++    this.#abortController.abort()
++  }
++
++  handleEvent(event: Event) {
++    const node = this.#nodeForEvent(event)
++
++    if (node) {
++      this.#handleNodeEvent(node, event)
++    }
++  }
++
++  #eventIsActivation(event: Event): boolean {
++    return event.type === 'click'
++  }
++
++  #nodeForEvent(event: Event): Element | null {
++    const target = event.target as Element
++    const node = target.closest('[role=treeitem]')
++    if (!node) return null
++
++    if (target.closest('.TreeViewItemToggle')) return null
++    if (target.closest('.TreeViewItemLeadingAction')) return null
++
++    return node
++  }
++
++  #handleNodeEvent(node: Element, event: Event) {
++    if (this.#eventIsCheckboxToggle(event)) {
++      this.#handleCheckboxToggle(node)
++    } else if (this.#eventIsActivation(event)) {
++      this.#handleNodeActivated(node)
++    } else if (event.type === 'focusin') {
++      this.#handleNodeFocused(node)
++    } else if (event instanceof KeyboardEvent) {
++      this.#handleNodeKeyboardEvent(event, node)
++    }
++  }
++
++  #eventIsCheckboxToggle(event: Event) {
++    return event.type === 'click' && (event.target as HTMLElement).closest('.TreeViewItemCheckbox') !== null
++  }
++
++  #handleCheckboxToggle(node: Element) {
++    // only handle checking of leaf nodes
++    const type = this.getNodeType(node)
++    if (type !== 'leaf') return
++
++    if (this.getNodeCheckedValue(node) === 'true') {
++      this.#setNodeCheckedValue(node, 'false')
++    } else {
++      this.#setNodeCheckedValue(node, 'true')
++    }
++  }
++
++  #handleNodeActivated(node: Element) {
++    const path = this.getNodePath(node)
++
++    const activationSuccess = this.dispatchEvent(
++      new CustomEvent('treeViewBeforeNodeActivated', {
++        bubbles: true,
++        cancelable: true,
++        detail: this.infoFromNode(node),
++      }),
++    )
++
++    if (!activationSuccess) return
++
++    this.toggleAtPath(path)
++
++    this.dispatchEvent(
++      new CustomEvent('treeViewNodeActivated', {
++        bubbles: true,
++        detail: this.infoFromNode(node),
++      }),
++    )
++  }
++
++  #handleNodeFocused(node: Element) {
++    const previousNode = this.querySelector('[aria-selected=true]')
++    previousNode?.setAttribute('aria-selected', 'false')
++    node.setAttribute('aria-selected', 'true')
++  }
++
++  #handleNodeKeyboardEvent(event: KeyboardEvent, node: Element) {
++    if (!node || this.getNodeType(node) !== 'leaf') {
++      return
++    }
++
++    switch (event.key) {
++      case ' ':
++        event.preventDefault()
++
++        if (this.getNodeCheckedValue(node) === 'true') {
++          this.#setNodeCheckedValue(node, 'false')
++        } else {
++          this.#setNodeCheckedValue(node, 'true')
++        }
++
++        break
++    }
++  }
++
++  getNodePath(node: Element): string[] {
++    const rawPath = node.getAttribute('data-path')
++
++    if (rawPath) {
++      return JSON.parse(rawPath)
++    }
++
++    return []
++  }
++
++  getNodeType(node: Element): TreeViewNodeType | null {
++    return node.getAttribute('data-node-type') as TreeViewNodeType | null
++  }
++
++  markCurrentAtPath(path: string[]) {
++    const pathStr = JSON.stringify(path)
++    const nodeToMark = this.querySelector(`[data-path="${CSS.escape(pathStr)}"`)
++    if (!nodeToMark) return
++
++    this.currentNode?.setAttribute('aria-current', 'false')
++    nodeToMark.setAttribute('aria-current', 'true')
++  }
++
++  get currentNode(): HTMLLIElement | null {
++    return this.querySelector('[aria-current=true]')
++  }
++
++  expandAtPath(path: string[]) {
++    const node = this.subTreeAtPath(path)
++    if (!node) return
++
++    node.expand()
++  }
++
++  collapseAtPath(path: string[]) {
++    const node = this.subTreeAtPath(path)
++    if (!node) return
++
++    node.collapse()
++  }
++
++  toggleAtPath(path: string[]) {
++    const node = this.subTreeAtPath(path)
++    if (!node) return
++
++    node.toggle()
++  }
++
++  checkAtPath(path: string[]) {
++    const node = this.nodeAtPath(path)
++    if (!node) return
++
++    this.#setNodeCheckedValue(node, 'true')
++  }
++
++  uncheckAtPath(path: string[]) {
++    const node = this.nodeAtPath(path)
++    if (!node) return
++
++    this.#setNodeCheckedValue(node, 'false')
++  }
++
++  toggleCheckedAtPath(path: string[]) {
++    const node = this.nodeAtPath(path)
++    if (!node) return
++
++    if (this.getNodeType(node) === 'leaf') {
++      if (this.getNodeCheckedValue(node) === 'true') {
++        this.uncheckAtPath(path)
++      } else {
++        this.checkAtPath(path)
++      }
++    }
++  }
++
++  checkedValueAtPath(path: string[]): TreeViewCheckedValue {
++    const node = this.nodeAtPath(path)
++    if (!node) return 'false'
++
++    return this.getNodeCheckedValue(node)
++  }
++
++  nodeAtPath(path: string[], selector?: string): Element | null {
++    const pathStr = JSON.stringify(path)
++    return this.querySelector(`${selector || ''}[data-path="${CSS.escape(pathStr)}"]`)
++  }
++
++  subTreeAtPath(path: string[]): TreeViewSubTreeNodeElement | null {
++    const node = this.nodeAtPath(path, '[data-node-type=sub-tree]')
++    if (!node) return null
++
++    return node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement | null
++  }
++
++  leafAtPath(path: string[]): HTMLLIElement | null {
++    return this.nodeAtPath(path, '[data-node-type=leaf]') as HTMLLIElement | null
++  }
++
++  #setNodeCheckedValue(node: Element, value: TreeViewCheckedValue) {
++    node.setAttribute('aria-checked', value.toString())
++  }
++
++  getNodeCheckedValue(node: Element): TreeViewCheckedValue {
++    return (node.getAttribute('aria-checked') || 'false') as TreeViewCheckedValue
++  }
++
++  // PRIVATE API METHOD
++  //
++  // This would normally be marked private, but it's called by TreeViewSubTreeNodes
++  // and thus must be public.
++  infoFromNode(node: Element, newCheckedValue?: TreeViewCheckedValue): TreeViewNodeInfo | null {
++    const type = this.getNodeType(node)
++    if (!type) return null
++
++    const checkedValue = this.getNodeCheckedValue(node)
++
++    return {
++      node,
++      type,
++      path: this.getNodePath(node),
++      checkedValue: newCheckedValue || checkedValue,
++      previousCheckedValue: checkedValue,
++    }
++  }
++}
++
++if (!window.customElements.get('tree-view')) {
++  window.TreeViewElement = TreeViewElement
++  window.customElements.define('tree-view', TreeViewElement)
++}
++
++declare global {
++  interface Window {
++    TreeViewElement: typeof TreeViewElement
++  }
++}
+diff --git a/app/components/primer/open_project/tree_view/tree_view_icon_pair_element.ts b/app/components/primer/open_project/tree_view/tree_view_icon_pair_element.ts
+new file mode 100644
+index 000000000..8f0a25cdb
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/tree_view_icon_pair_element.ts
+@@ -0,0 +1,56 @@
++import {controller, target} from '@github/catalyst'
++import {observeMutationsUntilConditionMet} from '../../utils'
++
++@controller
++export class TreeViewIconPairElement extends HTMLElement {
++  @target expandedIcon: HTMLElement
++  @target collapsedIcon: HTMLElement
++
++  expanded: boolean
++
++  connectedCallback() {
++    observeMutationsUntilConditionMet(
++      this,
++      () => Boolean(this.collapsedIcon) && Boolean(this.expandedIcon),
++      () => {
++        this.expanded = this.collapsedIcon.hidden
++      },
++    )
++  }
++
++  showExpanded() {
++    this.expanded = true
++    this.#update()
++  }
++
++  showCollapsed() {
++    this.expanded = false
++    this.#update()
++  }
++
++  toggle() {
++    this.expanded = !this.expanded
++    this.#update()
++  }
++
++  #update() {
++    if (this.expanded) {
++      this.expandedIcon.hidden = false
++      this.collapsedIcon.hidden = true
++    } else {
++      this.expandedIcon.hidden = true
++      this.collapsedIcon.hidden = false
++    }
++  }
++}
++
++if (!window.customElements.get('tree-view-icon-pair')) {
++  window.TreeViewIconPairElement = TreeViewIconPairElement
++  window.customElements.define('tree-view-icon-pair', TreeViewIconPairElement)
++}
++
++declare global {
++  interface Window {
++    TreeViewIconPairElement: typeof TreeViewIconPairElement
++  }
++}
+diff --git a/app/components/primer/open_project/tree_view/tree_view_include_fragment_element.ts b/app/components/primer/open_project/tree_view/tree_view_include_fragment_element.ts
+new file mode 100644
+index 000000000..133515ff3
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/tree_view_include_fragment_element.ts
+@@ -0,0 +1,29 @@
++import {controller} from '@github/catalyst'
++import {IncludeFragmentElement} from '@github/include-fragment-element'
++
++@controller
++export class TreeViewIncludeFragmentElement extends IncludeFragmentElement {
++  request(): Request {
++    const originalRequest = super.request()
++    const url = new URL(originalRequest.url)
++    url.searchParams.set('path', this.getAttribute('data-path') || '')
++
++    return new Request(url, {
++      method: originalRequest.method,
++      headers: originalRequest.headers,
++      credentials: originalRequest.credentials,
++    })
++  }
++}
++
++if (!window.customElements.get('tree-view-include-fragment')) {
++  window.TreeViewIncludeFragmentElement = TreeViewIncludeFragmentElement
++  // eslint-disable-next-line custom-elements/extends-correct-class
++  window.customElements.define('tree-view-include-fragment', TreeViewIncludeFragmentElement)
++}
++
++declare global {
++  interface Window {
++    TreeViewIncludeFragmentElement: typeof TreeViewIncludeFragmentElement
++  }
++}
+diff --git a/app/components/primer/open_project/tree_view/tree_view_roving_tab_index.ts b/app/components/primer/open_project/tree_view/tree_view_roving_tab_index.ts
+new file mode 100644
+index 000000000..1a5755cd7
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/tree_view_roving_tab_index.ts
+@@ -0,0 +1,156 @@
++import {TreeViewElement} from './tree_view'
++import {FocusKeys, focusZone} from '@primer/behaviors'
++
++// This code was adapted from the roving tab index implementation in primer/react, see:
++// https://github.com/primer/react/blob/f9785343716435f43e3d82482b057a17bd345c25/packages/react/src/TreeView/useRovingTabIndex.ts
++export function useRovingTabIndex(containerEl: TreeViewElement) {
++  // TODO: Initialize focus to the aria-current item if it exists
++  focusZone(containerEl, {
++    bindKeys: FocusKeys.ArrowVertical | FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd | FocusKeys.Backspace,
++    getNextFocusable: (_direction, from, event) => {
++      if (!(from instanceof HTMLElement)) return
++
++      // Skip elements within a modal dialog
++      // This need to be in a try/catch to avoid errors in
++      // non-supported browsers
++      try {
++        if (from.closest('dialog:modal')) {
++          return
++        }
++      } catch {
++        // Don't return
++      }
++
++      return getNextFocusableElement(from, event) ?? from
++    },
++    focusInStrategy: () => {
++      // Don't try to execute the focusInStrategy if focus is coming from a click.
++      // The clicked row will receive focus correctly by default.
++      // If a chevron is clicked, setting the focus through the focuszone will prevent its toggle.
++      // if (mouseDownRef.current) {
++      //   return undefined
++      // }
++
++      let currentItem = containerEl.querySelector('[aria-current]')
++      currentItem = currentItem?.checkVisibility() ? currentItem : null
++
++      const firstItem = containerEl.querySelector('[role="treeitem"]')
++
++      // Focus the aria-current item if it exists
++      if (currentItem instanceof HTMLElement) {
++        return currentItem
++      }
++
++      // Otherwise, focus the activeElement if it's a treeitem
++      if (
++        document.activeElement instanceof HTMLElement &&
++        containerEl.contains(document.activeElement) &&
++        document.activeElement.getAttribute('role') === 'treeitem'
++      ) {
++        return document.activeElement
++      }
++
++      // Otherwise, focus the first treeitem
++      return firstItem instanceof HTMLElement ? firstItem : undefined
++    },
++  })
++}
++
++// DOM utilities used for focus management
++
++function getNextFocusableElement(activeElement: HTMLElement, event: KeyboardEvent): HTMLElement | undefined {
++  const elementState = getElementState(activeElement)
++
++  // Reference: https://www.w3.org/WAI/ARIA/apg/patterns/treeview/#keyboard-interaction-24
++  switch (`${elementState} ${event.key}`) {
++    case 'open ArrowRight':
++      // Focus first child node
++      return getFirstChildElement(activeElement)
++
++    case 'open ArrowLeft':
++      // Close node; don't change focus
++      return
++
++    case 'closed ArrowRight':
++      // Open node; don't change focus
++      return
++
++    case 'closed ArrowLeft':
++      // Focus parent element
++      return getParentElement(activeElement)
++
++    case 'end ArrowRight':
++      // Do nothing
++      return
++
++    case 'end ArrowLeft':
++      // Focus parent element
++      return getParentElement(activeElement)
++  }
++
++  // ArrowUp and ArrowDown behavior is the same regardless of element state
++  switch (event.key) {
++    case 'ArrowUp':
++      // Focus previous visible element
++      return getVisibleElement(activeElement, 'previous')
++
++    case 'ArrowDown':
++      // Focus next visible element
++      return getVisibleElement(activeElement, 'next')
++
++    case 'Backspace':
++      return getParentElement(activeElement)
++  }
++}
++
++export function getElementState(element: HTMLElement): 'open' | 'closed' | 'end' {
++  if (element.getAttribute('role') !== 'treeitem') {
++    throw new Error('Element is not a treeitem')
++  }
++
++  switch (element.getAttribute('aria-expanded')) {
++    case 'true':
++      return 'open'
++    case 'false':
++      return 'closed'
++    default:
++      return 'end'
++  }
++}
++
++function getVisibleElement(element: HTMLElement, direction: 'next' | 'previous'): HTMLElement | undefined {
++  const root = element.closest('[role=tree]')
++
++  if (!root) return
++
++  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, node => {
++    if (!(node instanceof HTMLElement)) return NodeFilter.FILTER_SKIP
++    return node.getAttribute('role') === 'treeitem' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
++  })
++
++  let current = walker.firstChild()
++
++  while (current !== element) {
++    current = walker.nextNode()
++  }
++
++  let next = direction === 'next' ? walker.nextNode() : walker.previousNode()
++
++  // If next element is nested inside a collapsed subtree, continue iterating
++  while (next instanceof HTMLElement && next.parentElement?.closest('[role=treeitem][aria-expanded=false]')) {
++    next = direction === 'next' ? walker.nextNode() : walker.previousNode()
++  }
++
++  return next instanceof HTMLElement ? next : undefined
++}
++
++function getFirstChildElement(element: HTMLElement): HTMLElement | undefined {
++  const firstChild = element.querySelector('[role=treeitem]')
++  return firstChild instanceof HTMLElement ? firstChild : undefined
++}
++
++function getParentElement(element: HTMLElement): HTMLElement | undefined {
++  const group = element.closest('[role=group]')
++  const parent = group?.closest('[role=treeitem]')
++  return parent instanceof HTMLElement ? parent : undefined
++}
+diff --git a/app/components/primer/open_project/tree_view/tree_view_sub_tree_node_element.ts b/app/components/primer/open_project/tree_view/tree_view_sub_tree_node_element.ts
+new file mode 100644
+index 000000000..65c53679f
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/tree_view_sub_tree_node_element.ts
+@@ -0,0 +1,402 @@
++import {controller, target} from '@github/catalyst'
++import {TreeViewIconPairElement} from './tree_view_icon_pair_element'
++import {observeMutationsUntilConditionMet} from '../../utils'
++import {TreeViewIncludeFragmentElement} from './tree_view_include_fragment_element'
++import {TreeViewElement} from './tree_view'
++import type {TreeViewNodeInfo} from '../../shared_events'
++
++type LoadingState = 'loading' | 'error' | 'success'
++
++@controller
++export class TreeViewSubTreeNodeElement extends HTMLElement {
++  @target node: HTMLElement
++  @target subTree: HTMLElement
++  @target iconPair: TreeViewIconPairElement
++  @target toggleButton: HTMLElement
++  @target expandedToggleIcon: HTMLElement
++  @target collapsedToggleIcon: HTMLElement
++  @target includeFragment: TreeViewIncludeFragmentElement
++  @target loadingIndicator: HTMLElement
++  @target loadingFailureMessage: HTMLElement
++  @target retryButton: HTMLButtonElement
++
++  expanded: boolean
++  loadingState: LoadingState
++
++  #abortController: AbortController
++  #activeElementIsLoader: boolean = false
++
++  connectedCallback() {
++    this.expanded = this.node.getAttribute('aria-expanded') === 'true'
++    this.loadingState = 'success'
++
++    observeMutationsUntilConditionMet(
++      this,
++      () => Boolean(this.node) && Boolean(this.subTree),
++      () => {
++        this.#update()
++      },
++    )
++
++    const {signal} = (this.#abortController = new AbortController())
++    this.addEventListener('click', this, {signal})
++    this.addEventListener('keydown', this, {signal})
++
++    observeMutationsUntilConditionMet(
++      this,
++      () => Boolean(this.includeFragment),
++      () => {
++        this.includeFragment.addEventListener('loadstart', this, {signal})
++        this.includeFragment.addEventListener('error', this, {signal})
++        this.includeFragment.addEventListener('include-fragment-replace', this, {signal})
++        this.includeFragment.addEventListener(
++          'include-fragment-replaced',
++          (e: Event) => {
++            this.#handleIncludeFragmentEvent(e)
++          },
++          {signal},
++        )
++      },
++    )
++
++    observeMutationsUntilConditionMet(
++      this,
++      () => Boolean(this.retryButton),
++      () => {
++        this.retryButton.addEventListener(
++          'click',
++          event => {
++            this.#handleRetryButtonEvent(event)
++          },
++          {signal},
++        )
++      },
++    )
++
++    const checkedMutationObserver = new MutationObserver(() => {
++      if (this.selectStrategy !== 'descendants') return
++
++      let checkType = 'unknown'
++
++      for (const node of this.eachDirectDescendantNode()) {
++        switch (`${checkType} ${node.getAttribute('aria-checked') || 'false'}`) {
++          case 'unknown mixed':
++          case 'false mixed':
++          case 'true mixed':
++          case 'false true':
++          case 'true false':
++            checkType = 'mixed'
++            break
++
++          case 'unknown false':
++            checkType = 'false'
++            break
++
++          case 'unknown true':
++            checkType = 'true'
++        }
++      }
++
++      if (checkType !== 'unknown' && this.node?.getAttribute('aria-checked') !== checkType) {
++        this.node?.setAttribute('aria-checked', checkType)
++      }
++    })
++
++    checkedMutationObserver.observe(this, {
++      childList: true,
++      subtree: true,
++      attributeFilter: ['aria-checked'],
++    })
++  }
++
++  get selectStrategy(): string {
++    return this.node.getAttribute('data-select-strategy') || 'descendants'
++  }
++
++  disconnectedCallback() {
++    this.#abortController.abort()
++  }
++
++  handleEvent(event: Event) {
++    const checkbox = (event.target as Element).closest('.TreeViewItemCheckbox')
++
++    if (checkbox && checkbox === this.#checkboxElement) {
++      this.#handleCheckboxEvent(event)
++    } else if (event.target === this.toggleButton) {
++      this.#handleToggleEvent(event)
++    } else if (event.target === this.includeFragment) {
++      this.#handleIncludeFragmentEvent(event)
++    } else if (event instanceof KeyboardEvent) {
++      this.#handleKeyboardEvent(event)
++    }
++  }
++
++  expand() {
++    const alreadyExpanded = this.expanded
++
++    this.expanded = true
++    this.#update()
++
++    if (!alreadyExpanded && this.treeView) {
++      this.treeView.dispatchEvent(
++        new CustomEvent('treeViewNodeExpanded', {
++          bubbles: true,
++          detail: this.treeView?.infoFromNode(this.node),
++        }),
++      )
++    }
++  }
++
++  collapse() {
++    const alreadyCollapsed = !this.expanded
++
++    this.expanded = false
++    this.#update()
++
++    if (!alreadyCollapsed && this.treeView) {
++      // Prevent issue where currently focusable node is stuck inside a collapsed
++      // sub-tree and no node in the entire tree can be focused
++      const previousNode = this.subTree.querySelector("[tabindex='0']")
++      previousNode?.setAttribute('tabindex', '-1')
++      this.node.setAttribute('tabindex', '0')
++
++      this.treeView.dispatchEvent(
++        new CustomEvent('treeViewNodeCollapsed', {
++          bubbles: true,
++          detail: this.treeView?.infoFromNode(this.node),
++        }),
++      )
++    }
++  }
++
++  toggle() {
++    if (this.expanded) {
++      this.collapse()
++    } else {
++      this.expand()
++    }
++  }
++
++  get nodes(): NodeListOf<Element> {
++    return this.querySelectorAll(':scope > [role=treeitem]')
++  }
++
++  *eachDirectDescendantNode(): Generator<Element> {
++    for (const leaf of this.subTree.querySelectorAll(':scope > [role=treeitem]')) {
++      yield leaf
++    }
++
++    for (const subTree of this.subTree.querySelectorAll(':scope > tree-view-sub-tree-node > [role=treeitem]')) {
++      yield subTree
++    }
++  }
++
++  *eachDescendantNode(): Generator<Element> {
++    for (const node of this.subTree.querySelectorAll('[role=treeitem]')) {
++      yield node
++    }
++  }
++
++  get isEmpty(): boolean {
++    return this.nodes.length === 0
++  }
++
++  get treeView(): TreeViewElement | null {
++    return this.closest('tree-view')
++  }
++
++  #handleToggleEvent(event: Event) {
++    if (event.type === 'click') {
++      this.toggle()
++    }
++  }
++
++  #handleIncludeFragmentEvent(event: Event) {
++    switch (event.type) {
++      // the request has started
++      case 'loadstart':
++        this.loadingState = 'loading'
++        this.#update()
++        break
++
++      // the request failed
++      case 'error':
++        this.loadingState = 'error'
++        this.#update()
++        break
++
++      // request succeeded but element has not yet been replaced
++      case 'include-fragment-replace':
++        this.loadingState = 'success'
++        this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('li')
++        this.#update()
++        break
++
++      case 'include-fragment-replaced':
++        if (this.#activeElementIsLoader) {
++          const firstItem = this.querySelector('[role=treeitem] [role=group] > :first-child') as HTMLElement | null
++          if (!firstItem) return
++
++          if (firstItem.tagName.toLowerCase() === 'tree-view-sub-tree-node') {
++            const firstChild = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
++            firstChild?.focus()
++          } else {
++            firstItem?.focus()
++          }
++        }
++
++        this.#activeElementIsLoader = false
++        break
++    }
++  }
++
++  #handleRetryButtonEvent(event: Event) {
++    if (event.type === 'click') {
++      this.loadingState = 'loading'
++      this.#update()
++
++      this.includeFragment.refetch()
++    }
++  }
++
++  #handleKeyboardEvent(event: KeyboardEvent) {
++    const node = (event.target as HTMLElement).closest('[role=treeitem]')
++    if (!node || this.treeView?.getNodeType(node) !== 'sub-tree') {
++      return
++    }
++
++    switch (event.key) {
++      case 'Enter':
++        // eslint-disable-next-line no-restricted-syntax
++        event.stopPropagation()
++        this.toggle()
++        break
++
++      case 'ArrowRight':
++        // eslint-disable-next-line no-restricted-syntax
++        event.stopPropagation()
++        this.expand()
++        break
++
++      case 'ArrowLeft':
++        // eslint-disable-next-line no-restricted-syntax
++        event.stopPropagation()
++        this.collapse()
++        break
++
++      case ' ':
++        // eslint-disable-next-line no-restricted-syntax
++        event.stopPropagation()
++        event.preventDefault()
++        this.toggleChecked()
++        break
++    }
++  }
++
++  #handleCheckboxEvent(event: Event) {
++    if (event.type !== 'click') return
++
++    this.toggleChecked()
++
++    // prevent receiving this event twice
++    // eslint-disable-next-line no-restricted-syntax
++    event.stopPropagation()
++  }
++
++  toggleChecked() {
++    const checkValue = this.node.getAttribute('aria-checked') || 'false'
++    const newCheckValue = checkValue === 'false' ? 'true' : 'false'
++    const nodeInfos: TreeViewNodeInfo[] = []
++    const rootInfo = this.treeView?.infoFromNode(this.node, newCheckValue)
++    if (rootInfo) nodeInfos.push(rootInfo)
++
++    if (this.selectStrategy === 'descendants') {
++      for (const node of this.eachDescendantNode()) {
++        const info = this.treeView?.infoFromNode(node, newCheckValue)
++        if (info) nodeInfos.push(info)
++      }
++    }
++
++    const checkSuccess = this.dispatchEvent(
++      new CustomEvent('treeViewBeforeNodeChecked', {
++        bubbles: true,
++        cancelable: true,
++        detail: nodeInfos,
++      }),
++    )
++
++    if (!checkSuccess) return
++
++    for (const nodeInfo of nodeInfos) {
++      nodeInfo.node.setAttribute('aria-checked', newCheckValue)
++    }
++
++    this.dispatchEvent(
++      new CustomEvent('treeViewNodeChecked', {
++        bubbles: true,
++        cancelable: true,
++        detail: nodeInfos,
++      }),
++    )
++  }
++
++  #update() {
++    if (this.expanded) {
++      if (this.subTree) this.subTree.hidden = false
++      this.node.setAttribute('aria-expanded', 'true')
++
++      if (this.iconPair) {
++        this.iconPair.showExpanded()
++      }
++
++      if (this.expandedToggleIcon && this.collapsedToggleIcon) {
++        this.expandedToggleIcon.removeAttribute('hidden')
++        this.collapsedToggleIcon.setAttribute('hidden', 'hidden')
++      }
++    } else {
++      if (this.subTree) this.subTree.hidden = true
++      this.node.setAttribute('aria-expanded', 'false')
++
++      if (this.iconPair) {
++        this.iconPair.showCollapsed()
++      }
++
++      if (this.expandedToggleIcon && this.collapsedToggleIcon) {
++        this.expandedToggleIcon.setAttribute('hidden', 'hidden')
++        this.collapsedToggleIcon.removeAttribute('hidden')
++      }
++    }
++
++    switch (this.loadingState) {
++      case 'loading':
++        if (this.loadingFailureMessage) this.loadingFailureMessage.hidden = true
++        if (this.loadingIndicator) this.loadingIndicator.hidden = false
++        break
++
++      case 'error':
++        if (this.loadingIndicator) this.loadingIndicator.hidden = true
++        if (this.loadingFailureMessage) this.loadingFailureMessage.hidden = false
++        break
++
++      // success/init case
++      default:
++        if (this.loadingIndicator) this.loadingIndicator.hidden = true
++        if (this.loadingFailureMessage) this.loadingFailureMessage.hidden = true
++    }
++  }
++
++  get #checkboxElement(): HTMLElement | null {
++    return this.querySelector('.TreeViewItemCheckbox')
++  }
++}
++
++if (!window.customElements.get('tree-view-sub-tree-node')) {
++  window.TreeViewSubTreeNodeElement = TreeViewSubTreeNodeElement
++  window.customElements.define('tree-view-sub-tree-node', TreeViewSubTreeNodeElement)
++}
++
++declare global {
++  interface Window {
++    TreeViewSubTreeNodeElement: typeof TreeViewSubTreeNodeElement
++  }
++}
+diff --git a/app/components/primer/open_project/tree_view/visual.html.erb b/app/components/primer/open_project/tree_view/visual.html.erb
+new file mode 100644
+index 000000000..5967cdab2
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/visual.html.erb
+@@ -0,0 +1,14 @@
++<%= render(
++  Primer::BaseComponent.new(
++    tag: :div,
++    classes: "sr-only TreeViewVisuallyHidden",
++    aria: { hidden: true },
++    id: @id,
++    test_selector: "tree-view-visual-label"
++  )
++) do %>
++  <%= @label %>
++<% end %>
++<div class="TreeViewItemVisual" aria-hidden="true">
++  <%= render(@visual) %>
++</div>
+diff --git a/app/components/primer/open_project/tree_view/visual.rb b/app/components/primer/open_project/tree_view/visual.rb
+new file mode 100644
+index 000000000..06cee43a7
+--- /dev/null
++++ b/app/components/primer/open_project/tree_view/visual.rb
+@@ -0,0 +1,27 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    class TreeView
++      # A `TreeView` visual, either leading or trailing.
++      #
++      # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
++      # not be used directly.
++      class Visual < Primer::Component
++        # @param id [String] This visual's HTML ID.
++        # @param visual [ViewComponent::Base] A renderable component like an instance of <%= link_to_component(Primer::Beta::Octicon) %> to render as the visual.
++        # @param label [String] Text describing this visual that will be visible only to screen readers.
++        def initialize(id:, visual:, label: nil)
++          @id = id
++          @visual = visual
++          @label = label
++        end
++
++        def render_in(_view_context, &block)
++          block&.call(@visual)
++          super
++        end
++      end
++    end
++  end
++end
+diff --git a/app/components/primer/primer.pcss b/app/components/primer/primer.pcss
+index c94c105d5..57d1b44cd 100644
+--- a/app/components/primer/primer.pcss
++++ b/app/components/primer/primer.pcss
+@@ -51,3 +51,5 @@
+ @import "./open_project/side_panel/section.pcss";
+ @import "./open_project/border_box/collapsible_header.pcss";
+ @import "./open_project/collapsible_section.pcss";
++@import "./open_project/skeleton_box.pcss";
++@import "./open_project/tree_view.pcss";
+diff --git a/app/components/primer/primer.ts b/app/components/primer/primer.ts
+index ccb57ff60..532740801 100644
+--- a/app/components/primer/primer.ts
++++ b/app/components/primer/primer.ts
+@@ -33,3 +33,7 @@ import './open_project/danger_dialog_form_helper'
+ import './open_project/collapsible'
+ import './open_project/border_box/collapsible_header'
+ import './open_project/collapsible_section'
++import './open_project/tree_view/tree_view'
++import './open_project/tree_view/tree_view_icon_pair_element'
++import './open_project/tree_view/tree_view_sub_tree_node_element'
++import './open_project/tree_view/tree_view_include_fragment_element'
+diff --git a/app/components/primer/shared_events.ts b/app/components/primer/shared_events.ts
+index e9f015088..591efae8a 100644
+--- a/app/components/primer/shared_events.ts
++++ b/app/components/primer/shared_events.ts
+@@ -4,9 +4,28 @@ export type ItemActivatedEvent = {
+   value: string | null
+ }
+ 
++export type TreeViewNodeType = 'leaf' | 'sub-tree'
++export type TreeViewCheckedValue = 'true' | 'false' | 'mixed'
++
++export type TreeViewNodeInfo = {
++  node: Element
++  type: TreeViewNodeType
++  path: string[]
++  checkedValue: TreeViewCheckedValue
++  previousCheckedValue: TreeViewCheckedValue
++}
++
+ declare global {
+   interface HTMLElementEventMap {
+     itemActivated: CustomEvent<ItemActivatedEvent>
+     beforeItemActivated: CustomEvent<ItemActivatedEvent>
++
++    treeViewNodeActivated: CustomEvent<TreeViewNodeInfo>
++    treeViewBeforeNodeActivated: CustomEvent<TreeViewNodeInfo>
++    treeViewNodeExpanded: CustomEvent<TreeViewNodeInfo>
++    treeViewNodeCollapsed: CustomEvent<TreeViewNodeInfo>
++
++    treeViewNodeChecked: CustomEvent<TreeViewNodeInfo[]>
++    treeViewBeforeNodeChecked: CustomEvent<TreeViewNodeInfo[]>
+   }
+ }
+diff --git a/demo/app/controllers/tree_view_items.json b/demo/app/controllers/tree_view_items.json
+new file mode 100644
+index 000000000..91966364a
+--- /dev/null
++++ b/demo/app/controllers/tree_view_items.json
+@@ -0,0 +1,293 @@
++{
++  "children": {
++    "primer": {
++      "children": {
++        "alpha": {
++          "children": {
++            "action_bar": {
++              "children": {},
++              "files": [
++                "divider.rb",
++                "item.rb"
++              ]
++            },
++            "action_list": {
++              "children": {},
++              "files": [
++                "divider.rb",
++                "form_wrapper.rb",
++                "heading.rb",
++                "item.rb"
++              ]
++            },
++            "action_menu": {
++              "children": {},
++              "files": [
++                "action_menu_element.ts",
++                "group.rb",
++                "heading.rb",
++                "list.rb",
++                "list_wrapper.rb"
++              ]
++            },
++            "auto_complete": {
++              "children": {},
++              "files": [
++                "item.rb"
++              ]
++            },
++            "dialog": {
++              "children": {},
++              "files": [
++                "body.rb",
++                "footer.rb",
++                "header.rb"
++              ]
++            },
++            "dropdown": {
++              "children": {},
++              "files": [
++                "menu.rb",
++                "menu.ts"
++              ]
++            },
++            "file_tree_view": {
++              "children": {},
++              "files": [
++                "directory_item.rb",
++                "file_item.rb"
++              ]
++            },
++            "nav_list": {
++              "children": {},
++              "files": [
++                "divider.rb",
++                "group.rb",
++                "heading.rb",
++                "item.rb"
++              ]
++            },
++            "navigation": {
++              "children": {},
++              "files": [
++                "tab.rb"
++              ]
++            },
++            "overlay": {
++              "children": {},
++              "files": [
++                "body.rb",
++                "footer.rb",
++                "header.rb"
++              ]
++            },
++            "segmented_control": {
++              "children": {},
++              "files": [
++                "item.rb"
++              ]
++            },
++            "tree_view": {
++              "children": {},
++              "files": [
++                "icon.rb",
++                "icon_pair.rb",
++                "item.rb",
++                "leaf_item.rb",
++                "spinner_loader.rb",
++                "sub_tree.rb",
++                "sub_tree_container.rb",
++                "sub_tree_item.rb",
++                "tree_view_icon_pair_element.ts",
++                "tree_view_sub_tree_item_element.ts",
++                "visual.rb"
++              ]
++            }
++          },
++          "files": [
++            "action_bar.pcss",
++            "action_bar.rb",
++            "action_bar_element.ts",
++            "action_list.pcss",
++            "action_list.rb",
++            "action_list.ts",
++            "action_menu.rb",
++            "auto_complete.pcss",
++            "auto_complete.rb",
++            "banner.pcss",
++            "banner.rb",
++            "button_marketing.pcss",
++            "button_marketing.rb",
++            "check_box.rb",
++            "check_box_group.rb",
++            "dialog.pcss",
++            "dialog.rb",
++            "dropdown.pcss",
++            "dropdown.rb",
++            "dropdown.ts",
++            "file_tree_view.rb",
++            "form_button.rb",
++            "form_control.rb",
++            "hellip_button.rb",
++            "hidden_text_expander.rb",
++            "image.rb",
++            "layout.pcss",
++            "layout.rb",
++            "menu.pcss",
++            "menu.rb",
++            "modal_dialog.ts",
++            "multi_input.rb",
++            "nav_list.rb",
++            "octicon_symbols.rb",
++            "overlay.pcss",
++            "overlay.rb",
++            "radio_button.rb",
++            "radio_button_group.rb",
++            "segmented_control.pcss",
++            "segmented_control.rb",
++            "segmented_control.ts",
++            "select.rb",
++            "select_panel.pcss",
++            "select_panel.rb",
++            "select_panel_element.ts",
++            "stack.pcss",
++            "stack.rb",
++            "stack_item.pcss",
++            "stack_item.rb",
++            "submit_button.rb",
++            "tab_container.rb",
++            "tab_container.ts",
++            "tab_nav.pcss",
++            "tab_nav.rb",
++            "tab_panels.rb",
++            "text_area.rb",
++            "text_field.pcss",
++            "text_field.rb",
++            "toggle_switch.pcss",
++            "toggle_switch.rb",
++            "toggle_switch.ts",
++            "tool_tip.ts",
++            "tooltip.rb",
++            "tree_view.pcss",
++            "tree_view.rb",
++            "underline_nav.pcss",
++            "underline_nav.rb",
++            "underline_panels.rb",
++            "x_banner.ts"
++          ]
++        },
++        "beta": {
++          "children": {
++            "auto_complete": {
++              "children": {},
++              "files": [
++                "auto_complete.ts",
++                "item.rb",
++                "no_result_item.rb"
++              ]
++            },
++            "border_box": {
++              "children": {},
++              "files": [
++                "header.rb"
++              ]
++            },
++            "nav_list": {
++              "children": {},
++              "files": [
++                "divider.rb",
++                "group.rb",
++                "heading.rb",
++                "item.rb"
++              ]
++            }
++          },
++          "files": [
++            "auto_complete.rb",
++            "avatar.pcss",
++            "avatar.rb",
++            "avatar_stack.pcss",
++            "avatar_stack.rb",
++            "base_button.rb",
++            "blankslate.pcss",
++            "blankslate.rb",
++            "border_box.pcss",
++            "border_box.rb",
++            "breadcrumbs.pcss",
++            "breadcrumbs.rb",
++            "button.pcss",
++            "button.rb",
++            "button_group.pcss",
++            "button_group.rb",
++            "clipboard_copy.rb",
++            "clipboard_copy.ts",
++            "clipboard_copy_button.rb",
++            "close_button.rb",
++            "counter.pcss",
++            "counter.rb",
++            "details.rb",
++            "details_toggle_element.ts",
++            "flash.pcss",
++            "flash.rb",
++            "heading.rb",
++            "icon_button.rb",
++            "label.pcss",
++            "label.rb",
++            "link.pcss",
++            "link.rb",
++            "markdown.rb",
++            "nav_list.rb",
++            "nav_list.ts",
++            "nav_list_group_element.ts",
++            "octicon.rb",
++            "popover.pcss",
++            "popover.rb",
++            "progress_bar.pcss",
++            "progress_bar.rb",
++            "relative_time.rb",
++            "relative_time.ts",
++            "spinner.rb",
++            "state.pcss",
++            "state.rb",
++            "subhead.pcss",
++            "subhead.rb",
++            "text.rb",
++            "timeline_item.pcss",
++            "timeline_item.rb",
++            "truncate.pcss",
++            "truncate.rb"
++          ]
++        },
++        "navigation": {
++          "children": {},
++          "files": [
++            "tab_component.rb"
++          ]
++        }
++      },
++      "files": [
++        "anchored_position.ts",
++        "base_component.rb",
++        "blankslate_component.rb",
++        "box.rb",
++        "button_component.rb",
++        "component.rb",
++        "conditional_wrapper.rb",
++        "content.rb",
++        "dialog_helper.ts",
++        "focus_group.ts",
++        "icon_button.rb",
++        "layout_component.rb",
++        "primer.pcss",
++        "primer.ts",
++        "responsive_arg.rb",
++        "scrollable_region.ts",
++        "shared_events.ts",
++        "tooltip.rb",
++        "truncate.pcss",
++        "truncate.rb",
++        "utils.ts"
++      ]
++    }
++  }
++}
+\ No newline at end of file
+diff --git a/demo/app/controllers/tree_view_items_controller.rb b/demo/app/controllers/tree_view_items_controller.rb
+new file mode 100644
+index 000000000..a3136c9d3
+--- /dev/null
++++ b/demo/app/controllers/tree_view_items_controller.rb
+@@ -0,0 +1,38 @@
++# frozen_string_literal: true
++
++require "json"
++
++# :nodoc:
++class TreeViewItemsController < ApplicationController
++  TREE = JSON.parse(File.read(File.join(__dir__, "tree_view_items.json"))).freeze
++
++  def index
++    # delay a bit so loading spinners, etc can be seen
++    sleep 1
++
++    if params[:fail] == "true"
++      head :internal_server_error and return
++    end
++
++    path = JSON.parse(params[:path])
++    node = path.inject(TREE) do |current, segment|
++      current["children"][segment]
++    end
++
++    entries = (
++      node["children"].keys.map { |label| [label, :directory] } +
++      node["files"].map { |label| [label, :file] }
++    )
++
++    entries.sort_by!(&:first)
++
++    render(
++      locals: {
++        entries: entries,
++        path: path,
++        loader: (params[:loader] || :spinner).to_sym,
++        select_variant: (params[:select_variant] || :none).to_sym
++      }
++    )
++  end
++end
+diff --git a/demo/app/views/tree_view_items/index.html_fragment.erb b/demo/app/views/tree_view_items/index.html_fragment.erb
+new file mode 100644
+index 000000000..1d750b76c
+--- /dev/null
++++ b/demo/app/views/tree_view_items/index.html_fragment.erb
+@@ -0,0 +1,24 @@
++<%= render(Primer::OpenProject::TreeView::SubTree.new(path: path, expanded: true, select_variant: select_variant)) do |tree| %>
++  <% next if params[:empty] == "true" %>
++  <% entries.each do |label, type| %>
++    <% case type %>
++    <% when :directory %>
++      <% tree.with_sub_tree(label: label, select_variant: select_variant) do |sub_tree| %>
++        <% sub_tree.with_leading_visual_icons do |icons| %>
++          <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
++          <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
++        <% end %>
++
++        <% if loader == :skeleton %>
++          <% sub_tree.with_loading_skeleton(src: tree_view_items_path(loader: "skeleton", select_variant: select_variant)) %>
++        <% else %>
++          <% sub_tree.with_loading_spinner(src: tree_view_items_path(loader: "spinner", select_variant: select_variant)) %>
++        <% end %>
++      <% end %>
++    <% when :file %>
++      <% tree.with_leaf(label: label, select_variant: select_variant) do |item| %>
++        <% item.with_leading_visual_icon(icon: :file) %>
++      <% end %>
++    <% end %>
++  <% end %>
++<% end %>
+diff --git a/demo/config/routes.rb b/demo/config/routes.rb
+index a31a58d49..de759cd5c 100644
+--- a/demo/config/routes.rb
++++ b/demo/config/routes.rb
+@@ -24,6 +24,7 @@ Rails.application.routes.draw do
+     resources :nav_list_items, only: [:index]
+     resources :multi, only: [:create]
+     resources :select_panel_items, only: [:index]
++    resources :tree_view_items, only: [:index]
+ 
+     # generic form submission path
+     post "/form_handler", to: "form_handler#form_action", as: :generic_form_submission
+diff --git a/previews/primer/open_project/file_tree_view_preview.rb b/previews/primer/open_project/file_tree_view_preview.rb
+new file mode 100644
+index 000000000..6c839e24e
+--- /dev/null
++++ b/previews/primer/open_project/file_tree_view_preview.rb
+@@ -0,0 +1,66 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    # @label FileTreeView
++    class FileTreeViewPreview < ViewComponent::Preview
++      # @param expanded [Boolean] toggle
++      # @param select_variant [Symbol] select [multiple, none]
++      def default(expanded: false, select_variant: :none)
++        render_with_template(locals: {
++          expanded: coerce_bool(expanded),
++          select_variant: select_variant.to_sym
++        })
++      end
++
++      # @label Playground
++      #
++      # @param expanded [Boolean] toggle
++      # @param select_variant [Symbol] select [multiple, none]
++      def playground(expanded: false, select_variant: :none)
++        render_with_template(locals: {
++          expanded: coerce_bool(expanded),
++          select_variant: select_variant.to_sym,
++          populate: -> (*args) { populate(*args) }
++        })
++      end
++
++      private
++
++      def coerce_bool(value)
++        case value
++        when true, false
++          value
++        when "true"
++          true
++        when "false"
++          false
++        else
++          false
++        end
++      end
++
++      def populate(node, data, node_arguments)
++        return unless data
++
++        entries = (
++          data.fetch("children", {}).keys.map { |label, idx| [label, :directory] } +
++          data.fetch("files", []).map { |label| [label, :file] }
++        )
++
++        entries.sort_by!(&:first)
++
++        entries.each do |label, kind, idx|
++          case kind
++          when :directory
++            node.with_directory(label: label, **node_arguments) do |sub_tree|
++              populate(sub_tree, data["children"][label], node_arguments)
++            end
++          when :file
++            node.with_file(label: label, **node_arguments)
++          end
++        end
++      end
++    end
++  end
++end
+diff --git a/previews/primer/open_project/file_tree_view_preview/default.html.erb b/previews/primer/open_project/file_tree_view_preview/default.html.erb
+new file mode 100644
+index 000000000..8fe6fad5f
+--- /dev/null
++++ b/previews/primer/open_project/file_tree_view_preview/default.html.erb
+@@ -0,0 +1,16 @@
++<div style="max-width: 400px">
++  <%= render(Primer::OpenProject::FileTreeView.new) do |tree_view| %>
++    <% tree_view.with_directory(label: "src", expanded: expanded, select_variant: select_variant) do |dir| %>
++      <% dir.with_trailing_visual_icon(icon: :"diff-modified") %>
++
++      <% dir.with_file(label: "button.rb", select_variant: select_variant) %>
++      <% dir.with_file(label: "icon_button.rb", current: true, select_variant: select_variant) %>
++
++      <% dir.with_directory(label: "tree_view", select_variant: select_variant) do |subdir| %>
++        <% subdir.with_file(label: "sub_tree.rb", select_variant: select_variant) %>
++      <% end %>
++    <% end %>
++
++    <% tree_view.with_file(label: "action_menu.rb", select_variant: select_variant) %>
++  <% end %>
++</div>
+diff --git a/previews/primer/open_project/file_tree_view_preview/playground.html.erb b/previews/primer/open_project/file_tree_view_preview/playground.html.erb
+new file mode 100644
+index 000000000..2471d4411
+--- /dev/null
++++ b/previews/primer/open_project/file_tree_view_preview/playground.html.erb
+@@ -0,0 +1,4 @@
++<% data = TreeViewItemsController::TREE %>
++<%= render(Primer::OpenProject::FileTreeView.new) do |tree| %>
++  <% populate.call(tree, data, { select_variant: select_variant, expanded: expanded }) %>
++<% end %>
+diff --git a/previews/primer/open_project/skeleton_box_preview.rb b/previews/primer/open_project/skeleton_box_preview.rb
+new file mode 100644
+index 000000000..6d2f4133c
+--- /dev/null
++++ b/previews/primer/open_project/skeleton_box_preview.rb
+@@ -0,0 +1,20 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    # @label SkeletonBox
++    class SkeletonBoxPreview < ViewComponent::Preview
++      # @label Default
++      def default
++        render(Primer::OpenProject::SkeletonBox.new(width: "64px", height: "64px"))
++      end
++
++      # @label Playground
++      # @param width text
++      # @param height text
++      def playground(width: "64px", height: "64px")
++        render(Primer::OpenProject::SkeletonBox.new(width: width, height: height))
++      end
++    end
++  end
++end
+diff --git a/previews/primer/open_project/tree_view_preview.rb b/previews/primer/open_project/tree_view_preview.rb
+new file mode 100644
+index 000000000..9e6dd3f8d
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview.rb
+@@ -0,0 +1,126 @@
++# frozen_string_literal: true
++
++module Primer
++  module OpenProject
++    # @label TreeView
++    class TreeViewPreview < ViewComponent::Preview
++      # @param expanded [Boolean] toggle
++      # @param select_variant [Symbol] select [multiple, none]
++      # @param select_strategy [Symbol] select [self, descendants]
++      def default(expanded: false, select_variant: :none, select_strategy: :descendants)
++        render_with_template(locals: {
++          expanded: coerce_bool(expanded),
++          select_variant: select_variant.to_sym,
++          select_strategy: select_strategy.to_sym
++        })
++      end
++
++      # @label Playground
++      #
++      # @param expanded [Boolean] toggle
++      # @param select_variant [Symbol] select [multiple, none]
++      # @param select_strategy [Symbol] select [self, descendants]
++      def playground(expanded: false, select_variant: :none, select_strategy: :descendants)
++        render_with_template(locals: {
++          expanded: coerce_bool(expanded),
++          select_variant: select_variant.to_sym,
++          select_strategy: select_strategy.to_sym,
++          populate: -> (*args) { populate(*args) }
++        })
++      end
++
++      # @label Empty
++      def empty
++      end
++
++      # @label Loading spinner
++      #
++      # @param simulate_failure [Boolean] toggle
++      # @param simulate_empty [Boolean] toggle
++      def loading_spinner(simulate_failure: false, simulate_empty: false)
++        render_with_template(locals: {
++          simulate_failure: coerce_bool(simulate_failure),
++          simulate_empty: coerce_bool(simulate_empty),
++        })
++      end
++
++      # @label Loading skeleton
++      #
++      # @param simulate_failure [Boolean] toggle
++      # @param simulate_empty [Boolean] toggle
++      def loading_skeleton(simulate_failure: false, simulate_empty: false)
++        render_with_template(locals: {
++          simulate_failure: coerce_bool(simulate_failure),
++          simulate_empty: coerce_bool(simulate_empty)
++        })
++      end
++
++      # @label Leaf node playground
++      #
++      # @param label [String] text
++      # @param leading_visual_icon [Symbol] octicon
++      # @param leading_action_icon [Symbol] octicon
++      # @param trailing_visual_icon [Symbol] octicon
++      # @param select_variant [Symbol] select [multiple, none]
++      def leaf_node_playground(
++        label: "Leaf node",
++        leading_visual_icon: nil,
++        leading_action_icon: nil,
++        trailing_visual_icon: nil,
++        select_variant: :none
++      )
++        render_with_template(locals: {
++          label: label,
++          leading_visual_icon: leading_visual_icon,
++          leading_action_icon: leading_action_icon,
++          trailing_visual_icon: trailing_visual_icon,
++          select_variant: select_variant.to_sym
++        })
++      end
++
++      private
++
++      def coerce_bool(value)
++        case value
++        when true, false
++          value
++        when "true"
++          true
++        when "false"
++          false
++        else
++          false
++        end
++      end
++
++      def populate(node, data, node_arguments)
++        return unless data
++
++        entries = (
++          data.fetch("children", {}).keys.map { |label, idx| [label, :directory] } +
++          data.fetch("files", []).map { |label| [label, :file] }
++        )
++
++        entries.sort_by!(&:first)
++
++        entries.each do |label, kind, idx|
++          case kind
++          when :directory
++            node.with_sub_tree(label: label, **node_arguments) do |sub_tree|
++              sub_tree.with_leading_visual_icons do |icons|
++                icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent)
++                icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent)
++              end
++
++              populate(sub_tree, data["children"][label], node_arguments)
++            end
++          when :file
++            node.with_leaf(label: label, **node_arguments) do |leaf|
++              leaf.with_leading_visual_icon(icon: :file)
++            end
++          end
++        end
++      end
++    end
++  end
++end
+diff --git a/previews/primer/open_project/tree_view_preview/default.html.erb b/previews/primer/open_project/tree_view_preview/default.html.erb
+new file mode 100644
+index 000000000..85b99ac83
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/default.html.erb
+@@ -0,0 +1,24 @@
++<div style="max-width: 400px">
++  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
++    <% tree_view.with_sub_tree(label: "src", expanded: expanded, select_variant: select_variant, select_strategy: select_strategy) do |sub_tree| %>
++      <% sub_tree.with_leading_visual_icons(label: "Foobar") do |icons| %>
++        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
++        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
++      <% end %>
++
++      <% sub_tree.with_trailing_visual_icon(icon: :"diff-modified") %>
++
++      <% sub_tree.with_leaf(label: "button.rb", select_variant: select_variant) do |item| %>
++        <% item.with_leading_visual_icon(icon: :file) %>
++      <% end %>
++
++      <% sub_tree.with_leaf(label: "icon_button.rb", current: true, select_variant: select_variant) do |item| %>
++        <% item.with_leading_visual_icon(icon: :file) %>
++      <% end %>
++    <% end %>
++
++    <% tree_view.with_leaf(label: "action_menu.rb", select_variant: select_variant) do |item| %>
++      <% item.with_leading_visual_icon(icon: :file) %>
++    <% end %>
++  <% end %>
++</div>
+diff --git a/previews/primer/open_project/tree_view_preview/empty.html.erb b/previews/primer/open_project/tree_view_preview/empty.html.erb
+new file mode 100644
+index 000000000..b022096d6
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/empty.html.erb
+@@ -0,0 +1,10 @@
++<div style="max-width: 400px">
++  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
++    <% tree_view.with_sub_tree(label: "src") do |sub_tree| %>
++      <% sub_tree.with_leading_visual_icons do |icons| %>
++        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
++        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
++      <% end %>
++    <% end %>
++  <% end %>
++</div>
+diff --git a/previews/primer/open_project/tree_view_preview/leaf_node_playground.html.erb b/previews/primer/open_project/tree_view_preview/leaf_node_playground.html.erb
+new file mode 100644
+index 000000000..af6650c2d
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/leaf_node_playground.html.erb
+@@ -0,0 +1,15 @@
++<%= render(Primer::OpenProject::TreeView.new) do |tree| %>
++  <% tree.with_leaf(label: label, select_variant: select_variant) do |node| %>
++    <% if leading_visual_icon && leading_visual_icon != :none %>
++      <% node.with_leading_visual_icon(icon: leading_visual_icon) %>
++    <% end %>
++
++    <% if trailing_visual_icon && trailing_visual_icon != :none %>
++      <% node.with_trailing_visual_icon(icon: trailing_visual_icon) %>
++    <% end %>
++
++    <% if leading_action_icon && leading_action_icon != :none %>
++      <% node.with_leading_action_button(icon: leading_action_icon, aria: { label: "Leading action icon" }) %>
++    <% end %>
++  <% end %>
++<% end %>
+diff --git a/previews/primer/open_project/tree_view_preview/loading_skeleton.html.erb b/previews/primer/open_project/tree_view_preview/loading_skeleton.html.erb
+new file mode 100644
+index 000000000..f9dceaf6b
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/loading_skeleton.html.erb
+@@ -0,0 +1,12 @@
++<div style="max-width: 400px">
++  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
++    <% tree_view.with_sub_tree(label: "primer") do |sub_tree| %>
++      <% sub_tree.with_leading_visual_icons do |icons| %>
++        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
++        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
++      <% end %>
++
++      <% sub_tree.with_loading_skeleton(src: tree_view_items_path(loader: "skeleton", fail: simulate_failure, empty: simulate_empty)) %>
++    <% end %>
++  <% end %>
++</div>
+diff --git a/previews/primer/open_project/tree_view_preview/loading_spinner.html.erb b/previews/primer/open_project/tree_view_preview/loading_spinner.html.erb
+new file mode 100644
+index 000000000..7ba25cc25
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/loading_spinner.html.erb
+@@ -0,0 +1,12 @@
++<div style="max-width: 400px">
++  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
++    <% tree_view.with_sub_tree(label: "primer") do |sub_tree| %>
++      <% sub_tree.with_leading_visual_icons do |icons| %>
++        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
++        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
++      <% end %>
++
++      <% sub_tree.with_loading_spinner(src: tree_view_items_path(loader: "spinner", fail: simulate_failure, empty: simulate_empty)) %>
++    <% end %>
++  <% end %>
++</div>
+diff --git a/previews/primer/open_project/tree_view_preview/playground.html.erb b/previews/primer/open_project/tree_view_preview/playground.html.erb
+new file mode 100644
+index 000000000..4523437c9
+--- /dev/null
++++ b/previews/primer/open_project/tree_view_preview/playground.html.erb
+@@ -0,0 +1,4 @@
++<% data = TreeViewItemsController::TREE %>
++<%= render(Primer::OpenProject::TreeView.new) do |tree| %>
++  <% populate.call(tree, data, { select_variant: select_variant, select_strategy: select_strategy, expanded: expanded }) %>
++<% end %>
+diff --git a/static/classes.json b/static/classes.json
+index baa5ffabb..7a668dde0 100644
+--- a/static/classes.json
++++ b/static/classes.json
+@@ -589,6 +589,9 @@
+   "SidePanel-sectionHeader": [
+     "Primer::OpenProject::SidePanel::Section"
+   ],
++  "SkeletonBox": [
++    "Primer::OpenProject::SkeletonBox"
++  ],
+   "Stack": [
+     "Primer::Alpha::Stack"
+   ],
+@@ -724,6 +727,18 @@
+   "ToggleSwitch-track": [
+     "Primer::Alpha::ToggleSwitch"
+   ],
++  "TreeItemSkeletonTextStyles": [
++    "Primer::OpenProject::TreeView"
++  ],
++  "TreeViewFailureMessage": [
++    "Primer::OpenProject::TreeView"
++  ],
++  "TreeViewRootUlStyles": [
++    "Primer::OpenProject::TreeView"
++  ],
++  "TreeViewSkeletonItemContainerStyle": [
++    "Primer::OpenProject::TreeView"
++  ],
+   "Truncate": [
+     "Primer::Beta::Truncate"
+   ],
+diff --git a/test/components/component_test.rb b/test/components/component_test.rb
+index af73786f1..17e28bd13 100644
+--- a/test/components/component_test.rb
++++ b/test/components/component_test.rb
+@@ -61,6 +61,9 @@ class PrimerComponentTest < Minitest::Test
+       component.with_title { "Foo" }
+       component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
+     }],
++    [Primer::OpenProject::SkeletonBox, {}],
++    [Primer::OpenProject::TreeView, {}],
++    [Primer::OpenProject::FileTreeView, {}],
+     [Primer::Alpha::IncludeFragment, {}],
+     [Primer::Alpha::ActionBar, {}, proc { |component|
+       component.with_item_icon_button(icon: :search, label: "Search")
+@@ -219,7 +222,21 @@ class PrimerComponentTest < Minitest::Test
+       "Primer::OpenProject::PageHeader::Dialog",
+       "Primer::OpenProject::PageHeader::Title",
+       "Primer::OpenProject::SidePanel::Section",
+-      "Primer::OpenProject::DangerDialog::FormWrapper"
++      "Primer::OpenProject::DangerDialog::FormWrapper",
++      "Primer::OpenProject::TreeView::IconPair",
++      "Primer::OpenProject::TreeView::Icon",
++      "Primer::OpenProject::TreeView::LeadingAction",
++      "Primer::OpenProject::TreeView::LeafNode",
++      "Primer::OpenProject::TreeView::LoadingFailureMessage",
++      "Primer::OpenProject::TreeView::Node",
++      "Primer::OpenProject::TreeView::SkeletonLoader",
++      "Primer::OpenProject::TreeView::SpinnerLoader",
++      "Primer::OpenProject::TreeView::SubTreeContainer",
++      "Primer::OpenProject::TreeView::SubTreeNode",
++      "Primer::OpenProject::TreeView::SubTree",
++      "Primer::OpenProject::TreeView::Visual",
++      "Primer::OpenProject::FileTreeView::FileNode",
++      "Primer::OpenProject::FileTreeView::DirectoryNode",
+     ]
+ 
+     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
+diff --git a/test/components/primer/open_project/file_tree_view_test.rb b/test/components/primer/open_project/file_tree_view_test.rb
+new file mode 100644
+index 000000000..145900991
+--- /dev/null
++++ b/test/components/primer/open_project/file_tree_view_test.rb
+@@ -0,0 +1,38 @@
++# frozen_string_literal: true
++
++require "components/test_helper"
++
++module Primer
++  module OpenProject
++    class FileTreeViewTest < Minitest::Test
++      include Primer::ComponentTestHelpers
++
++      def test_dom_structure
++        render_preview(:default, params: { expanded: true })
++
++        assert_selector("tree-view") do |tree|
++          tree.assert_selector("ul[role=tree]") do |sub_tree|
++            sub_tree.assert_selector("li[role=treeitem]") do |node|
++              node.assert_selector(".TreeViewItemContainer", text: "src") do |node|
++                node.assert_selector(".TreeViewItemVisual tree-view-icon-pair") do |visual|
++                  visual.assert_selector("[data-target='tree-view-icon-pair.expandedIcon'] svg.octicon-file-directory-open-fill")
++                  visual.assert_selector("[data-target='tree-view-icon-pair.collapsedIcon'] svg.octicon-file-directory-fill", visible: :hidden)
++                end
++              end
++
++              node.assert_selector("ul[role=group]") do |sub_tree|
++                sub_tree.assert_selector("li[role=treeitem]", text: "button.rb") do |button_node|
++                  button_node.assert_selector(".TreeViewItemVisual svg.octicon-file")
++                end
++
++                sub_tree.assert_selector("li[role=treeitem]", text: "icon_button.rb") do |icon_button_node|
++                  icon_button_node.assert_selector(".TreeViewItemVisual svg.octicon-file")
++                end
++              end
++            end
++          end
++        end
++      end
++    end
++  end
++end
+diff --git a/test/components/primer/open_project/skeleton_box_test.rb b/test/components/primer/open_project/skeleton_box_test.rb
+new file mode 100644
+index 000000000..621b80c12
+--- /dev/null
++++ b/test/components/primer/open_project/skeleton_box_test.rb
+@@ -0,0 +1,46 @@
++# frozen_string_literal: true
++
++require "components/test_helper"
++
++module Primer
++  module OpenProject
++    class SkeletonBoxTest < Minitest::Test
++      include Primer::ComponentTestHelpers
++
++      def test_renders_box_with_no_dimensions_by_default
++        render_inline(Primer::OpenProject::SkeletonBox.new)
++
++        assert_selector(".SkeletonBox") do |box|
++          refute box[:style]
++        end
++      end
++
++      def test_renders_box_with_width_only
++        render_inline(Primer::OpenProject::SkeletonBox.new(width: "16px"))
++
++        assert_selector(".SkeletonBox") do |box|
++          assert_includes box[:style], "width: 16px"
++          refute_includes box[:style], "height"
++        end
++      end
++
++      def test_renders_box_with_height_only
++        render_inline(Primer::OpenProject::SkeletonBox.new(height: "16px"))
++
++        assert_selector(".SkeletonBox") do |box|
++          assert_includes box[:style], "height: 16px"
++          refute_includes box[:style], "width"
++        end
++      end
++
++      def test_renders_box_with_both_dimensions
++        render_inline(Primer::OpenProject::SkeletonBox.new(width: "16px", height: "16px"))
++
++        assert_selector(".SkeletonBox") do |box|
++          assert_includes box[:style], "width: 16px"
++          assert_includes box[:style], "height: 16px"
++        end
++      end
++    end
++  end
++end
+diff --git a/test/components/primer/open_project/tree_view_test.rb b/test/components/primer/open_project/tree_view_test.rb
+new file mode 100644
+index 000000000..1f584743d
+--- /dev/null
++++ b/test/components/primer/open_project/tree_view_test.rb
+@@ -0,0 +1,152 @@
++# frozen_string_literal: true
++
++require "components/test_helper"
++
++module Primer
++  module OpenProject
++    class TreeViewTest < Minitest::Test
++      include Primer::ComponentTestHelpers
++
++      def test_dom_structure
++        render_preview(:default, params: { expanded: true })
++
++        assert_selector("tree-view") do |tree|
++          tree.assert_selector("ul[role=tree]") do |sub_tree|
++            sub_tree.assert_selector("li[role=treeitem]") do |node|
++              node.assert_selector(".TreeViewItemContainer", text: "src")
++              node.assert_selector("ul[role=group]") do |sub_tree|
++                sub_tree.assert_selector("li[role=treeitem]", text: "button.rb")
++                sub_tree.assert_selector("li[role=treeitem]", text: "icon_button.rb")
++              end
++            end
++          end
++        end
++      end
++
++      def test_leading_visual_icon_pair_collapsed
++        render_preview(:default)
++
++        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
++          node.assert_selector(".TreeViewItemVisual tree-view-icon-pair") do |visual|
++            visual.assert_selector("svg.octicon-file-directory-fill")
++          end
++        end
++      end
++
++      def test_leading_visual_icon_pair_expanded
++        render_preview(:default, params: { expanded: true })
++
++        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
++          node.assert_selector(".TreeViewItemVisual tree-view-icon-pair") do |visual|
++            visual.assert_selector("svg.octicon-file-directory-open-fill")
++          end
++        end
++      end
++
++      def test_trailing_visual_icon
++        render_preview(:default)
++
++        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
++          # this should be visually positioned after the node's label
++          node.assert_selector(":nth-child(5) svg.octicon-diff-modified")
++        end
++      end
++
++      def test_node_described_by_leading_visual
++        render_inline(Primer::OpenProject::TreeView.new) do |tree|
++          tree.with_leaf(label: "src") do |node|
++            node.with_leading_visual_icon(icon: :"file-directory-fill", label: "File folder")
++          end
++        end
++
++        assert_selector "[data-test-selector='tree-view-visual-label']", text: "File folder"
++
++        label_id = page
++          .find_css("[data-test-selector='tree-view-visual-label']")
++          .attribute("id")
++          .value
++
++        assert_selector "li[aria-describedby='#{label_id}']"
++      end
++
++      def test_node_labelled_by_content
++        render_inline(Primer::OpenProject::TreeView.new) do |tree|
++          tree.with_leaf(label: "src")
++        end
++
++        assert_selector ".TreeViewItemContent", text: "src"
++
++        content_id = page
++          .find_css(".TreeViewItemContent")
++          .attribute("id")
++          .value
++
++        assert_selector "li[aria-labelledby='#{content_id}']"
++      end
++
++      def test_loading_spinner
++        render_preview(:loading_spinner)
++
++        assert_selector("tree-view-include-fragment", visible: :hidden) do |node|
++          node.assert_selector("[data-target='tree-view-sub-tree-node.loadingIndicator'] svg", visible: :hidden)
++          node.assert_selector("button[data-target='tree-view-sub-tree-node.retryButton']", visible: :hidden)
++        end
++      end
++
++      def test_loading_skeleton
++        render_preview(:loading_skeleton)
++
++        assert_selector("tree-view-include-fragment", visible: :hidden) do |node|
++          node.assert_selector("[data-target='tree-view-sub-tree-node.loadingIndicator'] .TreeViewItemSkeleton", visible: :hidden)
++          node.assert_selector("button[data-target='tree-view-sub-tree-node.retryButton']", visible: :hidden)
++        end
++      end
++
++      def test_leaf_leading_action
++        render_preview(:leaf_node_playground, params: { leading_action_icon: :grabber })
++
++        assert_selector("[role=treeitem] .TreeViewItemLeadingAction button svg.octicon-grabber")
++      end
++
++      def test_leaf_trailing_visual
++        render_preview(:leaf_node_playground, params: { trailing_visual_icon: :"diff-modified" })
++
++        assert_selector("[role=treeitem] .TreeViewItemVisual svg.octicon-diff-modified")
++      end
++
++      def test_sub_tree_leading_action
++        render_inline(Primer::OpenProject::TreeView.new) do |tree|
++          tree.with_sub_tree(label: "src") do |sub_tree|
++            sub_tree.with_leading_action_button(icon: :grabber, aria: { label: "Leading action icon" })
++            sub_tree.with_leaf(label: "button.rb")
++          end
++        end
++
++        assert_selector("[role=treeitem] .TreeViewItemLeadingAction button svg.octicon-grabber")
++      end
++
++      def test_sub_tree_leading_visual
++        render_inline(Primer::OpenProject::TreeView.new) do |tree|
++          tree.with_sub_tree(label: "src") do |sub_tree|
++            sub_tree.with_leading_visual_icon(icon: :"sparkle-fill")
++            sub_tree.with_leaf(label: "button.rb")
++          end
++        end
++
++        assert_selector("[role=treeitem] .TreeViewItemVisual svg.octicon-sparkle-fill")
++      end
++
++      def test_disallows_multi_select_for_async_sub_trees
++        error = assert_raises(ArgumentError) do
++          render_inline(Primer::OpenProject::TreeView.new) do |tree|
++            tree.with_sub_tree(label: "src", select_variant: :multiple) do |sub_tree|
++              sub_tree.with_loading_spinner(src: "/foobar")
++            end
++          end
++        end
++
++        assert_equal error.message, "TreeView does not currently support select variants for sub-trees loaded asynchronously."
++      end
++    end
++  end
++end
+diff --git a/test/css/component_specific_selectors_test.rb b/test/css/component_specific_selectors_test.rb
+index b0206fed2..dca894036 100644
+--- a/test/css/component_specific_selectors_test.rb
++++ b/test/css/component_specific_selectors_test.rb
+@@ -188,6 +188,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
+     Primer::OpenProject::SubHeader => [
+       ".SubHeader--expandedSearch",
+       ".SubHeader-filterInput_hiddenClearButton"
++    ],
++    Primer::OpenProject::TreeView => [
++      # Used, but not directly rendered by a preview
++      ".TreeViewItemLeadingAction",
+     ]
+   }.freeze
+ 
+diff --git a/test/system/alpha/select_panel_test.rb b/test/system/alpha/select_panel_test.rb
+index f4e054ffa..0d3a4f1f6 100644
+--- a/test/system/alpha/select_panel_test.rb
++++ b/test/system/alpha/select_panel_test.rb
+@@ -1,4 +1,3 @@
+-
+ # frozen_string_literal: true
+ 
+ require "system/test_case"
+diff --git a/test/system/open_project/tree_view_test.rb b/test/system/open_project/tree_view_test.rb
+new file mode 100644
+index 000000000..ac40b3757
+--- /dev/null
++++ b/test/system/open_project/tree_view_test.rb
+@@ -0,0 +1,548 @@
++# frozen_string_literal: true
++
++require "system/test_case"
++
++module OpenProject
++  class IntegrationTreeViewTest < System::TestCase
++    include Primer::KeyboardTestHelpers
++    include Primer::JsTestHelpers
++
++    ##### TEST HELPERS #####
++
++    def selector_for(*path)
++      "[role=treeitem][data-path='#{path.to_json}']"
++    end
++
++    def activate_at_path(*path)
++      find("#{selector_for(*path)} .TreeViewItemContainer", match: :first).click
++    end
++
++    def check_at_path(*path)
++      find("#{selector_for(*path)} .TreeViewItemCheckbox", match: :first).click
++    end
++
++    def label_at_path(*path)
++      label_of(node_at_path(*path))
++    end
++
++    def label_of(node)
++      return unless node
++      return unless node.tag_name == "li"
++      return unless node["role"] == "treeitem"
++
++      node.find_css(".TreeViewItemContentText").first.all_text
++    end
++
++    def node_at_path(*path)
++      find(selector_for(*path), match: :first)
++    end
++
++    def current_node
++      find_all("[role=treeitem][aria-current]").first
++    end
++
++    def active_element
++      page.evaluate_script("document.activeElement")
++    end
++
++    def assert_path(*path)
++      assert_selector selector_for(*path)
++    end
++
++    def refute_path(*path)
++      refute_selector selector_for(*path)
++    end
++
++    def assert_path_tabbable(*path)
++      assert_selector "#{selector_for(*path)}[tabindex='0']"
++    end
++
++    def assert_path_selected(*path)
++      assert_selector "#{selector_for(*path)}[aria-selected=true]"
++    end
++
++    def assert_path_checked(*path, value: :true)
++      assert_selector "#{selector_for(*path)}[aria-checked='#{value}']"
++    end
++
++    def refute_path_checked(*path, value: :true)
++      if value == :true_or_mixed
++        refute_path_checked(*path, "true")
++        refute_path_checked(*path, "mixed")
++      else
++        refute_selector "#{selector_for(*path)}[aria-checked='#{value}']"
++      end
++    end
++
++    def remove_fail_param_from_fragment_src_for(*path)
++      evaluate_multiline_script(<<~JS)
++        const selector = CSS.escape(JSON.stringify(#{path.inspect}))
++        const includeFragment = document.querySelector(`[data-path="${selector}"] tree-view-include-fragment`)
++        const relativeUrl = includeFragment.getAttribute('src')
++        const url = new URL(relativeUrl, 'http://dummy')
++        url.searchParams.delete('fail')
++        const newUrl = `${url.pathname}?${url.searchParams.toString()}`
++        includeFragment.setAttribute('src', newUrl)
++      JS
++    end
++
++    ##### TESTS #####
++
++    def test_expands
++      visit_preview(:default)
++      activate_at_path("src")
++
++      assert_path "src", "button.rb"
++      assert_path "src", "icon_button.rb"
++
++      node_at_path("src").tap do |node|
++        assert_equal "true", node["aria-expanded"]
++      end
++    end
++
++    def test_collapses
++      visit_preview(:default)
++      activate_at_path("src")
++
++      node_at_path("src").tap do |node|
++        assert_equal "true", node["aria-expanded"]
++      end
++
++      # should collapse
++      activate_at_path("src")
++
++      refute_path "src", "button.rb"
++      refute_path "src", "icon_button.rb"
++
++      node_at_path("src").tap do |node|
++        assert_equal "false", node["aria-expanded"]
++      end
++    end
++
++    def test_expanded_and_collapsed_icons
++      visit_preview(:default)
++
++      assert_selector "#{selector_for("src")} .TreeViewItemVisual svg.octicon-file-directory-fill"
++      activate_at_path("src")
++      assert_selector "#{selector_for("src")} .TreeViewItemVisual svg.octicon-file-directory-open-fill"
++    end
++
++    def test_current
++      visit_preview(:default)
++
++      refute current_node
++      activate_at_path("src")
++
++      assert current_node
++      assert_equal label_of(current_node), "icon_button.rb"
++    end
++
++    def test_first_item_tabbable_when_no_current
++      visit_preview(:default)
++
++      assert_path_tabbable("src")
++    end
++
++    def test_current_item_tabbable
++      visit_preview(:default, expanded: true)
++
++      assert_path_tabbable("src", "icon_button.rb")
++    end
++
++    def test_tab_selects_current_item
++      visit_preview(:default, expanded: true)
++
++      refute label_of(active_element)
++
++      keyboard.type(:tab)
++
++      assert_equal label_of(active_element), "icon_button.rb"
++      assert_path_selected("src", "icon_button.rb")
++    end
++
++    def test_tree_tabbable_after_parent_of_focused_item_is_collapsed
++      visit_preview(:default, expanded: true)
++
++      keyboard.type(:tab)
++      assert_path_selected("src", "icon_button.rb")
++
++      activate_at_path("src")
++
++      # collapsed node now tabbable
++      assert_path_tabbable("src")
++    end
++
++    ##### KEYBOARD NAVIGATION #####
++
++    def test_expands_on_enter
++      visit_preview(:default)
++
++      keyboard.type(:tab, :enter)
++      assert_path("src", "button.rb")
++    end
++
++    def test_collapses_on_enter
++      visit_preview(:default)
++
++      keyboard.type(:tab, :enter)
++      assert_path("src", "button.rb")
++
++      keyboard.type(:enter)
++      refute_path("src", "button.rb")
++    end
++
++    def test_expands_on_right_arrow
++      visit_preview(:default)
++
++      keyboard.type(:tab, :right)
++      assert_path("src", "button.rb")
++    end
++
++    def test_collapses_on_left_arrow
++      visit_preview(:default)
++
++      keyboard.type(:tab, :right)
++      assert_path("src", "button.rb")
++
++      keyboard.type(:left)
++      refute_path("src", "button.rb")
++    end
++
++    def test_arrow_down_selects_next_visible_node
++      visit_preview(:default)
++
++      keyboard.type(:tab, :down)
++
++      assert_equal label_of(active_element), "action_menu.rb"
++      assert_path_selected("action_menu.rb")
++    end
++
++    def test_arrow_up_selects_previous_visible_node
++      visit_preview(:default)
++
++      keyboard.type(:tab, :down)
++
++      assert_equal label_of(active_element), "action_menu.rb"
++      assert_path_selected("action_menu.rb")
++
++      keyboard.type(:up)
++
++      assert_equal label_of(active_element), "src"
++      assert_path_selected("src")
++    end
++
++    def test_arrow_down_selects_expanded_item
++      visit_preview(:default)
++
++      keyboard.type(:tab, :enter, :down)
++
++      assert_equal label_of(active_element), "button.rb"
++      assert_path_selected("src", "button.rb")
++    end
++
++    ##### LOADERS #####
++
++    def test_loading_spinner
++      visit_preview(:loading_spinner)
++
++      activate_at_path("primer")
++
++      # assert loader appears and is subsequently replaced
++      assert_selector "#{selector_for("primer", "loader")} svg"
++      assert_selector "#{selector_for("primer", "alpha")}"
++
++      # assert loader is gone
++      refute_selector "#{selector_for("primer", "loader")}"
++    end
++
++    def test_selecting_spinner_causes_selection_to_move_to_first_loaded_node
++      visit_preview(:loading_spinner)
++
++      keyboard.type(:tab, :enter)
++      assert_path("primer", "loader")
++      keyboard.type(:down)
++
++      assert_path_selected("primer", "alpha")
++    end
++
++    def test_loading_spinner_failure
++      visit_preview(:loading_spinner, simulate_failure: true)
++
++      activate_at_path("primer")
++
++      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
++    end
++
++    def test_loading_spinner_retry_after_failure
++      visit_preview(:loading_spinner, simulate_failure: true)
++
++      activate_at_path("primer")
++      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
++
++      remove_fail_param_from_fragment_src_for("primer")
++      click_on("Retry")
++
++      assert_path("primer", "alpha")
++      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
++    end
++
++    def test_empty_after_loading_spinner
++      visit_preview(:loading_spinner, simulate_empty: true)
++
++      activate_at_path("primer")
++
++      assert_selector "#{selector_for("primer")} .TreeViewItemContentText", text: "No items"
++    end
++
++    def test_loading_skeleton
++      visit_preview(:loading_skeleton)
++
++      activate_at_path("primer")
++
++      # assert loader appears and is subsequently replaced
++      assert_selector "#{selector_for("primer", "loader")} .SkeletonBox"
++      assert_selector "#{selector_for("primer", "alpha")}"
++
++      # assert loader is gone
++      refute_selector "#{selector_for("primer", "loader")}"
++    end
++
++    def test_selecting_skeleton_causes_selection_to_move_to_first_loaded_node
++      visit_preview(:loading_skeleton)
++
++      keyboard.type(:tab, :enter)
++      assert_path("primer", "loader")
++      keyboard.type(:down)
++
++      assert_path_selected("primer", "alpha")
++    end
++
++    def test_loading_skeleton_failure
++      visit_preview(:loading_skeleton, simulate_failure: true)
++
++      activate_at_path("primer")
++
++      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
++    end
++
++    def test_loading_skeleton_retry_after_failure
++      visit_preview(:loading_skeleton, simulate_failure: true)
++
++      activate_at_path("primer")
++      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
++
++      remove_fail_param_from_fragment_src_for("primer")
++      click_on("Retry")
++
++      assert_path("primer", "alpha")
++      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
++    end
++
++    def test_empty_after_loading_skeleton
++      visit_preview(:loading_skeleton, simulate_empty: true)
++
++      activate_at_path("primer")
++
++      assert_selector "#{selector_for("primer")} .TreeViewItemContentText", text: "No items"
++    end
++
++    def test_empty
++      visit_preview(:empty)
++
++      activate_at_path("src")
++
++      assert_selector "#{selector_for("src")} .TreeViewItemContentText", text: "No items"
++    end
++
++    def capture_event(event_name, cancel: false)
++      evaluate_multiline_script(<<~JS)
++        window.treeViewEventDetails = null
++        const treeViewShouldCancelEvent = #{cancel}
++
++        document.querySelector('tree-view').addEventListener('#{event_name}', (event) => {
++          window.treeViewEventDetails = event.detail
++
++          if (treeViewShouldCancelEvent) {
++            event.preventDefault()
++          }
++        })
++      JS
++
++      yield
++
++      return page.evaluate_script("window.treeViewEventDetails")
++    end
++
++    ##### JAVASCRIPT EVENTS #####
++
++    def test_fires_event_before_activation
++      visit_preview(:default)
++
++      details = capture_event("treeViewBeforeNodeActivated") do
++        activate_at_path("src")
++      end
++
++      assert details["node"]
++      assert_equal details["type"], "sub-tree"
++      assert_equal details["path"], ["src"]
++      assert_equal details["checkedValue"], "false"
++      assert_equal details["previousCheckedValue"], "false"
++    end
++
++    def test_canceling_activation_event_prevents_expansion
++      visit_preview(:default)
++
++      refute_path "src", "button.rb"
++
++      capture_event("treeViewBeforeNodeActivated", cancel: true) do
++        activate_at_path("src")
++      end
++
++      # src should still be collapsed
++      refute_path "src", "button.rb"
++    end
++
++    def test_fires_activation_event
++      visit_preview(:default)
++
++      details = capture_event("treeViewNodeActivated") do
++        activate_at_path("src")
++      end
++
++      assert details["node"]
++      assert_equal details["type"], "sub-tree"
++      assert_equal details["path"], ["src"]
++      assert_equal details["checkedValue"], "false"
++      assert_equal details["previousCheckedValue"], "false"
++    end
++
++    def test_fires_event_before_checking
++      visit_preview(:default, select_variant: :multiple)
++
++      details = capture_event("treeViewBeforeNodeChecked") do
++        check_at_path("src")
++      end
++
++      assert_equal details.size, 3
++
++      assert details[0]["node"]
++      assert_equal details[0]["type"], "sub-tree"
++      assert_equal details[0]["path"], ["src"]
++      assert_equal details[0]["checkedValue"], "true"
++      assert_equal details[0]["previousCheckedValue"], "false"
++    end
++
++    def test_canceling_check_event_prevents_checking
++      visit_preview(:default, select_variant: :multiple)
++
++      refute_path_checked "src"
++
++      capture_event("treeViewBeforeNodeChecked", cancel: true) do
++        check_at_path("src")
++      end
++
++      # src should still not be checked
++      refute_path_checked "src"
++    end
++
++    def test_fires_check_event
++      visit_preview(:default, select_variant: :multiple)
++
++      details = capture_event("treeViewNodeChecked") do
++        check_at_path("src")
++      end
++
++      assert_equal details.size, 3
++
++      assert details[0]["node"]
++      assert_equal details[0]["type"], "sub-tree"
++      assert_equal details[0]["path"], ["src"]
++      assert_equal details[0]["checkedValue"], "true"
++      assert_equal details[0]["previousCheckedValue"], "false"
++    end
++
++    ##### CHECKBOX BEHAVIOR #####
++
++    def test_space_checks_leaf_node
++      visit_preview(:playground, select_variant: :multiple)
++
++      activate_at_path("primer")
++      activate_at_path("primer", "alpha")
++      refute_path_checked "primer", "alpha", "action_bar.pcss"
++
++      keyboard.type(:tab, :down, :down, :down, :space)
++      assert_path_checked "primer", "alpha", "action_bar.pcss"
++    end
++
++    def test_space_checks_sub_tree_node
++      visit_preview(:playground, select_variant: :multiple)
++
++      refute_path_checked "primer"
++
++      keyboard.type(:tab, :space)
++      assert_path_checked "primer"
++    end
++
++    def test_checking_sub_tree_node_checks_all_children
++      visit_preview(:default, expanded: true, select_variant: :multiple)
++
++      assert_path "src", "button.rb"
++      refute_path_checked "src", "button.rb"
++
++      assert_path "src", "button.rb"
++      refute_path_checked "src", "icon_button.rb"
++
++      check_at_path("src")
++
++      assert_path_checked "src"
++      assert_path_checked "src", "button.rb"
++      assert_path_checked "src", "icon_button.rb"
++    end
++
++    def test_unchecking_sub_tree_child_results_in_mixed_parent
++      visit_preview(:default, expanded: true, select_variant: :multiple)
++
++      check_at_path("src")
++      assert_path_checked "src"
++
++      check_at_path("src", "button.rb")  # uncheck
++      assert_path_checked "src", value: :mixed
++      refute_path_checked "src", "button.rb"
++      assert_path_checked "src", "icon_button.rb"
++    end
++
++    def test_checking_deeply_nested_child_results_in_all_mixed_ancestors
++      visit_preview(:playground, expanded: true, select_variant: :multiple)
++
++      check_at_path("primer", "alpha", "action_bar", "item.rb")
++
++      assert_path_checked "primer", value: :mixed
++      assert_path_checked "primer", "alpha", value: :mixed
++      assert_path_checked "primer", "alpha", "action_bar", value: :mixed
++      assert_path_checked "primer", "alpha", "action_bar", "item.rb"
++    end
++
++    def test_self_select_strategy_does_not_check_parent
++      visit_preview(:playground, expanded: true, select_variant: :multiple, select_strategy: :self)
++
++      check_at_path("primer", "alpha", "action_bar", "item.rb")
++
++      refute_path_checked "primer", value: :true_or_mixed
++      refute_path_checked "primer", "alpha", value: :true_or_mixed
++      refute_path_checked "primer", "alpha", "action_bar", value: :true_or_mixed
++
++      assert_path_checked "primer", "alpha", "action_bar", "item.rb"
++    end
++
++    def test_self_select_strategy_checking_sub_tree_does_not_check_children
++      visit_preview(:playground, expanded: true, select_variant: :multiple, select_strategy: :self)
++
++      check_at_path("primer", "alpha", "action_bar")
++
++      refute_path_checked "primer", "alpha", "action_bar", "divider.rb", value: :true_or_mixed
++      refute_path_checked "primer", "alpha", "action_bar", "item.rb", value: :true_or_mixed
++
++      assert_path_checked "primer", "alpha", "action_bar"
++    end
++  end
++end
