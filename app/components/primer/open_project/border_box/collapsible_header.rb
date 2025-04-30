@@ -34,6 +34,14 @@ module Primer
           system_arguments[:color] ||= :subtle
           system_arguments[:hidden] = @collapsed
 
+          system_arguments[:data] = merge_data(
+            system_arguments, {
+              data: {
+                targets: "collapsible-header.collapsibleElements"
+              }
+            }
+          )
+
           Primer::Beta::Text.new(**system_arguments, &block)
         }
 
@@ -54,10 +62,10 @@ module Primer
           if @collapsed
             @system_arguments[:data] = merge_data(
               @system_arguments, {
-              data: {
-                collapsed: @collapsed
+                data: {
+                  collapsed: @collapsed
+                }
               }
-            }
             )
           end
 
