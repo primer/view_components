@@ -1,0 +1,7 @@
+- tree:
+  - treeitem "primer" [expanded] [level=1] [selected]:
+    - text: primer
+    - group:
+      - treeitem "Something went wrong Retry" [level=2]:
+        - text: Something went wrong
+        - button "Retry"

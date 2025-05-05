@@ -61,6 +61,9 @@ class PrimerComponentTest < Minitest::Test
       component.with_title { "Foo" }
       component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"])
     }],
+    [Primer::OpenProject::SkeletonBox, {}],
+    [Primer::OpenProject::TreeView, {}],
+    [Primer::OpenProject::FileTreeView, {}],
     [Primer::Alpha::IncludeFragment, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
@@ -219,7 +222,21 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::PageHeader::Dialog",
       "Primer::OpenProject::PageHeader::Title",
       "Primer::OpenProject::SidePanel::Section",
-      "Primer::OpenProject::DangerDialog::FormWrapper"
+      "Primer::OpenProject::DangerDialog::FormWrapper",
+      "Primer::OpenProject::TreeView::IconPair",
+      "Primer::OpenProject::TreeView::Icon",
+      "Primer::OpenProject::TreeView::LeadingAction",
+      "Primer::OpenProject::TreeView::LeafNode",
+      "Primer::OpenProject::TreeView::LoadingFailureMessage",
+      "Primer::OpenProject::TreeView::Node",
+      "Primer::OpenProject::TreeView::SkeletonLoader",
+      "Primer::OpenProject::TreeView::SpinnerLoader",
+      "Primer::OpenProject::TreeView::SubTreeContainer",
+      "Primer::OpenProject::TreeView::SubTreeNode",
+      "Primer::OpenProject::TreeView::SubTree",
+      "Primer::OpenProject::TreeView::Visual",
+      "Primer::OpenProject::FileTreeView::FileNode",
+      "Primer::OpenProject::FileTreeView::DirectoryNode",
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

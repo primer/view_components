@@ -188,6 +188,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::OpenProject::SubHeader => [
       ".SubHeader--expandedSearch",
       ".SubHeader-filterInput_hiddenClearButton"
+    ],
+    Primer::OpenProject::TreeView => [
+      # Used, but not directly rendered by a preview
+      ".TreeViewItemLeadingAction",
     ]
   }.freeze
 

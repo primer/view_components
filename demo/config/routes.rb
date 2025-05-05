@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :nav_list_items, only: [:index]
     resources :multi, only: [:create]
     resources :select_panel_items, only: [:index]
+    resources :tree_view_items, only: [:index]
 
     # generic form submission path
     post "/form_handler", to: "form_handler#form_action", as: :generic_form_submission
