@@ -290,6 +290,7 @@ module OpenProject
       visit_preview(:loading_spinner, simulate_empty: true)
 
       activate_at_path("primer")
+      refute_selector("tree-view-include-fragment") # wait for fragment to load
 
       assert_selector "#{selector_for("primer")} .TreeViewItemContentText", text: "No items"
     end
