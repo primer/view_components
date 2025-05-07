@@ -23,6 +23,12 @@ IGNORED_SELECTORS = {
 }.freeze
 # rubocop:enable Style/WordArray
 
+IGNORED_PREVIEWS = {
+  # Computationally-intensive; selectors checked by other previews
+  Primer::OpenProject::TreeView => [:playground],
+  Primer::OpenProject::FileTreeView => [:playground]
+}
+
 # Test CSS Selectors Used By Components
 # ----
 #
@@ -49,6 +55,8 @@ class ComponentSelectorUseTest < System::TestCase
     component_uri = preview_class.to_s.underscore.gsub("_preview", "")
 
     previews.each do |preview|
+      next if IGNORED_PREVIEWS.fetch(component_class, []).include?(preview)
+
       define_method("test_selectors_used_by_#{component_uri.parameterize(separator: '_')}_#{preview}_are_valid") do
         Capybara.current_session.using_wait_time(10) do
           visit("/rails/view_components/#{component_uri}/#{preview}")
