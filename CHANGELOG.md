@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.65.0
+
+### Minor Changes
+
+- [#295](https://github.com/opf/primer_view_components/pull/295) [`48d3acd`](https://github.com/opf/primer_view_components/commit/48d3acd10d460147539f7c0e1d5537d68535825c) Thanks [@HDinger](https://github.com/HDinger)! - Introduce the TreeView component
+
+### Patch Changes
+
+- [#295](https://github.com/opf/primer_view_components/pull/295) [`48d3acd`](https://github.com/opf/primer_view_components/commit/48d3acd10d460147539f7c0e1d5537d68535825c) Thanks [@HDinger](https://github.com/HDinger)! - Remove overridden capture method in forms code.
+
+- [#295](https://github.com/opf/primer_view_components/pull/295) [`48d3acd`](https://github.com/opf/primer_view_components/commit/48d3acd10d460147539f7c0e1d5537d68535825c) Thanks [@HDinger](https://github.com/HDinger)! - Update the SelectPanel no results pane to a smaller height
+
 ## 0.64.1
 
 ### Patch Changes
