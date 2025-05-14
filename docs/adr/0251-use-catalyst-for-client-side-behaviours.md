@@ -4,7 +4,10 @@ Date: 2022-04-12
 
 ## Status
 
-Accepted and adopted
+| Stage    | State      |
+| -------- | ----------- |
+| Status | Accepted ✅ |
+| Implementation | Adopted ✅ |
 
 ## Context
 

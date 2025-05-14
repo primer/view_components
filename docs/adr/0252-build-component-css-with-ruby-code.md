@@ -1,10 +1,13 @@
-# 252. Build component css with ruby code
+# Build component css with ruby code
 
 Date: 2022-08-17
 
 ## Status
 
-Accepted and Adopted
+| Stage    | State      |
+| -------- | ----------- |
+| Status | Accepted ✅ |
+| Implementation | Adopted ✅ |
 
 ## Context
 
