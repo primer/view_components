@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.43.2
+
+### Patch Changes
+
+- [#3483](https://github.com/primer/view_components/pull/3483) [`1165454`](https://github.com/primer/view_components/commit/11654544e90cfe17603d8f6fc2b4f1256e82a846) Thanks [@HDinger](https://github.com/HDinger)! - Provide default id for clear button in text fields
+
+- [#3475](https://github.com/primer/view_components/pull/3475) [`28532ae`](https://github.com/primer/view_components/commit/28532ae61c62adb8afe199be01302d0cb2485fec) Thanks [@langermank](https://github.com/langermank)! - Bump primitives + update snapshots
+
 ## 0.43.1
 
 ### Patch Changes
