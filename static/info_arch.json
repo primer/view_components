@@ -20072,6 +20072,13 @@
         ]
       },
       {
+        "name": "segmented_control",
+        "description": null,
+        "parameters": [
+
+        ]
+      },
+      {
         "name": "text",
         "description": null,
         "parameters": [
@@ -20169,6 +20176,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/sub_header/segmented_control",
+        "name": "segmented_control",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/sub_header/bottom_pane",
         "name": "bottom_pane",
         "snapshot": "false",
@@ -20194,6 +20214,231 @@
           ]
         }
       }
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader::Button",
+    "description": "A Helper class to create a Button with required icon inside the SubHeader action slot\nDo not use standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader::Button",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeaderButton",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/button/default/",
+    "parameters": [
+      {
+        "name": "icon",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The name of an {{link_to_octicons}} icon to use as leading visual"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "leading_visual_icon",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader::ButtonGroup",
+    "description": "A Helper class to create ButtonGroups inside the SubHeader action slot\nDo not use standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader::ButtonGroup",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeaderButtonGroup",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/button_group.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/button_group/default/",
+    "parameters": [
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "DEPRECATED. One of `:danger`, `:default`, `:invisible`, `:link`, `:primary`, or `:secondary`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "buttons",
+        "description": "List of buttons to be rendered. Add buttons via the `#with_button`, `#with_menu_button`, and `#with_clipboard_copy_button` methods (see below).",
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader::Menu",
+    "description": "A Helper class to create an ActionMenu with a required icon on the trigger button.\nIt is meant to be used inside the SubHeader\nDo not use standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader::Menu",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeaderMenu",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/menu/default/",
+    "parameters": [
+      {
+        "name": "icon_only",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the trigger button is an IconButton"
+      },
+      {
+        "name": "leading_icon",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "Name of Octicon icon to use as either leading icon or IconButton."
+      },
+      {
+        "name": "label",
+        "type": "String",
+        "default": "N/A",
+        "description": "The button label"
+      },
+      {
+        "name": "button_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Additional arguments for the button"
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "show_button",
+        "description": null,
+        "parameters": [
+
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
+    ],
+    "subcomponents": [
+
+    ]
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader::SegmentedControl",
+    "description": "A Helper class to create SegmentedControls inside the SubHeader action slot\nDo not use standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader::SegmentedControl",
+    "status": "open_project",
+    "a11y_reviewed": true,
+    "short_name": "OpenProjectSubHeaderSegmentedControl",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/segmented_control.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/segmented_control/default/",
+    "parameters": [
+      {
+        "name": "hide_labels",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to hide the labels and only show the icons"
+      },
+      {
+        "name": "full_width",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "If the component should be full width"
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
+    ],
+    "slots": [
+      {
+        "name": "items",
+        "description": "Use to render an item in the segmented control",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}"
+          }
+        ]
+      }
+    ],
+    "methods": [
+
+    ],
+    "previews": [
+
     ],
     "subcomponents": [
 

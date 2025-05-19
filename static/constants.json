@@ -1757,9 +1757,33 @@
     "GeneratedSlotMethods": "Primer::OpenProject::SkeletonBox::GeneratedSlotMethods"
   },
   "Primer::OpenProject::SubHeader": {
+    "Button": "Primer::OpenProject::SubHeader::Button",
+    "ButtonGroup": "Primer::OpenProject::SubHeader::ButtonGroup",
+    "DESKTOP_ACTIONS_DISPLAY": [
+      "none",
+      "flex"
+    ],
     "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::GeneratedSlotMethods",
     "HIDDEN_FILTER_TARGET_SELECTOR": "sub-header.hiddenItemsOnExpandedFilter",
-    "SHOWN_FILTER_TARGET_SELECTOR": "sub-header.shownItemsOnExpandedFilter"
+    "MOBILE_ACTIONS_DISPLAY": [
+      "flex",
+      "none"
+    ],
+    "Menu": "Primer::OpenProject::SubHeader::Menu",
+    "SHOWN_FILTER_TARGET_SELECTOR": "sub-header.shownItemsOnExpandedFilter",
+    "SegmentedControl": "Primer::OpenProject::SubHeader::SegmentedControl"
+  },
+  "Primer::OpenProject::SubHeader::Button": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::Button::GeneratedSlotMethods"
+  },
+  "Primer::OpenProject::SubHeader::ButtonGroup": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::ButtonGroup::GeneratedSlotMethods"
+  },
+  "Primer::OpenProject::SubHeader::Menu": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::Menu::GeneratedSlotMethods"
+  },
+  "Primer::OpenProject::SubHeader::SegmentedControl": {
+    "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::SegmentedControl::GeneratedSlotMethods"
   },
   "Primer::OpenProject::TreeView": {
     "GeneratedSlotMethods": "Primer::OpenProject::TreeView::GeneratedSlotMethods",

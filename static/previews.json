@@ -7622,6 +7622,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/sub_header/segmented_control",
+        "name": "segmented_control",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/sub_header/bottom_pane",
         "name": "bottom_pane",
         "snapshot": "false",
