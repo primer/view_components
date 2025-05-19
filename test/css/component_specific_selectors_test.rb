@@ -187,7 +187,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     ],
     Primer::OpenProject::SubHeader => [
       ".SubHeader--expandedSearch",
-      ".SubHeader-filterInput_hiddenClearButton"
+      ".SubHeader-filterInput_hiddenClearButton",
+      ".SubHeader--emptyLeftPane",
+      ".SubHeader--emptyLeftPane .SubHeader-middlePane"
     ],
     Primer::OpenProject::TreeView => [
       # Used, but not directly rendered by a preview

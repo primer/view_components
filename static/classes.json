@@ -619,6 +619,9 @@
   "SubHeader": [
     "Primer::OpenProject::SubHeader"
   ],
+  "SubHeader--emptyLeftPane": [
+    "Primer::OpenProject::SubHeader"
+  ],
   "SubHeader--expandedSearch": [
     "Primer::OpenProject::SubHeader"
   ],

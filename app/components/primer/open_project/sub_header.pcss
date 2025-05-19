@@ -5,7 +5,7 @@
     grid-template-areas: "left middle right" "bottom bottom bottom";
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: var(--base-size-16);
 }
 
 .SubHeader--expandedSearch {
@@ -33,7 +33,6 @@
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 12px;
 
     /* Since the container is not full width (due to the grid around it)
      we want it to grow, and then be limited by the max-width of the "FormControl-input-width--xy" class */
@@ -46,10 +45,37 @@
 
 .SubHeader-filterContainer {
     display: flex;
+    flex-basis: max-content;
     width: 100%;
     gap: 8px;
 }
 
-.SubHeader-filterInput_hiddenClearButton + button.FormControl-input-trailingAction {
+.SubHeader-filterInput_hiddenClearButton + .FormControl-input-trailingAction {
   display: none;
+}
+
+@media (max-width: 543.98px) {
+    .SubHeader {
+        grid-template-areas: "left right" "middle middle" "bottom bottom";
+        grid-template-columns: 1fr auto;
+    }
+
+    .SubHeader--emptyLeftPane {
+        grid-template-areas: "middle middle right" "bottom bottom bottom";
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .SubHeader--emptyLeftPane .SubHeader-middlePane {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .SubHeader-middlePane {
+        text-align: left;
+    }
+
+    .SubHeader-middlePane:has(> *) {
+        margin-top: var(--stack-gap-normal);
+    }
 }

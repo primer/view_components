@@ -13,8 +13,7 @@
       "Filter"
     end
 
-    component.with_action_button(scheme: :primary) do |button|
-      button.with_leading_visual_icon(icon: :plus)
+    component.with_action_button(leading_icon: :plus, label: "Create", scheme: :primary) do
       "User"
     end
   end

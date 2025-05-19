@@ -150,7 +150,7 @@ module Primer
             @mobile_segmented_control = Primer::Alpha::SegmentedControl.new(**system_arguments,
                                                                             **mobile_args,
                                                                             mr: 2,
-                                                                            display: %i[flex none])
+                                                                            display: MOBILE_ACTIONS_DISPLAY)
             @mobile_segmented_control_block = block
 
             Primer::Alpha::SegmentedControl.new(**system_arguments)
