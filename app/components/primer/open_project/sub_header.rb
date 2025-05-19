@@ -154,6 +154,7 @@ module Primer
           renders: lambda { |**kwargs|
             deny_tag_argument(**kwargs)
             kwargs[:tag] = :div
+            kwargs[:mr] ||= 2
             kwargs = set_as_hidden_filter_target(kwargs)
 
             Primer::BaseComponent.new(**kwargs)
