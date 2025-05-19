@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.66.1
+
+### Patch Changes
+
+- [#301](https://github.com/opf/primer_view_components/pull/301) [`7314060`](https://github.com/opf/primer_view_components/commit/731406049569485849e5219a68dad8ca5dcc76e2) Thanks [@HDinger](https://github.com/HDinger)! - Add spacing to custom filter button Primer::OpenProject::SubHeader
+
 ## 0.66.0
 
 ### Minor Changes
