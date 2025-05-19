@@ -1,5 +1,8 @@
 - navigation:
   - heading "Heading" [level=2]
-  - link "Item 1"
-  - link "With Icon"
-  - link "With Icon and Counter 25"
+  - link "Item 1":
+    - /url: "#url"
+  - link "With Icon":
+    - /url: "#url"
+  - link "With Icon and Counter 25":
+    - /url: "#url"

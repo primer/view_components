@@ -1,9 +1,12 @@
 - navigation "Default with nav element":
   - list:
     - listitem:
-      - link "Item 1"
+      - link "Item 1":
+        - /url: "#"
     - listitem:
-      - link "Item 2"
+      - link "Item 2":
+        - /url: "#"
     - listitem:
-      - link "Item 3"
+      - link "Item 3":
+        - /url: "#"
   - button "Button"

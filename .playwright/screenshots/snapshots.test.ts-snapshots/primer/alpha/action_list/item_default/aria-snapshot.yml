@@ -1,3 +1,4 @@
 - list "List heading":
   - listitem:
-    - link "Default item"
+    - link "Default item":
+      - /url: /
