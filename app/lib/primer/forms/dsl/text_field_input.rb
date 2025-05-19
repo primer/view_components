@@ -20,7 +20,7 @@ module Primer
           @leading_visual = system_arguments.delete(:leading_visual)
           @trailing_visual = system_arguments.delete(:trailing_visual)
           @leading_spinner = !!system_arguments.delete(:leading_spinner)
-          @clear_button_id = system_arguments.delete(:clear_button_id)
+          @clear_button_id = system_arguments.delete(:clear_button_id) || SecureRandom.uuid
           @inset = system_arguments.delete(:inset)
           @monospace = system_arguments.delete(:monospace)
           @auto_check_src = system_arguments.delete(:auto_check_src)
