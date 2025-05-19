@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.66.0
+
+### Minor Changes
+
+- [#292](https://github.com/opf/primer_view_components/pull/292) [`516760e`](https://github.com/opf/primer_view_components/commit/516760e09f9005b590457a2d8a21fa369a091e82) Thanks [@HDinger](https://github.com/HDinger)! - Improve mobile support for SubHeader by requiring a leading icon for each action. Further, the support for custom action buttons was removed.
+
 ## 0.65.0
 
 ### Minor Changes
