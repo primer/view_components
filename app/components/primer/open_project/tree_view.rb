@@ -248,6 +248,9 @@ module Primer
     #
     # Nodes with tags other than `:div` cannot have check boxes.
     #
+    # Nodes with tags other than `:div` do not emit the `treeViewNodeActivated` or `treeViewBeforeNodeActivated` events,
+    # since it is assumed any behavior associated with these element types is user- or browser-defined.
+    #
     # ## Interaction behavior matrix
     #
     # |Interaction     |Select variant|Tag          |Result                                 |

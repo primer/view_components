@@ -72,6 +72,10 @@ export class TreeViewElement extends HTMLElement {
   }
 
   #handleNodeActivated(node: Element) {
+    // do not emit activation events for buttons and anchors, since it is assumed any activation
+    // behavior for these element types is user- or browser-defined
+    if (!(node instanceof HTMLDivElement)) return
+
     const path = this.getNodePath(node)
 
     const activationSuccess = this.dispatchEvent(
