@@ -220,6 +220,26 @@ module OpenProject
       end
     end
 
+    def test_sub_tree_node_buttons_alert
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        activate_at_path("Secrets")
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
+    def test_leaf_node_buttons_alert
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
+        activate_at_path("Secrets", "Life and the universe")
+      end
+    end
+
     ##### KEYBOARD NAVIGATION #####
 
     def test_expands_on_enter
@@ -312,6 +332,30 @@ module OpenProject
       refute_path "Cloud Services", "Hetzner"
     end
 
+    def test_sub_tree_node_buttons_alert_on_enter
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        keyboard.type(:tab, :enter)
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
+    def test_sub_tree_node_buttons_alert_on_space
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        keyboard.type(:tab, :space)
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
     def test_leaf_node_links_navigate_on_enter
       visit_preview(:links, expanded: true)
 
@@ -324,6 +368,22 @@ module OpenProject
       visit_preview(:links, expanded: true)
 
       assert_window_opened(to: "https://www.openproject.org/") do
+        keyboard.type(:tab, :down, :space)
+      end
+    end
+
+    def test_leaf_node_buttons_alert_on_enter
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
+        keyboard.type(:tab, :down, :enter)
+      end
+    end
+
+    def test_leaf_node_buttons_alert_on_space
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
         keyboard.type(:tab, :down, :space)
       end
     end

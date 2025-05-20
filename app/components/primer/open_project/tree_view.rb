@@ -250,20 +250,20 @@ module Primer
     #
     # ## Interaction behavior matrix
     #
-    # |Interaction     |Select variant|Tag          |Result                     |
-    # |:---------------|:-------------|:------------|:--------------------------|
-    # |Enter/space     |none          |div          |Expands/collapses          |
-    # |Enter/space     |none          |anchor/button|Activates anchor/button    |
-    # |Enter/space     |multiple      |div          |Enter expands, space checks|
-    # |Enter/space     |multiple      |anchor/button|N/A (not allowed)          |
-    # |Left/right arrow|none          |div          |Expands/collapses          |
-    # |Left/right arrow|none          |anchor/button|Expands/collapses          |
-    # |Left/right arrow|multiple      |div          |Expands/collapses          |
-    # |Left/right arrow|multiple      |anchor/button|Expands/collapses          |
-    # |Click           |none          |div          |Expands/collapses          |
-    # |Click           |none          |anchor/button|Activates anchor/button    |
-    # |Click           |multiple      |div          |Expands/collapses          |
-    # |Click           |multiple      |anchor/button|N/A (not allowed)          |
+    # |Interaction     |Select variant|Tag          |Result                                 |
+    # |:---------------|:-------------|:------------|:--------------------------------------|
+    # |Enter/space     |none          |div          |Expands/collapses                      |
+    # |Enter/space     |none          |anchor/button|Activates anchor, sends event to button|
+    # |Enter/space     |multiple      |div          |Enter expands, space checks            |
+    # |Enter/space     |multiple      |anchor/button|N/A (not allowed)                      |
+    # |Left/right arrow|none          |div          |Expands/collapses                      |
+    # |Left/right arrow|none          |anchor/button|Expands/collapses                      |
+    # |Left/right arrow|multiple      |div          |Expands/collapses                      |
+    # |Left/right arrow|multiple      |anchor/button|Expands/collapses                      |
+    # |Click           |none          |div          |Expands/collapses                      |
+    # |Click           |none          |anchor/button|Activates anchor/button                |
+    # |Click           |multiple      |div          |Expands/collapses                      |
+    # |Click           |multiple      |anchor/button|N/A (not allowed)                      |
     #
     # ## JavaScript API
     #

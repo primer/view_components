@@ -110,7 +110,11 @@ module Primer
 
       # @label Buttons
       #
-      def buttons
+      # @param expanded [Boolean] toggle
+      def buttons(expanded: false)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
       end
 
       private

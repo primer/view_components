@@ -301,17 +301,17 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case ' ':
-        // eslint-disable-next-line no-restricted-syntax
-        event.stopPropagation()
-        event.preventDefault()
-
         if (this.treeView?.nodeHasCheckBox(node)) {
+          // eslint-disable-next-line no-restricted-syntax
+          event.stopPropagation()
+          event.preventDefault()
+
           this.toggleChecked()
         } else {
-          if (this.treeView?.nodeHasNativeAction(node) && node instanceof HTMLElement) {
-            // simulate click on space
+          if (node instanceof HTMLAnchorElement) {
+            // simulate click on space for anchors (buttons already handle this natively)
             node.click()
-          } else {
+          } else if (!this.treeView?.nodeHasNativeAction(node)) {
             this.toggle()
           }
         }
