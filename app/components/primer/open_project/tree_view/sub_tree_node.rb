@@ -102,7 +102,7 @@ module Primer
           }
         }
 
-        delegate :with_leaf, :with_sub_tree, :with_loading_spinner, :with_loading_skeleton, to: :@sub_tree
+        delegate :with_leaf, :with_sub_tree, :with_loading_spinner, :with_loading_skeleton, :nodes, to: :@sub_tree
         delegate :current?, :merge_system_arguments!, to: :@node
 
         # @param label [String] The node's label, i.e. it's textual content.

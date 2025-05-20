@@ -198,11 +198,13 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   *eachDirectDescendantNode(): Generator<Element> {
-    for (const leaf of this.subTree.querySelectorAll(':scope > [role=treeitem]')) {
+    for (const leaf of this.subTree.querySelectorAll(':scope > li > .TreeViewItemContainer > [role=treeitem]')) {
       yield leaf
     }
 
-    for (const subTree of this.subTree.querySelectorAll(':scope > tree-view-sub-tree-node > [role=treeitem]')) {
+    for (const subTree of this.subTree.querySelectorAll(
+      ':scope > tree-view-sub-tree-node > li > .TreeViewItemContainer > [role=treeitem]',
+    )) {
       yield subTree
     }
   }
@@ -241,21 +243,19 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
       // request succeeded but element has not yet been replaced
       case 'include-fragment-replace':
-        this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('li')
+        this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('[role=treeitem]')
         this.loadingState = 'success'
         break
 
       case 'include-fragment-replaced':
         if (this.#activeElementIsLoader) {
-          const firstItem = this.querySelector('[role=treeitem] [role=group] > :first-child') as HTMLElement | null
+          const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
           if (!firstItem) return
 
-          if (firstItem.tagName.toLowerCase() === 'tree-view-sub-tree-node') {
-            const firstChild = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
-            firstChild?.focus()
-          } else {
-            firstItem?.focus()
-          }
+          const content = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
+          if (!content) return
+
+          content.focus()
         }
 
         this.#activeElementIsLoader = false
@@ -280,7 +280,12 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       case 'Enter':
         // eslint-disable-next-line no-restricted-syntax
         event.stopPropagation()
-        this.toggle()
+
+        // navigate or trigger button, don't toggle
+        if (!this.treeView?.nodeHasNativeAction(node)) {
+          this.toggle()
+        }
+
         break
 
       case 'ArrowRight':
@@ -299,7 +304,18 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         // eslint-disable-next-line no-restricted-syntax
         event.stopPropagation()
         event.preventDefault()
-        this.toggleChecked()
+
+        if (this.treeView?.nodeHasCheckBox(node)) {
+          this.toggleChecked()
+        } else {
+          if (this.treeView?.nodeHasNativeAction(node) && node instanceof HTMLElement) {
+            // simulate click on space
+            node.click()
+          } else {
+            this.toggle()
+          }
+        }
+
         break
     }
   }

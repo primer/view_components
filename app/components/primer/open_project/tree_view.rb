@@ -17,23 +17,27 @@
 #     <ul role="tree">
 #       <LeafNode>
 #         <Node>
-#           <li role="treeitem">
-#             ...
+#           <li role="none">
+#             <div role="treeitem">
+#               ...
+#             </div>
 #           </li>
 #         </Node>
 #       </LeafNode>
 #
 #       <SubTreeNode>
 #         <tree-view-sub-tree-node>
-#           <li role="treeitem">
+#           <li role="none">
 #
 #             <SubTreeContainer>
 #               <ul role="group">
 #                 <SubTree>
 #                   <LeafNode>
 #                     <Node>
-#                       <li role="treeitem">
-#                         ...
+#                       <li role="none">
+#                         <div role="treeitem">
+#                           ...
+#                         </div>
 #                       </li>
 #                     </Node>
 #                   </LeafNode>
@@ -41,8 +45,10 @@
 #                   <SubTreeNode>
 #                     <tree-view-sub-tree-node>
 #                       <Node>
-#                         <li role="treeitem">
-#                           ...
+#                         <li role="none">
+#                           <div role="treeitem">
+#                             ...
+#                           </div>
 #                         </li>
 #                       </Node>
 #                       <SubTreeContainer>
@@ -72,19 +78,21 @@
 #
 # <LeafNode>
 #   <Node>
-#     <li role="treeitem">
-#       <Visual>
-#         <IconPair>
-#           <tree-view-icon-pair>
-#             <Icon slot="expanded_icon">
-#               <Primer::Beta::Octicon />
-#             </Icon>
-#             <Icon slot="collapsed_icon">
-#               <Primer::Beta::Octicon />
-#             </Icon>
-#           </tree-view-icon-pair>
-#         </IconPair>
-#       </Visual>
+#     <li role="none">
+#       <div role="treeitem">
+#         <Visual>
+#           <IconPair>
+#             <tree-view-icon-pair>
+#               <Icon slot="expanded_icon">
+#                 <Primer::Beta::Octicon />
+#               </Icon>
+#               <Icon slot="collapsed_icon">
+#                 <Primer::Beta::Octicon />
+#               </Icon>
+#             </tree-view-icon-pair>
+#           </IconPair>
+#         </Visual>
+#       </div>
 #     </li>
 #   </Node>
 # </LeafNode>
@@ -215,7 +223,49 @@ module Primer
     # <% end %>
     # ```
     #
-    # ### JavaScript API
+    # ## Multi-select mode
+    #
+    # Passing `select_variant: :multiple` to both sub-tree and leaf nodes will add a check box to the left of the node's
+    # label. These check boxes behave according to the value of a second argument, `select_strategy:`.
+    #
+    # The default select strategy, `:descendants`, will cause all child nodes to be checked when the node is checked.
+    # This includes both sub-tree and leaf nodes. When the node is unchecked, all child nodes will also be unchecked.
+    # Unchecking a child node of a checked parent will cause the parent to enter a mixed or indeterminate state, which
+    # is represented by a horizontal line icon instead of a check mark. This icon indicates that some children are
+    # checked, but not all.
+    #
+    # A secondary select strategy, `:self`, is provided to allow disabling the automatic checking of child nodes. When
+    # `select_strategy: :self` is specified, checking sub-tree nodes does not check child nodes, and sub-tree nodes
+    # cannot enter a mixed or indeterminate state.
+    #
+    # Nodes can be checked via the keyboard by pressing the space key.
+    #
+    # ## Node tags
+    #
+    # `TreeView` nodes support three different HTML tags: `:a` (anchor), `:button`, and `:div` (the default). Both
+    # anchors and buttons are browser-native elements, and can be activated (i.e. "clicked") using the mouse or keyboard
+    # via the enter or space keys.
+    #
+    # Nodes with tags other than `:div` cannot have check boxes.
+    #
+    # ## Interaction behavior matrix
+    #
+    # |Interaction     |Select variant|Tag          |Result                     |
+    # |:---------------|:-------------|:------------|:--------------------------|
+    # |Enter/space     |none          |div          |Expands/collapses          |
+    # |Enter/space     |none          |anchor/button|Activates anchor/button    |
+    # |Enter/space     |multiple      |div          |Enter expands, space checks|
+    # |Enter/space     |multiple      |anchor/button|N/A (not allowed)          |
+    # |Left/right arrow|none          |div          |Expands/collapses          |
+    # |Left/right arrow|none          |anchor/button|Expands/collapses          |
+    # |Left/right arrow|multiple      |div          |Expands/collapses          |
+    # |Left/right arrow|multiple      |anchor/button|Expands/collapses          |
+    # |Click           |none          |div          |Expands/collapses          |
+    # |Click           |none          |anchor/button|Activates anchor/button    |
+    # |Click           |multiple      |div          |Expands/collapses          |
+    # |Click           |multiple      |anchor/button|N/A (not allowed)          |
+    #
+    # ## JavaScript API
     #
     # `TreeView`s render a `<tree-view>` custom element that exposes behavior to the client.
     #
@@ -237,7 +287,7 @@ module Primer
     # |`leafAtPath(path: string[]): HTMLLIElement | null`                |Returns the leaf node at the given `path`, if it exists.                                                                                          |
     # |`getNodeCheckedValue(node: Element): TreeViewCheckedValue`        |The same as `checkedValueAtPath`, but accepts a node instead of a path.                                                                           |
     #
-    # #### Events
+    # ### Events
     #
     # The events enumerated below include node information by way of the `TreeViewNodeInfo` object, which has the
     # following signature:

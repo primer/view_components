@@ -1,0 +1,10 @@
+<div style="max-width: 400px">
+  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
+    <% tree_view.with_sub_tree(label: "Secrets", tag: :button, onclick: "alert('Shhhh')") do |sub_tree| %>
+      <% sub_tree.with_leaf(label: "Life and the universe", tag: :button, onclick: "alert(42)") %>
+      <% sub_tree.with_leaf(label: "Secret ingredient", tag: :button, onclick: "alert('Love')") %>
+    <% end %>
+
+    <% tree_view.with_leaf(label: "What do you give a sick bird?", tag: :button, onclick: "alert('Tweetment')") %>
+  <% end %>
+</div>

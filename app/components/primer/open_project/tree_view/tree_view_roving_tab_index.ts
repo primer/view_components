@@ -24,13 +24,6 @@ export function useRovingTabIndex(containerEl: TreeViewElement) {
       return getNextFocusableElement(from, event) ?? from
     },
     focusInStrategy: () => {
-      // Don't try to execute the focusInStrategy if focus is coming from a click.
-      // The clicked row will receive focus correctly by default.
-      // If a chevron is clicked, setting the focus through the focuszone will prevent its toggle.
-      // if (mouseDownRef.current) {
-      //   return undefined
-      // }
-
       let currentItem = containerEl.querySelector('[aria-current]')
       currentItem = currentItem?.checkVisibility() ? currentItem : null
 
@@ -137,11 +130,23 @@ function getVisibleElement(element: HTMLElement, direction: 'next' | 'previous')
   let next = direction === 'next' ? walker.nextNode() : walker.previousNode()
 
   // If next element is nested inside a collapsed subtree, continue iterating
-  while (next instanceof HTMLElement && next.parentElement?.closest('[role=treeitem][aria-expanded=false]')) {
+  while (next instanceof HTMLElement && collapsedParent(next, root)) {
     next = direction === 'next' ? walker.nextNode() : walker.previousNode()
   }
 
   return next instanceof HTMLElement ? next : undefined
+}
+
+function collapsedParent(node: Element, root: Element): Element | null {
+  for (const ancestor of root.querySelectorAll('[role=treeitem][aria-expanded=false]')) {
+    if (node === ancestor) continue
+
+    if (ancestor.closest('li')?.contains(node)) {
+      return ancestor
+    }
+  }
+
+  return null
 }
 
 function getFirstChildElement(element: HTMLElement): HTMLElement | undefined {

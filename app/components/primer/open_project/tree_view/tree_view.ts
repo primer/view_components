@@ -84,7 +84,10 @@ export class TreeViewElement extends HTMLElement {
 
     if (!activationSuccess) return
 
-    this.toggleAtPath(path)
+    // navigate or trigger button, don't toggle
+    if (!this.nodeHasNativeAction(node)) {
+      this.toggleAtPath(path)
+    }
 
     this.dispatchEvent(
       new CustomEvent('treeViewNodeActivated', {
@@ -107,12 +110,16 @@ export class TreeViewElement extends HTMLElement {
 
     switch (event.key) {
       case ' ':
-        event.preventDefault()
+        if (this.nodeHasCheckBox(node)) {
+          event.preventDefault()
 
-        if (this.getNodeCheckedValue(node) === 'true') {
-          this.#setNodeCheckedValue(node, 'false')
-        } else {
-          this.#setNodeCheckedValue(node, 'true')
+          if (this.getNodeCheckedValue(node) === 'true') {
+            this.#setNodeCheckedValue(node, 'false')
+          } else {
+            this.#setNodeCheckedValue(node, 'true')
+          }
+        } else if (node instanceof HTMLAnchorElement) {
+          node.click()
         }
 
         break
@@ -223,6 +230,14 @@ export class TreeViewElement extends HTMLElement {
 
   getNodeCheckedValue(node: Element): TreeViewCheckedValue {
     return (node.getAttribute('aria-checked') || 'false') as TreeViewCheckedValue
+  }
+
+  nodeHasCheckBox(node: Element): boolean {
+    return node.querySelector('.TreeViewItemCheckbox') !== null
+  }
+
+  nodeHasNativeAction(node: Element): boolean {
+    return node instanceof HTMLAnchorElement || node instanceof HTMLButtonElement
   }
 
   // PRIVATE API METHOD

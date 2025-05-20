@@ -12,11 +12,11 @@ module Primer
 
         assert_selector("tree-view") do |tree|
           tree.assert_selector("ul[role=tree]") do |sub_tree|
-            sub_tree.assert_selector("li[role=treeitem]") do |node|
+            sub_tree.assert_selector("li[role=none]") do |node|
               node.assert_selector(".TreeViewItemContainer", text: "src")
               node.assert_selector("ul[role=group]") do |sub_tree|
-                sub_tree.assert_selector("li[role=treeitem]", text: "button.rb")
-                sub_tree.assert_selector("li[role=treeitem]", text: "icon_button.rb")
+                sub_tree.assert_selector("li[role=none] [role=treeitem]", text: "button.rb")
+                sub_tree.assert_selector("li[role=none] [role=treeitem]", text: "icon_button.rb")
               end
             end
           end
@@ -26,7 +26,7 @@ module Primer
       def test_leading_visual_icon_pair_collapsed
         render_preview(:default)
 
-        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
+        assert_selector("[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
           node.assert_selector(".TreeViewItemVisual tree-view-icon-pair") do |visual|
             visual.assert_selector("svg.octicon-file-directory-fill")
           end
@@ -36,7 +36,7 @@ module Primer
       def test_leading_visual_icon_pair_expanded
         render_preview(:default, params: { expanded: true })
 
-        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
+        assert_selector("[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
           node.assert_selector(".TreeViewItemVisual tree-view-icon-pair") do |visual|
             visual.assert_selector("svg.octicon-file-directory-open-fill")
           end
@@ -46,7 +46,7 @@ module Primer
       def test_trailing_visual_icon
         render_preview(:default)
 
-        assert_selector("li[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
+        assert_selector("[role=treeitem][data-path=\"[\\\"src\\\"]\"]") do |node|
           # this should be visually positioned after the node's label
           node.assert_selector(":nth-child(5) svg.octicon-diff-modified")
         end
@@ -66,7 +66,7 @@ module Primer
           .attribute("id")
           .value
 
-        assert_selector "li[aria-describedby='#{label_id}']"
+        assert_selector "[role=treeitem][aria-describedby='#{label_id}']"
       end
 
       def test_node_labelled_by_content
@@ -81,7 +81,7 @@ module Primer
           .attribute("id")
           .value
 
-        assert_selector "li[aria-labelledby='#{content_id}']"
+        assert_selector "[role=treeitem][aria-labelledby='#{content_id}']"
       end
 
       def test_loading_spinner
@@ -105,7 +105,7 @@ module Primer
       def test_leaf_leading_action
         render_preview(:leaf_node_playground, params: { leading_action_icon: :grabber })
 
-        assert_selector("[role=treeitem] .TreeViewItemLeadingAction button svg.octicon-grabber")
+        assert_selector(".TreeViewItemLeadingAction button svg.octicon-grabber")
       end
 
       def test_leaf_trailing_visual
@@ -122,7 +122,7 @@ module Primer
           end
         end
 
-        assert_selector("[role=treeitem] .TreeViewItemLeadingAction button svg.octicon-grabber")
+        assert_selector(".TreeViewItemLeadingAction button svg.octicon-grabber")
       end
 
       def test_sub_tree_leading_visual
@@ -146,6 +146,42 @@ module Primer
         end
 
         assert_equal error.message, "TreeView does not currently support select variants for sub-trees loaded asynchronously."
+      end
+
+      def test_supports_anchor_tags
+        render_preview(:links)
+
+        assert_selector "a[role=treeitem]", count: 4, visible: :all
+      end
+
+      def test_supports_button_tags
+        render_preview(:buttons)
+
+        assert_selector "button[role=treeitem]", count: 4, visible: :all
+      end
+
+      def test_disallows_select_variants_for_anchor_tags
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::OpenProject::TreeView.new) do |tree|
+            tree.with_sub_tree(label: "src", tag: :a, select_variant: :multiple) do |sub_tree|
+              sub_tree.with_leaf(label: "button.rb")
+            end
+          end
+        end
+
+        assert_equal error.message, "TreeView nodes do not support select variants for tags other than :div."
+      end
+
+      def test_disallows_select_variants_for_button_tags
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::OpenProject::TreeView.new) do |tree|
+            tree.with_sub_tree(label: "src", tag: :button, select_variant: :multiple) do |sub_tree|
+              sub_tree.with_leaf(label: "button.rb")
+            end
+          end
+        end
+
+        assert_equal error.message, "TreeView nodes do not support select variants for tags other than :div."
       end
     end
   end
