@@ -20,16 +20,12 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   @target loadingFailureMessage: HTMLElement
   @target retryButton: HTMLButtonElement
 
-  expanded: boolean
-  loadingState: LoadingState
-
+  #expanded: boolean | null = null
+  #loadingState: LoadingState = 'success'
   #abortController: AbortController
   #activeElementIsLoader: boolean = false
 
   connectedCallback() {
-    this.expanded = this.node.getAttribute('aria-expanded') === 'true'
-    this.loadingState = 'success'
-
     observeMutationsUntilConditionMet(
       this,
       () => Boolean(this.node) && Boolean(this.subTree),
@@ -109,6 +105,28 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     })
   }
 
+  get expanded(): boolean {
+    if (this.#expanded === null) {
+      this.#expanded = this.node.getAttribute('aria-expanded') === 'true'
+    }
+
+    return this.#expanded
+  }
+
+  set expanded(newValue: boolean) {
+    this.#expanded = newValue
+    this.#update()
+  }
+
+  get loadingState(): LoadingState {
+    return this.#loadingState
+  }
+
+  set loadingState(newState: LoadingState) {
+    this.#loadingState = newState
+    this.#update()
+  }
+
   get selectStrategy(): string {
     return this.node.getAttribute('data-select-strategy') || 'descendants'
   }
@@ -135,7 +153,6 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     const alreadyExpanded = this.expanded
 
     this.expanded = true
-    this.#update()
 
     if (!alreadyExpanded && this.treeView) {
       this.treeView.dispatchEvent(
@@ -151,7 +168,6 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     const alreadyCollapsed = !this.expanded
 
     this.expanded = false
-    this.#update()
 
     if (!alreadyCollapsed && this.treeView) {
       // Prevent issue where currently focusable node is stuck inside a collapsed
@@ -216,20 +232,17 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       // the request has started
       case 'loadstart':
         this.loadingState = 'loading'
-        this.#update()
         break
 
       // the request failed
       case 'error':
         this.loadingState = 'error'
-        this.#update()
         break
 
       // request succeeded but element has not yet been replaced
       case 'include-fragment-replace':
-        this.loadingState = 'success'
         this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('li')
-        this.#update()
+        this.loadingState = 'success'
         break
 
       case 'include-fragment-replaced':
@@ -253,8 +266,6 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   #handleRetryButtonEvent(event: Event) {
     if (event.type === 'click') {
       this.loadingState = 'loading'
-      this.#update()
-
       this.includeFragment.refetch()
     }
   }
