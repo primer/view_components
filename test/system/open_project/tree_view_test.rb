@@ -14,7 +14,7 @@ module OpenProject
     end
 
     def activate_at_path(*path)
-      find("#{selector_for(*path)} .TreeViewItemContainer", match: :first).click
+      find("#{selector_for(*path)}", match: :first).click
     end
 
     def check_at_path(*path)
@@ -27,7 +27,6 @@ module OpenProject
 
     def label_of(node)
       return unless node
-      return unless node.tag_name == "li"
       return unless node["role"] == "treeitem"
 
       node.find_css(".TreeViewItemContentText").first.all_text
@@ -77,7 +76,7 @@ module OpenProject
     def remove_fail_param_from_fragment_src_for(*path)
       evaluate_multiline_script(<<~JS)
         const selector = CSS.escape(JSON.stringify(#{path.inspect}))
-        const includeFragment = document.querySelector(`[data-path="${selector}"] tree-view-include-fragment`)
+        const includeFragment = document.querySelector(`[data-path="${selector}"]`).closest('li').querySelector('tree-view-include-fragment')
         const relativeUrl = includeFragment.getAttribute('src')
         const url = new URL(relativeUrl, 'http://dummy')
         url.searchParams.delete('fail')
@@ -270,20 +269,20 @@ module OpenProject
 
       activate_at_path("primer")
 
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
+      assert_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage", text: "Something went wrong"
     end
 
     def test_loading_spinner_retry_after_failure
       visit_preview(:loading_spinner, simulate_failure: true)
 
       activate_at_path("primer")
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      assert_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage"
 
       remove_fail_param_from_fragment_src_for("primer")
       click_on("Retry")
 
       assert_path("primer", "alpha")
-      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      refute_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage"
     end
 
     def test_empty_after_loading_spinner
@@ -323,20 +322,20 @@ module OpenProject
 
       activate_at_path("primer")
 
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
+      assert_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage", text: "Something went wrong"
     end
 
     def test_loading_skeleton_retry_after_failure
       visit_preview(:loading_skeleton, simulate_failure: true)
 
       activate_at_path("primer")
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      assert_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage"
 
       remove_fail_param_from_fragment_src_for("primer")
       click_on("Retry")
 
       assert_path("primer", "alpha")
-      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      refute_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage"
     end
 
     def test_empty_after_loading_skeleton

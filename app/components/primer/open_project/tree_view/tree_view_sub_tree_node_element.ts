@@ -198,11 +198,13 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   *eachDirectDescendantNode(): Generator<Element> {
-    for (const leaf of this.subTree.querySelectorAll(':scope > [role=treeitem]')) {
+    for (const leaf of this.subTree.querySelectorAll(':scope > li > .TreeViewItemContainer > [role=treeitem]')) {
       yield leaf
     }
 
-    for (const subTree of this.subTree.querySelectorAll(':scope > tree-view-sub-tree-node > [role=treeitem]')) {
+    for (const subTree of this.subTree.querySelectorAll(
+      ':scope > tree-view-sub-tree-node > li > .TreeViewItemContainer > [role=treeitem]',
+    )) {
       yield subTree
     }
   }

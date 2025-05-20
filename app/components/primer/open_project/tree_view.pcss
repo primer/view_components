@@ -76,6 +76,10 @@
         outline: none;
       }
     }
+
+    &:has([role=treeitem]:focus-visible) {
+      box-shadow: var(--boxShadow-thick) var(--fgColor-accent);
+    }
   }
 
   &:where([data-omit-spacer='true']) .TreeViewItemContainer {
@@ -110,10 +114,10 @@
   }
 
   /* stylelint-disable-next-line no-duplicate-selectors -- Copied from primer/react */
-  & .TreeViewItem {
+  & .TreeViewItemContent {
     &[aria-checked='true'] {
       /* stylelint-disable-next-line selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
-      & > .TreeViewItemContainer .FormControl-checkbox {
+      & .FormControl-checkbox {
         background: var(--control-checked-bgColor-rest);
         border-color: var(--control-checked-borderColor-rest);
         transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
@@ -129,7 +133,7 @@
 
     &[aria-checked='mixed'] {
       /* stylelint-disable-next-line selector-max-compound-selectors, selector-max-specificity -- Copied from primer/react */
-      & > .TreeViewItemContainer .FormControl-checkbox {
+      & .FormControl-checkbox {
         background: var(--control-checked-bgColor-rest);
         border-color: var(--control-checked-borderColor-rest);
         transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
@@ -172,6 +176,7 @@
     display: flex;
     height: 100%;
     padding: 0 var(--base-size-8);
+    outline: none;
 
     /* The dynamic top and bottom padding to maintain the minimum item height for single line items */
     /* stylelint-disable-next-line primer/spacing */
