@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.66.2
+
+### Patch Changes
+
+- [#303](https://github.com/opf/primer_view_components/pull/303) [`6acd402`](https://github.com/opf/primer_view_components/commit/6acd40288ff9101ada7d9ddc34eb001aa8e2839f) Thanks [@camertron](https://github.com/camertron)! - Fix issue causing TreeView sub-trees to not expand/collapse when clicking the arrows
+
 ## 0.66.1
 
 ### Patch Changes
