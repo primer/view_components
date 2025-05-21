@@ -1,5 +1,4 @@
 - tree:
-  - treeitem "primer" [expanded] [level=1] [selected]:
-    - text: primer
-    - group:
-      - treeitem "Loading Loading..." [level=2]
+  - treeitem "primer" [expanded] [level=1] [selected]
+  - group:
+    - treeitem "Loading Loading..." [level=2]
