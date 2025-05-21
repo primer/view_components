@@ -1,8 +1,8 @@
 - radiogroup "How did you hear about us?":
   - text: How did you hear about us? We love our listeners
-  - radio "Online advertisement": online
+  - radio "Online advertisement"
   - text: Online advertisement Facebook maybe?
-  - radio "Radio advertisement": radio
+  - radio "Radio advertisement"
   - text: Radio advertisement We love us some NPR
-  - radio "From a friend": friend
+  - radio "From a friend"
   - text: From a friend Wow, what a good person
