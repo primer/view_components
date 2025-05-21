@@ -8,8 +8,9 @@ module Primer
       # This component is part of the <%= link_to_component(Primer::OpenProject::TreeView) %> component and should
       # not be used directly.
       class Node < Primer::Component
-        DEFAULT_TAG = :div
-        TAG_OPTIONS = [:a, :button, DEFAULT_TAG].freeze
+        DEFAULT_NODE_VARIANT = Primer::OpenProject::TreeView::DEFAULT_NODE_VARIANT
+        NODE_VARIANT_TAG_MAP = { DEFAULT_NODE_VARIANT => :div, :button => :button, :anchor => :a }.freeze
+        NODE_VARIANT_TAG_OPTIONS = NODE_VARIANT_TAG_MAP.keys.freeze
 
         # Generic leading action slot
         renders_one :leading_action
@@ -42,10 +43,10 @@ module Primer
         # @return [Symbol]
         attr_reader :select_variant
 
-        # This node's HTML tag.
+        # This node's variant, eg. `:button`, `:div`, etc.
         #
         # @return [Symbol]
-        attr_reader :tag
+        attr_reader :node_variant
 
         DEFAULT_SELECT_VARIANT = :none
         SELECT_VARIANT_OPTIONS = [
@@ -61,7 +62,7 @@ module Primer
         ]
 
         # @param path [Array<String>] The node's "path," i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path.
-        # @param tag [String] The HTML tag to use for the node's content, i.e. the `<button>` or `<a>` element. <%= one_of(Primer::OpenProject::TreeView::Node::TAG_OPTIONS) %>
+        # @param node_variant [Symbol] The node variant to use for the node's content, i.e. the `:button` or `:div`. <%= one_of(Primer::OpenProject::TreeView::NODE_VARIANT_OPTIONS) %>
         # @param href [String] The URL to use as the `href` attribute for this node. If set to a truthy value, the `tag:` parameter is ignored and assumed to be `:a`.
         # @param current [Boolean] Whether or not this node is the current node. The current node is styled differently than regular nodes and is the first element that receives focus when tabbing to the `TreeView` component.
         # @param select_variant [Symbol] Controls the type of checkbox that appears. <%= one_of(Primer::OpenProject::TreeView::Node::SELECT_VARIANT_OPTIONS) %>
@@ -69,7 +70,7 @@ module Primer
         # @param content_arguments [Hash] Arguments attached to the node's content, i.e the `<button>` or `<a>` element. <%= link_to_system_arguments_docs %>
         def initialize(
           path:,
-          tag: DEFAULT_TAG,
+          node_variant:,
           href: nil,
           current: false,
           select_variant: DEFAULT_SELECT_VARIANT,
@@ -88,9 +89,9 @@ module Primer
           @current = current
           @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
           @checked = fetch_or_fallback(CHECKED_STATES, checked, DEFAULT_CHECKED_STATE)
-          @tag = fetch_or_fallback(TAG_OPTIONS, href ? :a : tag, DEFAULT_TAG)
+          @node_variant = fetch_or_fallback(NODE_VARIANT_TAG_OPTIONS, node_variant, DEFAULT_NODE_VARIANT)
 
-          @content_arguments[:tag] = @tag
+          @content_arguments[:tag] = NODE_VARIANT_TAG_MAP[@node_variant]
           @content_arguments[:href] = href if href
           @content_arguments[:id] = content_id
           @content_arguments[:role] = :treeitem
@@ -159,7 +160,7 @@ module Primer
             )
           end
 
-          if select_variant != :none && tag != :div
+          if select_variant != :none && node_variant != :div
             raise ArgumentError, "TreeView nodes do not support select variants for tags other than :div."
           end
         end

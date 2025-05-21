@@ -160,10 +160,10 @@ module Primer
         assert_selector "button[role=treeitem]", count: 4, visible: :all
       end
 
-      def test_disallows_select_variants_for_anchor_tags
+      def test_disallows_select_variants_when_anchor_variant_is_used
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::OpenProject::TreeView.new) do |tree|
-            tree.with_sub_tree(label: "src", tag: :a, select_variant: :multiple) do |sub_tree|
+          render_inline(Primer::OpenProject::TreeView.new(node_variant: :anchor)) do |tree|
+            tree.with_sub_tree(label: "src", select_variant: :multiple) do |sub_tree|
               sub_tree.with_leaf(label: "button.rb")
             end
           end
@@ -172,16 +172,26 @@ module Primer
         assert_equal error.message, "TreeView nodes do not support select variants for tags other than :div."
       end
 
-      def test_disallows_select_variants_for_button_tags
+      def test_disallows_select_variants_when_button_variant_is_used
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::OpenProject::TreeView.new) do |tree|
-            tree.with_sub_tree(label: "src", tag: :button, select_variant: :multiple) do |sub_tree|
+          render_inline(Primer::OpenProject::TreeView.new(node_variant: :button)) do |tree|
+            tree.with_sub_tree(label: "src", select_variant: :multiple) do |sub_tree|
               sub_tree.with_leaf(label: "button.rb")
             end
           end
         end
 
         assert_equal error.message, "TreeView nodes do not support select variants for tags other than :div."
+      end
+
+      def test_falls_back_to_div_variant_when_invalid_variant_given
+        without_fetch_or_fallback_raises do
+          render_inline(Primer::OpenProject::TreeView.new(node_variant: :foo)) do |tree|
+            tree.with_leaf(label: "Foobar")
+          end
+        end
+
+        assert_selector "div[role=treeitem]", text: "Foobar"
       end
     end
   end

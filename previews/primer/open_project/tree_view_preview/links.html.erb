@@ -1,5 +1,5 @@
 <div style="max-width: 400px">
-  <%= render(Primer::OpenProject::TreeView.new) do |tree_view| %>
+  <%= render(Primer::OpenProject::TreeView.new(node_variant: :anchor)) do |tree_view| %>
     <% tree_view.with_sub_tree(label: "Cloud Services", href: "https://en.wikipedia.org/wiki/Cloud_computing", target: "blank", expanded: expanded) do |sub_tree| %>
       <% sub_tree.with_leaf(label: "OpenProject", href: "https://www.openproject.org", target: "blank") do |node| %>
         <% node.with_trailing_visual_icon(icon: :"link-external") %>

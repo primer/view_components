@@ -215,7 +215,7 @@ module Primer
     # Render a `Primer::OpenProject::TreeView::SubTree` in the action's template, tree_view_items/show.html_fragment.erb:
     #
     # ```erb
-    # <%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path)) do |tree| %>
+    # <%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path, node_variant: :div)) do |tree| %>
     #   <% tree.with_leaf(...) %>
     #   <% tree.with_sub_tree(...) do |sub_tree| %>
     #     ...
@@ -242,14 +242,16 @@ module Primer
     #
     # ## Node tags
     #
-    # `TreeView` nodes support three different HTML tags: `:a` (anchor), `:button`, and `:div` (the default). Both
-    # anchors and buttons are browser-native elements, and can be activated (i.e. "clicked") using the mouse or keyboard
-    # via the enter or space keys.
+    # `TreeView`s support three different node variants, `:anchor`, `:button`, and `:div` (the default), which controls
+    # which HTML tag is used to construct the nodes. The `:anchor` and `:button` variants correspond to `<a>` and
+    # `<button>` tags respectively, which are browser-native elements. Anchors and buttons can be activated (i.e.
+    # "clicked") using the mouse or keyboard via the enter or space keys. The node variant must be the same for all
+    # nodes in the tree, and is therefore specified at the root level, eg. `TreeView.new(node_variant: :anchor)`.
     #
-    # Nodes with tags other than `:div` cannot have check boxes.
+    # Trees with node variants other than `:div` cannot have check boxes, i.e. cannot be put into multi-select mode.
     #
-    # Nodes with tags other than `:div` do not emit the `treeViewNodeActivated` or `treeViewBeforeNodeActivated` events,
-    # since it is assumed any behavior associated with these element types is user- or browser-defined.
+    # Trees with node variants other than `:div` do not emit the `treeViewNodeActivated` or `treeViewBeforeNodeActivated`
+    # events, since it is assumed any behavior associated with these variants is user- or browser-defined.
     #
     # ## Interaction behavior matrix
     #
@@ -354,6 +356,9 @@ module Primer
     # both the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`
     # objects, which contain entries for every modified node in the tree.
     class TreeView < Primer::Component
+      DEFAULT_NODE_VARIANT = :div
+      NODE_VARIANT_OPTIONS = [DEFAULT_NODE_VARIANT, :anchor, :button].freeze
+
       # @!parse
       #   # Adds an leaf node to the tree. Leaf nodes are nodes that do not have children.
       #   #
@@ -375,6 +380,7 @@ module Primer
           renders: lambda { |component_klass: LeafNode, label:, **system_arguments|
             component_klass.new(
               **system_arguments,
+              node_variant: node_variant,
               path: [label],
               label: label
             )
@@ -387,6 +393,7 @@ module Primer
           renders: lambda { |component_klass: SubTreeNode, label:, **system_arguments|
             component_klass.new(
               **system_arguments,
+              node_variant: node_variant,
               path: [label],
               label: label
             )
@@ -396,9 +403,14 @@ module Primer
         }
       }
 
+      attr_reader :node_variant
+
+      # @param node_variant [Symbol] The variant to use for this node. <%= one_of(Primer::OpenProject::TreeView::NODE_VARIANT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
-      def initialize(**system_arguments)
+      def initialize(node_variant: DEFAULT_NODE_VARIANT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
+
+        @node_variant = fetch_or_fallback(NODE_VARIANT_OPTIONS, node_variant, DEFAULT_NODE_VARIANT)
 
         @system_arguments[:tag] = :ul
         @system_arguments[:role] = :tree
