@@ -172,6 +172,11 @@
     border-bottom-left-radius: var(--borderRadius-medium);
   }
 
+  & a.TreeViewItemContent:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--control-fgColor-rest);
+  }
+
   & .TreeViewItemContent {
     display: flex;
     height: 100%;
@@ -183,10 +188,6 @@
     border: none;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-      text-decoration: none;
-    }
 
     /* The dynamic top and bottom padding to maintain the minimum item height for single line items */
     /* stylelint-disable-next-line primer/spacing */
