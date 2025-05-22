@@ -136,16 +136,18 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   handleEvent(event: Event) {
-    const checkbox = (event.target as Element).closest('.TreeViewItemCheckbox')
-
-    if (checkbox && checkbox === this.#checkboxElement) {
-      this.#handleCheckboxEvent(event)
-    } else if (event.target === this.toggleButton) {
+    if (event.target === this.toggleButton) {
       this.#handleToggleEvent(event)
     } else if (event.target === this.includeFragment) {
       this.#handleIncludeFragmentEvent(event)
     } else if (event instanceof KeyboardEvent) {
       this.#handleKeyboardEvent(event)
+    } else if (
+      (event.target as Element).closest('[role=treeitem]') === this.node &&
+      event.type === 'click' &&
+      this.#checkboxElement
+    ) {
+      this.#handleCheckboxEvent(event)
     }
   }
 
@@ -226,6 +228,8 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   #handleToggleEvent(event: Event) {
     if (event.type === 'click') {
       this.toggle()
+      // eslint-disable-next-line no-restricted-syntax
+      event.stopPropagation()
     }
   }
 
@@ -281,8 +285,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         // eslint-disable-next-line no-restricted-syntax
         event.stopPropagation()
 
-        // navigate or trigger button, don't toggle
-        if (!this.treeView?.nodeHasNativeAction(node)) {
+        if (this.#checkboxElement) {
+          this.toggleChecked()
+        } else if (!this.treeView?.nodeHasNativeAction(node)) {
+          // toggle only if this node isn't eg. an anchor or button
           this.toggle()
         }
 
@@ -301,7 +307,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case ' ':
-        if (this.treeView?.nodeHasCheckBox(node)) {
+        if (this.#checkboxElement) {
           // eslint-disable-next-line no-restricted-syntax
           event.stopPropagation()
           event.preventDefault()

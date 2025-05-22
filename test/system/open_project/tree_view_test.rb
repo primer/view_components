@@ -17,7 +17,14 @@ module OpenProject
       find("#{selector_for(*path)}", match: :first).click
     end
 
+    def expand_at_path(*path)
+      node_at_path(*path).sibling(".TreeViewItemToggle").click
+    end
+
     def check_at_path(*path)
+      # NOTE: clicking anywhere on a node with a checkbox will check/uncheck it, but
+      # we target the checkbox element specifically here so this method will fail if
+      # no checkbox exists
       find("#{selector_for(*path)} .TreeViewItemCheckbox", match: :first).click
     end
 
@@ -593,14 +600,23 @@ module OpenProject
 
     ##### CHECKBOX BEHAVIOR #####
 
-    def test_space_checks_leaf_node
+    def test_activation_checks_sub_tree_node
       visit_preview(:playground, select_variant: :multiple)
 
+      refute_path_checked "primer"
+
       activate_at_path("primer")
-      activate_at_path("primer", "alpha")
+      assert_path_checked "primer"
+    end
+
+    def test_activation_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
       refute_path_checked "primer", "alpha", "action_bar.pcss"
 
-      keyboard.type(:tab, :down, :down, :down, :space)
+      activate_at_path("primer", "alpha", "action_bar.pcss")
       assert_path_checked "primer", "alpha", "action_bar.pcss"
     end
 
@@ -611,6 +627,37 @@ module OpenProject
 
       keyboard.type(:tab, :space)
       assert_path_checked "primer"
+    end
+
+    def test_space_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
+      refute_path_checked "primer", "alpha", "action_bar.pcss"
+
+      keyboard.type(:tab, :down, :down, :down, :space)
+      assert_path_checked "primer", "alpha", "action_bar.pcss"
+    end
+
+    def test_enter_checks_sub_tree_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      refute_path_checked "primer"
+
+      keyboard.type(:tab, :enter)
+      assert_path_checked "primer"
+    end
+
+    def test_enter_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
+      refute_path_checked "primer", "alpha", "action_bar.pcss"
+
+      keyboard.type(:tab, :down, :down, :down, :enter)
+      assert_path_checked "primer", "alpha", "action_bar.pcss"
     end
 
     def test_checking_sub_tree_node_checks_all_children

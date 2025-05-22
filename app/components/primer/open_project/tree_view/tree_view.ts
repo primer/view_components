@@ -44,7 +44,7 @@ export class TreeViewElement extends HTMLElement {
   }
 
   #handleNodeEvent(node: Element, event: Event) {
-    if (this.#eventIsCheckboxToggle(event)) {
+    if (this.#eventIsCheckboxToggle(event, node)) {
       this.#handleCheckboxToggle(node)
     } else if (this.#eventIsActivation(event)) {
       this.#handleNodeActivated(node)
@@ -55,8 +55,8 @@ export class TreeViewElement extends HTMLElement {
     }
   }
 
-  #eventIsCheckboxToggle(event: Event) {
-    return event.type === 'click' && (event.target as HTMLElement).closest('.TreeViewItemCheckbox') !== null
+  #eventIsCheckboxToggle(event: Event, node: Element) {
+    return event.type === 'click' && this.nodeHasCheckBox(node)
   }
 
   #handleCheckboxToggle(node: Element) {
@@ -114,6 +114,7 @@ export class TreeViewElement extends HTMLElement {
 
     switch (event.key) {
       case ' ':
+      case 'Enter':
         if (this.nodeHasCheckBox(node)) {
           event.preventDefault()
 
@@ -123,6 +124,7 @@ export class TreeViewElement extends HTMLElement {
             this.#setNodeCheckedValue(node, 'true')
           }
         } else if (node instanceof HTMLAnchorElement) {
+          // simulate click on space
           node.click()
         }
 
