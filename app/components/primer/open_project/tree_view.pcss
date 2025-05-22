@@ -46,7 +46,6 @@
     width: 100%;
     font-size: var(--text-body-size-medium);
     color: var(--fgColor-default);
-    cursor: pointer;
     border-radius: var(--borderRadius-medium);
     grid-template-columns: var(--spacer-width) var(--leading-action-width) var(--toggle-width) 1fr;
     grid-template-areas: 'spacer leadingAction toggle content';
@@ -161,6 +160,7 @@
     grid-area: toggle;
     justify-content: center;
     align-items: flex-start;
+    cursor: pointer;
   }
 
   & .TreeViewItemToggleHover:hover {
@@ -172,7 +172,7 @@
     border-bottom-left-radius: var(--borderRadius-medium);
   }
 
-  & a.TreeViewItemContent:hover {
+  & a.TreeViewItemContent:hover, button.TreeViewItemContent:hover {
     text-decoration: underline;
     text-decoration-color: var(--control-fgColor-rest);
   }
@@ -188,6 +188,7 @@
     border: none;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 
     /* The dynamic top and bottom padding to maintain the minimum item height for single line items */
     /* stylelint-disable-next-line primer/spacing */
