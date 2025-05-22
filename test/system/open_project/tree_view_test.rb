@@ -117,7 +117,7 @@ module OpenProject
       return unless to
 
       within_window(window) do
-        assert_equal to, current_url, "New window opened to unexpected URL"
+        assert_current_path to
       end
     end
 
