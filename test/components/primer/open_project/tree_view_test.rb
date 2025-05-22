@@ -13,7 +13,7 @@ module Primer
         assert_selector("tree-view") do |tree|
           tree.assert_selector("ul[role=tree]") do |sub_tree|
             sub_tree.assert_selector("li[role=none]") do |node|
-              node.assert_selector(".TreeViewItemContainer", text: "src")
+              node.assert_selector("[role=treeitem]", text: "src")
               node.assert_selector("ul[role=group]") do |sub_tree|
                 sub_tree.assert_selector("li[role=none] [role=treeitem]", text: "button.rb")
                 sub_tree.assert_selector("li[role=none] [role=treeitem]", text: "icon_button.rb")
