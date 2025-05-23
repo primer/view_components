@@ -117,6 +117,21 @@ module Primer
         })
       end
 
+      # @label Auto expansion
+      #
+      def auto_expansion
+        render(Primer::OpenProject::TreeView.new) do |tree|
+          tree.with_sub_tree(label: "Level 1") do |level1|
+            level1.with_sub_tree(label: "Level 2") do |level2|
+              # marking this node as expanded should automatically expand all ancestors
+              level2.with_sub_tree(label: "Level 3", expanded: true) do |level3|
+                level3.with_leaf(label: "Level 4")
+              end
+            end
+          end
+        end
+      end
+
       private
 
       def coerce_bool(value)
