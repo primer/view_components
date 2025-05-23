@@ -265,6 +265,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case 'include-fragment-replaced':
+        // Make sure to expand the new sub-tree, otherwise it looks like nothing happened. This prevents
+        // having to remember to pass `SubTree.new(expanded: true)` in the controller.
+        this.expanded = true
+
         if (this.#activeElementIsLoader) {
           const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
           if (!firstItem) return

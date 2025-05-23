@@ -76,6 +76,15 @@ module Primer
         })
       end
 
+      # @label Async alpha
+      #
+      # @param action_menu_expanded [Boolean] toggle
+      def async_alpha(action_menu_expanded: false)
+        render_with_template(locals: {
+          action_menu_expanded: coerce_bool(action_menu_expanded)
+        })
+      end
+
       # @label Leaf node playground
       #
       # @param label [String] text
