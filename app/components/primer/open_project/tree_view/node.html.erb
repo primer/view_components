@@ -13,7 +13,7 @@
     <% if leading_action? %>
       <%= leading_action %>
     <% end %>
-    <div id="<%= content_id %>" class="TreeViewItemContent">
+    <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
       <% if @select_variant == :multiple %>
         <div aria-hidden="true" class="TreeViewItemCheckbox" tabindex="-1">
           <div class="FormControl-checkbox"></div>
@@ -26,7 +26,7 @@
       <% if trailing_visual? %>
         <%= trailing_visual %>
       <% end %>
-    </div>
+    <% end %>
   </div>
   <%= content %>
 <% end %>

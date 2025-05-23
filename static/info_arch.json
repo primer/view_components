@@ -18762,6 +18762,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/default/",
     "parameters": [
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -20446,7 +20452,7 @@
   },
   {
     "fully_qualified_name": "Primer::OpenProject::TreeView",
-    "description": "TreeView is a hierarchical list of items that may have a parent-child relationship where children\ncan be toggled into view by expanding or collapsing their parent item.\n\n## Terminology\n\nConsider the following tree structure:\n\nsrc\n├ button.rb\n└ action_list\n  ├ item.rb\n  └ header.rb\n\n1. **Node**. A node is an item in the tree. Nodes can either be \"leaf\" nodes (i.e. have no children), or \"sub-tree\"\nnodes, which do have children. In the example above, button.rb, item.rb, and header.rb are all leaf nodes, while\naction_list is a sub-tree node.\n2. **Path**. A node's path is like its ID. It's an array of strings containing the current node's label and all the\nlabels of its ancestors, in order. In the example above, header.rb's path is [\"src\", \"action_list\", \"header.rb\"].\n\n## Static nodes\n\nThe `TreeView` component allows items to be provided statically or loaded dynamically from the server.\nProviding items statically is done using the `leaf` and `sub_tree` slots:\n\n```erb\n<%= render(Primer::OpenProject::TreeView.new) do |tree| %>\n  <% tree.with_sub_tree(label: \"Directory\") do |sub_tree| %>\n    <% sub_tree.with_leaf(label: \"File 1\")\n  <% end %>\n  <% tree.with_leaf(label: \"File 2\") %>\n<% end %>\n```\n\n## Dynamic nodes\n\nTree nodes can also be fetched dynamically from the server and will require creating a Rails controller action\nto respond with the list of nodes. Unlike other Primer components, `TreeView` allows the programmer to specify\nloading behavior on a per-sub-tree basis, i.e. each sub-tree must specify how its nodes are loaded. To load nodes\ndynamically for a given sub-tree, configure it with either a loading spinner or a loading skeleton, and provide\nthe URL to fetch nodes from:\n\n```erb\n<%= render(Primer::OpenProject::TreeView.new) do |tree| %>\n  <% tree.with_sub_tree(label: \"Directory\") do |sub_tree| %>\n    <% sub_tree.with_loading_spinner(src: tree_view_items_path) %>\n  <% end %>\n<% end %>\n```\n\nDefine a controller action to serve the list of nodes. The `TreeView` component automatically includes the\nsub-tree's path as a GET parameter, encoded as a JSON array.\n\n```ruby\nclass TreeViewItemsController < ApplicationController\n  def show\n    @path = JSON.parse(params[:path])\n    @results = get_tree_items(starting_at: path)\n  end\nend\n```\n\nResponses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't\navailable by default in Rails, so you may have to register it eg. in an initializer:\n\n```ruby\nMime::Type.register(\"text/fragment+html\", :html_fragment)\n```\n\nRender a `Primer::OpenProject::TreeView::SubTree` in the action's template, tree_view_items/show.html_fragment.erb:\n\n```erb\n<%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path)) do |tree| %>\n  <% tree.with_leaf(...) %>\n  <% tree.with_sub_tree(...) do |sub_tree| %>\n    ...\n  <% end %>\n<% end %>\n```\n\n### JavaScript API\n\n`TreeView`s render a `<tree-view>` custom element that exposes behavior to the client.\n\n|Name                                                              |Notes                                                                                                                                             |\n|:-----------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|\n|`getNodePath(node: Element): string[]`                            |Returns the path to the given node.                                                                                                               |\n|`getNodeType(node: Element): TreeViewNodeType | null`             |Returns either `\"leaf\"` or `\"sub-tree\"`.                                                                                                          |\n|`markCurrentAtPath(path: string[])`                               |Marks the node as the \"current\" node, which appears visually distinct from other nodes.                                                           |\n|`get currentNode(): HTMLLIElement | null`                         |Returns the current node.                                                                                                                         |\n|`expandAtPath(path: string[])`                                    |Expands the sub-tree at `path`.                                                                                                                   |\n|`collapseAtPath(path: string[])`                                  |Collapses the sub-tree at `path`.                                                                                                                 |\n|`toggleAtPath(path: string[])`                                    |If the sub-tree at `path` is collapsed, this function expands it, and vice-versa.                                                                 |\n|`checkAtPath(path: string[])`                                     |If the node at `path` has a checkbox, this function checks it.                                                                                    |\n|`uncheckAtPath(path: string[])`                                   |If the node at `path` has a checkbox, this function unchecks it.                                                                                  |\n|`toggleCheckedAtPath(path: string[])`                             |If the sub-tree at `path` is checked, this function unchecks it, and vice-versa.                                                                  |\n|`checkedValueAtPath(path: string[]): TreeViewCheckedValue`        |Returns `\"true\"` (all child nodes are checked), `\"false\"` (no child nodes are checked), or `\"mixed\"` (some child nodes are checked, some are not).|\n|`nodeAtPath(path: string[], selector?: string): Element | null`   |Returns the node for the given `path`, either a leaf node or sub-tree node.                                                                       |\n|`subTreeAtPath(path: string[]): TreeViewSubTreeNodeElement | null`|Returns the sub-tree at the given `path`, if it exists.                                                                                           |\n|`leafAtPath(path: string[]): HTMLLIElement | null`                |Returns the leaf node at the given `path`, if it exists.                                                                                          |\n|`getNodeCheckedValue(node: Element): TreeViewCheckedValue`        |The same as `checkedValueAtPath`, but accepts a node instead of a path.                                                                           |\n\n#### Events\n\nThe events enumerated below include node information by way of the `TreeViewNodeInfo` object, which has the\nfollowing signature:\n\n```typescript\ntype TreeViewNodeType = 'leaf' | 'sub-tree'\ntype TreeViewCheckedValue = 'true' | 'false' | 'mixed'\n\ntype TreeViewNodeInfo = {\n  node: Element\n  type: TreeViewNodeType\n  path: string[]\n  checkedValue: TreeViewCheckedValue\n  previousCheckedValue: TreeViewCheckedValue\n}\n```\n\n|Name                         |Type                                       |Bubbles |Cancelable |\n|:----------------------------|:------------------------------------------|:-------|:----------|\n|`treeViewNodeActivated`      |`CustomEvent<TreeViewNodeInfo>`            |Yes     |No         |\n|`treeViewBeforeNodeActivated`|`CustomEvent<TreeViewNodeInfo>`            |Yes     |Yes        |\n|`treeViewNodeExpanded`       |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |\n|`treeViewNodeCollapsed`      |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |\n|`treeViewNodeChecked`        |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |Yes        |\n|`treeViewBeforeNodeChecked`  |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |No         |\n\n_Item activation_\n\nThe `<tree-view>` element fires an `treeViewNodeActivated` event whenever a node is activated (eg. clicked)\nvia the mouse or keyboard.\n\nThe `treeViewBeforeNodeActivated` event fires before a node is activated. Canceling this event will prevent the\nnode from being activated.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"treeViewBeforeNodeActivated\",\n  (event: CustomEvent<TreeViewNodeInfo>) => {\n    event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)\n  }\n)\n```\n\n_Item checking/unchecking_\n\nThe `tree-view` element fires a `treeViewNodeChecked` event whenever a node is checked or unchecked.\n\nThe `treeViewBeforeNodeChecked` event fires before a node is checked or unchecked. Canceling this event will\nprevent the check/uncheck operation.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"treeViewBeforeNodeChecked\",\n  (event: CustomEvent<TreeViewNodeInfo[]>) => {\n    event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)\n  }\n)\n```\n\nBecause checking or unchecking a sub-tree results in the checking or unchecking of all its children recursively,\nboth the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`\nobjects, which contain entries for every modified node in the tree.",
+    "description": "TreeView is a hierarchical list of items that may have a parent-child relationship where children\ncan be toggled into view by expanding or collapsing their parent item.\n\n## Terminology\n\nConsider the following tree structure:\n\nsrc\n├ button.rb\n└ action_list\n  ├ item.rb\n  └ header.rb\n\n1. **Node**. A node is an item in the tree. Nodes can either be \"leaf\" nodes (i.e. have no children), or \"sub-tree\"\nnodes, which do have children. In the example above, button.rb, item.rb, and header.rb are all leaf nodes, while\naction_list is a sub-tree node.\n2. **Path**. A node's path is like its ID. It's an array of strings containing the current node's label and all the\nlabels of its ancestors, in order. In the example above, header.rb's path is [\"src\", \"action_list\", \"header.rb\"].\n\n## Static nodes\n\nThe `TreeView` component allows items to be provided statically or loaded dynamically from the server.\nProviding items statically is done using the `leaf` and `sub_tree` slots:\n\n```erb\n<%= render(Primer::OpenProject::TreeView.new) do |tree| %>\n  <% tree.with_sub_tree(label: \"Directory\") do |sub_tree| %>\n    <% sub_tree.with_leaf(label: \"File 1\")\n  <% end %>\n  <% tree.with_leaf(label: \"File 2\") %>\n<% end %>\n```\n\n## Dynamic nodes\n\nTree nodes can also be fetched dynamically from the server and will require creating a Rails controller action\nto respond with the list of nodes. Unlike other Primer components, `TreeView` allows the programmer to specify\nloading behavior on a per-sub-tree basis, i.e. each sub-tree must specify how its nodes are loaded. To load nodes\ndynamically for a given sub-tree, configure it with either a loading spinner or a loading skeleton, and provide\nthe URL to fetch nodes from:\n\n```erb\n<%= render(Primer::OpenProject::TreeView.new) do |tree| %>\n  <% tree.with_sub_tree(label: \"Directory\") do |sub_tree| %>\n    <% sub_tree.with_loading_spinner(src: tree_view_items_path) %>\n  <% end %>\n<% end %>\n```\n\nDefine a controller action to serve the list of nodes. The `TreeView` component automatically includes the\nsub-tree's path as a GET parameter, encoded as a JSON array.\n\n```ruby\nclass TreeViewItemsController < ApplicationController\n  def show\n    @path = JSON.parse(params[:path])\n    @results = get_tree_items(starting_at: path)\n  end\nend\n```\n\nResponses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't\navailable by default in Rails, so you may have to register it eg. in an initializer:\n\n```ruby\nMime::Type.register(\"text/fragment+html\", :html_fragment)\n```\n\nRender a `Primer::OpenProject::TreeView::SubTree` in the action's template, tree_view_items/show.html_fragment.erb:\n\n```erb\n<%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path, node_variant: :div)) do |tree| %>\n  <% tree.with_leaf(...) %>\n  <% tree.with_sub_tree(...) do |sub_tree| %>\n    ...\n  <% end %>\n<% end %>\n```\n\n## Multi-select mode\n\nPassing `select_variant: :multiple` to both sub-tree and leaf nodes will add a check box to the left of the node's\nlabel. These check boxes behave according to the value of a second argument, `select_strategy:`.\n\nThe default select strategy, `:descendants`, will cause all child nodes to be checked when the node is checked.\nThis includes both sub-tree and leaf nodes. When the node is unchecked, all child nodes will also be unchecked.\nUnchecking a child node of a checked parent will cause the parent to enter a mixed or indeterminate state, which\nis represented by a horizontal line icon instead of a check mark. This icon indicates that some children are\nchecked, but not all.\n\nA secondary select strategy, `:self`, is provided to allow disabling the automatic checking of child nodes. When\n`select_strategy: :self` is specified, checking sub-tree nodes does not check child nodes, and sub-tree nodes\ncannot enter a mixed or indeterminate state.\n\nNodes can be checked via the keyboard by pressing the space key.\n\n## Node tags\n\n`TreeView`s support three different node variants, `:anchor`, `:button`, and `:div` (the default), which controls\nwhich HTML tag is used to construct the nodes. The `:anchor` and `:button` variants correspond to `<a>` and\n`<button>` tags respectively, which are browser-native elements. Anchors and buttons can be activated (i.e.\n\"clicked\") using the mouse or keyboard via the enter or space keys. The node variant must be the same for all\nnodes in the tree, and is therefore specified at the root level, eg. `TreeView.new(node_variant: :anchor)`.\n\nTrees with node variants other than `:div` cannot have check boxes, i.e. cannot be put into multi-select mode.\n\nTrees with node variants other than `:div` do not emit the `treeViewNodeActivated` or `treeViewBeforeNodeActivated`\nevents, since it is assumed any behavior associated with these variants is user- or browser-defined.\n\n## Interaction behavior matrix\n\n|Interaction     |Select variant|Tag          |Result                     |\n|:---------------|:-------------|:------------|:--------------------------|\n|Enter/space     |none          |div          |Expands/collapses          |\n|Enter/space     |none          |anchor/button|Activates anchor/button    |\n|Enter/space     |multiple      |div          |Checks or unchecks         |\n|Enter/space     |multiple      |anchor/button|N/A (not allowed)          |\n|Left/right arrow|none          |div          |Expands/collapses          |\n|Left/right arrow|none          |anchor/button|Expands/collapses          |\n|Left/right arrow|multiple      |div          |Expands/collapses          |\n|Left/right arrow|multiple      |anchor/button|N/A (not allowed)          |\n|Click           |none          |div          |Expands/collapses          |\n|Click           |multiple      |div          |Checks or unchecks         |\n|Click           |multiple      |anchor/button|N/A (not allowed)          |\n\n## JavaScript API\n\n`TreeView`s render a `<tree-view>` custom element that exposes behavior to the client.\n\n|Name                                                              |Notes                                                                                                                                             |\n|:-----------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|\n|`getNodePath(node: Element): string[]`                            |Returns the path to the given node.                                                                                                               |\n|`getNodeType(node: Element): TreeViewNodeType | null`             |Returns either `\"leaf\"` or `\"sub-tree\"`.                                                                                                          |\n|`markCurrentAtPath(path: string[])`                               |Marks the node as the \"current\" node, which appears visually distinct from other nodes.                                                           |\n|`get currentNode(): HTMLLIElement | null`                         |Returns the current node.                                                                                                                         |\n|`expandAtPath(path: string[])`                                    |Expands the sub-tree at `path`.                                                                                                                   |\n|`collapseAtPath(path: string[])`                                  |Collapses the sub-tree at `path`.                                                                                                                 |\n|`toggleAtPath(path: string[])`                                    |If the sub-tree at `path` is collapsed, this function expands it, and vice-versa.                                                                 |\n|`checkAtPath(path: string[])`                                     |If the node at `path` has a checkbox, this function checks it.                                                                                    |\n|`uncheckAtPath(path: string[])`                                   |If the node at `path` has a checkbox, this function unchecks it.                                                                                  |\n|`toggleCheckedAtPath(path: string[])`                             |If the sub-tree at `path` is checked, this function unchecks it, and vice-versa.                                                                  |\n|`checkedValueAtPath(path: string[]): TreeViewCheckedValue`        |Returns `\"true\"` (all child nodes are checked), `\"false\"` (no child nodes are checked), or `\"mixed\"` (some child nodes are checked, some are not).|\n|`nodeAtPath(path: string[], selector?: string): Element | null`   |Returns the node for the given `path`, either a leaf node or sub-tree node.                                                                       |\n|`subTreeAtPath(path: string[]): TreeViewSubTreeNodeElement | null`|Returns the sub-tree at the given `path`, if it exists.                                                                                           |\n|`leafAtPath(path: string[]): HTMLLIElement | null`                |Returns the leaf node at the given `path`, if it exists.                                                                                          |\n|`getNodeCheckedValue(node: Element): TreeViewCheckedValue`        |The same as `checkedValueAtPath`, but accepts a node instead of a path.                                                                           |\n\n### Events\n\nThe events enumerated below include node information by way of the `TreeViewNodeInfo` object, which has the\nfollowing signature:\n\n```typescript\ntype TreeViewNodeType = 'leaf' | 'sub-tree'\ntype TreeViewCheckedValue = 'true' | 'false' | 'mixed'\n\ntype TreeViewNodeInfo = {\n  node: Element\n  type: TreeViewNodeType\n  path: string[]\n  checkedValue: TreeViewCheckedValue\n  previousCheckedValue: TreeViewCheckedValue\n}\n```\n\n|Name                         |Type                                       |Bubbles |Cancelable |\n|:----------------------------|:------------------------------------------|:-------|:----------|\n|`treeViewNodeActivated`      |`CustomEvent<TreeViewNodeInfo>`            |Yes     |No         |\n|`treeViewBeforeNodeActivated`|`CustomEvent<TreeViewNodeInfo>`            |Yes     |Yes        |\n|`treeViewNodeExpanded`       |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |\n|`treeViewNodeCollapsed`      |`CustomEvent<TreeViewNodeInfo>>`           |Yes     |No         |\n|`treeViewNodeChecked`        |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |Yes        |\n|`treeViewBeforeNodeChecked`  |`CustomEvent<TreeViewNodeInfo[]>`          |Yes     |No         |\n\n_Item activation_\n\nThe `<tree-view>` element fires an `treeViewNodeActivated` event whenever a node is activated (eg. clicked)\nvia the mouse or keyboard.\n\nThe `treeViewBeforeNodeActivated` event fires before a node is activated. Canceling this event will prevent the\nnode from being activated.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"treeViewBeforeNodeActivated\",\n  (event: CustomEvent<TreeViewNodeInfo>) => {\n    event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)\n  }\n)\n```\n\n_Item checking/unchecking_\n\nThe `tree-view` element fires a `treeViewNodeChecked` event whenever a node is checked or unchecked.\n\nThe `treeViewBeforeNodeChecked` event fires before a node is checked or unchecked. Canceling this event will\nprevent the check/uncheck operation.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"treeViewBeforeNodeChecked\",\n  (event: CustomEvent<TreeViewNodeInfo[]>) => {\n    event.preventDefault() // Cancel the event to prevent activation (eg. expanding/collapsing)\n  }\n)\n```\n\nBecause checking or unchecking a sub-tree results in the checking or unchecking of all its children recursively,\nboth the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`\nobjects, which contain entries for every modified node in the tree.",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -20458,6 +20464,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/default/",
     "parameters": [
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
       {
         "name": "system_arguments",
         "type": "Hash",
@@ -20512,6 +20524,16 @@
             "default": "N/A",
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::OpenProject::TreeView::SubTreeNode{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
+        ],
+        "return_types": [
+
+        ]
+      },
+      {
+        "name": "node_variant",
+        "description": "Returns the value of attribute node_variant.",
+        "parameters": [
+
         ],
         "return_types": [
 
@@ -20600,6 +20622,32 @@
       {
         "preview_path": "primer/open_project/tree_view/leaf_node_playground",
         "name": "leaf_node_playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/tree_view/links",
+        "name": "links",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/tree_view/buttons",
+        "name": "buttons",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -20948,6 +20996,18 @@
         "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
       },
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The node variant to use for the node's content, i.e. the `:button` or `:div`. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL to use as the `href` attribute for this node. If set to a truthy value, the `tag:` parameter is ignored and assumed to be `:a`."
+      },
+      {
         "name": "current",
         "type": "Boolean",
         "default": "`false`",
@@ -20966,10 +21026,10 @@
         "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
       },
       {
-        "name": "system_arguments",
+        "name": "content_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}."
+        "description": "Arguments attached to the node's content, i.e the `<button>` or `<a>` element. {{link_to_system_arguments_docs}}"
       }
     ],
     "slots": [
@@ -21043,6 +21103,16 @@
       {
         "name": "select_variant",
         "description": "This node's select variant (i.e. check box variant).",
+        "parameters": [
+
+        ],
+        "return_types": [
+          "Symbol"
+        ]
+      },
+      {
+        "name": "node_variant",
+        "description": "This node's variant, eg. `:button`, `:div`, etc.",
         "parameters": [
 
         ],
@@ -21206,6 +21276,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/sub_tree/default/",
     "parameters": [
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -21288,6 +21364,16 @@
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::OpenProject::TreeView::SkeletonLoader{{/link_to_component}}."
           }
+        ],
+        "return_types": [
+
+        ]
+      },
+      {
+        "name": "node_variant",
+        "description": "Returns the value of attribute node_variant.",
+        "parameters": [
+
         ],
         "return_types": [
 
@@ -21401,6 +21487,12 @@
         "type": "Array<String>",
         "default": "N/A",
         "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
+      },
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
       },
       {
         "name": "expanded",

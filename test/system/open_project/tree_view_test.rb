@@ -14,10 +14,17 @@ module OpenProject
     end
 
     def activate_at_path(*path)
-      find("#{selector_for(*path)} .TreeViewItemContainer", match: :first).click
+      find("#{selector_for(*path)}", match: :first).click
+    end
+
+    def expand_at_path(*path)
+      node_at_path(*path).sibling(".TreeViewItemToggle").click
     end
 
     def check_at_path(*path)
+      # NOTE: clicking anywhere on a node with a checkbox will check/uncheck it, but
+      # we target the checkbox element specifically here so this method will fail if
+      # no checkbox exists
       find("#{selector_for(*path)} .TreeViewItemCheckbox", match: :first).click
     end
 
@@ -27,7 +34,6 @@ module OpenProject
 
     def label_of(node)
       return unless node
-      return unless node.tag_name == "li"
       return unless node["role"] == "treeitem"
 
       node.find_css(".TreeViewItemContentText").first.all_text
@@ -77,13 +83,42 @@ module OpenProject
     def remove_fail_param_from_fragment_src_for(*path)
       evaluate_multiline_script(<<~JS)
         const selector = CSS.escape(JSON.stringify(#{path.inspect}))
-        const includeFragment = document.querySelector(`[data-path="${selector}"] tree-view-include-fragment`)
+        const includeFragment = document.querySelector(`[data-path="${selector}"]`).closest('li').querySelector('tree-view-include-fragment')
         const relativeUrl = includeFragment.getAttribute('src')
         const url = new URL(relativeUrl, 'http://dummy')
         url.searchParams.delete('fail')
         const newUrl = `${url.pathname}?${url.searchParams.toString()}`
         includeFragment.setAttribute('src', newUrl)
       JS
+    end
+
+    def capture_event(event_name, cancel: false)
+      evaluate_multiline_script(<<~JS)
+        window.treeViewEventDetails = null
+        const treeViewShouldCancelEvent = #{cancel}
+
+        document.querySelector('tree-view').addEventListener('#{event_name}', (event) => {
+          window.treeViewEventDetails = event.detail
+
+          if (treeViewShouldCancelEvent) {
+            event.preventDefault()
+          }
+        })
+      JS
+
+      yield
+
+      return page.evaluate_script("window.treeViewEventDetails")
+    end
+
+    def assert_window_opened(to: nil, &block)
+      window = window_opened_by(&block)
+
+      return unless to
+
+      within_window(window) do
+        assert_current_path to
+      end
     end
 
     ##### TESTS #####
@@ -172,6 +207,46 @@ module OpenProject
       assert_path_tabbable("src")
     end
 
+    def test_sub_tree_node_links_navigate
+      visit_preview(:links)
+
+      assert_window_opened(to: "https://en.wikipedia.org/wiki/Cloud_computing") do
+        activate_at_path("Cloud Services")
+      end
+
+      # check that clicking did not expand
+      refute_path "Cloud Services", "OpenProject"
+      refute_path "Cloud Services", "Hetzner"
+    end
+
+    def test_leaf_node_links_navigate
+      visit_preview(:links, expanded: true)
+
+      assert_window_opened(to: "https://www.openproject.org/") do
+        activate_at_path("Cloud Services", "OpenProject")
+      end
+    end
+
+    def test_sub_tree_node_buttons_alert
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        activate_at_path("Secrets")
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
+    def test_leaf_node_buttons_alert
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
+        activate_at_path("Secrets", "Life and the universe")
+      end
+    end
+
     ##### KEYBOARD NAVIGATION #####
 
     def test_expands_on_enter
@@ -240,6 +315,86 @@ module OpenProject
       assert_path_selected("src", "button.rb")
     end
 
+    def test_sub_tree_node_links_navigate_on_enter
+      visit_preview(:links)
+
+      assert_window_opened(to: "https://en.wikipedia.org/wiki/Cloud_computing") do
+        keyboard.type(:tab, :enter)
+      end
+
+      # check that clicking did not expand
+      refute_path "Cloud Services", "OpenProject"
+      refute_path "Cloud Services", "Hetzner"
+    end
+
+    def test_sub_tree_node_links_navigate_on_space
+      visit_preview(:links)
+
+      assert_window_opened(to: "https://en.wikipedia.org/wiki/Cloud_computing") do
+        keyboard.type(:tab, :space)
+      end
+
+      # check that clicking did not expand
+      refute_path "Cloud Services", "OpenProject"
+      refute_path "Cloud Services", "Hetzner"
+    end
+
+    def test_sub_tree_node_buttons_alert_on_enter
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        keyboard.type(:tab, :enter)
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
+    def test_sub_tree_node_buttons_alert_on_space
+      visit_preview(:buttons)
+
+      accept_alert("Shhhh") do
+        keyboard.type(:tab, :space)
+      end
+
+      # check that clicking did not expand
+      refute_path "Secrets", "Life and the universe"
+      refute_path "Secrets", "Secret ingredient"
+    end
+
+    def test_leaf_node_links_navigate_on_enter
+      visit_preview(:links, expanded: true)
+
+      assert_window_opened(to: "https://www.openproject.org/") do
+        keyboard.type(:tab, :down, :enter)
+      end
+    end
+
+    def test_leaf_node_links_navigate_on_space
+      visit_preview(:links, expanded: true)
+
+      assert_window_opened(to: "https://www.openproject.org/") do
+        keyboard.type(:tab, :down, :space)
+      end
+    end
+
+    def test_leaf_node_buttons_alert_on_enter
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
+        keyboard.type(:tab, :down, :enter)
+      end
+    end
+
+    def test_leaf_node_buttons_alert_on_space
+      visit_preview(:buttons, expanded: true)
+
+      accept_alert("42") do
+        keyboard.type(:tab, :down, :space)
+      end
+    end
+
     ##### LOADERS #####
 
     def test_loading_spinner
@@ -270,20 +425,20 @@ module OpenProject
 
       activate_at_path("primer")
 
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
+      assert_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage", text: "Something went wrong"
     end
 
     def test_loading_spinner_retry_after_failure
       visit_preview(:loading_spinner, simulate_failure: true)
 
       activate_at_path("primer")
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      assert_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage"
 
       remove_fail_param_from_fragment_src_for("primer")
       click_on("Retry")
 
       assert_path("primer", "alpha")
-      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      refute_selector "#{selector_for("primer", "failure_msg")} .TreeViewFailureMessage"
     end
 
     def test_empty_after_loading_spinner
@@ -323,20 +478,20 @@ module OpenProject
 
       activate_at_path("primer")
 
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage", text: "Something went wrong"
+      assert_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage", text: "Something went wrong"
     end
 
     def test_loading_skeleton_retry_after_failure
       visit_preview(:loading_skeleton, simulate_failure: true)
 
       activate_at_path("primer")
-      assert_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      assert_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage"
 
       remove_fail_param_from_fragment_src_for("primer")
       click_on("Retry")
 
       assert_path("primer", "alpha")
-      refute_selector "#{selector_for("primer")} .TreeViewFailureMessage"
+      refute_selector "#{selector_for("primer", "loader")} .TreeViewFailureMessage"
     end
 
     def test_empty_after_loading_skeleton
@@ -353,25 +508,6 @@ module OpenProject
       activate_at_path("src")
 
       assert_selector "#{selector_for("src")} .TreeViewItemContentText", text: "No items"
-    end
-
-    def capture_event(event_name, cancel: false)
-      evaluate_multiline_script(<<~JS)
-        window.treeViewEventDetails = null
-        const treeViewShouldCancelEvent = #{cancel}
-
-        document.querySelector('tree-view').addEventListener('#{event_name}', (event) => {
-          window.treeViewEventDetails = event.detail
-
-          if (treeViewShouldCancelEvent) {
-            event.preventDefault()
-          }
-        })
-      JS
-
-      yield
-
-      return page.evaluate_script("window.treeViewEventDetails")
     end
 
     ##### JAVASCRIPT EVENTS #####
@@ -464,14 +600,23 @@ module OpenProject
 
     ##### CHECKBOX BEHAVIOR #####
 
-    def test_space_checks_leaf_node
+    def test_activation_checks_sub_tree_node
       visit_preview(:playground, select_variant: :multiple)
 
+      refute_path_checked "primer"
+
       activate_at_path("primer")
-      activate_at_path("primer", "alpha")
+      assert_path_checked "primer"
+    end
+
+    def test_activation_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
       refute_path_checked "primer", "alpha", "action_bar.pcss"
 
-      keyboard.type(:tab, :down, :down, :down, :space)
+      activate_at_path("primer", "alpha", "action_bar.pcss")
       assert_path_checked "primer", "alpha", "action_bar.pcss"
     end
 
@@ -482,6 +627,37 @@ module OpenProject
 
       keyboard.type(:tab, :space)
       assert_path_checked "primer"
+    end
+
+    def test_space_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
+      refute_path_checked "primer", "alpha", "action_bar.pcss"
+
+      keyboard.type(:tab, :down, :down, :down, :space)
+      assert_path_checked "primer", "alpha", "action_bar.pcss"
+    end
+
+    def test_enter_checks_sub_tree_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      refute_path_checked "primer"
+
+      keyboard.type(:tab, :enter)
+      assert_path_checked "primer"
+    end
+
+    def test_enter_checks_leaf_node
+      visit_preview(:playground, select_variant: :multiple)
+
+      expand_at_path("primer")
+      expand_at_path("primer", "alpha")
+      refute_path_checked "primer", "alpha", "action_bar.pcss"
+
+      keyboard.type(:tab, :down, :down, :down, :enter)
+      assert_path_checked "primer", "alpha", "action_bar.pcss"
     end
 
     def test_checking_sub_tree_node_checks_all_children

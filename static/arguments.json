@@ -5420,6 +5420,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/default/",
     "parameters": [
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -5845,6 +5851,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/default/",
     "parameters": [
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -5971,6 +5983,18 @@
         "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
       },
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The node variant to use for the node's content, i.e. the `:button` or `:div`. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL to use as the `href` attribute for this node. If set to a truthy value, the `tag:` parameter is ignored and assumed to be `:a`."
+      },
+      {
         "name": "current",
         "type": "Boolean",
         "default": "`false`",
@@ -5989,10 +6013,10 @@
         "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
       },
       {
-        "name": "system_arguments",
+        "name": "content_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)."
+        "description": "Arguments attached to the node's content, i.e the `<button>` or `<a>` element. [System arguments](/system-arguments)"
       }
     ]
   },
@@ -6055,6 +6079,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/sub_tree/default/",
     "parameters": [
       {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -6109,6 +6139,12 @@
         "type": "Array<String>",
         "default": "N/A",
         "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
+      },
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
       },
       {
         "name": "expanded",
