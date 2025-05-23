@@ -10,7 +10,11 @@ module Primer
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
       # @param select_strategy [Symbol] select [self, descendants]
-      def default(expanded: false, select_variant: :none, select_strategy: :descendants)
+      def default(
+        expanded: false,
+        select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
+        select_strategy: Primer::OpenProject::TreeView::SubTreeNode::DEFAULT_SELECT_STRATEGY
+      )
         render_with_template(locals: {
           expanded: coerce_bool(expanded),
           select_variant: select_variant.to_sym,
@@ -23,7 +27,11 @@ module Primer
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
       # @param select_strategy [Symbol] select [self, descendants]
-      def playground(expanded: false, select_variant: :none, select_strategy: :descendants)
+      def playground(
+        expanded: false,
+        select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
+        select_strategy: Primer::OpenProject::TreeView::SubTreeNode::DEFAULT_SELECT_STRATEGY
+      )
         render_with_template(locals: {
           expanded: coerce_bool(expanded),
           select_variant: select_variant.to_sym,
@@ -80,7 +88,7 @@ module Primer
         leading_visual_icon: nil,
         leading_action_icon: nil,
         trailing_visual_icon: nil,
-        select_variant: :none
+        select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT
       )
         render_with_template(locals: {
           label: label,
@@ -88,6 +96,24 @@ module Primer
           leading_action_icon: leading_action_icon,
           trailing_visual_icon: trailing_visual_icon,
           select_variant: select_variant.to_sym
+        })
+      end
+
+      # @label Links
+      #
+      # @param expanded [Boolean] toggle
+      def links(expanded: false)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
+      end
+
+      # @label Buttons
+      #
+      # @param expanded [Boolean] toggle
+      def buttons(expanded: false)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
         })
       end
 

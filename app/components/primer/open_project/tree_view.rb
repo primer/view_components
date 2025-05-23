@@ -17,23 +17,27 @@
 #     <ul role="tree">
 #       <LeafNode>
 #         <Node>
-#           <li role="treeitem">
-#             ...
+#           <li role="none">
+#             <div role="treeitem">
+#               ...
+#             </div>
 #           </li>
 #         </Node>
 #       </LeafNode>
 #
 #       <SubTreeNode>
 #         <tree-view-sub-tree-node>
-#           <li role="treeitem">
+#           <li role="none">
 #
 #             <SubTreeContainer>
 #               <ul role="group">
 #                 <SubTree>
 #                   <LeafNode>
 #                     <Node>
-#                       <li role="treeitem">
-#                         ...
+#                       <li role="none">
+#                         <div role="treeitem">
+#                           ...
+#                         </div>
 #                       </li>
 #                     </Node>
 #                   </LeafNode>
@@ -41,8 +45,10 @@
 #                   <SubTreeNode>
 #                     <tree-view-sub-tree-node>
 #                       <Node>
-#                         <li role="treeitem">
-#                           ...
+#                         <li role="none">
+#                           <div role="treeitem">
+#                             ...
+#                           </div>
 #                         </li>
 #                       </Node>
 #                       <SubTreeContainer>
@@ -72,19 +78,21 @@
 #
 # <LeafNode>
 #   <Node>
-#     <li role="treeitem">
-#       <Visual>
-#         <IconPair>
-#           <tree-view-icon-pair>
-#             <Icon slot="expanded_icon">
-#               <Primer::Beta::Octicon />
-#             </Icon>
-#             <Icon slot="collapsed_icon">
-#               <Primer::Beta::Octicon />
-#             </Icon>
-#           </tree-view-icon-pair>
-#         </IconPair>
-#       </Visual>
+#     <li role="none">
+#       <div role="treeitem">
+#         <Visual>
+#           <IconPair>
+#             <tree-view-icon-pair>
+#               <Icon slot="expanded_icon">
+#                 <Primer::Beta::Octicon />
+#               </Icon>
+#               <Icon slot="collapsed_icon">
+#                 <Primer::Beta::Octicon />
+#               </Icon>
+#             </tree-view-icon-pair>
+#           </IconPair>
+#         </Visual>
+#       </div>
 #     </li>
 #   </Node>
 # </LeafNode>
@@ -207,7 +215,7 @@ module Primer
     # Render a `Primer::OpenProject::TreeView::SubTree` in the action's template, tree_view_items/show.html_fragment.erb:
     #
     # ```erb
-    # <%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path)) do |tree| %>
+    # <%= render(Primer::OpenProject::TreeView::SubTree.new(path: @path, node_variant: :div)) do |tree| %>
     #   <% tree.with_leaf(...) %>
     #   <% tree.with_sub_tree(...) do |sub_tree| %>
     #     ...
@@ -215,7 +223,53 @@ module Primer
     # <% end %>
     # ```
     #
-    # ### JavaScript API
+    # ## Multi-select mode
+    #
+    # Passing `select_variant: :multiple` to both sub-tree and leaf nodes will add a check box to the left of the node's
+    # label. These check boxes behave according to the value of a second argument, `select_strategy:`.
+    #
+    # The default select strategy, `:descendants`, will cause all child nodes to be checked when the node is checked.
+    # This includes both sub-tree and leaf nodes. When the node is unchecked, all child nodes will also be unchecked.
+    # Unchecking a child node of a checked parent will cause the parent to enter a mixed or indeterminate state, which
+    # is represented by a horizontal line icon instead of a check mark. This icon indicates that some children are
+    # checked, but not all.
+    #
+    # A secondary select strategy, `:self`, is provided to allow disabling the automatic checking of child nodes. When
+    # `select_strategy: :self` is specified, checking sub-tree nodes does not check child nodes, and sub-tree nodes
+    # cannot enter a mixed or indeterminate state.
+    #
+    # Nodes can be checked via the keyboard by pressing the space key.
+    #
+    # ## Node tags
+    #
+    # `TreeView`s support three different node variants, `:anchor`, `:button`, and `:div` (the default), which controls
+    # which HTML tag is used to construct the nodes. The `:anchor` and `:button` variants correspond to `<a>` and
+    # `<button>` tags respectively, which are browser-native elements. Anchors and buttons can be activated (i.e.
+    # "clicked") using the mouse or keyboard via the enter or space keys. The node variant must be the same for all
+    # nodes in the tree, and is therefore specified at the root level, eg. `TreeView.new(node_variant: :anchor)`.
+    #
+    # Trees with node variants other than `:div` cannot have check boxes, i.e. cannot be put into multi-select mode.
+    #
+    # Trees with node variants other than `:div` do not emit the `treeViewNodeActivated` or `treeViewBeforeNodeActivated`
+    # events, since it is assumed any behavior associated with these variants is user- or browser-defined.
+    #
+    # ## Interaction behavior matrix
+    #
+    # |Interaction     |Select variant|Tag          |Result                     |
+    # |:---------------|:-------------|:------------|:--------------------------|
+    # |Enter/space     |none          |div          |Expands/collapses          |
+    # |Enter/space     |none          |anchor/button|Activates anchor/button    |
+    # |Enter/space     |multiple      |div          |Checks or unchecks         |
+    # |Enter/space     |multiple      |anchor/button|N/A (not allowed)          |
+    # |Left/right arrow|none          |div          |Expands/collapses          |
+    # |Left/right arrow|none          |anchor/button|Expands/collapses          |
+    # |Left/right arrow|multiple      |div          |Expands/collapses          |
+    # |Left/right arrow|multiple      |anchor/button|N/A (not allowed)          |
+    # |Click           |none          |div          |Expands/collapses          |
+    # |Click           |multiple      |div          |Checks or unchecks         |
+    # |Click           |multiple      |anchor/button|N/A (not allowed)          |
+    #
+    # ## JavaScript API
     #
     # `TreeView`s render a `<tree-view>` custom element that exposes behavior to the client.
     #
@@ -237,7 +291,7 @@ module Primer
     # |`leafAtPath(path: string[]): HTMLLIElement | null`                |Returns the leaf node at the given `path`, if it exists.                                                                                          |
     # |`getNodeCheckedValue(node: Element): TreeViewCheckedValue`        |The same as `checkedValueAtPath`, but accepts a node instead of a path.                                                                           |
     #
-    # #### Events
+    # ### Events
     #
     # The events enumerated below include node information by way of the `TreeViewNodeInfo` object, which has the
     # following signature:
@@ -301,6 +355,9 @@ module Primer
     # both the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`
     # objects, which contain entries for every modified node in the tree.
     class TreeView < Primer::Component
+      DEFAULT_NODE_VARIANT = :div
+      NODE_VARIANT_OPTIONS = [DEFAULT_NODE_VARIANT, :anchor, :button].freeze
+
       # @!parse
       #   # Adds an leaf node to the tree. Leaf nodes are nodes that do not have children.
       #   #
@@ -322,6 +379,7 @@ module Primer
           renders: lambda { |component_klass: LeafNode, label:, **system_arguments|
             component_klass.new(
               **system_arguments,
+              node_variant: node_variant,
               path: [label],
               label: label
             )
@@ -334,6 +392,7 @@ module Primer
           renders: lambda { |component_klass: SubTreeNode, label:, **system_arguments|
             component_klass.new(
               **system_arguments,
+              node_variant: node_variant,
               path: [label],
               label: label
             )
@@ -343,9 +402,14 @@ module Primer
         }
       }
 
+      attr_reader :node_variant
+
+      # @param node_variant [Symbol] The variant to use for this node. <%= one_of(Primer::OpenProject::TreeView::NODE_VARIANT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
-      def initialize(**system_arguments)
+      def initialize(node_variant: DEFAULT_NODE_VARIANT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
+
+        @node_variant = fetch_or_fallback(NODE_VARIANT_OPTIONS, node_variant, DEFAULT_NODE_VARIANT)
 
         @system_arguments[:tag] = :ul
         @system_arguments[:role] = :tree

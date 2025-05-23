@@ -29,6 +29,7 @@ module Primer
             renders: lambda { |component_klass: LeafNode, label:, **system_arguments|
               component_klass.new(
                 **system_arguments,
+                node_variant: node_variant,
                 path: [*path, label],
                 label: label
               )
@@ -41,6 +42,7 @@ module Primer
             renders: lambda { |component_klass: SubTreeNode, label:, **system_arguments|
               component_klass.new(
                 **system_arguments,
+                node_variant: node_variant,
                 path: [*path, label],
                 label: label
               )
@@ -87,8 +89,13 @@ module Primer
 
         delegate :path, :expanded?, to: :@container
 
+        attr_reader :node_variant
+
+        # @param node_variant [Symbol] The variant to use for this node. <%= one_of(Primer::OpenProject::TreeView::NODE_VARIANT_OPTIONS) %>
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::OpenProject::TreeView::SubTreeContainer) %>.
-        def initialize(**system_arguments)
+        def initialize(node_variant:, **system_arguments)
+          @node_variant = node_variant
+
           system_arguments[:data] = merge_data(
             system_arguments,
             { data: { target: "tree-view-sub-tree-node.subTree" } }
