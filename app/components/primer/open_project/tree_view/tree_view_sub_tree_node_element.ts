@@ -213,6 +213,19 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     }
   }
 
+  *eachAncestorSubTreeNode(): Generator<TreeViewSubTreeNodeElement> {
+    if (!this.treeView) return
+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    let current: TreeViewSubTreeNodeElement | null = this
+
+    while (current && this.treeView.contains(current)) {
+      yield current
+
+      current = current.parentElement?.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement | null
+    }
+  }
+
   get isEmpty(): boolean {
     return this.nodes.length === 0
   }
@@ -355,6 +368,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     if (this.expanded) {
       if (this.subTree) this.subTree.hidden = false
       this.node.setAttribute('aria-expanded', 'true')
+      this.treeView?.expandAncestorsForNode(this)
 
       if (this.iconPair) {
         this.iconPair.showExpanded()
