@@ -24,6 +24,17 @@ class PrimerOpenProjectCollapsibleSectionTest < Minitest::Test
     assert_equal "Title must be present", err.message
   end
 
+  def test_does_not_render_when_title_is_not_a_string
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::CollapsibleSection.new) do |component|
+        component.with_title { { name: "Hello" } }
+        component.with_collapsible_content { "HIDE ME" }
+      end
+    end
+
+    assert_equal "Title must be a string", err.message
+  end
+
   def test_does_not_render_without_content
     err = assert_raises ArgumentError do
       render_inline(Primer::OpenProject::CollapsibleSection.new) do |component|
