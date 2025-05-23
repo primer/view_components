@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.67.0
+
+### Minor Changes
+
+- [#305](https://github.com/opf/primer_view_components/pull/305) [`9a9bef3`](https://github.com/opf/primer_view_components/commit/9a9bef368d8a924e06991b35522d9b66102d0ed4) Thanks [@camertron](https://github.com/camertron)! - Allow TreeView nodes to be anchors or buttons
+
+### Patch Changes
+
+- [#306](https://github.com/opf/primer_view_components/pull/306) [`393296b`](https://github.com/opf/primer_view_components/commit/393296b7b0540d307728147becaa23c3d04d327d) Thanks [@HDinger](https://github.com/HDinger)! - Enforce title for CollapsibleSection and CollapsibleHeader to be a String
+
 ## 0.66.2
 
 ### Patch Changes
