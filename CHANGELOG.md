@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.43.1
+
+### Patch Changes
+
+- [#3468](https://github.com/primer/view_components/pull/3468) [`18594d1`](https://github.com/primer/view_components/commit/18594d1cc1675dc6fe1dc1b4b396e06d37630891) Thanks [@camertron](https://github.com/camertron)! - Remove overridden capture method in forms code.
+
+- [#3464](https://github.com/primer/view_components/pull/3464) [`69ffaa8`](https://github.com/primer/view_components/commit/69ffaa8a23bbeba49c79df453e8434f908baee80) Thanks [@jonrohan](https://github.com/jonrohan)! - Update the SelectPanel no results pane to a smaller height
+
 ## 0.43.0
 
 ### Minor Changes
