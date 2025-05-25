@@ -220,17 +220,17 @@ module Primer
       #
       # @label Auto check request ok
       def with_auto_check_ok
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_ok_path, name: "my-text-field-18", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_ok_path, name: "my-text-field-18", label: "My text field"))
       end
 
       # @label Auto check request accepted
       def with_auto_check_accepted
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_accepted_path, name: "my-text-field-19", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_accepted_path, name: "my-text-field-19", label: "My text field"))
       end
 
       # @label Auto check request error
       def with_auto_check_error
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.example_check_error_path, name: "my-text-field-20", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_error_path, name: "my-text-field-20", label: "My text field"))
       end
       #
       # @!endgroup
