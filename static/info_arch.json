@@ -20620,6 +20620,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/tree_view/async_alpha",
+        "name": "async_alpha",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/tree_view/leaf_node_playground",
         "name": "leaf_node_playground",
         "snapshot": "false",
@@ -20648,6 +20661,19 @@
       {
         "preview_path": "primer/open_project/tree_view/buttons",
         "name": "buttons",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/tree_view/auto_expansion",
+        "name": "auto_expansion",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
