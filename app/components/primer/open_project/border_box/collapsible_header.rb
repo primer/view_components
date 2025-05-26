@@ -12,8 +12,6 @@ module Primer
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :title, lambda { |**system_arguments, &block|
-          raise ArgumentError, "Title must be a string" unless block.call.is_a?(String)
-
           system_arguments[:mr] ||= 2
 
           Primer::Beta::Text.new(**system_arguments, &block)
@@ -33,7 +31,6 @@ module Primer
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :description, lambda { |**system_arguments, &block|
-          raise ArgumentError, "Description must be a string" unless block.call.is_a?(String)
           system_arguments[:color] ||= :subtle
           system_arguments[:hidden] = @collapsed
 
