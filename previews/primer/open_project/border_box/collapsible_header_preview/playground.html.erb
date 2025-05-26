@@ -4,7 +4,7 @@
                                                                      collapsed: collapsed)) do |header| %>
       <% header.with_title { title } %>
       <% header.with_count(count: count) %>
-      <% header.with_description { description } unless description.nil? %>
+      <% header.with_description { description } %>
     <% end %>
   <% end %>
   <% component.with_body { "Body" } %>

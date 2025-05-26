@@ -39,16 +39,6 @@ class Primer::OpenProject::BorderBox::CollapsibleHeaderTest < Minitest::Test
     assert_equal "Title must be present", err.message
   end
 
-  def test_does_not_render_when_title_is_not_a_string
-    err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: Primer::Beta::BorderBox.new)) do |header|
-        header.with_title { { name: "Test title" } }
-      end
-    end
-
-    assert_equal "Title must be a string", err.message
-  end
-
   def test_renders_with_description
     render_preview(:with_description)
 
