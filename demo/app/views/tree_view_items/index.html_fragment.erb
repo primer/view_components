@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::TreeView::SubTree.new(path: path, expanded: true, select_variant: select_variant, node_variant: :div)) do |tree| %>
+<%= render(Primer::OpenProject::TreeView::SubTree.new(path: path, select_variant: select_variant, node_variant: :div)) do |tree| %>
   <% next if params[:empty] == "true" %>
   <% entries.each do |label, type| %>
     <% case type %>

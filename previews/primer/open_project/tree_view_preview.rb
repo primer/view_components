@@ -76,6 +76,15 @@ module Primer
         })
       end
 
+      # @label Async alpha
+      #
+      # @param action_menu_expanded [Boolean] toggle
+      def async_alpha(action_menu_expanded: false)
+        render_with_template(locals: {
+          action_menu_expanded: coerce_bool(action_menu_expanded)
+        })
+      end
+
       # @label Leaf node playground
       #
       # @param label [String] text
@@ -115,6 +124,21 @@ module Primer
         render_with_template(locals: {
           expanded: coerce_bool(expanded)
         })
+      end
+
+      # @label Auto expansion
+      #
+      def auto_expansion
+        render(Primer::OpenProject::TreeView.new) do |tree|
+          tree.with_sub_tree(label: "Level 1") do |level1|
+            level1.with_sub_tree(label: "Level 2") do |level2|
+              # marking this node as expanded should automatically expand all ancestors
+              level2.with_sub_tree(label: "Level 3", expanded: true) do |level3|
+                level3.with_leaf(label: "Level 4")
+              end
+            end
+          end
+        end
       end
 
       private

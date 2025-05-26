@@ -35,4 +35,15 @@ class TreeViewItemsController < ApplicationController
       }
     )
   end
+
+  def async_alpha
+    # delay a bit so loading spinners, etc can be seen
+    sleep 1
+
+    render(
+      locals: {
+        action_menu_expanded: params[:action_menu_expanded] == "true"
+      }
+    )
+  end
 end

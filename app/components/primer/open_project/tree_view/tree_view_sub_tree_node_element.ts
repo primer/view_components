@@ -217,6 +217,19 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     }
   }
 
+  *eachAncestorSubTreeNode(): Generator<TreeViewSubTreeNodeElement> {
+    if (!this.treeView) return
+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    let current: TreeViewSubTreeNodeElement | null = this
+
+    while (current && this.treeView.contains(current)) {
+      yield current
+
+      current = current.parentElement?.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement | null
+    }
+  }
+
   get isEmpty(): boolean {
     return this.nodes.length === 0
   }
@@ -252,6 +265,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case 'include-fragment-replaced':
+        // Make sure to expand the new sub-tree, otherwise it looks like nothing happened. This prevents
+        // having to remember to pass `SubTree.new(expanded: true)` in the controller.
+        this.expanded = true
+
         if (this.#activeElementIsLoader) {
           const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
           if (!firstItem) return
@@ -377,6 +394,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     if (this.expanded) {
       if (this.subTree) this.subTree.hidden = false
       this.node.setAttribute('aria-expanded', 'true')
+      this.treeView?.expandAncestorsForNode(this)
 
       if (this.iconPair) {
         this.iconPair.showExpanded()

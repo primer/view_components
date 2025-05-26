@@ -14,6 +14,32 @@ export class TreeViewElement extends HTMLElement {
     this.addEventListener('keydown', this, {signal})
 
     useRovingTabIndex(this)
+
+    // catch-all for any straggler nodes that aren't available when connectedCallback runs
+    new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        for (const addedNode of mutation.addedNodes) {
+          if (!(addedNode instanceof HTMLElement)) continue
+
+          // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
+          if (addedNode.querySelector('[aria-expanded=true]')) {
+            this.#autoExpandFrom(addedNode)
+          }
+        }
+      }
+    }).observe(this, {childList: true, subtree: true})
+
+    // eslint-disable-next-line github/no-then -- We don't want to wait for this to resolve, just get on with it
+    customElements.whenDefined('tree-view-sub-tree-node').then(() => {
+      // depends on TreeViewSubTreeNodeElement#eachAncestorSubTreeNode, which may not be defined yet
+      this.#autoExpandFrom(this)
+    })
+  }
+
+  #autoExpandFrom(root: HTMLElement) {
+    for (const element of root.querySelectorAll('[aria-expanded=true]')) {
+      this.expandAncestorsForNode(element as HTMLElement)
+    }
   }
 
   disconnectedCallback() {
@@ -244,6 +270,17 @@ export class TreeViewElement extends HTMLElement {
 
   nodeHasNativeAction(node: Element): boolean {
     return node instanceof HTMLAnchorElement || node instanceof HTMLButtonElement
+  }
+
+  expandAncestorsForNode(node: HTMLElement) {
+    const subTreeNode = node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
+    if (!subTreeNode) return
+
+    for (const ancestor of subTreeNode.eachAncestorSubTreeNode()) {
+      if (!ancestor.expanded) {
+        ancestor.expand()
+      }
+    }
   }
 
   // PRIVATE API METHOD
