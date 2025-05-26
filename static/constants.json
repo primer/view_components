@@ -1721,7 +1721,7 @@
   },
   "Primer::OpenProject::PageHeader::Title": {
     "GeneratedSlotMethods": "Primer::OpenProject::PageHeader::Title::GeneratedSlotMethods",
-    "HEADING_TAG_FALLBACK": "h1",
+    "HEADING_TAG_FALLBACK": "h2",
     "HEADING_TAG_OPTIONS": [
       "h1",
       "h2",
