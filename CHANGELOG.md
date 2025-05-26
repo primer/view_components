@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.68.0
+
+### Minor Changes
+
+- [#308](https://github.com/opf/primer_view_components/pull/308) [`a19f27f`](https://github.com/opf/primer_view_components/commit/a19f27f898742f0376c0a71edc676c047a22f85c) Thanks [@camertron](https://github.com/camertron)! - [TreeView] Bubble expanded state from children to parents, i.e. automatically expand ancestors of expanded nodes
+
+### Patch Changes
+
+- [#311](https://github.com/opf/primer_view_components/pull/311) [`0db76dc`](https://github.com/opf/primer_view_components/commit/0db76dc5002ddf1d799fe83f91e592f66147b897) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - set the fallback heading fallback to h2 in page header title
+
+- [#312](https://github.com/opf/primer_view_components/pull/312) [`1062b1c`](https://github.com/opf/primer_view_components/commit/1062b1c4c542fa3485faf1cce16764eefa39e303) Thanks [@HDinger](https://github.com/HDinger)! - Revert String enforcment for CollapsibleHeader and CollapsibleSection
+
 ## 0.67.0
 
 ### Minor Changes
