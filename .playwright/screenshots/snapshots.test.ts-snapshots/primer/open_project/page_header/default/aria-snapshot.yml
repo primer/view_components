@@ -6,5 +6,5 @@
       - link "Parent"
     - listitem:
       - link "Hello"
-- heading "Hello" [level=1]
+- heading "Hello" [level=2]
 - text: Last updated 5 minutes ago by XYZ.
