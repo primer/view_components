@@ -1,8 +1,11 @@
 - navigation "With icons and counters":
   - list:
     - listitem:
-      - link "Stars 10"
+      - link "Stars 10":
+        - /url: "#1"
     - listitem:
-      - link "Sponsors 14"
+      - link "Sponsors 14":
+        - /url: "#2"
     - listitem:
-      - link "Bookmarks 7"
+      - link "Bookmarks 7":
+        - /url: "#3"
