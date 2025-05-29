@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # For auto-check previews
+    # :nocov:
     class AutoCheckController < ApplicationController
       def error
         render partial: "primer/view_components/auto_check/error_message",

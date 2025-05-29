@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # :nodoc:
+    # :nocov:
     class FormHandlerController < ApplicationController
       layout false
 

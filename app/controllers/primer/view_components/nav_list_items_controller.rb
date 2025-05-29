@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # For nav list previews/tests
+    # :nocov:
     class NavListItemsController < ApplicationController
       layout false
 

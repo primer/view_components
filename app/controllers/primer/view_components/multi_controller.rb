@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # works with app/forms/multi_input_form.rb
+    # :nocov:
     class MultiController < ApplicationController
       def create
         respond_to do |format|

@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # For toggle switch previews/tests
+    # :nocov:
     class ToggleSwitchController < ApplicationController
       class << self
         attr_accessor :last_request

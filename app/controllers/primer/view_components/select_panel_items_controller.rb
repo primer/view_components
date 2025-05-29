@@ -3,6 +3,7 @@
 module Primer
   module ViewComponents
     # :nodoc:
+    # :nocov:
     class SelectPanelItemsController < ApplicationController
       SELECT_PANEL_ITEMS = [
         { value: 1, title: "Photon torpedo", description: "Starship-mounted missile" },
