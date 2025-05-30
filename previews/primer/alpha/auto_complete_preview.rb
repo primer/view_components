@@ -19,7 +19,7 @@ module Primer
             label_text: label_text,
             input_id: "input-id",
             list_id: "test-id",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             is_label_visible: is_label_visible,
             is_label_inline: is_label_inline,
             with_icon: with_icon,
@@ -43,7 +43,7 @@ module Primer
             label_text: label_text,
             input_id: "input-id",
             list_id: "test-id",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             is_label_visible: is_label_visible,
             is_label_inline: is_label_inline,
             with_icon: with_icon,
@@ -63,7 +63,7 @@ module Primer
             label_text: "Select a fruit",
             input_id: "input-id-1",
             list_id: "test-id-1",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             is_label_visible: false
           )
         )
@@ -78,7 +78,7 @@ module Primer
             label_text: "Select a fruit",
             input_id: "input-id-2",
             list_id: "test-id-2",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             is_label_inline: true
           )
         )
@@ -93,7 +93,7 @@ module Primer
             label_text: "Select a fruit",
             input_id: "input-id-3",
             list_id: "test-id-3",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             with_icon: true
           )
         )
@@ -108,7 +108,7 @@ module Primer
             label_text: "Select a fruit",
             input_id: "input-id-4",
             list_id: "test-id-4",
-            src: UrlHelpers.autocomplete_index_path(version: "alpha"),
+            src: UrlHelpers.primer_view_components.autocomplete_index_path(version: "alpha"),
             is_clearable: true
           )
         )

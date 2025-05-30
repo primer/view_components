@@ -4,7 +4,7 @@
   data: { interaction_subject: subject_id },
   # passing a uuid here causes the request to succeed the first time and fail all subsequent times
   # set show_results to false to simulate an initial load with no items
-  src: select_panel_items_path(show_results: show_results.to_s, fail: "true", uuid: SecureRandom.uuid),
+  src: primer_view_components.select_panel_items_path(show_results: show_results.to_s, fail: "true", uuid: SecureRandom.uuid),
   fetch_strategy: :remote,
   open_on_load: open_on_load,
   **system_arguments

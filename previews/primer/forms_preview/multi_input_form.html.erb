@@ -9,6 +9,6 @@
     };
   }, false);
 </script>
-<%= primer_form_with(url: multi_index_path(format: :json)) do |f| %>
+<%= primer_form_with(url: primer_view_components.multi_index_path(format: :json)) do |f| %>
   <%= render(MultiInputForm.new(f)) %>
 <% end %>

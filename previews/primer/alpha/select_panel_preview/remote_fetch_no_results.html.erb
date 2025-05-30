@@ -2,7 +2,7 @@
 
 <%= render(Primer::Alpha::SelectPanel.new(
   data: { interaction_subject: subject_id },
-  src: select_panel_items_path(show_results: "false"),
+  src: primer_view_components.select_panel_items_path(show_results: "false"),
   select_variant: :multiple,
   fetch_strategy: :remote,
   open_on_load: open_on_load

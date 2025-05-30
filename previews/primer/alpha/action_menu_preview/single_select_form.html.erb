@@ -1,4 +1,4 @@
-<%= form_with(url: action_menu_form_action_path(format: route_format)) do |f| %>
+<%= form_with(url: primer_view_components.action_menu_form_action_path(format: route_format)) do |f| %>
   <%= render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Strategy", form_arguments: { builder: f, name: "foo" })) do |menu| %>
     <% menu.with_show_button { "Strategy" } %>
     <% menu.with_item(label: "Fast forward", data: { value: "fast_forward" }) %>

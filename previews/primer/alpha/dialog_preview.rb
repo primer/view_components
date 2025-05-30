@@ -167,7 +167,7 @@ module Primer
                                subtitle: subtitle,
                                button_text: button_text,
                                show_divider: show_divider,
-                               url: UrlHelpers.autocomplete_index_path
+                               url: UrlHelpers.primer_view_components.autocomplete_index_path
                              })
       end
 

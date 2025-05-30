@@ -6,6 +6,7 @@ module Primer
     class << self
       # use send to avoid yard warning
       send :include, Rails.application.routes.url_helpers
+      send :include, Rails.application.routes.mounted_helpers
 
       private
 
