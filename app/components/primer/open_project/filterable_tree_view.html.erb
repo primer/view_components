@@ -1,0 +1,28 @@
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <%= render(Primer::Alpha::Stack.new) do %>
+    <%= render(Primer::Alpha::Stack.new(wrap: :reverse, direction: :horizontal, align: :center)) do %>
+      <%= render(Primer::Alpha::Stack.new(wrap: :wrap, direction: :horizontal, align: :center)) do %>
+        <%= render(Primer::Alpha::StackItem.new) do %>
+          <%= render(@filter_mode_control) %>
+        <% end %>
+        <%= render(Primer::Alpha::StackItem.new) do %>
+          <%= render(@include_sub_items_check_box) %>
+        <% end %>
+      <% end %>
+      <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
+        <%= render(Primer::Alpha::TextField.new(
+          name: :filter,
+          label: "Filter",
+          type: :search,
+          leading_visual: { icon: :search },
+          visually_hide_label: true,
+          data: { target: "filterable-tree-view.filterInput" },
+          label_arguments: {
+            position: :absolute
+          }
+        )) %>
+      <% end %>
+    <% end %>
+    <%= render(@tree_view) %>
+  <% end %>
+<% end %>

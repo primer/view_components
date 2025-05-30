@@ -7,6 +7,8 @@ import type {TreeViewNodeInfo} from '../../shared_events'
 
 type LoadingState = 'loading' | 'error' | 'success'
 
+export type SelectStrategy = 'self' | 'descendants' | 'mixed_descendants'
+
 @controller
 export class TreeViewSubTreeNodeElement extends HTMLElement {
   @target node: HTMLElement
@@ -70,7 +72,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     )
 
     const checkedMutationObserver = new MutationObserver(() => {
-      if (this.selectStrategy !== 'descendants') return
+      if (this.selectStrategy !== 'mixed_descendants') return
 
       let checkType = 'unknown'
 
@@ -127,8 +129,8 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     this.#update()
   }
 
-  get selectStrategy(): string {
-    return this.node.getAttribute('data-select-strategy') || 'descendants'
+  get selectStrategy(): SelectStrategy {
+    return (this.node.getAttribute('data-select-strategy') || 'descendants') as SelectStrategy
   }
 
   disconnectedCallback() {
@@ -360,7 +362,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     const rootInfo = this.treeView?.infoFromNode(this.node, newCheckValue)
     if (rootInfo) nodeInfos.push(rootInfo)
 
-    if (this.selectStrategy === 'descendants') {
+    if (this.selectStrategy === 'descendants' || this.selectStrategy === 'mixed_descendants') {
       for (const node of this.eachDescendantNode()) {
         const info = this.treeView?.infoFromNode(node, newCheckValue)
         if (info) nodeInfos.push(info)
@@ -438,6 +440,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
   get #checkboxElement(): HTMLElement | null {
     return this.querySelector('.TreeViewItemCheckbox')
+  }
+
+  changeSelectStrategy(newStrategy: SelectStrategy) {
+    this.node.setAttribute('data-select-strategy', newStrategy)
   }
 }
 

@@ -1,0 +1,22 @@
+
+  <%= render(Primer::OpenProject::FilterableTreeView.new) do |tree| %>
+    <% tree.with_sub_tree(label: "Hogwarts", expanded: true) do |hogwarts| %>
+      <% hogwarts.with_sub_tree(label: "Ravenclaw", expanded: true) do |ravenclaw| %>
+        <% ravenclaw.with_leaf(label: "Luna Lovegood") %>
+      <% end %>
+
+      <% hogwarts.with_sub_tree(label: "Slytherin", expanded: true) do |hufflepuff| %>
+        <% hufflepuff.with_leaf(label: "Draco Malfoy") %>
+      <% end %>
+
+      <% hogwarts.with_sub_tree(label: "Hufflepuff", expanded: true) do |hufflepuff| %>
+        <% hufflepuff.with_leaf(label: "Susan Bones") %>
+      <% end %>
+
+      <% hogwarts.with_sub_tree(label: "Gryffindor", expanded: true) do |hufflepuff| %>
+        <% hufflepuff.with_leaf(label: "Harry Potter") %>
+        <% hufflepuff.with_leaf(label: "Ronald Weasley") %>
+        <% hufflepuff.with_leaf(label: "Hermione Granger") %>
+      <% end %>
+    <% end %>
+  <% end %>

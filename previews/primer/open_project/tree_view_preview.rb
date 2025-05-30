@@ -9,7 +9,7 @@ module Primer
       # @snapshot interactive
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def default(
         expanded: false,
         select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
@@ -26,7 +26,7 @@ module Primer
       #
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def playground(
         expanded: false,
         select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,

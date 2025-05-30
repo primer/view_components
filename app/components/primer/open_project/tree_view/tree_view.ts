@@ -1,5 +1,5 @@
 import {controller} from '@github/catalyst'
-import {TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
+import {SelectStrategy, TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
 import {useRovingTabIndex} from './tree_view_roving_tab_index'
 import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
 
@@ -280,6 +280,12 @@ export class TreeViewElement extends HTMLElement {
       if (!ancestor.expanded) {
         ancestor.expand()
       }
+    }
+  }
+
+  changeSelectStrategy(newStrategy: SelectStrategy) {
+    for (const subTreeNode of this.querySelectorAll<TreeViewSubTreeNodeElement>('tree-view-sub-tree-node')) {
+      subTreeNode.changeSelectStrategy(newStrategy)
     }
   }
 
