@@ -21,7 +21,7 @@ puts preview_env_ids_to_delete.map { |pr_id| "- primer-view-components-preview-#
 
 preview_env_ids_to_delete.each_with_index do |pr_id, index|
   puts "Deleting preview environment #{index + 1}/#{preview_env_ids_to_delete.size}"
-  system "az container delete -n 'primer-view-components-preview-#{pr_id}' -g primer -y &> /dev/null"
+  system "az container delete -n 'primer-view-components-preview-#{pr_id}' -g primer -y &> File::NULL"
 end
 
 puts "Deleted #{preview_env_ids_to_delete.size} preview environments"
