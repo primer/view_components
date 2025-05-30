@@ -1,1 +1,2 @@
-- link "This is a muted primary link color."
+- link "This is a muted primary link color.":
+  - /url: "#"
