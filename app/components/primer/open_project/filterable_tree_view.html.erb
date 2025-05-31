@@ -10,17 +10,10 @@
         <% end %>
       <% end %>
       <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
-        <%= render(Primer::Alpha::TextField.new(
-          name: :filter,
-          label: "Filter",
-          type: :search,
-          leading_visual: { icon: :search },
-          visually_hide_label: true,
-          data: { target: "filterable-tree-view.filterInput" },
-          label_arguments: {
-            position: :absolute
-          }
-        )) %>
+        <%= render(@filter_input) do |input| %>
+          <%# exclude from form submissions %>
+          <% input.merge_input_arguments!(form: "") %>
+        <% end %>
       <% end %>
     <% end %>
     <%= render(@tree_view) %>

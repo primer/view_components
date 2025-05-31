@@ -1,10 +1,13 @@
-import {controller} from '@github/catalyst'
+import {controller, target} from '@github/catalyst'
 import {SelectStrategy, TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
 import {useRovingTabIndex} from './tree_view_roving_tab_index'
 import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
 
 @controller
 export class TreeViewElement extends HTMLElement {
+  @target formInputContainer: HTMLElement
+  @target formInputPrototype: HTMLInputElement
+
   #abortController: AbortController
 
   connectedCallback() {
@@ -28,6 +31,43 @@ export class TreeViewElement extends HTMLElement {
         }
       }
     }).observe(this, {childList: true, subtree: true})
+
+    const updateInputsObserver = new MutationObserver(mutations => {
+      if (!this.formInputContainer) return
+
+      // There is another MutationObserver in TreeViewSubTreeNodeElement that manages checking/unchecking
+      // nodes based on the component's select strategy. These two observers can conflict and cause infinite
+      // looping, so we make sure something actually changed before computing inputs again.
+      const somethingChanged = mutations.some(m => {
+        if (!(m.target instanceof HTMLElement)) return false
+        return m.target.getAttribute('aria-checked') !== m.oldValue
+      })
+
+      if (!somethingChanged) return
+
+      const newInputs = []
+
+      // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
+      for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
+        const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
+        newInput.removeAttribute('data-target')
+        newInput.removeAttribute('form')
+        newInput.value = JSON.stringify({
+          value: this.getFormInputValueForNode(node),
+          path: this.getNodePath(node),
+        })
+
+        newInputs.push(newInput)
+      }
+
+      this.formInputContainer.replaceChildren(...newInputs)
+    })
+
+    updateInputsObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributeFilter: ['aria-checked'],
+    })
 
     // eslint-disable-next-line github/no-then -- We don't want to wait for this to resolve, just get on with it
     customElements.whenDefined('tree-view-sub-tree-node').then(() => {
@@ -59,12 +99,12 @@ export class TreeViewElement extends HTMLElement {
   }
 
   #nodeForEvent(event: Event): Element | null {
-    const target = event.target as Element
-    const node = target.closest('[role=treeitem]')
+    const eventTarget = event.target as Element
+    const node = eventTarget.closest('[role=treeitem]')
     if (!node) return null
 
-    if (target.closest('.TreeViewItemToggle')) return null
-    if (target.closest('.TreeViewItemLeadingAction')) return null
+    if (eventTarget.closest('.TreeViewItemToggle')) return null
+    if (eventTarget.closest('.TreeViewItemLeadingAction')) return null
 
     return node
   }
@@ -91,15 +131,38 @@ export class TreeViewElement extends HTMLElement {
       return
     }
 
-    // only handle checking of leaf nodes
+    // only handle checking of leaf nodes, see TreeViewSubTreeNodeElement for the code that
+    // handles checking sub tree items.
     const type = this.getNodeType(node)
     if (type !== 'leaf') return
+
+    const checkValue = this.getNodeCheckedValue(node)
+    const newCheckValue = checkValue === 'false' ? 'true' : 'false'
+    const nodeInfo = this.infoFromNode(node, newCheckValue)
+
+    const checkSuccess = this.dispatchEvent(
+      new CustomEvent('treeViewBeforeNodeChecked', {
+        bubbles: true,
+        cancelable: true,
+        detail: [nodeInfo],
+      }),
+    )
+
+    if (!checkSuccess) return
 
     if (this.getNodeCheckedValue(node) === 'true') {
       this.#setNodeCheckedValue(node, 'false')
     } else {
       this.#setNodeCheckedValue(node, 'true')
     }
+
+    this.dispatchEvent(
+      new CustomEvent('treeViewNodeChecked', {
+        bubbles: true,
+        cancelable: true,
+        detail: [nodeInfo],
+      }),
+    )
   }
 
   #handleNodeActivated(event: Event, node: Element) {
@@ -171,6 +234,10 @@ export class TreeViewElement extends HTMLElement {
 
         break
     }
+  }
+
+  getFormInputValueForNode(node: Element): string | null {
+    return node.getAttribute('data-value')
   }
 
   getNodePath(node: Element): string[] {

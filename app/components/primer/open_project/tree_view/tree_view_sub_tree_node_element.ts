@@ -371,7 +371,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   toggleChecked() {
-    const checkValue = this.node.getAttribute('aria-checked') || 'false'
+    const checkValue = this.treeView?.getNodeCheckedValue(this.node) || 'false'
     const newCheckValue = checkValue === 'false' ? 'true' : 'false'
     const nodeInfos: TreeViewNodeInfo[] = []
     const rootInfo = this.treeView?.infoFromNode(this.node, newCheckValue)

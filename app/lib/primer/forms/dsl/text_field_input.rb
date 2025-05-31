@@ -41,6 +41,8 @@ module Primer
           add_input_data(:target, "primer-text-field.inputElement #{system_arguments.dig(:data, :target) || ''}")
           add_input_classes("FormControl-inset") if inset?
           add_input_classes("FormControl-monospace") if monospace?
+
+          yield(self) if block_given?
         end
 
         alias show_clear_button? show_clear_button

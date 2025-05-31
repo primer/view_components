@@ -74,6 +74,7 @@ module Primer
         # @param select_variant [Symbol] Controls the type of checkbox that appears. <%= one_of(Primer::OpenProject::TreeView::Node::SELECT_VARIANT_OPTIONS) %>
         # @param checked [Boolean | String] The checked state of the node's checkbox. <%= one_of(Primer::OpenProject::TreeView::Node::CHECKED_STATES) %>
         # @param disabled [Boolean] Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable.
+        # @param value [String] If this node is checked, this value will be sent to the server on form submission.
         # @param content_arguments [Hash] Arguments attached to the node's content, i.e the `<button>` or `<a>` element. <%= link_to_system_arguments_docs %>
         def initialize(
           path:,
@@ -83,6 +84,7 @@ module Primer
           select_variant: DEFAULT_SELECT_VARIANT,
           checked: DEFAULT_CHECKED_STATE,
           disabled: false,
+          value: nil,
           **content_arguments
         )
           @system_arguments = {
@@ -123,8 +125,12 @@ module Primer
           )
 
           @content_arguments[:data] = merge_data(
-            @content_arguments,
-            { data: { path: @path.to_json } }
+            @content_arguments, {
+              data: {
+                value: value,
+                path: @path.to_json
+              }
+            }
           )
 
           return unless current?

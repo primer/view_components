@@ -6,6 +6,16 @@ module Primer
     class FilterableTreeView < Primer::Component
       delegate :with_leaf, :with_sub_tree, to: :@tree_view
 
+      DEFAULT_FILTER_INPUT_ARGUMENTS = {
+        name: :filter,
+        label: "Filter",
+        type: :search,
+        leading_visual: { icon: :search },
+        visually_hide_label: true,
+      }
+
+      DEFAULT_FILTER_INPUT_ARGUMENTS.freeze
+
       DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS = {
         aria: {
           label: "Filter mode"
@@ -16,7 +26,8 @@ module Primer
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS = {
         label: "Include sub-items",
-        name: :include_sub_items
+        name: :include_sub_items,
+        html: { form: "" }, # exclude from form submissions
       }
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.freeze
@@ -36,6 +47,8 @@ module Primer
 
       def initialize(
         tree_view_arguments: {},
+        form_arguments: {},
+        filter_input_arguments: DEFAULT_FILTER_INPUT_ARGUMENTS.dup,
         filter_mode_control_arguments: DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.dup,
         include_sub_items_check_box_arguments: DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.dup,
         **system_arguments
@@ -46,7 +59,18 @@ module Primer
           }
         )
 
-        @tree_view = Primer::OpenProject::TreeView.new(**tree_view_arguments)
+        @tree_view = Primer::OpenProject::TreeView.new(
+          form_arguments: form_arguments,
+          **tree_view_arguments
+        )
+
+        filter_input_arguments[:data] = merge_data(
+          filter_input_arguments, {
+            data: { target: "filterable-tree-view.filterInput" }
+          }
+        )
+
+        @filter_input = Primer::Alpha::TextField.new(**filter_input_arguments)
 
         filter_mode_control_arguments[:data] = merge_data(
           filter_mode_control_arguments, {
