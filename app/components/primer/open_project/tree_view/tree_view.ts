@@ -71,9 +71,9 @@ export class TreeViewElement extends HTMLElement {
 
   #handleNodeEvent(node: Element, event: Event) {
     if (this.#eventIsCheckboxToggle(event, node)) {
-      this.#handleCheckboxToggle(node)
+      this.#handleCheckboxToggle(event, node)
     } else if (this.#eventIsActivation(event)) {
-      this.#handleNodeActivated(node)
+      this.#handleNodeActivated(event, node)
     } else if (event.type === 'focusin') {
       this.#handleNodeFocused(node)
     } else if (event instanceof KeyboardEvent) {
@@ -85,7 +85,12 @@ export class TreeViewElement extends HTMLElement {
     return event.type === 'click' && this.nodeHasCheckBox(node)
   }
 
-  #handleCheckboxToggle(node: Element) {
+  #handleCheckboxToggle(event: Event, node: Element) {
+    if (this.getNodeDisabledValue(node)) {
+      event.preventDefault()
+      return
+    }
+
     // only handle checking of leaf nodes
     const type = this.getNodeType(node)
     if (type !== 'leaf') return
@@ -97,7 +102,12 @@ export class TreeViewElement extends HTMLElement {
     }
   }
 
-  #handleNodeActivated(node: Element) {
+  #handleNodeActivated(event: Event, node: Element) {
+    if (this.getNodeDisabledValue(node)) {
+      event.preventDefault()
+      return
+    }
+
     // do not emit activation events for buttons and anchors, since it is assumed any activation
     // behavior for these element types is user- or browser-defined
     if (!(node instanceof HTMLDivElement)) return
@@ -141,6 +151,11 @@ export class TreeViewElement extends HTMLElement {
     switch (event.key) {
       case ' ':
       case 'Enter':
+        if (this.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         if (this.nodeHasCheckBox(node)) {
           event.preventDefault()
 
@@ -240,6 +255,13 @@ export class TreeViewElement extends HTMLElement {
     return this.getNodeCheckedValue(node)
   }
 
+  disabledValueAtPath(path: string[]): boolean {
+    const node = this.nodeAtPath(path)
+    if (!node) return false
+
+    return this.getNodeDisabledValue(node)
+  }
+
   nodeAtPath(path: string[], selector?: string): Element | null {
     const pathStr = JSON.stringify(path)
     return this.querySelector(`${selector || ''}[data-path="${CSS.escape(pathStr)}"]`)
@@ -262,6 +284,10 @@ export class TreeViewElement extends HTMLElement {
 
   getNodeCheckedValue(node: Element): TreeViewCheckedValue {
     return (node.getAttribute('aria-checked') || 'false') as TreeViewCheckedValue
+  }
+
+  getNodeDisabledValue(node: Element): boolean {
+    return node.getAttribute('aria-disabled') === 'true'
   }
 
   nodeHasCheckBox(node: Element): boolean {

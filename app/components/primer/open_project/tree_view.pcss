@@ -208,6 +208,35 @@
         }
       }
     }
+
+    &[aria-disabled='true'] {
+      & .TreeViewItemContentText {
+        color: var(--control-fgColor-disabled);
+      }
+
+      & .TreeViewItemVisual {
+        fill: var(--control-fgColor-disabled);
+
+        & svg {
+          fill: var(--control-fgColor-disabled);
+        }
+      }
+
+      & .FormControl-checkbox {
+        @media (hover: hover) {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          cursor: not-allowed;
+          background-color: transparent;
+        }
+      }
+    }
   }
 
   & .TreeViewItemContentText {

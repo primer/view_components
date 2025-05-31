@@ -116,6 +116,20 @@ export class FilterableTreeViewElement extends HTMLElement {
     const mode = this.filterMode || undefined
     const generation = window.crypto.randomUUID()
 
+    const expandAncestors = (ancestors: TreeViewSubTreeNodeElement[]) => {
+      for (const ancestor of ancestors) {
+        ancestor.expand()
+        ancestor.removeAttribute('hidden')
+        ancestor.setAttribute('data-generation', generation)
+
+        if (this.filterFn(ancestor.node, query, mode)) {
+          ancestor.node.removeAttribute('aria-disabled')
+        } else {
+          ancestor.node.setAttribute('aria-disabled', 'true')
+        }
+      }
+    }
+
     for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, [])) {
       let atLeastOneLeafMatches = false
 
@@ -131,21 +145,13 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
 
       if (atLeastOneLeafMatches) {
-        for (const ancestor of ancestors) {
-          ancestor.expand()
-          ancestor.removeAttribute('hidden')
-          ancestor.setAttribute('data-generation', generation)
-        }
+        expandAncestors(ancestors)
       } else {
         const parent: TreeViewSubTreeNodeElement | undefined = ancestors[ancestors.length - 1]
 
         if (parent) {
           if (this.filterFn(parent.node, query, mode)) {
-            for (const ancestor of ancestors) {
-              ancestor.expand()
-              ancestor.removeAttribute('hidden')
-              ancestor.setAttribute('data-generation', generation)
-            }
+            expandAncestors(ancestors.slice(1))
           } else {
             if (parent.getAttribute('data-generation') !== generation) {
               parent.collapse()

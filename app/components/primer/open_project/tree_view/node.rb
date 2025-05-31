@@ -48,6 +48,12 @@ module Primer
         # @return [Symbol]
         attr_reader :node_variant
 
+        # Whether or not this node is disabled, i.e. cannot be activated.
+        #
+        # @return [Boolean]
+        attr_reader :disabled
+        alias disabled? disabled
+
         DEFAULT_SELECT_VARIANT = :none
         SELECT_VARIANT_OPTIONS = [
           :multiple,
@@ -67,6 +73,7 @@ module Primer
         # @param current [Boolean] Whether or not this node is the current node. The current node is styled differently than regular nodes and is the first element that receives focus when tabbing to the `TreeView` component.
         # @param select_variant [Symbol] Controls the type of checkbox that appears. <%= one_of(Primer::OpenProject::TreeView::Node::SELECT_VARIANT_OPTIONS) %>
         # @param checked [Boolean | String] The checked state of the node's checkbox. <%= one_of(Primer::OpenProject::TreeView::Node::CHECKED_STATES) %>
+        # @param disabled [Boolean] Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable.
         # @param content_arguments [Hash] Arguments attached to the node's content, i.e the `<button>` or `<a>` element. <%= link_to_system_arguments_docs %>
         def initialize(
           path:,
@@ -75,6 +82,7 @@ module Primer
           current: false,
           select_variant: DEFAULT_SELECT_VARIANT,
           checked: DEFAULT_CHECKED_STATE,
+          disabled: false,
           **content_arguments
         )
           @system_arguments = {
@@ -89,6 +97,7 @@ module Primer
           @current = current
           @select_variant = fetch_or_fallback(SELECT_VARIANT_OPTIONS, select_variant, DEFAULT_SELECT_VARIANT)
           @checked = fetch_or_fallback(CHECKED_STATES, checked, DEFAULT_CHECKED_STATE)
+          @disabled = disabled
           @node_variant = fetch_or_fallback(NODE_VARIANT_TAG_OPTIONS, node_variant, DEFAULT_NODE_VARIANT)
 
           @content_arguments[:tag] = NODE_VARIANT_TAG_MAP[@node_variant]
@@ -107,7 +116,8 @@ module Primer
                 level: level,
                 selected: false,
                 checked: checked,
-                labelledby: content_id
+                labelledby: content_id,
+                disabled: disabled?
               }
             }
           )
