@@ -4,6 +4,7 @@ require "system/test_case"
 
 module OpenProject
   class IntegrationTreeViewTest < System::TestCase
+    include Primer::DriverTestHelpers
     include Primer::KeyboardTestHelpers
     include Primer::JsTestHelpers
 
@@ -20,6 +21,8 @@ module OpenProject
     def expand_at_path(*path)
       node_at_path(*path).sibling(".TreeViewItemToggle").click
     end
+
+    alias collapse_at_path expand_at_path
 
     def check_at_path(*path)
       # NOTE: clicking anywhere on a node with a checkbox will check/uncheck it, but
@@ -121,6 +124,29 @@ module OpenProject
       end
     end
 
+    def refute_window_opened(&block)
+      assert_raises(Capybara::WindowError) do
+        window_opened_by(&block)
+      end
+    end
+
+    def refute_alert(&block)
+      error_classes = chrome? ?
+        [Capybara::Cuprite::MouseEventFailed] :
+        [Selenium::WebDriver::Error::ElementClickInterceptedError]
+
+      assert_raises(Capybara::ModalNotFound, *error_classes) do
+        accept_alert(&block)
+      end
+    end
+
+    def swallow_click_failure
+      yield
+    rescue *(chrome? ?
+      [Capybara::Cuprite::MouseEventFailed] :
+      [Selenium::WebDriver::Error::ElementClickInterceptedError])
+    end
+
     ##### TESTS #####
 
     def test_expands
@@ -133,6 +159,16 @@ module OpenProject
       node_at_path("src").tap do |node|
         assert_equal "true", node["aria-expanded"]
       end
+    end
+
+    def test_disabled_nodes_still_expandable
+      visit_preview(:links, disabled: true)
+
+      refute_path("Cloud Services", "OpenProject")
+      expand_at_path("Cloud Services")
+      assert_path("Cloud Services", "OpenProject")
+      collapse_at_path("Cloud Services")
+      refute_path("Cloud Services", "OpenProject")
     end
 
     def test_automatically_expands_all_ancestors
@@ -192,6 +228,12 @@ module OpenProject
       assert_path_tabbable("src")
     end
 
+    def test_disabled_first_item_tabbable_when_no_current
+      visit_preview(:default, disabled: true)
+
+      assert_path_tabbable("src")
+    end
+
     def test_current_item_tabbable
       visit_preview(:default, expanded: true)
 
@@ -200,6 +242,17 @@ module OpenProject
 
     def test_tab_selects_current_item
       visit_preview(:default, expanded: true)
+
+      refute label_of(active_element)
+
+      keyboard.type(:tab)
+
+      assert_equal label_of(active_element), "icon_button.rb"
+      assert_path_selected("src", "icon_button.rb")
+    end
+
+    def test_tab_selects_disabled_current_item
+      visit_preview(:default, expanded: true, disabled: true)
 
       refute label_of(active_element)
 
@@ -233,10 +286,26 @@ module OpenProject
       refute_path "Cloud Services", "Hetzner"
     end
 
+    def test_disabled_sub_tree_node_links_do_not_navigate
+      visit_preview(:links, disabled: true)
+
+      refute_window_opened do
+        activate_at_path("Cloud Services")
+      end
+    end
+
     def test_leaf_node_links_navigate
       visit_preview(:links, expanded: true)
 
       assert_window_opened(to: "https://www.openproject.org/") do
+        activate_at_path("Cloud Services", "OpenProject")
+      end
+    end
+
+    def test_disabled_leaf_node_links_do_not_navigate
+      visit_preview(:links, expanded: true)
+
+      refute_window_opened do
         activate_at_path("Cloud Services", "OpenProject")
       end
     end
@@ -253,10 +322,26 @@ module OpenProject
       refute_path "Secrets", "Secret ingredient"
     end
 
+    def test_disabled_sub_tree_node_buttons_do_not_alert
+      visit_preview(:buttons, disabled: true)
+
+      refute_alert do
+        activate_at_path("Secrets")
+      end
+    end
+
     def test_leaf_node_buttons_alert
       visit_preview(:buttons, expanded: true)
 
       accept_alert("42") do
+        activate_at_path("Secrets", "Life and the universe")
+      end
+    end
+
+    def test_disabled_leaf_node_buttons_do_not_alert
+      visit_preview(:buttons, expanded: true, disabled: true)
+
+      refute_alert do
         activate_at_path("Secrets", "Life and the universe")
       end
     end
@@ -287,8 +372,25 @@ module OpenProject
       assert_path("src", "button.rb")
     end
 
+    def test_disabled_node_expands_on_right_arrow
+      visit_preview(:default, disabled: true)
+
+      keyboard.type(:tab, :right)
+      assert_path("src", "button.rb")
+    end
+
     def test_collapses_on_left_arrow
       visit_preview(:default)
+
+      keyboard.type(:tab, :right)
+      assert_path("src", "button.rb")
+
+      keyboard.type(:left)
+      refute_path("src", "button.rb")
+    end
+
+    def test_disabled_node_collapses_on_left_arrow
+      visit_preview(:default, disabled: true)
 
       keyboard.type(:tab, :right)
       assert_path("src", "button.rb")
@@ -565,6 +667,26 @@ module OpenProject
       assert_equal details["path"], ["src"]
       assert_equal details["checkedValue"], "false"
       assert_equal details["previousCheckedValue"], "false"
+    end
+
+    def test_disabled_node_does_not_fire_activation_event
+      visit_preview(:default, disabled: true)
+
+      details = capture_event("treeViewNodeActivated") do
+        swallow_click_failure { activate_at_path("src") }
+      end
+
+      assert_nil details
+    end
+
+    def test_disabled_node_does_not_fire_before_activation_event
+      visit_preview(:default, disabled: true)
+
+      details = capture_event("treeViewBeforeNodeActivated") do
+        swallow_click_failure { activate_at_path("src") }
+      end
+
+      assert_nil details
     end
 
     def test_fires_event_before_checking

@@ -8,15 +8,18 @@ module Primer
       #
       # @snapshot interactive
       # @param expanded [Boolean] toggle
+      # @param disabled [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
       # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def default(
         expanded: false,
+        disabled: false,
         select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
         select_strategy: Primer::OpenProject::TreeView::SubTreeNode::DEFAULT_SELECT_STRATEGY
       )
         render_with_template(locals: {
           expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled),
           select_variant: select_variant.to_sym,
           select_strategy: select_strategy.to_sym
         })
@@ -114,18 +117,22 @@ module Primer
       # @label Links
       #
       # @param expanded [Boolean] toggle
-      def links(expanded: false)
+      # @param disabled [Boolean] toggle
+      def links(expanded: false, disabled: false)
         render_with_template(locals: {
-          expanded: coerce_bool(expanded)
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled)
         })
       end
 
       # @label Buttons
       #
       # @param expanded [Boolean] toggle
-      def buttons(expanded: false)
+      # @param disabled [Boolean] toggle
+      def buttons(expanded: false, disabled: false)
         render_with_template(locals: {
-          expanded: coerce_bool(expanded)
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled)
         })
       end
 

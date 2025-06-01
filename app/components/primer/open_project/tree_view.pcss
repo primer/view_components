@@ -143,6 +143,10 @@
     text-decoration-color: var(--control-fgColor-rest);
   }
 
+  & :has(.TreeViewItemContent[aria-disabled=true]) {
+    cursor: not-allowed;
+  }
+
   & .TreeViewItemContent {
     display: flex;
     height: 100%;
@@ -210,6 +214,8 @@
     }
 
     &[aria-disabled='true'] {
+      pointer-events: none;
+
       & .TreeViewItemContentText {
         color: var(--control-fgColor-disabled);
       }
