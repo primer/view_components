@@ -6,13 +6,19 @@ module Primer
     class FilterableTreeViewPreview < ViewComponent::Preview
       # @label Playground
       #
-      # def playground
-      # end
+      # @snapshot interactive
+      def playground
+      end
 
       # @label Default
       #
       # @snapshot interactive
       def default
+      end
+
+      # @label Form input
+      #
+      def form_input
       end
     end
   end
