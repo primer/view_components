@@ -89,7 +89,7 @@ GEM
     docile (1.4.0)
     drb (2.2.1)
     dry-cli (1.2.0)
-    erb_lint (0.6.0)
+    erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -316,7 +316,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   cuprite (~> 0.15)
   debug
-  erb_lint (~> 0.6)
+  erb_lint (~> 0.9)
   erblint-github (~> 1.0)
   kramdown (~> 2.5)
   listen (~> 3.9)

@@ -54,7 +54,7 @@ group :development do
   gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.15"
   gem "debug"
-  gem "erb_lint", "~> 0.6"
+  gem "erb_lint", "~> 0.9"
   gem "erblint-github", "~> 1.0"
   gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
