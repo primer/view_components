@@ -1,2 +1,3 @@
 - heading "It looks like we have discovered a vulnerability" [level=2]
-- link "Fix issue"
+- link "Fix issue":
+  - /url: "#"

@@ -1,8 +1,8 @@
 - 'radiogroup "Question: what kind of bear is best?"':
   - text: "Question: what kind of bear is best?"
-  - radio "Bears": bears
+  - radio "Bears"
   - text: Bears
-  - radio "Beets": beets
+  - radio "Beets"
   - text: Beets
-  - radio "Battlestar Galactica": bsg
+  - radio "Battlestar Galactica"
   - text: Battlestar Galactica
