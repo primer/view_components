@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.69.0
+
+### Minor Changes
+
+- [#289](https://github.com/opf/primer_view_components/pull/289) [`f60a9e6`](https://github.com/opf/primer_view_components/commit/f60a9e637d83a5f478c45da4c9516b445aec540a) Thanks [@camertron](https://github.com/camertron)! - Multi-level ActionMenu
+
 ## 0.68.0
 
 ### Minor Changes
