@@ -23,6 +23,8 @@ module Primer
       find("#{selector_for(*path)} .TreeViewItemCheckbox", match: :first).click
     end
 
+    alias uncheck_at_path check_at_path
+
     def label_at_path(*path)
       label_of(node_at_path(*path))
     end
@@ -40,10 +42,6 @@ module Primer
 
     def current_node
       find_all("[role=treeitem][aria-current]").first
-    end
-
-    def active_element
-      page.evaluate_script("document.activeElement")
     end
 
     def assert_path(*path)
@@ -64,6 +62,14 @@ module Primer
 
     def assert_path_checked(*path, value: :true)
       assert_selector "#{selector_for(*path)}[aria-checked='#{value}']"
+    end
+
+    def assert_path_enabled(*path)
+      refute_selector "#{selector_for(*path)}[aria-disabled=true]"
+    end
+
+    def refute_path_enabled(*path)
+      assert_selector "#{selector_for(*path)}[aria-disabled=true]"
     end
 
     def refute_path_checked(*path, value: :true)

@@ -64,6 +64,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::OpenProject::SkeletonBox, {}],
     [Primer::OpenProject::TreeView, {}],
     [Primer::OpenProject::FileTreeView, {}],
+    [Primer::OpenProject::FilterableTreeView, {}],
     [Primer::Alpha::IncludeFragment, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
@@ -241,6 +242,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OpenProject::TreeView::Visual",
       "Primer::OpenProject::FileTreeView::FileNode",
       "Primer::OpenProject::FileTreeView::DirectoryNode",
+      "Primer::OpenProject::FilterableTreeView::SubTree",
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

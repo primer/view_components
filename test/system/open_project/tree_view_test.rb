@@ -13,6 +13,10 @@ module OpenProject
 
     ##### TEST HELPERS #####
 
+    def active_element
+      page.evaluate_script("document.activeElement")
+    end
+
     def remove_fail_param_from_fragment_src_for(*path)
       evaluate_multiline_script(<<~JS)
         const selector = CSS.escape(JSON.stringify(#{path.inspect}))

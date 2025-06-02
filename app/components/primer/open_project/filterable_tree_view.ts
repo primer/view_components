@@ -3,7 +3,7 @@ import {SegmentedControlElement} from '../alpha/segmented_control'
 import {TreeViewElement} from './tree_view/tree_view'
 import {TreeViewSubTreeNodeElement} from './tree_view/tree_view_sub_tree_node_element'
 
-export type FilterFn = (item: HTMLElement, query: string, filterMode?: string) => boolean
+export type FilterFn = (item: HTMLElement, query: string, filterMode?: string) => Range[] | boolean
 
 @controller
 export class FilterableTreeViewElement extends HTMLElement {
@@ -77,22 +77,54 @@ export class FilterableTreeViewElement extends HTMLElement {
     }
   }
 
-  defaultFilterFn(node: HTMLElement, query: string, filterMode?: string): boolean {
-    const matches = query === '' || node.textContent?.toLocaleLowerCase().includes(query.toLocaleLowerCase()) || false
+  defaultFilterFn(node: HTMLElement, query: string, filterMode?: string): Range[] | boolean {
+    if (query.length === 0) {
+      return true
+    }
+
+    const ranges = []
+    const lowercaseQuery = query.toLowerCase()
+    const treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT)
+    let currentNode = treeWalker.nextNode()
+
+    while (currentNode) {
+      const lowercaseNodeText = currentNode.textContent?.toLocaleLowerCase() || ''
+      let startIndex = 0
+
+      while (startIndex < lowercaseNodeText.length) {
+        const index = lowercaseNodeText.indexOf(lowercaseQuery, startIndex)
+        if (index === -1) break
+
+        const range = new Range()
+        range.setStart(currentNode, index)
+        range.setEnd(currentNode, index + lowercaseQuery.length)
+        ranges.push(range)
+
+        startIndex = index + lowercaseQuery.length
+      }
+
+      currentNode = treeWalker.nextNode()
+    }
 
     switch (filterMode) {
       case 'selected': {
-        return matches && this.treeView?.getNodeCheckedValue(node) !== 'false'
+        if (this.treeView?.getNodeCheckedValue(node) !== 'false') {
+          return ranges
+        }
+
+        break
       }
 
       case 'all': {
-        return matches
+        return ranges
       }
 
       default: {
-        return matches
+        return ranges
       }
     }
+
+    return false
   }
 
   get filterMode(): string | null {
@@ -112,9 +144,12 @@ export class FilterableTreeViewElement extends HTMLElement {
   #update() {
     if (!this.treeView) return
 
+    this.#removeHighlights()
+
     const query = this.queryString
     const mode = this.filterMode || undefined
     const generation = window.crypto.randomUUID()
+    const filterRangesCache: Map<Element, Range[] | boolean> = new Map()
 
     const expandAncestors = (ancestors: TreeViewSubTreeNodeElement[]) => {
       for (const ancestor of ancestors) {
@@ -122,7 +157,7 @@ export class FilterableTreeViewElement extends HTMLElement {
         ancestor.removeAttribute('hidden')
         ancestor.setAttribute('data-generation', generation)
 
-        if (this.filterFn(ancestor.node, query, mode)) {
+        if (cachedFilterFn(ancestor.node, query, mode)) {
           ancestor.node.removeAttribute('aria-disabled')
         } else {
           ancestor.node.setAttribute('aria-disabled', 'true')
@@ -130,11 +165,25 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
     }
 
+    const cachedFilterFn = (item: HTMLElement, queryStr: string, filterMode?: string): boolean => {
+      if (!filterRangesCache.has(item)) {
+        filterRangesCache.set(item, this.filterFn(item, queryStr, filterMode))
+      }
+
+      const cachedResult = filterRangesCache.get(item)!
+
+      if (cachedResult === true || cachedResult === false) {
+        return cachedResult
+      } else {
+        return cachedResult.length > 0
+      }
+    }
+
     for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, [])) {
       let atLeastOneLeafMatches = false
 
       for (const leafNode of leafNodes) {
-        if (this.filterFn(leafNode, query, mode)) {
+        if (cachedFilterFn(leafNode, query, mode)) {
           leafNode.closest('li')?.removeAttribute('hidden')
           atLeastOneLeafMatches = true
         } else {
@@ -150,7 +199,7 @@ export class FilterableTreeViewElement extends HTMLElement {
         const parent: TreeViewSubTreeNodeElement | undefined = ancestors[ancestors.length - 1]
 
         if (parent) {
-          if (this.filterFn(parent.node, query, mode)) {
+          if (cachedFilterFn(parent.node, query, mode)) {
             expandAncestors(ancestors.slice(1))
           } else {
             if (parent.getAttribute('data-generation') !== generation) {
@@ -160,6 +209,66 @@ export class FilterableTreeViewElement extends HTMLElement {
           }
         }
       }
+    }
+
+    if (CSS.highlights) {
+      const allRanges = []
+
+      for (const [, ranges] of filterRangesCache) {
+        if (ranges === true || ranges === false) continue
+        allRanges.push(...ranges)
+      }
+
+      CSS.highlights.set('primer-filterable-tree-view-search-results', new Highlight(...allRanges))
+    } else {
+      this.#applyHighlights(filterRangesCache)
+    }
+  }
+
+  #removeHighlights() {
+    for (const mark of this.querySelectorAll('mark')) {
+      if (!mark.parentElement) continue
+      mark.parentElement.replaceChildren(mark.parentElement.textContent!)
+    }
+  }
+
+  #applyHighlights(rangeMap: Map<Element, Range[] | boolean>) {
+    for (const ranges of rangeMap.values()) {
+      if (ranges === true || ranges === false) continue
+      if (ranges.length === 0) continue
+
+      // We’ll rebuild the text node's parent contents
+      const textNode = ranges[0].startContainer
+      const parent = textNode.parentNode!
+      const originalText = textNode.textContent!
+      const fragments = []
+      let lastIndex = 0
+
+      for (const {startOffset, endOffset} of ranges) {
+        // Text before the highlight
+        if (startOffset > lastIndex) {
+          fragments.push(document.createTextNode(originalText.slice(lastIndex, startOffset)))
+        }
+
+        // Highlighted text
+        const mark = document.createElement('mark')
+        mark.textContent = originalText.slice(startOffset, endOffset)
+        fragments.push(mark)
+
+        lastIndex = endOffset
+      }
+
+      // Remaining text after the last highlight
+      if (lastIndex < originalText.length) {
+        fragments.push(document.createTextNode(originalText.slice(lastIndex)))
+      }
+
+      // Replace original text node with fragments
+      for (const frag of fragments.reverse()) {
+        parent.insertBefore(frag, textNode.nextSibling)
+      }
+
+      parent.removeChild(textNode)
     }
   }
 
