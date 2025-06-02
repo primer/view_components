@@ -12,6 +12,7 @@ module Primer
         type: :search,
         leading_visual: { icon: :search },
         visually_hide_label: true,
+        show_clear_button: true,
       }
 
       DEFAULT_FILTER_INPUT_ARGUMENTS.freeze
@@ -27,7 +28,6 @@ module Primer
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS = {
         label: "Include sub-items",
         name: :include_sub_items,
-        html: { form: "" }, # exclude from form submissions
       }
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.freeze
@@ -45,12 +45,19 @@ module Primer
 
       DEFAULT_FILTER_MODES.freeze
 
+      DEFAULT_NO_RESULTS_NODE_ARGUMENTS = {
+        label: "No results"
+      }
+
+      DEFAULT_NO_RESULTS_NODE_ARGUMENTS.freeze
+
       def initialize(
         tree_view_arguments: {},
         form_arguments: {},
         filter_input_arguments: DEFAULT_FILTER_INPUT_ARGUMENTS.dup,
         filter_mode_control_arguments: DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.dup,
         include_sub_items_check_box_arguments: DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.dup,
+        no_results_node_arguments: DEFAULT_NO_RESULTS_NODE_ARGUMENTS.dup,
         **system_arguments
       )
         tree_view_arguments[:data] = merge_data(
@@ -90,6 +97,8 @@ module Primer
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"filterable-tree-view"
+
+        @no_results_node_arguments = no_results_node_arguments
       end
 
       def with_default_filter_modes

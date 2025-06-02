@@ -6,7 +6,9 @@
           <%= render(@filter_mode_control) %>
         <% end %>
         <%= render(Primer::Alpha::StackItem.new) do %>
-          <%= render(@include_sub_items_check_box) %>
+          <%= render(@include_sub_items_check_box) do |input| %>
+            <% input.merge_input_arguments!(form: "") %>
+          <% end %>
         <% end %>
       <% end %>
       <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
@@ -14,6 +16,11 @@
           <%# exclude from form submissions %>
           <% input.merge_input_arguments!(form: "") %>
         <% end %>
+      <% end %>
+    <% end %>
+    <%= render(Primer::BaseComponent.new(tag: :div, hidden: true, data: { target: "filterable-tree-view.noResultsMessage" })) do %>
+      <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
+        <% tree.with_leaf(**@no_results_node_arguments) %>
       <% end %>
     <% end %>
     <%= render(@tree_view) %>

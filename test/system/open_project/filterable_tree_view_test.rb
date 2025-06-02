@@ -7,22 +7,23 @@ module OpenProject
   class IntegrationFilterableTreeViewTest < System::TestCase
     include Primer::TreeViewHelpers
 
-    def test_form_submits_checked_nodes
-      visit_preview(:form_input)
+    def test_filtering_matches_sub_trees
+      visit_preview(:default)
 
-      check_at_path("Students", "Gryffindor", "Harry Potter")
-      check_at_path("Students", "Ravenclaw", "Luna Lovegood")
-      click_on "Submit"
+      assert_path("Students", "Ravenclaw", "Luna Lovegood")
+      assert_path("Students", "Slytherin", "Draco Malfoy")
 
-      response = JSON.parse(find("pre").text)
-      assert character_list = response.dig("form_params", "characters")
-      assert_equal 2, character_list.size
+      fill_in "Filter", with: "Raven"
 
-      character = JSON.parse(character_list[0])
-      assert character["path"], ["Students", "Gryffindor", "Harry Potter"]
+      assert_path("Students", "Ravenclaw")
+      assert_path_enabled("Students", "Ravenclaw")
 
-      character = JSON.parse(character_list[1])
-      assert character["path"], ["Students", "Hufflepuff", "Luna Lovegood"]
+      # non-matching parent is disabled, but visible
+      refute_path_enabled("Students")
+
+      # non-matching leaves are not visible
+      refute_path("Students", "Ravenclaw", "Luna Lovegood")
+      refute_path("Students", "Slytherin", "Draco Malfoy")
     end
 
     def test_selected_fiter_mode_shows_only_checked_nodes
@@ -140,6 +141,24 @@ module OpenProject
       fill_in "Filter", with: "Ron"
 
       assert_path("Students", "Gryffindor", "Ronald Weasley")
+    end
+
+    def test_form_submits_checked_nodes
+      visit_preview(:form_input)
+
+      check_at_path("Students", "Gryffindor", "Harry Potter")
+      check_at_path("Students", "Ravenclaw", "Luna Lovegood")
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert character_list = response.dig("form_params", "characters")
+      assert_equal 2, character_list.size
+
+      character = JSON.parse(character_list[0])
+      assert character["path"], ["Students", "Gryffindor", "Harry Potter"]
+
+      character = JSON.parse(character_list[1])
+      assert character["path"], ["Students", "Hufflepuff", "Luna Lovegood"]
     end
   end
 end
