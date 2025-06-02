@@ -5,7 +5,7 @@ require "system/test_case"
 module Alpha
   class IntegrationToggleSwitchTest < System::TestCase
     def setup
-      ToggleSwitchController.last_request = nil
+      Primer::ViewComponents::ToggleSwitchController.last_request = nil
     end
 
     def test_click
@@ -44,7 +44,7 @@ module Alpha
 
       wait_for_request
 
-      assert_equal "1", ToggleSwitchController.last_request.params[:value]
+      assert_equal "1", Primer::ViewComponents::ToggleSwitchController.last_request.params[:value]
     end
 
     def test_submits_correct_value_when_on
@@ -57,7 +57,7 @@ module Alpha
 
       wait_for_request
 
-      assert_equal "0", ToggleSwitchController.last_request.params[:value]
+      assert_equal "0", Primer::ViewComponents::ToggleSwitchController.last_request.params[:value]
     end
 
     def test_csrf_token
@@ -85,7 +85,7 @@ module Alpha
 
       wait_for_request
 
-      assert_equal "XMLHttpRequest", ToggleSwitchController.last_request.headers["HTTP_REQUESTED_WITH"]
+      assert_equal "XMLHttpRequest", Primer::ViewComponents::ToggleSwitchController.last_request.headers["HTTP_REQUESTED_WITH"]
     end
 
     def test_fetch_made_with_turbo
@@ -97,7 +97,7 @@ module Alpha
 
       wait_for_request
 
-      assert_equal "text/vnd.turbo-stream.html", ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
+      assert_equal "text/vnd.turbo-stream.html", Primer::ViewComponents::ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
     end
 
     def test_fetch_made_without_turbo
@@ -109,7 +109,7 @@ module Alpha
 
       wait_for_request
 
-      assert_equal "*/*", ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
+      assert_equal "*/*", Primer::ViewComponents::ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
     end
 
     private
@@ -126,7 +126,7 @@ module Alpha
       count = 0
 
       loop do
-        break if ToggleSwitchController.last_request
+        break if Primer::ViewComponents::ToggleSwitchController.last_request
 
         count += 1
         break if count >= 5
