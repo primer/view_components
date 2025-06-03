@@ -577,7 +577,7 @@
       {
         "name": "menu_id",
         "type": "String",
-        "default": "N/A",
+        "default": "`self.class.generate_id`",
         "description": "Id of the menu."
       },
       {
