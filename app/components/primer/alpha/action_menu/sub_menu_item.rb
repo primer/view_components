@@ -11,10 +11,9 @@ module Primer
           # ActionList::Item base class or to the SubMenu instance. Doing so prevents a form
           # input from being emitted for sub-menu items, which prevents an extra empty value
           # from being sent to the server on form submit.
-          @menu_id = self.class.generate_id
           @sub_menu = SubMenu.allocate
-          system_arguments = @sub_menu.send(:initialize, **system_arguments, menu_id: @menu_id)
-          system_arguments[:id] = "#{@menu_id}-button"
+          system_arguments = @sub_menu.send(:initialize, **system_arguments)
+          system_arguments[:id] = "#{@sub_menu.menu_id}-button"
 
           @form_arguments = form_arguments
 

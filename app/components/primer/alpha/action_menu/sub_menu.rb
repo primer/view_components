@@ -47,7 +47,7 @@ module Primer
         # @param overlay_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::Overlay) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
         def initialize(
-          menu_id:,
+          menu_id: self.class.generate_id,
           anchor_align: DEFAULT_ANCHOR_ALIGN,
           anchor_side: DEFAULT_ANCHOR_SIDE,
           overlay_arguments: {},

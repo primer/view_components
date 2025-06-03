@@ -25,7 +25,20 @@ module Primer
           menu.assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do |ul|
             ul.assert_selector("li button[role='menuitem']", visible: false)
           end
+          menu.assert_selector("anchored-position[id='menu-1-overlay'][anchor=menu-1-button]")
         end
+      end
+
+      def test_accepts_custom_menu_id_for_sub_menus
+        render_inline(Primer::Alpha::ActionMenu.new) do |component|
+          component.with_sub_menu_item(label: "Sub-menu", menu_id: "foobarbaz") do |sub_menu|
+            sub_menu.with_item(label: "Hello, world")
+          end
+        end
+
+        assert_selector("button[id='foobarbaz-button'][aria-haspopup='true']", text: "Sub-menu")
+        assert_selector("ul[id='foobarbaz-list'][aria-labelledby='foobarbaz-button'][role='menu']", visible: false)
+        assert_selector("anchored-position[id='foobarbaz-overlay'][anchor=foobarbaz-button]")
       end
 
       def test_falls_back_to_button_if_disallowed_tag_is_given
