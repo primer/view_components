@@ -47,7 +47,7 @@ Rails.application.configure do
   config.primer_view_components.raise_on_invalid_options = true
 
   config.autoload_paths << Rails.root.join("..", "test", "forms")
-  config.view_component.preview_paths << Rails.root.join("..", "test", "previews")
+  config.view_component.previews.paths << Rails.root.join("..", "test", "previews")
 
   if ENV.fetch("VC_COMPAT_PATCH_ENABLED", "false") == "true"
     config.view_component.capture_compatibility_patch_enabled = true
