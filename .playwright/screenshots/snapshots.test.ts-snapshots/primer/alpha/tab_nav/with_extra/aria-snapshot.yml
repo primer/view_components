@@ -1,12 +1,9 @@
 - navigation "With icons and counters":
   - list:
     - listitem:
-      - link "Tab 1":
-        - /url: "#"
+      - link "Tab 1"
     - listitem:
-      - link "Tab 2":
-        - /url: "#"
+      - link "Tab 2"
     - listitem:
-      - link "Tab 3":
-        - /url: "#"
+      - link "Tab 3"
   - button "Extra Button"

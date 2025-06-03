@@ -1,6 +1,4 @@
 - heading "It looks like we have discovered a vulnerability" [level=2]
 - paragraph: Millions of teams trust GitHub to keep their work safe
-- link "Fix issue":
-  - /url: "#"
-- link "Learn more about vulnerabilities":
-  - /url: "#"
+- link "Fix issue"
+- link "Learn more about vulnerabilities"

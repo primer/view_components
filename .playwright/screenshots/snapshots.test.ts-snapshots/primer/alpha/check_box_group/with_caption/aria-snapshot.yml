@@ -1,10 +1,10 @@
 - group "I would go into battle with:":
   - text: "I would go into battle with: With a caption"
-  - checkbox "Jean-Luc Picard"
+  - checkbox "Jean-Luc Picard": picard1
   - text: Jean-Luc Picard
-  - checkbox "Hikaru Sulu"
+  - checkbox "Hikaru Sulu": sulu1
   - text: Hikaru Sulu
-  - checkbox "Kathryn Janeway"
+  - checkbox "Kathryn Janeway": janeway1
   - text: Kathryn Janeway
-  - checkbox "Benjamin Sisko"
+  - checkbox "Benjamin Sisko": sisko1
   - text: Benjamin Sisko
