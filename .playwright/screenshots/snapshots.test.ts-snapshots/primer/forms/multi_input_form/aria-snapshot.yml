@@ -1,8 +1,8 @@
 - radiogroup "Country":
   - text: Country
-  - radio "USA"
+  - radio "USA": US
   - text: USA
-  - radio "Canada"
+  - radio "Canada": CA
   - text: Canada
 - text: Region
 - combobox "Region":
