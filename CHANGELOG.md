@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.69.1
+
+### Patch Changes
+
+- [#314](https://github.com/opf/primer_view_components/pull/314) [`1ad044d`](https://github.com/opf/primer_view_components/commit/1ad044d10bb8365a73b66bbb35b785a4db873d83) Thanks [@camertron](https://github.com/camertron)! - Enable specifying a custom menu_id: for ActionMenu sub menus
+
+## 0.69.0
+
+### Minor Changes
+
+- [#289](https://github.com/opf/primer_view_components/pull/289) [`f60a9e6`](https://github.com/opf/primer_view_components/commit/f60a9e637d83a5f478c45da4c9516b445aec540a) Thanks [@camertron](https://github.com/camertron)! - Multi-level ActionMenu
+
 ## 0.68.0
 
 ### Minor Changes

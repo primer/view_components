@@ -3,6 +3,8 @@ import '@oddbird/popover-polyfill'
 import type {IncludeFragmentElement} from '@github/include-fragment-element'
 import AnchoredPositionElement from '../../anchored_position'
 import {observeMutationsUntilConditionMet} from '../../utils'
+import {ActionMenuFocusZoneStack} from './action_menu_focus_zone_stack'
+import {ClipboardCopyElement} from '@github/clipboard-copy-element'
 
 type SelectVariant = 'none' | 'single' | 'multiple' | null
 type SelectedItem = {
@@ -11,22 +13,22 @@ type SelectedItem = {
   element: Element
 }
 
-const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
-const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
-
 @controller
 export class ActionMenuElement extends HTMLElement {
-  @target
-  includeFragment: IncludeFragmentElement
-
-  @target
-  overlay: AnchoredPositionElement
+  @target includeFragment: IncludeFragmentElement
+  @target overlay: AnchoredPositionElement
+  @target list: HTMLElement
 
   #abortController: AbortController
   #originalLabel = ''
   #inputName = ''
   #invokerBeingClicked = false
   #intersectionObserver: IntersectionObserver
+  #focusZoneStack: ActionMenuFocusZoneStack
+
+  static validItemRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio']
+  static validSelectors = ActionMenuElement.validItemRoles.map(role => `[role="${role}"]`)
+  static menuItemSelectors = ActionMenuElement.validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
   get selectVariant(): SelectVariant {
     return this.getAttribute('data-select-variant') as SelectVariant
@@ -60,6 +62,11 @@ export class ActionMenuElement extends HTMLElement {
 
   get popoverElement(): HTMLElement | null {
     return (this.invokerElement?.popoverTargetElement as HTMLElement) || null
+  }
+
+  // i.e. sub-menus
+  get childPopoverElements(): HTMLElement[] {
+    return Array.from(this.overlay.querySelectorAll('anchored-position')) as AnchoredPositionElement[]
   }
 
   get invokerElement(): HTMLButtonElement | null {
@@ -102,7 +109,7 @@ export class ActionMenuElement extends HTMLElement {
     this.addEventListener('mouseover', this, {signal})
     this.addEventListener('focusout', this, {signal})
     this.addEventListener('mousedown', this, {signal})
-    this.popoverElement?.addEventListener('toggle', this, {signal})
+    this.addEventListener('toggle', this, {signal, capture: true})
     this.#setDynamicLabel()
     this.#updateInput()
     this.#softDisableItems()
@@ -149,6 +156,22 @@ export class ActionMenuElement extends HTMLElement {
     if (!this.includeFragment) {
       this.setAttribute('data-ready', 'true')
     }
+
+    const levelObserver = new MutationObserver(() => this.#updateLevels())
+    levelObserver.observe(this, {childList: true, subtree: true})
+
+    this.#updateLevels()
+
+    this.#focusZoneStack = new ActionMenuFocusZoneStack()
+  }
+
+  #updateLevels() {
+    let idx = 1
+
+    for (const menu of this.querySelectorAll('[role=menu]')) {
+      menu.setAttribute('data-level', idx.toString())
+      idx++
+    }
   }
 
   disconnectedCallback() {
@@ -158,7 +181,7 @@ export class ActionMenuElement extends HTMLElement {
   #softDisableItems() {
     const {signal} = this.#abortController
 
-    for (const item of this.querySelectorAll(validSelectors.join(','))) {
+    for (const item of this.querySelectorAll(ActionMenuElement.validSelectors.join(','))) {
       item.addEventListener('click', this.#potentiallyDisallowActivation.bind(this), {signal})
       item.addEventListener('keydown', this.#potentiallyDisallowActivation.bind(this), {signal})
     }
@@ -168,7 +191,7 @@ export class ActionMenuElement extends HTMLElement {
   #potentiallyDisallowActivation(event: Event): boolean {
     if (!this.#isActivation(event)) return false
 
-    const item = (event.target as HTMLElement).closest(menuItemSelectors.join(','))
+    const item = (event.target as HTMLElement).closest(ActionMenuElement.menuItemSelectors.join(','))
     if (!item) return false
 
     if (item.getAttribute('aria-disabled')) {
@@ -193,21 +216,34 @@ export class ActionMenuElement extends HTMLElement {
     )
   }
 
+  #isClipboardActivationViaKeyboard(event: Event): boolean {
+    return (
+      event.target instanceof ClipboardCopyElement &&
+      event instanceof KeyboardEvent &&
+      event.type === 'keydown' &&
+      !(event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) &&
+      (event.key === ' ' || event.key === 'Enter')
+    )
+  }
+
   #isActivation(event: Event): boolean {
     // Some browsers fire MouseEvents (Firefox) and others fire PointerEvents (Chrome). Activating an item via
     // enter or space counterintuitively fires one of these rather than a KeyboardEvent. Since PointerEvent
     // inherits from MouseEvent, it is enough to check for MouseEvent here.
-    return (event instanceof MouseEvent && event.type === 'click') || this.#isAnchorActivationViaSpace(event)
+    return (
+      (event instanceof MouseEvent && event.type === 'click') ||
+      this.#isAnchorActivationViaSpace(event) ||
+      this.#isClipboardActivationViaKeyboard(event)
+    )
   }
 
   handleEvent(event: Event) {
     const targetIsInvoker = this.invokerElement?.contains(event.target as HTMLElement)
     const eventIsActivation = this.#isActivation(event)
 
-    if (event.type === 'toggle' && (event as ToggleEvent).newState === 'open') {
-      window.requestAnimationFrame(() => {
-        this.#firstItem?.focus()
-      })
+    if (event.type === 'toggle' && event instanceof ToggleEvent) {
+      this.#handleToggleEvent(event)
+      return
     }
 
     if (targetIsInvoker && event.type === 'mousedown') {
@@ -241,7 +277,7 @@ export class ActionMenuElement extends HTMLElement {
       return
     }
 
-    const item = (event.target as Element).closest(menuItemSelectors.join(','))
+    const item = (event.target as Element).closest(ActionMenuElement.menuItemSelectors.join(',')) as HTMLElement | null
     const targetIsItem = item !== null
 
     if (targetIsItem && eventIsActivation) {
@@ -262,7 +298,16 @@ export class ActionMenuElement extends HTMLElement {
       // We then click it manually to navigate.
       if (this.#isAnchorActivationViaSpace(event)) {
         event.preventDefault()
-        ;(item as HTMLElement).click()
+        item.click()
+      }
+
+      const subMenu = this.#subMenuForItem(item)
+
+      if (subMenu) {
+        // Prevent submitting a form when clicking on sub-menu items
+        event.preventDefault()
+        subMenu.showPopover()
+        return
       }
 
       this.#handleItemActivated(item)
@@ -272,6 +317,50 @@ export class ActionMenuElement extends HTMLElement {
 
     if (event.type === 'include-fragment-replaced') {
       this.#handleIncludeFragmentReplaced()
+      return
+    }
+
+    if (targetIsItem && event instanceof KeyboardEvent) {
+      this.#handleItemKeyboardEvent(event, item)
+    }
+  }
+
+  #handleItemKeyboardEvent(event: KeyboardEvent, item: HTMLElement) {
+    switch (event.key) {
+      case 'ArrowRight': {
+        const subMenu = this.#subMenuForItem(item)
+        subMenu?.showPopover()
+        break
+      }
+
+      case 'ArrowLeft':
+        if (item.closest('role[menu]') !== this.list) {
+          const overlay = item.closest('anchored-position') as AnchoredPositionElement | null
+          overlay?.hidePopover()
+        }
+
+        break
+    }
+  }
+
+  #handleToggleEvent(event: ToggleEvent) {
+    const subMenu = event.target as AnchoredPositionElement
+
+    if (event.newState === 'open') {
+      // allow tabbing away from primary menu, but trap focus in sub-menus
+      const isPrimaryMenu = subMenu === this.overlay
+      this.#focusZoneStack.push(subMenu, {trapFocus: !isPrimaryMenu})
+
+      window.requestAnimationFrame(() => {
+        const firstItem = subMenu.querySelector(ActionMenuElement.menuItemSelectors.join(',')) as HTMLElement | null
+        firstItem?.focus()
+      })
+    } else {
+      // Note that this will also cause focus to return to the invoker button, which is
+      // desirable
+      this.#focusZoneStack.pop(subMenu)
+      const item = this.#itemForSubMenu(subMenu)
+      if (item) item.focus()
     }
   }
 
@@ -322,7 +411,7 @@ export class ActionMenuElement extends HTMLElement {
     dialog.addEventListener('cancel', handleDialogClose, {signal})
   }
 
-  #handleItemActivated(item: Element) {
+  #handleItemActivated(item: HTMLElement) {
     // Hide popover after current event loop to prevent changes in focus from
     // altering the target of the event. Not doing this specifically affects
     // <a> tags. It causes the event to be sent to the currently focused element
@@ -391,6 +480,10 @@ export class ActionMenuElement extends HTMLElement {
 
   #hide() {
     this.popoverElement?.hidePopover()
+
+    for (const child of this.childPopoverElements) {
+      child.hidePopover()
+    }
   }
 
   #isOpen() {
@@ -458,11 +551,11 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   get #firstItem(): HTMLElement | null {
-    return this.querySelector(menuItemSelectors.join(','))
+    return this.querySelector(ActionMenuElement.menuItemSelectors.join(','))
   }
 
   get items(): HTMLElement[] {
-    return Array.from(this.querySelectorAll(menuItemSelectors.join(',')))
+    return Array.from(this.querySelectorAll(ActionMenuElement.menuItemSelectors.join(',')))
   }
 
   getItemById(itemId: string): HTMLElement | null {
@@ -521,7 +614,7 @@ export class ActionMenuElement extends HTMLElement {
 
   checkItem(item: Element | null) {
     if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
-      const itemContent = item.querySelector('.ActionListContent')!
+      const itemContent = item.querySelector('.ActionListContent')! as HTMLElement
       const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
 
       if (!ariaChecked) {
@@ -532,13 +625,33 @@ export class ActionMenuElement extends HTMLElement {
 
   uncheckItem(item: Element | null) {
     if (item && (this.selectVariant === 'single' || this.selectVariant === 'multiple')) {
-      const itemContent = item.querySelector('.ActionListContent')!
+      const itemContent = item.querySelector('.ActionListContent')! as HTMLElement
       const ariaChecked = itemContent.getAttribute('aria-checked') === 'true'
 
       if (ariaChecked) {
         this.#handleItemActivated(itemContent)
       }
     }
+  }
+
+  #subMenuForItem(item: HTMLElement): AnchoredPositionElement | null {
+    const popoverId = item.getAttribute('popovertarget')
+
+    if (popoverId) {
+      return this.querySelector(`[id="${popoverId}"]`) as AnchoredPositionElement
+    }
+
+    return null
+  }
+
+  #itemForSubMenu(subMenu: HTMLElement): HTMLElement | null {
+    const anchorId = subMenu.getAttribute('anchor')
+
+    if (anchorId) {
+      return this.querySelector(`[id="${anchorId}"]`) as HTMLElement | null
+    }
+
+    return null
   }
 }
 
