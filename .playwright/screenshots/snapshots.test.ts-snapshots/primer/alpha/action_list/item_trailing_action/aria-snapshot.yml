@@ -1,5 +1,4 @@
 - list "List heading":
   - listitem:
-    - link "Default item":
-      - /url: /
+    - link "Default item"
     - button "Button tooltip"

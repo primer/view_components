@@ -1,11 +1,8 @@
 - navigation "With icons and counters":
   - list:
     - listitem:
-      - link "Item 1 5":
-        - /url: "#"
+      - link "Item 1 5"
     - listitem:
-      - link "Item 2 10":
-        - /url: "#"
+      - link "Item 2 10"
     - listitem:
-      - link "Item 3 15":
-        - /url: "#"
+      - link "Item 3 15"

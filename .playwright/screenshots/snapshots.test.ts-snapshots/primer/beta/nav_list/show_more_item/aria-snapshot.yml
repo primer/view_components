@@ -2,18 +2,14 @@
   - heading "My favorite foods" [level=3]
   - list "My favorite foods":
     - listitem:
-      - link "Popplers":
-        - /url: /foods/popplers
+      - link "Popplers"
     - listitem:
-      - link "Slurm":
-        - /url: /foods/slurm
+      - link "Slurm"
   - button "Show more foods"
   - heading "My favorite snacks" [level=3]
   - list "My favorite snacks":
     - listitem:
-      - link "Popplers":
-        - /url: /foods/popplers
+      - link "Popplers"
     - listitem:
-      - link "Slurm":
-        - /url: /foods/slurm
+      - link "Slurm"
   - button "Show more snacks"
