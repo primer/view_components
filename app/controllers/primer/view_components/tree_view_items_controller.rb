@@ -18,7 +18,7 @@ module Primer
           head :internal_server_error and return
         end
 
-        path =  "primer/view_components/tree_view_items/#{JSON.parse(params[:path])}"
+        path =  JSON.parse(params[:path])
         node = path.inject(TREE) do |current, segment|
           current["children"][segment]
         end
