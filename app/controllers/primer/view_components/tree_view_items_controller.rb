@@ -5,7 +5,8 @@ require "json"
 
 module Primer
   module ViewComponents
-# :nodoc:
+    # :nodoc:
+    # :nocov:
     class TreeViewItemsController < ApplicationController
       TREE = JSON.parse(File.read(File.join(__dir__, "tree_view_items.json"))).freeze
 
