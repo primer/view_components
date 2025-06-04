@@ -6,7 +6,7 @@
         <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
       <% end %>
 
-      <% sub_tree.with_loading_spinner(src: tree_view_items_path(loader: "spinner", fail: simulate_failure, empty: simulate_empty)) %>
+      <% sub_tree.with_loading_spinner(src: primer_view_components.tree_view_items_path(loader: "spinner", fail: simulate_failure, empty: simulate_empty)) %>
     <% end %>
   <% end %>
 </div>

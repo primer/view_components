@@ -6,7 +6,7 @@
         <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
       <% end %>
 
-      <% sub_tree.with_loading_skeleton(src: tree_view_items_path(loader: "skeleton", fail: simulate_failure, empty: simulate_empty)) %>
+      <% sub_tree.with_loading_skeleton(src: primer_view_components.tree_view_items_path(loader: "skeleton", fail: simulate_failure, empty: simulate_empty)) %>
     <% end %>
   <% end %>
 </div>

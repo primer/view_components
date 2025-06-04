@@ -188,7 +188,7 @@ module Primer
     # ```erb
     # <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
     #   <% tree.with_sub_tree(label: "Directory") do |sub_tree| %>
-    #     <% sub_tree.with_loading_spinner(src: tree_view_items_path) %>
+    #     <% sub_tree.with_loading_spinner(src: primer_view_components.tree_view_items_path) %>
     #   <% end %>
     # <% end %>
     # ```
