@@ -151,9 +151,9 @@ export class TreeViewElement extends HTMLElement {
     if (!checkSuccess) return
 
     if (this.getNodeCheckedValue(node) === 'true') {
-      this.#setNodeCheckedValue(node, 'false')
+      this.setNodeCheckedValue(node, 'false')
     } else {
-      this.#setNodeCheckedValue(node, 'true')
+      this.setNodeCheckedValue(node, 'true')
     }
 
     this.dispatchEvent(
@@ -223,9 +223,9 @@ export class TreeViewElement extends HTMLElement {
           event.preventDefault()
 
           if (this.getNodeCheckedValue(node) === 'true') {
-            this.#setNodeCheckedValue(node, 'false')
+            this.setNodeCheckedValue(node, 'false')
           } else {
-            this.#setNodeCheckedValue(node, 'true')
+            this.setNodeCheckedValue(node, 'true')
           }
         } else if (node instanceof HTMLAnchorElement) {
           // simulate click on space
@@ -292,14 +292,14 @@ export class TreeViewElement extends HTMLElement {
     const node = this.nodeAtPath(path)
     if (!node) return
 
-    this.#setNodeCheckedValue(node, 'true')
+    this.setNodeCheckedValue(node, 'true')
   }
 
   uncheckAtPath(path: string[]) {
     const node = this.nodeAtPath(path)
     if (!node) return
 
-    this.#setNodeCheckedValue(node, 'false')
+    this.setNodeCheckedValue(node, 'false')
   }
 
   toggleCheckedAtPath(path: string[]) {
@@ -345,7 +345,7 @@ export class TreeViewElement extends HTMLElement {
     return this.nodeAtPath(path, '[data-node-type=leaf]') as HTMLLIElement | null
   }
 
-  #setNodeCheckedValue(node: Element, value: TreeViewCheckedValue) {
+  setNodeCheckedValue(node: Element, value: TreeViewCheckedValue) {
     node.setAttribute('aria-checked', value.toString())
   }
 

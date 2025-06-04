@@ -2,12 +2,18 @@ import {controller, target} from '@github/catalyst'
 import {SegmentedControlElement} from '../alpha/segmented_control'
 import {TreeViewElement} from './tree_view/tree_view'
 import {TreeViewSubTreeNodeElement} from './tree_view/tree_view_sub_tree_node_element'
+import {TreeViewNodeInfo} from '../shared_events'
 
 // This function is expected to return the following values:
 // 1. No match - return null
 // 2. Match but no highlights - empty array (i.e. when showing all selected nodes but empty query string)
 // 3. Match with highlights - non-empty array of Range objects
 export type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null
+
+type NodeState = {
+  checked: boolean
+  disabled: boolean
+}
 
 @controller
 export class FilterableTreeViewElement extends HTMLElement {
@@ -19,9 +25,13 @@ export class FilterableTreeViewElement extends HTMLElement {
 
   #filterFn?: FilterFn
   #abortController: AbortController
+  #stateMap: Map<TreeViewSubTreeNodeElement, Map<HTMLElement, NodeState>> = new Map()
+  #defaultNodeState: NodeState = {checked: false, disabled: false}
 
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
+    this.addEventListener('treeViewNodeChecked', this, {signal})
+    this.addEventListener('treeViewBeforeNodeChecked', this, {signal})
     this.addEventListener('itemActivated', this, {signal})
     this.addEventListener('input', this, {signal})
   }
@@ -37,6 +47,158 @@ export class FilterableTreeViewElement extends HTMLElement {
       this.#handleFilterInputEvent(event)
     } else if (event.target === this.includeSubItemsCheckBox) {
       this.#handleIncludeSubItemsCheckBoxEvent(event)
+    } else if (event.target instanceof TreeViewElement || event.target instanceof TreeViewSubTreeNodeElement) {
+      this.#handleTreeViewEvent(event)
+    }
+  }
+
+  #handleTreeViewEvent(origEvent: Event) {
+    const event = origEvent as CustomEvent<TreeViewNodeInfo[]>
+
+    // This event only fires if someone actually activates the check mark, i.e. does not fire when
+    // calling this.treeView.setNodeCheckedValue, which happens in this.#applyFilterOptions.
+    switch (origEvent.type) {
+      case 'treeViewNodeChecked':
+        this.#handleTreeViewNodeChecked(event)
+        break
+
+      case 'treeViewBeforeNodeChecked':
+        this.#handleTreeViewBeforeNodeChecked(event)
+        break
+    }
+  }
+
+  #handleTreeViewBeforeNodeChecked(event: CustomEvent<TreeViewNodeInfo[]>) {
+    if (!this.treeView) return
+
+    const nodeInfo = event.detail[0]
+    if (this.treeView.getNodeType(nodeInfo.node) !== 'sub-tree') return
+
+    const subTree = nodeInfo.node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
+
+    if (this.includeSubItemsCheckBox.checked) {
+      if (nodeInfo.checkedValue === 'true') {
+        this.#saveNodeState(subTree)
+        this.#disableSubTree(subTree)
+      }
+    }
+  }
+
+  #handleTreeViewNodeChecked(event: CustomEvent<TreeViewNodeInfo[]>) {
+    if (!this.treeView) return
+    if (!this.includeSubItemsCheckBox.checked) return
+
+    // Although multiple nodes may have been checked (eg. if the TreeView is in descendants mode),
+    // the one that actually received the click, i.e. the local root the user checked, is the first
+    // entry. We only care about sub-tree nodes because checking them affects all leaf nodes, so
+    // there's no need to check or uncheck individual leaves.
+    const nodeInfo = event.detail[0]
+    if (this.treeView.getNodeType(nodeInfo.node) !== 'sub-tree') return
+
+    const subTree = nodeInfo.node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
+
+    // If the sub-tree has been unchecked, allow all child nodes to be checked (i.e. enable them)
+    // and restore whatever state they were in before.
+    if (nodeInfo.checkedValue === 'false') {
+      this.#enableSubTree(subTree)
+      this.#restoreNodeState(subTree)
+    }
+  }
+
+  #saveNodeState(subTree: TreeViewSubTreeNodeElement) {
+    if (!this.treeView) return
+
+    const descendantStates: Map<HTMLElement, NodeState> = new Map()
+
+    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
+      for (const leafNode of leafNodes) {
+        const checked = this.treeView.getNodeCheckedValue(leafNode) === 'true'
+
+        // There is no need to record the state of a node that isn't checked, as a node cannot be
+        // both disabled _and_ unchecked.
+        if (checked) {
+          descendantStates.set(leafNode, {
+            checked,
+            disabled: leafNode.getAttribute('aria-disabled') === 'true',
+          })
+        }
+      }
+
+      for (const ancestor of ancestors) {
+        const checked = this.treeView.getNodeCheckedValue(ancestor.node) === 'true'
+
+        // There is no need to record the state of a node that isn't checked, as a node cannot be
+        // both disabled _and_ unchecked.
+        if (checked) {
+          descendantStates.set(ancestor.node, {
+            checked,
+            disabled: ancestor.node.getAttribute('aria-disabled') === 'true',
+          })
+        }
+      }
+    }
+
+    this.#stateMap.set(subTree, descendantStates)
+  }
+
+  #restoreNodeState(subTree: TreeViewSubTreeNodeElement) {
+    if (!this.treeView) return
+    if (!this.#stateMap.has(subTree)) return
+
+    const descendantStates = this.#stateMap.get(subTree)!
+
+    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
+      for (const leafNode of leafNodes) {
+        const descendantState = descendantStates.get(leafNode) || this.#defaultNodeState
+
+        this.treeView.setNodeCheckedValue(leafNode, descendantState.checked ? 'true' : 'false')
+
+        if (descendantState.disabled) {
+          leafNode.setAttribute('aria-disabled', 'true')
+        } else {
+          leafNode.removeAttribute('aria-disabled')
+        }
+      }
+
+      for (const ancestor of ancestors) {
+        const descendantState = descendantStates.get(ancestor.node) || this.#defaultNodeState
+
+        this.treeView.setNodeCheckedValue(ancestor.node, descendantState.checked ? 'true' : 'false')
+
+        if (descendantState.disabled) {
+          ancestor.node.setAttribute('aria-disabled', 'true')
+        } else {
+          ancestor.node.removeAttribute('aria-disabled')
+        }
+      }
+    }
+
+    this.#stateMap.delete(subTree)
+  }
+
+  #disableSubTree(subTree: TreeViewSubTreeNodeElement) {
+    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
+      for (const leafNode of leafNodes) {
+        leafNode.setAttribute('aria-disabled', 'true')
+      }
+
+      for (const ancestor of ancestors) {
+        if (ancestor === subTree) continue
+        ancestor.node.setAttribute('aria-disabled', 'true')
+      }
+    }
+  }
+
+  #enableSubTree(subTree: TreeViewSubTreeNodeElement) {
+    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
+      for (const leafNode of leafNodes) {
+        leafNode.removeAttribute('aria-disabled')
+      }
+
+      for (const ancestor of ancestors) {
+        if (ancestor === subTree) continue
+        ancestor.node.removeAttribute('aria-disabled')
+      }
     }
   }
 
@@ -51,23 +213,48 @@ export class FilterableTreeViewElement extends HTMLElement {
   #handleFilterModeEvent(event: Event) {
     if (event.type !== 'itemActivated') return
 
-    this.#update()
+    this.#applyFilterOptions()
   }
 
   #handleFilterInputEvent(event: Event) {
     if (event.type !== 'input') return
 
-    this.#update()
+    this.#applyFilterOptions()
   }
 
   #handleIncludeSubItemsCheckBoxEvent(event: Event) {
+    if (!this.treeView) return
     if (event.type !== 'input') return
 
     if (this.includeSubItemsCheckBox.checked) {
-      this.treeView?.changeSelectStrategy('descendants')
+      for (const [, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, 1, [])) {
+        for (const ancestor of ancestors) {
+          if (this.treeView.getNodeCheckedValue(ancestor.node) === 'true') {
+            if (!this.#stateMap.has(ancestor)) {
+              this.#saveNodeState(ancestor)
+            }
+
+            for (const node of ancestor.eachDescendantNode()) {
+              this.treeView.setNodeCheckedValue(node, 'true')
+            }
+
+            this.#disableSubTree(ancestor)
+
+            break
+          }
+
+          if (this.#stateMap.has(ancestor)) break
+        }
+      }
     } else {
-      this.treeView?.changeSelectStrategy('self')
+      for (const subTree of this.#stateMap.keys()) {
+        this.#restoreNodeState(subTree)
+      }
+
+      this.#stateMap.clear()
     }
+
+    this.#applyFilterOptions()
   }
 
   set filterFn(newFn: FilterFn) {
@@ -145,7 +332,45 @@ export class FilterableTreeViewElement extends HTMLElement {
     return this.filterInput.value
   }
 
-  #update() {
+  /* This function does quite a bit. It's responsible for showing and hiding nodes that match the filter
+   * criteria, disabling nodes under certain conditions, and rendering highlights for node text that
+   * matches the query string. The filter criteria are as follows:
+   *
+   * 1. A free-form query string from a text input field.
+   * 2. A SegmentedControl with two options:
+   *    1. The "Selected" option causes the component to only show checked nodes, provided they also
+   *       satisfy the other filter criteria described here.
+   *    2. The "All" option causes the component to show all nodes, provided they also satisfy the other
+   *       filter criteria described here.
+   * 3. A check box labeled "Include sub-items" that affects how nodes are checked. Checking this box will
+   *    automatically check and disable all child nodes under currently checked parents. Subsequently
+   *    checking an unchecked parent will check and disable all child nodes. Unchecking a parent restores
+   *    any previously checked children so as not to "undo" a user's selections.
+   *
+   * Whether or not a node matches is determined by a filter function with a `FilterFn` signature. The
+   * component defines a default filter function, but a user-defined one can also be provided. The filter
+   * function is expected to return an array of `Range` objects which #applyFilterOptions uses to highlight
+   * node text that matches the query string. The default filter function identifies matching node text by
+   * looking for an exact substring match, operating on a lowercased version of both the query string and
+   * the node text.
+   *
+   * It should be noted that the returned `Range` objects must have starting and ending values that refer
+   * to offsets inside the same text node. Not adhering to this rule may lead to undefined behavior.
+   *
+   * Applying the filter criteria can have the following effects on individual nodes:
+   *
+   * 1. Hidden: Nodes are hidden if:
+   *    1. The filter function returns null.
+   * 2. Disabled: Nodes are disabled if:
+   *    1. The node is a child of a checked parent and the "Include sub-items" check box is checked.
+   * 3. Checked: Nodes are checked if one of the following is true:
+   *    1. The node was manually checked by the user.
+   *    2. The node is a child of a checked parent and the "Include sub-items" check box is checked.
+   * 4. Expanded: Sub-tree nodes are expanded if:
+   *    1. For at least one of the node's children, including descendants, the filter function returns a
+   *       truthy value.
+   */
+  #applyFilterOptions() {
     if (!this.treeView) return
 
     this.#removeHighlights()
@@ -155,7 +380,7 @@ export class FilterableTreeViewElement extends HTMLElement {
     const generation = window.crypto.randomUUID()
     const filterRangesCache: Map<Element, Range[] | null> = new Map()
 
-    const expandAncestors = (ancestors: TreeViewSubTreeNodeElement[]) => {
+    const expandAncestors = (...ancestors: TreeViewSubTreeNodeElement[]) => {
       for (const ancestor of ancestors) {
         ancestor.expand()
         ancestor.removeAttribute('hidden')
@@ -177,7 +402,8 @@ export class FilterableTreeViewElement extends HTMLElement {
       return filterRangesCache.get(node)! !== null
     }
 
-    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, [])) {
+    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, 1, [])) {
+      const parent: TreeViewSubTreeNodeElement | undefined = ancestors[ancestors.length - 1]
       let atLeastOneLeafMatches = false
 
       for (const leafNode of leafNodes) {
@@ -192,13 +418,11 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
 
       if (atLeastOneLeafMatches) {
-        expandAncestors(ancestors)
+        expandAncestors(...ancestors)
       } else {
-        const parent: TreeViewSubTreeNodeElement | undefined = ancestors.pop()
-
         if (parent) {
           if (cachedFilterFn(parent.node, query, mode)) {
-            expandAncestors(ancestors)
+            expandAncestors(...ancestors)
           } else {
             if (parent.getAttribute('data-generation') !== generation) {
               parent.collapse()
@@ -278,17 +502,18 @@ export class FilterableTreeViewElement extends HTMLElement {
 
   *eachDescendantDepthFirst(
     node: HTMLElement,
+    level: number,
     ancestry: TreeViewSubTreeNodeElement[],
   ): Generator<[NodeListOf<HTMLElement>, TreeViewSubTreeNodeElement[]]> {
     for (const subTreeItem of node.querySelectorAll<HTMLElement>(
-      `[role=treeitem][data-node-type='sub-tree'][aria-level='${ancestry.length + 1}']`,
+      `[role=treeitem][data-node-type='sub-tree'][aria-level='${level}']`,
     )) {
       const subTree = subTreeItem.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
-      yield* this.eachDescendantDepthFirst(subTree, [...ancestry, subTree])
+      yield* this.eachDescendantDepthFirst(subTree, level + 1, [...ancestry, subTree])
     }
 
     const leafNodes = node.querySelectorAll<HTMLElement>(
-      `[role=treeitem][data-node-type='leaf'][aria-level='${ancestry.length + 1}']`,
+      `[role=treeitem][data-node-type='leaf'][aria-level='${level}']`,
     )
 
     yield [leafNodes, ancestry]

@@ -133,6 +133,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     return (this.node.getAttribute('data-select-strategy') || 'descendants') as SelectStrategy
   }
 
+  get level(): number {
+    return parseInt(this.node.getAttribute('aria-level') || '0')
+  }
+
   disconnectedCallback() {
     this.#abortController.abort()
   }

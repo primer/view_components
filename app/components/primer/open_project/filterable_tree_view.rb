@@ -27,7 +27,7 @@ module Primer
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS = {
         label: "Include sub-items",
-        name: :include_sub_items,
+        name: :include_sub_items
       }
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.freeze
