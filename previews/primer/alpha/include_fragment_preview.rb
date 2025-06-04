@@ -10,12 +10,12 @@ module Primer
       # @label Playground
       # @param loading select [eager, lazy]
       def playground(loading: :eager)
-        render(Primer::Alpha::IncludeFragment.new(loading: loading, src: UrlHelpers.include_fragment_deferred_path)) { "Loading..." }
+        render(Primer::Alpha::IncludeFragment.new(loading: loading, src: UrlHelpers.primer_view_components.include_fragment_deferred_path)) { "Loading..." }
       end
 
       # @label Default options
       def default
-        render(Primer::Alpha::IncludeFragment.new(loading: :eager, src: UrlHelpers.include_fragment_deferred_path)) { "Loading..." }
+        render(Primer::Alpha::IncludeFragment.new(loading: :eager, src: UrlHelpers.primer_view_components.include_fragment_deferred_path)) { "Loading..." }
       end
     end
   end

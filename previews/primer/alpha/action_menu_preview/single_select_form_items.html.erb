@@ -1,7 +1,7 @@
 <% contents = -> (menu) do %>
   <% menu.with_item(
     label: "Repository",
-    href: action_menu_form_action_path(format: route_format),
+    href: primer_view_components.action_menu_form_action_path(format: route_format),
     form_arguments: {
       method: :post,
       inputs: [{
@@ -15,7 +15,7 @@
   ) %>
   <% menu.with_item(
     label: "Date",
-    href: action_menu_form_action_path(format: route_format),
+    href: primer_view_components.action_menu_form_action_path(format: route_format),
     form_arguments: {
       method: :post,
       inputs: [{

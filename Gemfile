@@ -33,7 +33,7 @@ gem "puma", "~> 6.6.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.3.8"
+gem "lookbook", "~> 2.3.9"
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 gem "kramdown", "~> 2.5"
@@ -66,7 +66,7 @@ group :development do
   gem "rubocop-rails-accessibility", "~> 1.0"
   gem "selenium-webdriver", "~> 4.31"
   gem "simplecov", "~> 0.22.0"
-  gem "simplecov-console", "~> 0.9.1"
+  gem "simplecov-console", "~> 0.9.3"
   gem "sprockets"
   gem "sprockets-rails"
   gem "thor"

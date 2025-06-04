@@ -310,7 +310,7 @@ module Primer
       # @label With deferred preloaded content
       #
       def with_deferred_preloaded_content
-        render(Primer::Alpha::ActionMenu.new(menu_id: "deferred-preload", preload: true, src: UrlHelpers.action_menu_deferred_preload_path)) do |menu|
+        render(Primer::Alpha::ActionMenu.new(menu_id: "deferred-preload", preload: true, src: UrlHelpers.primer_view_components.action_menu_deferred_preload_path)) do |menu|
           menu.with_show_button { "Menu with deferred and preloaded content" }
         end
       end

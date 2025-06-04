@@ -14,7 +14,7 @@
     <% base.with_item(label: "Copy text", tag: :"clipboard-copy", content_arguments: { value: "Text to copy" }, disabled: disable_items) %>
     <% base.with_item(
       label: "Submit form",
-      href: action_menu_form_action_path(format: route_format),
+      href: primer_view_components.action_menu_form_action_path(format: route_format),
       form_arguments: {
         name: "foo", value: "bar", method: :post
       },
