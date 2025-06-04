@@ -19,8 +19,6 @@ module Primer
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
-        super
-
         @system_arguments = deny_tag_argument(**system_arguments) || {}
         @system_arguments[:display] = :flex
       end
