@@ -1,4 +1,4 @@
-<%= primer_form_with(url: generic_form_submission_path(route_format)) do |f| %>
+<%= primer_form_with(url: primer_view_components.generic_form_submission_path(route_format)) do |f| %>
   <%= render(Primer::OpenProject::DangerDialog.new(
         title: "Delete dialog",
         form_arguments: { builder: f }

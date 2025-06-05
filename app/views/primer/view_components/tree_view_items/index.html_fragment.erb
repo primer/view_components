@@ -10,9 +10,9 @@
         <% end %>
 
         <% if loader == :skeleton %>
-          <% sub_tree.with_loading_skeleton(src: tree_view_items_path(loader: "skeleton", select_variant: select_variant)) %>
+          <% sub_tree.with_loading_skeleton(src: primer_view_components.tree_view_items_path(loader: "skeleton", select_variant: select_variant)) %>
         <% else %>
-          <% sub_tree.with_loading_spinner(src: tree_view_items_path(loader: "spinner", select_variant: select_variant)) %>
+          <% sub_tree.with_loading_spinner(src: primer_view_components.tree_view_items_path(loader: "spinner", select_variant: select_variant)) %>
         <% end %>
       <% end %>
     <% when :file %>

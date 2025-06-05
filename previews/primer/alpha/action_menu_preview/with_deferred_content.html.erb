@@ -1,10 +1,10 @@
 <% if nest_in_sub_menu %>
   <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
     <% menu.with_show_button { "Menu with deferred content" } %>
-    <% menu.with_sub_menu_item(label: "Sub-menu", menu_id: "deferred", src: action_menu_deferred_path) %>
+    <% menu.with_sub_menu_item(label: "Sub-menu", menu_id: "deferred", src: primer_view_components.action_menu_deferred_path) %>
   <% end %>
 <% else %>
-  <%= render(Primer::Alpha::ActionMenu.new(menu_id: "deferred", src: action_menu_deferred_path)) do |menu| %>
+  <%= render(Primer::Alpha::ActionMenu.new(menu_id: "deferred", src: primer_view_components.action_menu_deferred_path)) do |menu| %>
     <% menu.with_show_button { "Menu with deferred content" } %>
   <% end %>
 <% end %>

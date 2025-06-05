@@ -1,4 +1,4 @@
-<%= form_with(url: action_menu_form_action_path(format: route_format)) do |f| %>
+<%= form_with(url: primer_view_components.action_menu_form_action_path(format: route_format)) do |f| %>
   <% content = -> (base) do %>
     <% base.with_item(label: "Fast forward", data: { value: "fast_forward" }) %>
     <% base.with_item(label: "Recursive", data: { value: "recursive" }) %>
