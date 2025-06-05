@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.69.2
+
+### Patch Changes
+
+- [#3498](https://github.com/primer/view_components/pull/3498) [`e9a4a60`](https://github.com/opf/primer_view_components/commit/e9a4a6030a16a4622069884bd5d4c8fe49812d9b) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Update test allocations to match latest ViewComponent alpha release.
+
+- [#3483](https://github.com/primer/view_components/pull/3483) [`1165454`](https://github.com/opf/primer_view_components/commit/11654544e90cfe17603d8f6fc2b4f1256e82a846) Thanks [@HDinger](https://github.com/HDinger)! - Provide default id for clear button in text fields
+
+- [#3475](https://github.com/primer/view_components/pull/3475) [`28532ae`](https://github.com/opf/primer_view_components/commit/28532ae61c62adb8afe199be01302d0cb2485fec) Thanks [@langermank](https://github.com/langermank)! - Bump primitives + update snapshots
+
 ## 0.69.1
 
 ### Patch Changes
