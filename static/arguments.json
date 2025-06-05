@@ -34,9 +34,7 @@
     "short_name": "ActionBarDivider",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionBar::Item",
@@ -153,9 +151,7 @@
     "short_name": "ActionListFormWrapper",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionList::Heading",
@@ -408,9 +404,7 @@
     "short_name": "ActionMenuHeading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/heading/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionMenu::List",
@@ -613,9 +607,7 @@
     "short_name": "ActionMenuSubMenuItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/sub_menu_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/sub_menu_item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "AutoComplete",
@@ -1254,9 +1246,7 @@
     "short_name": "DropdownMenuItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "FormButton",
@@ -1561,9 +1551,7 @@
     "short_name": "LayoutSidebar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Menu",
@@ -3386,9 +3374,7 @@
     "short_name": "Base",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/base_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/base/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "AutoComplete",
@@ -3549,9 +3535,7 @@
     "short_name": "AutoCompleteNoResultItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Avatar",
@@ -3780,9 +3764,7 @@
     "short_name": "BreadcrumbsItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Button",
@@ -4861,9 +4843,7 @@
     "short_name": "TimelineItemBadge",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item/badge.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/badge/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Truncate",
@@ -4888,9 +4868,7 @@
     "short_name": "TruncateTruncateText",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate/truncate_text.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/truncate_text/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Blankslate",
@@ -5113,9 +5091,7 @@
     "short_name": "Content",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "IconButton",
@@ -5442,9 +5418,7 @@
     "short_name": "OpenProjectDangerDialogFormWrapper",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/danger_dialog/form_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/danger_dialog/form_wrapper/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "OpenProject::DragHandle",
@@ -5541,9 +5515,7 @@
     "short_name": "OpenProjectFileTreeViewDirectoryNode",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/file_tree_view/directory_node.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/directory_node/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "OpenProject::FileTreeView::FileNode",
@@ -5552,9 +5524,7 @@
     "short_name": "OpenProjectFileTreeViewFileNode",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/file_tree_view/file_node.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/file_node/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "OpenProject::FlexLayout",
@@ -5771,9 +5741,7 @@
     "short_name": "OpenProjectSidePanelSection",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/side_panel/section.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/side_panel/section/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "OpenProject::SkeletonBox",
