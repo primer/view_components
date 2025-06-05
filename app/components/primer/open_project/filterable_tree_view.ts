@@ -31,7 +31,6 @@ export class FilterableTreeViewElement extends HTMLElement {
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('treeViewNodeChecked', this, {signal})
-    this.addEventListener('treeViewBeforeNodeChecked', this, {signal})
     this.addEventListener('itemActivated', this, {signal})
     this.addEventListener('input', this, {signal})
   }
@@ -61,26 +60,6 @@ export class FilterableTreeViewElement extends HTMLElement {
       case 'treeViewNodeChecked':
         this.#handleTreeViewNodeChecked(event)
         break
-
-      case 'treeViewBeforeNodeChecked':
-        this.#handleTreeViewBeforeNodeChecked(event)
-        break
-    }
-  }
-
-  #handleTreeViewBeforeNodeChecked(event: CustomEvent<TreeViewNodeInfo[]>) {
-    if (!this.treeView) return
-
-    const nodeInfo = event.detail[0]
-    if (this.treeView.getNodeType(nodeInfo.node) !== 'sub-tree') return
-
-    const subTree = nodeInfo.node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
-
-    if (this.includeSubItemsCheckBox.checked) {
-      if (nodeInfo.checkedValue === 'true') {
-        this.#saveNodeState(subTree)
-        this.#disableSubTree(subTree)
-      }
     }
   }
 
@@ -100,8 +79,14 @@ export class FilterableTreeViewElement extends HTMLElement {
     // If the sub-tree has been unchecked, allow all child nodes to be checked (i.e. enable them)
     // and restore whatever state they were in before.
     if (nodeInfo.checkedValue === 'false') {
-      this.#enableSubTree(subTree)
       this.#restoreNodeState(subTree)
+    } else {
+      this.#saveNodeState(subTree)
+      this.#disableSubTree(subTree)
+
+      for (const node of subTree.eachDescendantNode()) {
+        this.treeView.setNodeCheckedValue(node, 'true')
+      }
     }
   }
 
@@ -114,27 +99,20 @@ export class FilterableTreeViewElement extends HTMLElement {
       for (const leafNode of leafNodes) {
         const checked = this.treeView.getNodeCheckedValue(leafNode) === 'true'
 
-        // There is no need to record the state of a node that isn't checked, as a node cannot be
-        // both disabled _and_ unchecked.
-        if (checked) {
-          descendantStates.set(leafNode, {
-            checked,
-            disabled: leafNode.getAttribute('aria-disabled') === 'true',
-          })
-        }
+        descendantStates.set(leafNode, {
+          checked,
+          disabled: leafNode.getAttribute('aria-disabled') === 'true',
+        })
       }
 
       for (const ancestor of ancestors) {
+        if (ancestor === subTree) continue
         const checked = this.treeView.getNodeCheckedValue(ancestor.node) === 'true'
 
-        // There is no need to record the state of a node that isn't checked, as a node cannot be
-        // both disabled _and_ unchecked.
-        if (checked) {
-          descendantStates.set(ancestor.node, {
-            checked,
-            disabled: ancestor.node.getAttribute('aria-disabled') === 'true',
-          })
-        }
+        descendantStates.set(ancestor.node, {
+          checked,
+          disabled: ancestor.node.getAttribute('aria-disabled') === 'true',
+        })
       }
     }
 
@@ -147,29 +125,19 @@ export class FilterableTreeViewElement extends HTMLElement {
 
     const descendantStates = this.#stateMap.get(subTree)!
 
-    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
-      for (const leafNode of leafNodes) {
-        const descendantState = descendantStates.get(leafNode) || this.#defaultNodeState
+    for (const [element, state] of descendantStates.entries()) {
+      let node = element
 
-        this.treeView.setNodeCheckedValue(leafNode, descendantState.checked ? 'true' : 'false')
-
-        if (descendantState.disabled) {
-          leafNode.setAttribute('aria-disabled', 'true')
-        } else {
-          leafNode.removeAttribute('aria-disabled')
-        }
+      if (element instanceof TreeViewSubTreeNodeElement) {
+        node = element.node
       }
 
-      for (const ancestor of ancestors) {
-        const descendantState = descendantStates.get(ancestor.node) || this.#defaultNodeState
+      this.treeView.setNodeCheckedValue(node, state.checked ? 'true' : 'false')
 
-        this.treeView.setNodeCheckedValue(ancestor.node, descendantState.checked ? 'true' : 'false')
-
-        if (descendantState.disabled) {
-          ancestor.node.setAttribute('aria-disabled', 'true')
-        } else {
-          ancestor.node.removeAttribute('aria-disabled')
-        }
+      if (state.disabled) {
+        node.setAttribute('aria-disabled', 'true')
+      } else {
+        node.removeAttribute('aria-disabled')
       }
     }
 
@@ -185,19 +153,6 @@ export class FilterableTreeViewElement extends HTMLElement {
       for (const ancestor of ancestors) {
         if (ancestor === subTree) continue
         ancestor.node.setAttribute('aria-disabled', 'true')
-      }
-    }
-  }
-
-  #enableSubTree(subTree: TreeViewSubTreeNodeElement) {
-    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
-      for (const leafNode of leafNodes) {
-        leafNode.removeAttribute('aria-disabled')
-      }
-
-      for (const ancestor of ancestors) {
-        if (ancestor === subTree) continue
-        ancestor.node.removeAttribute('aria-disabled')
       }
     }
   }
@@ -226,35 +181,59 @@ export class FilterableTreeViewElement extends HTMLElement {
     if (!this.treeView) return
     if (event.type !== 'input') return
 
+    this.#applyFilterOptions()
+
     if (this.includeSubItemsCheckBox.checked) {
-      for (const [, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, 1, [])) {
-        for (const ancestor of ancestors) {
-          if (this.treeView.getNodeCheckedValue(ancestor.node) === 'true') {
-            if (!this.#stateMap.has(ancestor)) {
-              this.#saveNodeState(ancestor)
-            }
-
-            for (const node of ancestor.eachDescendantNode()) {
-              this.treeView.setNodeCheckedValue(node, 'true')
-            }
-
-            this.#disableSubTree(ancestor)
-
-            break
-          }
-
-          if (this.#stateMap.has(ancestor)) break
-        }
-      }
+      this.#includeSubItems()
     } else {
-      for (const subTree of this.#stateMap.keys()) {
-        this.#restoreNodeState(subTree)
+      this.#potentiallyExcludeSubItems()
+    }
+  }
+
+  #includeSubItems() {
+    if (!this.treeView) return
+
+    const checkedSubTreeNodes: NodeListOf<HTMLElement> = this.treeView.querySelectorAll(
+      '[role=treeitem][data-node-type="sub-tree"][aria-checked=true]',
+    )
+
+    let minLevel: number | null = null
+    const subTreesByDepth: Map<number, TreeViewSubTreeNodeElement[]> = new Map()
+
+    for (const checkedSubTreeNode of checkedSubTreeNodes) {
+      const checkedSubTree = checkedSubTreeNode.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
+      if (!checkedSubTree) continue
+
+      if (!minLevel || checkedSubTree.level < minLevel) {
+        minLevel = checkedSubTree.level
       }
 
-      this.#stateMap.clear()
+      if (subTreesByDepth.has(checkedSubTree.level)) {
+        subTreesByDepth.get(checkedSubTree.level)!.push(checkedSubTree)
+      } else {
+        subTreesByDepth.set(checkedSubTree.level, [checkedSubTree])
+      }
     }
 
-    this.#applyFilterOptions()
+    if (!minLevel) return
+
+    const shallowestSubTrees = subTreesByDepth.get(minLevel)
+    if (!shallowestSubTrees) return
+
+    for (const subTree of shallowestSubTrees) {
+      this.#saveNodeState(subTree)
+      this.#disableSubTree(subTree)
+
+      for (const node of subTree.eachDescendantNode()) {
+        this.treeView.setNodeCheckedValue(node, 'true')
+      }
+    }
+  }
+
+  #potentiallyExcludeSubItems() {
+    for (const subTree of this.#stateMap.keys()) {
+      this.#restoreNodeState(subTree)
+    }
   }
 
   set filterFn(newFn: FilterFn) {
