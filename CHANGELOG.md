@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.69.3
+
+### Patch Changes
+
+- [#318](https://github.com/opf/primer_view_components/pull/318) [`7e97ace`](https://github.com/opf/primer_view_components/commit/7e97ace3496d3d4118996fec059247642d023147) Thanks [@HDinger](https://github.com/HDinger)! - Add routes to gemspec
+
 ## 0.69.2
 
 ### Patch Changes
