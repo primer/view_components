@@ -24,13 +24,13 @@ Primer/NoTagMemoize:
 
 ### erb-lint
 
-To get access to our ERB linters, create a `.erb-linters/primer.rb` file with:
+To get access to our ERB linters, create a `.erb_linters/primer.rb` file with:
 
 ```rb
 require "primer/view_components/linters"
 ```
 
-Then, you can enable them in `.erb-lint.yml`. E.g.:
+Then, you can enable them in `.erb_lint.yml`. E.g.:
 
 ```yml
 linters:
@@ -38,7 +38,7 @@ linters:
     enabled: true
 ```
 
-If you also want to add our cops when linting ERB, you can modify your `.erb-lint.yml` to have:
+If you also want to add our cops when linting ERB, you can modify your `.erb_lint.yml` to have:
 
 ```yml
 linters:

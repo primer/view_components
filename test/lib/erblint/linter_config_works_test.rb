@@ -6,7 +6,7 @@ class LinterConfigWorksTest < ErblintTestCase
   # The ability to share rules and configs from other gems in erb_lint is not well-documented.
   # This test validates that our recommended setup works.
   def test_asserts_recommended_setup_works
-    erb_lint_config = ERBLint::RunnerConfig.new(file_loader.yaml(".erb-lint.yml"), file_loader)
+    erb_lint_config = ERBLint::RunnerConfig.new(file_loader.yaml(".erb_lint.yml"), file_loader)
 
     rules_enabled_in_accessibility_config = 0
     erb_lint_config.to_hash["linters"].each do |linter|
