@@ -24,7 +24,7 @@ Primer/NoTagMemoize:
 
 ### erb-lint
 
-To get access to our ERB linters, create a `.erb-linters/primer.rb` file with:
+To get access to our ERB linters, create a `.erb_linters/primer.rb` file with:
 
 ```rb
 require "primer/view_components/linters"
