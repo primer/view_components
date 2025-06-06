@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.43.3
+
+### Patch Changes
+
+- [#3518](https://github.com/primer/view_components/pull/3518) [`c25c43c`](https://github.com/primer/view_components/commit/c25c43cd9f1646943154a3c501fadba569353488) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Replace deprecated lookbook helper define_param_input with add_input_type
+
 ## 0.43.2
 
 ### Patch Changes
