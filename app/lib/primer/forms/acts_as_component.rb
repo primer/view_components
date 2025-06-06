@@ -71,8 +71,6 @@ module Primer
 
         if base_path
           @base_template_path = File.dirname(base_path)
-        else
-          warn "Could not identify the template for #{self}"
         end
       end
 
