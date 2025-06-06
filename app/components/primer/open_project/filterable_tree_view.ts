@@ -26,7 +26,6 @@ export class FilterableTreeViewElement extends HTMLElement {
   #filterFn?: FilterFn
   #abortController: AbortController
   #stateMap: Map<TreeViewSubTreeNodeElement, Map<HTMLElement, NodeState>> = new Map()
-  #defaultNodeState: NodeState = {checked: false, disabled: false}
 
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
@@ -54,8 +53,8 @@ export class FilterableTreeViewElement extends HTMLElement {
   #handleTreeViewEvent(origEvent: Event) {
     const event = origEvent as CustomEvent<TreeViewNodeInfo[]>
 
-    // This event only fires if someone actually activates the check mark, i.e. does not fire when
-    // calling this.treeView.setNodeCheckedValue, which happens in this.#applyFilterOptions.
+    // NOTE: This event only fires if someone actually activates the check mark, i.e. does not fire
+    // when calling this.treeView.setNodeCheckedValue.
     switch (origEvent.type) {
       case 'treeViewNodeChecked':
         this.#handleTreeViewNodeChecked(event)
@@ -76,47 +75,14 @@ export class FilterableTreeViewElement extends HTMLElement {
 
     const subTree = nodeInfo.node.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
 
-    // If the sub-tree has been unchecked, allow all child nodes to be checked (i.e. enable them)
-    // and restore whatever state they were in before.
     if (nodeInfo.checkedValue === 'false') {
+      // If the sub-tree has been unchecked, restore whatever state they were in before. We don't
+      // need to explicitly enable the sub-tree because restoring will handle setting the enabled
+      // or disabled state per-node.
       this.#restoreNodeState(subTree)
     } else {
-      this.#saveNodeState(subTree)
-      this.#disableSubTree(subTree)
-
-      for (const node of subTree.eachDescendantNode()) {
-        this.treeView.setNodeCheckedValue(node, 'true')
-      }
+      this.#includeSubItemsUnder(subTree)
     }
-  }
-
-  #saveNodeState(subTree: TreeViewSubTreeNodeElement) {
-    if (!this.treeView) return
-
-    const descendantStates: Map<HTMLElement, NodeState> = new Map()
-
-    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
-      for (const leafNode of leafNodes) {
-        const checked = this.treeView.getNodeCheckedValue(leafNode) === 'true'
-
-        descendantStates.set(leafNode, {
-          checked,
-          disabled: leafNode.getAttribute('aria-disabled') === 'true',
-        })
-      }
-
-      for (const ancestor of ancestors) {
-        if (ancestor === subTree) continue
-        const checked = this.treeView.getNodeCheckedValue(ancestor.node) === 'true'
-
-        descendantStates.set(ancestor.node, {
-          checked,
-          disabled: ancestor.node.getAttribute('aria-disabled') === 'true',
-        })
-      }
-    }
-
-    this.#stateMap.set(subTree, descendantStates)
   }
 
   #restoreNodeState(subTree: TreeViewSubTreeNodeElement) {
@@ -133,28 +99,12 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
 
       this.treeView.setNodeCheckedValue(node, state.checked ? 'true' : 'false')
-
-      if (state.disabled) {
-        node.setAttribute('aria-disabled', 'true')
-      } else {
-        node.removeAttribute('aria-disabled')
-      }
+      this.treeView.setNodeDisabledValue(node, state.disabled)
     }
 
+    // once node state has been restored, there's no reason to keep it around - it will be saved
+    // again if this sub-tree gets checked
     this.#stateMap.delete(subTree)
-  }
-
-  #disableSubTree(subTree: TreeViewSubTreeNodeElement) {
-    for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(subTree, subTree.level, [])) {
-      for (const leafNode of leafNodes) {
-        leafNode.setAttribute('aria-disabled', 'true')
-      }
-
-      for (const ancestor of ancestors) {
-        if (ancestor === subTree) continue
-        ancestor.node.setAttribute('aria-disabled', 'true')
-      }
-    }
   }
 
   get filterModeControl(): SegmentedControlElement | null {
@@ -186,51 +136,50 @@ export class FilterableTreeViewElement extends HTMLElement {
     if (this.includeSubItemsCheckBox.checked) {
       this.#includeSubItems()
     } else {
-      this.#potentiallyExcludeSubItems()
+      this.#restoreAllNodeStates()
     }
   }
 
+  // Automatically checks all children of checked nodes, including leaf nodes and sub-trees. It does so
+  // by finding the set of shallowest checked sub-tree nodes, i.e. the set of checked sub-tree nodes with
+  // the lowest level value. It then saves their node state, disables them, and checks all their children.
+  // Rather than storing child node information for every checked sub-tree regardless of depth, finding
+  // the set of shallowest sub-tree nodes allows the component to store the minimum amount of node
+  // information and simplifies the process of restoring it later.
   #includeSubItems() {
     if (!this.treeView) return
 
-    const checkedSubTreeNodes: NodeListOf<HTMLElement> = this.treeView.querySelectorAll(
-      '[role=treeitem][data-node-type="sub-tree"][aria-checked=true]',
-    )
-
-    let minLevel: number | null = null
-    const subTreesByDepth: Map<number, TreeViewSubTreeNodeElement[]> = new Map()
-
-    for (const checkedSubTreeNode of checkedSubTreeNodes) {
-      const checkedSubTree = checkedSubTreeNode.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement
-      if (!checkedSubTree) continue
-
-      if (!minLevel || checkedSubTree.level < minLevel) {
-        minLevel = checkedSubTree.level
-      }
-
-      if (subTreesByDepth.has(checkedSubTree.level)) {
-        subTreesByDepth.get(checkedSubTree.level)!.push(checkedSubTree)
-      } else {
-        subTreesByDepth.set(checkedSubTree.level, [checkedSubTree])
-      }
-    }
-
-    if (!minLevel) return
-
-    const shallowestSubTrees = subTreesByDepth.get(minLevel)
-    if (!shallowestSubTrees) return
-
-    for (const subTree of shallowestSubTrees) {
-      this.#saveNodeState(subTree)
-      this.#disableSubTree(subTree)
-
-      for (const node of subTree.eachDescendantNode()) {
-        this.treeView.setNodeCheckedValue(node, 'true')
+    for (const subTree of this.treeView.rootSubTreeNodes()) {
+      for (const checkedSubTree of this.eachShallowestCheckedSubTree(subTree)) {
+        this.#includeSubItemsUnder(checkedSubTree)
       }
     }
   }
 
-  #potentiallyExcludeSubItems() {
+  // Records the state of all the nodes in the given sub-tree. Node state includes whether or not the
+  // node is checked, and whether or not it is disabled. Or at least, that's what it included when this
+  // comment was first written. Check the members of the NodeState type above for up-to-date info.
+  #includeSubItemsUnder(subTree: TreeViewSubTreeNodeElement) {
+    if (!this.treeView) return
+
+    const descendantStates: Map<HTMLElement, NodeState> = new Map()
+
+    for (const node of subTree.eachDescendantNode()) {
+      descendantStates.set(node as HTMLElement, {
+        checked: this.treeView.getNodeCheckedValue(node) === 'true',
+        disabled: this.treeView.getNodeDisabledValue(node),
+      })
+
+      this.treeView.setNodeCheckedValue(node, 'true')
+      this.treeView.setNodeDisabledValue(node, true)
+    }
+
+    this.#stateMap.set(subTree, descendantStates)
+  }
+
+  // Revert all nodes back to their saved state, i.e. from before we automatically checked and disabled
+  // everything.
+  #restoreAllNodeStates() {
     for (const subTree of this.#stateMap.keys()) {
       this.#restoreNodeState(subTree)
     }
@@ -282,6 +231,7 @@ export class FilterableTreeViewElement extends HTMLElement {
 
     switch (filterMode) {
       case 'selected': {
+        // Only match nodes that have been checked
         if (this.treeView?.getNodeCheckedValue(node) !== 'false') {
           return ranges
         }
@@ -321,17 +271,14 @@ export class FilterableTreeViewElement extends HTMLElement {
    *       satisfy the other filter criteria described here.
    *    2. The "All" option causes the component to show all nodes, provided they also satisfy the other
    *       filter criteria described here.
-   * 3. A check box labeled "Include sub-items" that affects how nodes are checked. Checking this box will
-   *    automatically check and disable all child nodes under currently checked parents. Subsequently
-   *    checking an unchecked parent will check and disable all child nodes. Unchecking a parent restores
-   *    any previously checked children so as not to "undo" a user's selections.
    *
    * Whether or not a node matches is determined by a filter function with a `FilterFn` signature. The
    * component defines a default filter function, but a user-defined one can also be provided. The filter
    * function is expected to return an array of `Range` objects which #applyFilterOptions uses to highlight
    * node text that matches the query string. The default filter function identifies matching node text by
    * looking for an exact substring match, operating on a lowercased version of both the query string and
-   * the node text.
+   * the node text. For an exact description of the expected return values of the filter function, please
+   * see the FilterFn type above.
    *
    * It should be noted that the returned `Range` objects must have starting and ending values that refer
    * to offsets inside the same text node. Not adhering to this rule may lead to undefined behavior.
@@ -342,9 +289,6 @@ export class FilterableTreeViewElement extends HTMLElement {
    *    1. The filter function returns null.
    * 2. Disabled: Nodes are disabled if:
    *    1. The node is a child of a checked parent and the "Include sub-items" check box is checked.
-   * 3. Checked: Nodes are checked if one of the following is true:
-   *    1. The node was manually checked by the user.
-   *    2. The node is a child of a checked parent and the "Include sub-items" check box is checked.
    * 4. Expanded: Sub-tree nodes are expanded if:
    *    1. For at least one of the node's children, including descendants, the filter function returns a
    *       truthy value.
@@ -373,6 +317,10 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
     }
 
+    // This function is called in the loop below for both leaf  nodes and sub-tree nodes to determine
+    // if they match, and subsequently whether or not to hide them. However, it serves a secondary purpose
+    // as well in that it remembers the range information returned by the filter function so it can be
+    // used to highlight matching ranges later.
     const cachedFilterFn = (node: HTMLElement, queryStr: string, filterMode?: string): boolean => {
       if (!filterRangesCache.has(node)) {
         filterRangesCache.set(node, this.filterFn(node, queryStr, filterMode))
@@ -381,6 +329,19 @@ export class FilterableTreeViewElement extends HTMLElement {
       return filterRangesCache.get(node)! !== null
     }
 
+    /* We iterate depth-first here in order to be able to examine the most deeply nested leaf nodes
+     * before their parents. This enables us to easily hide the parent if none of its children match.
+     * To handle expanding and collapsing ancestors, the algorithm iterates over the provided ancestor
+     * chain, expanding "upwards" to the root.
+     *
+     * Using this technique does mean it's possible to iterate over the same ancestor multiple times.
+     * For example, consider two nodes that share the same ancestor. Node A contains matching children,
+     * but node B does not. The algorithm below will visit node A first and expand it and all its
+     * ancestors. Next, the algorithm will visit node B and collapse all its ancestors. To avoid this,
+     * the algorithm attaches a random "generation ID" to each node visited. If the generation ID
+     * matches when visiting a particular node, we know that node has already been visited and should
+     * not be hidden or collapsed.
+     */
     for (const [leafNodes, ancestors] of this.eachDescendantDepthFirst(this.treeViewList, 1, [])) {
       const parent: TreeViewSubTreeNodeElement | undefined = ancestors[ancestors.length - 1]
       let atLeastOneLeafMatches = false
@@ -392,8 +353,6 @@ export class FilterableTreeViewElement extends HTMLElement {
         } else {
           leafNode.closest('li')?.setAttribute('hidden', 'hidden')
         }
-
-        leafNode.setAttribute('data-generation', generation)
       }
 
       if (atLeastOneLeafMatches) {
@@ -401,8 +360,11 @@ export class FilterableTreeViewElement extends HTMLElement {
       } else {
         if (parent) {
           if (cachedFilterFn(parent.node, query, mode)) {
+            // sub-tree matched, so expand ancestors
             expandAncestors(...ancestors)
           } else {
+            // this node has already been marked by the current generation and is therefore
+            // a shared ancestor - don't collapse or hide it
             if (parent.getAttribute('data-generation') !== generation) {
               parent.collapse()
               parent.setAttribute('hidden', 'hidden')
@@ -412,6 +374,8 @@ export class FilterableTreeViewElement extends HTMLElement {
       }
     }
 
+    // convert range map into a 1-dimensional array with no nulls so it can be given to
+    // #applyHighlights (and therefore CSS.highlights.set) more easily
     const allRanges = Array.from(filterRangesCache.values())
       .flat()
       .filter(r => r !== null)
@@ -438,7 +402,6 @@ export class FilterableTreeViewElement extends HTMLElement {
   }
 
   #applyManualHighlights(ranges: Range[]) {
-    // Rebuild the text node's parent contents
     const textNode = ranges[0].startContainer
     const parent = textNode.parentNode!
     const originalText = textNode.textContent!
@@ -446,12 +409,12 @@ export class FilterableTreeViewElement extends HTMLElement {
     let lastIndex = 0
 
     for (const {startOffset, endOffset} of ranges) {
-      // Text before the highlight
+      // text before the highlight
       if (startOffset > lastIndex) {
         fragments.push(document.createTextNode(originalText.slice(lastIndex, startOffset)))
       }
 
-      // Highlighted text
+      // highlighted text
       const mark = document.createElement('mark')
       mark.textContent = originalText.slice(startOffset, endOffset)
       fragments.push(mark)
@@ -459,12 +422,12 @@ export class FilterableTreeViewElement extends HTMLElement {
       lastIndex = endOffset
     }
 
-    // Remaining text after the last highlight
+    // remaining text after the last highlight
     if (lastIndex < originalText.length) {
       fragments.push(document.createTextNode(originalText.slice(lastIndex)))
     }
 
-    // Replace original text node with fragments
+    // replace original text node with our text + <mark> elements
     for (const frag of fragments.reverse()) {
       parent.insertBefore(frag, textNode.nextSibling)
     }
@@ -473,12 +436,17 @@ export class FilterableTreeViewElement extends HTMLElement {
   }
 
   #removeHighlights() {
+    // quick-and-dirty way of ignoring any existing <mark> elements and restoring
+    // the original text
     for (const mark of this.querySelectorAll('mark')) {
       if (!mark.parentElement) continue
       mark.parentElement.replaceChildren(mark.parentElement.textContent!)
     }
   }
 
+  // Iterates over the nodes in the given sub-tree in depth-first order, yielding a list of leaf nodes
+  // and an array of ancestor nodes. It uses the aria-level information attached to each node to determine
+  // the next level of the tree to visit.
   *eachDescendantDepthFirst(
     node: HTMLElement,
     level: number,
@@ -496,6 +464,19 @@ export class FilterableTreeViewElement extends HTMLElement {
     )
 
     yield [leafNodes, ancestry]
+  }
+
+  // Yields only the shallowest (i.e. lowest depth) sub-tree nodes that are checked, i.e. does not
+  // visit a sub-tree's children if that sub-tree is checked.
+  *eachShallowestCheckedSubTree(root: TreeViewSubTreeNodeElement): Generator<TreeViewSubTreeNodeElement> {
+    if (this.treeView?.getNodeCheckedValue(root.node) === 'true') {
+      yield root
+      return // do not descend further
+    }
+
+    for (const childSubTree of root.eachDirectDescendantSubTreeNode()) {
+      yield* this.eachShallowestCheckedSubTree(childSubTree)
+    }
   }
 }
 

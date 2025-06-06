@@ -80,6 +80,14 @@ export class TreeViewElement extends HTMLElement {
     })
   }
 
+  rootLeafNodes(): NodeListOf<HTMLElement> {
+    return this.querySelectorAll(':scope > ul > li > .TreeViewItemContainer [role=treeitem]')
+  }
+
+  rootSubTreeNodes(): NodeListOf<TreeViewSubTreeNodeElement> {
+    return this.querySelectorAll(':scope > ul > tree-view-sub-tree-node')
+  }
+
   #autoExpandFrom(root: HTMLElement) {
     for (const element of root.querySelectorAll('[aria-expanded=true]')) {
       this.expandAncestorsForNode(element as HTMLElement)
@@ -359,6 +367,14 @@ export class TreeViewElement extends HTMLElement {
 
   getNodeDisabledValue(node: Element): boolean {
     return node.getAttribute('aria-disabled') === 'true'
+  }
+
+  setNodeDisabledValue(node: Element, disabled: boolean) {
+    if (disabled) {
+      node.setAttribute('aria-disabled', 'true')
+    } else {
+      node.removeAttribute('aria-disabled')
+    }
   }
 
   nodeHasCheckBox(node: Element): boolean {
