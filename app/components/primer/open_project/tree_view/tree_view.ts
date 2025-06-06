@@ -52,11 +52,15 @@ export class TreeViewElement extends HTMLElement {
         const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
         newInput.removeAttribute('data-target')
         newInput.removeAttribute('form')
-        newInput.value = JSON.stringify({
-          value: this.getFormInputValueForNode(node),
-          path: this.getNodePath(node),
-        })
 
+        const payload: {path: string[]; value?: string} = {
+          path: this.getNodePath(node),
+        }
+
+        const inputValue = this.getFormInputValueForNode(node)
+        if (inputValue) payload.value = inputValue
+
+        newInput.value = JSON.stringify(payload)
         newInputs.push(newInput)
       }
 
