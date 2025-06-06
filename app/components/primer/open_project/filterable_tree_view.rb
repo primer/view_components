@@ -3,6 +3,99 @@
 module Primer
   module OpenProject
     # A TreeView and associated filter controls for searching nested hierarchies.
+    #
+    # ## Filter controls
+    #
+    # `FilterableTreeView`s can be filtered using two controls:
+    #
+    # 1. A free-form query string from a text input field.
+    # 2. A `SegmentedControl` with two options (by default):
+    #    1. The "Selected" option causes the component to only show checked nodes, provided they also satisfy the other
+    #       filter criteria described here.
+    #    2. The "All" option causes the component to show all nodes, provided they also satisfy the other filter
+    #       criteria described here.
+    #
+    # ## Custom filter modes
+    #
+    # In addition to the default filter modes of `'all'` and `'selected'` described above, `FilterableTreeView` supports
+    # adding custom filter modes. Adding a filter mode will cause its label to appear in the `SegmentedControl` in the
+    # toolbar, and will be passed as the third argument to the filter function (see below).
+    #
+    # Here's how to add a custom filter mode in addition to the default ones:
+    #
+    # ```erb
+    # <%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>
+    #   <%# remove this line to prevent adding the default modes %>
+    #   <% tree_view.with_default_filter_modes %>
+    #   <% tree_view.with_filter_mode(:name, any_custom: :system_arguments)
+    # <% end %>
+    # ```
+    #
+    # ## Filter behavior
+    #
+    # By default, matching node text is identified by looking for an exact substring match, operating on a lowercased
+    # version of both the query string and the node text. For more information, and to provide a customized filter
+    # function, please see the section titled "Customizing the filter function" below.
+    #
+    # Nodes that match the filter appear as normal; nodes that do not match are presented as follows:
+    #
+    # 1. Leaf nodes are hidden.
+    # 2. Sub-tree nodes with no matching children are hidden.
+    # 3. Sub-tree nodes with at least one matching child are disabled but still visible.
+    #
+    # ## Checking behavior
+    #
+    # By default, checking a node in a `FilterableTreeView` checks only that node (i.e. no child nodes are checked).
+    # To aide in checking children in deeply nested or highly populated hierarchies, a third control exists in the
+    # toolbar: the "Include sub-items" check box. If this feature is turned on, checking sub-tree nodes causes all
+    # children, both leaf and sub-tree nodes, to also be checked recursively. Moreover, turning this feature on will
+    # cause the children of any previously checked nodes to be checked recursively. Unchecking a node while in
+    # "Include sub-items" mode will restore that sub-tree and all its children to their previously checked state, so as
+    # not to permanently override a user's selections. Unchecking the "Include sub-items" check box has a similar effect,
+    # i.e. restores all previous user selections under currently checked sub-trees.
+    #
+    # ## JavaScript API
+    #
+    # `FilterableTreeView` does not yet have an extensive JavaScript API, but this may change in the future as the
+    # component is further developed to fit additional use-cases.
+    #
+    # ### Customizing the filter function
+    #
+    # The filter function can be customized by setting the value of the `filterFn` property to a function with the
+    # following signature:
+    #
+    # ```typescript
+    # export type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null
+    # ```
+    #
+    # This function will be called once for each node in the tree every time filter controls change. The function is
+    # called with the following arguments:
+    #
+    # |Argument    |Description                                                      |
+    # |:-----------|:----------------------------------------------------------------|
+    # |`node`      |The HTML node element, i.e. the element with `role=treeitem` set.|
+    # |`query`     |The query string.                                                |
+    # |`filterMode`|The filter mode, one of `'all'` or `'selected'`.                 |
+    #
+    # The component expects the filter function to return specific values depending on the type of match:
+    #
+    # 1. No match - return `null`
+    # 2. Match but no highlights - return an empty array (i.e. when the query string is empty)
+    # 3. Match with highlights - return a non-empty array of `Range` objects
+    #
+    # Example:
+    #
+    # ```javascript
+    # const filterableTreeView = document.querySelector('filterable-tree-view')
+    # filterableTreeView.filterFn = (node, query, filterMode) => {
+    #   // custom filter implementation here
+    # }
+    # ```
+    #
+    # ### Events
+    #
+    # Currently `FilterableTreeView` does not emit any events aside from the events already emitted by the `TreeView`
+    # component.
     class FilterableTreeView < Primer::Component
       delegate :with_leaf, :with_sub_tree, to: :@tree_view
 
@@ -51,6 +144,12 @@ module Primer
 
       DEFAULT_NO_RESULTS_NODE_ARGUMENTS.freeze
 
+      # @param tree_view_arguments [Hash] Arguments that will be passed to the underlying <%= link_to_component(Primer::OpenProject::TreeView) %> component.
+      # @param form_arguments [Hash] Form arguments that will be passed to the underlying <%= link_to_component(Primer::OpenProject::TreeView) %> component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
+      # @param filter_input_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::TextField) %> component.
+      # @param filter_mode_control_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::SegmentedControl) %> component.
+      # @param include_sub_items_check_box_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::CheckBox) %> component.
+      # @param no_results_node_arguments [Hash] Arguments that will be passed to a <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %> component that appears when no items match the filter criteria.
       def initialize(
         tree_view_arguments: {},
         form_arguments: {},
