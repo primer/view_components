@@ -20,7 +20,12 @@ class CopTestCase < Minitest::Test
   def investigate(cop, src, filename = nil)
     processed_source = processed_source(src, filename)
     commissioner = RuboCop::Cop::Commissioner.new([cop], [], raise_error: true)
-    commissioner.investigate(processed_source)
+    result = commissioner.investigate(processed_source)
+    # Store offenses in the cop for backward compatibility with existing tests
+    def cop.offenses
+      @offenses ||= []
+    end
+    cop.instance_variable_set(:@offenses, result.offenses)
     commissioner
   end
 
