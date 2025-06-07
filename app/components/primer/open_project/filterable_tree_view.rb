@@ -6,7 +6,7 @@ module Primer
     #
     # ## Filter controls
     #
-    # `FilterableTreeView`s can be filtered using two controls:
+    # `FilterableTreeView`s can be filtered using two controls, both present in the toolbar above the tree:
     #
     # 1. A free-form query string from a text input field.
     # 2. A `SegmentedControl` with two options (by default):
@@ -27,7 +27,7 @@ module Primer
     # <%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>
     #   <%# remove this line to prevent adding the default modes %>
     #   <% tree_view.with_default_filter_modes %>
-    #   <% tree_view.with_filter_mode(:name, any_custom: :system_arguments)
+    #   <% tree_view.with_filter_mode(:name, system_arguments)
     # <% end %>
     # ```
     #
@@ -68,19 +68,19 @@ module Primer
     # export type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null
     # ```
     #
-    # This function will be called once for each node in the tree every time filter controls change. The function is
-    # called with the following arguments:
+    # This function will be called once for each node in the tree every time filter controls change (i.e. when the
+    # filter mode or query string are altered). The function is called with the following arguments:
     #
     # |Argument    |Description                                                      |
     # |:-----------|:----------------------------------------------------------------|
     # |`node`      |The HTML node element, i.e. the element with `role=treeitem` set.|
     # |`query`     |The query string.                                                |
-    # |`filterMode`|The filter mode, one of `'all'` or `'selected'`.                 |
+    # |`filterMode`|The filter mode, either `'all'` or `'selected'`.                 |
     #
     # The component expects the filter function to return specific values depending on the type of match:
     #
     # 1. No match - return `null`
-    # 2. Match but no highlights - return an empty array (i.e. when the query string is empty)
+    # 2. Match but no highlights (eg. when the query string is empty) - return an empty array
     # 3. Match with highlights - return a non-empty array of `Range` objects
     #
     # Example:
@@ -91,6 +91,12 @@ module Primer
     #   // custom filter implementation here
     # }
     # ```
+    #
+    # You can read about `Range` objects here: https://developer.mozilla.org/en-US/docs/Web/API/Range.
+    #
+    # For a complete example demonstrating how to implement a working filter function complete with range highlighting,
+    # see the default filter function available in the `FilterableTreeViewElement` JavaScript class, which is part of
+    # the Primer source code.
     #
     # ### Events
     #
