@@ -110,6 +110,15 @@ module Primer
 
         assert_equal error.message, "FilteredTreeView does not support asynchronous loading"
       end
+
+      def test_custom_filter_modes
+        render_inline(Primer::OpenProject::FilterableTreeView.new) do |tree|
+          tree.with_default_filter_modes
+          tree.with_filter_mode(name: :foo, label: "Foo")
+        end
+
+        assert_selector "segmented-control li", text: "Foo"
+      end
     end
   end
 end

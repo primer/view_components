@@ -27,7 +27,7 @@ module Primer
     # <%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>
     #   <%# remove this line to prevent adding the default modes %>
     #   <% tree_view.with_default_filter_modes %>
-    #   <% tree_view.with_filter_mode(:name, system_arguments)
+    #   <% tree_view.with_filter_mode(name: "Custom", system_arguments)
     # <% end %>
     # ```
     #
