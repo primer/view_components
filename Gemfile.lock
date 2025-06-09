@@ -56,7 +56,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.1.9)
+    bigdecimal (3.2.2)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
     builder (3.3.0)
@@ -104,7 +104,7 @@ GEM
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.16.3)
-    hashdiff (1.1.0)
+    hashdiff (1.2.0)
     htmlbeautifier (1.4.3)
     htmlentities (4.3.4)
     i18n (1.14.7)
@@ -293,7 +293,7 @@ GEM
       mutex_m
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
-    webmock (3.23.1)
+    webmock (3.25.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
