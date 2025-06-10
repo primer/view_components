@@ -3157,6 +3157,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/details/with_aria_labels",
+        "name": "with_aria_labels",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
