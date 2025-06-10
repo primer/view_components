@@ -68,6 +68,10 @@ class ComponentSelectorUseTest < System::TestCase
           };
 
           const ignoreNode = (node) => {
+            if (!node) {
+              return true;
+            }
+
             for (let i = 0; i < node.classList.length; i ++) {
               if (!ignoreClass(node.classList[i])) {
                 return false;

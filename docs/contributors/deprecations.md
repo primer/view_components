@@ -47,7 +47,7 @@ options.
   * Optional
   * Type: boolean
   * Default: false
-  * Whether or not this deprecations can be autocorrected with `erblint -a`
+  * Whether or not this deprecations can be autocorrected with `erb_lint -a`
 
 * replacement:
   * Optional

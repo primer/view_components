@@ -19,14 +19,12 @@ Bundler.require(*Rails.groups)
 module Demo
   # :nocov:
   class Application < Rails::Application
-    if Rails.version.to_i >= 7.1
+    if Rails.version.to_f >= 8.1
+      config.load_defaults 8.1
+    elsif Rails.version.to_f >= 8.0
       config.load_defaults 8.0
-    elsif Rails.version.to_i >= 7.1
+    elsif Rails.version.to_f >= 7.1
       config.load_defaults 7.1
-    elsif Rails.version.to_i >= 7
-      config.load_defaults 7.0
-    elsif Rails.version.to_i >= 6
-      config.load_defaults 6.0
     end
 
     config.active_support.to_time_preserves_timezone = :zone
