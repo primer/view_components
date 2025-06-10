@@ -6,7 +6,7 @@ gemspec
 rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "rack-cors"
-gem "rake", "~> 13.2"
+gem "rake", "~> 13.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
