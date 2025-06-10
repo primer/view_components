@@ -24,7 +24,7 @@ If the change requires a lot of updates or you’re unsure of the consequences o
    To use your linter run:
 
    ```bash
-   bin/bundle exec erblint --enable-linters LinterName -a app/views app/components app/packages
+   bin/bundle exec erb_lint --enable-linters LinterName -a app/views app/components app/packages
    ```
 
    You can also enable your linter globally by adding it to [`.erb_lint.yml`](https://github.com/github/github/blob/master/.erb_lint.yml).
