@@ -25,10 +25,6 @@ module Demo
       config.load_defaults 8.0
     elsif Rails.version.to_f >= 7.1
       config.load_defaults 7.1
-    elsif Rails.version.to_f >= 7.0
-      config.load_defaults 7.0
-    elsif Rails.version.to_f >= 6.0
-      config.load_defaults 6.0
     end
 
     config.active_support.to_time_preserves_timezone = :zone
