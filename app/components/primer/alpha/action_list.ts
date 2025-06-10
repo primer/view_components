@@ -1,6 +1,5 @@
 import {controller} from '@github/catalyst'
 
-// eslint-disable-next-line custom-elements/no-exports-with-element
 export class ActionListTruncationObserver {
   resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
@@ -41,7 +40,6 @@ export class ActionListTruncationObserver {
 }
 
 @controller
-// eslint-disable-next-line custom-elements/expose-class-on-global
 export class ActionListElement extends HTMLElement {
   #truncationObserver: ActionListTruncationObserver
 
