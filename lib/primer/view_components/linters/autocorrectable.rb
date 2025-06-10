@@ -25,7 +25,7 @@ module ERBLint
       def message(args, processed_source)
         return self.class::MESSAGE if args.nil?
 
-        "#{self.class::MESSAGE}\nTry using:\n\n#{correction(args)}\n\nYou can also run erblint in autocorrect mode:\n\nbundle exec erblint -a #{processed_source.filename}\n"
+        "#{self.class::MESSAGE}\nTry using:\n\n#{correction(args)}\n\nYou can also run erb_lint in autocorrect mode:\n\nbundle exec erb_lint -a #{processed_source.filename}\n"
       end
     end
   end
