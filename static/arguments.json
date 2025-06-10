@@ -34,9 +34,7 @@
     "short_name": "ActionBarDivider",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionBar::Item",
@@ -153,9 +151,7 @@
     "short_name": "ActionListFormWrapper",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionList::Heading",
@@ -474,9 +470,7 @@
     "short_name": "ActionMenuHeading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/heading/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionMenu::List",
@@ -674,7 +668,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+        "description": "One of `:danger`, `:default`, `:success`, `:upsell`, or `:warning`."
       },
       {
         "name": "system_arguments",
@@ -1071,6 +1065,12 @@
         "description": "One of `:large` or `:medium`."
       },
       {
+        "name": "close_label",
+        "type": "String",
+        "default": "`Close`",
+        "description": "The aria-label text of the close \"x\" button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -1147,9 +1147,7 @@
     "short_name": "DropdownMenuItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "FormButton",
@@ -1358,6 +1356,40 @@
     ]
   },
   {
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "IncludeFragment",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/include_fragment.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/include_fragment/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL from which to retrieve an HTML element fragment."
+      },
+      {
+        "name": "loading",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "accept",
+        "type": "String",
+        "default": "`nil`",
+        "description": "What to send as the Accept header."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Layout",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1420,9 +1452,7 @@
     "short_name": "LayoutSidebar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Menu",
@@ -2426,7 +2456,13 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Form arguments to pass to the underlying [ActionList](/components/alpha/actionlist) component. Only has an effect for the local fetch strategy."
+        "description": "Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag."
+      },
+      {
+        "name": "use_experimental_non_local_form",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923."
       },
       {
         "name": "show_filter",
@@ -3221,9 +3257,7 @@
     "short_name": "Base",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/base_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/base/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "AutoComplete",
@@ -3384,9 +3418,7 @@
     "short_name": "AutoCompleteNoResultItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Avatar",
@@ -3615,9 +3647,7 @@
     "short_name": "BreadcrumbsItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Button",
@@ -4696,9 +4726,7 @@
     "short_name": "TimelineItemBadge",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item/badge.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/badge/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Truncate",
@@ -4723,9 +4751,7 @@
     "short_name": "TruncateTruncateText",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate/truncate_text.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/truncate_text/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Blankslate",
@@ -4925,13 +4951,19 @@
         "name": "condition",
         "type": "Boolean",
         "default": "N/A",
-        "description": "Whether or not to wrap the content in a `Primer::BaseComponent`."
+        "description": "Whether or not to wrap the content in a component."
+      },
+      {
+        "name": "component",
+        "type": "Class",
+        "default": "`Primer::BaseComponent`",
+        "description": "The component class to use as a wrapper, defaults to `Primer::BaseComponent`"
       },
       {
         "name": "base_component_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments to pass to `Primer::BaseComponent`."
+        "description": "The arguments to pass to the component."
       }
     ]
   },
@@ -4942,9 +4974,7 @@
     "short_name": "Content",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "IconButton",

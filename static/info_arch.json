@@ -36,14 +36,10 @@
       {
         "name": "items",
         "description": null,
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/action_bar/default",
@@ -152,18 +148,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionBar::Divider",
@@ -178,21 +166,11 @@
         "short_name": "ActionBarDivider",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -287,9 +265,7 @@
       {
         "name": "items",
         "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
     "methods": [
@@ -310,9 +286,7 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_divider",
@@ -325,9 +299,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_avatar_item",
@@ -376,49 +348,31 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "id",
         "description": "Returns the value of attribute id.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "select_variant",
         "description": "Returns the value of attribute select_variant.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "role",
         "description": "Returns the value of attribute role.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "aria_selection_variant",
         "description": "Returns the value of attribute aria_selection_variant.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "build_item",
@@ -437,9 +391,7 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "build_avatar_item",
@@ -488,19 +440,13 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "post_list_content_block",
         "description": "Returns the value of attribute post_list_content_block.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
     "previews": [
@@ -1008,16 +954,12 @@
           {
             "name": "leading_visual",
             "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_visual",
             "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_action",
@@ -1054,79 +996,49 @@
           {
             "name": "id",
             "description": "Returns the value of attribute id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "item_id",
             "description": "Returns the value of attribute item_id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "list",
             "description": "Returns the value of attribute list.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "href",
             "description": "Returns the value of attribute href.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "active",
             "description": "Returns the value of attribute active.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "disabled",
             "description": "Returns the value of attribute disabled.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "parent",
             "description": "Returns the value of attribute parent.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "active?",
             "description": "Returns the value of attribute active.\nWhether or not this item is active.",
-            "parameters": [
-
-            ],
+            "parameters": [],
             "return_types": [
               "Boolean"
             ]
@@ -1134,20 +1046,14 @@
           {
             "name": "disabled?",
             "description": "Returns the value of attribute disabled.\nWhether or not this item is disabled.",
-            "parameters": [
-
-            ],
+            "parameters": [],
             "return_types": [
               "Boolean"
             ]
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Heading",
@@ -1194,37 +1100,23 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
+        "slots": [],
         "methods": [
           {
             "name": "title_id",
             "description": "Returns the value of attribute title_id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "subtitle_id",
             "description": "Returns the value of attribute subtitle_id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::FormWrapper",
@@ -1239,21 +1131,11 @@
         "short_name": "ActionListFormWrapper",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionList::Divider",
@@ -1282,18 +1164,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -1414,32 +1288,20 @@
       {
         "name": "list",
         "description": "Returns the value of attribute list.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "preload",
         "description": "Returns the value of attribute preload.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "preload?",
         "description": "Returns the value of attribute preload.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "with_show_button",
@@ -1452,9 +1314,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_item",
@@ -1467,9 +1327,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_divider",
@@ -1482,9 +1340,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `divider` slot."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_avatar_item",
@@ -1527,9 +1383,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -1933,27 +1787,17 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}"
           }
         ],
-        "slots": [
-
-        ],
+        "slots": [],
         "methods": [
           {
             "name": "items",
             "description": "Returns the value of attribute items.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionMenu::Heading",
@@ -1968,21 +1812,11 @@
         "short_name": "ActionMenuHeading",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/heading.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/heading/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionMenu::ListWrapper",
@@ -2033,20 +1867,12 @@
           {
             "name": "items",
             "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
-            "parameters": [
-
-            ]
+            "parameters": []
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::ActionMenu::Group",
@@ -2139,9 +1965,7 @@
           {
             "name": "items",
             "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
-            "parameters": [
-
-            ]
+            "parameters": []
           }
         ],
         "methods": [
@@ -2156,17 +1980,11 @@
                 "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Heading{{/link_to_component}}."
               }
             ],
-            "return_types": [
-
-            ]
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -2408,18 +2226,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -2483,7 +2293,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+        "description": "One of `:danger`, `:default`, `:success`, `:upsell`, or `:warning`."
       },
       {
         "name": "system_arguments",
@@ -2496,14 +2306,10 @@
       {
         "name": "action",
         "description": "A button or custom content that will render on the right-hand side of the component.\n\nTo render a button, call the `with_action_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}.\n\nTo render custom content, call the `with_action_content` method and pass a block that returns HTML.",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/banner/playground",
@@ -2584,6 +2390,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/banner/scheme_upsell",
+        "name": "scheme_upsell",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/banner/dismissible",
         "name": "dismissible",
         "snapshot": "true",
@@ -2649,9 +2468,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::ButtonMarketing",
@@ -2704,12 +2521,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/button_marketing/playground",
@@ -2829,9 +2642,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::CheckBox",
@@ -2980,12 +2791,8 @@
         "description": "Controls how check box values are submitted to the server. One of `:array` or `:boolean`.."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/check_box/playground",
@@ -3066,9 +2873,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::CheckBoxGroup",
@@ -3127,9 +2932,7 @@
         "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
       }
     ],
-    "slots": [
-
-    ],
+    "slots": [],
     "methods": [
       {
         "name": "check_box",
@@ -3148,9 +2951,7 @@
             "description": "The block accepted by {{#link_to_component}}Primer::Alpha::CheckBox{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -3246,9 +3047,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::Dialog",
@@ -3391,12 +3190,8 @@
       {
         "name": "id",
         "description": "The dialog's ID value.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
     "previews": [
@@ -3633,6 +3428,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header_close_button_label",
+        "name": "with_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/without_header_close_button_label",
+        "name": "without_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
@@ -3687,6 +3508,12 @@
             "description": "One of `:large` or `:medium`."
           },
           {
+            "name": "close_label",
+            "type": "String",
+            "default": "`Close`",
+            "description": "The aria-label text of the close \"x\" button."
+          },
+          {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
@@ -3719,15 +3546,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Body",
@@ -3750,18 +3571,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dialog::Footer",
@@ -3790,18 +3603,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -3894,9 +3699,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/dropdown/playground",
@@ -4108,21 +3911,11 @@
         "short_name": "DropdownMenuItem",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Dropdown::Menu",
@@ -4189,15 +3982,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -4264,18 +4051,10 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::FormControl",
@@ -4344,25 +4123,19 @@
       {
         "name": "caption",
         "description": "Describes the field and what sorts of input it expects. Displayed below the input.\nNote that this slot takes precedence over the `caption:` argument in the constructor.",
-        "parameters": [
-
-        ]
+        "parameters": []
       },
       {
         "name": "input",
         "description": "The input content. Yields a set of {{link_to_system_arguments_docs}} that should be added to the input.",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
     "methods": [
       {
         "name": "required?",
         "description": "Whether or not this input is marked as required.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -4370,9 +4143,7 @@
       {
         "name": "visually_hide_label?",
         "description": "Whether or not to hide the label visually. The label will still be visible to screen readers.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -4380,9 +4151,7 @@
       {
         "name": "full_width?",
         "description": "Whether or not the form control should take up all the horizontal space allowed by its container.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -4468,9 +4237,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::HellipButton",
@@ -4505,12 +4272,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/hellip_button/default",
@@ -4539,9 +4302,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::HiddenTextExpander",
@@ -4576,12 +4337,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/hidden_text_expander/playground",
@@ -4610,9 +4367,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::Image",
@@ -4653,18 +4408,81 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
+  },
+  {
+    "fully_qualified_name": "Primer::Alpha::IncludeFragment",
+    "description": "Use `IncludeFragment` to load HTML elements from the server.\nAdd additional usage considerations or best practices that may aid the user to use the component correctly.",
+    "accessibility_docs": "Add any accessibility considerations",
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "IncludeFragment",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/include_fragment.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/include_fragment/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL from which to retrieve an HTML element fragment."
+      },
+      {
+        "name": "loading",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "accept",
+        "type": "String",
+        "default": "`nil`",
+        "description": "What to send as the Accept header."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "{{link_to_system_arguments_docs}}"
+      }
     ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
-
+      {
+        "preview_path": "primer/alpha/include_fragment/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/include_fragment/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::Layout",
@@ -4755,9 +4573,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/layout/playground",
@@ -5047,21 +4863,11 @@
         "short_name": "LayoutSidebar",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Layout::Main",
@@ -5090,18 +4896,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -5170,9 +4968,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/menu/playground",
@@ -5201,9 +4997,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::MultiInput",
@@ -5328,12 +5122,8 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/multi_input/playground",
@@ -5401,9 +5191,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::NavList",
@@ -5436,24 +5224,16 @@
       {
         "name": "heading",
         "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Heading{{/link_to_component}}.",
-        "parameters": [
-
-        ]
+        "parameters": []
       },
       {
         "name": "items",
         "description": "Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
+    "methods": [],
+    "previews": [],
     "subcomponents": [
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Item",
@@ -5534,16 +5314,12 @@
           {
             "name": "leading_visual",
             "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_visual",
             "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_action",
@@ -5576,15 +5352,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Heading",
@@ -5625,18 +5395,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Divider",
@@ -5665,18 +5427,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::NavList::Group",
@@ -5767,15 +5521,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -5890,20 +5638,12 @@
       {
         "name": "selected",
         "description": "Returns the value of attribute selected.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::OcticonSymbols",
@@ -5926,12 +5666,8 @@
         "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/octicon_symbols/playground",
@@ -5960,9 +5696,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::Overlay",
@@ -6155,9 +5889,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/overlay/playground",
@@ -6322,15 +6054,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Footer",
@@ -6365,18 +6091,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Alpha::Overlay::Body",
@@ -6399,18 +6117,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -6537,12 +6247,8 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/radio_button/playground",
@@ -6623,9 +6329,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::RadioButtonGroup",
@@ -6684,9 +6388,7 @@
         "description": "Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag."
       }
     ],
-    "slots": [
-
-    ],
+    "slots": [],
     "methods": [
       {
         "name": "radio_button",
@@ -6705,9 +6407,7 @@
             "description": "The block accepted by {{#link_to_component}}Primer::Alpha::RadioButton{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -6803,9 +6503,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::SegmentedControl",
@@ -6860,9 +6558,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/segmented_control/playground",
@@ -7126,17 +6822,11 @@
                 "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}'s `with_trailing_visual_label` slot."
               }
             ],
-            "return_types": [
-
-            ]
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -7287,9 +6977,7 @@
         "description": "Create a prompt option with blank value and the text asking user to select something."
       }
     ],
-    "slots": [
-
-    ],
+    "slots": [],
     "methods": [
       {
         "name": "option",
@@ -7308,9 +6996,7 @@
             "description": "The value sent to the server on form submission."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -7432,13 +7118,11 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::SelectPanel",
-    "description": "Select panels allow for selecting from a large number of options and can be thought of as a more capable\nversion of the traditional HTML `<select>` element.\n\nSelect panels:\n\n1. feature an input field at the top that allows an end user to filter the list of results.\n1. can render their items statically or dynamically by fetching results from the server.\n1. allow selecting a single item or multiple items.\n1. permit leading visuals like Octicons, avatars, and custom SVGs.\n1. can be used as form inputs in Rails forms.\n\n## Static list items\n\nThe Rails `SelectPanel` component allows items to be provided statically or loaded dynamically from the\nserver. Providing items statically is done using a fetch strategy of `:local` in combination with the\n`item` slot:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel.new(fetch_strategy: :local))) do |panel| %>\n  <% panel.with_show_button { \"Select item\" } %>\n  <% panel.with_item(label: \"Item 1\") %>\n  <% panel.with_item(label: \"Item 2\") %>\n<% end %>\n```\n\n## Dynamic list items\n\nList items can also be fetched dynamically from the server and will require creating a Rails controller action\nto respond with the list of items in addition to rendering the `SelectPanel` instance. Render the instance as\nnormal, providing your desired [fetch strategy](#fetch-strategies):\n\n```erb\n<%= render(\n  Primer::Alpha::SelectPanel.new(\n    fetch_strategy: :remote,\n    src: search_items_path  # perhaps a Rails URL helper\n  )\n) %>\n```\n\nDefine a controller action to serve the list of items. The `SelectPanel` component passes any filter text in\nthe `q=` URL parameter.\n\n```ruby\nclass SearchItemsController < ApplicationController\n  def show\n    # NOTE: params[:q] may be nil since there is no filter string available\n    # when the panel is first opened\n    @results = SomeModel.search(params[:q] || \"\")\n  end\nend\n```\n\nResponses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't\navailable by default in Rails, so you may have to register it eg. in an initializer:\n\n```ruby\nMime::Type.register(\"text/fragment+html\", :html_fragment)\n```\n\nRender a `Primer::Alpha::SelectPanel::ItemList` in the action's template, search_items/show.html_fragment.erb:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>\n  <% @results.each do |result| %>\n    <% list.with_item(label: result.title) do |item| %>\n      <% item.with_description(result.description) %>\n    <% end %>\n  <% end %>\n<% end %>\n```\n\n### Selection consistency\n\nThe `SelectPanel` component automatically \"remembers\" which items have been selected across item fetch requests,\nmeaning the controller that renders dynamic list items does not (and should not) remember these selections or\npersist them until the user has confirmed them, either by submitting the form or otherwise indicating completion.\nThe `SelectPanel` component does not include unconfirmed selection data in requests.\n\n## Fetch strategies\n\nThe list of items can be fetched from a remote URL, or provided as a static list, configured using the\n`fetch_strategy` attribute. Fetch strategies are summarized below.\n\n1. `:remote`: a query is made to the URL in the `src` attribute every time the input field changes.\n\n2. `:eventually_local`: a query is made to the URL in the `src` attribute when the panel is first opened. The\n    results are \"remembered\" and filtered in-memory for all subsequent filter operations, i.e. when the input\n    field changes.\n\n3. `:local`: the list of items is provided statically ahead of time and filtered in-memory. No requests are made\n    to the server.\n\n## Customizing filter behavior\n\nIf the fetch strategy is `:remote`, then filtering is handled server-side. The server should render a\n`Primer::Alpha::SelectPanel::ItemList` (an alias of {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}})\nin the response containing the filtered list of items. The component achieves remote fetching via the\n[remote-input-element](https://github.com/github/remote-input-element), which sends a request to the\nserver with the filter string in the `q=` parameter. Responses must be HTML fragments, eg. have a content\ntype of `text/html+fragment`.\n\n### Local filtering\n\nIf the fetch strategy is `:local` or `:eventually_local`, filtering is performed client-side. Filter behavior can\nbe customized in JavaScript by setting the `filterFn` attribute on the instance of `SelectPanelElement`, eg:\n\n```javascript\ndocument.querySelector(\"select-panel\").filterFn = (item: HTMLElement, query: string): boolean => {\n  // return true if the item should be displayed, false otherwise\n}\n```\n\nThe element's default filter function uses the value of the `data-filter-string` attribute, falling back to the\nelement's `innerText` property. It performs a case-insensitive substring match against the filter string.\n\n### `SelectPanel`s as form inputs\n\n`SelectPanel`s can be used as form inputs. They behave very similarly to how HTML `<select>` boxes behave, and\nplay nicely with Rails' built-in form mechanisms. Pass arguments via the `form_arguments:` argument, including\nthe Rails form builder object and the name of the field. Each list item must also have a value specified in\n`content_arguments: { data: { value: } }`.\n\n```erb\n<% form_with(model: Address.new) do |f| %>\n  <%= render(Primer::Alpha::SelectPanel.new(form_arguments: { builder: f, name: \"country\" })) do |menu| %>\n    <% countries.each do |country|\n      <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>\n    <% end %>\n  <% end %>\n<% end %>\n```\n\nThe value of the `data: { value: ... }` argument is sent to the server on submit, keyed using the name provided above\n(eg. `\"country\"`). If no value is provided for an item, the value of that item is the item's label.  Here's the\ncorresponding `AddressesController` that might be written to handle the form above:\n\n```ruby\nclass AddressesController < ApplicationController\n  def create\n    puts \"You chose #{address_params[:country]} as your country\"\n  end\n\n  private\n\n  def address_params\n    params.require(:address).permit(:country)\n  end\nend\n```\n\nIf items are provided dynamically, things become a bit more complicated. The `form_for` or `form_with` method call\nhappens in the view that renders the `SelectPanel`, which means the form builder object but isn't available in the\nview that renders the list items. In such a case, it can be useful to create an instance of the form builder maually:\n\n```erb\n<% builder = ActionView::Helpers::FormBuilder.new(\n  \"address\",  # the name of the model, used to wrap input names, eg 'address[country]'\n  nil,        # object (eg. the Address instance, which we can omit)\n  self,       # template\n  {}          # options\n) %>\n<%= render(Primer::Alpha::SelectPanel::ItemList.new(\n  form_arguments: { builder: builder, name: \"country\" }\n)) do |list| %>\n  <% countries.each do |country| %>\n    <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>\n  <% end %>\n<% end %>\n```\n\n### JavaScript API\n\n`SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.\n\n#### Utility methods\n\n* `show()`: Manually open the panel. Under normal circumstances, a show button is used to show the panel, but this method exists to support unusual use-cases.\n* `hide()`: Manually hides (closes) the panel.\n\n#### Query methods\n\n* `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.\n* `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.\n* `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.\n* `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.\n\nNOTE: Item IDs are special values provided by the user that are attached to `SelectPanel` list items as the `data-item-id`\nHTML attribute. Item IDs can be provided by passing an `item_id:` attribute when adding items to the panel, eg:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel.new) do |panel| %>\n  <% panel.with_item(item_id: \"my-id\") %>\n<% end %>\n```\n\nThe same is true when rendering `ItemList`s:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>\n  <% list.with_item(item_id: \"my-id\") %>\n<% end %>\n```\n\n#### State methods\n\n* `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.\n* `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.\n* `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.\n* `uncheckItem(item: Element)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.\n\n#### Events\n\n|Name                 |Type                                       |Bubbles |Cancelable |\n|:--------------------|:------------------------------------------|:-------|:----------|\n|`itemActivated`      |`CustomEvent<ItemActivatedEvent>`          |Yes     |No         |\n|`beforeItemActivated`|`CustomEvent<ItemActivatedEvent>`          |Yes     |Yes        |\n|`dialog:open`        |`CustomEvent<{dialog: HTMLDialogElement}>` |No      |No         |\n|`panelClosed`        |`CustomEvent<{panel: SelectPanelElement}>` |Yes     |No         |\n\n_Item activation_\n\nThe `<select-panel>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"itemActivated\",\n  (event: CustomEvent<ItemActivatedEvent>) => {\n    event.detail.item     // Element: the <li> item that was activated\n    event.detail.checked  // boolean: whether or not the result of the activation checked the item\n  }\n)\n```\n\nThe `beforeItemActivated` event fires before an item is activated. Canceling this event will prevent the item\nfrom being activated.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"beforeItemActivated\",\n  (event: CustomEvent<ItemActivatedEvent>) => {\n    event.detail.item      // Element: the <li> item that was activated\n    event.detail.checked   // boolean: whether or not the result of the activation checked the item\n    event.preventDefault() // Cancel the event to prevent activation (eg. checking/unchecking)\n  }\n)\n```",
+    "description": "Select panels allow for selecting from a large number of options and can be thought of as a more capable\nversion of the traditional HTML `<select>` element.\n\nSelect panels:\n\n1. feature an input field at the top that allows an end user to filter the list of results.\n1. can render their items statically or dynamically by fetching results from the server.\n1. allow selecting a single item or multiple items.\n1. permit leading visuals like Octicons, avatars, and custom SVGs.\n1. can be used as form inputs in Rails forms.\n\n## Static list items\n\nThe Rails `SelectPanel` component allows items to be provided statically or loaded dynamically from the\nserver. Providing items statically is done using a fetch strategy of `:local` in combination with the\n`item` slot:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel.new(fetch_strategy: :local))) do |panel| %>\n  <% panel.with_show_button { \"Select item\" } %>\n  <% panel.with_item(label: \"Item 1\") %>\n  <% panel.with_item(label: \"Item 2\") %>\n<% end %>\n```\n\n## Dynamic list items\n\nList items can also be fetched dynamically from the server and will require creating a Rails controller action\nto respond with the list of items in addition to rendering the `SelectPanel` instance. Render the instance as\nnormal, providing your desired [fetch strategy](#fetch-strategies):\n\n```erb\n<%= render(\n  Primer::Alpha::SelectPanel.new(\n    fetch_strategy: :remote,\n    src: search_items_path  # perhaps a Rails URL helper\n  )\n) %>\n```\n\nDefine a controller action to serve the list of items. The `SelectPanel` component passes any filter text in\nthe `q=` URL parameter.\n\n```ruby\nclass SearchItemsController < ApplicationController\n  def show\n    # NOTE: params[:q] may be nil since there is no filter string available\n    # when the panel is first opened\n    @results = SomeModel.search(params[:q] || \"\")\n  end\nend\n```\n\nResponses must be HTML fragments, eg. have a content type of `text/html+fragment`. This content type isn't\navailable by default in Rails, so you may have to register it eg. in an initializer:\n\n```ruby\nMime::Type.register(\"text/fragment+html\", :html_fragment)\n```\n\nRender a `Primer::Alpha::SelectPanel::ItemList` in the action's template, search_items/show.html_fragment.erb:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>\n  <% @results.each do |result| %>\n    <% list.with_item(label: result.title) do |item| %>\n      <% item.with_description(result.description) %>\n    <% end %>\n  <% end %>\n<% end %>\n```\n\n### Selection consistency\n\nThe `SelectPanel` component automatically \"remembers\" which items have been selected across item fetch requests,\nmeaning the controller that renders dynamic list items does not (and should not) remember these selections or\npersist them until the user has confirmed them, either by submitting the form or otherwise indicating completion.\nThe `SelectPanel` component does not include unconfirmed selection data in requests.\n\n## Fetch strategies\n\nThe list of items can be fetched from a remote URL, or provided as a static list, configured using the\n`fetch_strategy` attribute. Fetch strategies are summarized below.\n\n1. `:remote`: a query is made to the URL in the `src` attribute every time the input field changes.\n\n2. `:eventually_local`: a query is made to the URL in the `src` attribute when the panel is first opened. The\n    results are \"remembered\" and filtered in-memory for all subsequent filter operations, i.e. when the input\n    field changes.\n\n3. `:local`: the list of items is provided statically ahead of time and filtered in-memory. No requests are made\n    to the server.\n\n## Customizing filter behavior\n\nIf the fetch strategy is `:remote`, then filtering is handled server-side. The server should render a\n`Primer::Alpha::SelectPanel::ItemList` (an alias of {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}})\nin the response containing the filtered list of items. The component achieves remote fetching via the\n[remote-input-element](https://github.com/github/remote-input-element), which sends a request to the\nserver with the filter string in the `q=` parameter. Responses must be HTML fragments, eg. have a content\ntype of `text/html+fragment`.\n\n### Local filtering\n\nIf the fetch strategy is `:local` or `:eventually_local`, filtering is performed client-side. Filter behavior can\nbe customized in JavaScript by setting the `filterFn` attribute on the instance of `SelectPanelElement`, eg:\n\n```javascript\ndocument.querySelector(\"select-panel\").filterFn = (item: HTMLElement, query: string): boolean => {\n  // return true if the item should be displayed, false otherwise\n}\n```\n\nThe element's default filter function uses the value of the `data-filter-string` attribute, falling back to the\nelement's `innerText` property. It performs a case-insensitive substring match against the filter string.\n\n### `SelectPanel`s as form inputs\n\n`SelectPanel`s can be used as form inputs. They behave very similarly to how HTML `<select>` boxes behave, and\nplay nicely with Rails' built-in form mechanisms. Pass arguments via the `form_arguments:` argument, including\nthe Rails form builder object and the name of the field. Each list item must also have a value specified in\n`content_arguments: { data: { value: } }`.\n\n```erb\n<% form_with(model: Address.new) do |f| %>\n  <%= render(Primer::Alpha::SelectPanel.new(form_arguments: { builder: f, name: \"country\" })) do |menu| %>\n    <% countries.each do |country|\n      <% menu.with_item(label: country.name, content_arguments: { data: { value: country.code } }) %>\n    <% end %>\n  <% end %>\n<% end %>\n```\n\nThe value of the `data: { value: ... }` argument is sent to the server on submit, keyed using the name provided above\n(eg. `\"country\"`). If no value is provided for an item, the value of that item is the item's label.  Here's the\ncorresponding `AddressesController` that might be written to handle the form above:\n\n```ruby\nclass AddressesController < ApplicationController\n  def create\n    puts \"You chose #{address_params[:country]} as your country\"\n  end\n\n  private\n\n  def address_params\n    params.require(:address).permit(:country)\n  end\nend\n```\n### JavaScript API\n\n`SelectPanel`s render a `<select-panel>` custom element that exposes behavior to the client.\n\n#### Utility methods\n\n* `show()`: Manually open the panel. Under normal circumstances, a show button is used to show the panel, but this method exists to support unusual use-cases.\n* `hide()`: Manually hides (closes) the panel.\n\n#### Query methods\n\n* `getItemById(itemId: string): Element`: Returns the item's HTML `<li>` element. The return value can be passed as the `item` argument to the other methods listed below.\n* `isItemChecked(item: Element): boolean`: Returns `true` if the item is checked, `false` otherwise.\n* `isItemHidden(item: Element): boolean`: Returns `true` if the item is hidden, `false` otherwise.\n* `isItemDisabled(item: Element): boolean`: Returns `true` if the item is disabled, `false` otherwise.\n\nNOTE: Item IDs are special values provided by the user that are attached to `SelectPanel` list items as the `data-item-id`\nHTML attribute. Item IDs can be provided by passing an `item_id:` attribute when adding items to the panel, eg:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel.new) do |panel| %>\n  <% panel.with_item(item_id: \"my-id\") %>\n<% end %>\n```\n\nThe same is true when rendering `ItemList`s:\n\n```erb\n<%= render(Primer::Alpha::SelectPanel::ItemList.new) do |list| %>\n  <% list.with_item(item_id: \"my-id\") %>\n<% end %>\n```\n\n#### State methods\n\n* `enableItem(item: Element)`: Enables the item, i.e. makes it clickable by the mouse and keyboard.\n* `disableItem(item: Element)`: Disables the item, i.e. makes it unclickable by the mouse and keyboard.\n* `checkItem(item: Element)`: Checks the item. Only has an effect in single- and multi-select modes.\n* `uncheckItem(item: Element)`: Unchecks the item. Only has an effect in multi-select mode, since items cannot be unchecked in single-select mode.\n\n#### Events\n\n|Name                 |Type                                       |Bubbles |Cancelable |\n|:--------------------|:------------------------------------------|:-------|:----------|\n|`itemActivated`      |`CustomEvent<ItemActivatedEvent>`          |Yes     |No         |\n|`beforeItemActivated`|`CustomEvent<ItemActivatedEvent>`          |Yes     |Yes        |\n|`dialog:open`        |`CustomEvent<{dialog: HTMLDialogElement}>` |No      |No         |\n|`panelClosed`        |`CustomEvent<{panel: SelectPanelElement}>` |Yes     |No         |\n\n_Item activation_\n\nThe `<select-panel>` element fires an `itemActivated` event whenever an item is activated (eg. clicked) via the mouse or keyboard.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"itemActivated\",\n  (event: CustomEvent<ItemActivatedEvent>) => {\n    event.detail.item     // Element: the <li> item that was activated\n    event.detail.checked  // boolean: whether or not the result of the activation checked the item\n  }\n)\n```\n\nThe `beforeItemActivated` event fires before an item is activated. Canceling this event will prevent the item\nfrom being activated.\n\n```typescript\ndocument.querySelector(\"select-panel\").addEventListener(\n  \"beforeItemActivated\",\n  (event: CustomEvent<ItemActivatedEvent>) => {\n    event.detail.item      // Element: the <li> item that was activated\n    event.detail.checked   // boolean: whether or not the result of the activation checked the item\n    event.preventDefault() // Cancel the event to prevent activation (eg. checking/unchecking)\n  }\n)\n```",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -7532,7 +7216,13 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Form arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}} component. Only has an effect for the local fetch strategy."
+        "description": "Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag."
+      },
+      {
+        "name": "use_experimental_non_local_form",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923."
       },
       {
         "name": "show_filter",
@@ -7623,25 +7313,19 @@
       {
         "name": "preload_error_content",
         "description": "Customizable content for the error message that appears when items are fetched for the first time. This message\nappears in place of the list of items.\nFor more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).",
-        "parameters": [
-
-        ]
+        "parameters": []
       },
       {
         "name": "error_content",
         "description": "Customizable content for the error message that appears when items are fetched as the result of a filter\noperation. This message appears as a banner above the previously fetched list of items.\nFor more information, see the [documentation regarding SelectPanel error messaging](/components/selectpanel#errorwarning).",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
     "methods": [
       {
         "name": "src",
         "description": "The URL to fetch search results from.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "String"
         ]
@@ -7649,9 +7333,7 @@
       {
         "name": "panel_id",
         "description": "The unique ID of the panel.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "String"
         ]
@@ -7659,9 +7341,7 @@
       {
         "name": "body_id",
         "description": "The unique ID of the panel body.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "String"
         ]
@@ -7669,9 +7349,7 @@
       {
         "name": "select_variant",
         "description": "One of `:multiple`, `:none`, or `:single`.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Symbol"
         ]
@@ -7679,9 +7357,7 @@
       {
         "name": "banner_scheme",
         "description": "One of `:danger` or `:warning`.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Symbol"
         ]
@@ -7689,9 +7365,7 @@
       {
         "name": "fetch_strategy",
         "description": "One of `:eventually_local`, `:local`, or `:remote`.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Symbol"
         ]
@@ -7699,9 +7373,7 @@
       {
         "name": "preload",
         "description": "Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -7709,9 +7381,7 @@
       {
         "name": "preload?",
         "description": "Whether to preload search results when the page loads. If this option is false, results are loaded when the panel is opened.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -7719,9 +7389,7 @@
       {
         "name": "show_filter",
         "description": "Whether or not to show the filter input.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -7729,9 +7397,7 @@
       {
         "name": "show_filter?",
         "description": "Whether or not to show the filter input.",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -7747,9 +7413,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -8053,6 +7717,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select_panel/remote_fetch_form",
+        "name": "remote_fetch_form",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select_panel/multiselect_form",
         "name": "multiselect_form",
         "snapshot": "interactive",
@@ -8149,20 +7826,12 @@
           {
             "name": "items",
             "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
-            "parameters": [
-
-            ]
+            "parameters": []
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -8229,12 +7898,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/stack/default",
@@ -8263,9 +7928,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::StackItem",
@@ -8300,12 +7963,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/stack_item/default",
@@ -8334,9 +7993,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::SubmitButton",
@@ -8401,18 +8058,10 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabContainer",
@@ -8435,18 +8084,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabNav",
@@ -8519,9 +8160,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/tab_nav/playground",
@@ -8576,9 +8215,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::TabPanels",
@@ -8663,9 +8300,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/tab_panels/playground",
@@ -8707,9 +8342,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::TextArea",
@@ -8840,12 +8473,8 @@
         "description": "A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/text_area/playground",
@@ -8965,9 +8594,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::TextField",
@@ -9152,12 +8779,8 @@
         "description": "The HTML id attribute of the clear button."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/text_field/playground",
@@ -9537,9 +9160,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::ToggleSwitch",
@@ -9610,12 +9231,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/toggle_switch/playground",
@@ -9800,9 +9417,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::Tooltip",
@@ -9849,19 +9464,13 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
+    "slots": [],
     "methods": [
       {
         "name": "id",
         "description": "Returns the value of attribute id.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
     "previews": [
@@ -10100,9 +9709,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlineNav",
@@ -10187,9 +9794,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/underline_nav/playground",
@@ -10231,9 +9836,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Alpha::UnderlinePanels",
@@ -10324,9 +9927,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/alpha/underline_panels/playground",
@@ -10381,9 +9982,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::AutoComplete",
@@ -10534,9 +10133,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/auto_complete/playground",
@@ -10876,15 +10473,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Beta::AutoComplete::NoResultItem",
@@ -10899,9 +10490,7 @@
         "short_name": "AutoCompleteNoResultItem",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "slots": [
           {
             "name": "leading_visual",
@@ -10940,15 +10529,9 @@
             ]
           }
         ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -11003,12 +10586,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/avatar/playground",
@@ -11180,9 +10759,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::AvatarStack",
@@ -11243,9 +10820,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/avatar_stack/playground",
@@ -11365,9 +10940,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::BaseButton",
@@ -11420,29 +10993,19 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
+    "slots": [],
     "methods": [
       {
         "name": "disabled",
         "description": "Returns the value of attribute disabled.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "disabled?",
         "description": "Returns the value of attribute disabled.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
     "previews": [
@@ -11486,9 +11049,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Blankslate",
@@ -11609,9 +11170,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/blankslate/playground",
@@ -11783,9 +11342,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::BorderBox",
@@ -11870,9 +11427,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/border_box/playground",
@@ -12012,20 +11567,12 @@
           {
             "name": "id",
             "description": "Returns the value of attribute id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -12070,9 +11617,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/breadcrumbs/playground",
@@ -12154,22 +11699,14 @@
         "short_name": "BreadcrumbsItem",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs/item.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/item/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
+        "parameters": [],
+        "slots": [],
         "methods": [
           {
             "name": "selected",
             "description": "Returns the value of attribute selected.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "selected=",
@@ -12182,19 +11719,13 @@
                 "description": "the value to set the attribute selected to."
               }
             ],
-            "return_types": [
-
-            ]
+            "return_types": []
           },
           {
             "name": "href",
             "description": "Returns the value of attribute href.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "href=",
@@ -12207,17 +11738,11 @@
                 "description": "the value to set the attribute href to."
               }
             ],
-            "return_types": [
-
-            ]
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -12358,9 +11883,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/button/playground",
@@ -12636,9 +12159,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::ButtonGroup",
@@ -12677,9 +12198,7 @@
       {
         "name": "buttons",
         "description": "List of buttons to be rendered. Add buttons via the `#with_button`, `#with_menu_button`, and `#with_clipboard_copy_button` methods (see below).",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
     "methods": [
@@ -12700,9 +12219,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_menu_button",
@@ -12715,9 +12232,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::ButtonGroup::MenuButton{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_clipboard_copy_button",
@@ -12730,9 +12245,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::ClipboardCopyButton{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       }
     ],
     "previews": [
@@ -12856,18 +12369,10 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} or {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}, depending on the value of the `icon:` argument."
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -12910,12 +12415,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/clipboard_copy/playground",
@@ -12970,9 +12471,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopyBaseButton",
@@ -13025,18 +12524,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::ClipboardCopyButton",
@@ -13115,9 +12606,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/clipboard_copy_button/playground",
@@ -13159,9 +12648,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::CloseButton",
@@ -13196,12 +12683,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/close_button/playground",
@@ -13230,9 +12713,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Counter",
@@ -13291,12 +12772,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/counter/playground",
@@ -13455,9 +12932,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Details",
@@ -13546,42 +13021,26 @@
       {
         "name": "disabled",
         "description": "Returns the value of attribute disabled.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "disabled?",
         "description": "Returns the value of attribute disabled.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "open",
         "description": "Returns the value of attribute open.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "open?",
         "description": "Returns the value of attribute open.",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
     "previews": [
@@ -13651,9 +13110,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Flash",
@@ -13720,9 +13177,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/flash/playground",
@@ -13842,9 +13297,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Heading",
@@ -13873,12 +13326,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/heading/playground",
@@ -13907,9 +13356,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::IconButton",
@@ -13992,12 +13439,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/icon_button/playground",
@@ -14091,9 +13534,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Label",
@@ -14146,12 +13587,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/label/playground",
@@ -14362,9 +13799,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Link",
@@ -14455,9 +13890,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/link/playground",
@@ -14590,9 +14023,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Markdown",
@@ -14621,18 +14052,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::NavList",
@@ -14665,16 +14088,12 @@
       {
         "name": "heading",
         "description": "The heading for the list at large. Accepts the arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Heading{{/link_to_component}}.",
-        "parameters": [
-
-        ]
+        "parameters": []
       },
       {
         "name": "items",
         "description": "Items. Items can be individual items, dividers, or groups. See the documentation for `#with_item`, `#with_divider`, and `#with_group` respectively for more information.",
-        "parameters": [
-
-        ]
+        "parameters": []
       }
     ],
     "methods": [
@@ -14695,9 +14114,7 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_avatar_item",
@@ -14746,9 +14163,7 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_group",
@@ -14761,9 +14176,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Group{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "with_divider",
@@ -14776,9 +14189,7 @@
             "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::NavList::Divider{{/link_to_component}}."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "build_item",
@@ -14797,9 +14208,7 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "build_avatar_item",
@@ -14848,16 +14257,12 @@
             "description": "These arguments are forwarded to {{#link_to_component}}Primer::Beta::NavList::Item{{/link_to_component}}, or whatever class is passed as the `component_klass` argument."
           }
         ],
-        "return_types": [
-
-        ]
+        "return_types": []
       },
       {
         "name": "render_outer_list?",
         "description": "Lists that contain top-level items (i.e. items outside of a group) should be wrapped in a `<ul>`",
-        "parameters": [
-
-        ],
+        "parameters": [],
         "return_types": [
           "Boolean"
         ]
@@ -15022,57 +14427,35 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
+        "slots": [],
         "methods": [
           {
             "name": "title",
             "description": "Returns the value of attribute title.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "id",
             "description": "Returns the value of attribute id.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "heading_level",
             "description": "Returns the value of attribute heading_level.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "system_arguments",
             "description": "Returns the value of attribute system_arguments.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Beta::NavList::Item",
@@ -15153,16 +14536,12 @@
           {
             "name": "leading_visual",
             "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_visual",
             "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
-            "parameters": [
-
-            ]
+            "parameters": []
           },
           {
             "name": "trailing_action",
@@ -15199,29 +14578,19 @@
           {
             "name": "selected_by_ids",
             "description": "Returns the value of attribute selected_by_ids.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "sub_item",
             "description": "Returns the value of attribute sub_item.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "sub_item?",
             "description": "Returns the value of attribute sub_item.\nWhether or not this item is nested under a parent item.",
-            "parameters": [
-
-            ],
+            "parameters": [],
             "return_types": [
               "Boolean"
             ]
@@ -15229,30 +14598,20 @@
           {
             "name": "expand!",
             "description": "Cause this item to show its list of sub items when rendered.",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           },
           {
             "name": "item_active?",
             "description": "Normally it would be easier to simply ask each item for its active status, eg.\nitems.any?(&:active?), but unfortunately the view context is not set on each\nitem until _after_ the parent's before_render, etc methods have been called.\nThis means helper methods like current_page? will blow up with an error, since\n`helpers` is simply an alias for the view context (i.e. an instance of\nActionView::Base). Since we know the view context for the parent object must\nbe set before `before_render` is invoked, we can call helper methods here in\nthe parent and bypass the problem entirely. Maybe not the most OO approach,\nbut it works.",
-            "parameters": [
-
-            ],
+            "parameters": [],
             "return_types": [
               "Boolean"
             ]
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Beta::NavList::Divider",
@@ -15281,18 +14640,10 @@
             "description": "{{link_to_system_arguments_docs}}"
           }
         ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       },
       {
         "fully_qualified_name": "Primer::Beta::NavList::Group",
@@ -15387,20 +14738,12 @@
           {
             "name": "expand!",
             "description": "Cause this group to show its list of sub items when rendered.\n:nocov:",
-            "parameters": [
-
-            ],
-            "return_types": [
-
-            ]
+            "parameters": [],
+            "return_types": []
           }
         ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -15449,12 +14792,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/octicon/playground",
@@ -15483,9 +14822,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Popover",
@@ -15552,9 +14889,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/popover/playground",
@@ -15648,9 +14983,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::ProgressBar",
@@ -15705,9 +15038,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/progress_bar/playground",
@@ -15775,9 +15106,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::RelativeTime",
@@ -15908,12 +15237,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/relative_time/playground",
@@ -16007,9 +15332,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Spinner",
@@ -16044,12 +15367,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/spinner/playground",
@@ -16078,9 +15397,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::State",
@@ -16127,12 +15444,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/state/playground",
@@ -16239,9 +15552,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Subhead",
@@ -16326,9 +15637,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/subhead/playground",
@@ -16448,9 +15757,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::Text",
@@ -16479,12 +15786,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/text/playground",
@@ -16513,9 +15816,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Beta::TimelineItem",
@@ -16588,9 +15889,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/timeline_item/playground",
@@ -16633,21 +15932,11 @@
         "short_name": "TimelineItemBadge",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item/badge.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/badge/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -16704,9 +15993,7 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/beta/truncate/playground",
@@ -16788,21 +16075,11 @@
         "short_name": "TruncateTruncateText",
         "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate/truncate_text.rb",
         "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/truncate_text/default/",
-        "parameters": [
-
-        ],
-        "slots": [
-
-        ],
-        "methods": [
-
-        ],
-        "previews": [
-
-        ],
-        "subcomponents": [
-
-        ]
+        "parameters": [],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
       }
     ]
   },
@@ -16931,15 +16208,9 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Box",
@@ -16962,12 +16233,8 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
+    "slots": [],
+    "methods": [],
     "previews": [
       {
         "preview_path": "primer/box/playground",
@@ -17022,9 +16289,7 @@
         }
       }
     ],
-    "subcomponents": [
-
-    ]
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::ButtonComponent",
@@ -17143,34 +16408,22 @@
       {
         "name": "icon",
         "description": "remove alias when all buttons are migrated to new slot names",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       },
       {
         "name": "counter",
         "description": "remove alias when all buttons are migrated to new slot names",
-        "parameters": [
-
-        ],
-        "return_types": [
-
-        ]
+        "parameters": [],
+        "return_types": []
       }
     ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::ConditionalWrapper",
-    "description": "Conditionally renders a `Primer::BaseComponent` around the given content. If the given condition\nis true, a `Primer::BaseComponent` will render around the content. If the condition is false, only\nthe content is rendered.",
+    "description": "Conditionally renders a component around the given content. If the given condition\nis true, the component will render around the content. If the condition is false, only\nthe content is rendered.",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -17186,27 +16439,25 @@
         "name": "condition",
         "type": "Boolean",
         "default": "N/A",
-        "description": "Whether or not to wrap the content in a `Primer::BaseComponent`."
+        "description": "Whether or not to wrap the content in a component."
+      },
+      {
+        "name": "component",
+        "type": "Class",
+        "default": "`Primer::BaseComponent`",
+        "description": "The component class to use as a wrapper, defaults to `Primer::BaseComponent`"
       },
       {
         "name": "base_component_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments to pass to `Primer::BaseComponent`."
+        "description": "The arguments to pass to the component."
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Content",
@@ -17221,21 +16472,11 @@
     "short_name": "Content",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
-    "parameters": [
-
-    ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "parameters": [],
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::IconButton",
@@ -17306,18 +16547,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::LayoutComponent",
@@ -17384,15 +16617,9 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Navigation::TabComponent",
@@ -17501,15 +16728,9 @@
         ]
       }
     ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Tooltip",
@@ -17562,18 +16783,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "fully_qualified_name": "Primer::Truncate",
@@ -17620,18 +16833,10 @@
         "description": "{{link_to_system_arguments_docs}}"
       }
     ],
-    "slots": [
-
-    ],
-    "methods": [
-
-    ],
-    "previews": [
-
-    ],
-    "subcomponents": [
-
-    ]
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
   },
   {
     "component": "BaseComponent",
