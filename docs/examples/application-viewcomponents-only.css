@@ -1,0 +1,11 @@
+/* Example CSS imports for Rails with Vite using only ViewComponents styles */
+
+/* Import CSS custom properties first */
+@import "@primer/primitives/dist/css/base/typography/typography.css";
+@import "@primer/primitives/dist/css/functional/themes/light.css";
+@import "@primer/primitives/dist/css/functional/themes/dark.css";
+
+/* Then import ViewComponents styles */
+@import "@primer/view-components/app/assets/styles/primer_view_components.css";
+
+/* Note: This approach requires more setup but gives you minimal CSS */

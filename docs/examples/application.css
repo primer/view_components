@@ -1,0 +1,7 @@
+/* Example CSS imports for Rails with Vite using Primer CSS */
+
+/* Import the full Primer CSS framework (recommended) */
+@import "@primer/css";
+
+/* This includes all Primer styles and ViewComponents styles */
+/* CSS custom properties are included automatically */
