@@ -16,8 +16,6 @@ module Primer
       # @param css_class [String] The basic css class applied on the grid-container
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(css_class:, **system_arguments)
-        super
-
         @system_arguments = system_arguments
         @css_class = css_class
         @system_arguments[:classes] = class_names(

@@ -9,7 +9,7 @@ class AutoCompleteForm < ApplicationForm
       name: :fruit,
       label: "Fruit",
       caption: "Please enter your favorite fruit",
-      src: Primer::UrlHelpers.autocomplete_index_path,
+      src: Primer::UrlHelpers.primer_view_components.autocomplete_index_path,
       validation_message: "Something went wrong"
     )
 
