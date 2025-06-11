@@ -1,4 +1,4 @@
-<%= form_with(url: generic_form_submission_path(format: :json)) do |f| %>
+<%= form_with(url: primer_view_components.generic_form_submission_path(format: :json)) do |f| %>
   <%= render(Primer::Alpha::Stack.new) do %>
     <%= render(Primer::OpenProject::FilterableTreeView.new(form_arguments: { builder: f, name: "characters" })) do |tree| %>
       <% tree.with_sub_tree(label: "Students", expanded: expanded) do |hogwarts| %>
