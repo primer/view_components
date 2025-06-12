@@ -98,6 +98,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
+    ffi (1.17.1-aarch64-linux-gnu)
     ffi (1.17.1-arm64-darwin)
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
@@ -120,6 +121,7 @@ GEM
       signet (>= 0.16, < 2.a)
     helm-cli (0.3.0)
       helm-rb (~> 0.1)
+    helm-rb (0.3.0-aarch64-linux)
     helm-rb (0.3.0-arm64-darwin)
     helm-rb (0.3.0-x86_64-darwin)
     helm-rb (0.3.0-x86_64-linux)
@@ -150,6 +152,7 @@ GEM
       multi_json
     jwt (2.10.1)
       base64
+    kind-rb (0.1.0-aarch64-linux)
     kind-rb (0.1.0-arm64-darwin)
     kind-rb (0.1.0-x86_64-darwin)
     kind-rb (0.1.0-x86_64-linux)
@@ -171,6 +174,7 @@ GEM
       jsonpath (~> 1.0)
       recursive-open-struct (~> 1.1, >= 1.1.1)
       rest-client (~> 2.0)
+    kubectl-rb (0.2.1-aarch64-linux)
     kubectl-rb (0.2.1-arm64-darwin)
     kubectl-rb (0.2.1-x86_64-darwin)
     kubectl-rb (0.2.1-x86_64-linux)
@@ -243,6 +247,8 @@ GEM
     mutex_m (0.3.0)
     netrc (0.11.0)
     nio4r (2.7.4)
+    nokogiri (1.18.8-aarch64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.18.8-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-darwin)
@@ -366,6 +372,7 @@ GEM
     zeitwerk (2.7.3)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-21
   arm64-darwin-23
   arm64-darwin-24
