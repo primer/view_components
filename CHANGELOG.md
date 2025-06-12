@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.43.3
+
+### Patch Changes
+
+- [#3521](https://github.com/primer/view_components/pull/3521) [`72a68d7`](https://github.com/primer/view_components/commit/72a68d7832a079c8ed7af5dbed9ad53d6c973281) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Rename .erb-linters folder to .erb_linters
+
+- [#3518](https://github.com/primer/view_components/pull/3518) [`c25c43c`](https://github.com/primer/view_components/commit/c25c43cd9f1646943154a3c501fadba569353488) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Replace deprecated lookbook helper define_param_input with add_input_type
+
+- [#3512](https://github.com/primer/view_components/pull/3512) [`b606322`](https://github.com/primer/view_components/commit/b606322653c6109797fe9933fdb7fcbfb09f8235) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Upgrade RuboCop cops to v1 API
+
+- [#3534](https://github.com/primer/view_components/pull/3534) [`b8ebe04`](https://github.com/primer/view_components/commit/b8ebe0461245075db80e00aff9af5647766440f4) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Remove unnecessary aria-label from the Details component
+
+- [#3540](https://github.com/primer/view_components/pull/3540) [`c94037e`](https://github.com/primer/view_components/commit/c94037ebc88b3d959aba99fdef47388ea16d3e3e) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix breadcrumb overflow by adding max-width constraint to prevent page overflow
+
+- [#3522](https://github.com/primer/view_components/pull/3522) [`223a4c6`](https://github.com/primer/view_components/commit/223a4c69262aafb0dad3d8a502272a48a1be3875) Thanks [@camertron](https://github.com/camertron)! - Publish config folder in packaged gem
+
 ## 0.43.2
 
 ### Patch Changes
