@@ -52,7 +52,7 @@ group :development do
   gem "benchmark"
   gem "benchmark-ips", "~> 2"
   gem "capybara", "~> 3.40.0"
-  gem "cuprite", "~> 0.15"
+  gem "cuprite", "~> 0.17"
   gem "debug"
   gem "erb_lint", "~> 0.9"
   gem "erblint-github", "~> 1.0.1"
