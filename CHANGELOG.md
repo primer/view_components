@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.69.4
+
+### Patch Changes
+
+- [#320](https://github.com/opf/primer_view_components/pull/320) [`e5df72a`](https://github.com/opf/primer_view_components/commit/e5df72a5cb56e9e67de7532358af550f3cb023be) Thanks [@HDinger](https://github.com/HDinger)! - Fix a bug to avoid that two menus interfere with each other
+
 ## 0.69.3
 
 ### Patch Changes
