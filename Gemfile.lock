@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/ViewComponent/view_component.git
-  revision: dc98fb8ab9b77253e08dba14ef8d1222ecb11e44
-  ref: dc98fb8ab9b77253e08dba14ef8d1222ecb11e44
+  revision: ab0b9262550481beb5c6592efabefc0b8940ae45
+  ref: ab0b9262550481beb5c6592efabefc0b8940ae45
   specs:
     view_component (4.0.0.alpha5)
       activesupport (>= 7.1.0, < 8.1)
