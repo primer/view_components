@@ -37,7 +37,7 @@ gem "lookbook", "~> 2.3.11"
 if ENV["VIEW_COMPONENT_PATH"]
   gem "view_component", path: ENV["VIEW_COMPONENT_PATH"]
 else
-  gem "view_component", github: "ViewComponent/view_component", ref: "670ca1768b7bf714935fc4a4b5e6e9e9a6a542c1"
+  gem "view_component", github: "ViewComponent/view_component", ref: "24d01006730c3c46f7bd34e4d5d66695f60b63b6"
 end
 
 gem "kramdown", "~> 2.5"
