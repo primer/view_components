@@ -224,8 +224,8 @@ GEM
     rubocop-ast (1.45.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    rubocop-github (0.25.0)
-      rubocop (>= 1.72)
+    rubocop-github (0.26.0)
+      rubocop (>= 1.76)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.23)
     rubocop-performance (1.25.0)
@@ -337,7 +337,7 @@ DEPENDENCIES
   railties (= 8.0.2)
   rake (~> 13.3)
   rubocop
-  rubocop-github (~> 0.25.0)
+  rubocop-github (~> 0.26.0)
   rubocop-performance
   rubocop-rails
   rubocop-rails-accessibility (~> 1.0)
