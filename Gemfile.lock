@@ -330,7 +330,7 @@ DEPENDENCIES
   erblint-github (~> 1.0.1)
   kramdown (~> 2.5)
   listen (~> 3.9)
-  lookbook
+  lookbook (= 2.3.10)
   matrix (~> 0.4.2)
   mocha
   primer_view_components!
