@@ -349,6 +349,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
+  view_component (= 4.0.0.alpha5)
   vite_rails (~> 3.0)
   webmock
   yard (~> 0.9.37)
