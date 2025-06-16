@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/ViewComponent/view_component.git
+  revision: 670ca1768b7bf714935fc4a4b5e6e9e9a6a542c1
+  ref: 670ca1768b7bf714935fc4a4b5e6e9e9a6a542c1
+  specs:
+    view_component (4.0.0.alpha5)
+      activesupport (>= 7.1.0, < 8.1)
+      concurrent-ruby (~> 1)
+
 PATH
   remote: ..
   specs:
@@ -346,9 +355,6 @@ GEM
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    view_component (4.0.0.alpha5)
-      activesupport (>= 7.1.0, < 8.1)
-      concurrent-ruby (~> 1)
     vite_rails (3.0.19)
       railties (>= 5.1, < 9)
       vite_ruby (~> 3.0, >= 3.2.2)
@@ -401,7 +407,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (= 4.0.0.alpha5)
+  view_component!
   vite_rails (~> 3.0)
 
 BUNDLED WITH

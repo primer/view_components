@@ -37,7 +37,7 @@ gem "puma", "~> 6.6.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
-gem "view_component", "4.0.0.alpha5"
+gem "view_component", github: "ViewComponent/view_component", ref: "670ca1768b7bf714935fc4a4b5e6e9e9a6a542c1"
 gem "lookbook", "~> 2.3.11" unless rails_version.to_f < 7
 
 gem "vite_rails", "~> 3.0"
