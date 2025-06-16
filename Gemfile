@@ -33,7 +33,7 @@ gem "puma", "~> 6.6.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", github: "lookbook-hq/lookbook", branch: "20250603-vc-4-alpha6-compat"
+gem "lookbook"
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
 gem "kramdown", "~> 2.5"
