@@ -102,4 +102,5 @@ Rails.application.configure do
 
   # Use a custom preview route because of how routes are configured in prod (see routes.rb)
   config.view_component.previews.route = "/view-components/rails-app/previews"
+  config.view_component.cache_classes = false
 end
