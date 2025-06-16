@@ -126,7 +126,7 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lookbook (2.3.10)
+    lookbook (2.3.11)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -328,7 +328,7 @@ DEPENDENCIES
   erblint-github (~> 1.0.1)
   kramdown (~> 2.5)
   listen (~> 3.9)
-  lookbook (~> 2.3.10)
+  lookbook (~> 2.3.11)
   matrix (~> 0.4.2)
   mocha
   primer_view_components!
