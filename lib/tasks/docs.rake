@@ -6,7 +6,6 @@ task :init_pvc do
   require "primer/yard"
 
   ENV["RAILS_ENV"] = "test"
-  ENV["VC_COMPAT_PATCH_ENABLED"] = "true"
 
   require File.expand_path("./../../demo/config/environment.rb", __dir__)
   Dir[File.expand_path("../../app/components/primer/**/*.rb", __dir__)].sort.each { |file| require file }

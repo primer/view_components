@@ -48,8 +48,4 @@ Rails.application.configure do
 
   config.autoload_paths << Rails.root.join("..", "test", "forms")
   config.view_component.previews.paths << Rails.root.join("..", "test", "previews")
-
-  if ENV.fetch("VC_COMPAT_PATCH_ENABLED", "false") == "true"
-    config.view_component.capture_compatibility_patch_enabled = true
-  end
 end
