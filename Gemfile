@@ -64,7 +64,7 @@ group :development do
   gem "matrix", "~> 0.4.2"
   gem "mocha"
   gem "rubocop"
-  gem "rubocop-github", "~> 0.25.0"
+  gem "rubocop-github", "~> 0.26.0"
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 1.0"
