@@ -2089,6 +2089,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/breadcrumbs/with_long_items",
+        "name": "with_long_items",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3148,6 +3161,19 @@
       {
         "preview_path": "primer/beta/details/open",
         "name": "open",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/details/with_aria_labels",
+        "name": "with_aria_labels",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
