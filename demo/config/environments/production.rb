@@ -101,5 +101,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Use a custom preview route because of how routes are configured in prod (see routes.rb)
-  config.view_component.preview_route = "/view-components/rails-app/previews"
+  config.view_component.previews.route = "/view-components/rails-app/previews"
 end

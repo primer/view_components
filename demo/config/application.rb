@@ -30,10 +30,11 @@ module Demo
     config.active_support.to_time_preserves_timezone = :zone
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.view_component.default_preview_layout = "component_preview"
+    config.view_component.previews.default_layout = "component_preview"
+    config.view_component.previews.enabled = true
+    config.view_component.previews.controller = "PreviewController"
+    config.view_component.previews.paths << Rails.root.join("..", "previews")
     config.view_component.show_previews = true
-    config.view_component.preview_controller = "PreviewController"
-    config.view_component.preview_paths << Rails.root.join("..", "previews")
 
     config.autoload_paths << Rails.root.join("..", "test", "test_helpers", "components")
 
