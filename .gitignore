@@ -54,6 +54,7 @@ demo/public/vite-test/
 demo/public/vite-dev/
 demo/public/vite/
 demo/app/assets/builds/
+File::NULL
 
 # IDE folders
 .idea

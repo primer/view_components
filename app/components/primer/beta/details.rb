@@ -32,26 +32,36 @@ module Primer
         system_arguments[:tag] = :summary
         system_arguments[:role] = "button"
 
-        aria_label_closed = system_arguments[:aria_label_closed] || ARIA_LABEL_CLOSED_DEFAULT
-        aria_label_open = system_arguments[:aria_label_open] || ARIA_LABEL_OPEN_DEFAULT
+        aria_label_closed = system_arguments[:aria_label_closed]
+        aria_label_open = system_arguments[:aria_label_open]
+
+        data_attributes = {
+          target: "details-toggle.summaryTarget",
+          action: "click:details-toggle#toggle",
+        }
+
+        # Only add aria-label data attributes if explicitly provided
+        if aria_label_closed || aria_label_open
+          data_attributes[:aria_label_closed] = aria_label_closed || ARIA_LABEL_CLOSED_DEFAULT
+          data_attributes[:aria_label_open] = aria_label_open || ARIA_LABEL_OPEN_DEFAULT
+        end
 
         system_arguments[:data] = merge_data(
           system_arguments, {
-            data: {
-              target: "details-toggle.summaryTarget",
-              action: "click:details-toggle#toggle",
-              aria_label_closed: aria_label_closed,
-              aria_label_open: aria_label_open,
-            }
+            data: data_attributes
           }
         )
 
+        aria_attributes = { expanded: open? }
+        # Only add aria-label if explicitly provided
+        if aria_label_closed || aria_label_open
+          current_label = open? ? (aria_label_open || ARIA_LABEL_OPEN_DEFAULT) : (aria_label_closed || ARIA_LABEL_CLOSED_DEFAULT)
+          aria_attributes[:label] = current_label
+        end
+
         system_arguments[:aria] = merge_aria(
           system_arguments, {
-            aria: {
-              label: open? ? aria_label_open : aria_label_closed,
-              expanded: open?,
-            }
+            aria: aria_attributes
           }
         )
 

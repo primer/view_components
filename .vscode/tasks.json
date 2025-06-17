@@ -127,7 +127,7 @@
       "label": "erblint: autofix erblint errors",
       "type": "shell",
       "group": "build",
-      "command": "bundle exec erblint -a app/components",
+      "command": "bundle exec erb_lint -a app/components",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"

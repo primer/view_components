@@ -81,4 +81,13 @@ class PrimerBreadcrumbsTest < Minitest::Test
   def test_status
     assert_component_state(Primer::Beta::Breadcrumbs, :beta)
   end
+
+  def test_breadcrumb_items_have_correct_css_class
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
+      component.with_item(href: "/") { "Home" }
+      component.with_item(href: "/about") { "About" }
+    end
+
+    assert_selector(".breadcrumb-item", count: 2)
+  end
 end

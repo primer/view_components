@@ -175,6 +175,7 @@ class ToggleSwitchElement extends HTMLElement {
         headers: requestHeaders,
         body,
       })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       throw new Error('A network error occurred, please try again.')
     }

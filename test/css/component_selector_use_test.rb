@@ -58,75 +58,77 @@ class ComponentSelectorUseTest < System::TestCase
       next if IGNORED_PREVIEWS.fetch(component_class, []).include?(preview)
 
       define_method("test_selectors_used_by_#{component_uri.parameterize(separator: '_')}_#{preview}_are_valid") do
-        Capybara.current_session.using_wait_time(10) do
-          visit("/rails/view_components/#{component_uri}/#{preview}")
+        visit("/rails/view_components/#{component_uri}/#{preview}")
 
-          global_ignored_selectors = IGNORED_SELECTORS.fetch(:global, [])
-          ignored_selectors = IGNORED_SELECTORS.fetch(component_class, [])
+        global_ignored_selectors = IGNORED_SELECTORS.fetch(:global, [])
+        ignored_selectors = IGNORED_SELECTORS.fetch(component_class, [])
 
-          unmatched_selectors = driver.evaluate_async_script(<<~JS, COMPONENT_SELECTORS, global_ignored_selectors, ignored_selectors)
-            const [componentSelectors, globalIgnoredSelectors, ignoredSelectors, callback] = arguments;
-            const root = document.querySelector('.preview-wrap > *');
+        unmatched_selectors = driver.evaluate_async_script(<<~JS, COMPONENT_SELECTORS, global_ignored_selectors, ignored_selectors)
+          const [componentSelectors, globalIgnoredSelectors, ignoredSelectors, callback] = arguments;
+          const root = document.querySelector('.preview-wrap > *');
 
-            const ignoreClass = (className) => {
-              return(
-                globalIgnoredSelectors.includes(className) ||
-                  ignoredSelectors.includes(className) ||
-                  className.startsWith('octicon-')
-              );
-            };
+          const ignoreClass = (className) => {
+            return(
+              globalIgnoredSelectors.includes(className) ||
+                ignoredSelectors.includes(className) ||
+                className.startsWith('octicon-')
+            );
+          };
 
-            const ignoreNode = (node) => {
-              for (let i = 0; i < node.classList.length; i ++) {
-                if (!ignoreClass(node.classList[i])) {
-                  return false;
-                }
-              }
-
+          const ignoreNode = (node) => {
+            if (!node) {
               return true;
-            };
-
-            const findEachNode = (node, cb) => {
-              if (!ignoreNode(node)) {
-                cb(node)
-              }
-
-              for (const child of node.children) {
-                findEachNode(child, cb);
-              }
-            };
-
-            const nodeMatchesAtLeastOneComponentSelector = (node) => {
-              for (const componentSelector of componentSelectors) {
-                try {
-                  if (node.matches(componentSelector) || node.querySelectorAll(`:scope > ${componentSelector}`).length > 0) {
-                    return true;
-                  }
-                } catch {
-                }
-              }
-
-              return false;
             }
 
-            let unmatchedClasses = [];
+            for (let i = 0; i < node.classList.length; i ++) {
+              if (!ignoreClass(node.classList[i])) {
+                return false;
+              }
+            }
 
-            findEachNode(root, (node) => {
-              if (!nodeMatchesAtLeastOneComponentSelector(node)) {
-                for (className of node.classList) {
-                  if (!ignoreClass(className)) {
-                    unmatchedClasses.push(className);
-                  }
+            return true;
+          };
+
+          const findEachNode = (node, cb) => {
+            if (!ignoreNode(node)) {
+              cb(node)
+            }
+
+            for (const child of node.children) {
+              findEachNode(child, cb);
+            }
+          };
+
+          const nodeMatchesAtLeastOneComponentSelector = (node) => {
+            for (const componentSelector of componentSelectors) {
+              try {
+                if (node.matches(componentSelector) || node.querySelectorAll(`:scope > ${componentSelector}`).length > 0) {
+                  return true;
+                }
+              } catch {
+              }
+            }
+
+            return false;
+          }
+
+          let unmatchedClasses = [];
+
+          findEachNode(root, (node) => {
+            if (!nodeMatchesAtLeastOneComponentSelector(node)) {
+              for (className of node.classList) {
+                if (!ignoreClass(className)) {
+                  unmatchedClasses.push(className);
                 }
               }
-            });
+            }
+          });
 
-            const result = Array.from(new Set(unmatchedClasses));
-            callback(result);
-          JS
+          const result = Array.from(new Set(unmatchedClasses));
+          callback(result);
+        JS
 
-          assert unmatched_selectors.empty?, unmatched_selectors_message(component_class, unmatched_selectors)
-        end
+        assert unmatched_selectors.empty?, unmatched_selectors_message(component_class, unmatched_selectors)
       end
     end
   end

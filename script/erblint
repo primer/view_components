@@ -1,6 +1,6 @@
 #! /bin/bash
 
-bundle exec erblint \
+bundle exec erb_lint \
     app/**/*.html.erb \
     lib/**/*.html.erb \
     previews/**/*.html.erb \

@@ -22,7 +22,8 @@ module RuboCop
       # primer_octicon(:"icon-with-daashes")
       # primer_octicon(@ivar)
       # primer_octicon(condition > "icon" : "other-icon")
-      class PrimerOcticon < RuboCop::Cop::Cop
+      class PrimerOcticon < RuboCop::Cop::Base
+        extend AutoCorrector
         INVALID_MESSAGE = <<~STR
           Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.
         STR
@@ -65,11 +66,7 @@ module RuboCop
             return if invalid_classes.present?
           end
 
-          add_offense(node, message: INVALID_MESSAGE)
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
+          add_offense(node, message: INVALID_MESSAGE) do |corrector|
             kwargs = kwargs(node)
 
             # Converting arguments for the component
@@ -85,6 +82,8 @@ module RuboCop
             end
           end
         end
+
+
 
         private
 
