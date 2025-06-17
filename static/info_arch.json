@@ -1195,37 +1195,6 @@
     "slots": [],
     "methods": [
       {
-        "name": "list",
-        "description": "Returns the value of attribute list.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "preload",
-        "description": "Returns the value of attribute preload.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "preload?",
-        "description": "Returns the value of attribute preload.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "with_show_button",
-        "description": "Button to activate the menu.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
-          }
-        ],
-        "return_types": []
-      },
-      {
         "name": "with_item",
         "description": "Adds an item to the menu.",
         "parameters": [
@@ -1234,19 +1203,6 @@
             "type": "Hash",
             "default": "N/A",
             "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
-          }
-        ],
-        "return_types": []
-      },
-      {
-        "name": "with_divider",
-        "description": "Adds a divider to the list.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `divider` slot."
           }
         ],
         "return_types": []
