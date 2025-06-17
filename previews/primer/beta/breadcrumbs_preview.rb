@@ -47,6 +47,12 @@ module Primer
           end
         end
       end
+
+      # @label With long items (no truncation)
+      # @snapshot
+      def with_long_items
+        render_with_template
+      end
     end
   end
 end

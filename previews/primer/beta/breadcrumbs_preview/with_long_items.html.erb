@@ -1,0 +1,13 @@
+<% texts = [
+          "Home",
+          "This is a very long breadcrumb item that would normally cause overflow issues by being much longer than expected breadcrumb text should be",
+          "And another extremely long breadcrumb item name that demonstrates the max-width fix working correctly to prevent page overflow"
+        ] %>
+
+<%= render(Primer::Beta::Breadcrumbs.new) do |breadcrumbs| %>
+  <% texts.each_with_index do |text, i| %>
+    <% breadcrumbs.with_item(href: "##{i}") do %>
+      <%= text %>
+    <% end %>
+  <% end %>
+<% end %>
