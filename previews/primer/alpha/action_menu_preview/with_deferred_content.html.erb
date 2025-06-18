@@ -1,0 +1,24 @@
+<% if nest_in_sub_menu %>
+  <%= render(Primer::Alpha::ActionMenu.new) do |menu| %>
+    <% menu.with_show_button { "Menu with deferred content" } %>
+    <% menu.with_sub_menu_item(label: "Sub-menu", menu_id: "deferred", src: primer_view_components.action_menu_deferred_path) %>
+  <% end %>
+<% else %>
+  <%= render(Primer::Alpha::ActionMenu.new(menu_id: "deferred", src: primer_view_components.action_menu_deferred_path)) do |menu| %>
+    <% menu.with_show_button { "Menu with deferred content" } %>
+  <% end %>
+<% end %>
+
+<%# This is used by the items rendered by ActionMenuController#deferred. It needs to be rendered %>
+<%# here and not returned alongside async-rendered menu items in case of sub-menu nesting. Any %>
+<%# additional HTML like this will end up being wrapped in a <ul> that's invisible when the menu is %>
+<%# closed, and appear to never open. %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: "Confirm deletion")) do |d| %>
+  <%= render(Primer::Alpha::Dialog::Body.new()) do %>
+    Are you sure you want to delete this?
+  <% end %>
+  <%= render(Primer::Alpha::Dialog::Footer.new()) do %>
+    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Delete" } %>
+  <% end %>
+<% end %>
