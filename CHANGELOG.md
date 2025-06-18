@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.70.0
+
+### Minor Changes
+
+- [#325](https://github.com/opf/primer_view_components/pull/325) [`fe09d8b`](https://github.com/opf/primer_view_components/commit/fe09d8b6814fc830fc69f43e047f605a695b8378) Thanks [@ulferts](https://github.com/ulferts)! - Enable sub menus in sub header action menus
+
 ## 0.69.5
 
 ### Patch Changes

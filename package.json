@@ -1,6 +1,6 @@
 {
   "name": "@openproject/primer-view-components",
-  "version": "0.69.5",
+  "version": "0.70.0",
   "description": "ViewComponents of the Primer Design System for OpenProject",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
