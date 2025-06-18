@@ -8,6 +8,9 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::SkeletonBox, {}],
+    [Primer::Alpha::TreeView, {}],
+    [Primer::Alpha::FileTreeView, {}],
     [Primer::Alpha::IncludeFragment, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
