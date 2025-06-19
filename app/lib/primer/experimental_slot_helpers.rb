@@ -22,7 +22,7 @@ module Primer
         registered_slots[slot_name][:renderable_hash][type] = poly_def
 
         define_method(:"with_#{type}") do |**system_arguments, &block|
-          set_slot(slot_name, poly_def, **system_arguments, &block)
+          __vc_set_slot(slot_name, poly_def, **system_arguments, &block)
         end
       end
     end
