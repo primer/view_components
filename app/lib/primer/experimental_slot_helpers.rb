@@ -13,7 +13,7 @@ module Primer
         slot_def = registered_slots[slot_name]
         raise "Unknown slot '#{slot_name}'" unless slot_def
 
-        poly_def = define_slot(
+        poly_def = __vc_define_slot(
           type,
           collection: slot_def[:collection],
           callable: callable
