@@ -22,4 +22,5 @@ git merge bump/primer-upstream-ref --no-commit
 
 find .changeset/ -name "*.md" -exec $SED -i "s/\@primer\/view-components/\@openproject\/primer-view-components/g" {} +
 
+git add .changeset/
 git commit
