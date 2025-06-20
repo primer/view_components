@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.43.4
+
+### Patch Changes
+
+- [#3556](https://github.com/primer/view_components/pull/3556) [`3614cac`](https://github.com/primer/view_components/commit/3614cac1ad1e15dd7692c4a8038adfaf1ca5f8f5) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use ViewComponent 4.0.0.alpha6 and lookbook 2.3.11
+
 ## 0.43.3
 
 ### Patch Changes
