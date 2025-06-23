@@ -18,7 +18,6 @@ export class TreeViewIncludeFragmentElement extends IncludeFragmentElement {
 
 if (!window.customElements.get('tree-view-include-fragment')) {
   window.TreeViewIncludeFragmentElement = TreeViewIncludeFragmentElement
-  // eslint-disable-next-line custom-elements/extends-correct-class
   window.customElements.define('tree-view-include-fragment', TreeViewIncludeFragmentElement)
 }
 

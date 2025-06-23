@@ -21,7 +21,6 @@ export class TreeViewElement extends HTMLElement {
         for (const addedNode of mutation.addedNodes) {
           if (!(addedNode instanceof HTMLElement)) continue
 
-          // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
           if (addedNode.querySelector('[aria-expanded=true]')) {
             this.#autoExpandFrom(addedNode)
           }
