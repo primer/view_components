@@ -282,7 +282,7 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
-    view_component (4.0.0.alpha6)
+    view_component (4.0.0.rc1)
       activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
     vite_rails (3.0.19)
@@ -349,7 +349,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.0.0.alpha6)
+  view_component (= 4.0.0.rc1)
   vite_rails (~> 3.0)
   webmock
   yard (~> 0.9.37)
