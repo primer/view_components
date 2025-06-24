@@ -21,6 +21,8 @@ git reset --hard origin/main
 git merge bump/primer-upstream-ref --no-commit
 
 find .changeset/ -name "*.md" -exec $SED -i "s/\@primer\/view-components/\@openproject\/primer-view-components/g" {} +
-
 git add .changeset/
+
+./setup
+git add */Gemfile.lock */package-lock.json
 git commit
