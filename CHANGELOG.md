@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.70.2
+
+### Patch Changes
+
+- [#3558](https://github.com/primer/view_components/pull/3558) [`9cdefbb`](https://github.com/opf/primer_view_components/commit/9cdefbb65bf44c5dd494b60b636166155687e956) Thanks [@myabc](https://github.com/myabc)! - Make `ToolTipElement` `for` an observed attribute
+
+- [#334](https://github.com/opf/primer_view_components/pull/334) [`02c37ff`](https://github.com/opf/primer_view_components/commit/02c37ffc120573d9df9a6ce0380201f1bf09e960) Thanks [@HDinger](https://github.com/HDinger)! - Make sure that the context bar of the PageHeader always has the same height
+
 ## 0.70.1
 
 ### Patch Changes
