@@ -8,6 +8,9 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::SkeletonBox, {}],
+    [Primer::Alpha::TreeView, {}],
+    [Primer::Alpha::FileTreeView, {}],
     [Primer::Alpha::IncludeFragment, {}],
     [Primer::Alpha::ActionBar, {}, proc { |component|
       component.with_item_icon_button(icon: :search, label: "Search")
@@ -159,7 +162,21 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::Content",
       "Primer::Navigation::TabComponent",
-      "Primer::ResponsiveArg"
+      "Primer::ResponsiveArg",
+      "Primer::Alpha::TreeView::IconPair",
+      "Primer::Alpha::TreeView::Icon",
+      "Primer::Alpha::TreeView::LeadingAction",
+      "Primer::Alpha::TreeView::LeafNode",
+      "Primer::Alpha::TreeView::LoadingFailureMessage",
+      "Primer::Alpha::TreeView::Node",
+      "Primer::Alpha::TreeView::SkeletonLoader",
+      "Primer::Alpha::TreeView::SpinnerLoader",
+      "Primer::Alpha::TreeView::SubTreeContainer",
+      "Primer::Alpha::TreeView::SubTreeNode",
+      "Primer::Alpha::TreeView::SubTree",
+      "Primer::Alpha::TreeView::Visual",
+      "Primer::Alpha::FileTreeView::FileNode",
+      "Primer::Alpha::FileTreeView::DirectoryNode",
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
