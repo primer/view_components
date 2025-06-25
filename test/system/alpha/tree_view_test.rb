@@ -785,5 +785,19 @@ module Alpha
 
       assert_path_checked "primer", "alpha", "action_bar"
     end
+
+
+    def test_form_submission
+      visit_preview(:form_input, expanded: true, route_format: :json)
+
+      check_at_path("action_menu.rb")
+
+      find("button[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+
+      assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 0)
+    end
   end
 end

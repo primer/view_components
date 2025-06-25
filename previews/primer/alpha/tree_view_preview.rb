@@ -151,6 +151,15 @@ module Primer
         end
       end
 
+      # @label Form input
+      #
+      # @param expanded [Boolean] toggle
+      def form_input(expanded: true)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
+      end
+
       private
 
       def coerce_bool(value)

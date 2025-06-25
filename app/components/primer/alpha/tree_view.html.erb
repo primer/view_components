@@ -1,4 +1,9 @@
 <tree-view>
+  <% if acts_as_form_input? %>
+    <%= @form_arguments[:builder].hidden_field(@form_arguments[:name], multiple: true, skip_default_ids: true, form: "", data: { target: "tree-view.formInputPrototype" }) %>
+    <div data-target="tree-view.formInputContainer"></div>
+  <% end %>
+
   <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
     <% nodes.each do |node| %>
       <%= node %>

@@ -407,9 +407,11 @@ module Primer
       attr_reader :node_variant
 
       # @param node_variant [Symbol] The variant to use for this node. <%= one_of(Primer::Alpha::TreeView::NODE_VARIANT_OPTIONS) %>
+      # @param form_arguments [Hash] These arguments allow the selections made within a `TreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>.
-      def initialize(node_variant: DEFAULT_NODE_VARIANT, **system_arguments)
+      def initialize(node_variant: DEFAULT_NODE_VARIANT, form_arguments: {}, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
+        @form_arguments = form_arguments
 
         @node_variant = fetch_or_fallback(NODE_VARIANT_OPTIONS, node_variant, DEFAULT_NODE_VARIANT)
 
@@ -419,6 +421,10 @@ module Primer
           @system_arguments.delete(:classes),
           "TreeViewRootUlStyles"
         )
+      end
+
+      def acts_as_form_input?
+        @form_arguments[:builder] && @form_arguments[:name]
       end
 
       private

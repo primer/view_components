@@ -1,10 +1,13 @@
-import {controller} from '@github/catalyst'
+import {controller, target} from '@github/catalyst'
 import {TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
 import {useRovingTabIndex} from './tree_view_roving_tab_index'
 import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
 
 @controller
 export class TreeViewElement extends HTMLElement {
+  @target formInputContainer: HTMLElement
+  @target formInputPrototype: HTMLInputElement
+
   #abortController: AbortController
 
   connectedCallback() {
@@ -27,6 +30,47 @@ export class TreeViewElement extends HTMLElement {
         }
       }
     }).observe(this, {childList: true, subtree: true})
+
+    const updateInputsObserver = new MutationObserver(mutations => {
+      if (!this.formInputContainer) return
+
+      // There is another MutationObserver in TreeViewSubTreeNodeElement that manages checking/unchecking
+      // nodes based on the component's select strategy. These two observers can conflict and cause infinite
+      // looping, so we make sure something actually changed before computing inputs again.
+      const somethingChanged = mutations.some(m => {
+        if (!(m.target instanceof HTMLElement)) return false
+        return m.target.getAttribute('aria-checked') !== m.oldValue
+      })
+
+      if (!somethingChanged) return
+
+      const newInputs = []
+
+      // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
+      for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
+        const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
+        newInput.removeAttribute('data-target')
+        newInput.removeAttribute('form')
+
+        const payload: {path: string[]; value?: string} = {
+          path: this.getNodePath(node),
+        }
+
+        const inputValue = this.getFormInputValueForNode(node)
+        if (inputValue) payload.value = inputValue
+
+        newInput.value = JSON.stringify(payload)
+        newInputs.push(newInput)
+      }
+
+      this.formInputContainer.replaceChildren(...newInputs)
+    })
+
+    updateInputsObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributeFilter: ['aria-checked'],
+    })
 
     // eslint-disable-next-line github/no-then -- We don't want to wait for this to resolve, just get on with it
     customElements.whenDefined('tree-view-sub-tree-node').then(() => {
@@ -171,6 +215,10 @@ export class TreeViewElement extends HTMLElement {
 
         break
     }
+  }
+
+  getFormInputValueForNode(node: Element): string | null {
+    return node.getAttribute('data-value')
   }
 
   getNodePath(node: Element): string[] {
