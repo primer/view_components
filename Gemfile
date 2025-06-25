@@ -61,7 +61,7 @@ group :development do
   gem "erb_lint", "~> 0.9"
   gem "erblint-github", "~> 1.0.1"
   gem "listen", "~> 3.9"
-  gem "matrix", "~> 0.4.2"
+  gem "matrix", "~> 0.4.3"
   gem "mocha"
   gem "rubocop"
   gem "rubocop-github", "~> 0.26.0"
