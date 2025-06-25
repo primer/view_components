@@ -8,10 +8,11 @@ module Primer
       # This component is part of the <%= link_to_component(Primer::Alpha::TreeView) %> component and should
       # not be used directly.
       class SubTreeNode < Primer::Component
-        DEFAULT_SELECT_STRATEGY = :descendants
+        DEFAULT_SELECT_STRATEGY = :mixed_descendants
         SELECT_STRATEGIES = [
           :self,
-          DEFAULT_SELECT_STRATEGY
+          DEFAULT_SELECT_STRATEGY,
+          :descendants
         ]
 
         # @!parse
@@ -59,7 +60,7 @@ module Primer
               visual: IconPair.new(
                 **system_arguments,
                 expanded: @sub_tree.expanded?,
-              )
+                )
             )
           }
         }
@@ -108,10 +109,19 @@ module Primer
         # @param label [String] The node's label, i.e. it's textual content.
         # @param path [Array<String>] The node's "path," i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path.
         # @param node_variant [Symbol] The variant to use for this node. <%= one_of(Primer::Alpha::TreeView::NODE_VARIANT_OPTIONS) %>
+        # @param sub_tree_component_klass [Class] The class to use for the sub-tree instead of the default <%= link_to_component(Primer::Alpha::TreeView::SubTree) %>
         # @param expanded [Boolean] Whether or not this sub-tree should be rendered expanded.
         # @param select_strategy [Symbol] What should happen when this sub-tree node is checked. <%= one_of(Primer::Alpha::TreeView::SubTreeNode::SELECT_STRATEGIES) %>
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::TreeView::Node) %>.
-        def initialize(label:, path:, node_variant:, expanded: false, select_strategy: DEFAULT_SELECT_STRATEGY, **system_arguments)
+        def initialize(
+          label:,
+          path:,
+          node_variant:,
+          sub_tree_component_klass: SubTree,
+          expanded: false,
+          select_strategy: DEFAULT_SELECT_STRATEGY,
+          **system_arguments
+        )
           @label = label
           @system_arguments = system_arguments
           @select_strategy = fetch_or_fallback(SELECT_STRATEGIES, select_strategy, DEFAULT_SELECT_STRATEGY)
@@ -123,16 +133,16 @@ module Primer
 
           @system_arguments[:data] = merge_data(
             @system_arguments, {
-              data: {
-                target: "tree-view-sub-tree-node.node",
-                "node-type": "sub-tree"
-              }
+            data: {
+              target: "tree-view-sub-tree-node.node",
+              "node-type": "sub-tree"
             }
+          }
           )
 
           sub_tree_arguments = @system_arguments.delete(:sub_tree_arguments) || {}
 
-          @sub_tree = SubTree.new(
+          @sub_tree = sub_tree_component_klass.new(
             expanded: expanded,
             path: path,
             node_variant: node_variant,

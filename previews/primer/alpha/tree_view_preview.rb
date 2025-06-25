@@ -10,7 +10,7 @@ module Primer
       # @param expanded [Boolean] toggle
       # @param disabled [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def default(
         expanded: false,
         disabled: false,
@@ -29,7 +29,7 @@ module Primer
       #
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def playground(
         expanded: false,
         select_variant: Primer::Alpha::TreeView::Node::DEFAULT_SELECT_VARIANT,
