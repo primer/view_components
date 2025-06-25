@@ -143,6 +143,10 @@
     text-decoration-color: var(--control-fgColor-rest);
   }
 
+  & :has(.TreeViewItemContent[aria-disabled=true]) {
+    cursor: not-allowed;
+  }
+
   & .TreeViewItemContent {
     display: flex;
     height: 100%;
@@ -205,6 +209,37 @@
           mask-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMiIgdmlld0JveD0iMCAwIDEwIDIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMCAxQzAgMC40NDc3MTUgMC40NDc3MTUgMCAxIDBIOUM5LjU1MjI5IDAgMTAgMC40NDc3MTUgMTAgMUMxMCAxLjU1MjI4IDkuNTUyMjkgMiA5IDJIMUMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K');
           animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards 80ms;
           clip-path: none;
+        }
+      }
+    }
+
+    &[aria-disabled='true'] {
+      pointer-events: none;
+
+      & .TreeViewItemContentText {
+        color: var(--control-fgColor-disabled);
+      }
+
+      & .TreeViewItemVisual {
+        fill: var(--control-fgColor-disabled);
+
+        & svg {
+          fill: var(--control-fgColor-disabled);
+        }
+      }
+
+      & .FormControl-checkbox {
+        @media (hover: hover) {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          cursor: not-allowed;
+          background-color: transparent;
         }
       }
     }

@@ -299,6 +299,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
     switch (event.key) {
       case 'Enter':
+        if (this.treeView?.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         // eslint-disable-next-line no-restricted-syntax
         event.stopPropagation()
 
@@ -324,6 +329,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case ' ':
+        if (this.treeView?.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         if (this.#checkboxElement) {
           // eslint-disable-next-line no-restricted-syntax
           event.stopPropagation()
@@ -344,6 +354,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   #handleCheckboxEvent(event: Event) {
+    if (this.treeView?.getNodeDisabledValue(this.node)) {
+      event.preventDefault()
+      return
+    }
+
     if (event.type !== 'click') return
 
     this.toggleChecked()
@@ -354,7 +369,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   toggleChecked() {
-    const checkValue = this.node.getAttribute('aria-checked') || 'false'
+    const checkValue = this.treeView?.getNodeCheckedValue(this.node) || 'false'
     const newCheckValue = checkValue === 'false' ? 'true' : 'false'
     const nodeInfos: TreeViewNodeInfo[] = []
     const rootInfo = this.treeView?.infoFromNode(this.node, newCheckValue)

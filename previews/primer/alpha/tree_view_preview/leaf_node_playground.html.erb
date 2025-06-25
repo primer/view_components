@@ -1,5 +1,5 @@
 <%= render(Primer::Alpha::TreeView.new) do |tree| %>
-  <% tree.with_leaf(label: label, select_variant: select_variant) do |node| %>
+  <% tree.with_leaf(label: label, select_variant: select_variant, disabled: disabled) do |node| %>
     <% if leading_visual_icon && leading_visual_icon != :none %>
       <% node.with_leading_visual_icon(icon: leading_visual_icon) %>
     <% end %>
