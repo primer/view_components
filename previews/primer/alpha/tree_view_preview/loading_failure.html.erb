@@ -1,0 +1,36 @@
+<% subject_id = SecureRandom.hex %>
+
+<div style="max-width: 400px">
+  <%= render(Primer::Alpha::TreeView.new(data: { interaction_subject: subject_id })) do |tree_view| %>
+    <% tree_view.with_sub_tree(label: "primer") do |sub_tree| %>
+      <% sub_tree.with_leading_visual_icons do |icons| %>
+        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
+        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
+      <% end %>
+
+      <% sub_tree.with_loading_spinner(src: primer_view_components.tree_view_items_path(loader: "spinner", fail: true)) %>
+    <% end %>
+  <% end %>
+</div>
+
+<script>
+  function ready(fn) {
+    if (document.readyState !== 'loading') {
+      fn()
+    } else {
+      document.addEventListener('DOMContentLoaded', fn)
+    }
+  }
+
+  ready(() => {
+    const subject = document.querySelector("[data-interaction-subject='<%= subject_id %>']")
+    if (!subject) return
+
+    const includeFragment = subject.querySelector('tree-view-include-fragment')
+    if (!includeFragment) return
+
+    includeFragment.addEventListener('loadend', (event) => {
+      subject.setAttribute('data-ready', 'true')
+    })
+  })
+</script>

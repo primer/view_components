@@ -43,6 +43,8 @@ module Primer
 
         @target = extract_data(:target, @system_arguments)
         @hidden = @system_arguments.delete(:hidden)
+
+        @wrapper_arguments = @system_arguments.delete(:wrapper_arguments) || {}
       end
 
       def no_aria_label?
