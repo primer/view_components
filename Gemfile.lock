@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.43.4)
+    primer_view_components (0.43.5)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       octicons (>= 18.0.0)
@@ -244,7 +244,7 @@ GEM
     ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.31.0)
+    selenium-webdriver (4.34.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -341,7 +341,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rails-accessibility (~> 1.0)
-  selenium-webdriver (~> 4.31)
+  selenium-webdriver (~> 4.34)
   simplecov (~> 0.22.0)
   simplecov-console (~> 0.9.3)
   sourcemap (~> 0.1)
