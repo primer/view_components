@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.70.3
+
+### Patch Changes
+
+- [#337](https://github.com/opf/primer_view_components/pull/337) [`afd57b3`](https://github.com/opf/primer_view_components/commit/afd57b356d0e75d046bbf8cbb7ae3fef13841c98) Thanks [@HDinger](https://github.com/HDinger)! - Add the option to skip breadcrumb items for mobile
+
 ## 0.70.2
 
 ### Patch Changes
