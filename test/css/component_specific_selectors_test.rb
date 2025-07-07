@@ -69,6 +69,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-inlineValidation--success",
       ".FormControl-checkbox",
       ".FormControl-radio",
+      ".FormControl-caption a"
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
