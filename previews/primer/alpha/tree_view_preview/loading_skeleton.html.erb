@@ -1,0 +1,12 @@
+<div style="max-width: 400px">
+  <%= render(Primer::Alpha::TreeView.new) do |tree_view| %>
+    <% tree_view.with_sub_tree(label: "primer") do |sub_tree| %>
+      <% sub_tree.with_leading_visual_icons do |icons| %>
+        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
+        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
+      <% end %>
+
+      <% sub_tree.with_loading_skeleton(src: primer_view_components.tree_view_items_path(loader: "skeleton", fail: simulate_failure, empty: simulate_empty)) %>
+    <% end %>
+  <% end %>
+</div>

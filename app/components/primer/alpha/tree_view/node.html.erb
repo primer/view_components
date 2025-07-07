@@ -1,0 +1,32 @@
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <div class="TreeViewItemContainer" style="--level: <%= level %>;">
+    <div style="grid-area: spacer; display: flex;">
+      <div style="width: 100%; display: flex;">
+        <% (0...(level - 1)).each do %>
+          <div class="TreeViewItemLevelLine"></div>
+        <% end %>
+      </div>
+    </div>
+    <% if toggle? %>
+      <%= toggle %>
+    <% end %>
+    <% if leading_action? %>
+      <%= leading_action %>
+    <% end %>
+    <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
+      <% if @select_variant == :multiple %>
+        <div aria-hidden="true" class="TreeViewItemCheckbox" tabindex="-1">
+          <div class="FormControl-checkbox"></div>
+        </div>
+      <% end %>
+      <% if leading_visual? %>
+        <%= leading_visual %>
+      <% end %>
+      <span class="TreeViewItemContentText"><%= text_content %></span>
+      <% if trailing_visual? %>
+        <%= trailing_visual %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= content %>
+<% end %>
