@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.70.4
+
+### Patch Changes
+
+- [#339](https://github.com/opf/primer_view_components/pull/339) [`18dc9e1`](https://github.com/opf/primer_view_components/commit/18dc9e1473ce4aead56f84670b1ae4ab256c8fc2) Thanks [@HDinger](https://github.com/HDinger)! - Add link underline effect to PageHeader descriptions and FormControl captions
+
 ## 0.70.3
 
 ### Patch Changes
