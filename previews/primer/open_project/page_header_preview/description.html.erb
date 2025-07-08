@@ -1,0 +1,12 @@
+<%= render(Primer::OpenProject::PageHeader.new) do |component| %>
+  <% component.with_title do %>
+    Great news
+  <% end %>
+  <% component.with_description do %>
+    <%= render(Primer::Beta::Text.new) do %>
+      Last updated by
+      <%= render(Primer::Beta::Link.new(href: "/foo")) {"user Foo"} %>
+    <% end %>
+  <% end %>
+  <% component.with_breadcrumbs([{ href: "/foo", text: "Foo" }, { href: "/bar", text: "Bar" }, "Baz"]) %>
+<% end %>

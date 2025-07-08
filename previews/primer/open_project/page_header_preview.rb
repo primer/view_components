@@ -266,6 +266,11 @@ module Primer
                                        "Baz"])
         end
       end
+
+      # @label With a link in the description
+      def description
+        render_with_template(template: "primer/open_project/page_header_preview/description")
+      end
     end
   end
 end
