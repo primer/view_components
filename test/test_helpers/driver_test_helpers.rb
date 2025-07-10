@@ -17,10 +17,11 @@ module Primer
     def setup_driver
       if chrome?
         require "test_helpers/cuprite_setup"
-        require "test_helpers/retry"
       elsif firefox?
         require "test_helpers/webdriver_setup"
       end
+
+      require "test_helpers/retry"
     end
 
     private

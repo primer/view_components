@@ -6,15 +6,14 @@
 module Minitest
   module Retry
     RETRY_MAX = 3
-    ERRORS = [
-      Ferrum::TimeoutError
-    ].freeze
+    ERRORS = Primer::DriverTestHelpers.chrome? ? [Ferrum::TimeoutError] : []
+    ERRORS.freeze
 
-    module ClassMethods
+    module PrependedClassMethods
       def run_one_method(klass, method_name)
         result = super
 
-        return result if !should_retry?(result.failures) || result.skipped?
+        return result if !should_retry?(klass, result.failures) || result.skipped?
 
         Minitest::Retry::RETRY_MAX.times do |count|
           puts "Retrying '#{method_name}' #{count + 1} of #{Minitest::Retry::RETRY_MAX}. Error: #{result.failures.map(&:message).join(',')}"
@@ -26,20 +25,21 @@ module Minitest
         result
       end
 
-      def should_retry?(failures)
+      def should_retry?(klass, failures)
         return false if failures.empty?
 
         errors = failures.map { |failure| failure.error.class }
-        (errors & Minitest::Retry::ERRORS).any?
+        test_case_errors_to_retry = klass.respond_to?(:errors_to_retry) ? klass.errors_to_retry : []
+        (errors & [*Minitest::Retry::ERRORS, *test_case_errors_to_retry]).any?
       end
     end
 
-    def self.prepended(base)
+    def self.included(base)
       class << base
-        prepend ClassMethods
+        prepend PrependedClassMethods
       end
     end
   end
 end
 
-Minitest.prepend(Minitest::Retry)
+Minitest.include(Minitest::Retry)
