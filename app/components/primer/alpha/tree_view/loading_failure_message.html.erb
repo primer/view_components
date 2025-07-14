@@ -1,0 +1,13 @@
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", color: :danger)) %>
+  <span><%= @text %></span>
+  <div></div> <!-- spacer -->
+  <%= render(Primer::Beta::Button.new(
+    size: :small,
+    scheme: :default,
+    style: "justify-self: start",
+    **@retry_button_arguments
+  )) do %>
+    <%= @retry_button_label %>
+  <% end %>
+<% end %>

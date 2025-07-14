@@ -1,0 +1,13 @@
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <% if expanded_icon? %>
+    <div data-target="tree-view-icon-pair.expandedIcon" <%= expanded? ? "" : "hidden" %>>
+      <%= expanded_icon %>
+    </div>
+  <% end %>
+
+  <% if collapsed_icon? %>
+    <div data-target="tree-view-icon-pair.collapsedIcon" <%= expanded? ? "hidden" : "" %>>
+      <%= collapsed_icon %>
+    </div>
+  <% end %>
+<% end %>
