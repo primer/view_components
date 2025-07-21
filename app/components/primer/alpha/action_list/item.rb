@@ -142,6 +142,27 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
+        # An `ActionMenu` that appears when the item is hovered. The menu will be positioned relative to the item
+        # and will appear on mouse enter and disappear on mouse leave with a small delay.
+        #
+        # @param menu_id [String] Optional. Unique identifier for the menu. If not provided, one will be generated.
+        # @param anchor_side [Symbol] Optional. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+        # @param anchor_align [Symbol] Optional. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
+        renders_one :hover_menu, lambda { |menu_id: nil, **system_arguments|
+          menu_id ||= "hover-menu-#{SecureRandom.hex(4)}"
+          
+          # Create the ActionMenu without a show button since it's triggered by hover
+          menu = Primer::Alpha::ActionMenu.new(
+            menu_id: menu_id,
+            anchor_side: :outside_right,
+            **system_arguments
+          )
+          
+          # Don't render a show button for hover menus - they trigger on item hover
+          menu
+        }
+
         # Used internally.
         #
         # @private
@@ -310,6 +331,15 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?
           )
+
+          # Add hover menu data attributes if hover menu is present
+          if hover_menu?
+            @system_arguments[:data] = merge_data(
+              @system_arguments, {
+                data: { "has-hover-menu": true }
+              }
+            )
+          end
 
           if @truncate_label == :show_tooltip && !tooltip?
             with_tooltip(text: @label, direction: :ne)
