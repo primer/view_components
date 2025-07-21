@@ -151,16 +151,22 @@ module Primer
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
         renders_one :hover_menu, lambda { |menu_id: nil, **system_arguments|
           menu_id ||= "hover-menu-#{SecureRandom.hex(4)}"
-          
-          # Create the ActionMenu without a show button since it's triggered by hover
-          menu = Primer::Alpha::ActionMenu.new(
+
+          # Generate a consistent item ID that will be used for anchoring
+          item_id = @id || @item_id || "action-list-item-#{SecureRandom.hex(4)}"
+          @hover_menu_anchor_id = item_id  # Store for use in before_render
+
+          # Extract overlay-specific arguments for proper anchoring
+          overlay_arguments = system_arguments.delete(:overlay_arguments) || {}
+
+          # Create the ActionMenu with proper overlay configuration for hover anchoring
+          Primer::Alpha::ActionMenu.new(
             menu_id: menu_id,
             anchor_side: :outside_right,
+            # Pass the anchor through overlay_arguments to the Overlay
+            overlay_arguments: overlay_arguments.merge(anchor: item_id),
             **system_arguments
           )
-          
-          # Don't render a show button for hover menus - they trigger on item hover
-          menu
         }
 
         # Used internally.
@@ -334,6 +340,9 @@ module Primer
 
           # Add hover menu data attributes if hover menu is present
           if hover_menu?
+            # Use the anchor ID that was set when creating the hover menu
+            @system_arguments[:id] = @hover_menu_anchor_id if @hover_menu_anchor_id
+
             @system_arguments[:data] = merge_data(
               @system_arguments, {
                 data: { "has-hover-menu": true }
