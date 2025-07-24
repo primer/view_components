@@ -77,46 +77,22 @@ module Primer
       # @label Hover menu
       # @snapshot
       def hover_menu
-        render(Primer::Beta::NavList.new(selected_item_id: :code_review_limits)) do |list|
-          list.with_heading(title: "Repository settings")
+        render(Primer::Beta::NavList.new(selected_item_id: :code_review_limits, aria: { label: "Repositories" })) do |list|
           list.with_group do |group|
-            group.with_heading(title: "Access")
-
-            group.with_avatar_item(
-              src: "https://avatars.githubusercontent.com/u/103004183?v=4",
-              username: "hulk_smash",
-              full_name: "Bruce Banner",
-              full_name_scheme: :inline,
-              href: "/profile",
-              avatar_arguments: { shape: :square }
-            )
-
-            group.with_item(label: "Collaborators and teams", href: "/collaborators", selected_by_ids: :collaborators) do |item|
-              item.with_leading_visual_icon(icon: :people)
-            end
-
-            group.with_item(label: "Moderation options") do |item|
-              item.with_leading_visual_icon(icon: :"comment-discussion")
-
-              item.with_item(label: "Interaction limits", href: "/interaction-limits", selected_by_ids: :interaction_limits) do |interaction_item|
-                interaction_item.with_hover_menu(anchor_side: :outside_right) do |menu|
-                  menu.with_item(label: "Block users") do |block_item|
-                    block_item.with_leading_visual_icon(icon: :blocked)
-                  end
-                  menu.with_item(label: "Limit interactions") do |limit_item|
-                    limit_item.with_leading_visual_icon(icon: :"comment-discussion")
-                  end
-                  menu.with_item(label: "Hide comments") do |hide_item|
-                    hide_item.with_leading_visual_icon(icon: :gear)
-                  end
-                  menu.with_divider
-                  menu.with_item(label: "View settings", href: "/interaction-limits/settings") do |settings_item|
-                    settings_item.with_leading_visual_icon(icon: :gear)
-                  end
+            group.with_heading(title: "Repositories")
+            group.with_avatar_item(label: "github/github", href: "/interaction-limits", selected_by_ids: :interaction_limits, src: "https://avatars.githubusercontent.com/u/9919?v=4", username: "github") do |interaction_item|
+              interaction_item.with_hover_menu(anchor_side: :outside_right) do |menu|
+                menu.with_item(label: "Code") do |block_item|
+                  block_item.with_leading_visual_icon(icon: :code)
+                end
+                menu.with_item(label: "Pull requests") do |limit_item|
+                  limit_item.with_leading_visual_icon(icon: :"git-pull-request")
+                end
+                menu.with_divider
+                menu.with_item(label: "Repository settings", href: "/interaction-limits/settings") do |settings_item|
+                  settings_item.with_leading_visual_icon(icon: :gear)
                 end
               end
-              item.with_item(label: "Code review limits", href: "/review-limits", selected_by_ids: :code_review_limits)
-              item.with_item(label: "Reported content", href: "/reported-content", selected_by_ids: :reported_content)
             end
           end
         end
