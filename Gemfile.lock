@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.43.5)
+    primer_view_components (0.43.6)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       octicons (>= 18.0.0)
-      view_component (>= 3.1, < 4.0)
+      view_component (>= 3.1, < 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -149,12 +149,12 @@ GEM
     msgpack (1.8.0)
     mutex_m (0.3.0)
     nio4r (2.7.4)
-    nokogiri (1.18.8)
+    nokogiri (1.18.9)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-linux-gnu)
+    nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
-    octicons (19.15.2)
+    octicons (19.15.4)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -212,7 +212,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.1)
     rouge (4.5.2)
-    rubocop (1.77.0)
+    rubocop (1.78.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -284,7 +284,7 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
-    view_component (4.0.0.rc1)
+    view_component (4.0.0.rc5)
       activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
     vite_rails (3.0.19)
@@ -351,7 +351,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.0.0.rc1)
+  view_component (= 4.0.0.rc5)
   vite_rails (~> 3.0)
   webmock
   yard (~> 0.9.37)

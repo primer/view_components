@@ -1,11 +1,11 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.43.5)
+    primer_view_components (0.43.6)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       octicons (>= 18.0.0)
-      view_component (>= 3.1, < 4.0)
+      view_component (>= 3.1, < 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -243,11 +243,11 @@ GEM
     mutex_m (0.3.0)
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.8-arm64-darwin)
+    nokogiri (1.18.9-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-darwin)
+    nokogiri (1.18.9-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-linux-gnu)
+    nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     octicons (19.15.3)
     oj (3.16.10)
@@ -339,14 +339,14 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.7)
-    thor (1.3.2)
+    thor (1.4.0)
     timeliness (0.3.10)
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    view_component (4.0.0.rc2)
+    view_component (4.0.0.rc5)
       activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
     vite_rails (3.0.19)
@@ -401,7 +401,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (= 4.0.0.rc2)
+  view_component (= 4.0.0.rc5)
   vite_rails (~> 3.0)
 
 BUNDLED WITH

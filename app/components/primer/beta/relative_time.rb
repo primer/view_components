@@ -102,6 +102,7 @@ module Primer
       # @param lang [String] The language to use.
       # @param title [String] Provide a custom title to the element.
       # @param no_title [Boolean] Removes the `title` attribute provided on the element by default.
+      # @param aria_hidden [Boolean] Set if the element is hidden or not.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         datetime:,
@@ -122,6 +123,7 @@ module Primer
         lang: nil,
         title: nil,
         no_title: false,
+        aria_hidden: nil,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -143,6 +145,7 @@ module Primer
         @system_arguments[:lang] = lang if lang.present?
         @system_arguments[:format] = fetch_or_fallback(FORMAT_OPTIONS, format, FORMAT_DEFAULT) if format.present?
         @system_arguments[:"format-style"] = format_style if format_style.present?
+        @system_arguments[:"aria-hidden"] = aria_hidden if aria_hidden.present?
         if datetime.present? && datetime.respond_to?(:iso8601)
           @datetime = datetime
           @system_arguments[:datetime] = datetime.iso8601
