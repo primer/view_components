@@ -15257,6 +15257,12 @@
         "description": "Removes the `title` attribute provided on the element by default."
       },
       {
+        "name": "aria_hidden",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "Set if the element is hidden or not."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
