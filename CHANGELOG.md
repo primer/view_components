@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.43.6
+
+### Patch Changes
+
+- [#3597](https://github.com/primer/view_components/pull/3597) [`191b4cd`](https://github.com/primer/view_components/commit/191b4cd3ae7a66210513dcb3cb9f9b4e937c3c33) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Support ViewComponent 4.0.0
+
 ## 0.43.5
 
 ### Patch Changes
