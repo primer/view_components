@@ -123,7 +123,7 @@ module Primer
         lang: nil,
         title: nil,
         no_title: false,
-        aria_hidden: false,
+        aria_hidden: nil,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
