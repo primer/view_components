@@ -1,0 +1,23 @@
+<%= render(Primer::Alpha::TreeView::SubTree.new(path: ["primer"], node_variant: :div)) do |tree| %>
+  <% tree.with_sub_tree(label: "alpha") do |sub_tree| %>
+    <% sub_tree.with_leading_visual_icons do |icons| %>
+      <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
+      <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
+    <% end %>
+
+    <% sub_tree.with_sub_tree(label: "action_menu", expanded: action_menu_expanded) do |sub_tree| %>
+      <% sub_tree.with_leading_visual_icons do |icons| %>
+        <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
+        <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
+      <% end %>
+
+      <% sub_tree.with_leaf(label: "group.rb") do |item| %>
+        <% item.with_leading_visual_icon(icon: :file) %>
+      <% end %>
+
+      <% sub_tree.with_leaf(label: "heading.rb") do |item| %>
+        <% item.with_leading_visual_icon(icon: :file) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
