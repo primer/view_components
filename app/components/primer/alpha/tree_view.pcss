@@ -143,7 +143,7 @@
     text-decoration-color: var(--control-fgColor-rest);
   }
 
-  & :has(.TreeViewItemContent[aria-disabled=true]) {
+  & :has(.TreeViewItemContent[aria-disabled="true"]) {
     cursor: not-allowed;
   }
 
@@ -223,13 +223,16 @@
       & .TreeViewItemVisual {
         fill: var(--control-fgColor-disabled);
 
+        /* stylelint-disable-next-line max-nesting-depth, selector-max-compound-selectors, selector-max-specificity */
         & svg {
           fill: var(--control-fgColor-disabled);
         }
       }
 
       & .FormControl-checkbox {
+        /* stylelint-disable-next-line max-nesting-depth */
         @media (hover: hover) {
+          /* stylelint-disable-next-line max-nesting-depth, selector-max-specificity */
           &:hover {
             cursor: not-allowed;
           }
@@ -237,6 +240,7 @@
       }
 
       @media (hover: hover) {
+        /* stylelint-disable-next-line max-nesting-depth */
         &:hover {
           cursor: not-allowed;
           background-color: transparent;

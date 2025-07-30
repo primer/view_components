@@ -46,7 +46,6 @@ export class TreeViewElement extends HTMLElement {
 
       const newInputs = []
 
-      // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
       for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
         const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
         newInput.removeAttribute('data-target')
