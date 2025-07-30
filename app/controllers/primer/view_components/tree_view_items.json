@@ -1,0 +1,293 @@
+{
+  "children": {
+    "primer": {
+      "children": {
+        "alpha": {
+          "children": {
+            "action_bar": {
+              "children": {},
+              "files": [
+                "divider.rb",
+                "item.rb"
+              ]
+            },
+            "action_list": {
+              "children": {},
+              "files": [
+                "divider.rb",
+                "form_wrapper.rb",
+                "heading.rb",
+                "item.rb"
+              ]
+            },
+            "action_menu": {
+              "children": {},
+              "files": [
+                "action_menu_element.ts",
+                "group.rb",
+                "heading.rb",
+                "list.rb",
+                "list_wrapper.rb"
+              ]
+            },
+            "auto_complete": {
+              "children": {},
+              "files": [
+                "item.rb"
+              ]
+            },
+            "dialog": {
+              "children": {},
+              "files": [
+                "body.rb",
+                "footer.rb",
+                "header.rb"
+              ]
+            },
+            "dropdown": {
+              "children": {},
+              "files": [
+                "menu.rb",
+                "menu.ts"
+              ]
+            },
+            "file_tree_view": {
+              "children": {},
+              "files": [
+                "directory_item.rb",
+                "file_item.rb"
+              ]
+            },
+            "nav_list": {
+              "children": {},
+              "files": [
+                "divider.rb",
+                "group.rb",
+                "heading.rb",
+                "item.rb"
+              ]
+            },
+            "navigation": {
+              "children": {},
+              "files": [
+                "tab.rb"
+              ]
+            },
+            "overlay": {
+              "children": {},
+              "files": [
+                "body.rb",
+                "footer.rb",
+                "header.rb"
+              ]
+            },
+            "segmented_control": {
+              "children": {},
+              "files": [
+                "item.rb"
+              ]
+            },
+            "tree_view": {
+              "children": {},
+              "files": [
+                "icon.rb",
+                "icon_pair.rb",
+                "item.rb",
+                "leaf_item.rb",
+                "spinner_loader.rb",
+                "sub_tree.rb",
+                "sub_tree_container.rb",
+                "sub_tree_item.rb",
+                "tree_view_icon_pair_element.ts",
+                "tree_view_sub_tree_item_element.ts",
+                "visual.rb"
+              ]
+            }
+          },
+          "files": [
+            "action_bar.pcss",
+            "action_bar.rb",
+            "action_bar_element.ts",
+            "action_list.pcss",
+            "action_list.rb",
+            "action_list.ts",
+            "action_menu.rb",
+            "auto_complete.pcss",
+            "auto_complete.rb",
+            "banner.pcss",
+            "banner.rb",
+            "button_marketing.pcss",
+            "button_marketing.rb",
+            "check_box.rb",
+            "check_box_group.rb",
+            "dialog.pcss",
+            "dialog.rb",
+            "dropdown.pcss",
+            "dropdown.rb",
+            "dropdown.ts",
+            "file_tree_view.rb",
+            "form_button.rb",
+            "form_control.rb",
+            "hellip_button.rb",
+            "hidden_text_expander.rb",
+            "image.rb",
+            "layout.pcss",
+            "layout.rb",
+            "menu.pcss",
+            "menu.rb",
+            "modal_dialog.ts",
+            "multi_input.rb",
+            "nav_list.rb",
+            "octicon_symbols.rb",
+            "overlay.pcss",
+            "overlay.rb",
+            "radio_button.rb",
+            "radio_button_group.rb",
+            "segmented_control.pcss",
+            "segmented_control.rb",
+            "segmented_control.ts",
+            "select.rb",
+            "select_panel.pcss",
+            "select_panel.rb",
+            "select_panel_element.ts",
+            "stack.pcss",
+            "stack.rb",
+            "stack_item.pcss",
+            "stack_item.rb",
+            "submit_button.rb",
+            "tab_container.rb",
+            "tab_container.ts",
+            "tab_nav.pcss",
+            "tab_nav.rb",
+            "tab_panels.rb",
+            "text_area.rb",
+            "text_field.pcss",
+            "text_field.rb",
+            "toggle_switch.pcss",
+            "toggle_switch.rb",
+            "toggle_switch.ts",
+            "tool_tip.ts",
+            "tooltip.rb",
+            "tree_view.pcss",
+            "tree_view.rb",
+            "underline_nav.pcss",
+            "underline_nav.rb",
+            "underline_panels.rb",
+            "x_banner.ts"
+          ]
+        },
+        "beta": {
+          "children": {
+            "auto_complete": {
+              "children": {},
+              "files": [
+                "auto_complete.ts",
+                "item.rb",
+                "no_result_item.rb"
+              ]
+            },
+            "border_box": {
+              "children": {},
+              "files": [
+                "header.rb"
+              ]
+            },
+            "nav_list": {
+              "children": {},
+              "files": [
+                "divider.rb",
+                "group.rb",
+                "heading.rb",
+                "item.rb"
+              ]
+            }
+          },
+          "files": [
+            "auto_complete.rb",
+            "avatar.pcss",
+            "avatar.rb",
+            "avatar_stack.pcss",
+            "avatar_stack.rb",
+            "base_button.rb",
+            "blankslate.pcss",
+            "blankslate.rb",
+            "border_box.pcss",
+            "border_box.rb",
+            "breadcrumbs.pcss",
+            "breadcrumbs.rb",
+            "button.pcss",
+            "button.rb",
+            "button_group.pcss",
+            "button_group.rb",
+            "clipboard_copy.rb",
+            "clipboard_copy.ts",
+            "clipboard_copy_button.rb",
+            "close_button.rb",
+            "counter.pcss",
+            "counter.rb",
+            "details.rb",
+            "details_toggle_element.ts",
+            "flash.pcss",
+            "flash.rb",
+            "heading.rb",
+            "icon_button.rb",
+            "label.pcss",
+            "label.rb",
+            "link.pcss",
+            "link.rb",
+            "markdown.rb",
+            "nav_list.rb",
+            "nav_list.ts",
+            "nav_list_group_element.ts",
+            "octicon.rb",
+            "popover.pcss",
+            "popover.rb",
+            "progress_bar.pcss",
+            "progress_bar.rb",
+            "relative_time.rb",
+            "relative_time.ts",
+            "spinner.rb",
+            "state.pcss",
+            "state.rb",
+            "subhead.pcss",
+            "subhead.rb",
+            "text.rb",
+            "timeline_item.pcss",
+            "timeline_item.rb",
+            "truncate.pcss",
+            "truncate.rb"
+          ]
+        },
+        "navigation": {
+          "children": {},
+          "files": [
+            "tab_component.rb"
+          ]
+        }
+      },
+      "files": [
+        "anchored_position.ts",
+        "base_component.rb",
+        "blankslate_component.rb",
+        "box.rb",
+        "button_component.rb",
+        "component.rb",
+        "conditional_wrapper.rb",
+        "content.rb",
+        "dialog_helper.ts",
+        "focus_group.ts",
+        "icon_button.rb",
+        "layout_component.rb",
+        "primer.pcss",
+        "primer.ts",
+        "responsive_arg.rb",
+        "scrollable_region.ts",
+        "shared_events.ts",
+        "tooltip.rb",
+        "truncate.pcss",
+        "truncate.rb",
+        "utils.ts"
+      ]
+    }
+  }
+}

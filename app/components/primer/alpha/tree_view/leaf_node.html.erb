@@ -1,0 +1,18 @@
+<%= render(@node) do |node| %>
+  <% if leading_action? %>
+    <% node.with_leading_action do %>
+      <%= leading_action %>
+    <% end %>
+  <% end %>
+  <% if leading_visual? %>
+    <% node.with_leading_visual do %>
+      <%= leading_visual %>
+    <% end %>
+  <% end %>
+  <% if trailing_visual? %>
+    <% node.with_trailing_visual do %>
+      <%= trailing_visual %>
+    <% end %>
+  <% end %>
+  <% node.with_text_content { @label } %>
+<% end %>

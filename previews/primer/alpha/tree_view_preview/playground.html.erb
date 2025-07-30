@@ -1,0 +1,4 @@
+<% data = Primer::ViewComponents::TreeViewItemsController::TREE %>
+<%= render(Primer::Alpha::TreeView.new) do |tree| %>
+  <% populate.call(tree, data, { select_variant: select_variant, select_strategy: select_strategy, expanded: expanded }) %>
+<% end %>
