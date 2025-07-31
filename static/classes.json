@@ -510,6 +510,9 @@
   "SelectPanel-loadingPanel": [
     "Primer::Alpha::SelectPanel"
   ],
+  "SkeletonBox": [
+    "Primer::Alpha::SkeletonBox"
+  ],
   "Stack": [
     "Primer::Alpha::Stack"
   ],
@@ -620,6 +623,18 @@
   ],
   "ToggleSwitch-track": [
     "Primer::Alpha::ToggleSwitch"
+  ],
+  "TreeItemSkeletonTextStyles": [
+    "Primer::Alpha::TreeView"
+  ],
+  "TreeViewFailureMessage": [
+    "Primer::Alpha::TreeView"
+  ],
+  "TreeViewRootUlStyles": [
+    "Primer::Alpha::TreeView"
+  ],
+  "TreeViewSkeletonItemContainerStyle": [
+    "Primer::Alpha::TreeView"
   ],
   "Truncate": [
     "Primer::Beta::Truncate"

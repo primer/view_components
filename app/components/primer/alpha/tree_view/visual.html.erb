@@ -1,0 +1,14 @@
+<%= render(
+  Primer::BaseComponent.new(
+    tag: :div,
+    classes: "sr-only TreeViewVisuallyHidden",
+    aria: { hidden: true },
+    id: @id,
+    test_selector: "tree-view-visual-label"
+  )
+) do %>
+  <%= @label %>
+<% end %>
+<div class="TreeViewItemVisual" aria-hidden="true">
+  <%= render(@visual) %>
+</div>
