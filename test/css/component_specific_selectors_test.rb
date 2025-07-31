@@ -70,6 +70,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-checkbox",
       ".FormControl-radio",
     ],
+    Primer::Alpha::TreeView => [
+      # Used, but not directly rendered by a preview
+      ".TreeViewItemLeadingAction",
+    ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
       ".btn-small-mktg"
