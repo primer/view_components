@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.44.0
+
+### Minor Changes
+
+- [#3563](https://github.com/primer/view_components/pull/3563) [`cf9ce00`](https://github.com/primer/view_components/commit/cf9ce00849b200482e2a799a279acb645929ab57) Thanks [@camertron](https://github.com/camertron)! - Introduce Primer::Alpha::TreeView, Primer::Alpha::FileTreeView and Primer::Alpha::SkeletonBox
+
+### Patch Changes
+
+- [#3613](https://github.com/primer/view_components/pull/3613) [`0ddc1a4`](https://github.com/primer/view_components/commit/0ddc1a41be5dce9f4042e6d4138432554d2419a1) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating snapshots
+
 ## 0.43.6
 
 ### Patch Changes
