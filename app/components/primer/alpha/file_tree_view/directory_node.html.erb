@@ -1,0 +1,5 @@
+<% with_leading_visual_icons do |icons| %>
+  <% icons.with_expanded_icon(icon: :"file-directory-open-fill", **@expanded_icon_arguments) %>
+  <% icons.with_collapsed_icon(icon: :"file-directory-fill", **@collapsed_icon_arguments) %>
+<% end %>
+<%= render_parent %>

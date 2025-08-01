@@ -1,0 +1,49 @@
+<tree-view-sub-tree-node>
+  <%= render(@node) do |node| %>
+    <% if leading_action? %>
+      <% node.with_leading_action do %>
+        <%= leading_action %>
+      <% end %>
+    <% end %>
+    <% if leading_visual? %>
+      <% node.with_leading_visual do %>
+        <%= leading_visual %>
+      <% end %>
+    <% end %>
+    <% if trailing_visual? %>
+      <% node.with_trailing_visual do %>
+        <%= trailing_visual %>
+      <% end %>
+    <% end %>
+
+    <% node.with_text_content { @label } %>
+
+    <% node.with_toggle do %>
+      <div
+        data-target="tree-view-sub-tree-node.toggleButton"
+        class="TreeViewItemToggle TreeViewItemToggleHover TreeViewItemToggleEnd">
+        <%= render(
+          Primer::Beta::Octicon.new(
+            icon: :"chevron-down",
+            size: :xsmall,
+            data: { target: "tree-view-sub-tree-node.expandedToggleIcon" },
+            hidden: !@sub_tree.expanded?,
+            style: "pointer-events: none;"
+          )
+        ) %>
+
+        <%= render(
+          Primer::Beta::Octicon.new(
+            icon: :"chevron-right",
+            size: :xsmall,
+            data: { target: "tree-view-sub-tree-node.collapsedToggleIcon" },
+            hidden: @sub_tree.expanded?,
+            style: "pointer-events: none;"
+          )
+        ) %>
+      </div>
+    <% end %>
+
+    <%= render(@sub_tree) %>
+  <% end %>
+</tree-view-sub-tree-node>
