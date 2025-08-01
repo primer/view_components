@@ -1,1 +1,2 @@
-- link "This is a link!"
+- link "This is a link!":
+  - /url: "#"
