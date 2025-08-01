@@ -1,8 +1,11 @@
 - navigation "Breadcrumb":
   - list:
     - listitem:
-      - link "Home"
+      - link "Home":
+        - /url: "#0"
     - listitem:
-      - link "This is a very long breadcrumb item that would normally cause overflow issues by being much longer than expected breadcrumb text should be"
+      - link "This is a very long breadcrumb item that would normally cause overflow issues by being much longer than expected breadcrumb text should be":
+        - /url: "#1"
     - listitem:
-      - link "And another extremely long breadcrumb item name that demonstrates the max-width fix working correctly to prevent page overflow"
+      - link "And another extremely long breadcrumb item name that demonstrates the max-width fix working correctly to prevent page overflow":
+        - /url: "#2"
