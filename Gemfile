@@ -6,7 +6,7 @@ gemspec
 rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "rack-cors"
-gem "rake", "~> 13.2"
+gem "rake", "~> 13.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -33,8 +33,12 @@ gem "puma", "~> 6.6.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.3.9"
-gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
+gem "lookbook", "~> 2.3.12"
+if ENV["VIEW_COMPONENT_PATH"]
+  gem "view_component", path: ENV["VIEW_COMPONENT_PATH"]
+else
+  gem "view_component", "4.0.0.rc5"
+end
 
 gem "kramdown", "~> 2.5"
 gem "sourcemap", "~> 0.1"
@@ -54,19 +58,19 @@ group :development do
   gem "capybara", "~> 3.40.0"
   gem "cuprite", "~> 0.15"
   gem "debug"
-  gem "erb_lint", "~> 0.6"
-  gem "erblint-github", "~> 1.0"
+  gem "erb_lint", "~> 0.9"
+  gem "erblint-github", "~> 1.0.1"
   gem "listen", "~> 3.9"
-  gem "matrix", "~> 0.4.2"
+  gem "matrix", "~> 0.4.3"
   gem "mocha"
   gem "rubocop"
-  gem "rubocop-github", "~> 0.20.0"
+  gem "rubocop-github", "~> 0.26.0"
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 1.0"
-  gem "selenium-webdriver", "~> 4.31"
+  gem "selenium-webdriver", "~> 4.34"
   gem "simplecov", "~> 0.22.0"
-  gem "simplecov-console", "~> 0.9.3"
+  gem "simplecov-console", "~> 0.9.4"
   gem "sprockets"
   gem "sprockets-rails"
   gem "thor"

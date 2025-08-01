@@ -124,6 +124,22 @@ class PrimerBetaDetailsTest < Minitest::Test
     assert_selector("summary[data-aria-label-closed='Open me']")
   end
 
+  def test_accepts_partial_aria_label_values
+    render_inline(Primer::Beta::Details.new) do |component|
+      component.with_summary(aria_label_closed: "Open me") do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    assert_selector("summary")
+    assert_selector("summary[aria-label='Open me']")
+    assert_selector("summary[data-aria-label-closed='Open me']")
+    assert_selector("summary[data-aria-label-open='Collapse']")  # Uses default when only one is provided
+  end
+
   def test_prevents_rendering_without_slots
     render_inline(Primer::Beta::Details.new)
 
@@ -159,6 +175,44 @@ class PrimerBetaDetailsTest < Minitest::Test
     assert_component_state(Primer::Beta::Details, :beta)
   end
 
+  def test_renders_no_aria_labels_when_not_provided
+    render_inline(Primer::Beta::Details.new) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    # Should not have aria-label attribute
+    refute_selector("summary[aria-label]")
+    # Should not have data-aria-label attributes 
+    refute_selector("summary[data-aria-label-closed]")
+    refute_selector("summary[data-aria-label-open]")
+    # Should still have aria-expanded
+    assert_selector("summary[aria-expanded=false]")
+  end
+
+  def test_renders_no_aria_labels_when_not_provided_and_open
+    render_inline(Primer::Beta::Details.new(open: true)) do |component|
+      component.with_summary do
+        "Summary"
+      end
+      component.with_body do
+        "Body"
+      end
+    end
+
+    # Should not have aria-label attribute
+    refute_selector("summary[aria-label]")
+    # Should not have data-aria-label attributes 
+    refute_selector("summary[data-aria-label-closed]")
+    refute_selector("summary[data-aria-label-open]")
+    # Should still have aria-expanded
+    assert_selector("summary[aria-expanded=true]")
+  end
+
   def test_renders_details_catalyst_element_and_data_attributes
     render_inline(Primer::Beta::Details.new) do |component|
       component.with_summary do
@@ -171,11 +225,11 @@ class PrimerBetaDetailsTest < Minitest::Test
 
     assert_selector("details-toggle")
     assert_selector("details[data-target='details-toggle.detailsTarget']")
-    assert_selector("summary[aria-label='Expand']")
+    refute_selector("summary[aria-label]")  # No aria-label when not explicitly provided
     assert_selector("summary[aria-expanded=false]")
     assert_selector("summary[data-action='click:details-toggle#toggle']")
-    assert_selector("summary[data-aria-label-closed='Expand']")
-    assert_selector("summary[data-aria-label-open='Collapse']")
+    refute_selector("summary[data-aria-label-closed]")  # No data attributes when not explicitly provided
+    refute_selector("summary[data-aria-label-open]")  # No data attributes when not explicitly provided
     assert_selector("summary[data-target='details-toggle.summaryTarget']")
   end
 
@@ -190,7 +244,7 @@ class PrimerBetaDetailsTest < Minitest::Test
     end
 
     assert_selector("details[open]")
-    assert_selector("summary[aria-label='Collapse']")
+    refute_selector("summary[aria-label]")  # No aria-label when not explicitly provided
     assert_selector("summary[aria-expanded=true]")
   end
 end

@@ -1557,6 +1557,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/banner/scheme_upsell",
+        "name": "scheme_upsell",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/banner/dismissible",
         "name": "dismissible",
         "snapshot": "true",
@@ -2068,6 +2081,19 @@
         "preview_path": "primer/beta/breadcrumbs/with_link_target",
         "name": "with_link_target",
         "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/breadcrumbs/with_long_items",
+        "name": "with_long_items",
+        "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3144,6 +3170,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/details/with_aria_labels",
+        "name": "with_aria_labels",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3386,6 +3425,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/with_header_close_button_label",
+        "name": "with_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/dialog/without_header_close_button_label",
+        "name": "without_header_close_button_label",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3580,6 +3645,40 @@
       {
         "preview_path": "primer/alpha/dropdown/options_overlay_dark",
         "name": "options_overlay_dark",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "file_tree_view",
+    "component": "FileTreeView",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/file_tree_view",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/file_tree_view/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/file_tree_view/playground",
+        "name": "playground",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -3993,6 +4092,40 @@
         "preview_path": "primer/beta/icon_button/summary_as_button",
         "name": "summary_as_button",
         "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "include_fragment",
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/include_fragment",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/include_fragment/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/include_fragment/default",
+        "name": "default",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -6115,6 +6248,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select_panel/remote_fetch_form",
+        "name": "remote_fetch_form",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select_panel/multiselect_form",
         "name": "multiselect_form",
         "snapshot": "interactive",
@@ -6156,6 +6302,40 @@
       {
         "preview_path": "primer/alpha/select_panel/scroll_container",
         "name": "scroll_container",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "skeleton_box",
+    "component": "SkeletonBox",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/skeleton_box",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/skeleton_box/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/skeleton_box/playground",
+        "name": "playground",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -7613,6 +7793,170 @@
         "preview_path": "primer/alpha/tooltip/tooltip_nw",
         "name": "tooltip_nw",
         "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "tree_view",
+    "component": "TreeView",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/tree_view",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/tree_view/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/empty",
+        "name": "empty",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/loading_failure",
+        "name": "loading_failure",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/loading_spinner",
+        "name": "loading_spinner",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/loading_skeleton",
+        "name": "loading_skeleton",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/async_alpha",
+        "name": "async_alpha",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/leaf_node_playground",
+        "name": "leaf_node_playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/links",
+        "name": "links",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/buttons",
+        "name": "buttons",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/auto_expansion",
+        "name": "auto_expansion",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/form_input",
+        "name": "form_input",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"

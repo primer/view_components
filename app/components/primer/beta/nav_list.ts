@@ -1,4 +1,3 @@
-/* eslint-disable custom-elements/expose-class-on-global */
 import {controller, target, targets} from '@github/catalyst'
 import {ActionListTruncationObserver} from '../alpha/action_list'
 

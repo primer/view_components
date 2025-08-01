@@ -197,7 +197,8 @@
       "default": "bell",
       "warning": "alert",
       "danger": "stop",
-      "success": "check-circle"
+      "success": "check-circle",
+      "upsell": "info"
     },
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "div",
@@ -217,7 +218,8 @@
       "default": "",
       "warning": "Banner--warning",
       "danger": "Banner--error",
-      "success": "Banner--success"
+      "success": "Banner--success",
+      "upsell": "Banner--upsell"
     },
     "TAG_OPTIONS": [
       "div",
@@ -321,6 +323,7 @@
     "GeneratedSlotMethods": "Primer::Alpha::Dialog::Footer::GeneratedSlotMethods"
   },
   "Primer::Alpha::Dialog::Header": {
+    "DEFAULT_CLOSE_LABEL": "Close",
     "DEFAULT_VARIANT": "medium",
     "GeneratedSlotMethods": "Primer::Alpha::Dialog::Header::GeneratedSlotMethods",
     "VARIANT_MAPPINGS": {
@@ -374,6 +377,17 @@
       "summary"
     ]
   },
+  "Primer::Alpha::FileTreeView": {
+    "DirectoryNode": "Primer::Alpha::FileTreeView::DirectoryNode",
+    "FileNode": "Primer::Alpha::FileTreeView::FileNode",
+    "GeneratedSlotMethods": "Primer::Alpha::FileTreeView::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::FileTreeView::DirectoryNode": {
+    "GeneratedSlotMethods": "Primer::Alpha::FileTreeView::DirectoryNode::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::FileTreeView::FileNode": {
+    "GeneratedSlotMethods": "Primer::Alpha::FileTreeView::FileNode::GeneratedSlotMethods"
+  },
   "Primer::Alpha::FormButton": {
     "GeneratedSlotMethods": "Primer::Alpha::FormButton::GeneratedSlotMethods"
   },
@@ -388,6 +402,14 @@
   },
   "Primer::Alpha::Image": {
     "GeneratedSlotMethods": "Primer::Alpha::Image::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::IncludeFragment": {
+    "ALLOWED_LOADING_VALUES": [
+      "lazy",
+      "eager"
+    ],
+    "DEFAULT_LOADING": "eager",
+    "GeneratedSlotMethods": "Primer::Alpha::IncludeFragment::GeneratedSlotMethods"
   },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
@@ -675,6 +697,9 @@
   "Primer::Alpha::SelectPanel::ItemList": {
     "GeneratedSlotMethods": "Primer::Alpha::SelectPanel::ItemList::GeneratedSlotMethods"
   },
+  "Primer::Alpha::SkeletonBox": {
+    "GeneratedSlotMethods": "Primer::Alpha::SkeletonBox::GeneratedSlotMethods"
+  },
   "Primer::Alpha::Stack": {
     "ARG_CLASSES": [
       "Primer::Alpha::Stack::JustifyArg",
@@ -770,6 +795,93 @@
       "label",
       "description"
     ]
+  },
+  "Primer::Alpha::TreeView": {
+    "DEFAULT_NODE_VARIANT": "div",
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::GeneratedSlotMethods",
+    "Icon": "Primer::Alpha::TreeView::Icon",
+    "IconPair": "Primer::Alpha::TreeView::IconPair",
+    "LeadingAction": "Primer::Alpha::TreeView::LeadingAction",
+    "LeafNode": "Primer::Alpha::TreeView::LeafNode",
+    "LoadingFailureMessage": "Primer::Alpha::TreeView::LoadingFailureMessage",
+    "NODE_VARIANT_OPTIONS": [
+      "div",
+      "anchor",
+      "button"
+    ],
+    "Node": "Primer::Alpha::TreeView::Node",
+    "SkeletonLoader": "Primer::Alpha::TreeView::SkeletonLoader",
+    "SpinnerLoader": "Primer::Alpha::TreeView::SpinnerLoader",
+    "SubTree": "Primer::Alpha::TreeView::SubTree",
+    "SubTreeContainer": "Primer::Alpha::TreeView::SubTreeContainer",
+    "SubTreeNode": "Primer::Alpha::TreeView::SubTreeNode",
+    "Visual": "Primer::Alpha::TreeView::Visual"
+  },
+  "Primer::Alpha::TreeView::Icon": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::Icon::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::IconPair": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::IconPair::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::LeadingAction": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::LeadingAction::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::LeafNode": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::LeafNode::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::LoadingFailureMessage": {
+    "DEFAULT_RETRY_BUTTON_LABEL": "Retry",
+    "DEFAULT_TEXT": "Something went wrong",
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::LoadingFailureMessage::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::Node": {
+    "CHECKED_STATES": [
+      false,
+      true,
+      "mixed"
+    ],
+    "DEFAULT_CHECKED_STATE": false,
+    "DEFAULT_NODE_VARIANT": "div",
+    "DEFAULT_SELECT_VARIANT": "none",
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::Node::GeneratedSlotMethods",
+    "NODE_VARIANT_TAG_MAP": {
+      "div": "div",
+      "button": "button",
+      "anchor": "a"
+    },
+    "NODE_VARIANT_TAG_OPTIONS": [
+      "div",
+      "button",
+      "anchor"
+    ],
+    "SELECT_VARIANT_OPTIONS": [
+      "multiple",
+      "none"
+    ]
+  },
+  "Primer::Alpha::TreeView::SkeletonLoader": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::SkeletonLoader::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::SpinnerLoader": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::SpinnerLoader::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::SubTree": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::SubTree::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::SubTreeContainer": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::SubTreeContainer::GeneratedSlotMethods"
+  },
+  "Primer::Alpha::TreeView::SubTreeNode": {
+    "DEFAULT_SELECT_STRATEGY": "mixed_descendants",
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::SubTreeNode::GeneratedSlotMethods",
+    "SELECT_STRATEGIES": [
+      "self",
+      "mixed_descendants",
+      "descendants"
+    ]
+  },
+  "Primer::Alpha::TreeView::Visual": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::Visual::GeneratedSlotMethods"
   },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",

@@ -15,20 +15,19 @@ module RuboCop
       # good
       # Primer::Beta::ComponentName.new()
       class ComponentNameMigration < BaseCop
+        extend AutoCorrector
+
         def on_send(node)
           return unless node.method_name == :new && !node.receiver.nil? && ::Primer::Deprecations.deprecated?(node.receiver.const_name)
 
           message = ::Primer::Deprecations.deprecation_message(node.receiver.const_name)
-          add_offense(node.receiver, message: message)
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            component_name = node.const_name
-            return unless ::Primer::Deprecations.correctable?(component_name)
+          
+          add_offense(node.receiver, message: message) do |corrector|
+            component_name = node.receiver.const_name
+            next unless ::Primer::Deprecations.correctable?(component_name)
 
             replacement = ::Primer::Deprecations.replacement(component_name)
-            corrector.replace(node, replacement) if replacement.present?
+            corrector.replace(node.receiver, replacement) if replacement.present?
           end
         end
       end

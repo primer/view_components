@@ -1,5 +1,51 @@
 # CHANGELOG
 
+## 0.43.6
+
+### Patch Changes
+
+- [#3597](https://github.com/primer/view_components/pull/3597) [`191b4cd`](https://github.com/primer/view_components/commit/191b4cd3ae7a66210513dcb3cb9f9b4e937c3c33) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Support ViewComponent 4.0.0
+
+## 0.43.5
+
+### Patch Changes
+
+- [#3558](https://github.com/primer/view_components/pull/3558) [`9cdefbb`](https://github.com/primer/view_components/commit/9cdefbb65bf44c5dd494b60b636166155687e956) Thanks [@myabc](https://github.com/myabc)! - Make `ToolTipElement` `for` an observed attribute
+
+- [#3562](https://github.com/primer/view_components/pull/3562) [`8686a5d`](https://github.com/primer/view_components/commit/8686a5d52cbba386ee05a2d2efe9041789e01b75) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Use ViewComponent 4.0.0.rc1
+
+## 0.43.4
+
+### Patch Changes
+
+- [#3556](https://github.com/primer/view_components/pull/3556) [`3614cac`](https://github.com/primer/view_components/commit/3614cac1ad1e15dd7692c4a8038adfaf1ca5f8f5) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use ViewComponent 4.0.0.alpha6 and lookbook 2.3.11
+
+## 0.43.3
+
+### Patch Changes
+
+- [#3521](https://github.com/primer/view_components/pull/3521) [`72a68d7`](https://github.com/primer/view_components/commit/72a68d7832a079c8ed7af5dbed9ad53d6c973281) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Rename .erb-linters folder to .erb_linters
+
+- [#3518](https://github.com/primer/view_components/pull/3518) [`c25c43c`](https://github.com/primer/view_components/commit/c25c43cd9f1646943154a3c501fadba569353488) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Replace deprecated lookbook helper define_param_input with add_input_type
+
+- [#3512](https://github.com/primer/view_components/pull/3512) [`b606322`](https://github.com/primer/view_components/commit/b606322653c6109797fe9933fdb7fcbfb09f8235) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Upgrade RuboCop cops to v1 API
+
+- [#3534](https://github.com/primer/view_components/pull/3534) [`b8ebe04`](https://github.com/primer/view_components/commit/b8ebe0461245075db80e00aff9af5647766440f4) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Remove unnecessary aria-label from the Details component
+
+- [#3540](https://github.com/primer/view_components/pull/3540) [`c94037e`](https://github.com/primer/view_components/commit/c94037ebc88b3d959aba99fdef47388ea16d3e3e) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix breadcrumb overflow by adding max-width constraint to prevent page overflow
+
+- [#3522](https://github.com/primer/view_components/pull/3522) [`223a4c6`](https://github.com/primer/view_components/commit/223a4c69262aafb0dad3d8a502272a48a1be3875) Thanks [@camertron](https://github.com/camertron)! - Publish config folder in packaged gem
+
+## 0.43.2
+
+### Patch Changes
+
+- [#3498](https://github.com/primer/view_components/pull/3498) [`e9a4a60`](https://github.com/primer/view_components/commit/e9a4a6030a16a4622069884bd5d4c8fe49812d9b) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Update test allocations to match latest ViewComponent alpha release.
+
+- [#3483](https://github.com/primer/view_components/pull/3483) [`1165454`](https://github.com/primer/view_components/commit/11654544e90cfe17603d8f6fc2b4f1256e82a846) Thanks [@HDinger](https://github.com/HDinger)! - Provide default id for clear button in text fields
+
+- [#3475](https://github.com/primer/view_components/pull/3475) [`28532ae`](https://github.com/primer/view_components/commit/28532ae61c62adb8afe199be01302d0cb2485fec) Thanks [@langermank](https://github.com/langermank)! - Bump primitives + update snapshots
+
 ## 0.43.1
 
 ### Patch Changes

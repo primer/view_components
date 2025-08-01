@@ -23,13 +23,19 @@ IGNORED_SELECTORS = {
 }.freeze
 # rubocop:enable Style/WordArray
 
+IGNORED_PREVIEWS = {
+  # Computationally-intensive; selectors checked by other previews
+  Primer::Alpha::TreeView => [:playground],
+  Primer::Alpha::FileTreeView => [:playground]
+}
+
 # Test CSS Selectors Used By Components
 # ----
 #
 # ensure all of the classes used by components are valid, checking against the
 # available selectors in component-specific CSS
 class ComponentSelectorUseTest < System::TestCase
-  parallelize workers: 4
+  parallelize workers: 2
 
   extend Primer::RenderPreview
   include Primer::RenderPreview
@@ -49,6 +55,8 @@ class ComponentSelectorUseTest < System::TestCase
     component_uri = preview_class.to_s.underscore.gsub("_preview", "")
 
     previews.each do |preview|
+      next if IGNORED_PREVIEWS.fetch(component_class, []).include?(preview)
+
       define_method("test_selectors_used_by_#{component_uri.parameterize(separator: '_')}_#{preview}_are_valid") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
 
@@ -68,6 +76,10 @@ class ComponentSelectorUseTest < System::TestCase
           };
 
           const ignoreNode = (node) => {
+            if (!node) {
+              return true;
+            }
+
             for (let i = 0; i < node.classList.length; i ++) {
               if (!ignoreClass(node.classList[i])) {
                 return false;

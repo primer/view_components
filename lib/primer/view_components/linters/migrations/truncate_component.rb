@@ -4,7 +4,8 @@ module RuboCop
   module Cop
     module Migrations
       # Lint & autocorrect Truncate components
-      class TruncateComponent < RuboCop::Cop::Cop
+      class TruncateComponent < RuboCop::Cop::Base
+        extend AutoCorrector
         INVALID_MESSAGE = <<~STR
           `Primer::Truncate` is deprecated. Please use `Primer::Beta::Truncate` instead!
         STR
@@ -24,13 +25,9 @@ module RuboCop
         def on_send(node)
           return unless truncate_component(node)
 
-          add_offense(node, message: INVALID_MESSAGE)
-        end
+          add_offense(node, message: INVALID_MESSAGE) do |corrector|
+            next if hash_with_inline_value?(node.arguments.first)
 
-        def autocorrect(node)
-          return if hash_with_inline_value?(node.arguments.first)
-
-          lambda do |corrector|
             if node.arguments.first.nil? == false
               corrector.replace(node.children.first, "Primer::Beta::Truncate")
               corrector.insert_after(node.arguments.first, ", tag: :div") unless truncate_with_tag?(node.arguments.first)

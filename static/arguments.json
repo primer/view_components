@@ -34,9 +34,7 @@
     "short_name": "ActionBarDivider",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar/divider.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_bar/divider/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionBar::Item",
@@ -153,9 +151,7 @@
     "short_name": "ActionListFormWrapper",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/form_wrapper.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/form_wrapper/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionList::Heading",
@@ -474,9 +470,7 @@
     "short_name": "ActionMenuHeading",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/heading.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/heading/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "ActionMenu::List",
@@ -674,7 +668,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+        "description": "One of `:danger`, `:default`, `:success`, `:upsell`, or `:warning`."
       },
       {
         "name": "system_arguments",
@@ -1071,6 +1065,12 @@
         "description": "One of `:large` or `:medium`."
       },
       {
+        "name": "close_label",
+        "type": "String",
+        "default": "`Close`",
+        "description": "The aria-label text of the close \"x\" button."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -1147,9 +1147,53 @@
     "short_name": "DropdownMenuItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown/menu/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/menu/item/default/",
+    "parameters": []
+  },
+  {
+    "component": "FileTreeView",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "FileTreeView",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/file_tree_view.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/file_tree_view/default/",
     "parameters": [
-
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "These arguments allow the selections made within a `TreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)."
+      }
     ]
+  },
+  {
+    "component": "FileTreeView::DirectoryNode",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "FileTreeViewDirectoryNode",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/file_tree_view/directory_node.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/file_tree_view/directory_node/default/",
+    "parameters": []
+  },
+  {
+    "component": "FileTreeView::FileNode",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "FileTreeViewFileNode",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/file_tree_view/file_node.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/file_tree_view/file_node/default/",
+    "parameters": []
   },
   {
     "component": "FormButton",
@@ -1358,6 +1402,40 @@
     ]
   },
   {
+    "component": "IncludeFragment",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "IncludeFragment",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/include_fragment.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/include_fragment/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL from which to retrieve an HTML element fragment."
+      },
+      {
+        "name": "loading",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "One of `:eager` or `:lazy`."
+      },
+      {
+        "name": "accept",
+        "type": "String",
+        "default": "`nil`",
+        "description": "What to send as the Accept header."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Layout",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -1420,9 +1498,7 @@
     "short_name": "LayoutSidebar",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout/sidebar.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/sidebar/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Menu",
@@ -2426,7 +2502,13 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Form arguments to pass to the underlying [ActionList](/components/alpha/actionlist) component. Only has an effect for the local fetch strategy."
+        "description": "Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag."
+      },
+      {
+        "name": "use_experimental_non_local_form",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923."
       },
       {
         "name": "show_filter",
@@ -2491,6 +2573,34 @@
         "type": "Hash",
         "default": "N/A",
         "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)."
+      }
+    ]
+  },
+  {
+    "component": "SkeletonBox",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "SkeletonBox",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/skeleton_box.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/skeleton_box/default/",
+    "parameters": [
+      {
+        "name": "height",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Any valid CSS height."
+      },
+      {
+        "name": "width",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Any valid CSS width."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
       }
     ]
   },
@@ -3135,6 +3245,382 @@
     ]
   },
   {
+    "component": "TreeView",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeView",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/default/",
+    "parameters": [
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "These arguments allow the selections made within a `TreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::Icon",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewIcon",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/icon.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/icon/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [Octicon](/components/beta/octicon)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::IconPair",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewIconPair",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/icon_pair.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/icon_pair/default/",
+    "parameters": [
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "If true, the expanded icon is shown and the collapsed icon is hidden, etc."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TreeView::LeadingAction",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewLeadingAction",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/leading_action.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/leading_action/default/",
+    "parameters": [
+      {
+        "name": "action",
+        "type": "ViewComponent::Base",
+        "default": "N/A",
+        "description": "A component or other renderable to use as the action button etc."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::LeafNode",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewLeafNode",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/leaf_node.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/leaf_node/default/",
+    "parameters": [
+      {
+        "name": "label",
+        "type": "String",
+        "default": "N/A",
+        "description": "The node's label, i.e. it's textual content."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [TreeView::Node](/components/alpha/treeviewnode)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::LoadingFailureMessage",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewLoadingFailureMessage",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/loading_failure_message.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/loading_failure_message/default/",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "String",
+        "default": "`Something went wrong`",
+        "description": "The failure message to display."
+      },
+      {
+        "name": "retry_button_label",
+        "type": "String",
+        "default": "`Retry`",
+        "description": "The text shown on the retry button."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TreeView::Node",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewNode",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/node.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/node/default/",
+    "parameters": [
+      {
+        "name": "path",
+        "type": "Array<String>",
+        "default": "N/A",
+        "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
+      },
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The node variant to use for the node's content, i.e. the `:button` or `:div`. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The URL to use as the `href` attribute for this node. If set to a truthy value, the `tag:` parameter is ignored and assumed to be `:a`."
+      },
+      {
+        "name": "current",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this node is the current node. The current node is styled differently than regular nodes and is the first element that receives focus when tabbing to the `TreeView` component."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "Controls the type of checkbox that appears. One of `:multiple` or `:none`."
+      },
+      {
+        "name": "checked",
+        "type": "Boolean | String",
+        "default": "`false`",
+        "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable."
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If this node is checked, this value will be sent to the server on form submission."
+      },
+      {
+        "name": "content_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "Arguments attached to the node's content, i.e the `<button>` or `<a>` element. [System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TreeView::SkeletonLoader",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewSkeletonLoader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/skeleton_loader.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/skeleton_loader/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "N/A",
+        "description": "The URL to fetch nodes from."
+      },
+      {
+        "name": "count",
+        "type": "Integer",
+        "default": "`3`",
+        "description": "The number of skeleton nodes to render."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [TreeView::SubTreeContainer](/components/alpha/treeviewsubtreecontainer)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::SpinnerLoader",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewSpinnerLoader",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/spinner_loader.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/spinner_loader/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "N/A",
+        "description": "The URL to fetch nodes from."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [TreeView::SubTreeContainer](/components/alpha/treeviewsubtreecontainer)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::SubTree",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewSubTree",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/sub_tree.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/sub_tree/default/",
+    "parameters": [
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [TreeView::SubTreeContainer](/components/alpha/treeviewsubtreecontainer)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::SubTreeContainer",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewSubTreeContainer",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/sub_tree_container.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/sub_tree_container/default/",
+    "parameters": [
+      {
+        "name": "path",
+        "type": "Array<String>",
+        "default": "N/A",
+        "description": "The path to this node."
+      },
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this sub-tree node renders expanded."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TreeView::SubTreeNode",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewSubTreeNode",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/sub_tree_node.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/sub_tree_node/default/",
+    "parameters": [
+      {
+        "name": "label",
+        "type": "String",
+        "default": "N/A",
+        "description": "The node's label, i.e. it's textual content."
+      },
+      {
+        "name": "path",
+        "type": "Array<String>",
+        "default": "N/A",
+        "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
+      },
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "sub_tree_component_klass",
+        "type": "Class",
+        "default": "`SubTree`",
+        "description": "The class to use for the sub-tree instead of the default [TreeView::SubTree](/components/alpha/treeviewsubtree)"
+      },
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this sub-tree should be rendered expanded."
+      },
+      {
+        "name": "select_strategy",
+        "type": "Symbol",
+        "default": "`:mixed_descendants`",
+        "description": "What should happen when this sub-tree node is checked. One of `:descendants`, `:mixed_descendants`, or `:self`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [TreeView::Node](/components/alpha/treeviewnode)."
+      }
+    ]
+  },
+  {
+    "component": "TreeView::Visual",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewVisual",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/visual.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/visual/default/",
+    "parameters": [
+      {
+        "name": "id",
+        "type": "String",
+        "default": "N/A",
+        "description": "This visual's HTML ID."
+      },
+      {
+        "name": "visual",
+        "type": "ViewComponent::Base",
+        "default": "N/A",
+        "description": "A renderable component like an instance of [Octicon](/components/beta/octicon) to render as the visual."
+      },
+      {
+        "name": "label",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Text describing this visual that will be visible only to screen readers."
+      }
+    ]
+  },
+  {
     "component": "UnderlineNav",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -3221,9 +3707,7 @@
     "short_name": "Base",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/base_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/base/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "AutoComplete",
@@ -3384,9 +3868,7 @@
     "short_name": "AutoCompleteNoResultItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Avatar",
@@ -3615,9 +4097,7 @@
     "short_name": "BreadcrumbsItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs/item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/item/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Button",
@@ -4542,6 +5022,12 @@
         "description": "Removes the `title` attribute provided on the element by default."
       },
       {
+        "name": "aria_hidden",
+        "type": "Boolean",
+        "default": "`nil`",
+        "description": "Set if the element is hidden or not."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -4696,9 +5182,7 @@
     "short_name": "TimelineItemBadge",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item/badge.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/badge/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Truncate",
@@ -4723,9 +5207,7 @@
     "short_name": "TruncateTruncateText",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate/truncate_text.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/truncate_text/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "Blankslate",
@@ -4925,13 +5407,19 @@
         "name": "condition",
         "type": "Boolean",
         "default": "N/A",
-        "description": "Whether or not to wrap the content in a `Primer::BaseComponent`."
+        "description": "Whether or not to wrap the content in a component."
+      },
+      {
+        "name": "component",
+        "type": "Class",
+        "default": "`Primer::BaseComponent`",
+        "description": "The component class to use as a wrapper, defaults to `Primer::BaseComponent`"
       },
       {
         "name": "base_component_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments to pass to `Primer::BaseComponent`."
+        "description": "The arguments to pass to the component."
       }
     ]
   },
@@ -4942,9 +5430,7 @@
     "short_name": "Content",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/content.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/content/default/",
-    "parameters": [
-
-    ]
+    "parameters": []
   },
   {
     "component": "IconButton",

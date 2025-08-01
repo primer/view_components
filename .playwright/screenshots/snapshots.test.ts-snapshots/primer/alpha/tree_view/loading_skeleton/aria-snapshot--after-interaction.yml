@@ -1,0 +1,4 @@
+- tree:
+  - treeitem "primer" [expanded] [level=1] [selected]
+  - group:
+    - treeitem [level=2]

@@ -5,9 +5,10 @@ import {controller, target} from '@github/catalyst'
  * ensures the <details> and <summary> elements markup is properly accessible by
  * updating the aria-label and aria-expanded attributes on click.
  *
- * aria-label values default to "Expand" and "Collapse". To override those
- * values, use the `data-aria-label-open` and `data-aria-label-closed`
- * attributes on the summary target.
+ * aria-label values are only set if provided via the `data-aria-label-open` and
+ * `data-aria-label-closed` attributes on the summary target. If these attributes
+ * are not present, no aria-label will be set, allowing screen readers to use
+ * the visible text content.
  *
  * @example
  * ```html
@@ -37,12 +38,16 @@ class DetailsToggleElement extends HTMLElement {
   toggle() {
     const detailsIsOpen = this.detailsTarget.hasAttribute('open')
     if (detailsIsOpen) {
-      const ariaLabelClosed = this.summaryTarget.getAttribute('data-aria-label-closed') || 'Expand'
-      this.summaryTarget.setAttribute('aria-label', ariaLabelClosed)
+      const ariaLabelClosed = this.summaryTarget.getAttribute('data-aria-label-closed')
+      if (ariaLabelClosed) {
+        this.summaryTarget.setAttribute('aria-label', ariaLabelClosed)
+      }
       this.summaryTarget.setAttribute('aria-expanded', 'false')
     } else {
-      const ariaLabelOpen = this.summaryTarget.getAttribute('data-aria-label-open') || 'Collapse'
-      this.summaryTarget.setAttribute('aria-label', ariaLabelOpen)
+      const ariaLabelOpen = this.summaryTarget.getAttribute('data-aria-label-open')
+      if (ariaLabelOpen) {
+        this.summaryTarget.setAttribute('aria-label', ariaLabelOpen)
+      }
       this.summaryTarget.setAttribute('aria-expanded', 'true')
     }
   }
