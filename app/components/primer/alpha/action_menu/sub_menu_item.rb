@@ -36,6 +36,10 @@ module Primer
           @sub_menu.with_item(form_arguments: @form_arguments, **system_arguments, &block)
         end
 
+        def with_divider(**system_arguments, &block)
+          @sub_menu.with_divider(form_arguments: @form_arguments, **system_arguments, &block)
+        end
+
         def with_avatar_item(**system_arguments, &block)
           @sub_menu.with_avatar_item(form_arguments: @form_arguments, **system_arguments, &block)
         end

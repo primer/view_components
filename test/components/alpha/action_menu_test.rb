@@ -41,6 +41,21 @@ module Primer
         assert_selector("anchored-position[id='foobarbaz-overlay'][anchor=foobarbaz-button]")
       end
 
+      def test_accepts_divider_for_sub_menus
+        render_inline(Primer::Alpha::ActionMenu.new) do |component|
+          component.with_sub_menu_item(label: "Sub-menu", menu_id: "foobarbaz") do |sub_menu|
+            sub_menu.with_item(label: "Hello, world")
+            sub_menu.with_divider
+            sub_menu.with_item(label: "How are you doing?")
+          end
+        end
+
+        assert_selector("button[id='foobarbaz-button'][aria-haspopup='true']", text: "Sub-menu")
+        assert_selector("ul[id='foobarbaz-list'][aria-labelledby='foobarbaz-button'][role='menu']", visible: false)
+        assert_selector("anchored-position[id='foobarbaz-overlay'][anchor=foobarbaz-button]")
+        assert_selector("li[class='ActionList-sectionDivider'][role=presentation]")
+      end
+
       def test_falls_back_to_button_if_disallowed_tag_is_given
         without_fetch_or_fallback_raises do
           render_inline Primer::Alpha::ActionMenu.new(menu_id: "bad-menu") do |component|
