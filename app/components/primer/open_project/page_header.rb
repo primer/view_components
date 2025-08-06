@@ -45,11 +45,15 @@ module Primer
       }
 
       # Optional description below the title row
-      renders_one :description, lambda { |**system_arguments|
+      renders_one :description, lambda { |underlined_links: true, **system_arguments|
         deny_tag_argument(**system_arguments)
 
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-description")
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "PageHeader-description",
+          ("PageHeader-description-underlined-link" if underlined_links)
+        )
 
         Primer::BaseComponent.new(**system_arguments)
       }
