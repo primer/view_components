@@ -52,7 +52,7 @@ module Primer
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "PageHeader-description",
-          ("PageHeader-description--underlined-link" if underlined_links)
+          ("PageHeader-description--underlined-links" if underlined_links)
         )
 
         Primer::BaseComponent.new(**system_arguments)
