@@ -2,8 +2,8 @@
 
 .PageHeader {
   display: flex;
-  padding-bottom: var(--stack-padding-condensed);
-  margin-bottom: var(--stack-gap-normal);
+  padding-bottom: var(--base-size-8);
+  margin-bottom: var(--base-size-16);
   border-bottom: var(--borderWidth-thin) solid var(--borderColor-muted);
   flex-flow: column;
 }
@@ -47,7 +47,7 @@
   flex: 1 100%;
 }
 
-.PageHeader-description a {
+.PageHeader-description--underlined-links a {
   /* Ensure the accessibility is met, given that the description is written in light grey */
   text-decoration: underline;
 }
@@ -76,7 +76,7 @@
 }
 
 .PageHeader-leadingAction {
-  margin-top: 2px; /* to center align with label */
+  margin-top: var(--base-size-2); /* to center align with label */
   margin-right: var(--base-size-4);
 }
 
