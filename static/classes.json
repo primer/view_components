@@ -496,6 +496,9 @@
   "PageHeader-description": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader-description--underlined-links": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "PageHeader-leadingAction": [
     "Primer::OpenProject::PageHeader"
   ],
