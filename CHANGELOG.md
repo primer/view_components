@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.70.5
+
+### Patch Changes
+
+- [#341](https://github.com/opf/primer_view_components/pull/341) [`b355320`](https://github.com/opf/primer_view_components/commit/b3553206a1e1b2c9acac3ba36c7422f66bdf6dc4) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [65898] ActionMenu SubMenu does not support dividers
+
+- [#345](https://github.com/opf/primer_view_components/pull/345) [`8b98093`](https://github.com/opf/primer_view_components/commit/8b980930bdd28758bc94724f201bae4e765e33b7) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [65869] Add an option in the page header description that allows all links in it to be displayed with or without an underline.
+
 ## 0.70.4
 
 ### Patch Changes
