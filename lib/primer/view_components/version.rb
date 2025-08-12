@@ -5,8 +5,8 @@ module Primer
   module ViewComponents
     module VERSION
       MAJOR = 0
-      MINOR = 70
-      PATCH = 5
+      MINOR = 71
+      PATCH = 0
 
       STRING = [MAJOR, MINOR, PATCH].join(".")
     end
