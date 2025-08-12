@@ -143,6 +143,10 @@
     text-decoration-color: var(--control-fgColor-rest);
   }
 
+  & :has(.TreeViewItemContent[aria-disabled=true]) {
+    cursor: not-allowed;
+  }
+
   & .TreeViewItemContent {
     display: flex;
     height: 100%;
@@ -208,12 +212,56 @@
         }
       }
     }
+
+    &[aria-disabled="true"] {
+      pointer-events: none;
+
+      & .TreeViewItemContentText {
+        color: var(--control-fgColor-disabled);
+      }
+
+      & .TreeViewItemVisual {
+        fill: var(--control-fgColor-disabled);
+
+        & svg {
+          fill: var(--control-fgColor-disabled);
+        }
+      }
+
+      & .FormControl-checkbox {
+        @media (hover: hover) {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          cursor: not-allowed;
+          background-color: transparent;
+        }
+      }
+    }
+
+    & ::highlight(primer-filterable-tree-view-search-results) {
+      background-color: var(--label-yellow-bgColor-active);
+      color: var(--fgColor-default);
+    }
+
+    & mark {
+      background-color: var(--label-yellow-bgColor-active);
+      color: var(--fgColor-default);
+    }
   }
 
   & .TreeViewItemContentText {
     color: var(--control-fgColor-rest);
     flex: 1 1 auto;
     width: 0;
+    /* Do not remove, as otherwise the filter result of the filterableTreeView will not be shown in Safari
+       see: https://bugs.webkit.org/show_bug.cgi?id=278455 */
+    -webkit-user-select: auto;
   }
 
   &:where([data-truncate-text='true']) .TreeViewItemContentText {

@@ -1,0 +1,30 @@
+- list "Filter mode":
+  - listitem:
+    - button "All"
+  - listitem:
+    - button "Selected"
+- checkbox "Include sub-items": "1"
+- text: Include sub-items Filter
+- searchbox "Filter"
+- button "Clear"
+- tree:
+  - treeitem "Students" [expanded] [level=1]
+  - group:
+    - treeitem "Ravenclaw" [expanded] [level=2]
+    - group:
+      - treeitem "Luna Lovegood" [level=3]
+    - treeitem "Slytherin" [expanded] [level=2]
+    - group:
+      - treeitem "Draco Malfoy" [level=3]
+    - treeitem "Hufflepuff" [expanded] [level=2]
+    - group:
+      - treeitem "Susan Bones" [level=3]
+    - treeitem "Gryffindor" [expanded] [level=2]
+    - group:
+      - treeitem "Harry Potter" [level=3]
+      - treeitem "Ronald Weasley" [level=3]
+      - treeitem "Hermione Granger" [level=3]
+  - treeitem "Albus Dumbledore" [level=1]
+  - treeitem "Minerva McGonagall" [level=1]
+  - treeitem "Severus Snape" [level=1]
+  - treeitem "Rubeus Hagrid" [level=1]

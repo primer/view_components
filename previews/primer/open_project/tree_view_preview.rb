@@ -8,15 +8,18 @@ module Primer
       #
       # @snapshot interactive
       # @param expanded [Boolean] toggle
+      # @param disabled [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def default(
         expanded: false,
+        disabled: false,
         select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
         select_strategy: Primer::OpenProject::TreeView::SubTreeNode::DEFAULT_SELECT_STRATEGY
       )
         render_with_template(locals: {
           expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled),
           select_variant: select_variant.to_sym,
           select_strategy: select_strategy.to_sym
         })
@@ -26,7 +29,7 @@ module Primer
       #
       # @param expanded [Boolean] toggle
       # @param select_variant [Symbol] select [multiple, none]
-      # @param select_strategy [Symbol] select [self, descendants]
+      # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def playground(
         expanded: false,
         select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
@@ -92,37 +95,44 @@ module Primer
       # @param leading_action_icon [Symbol] octicon
       # @param trailing_visual_icon [Symbol] octicon
       # @param select_variant [Symbol] select [multiple, none]
+      # @param disabled [Boolean] toggle
       def leaf_node_playground(
         label: "Leaf node",
         leading_visual_icon: nil,
         leading_action_icon: nil,
         trailing_visual_icon: nil,
-        select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT
+        select_variant: Primer::OpenProject::TreeView::Node::DEFAULT_SELECT_VARIANT,
+        disabled: false
       )
         render_with_template(locals: {
           label: label,
           leading_visual_icon: leading_visual_icon,
           leading_action_icon: leading_action_icon,
           trailing_visual_icon: trailing_visual_icon,
-          select_variant: select_variant.to_sym
+          select_variant: select_variant.to_sym,
+          disabled: disabled
         })
       end
 
       # @label Links
       #
       # @param expanded [Boolean] toggle
-      def links(expanded: false)
+      # @param disabled [Boolean] toggle
+      def links(expanded: false, disabled: false)
         render_with_template(locals: {
-          expanded: coerce_bool(expanded)
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled)
         })
       end
 
       # @label Buttons
       #
       # @param expanded [Boolean] toggle
-      def buttons(expanded: false)
+      # @param disabled [Boolean] toggle
+      def buttons(expanded: false, disabled: false)
         render_with_template(locals: {
-          expanded: coerce_bool(expanded)
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled)
         })
       end
 

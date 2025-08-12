@@ -78,7 +78,8 @@ module Primer
         OPTIONS = [
           nil,
           DEFAULT,
-          :wrap
+          :wrap,
+          :reverse
         ].freeze
 
         def initialize(values)

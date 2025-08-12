@@ -1,0 +1,28 @@
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <%= render(Primer::Alpha::Stack.new) do %>
+    <%= render(Primer::Alpha::Stack.new(wrap: :reverse, direction: :horizontal, align: :center)) do %>
+      <%= render(Primer::Alpha::Stack.new(wrap: :wrap, direction: :horizontal, align: :center)) do %>
+        <%= render(Primer::Alpha::StackItem.new) do %>
+          <%= render(@filter_mode_control) %>
+        <% end %>
+        <%= render(Primer::Alpha::StackItem.new) do %>
+          <%= render(@include_sub_items_check_box) do |input| %>
+            <% input.merge_input_arguments!(form: "") %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
+        <%= render(@filter_input) do |input| %>
+          <%# exclude from form submissions %>
+          <% input.merge_input_arguments!(form: "") %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= render(Primer::BaseComponent.new(tag: :div, hidden: true, data: { target: "filterable-tree-view.noResultsMessage" })) do %>
+      <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
+        <% tree.with_leaf(**@no_results_node_arguments) %>
+      <% end %>
+    <% end %>
+    <%= render(@tree_view) %>
+  <% end %>
+<% end %>

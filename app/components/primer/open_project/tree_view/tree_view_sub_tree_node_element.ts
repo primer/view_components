@@ -7,6 +7,8 @@ import type {TreeViewNodeInfo} from '../../shared_events'
 
 type LoadingState = 'loading' | 'error' | 'success'
 
+export type SelectStrategy = 'self' | 'descendants' | 'mixed_descendants'
+
 @controller
 export class TreeViewSubTreeNodeElement extends HTMLElement {
   @target node: HTMLElement
@@ -70,7 +72,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     )
 
     const checkedMutationObserver = new MutationObserver(() => {
-      if (this.selectStrategy !== 'descendants') return
+      if (this.selectStrategy !== 'mixed_descendants') return
 
       let checkType = 'unknown'
 
@@ -127,8 +129,12 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
     this.#update()
   }
 
-  get selectStrategy(): string {
-    return this.node.getAttribute('data-select-strategy') || 'descendants'
+  get selectStrategy(): SelectStrategy {
+    return (this.node.getAttribute('data-select-strategy') || 'descendants') as SelectStrategy
+  }
+
+  get level(): number {
+    return parseInt(this.node.getAttribute('aria-level') || '0')
   }
 
   disconnectedCallback() {
@@ -208,6 +214,12 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       ':scope > tree-view-sub-tree-node > li > .TreeViewItemContainer > [role=treeitem]',
     )) {
       yield subTree
+    }
+  }
+
+  *eachDirectDescendantSubTreeNode(): Generator<TreeViewSubTreeNodeElement> {
+    for (const subTree of this.subTree.querySelectorAll(':scope > tree-view-sub-tree-node')) {
+      yield subTree as TreeViewSubTreeNodeElement
     }
   }
 
@@ -299,6 +311,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
     switch (event.key) {
       case 'Enter':
+        if (this.treeView?.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         // eslint-disable-next-line no-restricted-syntax
         event.stopPropagation()
 
@@ -324,6 +341,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         break
 
       case ' ':
+        if (this.treeView?.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         if (this.#checkboxElement) {
           // eslint-disable-next-line no-restricted-syntax
           event.stopPropagation()
@@ -344,6 +366,11 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   #handleCheckboxEvent(event: Event) {
+    if (this.treeView?.getNodeDisabledValue(this.node)) {
+      event.preventDefault()
+      return
+    }
+
     if (event.type !== 'click') return
 
     this.toggleChecked()
@@ -354,13 +381,13 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   }
 
   toggleChecked() {
-    const checkValue = this.node.getAttribute('aria-checked') || 'false'
+    const checkValue = this.treeView?.getNodeCheckedValue(this.node) || 'false'
     const newCheckValue = checkValue === 'false' ? 'true' : 'false'
     const nodeInfos: TreeViewNodeInfo[] = []
     const rootInfo = this.treeView?.infoFromNode(this.node, newCheckValue)
     if (rootInfo) nodeInfos.push(rootInfo)
 
-    if (this.selectStrategy === 'descendants') {
+    if (this.selectStrategy === 'descendants' || this.selectStrategy === 'mixed_descendants') {
       for (const node of this.eachDescendantNode()) {
         const info = this.treeView?.infoFromNode(node, newCheckValue)
         if (info) nodeInfos.push(info)
@@ -438,6 +465,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
   get #checkboxElement(): HTMLElement | null {
     return this.querySelector('.TreeViewItemCheckbox')
+  }
+
+  changeSelectStrategy(newStrategy: SelectStrategy) {
+    this.node.setAttribute('data-select-strategy', newStrategy)
   }
 }
 

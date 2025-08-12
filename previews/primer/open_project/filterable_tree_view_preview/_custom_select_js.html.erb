@@ -1,0 +1,62 @@
+<script>
+  function ready(fn) {
+    if (document.readyState !== 'loading') {
+      fn()
+    } else {
+      document.addEventListener('DOMContentLoaded', fn)
+    }
+  }
+
+  ready(() => {
+      const filterableTreeView = document.querySelector('filterable-tree-view')
+      filterableTreeView.filterFn = (node, query, filterMode) => {
+          const ranges = []
+
+          if (query.length > 0) {
+              const lowercaseQuery = query.toLowerCase()
+              const treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT)
+              let currentNode = treeWalker.nextNode()
+
+              while (currentNode) {
+                  const lowercaseNodeText = currentNode.textContent?.toLocaleLowerCase() || ''
+                  let startIndex = 0
+
+                  while (startIndex < lowercaseNodeText.length) {
+                      const index = lowercaseNodeText.indexOf(lowercaseQuery, startIndex)
+                      if (index === -1) break
+
+                      const range = new Range()
+                      range.setStart(currentNode, index)
+                      range.setEnd(currentNode, index + lowercaseQuery.length)
+                      ranges.push(range)
+
+                      startIndex = index + lowercaseQuery.length
+                  }
+
+                  currentNode = treeWalker.nextNode()
+              }
+          }
+
+          if (ranges.length === 0 && query.length > 0) {
+              return null
+          }
+
+          switch (filterMode) {
+              case 'teacher': {
+                  // Only match nodes that are teachers
+                  if (!node.dataset.path.includes('Students')) {
+                      return ranges
+                  }
+
+                  break
+              }
+
+              case 'all': {
+                  return ranges
+              }
+          }
+
+          return null
+      }
+  })
+</script>

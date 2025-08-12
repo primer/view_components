@@ -1,7 +1,7 @@
 import {controller, targets} from '@github/catalyst'
 
 @controller
-class SegmentedControlElement extends HTMLElement {
+export class SegmentedControlElement extends HTMLElement {
   @targets items: HTMLElement[]
 
   connectedCallback() {
@@ -17,6 +17,21 @@ class SegmentedControlElement extends HTMLElement {
 
     button.closest('li.SegmentedControl-item')?.classList.add('SegmentedControl-item--selected')
     button.setAttribute('aria-current', 'true')
+
+    this.dispatchEvent(
+      new CustomEvent('itemActivated', {
+        bubbles: true,
+        detail: {
+          item: button,
+          checked: false,
+          value: button.querySelector('.Button-label')?.textContent,
+        },
+      }),
+    )
+  }
+
+  get current(): HTMLElement | null {
+    return this.querySelector('[aria-current=true]')
   }
 
   // Updates the button labels to have a data-content attribute with the text

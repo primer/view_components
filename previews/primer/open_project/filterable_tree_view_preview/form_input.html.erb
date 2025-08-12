@@ -1,0 +1,32 @@
+<%= form_with(url: primer_view_components.generic_form_submission_path(format: :json)) do |f| %>
+  <%= render(Primer::Alpha::Stack.new) do %>
+    <%= render(Primer::OpenProject::FilterableTreeView.new(form_arguments: { builder: f, name: "characters" })) do |tree| %>
+      <% tree.with_sub_tree(label: "Students", expanded: expanded) do |hogwarts| %>
+        <% hogwarts.with_sub_tree(label: "Ravenclaw", expanded: expanded) do |ravenclaw| %>
+          <% ravenclaw.with_leaf(label: "Luna Lovegood") %>
+        <% end %>
+
+        <% hogwarts.with_sub_tree(label: "Slytherin", expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Draco Malfoy") %>
+        <% end %>
+
+        <% hogwarts.with_sub_tree(label: "Hufflepuff", expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Susan Bones") %>
+        <% end %>
+
+        <% hogwarts.with_sub_tree(label: "Gryffindor", expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Harry Potter") %>
+          <% hufflepuff.with_leaf(label: "Ronald Weasley") %>
+          <% hufflepuff.with_leaf(label: "Hermione Granger") %>
+        <% end %>
+      <% end %>
+
+      <% tree.with_leaf(label: "Albus Dumbledore") %>
+      <% tree.with_leaf(label: "Minerva McGonagall") %>
+      <% tree.with_leaf(label: "Severus Snape") %>
+      <% tree.with_leaf(label: "Rubeus Hagrid") %>
+    <% end %>
+
+    <%= render(Primer::Alpha::SubmitButton.new(name: :submit, label: "Submit")) %>
+  <% end %>
+<% end %>

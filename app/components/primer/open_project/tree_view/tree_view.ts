@@ -1,10 +1,13 @@
-import {controller} from '@github/catalyst'
-import {TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
+import {controller, target} from '@github/catalyst'
+import {SelectStrategy, TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
 import {useRovingTabIndex} from './tree_view_roving_tab_index'
 import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
 
 @controller
 export class TreeViewElement extends HTMLElement {
+  @target formInputContainer: HTMLElement
+  @target formInputPrototype: HTMLInputElement
+
   #abortController: AbortController
 
   connectedCallback() {
@@ -29,11 +32,60 @@ export class TreeViewElement extends HTMLElement {
       }
     }).observe(this, {childList: true, subtree: true})
 
+    const updateInputsObserver = new MutationObserver(mutations => {
+      if (!this.formInputContainer) return
+
+      // There is another MutationObserver in TreeViewSubTreeNodeElement that manages checking/unchecking
+      // nodes based on the component's select strategy. These two observers can conflict and cause infinite
+      // looping, so we make sure something actually changed before computing inputs again.
+      const somethingChanged = mutations.some(m => {
+        if (!(m.target instanceof HTMLElement)) return false
+        return m.target.getAttribute('aria-checked') !== m.oldValue
+      })
+
+      if (!somethingChanged) return
+
+      const newInputs = []
+
+      // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
+      for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
+        const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
+        newInput.removeAttribute('data-target')
+        newInput.removeAttribute('form')
+
+        const payload: {path: string[]; value?: string} = {
+          path: this.getNodePath(node),
+        }
+
+        const inputValue = this.getFormInputValueForNode(node)
+        if (inputValue) payload.value = inputValue
+
+        newInput.value = JSON.stringify(payload)
+        newInputs.push(newInput)
+      }
+
+      this.formInputContainer.replaceChildren(...newInputs)
+    })
+
+    updateInputsObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributeFilter: ['aria-checked'],
+    })
+
     // eslint-disable-next-line github/no-then -- We don't want to wait for this to resolve, just get on with it
     customElements.whenDefined('tree-view-sub-tree-node').then(() => {
       // depends on TreeViewSubTreeNodeElement#eachAncestorSubTreeNode, which may not be defined yet
       this.#autoExpandFrom(this)
     })
+  }
+
+  rootLeafNodes(): NodeListOf<HTMLElement> {
+    return this.querySelectorAll(':scope > ul > li > .TreeViewItemContainer [role=treeitem]')
+  }
+
+  rootSubTreeNodes(): NodeListOf<TreeViewSubTreeNodeElement> {
+    return this.querySelectorAll(':scope > ul > tree-view-sub-tree-node')
   }
 
   #autoExpandFrom(root: HTMLElement) {
@@ -59,21 +111,21 @@ export class TreeViewElement extends HTMLElement {
   }
 
   #nodeForEvent(event: Event): Element | null {
-    const target = event.target as Element
-    const node = target.closest('[role=treeitem]')
+    const eventTarget = event.target as Element
+    const node = eventTarget.closest('[role=treeitem]')
     if (!node) return null
 
-    if (target.closest('.TreeViewItemToggle')) return null
-    if (target.closest('.TreeViewItemLeadingAction')) return null
+    if (eventTarget.closest('.TreeViewItemToggle')) return null
+    if (eventTarget.closest('.TreeViewItemLeadingAction')) return null
 
     return node
   }
 
   #handleNodeEvent(node: Element, event: Event) {
     if (this.#eventIsCheckboxToggle(event, node)) {
-      this.#handleCheckboxToggle(node)
+      this.#handleCheckboxToggle(event, node)
     } else if (this.#eventIsActivation(event)) {
-      this.#handleNodeActivated(node)
+      this.#handleNodeActivated(event, node)
     } else if (event.type === 'focusin') {
       this.#handleNodeFocused(node)
     } else if (event instanceof KeyboardEvent) {
@@ -85,19 +137,52 @@ export class TreeViewElement extends HTMLElement {
     return event.type === 'click' && this.nodeHasCheckBox(node)
   }
 
-  #handleCheckboxToggle(node: Element) {
-    // only handle checking of leaf nodes
+  #handleCheckboxToggle(event: Event, node: Element) {
+    if (this.getNodeDisabledValue(node)) {
+      event.preventDefault()
+      return
+    }
+
+    // only handle checking of leaf nodes, see TreeViewSubTreeNodeElement for the code that
+    // handles checking sub tree items.
     const type = this.getNodeType(node)
     if (type !== 'leaf') return
 
+    const checkValue = this.getNodeCheckedValue(node)
+    const newCheckValue = checkValue === 'false' ? 'true' : 'false'
+    const nodeInfo = this.infoFromNode(node, newCheckValue)
+
+    const checkSuccess = this.dispatchEvent(
+      new CustomEvent('treeViewBeforeNodeChecked', {
+        bubbles: true,
+        cancelable: true,
+        detail: [nodeInfo],
+      }),
+    )
+
+    if (!checkSuccess) return
+
     if (this.getNodeCheckedValue(node) === 'true') {
-      this.#setNodeCheckedValue(node, 'false')
+      this.setNodeCheckedValue(node, 'false')
     } else {
-      this.#setNodeCheckedValue(node, 'true')
+      this.setNodeCheckedValue(node, 'true')
     }
+
+    this.dispatchEvent(
+      new CustomEvent('treeViewNodeChecked', {
+        bubbles: true,
+        cancelable: true,
+        detail: [nodeInfo],
+      }),
+    )
   }
 
-  #handleNodeActivated(node: Element) {
+  #handleNodeActivated(event: Event, node: Element) {
+    if (this.getNodeDisabledValue(node)) {
+      event.preventDefault()
+      return
+    }
+
     // do not emit activation events for buttons and anchors, since it is assumed any activation
     // behavior for these element types is user- or browser-defined
     if (!(node instanceof HTMLDivElement)) return
@@ -141,13 +226,18 @@ export class TreeViewElement extends HTMLElement {
     switch (event.key) {
       case ' ':
       case 'Enter':
+        if (this.getNodeDisabledValue(node)) {
+          event.preventDefault()
+          break
+        }
+
         if (this.nodeHasCheckBox(node)) {
           event.preventDefault()
 
           if (this.getNodeCheckedValue(node) === 'true') {
-            this.#setNodeCheckedValue(node, 'false')
+            this.setNodeCheckedValue(node, 'false')
           } else {
-            this.#setNodeCheckedValue(node, 'true')
+            this.setNodeCheckedValue(node, 'true')
           }
         } else if (node instanceof HTMLAnchorElement) {
           // simulate click on space
@@ -156,6 +246,10 @@ export class TreeViewElement extends HTMLElement {
 
         break
     }
+  }
+
+  getFormInputValueForNode(node: Element): string | null {
+    return node.getAttribute('data-value')
   }
 
   getNodePath(node: Element): string[] {
@@ -210,14 +304,14 @@ export class TreeViewElement extends HTMLElement {
     const node = this.nodeAtPath(path)
     if (!node) return
 
-    this.#setNodeCheckedValue(node, 'true')
+    this.setNodeCheckedValue(node, 'true')
   }
 
   uncheckAtPath(path: string[]) {
     const node = this.nodeAtPath(path)
     if (!node) return
 
-    this.#setNodeCheckedValue(node, 'false')
+    this.setNodeCheckedValue(node, 'false')
   }
 
   toggleCheckedAtPath(path: string[]) {
@@ -240,6 +334,13 @@ export class TreeViewElement extends HTMLElement {
     return this.getNodeCheckedValue(node)
   }
 
+  disabledValueAtPath(path: string[]): boolean {
+    const node = this.nodeAtPath(path)
+    if (!node) return false
+
+    return this.getNodeDisabledValue(node)
+  }
+
   nodeAtPath(path: string[], selector?: string): Element | null {
     const pathStr = JSON.stringify(path)
     return this.querySelector(`${selector || ''}[data-path="${CSS.escape(pathStr)}"]`)
@@ -256,12 +357,24 @@ export class TreeViewElement extends HTMLElement {
     return this.nodeAtPath(path, '[data-node-type=leaf]') as HTMLLIElement | null
   }
 
-  #setNodeCheckedValue(node: Element, value: TreeViewCheckedValue) {
+  setNodeCheckedValue(node: Element, value: TreeViewCheckedValue) {
     node.setAttribute('aria-checked', value.toString())
   }
 
   getNodeCheckedValue(node: Element): TreeViewCheckedValue {
     return (node.getAttribute('aria-checked') || 'false') as TreeViewCheckedValue
+  }
+
+  getNodeDisabledValue(node: Element): boolean {
+    return node.getAttribute('aria-disabled') === 'true'
+  }
+
+  setNodeDisabledValue(node: Element, disabled: boolean) {
+    if (disabled) {
+      node.setAttribute('aria-disabled', 'true')
+    } else {
+      node.removeAttribute('aria-disabled')
+    }
   }
 
   nodeHasCheckBox(node: Element): boolean {
@@ -280,6 +393,12 @@ export class TreeViewElement extends HTMLElement {
       if (!ancestor.expanded) {
         ancestor.expand()
       }
+    }
+  }
+
+  changeSelectStrategy(newStrategy: SelectStrategy) {
+    for (const subTreeNode of this.querySelectorAll<TreeViewSubTreeNodeElement>('tree-view-sub-tree-node')) {
+      subTreeNode.changeSelectStrategy(newStrategy)
     }
   }
 

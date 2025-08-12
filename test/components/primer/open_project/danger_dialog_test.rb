@@ -50,8 +50,8 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     end
 
     assert_selector("dialog.DangerDialog") do
-      assert_selector(".Overlay-footer .Button", text: "en.button_cancel")
-      assert_selector(".Overlay-footer .Button", text: "en.button_delete")
+      assert_selector(".Overlay-footer .Button", text: "Cancel")
+      assert_selector(".Overlay-footer .Button", text: "Delete")
     end
   end
 
@@ -97,8 +97,8 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
     end
 
     assert_selector("dialog.DangerDialog") do
-      assert_selector(".Overlay-footer .Button", text: "en.button_cancel")
-      assert_selector(".Overlay-footer .Button", text: "en.button_delete_permanently")
+      assert_selector(".Overlay-footer .Button", text: "Cancel")
+      assert_selector(".Overlay-footer .Button", text: "Delete permanently")
     end
   end
 

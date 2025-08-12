@@ -14,7 +14,7 @@ module Primer
         )
       end
 
-      delegate :required?, :disabled?, :hidden?, to: :@input
+      delegate :required?, :disabled?, :hidden?, :merge_input_arguments!, to: :@input
 
       def perform_render(&block)
         return "" unless render?

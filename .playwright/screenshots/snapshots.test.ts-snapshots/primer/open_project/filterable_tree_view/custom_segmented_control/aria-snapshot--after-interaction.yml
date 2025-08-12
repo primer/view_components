@@ -1,0 +1,14 @@
+- list "Filter mode":
+  - listitem:
+    - button "Teacher"
+  - listitem:
+    - button "All"
+- checkbox "Include sub-items": "1"
+- text: Include sub-items Filter
+- searchbox "Filter"
+- button "Clear"
+- tree:
+  - treeitem "Albus Dumbledore" [level=1]
+  - treeitem "Minerva McGonagall" [level=1]
+  - treeitem "Severus Snape" [level=1]
+  - treeitem "Rubeus Hagrid" [level=1]

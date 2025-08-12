@@ -115,6 +115,11 @@
     flex-wrap: nowrap;
   }
 
+  &[data-wrap='reverse'],
+  &[data-wrap-narrow='reverse'] {
+    flex-wrap: wrap-reverse;
+  }
+
   /* @custom-media --veiwportRange-regular */
   @media (min-width: 48rem) {
     &[data-padding-regular='none'] {
@@ -202,6 +207,10 @@
 
     &[data-wrap-regular='nowrap'] {
       flex-wrap: nowrap;
+    }
+
+    &[data-wrap-regular='reverse'] {
+      flex-wrap: wrap-reverse;
     }
   }
 
@@ -292,6 +301,10 @@
 
     &[data-wrap-wide='nowrap'] {
       flex-wrap: nowrap;
+    }
+
+    &[data-wrap-wide='reverse'] {
+      flex-wrap: wrap-reverse;
     }
   }
 }
