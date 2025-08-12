@@ -107,7 +107,7 @@ module Primer
 
       DEFAULT_FILTER_INPUT_ARGUMENTS = {
         name: :filter,
-        label: "Filter",
+        label: I18n.t(:button_filter),
         type: :search,
         leading_visual: { icon: :search },
         visually_hide_label: true,
@@ -118,14 +118,14 @@ module Primer
 
       DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS = {
         aria: {
-          label: "Filter mode"
+          label: I18n.t("filterable_tree_view.filter_mode.label")
         }
       }
 
       DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.freeze
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS = {
-        label: "Include sub-items",
+        label: I18n.t("filterable_tree_view.include_sub_items"),
         name: :include_sub_items
       }
 
@@ -133,19 +133,19 @@ module Primer
 
       DEFAULT_FILTER_MODES = {
         all: {
-          label: "All",
+          label: I18n.t("filterable_tree_view.filter_mode.all"),
           selected: true,
         },
 
         selected: {
-          label: "Selected",
+          label: I18n.t("filterable_tree_view.filter_mode.selected"),
         }
       }
 
       DEFAULT_FILTER_MODES.freeze
 
       DEFAULT_NO_RESULTS_NODE_ARGUMENTS = {
-        label: "No results"
+        label: I18n.t("filterable_tree_view.no_results_text")
       }
 
       DEFAULT_NO_RESULTS_NODE_ARGUMENTS.freeze

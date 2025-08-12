@@ -1,0 +1,20 @@
+en:
+  button_back: "Back"
+  button_cancel: "Cancel"
+  button_close: "Close"
+  button_delete: "Delete"
+  button_delete_permanently: "Delete permanently"
+  button_filter: "Filter"
+  button_save: "Save"
+
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
+
+  label_title: "Title"
+  label_loading: "Loading..."
+  label_more: "More"
