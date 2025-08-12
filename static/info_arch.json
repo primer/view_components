@@ -8373,7 +8373,7 @@
         "name": "wrap",
         "type": "Symbol",
         "default": "`:nowrap`",
-        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, or `:wrap`."
+        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, `:reverse`, or `:wrap`."
       },
       {
         "name": "justify",
@@ -18411,6 +18411,189 @@
     "subcomponents": []
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::FilterableTreeView",
+    "description": "A TreeView and associated filter controls for searching nested hierarchies.\n\n## Filter controls\n\n`FilterableTreeView`s can be filtered using two controls, both present in the toolbar above the tree:\n\n1. A free-form query string from a text input field.\n2. A `SegmentedControl` with two options (by default):\n   1. The \"Selected\" option causes the component to only show checked nodes, provided they also satisfy the other\n      filter criteria described here.\n   2. The \"All\" option causes the component to show all nodes, provided they also satisfy the other filter\n      criteria described here.\n\n## Custom filter modes\n\nIn addition to the default filter modes of `'all'` and `'selected'` described above, `FilterableTreeView` supports\nadding custom filter modes. Adding a filter mode will cause its label to appear in the `SegmentedControl` in the\ntoolbar, and will be passed as the third argument to the filter function (see below).\n\nHere's how to add a custom filter mode in addition to the default ones:\n\n```erb\n<%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>\n  <%# remove this line to prevent adding the default modes %>\n  <% tree_view.with_default_filter_modes %>\n  <% tree_view.with_filter_mode(name: \"Custom\", system_arguments)\n<% end %>\n```\n\n## Filter behavior\n\nBy default, matching node text is identified by looking for an exact substring match, operating on a lowercased\nversion of both the query string and the node text. For more information, and to provide a customized filter\nfunction, please see the section titled \"Customizing the filter function\" below.\n\nNodes that match the filter appear as normal; nodes that do not match are presented as follows:\n\n1. Leaf nodes are hidden.\n2. Sub-tree nodes with no matching children are hidden.\n3. Sub-tree nodes with at least one matching child are disabled but still visible.\n\n## Checking behavior\n\nBy default, checking a node in a `FilterableTreeView` checks only that node (i.e. no child nodes are checked).\nTo aide in checking children in deeply nested or highly populated hierarchies, a third control exists in the\ntoolbar: the \"Include sub-items\" check box. If this feature is turned on, checking sub-tree nodes causes all\nchildren, both leaf and sub-tree nodes, to also be checked recursively. Moreover, turning this feature on will\ncause the children of any previously checked nodes to be checked recursively. Unchecking a node while in\n\"Include sub-items\" mode will restore that sub-tree and all its children to their previously checked state, so as\nnot to permanently override a user's selections. Unchecking the \"Include sub-items\" check box has a similar effect,\ni.e. restores all previous user selections under currently checked sub-trees.\n\n## JavaScript API\n\n`FilterableTreeView` does not yet have an extensive JavaScript API, but this may change in the future as the\ncomponent is further developed to fit additional use-cases.\n\n### Customizing the filter function\n\nThe filter function can be customized by setting the value of the `filterFn` property to a function with the\nfollowing signature:\n\n```typescript\nexport type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null\n```\n\nThis function will be called once for each node in the tree every time filter controls change (i.e. when the\nfilter mode or query string are altered). The function is called with the following arguments:\n\n|Argument    |Description                                                      |\n|:-----------|:----------------------------------------------------------------|\n|`node`      |The HTML node element, i.e. the element with `role=treeitem` set.|\n|`query`     |The query string.                                                |\n|`filterMode`|The filter mode, either `'all'` or `'selected'`.                 |\n\nThe component expects the filter function to return specific values depending on the type of match:\n\n1. No match - return `null`\n2. Match but no highlights (eg. when the query string is empty) - return an empty array\n3. Match with highlights - return a non-empty array of `Range` objects\n\nExample:\n\n```javascript\nconst filterableTreeView = document.querySelector('filterable-tree-view')\nfilterableTreeView.filterFn = (node, query, filterMode) => {\n  // custom filter implementation here\n}\n```\n\nYou can read about `Range` objects here: https://developer.mozilla.org/en-US/docs/Web/API/Range.\n\nFor a complete example demonstrating how to implement a working filter function complete with range highlighting,\nsee the default filter function available in the `FilterableTreeViewElement` JavaScript class, which is part of\nthe Primer source code.\n\n### Events\n\nCurrently `FilterableTreeView` does not emit any events aside from the events already emitted by the `TreeView`\ncomponent.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::FilterableTreeView",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFilterableTreeView",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/default/",
+    "parameters": [
+      {
+        "name": "tree_view_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments that will be passed to the underlying {{#link_to_component}}Primer::OpenProject::TreeView{{/link_to_component}} component."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Form arguments that will be passed to the underlying {{#link_to_component}}Primer::OpenProject::TreeView{{/link_to_component}} component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+      },
+      {
+        "name": "filter_input_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_FILTER_INPUT_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the {{#link_to_component}}Primer::Alpha::TextField{{/link_to_component}} component."
+      },
+      {
+        "name": "filter_mode_control_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the {{#link_to_component}}Primer::Alpha::SegmentedControl{{/link_to_component}} component."
+      },
+      {
+        "name": "include_sub_items_check_box_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the {{#link_to_component}}Primer::Alpha::CheckBox{{/link_to_component}} component."
+      },
+      {
+        "name": "no_results_node_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_NO_RESULTS_NODE_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to a {{#link_to_component}}Primer::OpenProject::TreeView::LeafNode{{/link_to_component}} component that appears when no items match the filter criteria."
+      }
+    ],
+    "slots": [],
+    "methods": [],
+    "previews": [
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/form_input",
+        "name": "form_input",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_segmented_control",
+        "name": "custom_segmented_control",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_no_results_text",
+        "name": "custom_no_results_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_checkbox_text",
+        "name": "custom_checkbox_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ],
+    "subcomponents": []
+  },
+  {
+    "fully_qualified_name": "Primer::OpenProject::FilterableTreeView::SubTree",
+    "description": "A `FilterableTreeView` sub-tree node.\n\nThis component is part of the {{#link_to_component}}Primer::OpenProject::FilterableTreeView{{/link_to_component}} component and\nshould not be used directly.",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::FilterableTreeView::SubTree",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFilterableTreeViewSubTree",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view/sub_tree.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/sub_tree/default/",
+    "parameters": [
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by {{#link_to_component}}Primer::OpenProject::TreeView::SubTreeContainer{{/link_to_component}}."
+      }
+    ],
+    "slots": [
+      {
+        "name": "nodes",
+        "description": null,
+        "parameters": []
+      },
+      {
+        "name": "loader",
+        "description": null,
+        "parameters": []
+      },
+      {
+        "name": "no_items_message",
+        "description": "The message to display if this sub-tree contains no children.",
+        "parameters": []
+      }
+    ],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::FlexLayout",
     "description": "A layouting component used to arrange multiple components next / below each other",
     "accessibility_docs": null,
@@ -20368,6 +20551,18 @@
         "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable."
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If this node is checked, this value will be sent to the server on form submission."
+      },
+      {
         "name": "content_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -20440,6 +20635,22 @@
         "parameters": [],
         "return_types": [
           "Symbol"
+        ]
+      },
+      {
+        "name": "disabled",
+        "description": "Whether or not this node is disabled, i.e. cannot be activated.",
+        "parameters": [],
+        "return_types": [
+          "Boolean"
+        ]
+      },
+      {
+        "name": "disabled?",
+        "description": "Whether or not this node is disabled, i.e. cannot be activated.",
+        "parameters": [],
+        "return_types": [
+          "Boolean"
         ]
       },
       {
@@ -20765,6 +20976,12 @@
         "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
       },
       {
+        "name": "sub_tree_component_klass",
+        "type": "Class",
+        "default": "`SubTree`",
+        "description": "The class to use for the sub-tree instead of the default {{#link_to_component}}Primer::OpenProject::TreeView::SubTree{{/link_to_component}}"
+      },
+      {
         "name": "expanded",
         "type": "Boolean",
         "default": "`false`",
@@ -20773,8 +20990,8 @@
       {
         "name": "select_strategy",
         "type": "Symbol",
-        "default": "`:descendants`",
-        "description": "What should happen when this sub-tree node is checked. One of `:descendants` or `:self`."
+        "default": "`:mixed_descendants`",
+        "description": "What should happen when this sub-tree node is checked. One of `:descendants`, `:mixed_descendants`, or `:self`."
       },
       {
         "name": "system_arguments",

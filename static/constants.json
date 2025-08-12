@@ -1653,6 +1653,44 @@
   "Primer::OpenProject::FileTreeView::FileNode": {
     "GeneratedSlotMethods": "Primer::OpenProject::FileTreeView::FileNode::GeneratedSlotMethods"
   },
+  "Primer::OpenProject::FilterableTreeView": {
+    "DEFAULT_FILTER_INPUT_ARGUMENTS": {
+      "name": "filter",
+      "label": "Filter",
+      "type": "search",
+      "leading_visual": {
+        "icon": "search"
+      },
+      "visually_hide_label": true,
+      "show_clear_button": true
+    },
+    "DEFAULT_FILTER_MODES": {
+      "all": {
+        "label": "All",
+        "selected": true
+      },
+      "selected": {
+        "label": "Selected"
+      }
+    },
+    "DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS": {
+      "aria": {
+        "label": "Filter mode"
+      }
+    },
+    "DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS": {
+      "label": "Include sub-items",
+      "name": "include_sub_items"
+    },
+    "DEFAULT_NO_RESULTS_NODE_ARGUMENTS": {
+      "label": "No results"
+    },
+    "GeneratedSlotMethods": "Primer::OpenProject::FilterableTreeView::GeneratedSlotMethods",
+    "SubTree": "Primer::OpenProject::FilterableTreeView::SubTree"
+  },
+  "Primer::OpenProject::FilterableTreeView::SubTree": {
+    "GeneratedSlotMethods": "Primer::OpenProject::FilterableTreeView::SubTree::GeneratedSlotMethods"
+  },
   "Primer::OpenProject::FlexLayout": {
     "GeneratedSlotMethods": "Primer::OpenProject::FlexLayout::GeneratedSlotMethods"
   },
@@ -1881,10 +1919,11 @@
     "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SubTreeContainer::GeneratedSlotMethods"
   },
   "Primer::OpenProject::TreeView::SubTreeNode": {
-    "DEFAULT_SELECT_STRATEGY": "descendants",
+    "DEFAULT_SELECT_STRATEGY": "mixed_descendants",
     "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SubTreeNode::GeneratedSlotMethods",
     "SELECT_STRATEGIES": [
       "self",
+      "mixed_descendants",
       "descendants"
     ]
   },

@@ -2671,7 +2671,7 @@
         "name": "wrap",
         "type": "Symbol",
         "default": "`:nowrap`",
-        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, or `:wrap`."
+        "description": "Specify whether items are forced onto one line or can wrap onto multiple lines. One of `nil`, `:nowrap`, `:reverse`, or `:wrap`."
       },
       {
         "name": "justify",
@@ -5527,6 +5527,74 @@
     "parameters": []
   },
   {
+    "component": "OpenProject::FilterableTreeView",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFilterableTreeView",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/default/",
+    "parameters": [
+      {
+        "name": "tree_view_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments that will be passed to the underlying [OpenProject::TreeView](/components/openprojecttreeview) component."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Form arguments that will be passed to the underlying [OpenProject::TreeView](/components/openprojecttreeview) component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+      },
+      {
+        "name": "filter_input_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_FILTER_INPUT_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the [TextField](/components/alpha/textfield) component."
+      },
+      {
+        "name": "filter_mode_control_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the [SegmentedControl](/components/alpha/segmentedcontrol) component."
+      },
+      {
+        "name": "include_sub_items_check_box_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to the [CheckBox](/components/alpha/checkbox) component."
+      },
+      {
+        "name": "no_results_node_arguments",
+        "type": "Hash",
+        "default": "`DEFAULT_NO_RESULTS_NODE_ARGUMENTS.dup`",
+        "description": "Arguments that will be passed to a [OpenProject::TreeView::LeafNode](/components/openprojecttreeviewleafnode) component that appears when no items match the filter criteria."
+      }
+    ]
+  },
+  {
+    "component": "OpenProject::FilterableTreeView::SubTree",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectFilterableTreeViewSubTree",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view/sub_tree.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/sub_tree/default/",
+    "parameters": [
+      {
+        "name": "node_variant",
+        "type": "Symbol",
+        "default": "N/A",
+        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "The arguments accepted by [OpenProject::TreeView::SubTreeContainer](/components/openprojecttreeviewsubtreecontainer)."
+      }
+    ]
+  },
+  {
     "component": "OpenProject::FlexLayout",
     "status": "open_project",
     "a11y_reviewed": false,
@@ -6082,6 +6150,18 @@
         "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
       },
       {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable."
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If this node is checked, this value will be sent to the server on form submission."
+      },
+      {
         "name": "content_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -6216,6 +6296,12 @@
         "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
       },
       {
+        "name": "sub_tree_component_klass",
+        "type": "Class",
+        "default": "`SubTree`",
+        "description": "The class to use for the sub-tree instead of the default [OpenProject::TreeView::SubTree](/components/openprojecttreeviewsubtree)"
+      },
+      {
         "name": "expanded",
         "type": "Boolean",
         "default": "`false`",
@@ -6224,8 +6310,8 @@
       {
         "name": "select_strategy",
         "type": "Symbol",
-        "default": "`:descendants`",
-        "description": "What should happen when this sub-tree node is checked. One of `:descendants` or `:self`."
+        "default": "`:mixed_descendants`",
+        "description": "What should happen when this sub-tree node is checked. One of `:descendants`, `:mixed_descendants`, or `:self`."
       },
       {
         "name": "system_arguments",

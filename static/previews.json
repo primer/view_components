@@ -4229,6 +4229,92 @@
     ]
   },
   {
+    "name": "filterable_tree_view",
+    "component": "OpenProject::FilterableTreeView",
+    "status": "alpha",
+    "lookup_path": "primer/open_project/filterable_tree_view",
+    "examples": [
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/form_input",
+        "name": "form_input",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_segmented_control",
+        "name": "custom_segmented_control",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_no_results_text",
+        "name": "custom_no_results_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/custom_checkbox_text",
+        "name": "custom_checkbox_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "flash",
     "component": "Flash",
     "status": "deprecated",

@@ -135,6 +135,8 @@
   "Primer::OpenProject::FileTreeView": "alpha",
   "Primer::OpenProject::FileTreeView::DirectoryNode": "alpha",
   "Primer::OpenProject::FileTreeView::FileNode": "alpha",
+  "Primer::OpenProject::FilterableTreeView": "alpha",
+  "Primer::OpenProject::FilterableTreeView::SubTree": "alpha",
   "Primer::OpenProject::FlexLayout": "open_project",
   "Primer::OpenProject::GridLayout": "open_project",
   "Primer::OpenProject::GridLayout::Area": "open_project",

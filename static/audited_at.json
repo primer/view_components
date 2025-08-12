@@ -135,6 +135,8 @@
   "Primer::OpenProject::FileTreeView": "",
   "Primer::OpenProject::FileTreeView::DirectoryNode": "",
   "Primer::OpenProject::FileTreeView::FileNode": "",
+  "Primer::OpenProject::FilterableTreeView": "",
+  "Primer::OpenProject::FilterableTreeView::SubTree": "",
   "Primer::OpenProject::FlexLayout": "",
   "Primer::OpenProject::GridLayout": "",
   "Primer::OpenProject::GridLayout::Area": "",
