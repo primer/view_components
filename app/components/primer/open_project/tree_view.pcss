@@ -213,7 +213,7 @@
       }
     }
 
-    &[aria-disabled='true'] {
+    &[aria-disabled="true"] {
       pointer-events: none;
 
       & .TreeViewItemContentText {
@@ -245,13 +245,13 @@
     }
 
     & ::highlight(primer-filterable-tree-view-search-results) {
-      background-color: yellow;
-      color: black;
+      background-color: var(--label-yellow-bgColor-active);
+      color: var(--fgColor-default);
     }
 
     & mark {
-      background-color: yellow;
-      color: black;
+      background-color: var(--label-yellow-bgColor-active);
+      color: var(--fgColor-default);
     }
   }
 
@@ -259,6 +259,9 @@
     color: var(--control-fgColor-rest);
     flex: 1 1 auto;
     width: 0;
+    /* Do not remove, as otherwise the filter result of the filterableTreeView will not be shown in Safari
+       see: https://bugs.webkit.org/show_bug.cgi?id=278455 */
+    -webkit-user-select: auto;
   }
 
   &:where([data-truncate-text='true']) .TreeViewItemContentText {
