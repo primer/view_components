@@ -11,7 +11,9 @@ module Primer
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
       # @param size [Symbol] select [auto, small, medium, large, xlarge]
       def playground(
-        select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        select_variant: Primer::Alpha::ActionMenu::PrimaryMenu::DEFAULT_SELECT_VARIANT,
+        anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
+        anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
         size: Primer::Alpha::Overlay::DEFAULT_SIZE
       )
         render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side, size: size)) do |menu|
@@ -55,13 +57,9 @@ module Primer
       # @label With groups
       #
       # @snapshot interactive
-      def with_groups
-        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
-          menu.with_show_button do |button|
-            button.with_trailing_action_icon(icon: :"triangle-down")
-            "Favorite character"
-          end
-
+      # @param nest_in_sub_menu toggle
+      def with_groups(nest_in_sub_menu: false)
+        contents = -> (menu) {
           menu.with_group do |group|
             group.with_heading(title: "Battlestar Galactica")
             group.with_item(label: "William Adama")
@@ -84,6 +82,21 @@ module Primer
             group.with_item(label: "Luke Skywalker")
             group.with_item(label: "Han Solo")
             group.with_item(label: "Chewbacca")
+          end
+        }
+
+        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-1")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Favorite character"
+          end
+
+          if nest_in_sub_menu
+            menu.with_sub_menu_item(label: "Sub-menu") do |sub_menu_item|
+              contents.call(sub_menu_item)
+            end
+          else
+            contents.call(menu)
           end
         end
       end
@@ -159,10 +172,9 @@ module Primer
 
       # @label Multiple select
       #
-      def multiple_select
-        render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
-          menu.with_show_button { "Menu" }
-
+      # @param nest_in_sub_menu toggle
+      def multiple_select(nest_in_sub_menu: false)
+        content = -> (menu) {
           menu.with_avatar_item(
             src: "https://avatars.githubusercontent.com/u/18661030?v=4",
             username: "langermank",
@@ -189,6 +201,18 @@ module Primer
             avatar_arguments: { shape: :square },
             item_id: :armagan
           )
+        }
+
+        render(Primer::Alpha::ActionMenu.new(select_variant: :multiple)) do |menu|
+          menu.with_show_button { "Menu" }
+
+          if nest_in_sub_menu
+            menu.with_sub_menu_item(label: "Sub-menu") do |sub_menu|
+              content.call(sub_menu)
+            end
+          else
+            content.call(menu)
+          end
         end
       end
 
@@ -218,17 +242,29 @@ module Primer
       # @label Single Select with Internal Label
       #
       # @snapshot interactive
-      def single_select_with_internal_label
-        render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
-          menu.with_show_button do |button|
-            button.with_trailing_action_icon(icon: :"triangle-down")
-            "Menu"
-          end
+      # @param nest_in_sub_menu toggle
+      def single_select_with_internal_label(nest_in_sub_menu: false)
+        contents = -> (menu) {
           menu.with_item(label: "Copy link") do |item|
             item.with_trailing_visual_label(scheme: :accent, inline: true).with_content("Recommended")
           end
           menu.with_item(label: "Quote reply", active: true)
           menu.with_item(label: "Reference in new issue")
+        }
+
+        render(Primer::Alpha::ActionMenu.new(select_variant: :single, dynamic_label: true, dynamic_label_prefix: "Menu")) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Menu"
+          end
+
+          if nest_in_sub_menu
+            menu.with_sub_menu_item(label: "Sub-menu") do |sub_menu_item|
+              contents.call(sub_menu_item)
+            end
+          else
+            contents.call(menu)
+          end
         end
       end
 
@@ -266,10 +302,9 @@ module Primer
 
       # @label With deferred content
       #
-      def with_deferred_content
-        render(Primer::Alpha::ActionMenu.new(menu_id: "deferred", src: UrlHelpers.primer_view_components.action_menu_deferred_path)) do |menu|
-          menu.with_show_button { "Menu with deferred content" }
-        end
+      # @param nest_in_sub_menu toggle
+      def with_deferred_content(nest_in_sub_menu: false)
+        render_with_template(locals: { nest_in_sub_menu: nest_in_sub_menu })
       end
 
       # @label With deferred preloaded content
@@ -283,8 +318,13 @@ module Primer
       # @label With actions
       #
       # @param disable_items toggle
-      def with_actions(disable_items: false, route_format: :html)
-        render_with_template(locals: { disable_items: disable_items, route_format: route_format })
+      # @param nest_in_sub_menu toggle
+      def with_actions(disable_items: false, nest_in_sub_menu: false, route_format: :html)
+        render_with_template(locals: {
+          disable_items: disable_items,
+          nest_in_sub_menu: nest_in_sub_menu,
+          route_format: route_format
+        })
       end
 
       # @label Single select form
@@ -295,14 +335,16 @@ module Primer
 
       # @label Single select form items
       #
-      def single_select_form_items(route_format: :html)
-        render_with_template(locals: { route_format: route_format })
+      # @param nest_in_sub_menu toggle
+      def single_select_form_items(route_format: :html, nest_in_sub_menu: false)
+        render_with_template(locals: { route_format: route_format, nest_in_sub_menu: nest_in_sub_menu })
       end
 
       # @label Multiple select form
       #
-      def multiple_select_form(route_format: :html)
-        render_with_template(locals: { route_format: route_format })
+      # @param nest_in_sub_menu toggle
+      def multiple_select_form(route_format: :html, nest_in_sub_menu: false)
+        render_with_template(locals: { route_format: route_format, nest_in_sub_menu: nest_in_sub_menu })
       end
 
       # @label With disabled items
@@ -317,9 +359,11 @@ module Primer
 
       # @label Opens a dialog
       #
-      def opens_dialog(menu_id: "menu-1")
+      # @param nest_in_sub_menu toggle
+      def opens_dialog(menu_id: "menu-1", nest_in_sub_menu: false)
         render_with_template(locals: {
-                               menu_id: menu_id
+                               menu_id: menu_id,
+                               nest_in_sub_menu: nest_in_sub_menu
                              })
       end
 
@@ -405,6 +449,26 @@ module Primer
       # @label Two menus
       #
       def two_menus; end
+
+      # @label Sub-menus
+      #
+      # @param anchor_align [Symbol] select [start, center, end]
+      # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      # @param sub_menu_anchor_align [Symbol] select [start, center, end]
+      # @param sub_menu_anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      def sub_menus(
+        anchor_align: Primer::Alpha::ActionMenu::PrimaryMenu::DEFAULT_ANCHOR_ALIGN,
+        anchor_side: Primer::Alpha::ActionMenu::PrimaryMenu::DEFAULT_ANCHOR_SIDE,
+        sub_menu_anchor_align: Primer::Alpha::ActionMenu::SubMenu::DEFAULT_ANCHOR_ALIGN,
+        sub_menu_anchor_side: Primer::Alpha::ActionMenu::SubMenu::DEFAULT_ANCHOR_SIDE
+      )
+        render_with_template(locals: {
+          anchor_align: anchor_align.to_sym,
+          anchor_side: anchor_side.to_sym,
+          sub_menu_anchor_align: sub_menu_anchor_align,
+          sub_menu_anchor_side: sub_menu_anchor_side
+        })
+      end
     end
   end
 end

@@ -312,7 +312,7 @@ module Primer
       # @return [String]
       attr_reader :body_id
 
-      # <%= one_of(Primer::Alpha::ActionMenu::SELECT_VARIANT_OPTIONS) %>
+      # <%= one_of(Primer::Alpha::ActionMenu::Menu::SELECT_VARIANT_OPTIONS) %>
       #
       # @return [Symbol]
       attr_reader :select_variant
@@ -461,7 +461,7 @@ module Primer
 
         @list = Primer::Alpha::SelectPanel::ItemList.new(
           **list_arguments,
-          form_arguments: @list_form_arguments, 
+          form_arguments: @list_form_arguments,
           id: "#{@panel_id}-list",
           select_variant: @select_variant,
           aria: {
