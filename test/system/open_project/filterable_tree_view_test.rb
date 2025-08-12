@@ -80,6 +80,10 @@ module OpenProject
       refute_path_checked("Students", "Gryffindor", "Harry Potter")
       refute_path_checked("Students", "Gryffindor", "Ronald Weasley")
       refute_path_checked("Students", "Gryffindor", "Hermione Granger")
+
+      assert_path_enabled("Students", "Gryffindor", "Harry Potter")
+      assert_path_enabled("Students", "Gryffindor", "Ronald Weasley")
+      assert_path_enabled("Students", "Gryffindor", "Hermione Granger")
     end
 
     def test_checking_parent_when_sub_items_included_checks_children
@@ -93,6 +97,55 @@ module OpenProject
       assert_path_checked("Students", "Gryffindor", "Harry Potter")
       assert_path_checked("Students", "Gryffindor", "Ronald Weasley")
       assert_path_checked("Students", "Gryffindor", "Hermione Granger")
+
+      refute_path_enabled("Students", "Gryffindor", "Harry Potter")
+      refute_path_enabled("Students", "Gryffindor", "Ronald Weasley")
+      refute_path_enabled("Students", "Gryffindor", "Hermione Granger")
+    end
+
+    def remember_selection_state_when_toggling_sub_items_included
+      visit_preview(:default)
+
+      check_at_path("Students", "Gryffindor", "Harry Potter")
+      assert_path_checked("Students", "Gryffindor", "Harry Potter")
+      refute_path_checked("Students", "Gryffindor")
+      refute_path_checked("Students", "Gryffindor", "Hermione Granger")
+      refute_path_checked("Students", "Gryffindor", "Ronald Weasley")
+
+      check "Include sub-items"
+      assert_checked_field "Include sub-items"
+
+      check_at_path("Students", "Gryffindor")
+
+      assert_path_checked("Students", "Gryffindor", "Harry Potter")
+      assert_path_checked("Students", "Gryffindor", "Ronald Weasley")
+      assert_path_checked("Students", "Gryffindor", "Hermione Granger")
+
+      check "Include sub-items"
+      assert_unchecked_field "Include sub-items"
+
+      # Remember what was selected before
+      assert_path_checked("Students", "Gryffindor", "Harry Potter")
+      refute_path_checked("Students", "Gryffindor")
+      refute_path_checked("Students", "Gryffindor", "Hermione Granger")
+      refute_path_checked("Students", "Gryffindor", "Ronald Weasley")
+    end
+
+    def test_checking_parent_with_sub_items_included_when_children_filtered_out
+      visit_preview(:default)
+
+      check "Include sub-items"
+      assert_checked_field "Include sub-items"
+
+      fill_in "Filter", with: "Ravenclaw"
+
+      check_at_path("Students", "Ravenclaw")
+      assert_path_checked("Students", "Ravenclaw")
+
+      find(".FormControl button[aria-label='Clear']").click
+
+      assert_path_checked("Students", "Ravenclaw")
+      assert_path_checked("Students", "Ravenclaw", "Luna Lovegood")
     end
 
     def test_hides_nodes_that_do_not_match_filter_text
