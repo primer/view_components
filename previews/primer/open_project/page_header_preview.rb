@@ -256,6 +256,21 @@ module Primer
           end
         end
       end
+
+      # @label With skipable breadcrumb items
+      def skip_breadcrumb_item
+        render(Primer::OpenProject::PageHeader.new) do |component|
+          component.with_title { "Resize me to mobile screen size" }
+          component.with_breadcrumbs([{ href: "/foo", text: "Foo" },
+                                      { href: "/bar", text: "Bar", skip_for_mobile: true },
+                                       "Baz"])
+        end
+      end
+
+      # @label With a link in the description
+      def description
+        render_with_template(template: "primer/open_project/page_header_preview/description")
+      end
     end
   end
 end

@@ -1,5 +1,67 @@
 # CHANGELOG
 
+## 0.70.5
+
+### Patch Changes
+
+- [#341](https://github.com/opf/primer_view_components/pull/341) [`b355320`](https://github.com/opf/primer_view_components/commit/b3553206a1e1b2c9acac3ba36c7422f66bdf6dc4) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [65898] ActionMenu SubMenu does not support dividers
+
+- [#345](https://github.com/opf/primer_view_components/pull/345) [`8b98093`](https://github.com/opf/primer_view_components/commit/8b980930bdd28758bc94724f201bae4e765e33b7) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [65869] Add an option in the page header description that allows all links in it to be displayed with or without an underline.
+
+## 0.70.4
+
+### Patch Changes
+
+- [#339](https://github.com/opf/primer_view_components/pull/339) [`18dc9e1`](https://github.com/opf/primer_view_components/commit/18dc9e1473ce4aead56f84670b1ae4ab256c8fc2) Thanks [@HDinger](https://github.com/HDinger)! - Add link underline effect to PageHeader descriptions and FormControl captions
+
+## 0.70.3
+
+### Patch Changes
+
+- [#337](https://github.com/opf/primer_view_components/pull/337) [`afd57b3`](https://github.com/opf/primer_view_components/commit/afd57b356d0e75d046bbf8cbb7ae3fef13841c98) Thanks [@HDinger](https://github.com/HDinger)! - Add the option to skip breadcrumb items for mobile
+
+## 0.70.2
+
+### Patch Changes
+
+- [#3558](https://github.com/primer/view_components/pull/3558) [`9cdefbb`](https://github.com/opf/primer_view_components/commit/9cdefbb65bf44c5dd494b60b636166155687e956) Thanks [@myabc](https://github.com/myabc)! - Make `ToolTipElement` `for` an observed attribute
+
+- [#334](https://github.com/opf/primer_view_components/pull/334) [`02c37ff`](https://github.com/opf/primer_view_components/commit/02c37ffc120573d9df9a6ce0380201f1bf09e960) Thanks [@HDinger](https://github.com/HDinger)! - Make sure that the context bar of the PageHeader always has the same height
+
+## 0.70.1
+
+### Patch Changes
+
+- [#3556](https://github.com/primer/view_components/pull/3556) [`3614cac`](https://github.com/opf/primer_view_components/commit/3614cac1ad1e15dd7692c4a8038adfaf1ca5f8f5) Thanks [@joelhawksley](https://github.com/joelhawksley)! - use ViewComponent 4.0.0.alpha6 and lookbook 2.3.11
+
+## 0.70.0
+
+### Minor Changes
+
+- [#325](https://github.com/opf/primer_view_components/pull/325) [`fe09d8b`](https://github.com/opf/primer_view_components/commit/fe09d8b6814fc830fc69f43e047f605a695b8378) Thanks [@ulferts](https://github.com/ulferts)! - Enable sub menus in sub header action menus
+
+## 0.69.5
+
+### Patch Changes
+
+- [#3521](https://github.com/primer/view_components/pull/3521) [`72a68d7`](https://github.com/opf/primer_view_components/commit/72a68d7832a079c8ed7af5dbed9ad53d6c973281) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Rename .erb-linters folder to .erb_linters
+
+- [#3518](https://github.com/primer/view_components/pull/3518) [`c25c43c`](https://github.com/opf/primer_view_components/commit/c25c43cd9f1646943154a3c501fadba569353488) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Replace deprecated lookbook helper define_param_input with add_input_type
+
+- [#3512](https://github.com/primer/view_components/pull/3512) [`b606322`](https://github.com/opf/primer_view_components/commit/b606322653c6109797fe9933fdb7fcbfb09f8235) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Upgrade RuboCop cops to v1 API
+
+- [#3534](https://github.com/primer/view_components/pull/3534) [`b8ebe04`](https://github.com/opf/primer_view_components/commit/b8ebe0461245075db80e00aff9af5647766440f4) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Remove unnecessary aria-label from the Details component
+
+- [#3540](https://github.com/primer/view_components/pull/3540) [`c94037e`](https://github.com/opf/primer_view_components/commit/c94037ebc88b3d959aba99fdef47388ea16d3e3e) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix breadcrumb overflow by adding max-width constraint to prevent page overflow
+
+- [#3522](https://github.com/primer/view_components/pull/3522) [`223a4c6`](https://github.com/opf/primer_view_components/commit/223a4c69262aafb0dad3d8a502272a48a1be3875) Thanks [@camertron](https://github.com/camertron)! - Publish config folder in packaged gem
+
+## 0.69.4
+
+### Patch Changes
+
+- [#320](https://github.com/opf/primer_view_components/pull/320) [`e5df72a`](https://github.com/opf/primer_view_components/commit/e5df72a5cb56e9e67de7532358af550f3cb023be) Thanks [@HDinger](https://github.com/HDinger)! - Fix a bug to avoid that two menus interfere with each other
+
 ## 0.69.3
 
 ### Patch Changes

@@ -54,6 +54,7 @@ export class NavListGroupElement extends HTMLElement {
       if (this.currentPage === this.totalPages) {
         this.showMoreItem.hidden = true
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       // Ignore network errors
       this.showMoreDisabled = false

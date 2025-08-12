@@ -6,7 +6,7 @@ gemspec
 rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "rack-cors"
-gem "rake", "~> 13.2"
+gem "rake", "~> 13.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -33,8 +33,12 @@ gem "puma", "~> 6.6.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "lookbook", "~> 2.3.9"
-gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
+gem "lookbook", "~> 2.3.11"
+if ENV["VIEW_COMPONENT_PATH"]
+  gem "view_component", path: ENV["VIEW_COMPONENT_PATH"]
+else
+  gem "view_component", "4.0.0.alpha6"
+end
 
 gem "kramdown", "~> 2.5"
 gem "sourcemap", "~> 0.1"
@@ -55,12 +59,12 @@ group :development do
   gem "cuprite", "~> 0.15"
   gem "debug"
   gem "erb_lint", "~> 0.9"
-  gem "erblint-github", "~> 1.0"
+  gem "erblint-github", "~> 1.0.1"
   gem "listen", "~> 3.9"
   gem "matrix", "~> 0.4.2"
   gem "mocha"
   gem "rubocop"
-  gem "rubocop-github", "~> 0.20.0"
+  gem "rubocop-github", "~> 0.26.0"
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 1.0"

@@ -269,6 +269,27 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".FormField-input.Button--secondary")
   end
 
+  def test_skips_a_breadcrumb_item_for_mobile
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs([{ href: "/foo", text: "Foo" },
+                               { href: "/bar", text: "Bar", skip_for_mobile: true },
+                               "Baz"])
+    end
+
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-breadcrumbs")
+
+    # The direct parent is skipped for the mobile back button..
+    assert_selector("a.PageHeader-parentLink[href='/foo']")
+
+    # .. but it is present in the normal desktop
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/bar']")
+    assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item.text-bold a[href='#']")
+  end
+
   private
 
   def breadcrumb_elements

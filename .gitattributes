@@ -1,0 +1,5 @@
+CHANGELOG.md merge=ours
+Gemfile.lock merge=ours
+demo/Gemfile.lock merge=ours
+lib/primer/view_components/version.rb merge=ours
+package-lock.json merge=ours

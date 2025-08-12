@@ -2,8 +2,7 @@
 
 const postcss = require('postcss')
 const { readFile, writeFile } = require('node:fs/promises')
-const { promisify } = require('util')
-const glob = promisify(require('glob'))
+const {glob} = require('glob')
 const CSSwhat = require('css-what')
 
 console.log('Exporting CSS selectors...')

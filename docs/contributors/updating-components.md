@@ -24,10 +24,10 @@ If the change requires a lot of updates or you’re unsure of the consequences o
    To use your linter run:
 
    ```bash
-   bin/bundle exec erblint --enable-linters LinterName -a app/views app/components app/packages
+   bin/bundle exec erb_lint --enable-linters LinterName -a app/views app/components app/packages
    ```
 
-   You can also enable your linter globally by adding it to [`.erb-lint.yml`](https://github.com/github/github/blob/master/.erb-lint.yml).
+   You can also enable your linter globally by adding it to [`.erb_lint.yml`](https://github.com/github/github/blob/master/.erb_lint.yml).
 
    If the migrations result in a lot of changes it’s best to split them up into multiple pull requests. [Here’s an example script for drafting pull requests by codeowners](https://github.com/primer/view_components/pull/972#discussion_r784217378).
 

@@ -46,7 +46,7 @@ module Primer
         @menu = Primer::Alpha::ActionMenu.new(**system_arguments)
       end
 
-      delegate :with_item, :with_divider, :with_avatar_item, :with_group,
+      delegate :with_item, :with_divider, :with_avatar_item, :with_group, :with_sub_menu_item,
                to: :@menu
 
       def before_render

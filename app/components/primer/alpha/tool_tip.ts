@@ -234,28 +234,7 @@ class ToolTipElement extends HTMLElement {
     this.#update(false)
     this.#allowUpdatePosition = true
 
-    if (!this.control) return
-
-    this.setAttribute('role', 'tooltip')
-
-    this.#abortController?.abort()
-    this.#abortController = new AbortController()
-    const {signal} = this.#abortController
-
-    this.addEventListener('mouseleave', this, {signal})
-    this.addEventListener('toggle', this, {signal})
-    this.control.addEventListener('mouseenter', this, {signal})
-    this.control.addEventListener('mouseleave', this, {signal})
-    this.control.addEventListener('focus', this, {signal})
-    this.control.addEventListener('mousedown', this, {signal})
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore popoverTargetElement is not in the type definition
-    this.control.popoverTargetElement?.addEventListener('beforetoggle', this, {
-      signal,
-    })
-    this.ownerDocument.addEventListener('focusout', focusOutListener)
-    this.ownerDocument.addEventListener('focusin', focusInListener)
-    this.ownerDocument.addEventListener('keydown', this, {signal, capture: true})
+    this.#updateControl()
   }
 
   disconnectedCallback() {
@@ -303,7 +282,7 @@ class ToolTipElement extends HTMLElement {
     }
   }
 
-  static observedAttributes = ['data-type', 'data-direction', 'id']
+  static observedAttributes = ['data-type', 'data-direction', 'id', 'for']
 
   #update(isOpen: boolean) {
     if (isOpen) {
@@ -321,11 +300,38 @@ class ToolTipElement extends HTMLElement {
   attributeChangedCallback(name: string) {
     if (!this.isConnected) return
 
-    if (name === 'id' || name === 'data-type') {
+    if (name === 'for') {
+      this.#updateControl()
+    } else if (name === 'id' || name === 'data-type') {
       this.#updateControlReference()
     } else if (name === 'data-direction') {
       this.#updateDirection()
     }
+  }
+
+  #updateControl() {
+    if (!this.control) return
+
+    this.setAttribute('role', 'tooltip')
+
+    this.#abortController?.abort()
+    this.#abortController = new AbortController()
+    const {signal} = this.#abortController
+
+    this.addEventListener('mouseleave', this, {signal})
+    this.addEventListener('toggle', this, {signal})
+    this.control.addEventListener('mouseenter', this, {signal})
+    this.control.addEventListener('mouseleave', this, {signal})
+    this.control.addEventListener('focus', this, {signal})
+    this.control.addEventListener('mousedown', this, {signal})
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore popoverTargetElement is not in the type definition
+    this.control.popoverTargetElement?.addEventListener('beforetoggle', this, {
+      signal,
+    })
+    this.ownerDocument.addEventListener('focusout', focusOutListener)
+    this.ownerDocument.addEventListener('focusin', focusInListener)
+    this.ownerDocument.addEventListener('keydown', this, {signal, capture: true})
   }
 
   #updateControlReference() {

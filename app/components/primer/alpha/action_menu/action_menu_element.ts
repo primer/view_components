@@ -360,7 +360,10 @@ export class ActionMenuElement extends HTMLElement {
       // desirable
       this.#focusZoneStack.pop(subMenu)
       const item = this.#itemForSubMenu(subMenu)
-      if (item) item.focus()
+      const openPopover = document.querySelector(':popover-open')
+      if (item && !openPopover) {
+        item.focus()
+      }
     }
   }
 

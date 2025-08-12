@@ -45,11 +45,15 @@ module Primer
       }
 
       # Optional description below the title row
-      renders_one :description, lambda { |**system_arguments|
+      renders_one :description, lambda { |underlined_links: true, **system_arguments|
         deny_tag_argument(**system_arguments)
 
         system_arguments[:tag] = :div
-        system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-description")
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "PageHeader-description",
+          ("PageHeader-description--underlined-links" if underlined_links)
+        )
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -186,11 +190,16 @@ module Primer
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
 
-        # show parent link if there is a parent for current page
-        if items.length > 1
-          link_arguments = {}
-          parent_item = items[items.length - 2]
+        parent_item = nil
 
+        # show parent link if there is a parent for current page
+        items.reverse_each do |item|
+          parent_item = item if item.is_a?(Hash) && item[:skip_for_mobile] != true
+          break if parent_item.present?
+        end
+
+        if parent_item.present? && parent_item[:href].present?
+          link_arguments = {}
           link_arguments[:icon] = fetch_or_fallback(BACK_BUTTON_ICON_OPTIONS, DEFAULT_BACK_BUTTON_ICON)
           link_arguments[:href] = parent_item[:href]
           link_arguments[:target] = "_top"
