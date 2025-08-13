@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 # :nodoc:
-class CustomCitiesForm < ApplicationForm
-  form do |custom_cities_form|
-    custom_cities_form.text_field(
-      name: :custom_cities,
-      label: "Custom cities",
-      description: "A space-separated list of cities"
-    )
-  end
-end
-
-# :nodoc:
 class CheckBoxWithNestedForm < ApplicationForm
+  # :nodoc:
+  class CustomCitiesForm < ApplicationForm
+    form do |custom_cities_form|
+      custom_cities_form.text_field(
+        name: :custom_cities,
+        label: "Custom cities",
+        description: "A space-separated list of cities"
+      )
+    end
+  end
+
   form do |check_form|
     check_form.check_box_group(name: :city_categories) do |check_group|
       check_group.check_box(
