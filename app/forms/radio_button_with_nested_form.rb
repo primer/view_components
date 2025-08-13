@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 # :nodoc:
-class FriendForm < ApplicationForm
-  form do |friend_form|
-    friend_form.group(layout: :horizontal) do |name_group|
-      name_group.text_field(name: "first_name", label: "First Name")
-      name_group.text_field(name: "last_name", label: "Last Name")
+class RadioButtonWithNestedForm < ApplicationForm
+  # :nodoc:
+  class FriendForm < ApplicationForm
+    form do |friend_form|
+      friend_form.group(layout: :horizontal) do |name_group|
+        name_group.text_field(name: "first_name", label: "First Name")
+        name_group.text_field(name: "last_name", label: "Last Name")
+      end
     end
   end
-end
 
-# :nodoc:
-class FriendTextAreaForm < ApplicationForm
-  form do |friend_text_area_form|
-    friend_text_area_form.text_area(
-      name: "description",
-      label: "Describe this wonderful person in loving detail"
-    )
+  # :nodoc:
+  class FriendTextAreaForm < ApplicationForm
+    form do |friend_text_area_form|
+      friend_text_area_form.text_area(
+        name: "description",
+        label: "Describe this wonderful person in loving detail"
+      )
+    end
   end
-end
 
-# :nodoc:
-class RadioButtonWithNestedForm < ApplicationForm
   form do |radio_form|
     radio_form.radio_button_group(name: "channel") do |radio_group|
       radio_group.radio_button(value: "online", label: "Online advertisement", caption: "Facebook maybe?")
