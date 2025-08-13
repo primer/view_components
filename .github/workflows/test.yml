@@ -217,6 +217,8 @@ jobs:
     runs-on: ubuntu-latest-8-cores
     steps:
     - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
