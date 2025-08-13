@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.71.0
+
+### Minor Changes
+
+- [#321](https://github.com/opf/primer_view_components/pull/321) [`9219647`](https://github.com/opf/primer_view_components/commit/9219647e3f6368bdb3d3d1aa45380a63838c8c11) Thanks [@camertron](https://github.com/camertron)! - Add the FilterableTreeView component
+
 ## 0.70.5
 
 ### Patch Changes
