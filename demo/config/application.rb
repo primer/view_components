@@ -23,6 +23,8 @@ module Demo
       config.load_defaults 8.1
     elsif Rails.version.to_f >= 8.0
       config.load_defaults 8.0
+    elsif Rails.version.to_f >= 7.2
+      config.load_defaults 7.2
     elsif Rails.version.to_f >= 7.1
       config.load_defaults 7.1
     end

@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/**/*", "previews/**/*", "config/**/*"] - Dir["lib/**/*.rake"]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "actionview", ">= 7.1.0"
-  spec.add_runtime_dependency     "activesupport", ">= 7.1.0"
+  spec.add_runtime_dependency     "actionview", ">= 7.2.0"
+  spec.add_runtime_dependency     "activesupport", ">= 7.2.0"
   spec.add_runtime_dependency     "octicons", ">= 18.0.0"
   spec.add_runtime_dependency     "view_component", [">= 3.1", "< 5.0"]
 end
