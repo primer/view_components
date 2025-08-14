@@ -326,10 +326,76 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/default/",
     "parameters": [
       {
+        "name": "menu_id",
+        "type": "String",
+        "default": "`self.class.generate_id`",
+        "description": "Id of the menu."
+      },
+      {
+        "name": "anchor_align",
+        "type": "Symbol",
+        "default": "`:start`",
+        "description": "One of `:center`, `:end`, or `:start`.."
+      },
+      {
+        "name": "anchor_side",
+        "type": "Symbol",
+        "default": "`:outside_bottom`",
+        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
+      },
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Used with an `include-fragment` element to load menu content from the given source URL."
+      },
+      {
+        "name": "preload",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "When true, and src is present, loads the `include-fragment` on trigger hover."
+      },
+      {
+        "name": "dynamic_label",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to display the text of the currently selected item in the show button."
+      },
+      {
+        "name": "dynamic_label_prefix",
+        "type": "String",
+        "default": "`nil`",
+        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
+      },
+      {
+        "name": "select_variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "One of `:multiple`, `:none`, or `:single`."
+      },
+      {
+        "name": "form_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+      },
+      {
+        "name": "overlay_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Arguments to pass to the underlying [Overlay](/components/alpha/overlay)"
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by [ActionMenu::PrimaryMenu](/components/alpha/actionmenuprimarymenu)."
+        "description": "[System arguments](/system-arguments)."
       }
     ]
   },
@@ -418,7 +484,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by [ActionMenu::ListWrapper](/components/alpha/actionmenulistwrapper)"
+        "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)"
       }
     ]
   },
@@ -443,171 +509,6 @@
         "description": "The arguments accepted by [ActionList](/components/alpha/actionlist)"
       }
     ]
-  },
-  {
-    "component": "ActionMenu::Menu",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ActionMenuMenu",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/menu.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/menu/default/",
-    "parameters": [
-      {
-        "name": "anchor_align",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "One of `:center`, `:end`, or `:start`."
-      },
-      {
-        "name": "anchor_side",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
-      },
-      {
-        "name": "menu_id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "Id of the menu."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:auto`",
-        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
-      },
-      {
-        "name": "src",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Used with an `include-fragment` element to load menu content from the given source URL."
-      },
-      {
-        "name": "preload",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "When true, and src is present, loads the `include-fragment` on trigger hover."
-      },
-      {
-        "name": "select_variant",
-        "type": "Symbol",
-        "default": "`:none`",
-        "description": "One of `:multiple`, `:none`, or `:single`."
-      },
-      {
-        "name": "form_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
-      },
-      {
-        "name": "overlay_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Arguments to pass to the underlying [Overlay](/components/alpha/overlay)"
-      },
-      {
-        "name": "list_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Arguments to pass to the underlying [ActionMenu::List](/components/alpha/actionmenulist)"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)."
-      }
-    ]
-  },
-  {
-    "component": "ActionMenu::PrimaryMenu",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ActionMenuPrimaryMenu",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/primary_menu.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/primary_menu/default/",
-    "parameters": [
-      {
-        "name": "anchor_align",
-        "type": "Symbol",
-        "default": "`:start`",
-        "description": "One of `:center`, `:end`, or `:start`."
-      },
-      {
-        "name": "anchor_side",
-        "type": "Symbol",
-        "default": "`:outside_bottom`",
-        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
-      },
-      {
-        "name": "dynamic_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to display the text of the currently selected item in the show button."
-      },
-      {
-        "name": "dynamic_label_prefix",
-        "type": "String",
-        "default": "`nil`",
-        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)."
-      }
-    ]
-  },
-  {
-    "component": "ActionMenu::SubMenu",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ActionMenuSubMenu",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/sub_menu.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/sub_menu/default/",
-    "parameters": [
-      {
-        "name": "menu_id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "Id of the menu."
-      },
-      {
-        "name": "anchor_align",
-        "type": "Symbol",
-        "default": "`:start`",
-        "description": "One of `:center`, `:end`, or `:start`."
-      },
-      {
-        "name": "anchor_side",
-        "type": "Symbol",
-        "default": "`:outside_right`",
-        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
-      },
-      {
-        "name": "overlay_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Arguments to pass to the underlying [Overlay](/components/alpha/overlay)"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)."
-      }
-    ]
-  },
-  {
-    "component": "ActionMenu::SubMenuItem",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "ActionMenuSubMenuItem",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/sub_menu_item.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/sub_menu_item/default/",
-    "parameters": []
   },
   {
     "component": "AutoComplete",

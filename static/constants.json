@@ -152,15 +152,18 @@
     ]
   },
   "Primer::Alpha::ActionMenu": {
+    "DEFAULT_PRELOAD": false,
+    "DEFAULT_SELECT_VARIANT": "none",
     "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::GeneratedSlotMethods",
     "Group": "Primer::Alpha::ActionMenu::Group",
     "Heading": "Primer::Alpha::ActionMenu::Heading",
     "List": "Primer::Alpha::ActionMenu::List",
     "ListWrapper": "Primer::Alpha::ActionMenu::ListWrapper",
-    "Menu": "Primer::Alpha::ActionMenu::Menu",
-    "PrimaryMenu": "Primer::Alpha::ActionMenu::PrimaryMenu",
-    "SubMenu": "Primer::Alpha::ActionMenu::SubMenu",
-    "SubMenuItem": "Primer::Alpha::ActionMenu::SubMenuItem"
+    "SELECT_VARIANT_OPTIONS": [
+      "single",
+      "multiple",
+      "none"
+    ]
   },
   "Primer::Alpha::ActionMenu::Group": {
     "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::Group::GeneratedSlotMethods"
@@ -179,29 +182,6 @@
   },
   "Primer::Alpha::ActionMenu::ListWrapper": {
     "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::ListWrapper::GeneratedSlotMethods"
-  },
-  "Primer::Alpha::ActionMenu::Menu": {
-    "DEFAULT_PRELOAD": false,
-    "DEFAULT_SELECT_VARIANT": "none",
-    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::Menu::GeneratedSlotMethods",
-    "SELECT_VARIANT_OPTIONS": [
-      "single",
-      "multiple",
-      "none"
-    ]
-  },
-  "Primer::Alpha::ActionMenu::PrimaryMenu": {
-    "DEFAULT_ANCHOR_ALIGN": "start",
-    "DEFAULT_ANCHOR_SIDE": "outside_bottom",
-    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::PrimaryMenu::GeneratedSlotMethods"
-  },
-  "Primer::Alpha::ActionMenu::SubMenu": {
-    "DEFAULT_ANCHOR_ALIGN": "start",
-    "DEFAULT_ANCHOR_SIDE": "outside_right",
-    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::SubMenu::GeneratedSlotMethods"
-  },
-  "Primer::Alpha::ActionMenu::SubMenuItem": {
-    "GeneratedSlotMethods": "Primer::Alpha::ActionMenu::SubMenuItem::GeneratedSlotMethods"
   },
   "Primer::Alpha::AutoComplete": {
     "GeneratedSlotMethods": "Primer::Alpha::AutoComplete::GeneratedSlotMethods",
