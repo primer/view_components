@@ -1186,204 +1186,73 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/default/",
     "parameters": [
       {
-        "name": "menu_id",
-        "type": "String",
-        "default": "`self.class.generate_id`",
-        "description": "Id of the menu."
-      },
-      {
-        "name": "anchor_align",
-        "type": "Symbol",
-        "default": "`:start`",
-        "description": "One of `:center`, `:end`, or `:start`.."
-      },
-      {
-        "name": "anchor_side",
-        "type": "Symbol",
-        "default": "`:outside_bottom`",
-        "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:auto`",
-        "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`.."
-      },
-      {
-        "name": "src",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Used with an `include-fragment` element to load menu content from the given source URL."
-      },
-      {
-        "name": "preload",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "When true, and src is present, loads the `include-fragment` on trigger hover."
-      },
-      {
-        "name": "dynamic_label",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to display the text of the currently selected item in the show button."
-      },
-      {
-        "name": "dynamic_label_prefix",
-        "type": "String",
-        "default": "`nil`",
-        "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
-      },
-      {
-        "name": "select_variant",
-        "type": "Symbol",
-        "default": "`:none`",
-        "description": "One of `:multiple`, `:none`, or `:single`."
-      },
-      {
-        "name": "form_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
-      },
-      {
-        "name": "overlay_arguments",
-        "type": "Hash",
-        "default": "`{}`",
-        "description": "Arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}"
-      },
-      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "{{link_to_system_arguments_docs}}."
+        "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::PrimaryMenu{{/link_to_component}}."
       }
     ],
-    "slots": [
-      {
-        "name": "show_button",
-        "description": "Button to activate the menu.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
-          }
-        ]
-      },
-      {
-        "name": "items",
-        "description": "Adds a new item to the list.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
-          }
-        ]
-      }
-    ],
+    "slots": [],
     "methods": [
       {
-        "name": "list",
-        "description": "Returns the value of attribute list.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "preload",
-        "description": "Returns the value of attribute preload.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "preload?",
-        "description": "Returns the value of attribute preload.",
-        "parameters": [],
-        "return_types": []
-      },
-      {
-        "name": "with_show_button",
-        "description": "Button to activate the menu.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
-          }
-        ],
-        "return_types": []
-      },
-      {
         "name": "with_item",
-        "description": "Adds a new item to the list.",
+        "description": "Adds an item to the menu.",
         "parameters": [
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
-          }
-        ],
-        "return_types": []
-      },
-      {
-        "name": "with_divider",
-        "description": "Adds a divider to the list.",
-        "parameters": [
-          {
-            "name": "system_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `divider` slot."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
           }
         ],
         "return_types": []
       },
       {
         "name": "with_avatar_item",
-        "description": "Adds an avatar item to the list. Avatar items are a convenient way to accessibly add an item with a leading avatar image.",
+        "description": "Adds an avatar item to the menu.",
         "parameters": [
-          {
-            "name": "src",
-            "type": "String",
-            "default": "N/A",
-            "description": "The source url of the avatar image."
-          },
-          {
-            "name": "username",
-            "type": "String",
-            "default": "N/A",
-            "description": "The username associated with the avatar."
-          },
-          {
-            "name": "full_name",
-            "type": "String",
-            "default": "N/A",
-            "description": "Optional. The user's full name."
-          },
-          {
-            "name": "full_name_scheme",
-            "type": "Symbol",
-            "default": "N/A",
-            "description": "Optional. How to display the user's full name."
-          },
-          {
-            "name": "avatar_arguments",
-            "type": "Hash",
-            "default": "N/A",
-            "description": "Optional. The arguments accepted by {{#link_to_component}}Primer::Beta::Avatar{{/link_to_component}}."
-          },
           {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Item{{/link_to_component}}."
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
           }
         ],
         "return_types": []
+      },
+      {
+        "name": "with_divider",
+        "description": "Adds a divider to the list. Dividers visually separate items.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+          }
+        ],
+        "return_types": []
+      },
+      {
+        "name": "with_group",
+        "description": "Adds a group to the menu. Groups are a logical set of items with a header.",
+        "parameters": [
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Group{{/link_to_component}}."
+          }
+        ],
+        "return_types": []
+      },
+      {
+        "name": "items",
+        "description": "Gets the list of configured menu items, which includes regular items, avatar items, groups, and dividers.",
+        "parameters": [],
+        "return_types": [
+          "Array<ViewComponent::Slot>"
+        ]
       }
     ],
     "previews": [
@@ -1763,9 +1632,236 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/sub_menus",
+        "name": "sub_menus",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": [
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::Menu",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionMenu::Menu",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuMenu",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/menu.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/menu/default/",
+        "parameters": [
+          {
+            "name": "anchor_align",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "anchor_side",
+            "type": "Symbol",
+            "default": "N/A",
+            "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+          },
+          {
+            "name": "menu_id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "Id of the menu."
+          },
+          {
+            "name": "size",
+            "type": "Symbol",
+            "default": "`:auto`",
+            "description": "One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
+          },
+          {
+            "name": "src",
+            "type": "String",
+            "default": "`nil`",
+            "description": "Used with an `include-fragment` element to load menu content from the given source URL."
+          },
+          {
+            "name": "preload",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "When true, and src is present, loads the `include-fragment` on trigger hover."
+          },
+          {
+            "name": "select_variant",
+            "type": "Symbol",
+            "default": "`:none`",
+            "description": "One of `:multiple`, `:none`, or `:single`."
+          },
+          {
+            "name": "form_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Allows an `ActionMenu` to act as a select list in multi- and single-select modes. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+          },
+          {
+            "name": "overlay_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}"
+          },
+          {
+            "name": "list_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::ActionMenu::List{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}."
+          }
+        ],
+        "slots": [],
+        "methods": [
+          {
+            "name": "menu_id",
+            "description": "Returns the value of attribute menu_id.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "anchor_side",
+            "description": "Returns the value of attribute anchor_side.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "anchor_align",
+            "description": "Returns the value of attribute anchor_align.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "list",
+            "description": "Returns the value of attribute list.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "preload",
+            "description": "Returns the value of attribute preload.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "src",
+            "description": "Returns the value of attribute src.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "select_variant",
+            "description": "Returns the value of attribute select_variant.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "form_arguments",
+            "description": "Returns the value of attribute form_arguments.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "preload?",
+            "description": "Returns the value of attribute preload.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "with_item",
+            "description": "Adds an item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_avatar_item",
+            "description": "Adds an avatar item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_divider",
+            "description": "Adds a divider to the list. Dividers visually separate items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_group",
+            "description": "Adds a group to the menu. Groups are a logical set of items with a header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Group{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "items",
+            "description": "Gets the list of configured menu items, which includes regular items, avatar items, groups, and dividers.",
+            "parameters": [],
+            "return_types": [
+              "Array<ViewComponent::Slot>"
+            ]
+          },
+          {
+            "name": "with_sub_menu_item",
+            "description": "Adds a sub-menu to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::SubMenuItem{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          }
+        ],
+        "previews": [],
+        "subcomponents": []
+      },
       {
         "fully_qualified_name": "Primer::Alpha::ActionMenu::List",
         "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
@@ -1784,7 +1880,7 @@
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
-            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}"
+            "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::ListWrapper{{/link_to_component}}"
           }
         ],
         "slots": [],
@@ -1796,6 +1892,344 @@
             "return_types": []
           }
         ],
+        "previews": [],
+        "subcomponents": []
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::SubMenu",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionMenu::SubMenu",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuSubMenu",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/sub_menu.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/sub_menu/default/",
+        "parameters": [
+          {
+            "name": "menu_id",
+            "type": "String",
+            "default": "`self.class.generate_id`",
+            "description": "Id of the menu."
+          },
+          {
+            "name": "anchor_align",
+            "type": "Symbol",
+            "default": "`:start`",
+            "description": "One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "anchor_side",
+            "type": "Symbol",
+            "default": "`:outside_right`",
+            "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+          },
+          {
+            "name": "overlay_arguments",
+            "type": "Hash",
+            "default": "`{}`",
+            "description": "Arguments to pass to the underlying {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}"
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}."
+          }
+        ],
+        "slots": [],
+        "methods": [
+          {
+            "name": "with_item",
+            "description": "Adds an item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_avatar_item",
+            "description": "Adds an avatar item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_divider",
+            "description": "Adds a divider to the list. Dividers visually separate items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_group",
+            "description": "Adds a group to the menu. Groups are a logical set of items with a header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Group{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "items",
+            "description": "Gets the list of configured menu items, which includes regular items, avatar items, groups, and dividers.",
+            "parameters": [],
+            "return_types": [
+              "Array<ViewComponent::Slot>"
+            ]
+          },
+          {
+            "name": "with_sub_menu_item",
+            "description": "Adds a sub-menu to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::SubMenuItem{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          }
+        ],
+        "previews": [],
+        "subcomponents": []
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::PrimaryMenu",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionMenu::PrimaryMenu",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuPrimaryMenu",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/primary_menu.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/primary_menu/default/",
+        "parameters": [
+          {
+            "name": "anchor_align",
+            "type": "Symbol",
+            "default": "`:start`",
+            "description": "One of `:center`, `:end`, or `:start`."
+          },
+          {
+            "name": "anchor_side",
+            "type": "Symbol",
+            "default": "`:outside_bottom`",
+            "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`."
+          },
+          {
+            "name": "dynamic_label",
+            "type": "Boolean",
+            "default": "`false`",
+            "description": "Whether or not to display the text of the currently selected item in the show button."
+          },
+          {
+            "name": "dynamic_label_prefix",
+            "type": "String",
+            "default": "`nil`",
+            "description": "If provided, the prefix is prepended to the dynamic label and displayed in the show button."
+          },
+          {
+            "name": "system_arguments",
+            "type": "Hash",
+            "default": "N/A",
+            "description": "{{link_to_system_arguments_docs}}."
+          }
+        ],
+        "slots": [],
+        "methods": [
+          {
+            "name": "dynamic_label",
+            "description": "Returns the value of attribute dynamic_label.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "dynamic_label_prefix",
+            "description": "Returns the value of attribute dynamic_label_prefix.",
+            "parameters": [],
+            "return_types": []
+          },
+          {
+            "name": "with_item",
+            "description": "Adds an item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_avatar_item",
+            "description": "Adds an avatar item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_divider",
+            "description": "Adds a divider to the list. Dividers visually separate items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_group",
+            "description": "Adds a group to the menu. Groups are a logical set of items with a header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Group{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "items",
+            "description": "Gets the list of configured menu items, which includes regular items, avatar items, groups, and dividers.",
+            "parameters": [],
+            "return_types": [
+              "Array<ViewComponent::Slot>"
+            ]
+          },
+          {
+            "name": "with_show_button",
+            "description": "Button to activate the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Overlay{{/link_to_component}}'s `show_button` slot."
+              }
+            ],
+            "return_types": []
+          }
+        ],
+        "previews": [],
+        "subcomponents": []
+      },
+      {
+        "fully_qualified_name": "Primer::Alpha::ActionMenu::SubMenuItem",
+        "description": "This component is part of {{#link_to_component}}Primer::Alpha::ActionMenu{{/link_to_component}} and should not be\nused as a standalone component.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "ActionMenu::SubMenuItem",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "ActionMenuSubMenuItem",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/sub_menu_item.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_menu/sub_menu_item/default/",
+        "parameters": [],
+        "slots": [
+          {
+            "name": "description",
+            "description": "Description content that complements the item's label, with optional test_selector.\nSee `ActionList`'s `description_scheme` argument for layout options.",
+            "parameters": [
+              {
+                "name": "legacy_content",
+                "type": "String",
+                "default": "N/A",
+                "description": "Slot content, provided for backwards-compatibility. Pass a content block instead, or call `with_content`, eg. `component.with_description { \"My description\" }` or `component.with_description.with_content(\"My description\")`."
+              },
+              {
+                "name": "test_selector",
+                "type": "String",
+                "default": "N/A",
+                "description": "The value of this argument is set as the value of a `data-test-selector` HTML attribute on the description element."
+              }
+            ]
+          },
+          {
+            "name": "leading_visual",
+            "description": "An icon, avatar, SVG, or custom content that will render to the left of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render an SVG, call the `with_leading_visual_svg` method.\n\nTo render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.",
+            "parameters": []
+          },
+          {
+            "name": "trailing_visual",
+            "description": "An icon, label, counter, or text to render to the right of the label.\n\nTo render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Octicon{{/link_to_component}}.\n\nTo render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Label{{/link_to_component}}.\n\nTo render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Counter{{/link_to_component}}.\n\nTo render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:\n```ruby\nwith_leading_visual_text { \"Text here\" }\n```",
+            "parameters": []
+          },
+          {
+            "name": "trailing_action",
+            "description": "A button rendered after the trailing icon that can be used to show a menu, activate\na dialog, etc.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
+              }
+            ]
+          },
+          {
+            "name": "tooltip",
+            "description": "`Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as\na last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be\nmore appropriate. Consult the {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}} documentation for more information.",
+            "parameters": [
+              {
+                "name": "type",
+                "type": "Symbol",
+                "default": "`:description`",
+                "description": "One of `:description` or `:label`."
+              },
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::Tooltip{{/link_to_component}}."
+              }
+            ]
+          }
+        ],
+        "methods": [],
         "previews": [],
         "subcomponents": []
       },
@@ -1863,14 +2297,70 @@
                 "description": "The arguments accepted by `component_klass`."
               }
             ]
+          }
+        ],
+        "methods": [
+          {
+            "name": "with_item",
+            "description": "Adds an item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_avatar_item",
+            "description": "Adds an avatar item to the menu.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList{{/link_to_component}}'s `item` slot."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_divider",
+            "description": "Adds a divider to the list. Dividers visually separate items.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionList::Divider{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_group",
+            "description": "Adds a group to the menu. Groups are a logical set of items with a header.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Alpha::ActionMenu::Group{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
           },
           {
             "name": "items",
-            "description": "Items. Items can be individual items, avatar items, or dividers. See the documentation for `#with_item`, `#with_divider`, and `#with_avatar_item` respectively for more information.",
-            "parameters": []
+            "description": "Gets the list of configured menu items, which includes regular items, avatar items, groups, and dividers.",
+            "parameters": [],
+            "return_types": [
+              "Array<ViewComponent::Slot>"
+            ]
           }
         ],
-        "methods": [],
         "previews": [],
         "subcomponents": []
       },
