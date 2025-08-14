@@ -86,6 +86,7 @@ class IntegrationAlphaActionBarTest < System::TestCase
       end
 
       mouse.click(x: 0, y: 0)
+      keyboard.type(:tab)
 
       # Ensures that ActionMenu trigger is still focusable
       assert_equal page.evaluate_script("document.activeElement.classList.contains('Button--iconOnly')"), true

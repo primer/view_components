@@ -20,25 +20,12 @@ module Primer
       def test_renders_with_relevant_accessibility_attributes
         render_preview(:default)
 
-        assert_selector("action-menu") do |menu|
-          menu.assert_selector("button[id='menu-1-button'][aria-haspopup='true']", text: "Menu")
-          menu.assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do |ul|
-            ul.assert_selector("li button[role='menuitem']", visible: false)
-          end
-          menu.assert_selector("anchored-position[id='menu-1-overlay'][anchor=menu-1-button]")
-        end
-      end
-
-      def test_accepts_custom_menu_id_for_sub_menus
-        render_inline(Primer::Alpha::ActionMenu.new) do |component|
-          component.with_sub_menu_item(label: "Sub-menu", menu_id: "foobarbaz") do |sub_menu|
-            sub_menu.with_item(label: "Hello, world")
+        assert_selector("action-menu") do
+          assert_selector("button[id='menu-1-button'][aria-haspopup='true']", text: "Menu")
+          assert_selector("ul[id='menu-1-list'][aria-labelledby='menu-1-button'][role='menu']", visible: false) do
+            assert_selector("li button[role='menuitem']", visible: false)
           end
         end
-
-        assert_selector("button[id='foobarbaz-button'][aria-haspopup='true']", text: "Sub-menu")
-        assert_selector("ul[id='foobarbaz-list'][aria-labelledby='foobarbaz-button'][role='menu']", visible: false)
-        assert_selector("anchored-position[id='foobarbaz-overlay'][anchor=foobarbaz-button]")
       end
 
       def test_falls_back_to_button_if_disallowed_tag_is_given
@@ -66,24 +53,30 @@ module Primer
       def test_allows_trigger_button_to_be_icon_button
         render_preview(:with_icon_button)
 
-        assert_selector("action-menu", visible: false) do |menu|
-          menu.assert_selector("button[aria-haspopup='true']", visible: false) do |button|
-            button.assert_selector("svg", visible: false)
+        assert_selector("action-menu", visible: false) do
+          assert_selector("button[aria-haspopup='true']", visible: false) do
+            assert_selector("svg", visible: false)
           end
 
-          menu.assert_selector("tool-tip", text: "Menu", visible: false)
+          assert_selector("tool-tip", text: "Menu", visible: false)
         end
       end
 
       def test_allows_some_tags_as_nested_menu_item
         render_preview(:with_actions)
 
-        assert_selector("action-menu") do |menu|
-          menu.assert_selector("button[aria-haspopup='true']", text: "Trigger")
-          menu.assert_selector("ul", visible: false) do |list|
-            list.assert_selector("li button[role='menuitem']", text: "Alert", visible: false)
-            list.assert_selector("li a", text: "Navigate", visible: false)
-            list.assert_selector("li clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
+        assert_selector("action-menu") do
+          assert_selector("button[aria-haspopup='true']", text: "Trigger")
+          assert_selector("ul", visible: false) do
+            assert_selector("li", visible: false) do
+              assert_selector("button[role='menuitem']", text: "Alert", visible: false)
+            end
+            assert_selector("li", visible: false) do
+              assert_selector("a", text: "Navigate", visible: false)
+            end
+            assert_selector("li", visible: false) do
+              assert_selector("clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
+            end
           end
         end
       end
@@ -93,10 +86,10 @@ module Primer
           component.with_show_button { "Trigger" }
         end
 
-        assert_selector("action-menu") do |menu|
-          menu.assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
-          menu.assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do |fragment|
-            fragment.assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
+        assert_selector("action-menu") do
+          assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
+            assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end
         end
       end
@@ -110,10 +103,10 @@ module Primer
           component.with_show_button { "Trigger" }
         end
 
-        assert_selector("action-menu[preload='true']") do |menu|
-          menu.assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
-          menu.assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do |fragment|
-            fragment.assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
+        assert_selector("action-menu[preload='true']") do
+          assert_selector("button[id='deferred-menu-button'][aria-haspopup='true']", text: "Trigger")
+          assert_selector("include-fragment[src='/'][data-target='action-menu.includeFragment']", visible: false) do
+            assert_selector(".ActionListItem[aria-disabled='true']", visible: false)
           end
         end
       end
@@ -121,8 +114,10 @@ module Primer
       def test_disabled
         render_preview(:with_disabled_items)
 
-        assert_selector("li[role='none'] button.ActionListContent[aria-disabled=true]", text: "Does something")
-        assert_selector("li[role='none'] a.ActionListContent[aria-disabled=true]", text: "Site")
+        assert_selector("li[role=none]") do
+          assert_selector("button.ActionListContent[aria-disabled=true]", text: "Does something")
+          assert_selector("a.ActionListContent[aria-disabled=true]", text: "Site")
+        end
       end
 
       def test_renders_a_tag_when_href_provided
@@ -147,13 +142,6 @@ module Primer
         refute_selector ".ActionListItem .avatar.circle"
       end
 
-      def test_avatar_items_appear_in_sub_menus
-        render_preview(:multiple_select, params: { nest_in_sub_menu: true })
-
-        assert_selector ".ActionListItem .avatar"
-        refute_selector ".ActionListItem .avatar.circle"
-      end
-
       def test_renders_groups
         render_preview(:with_groups)
 
@@ -162,40 +150,6 @@ module Primer
           menu.assert_selector("ul[role=group]", count: 3) do |group|
             group.assert_selector("li[role=none]") do |item|
               item.assert_selector "button[role=menuitem]"
-            end
-          end
-        end
-      end
-
-      def test_renders_groups_in_sub_menu
-        render_preview(:with_groups, params: { nest_in_sub_menu: true })
-
-        assert_selector("ul[role=menu] ul[role=menu]") do |menu|
-          menu.assert_selector(".ActionList-sectionDivider .ActionList-sectionDivider-title", count: 3)
-          menu.assert_selector("ul[role=group]", count: 3) do |group|
-            group.assert_selector("li[role=none]") do |item|
-              item.assert_selector "button[role=menuitem]"
-            end
-          end
-        end
-      end
-
-      def test_renders_sub_menus_in_sub_menus
-        render_inline Primer::Alpha::ActionMenu.new(menu_id: "foo") do |component|
-          component.with_show_button { "Trigger" }
-          component.with_sub_menu_item(label: "Level 2") do |level2|
-            level2.with_sub_menu_item(label: "Level 3") do |level3|
-              level3.with_item(label: "Level 4")
-            end
-          end
-        end
-
-        assert_selector("[role=menu]") do |level1|
-          level1.assert_selector("[role='menuitem']", text: "Level 2")
-          level1.assert_selector("[role=menu]") do |level2|
-            level2.assert_selector("[role=menuitem]", text: "Level 3")
-            level2.assert_selector("[role=menu]") do |level3|
-              level3.assert_selector("[role=menuitem]", text: "Level 4")
             end
           end
         end
@@ -249,27 +203,6 @@ module Primer
         end
 
         assert_selector "anchored-position[data-foo=bar]"
-      end
-
-      def test_renders_submenus
-        render_preview(:with_actions, params: { nest_in_sub_menu: true })
-
-        assert_selector("action-menu") do |menu|
-          sub_menu_button = page.find_css("li button", text: "Sub-menu").first
-          popover_id = sub_menu_button["popovertarget"]
-
-          menu.assert_selector("anchored-position##{popover_id} ul", visible: false) do |sub_menu|
-            sub_menu.assert_selector("li button[role='menuitem']", text: "Alert", visible: false)
-            sub_menu.assert_selector("li a", text: "Navigate", visible: false)
-            sub_menu.assert_selector("li clipboard-copy[role='menuitem']", text: "Copy text", visible: false)
-          end
-        end
-      end
-
-      def test_renders_internal_label
-        render_preview(:single_select_with_internal_label)
-
-        assert_selector("button[aria-haspopup='true'] .Button-label", text: "Menu")
       end
     end
   end

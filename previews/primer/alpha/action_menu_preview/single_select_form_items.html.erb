@@ -1,4 +1,5 @@
-<% contents = -> (menu) do %>
+<%= render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu| %>
+  <% menu.with_show_button { "Group By" } %>
   <% menu.with_item(
     label: "Repository",
     href: primer_view_components.action_menu_form_action_path(format: route_format),
@@ -27,16 +28,4 @@
       }]
     }
   ) %>
-<% end %>
-
-<%= render(Primer::Alpha::ActionMenu.new(select_variant: :single)) do |menu| %>
-  <% menu.with_show_button { "Group By" } %>
-
-  <% if nest_in_sub_menu %>
-    <% menu.with_sub_menu_item(label: "Sub-menu") do |sub_menu_item| %>
-      <% contents.call(sub_menu_item) %>
-    <% end %>
-  <% else %>
-    <% contents.call(menu) %>
-  <% end %>
 <% end %>
