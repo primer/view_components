@@ -36,7 +36,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Get preview app info
         run: ./.github/workflows/demo-preview-app-info.sh
