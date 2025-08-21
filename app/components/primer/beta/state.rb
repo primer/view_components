@@ -10,7 +10,9 @@ module Primer
       NEW_SCHEME_MAPPINGS = {
         open: "State--open",
         closed: "State--closed",
-        merged: "State--merged"
+        merged: "State--merged",
+        draft: "State--draft",
+        unlisted: "State--unlisted"
       }.freeze
 
       DEPRECATED_SCHEME_MAPPINGS = {
