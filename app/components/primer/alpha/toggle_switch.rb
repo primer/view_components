@@ -29,6 +29,8 @@ module Primer
       # @param turbo [Boolean] Whether or not to request a turbo stream and render the response as such.
       # @param autofocus [Boolean] Whether switch should be autofocused when rendered.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param on_label [String] Custom label to show when switch is ON. Defaults to On.
+      # @param off_label [String] Custom label to show when switch is OFF. Defaults to Off.
       def initialize(
         src: nil,
         csrf_token: nil,
@@ -38,6 +40,8 @@ module Primer
         status_label_position: STATUS_LABEL_POSITION_DEFAULT,
         turbo: false,
         autofocus: nil,
+        on_label: nil,
+        off_label: nil,
         **system_arguments
       )
         @src = src
@@ -70,6 +74,9 @@ module Primer
         @button_arguments[:autofocus] = true if autofocus
 
         @system_arguments[:src] = @src if @src
+
+        @on_label  = on_label  || "On"
+        @off_label = off_label || "Off"
       end
 
       def on?
