@@ -1743,17 +1743,6 @@
   "Primer::OpenProject::FeedbackMessage": {
     "GeneratedSlotMethods": "Primer::OpenProject::FeedbackMessage::GeneratedSlotMethods"
   },
-  "Primer::OpenProject::FileTreeView": {
-    "DirectoryNode": "Primer::OpenProject::FileTreeView::DirectoryNode",
-    "FileNode": "Primer::OpenProject::FileTreeView::FileNode",
-    "GeneratedSlotMethods": "Primer::OpenProject::FileTreeView::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::FileTreeView::DirectoryNode": {
-    "GeneratedSlotMethods": "Primer::OpenProject::FileTreeView::DirectoryNode::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::FileTreeView::FileNode": {
-    "GeneratedSlotMethods": "Primer::OpenProject::FileTreeView::FileNode::GeneratedSlotMethods"
-  },
   "Primer::OpenProject::FilterableTreeView": {
     "DEFAULT_FILTER_INPUT_ARGUMENTS": {
       "name": "filter",
@@ -1912,9 +1901,6 @@
       "h6"
     ]
   },
-  "Primer::OpenProject::SkeletonBox": {
-    "GeneratedSlotMethods": "Primer::OpenProject::SkeletonBox::GeneratedSlotMethods"
-  },
   "Primer::OpenProject::SubHeader": {
     "Button": "Primer::OpenProject::SubHeader::Button",
     "ButtonGroup": "Primer::OpenProject::SubHeader::ButtonGroup",
@@ -1943,93 +1929,6 @@
   },
   "Primer::OpenProject::SubHeader::SegmentedControl": {
     "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::SegmentedControl::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView": {
-    "DEFAULT_NODE_VARIANT": "div",
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::GeneratedSlotMethods",
-    "Icon": "Primer::OpenProject::TreeView::Icon",
-    "IconPair": "Primer::OpenProject::TreeView::IconPair",
-    "LeadingAction": "Primer::OpenProject::TreeView::LeadingAction",
-    "LeafNode": "Primer::OpenProject::TreeView::LeafNode",
-    "LoadingFailureMessage": "Primer::OpenProject::TreeView::LoadingFailureMessage",
-    "NODE_VARIANT_OPTIONS": [
-      "div",
-      "anchor",
-      "button"
-    ],
-    "Node": "Primer::OpenProject::TreeView::Node",
-    "SkeletonLoader": "Primer::OpenProject::TreeView::SkeletonLoader",
-    "SpinnerLoader": "Primer::OpenProject::TreeView::SpinnerLoader",
-    "SubTree": "Primer::OpenProject::TreeView::SubTree",
-    "SubTreeContainer": "Primer::OpenProject::TreeView::SubTreeContainer",
-    "SubTreeNode": "Primer::OpenProject::TreeView::SubTreeNode",
-    "Visual": "Primer::OpenProject::TreeView::Visual"
-  },
-  "Primer::OpenProject::TreeView::Icon": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::Icon::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::IconPair": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::IconPair::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::LeadingAction": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::LeadingAction::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::LeafNode": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::LeafNode::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::LoadingFailureMessage": {
-    "DEFAULT_RETRY_BUTTON_LABEL": "Retry",
-    "DEFAULT_TEXT": "Something went wrong",
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::LoadingFailureMessage::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::Node": {
-    "CHECKED_STATES": [
-      false,
-      true,
-      "mixed"
-    ],
-    "DEFAULT_CHECKED_STATE": false,
-    "DEFAULT_NODE_VARIANT": "div",
-    "DEFAULT_SELECT_VARIANT": "none",
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::Node::GeneratedSlotMethods",
-    "NODE_VARIANT_TAG_MAP": {
-      "div": "div",
-      "button": "button",
-      "anchor": "a"
-    },
-    "NODE_VARIANT_TAG_OPTIONS": [
-      "div",
-      "button",
-      "anchor"
-    ],
-    "SELECT_VARIANT_OPTIONS": [
-      "multiple",
-      "none"
-    ]
-  },
-  "Primer::OpenProject::TreeView::SkeletonLoader": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SkeletonLoader::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::SpinnerLoader": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SpinnerLoader::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::SubTree": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SubTree::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::SubTreeContainer": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SubTreeContainer::GeneratedSlotMethods"
-  },
-  "Primer::OpenProject::TreeView::SubTreeNode": {
-    "DEFAULT_SELECT_STRATEGY": "mixed_descendants",
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::SubTreeNode::GeneratedSlotMethods",
-    "SELECT_STRATEGIES": [
-      "self",
-      "mixed_descendants",
-      "descendants"
-    ]
-  },
-  "Primer::OpenProject::TreeView::Visual": {
-    "GeneratedSlotMethods": "Primer::OpenProject::TreeView::Visual::GeneratedSlotMethods"
   },
   "Primer::OpenProject::ZenModeButton": {
     "GeneratedSlotMethods": "Primer::OpenProject::ZenModeButton::GeneratedSlotMethods",

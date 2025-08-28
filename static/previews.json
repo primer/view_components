@@ -4196,12 +4196,12 @@
   },
   {
     "name": "file_tree_view",
-    "component": "OpenProject::FileTreeView",
+    "component": "FileTreeView",
     "status": "alpha",
-    "lookup_path": "primer/open_project/file_tree_view",
+    "lookup_path": "primer/alpha/file_tree_view",
     "examples": [
       {
-        "preview_path": "primer/open_project/file_tree_view/default",
+        "preview_path": "primer/alpha/file_tree_view/default",
         "name": "default",
         "snapshot": "interactive",
         "skip_rules": {
@@ -4214,7 +4214,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/file_tree_view/playground",
+        "preview_path": "primer/alpha/file_tree_view/playground",
         "name": "playground",
         "snapshot": "false",
         "skip_rules": {
@@ -4302,40 +4302,6 @@
       {
         "preview_path": "primer/open_project/filterable_tree_view/custom_checkbox_text",
         "name": "custom_checkbox_text",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "name": "file_tree_view",
-    "component": "FileTreeView",
-    "status": "alpha",
-    "lookup_path": "primer/alpha/file_tree_view",
-    "examples": [
-      {
-        "preview_path": "primer/alpha/file_tree_view/default",
-        "name": "default",
-        "snapshot": "interactive",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/file_tree_view/playground",
-        "name": "playground",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -7462,40 +7428,6 @@
       {
         "preview_path": "primer/open_project/side_panel/with_action_menu",
         "name": "with_action_menu",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "name": "skeleton_box",
-    "component": "OpenProject::SkeletonBox",
-    "status": "alpha",
-    "lookup_path": "primer/open_project/skeleton_box",
-    "examples": [
-      {
-        "preview_path": "primer/open_project/skeleton_box/default",
-        "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/open_project/skeleton_box/playground",
-        "name": "playground",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

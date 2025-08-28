@@ -593,9 +593,6 @@
     "Primer::OpenProject::SidePanel::Section"
   ],
   "SkeletonBox": [
-    "Primer::OpenProject::SkeletonBox"
-  ],
-  "SkeletonBox": [
     "Primer::Alpha::SkeletonBox"
   ],
   "Stack": [

@@ -5943,46 +5943,6 @@
     ]
   },
   {
-    "component": "OpenProject::FileTreeView",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectFileTreeView",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/file_tree_view.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/default/",
-    "parameters": [
-      {
-        "name": "node_variant",
-        "type": "Symbol",
-        "default": "`:div`",
-        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::FileTreeView::DirectoryNode",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectFileTreeViewDirectoryNode",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/file_tree_view/directory_node.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/directory_node/default/",
-    "parameters": []
-  },
-  {
-    "component": "OpenProject::FileTreeView::FileNode",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectFileTreeViewFileNode",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/file_tree_view/file_node.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/file_tree_view/file_node/default/",
-    "parameters": []
-  },
-  {
     "component": "OpenProject::FilterableTreeView",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -5994,13 +5954,13 @@
         "name": "tree_view_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Arguments that will be passed to the underlying [OpenProject::TreeView](/components/openprojecttreeview) component."
+        "description": "Arguments that will be passed to the underlying [TreeView](/components/alpha/treeview) component."
       },
       {
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Form arguments that will be passed to the underlying [OpenProject::TreeView](/components/openprojecttreeview) component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
+        "description": "Form arguments that will be passed to the underlying [TreeView](/components/alpha/treeview) component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission."
       },
       {
         "name": "filter_input_arguments",
@@ -6024,7 +5984,7 @@
         "name": "no_results_node_arguments",
         "type": "Hash",
         "default": "`DEFAULT_NO_RESULTS_NODE_ARGUMENTS.dup`",
-        "description": "Arguments that will be passed to a [OpenProject::TreeView::LeafNode](/components/openprojecttreeviewleafnode) component that appears when no items match the filter criteria."
+        "description": "Arguments that will be passed to a [TreeView::LeafNode](/components/alpha/treeviewleafnode) component that appears when no items match the filter criteria."
       }
     ]
   },
@@ -6046,7 +6006,7 @@
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::SubTreeContainer](/components/openprojecttreeviewsubtreecontainer)."
+        "description": "The arguments accepted by [TreeView::SubTreeContainer](/components/alpha/treeviewsubtreecontainer)."
       }
     ]
   },
@@ -6268,34 +6228,6 @@
     "parameters": []
   },
   {
-    "component": "OpenProject::SkeletonBox",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectSkeletonBox",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/skeleton_box.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/skeleton_box/default/",
-    "parameters": [
-      {
-        "name": "height",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Any valid CSS height."
-      },
-      {
-        "name": "width",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Any valid CSS width."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "OpenProject::SubHeader",
     "status": "open_project",
     "a11y_reviewed": false,
@@ -6432,376 +6364,6 @@
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeView",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/default/",
-    "parameters": [
-      {
-        "name": "node_variant",
-        "type": "Symbol",
-        "default": "`:div`",
-        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::Icon",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewIcon",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/icon.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/icon/default/",
-    "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [Octicon](/components/beta/octicon)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::IconPair",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewIconPair",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/icon_pair.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/icon_pair/default/",
-    "parameters": [
-      {
-        "name": "expanded",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If true, the expanded icon is shown and the collapsed icon is hidden, etc."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::LeadingAction",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewLeadingAction",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/leading_action.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/leading_action/default/",
-    "parameters": [
-      {
-        "name": "action",
-        "type": "ViewComponent::Base",
-        "default": "N/A",
-        "description": "A component or other renderable to use as the action button etc."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::LeafNode",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewLeafNode",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/leaf_node.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/leaf_node/default/",
-    "parameters": [
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "The node's label, i.e. it's textual content."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::Node](/components/openprojecttreeviewnode)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::LoadingFailureMessage",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewLoadingFailureMessage",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/loading_failure_message.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/loading_failure_message/default/",
-    "parameters": [
-      {
-        "name": "text",
-        "type": "String",
-        "default": "`Something went wrong`",
-        "description": "The failure message to display."
-      },
-      {
-        "name": "retry_button_label",
-        "type": "String",
-        "default": "`Retry`",
-        "description": "The text shown on the retry button."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::Node",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewNode",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/node.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/node/default/",
-    "parameters": [
-      {
-        "name": "path",
-        "type": "Array<String>",
-        "default": "N/A",
-        "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
-      },
-      {
-        "name": "node_variant",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The node variant to use for the node's content, i.e. the `:button` or `:div`. One of `:anchor`, `:button`, or `:div`."
-      },
-      {
-        "name": "href",
-        "type": "String",
-        "default": "`nil`",
-        "description": "The URL to use as the `href` attribute for this node. If set to a truthy value, the `tag:` parameter is ignored and assumed to be `:a`."
-      },
-      {
-        "name": "current",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not this node is the current node. The current node is styled differently than regular nodes and is the first element that receives focus when tabbing to the `TreeView` component."
-      },
-      {
-        "name": "select_variant",
-        "type": "Symbol",
-        "default": "`:none`",
-        "description": "Controls the type of checkbox that appears. One of `:multiple` or `:none`."
-      },
-      {
-        "name": "checked",
-        "type": "Boolean | String",
-        "default": "`false`",
-        "description": "The checked state of the node's checkbox. One of `false`, `mixed`, or `true`."
-      },
-      {
-        "name": "disabled",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not the node can be activated. Passing `false` here will cause the node to appear visually disabled but it is still keyboard-focusable."
-      },
-      {
-        "name": "value",
-        "type": "String",
-        "default": "`nil`",
-        "description": "If this node is checked, this value will be sent to the server on form submission."
-      },
-      {
-        "name": "content_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "Arguments attached to the node's content, i.e the `<button>` or `<a>` element. [System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::SkeletonLoader",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewSkeletonLoader",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/skeleton_loader.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/skeleton_loader/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The URL to fetch nodes from."
-      },
-      {
-        "name": "count",
-        "type": "Integer",
-        "default": "`3`",
-        "description": "The number of skeleton nodes to render."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::SubTreeContainer](/components/openprojecttreeviewsubtreecontainer)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::SpinnerLoader",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewSpinnerLoader",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/spinner_loader.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/spinner_loader/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The URL to fetch nodes from."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::SubTreeContainer](/components/openprojecttreeviewsubtreecontainer)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::SubTree",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewSubTree",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/sub_tree.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/sub_tree/default/",
-    "parameters": [
-      {
-        "name": "node_variant",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::SubTreeContainer](/components/openprojecttreeviewsubtreecontainer)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::SubTreeContainer",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewSubTreeContainer",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/sub_tree_container.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/sub_tree_container/default/",
-    "parameters": [
-      {
-        "name": "path",
-        "type": "Array<String>",
-        "default": "N/A",
-        "description": "The path to this node."
-      },
-      {
-        "name": "expanded",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not this sub-tree node renders expanded."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::SubTreeNode",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewSubTreeNode",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/sub_tree_node.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/sub_tree_node/default/",
-    "parameters": [
-      {
-        "name": "label",
-        "type": "String",
-        "default": "N/A",
-        "description": "The node's label, i.e. it's textual content."
-      },
-      {
-        "name": "path",
-        "type": "Array<String>",
-        "default": "N/A",
-        "description": "The node's \"path,\" i.e. this node's label and the labels of all its ancestors. This node should be reachable by traversing the tree following this path."
-      },
-      {
-        "name": "node_variant",
-        "type": "Symbol",
-        "default": "N/A",
-        "description": "The variant to use for this node. One of `:anchor`, `:button`, or `:div`."
-      },
-      {
-        "name": "sub_tree_component_klass",
-        "type": "Class",
-        "default": "`SubTree`",
-        "description": "The class to use for the sub-tree instead of the default [OpenProject::TreeView::SubTree](/components/openprojecttreeviewsubtree)"
-      },
-      {
-        "name": "expanded",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not this sub-tree should be rendered expanded."
-      },
-      {
-        "name": "select_strategy",
-        "type": "Symbol",
-        "default": "`:mixed_descendants`",
-        "description": "What should happen when this sub-tree node is checked. One of `:descendants`, `:mixed_descendants`, or `:self`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "The arguments accepted by [OpenProject::TreeView::Node](/components/openprojecttreeviewnode)."
-      }
-    ]
-  },
-  {
-    "component": "OpenProject::TreeView::Visual",
-    "status": "alpha",
-    "a11y_reviewed": false,
-    "short_name": "OpenProjectTreeViewVisual",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/tree_view/visual.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/tree_view/visual/default/",
-    "parameters": [
-      {
-        "name": "id",
-        "type": "String",
-        "default": "N/A",
-        "description": "This visual's HTML ID."
-      },
-      {
-        "name": "visual",
-        "type": "ViewComponent::Base",
-        "default": "N/A",
-        "description": "A renderable component like an instance of [Octicon](/components/beta/octicon) to render as the visual."
-      },
-      {
-        "name": "label",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text describing this visual that will be visible only to screen readers."
       }
     ]
   },
