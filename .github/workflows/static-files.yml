@@ -20,7 +20,7 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           cache: 'npm'
       - name: Build
         run: npm ci
@@ -29,7 +29,7 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-      - uses: stefanzweifel/git-auto-commit-action@v6
+      - uses: stefanzweifel/git-auto-commit-action@v6.0.1
         with:
           commit_message: Generating static files
           commit_user_name: OpenProject CI

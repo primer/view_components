@@ -64,7 +64,7 @@ class PrimerBetaSpinnerTest < Minitest::Test
   end
 
   def test_no_custom_sr_span_with_aria_label_hash
-    render_inline(Primer::Beta::Spinner.new(aria: { label: "Aria label"}))
+    render_inline(Primer::Beta::Spinner.new(aria: { label: "Aria label" }))
 
     assert_no_selector("span.sr-only")
   end
@@ -76,7 +76,7 @@ class PrimerBetaSpinnerTest < Minitest::Test
   end
 
   def test_no_custom_sr_span_with_aria_labelledby_hash
-    render_inline(Primer::Beta::Spinner.new(aria: { labelledby: "my_id"}))
+    render_inline(Primer::Beta::Spinner.new(aria: { labelledby: "my_id" }))
 
     assert_no_selector("span.sr-only")
   end

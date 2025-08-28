@@ -19,7 +19,7 @@
       <% end %>
     <% end %>
     <%= render(Primer::BaseComponent.new(tag: :div, hidden: true, data: { target: "filterable-tree-view.noResultsMessage" })) do %>
-      <%= render(Primer::OpenProject::TreeView.new) do |tree| %>
+      <%= render(Primer::Alpha::TreeView.new) do |tree| %>
         <% tree.with_leaf(**@no_results_node_arguments) %>
       <% end %>
     <% end %>

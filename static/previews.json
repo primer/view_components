@@ -4315,6 +4315,40 @@
     ]
   },
   {
+    "name": "file_tree_view",
+    "component": "FileTreeView",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/file_tree_view",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/file_tree_view/default",
+        "name": "default",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/file_tree_view/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "flash",
     "component": "Flash",
     "status": "deprecated",
@@ -7475,6 +7509,40 @@
     ]
   },
   {
+    "name": "skeleton_box",
+    "component": "SkeletonBox",
+    "status": "alpha",
+    "lookup_path": "primer/alpha/skeleton_box",
+    "examples": [
+      {
+        "preview_path": "primer/alpha/skeleton_box/default",
+        "name": "default",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/skeleton_box/playground",
+        "name": "playground",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "spinner",
     "component": "Spinner",
     "status": "beta",
@@ -9057,12 +9125,12 @@
   },
   {
     "name": "tree_view",
-    "component": "OpenProject::TreeView",
+    "component": "TreeView",
     "status": "alpha",
-    "lookup_path": "primer/open_project/tree_view",
+    "lookup_path": "primer/alpha/tree_view",
     "examples": [
       {
-        "preview_path": "primer/open_project/tree_view/default",
+        "preview_path": "primer/alpha/tree_view/default",
         "name": "default",
         "snapshot": "interactive",
         "skip_rules": {
@@ -9075,7 +9143,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/playground",
+        "preview_path": "primer/alpha/tree_view/playground",
         "name": "playground",
         "snapshot": "false",
         "skip_rules": {
@@ -9088,7 +9156,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/empty",
+        "preview_path": "primer/alpha/tree_view/empty",
         "name": "empty",
         "snapshot": "interactive",
         "skip_rules": {
@@ -9101,7 +9169,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/loading_failure",
+        "preview_path": "primer/alpha/tree_view/loading_failure",
         "name": "loading_failure",
         "snapshot": "interactive",
         "skip_rules": {
@@ -9114,7 +9182,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/loading_spinner",
+        "preview_path": "primer/alpha/tree_view/loading_spinner",
         "name": "loading_spinner",
         "snapshot": "interactive",
         "skip_rules": {
@@ -9127,7 +9195,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/loading_skeleton",
+        "preview_path": "primer/alpha/tree_view/loading_skeleton",
         "name": "loading_skeleton",
         "snapshot": "interactive",
         "skip_rules": {
@@ -9140,7 +9208,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/async_alpha",
+        "preview_path": "primer/alpha/tree_view/async_alpha",
         "name": "async_alpha",
         "snapshot": "false",
         "skip_rules": {
@@ -9153,7 +9221,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/leaf_node_playground",
+        "preview_path": "primer/alpha/tree_view/leaf_node_playground",
         "name": "leaf_node_playground",
         "snapshot": "false",
         "skip_rules": {
@@ -9166,7 +9234,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/links",
+        "preview_path": "primer/alpha/tree_view/links",
         "name": "links",
         "snapshot": "false",
         "skip_rules": {
@@ -9179,7 +9247,7 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/buttons",
+        "preview_path": "primer/alpha/tree_view/buttons",
         "name": "buttons",
         "snapshot": "false",
         "skip_rules": {
@@ -9192,8 +9260,21 @@
         }
       },
       {
-        "preview_path": "primer/open_project/tree_view/auto_expansion",
+        "preview_path": "primer/alpha/tree_view/auto_expansion",
         "name": "auto_expansion",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/form_input",
+        "name": "form_input",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

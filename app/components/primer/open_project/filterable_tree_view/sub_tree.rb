@@ -7,7 +7,7 @@ module Primer
       #
       # This component is part of the <%= link_to_component(Primer::OpenProject::FilterableTreeView) %> component and
       # should not be used directly.
-      class SubTree < Primer::OpenProject::TreeView::SubTree
+      class SubTree < Primer::Alpha::TreeView::SubTree
         def with_sub_tree(**system_arguments, &block)
           super(
             sub_tree_component_klass: self.class,

@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::TreeView::SubTree.new(path: ["primer"], node_variant: :div)) do |tree| %>
+<%= render(Primer::Alpha::TreeView::SubTree.new(path: ["primer"], node_variant: :div)) do |tree| %>
   <% tree.with_sub_tree(label: "alpha") do |sub_tree| %>
     <% sub_tree.with_leading_visual_icons do |icons| %>
       <% icons.with_expanded_icon(icon: :"file-directory-open-fill", color: :accent) %>
