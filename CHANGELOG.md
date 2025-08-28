@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.72.0
+
+### Minor Changes
+
+- [#3563](https://github.com/primer/view_components/pull/3563) [`cf9ce00`](https://github.com/opf/primer_view_components/commit/cf9ce00849b200482e2a799a279acb645929ab57) Thanks [@camertron](https://github.com/camertron)! - Introduce Primer::Alpha::TreeView, Primer::Alpha::FileTreeView and Primer::Alpha::SkeletonBox
+
+### Patch Changes
+
+- [#3636](https://github.com/primer/view_components/pull/3636) [`fd25aaf`](https://github.com/opf/primer_view_components/commit/fd25aafe80d97251f7522a2c5a9bdf2e3c3b58fc) Thanks [@langermank](https://github.com/langermank)! - Support high contrast themes in `ProgressBar`
+
+- [#3613](https://github.com/primer/view_components/pull/3613) [`0ddc1a4`](https://github.com/opf/primer_view_components/commit/0ddc1a41be5dce9f4042e6d4138432554d2419a1) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating snapshots
+
+- [#3614](https://github.com/primer/view_components/pull/3614) [`41b64d6`](https://github.com/opf/primer_view_components/commit/41b64d638f0c0805acafb4e17de2935116b63d70) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Breadcrumb is not properly left-aligned when it has long items
+
 ## 0.71.0
 
 ### Minor Changes
