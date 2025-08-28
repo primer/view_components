@@ -23,6 +23,8 @@ module Demo
       config.load_defaults 8.1
     elsif Rails.version.to_f >= 8.0
       config.load_defaults 8.0
+    elsif Rails.version.to_f >= 7.2
+      config.load_defaults 7.2
     elsif Rails.version.to_f >= 7.1
       config.load_defaults 7.1
     end
@@ -34,7 +36,6 @@ module Demo
     config.view_component.previews.enabled = true
     config.view_component.previews.controller = "PreviewController"
     config.view_component.previews.paths << Rails.root.join("..", "previews")
-    config.view_component.show_previews = true
 
     config.autoload_paths << Rails.root.join("..", "test", "test_helpers", "components")
 

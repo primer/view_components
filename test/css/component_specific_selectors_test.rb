@@ -71,6 +71,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-radio",
       ".FormControl-caption a"
     ],
+    Primer::Alpha::TreeView => [
+      # Used, but not directly rendered by a preview
+      ".TreeViewItemLeadingAction",
+    ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
       ".btn-small-mktg"
@@ -191,10 +195,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".SubHeader-filterInput_hiddenClearButton",
       ".SubHeader--emptyLeftPane",
       ".SubHeader--emptyLeftPane .SubHeader-middlePane"
-    ],
-    Primer::OpenProject::TreeView => [
-      # Used, but not directly rendered by a preview
-      ".TreeViewItemLeadingAction",
     ]
   }.freeze
 

@@ -1,7 +1,7 @@
 import {controller, target} from '@github/catalyst'
 import {SegmentedControlElement} from '../alpha/segmented_control'
-import {TreeViewElement} from './tree_view/tree_view'
-import {TreeViewSubTreeNodeElement} from './tree_view/tree_view_sub_tree_node_element'
+import {TreeViewElement} from '../alpha/tree_view/tree_view'
+import {TreeViewSubTreeNodeElement} from '../alpha/tree_view/tree_view_sub_tree_node_element'
 import {TreeViewNodeInfo} from '../shared_events'
 
 // This function is expected to return the following values:

@@ -150,12 +150,12 @@ module Primer
 
       DEFAULT_NO_RESULTS_NODE_ARGUMENTS.freeze
 
-      # @param tree_view_arguments [Hash] Arguments that will be passed to the underlying <%= link_to_component(Primer::OpenProject::TreeView) %> component.
-      # @param form_arguments [Hash] Form arguments that will be passed to the underlying <%= link_to_component(Primer::OpenProject::TreeView) %> component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
+      # @param tree_view_arguments [Hash] Arguments that will be passed to the underlying <%= link_to_component(Primer::Alpha::TreeView) %> component.
+      # @param form_arguments [Hash] Form arguments that will be passed to the underlying <%= link_to_component(Primer::Alpha::TreeView) %> component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param filter_input_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::TextField) %> component.
       # @param filter_mode_control_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::SegmentedControl) %> component.
       # @param include_sub_items_check_box_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::CheckBox) %> component.
-      # @param no_results_node_arguments [Hash] Arguments that will be passed to a <%= link_to_component(Primer::OpenProject::TreeView::LeafNode) %> component that appears when no items match the filter criteria.
+      # @param no_results_node_arguments [Hash] Arguments that will be passed to a <%= link_to_component(Primer::Alpha::TreeView::LeafNode) %> component that appears when no items match the filter criteria.
       def initialize(
         tree_view_arguments: {},
         form_arguments: {},
@@ -171,7 +171,7 @@ module Primer
           }
         )
 
-        @tree_view = Primer::OpenProject::TreeView.new(
+        @tree_view = Primer::Alpha::TreeView.new(
           form_arguments: form_arguments,
           **tree_view_arguments
         )

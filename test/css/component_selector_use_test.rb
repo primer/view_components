@@ -25,8 +25,8 @@ IGNORED_SELECTORS = {
 
 IGNORED_PREVIEWS = {
   # Computationally-intensive; selectors checked by other previews
-  Primer::OpenProject::TreeView => [:playground],
-  Primer::OpenProject::FileTreeView => [:playground]
+  Primer::Alpha::TreeView => [:playground],
+  Primer::Alpha::FileTreeView => [:playground]
 }
 
 # Test CSS Selectors Used By Components
