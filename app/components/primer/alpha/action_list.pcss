@@ -353,7 +353,7 @@ nav-list {
   /* nesting (single level)
    target items inside expanded subgroups */
   &[aria-expanded] {
-    & + .ActionList--subGroup {
+    & ~ .ActionList--subGroup {
       @media screen and (prefers-reduced-motion: no-preference) {
         transition:
           opacity 160ms cubic-bezier(0.25, 1, 0.5, 1),
@@ -366,21 +366,21 @@ nav-list {
     }
 
     /* has 16px leading visual */
-    &.ActionListContent--visual16 + .ActionList--subGroup {
+    &.ActionListContent--visual16 ~ .ActionList--subGroup {
       & .ActionListContent {
         padding-left: var(--base-size-32);
       }
     }
 
     /* has 20px leading visual */
-    &.ActionListContent--visual20 + .ActionList--subGroup {
+    &.ActionListContent--visual20 ~ .ActionList--subGroup {
       & .ActionListContent {
         padding-left: var(--base-size-36);
       }
     }
 
     /* has 24px leading visual */
-    &.ActionListContent--visual24 + .ActionList--subGroup {
+    &.ActionListContent--visual24 ~ .ActionList--subGroup {
       & .ActionListContent {
         padding-left: var(--base-size-40);
       }
@@ -393,7 +393,7 @@ nav-list {
       transform: scaleY(-1);
     }
 
-    & + .ActionList--subGroup {
+    & ~ .ActionList--subGroup {
       height: auto;
       overflow: visible;
       visibility: visible;
@@ -414,7 +414,7 @@ nav-list {
       transform: scaleY(1);
     }
 
-    & + .ActionList--subGroup {
+    & ~ .ActionList--subGroup {
       height: 0;
       overflow: hidden;
       visibility: hidden;

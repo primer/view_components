@@ -60,14 +60,20 @@ export class NavListElement extends HTMLElement {
 
   // expand collapsible item onClick
   expandItem(item: HTMLElement) {
-    item.nextElementSibling?.removeAttribute('data-hidden')
-    item.setAttribute('aria-expanded', 'true')
+    const nextUl = this.#findNextUlSibling(item)
+    if (nextUl) {
+      nextUl.removeAttribute('data-hidden')
+      item.setAttribute('aria-expanded', 'true')
+    }
   }
 
   collapseItem(item: HTMLElement) {
-    item.nextElementSibling?.setAttribute('data-hidden', '')
-    item.setAttribute('aria-expanded', 'false')
-    item.focus()
+    const nextUl = this.#findNextUlSibling(item)
+    if (nextUl) {
+      nextUl.setAttribute('data-hidden', '')
+      item.setAttribute('aria-expanded', 'false')
+      item.focus()
+    }
   }
 
   itemIsExpanded(item: HTMLElement | null) {
@@ -115,6 +121,17 @@ export class NavListElement extends HTMLElement {
 
     /* eslint-disable-next-line no-restricted-syntax */
     e.stopPropagation()
+  }
+
+  #findNextUlSibling(item: HTMLElement): HTMLUListElement | null {
+    let sibling = item.nextElementSibling
+    while (sibling) {
+      if (sibling.tagName === 'UL') {
+        return sibling as HTMLUListElement
+      }
+      sibling = sibling.nextElementSibling
+    }
+    return null
   }
 
   #findSelectedNavItemById(itemId: string): HTMLElement | null {
