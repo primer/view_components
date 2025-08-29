@@ -150,14 +150,18 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Divider",
       "Primer::Alpha::ActionList::FormWrapper",
-      "Primer::Alpha::ActionMenu::Heading",
-      "Primer::Alpha::ActionMenu::List",
-      "Primer::Alpha::ActionMenu::ListWrapper",
       "Primer::Alpha::ActionMenu::Group",
+      "Primer::Alpha::ActionMenu::Heading",
+      "Primer::Alpha::ActionMenu::ListWrapper",
+      "Primer::Alpha::ActionMenu::List",
+      "Primer::Alpha::ActionMenu::Menu",
+      "Primer::Alpha::ActionMenu::PrimaryMenu",
+      "Primer::Alpha::ActionMenu::SubMenuItem",
+      "Primer::Alpha::ActionMenu::SubMenu",
       "Primer::Beta::NavList::Item",
       "Primer::Beta::NavList::Group",
       "Primer::Beta::NavList::Divider",
-      "Primer::Beta::NavList::Header",
+      "Primer::Beta::NavList::Heading",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content",
@@ -179,8 +183,16 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::FileTreeView::DirectoryNode",
     ]
 
-    primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
-    assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
+    primer_component_files = Dir.chdir("app/components") { Dir["**/*.rb"] }.reject { |p| p.include?("/experimental/") }
+    primer_component_class_names = primer_component_files.map { |f| f.chomp(".rb").camelize }
+
+    documented_class_names = [*COMPONENTS_WITH_ARGS.map { |klass, *| klass.name }, *ignored_components]
+    missing = primer_component_class_names - documented_class_names
+
+    assert_empty(
+      missing,
+      "Primer component added. Please update this test with an entry for your new component <3"
+    )
   end
 
   def test_all_components_support_system_arguments
