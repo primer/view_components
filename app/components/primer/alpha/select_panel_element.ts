@@ -555,8 +555,7 @@ export class SelectPanelElement extends HTMLElement {
         if (errorElement && !errorElement.hasAttribute('hidden')) {
           this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
         }
-
-        break
+        throw new Error(event.detail.error)
       }
     }
   }
