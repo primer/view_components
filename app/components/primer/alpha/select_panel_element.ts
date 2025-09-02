@@ -554,7 +554,6 @@ export class SelectPanelElement extends HTMLElement {
         // check if the errorElement is visible in the dom
         if (errorElement && !errorElement.hasAttribute('hidden')) {
           this.liveRegion.announceFromElement(errorElement, {politeness: 'assertive'})
-          return
         }
 
         break
