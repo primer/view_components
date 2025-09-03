@@ -241,7 +241,7 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
-    octicons (19.15.5)
+    octicons (19.16.0)
     oj (3.16.10)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
