@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.44.1
+
+### Patch Changes
+
+- [#3663](https://github.com/primer/view_components/pull/3663) [`68deac6`](https://github.com/primer/view_components/commit/68deac6d682cbf22970b60359b8deddc7b93bb03) Thanks [@jonrohan](https://github.com/jonrohan)! - When an error occurs in the SelectPanel, continue throwing the error
+
 ## 0.44.0
 
 ### Minor Changes
