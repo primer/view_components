@@ -260,7 +260,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.6.1)
+    puma (7.0.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.16)
@@ -378,7 +378,7 @@ DEPENDENCIES
   lookbook (~> 2.3.13)
   primer_view_components!
   pry-byebug
-  puma (~> 6.6.1)
+  puma (~> 7.0.1)
   rack-cors
   railties (= 7.2.2.1)
   rake (~> 13.3)
