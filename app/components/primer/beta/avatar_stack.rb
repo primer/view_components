@@ -31,6 +31,7 @@ module Primer
         @system_arguments = system_arguments
         @tooltipped = tooltipped
         @body_arguments = body_arguments
+        @direction = @body_arguments[:direction]
 
         body_tag = @body_arguments[:tag] || DEFAULT_BODY_TAG
         @body_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, body_tag, DEFAULT_BODY_TAG)
@@ -53,7 +54,7 @@ module Primer
           for_id: @body_arguments[:id],
         }
 
-        @tooltip_arguments[:direction] = @body_arguments[:direction] ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
+        @tooltip_arguments[:direction] = @direction ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
         @tooltip_arguments[:text] = @body_arguments[:label]
         @tooltip_arguments[:type] = :description
       end
