@@ -45,14 +45,21 @@ module Primer
           system_arguments[:classes],
           "AvatarStack--right" => @align == :right
         )
+
+        @body_arguments[:tabindex] = tooltipped ? 0 : nil
+        @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : nil
+
+        @tooltip_arguments = {
+          for_id: @body_arguments[:id],
+        }
+
+        @tooltip_arguments[:direction] = @body_arguments[:direction] ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
+        @tooltip_arguments[:text] = @body_arguments[:label]
+        @tooltip_arguments[:type] = :description
       end
 
       def body_component
-        if @tooltipped
-          Primer::Tooltip.new(**@body_arguments) # rubocop:disable Primer/ComponentNameMigration
-        else
-          Primer::BaseComponent.new(**@body_arguments)
-        end
+        Primer::BaseComponent.new(**@body_arguments)
       end
 
       def before_render
