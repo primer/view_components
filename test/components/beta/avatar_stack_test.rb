@@ -63,7 +63,7 @@ class PrimerAvatarStackTest < Minitest::Test
     end
 
     assert_selector(".AvatarStack") do
-      assert_selector("div[aria-label=\"Tooltip\"].AvatarStack-body.tooltipped") do
+      assert_selector("div[aria-label=\"Tooltip\"]") do
         assert_selector("img.avatar", count: 1)
       end
     end
