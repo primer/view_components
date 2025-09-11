@@ -48,7 +48,7 @@ module Primer
         )
 
         @body_arguments[:tabindex] = tooltipped ? 0 : nil
-        @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : nil
+        @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : @body_arguments[:id]
 
         @tooltip_arguments = {
           for_id: @body_arguments[:id],
