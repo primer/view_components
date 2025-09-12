@@ -74,6 +74,30 @@ module Primer
         end
       end
 
+      # @label Hover menu
+      # @snapshot
+      def hover_menu
+        render(Primer::Beta::NavList.new(selected_item_id: :code_review_limits, aria: { label: "Repositories" })) do |list|
+          list.with_group do |group|
+            group.with_heading(title: "Repositories")
+            group.with_avatar_item(label: "github/github", href: "/interaction-limits", selected_by_ids: :interaction_limits, src: "https://avatars.githubusercontent.com/u/9919?v=4", username: "github") do |interaction_item|
+              interaction_item.with_hover_menu(anchor_side: :outside_right) do |menu|
+                menu.with_item(label: "Code") do |block_item|
+                  block_item.with_leading_visual_icon(icon: :code)
+                end
+                menu.with_item(label: "Pull requests") do |limit_item|
+                  limit_item.with_leading_visual_icon(icon: :"git-pull-request")
+                end
+                menu.with_divider
+                menu.with_item(label: "Repository settings", href: "/interaction-limits/settings") do |settings_item|
+                  settings_item.with_leading_visual_icon(icon: :gear)
+                end
+              end
+            end
+          end
+        end
+      end
+
       # @label Top-level items
       #
       def top_level_items
