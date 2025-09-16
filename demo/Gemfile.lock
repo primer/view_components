@@ -4,7 +4,7 @@ PATH
     openproject-primer_view_components (0.72.0)
       actionview (>= 7.2.0)
       activesupport (>= 7.2.0)
-      openproject-octicons (>= 19.25.0)
+      openproject-octicons (>= 19.29.0)
       view_component (>= 3.1, < 5.0)
 
 GEM
@@ -256,7 +256,7 @@ GEM
     oj (3.16.10)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
-    openproject-octicons (19.25.0)
+    openproject-octicons (19.29.0)
     os (1.1.4)
     ostruct (0.6.1)
     pp (0.6.2)
