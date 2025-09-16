@@ -41,7 +41,7 @@ jobs:
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) != true }}
         run: echo "passed"; exit 0;
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) == true }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) == true }}
