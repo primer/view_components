@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.72.1
+
+### Patch Changes
+
+- [#3663](https://github.com/primer/view_components/pull/3663) [`68deac6`](https://github.com/opf/primer_view_components/commit/68deac6d682cbf22970b60359b8deddc7b93bb03) Thanks [@jonrohan](https://github.com/jonrohan)! - When an error occurs in the SelectPanel, continue throwing the error
+
+- [#355](https://github.com/opf/primer_view_components/pull/355) [`eaf9354`](https://github.com/opf/primer_view_components/commit/eaf93548b61ce940e94386df512801b2c995e8cb) Thanks [@HDinger](https://github.com/HDinger)! - Change loading spinner for FeedbackMessage and FeedbackDialog
+
 ## 0.72.0
 
 ### Minor Changes
