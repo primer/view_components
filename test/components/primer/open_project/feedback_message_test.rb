@@ -41,7 +41,7 @@ class PrimerOpenProjectFeedbackMessageTest < Minitest::Test
     end
 
     assert_selector("h2", text: "Ups, something went wrong")
-    assert_selector("img.blankslate-image[src^='/assets/loading_indicator']")
+    assert_selector("svg.blankslate-image")
   end
 
   def test_renders_secondary_action

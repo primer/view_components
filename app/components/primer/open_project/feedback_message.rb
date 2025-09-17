@@ -39,7 +39,7 @@ module Primer
 
       def before_render
         if @loading
-          @blankslate.with_visual_image(src: asset_path("loading_indicator.svg"), alt: I18n.t(:label_loading))
+          @blankslate.with_visual_spinner(size: :large)
         elsif @icon_arguments[:icon] != :none
           @blankslate.with_visual_icon(size: :medium, **@icon_arguments)
         end
