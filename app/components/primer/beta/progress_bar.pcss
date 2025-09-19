@@ -25,3 +25,14 @@
 .Progress-item + .Progress-item {
   margin-left: var(--base-size-2);
 }
+
+@media (forced-colors: active) {
+  :root {
+    --progress-bg: LinkText;
+    --progressBar-track-bgColor: CanvasText;
+  }
+
+  .Progress {
+    forced-color-adjust: none;
+  }
+}
