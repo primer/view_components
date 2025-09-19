@@ -20,6 +20,7 @@
 
 .Progress-item {
   outline: 2px solid transparent; /* Support Firefox custom colors */
+  background: LinkText;
 }
 
 .Progress-item + .Progress-item {
@@ -28,11 +29,10 @@
 
 @media (forced-colors: active) {
   :root {
-    --progress-bg: LinkText;
     --progressBar-track-bgColor: CanvasText;
   }
 
-  .Progress {
+  .Progress, .Progress-item {
     forced-color-adjust: none;
   }
 }
