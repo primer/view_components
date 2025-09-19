@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.44.2
+
+### Patch Changes
+
+- [#3686](https://github.com/primer/view_components/pull/3686) [`db729fb`](https://github.com/primer/view_components/commit/db729fb7e1154c23bfca0523bca7107ce1474c9f) Thanks [@langermank](https://github.com/langermank)! - Implement forced colors for progress bar
+
 ## 0.44.1
 
 ### Patch Changes
