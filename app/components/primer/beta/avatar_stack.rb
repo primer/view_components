@@ -50,10 +50,6 @@ module Primer
         @body_arguments[:tabindex] = tooltipped ? 0 : nil
         @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : @body_arguments[:id]
 
-        @body_arguments[:aria] ||= {}
-        if tooltipped && @body_arguments[:label].present?
-          @body_arguments[:aria][:label] = @body_arguments[:label]
-        end
         @tooltip_arguments = {
           for_id: @body_arguments[:id],
         }
@@ -61,6 +57,12 @@ module Primer
         @tooltip_arguments[:direction] = @direction || Primer::Alpha::Tooltip::DIRECTION_DEFAULT
         @tooltip_arguments[:text] = @body_arguments[:label]
         @tooltip_arguments[:type] = :description
+
+        @body_arguments[:aria] ||= {}
+        if tooltipped && @body_arguments[:label].present?
+          @body_arguments[:aria][:label] = @body_arguments[:label]
+          @body_arguments[:label] = nil
+        end
       end
 
       def body_component
