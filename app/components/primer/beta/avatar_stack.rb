@@ -58,7 +58,7 @@ module Primer
           for_id: @body_arguments[:id],
         }
 
-        @tooltip_arguments[:direction] = @direction ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
+        @tooltip_arguments[:direction] = @direction || Primer::Alpha::Tooltip::DIRECTION_DEFAULT
         @tooltip_arguments[:text] = @body_arguments[:label]
         @tooltip_arguments[:type] = :description
       end
