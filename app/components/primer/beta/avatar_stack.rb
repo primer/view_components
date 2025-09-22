@@ -51,9 +51,9 @@ module Primer
         @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : @body_arguments[:id]
 
         @body_arguments[:aria] ||= {}
-        @body_arguments[:aria][:label] = tooltipped && @body_arguments[:label].present? ? @body_arguments[:label] : nil
-
-
+        if tooltipped && @body_arguments[:label].present?
+          @body_arguments[:aria][:label] = @body_arguments[:label]
+        end
         @tooltip_arguments = {
           for_id: @body_arguments[:id],
         }
