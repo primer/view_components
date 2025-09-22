@@ -4,8 +4,8 @@
     <%= render(Primer::Beta::Spinner.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
   </span>
   <%= render(Primer::Beta::Text.new(aria: { hidden: true }, classes: "ToggleSwitch-status")) do %>
-    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOn").with_content("On")) %>
-    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content("Off")) %>
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOn").with_content(@on_label)) %>
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content(@off_label)) %>
   <% end %>
 
   <%= render(Primer::BaseComponent.new(tag: :button, classes: "ToggleSwitch-track", disabled: disabled?, data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, **@button_arguments)) do %>
