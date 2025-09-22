@@ -31,6 +31,7 @@ module Primer
         @system_arguments = system_arguments
         @tooltipped = tooltipped
         @body_arguments = body_arguments
+        @direction = @body_arguments[:direction]
 
         body_tag = @body_arguments[:tag] || DEFAULT_BODY_TAG
         @body_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, body_tag, DEFAULT_BODY_TAG)
@@ -45,14 +46,27 @@ module Primer
           system_arguments[:classes],
           "AvatarStack--right" => @align == :right
         )
+
+        @body_arguments[:tabindex] = tooltipped ? 0 : nil
+        @body_arguments[:id] = tooltipped ? @body_arguments[:id] ||= self.class.generate_id : @body_arguments[:id]
+
+        @tooltip_arguments = {
+          for_id: @body_arguments[:id],
+        }
+
+        @tooltip_arguments[:direction] = @direction || Primer::Alpha::Tooltip::DIRECTION_DEFAULT
+        @tooltip_arguments[:text] = @body_arguments[:label]
+        @tooltip_arguments[:type] = :description
+
+        @body_arguments[:aria] ||= {}
+        if tooltipped && @body_arguments[:label].present?
+          @body_arguments[:aria][:label] = @body_arguments[:label]
+          @body_arguments[:label] = nil
+        end
       end
 
       def body_component
-        if @tooltipped
-          Primer::Tooltip.new(**@body_arguments) # rubocop:disable Primer/ComponentNameMigration
-        else
-          Primer::BaseComponent.new(**@body_arguments)
-        end
+        Primer::BaseComponent.new(**@body_arguments)
       end
 
       def before_render

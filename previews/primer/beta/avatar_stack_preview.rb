@@ -92,9 +92,9 @@ module Primer
       # @label With tooltip
       def with_tooltip
         render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: "This is a tooltip!" })) do |component|
-          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
-          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
-          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
         end
       end
       #
