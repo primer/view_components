@@ -2,8 +2,10 @@
   <%= render(Primer::Alpha::Stack.new) do %>
     <%= render(Primer::Alpha::Stack.new(wrap: :reverse, direction: :horizontal, align: :center)) do %>
       <%= render(Primer::Alpha::Stack.new(wrap: :wrap, direction: :horizontal, align: :center)) do %>
-        <%= render(Primer::Alpha::StackItem.new) do %>
-          <%= render(@filter_mode_control) %>
+        <% if @filter_mode_control.present? %>
+          <%= render(Primer::Alpha::StackItem.new) do %>
+            <%= render(@filter_mode_control) %>
+          <% end %>
         <% end %>
         <%= render(Primer::Alpha::StackItem.new) do %>
           <%= render(@include_sub_items_check_box) do |input| %>

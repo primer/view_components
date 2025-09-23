@@ -106,6 +106,13 @@ module Primer
         })
       end
 
+      # @label Hide SegmentedControl
+      def hide_segmented_control(expanded: true)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
+      end
+
       private
 
       def coerce_bool(value)

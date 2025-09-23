@@ -184,13 +184,15 @@ module Primer
 
         @filter_input = Primer::Alpha::TextField.new(**filter_input_arguments)
 
-        filter_mode_control_arguments[:data] = merge_data(
-          filter_mode_control_arguments, {
-            data: { target: "filterable-tree-view.filterModeControlList" }
-          }
-        )
+        unless filter_mode_control_arguments == :none
+          filter_mode_control_arguments[:data] = merge_data(
+            filter_mode_control_arguments, {
+              data: { target: "filterable-tree-view.filterModeControlList" }
+            }
+          )
 
-        @filter_mode_control = Primer::Alpha::SegmentedControl.new(**filter_mode_control_arguments)
+          @filter_mode_control = Primer::Alpha::SegmentedControl.new(**filter_mode_control_arguments)
+        end
 
         include_sub_items_check_box_arguments[:data] = merge_data(
           include_sub_items_check_box_arguments, {
@@ -245,7 +247,7 @@ module Primer
       def before_render
         content
 
-        if @filter_mode_control.items.empty?
+        if @filter_mode_control.present? && @filter_mode_control.items.empty?
           with_default_filter_modes
         end
       end
