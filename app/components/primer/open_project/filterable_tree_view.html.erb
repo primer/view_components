@@ -7,7 +7,7 @@
             <%= render(@filter_mode_control) %>
           <% end %>
         <% end %>
-        <%= render(Primer::Alpha::StackItem.new) do %>
+        <%= render(Primer::Alpha::StackItem.new(hidden: @include_sub_items_check_box_arguments[:hidden])) do %>
           <%= render(@include_sub_items_check_box) do |input| %>
             <% input.merge_input_arguments!(form: "") %>
           <% end %>

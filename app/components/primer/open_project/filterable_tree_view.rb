@@ -126,7 +126,9 @@ module Primer
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS = {
         label: I18n.t("filterable_tree_view.include_sub_items"),
-        name: :include_sub_items
+        name: :include_sub_items,
+        checked: false,
+        hidden: false,
       }
 
       DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS.freeze
@@ -194,13 +196,15 @@ module Primer
           @filter_mode_control = Primer::Alpha::SegmentedControl.new(**filter_mode_control_arguments)
         end
 
-        include_sub_items_check_box_arguments[:data] = merge_data(
-          include_sub_items_check_box_arguments, {
+        @include_sub_items_check_box_arguments = include_sub_items_check_box_arguments.reverse_merge(DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS)
+
+        @include_sub_items_check_box_arguments[:data] = merge_data(
+          @include_sub_items_check_box_arguments, {
             data: { target: "filterable-tree-view.includeSubItemsCheckBox" }
           }
         )
 
-        @include_sub_items_check_box = Primer::Alpha::CheckBox.new(**include_sub_items_check_box_arguments)
+        @include_sub_items_check_box = Primer::Alpha::CheckBox.new(**@include_sub_items_check_box_arguments)
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"filterable-tree-view"

@@ -71,6 +71,28 @@ module Primer
         assert_selector("label[for='#{id}']", text: "Include sub-items")
       end
 
+      def test_include_sub_items_can_be_hidden
+        render_inline(
+          Primer::OpenProject::FilterableTreeView.new(
+            include_sub_items_check_box_arguments: { hidden: true }
+          )
+        )
+
+        assert_selector(".FormControl-checkbox-wrap", visible: :hidden)
+        assert_selector("input[name=include_sub_items]", visible: :hidden)
+      end
+
+      def test_include_sub_items_can_have_a_different_default
+        render_inline(
+          Primer::OpenProject::FilterableTreeView.new(
+            include_sub_items_check_box_arguments: { checked: true }
+          )
+        )
+
+        assert_selector(".FormControl-checkbox-wrap", visible: :visible)
+        assert_selector("input[name=include_sub_items][checked=checked]", visible: :visible)
+      end
+
       def test_has_filter_input
         render_preview(:default)
 
