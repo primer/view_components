@@ -107,6 +107,33 @@ class Primer::Forms::InputTest < Minitest::Test
     assert_selector "label[for=ultimate_answer]"
   end
 
+  def test_removes_model_scope_from_name_and_id_using_namespace
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo", namespace: "baz") do |f|
+        render(NoModelScopeForm.new(f))
+      end
+    end
+
+    assert_selector "input#baz_ultimate_answer[name=ultimate_answer]"
+  end
+
+  def test_label_removes_model_scope_from_name_and_id_using_namespace
+    # See upstream issue: https://github.com/rails/rails/pull/51237
+    skip "Broken in Rails versions prior to 8.0.3" unless Rails::VERSION::STRING >= "8.0.3"
+
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo", namespace: "baz") do |f|
+        render(NoModelScopeForm.new(f))
+      end
+    end
+
+    assert_selector "label[for=baz_ultimate_answer]"
+  end
+
   def test_uses_given_id
     model = DeepThought.new(42)
 
@@ -118,5 +145,32 @@ class Primer::Forms::InputTest < Minitest::Test
 
     assert_selector "input#foobar[name=ultimate_answer]"
     assert_selector "label[for=foobar]"
+  end
+
+  def test_uses_given_id_and_namespace
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo", namespace: "baz") do |f|
+        render(NoModelScopeForm.new(f, id: "foobar"))
+      end
+    end
+
+    assert_selector "input#baz_foobar[name=ultimate_answer]"
+  end
+
+  def test_label_uses_given_id_and_namespace
+    # See upstream issue: https://github.com/rails/rails/pull/51237
+    skip "Broken in Rails versions prior to 8.0.3" unless Rails::VERSION::STRING >= "8.0.3"
+
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo", namespace: "baz") do |f|
+        render(NoModelScopeForm.new(f, id: "foobar"))
+      end
+    end
+
+    assert_selector "label[for=baz_foobar]"
   end
 end
