@@ -7,9 +7,13 @@ module Primer
       # @label Playground
       #
       # @param expanded [Boolean] toggle
-      def playground(expanded: true)
+      # @param show_checkbox [Boolean] toggle
+      # @param show_segmented_control [Boolean] toggle
+      def playground(expanded: true, show_checkbox: true, show_segmented_control: true)
         render_with_template(locals: {
-          expanded: coerce_bool(expanded)
+          expanded: coerce_bool(expanded),
+          show_checkbox: coerce_bool(show_checkbox),
+          show_segmented_control: coerce_bool(show_segmented_control)
         })
       end
 
@@ -101,6 +105,23 @@ module Primer
 
       # @label Custom checkbox text
       def custom_checkbox_text(expanded: true)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
+      end
+
+      # @label Hide checkbox
+      #
+      # @param include_sub_items [Boolean] toggle
+      def hide_checkbox(include_sub_items: true)
+        render_with_template(locals: {
+          expanded: true,
+          include_sub_items: coerce_bool(include_sub_items)
+        })
+      end
+
+      # @label Hide SegmentedControl
+      def hide_segmented_control(expanded: true)
         render_with_template(locals: {
           expanded: coerce_bool(expanded)
         })
