@@ -1770,7 +1770,9 @@
     },
     "DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS": {
       "label": "Include sub-items",
-      "name": "include_sub_items"
+      "name": "include_sub_items",
+      "checked": false,
+      "hidden": false
     },
     "DEFAULT_NO_RESULTS_NODE_ARGUMENTS": {
       "label": "No results"

@@ -4311,6 +4311,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/hide_checkbox",
+        "name": "hide_checkbox",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/hide_segmented_control",
+        "name": "hide_segmented_control",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
