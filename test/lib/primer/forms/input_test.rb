@@ -104,6 +104,7 @@ class Primer::Forms::InputTest < Minitest::Test
     end
 
     assert_selector "input#ultimate_answer[name=ultimate_answer]"
+    assert_selector "label[for=ultimate_answer]"
   end
 
   def test_uses_given_id
@@ -116,5 +117,6 @@ class Primer::Forms::InputTest < Minitest::Test
     end
 
     assert_selector "input#foobar[name=ultimate_answer]"
+    assert_selector "label[for=foobar]"
   end
 end
