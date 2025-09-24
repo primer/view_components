@@ -3,7 +3,10 @@
     <% dialog.with_header(close_label: I18n.t("button_close")) %>
   <% end %>
 
-  <danger-dialog-form-helper>
+  <danger-dialog-form-helper
+    data-confirmation-live-message-checked="<%= I18n.t("danger_dialog.confirmation_live_message_checked") %>"
+    data-confirmation-live-message-unchecked="<%= I18n.t("danger_dialog.confirmation_live_message_unchecked") %>">
+
     <%= render(@form_wrapper) do %>
       <scrollable-region data-labelled-by="<%= labelledby %>">
         <%= render(Primer::Alpha::Dialog::Body.new) do %>
@@ -16,8 +19,9 @@
       </scrollable-region>
       <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
         <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { @cancel_button_text } %>
-        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, data: { "submit-dialog-id": dialog_id })) { @confirm_button_text } %>
+        <%= render(Primer::Beta::Button.new(type: (@form_wrapper.shows_form? ? :submit : :button), scheme: :danger, aria: { describedby: "#{dialog_id}-check_box" }, data: { "submit-dialog-id": dialog_id })) { @confirm_button_text } %>
       <% end %>
+      <live-region data-target="danger-dialog-form-helper.liveRegion"></live-region>
     <% end %>
   </danger-dialog-form-helper>
 <% end %>

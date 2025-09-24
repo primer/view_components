@@ -282,4 +282,18 @@ class PrimerOpenProjectDangerDialogTest < Minitest::Test
       assert_selector(".DangerDialog-additionalDetails", text: "Additional important information.")
     end
   end
+
+  def test_renders_live_region_for_confirmation_checkbox
+    render_inline(Primer::OpenProject::DangerDialog.new(
+      title: "Danger confirmation action"
+    )) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { "Danger" }
+      end
+      dialog.with_confirmation_check_box { "I confirm this deletion" }
+    end
+
+    # Check that the live region exists
+    assert_selector("live-region[data-target='danger-dialog-form-helper.liveRegion']")
+  end
 end

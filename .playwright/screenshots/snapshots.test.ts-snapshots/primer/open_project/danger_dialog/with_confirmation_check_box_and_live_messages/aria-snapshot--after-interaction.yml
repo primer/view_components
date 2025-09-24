@@ -3,7 +3,7 @@
   - heading "Delete dialog" [level=1]
   - button "Close"
   - heading "Permanently delete this item?" [level=2]
-  - paragraph: This action is not reversible. Please proceed with caution.
+  - paragraph: This action is irreversible. Proceed with caution.
   - checkbox "I understand that this deletion cannot be reversed": "1"
   - text: I understand that this deletion cannot be reversed
   - button "Cancel"

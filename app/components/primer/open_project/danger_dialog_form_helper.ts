@@ -1,10 +1,14 @@
-import {controller, target} from '@github/catalyst'
+import {controller, target, attr} from '@github/catalyst'
+import type {LiveRegionElement} from '@primer/live-region-element'
 
 const SUBMIT_BUTTON_SELECTOR = 'input[type=submit],button[type=submit],button[data-submit-dialog-id]'
 
 @controller
 class DangerDialogFormHelperElement extends HTMLElement {
   @target checkbox: HTMLInputElement | undefined
+  @target liveRegion: LiveRegionElement
+  @attr confirmationLiveMessageChecked = ''
+  @attr confirmationLiveMessageUnchecked = ''
 
   get form() {
     return this.querySelector('form')
@@ -25,8 +29,14 @@ class DangerDialogFormHelperElement extends HTMLElement {
   }
 
   toggle(): void {
-    if (this.checkbox) {
-      this.submitButton.disabled = !this.checkbox.checked
+    if (!this.checkbox || !this.submitButton) return
+
+    const enabled = this.checkbox.checked
+    this.submitButton.disabled = !enabled
+
+    if (this.liveRegion) {
+      const message = enabled ? this.confirmationLiveMessageChecked : this.confirmationLiveMessageUnchecked
+      this.liveRegion.announce(message, {politeness: 'assertive'})
     }
   }
 
