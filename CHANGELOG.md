@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.73.0
+
+### Minor Changes
+
+- [#356](https://github.com/opf/primer_view_components/pull/356) [`0f43b46`](https://github.com/opf/primer_view_components/commit/0f43b4619a6162aa0be443fd0b05b815d59d2cbd) Thanks [@HDinger](https://github.com/HDinger)! - Make SegmentedControl and "Include sub-nodes" checkbox optional for FilterableTreeView
+
+### Patch Changes
+
+- [#357](https://github.com/opf/primer_view_components/pull/357) [`f139f00`](https://github.com/opf/primer_view_components/commit/f139f00b10b42697793271238487651a9996aeac) Thanks [@HDinger](https://github.com/HDinger)! - Avoid increasing description of PageHeader
+
+- [#351](https://github.com/opf/primer_view_components/pull/351) [`f324227`](https://github.com/opf/primer_view_components/commit/f324227ceab7c533b1bdeb5660c62e574934582a) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [61890] Advanced accessibility for the Danger Dialogs (with ARIA semantics to communicate contextual changes)
+
 ## 0.72.1
 
 ### Patch Changes
