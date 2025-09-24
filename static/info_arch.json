@@ -19149,9 +19149,9 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_dialog/with_confirmation_check_box",
-        "name": "with_confirmation_check_box",
-        "snapshot": "interactive",
+        "preview_path": "primer/open_project/danger_dialog/playground",
+        "name": "playground",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -19162,9 +19162,9 @@
         }
       },
       {
-        "preview_path": "primer/open_project/danger_dialog/playground",
-        "name": "playground",
-        "snapshot": "false",
+        "preview_path": "primer/open_project/danger_dialog/with_confirmation_check_box",
+        "name": "with_confirmation_check_box",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
