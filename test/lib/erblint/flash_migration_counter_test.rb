@@ -10,7 +10,7 @@ class FlashMigrationCounterTest < ErblintTestCase
     @file = "<div class=\"flash flash-warn flash-full\">flash</div>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::Beta::Flash.new(scheme: :warning, full: true)")
+    assert_includes(offenses.first.message, "render Primer::Alpha::Banner.new(scheme: :warning, full: true)")
   end
 
   def test_does_not_autocorrect_with_html_content

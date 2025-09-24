@@ -12,9 +12,9 @@ module ERBLint
 
       TAGS = %w[div].freeze
       CLASSES = %w[flash].freeze
-      MESSAGE = "We are migrating flashes to use [Primer::Beta::Flash](https://primer.style/view-components/components/beta/flash), please try to use that instead of raw HTML."
+      MESSAGE = "We are migrating flashes to use [Primer::Alpha::Banner](https://primer.style/view-components/components/alpha/banner), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::Flash
-      COMPONENT = "Primer::Beta::Flash"
+      COMPONENT = "Primer::Alpha::Banner"
 
       def map_arguments(tag, tag_tree)
         # We can only autocorrect elements with simple text as content.
