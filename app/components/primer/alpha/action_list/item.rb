@@ -142,6 +142,33 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
+        # An `ActionMenu` that appears when the item is hovered. The menu will be positioned relative to the item
+        # and will appear on mouse enter and disappear on mouse leave with a small delay.
+        #
+        # @param menu_id [String] Optional. Unique identifier for the menu. If not provided, one will be generated.
+        # @param anchor_side [Symbol] Optional. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
+        # @param anchor_align [Symbol] Optional. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionMenu) %>.
+        renders_one :hover_menu, lambda { |menu_id: nil, **system_arguments|
+          menu_id ||= "hover-menu-#{SecureRandom.hex(4)}"
+
+          # Generate a consistent item ID that will be used for anchoring
+          item_id = @id || @item_id || "action-list-item-#{SecureRandom.hex(4)}"
+          @hover_menu_anchor_id = item_id  # Store for use in before_render
+
+          # Extract overlay-specific arguments for proper anchoring
+          overlay_arguments = system_arguments.delete(:overlay_arguments) || {}
+
+          # Create the ActionMenu with proper overlay configuration for hover anchoring
+          Primer::Alpha::ActionMenu.new(
+            menu_id: menu_id,
+            anchor_side: :outside_right,
+            # Pass the anchor through overlay_arguments to the Overlay
+            overlay_arguments: overlay_arguments.merge(anchor: item_id),
+            **system_arguments
+          )
+        }
+
         # Used internally.
         #
         # @private
@@ -310,6 +337,18 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?
           )
+
+          # Add hover menu data attributes if hover menu is present
+          if hover_menu?
+            # Use the anchor ID that was set when creating the hover menu
+            @system_arguments[:id] = @hover_menu_anchor_id if @hover_menu_anchor_id
+
+            @system_arguments[:data] = merge_data(
+              @system_arguments, {
+                data: { "has-hover-menu": true }
+              }
+            )
+          end
 
           if @truncate_label == :show_tooltip && !tooltip?
             with_tooltip(text: @label, direction: :ne)
