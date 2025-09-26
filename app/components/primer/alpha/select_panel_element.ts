@@ -449,6 +449,18 @@ export class SelectPanelElement extends HTMLElement {
       return
     }
 
+    if (
+      event.type === 'keydown' &&
+      event instanceof KeyboardEvent &&
+      (event.target as Element).closest(visibleMenuItemSelectors)
+    ) {
+      const hasModifier = event.ctrlKey || event.altKey || event.metaKey
+      const isAlphabetKey = event.key.length === 1 && /[a-z\d]/i.test(event.key)
+
+      // eslint-disable-next-line no-restricted-syntax
+      if (!hasModifier && isAlphabetKey) event.stopPropagation()
+    }
+
     if (event.target === this.dialog && event.type === 'close') {
       // Remove data-ready so it can be set the next time the panel is opened
       this.dialog.removeAttribute('data-ready')
