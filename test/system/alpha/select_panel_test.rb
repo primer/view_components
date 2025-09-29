@@ -1369,15 +1369,15 @@ module Alpha
     def test_prevents_events_from_bubbling
       visit_preview(:default)
 
+      click_on_invoker_button
+      
+      keyboard.type(:tab)
+
       evaluate_multiline_script(<<~JS)
         document.body.addEventListener('keydown', (event) => {
           window.bodyKeydownFired = true
         }, { once: true })
       JS
-
-      click_on_invoker_button
-      
-      keyboard.type(:tab)
 
       assert_includes active_element.text, "Item 1"
 
