@@ -1389,7 +1389,7 @@ module Alpha
 
       refute_selector "select-panel dialog[open]"
 
-      keyboard.type(:a)  
+      keyboard.type("a")  
 
       assert page.evaluate_script("window.bodyKeydownFired")
     end
