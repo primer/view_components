@@ -1381,7 +1381,7 @@ module Alpha
 
       assert_includes active_element.text, "Item 1"
 
-      keyboard.type(:a)  # type an alphabetic key, which should be stopped from propagating
+      keyboard.type("a")  # type an alphabetic key, which should be stopped from propagating
 
       refute page.evaluate_script("window.bodyKeydownFired")
 
