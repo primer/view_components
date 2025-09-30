@@ -9,6 +9,8 @@ type LoadingState = 'loading' | 'error' | 'success'
 
 export type SelectStrategy = 'self' | 'descendants' | 'mixed_descendants'
 
+export type SelectVariant = 'none' | 'single' | 'multiple'
+
 @controller
 export class TreeViewSubTreeNodeElement extends HTMLElement {
   @target node: HTMLElement
@@ -131,6 +133,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
   get selectStrategy(): SelectStrategy {
     return (this.node.getAttribute('data-select-strategy') || 'descendants') as SelectStrategy
+  }
+
+  get selectVariant(): SelectVariant {
+    return (this.node.getAttribute('data-select-variant') || 'none') as SelectVariant
   }
 
   disconnectedCallback() {
@@ -311,6 +317,9 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
 
         if (this.#checkboxElement) {
           this.toggleChecked()
+        } else if (this.selectVariant === 'single') {
+          // Follow the standard implementation of TreeView and select that item
+          this.treeView.handleSingleSelection(event, node)
         } else if (!this.treeView?.nodeHasNativeAction(node)) {
           // toggle only if this node isn't eg. an anchor or button
           this.toggle()
@@ -342,6 +351,9 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
           event.preventDefault()
 
           this.toggleChecked()
+        } else if (this.selectVariant === 'single') {
+          // Follow the standard implementation of TreeView and select that item
+          this.treeView.handleSingleSelection(event, node)
         } else {
           if (node instanceof HTMLAnchorElement) {
             // simulate click on space for anchors (buttons already handle this natively)

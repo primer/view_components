@@ -1,7 +1,7 @@
 import {controller, target} from '@github/catalyst'
-import {TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
+import {SelectVariant, TreeViewSubTreeNodeElement} from './tree_view_sub_tree_node_element'
 import {useRovingTabIndex} from './tree_view_roving_tab_index'
-import type {TreeViewNodeType, TreeViewCheckedValue, TreeViewNodeInfo} from '../../shared_events'
+import type {TreeViewCheckedValue, TreeViewNodeInfo, TreeViewNodeType} from '../../shared_events'
 
 @controller
 export class TreeViewElement extends HTMLElement {
@@ -114,6 +114,8 @@ export class TreeViewElement extends HTMLElement {
   #handleNodeEvent(node: Element, event: Event) {
     if (this.#eventIsCheckboxToggle(event, node)) {
       this.#handleCheckboxToggle(event, node)
+    } else if (this.#eventIsSingleSelection(event, node)) {
+      this.handleSingleSelection(event, node)
     } else if (this.#eventIsActivation(event)) {
       this.#handleNodeActivated(event, node)
     } else if (event.type === 'focusin') {
@@ -138,11 +140,48 @@ export class TreeViewElement extends HTMLElement {
     const type = this.getNodeType(node)
     if (type !== 'leaf') return
 
-    if (this.getNodeCheckedValue(node) === 'true') {
-      this.setNodeCheckedValue(node, 'false')
-    } else {
-      this.setNodeCheckedValue(node, 'true')
+    this.#checkMultiSelectNode(node)
+  }
+
+  #eventIsSingleSelection(event: Event, node: Element) {
+    return event.type === 'click' && this.selectVariant(node) === 'single'
+  }
+
+  handleSingleSelection(event: Event, node: Element) {
+    if (this.getNodeDisabledValue(node)) {
+      event.preventDefault()
+      return
     }
+
+    // do not emit activation events for buttons and anchors, since it is assumed any activation
+    // behavior for these element types is user- or browser-defined
+    if (!(node instanceof HTMLDivElement)) return
+
+    const nodeInfo = this.infoFromNode(node, 'true')
+
+    const checkSuccess = this.dispatchEvent(
+      new CustomEvent('treeViewBeforeNodeChecked', {
+        bubbles: true,
+        cancelable: true,
+        detail: [nodeInfo],
+      }),
+    )
+
+    if (!checkSuccess) return
+
+    const currentlyChecked = !this.getNodeCheckedValue(node)
+
+    // disallow unchecking checked item in single-select mode
+    if (!currentlyChecked) {
+      this.#checkSingleSelectNode(node)
+    }
+
+    this.dispatchEvent(
+      new CustomEvent('treeViewNodeChecked', {
+        bubbles: true,
+        detail: [nodeInfo],
+      }),
+    )
   }
 
   #handleNodeActivated(event: Event, node: Element) {
@@ -199,14 +238,14 @@ export class TreeViewElement extends HTMLElement {
           break
         }
 
-        if (this.nodeHasCheckBox(node)) {
+        if (this.selectVariant(node) === 'multiple') {
           event.preventDefault()
 
-          if (this.getNodeCheckedValue(node) === 'true') {
-            this.setNodeCheckedValue(node, 'false')
-          } else {
-            this.setNodeCheckedValue(node, 'true')
-          }
+          this.#checkMultiSelectNode(node)
+        } else if (this.selectVariant(node) === 'single') {
+          event.preventDefault()
+
+          this.#checkSingleSelectNode(node)
         } else if (node instanceof HTMLAnchorElement) {
           // simulate click on space
           node.click()
@@ -247,6 +286,10 @@ export class TreeViewElement extends HTMLElement {
     return this.querySelector('[aria-current=true]')
   }
 
+  get activeNodes() {
+    return document.querySelectorAll('[aria-checked="true"]')
+  }
+
   expandAtPath(path: string[]) {
     const node = this.subTreeAtPath(path)
     if (!node) return
@@ -280,6 +323,22 @@ export class TreeViewElement extends HTMLElement {
     if (!node) return
 
     this.setNodeCheckedValue(node, 'false')
+  }
+
+  #checkSingleSelectNode(node: Element) {
+    for (const el of this.activeNodes) {
+      this.uncheckAtPath(this.getNodePath(el))
+    }
+
+    this.checkAtPath(this.getNodePath(node))
+  }
+
+  #checkMultiSelectNode(node: Element) {
+    if (this.getNodeCheckedValue(node) === 'true') {
+      this.setNodeCheckedValue(node, 'false')
+    } else {
+      this.setNodeCheckedValue(node, 'true')
+    }
   }
 
   toggleCheckedAtPath(path: string[]) {
@@ -381,6 +440,10 @@ export class TreeViewElement extends HTMLElement {
       checkedValue: newCheckedValue || checkedValue,
       previousCheckedValue: checkedValue,
     }
+  }
+
+  selectVariant(node: Element): SelectVariant {
+    return (node.getAttribute('data-select-variant') || 'none') as SelectVariant
   }
 }
 
