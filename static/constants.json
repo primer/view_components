@@ -1766,7 +1766,8 @@
     "DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS": {
       "aria": {
         "label": "Filter mode"
-      }
+      },
+      "hidden": false
     },
     "DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS": {
       "label": "Include sub-items",
