@@ -7,11 +7,13 @@ module Primer
       # @label Playground
       #
       # @param expanded [Boolean] toggle
+      # @param select_variant [Symbol] select [multiple, single]
       # @param show_checkbox [Boolean] toggle
       # @param show_segmented_control [Boolean] toggle
-      def playground(expanded: true, show_checkbox: true, show_segmented_control: true)
+      def playground(expanded: true, select_variant: :multiple, show_checkbox: true, show_segmented_control: true)
         render_with_template(locals: {
           expanded: coerce_bool(expanded),
+          select_variant: select_variant.to_sym,
           show_checkbox: coerce_bool(show_checkbox),
           show_segmented_control: coerce_bool(show_segmented_control)
         })
@@ -29,9 +31,11 @@ module Primer
 
       # @label Form input
       #
+      # @param select_variant [Symbol] select [multiple, single]
       # @param expanded [Boolean] toggle
-      def form_input(expanded: true)
+      def form_input(select_variant: :multiple, expanded: true)
         render_with_template(locals: {
+          select_variant: select_variant.to_sym,
           expanded: coerce_bool(expanded)
         })
       end

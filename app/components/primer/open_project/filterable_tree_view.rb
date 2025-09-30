@@ -230,19 +230,43 @@ module Primer
       end
 
       def with_sub_tree(**system_arguments, &block)
+        system_arguments[:select_variant] ||= :multiple
+
+        if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
+          raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+        end
+
+        if system_arguments[:select_variant] == :single
+          # In single selection, the include sub-items checkbox and the SegmentedControl make no sense
+          @include_sub_items_check_box_arguments[:hidden] = true
+          @include_sub_items_check_box_arguments[:checked] = false
+          @filter_mode_control_arguments[:hidden] = true
+        end
+
         @tree_view.with_sub_tree(
           sub_tree_component_klass: SubTree,
           **system_arguments,
-          select_variant: :multiple,
           select_strategy: :self,
           &block
         )
       end
 
       def with_leaf(**system_arguments, &block)
+        system_arguments[:select_variant] ||= :multiple
+
+        if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
+          raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+        end
+
+        if system_arguments[:select_variant] == :single
+          # In single selection, the include sub-items checkbox and the SegmentedControl make no sense
+          @include_sub_items_check_box_arguments[:hidden] = true
+          @include_sub_items_check_box_arguments[:checked] = false
+          @filter_mode_control_arguments[:hidden] = true
+        end
+
         @tree_view.with_leaf(
           **system_arguments,
-          select_variant: :multiple,
           &block
         )
       end
