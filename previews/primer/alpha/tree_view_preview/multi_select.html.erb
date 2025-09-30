@@ -1,0 +1,10 @@
+<div style="max-width: 400px">
+  <%= render(Primer::Alpha::TreeView.new) do |tree_view| %>
+    <% tree_view.with_sub_tree(label: "src", expanded: expanded, disabled: disabled, select_variant: select_variant) do |sub_tree| %>
+      <% sub_tree.with_leaf(label: "button.rb", disabled: disabled, select_variant: select_variant) %>
+      <% sub_tree.with_leaf(label: "icon_button.rb", current: true, disabled: disabled, select_variant: select_variant) %>
+    <% end %>
+
+    <% tree_view.with_leaf(label: "action_menu.rb", disabled: disabled, select_variant: select_variant) %>
+  <% end %>
+</div>

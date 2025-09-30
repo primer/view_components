@@ -23,7 +23,11 @@
         <%= leading_visual %>
       <% end %>
       <span class="TreeViewItemContentText"><%= text_content %></span>
-      <% if trailing_visual? %>
+      <% if @select_variant == :single %>
+        <span class="TreeViewItemVisual" aria-hidden="true">
+          <%= render(Primer::Beta::Octicon.new(icon: :check, classes: "TreeViewItem-singleSelectCheckmark")) %>
+        </span>
+      <% elsif trailing_visual? %>
         <%= trailing_visual %>
       <% end %>
     <% end %>
