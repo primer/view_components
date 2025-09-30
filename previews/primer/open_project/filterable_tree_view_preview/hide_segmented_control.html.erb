@@ -1,4 +1,4 @@
-<%= render(Primer::OpenProject::FilterableTreeView.new(filter_mode_control_arguments: :none)) do |tree| %>
+<%= render(Primer::OpenProject::FilterableTreeView.new(filter_mode_control_arguments: { hidden: true })) do |tree| %>
   <% tree.with_sub_tree(label: "Students", expanded: expanded) do |hogwarts| %>
     <% hogwarts.with_sub_tree(label: "Ravenclaw", expanded: expanded) do |ravenclaw| %>
       <% ravenclaw.with_leaf(label: "Luna Lovegood") %>

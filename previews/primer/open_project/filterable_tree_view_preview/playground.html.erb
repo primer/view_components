@@ -1,6 +1,6 @@
 <%= render(Primer::OpenProject::FilterableTreeView.new(
   include_sub_items_check_box_arguments: { hidden: !show_checkbox },
-  **(show_segmented_control ? {} : { filter_mode_control_arguments: :none })
+  filter_mode_control_arguments: { hidden: !show_segmented_control }
 )) do |tree| %>
   <% tree.with_sub_tree(label: "Students", expanded: expanded) do |hogwarts| %>
     <% hogwarts.with_sub_tree(label: "Ravenclaw", expanded: expanded) do |ravenclaw| %>

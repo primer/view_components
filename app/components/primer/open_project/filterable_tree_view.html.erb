@@ -1,13 +1,12 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::Alpha::Stack.new) do %>
     <%= render(Primer::Alpha::Stack.new(wrap: :reverse, direction: :horizontal, align: :center)) do %>
-      <%= render(Primer::Alpha::Stack.new(wrap: :wrap, direction: :horizontal, align: :center)) do %>
-        <% if @filter_mode_control.present? %>
-          <%= render(Primer::Alpha::StackItem.new) do %>
-            <%= render(@filter_mode_control) %>
-          <% end %>
+      <%= render(Primer::ConditionalWrapper.new(condition: !hide_filter_mode_control? && !hide_include_sub_items_check_box?,
+                                                component: Primer::Alpha::Stack, wrap: :wrap, direction: :horizontal, align: :center)) do %>
+        <%= render(Primer::Alpha::StackItem.new(hidden: hide_filter_mode_control?)) do %>
+          <%= render(@filter_mode_control) %>
         <% end %>
-        <%= render(Primer::Alpha::StackItem.new(hidden: @include_sub_items_check_box_arguments[:hidden])) do %>
+        <%= render(Primer::Alpha::StackItem.new(hidden: hide_include_sub_items_check_box?)) do %>
           <%= render(@include_sub_items_check_box) do |input| %>
             <% input.merge_input_arguments!(form: "") %>
           <% end %>

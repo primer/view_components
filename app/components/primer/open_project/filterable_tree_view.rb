@@ -119,7 +119,8 @@ module Primer
       DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS = {
         aria: {
           label: I18n.t("filterable_tree_view.filter_mode.label")
-        }
+        },
+        hidden: false,
       }
 
       DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS.freeze
@@ -186,15 +187,15 @@ module Primer
 
         @filter_input = Primer::Alpha::TextField.new(**filter_input_arguments)
 
-        unless filter_mode_control_arguments == :none
-          filter_mode_control_arguments[:data] = merge_data(
-            filter_mode_control_arguments, {
-              data: { target: "filterable-tree-view.filterModeControlList" }
-            }
-          )
 
-          @filter_mode_control = Primer::Alpha::SegmentedControl.new(**filter_mode_control_arguments)
-        end
+        @filter_mode_control_arguments = filter_mode_control_arguments.reverse_merge(DEFAULT_FILTER_MODE_CONTROL_ARGUMENTS)
+        @filter_mode_control_arguments[:data] = merge_data(
+          @filter_mode_control_arguments, {
+            data: { target: "filterable-tree-view.filterModeControlList" }
+          }
+        )
+
+        @filter_mode_control = Primer::Alpha::SegmentedControl.new(**@filter_mode_control_arguments)
 
         @include_sub_items_check_box_arguments = include_sub_items_check_box_arguments.reverse_merge(DEFAULT_INCLUDE_SUB_ITEMS_CHECK_BOX_ARGUMENTS)
 
@@ -254,6 +255,14 @@ module Primer
         if @filter_mode_control.present? && @filter_mode_control.items.empty?
           with_default_filter_modes
         end
+      end
+
+      def hide_filter_mode_control?
+        @filter_mode_control_arguments[:hidden]
+      end
+
+      def hide_include_sub_items_check_box?
+        @include_sub_items_check_box_arguments[:hidden]
       end
     end
   end

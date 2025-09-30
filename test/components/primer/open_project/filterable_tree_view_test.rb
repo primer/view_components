@@ -54,11 +54,11 @@ module Primer
       def test_segmented_control_can_be_hidden
         render_inline(
           Primer::OpenProject::FilterableTreeView.new(
-            filter_mode_control_arguments: :none
+            filter_mode_control_arguments: { hidden: true }
           )
         )
 
-        assert_no_selector("segmented-control")
+        assert_selector("segmented-control", visible: :hidden)
       end
 
       def test_has_include_sub_items_check_box
