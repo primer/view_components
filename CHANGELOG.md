@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.73.1
+
+### Patch Changes
+
+- [#361](https://github.com/opf/primer_view_components/pull/361) [`acc6ee9`](https://github.com/opf/primer_view_components/commit/acc6ee91a14864895108308934ad1cb6c4221124) Thanks [@HDinger](https://github.com/HDinger)! - Change signature to hide the SegmentedControl in FilterableTreeView
+
 ## 0.73.0
 
 ### Minor Changes
