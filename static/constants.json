@@ -875,6 +875,7 @@
       "anchor"
     ],
     "SELECT_VARIANT_OPTIONS": [
+      "single",
       "multiple",
       "none"
     ]

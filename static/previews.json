@@ -9114,6 +9114,32 @@
         }
       },
       {
+        "preview_path": "primer/alpha/tree_view/single_select",
+        "name": "single_select",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/tree_view/multi_select",
+        "name": "multi_select",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/tree_view/empty",
         "name": "empty",
         "snapshot": "interactive",

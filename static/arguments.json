@@ -3529,7 +3529,7 @@
         "name": "select_variant",
         "type": "Symbol",
         "default": "`:none`",
-        "description": "Controls the type of checkbox that appears. One of `:multiple` or `:none`."
+        "description": "Controls the type of checkbox that appears. One of `:multiple`, `:none`, or `:single`."
       },
       {
         "name": "checked",
