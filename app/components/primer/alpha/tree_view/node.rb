@@ -56,6 +56,7 @@ module Primer
 
         DEFAULT_SELECT_VARIANT = :none
         SELECT_VARIANT_OPTIONS = [
+          :single,
           :multiple,
           DEFAULT_SELECT_VARIANT
         ].freeze
@@ -128,7 +129,8 @@ module Primer
             @content_arguments, {
             data: {
               value: value,
-              path: @path.to_json
+              path: @path.to_json,
+              select_variant: @select_variant
             }
           }
           )
@@ -169,6 +171,10 @@ module Primer
         private
 
         def before_render
+          if trailing_visual? && select_variant == :single
+            raise ArgumentError, "Trailing visuals can't be used in combination with single select mode as the icon is reserved."
+          end
+
           if leading_action?
             @content_arguments[:data] = merge_data(
               @content_arguments,

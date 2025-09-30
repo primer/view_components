@@ -197,6 +197,13 @@
       }
     }
 
+    &[aria-checked='false'] {
+      /* singleselect checkmark */
+      & .TreeViewItem-singleSelectCheckmark {
+        visibility: hidden;
+      }
+    }
+
     &[aria-checked='mixed'] {
       & .FormControl-checkbox {
         background: var(--control-checked-bgColor-rest);

@@ -6,7 +6,7 @@
         <% icons.with_collapsed_icon(icon: :"file-directory-fill", color: :accent) %>
       <% end %>
 
-      <% sub_tree.with_trailing_visual_icon(icon: :"diff-modified") %>
+      <% sub_tree.with_trailing_visual_icon(icon: :"diff-modified") unless select_variant == :single %>
 
       <% sub_tree.with_leaf(label: "button.rb", disabled: disabled, select_variant: select_variant) do |item| %>
         <% item.with_leading_visual_icon(icon: :file) %>

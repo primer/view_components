@@ -155,7 +155,7 @@ module Primer
             node_variant: node_variant
           )
 
-          return if @node.select_variant == :none
+          return unless @node.select_variant == :multiple
 
           @node.merge_system_arguments!(
             data: {
