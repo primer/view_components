@@ -1,30 +1,30 @@
 <%= form_with(url: primer_view_components.generic_form_submission_path(format: :json)) do |f| %>
   <%= render(Primer::Alpha::Stack.new) do %>
     <%= render(Primer::OpenProject::FilterableTreeView.new(form_arguments: { builder: f, name: "characters" })) do |tree| %>
-      <% tree.with_sub_tree(label: "Students", expanded: expanded) do |hogwarts| %>
-        <% hogwarts.with_sub_tree(label: "Ravenclaw", expanded: expanded) do |ravenclaw| %>
-          <% ravenclaw.with_leaf(label: "Luna Lovegood") %>
+      <% tree.with_sub_tree(label: "Students", select_variant: select_variant, expanded: expanded) do |hogwarts| %>
+        <% hogwarts.with_sub_tree(label: "Ravenclaw", select_variant: select_variant, expanded: expanded) do |ravenclaw| %>
+          <% ravenclaw.with_leaf(label: "Luna Lovegood", select_variant: select_variant) %>
         <% end %>
 
-        <% hogwarts.with_sub_tree(label: "Slytherin", expanded: expanded) do |hufflepuff| %>
-          <% hufflepuff.with_leaf(label: "Draco Malfoy") %>
+        <% hogwarts.with_sub_tree(label: "Slytherin", select_variant: select_variant, expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Draco Malfoy", select_variant: select_variant) %>
         <% end %>
 
-        <% hogwarts.with_sub_tree(label: "Hufflepuff", expanded: expanded) do |hufflepuff| %>
-          <% hufflepuff.with_leaf(label: "Susan Bones") %>
+        <% hogwarts.with_sub_tree(label: "Hufflepuff", select_variant: select_variant, expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Susan Bones", select_variant: select_variant) %>
         <% end %>
 
-        <% hogwarts.with_sub_tree(label: "Gryffindor", expanded: expanded) do |hufflepuff| %>
-          <% hufflepuff.with_leaf(label: "Harry Potter") %>
-          <% hufflepuff.with_leaf(label: "Ronald Weasley") %>
-          <% hufflepuff.with_leaf(label: "Hermione Granger") %>
+        <% hogwarts.with_sub_tree(label: "Gryffindor", select_variant: select_variant, expanded: expanded) do |hufflepuff| %>
+          <% hufflepuff.with_leaf(label: "Harry Potter", select_variant: select_variant) %>
+          <% hufflepuff.with_leaf(label: "Ronald Weasley", select_variant: select_variant) %>
+          <% hufflepuff.with_leaf(label: "Hermione Granger", select_variant: select_variant) %>
         <% end %>
       <% end %>
 
-      <% tree.with_leaf(label: "Albus Dumbledore") %>
-      <% tree.with_leaf(label: "Minerva McGonagall") %>
-      <% tree.with_leaf(label: "Severus Snape") %>
-      <% tree.with_leaf(label: "Rubeus Hagrid") %>
+      <% tree.with_leaf(label: "Albus Dumbledore", select_variant: select_variant) %>
+      <% tree.with_leaf(label: "Minerva McGonagall", select_variant: select_variant) %>
+      <% tree.with_leaf(label: "Severus Snape", select_variant: select_variant) %>
+      <% tree.with_leaf(label: "Rubeus Hagrid", select_variant: select_variant) %>
     <% end %>
 
     <%= render(Primer::Alpha::SubmitButton.new(name: :submit, label: "Submit")) %>

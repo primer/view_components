@@ -217,6 +217,23 @@ module OpenProject
       assert_path("Students", "Gryffindor", "Ronald Weasley")
     end
 
+    def test_form_submits_checked_nodes_for_single_select_variant
+      visit_preview(:form_input, select_variant: :single)
+
+      activate_at_path("Students", "Gryffindor", "Harry Potter")
+      activate_at_path("Students", "Ravenclaw", "Luna Lovegood")
+      click_on "Submit"
+
+      response = JSON.parse(find("pre").text)
+      assert character_list = response.dig("form_params", "characters")
+
+      # Since we are in single select mode, only the last checked element is selected and send
+      assert_equal 1, character_list.size
+
+      character = JSON.parse(character_list[0])
+      assert_equal character["path"], ["Students", "Ravenclaw", "Luna Lovegood"]
+    end
+
     def test_form_submits_checked_nodes
       visit_preview(:form_input)
 
