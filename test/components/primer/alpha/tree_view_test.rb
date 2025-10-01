@@ -193,6 +193,19 @@ module Primer
 
         assert_selector "div[role=treeitem]", text: "Foobar"
       end
+
+      def test_disallows_trailing_visuals_when_single_select_variant_is_used
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::Alpha::TreeView.new) do |tree|
+            tree.with_sub_tree(label: "src", select_variant: :single) do |sub_tree|
+              sub_tree.with_trailing_visual_icon(icon: :"diff-modified")
+              sub_tree.with_leaf(label: "button.rb")
+            end
+          end
+        end
+
+        assert_equal error.message, "Trailing visuals can't be used in combination with single select mode as the icon is reserved."
+      end
     end
   end
 end
