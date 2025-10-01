@@ -14,9 +14,8 @@ module Primer
     # - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only
     # and screen reader users. Use of tooltips through <%= link_to_component(Primer::Beta::Button) %>, <%= link_to_component(Primer::Beta::Link) %>, or <%= link_to_component(Primer::Beta::IconButton) %> will guarantee this.
     # - If you must use `Tooltip` as a standalone component, place it immediately after the trigger element in the DOM. This allows screen reader users to navigate to the tooltip and copy its contents if desired.
-    #   content.
     #
-    # Semantically, a tooltip will either act an accessible name or an accessible description for the element that it is associated with resulting in either a
+    # Semantically, a tooltip will either act as an accessible name or an accessible description for the element that it is associated with resulting in either an
     # `aria-labelledby` or an `aria-describedby` association. The `type` drastically changes semantics and screen reader behavior so follow these guidelines carefully:
     # - When there is already a visible label text on the trigger element, the tooltip is likely intended be supplementary, so set `type: :description`.
     # The majority of tooltips will fall under this category.
