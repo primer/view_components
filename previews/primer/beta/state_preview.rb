@@ -50,6 +50,20 @@ module Primer
         render(Primer::Beta::State.new(title: "Merged", scheme: :merged)) { "Merged state" }
       end
       #
+
+      # @label Draft
+      # @snapshot
+      def states_draft
+        render(Primer::Beta::State.new(title: "Draft", scheme: :draft)) { "Draft state" }
+      end
+      #
+
+      # @label Unlisted
+      # @snapshot
+      def states_unlisted
+        render(Primer::Beta::State.new(title: "Unlisted", scheme: :unlisted)) { "Unlisted state" }
+      end
+      #
       # @!endgroup
 
       # @!group Sizes
