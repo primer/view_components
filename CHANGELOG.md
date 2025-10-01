@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.74.0
+
+### Minor Changes
+
+- [#360](https://github.com/opf/primer_view_components/pull/360) [`8a130e2`](https://github.com/opf/primer_view_components/commit/8a130e2e4311e939ec79933973168c64f2f92b00) Thanks [@HDinger](https://github.com/HDinger)! - Support single selection variant for TreeView
+
+- [#363](https://github.com/opf/primer_view_components/pull/363) [`a283c67`](https://github.com/opf/primer_view_components/commit/a283c67e75ada320f82356520e48f447094c92c8) Thanks [@HDinger](https://github.com/HDinger)! - Support single select variant in FilterableTreeView
+
 ## 0.73.1
 
 ### Patch Changes
