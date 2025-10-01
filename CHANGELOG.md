@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.74.1
+
+### Patch Changes
+
+- [#365](https://github.com/opf/primer_view_components/pull/365) [`982d4f6`](https://github.com/opf/primer_view_components/commit/982d4f67c3393f323c476cd3c17dacdafac53bed) Thanks [@mrmir](https://github.com/mrmir)! - Delegate the items call to SubMenu of ActionMenu component
+
 ## 0.74.0
 
 ### Minor Changes
