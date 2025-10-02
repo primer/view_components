@@ -354,8 +354,7 @@ module Primer
       # @param dynamic_aria_label_prefix [String] If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button.
       # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
       # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
-      # @param form_arguments [Hash] Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag.
-      # @param use_experimental_non_local_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923.
+      # @param form_arguments [Hash] Form arguments. Supported for all fetch strategies.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
@@ -377,7 +376,6 @@ module Primer
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
         body_id: nil,
-        use_experimental_non_local_form: false,
         list_arguments: {},
         form_arguments: {},
         show_filter: true,
@@ -411,13 +409,11 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
 
-        if use_experimental_non_local_form
-          @form_builder = form_arguments[:builder]
-          @value = form_arguments[:value]
-          @input_name = form_arguments[:name]
-        end
+        @form_builder = form_arguments[:builder]
+        @value = form_arguments[:value]
+        @input_name = form_arguments[:name]
 
-        @list_form_arguments = use_experimental_non_local_form ? {} : form_arguments
+        @list_form_arguments = form_arguments
 
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
