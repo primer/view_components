@@ -413,7 +413,7 @@ module Primer
         @value = form_arguments[:value]
         @input_name = form_arguments[:name]
 
-        @list_form_arguments = form_arguments
+        @list_form_arguments = {}
 
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
