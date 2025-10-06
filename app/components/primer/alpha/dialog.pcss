@@ -18,7 +18,7 @@
 @property --dialog-scrollgutter {
   initial-value: 0;
   inherits: false;
-  syntax: "<length>";
+  syntax: '<length>';
 }
 
 body:has(dialog:modal.Overlay--disableScroll) {
@@ -120,13 +120,16 @@ dialog.Overlay:not([open]) {
     height: auto;
   }
 
-  &.Overlay--placement-left, &.Overlay--placement-right {
+  &.Overlay--placement-left,
+  &.Overlay--placement-right {
     position: fixed;
     height: 100%;
     max-height: unset;
   }
 
-  &.Overlay--motion-scaleFade, &.Overlay--placement-left, &.Overlay--placement-right {
+  &.Overlay--motion-scaleFade,
+  &.Overlay--placement-left,
+  &.Overlay--placement-right {
     @media screen and (prefers-reduced-motion: no-preference) {
       animation: 200ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running Overlay--motion-scaleFade;
     }
@@ -235,8 +238,9 @@ dialog.Overlay:not([open]) {
       & .Overlay-titleWrap {
         gap: var(--stack-gap-condensed);
 
+        /* large title is same size as default, making this change non-breaking-ish */
         & .Overlay-title {
-          font-size: var(--text-title-size-medium);
+          font: var(--text-title-shorthand-small);
         }
 
         & .Overlay-description {
@@ -268,8 +272,7 @@ dialog.Overlay:not([open]) {
 
       & .Overlay-title {
         margin: 0;
-        font-size: var(--text-body-size-medium);
-        font-weight: var(--base-text-weight-semibold);
+        font: var(--text-title-shorthand-small);
       }
 
       & .Overlay-description {
@@ -385,7 +388,8 @@ dialog.Overlay:not([open]) {
 
 /* --viewportRange-narrowLandscape */
 @media (max-width: 767px) {
-  .Overlay.Overlay--placement-left-whenNarrow, .Overlay--placement-right-whenNarrow {
+  .Overlay.Overlay--placement-left-whenNarrow,
+  .Overlay--placement-right-whenNarrow {
     position: fixed;
     height: 100%;
     max-height: 100vh;
