@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.45.1
+
+### Patch Changes
+
+- [#3724](https://github.com/primer/view_components/pull/3724) [`287150f`](https://github.com/primer/view_components/commit/287150f9e030a93be29be78a8ac40d512ae7490e) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix: Delete the direction from the body arguments
+
 ## 0.45.0
 
 ### Minor Changes
