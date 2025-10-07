@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.45.0
+
+### Minor Changes
+
+- [#3676](https://github.com/primer/view_components/pull/3676) [`263b185`](https://github.com/primer/view_components/commit/263b18573ae9c3a3c5ef028ca4d16dc6c5190071) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Utilize modern `Tooltip` component for `AvatarStack`
+
+- [#3700](https://github.com/primer/view_components/pull/3700) [`7c72ee7`](https://github.com/primer/view_components/commit/7c72ee7d539cc55f167645f132c4a71e791d66db) Thanks [@TylerJDev](https://github.com/TylerJDev)! - SelectPanel: Prevents `keydown` events from escaping the SelectPanel when within the items.
+
+- [#3719](https://github.com/primer/view_components/pull/3719) [`3c4bedb`](https://github.com/primer/view_components/commit/3c4bedb00422876f4d6f67e6ea18768d19862f2c) Thanks [@langermank](https://github.com/langermank)! - Update Dialog large heading size
+
+### Patch Changes
+
+- [#3692](https://github.com/primer/view_components/pull/3692) [`b0acdff`](https://github.com/primer/view_components/commit/b0acdfffaa30e606a07db657d9b444b4de8ca860) Thanks [@lukasoppermann](https://github.com/lukasoppermann)! - Replacing color tokens for StateLabel draft with new draft tokens
+
+- [#3659](https://github.com/primer/view_components/pull/3659) [`6734331`](https://github.com/primer/view_components/commit/6734331d14dbaaa455d6a61e24d0257ba5f5cf15) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Add custom label support for ToggleSwitch on/off states
+
+- [#3723](https://github.com/primer/view_components/pull/3723) [`e545103`](https://github.com/primer/view_components/commit/e545103ae106655c081b2553ad86842b5142af96) Thanks [@jonrohan](https://github.com/jonrohan)! - Add box-shadow back to the AvatarStack avatars
+
+- [#3686](https://github.com/primer/view_components/pull/3686) [`db729fb`](https://github.com/primer/view_components/commit/db729fb7e1154c23bfca0523bca7107ce1474c9f) Thanks [@langermank](https://github.com/langermank)! - Implement forced colors for progress bar
+
 ## 0.44.1
 
 ### Patch Changes
