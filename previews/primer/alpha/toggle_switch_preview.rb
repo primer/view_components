@@ -67,5 +67,9 @@ module Primer
         render(Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.primer_view_components.toggle_switch_index_path, autofocus: true))
       end
     end
+
+    def with_custom_status_label
+      render Primer::Alpha::ToggleSwitch.new(src: UrlHelpers.primer_view_components.toggle_switch_index_path, on_label: "Enabled", off_label: "Disabled")
+    end
   end
 end
