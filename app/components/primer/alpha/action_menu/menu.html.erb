@@ -13,7 +13,7 @@
               autofocus: true
             }
           ) do %>
-            <%= render Primer::Beta::Spinner.new(aria: { label: "Loading content..." }) %>
+            <%= render Primer::Beta::Spinner.new(aria: { label: I18n.t(:label_loading) }, size: :small) %>
           <% end %>
         <% end %>
       <% end %>
