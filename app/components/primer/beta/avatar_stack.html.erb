@@ -7,4 +7,7 @@
       <%= avatar %>
     <% end %>
   <% end %>
+  <% if @tooltipped %>
+    <%= render Primer::Alpha::Tooltip.new(**@tooltip_arguments) %>
+  <% end %>
 <% end %>

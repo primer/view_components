@@ -21,9 +21,10 @@
 .State,
 .State--draft {
   color: var(--fgColor-onEmphasis);
-  background-color: var(--bgColor-neutral-emphasis);
+  /* stylelint-disable-next-line primer/colors */
+  background-color: var(--bgColor-draft-emphasis, var(--bgColor-neutral-emphasis));
   border: var(--borderWidth-thin) solid transparent;
-  box-shadow: var(--boxShadow-thin) var(--borderColor-neutral-emphasis);
+  box-shadow: var(--boxShadow-thin) var(--borderColor-draft-emphasis, var(--borderColor-neutral-emphasis));
 }
 
 .State--open {

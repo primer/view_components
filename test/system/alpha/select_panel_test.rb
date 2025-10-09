@@ -1364,5 +1364,33 @@ module Alpha
         end
       end
     end
+
+    def test_prevents_events_from_bubbling
+      visit_preview(:default)
+
+      click_on_invoker_button
+      
+      keyboard.type(:tab)
+
+      evaluate_multiline_script(<<~JS)
+        document.body.addEventListener('keydown', (event) => {
+          window.bodyKeydownFired = true
+        }, { once: true })
+      JS
+
+      assert_includes active_element.text, "Item 1"
+
+      keyboard.type("a")  # type an alphabetic key, which should be stopped from propagating
+
+      refute page.evaluate_script("window.bodyKeydownFired")
+
+      keyboard.type(:escape)  # close the panel
+
+      refute_selector "select-panel dialog[open]"
+
+      keyboard.type("a")  
+
+      assert page.evaluate_script("window.bodyKeydownFired")
+    end
   end
 end
