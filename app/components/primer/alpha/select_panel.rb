@@ -505,7 +505,7 @@ module Primer
 
       # Adds a show button (i.e. a button) that will open the panel when clicked.
       #
-      # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
+      # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If an [icon](https://primer.style/octicons/usage-guidelines/) is provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
       renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:id] = "#{@panel_id}-button"
