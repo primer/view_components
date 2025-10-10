@@ -193,7 +193,7 @@ module Primer
       def select_panel_with_icon_button(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
       end
-      
+
       # @!group With icons
 
       # @label With leading icons

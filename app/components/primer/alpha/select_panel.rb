@@ -507,7 +507,7 @@ module Primer
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
-      renders_one :show_button, lambda {  |icon: nil, **system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:id] = "#{@panel_id}-button"
 
         system_arguments[:aria] = merge_aria(
