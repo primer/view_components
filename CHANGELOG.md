@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.75.1
+
+### Patch Changes
+
+- [#369](https://github.com/opf/primer_view_components/pull/369) [`a202e63`](https://github.com/opf/primer_view_components/commit/a202e63c4b2f976d6a9420b413bd26dec9756367) Thanks [@akabiru](https://github.com/akabiru)! - Make the (lazy) action menu spinner aria label translatable and reduce it's size to small
+
+- [#3724](https://github.com/primer/view_components/pull/3724) [`287150f`](https://github.com/opf/primer_view_components/commit/287150f9e030a93be29be78a8ac40d512ae7490e) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix: Delete the direction from the body arguments
+
 ## 0.75.0
 
 ### Minor Changes
