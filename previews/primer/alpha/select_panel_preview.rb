@@ -186,6 +186,14 @@ module Primer
         render_with_template(locals: { open_on_load: open_on_load })
       end
 
+      # @label SelectPanel with Primer::IconButton
+      #
+      # @snapshot interactive
+      # @param open_on_load toggle
+      def selectpanel_with_icon_button(open_on_load: false)
+        render_with_template(locals: { open_on_load: open_on_load })
+      end
+      
       # @!group With icons
 
       # @label With leading icons
