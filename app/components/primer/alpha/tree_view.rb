@@ -240,6 +240,14 @@ module Primer
     #
     # Nodes can be checked via the keyboard by pressing the space key.
     #
+    # ## Single-select mode
+    #
+    # By passing `select_variant: :single` to both sub-tree and leaf nodes:
+    # - Nodes become selectable and can be toggled via keyboard (space key).
+    # - A selected node displays a checkmark at the end of the line.
+    # Note: This checkmark conflicts with the `trailing_visual_icon` slot,
+    # so both cannot be used simultaneously.
+    #
     # ## Node tags
     #
     # `TreeView`s support three different node variants, `:anchor`, `:button`, and `:div` (the default), which controls
@@ -259,13 +267,19 @@ module Primer
     # |:---------------|:-------------|:------------|:--------------------------|
     # |Enter/space     |none          |div          |Expands/collapses          |
     # |Enter/space     |none          |anchor/button|Activates anchor/button    |
+    # |Enter/space     |single        |div          |Selects                    |
+    # |Enter/space     |single        |anchor/button|N/A (not allowed)          |
     # |Enter/space     |multiple      |div          |Checks or unchecks         |
     # |Enter/space     |multiple      |anchor/button|N/A (not allowed)          |
     # |Left/right arrow|none          |div          |Expands/collapses          |
     # |Left/right arrow|none          |anchor/button|Expands/collapses          |
+    # |Left/right arrow|single        |div          |Expands/collapses          |
+    # |Left/right arrow|single        |anchor/button|N/A (not allowed)          |
     # |Left/right arrow|multiple      |div          |Expands/collapses          |
     # |Left/right arrow|multiple      |anchor/button|N/A (not allowed)          |
     # |Click           |none          |div          |Expands/collapses          |
+    # |Click           |single        |div          |Selects                    |
+    # |Click           |single        |anchor/button|N/A (not allowed)          |
     # |Click           |multiple      |div          |Checks or unchecks         |
     # |Click           |multiple      |anchor/button|N/A (not allowed)          |
     #
@@ -351,7 +365,7 @@ module Primer
     # )
     # ```
     #
-    # Because checking or unchecking a sub-tree results in the checking or unchecking of all its children recursively,
+    # Because checking or unchecking a sub-tree may result in the checking or unchecking of all its children recursively,
     # both the `treeViewNodeChecked` and `treeViewBeforeNodeChecked` events provide an array of `TreeViewNodeInfo`
     # objects, which contain entries for every modified node in the tree.
     class TreeView < Primer::Component
