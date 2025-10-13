@@ -7439,6 +7439,12 @@
         "description": "Adds a show button (i.e. a button) that will open the panel when clicked.",
         "parameters": [
           {
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "Name of {{link_to_octicons}} to use instead of text. If an [icon](https://primer.style/octicons/usage-guidelines/) is provided, a {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} will be rendered. Otherwise a {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} will be rendered."
+          },
+          {
             "name": "system_arguments",
             "type": "Hash",
             "default": "N/A",
@@ -7762,8 +7768,8 @@
         }
       },
       {
-        "preview_path": "primer/alpha/select_panel/with_icon_button",
-        "name": "selectpanel_with_icon_button",
+        "preview_path": "primer/alpha/select_panel/select_panel_with_icon_button",
+        "name": "select_panel_with_icon_button",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
