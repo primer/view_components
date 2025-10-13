@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.75.2
+
+### Patch Changes
+
+- [#372](https://github.com/opf/primer_view_components/pull/372) [`eedf030`](https://github.com/opf/primer_view_components/commit/eedf030b9d583f0d924def49b6af41b34dc15646) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [62820] Primer Alpha::ToggleSwitch locale support, set default values for On and Off labels
+
 ## 0.75.1
 
 ### Patch Changes
