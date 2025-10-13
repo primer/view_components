@@ -15,6 +15,10 @@ en:
     include_sub_items: "Include sub-items"
     no_results_text: "No results"
 
+  toggle_switch:
+    label_on: "On"
+    label_off: "Off"
+
   label_title: "Title"
   label_loading: "Loading..."
   label_more: "More"

@@ -84,8 +84,8 @@ module Primer
 
         @system_arguments[:src] = @src if @src
 
-        @on_label  = on_label  || "On"
-        @off_label = off_label || "Off"
+        @on_label  = on_label  || I18n.t("toggle_switch.label_on")
+        @off_label = off_label || I18n.t("toggle_switch.label_off")
       end
 
       def on?
