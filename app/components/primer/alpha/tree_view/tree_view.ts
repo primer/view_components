@@ -341,19 +341,6 @@ export class TreeViewElement extends HTMLElement {
     }
   }
 
-  toggleCheckedAtPath(path: string[]) {
-    const node = this.nodeAtPath(path)
-    if (!node) return
-
-    if (this.getNodeType(node) === 'leaf') {
-      if (this.getNodeCheckedValue(node) === 'true') {
-        this.uncheckAtPath(path)
-      } else {
-        this.checkAtPath(path)
-      }
-    }
-  }
-
   checkedValueAtPath(path: string[]): TreeViewCheckedValue {
     const node = this.nodeAtPath(path)
     if (!node) return 'false'
