@@ -505,8 +505,9 @@ module Primer
 
       # Adds a show button (i.e. a button) that will open the panel when clicked.
       #
+      # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If an [icon](https://primer.style/octicons/usage-guidelines/) is provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:id] = "#{@panel_id}-button"
 
         system_arguments[:aria] = merge_aria(
@@ -514,7 +515,11 @@ module Primer
           { aria: { controls: "#{@panel_id}-dialog", "haspopup": "dialog", "expanded": "false" } }
         )
 
-        Primer::Beta::Button.new(**system_arguments)
+        if icon.present?
+          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
+        else
+          Primer::Beta::Button.new(**system_arguments)
+        end
       }
 
       # Customizable content for the error message that appears when items are fetched for the first time. This message
