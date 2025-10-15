@@ -9,9 +9,12 @@ gem "rack-cors"
 gem "rake", "~> 13.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-
-# rubocop:disable Bundler/DuplicatedGem
-if rails_version == "main"
+if rails_version == "latest"
+  gem "actionview"
+  gem "activemodel"
+  gem "activesupport"
+  gem "railties"
+elsif rails_version == "main"
   git "https://github.com/rails/rails", ref: "main" do
     gem "actionview"
     gem "activemodel"
@@ -25,7 +28,6 @@ else
   gem "activesupport", rails_version
   gem "railties", rails_version
 end
-# rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
 gem "puma", "~> 7.0.4"
