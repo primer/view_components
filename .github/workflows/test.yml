@@ -23,16 +23,6 @@ env:
   FERRUM_PROCESS_TIMEOUT: 30
 
 jobs:
-  define-matrix:
-    name: Define matrix
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - id: set-matrix
-        run: |
-          echo "matrix=[{"rails_version": "8.0.0", "ruby_version": "3.3", "label": "last"}, {"rails_version": "8.1.0.beta1", "ruby_version": "3.4", "label": "dotcom"}]" >> $GITHUB_OUTPUT
-
   accessibility:
     name: Accessibility
     runs-on: ubuntu-latest-8-cores
@@ -57,12 +47,11 @@ jobs:
         run: bundle exec rake test:accessibility
   components:
     name: Components (${{ matrix.label }})
-    needs: define-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
@@ -92,12 +81,11 @@ jobs:
           RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
     name: Lib (${{ matrix.label }})
-    needs: define-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
@@ -127,12 +115,11 @@ jobs:
           RAILS_VERSION: ${{ matrix.rails_version }}
   performance:
     name: Performance (${{ matrix.label }})
-    needs: define-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
