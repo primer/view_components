@@ -54,7 +54,7 @@ jobs:
         include:
           - rails_version: "8.0.0"
             ruby_version: "3.3"
-          - rails_version: "8.1.0.beta1.d8795bd"
+          - rails_version: "8.1.0.beta1"
             ruby_version: "3.4"
           - rails_version: "main"
             ruby_version: "3.4"
@@ -94,7 +94,7 @@ jobs:
         include:
           - rails_version: "8.0.0"
             ruby_version: "3.3"
-          - rails_version: "8.1.0.beta1.d8795bd"
+          - rails_version: "8.1.0.beta1"
             ruby_version: "3.4"
           - rails_version: "main"
             ruby_version: "3.4"
@@ -134,7 +134,7 @@ jobs:
         include:
           - rails_version: "8.0.0"
             ruby_version: "3.3"
-          - rails_version: "8.1.0.beta1.d8795bd"
+          - rails_version: "8.1.0.beta1"
             ruby_version: "3.4"
           - rails_version: "main"
             ruby_version: "3.4"
