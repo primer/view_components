@@ -1,12 +1,12 @@
 <%= form_with(url: primer_view_components.generic_form_submission_path(format: :json)) do |f| %>
   <%= render(Primer::Alpha::Stack.new) do %>
     <%= render(Primer::Alpha::TreeView.new(form_arguments: { builder: f, name: "folder_structure" })) do |tree| %>
-      <% tree.with_sub_tree(label: "src", expanded: expanded, select_variant: :multiple, value: 0) do |sub_tree| %>
-        <% sub_tree.with_leaf(label: "button.rb", select_variant: :multiple, value: 1) %>
-        <% sub_tree.with_leaf(label: "icon_button.rb", current: true, select_variant: :multiple, value: 2) %>
+      <% tree.with_sub_tree(label: "src", expanded: expanded, select_variant: select_variant, value: 0) do |sub_tree| %>
+        <% sub_tree.with_leaf(label: "button.rb", select_variant: select_variant, value: 1) %>
+        <% sub_tree.with_leaf(label: "icon_button.rb", current: true, select_variant: select_variant, value: 2) %>
       <% end %>
 
-      <% tree.with_leaf(label: "action_menu.rb", select_variant: :multiple, value: 3) %>
+      <% tree.with_leaf(label: "action_menu.rb", select_variant: select_variant, value: 3) %>
     <% end %>
 
     <%= render(Primer::Alpha::SubmitButton.new(name: :submit, label: "Submit")) %>

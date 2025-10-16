@@ -9,7 +9,7 @@ module Primer
       # @snapshot interactive
       # @param expanded [Boolean] toggle
       # @param disabled [Boolean] toggle
-      # @param select_variant [Symbol] select [multiple, none]
+      # @param select_variant [Symbol] select [multiple, single, none]
       # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def default(
         expanded: false,
@@ -28,7 +28,7 @@ module Primer
       # @label Playground
       #
       # @param expanded [Boolean] toggle
-      # @param select_variant [Symbol] select [multiple, none]
+      # @param select_variant [Symbol] select [multiple, single, none]
       # @param select_strategy [Symbol] select [self, descendants, mixed_descendants]
       def playground(
         expanded: false,
@@ -40,6 +40,38 @@ module Primer
           select_variant: select_variant.to_sym,
           select_strategy: select_strategy.to_sym,
           populate: -> (*args) { populate(*args) }
+        })
+      end
+
+      # @label Single select
+      #
+      # @snapshot interactive
+      # @param expanded [Boolean] toggle
+      # @param disabled [Boolean] toggle
+      def single_select(
+        expanded: false,
+        disabled: false
+      )
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled),
+          select_variant: :single,
+        })
+      end
+
+      # @label Multi select
+      #
+      # @snapshot interactive
+      # @param expanded [Boolean] toggle
+      # @param disabled [Boolean] toggle
+      def multi_select(
+        expanded: false,
+        disabled: false
+      )
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded),
+          disabled: coerce_bool(disabled),
+          select_variant: :multiple,
         })
       end
 
@@ -94,7 +126,7 @@ module Primer
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_action_icon [Symbol] octicon
       # @param trailing_visual_icon [Symbol] octicon
-      # @param select_variant [Symbol] select [multiple, none]
+      # @param select_variant [Symbol] select [multiple, single, none]
       # @param disabled [Boolean] toggle
       def leaf_node_playground(
         label: "Leaf node",
@@ -153,9 +185,11 @@ module Primer
 
       # @label Form input
       #
+      # @param select_variant [Symbol] select [multiple, single]
       # @param expanded [Boolean] toggle
-      def form_input(expanded: true)
+      def form_input(select_variant: :multiple, expanded: true)
         render_with_template(locals: {
+          select_variant: select_variant.to_sym,
           expanded: coerce_bool(expanded)
         })
       end
