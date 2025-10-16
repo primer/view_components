@@ -6157,6 +6157,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/select_panel/select_panel_with_icon_button",
+        "name": "select_panel_with_icon_button",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/select_panel/with_leading_icons",
         "name": "with_leading_icons",
         "snapshot": "interactive",
