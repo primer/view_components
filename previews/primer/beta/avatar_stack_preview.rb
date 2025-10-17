@@ -11,8 +11,9 @@ module Primer
       # @param align select [["Left", left], ["Right", right]]
       # @param tooltipped toggle
       # @param tooltip_label text
-      def playground(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!")
-        render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, body_arguments: { label: tooltip_label })) do |component|
+      # @param disable_expand toggle
+      def playground(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!", disable_expand: false)
+        render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, disable_expand: disable_expand, body_arguments: { label: tooltip_label })) do |component|
           Array.new(number_of_avatars&.to_i || 1) do
             component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
           end
@@ -95,6 +96,17 @@ module Primer
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
           component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "primer.style")
+        end
+      end
+
+      # @label With disabled expand
+      def with_disabled_expand
+        render(Primer::Beta::AvatarStack.new(disable_expand: true)) do |component|
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
       #

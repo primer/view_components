@@ -109,4 +109,18 @@ class PrimerAvatarStackTest < Minitest::Test
       end
     end
   end
+
+  def test_renders_with_disable_expand
+    render_inline(Primer::Beta::AvatarStack.new(disable_expand: true)) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    assert_selector(".AvatarStack") do
+      assert_selector(".AvatarStack-body[data-disable-expand]") do
+        assert_selector("img.avatar", count: 3)
+      end
+    end
+  end
 end
