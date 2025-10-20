@@ -7854,13 +7854,7 @@
         "name": "form_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag."
-      },
-      {
-        "name": "use_experimental_non_local_form",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923."
+        "description": "Form arguments. Supported for all fetch strategies."
       },
       {
         "name": "show_filter",
@@ -7940,6 +7934,12 @@
         "name": "show_button",
         "description": "Adds a show button (i.e. a button) that will open the panel when clicked.",
         "parameters": [
+          {
+            "name": "icon",
+            "type": "String",
+            "default": "N/A",
+            "description": "Name of {{link_to_octicons}} to use instead of text. If an [icon](https://primer.style/octicons/usage-guidelines/) is provided, a {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}} will be rendered. Otherwise a {{#link_to_component}}Primer::Beta::Button{{/link_to_component}} will be rendered."
+          },
           {
             "name": "system_arguments",
             "type": "Hash",
@@ -8253,6 +8253,19 @@
       {
         "preview_path": "primer/alpha/select_panel/with_avatar_items",
         "name": "with_avatar_items",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/select_panel_with_icon_button",
+        "name": "select_panel_with_icon_button",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
