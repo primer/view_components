@@ -32,7 +32,7 @@ jobs:
         with:
           ruby-version: "3.4"
           bundler-cache: true
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -59,7 +59,7 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
           cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -93,7 +93,7 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
           cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -149,7 +149,7 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -172,7 +172,7 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -201,7 +201,7 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
@@ -277,7 +277,7 @@ jobs:
           ruby-version: "3.2"
           bundler-cache: true
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
