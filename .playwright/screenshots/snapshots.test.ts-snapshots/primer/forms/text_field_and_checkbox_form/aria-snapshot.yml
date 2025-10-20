@@ -1,5 +1,5 @@
 - text: Ultimate answer
 - textbox "Ultimate answer"
 - text: The answer to life, the universe, and everything
-- checkbox "Enable the Infinite Improbability Drive": "1"
+- checkbox "Enable the Infinite Improbability Drive"
 - text: Enable the Infinite Improbability Drive Cross interstellar distances in a mere nothingth of a second.

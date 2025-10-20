@@ -1,2 +1,3 @@
 - button "Button 1"
-- link "Button 2"
+- link "Button 2":
+  - /url: "#"

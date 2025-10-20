@@ -1,3 +1,4 @@
 - list "List heading":
   - listitem:
-    - link "Danger item"
+    - link "Danger item":
+      - /url: /
