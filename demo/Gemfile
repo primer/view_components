@@ -47,7 +47,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring", "~> 4.4"
   gem "spring-watcher-listen", "~> 2.1"
-  gem "hotwire-livereload", "~> 2.0"
+  gem "hotwire-livereload", "~> 2.1"
 
   # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
   gem "turbo-rails"
