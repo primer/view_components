@@ -287,6 +287,21 @@ We periodically sync with GitHub's Primer repository. The process:
 
 **Important:** Only update one version at a time to preserve changeset history.
 
+## Coding Standards
+
+**We follow the coding standards defined by the upstream project (GitHub), not the guidelines used by OpenProject core.** This approach:
+- Facilitates upstreaming of our changes to the original Primer repository
+- Reduces the overhead of maintaining two sets of rules within one repository
+- Maintains consistency with the broader Primer ecosystem
+
+**Concrete implications:**
+- **Testing**: Use **Minitest**, not RSpec (as used in OpenProject core)
+- **CSS**: Follow GitHub's CSS formatting rules and conventions
+- **TypeScript**: Follow GitHub's TypeScript formatting rules and style guide
+- **Ruby**: Follow the Primer ViewComponents patterns and conventions
+
+When in doubt, refer to the existing codebase and upstream Primer ViewComponents for guidance on style and patterns.
+
 ## Code Style Guidelines
 
 ### Ruby
