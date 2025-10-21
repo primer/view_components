@@ -10,6 +10,11 @@ This repository is **a fork of GitHub's Primer ViewComponents** (`primer/view_co
 - We periodically sync with upstream to get new features and improvements
 - We use changesets for versioning and releases
 
+**Related Repositories:**
+- **Main Consumer**: [opf/openproject](https://github.com/opf/openproject) - The OpenProject application that consumes this library
+- **Upstream**: [primer/view_components](https://github.com/primer/view_components) - GitHub's Primer ViewComponents that we fork from
+- **Icons**: [opf/openproject-octicons](https://github.com/opf/openproject-octicons) - OpenProject's fork of GitHub Octicons
+
 ## Repository Structure
 
 ```
