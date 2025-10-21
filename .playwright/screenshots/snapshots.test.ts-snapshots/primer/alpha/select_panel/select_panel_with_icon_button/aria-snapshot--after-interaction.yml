@@ -1,0 +1,11 @@
+- button "Menu" [expanded]
+- dialog "Menu":
+  - heading "Menu" [level=1]
+  - button "Close"
+  - text: Filter
+  - searchbox "Filter"
+  - listbox "Menu options":
+    - option "Item 1"
+    - option "Item 2"
+    - option "Item 3"
+  - text: 3 results tab for results

@@ -30,12 +30,12 @@ jobs:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: "3.4"
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: |
             package-lock.json
             demo/package-lock.json
@@ -46,20 +46,12 @@ jobs:
       - name: Test
         run: bundle exec rake test:accessibility
   components:
-    name: Components
+    name: Components (${{ matrix.label }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.2'
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.4'
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
@@ -70,7 +62,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       - name: Build
         run: |
           npm ci
@@ -88,20 +80,12 @@ jobs:
           RUBY_VERSION: ${{ matrix.ruby_version }}
           RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
-    name: Lib
+    name: Lib (${{ matrix.label }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.2'
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.4'
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
@@ -112,7 +96,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       - name: Build
         run: |
           npm ci
@@ -130,20 +114,12 @@ jobs:
           RUBY_VERSION: ${{ matrix.ruby_version }}
           RAILS_VERSION: ${{ matrix.rails_version }}
   performance:
-    name: Performance
+    name: Performance (${{ matrix.label }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.2'
-          - rails_version: '7.2.2.1'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.3'
-          - rails_version: 'main'
-            ruby_version: '3.4'
+        include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
@@ -171,12 +147,12 @@ jobs:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: "3.2"
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: |
             package-lock.json
             demo/package-lock.json
@@ -194,12 +170,12 @@ jobs:
       - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: "3.2"
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: |
             package-lock.json
             demo/package-lock.json
@@ -223,12 +199,12 @@ jobs:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: "3.2"
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: |
             package-lock.json
             demo/package-lock.json
@@ -269,7 +245,7 @@ jobs:
           commit_message: Generating component snapshots
           file_pattern: .playwright/screenshots/**/*.png .playwright/screenshots/**/*.yml
           push_options: --force-with-lease
-      - name: 'Changes detected'
+      - name: "Changes detected"
         if: steps.auto-commit.outputs.changes_detected == 'true'
         uses: phulsechinmay/rewritable-pr-comment@v0.3.0
         with:
@@ -280,7 +256,7 @@ jobs:
 
             [Review differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&file-filters%5B%5D=.yml&show-viewed-files=false)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT_IDENTIFIER: 'visual-comparison-diff'
+          COMMENT_IDENTIFIER: "visual-comparison-diff"
       - uses: actions/upload-artifact@v4
         with:
           name: playwright-report
@@ -298,17 +274,17 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: "3.2"
           bundler-cache: true
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       - name: NPM Build
         run: npm ci
         env:
           # Disable CSS minification for tests
-          CI: 'false'
+          CI: "false"
       - name: Test CSS
         run: bundle exec rake test:component_css

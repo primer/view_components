@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## 0.46.0
+
+### Minor Changes
+
+- [#3713](https://github.com/primer/view_components/pull/3713) [`4ba92f5`](https://github.com/primer/view_components/commit/4ba92f579fff940943b9ee04d3097e28cb9588a6) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Enable use_experimental_non_local_form for all SelectPanels
+
+### Patch Changes
+
+- [#3731](https://github.com/primer/view_components/pull/3731) [`15ab908`](https://github.com/primer/view_components/commit/15ab9083e8ad06185c727071be5ee2a0eab14ae4) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Updates SelectPanel anchor to allow IconButtons
+
+- [#3727](https://github.com/primer/view_components/pull/3727) [`1ebafaa`](https://github.com/primer/view_components/commit/1ebafaabfd3424c78dd41610372b8c0e684bac1b) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove left/right bg color borders from Avatar Stack
+
+## 0.45.1
+
+### Patch Changes
+
+- [#3724](https://github.com/primer/view_components/pull/3724) [`287150f`](https://github.com/primer/view_components/commit/287150f9e030a93be29be78a8ac40d512ae7490e) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix: Delete the direction from the body arguments
+
+## 0.45.0
+
+### Minor Changes
+
+- [#3676](https://github.com/primer/view_components/pull/3676) [`263b185`](https://github.com/primer/view_components/commit/263b18573ae9c3a3c5ef028ca4d16dc6c5190071) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Utilize modern `Tooltip` component for `AvatarStack`
+
+- [#3700](https://github.com/primer/view_components/pull/3700) [`7c72ee7`](https://github.com/primer/view_components/commit/7c72ee7d539cc55f167645f132c4a71e791d66db) Thanks [@TylerJDev](https://github.com/TylerJDev)! - SelectPanel: Prevents `keydown` events from escaping the SelectPanel when within the items.
+
+- [#3719](https://github.com/primer/view_components/pull/3719) [`3c4bedb`](https://github.com/primer/view_components/commit/3c4bedb00422876f4d6f67e6ea18768d19862f2c) Thanks [@langermank](https://github.com/langermank)! - Update Dialog large heading size
+
+### Patch Changes
+
+- [#3692](https://github.com/primer/view_components/pull/3692) [`b0acdff`](https://github.com/primer/view_components/commit/b0acdfffaa30e606a07db657d9b444b4de8ca860) Thanks [@lukasoppermann](https://github.com/lukasoppermann)! - Replacing color tokens for StateLabel draft with new draft tokens
+
+- [#3659](https://github.com/primer/view_components/pull/3659) [`6734331`](https://github.com/primer/view_components/commit/6734331d14dbaaa455d6a61e24d0257ba5f5cf15) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - Add custom label support for ToggleSwitch on/off states
+
+- [#3723](https://github.com/primer/view_components/pull/3723) [`e545103`](https://github.com/primer/view_components/commit/e545103ae106655c081b2553ad86842b5142af96) Thanks [@jonrohan](https://github.com/jonrohan)! - Add box-shadow back to the AvatarStack avatars
+
+- [#3686](https://github.com/primer/view_components/pull/3686) [`db729fb`](https://github.com/primer/view_components/commit/db729fb7e1154c23bfca0523bca7107ce1474c9f) Thanks [@langermank](https://github.com/langermank)! - Implement forced colors for progress bar
+
 ## 0.44.1
 
 ### Patch Changes

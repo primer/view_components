@@ -7,7 +7,7 @@ jobs:
   pagerduty:
     if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'changeset-release/main'
     name: Lookup who is oncall from pagerduty
-    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@v2.2.0
+    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@v2.2.1
     with:
       schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
     secrets:

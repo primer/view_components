@@ -354,8 +354,7 @@ module Primer
       # @param dynamic_aria_label_prefix [String] If provided, the prefix is prepended to the dynamic label and set as the value of the `aria-label` attribute on the show button.
       # @param body_id [String] The unique ID of the panel body. If not provided, the body ID will be set to the panel ID with a "-body" suffix.
       # @param list_arguments [Hash] Arguments to pass to the underlying <%= link_to_component(Primer::Alpha::ActionList) %> component. Only has an effect for the local fetch strategy.
-      # @param form_arguments [Hash] Form arguments. Supported for `local`, and experimentally supported for `remote` and `eventually_local` strategies by enabling the `use_experimental_non_local_form` flag.
-      # @param use_experimental_non_local_form [Boolean] A feature flag used to slowly roll out moving the input field (generated from form arguments) to the top of the SelectPanel HTML thus allowing remote fetching to have default form values. At this time, support is only available for the :single select variant. See: https://github.com/github/primer/issues/4923.
+      # @param form_arguments [Hash] Form arguments. Supported for all fetch strategies.
       # @param show_filter [Boolean] Whether or not to show the filter input.
       # @param open_on_load [Boolean] Open the panel when the page loads.
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
@@ -377,7 +376,6 @@ module Primer
         dynamic_label_prefix: nil,
         dynamic_aria_label_prefix: nil,
         body_id: nil,
-        use_experimental_non_local_form: false,
         list_arguments: {},
         form_arguments: {},
         show_filter: true,
@@ -411,13 +409,11 @@ module Primer
         @loading_label = loading_label
         @loading_description_id = nil
 
-        if use_experimental_non_local_form
-          @form_builder = form_arguments[:builder]
-          @value = form_arguments[:value]
-          @input_name = form_arguments[:name]
-        end
+        @form_builder = form_arguments[:builder]
+        @value = form_arguments[:value]
+        @input_name = form_arguments[:name]
 
-        @list_form_arguments = use_experimental_non_local_form ? {} : form_arguments
+        @list_form_arguments = {}
 
         if loading_description.present?
           @loading_description_id = "#{@panel_id}-loading-description"
@@ -509,8 +505,9 @@ module Primer
 
       # Adds a show button (i.e. a button) that will open the panel when clicked.
       #
+      # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If an [icon](https://primer.style/octicons/usage-guidelines/) is provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Button) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_button, lambda { |icon: nil, **system_arguments|
         system_arguments[:id] = "#{@panel_id}-button"
 
         system_arguments[:aria] = merge_aria(
@@ -518,7 +515,11 @@ module Primer
           { aria: { controls: "#{@panel_id}-dialog", "haspopup": "dialog", "expanded": "false" } }
         )
 
-        Primer::Beta::Button.new(**system_arguments)
+        if icon.present?
+          Primer::Beta::IconButton.new(icon: icon, **system_arguments)
+        else
+          Primer::Beta::Button.new(**system_arguments)
+        end
       }
 
       # Customizable content for the error message that appears when items are fetched for the first time. This message

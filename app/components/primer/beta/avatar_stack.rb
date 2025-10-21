@@ -52,6 +52,7 @@ module Primer
 
         @tooltip_arguments = {
           for_id: @body_arguments[:id],
+          direction: @body_arguments.delete(:direction),
         }
 
         @tooltip_arguments[:direction] = @direction || Primer::Alpha::Tooltip::DIRECTION_DEFAULT
