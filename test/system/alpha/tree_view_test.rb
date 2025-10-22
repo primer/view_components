@@ -607,6 +607,51 @@ module Alpha
       assert_equal details["previousCheckedValue"], "false"
     end
 
+    def test_fires_event_before_checking_single_variant
+      visit_preview(:default, select_variant: :single)
+
+      details = capture_event("treeViewBeforeNodeChecked") do
+        activate_at_path("src")
+      end
+
+      assert_equal details.size, 1
+
+      assert details[0]["node"]
+      assert_equal details[0]["type"], "sub-tree"
+      assert_equal details[0]["path"], ["src"]
+      assert_equal details[0]["checkedValue"], "true"
+      assert_equal details[0]["previousCheckedValue"], "false"
+    end
+
+    def test_canceling_check_event_prevents_checking_for_single_variant
+      visit_preview(:default, select_variant: :single)
+
+      refute_path_checked "src"
+
+      capture_event("treeViewBeforeNodeChecked", cancel: true) do
+        activate_at_path("src")
+      end
+
+      # src should still not be checked
+      refute_path_checked "src"
+    end
+
+    def test_fires_check_event_after_single_variant
+      visit_preview(:default, select_variant: :single)
+
+      details = capture_event("treeViewNodeChecked") do
+        activate_at_path("src")
+      end
+
+      assert_equal details.size, 1
+
+      assert details[0]["node"]
+      assert_equal details[0]["type"], "sub-tree"
+      assert_equal details[0]["path"], ["src"]
+      assert_equal details[0]["checkedValue"], "true"
+      assert_equal details[0]["previousCheckedValue"], "false"
+    end
+
     def test_fires_event_before_checking
       visit_preview(:default, select_variant: :multiple)
 
@@ -786,11 +831,23 @@ module Alpha
       assert_path_checked "primer", "alpha", "action_bar"
     end
 
-
     def test_form_submission
       visit_preview(:form_input, expanded: true, route_format: :json)
 
       check_at_path("action_menu.rb")
+
+      find("button[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+
+      assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 0)
+    end
+
+    def test_form_submission_with_single_select_variant
+      visit_preview(:form_input, expanded: true, select_variant: :single, route_format: :json)
+
+      activate_at_path("action_menu.rb")
 
       find("button[type=submit]").click
 
