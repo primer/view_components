@@ -25,6 +25,7 @@ env:
 jobs:
   accessibility:
     name: Accessibility
+    timeout-minutes: 10
     runs-on:
       labels:
         - runs-on
@@ -51,11 +52,7 @@ jobs:
         run: bundle exec rake test:accessibility
   components:
     name: Components (${{ matrix.label }})
-    runs-on:
-      labels:
-        - runs-on
-        - runner=16cpu-linux-x64
-        - run-id=${{ github.run_id }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -89,11 +86,7 @@ jobs:
           RAILS_VERSION: ${{ matrix.rails_version }}
   lib:
     name: Lib (${{ matrix.label }})
-    runs-on:
-      labels:
-        - runs-on
-        - runner=16cpu-linux-x64
-        - run-id=${{ github.run_id }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -279,11 +272,7 @@ jobs:
         run: exit 1
   selectors:
     name: CSS coverage
-    runs-on:
-      labels:
-        - runs-on
-        - runner=16cpu-linux-x64
-        - run-id=${{ github.run_id }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
