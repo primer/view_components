@@ -261,10 +261,10 @@ module Primer
       end
 
       def render?
-        raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
+        raise ArgumentError, "PageHeader needs a title. Please use the `with_title` slot" unless title? || Rails.env.production?
         raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
 
-        title? && breadcrumbs?
+        title?
       end
 
       def render_mobile_menu?
@@ -273,6 +273,43 @@ module Primer
 
       def show_state?
         @state == STATE_DEFAULT
+      end
+
+      def context_bar
+        # Determine if breadcrumbs slot is present
+        show_context_bar = breadcrumbs? || @parent_link.present?
+
+        # Check if there are mobile actions (single action or menu)
+        has_mobile_actions = actions.any?
+
+        return unless show_context_bar || has_mobile_actions
+
+        display = if show_context_bar
+                    [:flex, :flex]   # show on all screens
+                  else
+                    [:flex, :none]   # only on mobile
+                  end
+
+        render Primer::BaseComponent.new(
+          tag: :div,
+          classes: "PageHeader-contextBar",
+          display: display
+        ) do
+          concat(@parent_link) if @parent_link.present?
+          concat(breadcrumbs) if breadcrumbs?
+          if @mobile_segmented_control
+            concat(render(@mobile_segmented_control, &@mobile_segmented_control_block))
+          end
+
+          if render_mobile_menu?
+            concat(render(@mobile_action_menu) do |menu|
+              menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
+              @desktop_menu_block.call(menu) unless @desktop_menu_block.nil?
+            end)
+          elsif actions.length == 1 && @mobile_action.present?
+            concat(render(@mobile_action) { |el| @mobile_action_block.call(el) unless @mobile_action_block.nil? })
+          end
+        end
       end
 
       private
