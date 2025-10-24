@@ -10,18 +10,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       render_inline(Primer::OpenProject::PageHeader.new)
     end
 
-    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
-  end
-
-  def test_raises_if_no_breadcrumb_provided
-    err = assert_raises ArgumentError do
-      render_inline(Primer::OpenProject::PageHeader.new) do |header|
-        header.with_title { "Hello" }
-      end
-
-    end
-
-    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
+    assert_equal("PageHeader needs a title. Please use the `with_title`` slot", err.message)
   end
 
   def test_renders_title
