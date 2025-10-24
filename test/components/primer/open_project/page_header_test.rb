@@ -296,17 +296,26 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_no_selector(".PageHeader-contextBar")
   end
 
-  def test_context_bar_shows_only_on_mobile_with_actions
-    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+  def test_renders_actions_without_breadcrumbs
+    render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
       header.with_title { "Hello" }
-      header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
+      header.with_action_button(mobile_icon: "pencil", mobile_label: "Edit") { "Edit" }
+      header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
+      header.with_action_link(mobile_icon: "link", mobile_label: "Go to", href: "https://openproject.org") { "Go to OpenProject" }
     end
 
-    # Context bar should exist
-    assert_selector(".PageHeader-contextBar.d-flex.d-sm-none")
-
-    # Breadcrumbs should not exist
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-actions")
+    assert_text("Edit")
+    assert_text("Delete")
+    assert_text("Go to OpenProject")
+    assert_no_selector(".PageHeader-contextBar")
     assert_no_selector(".PageHeader-breadcrumbs")
+    assert_no_selector(".PageHeader-parentLink")
+
+    # At least one mobile action button or menu should exist
+    assert_selector(".PageHeader-actions .Button, .PageHeader-actions action-menu", minimum: 1)
   end
 
   private
