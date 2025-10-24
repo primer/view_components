@@ -296,6 +296,19 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_no_selector(".PageHeader-contextBar")
   end
 
+  def test_context_bar_shows_only_on_mobile_with_actions
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_action_button(mobile_icon: "pencil", mobile_label: "Action") { "An action" }
+    end
+
+    # Context bar should exist
+    assert_selector(".PageHeader-contextBar.d-flex.d-sm-none")
+
+    # Breadcrumbs should not exist
+    assert_no_selector(".PageHeader-breadcrumbs")
+  end
+
   private
 
   def breadcrumb_elements
