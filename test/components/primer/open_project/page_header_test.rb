@@ -10,7 +10,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       render_inline(Primer::OpenProject::PageHeader.new)
     end
 
-    assert_equal("PageHeader needs a title. Please use the `with_title`` slot", err.message)
+    assert_equal("PageHeader needs a title. Please use the `with_title` slot", err.message)
   end
 
   def test_renders_title
@@ -277,6 +277,23 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/foo']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item a[href='/bar']")
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item.text-bold a[href='#']")
+  end
+
+  def test_renders_without_breadcrumbs
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+    end
+
+    # Title is rendered
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+
+    # Breadcrumbs and parent link are not rendered
+    assert_no_selector(".PageHeader-breadcrumbs")
+    assert_no_selector(".PageHeader-parentLink")
+
+    # Context bar should not be rendered when no breadcrumbs or parent link exist
+    assert_no_selector(".PageHeader-contextBar")
   end
 
   private
