@@ -4,17 +4,7 @@
       <div class="PageHeader-contextBar">
         <%= @parent_link %>
         <%= breadcrumbs %>
-        <% if @mobile_segmented_control %>
-          <%= render(@mobile_segmented_control, &@mobile_segmented_control_block) %>
-        <% end %>
-        <% if render_mobile_menu? %>
-          <%= render(@mobile_action_menu) do |menu| %>
-            <% menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label) %>
-            <% @desktop_menu_block.call(menu) unless @desktop_menu_block.nil? %>
-          <% end %>
-        <% elsif actions.length == 1 && @mobile_action.present? %>
-          <%= render(@mobile_action) { |el| @mobile_action_block.call(el) unless @mobile_action_block.nil?} %>
-        <% end %>
+        <%= render_mobile_actions %>
       </div>
     <% end %>
   <% end %>
@@ -30,18 +20,7 @@
 
         <%# If there are no breadcrumbs, render mobile actions in the title bar instead %>
         <% unless breadcrumbs %>
-
-          <% if @mobile_segmented_control %>
-            <%= render(@mobile_segmented_control, &@mobile_segmented_control_block) %>
-          <% end %>
-          <% if render_mobile_menu? %>
-            <%= render(@mobile_action_menu) do |menu| %>
-              <% menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label) %>
-              <% @desktop_menu_block.call(menu) unless @desktop_menu_block.nil? %>
-            <% end %>
-          <% elsif actions.length == 1 && @mobile_action.present? %>
-            <%= render(@mobile_action) { |el| @mobile_action_block.call(el) unless @mobile_action_block.nil?} %>
-          <% end %>
+          <%= render_mobile_actions %>
         <% end %>
       </div>
     <% end %>
@@ -54,4 +33,3 @@
     </div>
   <% end %>
 <% end %>
-

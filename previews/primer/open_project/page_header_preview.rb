@@ -278,12 +278,10 @@ module Primer
         render(Primer::OpenProject::PageHeader.new) do |header|
           header.with_title { "Hello" }
           header.with_description { "This PageHeader does not have any breadcrumbs." }
-
           header.with_action_button(mobile_icon: "star", mobile_label: "Star") do |button|
             button.with_leading_visual_icon(icon: "star")
             "Star"
           end
-
         end
       end
     end

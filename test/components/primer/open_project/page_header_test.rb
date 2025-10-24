@@ -318,6 +318,32 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-actions .Button, .PageHeader-actions action-menu", minimum: 1)
   end
 
+  def test_renders_with_mobile_segmented_control
+    render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
+      header.with_title { "Title" }
+      header.with_action_segmented_control(
+        "aria-label": "Segmented control",
+        mobile_system_arguments: { hide_labels: true }
+      ) do |control|
+        control.with_item(label: "Preview", icon: :eye, selected: true)
+        control.with_item(label: "Raw", icon: :"file-code")
+      end
+    end
+
+    assert_selector(".PageHeader-action")
+    assert_selector(".PageHeader-action.SegmentedControl")
+  end
+
+  def test_renders_single_action_with_mobile_action
+    render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
+      header.with_title { "Single Action Test" }
+      header.with_action_button(mobile_icon: "plus", mobile_label: "Add") { "Add" }
+    end
+
+    assert_text("Add")
+  end
+
+
   private
 
   def breadcrumb_elements

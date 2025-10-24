@@ -275,41 +275,25 @@ module Primer
         @state == STATE_DEFAULT
       end
 
-      def context_bar
-        # Determine if breadcrumbs slot is present
-        show_context_bar = breadcrumbs? || @parent_link.present?
+      def render_mobile_actions
+        safe_join([
+                    (render(@mobile_segmented_control, &@mobile_segmented_control_block) if @mobile_segmented_control),
+                    (render_mobile_action_menu if render_mobile_menu?),
+                    (render_single_mobile_action if actions.one? && @mobile_action.present?)
+                  ].compact)
+      end
 
-        # Check if there are mobile actions (single action or menu)
-        has_mobile_actions = actions.any?
+      private
 
-        return unless show_context_bar || has_mobile_actions
-
-        display = if show_context_bar
-                    [:flex, :flex]   # show on all screens
-                  else
-                    [:flex, :none]   # only on mobile
-                  end
-
-        render Primer::BaseComponent.new(
-          tag: :div,
-          classes: "PageHeader-contextBar",
-          display: display
-        ) do
-          concat(@parent_link) if @parent_link.present?
-          concat(breadcrumbs) if breadcrumbs?
-          if @mobile_segmented_control
-            concat(render(@mobile_segmented_control, &@mobile_segmented_control_block))
-          end
-
-          if render_mobile_menu?
-            concat(render(@mobile_action_menu) do |menu|
-              menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
-              @desktop_menu_block.call(menu) unless @desktop_menu_block.nil?
-            end)
-          elsif actions.length == 1 && @mobile_action.present?
-            concat(render(@mobile_action) { |el| @mobile_action_block.call(el) unless @mobile_action_block.nil? })
-          end
+      def render_mobile_action_menu
+        render(@mobile_action_menu) do |menu|
+          menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
+          @desktop_menu_block&.call(menu)
         end
+      end
+
+      def render_single_mobile_action
+        render(@mobile_action) { |el| @mobile_action_block&.call(el) }
       end
 
       private
