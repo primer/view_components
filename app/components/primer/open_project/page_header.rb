@@ -186,7 +186,9 @@ module Primer
       #
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :breadcrumbs, lambda { |items, selected_item_font_weight: :bold, **system_arguments|
+      renders_one :breadcrumbs, lambda { |items = nil, selected_item_font_weight: :bold, **system_arguments|
+        return if items.nil?
+
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
 
@@ -208,9 +210,12 @@ module Primer
           link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
 
           @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
-            render(Primer::Beta::Octicon.new(icon: "arrow-left",
-                                             "aria-label": I18n.t("button_back"),
-                                             mr: 2)
+            render(
+              Primer::Beta::Octicon.new(
+                icon: "arrow-left",
+                "aria-label": I18n.t("button_back"),
+                mr: 2
+              )
             ) + content_tag(:span, parent_item[:text])
           end
         end
@@ -261,10 +266,10 @@ module Primer
       end
 
       def render?
-        raise ArgumentError, "PageHeader needs a title. Please use the `with_title` slot" unless title? || Rails.env.production?
+        raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
         raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
 
-        title?
+        title? && breadcrumbs?
       end
 
       def context_bar
@@ -287,28 +292,12 @@ module Primer
 
       private
 
-      def show_context_bar?
-        show_breadcrumbs? || actions.any?
-      end
-
-      def render_mobile_menu?
-        actions.count > 1
-      end
-
       def show_state?
         @state == STATE_DEFAULT
       end
 
-      def render_mobile_actions
-        safe_join([
-                    (render(@mobile_segmented_control, &@mobile_segmented_control_block) if @mobile_segmented_control),
-                    (render_mobile_action_menu if render_mobile_menu?),
-                    (render_single_mobile_action if actions.one? && @mobile_action.present?)
-                  ].compact)
-      end
-
       def show_breadcrumbs?
-        breadcrumbs? || @parent_link.present?
+        breadcrumbs && !breadcrumbs.to_s.strip.empty? || @parent_link.present?
       end
 
       def render_mobile_action_menu
@@ -316,6 +305,14 @@ module Primer
           menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
           @desktop_menu_block&.call(menu)
         end
+      end
+
+      def show_context_bar?
+        show_breadcrumbs? || actions.any?
+      end
+
+      def render_mobile_menu?
+        actions.count > 1
       end
 
       def render_single_mobile_action
