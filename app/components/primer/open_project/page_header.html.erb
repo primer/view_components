@@ -1,14 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if breadcrumbs %>
-    <% if @parent_link || actions.any? %>
-      <div class="PageHeader-contextBar">
-        <%= @parent_link %>
-        <%= breadcrumbs %>
-        <%= render_mobile_actions %>
-      </div>
-    <% end %>
-  <% end %>
-
+  <%= context_bar %>
   <div class="PageHeader-titleBar">
     <%= leading_action %>
     <%= title %>
@@ -17,15 +8,9 @@
         <% actions.each do |action| %>
           <%= action %>
         <% end %>
-
-        <%# If there are no breadcrumbs, render mobile actions in the title bar instead %>
-        <% unless breadcrumbs %>
-          <%= render_mobile_actions %>
-        <% end %>
       </div>
     <% end %>
   </div>
-
   <%= description %>
   <% if tab_nav %>
     <div class="PageHeader-tabNavBar">

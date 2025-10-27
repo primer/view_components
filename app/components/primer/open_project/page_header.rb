@@ -40,7 +40,7 @@ module Primer
           "PageHeader-title",
           "PageHeader-title--#{variant}"
         )
-
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], ("PageHeader--noBreadcrumb" unless show_breadcrumbs?))
         Primer::OpenProject::PageHeader::Title.new(state: @state, **system_arguments)
       }
 
@@ -267,6 +267,30 @@ module Primer
         title?
       end
 
+      def context_bar
+        return unless show_context_bar?
+
+        render Primer::BaseComponent.new(
+          tag: :div,
+          classes: "PageHeader-contextBar",
+          display: show_breadcrumbs? ? [:flex, :flex] : [:flex, :none]
+        ) do
+          concat(@parent_link) if @parent_link.present?
+          concat(breadcrumbs) if breadcrumbs?
+
+          concat(render_mobile_segmented_control) if @mobile_segmented_control
+
+          concat(render_mobile_action_menu) if render_mobile_menu?
+          concat(render_single_mobile_action) if actions.one? && @mobile_action.present?
+        end
+      end
+
+      private
+
+      def show_context_bar?
+        show_breadcrumbs? || actions.any?
+      end
+
       def render_mobile_menu?
         actions.count > 1
       end
@@ -283,7 +307,9 @@ module Primer
                   ].compact)
       end
 
-      private
+      def show_breadcrumbs?
+        breadcrumbs? || @parent_link.present?
+      end
 
       def render_mobile_action_menu
         render(@mobile_action_menu) do |menu|
@@ -296,7 +322,9 @@ module Primer
         render(@mobile_action) { |el| @mobile_action_block&.call(el) }
       end
 
-      private
+      def render_mobile_segmented_control
+        render(@mobile_segmented_control, &@mobile_segmented_control_block)
+      end
 
       def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
