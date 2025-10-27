@@ -181,9 +181,8 @@ module Primer
         Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
-      # Optional breadcrumbs above the title row
-      # By default shown on wider screens. Can be overridden with system_argument: display
-      #
+      # Using PageHeader without breadcrumbs is only recommended in special cases.
+      # In doubt, please check the PageHeader component documentation.
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :breadcrumbs, lambda { |items = nil, selected_item_font_weight: :bold, **system_arguments|
@@ -300,13 +299,6 @@ module Primer
         breadcrumbs && !breadcrumbs.to_s.strip.empty? || @parent_link.present?
       end
 
-      def render_mobile_action_menu
-        render(@mobile_action_menu) do |menu|
-          menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
-          @desktop_menu_block&.call(menu)
-        end
-      end
-
       def show_context_bar?
         show_breadcrumbs? || actions.any?
       end
@@ -321,6 +313,13 @@ module Primer
 
       def render_mobile_segmented_control
         render(@mobile_segmented_control, &@mobile_segmented_control_block)
+      end
+
+      def render_mobile_action_menu
+        render(@mobile_action_menu) do |menu|
+          menu.with_show_button(icon: :"kebab-horizontal", size: :small, "aria-label": @mobile_menu_label)
+          @desktop_menu_block&.call(menu)
+        end
       end
 
       def set_action_arguments(system_arguments, scheme: nil)

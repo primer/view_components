@@ -10,7 +10,18 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
       render_inline(Primer::OpenProject::PageHeader.new)
     end
 
-    assert_equal("PageHeader needs a title. Please use the `with_title` slot", err.message)
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
+  end
+
+  def test_raises_if_no_breadcrumb_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::PageHeader.new) do |header|
+        header.with_title { "Hello" }
+      end
+
+    end
+
+    assert_equal("PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot", err.message)
   end
 
   def test_renders_title
@@ -282,6 +293,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_without_breadcrumbs
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs()
     end
 
     # Title is rendered
@@ -299,6 +311,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_actions_without_breadcrumbs
     render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
       header.with_title { "Hello" }
+      header.with_breadcrumbs()
       header.with_action_button(mobile_icon: "pencil", mobile_label: "Edit") { "Edit" }
       header.with_action_icon_button(icon: "trash", mobile_icon: "trash", label: "Delete") { "Delete" }
       header.with_action_link(mobile_icon: "link", mobile_label: "Go to", href: "https://openproject.org") { "Go to OpenProject" }
@@ -310,7 +323,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_text("Edit")
     assert_text("Delete")
     assert_text("Go to OpenProject")
-    assert_no_selector(".PageHeader-contextBar")
+    assert_selector(".PageHeader-contextBar")
     assert_no_selector(".PageHeader-breadcrumbs")
     assert_no_selector(".PageHeader-parentLink")
 
@@ -321,6 +334,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_with_mobile_segmented_control
     render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
       header.with_title { "Title" }
+      header.with_breadcrumbs()
       header.with_action_segmented_control(
         "aria-label": "Segmented control",
         mobile_system_arguments: { hide_labels: true }
@@ -337,6 +351,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
   def test_renders_single_action_with_mobile_action
     render_inline(Primer::OpenProject::PageHeader.new(show_state: true)) do |header|
       header.with_title { "Single Action Test" }
+      header.with_breadcrumbs()
       header.with_action_button(mobile_icon: "plus", mobile_label: "Add") { "Add" }
     end
 
