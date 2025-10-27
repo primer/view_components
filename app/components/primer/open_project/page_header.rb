@@ -289,11 +289,11 @@ module Primer
         end
       end
 
-      private
-
       def show_state?
         @state == STATE_DEFAULT
       end
+
+      private
 
       def show_breadcrumbs?
         breadcrumbs && !breadcrumbs.to_s.strip.empty? || @parent_link.present?
