@@ -40,7 +40,6 @@ module Primer
           "PageHeader-title",
           "PageHeader-title--#{variant}"
         )
-        @system_arguments[:classes] = class_names(@system_arguments[:classes], ("PageHeader--noBreadcrumb" unless show_breadcrumbs?))
         Primer::OpenProject::PageHeader::Title.new(state: @state, **system_arguments)
       }
 
@@ -269,6 +268,14 @@ module Primer
         raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
 
         title? && breadcrumbs?
+      end
+
+      def before_render
+        super
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          ("PageHeader--noBreadcrumb" unless show_breadcrumbs?)
+        )
       end
 
       def context_bar
