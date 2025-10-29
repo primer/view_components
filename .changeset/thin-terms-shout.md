@@ -1,5 +1,5 @@
 ---
-"@openproject/primer-view-components": patch
+"@openproject/primer-view-components": minor
 ---
 
-[67724] Make breadcrumbs optional in page header component
+[67724] keep breadcrumbs slot required but allow nil/empty value
