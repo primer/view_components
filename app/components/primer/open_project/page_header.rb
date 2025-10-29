@@ -212,12 +212,9 @@ module Primer
           link_arguments[:display] ||= DEFAULT_PARENT_LINK_DISPLAY
 
           @parent_link = render(Primer::Beta::Link.new(scheme: :primary, muted: true, **link_arguments)) do
-            render(
-              Primer::Beta::Octicon.new(
-                icon: "arrow-left",
-                "aria-label": I18n.t("button_back"),
-                mr: 2
-              )
+            render(Primer::Beta::Octicon.new(icon: "arrow-left",
+                                             "aria-label": I18n.t("button_back"),
+                                             mr: 2)
             ) + content_tag(:span, parent_item[:text])
           end
         end
@@ -274,15 +271,15 @@ module Primer
         title? && breadcrumbs?
       end
 
+      def render_mobile_menu?
+        actions.count > 1
+      end
+
       def show_state?
         @state == STATE_DEFAULT
       end
 
       private
-
-      def render_mobile_menu?
-        actions.count > 1
-      end
 
       def set_action_arguments(system_arguments, scheme: nil)
         system_arguments[:ml] ||= 2
