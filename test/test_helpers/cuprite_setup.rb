@@ -38,7 +38,7 @@ Capybara.register_driver(:primer_cuprite) do |app|
     "disable-renderer-backgrounding": nil
   }
 
-  driver_options = options.merge(browser_options:)
+  driver_options = options.merge(browser_options: browser_options)
   Capybara::Cuprite::Driver.new(app, **driver_options)
 end
 
