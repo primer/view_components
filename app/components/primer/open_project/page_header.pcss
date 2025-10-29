@@ -83,3 +83,17 @@
 .PageHeader-parentLink {
   flex: 1 1 auto;
 }
+
+.PageHeader--noBreadcrumb .PageHeader-contextBar {
+  display: none;
+}
+
+/* Keep it visible on smaller*/
+@media (max-width: 543.98px) {
+  .PageHeader--noBreadcrumb .PageHeader-contextBar {
+    display: flex;
+  }
+}
+.PageHeader--noBreadcrumb .PageHeader-titleBar {
+  height: var(--control-small-size);
+}

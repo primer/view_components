@@ -305,7 +305,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_no_selector(".PageHeader-parentLink")
 
     # Context bar should not be rendered when no breadcrumbs or parent link exist
-    assert_no_selector(".PageHeader-contextBar")
+    assert_selector(".PageHeader--noBreadcrumb")
   end
 
   def test_renders_actions_without_breadcrumbs
