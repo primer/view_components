@@ -185,8 +185,11 @@ module Primer
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :breadcrumbs, lambda { |items = nil, selected_item_font_weight: :bold, **system_arguments|
-
-        return if items.nil?
+        if items.nil?
+          # No breadcrumbs → mark the PageHeader with a special class
+          @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--noBreadcrumb")
+          return
+        end
 
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
@@ -268,10 +271,6 @@ module Primer
         raise ArgumentError, "PageHeader needs a title and a breadcrumb. Please use the `with_title` and `with_breadcrumbs` slot" unless breadcrumbs? || Rails.env.production?
         raise ArgumentError, "PageHeader allows only a maximum of 5 actions" if actions.count > 5
 
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          ("PageHeader--noBreadcrumb" unless show_breadcrumbs?)
-        )
         title? && breadcrumbs?
       end
 
