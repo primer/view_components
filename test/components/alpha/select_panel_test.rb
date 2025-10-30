@@ -183,6 +183,12 @@ module Primer
 
         assert_selector("input[value='3']", visible: :all)
       end
+
+      def test_renders_icon_button_as_invoker
+        render_preview(:select_panel_with_icon_button)
+
+         assert_selector(".Button--iconOnly")
+      end
     end
   end
 end

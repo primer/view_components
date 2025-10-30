@@ -1469,6 +1469,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/beta/avatar_stack/with_disabled_expand",
+        "name": "with_disabled_expand",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -6146,6 +6159,19 @@
       {
         "preview_path": "primer/alpha/select_panel/with_avatar_items",
         "name": "with_avatar_items",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/select_panel/select_panel_with_icon_button",
+        "name": "select_panel_with_icon_button",
         "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
