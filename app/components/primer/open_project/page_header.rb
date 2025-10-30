@@ -184,7 +184,7 @@ module Primer
       # In doubt, please check the PageHeader component documentation.
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :breadcrumbs, lambda { |items = nil, selected_item_font_weight: :bold, **system_arguments|
+      renders_one :breadcrumbs, lambda { |items, selected_item_font_weight: :bold, **system_arguments|
         if items.nil?
           # No breadcrumbs → mark the PageHeader with a special class
           @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--noBreadcrumb")
