@@ -1,8 +1,8 @@
 - group:
-  - checkbox "Capital": capital
+  - checkbox "Capital"
   - text: Capital
-  - checkbox "Most-populous": populous
+  - checkbox "Most-populous"
   - text: Most-populous
-  - checkbox "Custom": custom
+  - checkbox "Custom"
   - text: Custom Custom cities
   - textbox "Custom cities"
