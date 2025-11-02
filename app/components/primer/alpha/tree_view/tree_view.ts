@@ -206,10 +206,9 @@ export class TreeViewElement extends HTMLElement {
 
     if (!checkSuccess) return
 
-    const currentlyChecked = !this.getNodeCheckedValue(node)
-
-    // disallow unchecking checked item in single-select mode
-    if (!currentlyChecked) {
+    if (this.getNodeCheckedValue(node) === 'true') {
+      this.setNodeCheckedValue(node, 'false')
+    } else {
       this.checkOnlyAtPath(path)
     }
 
