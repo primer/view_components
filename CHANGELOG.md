@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.76.0
+
+### Minor Changes
+
+- [#3713](https://github.com/primer/view_components/pull/3713) [`4ba92f5`](https://github.com/opf/primer_view_components/commit/4ba92f579fff940943b9ee04d3097e28cb9588a6) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Enable use_experimental_non_local_form for all SelectPanels
+
+### Patch Changes
+
+- [#3731](https://github.com/primer/view_components/pull/3731) [`15ab908`](https://github.com/opf/primer_view_components/commit/15ab9083e8ad06185c727071be5ee2a0eab14ae4) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Updates SelectPanel anchor to allow IconButtons
+
+- [#378](https://github.com/opf/primer_view_components/pull/378) [`7f3e4ef`](https://github.com/opf/primer_view_components/commit/7f3e4ef832277c4a861e8e00bfd0112a0c0250b2) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [68697] Allow deselecting tree view items in single select, when clicking on the selected item
+
+- [#3727](https://github.com/primer/view_components/pull/3727) [`1ebafaa`](https://github.com/opf/primer_view_components/commit/1ebafaabfd3424c78dd41610372b8c0e684bac1b) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove left/right bg color borders from Avatar Stack
+
 ## 0.75.2
 
 ### Patch Changes
