@@ -1,12 +1,58 @@
 name: Release
 on:
   push:
-    branches:
-      - 'main'
-jobs:
   release:
-    name: Final
-    if: ${{ github.repository == 'primer/view_components' }}
+    types: [published]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+  checks: write
+  statuses: write
+
+jobs:
+  publish-main:
+    if: ${{ github.event_name == 'release' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Create .gem credentials
+        run: |
+          mkdir -p $HOME/.gem
+          cat << EOF > $HOME/.gem/credentials
+          ---
+          :rubygems_api_key: ${RUBYGEMS_TOKEN}
+          EOF
+          chmod 0600 $HOME/.gem/credentials
+        env:
+          RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN_SHARED }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: NPM install
+        run: |
+          npm ci
+      - name: Publish Gem
+        run: bundle exec rake release
+      - name: Publish NPM
+        run: npm publish --access public
+
+  release-main:
+    name: Main
+    if: ${{ github.repository == 'primer/view_components' && github.ref_name == 'main' && github.event_name == 'push' }}
 
     runs-on: ubuntu-latest
     steps:
@@ -18,15 +64,15 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 24
+          cache: "npm"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: "3.3"
 
       - name: Install dependencies
         run: |
@@ -52,4 +98,21 @@ jobs:
           publish: script/changeset-publish
         env:
           GITHUB_TOKEN: ${{ steps.get-access-token.outputs.token }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+
+  release-canary:
+    name: Canary
+    if: ${{ github.repository == 'primer/view_components' && github.ref_name != 'main' && github.ref_name != 'changeset-release/main' && github.event_name == 'push' }}
+    uses: primer/.github/.github/workflows/release_canary.yml@v2.2.1
+    with:
+      install: npm i
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+
+  release-candidate:
+    name: Candidate
+    if: ${{ github.repository == 'primer/view_components' && github.ref_name == 'changeset-release/main' && github.event_name == 'push' }}
+    uses: primer/.github/.github/workflows/release_candidate.yml@v2.2.1
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
