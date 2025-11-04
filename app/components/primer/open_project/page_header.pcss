@@ -84,17 +84,14 @@
   flex: 1 1 auto;
 }
 
-.PageHeader--noBreadcrumb .PageHeader-contextBar {
-  display: none;
-}
-
-/* Keep it visible on smaller */
-@media (max-width: 543.98px) {
+/* Hide the context bar on desktop when no breadcrumb is visible */
+@media screen and (min-width: 543.98px) {
   .PageHeader--noBreadcrumb .PageHeader-contextBar {
-    display: flex;
+    display: none;
   }
 }
 
+/* Match the title bar height with the toggle menu button for proper vertical alignment */
 .PageHeader--noBreadcrumb .PageHeader-titleBar {
   height: var(--control-small-size);
 }
