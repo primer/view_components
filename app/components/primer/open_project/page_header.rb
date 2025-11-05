@@ -40,7 +40,6 @@ module Primer
           "PageHeader-title",
           "PageHeader-title--#{variant}"
         )
-
         Primer::OpenProject::PageHeader::Title.new(state: @state, **system_arguments)
       }
 
@@ -181,12 +180,17 @@ module Primer
         Primer::Beta::IconButton.new(icon: icon, **system_arguments)
       }
 
-      # Optional breadcrumbs above the title row
-      # By default shown on wider screens. Can be overridden with system_argument: display
-      #
+      # Using PageHeader without breadcrumbs is only recommended in special cases.
+      # In doubt, please check the PageHeader component documentation.
       # @param items [Array<String, Hash>] Items is an array of strings, hash {href, text} or an anchor tag string
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :breadcrumbs, lambda { |items, selected_item_font_weight: :bold, **system_arguments|
+        if items.nil?
+          # No breadcrumbs → mark the PageHeader with a special class
+          @system_arguments[:classes] = class_names(@system_arguments[:classes], "PageHeader--noBreadcrumb")
+          return
+        end
+
         system_arguments[:classes] = class_names(system_arguments[:classes], "PageHeader-breadcrumbs")
         system_arguments[:display] ||= DEFAULT_BREADCRUMBS_DISPLAY
 

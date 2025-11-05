@@ -290,6 +290,24 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item.text-bold a[href='#']")
   end
 
+  def test_renders_without_breadcrumbs
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(nil)
+    end
+
+    # Title is rendered
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+
+    # Breadcrumbs and parent link are not rendered
+    assert_no_selector(".PageHeader-breadcrumbs")
+    assert_no_selector(".PageHeader-parentLink")
+
+    # A class should be added to the page header when there is no breadcrumbs
+    assert_selector(".PageHeader--noBreadcrumb")
+  end
+
   private
 
   def breadcrumb_elements

@@ -83,3 +83,15 @@
 .PageHeader-parentLink {
   flex: 1 1 auto;
 }
+
+/* Hide the context bar on desktop when no breadcrumb is visible */
+@media screen and (min-width: 543.98px) {
+  .PageHeader--noBreadcrumb .PageHeader-contextBar {
+    display: none;
+  }
+}
+
+/* Match the title bar height with the toggle menu button for proper vertical alignment */
+.PageHeader--noBreadcrumb .PageHeader-titleBar {
+  height: var(--control-small-size);
+}
