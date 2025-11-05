@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.77.0
+
+### Minor Changes
+
+- [#376](https://github.com/opf/primer_view_components/pull/376) [`7c51730`](https://github.com/opf/primer_view_components/commit/7c517307badac36ed9691aebc0c7053958a2f622) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [67724] keep breadcrumbs slot required but allow nil/empty value
+
 ## 0.76.0
 
 ### Minor Changes
