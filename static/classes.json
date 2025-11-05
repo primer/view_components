@@ -481,6 +481,9 @@
   "PageHeader": [
     "Primer::OpenProject::PageHeader"
   ],
+  "PageHeader--noBreadcrumb": [
+    "Primer::OpenProject::PageHeader"
+  ],
   "PageHeader--withTabNav": [
     "Primer::OpenProject::PageHeader"
   ],

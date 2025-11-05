@@ -20376,7 +20376,7 @@
       },
       {
         "name": "breadcrumbs",
-        "description": "Optional breadcrumbs above the title row\nBy default shown on wider screens. Can be overridden with system_argument: display",
+        "description": "Using PageHeader without breadcrumbs is only recommended in special cases.\nIn doubt, please check the PageHeader component documentation.",
         "parameters": [
           {
             "name": "items",
@@ -20564,6 +20564,32 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/without_breadcrumbs",
+        "name": "without_breadcrumbs",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/page_header/skip_breadcrumb_item",
+        "name": "skip_breadcrumb_item",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/tab_nav",
         "name": "tab_nav",
         "snapshot": "false",
@@ -20592,19 +20618,6 @@
       {
         "preview_path": "primer/open_project/page_header/segmented_control_mobile_icons",
         "name": "segmented_control_mobile_icons",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/open_project/page_header/skip_breadcrumb_item",
-        "name": "skip_breadcrumb_item",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
