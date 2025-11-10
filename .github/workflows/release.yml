@@ -111,6 +111,6 @@ jobs:
   release-candidate:
     name: Candidate
     if: ${{ github.repository == 'primer/view_components' && github.ref_name == 'changeset-release/main' && github.event_name == 'push' }}
-    uses: primer/.github/.github/workflows/release_candidate.yml@v2.3.0
+    uses: primer/.github/.github/workflows/release_candidate.yml@v2.4.0
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
