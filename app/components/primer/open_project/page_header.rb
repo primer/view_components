@@ -23,6 +23,7 @@ module Primer
       DEFAULT_LEADING_ACTION_DISPLAY = [:none, :flex].freeze
       DEFAULT_BREADCRUMBS_DISPLAY = [:none, :flex].freeze
       DEFAULT_PARENT_LINK_DISPLAY = [:block, :none].freeze
+      BREADCRUMB_TRUNCATE_AT = 200
 
       STATE_DEFAULT = :show
       STATE_EDIT = :edit
@@ -222,9 +223,17 @@ module Primer
         render(Primer::Beta::Breadcrumbs.new(**system_arguments)) do |breadcrumbs|
           items.each do |item|
             if item.is_a?(String)
-              breadcrumbs.with_item(href: "#", font_weight: selected_item_font_weight) { item }
+              breadcrumbs.with_item(href: "#", font_weight: selected_item_font_weight) do
+                render(Primer::Beta::Truncate.new) do |truncate|
+                  truncate.with_item(max_width: BREADCRUMB_TRUNCATE_AT) { item }
+                end
+              end
             else
-              breadcrumbs.with_item(href: item[:href], target: "_top") { item[:text] }
+              breadcrumbs.with_item(href: item[:href], target: "_top") do
+                render(Primer::Beta::Truncate.new) do |truncate|
+                  truncate.with_item(max_width: BREADCRUMB_TRUNCATE_AT) { item[:text] }
+                end
+              end
             end
           end
         end
