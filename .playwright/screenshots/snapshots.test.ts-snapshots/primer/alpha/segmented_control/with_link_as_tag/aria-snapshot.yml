@@ -1,7 +1,10 @@
 - list "File view":
   - listitem:
-    - link "Preview"
+    - link "Preview":
+      - /url: "#"
   - listitem:
-    - link "Raw"
+    - link "Raw":
+      - /url: "#"
   - listitem:
-    - link "Blame"
+    - link "Blame":
+      - /url: "#"

@@ -2,22 +2,29 @@
   - heading "Repository settings" [level=2]
   - list:
     - listitem:
-      - link "General"
+      - link "General":
+        - /url: /general
     - listitem:
-      - link "Settings"
+      - link "Settings":
+        - /url: /settings
     - listitem:
       - heading "Access" [level=3]
       - list "Access":
         - listitem:
-          - link "hulk_smash Bruce Banner"
+          - link "hulk_smash Bruce Banner":
+            - /url: /profile
         - listitem:
-          - link "Collaborators and teams"
+          - link "Collaborators and teams":
+            - /url: /collaborators
         - listitem:
           - button "Moderation options" [expanded]
           - list "Moderation options":
             - listitem:
-              - link "Interaction limits"
+              - link "Interaction limits":
+                - /url: /interaction-limits
             - listitem:
-              - link "Code review limits"
+              - link "Code review limits":
+                - /url: /review-limits
             - listitem:
-              - link "Reported content"
+              - link "Reported content":
+                - /url: /reported-content
