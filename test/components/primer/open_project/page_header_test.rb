@@ -231,7 +231,7 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector(".PageHeader-breadcrumbs")
     assert_selector(".PageHeader-parentLink")
 
-    assert_selector(".breadcrumb-item a[href='/baz'] .Truncate > .Truncate-text[style='max-width: 135px;']",
+    assert_selector(".breadcrumb-item a[href='/baz'] .Truncate > .Truncate-text[style='max-width: 200px;']",
                     text: "A very long sub project that will be truncated")
   end
 
