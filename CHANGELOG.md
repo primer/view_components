@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.78.0
+
+### Minor Changes
+
+- [#380](https://github.com/opf/primer_view_components/pull/380) [`6305c8d`](https://github.com/opf/primer_view_components/commit/6305c8de62ef0f417532a67d4865675763928213) Thanks [@HDinger](https://github.com/HDinger)! - Truncate Pageheader breadcrumb items when they are too long
+
+### Patch Changes
+
+- [#381](https://github.com/opf/primer_view_components/pull/381) [`03575a7`](https://github.com/opf/primer_view_components/commit/03575a7cfe8bb522b71cb0435819e11b710f6936) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [67724] Use line-height instead of height for the styles of the page header title, when there is no breadcrumb
+
 ## 0.77.0
 
 ### Minor Changes
