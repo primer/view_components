@@ -1831,6 +1831,7 @@
       "chevron-left",
       "triangle-left"
     ],
+    "BREADCRUMB_TRUNCATE_AT": 200,
     "DEFAULT_ACTION_SCHEME": "default",
     "DEFAULT_BACK_BUTTON_ICON": "arrow-left",
     "DEFAULT_BREADCRUMBS_DISPLAY": [

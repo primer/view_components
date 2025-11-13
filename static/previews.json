@@ -6184,6 +6184,19 @@
         }
       },
       {
+        "preview_path": "primer/open_project/page_header/truncated_breadcrumbs",
+        "name": "truncated_breadcrumbs",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/open_project/page_header/without_breadcrumbs",
         "name": "without_breadcrumbs",
         "snapshot": "false",
