@@ -215,6 +215,26 @@ class PrimerOpenProjectPageHeaderTest < Minitest::Test
     assert_selector("nav[aria-label='Breadcrumb'].PageHeader-breadcrumbs .breadcrumb-item:not(.text-bold) a[href='#']")
   end
 
+  def test_renders_truncated_breadcrumb
+    breadcrumb_items = [{ href: "/foo", text: "OpenProject" },
+                        { href: "/bar", text: "Stream Dream team" },
+                        { href: "/baz", text: "A very long sub project that will be truncated" },
+                        "Hello"]
+
+    render_inline(Primer::OpenProject::PageHeader.new) do |header|
+      header.with_title { "Hello" }
+      header.with_breadcrumbs(breadcrumb_items)
+    end
+
+    assert_text("Hello")
+    assert_selector(".PageHeader-title")
+    assert_selector(".PageHeader-breadcrumbs")
+    assert_selector(".PageHeader-parentLink")
+
+    assert_selector(".breadcrumb-item a[href='/baz'] .Truncate > .Truncate-text[style='max-width: 200px;']",
+                    text: "A very long sub project that will be truncated")
+  end
+
   def test_renders_tab_nav
     render_inline(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { "Hello" }

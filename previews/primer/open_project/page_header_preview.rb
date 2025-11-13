@@ -191,6 +191,19 @@ module Primer
         end
       end
 
+      # @label With truncated breadcrumbs
+      # Long breadcrumb elements are truncated after 200px
+      def truncated_breadcrumbs
+        breadcrumb_items = [{ href: "/foo", text: "OpenProject" },
+                            { href: "/bar", text: "Stream Dream team" },
+                            { href: "/baz", text: "A very long sub project that will be truncated" },
+                            "Hello"]
+        render(Primer::OpenProject::PageHeader.new) do |header|
+          header.with_title { "A title" }
+          header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: :normal)
+        end
+      end
+
       # @label Without breadcrumbs
       # A PageHeader example that renders without breadcrumbs.
       # This should only be done for *entry pages* (such as overview pages).
