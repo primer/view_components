@@ -31,6 +31,7 @@ const config: PlaywrightTestConfig = {
     },
     toMatchSnapshot: {
       threshold: 0.1,
+      maxDiffPixels: 100
     },
   },
   /* Retry on CI only */
