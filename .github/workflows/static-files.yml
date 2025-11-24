@@ -2,8 +2,6 @@ name: Generate static files
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   static:
