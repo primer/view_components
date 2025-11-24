@@ -37,7 +37,7 @@ jobs:
           ruby-version: '3.3'
 
       - name: Check out repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # Delete web app (which will also delete the App Service plan)
       # This will succeed even if the app doesn't exist / has already been deleted
