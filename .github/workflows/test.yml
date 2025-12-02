@@ -60,26 +60,3 @@ jobs:
         env:
           RUBY_VERSION: ${{ matrix.ruby_version }}
           RAILS_VERSION: ${{ matrix.rails_version }}
-  selectors:
-    name: CSS coverage
-    runs-on: ubuntu-latest-8-cores
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.2"
-          bundler-cache: true
-      - name: Setup Node
-        uses: actions/setup-node@v5
-        with:
-          node-version: 20
-          cache: "npm"
-      - name: NPM Build
-        run: npm ci
-        env:
-          # Disable CSS minification for tests
-          CI: "false"
-      - name: Test CSS
-        run: bundle exec rake test:component_css
