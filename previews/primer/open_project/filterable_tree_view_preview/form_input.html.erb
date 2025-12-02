@@ -7,7 +7,7 @@
         <% end %>
 
         <% hogwarts.with_sub_tree(label: "Slytherin", select_variant: select_variant, expanded: expanded) do |hufflepuff| %>
-          <% hufflepuff.with_leaf(label: "Draco Malfoy", select_variant: select_variant) %>
+          <% hufflepuff.with_leaf(label: "Draco Malfoy", select_variant: select_variant, checked: true) %>
         <% end %>
 
         <% hogwarts.with_sub_tree(label: "Hufflepuff", select_variant: select_variant, expanded: expanded) do |hufflepuff| %>
