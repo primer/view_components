@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.78.1
+
+### Patch Changes
+
+- [#384](https://github.com/opf/primer_view_components/pull/384) [`8c11177`](https://github.com/opf/primer_view_components/commit/8c111771be1c8cfdcc32bc2b6fba4b064902885b) Thanks [@HDinger](https://github.com/HDinger)! - Initiate form state for TreeView
+
+- [#383](https://github.com/opf/primer_view_components/pull/383) [`74f4789`](https://github.com/opf/primer_view_components/commit/74f47890648f738176872d5a4a388950ffead226) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [69204] PageHeader title is misaligned on Overview page
+
 ## 0.78.0
 
 ### Minor Changes
