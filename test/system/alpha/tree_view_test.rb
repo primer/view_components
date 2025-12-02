@@ -834,7 +834,36 @@ module Alpha
     def test_form_submission
       visit_preview(:form_input, expanded: true, route_format: :json)
 
+      assert_path_checked "src", "button.rb"
       check_at_path("action_menu.rb")
+
+      find("button[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+
+      assert_equal "{\"path\":[\"src\",\"button.rb\"],\"value\":\"1\"}", response.dig("form_params", "folder_structure", 0)
+      assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 1)
+    end
+
+    def test_initial_form_state
+      visit_preview(:form_input, expanded: true, route_format: :json)
+
+      assert_path_checked "src", "button.rb"
+
+      find("button[type=submit]").click
+
+      # for some reason the JSON response is wrapped in HTML, I have no idea why
+      response = JSON.parse(find("pre").text)
+
+      assert_equal "{\"path\":[\"src\",\"button.rb\"],\"value\":\"1\"}", response.dig("form_params", "folder_structure", 0)
+    end
+
+    def test_form_submission_with_single_select_variant
+      visit_preview(:form_input, expanded: true, select_variant: :single, route_format: :json)
+
+      assert_path_checked "src", "button.rb"
+      activate_at_path("action_menu.rb")
 
       find("button[type=submit]").click
 
@@ -844,17 +873,17 @@ module Alpha
       assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 0)
     end
 
-    def test_form_submission_with_single_select_variant
-      visit_preview(:form_input, expanded: true, select_variant: :single, route_format: :json)
+    def test_initial_form_state_for_single_select
+      visit_preview(:form_input, expanded: true, route_format: :json)
 
-      activate_at_path("action_menu.rb")
+      assert_path_checked "src", "button.rb"
 
       find("button[type=submit]").click
 
       # for some reason the JSON response is wrapped in HTML, I have no idea why
       response = JSON.parse(find("pre").text)
 
-      assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 0)
+      assert_equal "{\"path\":[\"src\",\"button.rb\"],\"value\":\"1\"}", response.dig("form_params", "folder_structure", 0)
     end
   end
 end

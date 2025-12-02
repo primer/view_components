@@ -220,6 +220,7 @@ module OpenProject
     def test_form_submits_checked_nodes_for_single_select_variant
       visit_preview(:form_input, select_variant: :single)
 
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
       activate_at_path("Students", "Gryffindor", "Harry Potter")
       activate_at_path("Students", "Ravenclaw", "Luna Lovegood")
       click_on "Submit"
@@ -234,27 +235,62 @@ module OpenProject
       assert_equal character["path"], ["Students", "Ravenclaw", "Luna Lovegood"]
     end
 
+    def test_initial_form_state_for_single_select
+      visit_preview(:form_input, select_variant: :single)
+
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
+
+      find("button[type=submit]").click
+
+      response = JSON.parse(find("pre").text)
+      assert character_list = response.dig("form_params", "characters")
+      assert_equal 1, character_list.size
+
+      character = JSON.parse(character_list[0])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
+    end
+
     def test_form_submits_checked_nodes
       visit_preview(:form_input)
 
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
       check_at_path("Students", "Gryffindor", "Harry Potter")
       check_at_path("Students", "Ravenclaw", "Luna Lovegood")
       click_on "Submit"
 
       response = JSON.parse(find("pre").text)
       assert character_list = response.dig("form_params", "characters")
-      assert_equal 2, character_list.size
+      assert_equal 3, character_list.size
 
       character = JSON.parse(character_list[0])
       assert_equal character["path"], ["Students", "Ravenclaw", "Luna Lovegood"]
 
-
       character = JSON.parse(character_list[1])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
+
+      character = JSON.parse(character_list[2])
       assert_equal character["path"], ["Students", "Gryffindor", "Harry Potter"]
+    end
+
+    def test_initial_form_state_for_multi_select
+      visit_preview(:form_input)
+
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
+
+      find("button[type=submit]").click
+
+      response = JSON.parse(find("pre").text)
+      assert character_list = response.dig("form_params", "characters")
+      assert_equal 1, character_list.size
+
+      character = JSON.parse(character_list[0])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
     end
 
     def test_form_submits_checked_nodes_when_sub_items_included_checked
       visit_preview(:form_input)
+
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
 
       check "Include sub-items"
       assert_checked_field "Include sub-items"
@@ -265,17 +301,22 @@ module OpenProject
 
       response = JSON.parse(find("pre").text)
       assert character_list = response.dig("form_params", "characters")
-      assert_equal 2, character_list.size
+      assert_equal 3, character_list.size
 
       character = JSON.parse(character_list[0])
       assert_equal character["path"], ["Students", "Ravenclaw"]
 
       character = JSON.parse(character_list[1])
       assert_equal character["path"], ["Students", "Ravenclaw", "Luna Lovegood"]
+
+      character = JSON.parse(character_list[2])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
     end
 
     def test_form_submits_checked_nodes_when_items_filtered_out
       visit_preview(:form_input)
+
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
 
       check_at_path("Students", "Ravenclaw")
 
@@ -287,18 +328,22 @@ module OpenProject
 
       response = JSON.parse(find("pre").text)
       assert character_list = response.dig("form_params", "characters")
-      assert_equal 2, character_list.size
+      assert_equal 3, character_list.size
 
       character = JSON.parse(character_list[0])
       assert_equal character["path"], ["Students", "Ravenclaw"]
 
       character = JSON.parse(character_list[1])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
+
+      character = JSON.parse(character_list[2])
       assert_equal character["path"], ["Students", "Gryffindor", "Harry Potter"]
     end
 
     def test_form_submits_checked_nodes_when_filtering_for_selected_only
       visit_preview(:form_input)
 
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
       check_at_path("Students", "Ravenclaw")
       check_at_path("Students", "Ravenclaw", "Luna Lovegood")
 
@@ -308,6 +353,7 @@ module OpenProject
 
       uncheck_at_path("Students", "Ravenclaw", "Luna Lovegood")
 
+      assert_path_checked("Students", "Slytherin", "Draco Malfoy")
       assert_path_checked("Students", "Ravenclaw")
       refute_path_checked("Students", "Ravenclaw", "Luna Lovegood")
 
@@ -315,10 +361,13 @@ module OpenProject
 
       response = JSON.parse(find("pre").text)
       assert character_list = response.dig("form_params", "characters")
-      assert_equal 1, character_list.size
+      assert_equal 2, character_list.size
 
       character = JSON.parse(character_list[0])
       assert_equal character["path"], ["Students", "Ravenclaw"]
+
+      character = JSON.parse(character_list[1])
+      assert_equal character["path"], ["Students", "Slytherin", "Draco Malfoy"]
     end
   end
 end

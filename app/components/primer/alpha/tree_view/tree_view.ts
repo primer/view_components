@@ -45,26 +45,7 @@ export class TreeViewElement extends HTMLElement {
 
       if (!somethingChanged) return
 
-      const newInputs = []
-
-      // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
-      for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
-        const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
-        newInput.removeAttribute('data-target')
-        newInput.removeAttribute('form')
-
-        const payload: {path: string[]; value?: string} = {
-          path: this.getNodePath(node),
-        }
-
-        const inputValue = this.getFormInputValueForNode(node)
-        if (inputValue) payload.value = inputValue
-
-        newInput.value = JSON.stringify(payload)
-        newInputs.push(newInput)
-      }
-
-      this.formInputContainer.replaceChildren(...newInputs)
+      this.updateHiddenFormInputs()
     })
 
     updateInputsObserver.observe(this, {
@@ -72,6 +53,11 @@ export class TreeViewElement extends HTMLElement {
       subtree: true,
       attributeFilter: ['aria-checked'],
     })
+
+    // Correctly initialize the form
+    if (this.formInputContainer) {
+      this.updateHiddenFormInputs()
+    }
 
     // eslint-disable-next-line github/no-then -- We don't want to wait for this to resolve, just get on with it
     customElements.whenDefined('tree-view-sub-tree-node').then(() => {
@@ -482,6 +468,29 @@ export class TreeViewElement extends HTMLElement {
 
   selectVariant(node: Element): SelectVariant {
     return (node.getAttribute('data-select-variant') || 'none') as SelectVariant
+  }
+
+  updateHiddenFormInputs() {
+    const newInputs = []
+
+    // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
+    for (const node of this.querySelectorAll('[role=treeitem][aria-checked=true]')) {
+      const newInput = this.formInputPrototype.cloneNode() as HTMLInputElement
+      newInput.removeAttribute('data-target')
+      newInput.removeAttribute('form')
+
+      const payload: {path: string[]; value?: string} = {
+        path: this.getNodePath(node),
+      }
+
+      const inputValue = this.getFormInputValueForNode(node)
+      if (inputValue) payload.value = inputValue
+
+      newInput.value = JSON.stringify(payload)
+      newInputs.push(newInput)
+    }
+
+    this.formInputContainer.replaceChildren(...newInputs)
   }
 }
 
