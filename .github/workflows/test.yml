@@ -27,7 +27,7 @@ jobs:
     name: Accessibility
     runs-on: ubuntu-latest-8-cores
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.4"
@@ -53,7 +53,7 @@ jobs:
       matrix:
         include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
@@ -87,7 +87,7 @@ jobs:
       matrix:
         include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
@@ -121,7 +121,7 @@ jobs:
       matrix:
         include: ${{ fromJson(vars.TEST_MATRIX) }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
@@ -144,7 +144,7 @@ jobs:
     name: System (Chrome)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
@@ -167,7 +167,7 @@ jobs:
     name: System (Firefox)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
@@ -193,7 +193,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest-8-cores
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -271,7 +271,7 @@ jobs:
     runs-on: ubuntu-latest-8-cores
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
