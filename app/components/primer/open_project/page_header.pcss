@@ -91,7 +91,13 @@
   }
 }
 
-/* Match the title bar height with the toggle menu button for proper vertical alignment */
-.PageHeader--noBreadcrumb .PageHeader-titleBar {
-  line-height: var(--control-small-size);
+/* Match the title bar and actions height with the toggle menu button for proper vertical alignment */
+.PageHeader--noBreadcrumb {
+  & .PageHeader-titleBar {
+    line-height: var(--control-small-size);
+  }
+
+  & .PageHeader-actions {
+    height: var(--control-small-size);
+  }
 }
