@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.48.0
+
+### Minor Changes
+
+- [#3776](https://github.com/primer/view_components/pull/3776) [`edc480f`](https://github.com/primer/view_components/commit/edc480fe8ac9352fa5584488e9f6d3887fe088d2) Thanks [@TylerJDev](https://github.com/TylerJDev)! - AvatarStack: Adds support for individual tooltips on AvatarStack component, avatars.
+
 ## 0.47.0
 
 ### Minor Changes
