@@ -1,0 +1,70 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  merge_group:
+    branches:
+      - main
+    types:
+      - checks_requested
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-system-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  FERRUM_PROCESS_TIMEOUT: 30
+
+jobs:
+  system_chrome:
+    name: System (Chrome)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          cd demo && npm ci
+      - name: Test
+        run: |
+          USE_BROWSER=chrome bundle exec rake test:system
+  system_firefox:
+    name: System (Firefox)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          cd demo && npm ci
+      - name: Test
+        run: |
+          USE_BROWSER=firefox bundle exec rake test:system
