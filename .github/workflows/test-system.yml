@@ -1,4 +1,4 @@
-name: Test - System
+name: test-system
 
 on:
   pull_request:

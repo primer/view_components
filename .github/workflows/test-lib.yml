@@ -1,4 +1,4 @@
-name: Test - Lib
+name: test-lib
 
 on:
   pull_request:

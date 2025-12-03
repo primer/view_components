@@ -1,4 +1,4 @@
-name: Test - Selectors
+name: test-selectors
 
 on:
   pull_request:

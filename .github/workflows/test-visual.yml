@@ -1,4 +1,4 @@
-name: Test - Visual
+name: test-visual
 
 on:
   pull_request:

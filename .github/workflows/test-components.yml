@@ -1,4 +1,4 @@
-name: Test - Components
+name: test-components
 
 on:
   pull_request:
