@@ -90,7 +90,7 @@ export class CharacterCounter {
 
     this.inputElement.setAttribute('invalid', 'true')
     this.inputElement.setAttribute('aria-invalid', 'true')
-    
+
     // Add validation message ID to aria-describedby
     const validationId = this.validationElement.id
     if (validationId) {
@@ -101,7 +101,7 @@ export class CharacterCounter {
         this.inputElement.setAttribute('aria-describedby', describedByIds.join(' '))
       }
     }
-    
+
     this.validationMessageElement.textContent = "You've exceeded the character limit"
     this.validationElement.hidden = false
   }
@@ -114,7 +114,7 @@ export class CharacterCounter {
 
     this.inputElement.removeAttribute('invalid')
     this.inputElement.removeAttribute('aria-invalid')
-    
+
     // Remove validation message ID from aria-describedby
     const validationId = this.validationElement.id
     if (validationId) {
@@ -126,7 +126,7 @@ export class CharacterCounter {
         this.inputElement.removeAttribute('aria-describedby')
       }
     }
-    
+
     this.validationMessageElement.textContent = ''
     this.validationElement.hidden = true
   }
