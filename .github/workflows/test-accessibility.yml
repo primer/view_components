@@ -1,4 +1,4 @@
-name: Test - Accessibility
+name: Accessibility
 
 on:
   pull_request:
@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   accessibility:
+    name: Test
     runs-on: ubuntu-latest-8-cores
     steps:
       - uses: actions/checkout@v6
