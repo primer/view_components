@@ -1,3 +1,5 @@
+name: test-accessibility
+
 on:
   pull_request:
   merge_group:
