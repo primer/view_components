@@ -1,22 +1,17 @@
 [
   {
+    "label": "last",
     "rails_version": "8.0.0",
-    "ruby_version": "3.3",
-    "label": "last"
+    "ruby_version": "3.3"
   },
   {
+    "label": "dotcom",
     "rails_version": "8.1.0.beta1",
-    "ruby_version": "3.4",
-    "label": "dotcom"
+    "ruby_version": "3.4"
   },
   {
+    "label": "latest",
     "rails_version": "latest",
-    "ruby_version": "3.4",
-    "label": "latest"
-  },
-  {
-    "rails_version": "main",
-    "ruby_version": "3.4",
-    "label": "main"
+    "ruby_version": "3.4"
   }
 ]
