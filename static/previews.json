@@ -7311,6 +7311,32 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_field/with_character_limit",
+        "name": "with_character_limit",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit_and_caption",
+        "name": "with_character_limit_and_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_field/with_auto_check_ok",
         "name": "with_auto_check_ok",
         "snapshot": "false",
@@ -7391,32 +7417,6 @@
       {
         "preview_path": "primer/alpha/text_field/input_group_leading_action_menu",
         "name": "input_group_leading_action_menu",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/text_field/with_character_limit",
-        "name": "with_character_limit",
-        "snapshot": "true",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/text_field/with_character_limit_and_caption",
-        "name": "with_character_limit_and_caption",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
