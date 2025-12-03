@@ -24,6 +24,7 @@ module Primer
       # @param monospace toggle
       # @param leading_visual_icon octicon
       # @param leading_spinner toggle
+      # @param character_limit number
       def playground(
         name: "my-text-field",
         id: "my-text-field",
@@ -42,7 +43,8 @@ module Primer
         inset: false,
         monospace: false,
         leading_visual_icon: nil,
-        leading_spinner: false
+        leading_spinner: false,
+        character_limit: nil
       )
         system_arguments = {
           name: name,
@@ -61,7 +63,8 @@ module Primer
           placeholder: placeholder,
           inset: inset,
           monospace: monospace,
-          leading_spinner: leading_spinner
+          leading_spinner: leading_spinner,
+          character_limit: character_limit
         }
 
         if leading_visual_icon
@@ -261,6 +264,18 @@ module Primer
       # @snapshot
       def input_group_leading_action_menu(route_format: :html)
         render_with_template(locals: { route_format: route_format })
+      end
+
+      # @label With character limit
+      # @snapshot
+      def with_character_limit
+        render(Primer::Alpha::TextField.new(character_limit: 20, name: "my-text-field", label: "Username"))
+      end
+
+      # @label With character limit and caption
+      # @snapshot
+      def with_character_limit_and_caption
+        render(Primer::Alpha::TextField.new(character_limit: 20, caption: "Choose a unique username.", name: "my-text-field", label: "Username"))
       end
     end
   end

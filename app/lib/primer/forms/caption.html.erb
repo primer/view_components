@@ -1,10 +1,15 @@
-<% if @input.caption? && !@input.caption.blank? %>
-  <span class="FormControl-caption" id="<%= @input.caption_id %>"><%= @input.caption %></span>
-<% elsif caption_template? %>
-  <% caption_template = render_caption_template %>
-  <% unless caption_template.blank? %>
-    <span class="FormControl-caption" id="<%= @input.caption_id %>">
-      <%= caption_template %>
-    </span>
-  <% end %>
+<% if @input.caption? || caption_template? || @input.character_limit? %>
+  <span class="FormControl-caption" id="<%= @input.caption_id %>">
+    <% if @input.character_limit? %>
+      <span class="sr-only" id="<%= @input.character_limit_sr_id %>" aria-live="polite" aria-atomic="true"></span>
+      <div class="FormControl-caption--characterLimit" data-target="primer-text-area.characterLimitElement" data-max-length="<%= @input.character_limit %>" data-sr-target="<%= @input.character_limit_sr_id %>">
+        <%= @input.character_limit %> characters remaining.
+      </div>
+    <% end %>
+    <% if @input.caption? && !@input.caption.blank? %>
+      <%= @input.caption %>
+    <% elsif caption_template? %>
+      <%= render_caption_template %>
+    <% end %>
+  </span>
 <% end %>

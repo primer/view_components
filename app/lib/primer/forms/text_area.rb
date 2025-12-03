@@ -15,6 +15,13 @@ module Primer
           hidden: @input.hidden?
         }
       end
+
+      def character_limit_validation_arguments
+        {
+          class: "FormControl-inlineValidation",
+          hidden: true
+        }
+      end
     end
   end
 end

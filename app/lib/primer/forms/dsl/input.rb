@@ -196,6 +196,10 @@ module Primer
           form.render_caption_template(caption_template_name)
         end
 
+        def character_limit?
+          false
+        end
+
         def valid?
           supports_validation? && validation_messages.empty? && !@invalid
         end
