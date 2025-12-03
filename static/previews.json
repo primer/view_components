@@ -6993,7 +6993,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_character_limit",
         "name": "with_character_limit",
-        "snapshot": "true",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7313,7 +7313,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_character_limit",
         "name": "with_character_limit",
-        "snapshot": "true",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
