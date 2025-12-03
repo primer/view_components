@@ -218,9 +218,9 @@ module Primer
       end
 
       # @label With character limit
-      # @snapshot
+      # @snapshot interactive
       def with_character_limit
-        render(Primer::Alpha::TextField.new(character_limit: 20, name: "my-text-field-18", label: "Username"))
+        render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-18", label: "Username"))
       end
 
       # @label With character limit and caption
