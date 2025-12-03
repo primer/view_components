@@ -1,0 +1,40 @@
+name: test-accessibility
+
+on:
+  pull_request:
+  merge_group:
+    branches:
+      - main
+    types:
+      - checks_requested
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-accessibility-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  accessibility:
+    name: Accessibility
+    runs-on: ubuntu-latest-8-cores
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          cd demo && npm ci
+      - name: Test
+        run: bundle exec rake test:accessibility

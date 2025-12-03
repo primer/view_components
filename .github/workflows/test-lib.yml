@@ -1,0 +1,65 @@
+name: test-lib
+
+on:
+  pull_request:
+  merge_group:
+    branches:
+      - main
+    types:
+      - checks_requested
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-lib-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  FERRUM_PROCESS_TIMEOUT: 30
+
+jobs:
+  load-matrix:
+    name: Load test matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+      - id: set-matrix
+        run: echo "matrix=$(cat .github/version-matrix.json | jq -c .)" >> $GITHUB_OUTPUT
+  lib:
+    name: Lib (${{ matrix.label }})
+    runs-on: ubuntu-latest
+    needs: load-matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.load-matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Build
+        run: |
+          npm ci
+          bundle config unset deployment
+          bundle install --jobs 4 --retry 3
+        env:
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
+      - name: Test
+        run: |
+          bundle exec rake test:lib
+          bundle exec rake test:coverage
+        env:
+          COVERAGE: 1
+          RUBY_VERSION: ${{ matrix.ruby_version }}
+          RAILS_VERSION: ${{ matrix.rails_version }}
