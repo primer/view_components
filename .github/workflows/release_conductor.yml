@@ -7,7 +7,7 @@ jobs:
   pagerduty:
     if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'changeset-release/main'
     name: Lookup who is oncall from pagerduty
-    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@v2.2.1
+    uses: primer/.github/.github/workflows/pagerduty_oncall.yml@v2.4.0
     with:
       schedule-id: ${{ vars.PAGERDUTY_RELEASE_CONDUCTOR_SCHEDULE }}
     secrets:
@@ -25,7 +25,7 @@ jobs:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
           owner: primer
           private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Get Release PR
         id: release-pr
         run: |

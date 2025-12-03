@@ -2,18 +2,21 @@ name: Generate static files
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   static:
     runs-on: ubuntu-latest
     steps:
-      # Unfortunately we can't use the primer GitHub App and camertron/github-app-installation-auth-action
-      # because branch protection rules cannot be bypassed by Apps.
-      - uses: actions/checkout@v5
+      - uses: actions/create-github-app-token@v2
+        id: app-token
         with:
-          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+          app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
+          private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
+          owner: primer
+          repositories: view_components
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'

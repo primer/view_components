@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.48.0
+
+### Minor Changes
+
+- [#3776](https://github.com/primer/view_components/pull/3776) [`edc480f`](https://github.com/primer/view_components/commit/edc480fe8ac9352fa5584488e9f6d3887fe088d2) Thanks [@TylerJDev](https://github.com/TylerJDev)! - AvatarStack: Adds support for individual tooltips on AvatarStack component, avatars.
+
+## 0.47.0
+
+### Minor Changes
+
+- [#3740](https://github.com/primer/view_components/pull/3740) [`ccf3d94`](https://github.com/primer/view_components/commit/ccf3d94b557a909965062885b5db9e48b2a63e3d) Thanks [@sarahkemi](https://github.com/sarahkemi)! - Add `disable_expand` param to AvatarStack for React component parity
+
 ## 0.46.0
 
 ### Minor Changes

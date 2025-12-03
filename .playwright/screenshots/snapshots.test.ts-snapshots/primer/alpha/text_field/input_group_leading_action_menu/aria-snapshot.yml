@@ -1,3 +1,5 @@
 - button "Filter"
 - text: What is your current status?
-- textbox "What is your current status?": Some value
+- textbox "What is your current status?":
+  - /placeholder: What's happening?
+  - text: Some value
