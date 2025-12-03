@@ -3,6 +3,7 @@
  * Handles real-time character count updates, validation, and aria-live announcements.
  */
 export class CharacterCounter {
+  private SCREEN_READER_DELAY: number = 150
   private announceTimeout: number | null = null
 
   constructor(
@@ -39,30 +40,28 @@ export class CharacterCounter {
     if (maxLength === 0) return
 
     const currentLength = this.inputElement.value.length
-    const remaining = maxLength - currentLength
+    const charactersRemaining = maxLength - currentLength
     let message = ''
 
-    if (remaining >= 0) {
-      // Still under or at the limit
-      const word = remaining === 1 ? 'character' : 'characters'
-      message = `${remaining} ${word} remaining.`
+    if (charactersRemaining >= 0) {
+      const characterText = charactersRemaining === 1 ? 'character' : 'characters'
+      message = `${charactersRemaining} ${characterText} remaining.`
       this.characterLimitElement.textContent = message
       this.clearError()
     } else {
       // Over the limit
-      const over = Math.abs(remaining)
-      const word = over === 1 ? 'character' : 'characters'
-      message = `${over} ${word} over.`
+      const charactersOver = Math.abs(charactersRemaining)
+      const characterText = charactersOver === 1 ? 'character' : 'characters'
+      message = `${charactersOver} ${characterText} over.`
       this.characterLimitElement.textContent = message
       this.setError()
     }
 
-    // Debounce the aria-live announcement
     this.announceToScreenReader(message)
   }
 
   /**
-   * Announce character count to screen readers with debouncing
+   * Announce character count to screen readers
    */
   private announceToScreenReader(message: string): void {
     // Clear any existing timeout
@@ -70,7 +69,7 @@ export class CharacterCounter {
       clearTimeout(this.announceTimeout)
     }
 
-    // Set a new timeout to announce after 150ms
+    // Set a new timeout to announce after a delay
     this.announceTimeout = window.setTimeout(() => {
       const srTargetId = this.characterLimitElement?.getAttribute('data-sr-target')
       if (srTargetId) {
@@ -79,7 +78,7 @@ export class CharacterCounter {
           srElement.textContent = message
         }
       }
-    }, 150)
+    }, this.SCREEN_READER_DELAY)
   }
 
   /**
@@ -91,7 +90,7 @@ export class CharacterCounter {
     this.inputElement.setAttribute('invalid', 'true')
     this.inputElement.setAttribute('aria-invalid', 'true')
 
-    // Add validation message ID to aria-describedby
+    // Add validation message ID to aria-describedby to ensure it is read by screen readers
     const validationId = this.validationElement.id
     if (validationId) {
       const existingDescribedBy = this.inputElement.getAttribute('aria-describedby') || ''

@@ -26,6 +26,10 @@ module Primer
           @auto_check_src = system_arguments.delete(:auto_check_src)
           @character_limit = system_arguments.delete(:character_limit)
 
+          if @character_limit.present? && @character_limit.to_i <= 0
+            raise ArgumentError, "character_limit must be a positive integer, got #{@character_limit}"
+          end
+
           if @leading_visual
             @leading_visual[:classes] = class_names(
               "FormControl-input-leadingVisual",

@@ -12,6 +12,10 @@ module Primer
           @label = label
           @character_limit = system_arguments.delete(:character_limit)
 
+          if @character_limit.present? && @character_limit.to_i <= 0
+            raise ArgumentError, "character_limit must be a positive integer, got #{@character_limit}"
+          end
+
           super(**system_arguments)
 
           add_input_data(:target, "primer-text-area.inputElement")
