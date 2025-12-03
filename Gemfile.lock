@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.47.0)
+    primer_view_components (0.48.0)
       actionview (>= 7.2.0)
       activesupport (>= 7.2.0)
       octicons (>= 18.0.0)
@@ -167,10 +167,10 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (7.0.4)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.1)
+    rack (3.2.3)
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
@@ -334,7 +334,7 @@ DEPENDENCIES
   matrix (~> 0.4.3)
   mocha
   primer_view_components!
-  puma (~> 7.0.4)
+  puma (~> 7.1.0)
   rack-cors
   railties (= 8.0.2)
   rake (~> 13.3)

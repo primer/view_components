@@ -99,6 +99,15 @@ module Primer
         end
       end
 
+      # @label With individual avatar tooltips
+      def with_individual_tooltips
+        render(Primer::Beta::AvatarStack.new) do |component|
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "https://github.com/user1", tooltip: "User 1")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "https://github.com/user2", tooltip: "User 2")
+          component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", href: "https://github.com/user3", tooltip: "User 3")
+        end
+      end
+
       # @label With disabled expand
       def with_disabled_expand
         render(Primer::Beta::AvatarStack.new(disable_expand: true)) do |component|
