@@ -1,3 +1,8 @@
+/* stylelint-disable selector-max-specificity */
+/* The selector-max-specificity rule is disabled here because the nested selectors
+ in AvatarStack require high specificity to properly override default styles and 
+ achieve the intended visual stacking. */
+
 /* AvatarStack */
 
 /* Stacked avatars can be used to show who is participating in thread when
@@ -59,8 +64,14 @@
       opacity: 0;
     }
   }
+  /* stylelint-disable-next-line selector-max-type */
+  & span:nth-child(n + 4) .avatar {
+    display: none;
+    opacity: 0;
+  }
 
-  &:hover {
+  &:hover:not([data-disable-expand]),
+  &:focus-within:not([data-disable-expand]) {
     & .avatar {
       margin-right: var(--base-size-4);
     }
@@ -69,10 +80,19 @@
       display: flex;
       opacity: 1;
     }
+    /* stylelint-disable-next-line selector-max-type */
+    & span:nth-child(n + 4) .avatar {
+      display: flex;
+      opacity: 1;
+    }
 
     & .avatar-more {
       display: none !important;
     }
+  }
+
+  &[data-disable-expand] {
+    position: relative;
   }
 }
 
@@ -110,7 +130,7 @@
     right: 0;
     flex-direction: row-reverse;
 
-    &:hover .avatar {
+    &:hover:not([data-disable-expand]) .avatar {
       margin-right: 0;
       margin-left: var(--base-size-4);
     }

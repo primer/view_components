@@ -2,8 +2,10 @@
   - heading "Workflows" [level=3]
   - list "Workflows":
     - listitem:
-      - link "Build and Test"
+      - link "Build and Test":
+        - /url: /workflows/1
       - 'button "Build and test: re-run workflow"'
     - listitem:
-      - link "Publish"
+      - link "Publish":
+        - /url: /workflows/2
       - 'button "Publish: re-run workflow"'

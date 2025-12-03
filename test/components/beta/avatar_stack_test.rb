@@ -109,4 +109,33 @@ class PrimerAvatarStackTest < Minitest::Test
       end
     end
   end
+
+  def test_renders_with_disable_expand
+    render_inline(Primer::Beta::AvatarStack.new(disable_expand: true)) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    assert_selector(".AvatarStack") do
+      assert_selector(".AvatarStack-body[data-disable-expand]") do
+        assert_selector("img.avatar", count: 3)
+      end
+    end
+  end
+
+  def test_renders_avatars_with_individual_tooltips
+    render_inline(Primer::Beta::AvatarStack.new) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar", href: "https://github.com/user1", tooltip: "User 1")
+      component.with_avatar(src: "Foo", alt: "Bar", href: "https://github.com/user2", tooltip: "User 2")
+      component.with_avatar(src: "Foo", alt: "Bar", href: "https://github.com/user3", tooltip: "User 3")
+    end
+
+    assert_selector(".AvatarStack") do
+      assert_selector(".AvatarStack-body") do
+        assert_selector("a.Link", count: 3)
+        assert_selector("tool-tip", count: 3)
+      end
+    end
+  end
 end

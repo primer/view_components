@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.45.2",
+  "version": "0.48.0",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -78,7 +78,7 @@
     "eslint": "^9.10.0",
     "eslint-plugin-github": "^6.0.0",
     "glob": "^11.0.2",
-    "markdownlint-cli2": "^0.18.1",
+    "markdownlint-cli2": "^0.19.1",
     "mocha": "^11.0.1",
     "playwright": "^1.49.1",
     "postcss": "^8.4.16",

@@ -11953,6 +11953,12 @@
         "description": "The URL to link to. If used, component will be wrapped by an `<a>` tag."
       },
       {
+        "name": "tooltip",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Tooltip text to display on hover when href is provided."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -12167,6 +12173,12 @@
         "description": "Whether to add a tooltip to the stack or not."
       },
       {
+        "name": "disable_expand",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to disable the expand behavior on hover. If true, avatars will not expand."
+      },
+      {
         "name": "body_arguments",
         "type": "Hash",
         "default": "`{}`",
@@ -12302,6 +12314,32 @@
       {
         "preview_path": "primer/beta/avatar_stack/with_tooltip",
         "name": "with_tooltip",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/avatar_stack/with_individual_tooltips",
+        "name": "with_individual_tooltips",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/beta/avatar_stack/with_disabled_expand",
+        "name": "with_disabled_expand",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

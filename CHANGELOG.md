@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.48.0
+
+### Minor Changes
+
+- [#3776](https://github.com/primer/view_components/pull/3776) [`edc480f`](https://github.com/primer/view_components/commit/edc480fe8ac9352fa5584488e9f6d3887fe088d2) Thanks [@TylerJDev](https://github.com/TylerJDev)! - AvatarStack: Adds support for individual tooltips on AvatarStack component, avatars.
+
+## 0.47.0
+
+### Minor Changes
+
+- [#3740](https://github.com/primer/view_components/pull/3740) [`ccf3d94`](https://github.com/primer/view_components/commit/ccf3d94b557a909965062885b5db9e48b2a63e3d) Thanks [@sarahkemi](https://github.com/sarahkemi)! - Add `disable_expand` param to AvatarStack for React component parity
+
+## 0.46.0
+
+### Minor Changes
+
+- [#3713](https://github.com/primer/view_components/pull/3713) [`4ba92f5`](https://github.com/primer/view_components/commit/4ba92f579fff940943b9ee04d3097e28cb9588a6) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Enable use_experimental_non_local_form for all SelectPanels
+
+### Patch Changes
+
+- [#3731](https://github.com/primer/view_components/pull/3731) [`15ab908`](https://github.com/primer/view_components/commit/15ab9083e8ad06185c727071be5ee2a0eab14ae4) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Updates SelectPanel anchor to allow IconButtons
+
+- [#3727](https://github.com/primer/view_components/pull/3727) [`1ebafaa`](https://github.com/primer/view_components/commit/1ebafaabfd3424c78dd41610372b8c0e684bac1b) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove left/right bg color borders from Avatar Stack
+
 ## 0.45.1
 
 ### Patch Changes
