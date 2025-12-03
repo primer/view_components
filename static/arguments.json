@@ -1304,6 +1304,12 @@
         "description": "HTML attributes to attach to the `<label>` element that labels the input."
       },
       {
+        "name": "character_limit",
+        "type": "Number",
+        "default": "`nil`",
+        "description": "Optional character limit for the input. If provided, a character counter will be displayed below the input."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",

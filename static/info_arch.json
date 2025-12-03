@@ -4255,6 +4255,12 @@
         "description": "HTML attributes to attach to the `<label>` element that labels the input."
       },
       {
+        "name": "character_limit",
+        "type": "Number",
+        "default": "`nil`",
+        "description": "Optional character limit for the input. If provided, a character counter will be displayed below the input."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -4293,6 +4299,14 @@
       {
         "name": "full_width?",
         "description": "Whether or not the form control should take up all the horizontal space allowed by its container.",
+        "parameters": [],
+        "return_types": [
+          "Boolean"
+        ]
+      },
+      {
+        "name": "character_limit?",
+        "description": "Returns the character limit for the input, if set.",
         "parameters": [],
         "return_types": [
           "Boolean"
@@ -8812,6 +8826,32 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/text_area/with_character_limit",
+        "name": "with_character_limit",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_area/with_character_limit_and_caption",
+        "name": "with_character_limit_and_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ],
     "subcomponents": []
@@ -9369,6 +9409,32 @@
       {
         "preview_path": "primer/alpha/text_field/input_group_leading_action_menu",
         "name": "input_group_leading_action_menu",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit",
+        "name": "with_character_limit",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit_and_caption",
+        "name": "with_character_limit_and_caption",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
