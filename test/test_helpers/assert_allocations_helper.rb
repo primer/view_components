@@ -12,6 +12,12 @@ module Primer
       total = trace.allocations.all.size
       count = count_map[ruby_version]
 
+      if count.nil?
+        raise "No allocation count mapped for Ruby version #{ruby_version}. " \
+              "Available versions: #{count_map.keys.sort.join(', ')}. " \
+              "Actual allocations: #{total}"
+      end
+
       assert_equal count, total, "Expected #{count} allocations, got #{total} allocations"
     end
 
