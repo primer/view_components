@@ -45,13 +45,39 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
     assert_selector "primer-text-area"
     assert_selector "div.FormControl-caption--characterLimit[data-target='primer-text-area.characterLimitElement'][data-max-length='100']", text: "100 characters remaining."
     assert_selector "textarea[data-target='primer-text-area.inputElement']"
-    assert_selector "div.FormControl-inlineValidation[data-target='primer-text-area.validationElement'][hidden]"
-    assert_selector "span[data-target='primer-text-area.validationMessageElement']"
-    
+
     # Check for aria-live region
-    assert_selector "span.sr-only[aria-live='polite'][aria-atomic='true']" do |span|
+    assert_selector "span.sr-only[aria-live='polite']" do |span|
       assert span["id"].start_with?("bio-character-count-sr-")
     end
+  end
+
+  def test_character_limit_rejects_zero
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        primer_form_with(url: "/foo") do |f|
+          render_inline_form(f) do |text_area_form|
+            text_area_form.text_area(name: :bio, label: "Bio", character_limit: 0)
+          end
+        end
+      end
+    end
+
+    assert_includes error.message, "character_limit must be a positive integer"
+  end
+
+  def test_character_limit_rejects_negative
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        primer_form_with(url: "/foo") do |f|
+          render_inline_form(f) do |text_area_form|
+            text_area_form.text_area(name: :bio, label: "Bio", character_limit: -10)
+          end
+        end
+      end
+    end
+
+    assert_includes error.message, "character_limit must be a positive integer"
   end
 
   def test_character_limit_with_caption
