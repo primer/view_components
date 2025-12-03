@@ -54,4 +54,55 @@ class Primer::Forms::FormControlTest < Minitest::Test
     assert_selector "input[id=bazboo]"
     assert_selector "label[for=bazboo]"
   end
+
+  def test_character_limit_generates_aria_live_region
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |test_form|
+          test_form.text_field(name: :username, label: "Username", character_limit: 50)
+        end
+      end
+    end
+
+    # Aria-live region exists and is configured correctly
+    assert_selector "span.sr-only[aria-live='polite']" do |element|
+      assert element["id"].start_with?("username-character-count-sr-")
+      # Should be empty initially (populated by JS)
+      assert_equal "", element.text.strip
+    end
+
+    # Character limit display is visible but hidden from screen readers
+    assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "50 characters remaining."
+  end
+
+  def test_character_limit_works_with_text_area
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |test_form|
+          test_form.text_area(name: :bio, label: "Bio", character_limit: 200)
+        end
+      end
+    end
+
+    # Wrapped in primer-text-area custom element
+    assert_selector "primer-text-area"
+
+    # Character limit elements present
+    assert_selector "div.FormControl-caption--characterLimit[data-target='primer-text-area.characterLimitElement'][data-max-length='200']"
+    assert_selector "span.sr-only[aria-live='polite']"
+  end
+
+  def test_character_limit_with_caption_shows_both
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |test_form|
+          test_form.text_field(name: :title, label: "Title", caption: "Keep it short and descriptive", character_limit: 100)
+        end
+      end
+    end
+
+    # Both caption text and character limit are present
+    assert_selector "span.FormControl-caption", text: "Keep it short and descriptive"
+    assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "100 characters remaining."
+  end
 end
