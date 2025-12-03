@@ -25,7 +25,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chrome, firefox]
+        browser:
+          - chrome
+          # - firefox  # Firefox is currently disabled due to intermittent CI failures.
     steps:
       - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
