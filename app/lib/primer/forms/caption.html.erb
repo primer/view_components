@@ -1,8 +1,10 @@
+<% if @input.character_limit? %>
+  <span class="sr-only" id="<%= @input.character_limit_sr_id %>" aria-live="polite"></span>
+<% end %>
 <% if @input.caption? || caption_template? || @input.character_limit? %>
   <span class="FormControl-caption" id="<%= @input.caption_id %>">
     <% if @input.character_limit? %>
-      <span class="sr-only" id="<%= @input.character_limit_sr_id %>" aria-live="polite" aria-atomic="true"></span>
-      <div class="FormControl-caption--characterLimit" data-target="primer-text-area.characterLimitElement" data-max-length="<%= @input.character_limit %>" data-sr-target="<%= @input.character_limit_sr_id %>">
+      <div class="FormControl-caption--characterLimit" data-target="<%= @input.character_limit_target_prefix %>.characterLimitElement" data-max-length="<%= @input.character_limit %>" data-sr-target="<%= @input.character_limit_sr_id %>" aria-hidden="true">
         <%= @input.character_limit %> characters remaining.
       </div>
     <% end %>

@@ -200,6 +200,17 @@ module Primer
           false
         end
 
+        def character_limit_target_prefix
+          case type
+          when :text_field
+            "primer-text-field"
+          when :text_area
+            "primer-text-area"
+          else
+            ""
+          end
+        end
+
         def valid?
           supports_validation? && validation_messages.empty? && !@invalid
         end
