@@ -32,9 +32,11 @@ module Primer
       # @param size [Integer] <%= one_of(Primer::Beta::Avatar::SIZE_OPTIONS) %>
       # @param shape [Symbol] Shape of the avatar. <%= one_of(Primer::Beta::Avatar::SHAPE_OPTIONS) %>
       # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
+      # @param tooltip [String] Tooltip text to display on hover when href is provided.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src:, alt: nil, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
+      def initialize(src:, alt: nil, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, tooltip: nil, **system_arguments)
         @href = href
+        @tooltip = tooltip
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :img
         @system_arguments[:src] = src
@@ -54,7 +56,9 @@ module Primer
 
       def call
         if @href
-          render(Primer::Beta::Link.new(href: @href, classes: @system_arguments[:classes])) do
+          link_id = @tooltip.present? ? self.class.generate_id : nil
+          render(Primer::Beta::Link.new(href: @href, classes: @system_arguments[:classes], id: link_id)) do |link|
+            link.with_tooltip(text: @tooltip) if @tooltip.present?
             render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
           end
         else

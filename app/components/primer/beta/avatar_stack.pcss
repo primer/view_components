@@ -64,13 +64,24 @@
       opacity: 0;
     }
   }
+  /* stylelint-disable-next-line selector-max-type */
+  & span:nth-child(n + 4) .avatar {
+    display: none;
+    opacity: 0;
+  }
 
-  &:hover:not([data-disable-expand]) {
+  &:hover:not([data-disable-expand]),
+  &:focus-within:not([data-disable-expand]) {
     & .avatar {
       margin-right: var(--base-size-4);
     }
 
     & .avatar:nth-child(n + 4) {
+      display: flex;
+      opacity: 1;
+    }
+    /* stylelint-disable-next-line selector-max-type */
+    & span:nth-child(n + 4) .avatar {
       display: flex;
       opacity: 1;
     }
