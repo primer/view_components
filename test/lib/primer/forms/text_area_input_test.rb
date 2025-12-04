@@ -33,6 +33,18 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
     refute_selector ".field_with_errors", visible: :all
   end
 
+  def test_renders_character_limit_form
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(TextAreaWithCharacterLimitForm.new(f))
+      end
+    end
+
+    assert_selector "primer-text-area"
+    assert_selector "textarea[name=bio]"
+    assert_selector "div.FormControl-caption--characterLimit[data-max-length='100']"
+  end
+
   def test_character_limit
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|

@@ -61,6 +61,18 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
     assert_includes error.message, "must also specify a leading visual"
   end
 
+  def test_renders_character_limit_form
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(TextFieldWithCharacterLimitForm.new(f))
+      end
+    end
+
+    assert_selector "primer-text-field"
+    assert_selector "input[name=username]"
+    assert_selector "div.FormControl-caption--characterLimit[data-max-length='20']"
+  end
+
   def test_character_limit
     render_in_view_context do
       primer_form_with(url: "/foo") do |f|
@@ -117,7 +129,7 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
       end
     end
 
-    assert_selector "div.FormControl-caption--characterLimit", text: "20 characters remaining."
+    assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "20 characters remaining."
     assert_selector "span.FormControl-caption", text: "Choose a unique username"
   end
 end
