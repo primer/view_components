@@ -2853,6 +2853,12 @@
         "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
       },
       {
+        "name": "character_limit",
+        "type": "Number",
+        "default": "N/A",
+        "description": "Optional character limit for the input. If provided, a character counter will be displayed below the input."
+      },
+      {
         "name": "name",
         "type": "String",
         "default": "N/A",
@@ -2981,6 +2987,12 @@
         "type": "Boolean",
         "default": "N/A",
         "description": "When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`."
+      },
+      {
+        "name": "character_limit",
+        "type": "Number",
+        "default": "N/A",
+        "description": "Optional character limit for the input. If provided, a character counter will be displayed below the input."
       },
       {
         "name": "name",
