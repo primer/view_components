@@ -69,24 +69,8 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
     end
 
     assert_selector "primer-text-field"
-    assert_selector "input[name=username]"
-    assert_selector "div.FormControl-caption--characterLimit[data-max-length='20']"
-  end
-
-  def test_character_limit
-    render_in_view_context do
-      primer_form_with(url: "/foo") do |f|
-        render_inline_form(f) do |text_field_form|
-          text_field_form.text_field(name: :username, label: "Username", character_limit: 20)
-        end
-      end
-    end
-
-    assert_selector "primer-text-field"
     assert_selector "div.FormControl-caption--characterLimit[data-target='primer-text-field.characterLimitElement'][data-max-length='20']", text: "20 characters remaining."
     assert_selector "input[type=text][data-target*='primer-text-field.inputElement']"
-
-    # Check for aria-live region
     assert_selector "span.sr-only[aria-live='polite']" do |span|
       assert span["id"].start_with?("username-character-count-sr-")
     end
