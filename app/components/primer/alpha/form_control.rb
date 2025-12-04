@@ -48,16 +48,14 @@ module Primer
       # @param visually_hide_label [Boolean] When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers.
       # @param full_width [Boolean] When set to `true`, the form control will take up all the horizontal space allowed by its container.
       # @param label_arguments [Hash] HTML attributes to attach to the `<label>` element that labels the input.
-      # @param character_limit [Number] Optional character limit for the input. If provided, a character counter will be displayed below the input.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label:, caption: nil, validation_message: nil, required: false, visually_hide_label: false, full_width: false, label_arguments: {}, character_limit: nil, **system_arguments)
+      def initialize(label:, caption: nil, validation_message: nil, required: false, visually_hide_label: false, full_width: false, label_arguments: {}, **system_arguments)
         @label = label
         @init_caption = caption
         @validation_message = validation_message
         @required = required
         @visually_hide_label = visually_hide_label
         @full_width = full_width
-        @character_limit = character_limit
         @label_arguments = label_arguments
         @system_arguments = system_arguments
 
@@ -108,12 +106,6 @@ module Primer
       # @returns Boolean
       def full_width?
         @full_width
-      end
-
-      # Returns the character limit for the input, if set.
-      # @returns [Number, nil]
-      def character_limit?
-        @character_limit
       end
 
       private
