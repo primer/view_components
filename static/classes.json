@@ -245,9 +245,6 @@
   "FormControl-caption": [
     "Primer::Alpha::TextField"
   ],
-  "FormControl-caption--characterLimit": [
-    "Primer::Alpha::TextField"
-  ],
   "FormControl-check-group-wrap": [
     "Primer::Alpha::TextField"
   ],
