@@ -1,5 +1,21 @@
-<%= render(FormControl.new(input: @input)) do %>
-  <%= content_tag(:div, **@field_wrap_arguments) do %>
-    <%= builder.text_area(@input.name, **@input.input_arguments) %>
+<% if @input.character_limit? %>
+  <primer-text-area>
+    <%= render(FormControl.new(input: @input)) do %>
+      <%= content_tag(:div, **@field_wrap_arguments) do %>
+        <%= builder.text_area(@input.name, **@input.input_arguments) %>
+      <% end %>
+      <% if @input.character_limit? %>
+        <%= content_tag(:div, **character_limit_validation_arguments, data: { target: "primer-text-area.validationElement" }) do %>
+          <span class="FormControl-inlineValidation--visual"><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
+          <span data-target="primer-text-area.validationMessageElement"></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </primer-text-area>
+<% else %>
+  <%= render(FormControl.new(input: @input)) do %>
+    <%= content_tag(:div, **@field_wrap_arguments) do %>
+      <%= builder.text_area(@input.name, **@input.input_arguments) %>
+    <% end %>
   <% end %>
 <% end %>

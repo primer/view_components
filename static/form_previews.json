@@ -107,6 +107,16 @@
         "preview_path": "primer/forms/auto_complete_form",
         "name": "auto_complete_form",
         "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/text_area_with_character_limit_form",
+        "name": "text_area_with_character_limit_form",
+        "snapshot": "true"
+      },
+      {
+        "preview_path": "primer/forms/text_field_with_character_limit_form",
+        "name": "text_field_with_character_limit_form",
+        "snapshot": "true"
       }
     ]
   }
