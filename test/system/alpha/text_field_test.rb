@@ -122,7 +122,7 @@ module Alpha
 
       # Initial state - should show full limit remaining
       assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "10 characters remaining."
-      
+
       # Validation should be hidden initially
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
 
@@ -135,7 +135,7 @@ module Alpha
 
       # Character count should update to show 5 remaining
       assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "5 characters remaining."
-      
+
       # Validation should still be hidden
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
     end
@@ -144,7 +144,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-      
+
       # Type text that exceeds the 10 character limit
       input.fill_in(with: "Hello World!") # 12 characters
 
@@ -165,7 +165,7 @@ module Alpha
       # Check that aria-describedby includes the validation ID
       validation_element = find("div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']")
       validation_id = validation_element["id"]
-      
+
       input_aria_describedby = input["aria-describedby"]
       assert_includes input_aria_describedby, validation_id, "input aria-describedby should include validation element ID"
     end
@@ -174,7 +174,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-      
+
       # First, exceed the limit
       input.fill_in(with: "Hello World!") # 12 characters
       sleep 0.3
@@ -202,13 +202,13 @@ module Alpha
       visit_preview(:with_character_limit)
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-      
+
       # Get the aria-live region
       sr_element = find("span.sr-only[aria-live='polite']")
 
       # Type some text
       input.fill_in(with: "Test")
-      
+
       # Wait for debounced update (150ms + buffer)
       sleep 0.3
 
@@ -227,7 +227,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-      
+
       # Type to leave exactly 1 character remaining
       input.fill_in(with: "123456789") # 9 characters, limit is 10
       sleep 0.3

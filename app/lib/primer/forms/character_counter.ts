@@ -36,9 +36,10 @@ export class CharacterCounter {
   private updateCharacterCount(): void {
     if (!this.characterLimitElement) return
 
-    const maxLength = parseInt(this.characterLimitElement.getAttribute('data-max-length') || '0', 10)
-    if (maxLength === 0) return
+    const maxLengthAttr = this.characterLimitElement.getAttribute('data-max-length')
+    if (!maxLengthAttr) return
 
+    const maxLength = parseInt(maxLengthAttr, 10)
     const currentLength = this.inputElement.value.length
     const charactersRemaining = maxLength - currentLength
     let message = ''
@@ -49,8 +50,7 @@ export class CharacterCounter {
       this.characterLimitElement.textContent = message
       this.clearError()
     } else {
-      // Over the limit
-      const charactersOver = Math.abs(charactersRemaining)
+      const charactersOver = -charactersRemaining
       const characterText = charactersOver === 1 ? 'character' : 'characters'
       message = `${charactersOver} ${characterText} over.`
       this.characterLimitElement.textContent = message
@@ -61,28 +61,27 @@ export class CharacterCounter {
   }
 
   /**
-   * Announce character count to screen readers
+   * Announce character count to screen readers with debouncing
    */
   private announceToScreenReader(message: string): void {
-    // Clear any existing timeout
     if (this.announceTimeout) {
       clearTimeout(this.announceTimeout)
     }
 
-    // Set a new timeout to announce after a delay
     this.announceTimeout = window.setTimeout(() => {
       const srTargetId = this.characterLimitElement?.getAttribute('data-sr-target')
-      if (srTargetId) {
-        const srElement = document.getElementById(srTargetId)
-        if (srElement) {
-          srElement.textContent = message
-        }
+      if (!srTargetId) return
+
+      const srElement = document.getElementById(srTargetId)
+      if (srElement) {
+        srElement.textContent = message
       }
     }, this.SCREEN_READER_DELAY)
   }
 
   /**
-   * Show validation error when character limit is exceeded
+   * Show validation error when character limit is exceeded.
+   * Required since default validation on inputs only appears after an attempt to submit the form.
    */
   private setError(): void {
     if (!this.validationElement || !this.validationMessageElement) return

@@ -56,10 +56,6 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
         end
       end
     end
-
-
-    # Check for aria-live region
-
   end
 
   def test_character_limit_rejects_zero
