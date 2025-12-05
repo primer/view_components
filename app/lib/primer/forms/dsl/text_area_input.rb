@@ -37,10 +37,6 @@ module Primer
           @character_limit_sr_id ||= "#{name}-character-count-sr-#{SecureRandom.hex(4)}"
         end
 
-        def character_limit_display_id
-          @character_limit_display_id ||= "#{name}-character-limit-display-#{SecureRandom.hex(4)}"
-        end
-
         def character_limit_validation_id
           @character_limit_validation_id ||= "#{name}-character-limit-validation-#{SecureRandom.hex(4)}"
         end

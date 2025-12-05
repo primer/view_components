@@ -71,8 +71,7 @@ class Primer::Forms::FormControlTest < Minitest::Test
       assert_equal "", element.text.strip
     end
 
-    # Character limit display is visible but hidden from screen readers
-    assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "50 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='50']", text: "50 characters remaining."
   end
 
   def test_character_limit_works_with_text_area
@@ -88,7 +87,7 @@ class Primer::Forms::FormControlTest < Minitest::Test
     assert_selector "primer-text-area"
 
     # Character limit elements present
-    assert_selector "div.FormControl-caption--characterLimit[data-target='primer-text-area.characterLimitElement'][data-max-length='200']"
+    assert_selector "span.FormControl-caption[data-max-length='200']"
     assert_selector "span.sr-only[aria-live='polite']"
   end
 
@@ -103,6 +102,6 @@ class Primer::Forms::FormControlTest < Minitest::Test
 
     # Both caption text and character limit are present
     assert_selector "span.FormControl-caption", text: "Keep it short and descriptive"
-    assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "100 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='100']", text: "100 characters remaining."
   end
 end

@@ -10,7 +10,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       # Initial state - should show full limit remaining
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "10 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "10 characters remaining."
 
       # Validation should be hidden initially
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-area.validationElement']", visible: :hidden
@@ -23,7 +23,7 @@ module Alpha
       sleep 0.2
 
       # Character count should update to show 5 remaining
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "5 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
 
       # Validation should still be hidden
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-area.validationElement']", visible: :hidden
@@ -41,7 +41,7 @@ module Alpha
       sleep 0.3
 
       # Character count should show "over" message
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "2 characters over."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "2 characters over."
 
       # Validation error should be visible
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-area.validationElement']", visible: :visible do |element|
@@ -54,7 +54,7 @@ module Alpha
       # Check that aria-describedby includes the validation ID
       validation_element = find("div.FormControl-inlineValidation[data-target='primer-text-area.validationElement']")
       validation_id = validation_element["id"]
-      
+
       textarea_aria_describedby = textarea["aria-describedby"]
       assert_includes textarea_aria_describedby, validation_id, "textarea aria-describedby should include validation element ID"
     end
@@ -63,7 +63,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
-      
+
       # First, exceed the limit
       textarea.fill_in(with: "Hello World!") # 12 characters
       sleep 0.3
@@ -77,7 +77,7 @@ module Alpha
       sleep 0.3
 
       # Character count should update
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "5 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
 
       # Validation should be hidden again
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-area.validationElement']", visible: :hidden
@@ -91,16 +91,16 @@ module Alpha
       visit_preview(:with_character_limit)
 
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
-      
+
       # Get the aria-live region
       sr_element = find("span.sr-only[aria-live='polite']")
-      
+
       # Initially should be empty (or match initial state)
       initial_text = sr_element.text
 
       # Type some text
       textarea.fill_in(with: "Test")
-      
+
       # Wait for debounced update (150ms + buffer)
       sleep 0.3
 
@@ -119,20 +119,19 @@ module Alpha
       visit_preview(:with_character_limit)
 
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
-      
-      # Type to leave exactly 1 character remaining
+            # Type to leave exactly 1 character remaining
       textarea.fill_in(with: "123456789") # 9 characters, limit is 10
       sleep 0.3
 
       # Should use singular "character"
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "1 character remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character remaining."
 
       # Type one more to exceed by exactly 1
       textarea.fill_in(with: "12345678901") # 11 characters
       sleep 0.3
 
       # Should use singular "character" for over
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "1 character over."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character over."
     end
   end
 end

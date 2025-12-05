@@ -121,7 +121,7 @@ module Alpha
       visit_preview(:with_character_limit)
 
       # Initial state - should show full limit remaining
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "10 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "10 characters remaining."
 
       # Validation should be hidden initially
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
@@ -134,7 +134,7 @@ module Alpha
       sleep 0.2
 
       # Character count should update to show 5 remaining
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "5 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
 
       # Validation should still be hidden
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
@@ -152,7 +152,7 @@ module Alpha
       sleep 0.3
 
       # Character count should show "over" message
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "2 characters over."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "2 characters over."
 
       # Validation error should be visible
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :visible do |element|
@@ -188,7 +188,7 @@ module Alpha
       sleep 0.3
 
       # Character count should update
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "5 characters remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
 
       # Validation should be hidden again
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
@@ -233,14 +233,14 @@ module Alpha
       sleep 0.3
 
       # Should use singular "character"
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "1 character remaining."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character remaining."
 
       # Type one more to exceed by exactly 1
       input.fill_in(with: "12345678901") # 11 characters
       sleep 0.3
 
       # Should use singular "character" for over
-      assert_selector "div.FormControl-caption--characterLimit[aria-hidden='true']", text: "1 character over."
+      assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character over."
     end
   end
 end

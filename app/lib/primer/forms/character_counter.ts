@@ -3,7 +3,7 @@
  * Handles real-time character count updates, validation, and aria-live announcements.
  */
 export class CharacterCounter {
-  private SCREEN_READER_DELAY: number = 150
+  private SCREEN_READER_DELAY: number = 500
   private announceTimeout: number | null = null
 
   constructor(

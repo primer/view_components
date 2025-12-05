@@ -1,13 +1,11 @@
 <% if @input.character_limit? %>
-  <span class="sr-only" id="<%= @input.character_limit_sr_id %>" aria-live="polite"></span>
+  <span class="sr-only" id="<%= @input.character_limit_sr_id %>" aria-live="polite" aria-atomic="true"></span>
+  <span class="FormControl-caption" data-target="<%= @input.character_limit_target_prefix %>.characterLimitElement" data-max-length="<%= @input.character_limit %>" data-sr-target="<%= @input.character_limit_sr_id %>">
+    <%= @input.character_limit %> characters remaining.
+  </span>
 <% end %>
-<% if @input.caption? || caption_template? || @input.character_limit? %>
+<% if @input.caption? || caption_template? %>
   <span class="FormControl-caption" id="<%= @input.caption_id %>">
-    <% if @input.character_limit? %>
-      <div class="FormControl-caption--characterLimit" data-target="<%= @input.character_limit_target_prefix %>.characterLimitElement" data-max-length="<%= @input.character_limit %>" data-sr-target="<%= @input.character_limit_sr_id %>" aria-hidden="true">
-        <%= @input.character_limit %> characters remaining.
-      </div>
-    <% end %>
     <% if @input.caption? && !@input.caption.blank? %>
       <%= @input.caption %>
     <% elsif caption_template? %>
