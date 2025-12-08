@@ -120,23 +120,15 @@ module Alpha
     def test_character_limit_updates_on_input
       visit_preview(:with_character_limit)
 
-      # Initial state - should show full limit remaining
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "10 characters remaining."
-
-      # Validation should be hidden initially
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
 
-      # Type some text (5 characters)
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
       input.fill_in(with: "Hello")
 
-      # Wait for JS to update
       sleep 0.2
 
-      # Character count should update to show 5 remaining
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
-
-      # Validation should still be hidden
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
     end
 
@@ -145,24 +137,16 @@ module Alpha
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
 
-      # Type text that exceeds the 10 character limit
       input.fill_in(with: "Hello World!") # 12 characters
 
-      # Wait for JS to update (includes debounce time)
       sleep 0.3
 
-      # Character count should show "over" message
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "2 characters over."
-
-      # Validation error should be visible
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :visible do |element|
         assert_includes element.text, "You've exceeded the character limit"
       end
-
-      # Input should be marked as invalid
       assert_selector "input[invalid='true'][aria-invalid='true']"
 
-      # Check that aria-describedby includes the validation ID
       validation_element = find("div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']")
       validation_id = validation_element["id"]
 
@@ -175,25 +159,18 @@ module Alpha
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
 
-      # First, exceed the limit
       input.fill_in(with: "Hello World!") # 12 characters
       sleep 0.3
 
-      # Verify error is shown
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :visible
       assert_selector "input[invalid='true'][aria-invalid='true']"
 
-      # Now delete characters to get back under the limit
       input.fill_in(with: "Hello") # 5 characters
       sleep 0.3
 
-      # Character count should update
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "5 characters remaining."
-
-      # Validation should be hidden again
       assert_selector "div.FormControl-inlineValidation[data-target='primer-text-field.characterLimitValidationElement']", visible: :hidden
 
-      # Input should not be marked as invalid
       refute_selector "input[invalid='true']"
       refute_selector "input[aria-invalid='true']"
     end
@@ -203,23 +180,18 @@ module Alpha
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
 
-      # Get the aria-live region
       sr_element = find("span.sr-only[aria-live='polite']")
 
-      # Type some text
       input.fill_in(with: "Test")
 
-      # Wait for debounced update (150ms + buffer)
-      sleep 0.3
+      # Wait for debounced update (500ms + buffer)
+      sleep 0.6
 
-      # Screen reader text should be updated
       assert_equal "6 characters remaining.", sr_element.text
 
-      # Type more to exceed limit
       input.fill_in(with: "Hello World!") # 12 characters
-      sleep 0.3
+      sleep 0.6
 
-      # Screen reader should announce over limit
       assert_equal "2 characters over.", sr_element.text
     end
 
@@ -228,18 +200,14 @@ module Alpha
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
 
-      # Type to leave exactly 1 character remaining
       input.fill_in(with: "123456789") # 9 characters, limit is 10
       sleep 0.3
 
-      # Should use singular "character"
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character remaining."
 
-      # Type one more to exceed by exactly 1
       input.fill_in(with: "12345678901") # 11 characters
       sleep 0.3
 
-      # Should use singular "character" for over
       assert_selector "span.FormControl-caption[data-max-length='10']", text: "1 character over."
     end
   end
