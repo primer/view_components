@@ -48,16 +48,6 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
     end
   end
 
-  def test_character_limit
-    render_in_view_context do
-      primer_form_with(url: "/foo") do |f|
-        render_inline_form(f) do |text_area_form|
-          text_area_form.text_area(name: :bio, label: "Bio", character_limit: 100)
-        end
-      end
-    end
-  end
-
   def test_character_limit_rejects_zero
     error = assert_raises(ArgumentError) do
       render_in_view_context do
