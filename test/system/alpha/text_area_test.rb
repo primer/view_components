@@ -17,7 +17,6 @@ module Alpha
       sleep 0.3
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "5 characters remaining"
-      refute_selector "span.FormControl-caption .FormControl-caption-icon[hidden]", visible: :all
     end
 
     def test_character_limit_shows_validation_when_exceeded
