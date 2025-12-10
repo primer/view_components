@@ -33,10 +33,6 @@ module Primer
           @character_limit.present?
         end
 
-        def character_limit_sr_id
-          @character_limit_sr_id ||= "#{name}-character-count-sr-#{SecureRandom.hex(4)}"
-        end
-
         # :nocov:
         def focusable?
           true

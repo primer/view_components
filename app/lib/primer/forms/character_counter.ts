@@ -10,7 +10,7 @@ export class CharacterCounter {
   constructor(
     private inputElement: HTMLInputElement | HTMLTextAreaElement,
     private characterLimitElement: HTMLElement,
-    private characterLimitSrElement?: HTMLElement,
+    private characterLimitSrElement: HTMLElement,
   ) {}
 
   /**

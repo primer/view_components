@@ -69,11 +69,9 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
     end
 
     assert_selector "primer-text-field"
-    assert_selector "span.FormControl-caption[data-max-length='20']", text: "20 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='20'] .FormControl-caption-text", text: "20 characters remaining"
     assert_selector "input[type=text][data-target*='primer-text-field.inputElement']"
-    assert_selector "span.sr-only[aria-live='polite']" do |span|
-      assert span["id"].start_with?("username-character-count-sr-")
-    end
+    assert_selector "span.sr-only[data-target='primer-text-field.characterLimitSrElement'][aria-live='polite']"
   end
 
   def test_character_limit_rejects_zero
@@ -113,7 +111,7 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
       end
     end
 
-    assert_selector "span.FormControl-caption[data-max-length='20']", text: "20 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='20'] .FormControl-caption-text", text: "20 characters remaining"
     assert_selector "span.FormControl-caption", text: "Choose a unique username"
   end
 end

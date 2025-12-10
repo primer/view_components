@@ -65,13 +65,11 @@ class Primer::Forms::FormControlTest < Minitest::Test
     end
 
     # Aria-live region exists and is configured correctly
-    assert_selector "span.sr-only[aria-live='polite']" do |element|
-      assert element["id"].start_with?("username-character-count-sr-")
-      # Should be empty initially (populated by JS)
+    assert_selector "span.sr-only[data-target='primer-text-field.characterLimitSrElement'][aria-live='polite']" do |element|
       assert_equal "", element.text.strip
     end
 
-    assert_selector "span.FormControl-caption[data-max-length='50']", text: "50 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='50'] .FormControl-caption-text", text: "50 characters remaining"
   end
 
   def test_character_limit_works_with_text_area
@@ -100,8 +98,8 @@ class Primer::Forms::FormControlTest < Minitest::Test
       end
     end
 
-    # Both caption text and character limit are present
+    # Both caption text and character limit are present (as separate spans)
     assert_selector "span.FormControl-caption", text: "Keep it short and descriptive"
-    assert_selector "span.FormControl-caption[data-max-length='100']", text: "100 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='100'] .FormControl-caption-text", text: "100 characters remaining"
   end
 end

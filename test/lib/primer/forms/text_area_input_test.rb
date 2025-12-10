@@ -41,11 +41,9 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
     end
 
     assert_selector "primer-text-area"
-    assert_selector "span.FormControl-caption[data-target='primer-text-area.characterLimitElement'][data-max-length='100']", text: "100 characters remaining."
+    assert_selector "span.FormControl-caption[data-target='primer-text-area.characterLimitElement'][data-max-length='100'] .FormControl-caption-text", text: "100 characters remaining"
     assert_selector "textarea[data-target='primer-text-area.inputElement']"
-    assert_selector "span.sr-only[aria-live='polite']" do |span|
-      assert span["id"].start_with?("bio-character-count-sr-")
-    end
+    assert_selector "span.sr-only[data-target='primer-text-area.characterLimitSrElement'][aria-live='polite']"
   end
 
   def test_character_limit_rejects_zero
@@ -85,7 +83,7 @@ class Primer::Forms::TextAreaInputTest < Minitest::Test
       end
     end
 
-    assert_selector "span.FormControl-caption[data-max-length='100']", text: "100 characters remaining."
+    assert_selector "span.FormControl-caption[data-max-length='100'] .FormControl-caption-text", text: "100 characters remaining"
     assert_selector "span.FormControl-caption", text: "Tell us about yourself"
   end
 end

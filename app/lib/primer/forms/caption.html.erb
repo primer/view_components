@@ -1,5 +1,5 @@
 <% if @input.character_limit? %>
-  <span class="sr-only" data-target="<%= @input.character_limit_target_prefix %>.characterLimitSrElement" id="<%= @input.character_limit_sr_id %>" aria-live="polite" aria-atomic="true"></span>
+  <span class="sr-only" data-target="<%= @input.character_limit_target_prefix %>.characterLimitSrElement" aria-live="polite" aria-atomic="true"></span>
   <span class="FormControl-caption" data-target="<%= @input.character_limit_target_prefix %>.characterLimitElement" data-max-length="<%= @input.character_limit %>" id="<%= @input.character_limit_id %>">
     <span class="FormControl-caption-icon" hidden><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
     <span class="FormControl-caption-text"><%= @input.character_limit %> <%= @input.character_limit == 1 ? 'character' : 'characters' %> remaining</span>
