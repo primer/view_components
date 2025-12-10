@@ -223,10 +223,16 @@ module Primer
         render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-18", label: "Username"))
       end
 
+      # @label With character limit, over limit
+      # @snapshot interactive
+      def with_character_limit_over_limit
+        render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-19", label: "Tell me about yourself", value: "This text is definitely over the limit."))
+      end
+
       # @label With character limit and caption
       # @snapshot
       def with_character_limit_and_caption
-        render(Primer::Alpha::TextField.new(character_limit: 20, caption: "Choose a unique username.", name: "my-text-field-19", label: "Username"))
+        render(Primer::Alpha::TextField.new(character_limit: 20, caption: "Choose a unique username.", name: "my-text-field-20", label: "Username"))
       end
       #
       # @!endgroup
@@ -235,24 +241,24 @@ module Primer
       #
       # @label Auto check request ok
       def with_auto_check_ok
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_ok_path, name: "my-text-field-20", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_ok_path, name: "my-text-field-21", label: "My text field"))
       end
 
       # @label Auto check request accepted
       def with_auto_check_accepted
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_accepted_path, name: "my-text-field-21", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_accepted_path, name: "my-text-field-22", label: "My text field"))
       end
 
       # @label Auto check request error
       def with_auto_check_error
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_error_path, name: "my-text-field-22", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_error_path, name: "my-text-field-23", label: "My text field"))
       end
       #
       # @!endgroup
 
       # @label With data target attribute
       def with_data_target
-        render(Primer::Alpha::TextField.new(name: "my-text-field-23", label: "My text field", data: { target: "custom-component.inputElement" }))
+        render(Primer::Alpha::TextField.new(name: "my-text-field-24", label: "My text field", data: { target: "custom-component.inputElement" }))
       end
       #
       # @!endgroup

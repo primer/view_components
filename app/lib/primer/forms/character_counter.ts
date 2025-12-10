@@ -55,13 +55,19 @@ export class CharacterCounter {
     if (charactersRemaining >= 0) {
       const characterText = this.pluralize(charactersRemaining, 'character')
       message = `${charactersRemaining} ${characterText} remaining`
-      this.characterLimitElement.textContent = message
+      const textSpan = this.characterLimitElement.querySelector('.FormControl-caption-text')
+      if (textSpan) {
+        textSpan.textContent = message
+      }
       this.clearError()
     } else {
       const charactersOver = -charactersRemaining
       const characterText = this.pluralize(charactersOver, 'character')
       message = `${charactersOver} ${characterText} over`
-      this.characterLimitElement.textContent = message
+      const textSpan = this.characterLimitElement.querySelector('.FormControl-caption-text')
+      if (textSpan) {
+        textSpan.textContent = message
+      }
       this.setError()
     }
 
@@ -92,8 +98,13 @@ export class CharacterCounter {
   private setError(): void {
     this.inputElement.setAttribute('invalid', 'true')
     this.inputElement.setAttribute('aria-invalid', 'true')
+    this.characterLimitElement.classList.add('fgColor-danger')
 
-    // TODO: add error icon to character limit text and change color to red
+    // Show danger icon
+    const icon = this.characterLimitElement.querySelector('.FormControl-caption-icon')
+    if (icon) {
+      icon.removeAttribute('hidden')
+    }
   }
 
   /**
@@ -102,7 +113,12 @@ export class CharacterCounter {
   private clearError(): void {
     this.inputElement.removeAttribute('invalid')
     this.inputElement.removeAttribute('aria-invalid')
+    this.characterLimitElement.classList.remove('fgColor-danger')
 
-    // TODO: Undo error icon and color changes
+    // Hide danger icon
+    const icon = this.characterLimitElement.querySelector('.FormControl-caption-icon')
+    if (icon) {
+      icon.setAttribute('hidden', '')
+    }
   }
 }
