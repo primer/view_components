@@ -95,38 +95,32 @@ module Alpha
       visit_preview(:with_character_limit)
 
       sr_element = find("span.sr-only[aria-live='polite']")
-      
-      # Screen reader element should be empty on initial load
+
       assert_equal "", sr_element.text
-      
-      # Only populated after user input
+
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
       textarea.fill_in(with: "Test")
-      
+
       sleep 0.6 # Wait for debounced update
-      
+
       assert_equal "6 characters remaining", sr_element.text
     end
 
     def test_character_limit_icon_visibility
       visit_preview(:with_character_limit)
 
-      # Icon should be hidden initially
       assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"
-      
+
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
-      
-      # Icon should remain hidden when under limit
+
       textarea.fill_in(with: "Hello")
       sleep 0.3
       assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"
-      
-      # Icon should be visible when over limit
+
       textarea.fill_in(with: "Hello World!")
       sleep 0.3
       assert_selector "span.FormControl-caption .FormControl-caption-icon:not([hidden])", visible: :visible
-      
-      # Icon should be hidden again when back under limit
+
       textarea.fill_in(with: "Hi")
       sleep 0.3
       assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"

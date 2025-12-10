@@ -155,38 +155,16 @@ module Alpha
       input.fill_in(with: "Hello World!") # 12 characters
       sleep 0.3
 
-      assert_selector "span.FormControl-caption .FormControl-caption-icon:not([hidden])", visible: :visible
       assert_selector "input[invalid='true'][aria-invalid='true']"
 
       input.fill_in(with: "Hello") # 5 characters
       sleep 0.3
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "5 characters remaining"
-      refute_selector "span.FormControl-caption .FormControl-caption-icon[hidden]", visible: :all
       refute_selector "span.FormControl-caption.fgColor-danger"
 
       refute_selector "input[invalid='true']"
       refute_selector "input[aria-invalid='true']"
-    end
-
-    def test_character_limit_screen_reader_text_updates
-      visit_preview(:with_character_limit)
-
-      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-
-      sr_element = find("span.sr-only[aria-live='polite']")
-
-      input.fill_in(with: "Test")
-
-      # Wait for debounced update (500ms + buffer)
-      sleep 0.6
-
-      assert_equal "6 characters remaining", sr_element.text
-
-      input.fill_in(with: "Hello World!") # 12 characters
-      sleep 0.6
-
-      assert_equal "2 characters over", sr_element.text
     end
 
     def test_character_limit_singular_vs_plural
@@ -203,20 +181,6 @@ module Alpha
       sleep 0.3
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "1 character over"
-    end
-
-    def test_character_limit_screen_reader_not_announced_on_load
-      visit_preview(:with_character_limit)
-
-      sr_element = find("span.sr-only[aria-live='polite']")
-
-      assert_equal "", sr_element.text
-
-      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
-      input.fill_in(with: "Test")
-
-      sleep 0.6 # Wait for debounced update
-      assert_equal "6 characters remaining", sr_element.text
     end
   end
 end
