@@ -23,10 +23,4 @@
       </div>
     <% end %>
   <% end %>
-  <% if @input.character_limit? %>
-    <%= content_tag(:div, **character_limit_validation_arguments, data: { target: "primer-text-field.characterLimitValidationElement" }) do %>
-      <span class="FormControl-inlineValidation--visual"><%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %></span>
-      <span data-target="primer-text-field.characterLimitValidationMessageElement"></span>
-    <% end %>
-  <% end %>
 <% end %>

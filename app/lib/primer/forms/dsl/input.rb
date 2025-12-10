@@ -115,6 +115,7 @@ module Primer
 
           @ids = {}.tap do |id_map|
             id_map[:validation] = "validation-#{@base_id}" if supports_validation?
+            id_map[:character_limit_caption] = "character_limit-#{@base_id}" if character_limit?
             id_map[:caption] = "caption-#{@base_id}" if caption? || caption_template?
           end
 
@@ -201,6 +202,10 @@ module Primer
 
         def character_limit?
           false
+        end
+
+        def character_limit_id
+          ids[:character_limit_caption]
         end
 
         def character_limit_target_prefix

@@ -103,6 +103,12 @@ module Primer
         render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself"))
       end
 
+      # @label With character limit, over limit
+      # @snapshot interactive
+      def with_character_limit_over_limit
+        render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself", value: "This text is definitely over the limit."))
+      end
+
       # @label With character limit and caption
       # @snapshot
       def with_character_limit_and_caption

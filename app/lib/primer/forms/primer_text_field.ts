@@ -20,8 +20,7 @@ export class PrimerTextFieldElement extends HTMLElement {
   @target leadingVisual: HTMLElement
   @target leadingSpinner: HTMLElement
   @target characterLimitElement: HTMLElement
-  @target characterLimitValidationElement: HTMLElement
-  @target characterLimitValidationMessageElement: HTMLElement
+  @target characterLimitSrElement: HTMLElement
 
   #abortController: AbortController | null
   #characterCounter: CharacterCounter | null = null
@@ -57,8 +56,7 @@ export class PrimerTextFieldElement extends HTMLElement {
       this.#characterCounter = new CharacterCounter(
         this.inputElement,
         this.characterLimitElement,
-        this.characterLimitValidationElement,
-        this.characterLimitValidationMessageElement,
+        this.characterLimitSrElement,
       )
       this.#characterCounter.initialize(signal)
     }

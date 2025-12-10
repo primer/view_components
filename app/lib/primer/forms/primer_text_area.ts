@@ -5,8 +5,7 @@ import {CharacterCounter} from './character_counter'
 export class PrimerTextAreaElement extends HTMLElement {
   @target inputElement: HTMLTextAreaElement
   @target characterLimitElement: HTMLElement
-  @target validationElement: HTMLElement
-  @target validationMessageElement: HTMLElement
+  @target characterLimitSrElement: HTMLElement
 
   #characterCounter: CharacterCounter | null = null
 
@@ -15,8 +14,7 @@ export class PrimerTextAreaElement extends HTMLElement {
       this.#characterCounter = new CharacterCounter(
         this.inputElement,
         this.characterLimitElement,
-        this.validationElement,
-        this.validationMessageElement,
+        this.characterLimitSrElement,
       )
       this.#characterCounter.initialize()
     }
