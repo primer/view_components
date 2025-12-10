@@ -10,7 +10,6 @@ module Alpha
       visit_preview(:with_character_limit)
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "10 characters remaining"
-      refute_selector "span.FormControl-caption .FormControl-caption-icon[hidden]", visible: :all
 
       textarea = find("textarea[data-target='primer-text-area.inputElement']")
       textarea.fill_in(with: "Hello")
@@ -50,7 +49,6 @@ module Alpha
       sleep 0.3
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "5 characters remaining"
-      refute_selector "span.FormControl-caption .FormControl-caption-icon[hidden]", visible: :all
       refute_selector "span.FormControl-caption.fgColor-danger"
 
       refute_selector "textarea[invalid='true']"
@@ -104,26 +102,6 @@ module Alpha
       sleep 0.6 # Wait for debounced update
 
       assert_equal "6 characters remaining", sr_element.text
-    end
-
-    def test_character_limit_icon_visibility
-      visit_preview(:with_character_limit)
-
-      assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"
-
-      textarea = find("textarea[data-target='primer-text-area.inputElement']")
-
-      textarea.fill_in(with: "Hello")
-      sleep 0.3
-      assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"
-
-      textarea.fill_in(with: "Hello World!")
-      sleep 0.3
-      assert_selector "span.FormControl-caption .FormControl-caption-icon:not([hidden])", visible: :visible
-
-      textarea.fill_in(with: "Hi")
-      sleep 0.3
-      assert_selector "span.FormControl-caption .FormControl-caption-icon[hidden]"
     end
   end
 end

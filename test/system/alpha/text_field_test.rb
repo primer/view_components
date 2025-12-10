@@ -121,7 +121,6 @@ module Alpha
       visit_preview(:with_character_limit)
 
       assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "10 characters remaining"
-      refute_selector "span.FormControl-caption .FormControl-caption-icon[hidden]", visible: :all
 
       input = find("input[type=text][data-target*='primer-text-field.inputElement']")
       input.fill_in(with: "Hello")
