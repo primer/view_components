@@ -77,6 +77,14 @@ module Primer
             Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
           end
       end
+
+      def character_limit_validation_arguments
+        {
+          class: "FormControl-inlineValidation",
+          id: @input.character_limit_validation_id,
+          hidden: true
+        }
+      end
     end
   end
 end

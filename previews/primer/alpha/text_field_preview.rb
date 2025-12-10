@@ -24,6 +24,7 @@ module Primer
       # @param monospace toggle
       # @param leading_visual_icon octicon
       # @param leading_spinner toggle
+      # @param character_limit number
       def playground(
         name: "my-text-field",
         id: "my-text-field",
@@ -42,7 +43,8 @@ module Primer
         inset: false,
         monospace: false,
         leading_visual_icon: nil,
-        leading_spinner: false
+        leading_spinner: false,
+        character_limit: nil
       )
         system_arguments = {
           name: name,
@@ -61,7 +63,8 @@ module Primer
           placeholder: placeholder,
           inset: inset,
           monospace: monospace,
-          leading_spinner: leading_spinner
+          leading_spinner: leading_spinner,
+          character_limit: character_limit
         }
 
         if leading_visual_icon
@@ -197,7 +200,7 @@ module Primer
       end
 
       # @label With trailing label
-      # @snapshot 
+      # @snapshot
       def with_trailing_label
         render(Primer::Alpha::TextField.new(trailing_visual: { label: { text: "Hello" } }, name: "my-text-field-15", label: "My text field"))
       end
@@ -213,6 +216,24 @@ module Primer
       def with_validation_message
         render(Primer::Alpha::TextField.new(validation_message: "An error occurred!", name: "my-text-field-17", label: "My text field"))
       end
+
+      # @label With character limit
+      # @snapshot interactive
+      def with_character_limit
+        render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-18", label: "Username"))
+      end
+
+      # @label With character limit, over limit
+      # @snapshot interactive
+      def with_character_limit_over_limit
+        render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-19", label: "Tell me about yourself", value: "This text is definitely over the limit."))
+      end
+
+      # @label With character limit and caption
+      # @snapshot
+      def with_character_limit_and_caption
+        render(Primer::Alpha::TextField.new(character_limit: 20, caption: "Choose a unique username.", name: "my-text-field-20", label: "Username"))
+      end
       #
       # @!endgroup
 
@@ -220,24 +241,24 @@ module Primer
       #
       # @label Auto check request ok
       def with_auto_check_ok
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_ok_path, name: "my-text-field-18", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_ok_path, name: "my-text-field-21", label: "My text field"))
       end
 
       # @label Auto check request accepted
       def with_auto_check_accepted
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_accepted_path, name: "my-text-field-19", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_accepted_path, name: "my-text-field-22", label: "My text field"))
       end
 
       # @label Auto check request error
       def with_auto_check_error
-        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_error_path, name: "my-text-field-20", label: "My text field"))
+        render(Primer::Alpha::TextField.new(auto_check_src: UrlHelpers.primer_view_components.example_check_error_path, name: "my-text-field-23", label: "My text field"))
       end
       #
       # @!endgroup
 
       # @label With data target attribute
       def with_data_target
-        render(Primer::Alpha::TextField.new(name: "my-text-field", label: "My text field", data: { target: "custom-component.inputElement" }))
+        render(Primer::Alpha::TextField.new(name: "my-text-field-24", label: "My text field", data: { target: "custom-component.inputElement" }))
       end
       #
       # @!endgroup

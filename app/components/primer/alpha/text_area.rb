@@ -18,6 +18,7 @@ module Primer
       # @!method initialize
       #
       # @macro form_full_width_arguments
+      # @macro form_input_character_limit_arguments
       # @macro form_input_arguments
     end
   end

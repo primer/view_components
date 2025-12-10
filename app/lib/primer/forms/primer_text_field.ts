@@ -1,8 +1,7 @@
-/* eslint-disable custom-elements/expose-class-on-global */
-
 import '@github/auto-check-element'
 import type {AutoCheckErrorEvent, AutoCheckSuccessEvent} from '@github/auto-check-element'
 import {controller, target} from '@github/catalyst'
+import {CharacterCounter} from './character_counter'
 
 declare global {
   interface HTMLElementEventMap {
@@ -20,8 +19,11 @@ export class PrimerTextFieldElement extends HTMLElement {
   @target validationErrorIcon: HTMLElement
   @target leadingVisual: HTMLElement
   @target leadingSpinner: HTMLElement
+  @target characterLimitElement: HTMLElement
+  @target characterLimitSrElement: HTMLElement
 
   #abortController: AbortController | null
+  #characterCounter: CharacterCounter | null = null
 
   connectedCallback(): void {
     this.#abortController?.abort()
@@ -48,16 +50,27 @@ export class PrimerTextFieldElement extends HTMLElement {
       },
       {signal},
     )
+
+    // Set up character limit tracking if present
+    if (this.characterLimitElement) {
+      this.#characterCounter = new CharacterCounter(
+        this.inputElement,
+        this.characterLimitElement,
+        this.characterLimitSrElement,
+      )
+      this.#characterCounter.initialize(signal)
+    }
   }
 
   disconnectedCallback() {
     this.#abortController?.abort()
+    this.#characterCounter?.cleanup()
   }
 
   clearContents() {
     this.inputElement.value = ''
     this.inputElement.focus()
-    this.inputElement.dispatchEvent(new Event('input', { bubbles: true, cancelable: false }))
+    this.inputElement.dispatchEvent(new Event('input', {bubbles: true, cancelable: false}))
   }
 
   clearError(): void {

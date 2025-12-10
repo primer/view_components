@@ -1,5 +1,7 @@
-<%= render(FormControl.new(input: @input)) do %>
-  <%= content_tag(:div, **@field_wrap_arguments) do %>
-    <%= builder.text_area(@input.name, **@input.input_arguments) %>
+<primer-text-area>
+  <%= render(FormControl.new(input: @input)) do %>
+    <%= content_tag(:div, **@field_wrap_arguments) do %>
+      <%= builder.text_area(@input.name, **@input.input_arguments) %>
+    <% end %>
   <% end %>
-<% end %>
+</primer-text-area>

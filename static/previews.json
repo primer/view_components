@@ -6989,6 +6989,45 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/text_area/with_character_limit",
+        "name": "with_character_limit",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_area/with_character_limit_over_limit",
+        "name": "with_character_limit_over_limit",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_area/with_character_limit_and_caption",
+        "name": "with_character_limit_and_caption",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -7274,6 +7313,45 @@
       {
         "preview_path": "primer/alpha/text_field/with_validation_message",
         "name": "with_validation_message",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit",
+        "name": "with_character_limit",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit_over_limit",
+        "name": "with_character_limit_over_limit",
+        "snapshot": "interactive",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/with_character_limit_and_caption",
+        "name": "with_character_limit_and_caption",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
