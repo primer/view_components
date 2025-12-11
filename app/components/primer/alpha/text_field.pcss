@@ -120,7 +120,7 @@
 **
 ** .FormControl
 ** ├─ .FormControl-label
-** ├─ .FormControl-input-wrap
+** ├─ .FormControl-input-wrap.FormControl-input-baseWrap
 ** │  ├─ .FormControl-input-trailingVisualWrap
 ** │  │  ├─ .FormControl-input-trailingVisual
 ** │  ├─ .FormControl-input-leadingVisualWrap
@@ -149,7 +149,22 @@
 ** ├─ .FormControl-inlineValidation
 ** ├─ .FormControl-caption */
 
-.FormControl-input,
+/* Unstyled input - wrapper handles most styling */
+.FormControl-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+/* Base styles for select and textarea */
 .FormControl-select,
 .FormControl-textarea {
   @mixin Field;
@@ -233,20 +248,146 @@
   gap: var(--base-size-16);
 }
 
+.FormControl-input-baseWrap {
+  display: inline-flex;
+  min-height: var(--base-size-32);
+  overflow: hidden;
+  font-size: var(--text-body-size-medium);
+  /* stylelint-disable-next-line primer/typography */
+  line-height: var(--base-size-20);
+  color: var(--fgColor-default);
+  vertical-align: middle;
+  cursor: text;
+  background-color: var(--bgColor-default);
+  border: var(--borderWidth-thin) solid var(--control-borderColor-rest);
+  border-radius: var(--borderRadius-medium);
+  outline: none;
+  box-shadow: var(--shadow-inset);
+  align-items: stretch;
+
+  input {
+    cursor: text;
+
+    &::placeholder {
+      color: var(--fgColor-muted);
+    }
+  }
+
+  &:where(:has(.FormControl-input-wrap--trailingAction)[data-focused]),
+  &:where(:not(:has(.FormControl-input-wrap--trailingAction)):focus-within) {
+    border-color: var(--borderColor-accent-emphasis);
+    outline: var(--borderWidth-thick) solid var(--borderColor-accent-emphasis);
+    outline-offset: -1px;
+  }
+
+  &:where(:has(input[disabled])) {
+    color: var(--fgColor-disabled);
+    background-color: var(--control-bgColor-disabled);
+    border-color: var(--control-borderColor-disabled);
+    box-shadow: none;
+
+    input {
+      cursor: not-allowed;
+    }
+  }
+
+  &:where(:has(.FormControl-monospace)) {
+    font-family: var(--fontStack-monospace);
+  }
+
+  &:where(:has(.FormControl-inset)) {
+    background-color: var(--bgColor-muted);
+  }
+
+  &:where(:has(input[invalid='true'])) {
+    border-color: var(--borderColor-danger-emphasis);
+  }
+
+  &:where(:has(input[invalid='false'])) {
+    /* stylelint-disable-next-line primer/colors */
+    border-color: var(--bgColor-success-emphasis);
+  }
+
+  /* Ensures inputs don't zoom on mobile but are body-font size on desktop */
+  @media screen and (--viewportRange-regular) {
+    font-size: var(--text-body-size-medium);
+  }
+
+  --inner-action-size: var(--base-size-24); /* Default size */
+
+  /* size modifications */
+  &:where(:has(.FormControl-small)) {
+    --inner-action-size: var(--base-size-20);
+
+    min-height: var(--base-size-28);
+    /* stylelint-disable-next-line primer/spacing */
+    padding-top: 3px;
+    padding-right: var(--base-size-8);
+    /* stylelint-disable-next-line primer/spacing */
+    padding-bottom: 3px;
+    padding-left: var(--base-size-8);
+    font-size: var(--text-body-size-small);
+    /* stylelint-disable-next-line primer/typography */
+    line-height: var(--base-size-20);
+  }
+
+  &:where(:has(.FormControl-large)) {
+    --inner-action-size: var(--base-size-28);
+
+    height: var(--base-size-40);
+    /* stylelint-disable-next-line primer/spacing */
+    padding-top: 10px;
+    padding-right: var(--base-size-8);
+    /* stylelint-disable-next-line primer/spacing */
+    padding-bottom: 10px;
+    padding-left: var(--base-size-8);
+  }
+
+  /* Input element styles - override base styles for flexbox layout */
+  & .FormControl-input {
+    flex: 1;
+    min-width: 0;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+
+    /* Prevent focus styles on input - wrapper handles focus state */
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      border: 0;
+      box-shadow: none;
+    }
+  }
+}
+
 /* positioning for leading/trailing items for TextInput */
 .FormControl-input-wrap {
-  position: relative;
-  display: grid;
+  padding-right: 0;
+  padding-left: 0;
+
+  > .FormControl-input {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Repeat and position set for form states (success, error, etc) */
+  background-repeat: no-repeat;
+
+  /* For form validation. This keeps images 8px from right and centered vertically. */
+  background-position: right 8px center;
+
+  /* Remove spacing between children */
+  & > :not(:last-child) {
+    margin-right: var(--base-size-8);
+  }
 
   & .FormControl-input-leadingVisualWrap {
-    position: absolute;
-    top: var(--base-size-8);
-    left: var(--base-size-8);
-    display: block;
-    width: var(--base-size-16);
-    height: var(--base-size-16);
+    align-self: center;
     color: var(--fgColor-muted);
-    pointer-events: none;
+    flex-shrink: 0;
 
     /* octicon */
     & .FormControl-input-leadingVisual {
@@ -256,66 +397,59 @@
   }
 
   & .FormControl-input-trailingVisualWrap {
-    position: absolute;
-    top: var(--base-size-8);
-    right: var(--base-size-8);
-    display: flex;
-    height: var(--base-size-16);
-    align-items: center;
-    gap: var(--base-size-4);
+    align-self: center;
     color: var(--fgColor-muted);
-    pointer-events: none;
-
-    &:has( .FormControl-input-trailingVisualText) {
-      max-width: 25%;
-      padding-left: var(--base-size-8);
-    }
-
-    &:has( .FormControl-input-trailingVisualLabel) {
-      max-width: 25%;
-      padding-left: var(--base-size-8);
-    }
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
 
     & .FormControl-input-trailingVisualLabel {
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: var(--text-body-lineHeight-medium);
     }
   }
-  /* TODO: replace with new Button component */
+
   & .FormControl-input-trailingAction {
-    position: absolute;
-    top: var(--base-size-4);
-    right: var(--base-size-4);
-    z-index: 4;
-    display: grid;
-    width: var(--control-xsmall-size);
-    height: var(--control-xsmall-size);
-    padding: 0;
-    color: var(--fgColor-muted);
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    border-radius: var(--borderRadius-small);
-    transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    transition-property: color, background-color, border-color;
-    align-items: center;
-    justify-content: center;
+    align-self: center;
+    flex-shrink: 0;
+    color: var(--fgColor-muted,var(--color-fg-muted));
+    margin-left: var(--base-size-4, .25rem);
+    margin-right: var(--base-size-4, .25rem);
+    /* stylelint-disable-next-line primer/typography */
+    line-height: 0;
 
-    & svg {
-      user-select: none;
-    }
+    & .FormControl-input-trailingActionButton {
+      position: relative;
+      padding-top: var(--base-size-2);
+      padding-right: var(--base-size-4);
+      padding-bottom: var(--base-size-2);
+      padding-left: var(--base-size-4);
+      color: var(--fgColor-muted);
+      background-color: transparent;
 
-    &[disabled] {
-      color: var(--control-fgColor-disabled);
-      pointer-events: none;
-    }
+      &:hover,
+      &:focus {
+        color: var(--fgColor-default);
+      }
 
-    &:hover {
-      background: var(--control-transparent-bgColor-hover);
-    }
+      &.Button--iconOnly {
+        width: var(--inner-action-size);
+        height: var(--inner-action-size);
+      }
 
-    &:active {
-      background: var(--control-transparent-bgColor-active);
+      @media (pointer: coarse) {
+        ::after {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          left: 0;
+          min-height: 44px;
+          content: '';
+          transform: translateY(-50%);
+        }
+      }
     }
 
     /* show vertical divider line between field and button */
@@ -332,249 +466,48 @@
         background: var(--borderColor-default);
       }
     }
+  }
 
-    &::after {
-      @mixin minTouchTarget var(--control-medium-size) var(--control-medium-size);
+  /* With leading visual */
+  &:where(.FormControl-input-wrap--leadingVisual) {
+    padding-left: var(--base-size-8);
+  }
 
-      @media (pointer: coarse) {
-        min-width: var(--control-minTarget-coarse);
-        min-height: var(--control-minTarget-coarse);
-      }
+  /* With trailing visual */
+  &:where(.FormControl-input-wrap--trailingVisual:not(.FormControl-input-wrap--trailingAction)) {
+    padding-right: var(--base-size-8);
+  }
+
+  /* Only trailing visual */
+  &:where(:not(.FormControl-input-wrap--leadingVisual).FormControl-input-wrap--trailingVisual),
+  &:where(:not(.FormControl-input-wrap--leadingVisual).FormControl-input-wrap--trailingAction) {
+    > .FormControl-input {
+      padding-left: var(--base-size-8);
     }
   }
 
-  /* if leadingVisual is present */
-
-  /*
-	┌──32px──┬────────────────────┐
-	╎  ┌───┐   ┌────────────────┐ ╎
-	╎   16px    16px              ╎
-	╎  └───┘   └────────────────┘ ╎
-	└───────8px───────────────────┘
-	*/
-
-  &.FormControl-input-wrap--leadingVisual {
-    & .FormControl-input {
-      padding-inline-start: calc(
-        var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap)
-      ); /* 32px */
-    }
+  /* Only leading visual */
+  &:where(:not(.FormControl-input-wrap--trailingVisual):not(.FormControl-input-wrap--trailingAction)) > .FormControl-input {
+    padding-right: var(--base-size-8);
   }
 
-  /* if trailingVisual is present */
+  /* No visuals at all */
+  &:where(:not(.FormControl-input-wrap--leadingVisual):not(.FormControl-input-wrap--trailingVisual):not(.FormControl-input-wrap--trailingAction)) > .FormControl-input {
+    padding-left: var(--base-size-12);
+    padding-right: var(--base-size-12);
+  }
+}
 
-  /*
-	┌──────────────────┬──32px──┐
-	╎  ┌──────────────┐  ┌────┐ ╎
-	╎   24px               24px ╎
-	╎  └──────────────┘  └────┘ ╎
-	└──────────────────┴────────┘
-  */
-
-  &.FormControl-input-wrap--trailingVisual {
-    & .FormControl-input {
-      padding-inline-end: calc(var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap));
-    }
-
-    &:has(.FormControl-input-trailingVisualText) .FormControl-input {
-      padding-inline-end: 25%
-    }
-
-    &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
-      padding-inline-end: 25%
-    }
+/* Large size input */
+.FormControl-input-wrap:where(:has(.FormControl-large)) {
+  /* Large size with leading visual */
+  &:where(.FormControl-input-wrap--leadingVisual) {
+    padding-left: var(--base-size-12);
   }
 
-  /*
-	┌──────────────────┬──32px──┐
-	╎  ┌──────────────┐  ┌────┐ ╎
-	╎   24px               24px ╎
-	╎  └──────────────┘  └────┘ ╎
-	└──────────────────┴────────┘
-  */
-
-  /* if trailingAction is present */
-  &.FormControl-input-wrap--trailingAction {
-    & .FormControl-input {
-      padding-inline-end: calc(
-        var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap)
-      ); /* 32px */
-    }
-
-    /*
-		32px + 1px border
-		┌──────────────────┬──33px──┐
-		╎  ┌──────────────┐  ┌────┐ ╎
-		╎   24px               24px   ╎
-		╎  └──────────────┘  └────┘ ╎
-		└──────────────────┴────────┘
-		*/
-
-    /* if trailingAction divider is present, add 1px padding to accomodate input field text
-    ** can be refactored to has(.FormControl-input-trailingAction--divider) */
-    &.FormControl-input-wrap-trailingAction--divider {
-      & .FormControl-input {
-        padding-inline-end: calc(
-          var(--control-medium-paddingInline-condensed) + var(--base-size-16) + var(--control-medium-gap) +
-            var(--borderWidth-thin)
-        ); /* 33px */
-      }
-    }
-  }
-
-  /* size modifications can be refactored with :has() - FormControl-input-wrap:has(.FormControl-large)
-  // sizes */
-  &.FormControl-input-wrap--small {
-    & .FormControl-input-leadingVisualWrap {
-      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-      left: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-    }
-
-    & .FormControl-input-trailingVisualWrap {
-      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-      right: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-    }
-
-    /*
-    ┌──────────────────┬──28px──┐
-    ╎  ┌──────────────┐  ┌────┐ ╎
-    ╎   20px               20px   ╎
-    ╎  └──────────────┘  └────┘ ╎
-    └──────────────────┴────────┘
-    */
-
-    &.FormControl-input-wrap--trailingAction {
-      & .FormControl-input.FormControl-small {
-        padding-inline-end: calc(
-          var(--control-small-paddingInline-condensed) + var(--base-size-16) + var(--control-small-gap)
-        ); /* 28px */
-      }
-
-      /*
-			28px + 1px border
-			┌──────────────────┬──29px──┐
-			╎  ┌──────────────┐  ┌────┐ ╎
-			╎   20px               20px   ╎
-			╎  └──────────────┘  └────┘ ╎
-			└──────────────────┴────────┘
-			*/
-
-      &.FormControl-input-wrap-trailingAction--divider {
-        & .FormControl-input.FormControl-small {
-          padding-inline-end: calc(
-            var(--control-small-paddingInline-condensed) + var(--base-size-16) + var(--control-small-gap) +
-              var(--borderWidth-thin)
-          ); /* 29px */
-        }
-      }
-    }
-
-    & .FormControl-input-trailingAction {
-      width: calc(var(--control-small-size) - var(--base-size-8));
-      height: calc(var(--control-small-size) - var(--base-size-8));
-
-      &::before {
-        top: calc((var(--control-xsmall-size) - var(--base-size-16)) / 4); /* 2px */
-      }
-    }
-  }
-
-  &.FormControl-input-wrap--large {
-    & .FormControl-input-leadingVisualWrap {
-      top: var(--control-medium-paddingInline-normal);
-      left: var(--control-medium-paddingInline-normal);
-    }
-
-    & .FormControl-input-trailingVisualWrap {
-      top: var(--control-medium-paddingInline-normal);
-      right: var(--control-medium-paddingInline-normal);
-    }
-
-    /*
-    ┌──36px──┬───12px padding──────┐
-    ╎  ┌───┐   ┌────────────────┐ ╎
-    ╎   16px    16px                ╎
-    ╎  └───┘   └────────────────┘ ╎
-    └12px───8px───────────────────┘
-    */
-
-    &.FormControl-input-wrap--leadingVisual {
-      & .FormControl-input.FormControl-large {
-        padding-inline-start: calc(
-          var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap)
-        ); /* 36px */
-      }
-    }
-
-    &.FormControl-input-wrap--trailingVisual {
-      & .FormControl-input {
-        padding-inline-end: calc(var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap));
-      }
-
-      &:has(.FormControl-input-trailingVisualText) .FormControl-input {
-        padding-inline-end: 25%
-      }
-
-      &:has(.FormControl-input-trailingVisualLabel) .FormControl-input {
-        padding-inline-end: 25%
-      }
-    }
-
-    &.FormControl-input-wrap--trailingText {
-      & .FormControl-input.FormControl-large {
-        padding-inline-end: 25%;
-      }
-    }
-
-    &.FormControl-input-wrap--trailingLabel {
-      & .FormControl-input.FormControl-large {
-        padding-inline-end: 25%;
-      }
-    }
-    /*
-    ┌──────────────────┬──36px──┐
-    ╎  ┌──────────────┐  ┌────┐ ╎
-    ╎   28px               28px   ╎
-    ╎  └──────────────┘  └────┘ ╎
-    └──────────────────┴────────┘
-    */
-
-    &.FormControl-input-wrap--trailingAction {
-      & .FormControl-input.FormControl-large {
-        padding-inline-end: calc(
-          var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap)
-        ); /* 36px */
-      }
-
-      /*
-			┌──────────────────┬──37px──┐
-			╎  ┌──────────────┐  ┌────┐ ╎
-			╎   28px               28px   ╎
-			╎  └──────────────┘  └────┘ ╎
-			└──────────────────┴────────┘
-			*/
-
-      &.FormControl-input-wrap-trailingAction--divider {
-        & .FormControl-input.FormControl-large {
-          padding-inline-end: calc(
-            var(--control-large-paddingInline-normal) + var(--base-size-16) + var(--control-large-gap) +
-              var(--borderWidth-thin)
-          ); /* 37px */
-        }
-      }
-    }
-
-    & .FormControl-input-trailingAction {
-      top: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-      right: calc(var(--control-medium-paddingInline-condensed) - var(--base-size-2)); /* 6px */
-      width: var(--control-small-size);
-      height: var(--control-small-size);
-
-      &::before {
-        top: unset;
-        height: var(--base-size-20);
-      }
-    }
+  /* Large size with trailing visual */
+  &:where(.FormControl-input-wrap--trailingVisual) {
+    padding-right: var(--base-size-12);
   }
 }
 

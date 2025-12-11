@@ -21,6 +21,7 @@ module Primer
 
         @field_wrap_arguments = {
           class: class_names(
+            "FormControl-input-baseWrap",
             "FormControl-input-wrap",
             INPUT_WRAP_SIZE[input.size],
             "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
