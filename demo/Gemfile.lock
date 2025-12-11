@@ -354,8 +354,8 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     useragent (0.16.11)
-    view_component (4.0.2)
-      activesupport (>= 7.1.0, < 8.1)
+    view_component (4.1.0)
+      activesupport (>= 7.1.0, < 8.2)
       concurrent-ruby (~> 1)
     vite_rails (3.0.19)
       railties (>= 5.1, < 9)
@@ -410,7 +410,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (= 4.0.2)
+  view_component (= 4.1.0)
   vite_rails (~> 3.0)
 
 BUNDLED WITH

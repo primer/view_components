@@ -1484,6 +1484,19 @@
         }
       },
       {
+        "preview_path": "primer/beta/avatar_stack/with_individual_tooltips",
+        "name": "with_individual_tooltips",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/beta/avatar_stack/with_disabled_expand",
         "name": "with_disabled_expand",
         "snapshot": "false",
