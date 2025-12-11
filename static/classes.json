@@ -596,8 +596,7 @@
     "Primer::OpenProject::SidePanel::Section"
   ],
   "SkeletonBox": [
-    "Primer::Alpha::SkeletonBox",
-    "Primer::OpenProject::SkeletonBox"
+    "Primer::Alpha::SkeletonBox"
   ],
   "Stack": [
     "Primer::Alpha::Stack"
@@ -738,20 +737,16 @@
     "Primer::Alpha::ToggleSwitch"
   ],
   "TreeItemSkeletonTextStyles": [
-    "Primer::Alpha::TreeView",
-    "Primer::OpenProject::TreeView"
+    "Primer::Alpha::TreeView"
   ],
   "TreeViewFailureMessage": [
-    "Primer::Alpha::TreeView",
-    "Primer::OpenProject::TreeView"
+    "Primer::Alpha::TreeView"
   ],
   "TreeViewRootUlStyles": [
-    "Primer::Alpha::TreeView",
-    "Primer::OpenProject::TreeView"
+    "Primer::Alpha::TreeView"
   ],
   "TreeViewSkeletonItemContainerStyle": [
-    "Primer::Alpha::TreeView",
-    "Primer::OpenProject::TreeView"
+    "Primer::Alpha::TreeView"
   ],
   "Truncate": [
     "Primer::Beta::Truncate"
