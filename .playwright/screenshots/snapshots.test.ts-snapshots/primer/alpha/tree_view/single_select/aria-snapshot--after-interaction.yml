@@ -1,0 +1,3 @@
+- tree:
+  - treeitem "src" [checked] [level=1] [selected]
+  - treeitem "action_menu.rb" [level=1]
