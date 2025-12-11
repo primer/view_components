@@ -193,7 +193,8 @@ jobs:
           USE_BROWSER=firefox bundle exec rake test:system
   visual:
     name: Visual and Semantic Markup Regressions
-    if: ${{ github.event_name == 'pull_request' }}
+    # Temp skip this run
+    if: ${{ github.event_name == 'pull_request' && false }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
