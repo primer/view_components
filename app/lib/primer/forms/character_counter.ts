@@ -17,7 +17,12 @@ export class CharacterCounter {
    * Initialize character counting by setting up event listener and initial count
    */
   initialize(signal?: AbortSignal): void {
-    this.inputElement.addEventListener('input', () => this.updateCharacterCount(), signal ? {signal} : undefined)
+    this.inputElement.addEventListener('keyup', () => this.updateCharacterCount(), signal ? {signal} : undefined) // Keyup used over input for better screen reader support
+    this.inputElement.addEventListener(
+      'paste',
+      () => setTimeout(() => this.updateCharacterCount(), 50), // Gives the pasted content time to register
+      signal ? {signal} : undefined,
+    )
     this.updateCharacterCount()
     this.isInitialLoad = false
   }
