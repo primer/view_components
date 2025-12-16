@@ -5,13 +5,20 @@ module Primer
     module Dsl
       # :nodoc:
       class TextAreaInput < Input
-        attr_reader :name, :label
+        attr_reader :name, :label, :character_limit
 
         def initialize(name:, label:, **system_arguments)
           @name = name
           @label = label
+          @character_limit = system_arguments.delete(:character_limit)
+
+          if @character_limit.present? && @character_limit.to_i <= 0
+            raise ArgumentError, "character_limit must be a positive integer, got #{@character_limit}"
+          end
 
           super(**system_arguments)
+
+          add_input_data(:target, "primer-text-area.inputElement")
         end
 
         def to_component
@@ -20,6 +27,10 @@ module Primer
 
         def type
           :text_area
+        end
+
+        def character_limit?
+          @character_limit.present?
         end
 
         # :nocov:
