@@ -116,5 +116,69 @@ module Alpha
 
       refute_selector "[data-target='primer-text-field.leadingSpinner'] .sr-only"
     end
+
+    def test_character_limit_updates_on_input
+      visit_preview(:with_character_limit)
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "10 characters remaining"
+
+      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
+      input.fill_in(with: "Hello")
+
+      sleep 0.2
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "5 characters remaining"
+    end
+
+    def test_character_limit_shows_validation_when_exceeded
+      visit_preview(:with_character_limit)
+
+      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
+
+      input.fill_in(with: "Hello World!") # 12 characters
+
+      sleep 0.3
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "2 characters over"
+      assert_selector "span.FormControl-caption .FormControl-caption-icon:not([hidden])", visible: :visible
+      assert_selector "span.FormControl-caption.fgColor-danger"
+      assert_selector "input[invalid='true'][aria-invalid='true']"
+    end
+
+    def test_character_limit_clears_validation_when_back_under_limit
+      visit_preview(:with_character_limit)
+
+      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
+
+      input.fill_in(with: "Hello World!") # 12 characters
+      sleep 0.3
+
+      assert_selector "input[invalid='true'][aria-invalid='true']"
+
+      input.fill_in(with: "Hello") # 5 characters
+      sleep 0.3
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "5 characters remaining"
+      refute_selector "span.FormControl-caption.fgColor-danger"
+
+      refute_selector "input[invalid='true']"
+      refute_selector "input[aria-invalid='true']"
+    end
+
+    def test_character_limit_singular_vs_plural
+      visit_preview(:with_character_limit)
+
+      input = find("input[type=text][data-target*='primer-text-field.inputElement']")
+
+      input.fill_in(with: "123456789") # 9 characters, limit is 10
+      sleep 0.3
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "1 character remaining"
+
+      input.fill_in(with: "12345678901") # 11 characters
+      sleep 0.3
+
+      assert_selector "span.FormControl-caption[data-max-length='10'] .FormControl-caption-text", text: "1 character over"
+    end
   end
 end
