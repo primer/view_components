@@ -6,7 +6,7 @@ module Primer
         attr_reader(
           *%i[
             name label show_clear_button leading_visual leading_spinner trailing_visual clear_button_id
-            visually_hide_label inset monospace field_wrap_classes auto_check_src
+            visually_hide_label inset monospace field_wrap_classes auto_check_src character_limit
           ]
         )
 
@@ -24,6 +24,11 @@ module Primer
           @inset = system_arguments.delete(:inset)
           @monospace = system_arguments.delete(:monospace)
           @auto_check_src = system_arguments.delete(:auto_check_src)
+          @character_limit = system_arguments.delete(:character_limit)
+
+          if @character_limit.present? && @character_limit.to_i <= 0
+            raise ArgumentError, "character_limit must be a positive integer, got #{@character_limit}"
+          end
 
           if @leading_visual
             @leading_visual[:classes] = class_names(
@@ -65,6 +70,10 @@ module Primer
 
         def focusable?
           true
+        end
+
+        def character_limit?
+          @character_limit.present?
         end
 
         def validation_arguments

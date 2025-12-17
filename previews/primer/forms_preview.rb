@@ -67,5 +67,11 @@ module Primer
 
     # @snapshot
     def auto_complete_form; end
+
+    # @snapshot
+    def text_area_with_character_limit_form; end
+
+    # @snapshot
+    def text_field_with_character_limit_form; end
   end
 end
