@@ -33,6 +33,9 @@ module Primer
         # @!macro [new] form_full_width_arguments
         #   @param full_width [Boolean] When set to `true`, the field will take up all the horizontal space allowed by its container. Defaults to `true`.
 
+        # @!macro [new] form_input_character_limit_arguments
+        #   @param character_limit [Number] Optional character limit for the input. If provided, a character counter will be displayed below the input.
+
         # @!macro [new] form_system_arguments
         #   @param system_arguments [Hash] A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details.
 
@@ -112,6 +115,7 @@ module Primer
 
           @ids = {}.tap do |id_map|
             id_map[:validation] = "validation-#{@base_id}" if supports_validation?
+            id_map[:character_limit_caption] = "character_limit-#{@base_id}" if character_limit?
             id_map[:caption] = "caption-#{@base_id}" if caption? || caption_template?
           end
 
@@ -194,6 +198,25 @@ module Primer
 
         def render_caption_template
           form.render_caption_template(caption_template_name)
+        end
+
+        def character_limit?
+          false
+        end
+
+        def character_limit_id
+          ids[:character_limit_caption]
+        end
+
+        def character_limit_target_prefix
+          case type
+          when :text_field
+            "primer-text-field"
+          when :text_area
+            "primer-text-area"
+          else
+            ""
+          end
         end
 
         def valid?
