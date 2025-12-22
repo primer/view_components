@@ -16,6 +16,7 @@ module Primer
       # @param disabled toggle
       # @param invalid toggle
       # @param validation_message text
+      # @param character_limit number
       def playground(
         name: "my-text-area",
         id: "my-text-area",
@@ -26,7 +27,8 @@ module Primer
         full_width: true,
         disabled: false,
         invalid: false,
-        validation_message: nil
+        validation_message: nil,
+        character_limit: nil
       )
         system_arguments = {
           name: name,
@@ -38,7 +40,8 @@ module Primer
           full_width: full_width,
           disabled: disabled,
           invalid: invalid,
-          validation_message: validation_message
+          validation_message: validation_message,
+          character_limit: character_limit
         }
 
         render(Primer::Alpha::TextArea.new(**system_arguments))
@@ -92,6 +95,24 @@ module Primer
       # @snapshot
       def with_validation_message
         render(Primer::Alpha::TextArea.new(validation_message: "An error occurred!", name: "my-text-area", label: "Tell me about yourself"))
+      end
+
+      # @label With character limit
+      # @snapshot interactive
+      def with_character_limit
+        render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself"))
+      end
+
+      # @label With character limit, over limit
+      # @snapshot interactive
+      def with_character_limit_over_limit
+        render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself", value: "This text is definitely over the limit."))
+      end
+
+      # @label With character limit and caption
+      # @snapshot
+      def with_character_limit_and_caption
+        render(Primer::Alpha::TextArea.new(character_limit: 100, caption: "With a caption.", name: "my-text-area", label: "Tell me about yourself"))
       end
       #
       # @!endgroup

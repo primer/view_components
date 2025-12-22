@@ -19,7 +19,9 @@ IGNORED_SELECTORS = {
 
   # AutoComplete uses a pre-release version of the ActionList styles from primer/css.
   # The .ActionList class does not exist in PVC.
-  Primer::Beta::AutoComplete => ["ActionList"]
+  Primer::Beta::AutoComplete => ["ActionList"],
+  Primer::Alpha::TextArea => ["FormControl-caption-icon", "FormControl-caption-text"],
+  Primer::Alpha::TextField => ["FormControl-caption-icon", "FormControl-caption-text"]
 }.freeze
 # rubocop:enable Style/WordArray
 

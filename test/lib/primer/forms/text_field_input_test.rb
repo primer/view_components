@@ -60,4 +60,58 @@ class Primer::Forms::TextFieldInputTest < Minitest::Test
 
     assert_includes error.message, "must also specify a leading visual"
   end
+
+  def test_renders_character_limit_form
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(TextFieldWithCharacterLimitForm.new(f))
+      end
+    end
+
+    assert_selector "primer-text-field"
+    assert_selector "span.FormControl-caption[data-max-length='20'] .FormControl-caption-text", text: "20 characters remaining"
+    assert_selector "input[type=text][data-target*='primer-text-field.inputElement']"
+    assert_selector "span.sr-only[data-target='primer-text-field.characterLimitSrElement'][aria-live='polite']"
+  end
+
+  def test_character_limit_rejects_zero
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        primer_form_with(url: "/foo") do |f|
+          render_inline_form(f) do |text_field_form|
+            text_field_form.text_field(name: :username, label: "Username", character_limit: 0)
+          end
+        end
+      end
+    end
+
+    assert_includes error.message, "character_limit must be a positive integer"
+  end
+
+  def test_character_limit_rejects_negative
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        primer_form_with(url: "/foo") do |f|
+          render_inline_form(f) do |text_field_form|
+            text_field_form.text_field(name: :username, label: "Username", character_limit: -5)
+          end
+        end
+      end
+    end
+
+    assert_includes error.message, "character_limit must be a positive integer"
+  end
+
+  def test_character_limit_with_caption
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render_inline_form(f) do |text_field_form|
+          text_field_form.text_field(name: :username, label: "Username", caption: "Choose a unique username", character_limit: 20)
+        end
+      end
+    end
+
+    assert_selector "span.FormControl-caption[data-max-length='20'] .FormControl-caption-text", text: "20 characters remaining"
+    assert_selector "span.FormControl-caption", text: "Choose a unique username"
+  end
 end
