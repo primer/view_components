@@ -34,7 +34,7 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-      - uses: stefanzweifel/git-auto-commit-action@v6.0.1
+      - uses: stefanzweifel/git-auto-commit-action@v7.1.0
         with:
           commit_message: Generating static files
           commit_user_name: GitHub Design Engineering Bot
