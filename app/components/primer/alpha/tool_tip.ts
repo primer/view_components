@@ -174,6 +174,7 @@ class ToolTipElement extends HTMLElement {
   #side: AnchorSide = 'outside-bottom'
   #allowUpdatePosition = false
   #showReason: 'focus' | 'mouse' = 'mouse'
+  #isControlsPopoverOpen = false
   get showReason() {
     return this.#showReason
   }
@@ -247,20 +248,28 @@ class ToolTipElement extends HTMLElement {
     if (!this.control) return
     const showing = isPopoverOpen(this)
 
+    // Track when the control's popover (e.g an ActionMenu) is opened/closed
+    if (event.type === 'beforetoggle' && event.currentTarget !== this) {
+      this.#isControlsPopoverOpen = (event as ToggleEvent).newState === 'open'
+    }
+
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
     const shouldShow =
-      event.type === 'mouseenter' ||
-      // Only show tooltip on focus if running in headless browser (for tests) or if focus ring
-      // is visible (i.e. if user is using keyboard navigation)
-      (event.type === 'focus' && (navigator.webdriver || this.control.matches(':focus-visible')))
+      (event.type === 'mouseenter' ||
+        // Only show tooltip on focus if running in headless browser (for tests) or if focus ring
+        // is visible (i.e. if user is using keyboard navigation)
+        (event.type === 'focus' && (navigator.webdriver || this.control.matches(':focus-visible')))) &&
+      // Don't show tooltip if the control's popover is open (e.g. an ActionMenu)
+      !this.#isControlsPopoverOpen
     const isMouseLeaveFromButton =
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
       (event as MouseEvent).relatedTarget !== this
     const isEscapeKeydown = event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape'
     const isMouseDownOnButton = event.type === 'mousedown' && event.currentTarget === this.control
-    const isOpeningOtherPopover = event.type === 'beforetoggle' && event.currentTarget !== this
+    const isOpeningOtherPopover =
+      event.type === 'beforetoggle' && event.currentTarget !== this && (event as ToggleEvent).newState === 'open'
     const shouldHide = isMouseLeaveFromButton || isEscapeKeydown || isMouseDownOnButton || isOpeningOtherPopover
 
     if (showing && isEscapeKeydown) {
