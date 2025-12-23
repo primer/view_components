@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.49.0
+
+### Minor Changes
+
+- [#3785](https://github.com/primer/view_components/pull/3785) [`7526370`](https://github.com/primer/view_components/commit/75263700b8c00ffdd525c81feed0de61b81d1067) Thanks [@lindseywild](https://github.com/lindseywild)! - Adds character_limit option to TextArea and TextField components
+
 ## 0.48.0
 
 ### Minor Changes
