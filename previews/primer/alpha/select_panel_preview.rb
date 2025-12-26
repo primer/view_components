@@ -156,16 +156,26 @@ module Primer
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def with_dynamic_label(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param select_variant [Symbol] select [single, multiple]
+      def with_dynamic_label(open_on_load: false, select_variant: :single)
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
+          select_variant: select_variant.to_sym
+        })
       end
 
       # @label With dynamic label and aria prefix
       #
       # @snapshot interactive
       # @param open_on_load toggle
-      def with_dynamic_label_and_aria_prefix(open_on_load: false)
-        render_with_template(locals: { open_on_load: open_on_load })
+      # @param select_variant [Symbol] select [single, multiple]
+      def with_dynamic_label_and_aria_prefix(open_on_load: false, select_variant: :single)
+        render_with_template(locals: {
+          open_on_load: open_on_load,
+          # .to_sym workaround for https://github.com/lookbook-hq/lookbook/issues/640
+          select_variant: select_variant.to_sym
+        })
       end
 
       # @!endgroup
