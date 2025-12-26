@@ -913,6 +913,8 @@ export class SelectPanelElement extends HTMLElement {
       } else {
         this.#removeSelectedItem(item)
       }
+
+      this.#setDynamicLabel()
     }
 
     this.#updateInput()
@@ -949,8 +951,15 @@ export class SelectPanelElement extends HTMLElement {
     const invokerLabel = this.invokerLabel
     if (!invokerLabel) return
     this.#originalLabel ||= invokerLabel.textContent || ''
-    const itemLabel =
-      this.querySelector(`[${this.ariaSelectionType}=true] .ActionListItem-label`)?.textContent || this.#originalLabel
+    let itemLabel: string | undefined
+    if (this.selectVariant === 'single') {
+      itemLabel = this.querySelector(`[${this.ariaSelectionType}=true] .ActionListItem-label`)?.textContent
+    } else if (this.selectVariant === 'multiple') {
+      itemLabel = Array.from(this.querySelectorAll(`[${this.ariaSelectionType}=true] .ActionListItem-label`))
+        .map(label => label.textContent.trim())
+        .join(', ')
+    }
+    itemLabel ||= this.#originalLabel
     if (itemLabel) {
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')

@@ -752,6 +752,56 @@ module Alpha
       assert_selector "[data-target='select-panel.bannerErrorElement'] .Banner--warning", text: "Sorry, something went wrong"
     end
 
+    def test_dynamic_label_for_single_select_variant
+      visit_preview(:with_dynamic_label, select_variant: :single)
+
+      click_on_invoker_button
+
+      assert_selector "select-panel button[aria-controls]", exact_text: "Item: Choose item"
+
+      click_on_second_item
+
+      assert_selector "select-panel button[aria-controls]", exact_text: "Item: Item 2"
+    end
+
+    def test_dynamic_label_for_multiple_select_variant
+      visit_preview(:with_dynamic_label, select_variant: :multiple)
+
+      click_on_invoker_button
+
+      assert_selector "select-panel button[aria-controls]", exact_text: "Item: Choose item"
+
+      click_on_second_item
+      click_on_third_item
+
+      assert_selector "select-panel button[aria-controls]", exact_text: "Item: Item 2, Item 3"
+    end
+
+    def test_dynamic_label_and_aria_prefix_for_single_select_variant
+      visit_preview(:with_dynamic_label_and_aria_prefix, select_variant: :single)
+
+      click_on_invoker_button
+
+      assert_selector "select-panel button[aria-controls][aria-label='Your item: Choose item']"
+
+      click_on_second_item
+
+      assert_selector "select-panel button[aria-controls][aria-label='Your item: Item 2']"
+    end
+
+    def test_dynamic_label_and_aria_prefix_for_multiple_select_variant
+      visit_preview(:with_dynamic_label_and_aria_prefix, select_variant: :multiple)
+
+      click_on_invoker_button
+
+      assert_selector "select-panel button[aria-controls][aria-label='Your item: Choose item']"
+
+      click_on_second_item
+      click_on_third_item
+
+      assert_selector "select-panel button[aria-controls][aria-label='Your item: Item 2, Item 3']"
+    end
+
     ########## JAVASCRIPT API TESTS ############
 
     def test_disable_item_via_js_api
@@ -1370,7 +1420,7 @@ module Alpha
       visit_preview(:default)
 
       click_on_invoker_button
-      
+
       keyboard.type(:tab)
 
       evaluate_multiline_script(<<~JS)
@@ -1389,7 +1439,7 @@ module Alpha
 
       refute_selector "select-panel dialog[open]"
 
-      keyboard.type("a")  
+      keyboard.type("a")
 
       assert page.evaluate_script("window.bodyKeydownFired")
     end
