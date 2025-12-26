@@ -360,6 +360,8 @@ export class ActionMenuElement extends HTMLElement {
     } else {
       // multi-select mode allows unchecking a checked item
       item.setAttribute('aria-checked', `${checked}`)
+
+      this.#setDynamicLabel()
     }
 
     this.#updateInput()
@@ -398,18 +400,25 @@ export class ActionMenuElement extends HTMLElement {
   }
 
   #setDynamicLabel() {
-    if (this.selectVariant !== 'single') return
     if (!this.dynamicLabel) return
     const invokerLabel = this.invokerLabel
     if (!invokerLabel) return
     this.#originalLabel ||= invokerLabel.textContent || ''
-    const itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')
+    let itemLabel: string | undefined
+    if (this.selectVariant === 'single') {
+      itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')?.textContent
+    } else if (this.selectVariant === 'multiple') {
+      itemLabel = Array.from(this.querySelectorAll(`[aria-checked=true] .ActionListItem-label`))
+        .map(label => label.textContent.trim())
+        .join(', ')
+    }
+    itemLabel ||= this.#originalLabel
     if (itemLabel && this.dynamicLabel) {
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
       prefixSpan.textContent = this.dynamicLabelPrefix
-      contentSpan.textContent = itemLabel.textContent || ''
+      contentSpan.textContent = itemLabel
       invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
       invokerLabel.textContent = this.#originalLabel
