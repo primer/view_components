@@ -417,7 +417,7 @@ export class ActionMenuElement extends HTMLElement {
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
-      prefixSpan.textContent = this.dynamicLabelPrefix
+      prefixSpan.textContent = `${this.dynamicLabelPrefix} `
       contentSpan.textContent = itemLabel
       invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
