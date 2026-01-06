@@ -240,7 +240,7 @@ GEM
     multipart-post (2.4.1)
     mutex_m (0.3.0)
     netrc (0.11.0)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
     octicons (19.21.1)
@@ -263,7 +263,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (6.6.1)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.19)
@@ -385,7 +385,7 @@ DEPENDENCIES
   lookbook (~> 2.3.14)
   primer_view_components!
   pry-byebug
-  puma (~> 6.6.1)
+  puma (~> 7.1.0)
   rack-cors
   railties (= 7.2.2.1)
   rake (~> 13.3)
