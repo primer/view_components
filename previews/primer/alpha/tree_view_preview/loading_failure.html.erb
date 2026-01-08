@@ -55,16 +55,12 @@
     // redirect focus to Retry so it is reachable without requiring a mouse click.
     subject.addEventListener('keydown', (event) => {
       if (event.key !== 'Tab' || event.shiftKey) return
-    
       const active = document.activeElement
       if (!(active instanceof HTMLElement)) return
       if (!subject.contains(active)) return
-    
       if (active.getAttribute('role') !== 'treeitem') return
-    
       const retry = retryButton()
       if (!retry) return
-    
       makeRetryTabbable()
       event.preventDefault()
       retry.focus()
