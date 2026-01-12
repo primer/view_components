@@ -80,6 +80,7 @@ module Primer
           "AvatarStack--three-plus" => avatars.size > 2
         )
 
+        # Make non-linked stacks keyboard-focusable so :focus-within triggers expansion (avoid extra focus stop when avatars are links).
         unless @tooltipped || @disable_expand
           has_linked_avatars = avatars.any?(&:link?)
           @body_arguments[:tabindex] ||= 0 unless has_linked_avatars
