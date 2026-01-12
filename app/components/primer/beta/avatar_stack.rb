@@ -79,6 +79,11 @@ module Primer
           "AvatarStack--two" => avatars.size == 2,
           "AvatarStack--three-plus" => avatars.size > 2
         )
+
+        unless @tooltipped || @disable_expand
+          has_linked_avatars = avatars.any? { |avatar| avatar.instance_variable_get(:@href).present? }
+          @body_arguments[:tabindex] ||= 0 unless has_linked_avatars
+        end
       end
 
       def render?
