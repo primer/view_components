@@ -15,6 +15,9 @@ concurrency:
   group: test-accessibility-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+env:
+  FERRUM_PROCESS_TIMEOUT: 30
+
 jobs:
   accessibility:
     name: Accessibility
