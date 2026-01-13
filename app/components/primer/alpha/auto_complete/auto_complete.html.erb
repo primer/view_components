@@ -7,16 +7,18 @@
     <% end %>
   </label>
   <span class="autocomplete-body">
+    <% clear_button = @is_clearable ? capture do %>
+      <button id="<%= @input_id %>-clear" class="btn-octicon" aria-label="Clear"><%= primer_octicon "x" %></button>
+    <% end : nil %>
     <% if @with_icon %>
       <div class="form-control autocomplete-embedded-icon-wrap">
         <%= render Primer::Beta::Octicon.new(:search) %>
-    <% end %>
-    <%= input %>
-    <% if @is_clearable %>
-      <button id="<%= @input_id %>-clear" class="btn-octicon" aria-label="Clear"><%= primer_octicon "x" %></button>
-    <% end %>
-    <% if @with_icon %>
+        <%= input %>
+        <%= clear_button %>
       </div>
+    <% else %>
+      <%= input %>
+      <%= clear_button %>
     <% end %>
     <%= results %>
   </span>
