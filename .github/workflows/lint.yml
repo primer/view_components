@@ -127,5 +127,4 @@ jobs:
         bundler-cache: true
     - name: Lint with Herb
       run: |
-        npm ci
         npx @herb-tools/linter
