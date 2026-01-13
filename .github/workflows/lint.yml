@@ -113,3 +113,11 @@ jobs:
       run: |
         npm ci
         npx stylelint --rd -q ${{ steps.changed-files.outputs.all_changed_files }} --custom-formatter=stylelint-actions-formatters
+
+  herb:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Lint with Herb
+      run: |
+        npx @herb-tools/linter
