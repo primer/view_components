@@ -76,6 +76,7 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
+    this.ownerDocument.body.setAttribute('data-disable-scroll', 'false')
     this.ownerDocument.body.style.setProperty(
       '--dialog-scrollgutter',
       `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
@@ -102,6 +103,16 @@ export class DialogHelperElement extends HTMLElement {
       this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
       this.dialog.close()
       this.dialog.showModal()
+    }
+    if (this.dialog.open) {
+      this.ownerDocument.body.setAttribute('data-disable-scroll', 'true')
+      this.dialog.addEventListener(
+        'close',
+        () => {
+          this.ownerDocument.body.setAttribute('data-disable-scroll', 'false')
+        },
+        {once: true},
+      )
     }
   }
 
