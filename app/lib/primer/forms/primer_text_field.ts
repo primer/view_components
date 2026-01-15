@@ -32,7 +32,7 @@ export class PrimerTextFieldElement extends HTMLElement {
     this.addEventListener(
       'auto-check-success',
       async (event: AutoCheckSuccessEvent) => {
-        const message = await event.detail.response.text()
+        const message = await event.detail.response.clone().text()
         if (message && message.length > 0) {
           this.setSuccess(message)
         } else {
@@ -45,7 +45,7 @@ export class PrimerTextFieldElement extends HTMLElement {
     this.addEventListener(
       'auto-check-error',
       async (event: AutoCheckErrorEvent) => {
-        const errorMessage = await event.detail.response.text()
+        const errorMessage = await event.detail.response.clone().text()
         this.setError(errorMessage)
       },
       {signal},
