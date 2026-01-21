@@ -3,12 +3,10 @@
   class="sr-only"
   role="status"
   aria-live="polite"
-  aria-atomic="true"
-></span>
+  aria-atomic="true"></span>
 
 <details
-  ontoggle="document.getElementById('button-summary-live').textContent = this.open ? 'A wrapping `details` tag is required when using the button with the `:summary` tag' : ''"
->
+  ontoggle="document.getElementById('button-summary-live').textContent = this.open ? 'A wrapping `details` tag is required when using the button with the `:summary` tag' : ''">
   <%= render(Primer::Beta::Button.new(
       scheme: scheme,
       size: size,
