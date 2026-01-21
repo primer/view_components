@@ -245,9 +245,9 @@ GEM
       rubocop (>= 1.0.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    rubyzip (3.0.1)
+    rubyzip (3.2.2)
     securerandom (0.4.1)
-    selenium-webdriver (4.35.0)
+    selenium-webdriver (4.40.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -346,7 +346,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rails-accessibility (~> 1.0)
-  selenium-webdriver (~> 4.35)
+  selenium-webdriver (~> 4.40)
   simplecov (~> 0.22.0)
   simplecov-console (~> 0.9.4)
   sourcemap (~> 0.1)
