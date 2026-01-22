@@ -86,6 +86,38 @@ module Primer
 
         assert_selector(".ToggleSwitch-track[autofocus]")
       end
+
+      def test_default_aria_label
+        render_inline(Primer::Alpha::ToggleSwitch.new)
+
+        assert_selector(".ToggleSwitch-track[aria-label='toggle switch']")
+      end
+
+      def test_custom_aria_label_string_key
+        render_inline(Primer::Alpha::ToggleSwitch.new("aria-label": "Custom toggle"))
+
+        assert_selector(".ToggleSwitch-track[aria-label='Custom toggle']")
+      end
+
+      def test_custom_aria_label_hash_key
+        render_inline(Primer::Alpha::ToggleSwitch.new(aria: { label: "Hash toggle" }))
+
+        assert_selector(".ToggleSwitch-track[aria-label='Hash toggle']")
+      end
+
+      def test_aria_labelledby_string_key
+        render_inline(Primer::Alpha::ToggleSwitch.new("aria-labelledby": "some-id"))
+
+        assert_selector(".ToggleSwitch-track[aria-labelledby='some-id']")
+        refute_selector(".ToggleSwitch-track[aria-label]")
+      end
+
+      def test_aria_labelledby_hash_key
+        render_inline(Primer::Alpha::ToggleSwitch.new(aria: { labelledby: "another-id" }))
+
+        assert_selector(".ToggleSwitch-track[aria-labelledby='another-id']")
+        refute_selector(".ToggleSwitch-track[aria-label]")
+      end
     end
   end
 end
