@@ -11,6 +11,12 @@ module Primer
         end
       end
 
+      # @label Gap options
+      # @snapshot
+      def gap_options
+        render_with_template
+      end
+
       # @label Playground
       #
       # @param tag text
