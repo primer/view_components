@@ -76,7 +76,6 @@ module Primer
 
         # Build aria attributes for the button
         aria_attrs = { pressed: on? }
-        
         # Only add a default label if neither aria-label nor aria-labelledby is provided
         unless aria(:label, @system_arguments) || aria(:labelledby, @system_arguments)
           aria_attrs[:label] = "toggle switch"
