@@ -59,7 +59,6 @@ module Primer
         @enabled = enabled
         @turbo = turbo
         @system_arguments = system_arguments
-        @accessible_name = system_arguments[:aria]&.dig(:label) || "toggle switch"
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)
         @status_label_position = fetch_or_fallback(
@@ -75,11 +74,16 @@ module Primer
           SIZE_MAPPINGS[@size]
         )
 
+        # Build aria attributes for the button
+        aria_attrs = { pressed: on? }
+        
+        # Only add a default label if neither aria-label nor aria-labelledby is provided
+        unless aria(:label, @system_arguments) || aria(:labelledby, @system_arguments)
+          aria_attrs[:label] = "toggle switch"
+        end
+
         @button_arguments = {
-          aria: merge_aria(
-            @system_arguments,
-            aria: { pressed: on?, label: @accessible_name}
-          )
+          aria: merge_aria(@system_arguments, aria: aria_attrs)
         }
         @button_arguments[:autofocus] = true if autofocus
 
