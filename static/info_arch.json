@@ -8135,6 +8135,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/stack/gap_options",
+        "name": "gap_options",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/stack/playground",
         "name": "playground",
         "snapshot": "false",
