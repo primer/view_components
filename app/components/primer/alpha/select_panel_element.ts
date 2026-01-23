@@ -97,7 +97,7 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   get ariaSelectionType(): string {
-    return this.selectVariant === 'multiple' ? 'aria-checked' : 'aria-selected'
+    return 'aria-selected'
   }
 
   set selectVariant(variant: SelectVariant) {
