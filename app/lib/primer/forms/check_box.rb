@@ -11,6 +11,13 @@ module Primer
         @input.add_label_classes("FormControl-label")
         @input.add_input_classes("FormControl-checkbox")
 
+        # Generate custom ID that preserves brackets from the name
+        unless @input.input_arguments[:id].present?
+          generate_custom_id
+          # Update the label's for attribute to match the new ID
+          @input.label_arguments[:for] = @input.input_arguments[:id]
+        end
+
         return unless @input.scheme == :array
 
         @input.input_arguments[:multiple] = true
@@ -31,6 +38,24 @@ module Primer
       end
 
       private
+
+      def generate_custom_id
+        # Generate an ID from the name that preserves special characters like brackets
+        # Format: name (with brackets preserved) + "_" + value
+        # Example: "permissions[3]" + "_foo" = "permissions[3]_foo"
+        base_name = @input.name.to_s
+        
+        # For array scheme, the name will have [] appended by Rails, so we need to remove it for ID generation
+        # but only the trailing [] that Rails adds, not brackets that are part of the original name
+        base_name = base_name.sub(/\[\]$/, "") if base_name.end_with?("[]")
+        
+        # Append the value if present to make the ID unique
+        if @input.value.present?
+          @input.input_arguments[:id] = "#{base_name}_#{@input.value}"
+        else
+          @input.input_arguments[:id] = base_name
+        end
+      end
 
       def checked_value
         @input.value || "1"
