@@ -44,13 +44,15 @@ module Primer
         # For array scheme: name + "_" + value (e.g., "permissions[3]_foo")
         # For boolean scheme: just the name (e.g., "long_o")
         base_name = @input.name.to_s
-        
+
         # For array scheme, Rails appends [] to the name, so we remove it for ID generation
         # but only the trailing [] that Rails adds, not brackets that are part of the original name
+        # Regex /\[\]$/ matches literal "[]" at the end of the string
         base_name = base_name.sub(/\[\]$/, "")
-        
+
         # For array scheme, append the value to make IDs unique
         # For boolean scheme, just use the base name
+        # Note: Rails automatically escapes HTML attributes, so special characters are safe
         if @input.scheme == :array && @input.value.present?
           @input.input_arguments[:id] = "#{base_name}_#{@input.value}"
         else
