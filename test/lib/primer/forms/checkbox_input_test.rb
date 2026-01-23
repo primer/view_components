@@ -87,15 +87,14 @@ class Primer::Forms::CheckboxInputTest < Minitest::Test
         render_inline_form(f) do |check_form|
           check_form.check_box(
             name: "user[settings][email]",
-            label: "Email notifications",
-            value: "1"
+            label: "Email notifications"
           )
         end
       end
     end
 
-    # The ID should preserve brackets from the name
-    assert_selector "input[id='user[settings][email]_1']"
-    assert_selector "label[for='user[settings][email]_1']"
+    # For boolean scheme, the ID should just be the name with brackets preserved
+    assert_selector "input[id='user[settings][email]']"
+    assert_selector "label[for='user[settings][email]']"
   end
 end
