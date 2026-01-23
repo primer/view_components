@@ -45,9 +45,9 @@ module Primer
         # For boolean scheme: just the name (e.g., "long_o")
         base_name = @input.name.to_s
         
-        # For array scheme, the name will have [] appended by Rails, so we need to remove it for ID generation
+        # For array scheme, Rails appends [] to the name, so we remove it for ID generation
         # but only the trailing [] that Rails adds, not brackets that are part of the original name
-        base_name = base_name.sub(/\[\]$/, "") if base_name.end_with?("[]")
+        base_name = base_name.sub(/\[\]$/, "")
         
         # For array scheme, append the value to make IDs unique
         # For boolean scheme, just use the base name
