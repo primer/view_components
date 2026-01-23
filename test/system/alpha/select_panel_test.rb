@@ -211,18 +211,18 @@ module Alpha
       end
 
       # Phaser should already be selected
-      assert_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Phaser"
 
       click_on "Photon torpedo"
 
-      assert_selector "[aria-checked=true]", text: "Phaser"
-      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+      assert_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
 
       wait_for_items_to_load do
         filter_results(query: "ph")
       end
 
-      assert_selector "[aria-checked=true]", count: 2
+      assert_selector "[aria-selected=true]", count: 2
     end
 
     def test_pressing_down_arrow_in_filter_input_focuses_first_item
@@ -270,7 +270,6 @@ module Alpha
       click_on_invoker_button
 
       # nothing is checked initially
-      refute_selector "[aria-checked=true]"
       refute_selector "[aria-selected=true]"
 
       assert_equal active_element.tag_name, "input"
@@ -278,8 +277,7 @@ module Alpha
       keyboard.type(:enter)
 
       # pressing enter in the filter input does not close the panel
-      assert_selector "[aria-checked=true]", text: "Item 1"
-      refute_selector "[aria-selected]"
+      assert_selector "[aria-selected=true]", text: "Item 1"
     end
 
     def test_pressing_enter_in_filter_input_navigates_if_first_item_is_link
@@ -316,7 +314,6 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_remote_fetch_item_checked
@@ -327,7 +324,6 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Photon torpedo", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_checked_via_keyboard_enter
@@ -359,7 +355,6 @@ module Alpha
       keyboard.type(:tab, :down, :enter)
 
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_checked_via_keyboard_space
@@ -391,7 +386,6 @@ module Alpha
       keyboard.type(:tab, :down, :space)
 
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_unchecks_previously_checked_item
@@ -402,14 +396,12 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 3", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
 
       click_on_invoker_button
       click_on_second_item
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_item_unchecks_previously_checked_item_after_filtering
@@ -419,7 +411,6 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Phaser"
-      refute_selector "[aria-checked]"
 
       wait_for_items_to_load do
         filter_results(query: "ph")
@@ -431,7 +422,6 @@ module Alpha
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=false]", text: "Phaser"
       assert_selector "[aria-selected=true]", text: "Photon torpedo"
-      refute_selector "[aria-checked]"
     end
 
     def test_single_selected_item_cannot_be_unchecked
@@ -445,7 +435,6 @@ module Alpha
 
       # clicking item closes panel, so checked item is hidden
       assert_selector "[aria-selected=true]", text: "Item 2", visible: :hidden
-      refute_selector "[aria-checked]", visible: :hidden
     end
 
     def test_single_select_clears_input_on_selection
@@ -614,9 +603,8 @@ module Alpha
       click_on_third_item
 
       # clicking item closes panel, so checked item is hidden
-      assert_selector "[aria-checked=true]", text: "Item 2"
-      assert_selector "[aria-checked=true]", text: "Item 3"
-      refute_selector "[aria-selected]", visible: :hidden
+      assert_selector "[aria-selected=true]", text: "Item 2"
+      assert_selector "[aria-selected=true]", text: "Item 3"
     end
 
     def test_multi_select_items_checked_via_keyboard_enter
@@ -633,17 +621,16 @@ module Alpha
       # select first item
       keyboard.type(:tab, :enter)
 
-      assert_selector "[aria-checked=true]", count: 1
-      assert_selector "[aria-checked=true]", text: "Item 1"
+      assert_selector "[aria-selected=true]", count: 1
+      assert_selector "[aria-selected=true]", text: "Item 1"
 
       # select second item
       keyboard.type(:down, :enter)
 
-      assert_selector "[aria-checked=true]", count: 2
-      assert_selector "[aria-checked=true]", text: "Item 1"
-      assert_selector "[aria-checked=true]", text: "Item 2"
+      assert_selector "[aria-selected=true]", count: 2
+      assert_selector "[aria-selected=true]", text: "Item 1"
+      assert_selector "[aria-selected=true]", text: "Item 2"
 
-      refute_selector "[aria-selected]", visible: :hidden
     end
 
     def test_multi_select_items_checked_via_keyboard_space
@@ -660,17 +647,16 @@ module Alpha
       # select first item
       keyboard.type(:tab, :space)
 
-      assert_selector "[aria-checked=true]", count: 1
-      assert_selector "[aria-checked=true]", text: "Item 1"
+      assert_selector "[aria-selected=true]", count: 1
+      assert_selector "[aria-selected=true]", text: "Item 1"
 
       # select second item
       keyboard.type(:down, :space)
 
-      assert_selector "[aria-checked=true]", count: 2
-      assert_selector "[aria-checked=true]", text: "Item 1"
-      assert_selector "[aria-checked=true]", text: "Item 2"
+      assert_selector "[aria-selected=true]", count: 2
+      assert_selector "[aria-selected=true]", text: "Item 1"
+      assert_selector "[aria-selected=true]", text: "Item 2"
 
-      refute_selector "[aria-selected]", visible: :hidden
     end
 
     def test_multi_select_items_can_be_unchecked
@@ -680,13 +666,13 @@ module Alpha
       click_on_second_item
       click_on_third_item
 
-      assert_selector "[aria-checked=true]", text: "Item 2"
-      assert_selector "[aria-checked=true]", text: "Item 3"
+      assert_selector "[aria-selected=true]", text: "Item 2"
+      assert_selector "[aria-selected=true]", text: "Item 3"
 
       click_on_second_item
       click_on_third_item
 
-      refute_selector "[aria-checked=true]"
+      refute_selector "[aria-selected=true]"
     end
 
     def test_multi_select_disabled_item_cannot_be_checked
@@ -696,7 +682,7 @@ module Alpha
 
       click_on_item_by_id("disabled")
 
-      refute_selector "[aria-checked=true]"
+      refute_selector "[aria-selected=true]"
     end
 
     def test_multi_select_does_not_allow_server_to_check_items_on_filter_if_selections_already_made
@@ -708,7 +694,7 @@ module Alpha
       end
 
       # Phaser should already be selected
-      assert_selector "[aria-checked=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Phaser"
 
       # check torpedo, uncheck phaser
       click_on "Photon torpedo"
@@ -720,8 +706,8 @@ module Alpha
 
       # server will render phaser checked, but since the user has already made selections,
       # the server-rendered selections should be ignored
-      refute_selector "[aria-checked=true]", text: "Phaser"
-      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+      refute_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
     end
 
     def test_multi_select_allows_server_to_check_multiple_items
@@ -732,8 +718,8 @@ module Alpha
         click_on_invoker_button
       end
 
-      assert_selector "[aria-checked=true]", text: "Phaser"
-      assert_selector "[aria-checked=true]", text: "Photon torpedo"
+      assert_selector "[aria-selected=true]", text: "Phaser"
+      assert_selector "[aria-selected=true]", text: "Photon torpedo"
     end
 
     def test_banner_scheme_is_passed_to_banner_component
@@ -804,7 +790,7 @@ module Alpha
       click_on_invoker_button
       click_on_item_by_id("item1")
 
-      assert_selector "li[data-item-id=item1] [aria-checked=true]"
+      assert_selector "li[data-item-id=item1] [aria-selected=true]"
 
       evaluate_multiline_script(<<~JS)
         const panel = document.querySelector('select-panel')

@@ -8080,7 +8080,7 @@
         "name": "gap",
         "type": "Symbol",
         "default": "`GapArg::DEFAULT`",
-        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:normal`, or `:spacious`."
+        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:none`, `:normal`, or `:spacious`."
       },
       {
         "name": "direction",
