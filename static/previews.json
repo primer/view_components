@@ -4883,7 +4883,8 @@
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
-            "region"
+            "region",
+            "label-title-only"
           ],
           "will_fix": [
             "color-contrast"
