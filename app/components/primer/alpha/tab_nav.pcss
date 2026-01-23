@@ -12,7 +12,12 @@
   display: flex;
   /* stylelint-disable-next-line primer/spacing */
   margin-bottom: calc(var(--borderWidth-thin) * -1);
-  overflow: hidden;
+  overflow-x: auto;
+
+  /* Ensure list items behave as flex items and don't overlap */
+  & > li {
+    flex-shrink: 0;
+  }
 }
 
 .tabnav-tab {
