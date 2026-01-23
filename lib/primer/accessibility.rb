@@ -32,6 +32,10 @@ module Primer
         per_component: {
           Primer::Alpha::ToggleSwitch => {
             all_scenarios: %i[button-name]
+          },
+
+          Primer::Alpha::MultiInput => {
+            visually_hide_label: %i[label-title-only]
           }
         }
       }
@@ -46,6 +50,8 @@ module Primer
       end
 
       def axe_rules_to_skip(component: nil, scenario_name: nil, flatten: false)
+        scenario_key = scenario_name.is_a?(String) ? scenario_name.to_sym : scenario_name
+
         to_skip = {
           wont_fix: Set.new(AXE_RULES_TO_SKIP.dig(:wont_fix, :global) || []),
           will_fix: Set.new(AXE_RULES_TO_SKIP.dig(:will_fix, :global) || [])
@@ -55,9 +61,9 @@ module Primer
           to_skip[:wont_fix].merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, :all_scenarios) || [])
           to_skip[:will_fix].merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, :all_scenarios) || [])
 
-          if scenario_name
-            to_skip[:wont_fix].merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, scenario_name) || [])
-            to_skip[:will_fix].merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, scenario_name) || [])
+          if scenario_key
+            to_skip[:wont_fix].merge(AXE_RULES_TO_SKIP.dig(:wont_fix, :per_component, component, scenario_key) || [])
+            to_skip[:will_fix].merge(AXE_RULES_TO_SKIP.dig(:will_fix, :per_component, component, scenario_key) || [])
           end
         end
 
