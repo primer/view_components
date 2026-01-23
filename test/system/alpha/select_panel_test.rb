@@ -271,7 +271,6 @@ module Alpha
 
       # nothing is checked initially
       refute_selector "[aria-selected=true]"
-      refute_selector "[aria-selected=true]"
 
       assert_equal active_element.tag_name, "input"
 
