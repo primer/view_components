@@ -5131,19 +5131,6 @@
         }
       },
       {
-        "preview_path": "primer/alpha/overlay/menu_no_header",
-        "name": "menu_no_header",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
         "preview_path": "primer/alpha/overlay/middle_of_page",
         "name": "middle_of_page",
         "snapshot": "false",
