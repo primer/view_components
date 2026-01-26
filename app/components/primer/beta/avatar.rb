@@ -19,6 +19,10 @@ module Primer
     class Avatar < Primer::Component
       status :beta
 
+      def link?
+        @href.present?
+      end
+
       DEFAULT_SIZE = 20
       SMALL_THRESHOLD = 24
 

@@ -8,7 +8,7 @@
   }) do |item| %>
     <% if params["time"] %>
       <% item.with_description.with_content("Last submitted at #{params["time"]}") %>
-    <% elsif %>
+    <% else %>
       <% item.with_description.with_content("Not yet submitted") %>
     <% end %>
   <% end %>

@@ -256,7 +256,7 @@ module Primer
           super(
             p: 2,
             role: "listbox",
-            aria_selection_variant: select_variant == :single ? :selected : :checked,
+            aria_selection_variant: :selected,
             select_variant: select_variant == :multiple ? :multiple_checkbox : :single,
             **system_arguments
           )

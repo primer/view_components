@@ -1,4 +1,12 @@
-<details>
+<span
+  id="button-summary-live"
+  class="sr-only"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"></span>
+
+<details
+  ontoggle="document.getElementById('button-summary-live').textContent = this.open ? 'A wrapping `details` tag is required when using the button with the `:summary` tag' : ''">
   <%= render(Primer::Beta::Button.new(
       scheme: scheme,
       size: size,
@@ -9,5 +17,6 @@
   )) do %>
     Button
   <% end %>
+
   <p>A wrapping `details` tag is required when using the button with the `:summary` tag</p>
 </details>

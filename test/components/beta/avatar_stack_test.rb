@@ -50,7 +50,7 @@ class PrimerAvatarStackTest < Minitest::Test
     end
 
     assert_selector(".AvatarStack") do
-      refute_selector(".toltipped")
+      refute_selector(".tooltipped")
       assert_selector(".AvatarStack-body") do
         assert_selector("img.avatar", count: 1)
       end
@@ -75,7 +75,7 @@ class PrimerAvatarStackTest < Minitest::Test
     end
 
     assert_selector(".AvatarStack.AvatarStack--right") do
-      refute_selector(".toltipped")
+      refute_selector(".tooltipped")
       assert_selector(".AvatarStack-body") do
         assert_selector("img.avatar", count: 1)
       end
@@ -137,5 +137,40 @@ class PrimerAvatarStackTest < Minitest::Test
         assert_selector("tool-tip", count: 3)
       end
     end
+  end
+
+  def test_adds_tabindex_when_expandable_and_avatars_are_not_links
+    render_inline(Primer::Beta::AvatarStack.new) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    assert_selector(".AvatarStack-body[tabindex='0']")
+  end
+
+  def test_does_not_add_tabindex_when_disable_expand_is_true
+    render_inline(Primer::Beta::AvatarStack.new(disable_expand: true)) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar")
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    refute_selector(".AvatarStack-body[tabindex]")
+  end
+
+  def test_does_not_add_tabindex_when_any_avatar_is_a_link
+    render_inline(Primer::Beta::AvatarStack.new) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar", href: "https://github.com/user1")
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    refute_selector(".AvatarStack-body[tabindex]")
+  end
+
+  def test_adds_tabindex_when_tooltipped
+    render_inline(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: "Tooltip" })) do |component|
+      component.with_avatar(src: "Foo", alt: "Bar")
+    end
+
+    assert_selector(".AvatarStack-body[tabindex='0']")
   end
 end

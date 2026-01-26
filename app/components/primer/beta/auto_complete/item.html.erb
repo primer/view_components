@@ -1,9 +1,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <span class="ActionListContent">
     <% if leading_visual %>
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-            <%= leading_visual %>
-        </span>
+      <span class="ActionListItem-visual ActionListItem-visual--leading">
+        <%= leading_visual %>
+      </span>
     <% end %>
     <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
       <span class="ActionListItem-label"><%= content %></span>
@@ -13,9 +13,10 @@
         </span>
       <% end %>
     <% end %>
-   <% if trailing_visual %>
+    <% if trailing_visual %>
         <span class="ActionListItem-visual ActionListItem-visual--trailing">
             <%= trailing_visual %>
         </span>
     <% end %>
+  </span>
 <% end %>

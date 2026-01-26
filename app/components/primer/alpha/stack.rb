@@ -117,6 +117,7 @@ module Primer
         DEFAULT = nil
         OPTIONS = [
           DEFAULT,
+          :none,
           :condensed,
           :normal,
           :spacious
