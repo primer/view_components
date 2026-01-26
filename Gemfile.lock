@@ -104,7 +104,8 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
-    ffi (1.16.3)
+    ffi (1.17.3)
+    ffi (1.17.3-x86_64-linux-gnu)
     hashdiff (1.2.1)
     htmlbeautifier (1.4.3)
     htmlentities (4.3.4)
@@ -120,7 +121,8 @@ GEM
       rexml (>= 3.3.9)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
-    listen (3.9.0)
+    listen (3.10.0)
+      logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
@@ -201,7 +203,7 @@ GEM
     rainbow (3.1.1)
     rake (13.3.1)
     rb-fsevent (0.11.2)
-    rb-inotify (0.10.1)
+    rb-inotify (0.11.1)
       ffi (~> 1.0)
     rdoc (7.0.3)
       erb
@@ -332,7 +334,7 @@ DEPENDENCIES
   erb_lint (~> 0.9)
   erblint-github (~> 1.0.1)
   kramdown (~> 2.5)
-  listen (~> 3.9)
+  listen (~> 3.10)
   lookbook (~> 2.3.14)
   matrix (~> 0.4.3)
   mocha
