@@ -84,6 +84,6 @@ npx playwright test --update-snapshots
 ## Tips for PR Authors
 
 1. **Before submitting**: Use Playwright MCP to visually verify your component changes
-3. **Test interactions**: For interactive components, verify hover, focus, and active states
-4. **Accessibility**: Ensure ARIA snapshots remain valid after your changes
-5. **Screenshots**: If visual changes are intentional, the PR should include updated snapshots
+1. **Test interactions**: For interactive components, verify hover, focus, and active states
+1. **Accessibility**: Ensure ARIA snapshots remain valid after your changes
+1. **Screenshots**: If visual changes are intentional, the PR should include updated snapshots
