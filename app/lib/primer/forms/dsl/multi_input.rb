@@ -39,7 +39,9 @@ module Primer
           new_options[:data] ||= {}
           new_options[:data][:name] = name
           new_options[:data][:targets] = "primer-multi-input.fields"
-          new_options[:id] = nil if options[:hidden]
+          new_options[:id] = "#{@name}_#{name}"
+          new_options[:aria] ||= {}
+          new_options[:aria][:labelledby] = "label-#{base_id}"
           new_options[:disabled] = true if options[:hidden] # disable to avoid submitting to server
           new_options
         end

@@ -1,7 +1,8 @@
 <% if @input.form_control? %>
   <%= content_tag(@tag, **@form_group_arguments) do %>
     <% if @input.label %>
-      <%= builder.label(@input.name, **@input.label_arguments) do %>
+      <% label_id = @input.label_arguments[:id] || "label-#{@input.base_id}" %>
+      <%= builder.label(@input.name, **@input.label_arguments.merge(id: label_id)) do %>
         <%= @input.label %>
         <% if @input.required? %>
           <span aria-hidden="true">*</span>
