@@ -5312,7 +5312,8 @@
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
-            "region"
+            "region",
+            "label-title-only"
           ],
           "will_fix": [
             "color-contrast"
@@ -6049,19 +6050,6 @@
       {
         "preview_path": "primer/alpha/overlay/default",
         "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/menu_no_header",
-        "name": "menu_no_header",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -8079,7 +8067,7 @@
         "name": "gap",
         "type": "Symbol",
         "default": "`GapArg::DEFAULT`",
-        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:normal`, or `:spacious`."
+        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:none`, `:normal`, or `:spacious`."
       },
       {
         "name": "direction",
