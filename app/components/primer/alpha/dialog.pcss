@@ -21,7 +21,7 @@
   syntax: "<length>";
 }
 
-body:has(dialog:modal.Overlay--disableScroll) {
+body[data-disable-scroll="true"]:has(dialog:modal.Overlay--disableScroll) {
   padding-right: var(--dialog-scrollgutter) !important;
   overflow: hidden !important;
 }
