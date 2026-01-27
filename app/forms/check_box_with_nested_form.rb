@@ -8,7 +8,7 @@ class CheckBoxWithNestedForm < ApplicationForm
       custom_cities_form.text_field(
         name: :custom_cities,
         label: "Custom cities",
-        description: "A space-separated list of cities"
+        caption: "A space-separated list of cities"
       )
     end
   end
@@ -17,22 +17,22 @@ class CheckBoxWithNestedForm < ApplicationForm
     check_form.check_box_group(
       name: :city_categories,
       label: "City categories",
-      description: "Select all that apply."
+      caption: "Select all that apply."
     ) do |check_group|
       check_group.check_box(
         value: "capital",
         label: "Capital",
-        description: "The capital city"
+        caption: "The capital city"
       )
       check_group.check_box(
         value: "populous",
         label: "Most-populous",
-        description: "The five most-populous cities"
+        caption: "The five most-populous cities"
       )
       check_group.check_box(
         value: "custom",
         label: "Custom",
-        description: "A custom list of cities"
+        caption: "A custom list of cities"
       ) do |custom_check_box|
         custom_check_box.nested_form do |builder|
           CustomCitiesForm.new(builder)
