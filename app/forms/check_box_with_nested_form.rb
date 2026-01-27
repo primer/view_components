@@ -14,7 +14,11 @@ class CheckBoxWithNestedForm < ApplicationForm
   end
 
   form do |check_form|
-    check_form.check_box_group(name: :city_categories) do |check_group|
+    check_form.check_box_group(
+      name: :city_categories,
+      label: "City categories",
+      description: "Select all that apply."
+    ) do |check_group|
       check_group.check_box(
         value: "capital",
         label: "Capital",
