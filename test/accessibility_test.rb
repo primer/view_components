@@ -3,7 +3,6 @@
 require "system/test_case"
 
 class AccessibilityTest < System::TestCase
-  parallelize workers: 4
 
   Lookbook.previews.each do |preview|
     next if Primer::Accessibility.ignore_preview?(preview.preview_class)
