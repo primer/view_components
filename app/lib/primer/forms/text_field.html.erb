@@ -13,9 +13,9 @@
       <%= builder.text_field(@input.name, **@input.input_arguments) %>
     <% end %>
     <% if @input.show_clear_button? %>
-      <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear" data-action="click:primer-text-field#clearContents">
-        <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
-      </button>
+      <span class="FormControl-input-trailingAction">
+        <%= render(Primer::Beta::IconButton.new(size: :small, scheme: :invisible, icon: :"x-circle-fill", "aria-label": "Clear", id: @input.clear_button_id, classes: "FormControl-input-trailingActionButton", data: { action: "click:primer-text-field#clearContents" })) %>
+      </span>
     <% end %>
     <% if @input.trailing_visual %>
       <div class="FormControl-input-trailingVisualWrap">
