@@ -74,15 +74,11 @@ module Primer
           SIZE_MAPPINGS[@size]
         )
 
-        # Build aria attributes for the button
-        aria_attrs = { pressed: on? }
-        # Only add a default label if neither aria-label nor aria-labelledby is provided
-        unless aria(:label, @system_arguments) || aria(:labelledby, @system_arguments)
-          aria_attrs[:label] = "toggle switch"
-        end
-
         @button_arguments = {
-          aria: merge_aria(@system_arguments, aria: aria_attrs)
+          aria: merge_aria(
+            @system_arguments,
+            aria: { pressed: on? }
+          )
         }
         @button_arguments[:autofocus] = true if autofocus
 
