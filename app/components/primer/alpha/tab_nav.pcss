@@ -12,7 +12,13 @@
   display: flex;
   /* stylelint-disable-next-line primer/spacing */
   margin-bottom: calc(var(--borderWidth-thin) * -1);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* stylelint-disable-next-line selector-max-type */
+  & > li {
+    flex-shrink: 0;
+  }
 }
 
 .tabnav-tab {
