@@ -49,6 +49,7 @@ gem "cssbundling-rails", "~> 1.4"
 gem "vite_rails", "~> 3.0"
 
 group :test do
+  gem "minitest", "5.26.2"
   gem "webmock"
 end
 
