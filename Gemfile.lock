@@ -337,7 +337,6 @@ DEPENDENCIES
   listen (~> 3.10)
   lookbook (~> 2.3.14)
   matrix (~> 0.4.3)
-  minitest (= 5.26.2)
   mocha
   primer_view_components!
   puma (~> 7.1.0)
