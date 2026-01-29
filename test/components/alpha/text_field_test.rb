@@ -45,7 +45,7 @@ class PrimerAlphaTextFieldTest < Minitest::Test
       )
     )
 
-    assert_selector "button.FormControl-input-trailingAction#clear-button-id"
+    assert_selector "button.FormControl-input-trailingActionButton#clear-button-id"
   end
 
   def test_renders_the_component_full_width

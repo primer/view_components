@@ -21,6 +21,7 @@ module Primer
 
         @field_wrap_arguments = {
           class: class_names(
+            "FormControl-input-baseWrap",
             "FormControl-input-wrap",
             INPUT_WRAP_SIZE[input.size],
             "FormControl-input-wrap--trailingAction": @input.show_clear_button?,
@@ -67,14 +68,14 @@ module Primer
             )
 
             Primer::Beta::Counter.new(**counter_arguments)
-          elsif (truncate_arguments = visual[:text])
+          elsif (text_arguments = visual[:text])
             # Render text if specified
-            truncate_arguments[:classes] = class_names(
-              truncate_arguments.delete(:classes),
+            text_arguments[:classes] = class_names(
+              text_arguments.delete(:classes),
               "FormControl-input-trailingVisualText"
             )
-            text = truncate_arguments.delete(:text)
-            Primer::Beta::Truncate.new(**truncate_arguments).with_content(text)
+            text = text_arguments.delete(:text)
+            Primer::Beta::Text.new(**text_arguments).with_content(text)
           end
       end
 
