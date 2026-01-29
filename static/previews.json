@@ -7130,6 +7130,19 @@
         }
       },
       {
+        "preview_path": "primer/alpha/text_field/show_clear_button_with_custom_label",
+        "name": "show_clear_button_with_custom_label",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
         "preview_path": "primer/alpha/text_field/full_width",
         "name": "full_width",
         "snapshot": "true",

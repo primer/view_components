@@ -48,6 +48,29 @@ class PrimerAlphaTextFieldTest < Minitest::Test
     assert_selector "button.FormControl-input-trailingAction#clear-button-id"
   end
 
+  def test_renders_clear_button_with_default_aria_label
+    render_inline(
+      Primer::Alpha::TextField.new(
+        **@default_params,
+        show_clear_button: true
+      )
+    )
+
+    assert_selector "button[aria-label='Clear']"
+  end
+
+  def test_renders_clear_button_with_custom_aria_label
+    render_inline(
+      Primer::Alpha::TextField.new(
+        **@default_params,
+        show_clear_button: true,
+        clear_button_label: "Effacer"
+      )
+    )
+
+    assert_selector "button[aria-label='Effacer']"
+  end
+
   def test_renders_the_component_full_width
     render_inline(Primer::Alpha::TextField.new(**@default_params, full_width: true))
 

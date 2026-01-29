@@ -6,7 +6,7 @@ module Primer
         attr_reader(
           *%i[
             name label show_clear_button leading_visual leading_spinner trailing_visual clear_button_id
-            visually_hide_label inset monospace field_wrap_classes auto_check_src character_limit
+            clear_button_label visually_hide_label inset monospace field_wrap_classes auto_check_src character_limit
           ]
         )
 
@@ -21,6 +21,7 @@ module Primer
           @trailing_visual = system_arguments.delete(:trailing_visual)
           @leading_spinner = !!system_arguments.delete(:leading_spinner)
           @clear_button_id = system_arguments.delete(:clear_button_id) || SecureRandom.uuid
+          @clear_button_label = system_arguments.delete(:clear_button_label)
           @inset = system_arguments.delete(:inset)
           @monospace = system_arguments.delete(:monospace)
           @auto_check_src = system_arguments.delete(:auto_check_src)

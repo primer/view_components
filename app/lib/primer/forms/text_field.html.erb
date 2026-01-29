@@ -13,7 +13,7 @@
       <%= builder.text_field(@input.name, **@input.input_arguments) %>
     <% end %>
     <% if @input.show_clear_button? %>
-      <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear" data-action="click:primer-text-field#clearContents">
+      <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="<%= @input.clear_button_label || 'Clear' %>" data-action="click:primer-text-field#clearContents">
         <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
       </button>
     <% end %>
