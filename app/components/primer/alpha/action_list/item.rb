@@ -302,7 +302,8 @@ module Primer
           if @list.allows_selection?
             @content_arguments[:aria] = merge_aria(
               @content_arguments,
-              { aria: @list.aria_selection_variant == :selected ? { selected: active? } : { checked: active? } }
+              # Always use aria-selected for listbox (role="option" requires aria-selected per WAI-ARIA 1.2)
+              { aria: @list.acts_as_listbox? || @list.aria_selection_variant == :selected ? { selected: active? } : { checked: active? } }
             )
           end
 

@@ -15,6 +15,7 @@ module Primer
       # @param size [Symbol] select [small, medium, large]
       # @param show_clear_button toggle
       # @param clear_button_id text
+      # @param clear_button_label text
       # @param full_width toggle
       # @param disabled toggle
       # @param invalid toggle
@@ -35,6 +36,7 @@ module Primer
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         show_clear_button: false,
         clear_button_id: "my-text-field-clear-button",
+        clear_button_label: nil,
         full_width: true,
         disabled: false,
         invalid: false,
@@ -56,6 +58,7 @@ module Primer
           size: size,
           show_clear_button: show_clear_button,
           clear_button_id: clear_button_id,
+          clear_button_label: clear_button_label,
           full_width: full_width,
           disabled: disabled,
           invalid: invalid,
@@ -131,6 +134,12 @@ module Primer
       # @snapshot
       def show_clear_button
         render(Primer::Alpha::TextField.new(show_clear_button: true, name: "my-text-field-3", label: "My text field"))
+      end
+
+      # @label Show clear button with custom label
+      # @snapshot
+      def show_clear_button_with_custom_label
+        render(Primer::Alpha::TextField.new(show_clear_button: true, clear_button_label: "Effacer", name: "my-text-field-3-custom", label: "Mon champ de texte"))
       end
 
       # @label Full width
