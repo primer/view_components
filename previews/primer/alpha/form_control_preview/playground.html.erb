@@ -8,7 +8,7 @@
 
 <br>
 
-<% field_id = "bar-#{SecureRandom.hex(6)}" %>
+<% field_id = "bar-#{SecureRandom.hex}" %>
 
 <%= form_with(url: "/foo") do |f| %>
   <%= render(Primer::Alpha::FormControl.new(**system_arguments, label_arguments: { for: field_id })) do |component| %>
