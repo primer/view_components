@@ -21,8 +21,10 @@ module Primer
       def test_label_describes_input
         render_preview(:playground)
 
-        assert_selector(".FormControl-label[for=bar]")
-        assert_selector("input[type=text][name=bar]")
+        label = page.find_css(".FormControl-label")[0]
+        input_id = label.attributes.fetch("for").value
+
+        assert_selector(%(input[type=text]##{input_id}[name=bar]))
       end
 
       def test_described_by_ids
