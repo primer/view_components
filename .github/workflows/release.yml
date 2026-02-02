@@ -87,7 +87,7 @@ jobs:
 
       - name: Create release pull request or publish to npm
         id: changesets
-        uses: changesets/action@v1.4.10
+        uses: changesets/action@v1.6.0
         with:
           title: Release Tracking
           version: npm run changeset:version
