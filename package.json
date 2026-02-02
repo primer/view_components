@@ -68,7 +68,7 @@
     "@github/markdownlint-github": "^0.8.0",
     "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.57.0",
-    "@primer/css": "22.0.2",
+    "@primer/css": "22.1.0",
     "@primer/stylelint-config": "^13.1.1",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^8.3.3",
