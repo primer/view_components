@@ -8,15 +8,14 @@
 
 > [!WARNING]
 > As part of GitHub’s move to React-based interfaces, Primer ViewComponents is in maintenance mode as of February 2026.
-
-Maintenance mode means:
-- this project is **not accepting new features, components, or significant enhancements.** 
-- the Primer team at GitHub will continue providing:
-   - Security updates
-   - Dependency bumps
-   - Critical/P0 bug fixes
-- issues, PRs, and discussions / community Q&A remain open, but maintainer response is not guaranteed
-
+> 
+> Maintenance mode means:
+> - this project is **not accepting new features, components, or significant enhancements.** 
+> - the Primer team at GitHub will continue providing:
+>    - Security updates
+>    - Dependency bumps
+>    - Critical/P0 bug fixes
+> - issues, PRs, and discussions / community Q&A remain open, but maintainer response is not guaranteed
 The Primer team continues to focus its resources on strategic investments that help GitHub and its customers to be successful, while making developers’ lives easier. The Primer design system remains a part of this vision through [guidance](https://primer.style/product/ui-patterns/), [tooling](https://primer.style/product/getting-started/react/), and ready-to-use [React](https://primer.style/product/components/) and [web components](https://github.com/github/github-elements).
 
 We encourage internal GitHub consumers to plan to migrate from Primer ViewComponents to [Primer React](https://github.com/primer/react).
