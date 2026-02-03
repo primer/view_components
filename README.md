@@ -17,12 +17,12 @@
 >    - Critical/P0 bug fixes
 > - issues, PRs, and discussions / community Q&A remain open, but maintainer response is not guaranteed
 The Primer team continues to focus its resources on strategic investments that help GitHub and its customers to be successful, while making developers’ lives easier. The Primer design system remains a part of this vision through [guidance](https://primer.style/product/ui-patterns/), [tooling](https://primer.style/product/getting-started/react/), and ready-to-use [React](https://primer.style/product/components/) and [web components](https://github.com/github/github-elements).
-
-We encourage internal GitHub consumers to plan to migrate from Primer ViewComponents to [Primer React](https://github.com/primer/react).
-
-Non-GitHub consumers should consider forking and maintaining a copy of this repo.
-
-Questions may be posted on the [maintenance mode announcement](https://github.com/primer/view_components/discussions/3908). Thank you for your support and interest!
+>
+> We encourage internal GitHub consumers to plan to migrate from Primer ViewComponents to [Primer React](https://github.com/primer/react).
+>
+> Non-GitHub consumers should consider forking and maintaining a copy of this repo.
+> 
+> Questions may be posted on the [maintenance mode announcement](https://github.com/primer/view_components/discussions/3908). Thank you for your support and interest!
 
 ## Documentation
 
