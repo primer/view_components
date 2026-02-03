@@ -1,4 +1,3 @@
-
 <p align="center">
   <img width="300px" alt="Primer ViewComponents Logo" src="/static/assets/view-components.svg">
 </p>
