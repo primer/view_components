@@ -23,7 +23,7 @@ We encourage internal GitHub consumers to plan to migrate from Primer ViewCompon
 
 Non-GitHub consumers should consider forking and maintaining a copy of this repo.
 
-Questions may be posted on the [maintenance mode announcement](). Thank you for your support and interest!
+Questions may be posted on the [maintenance mode announcement](https://github.com/primer/view_components/discussions/3908). Thank you for your support and interest!
 
 ## Documentation
 
