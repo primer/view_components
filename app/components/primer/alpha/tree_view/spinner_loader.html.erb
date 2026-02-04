@@ -2,7 +2,7 @@
   <% with_loading_failure_message  # set the default %>
 <% end %>
 
-<%= render(Primer::BaseComponent.new(tag: :"tree-view-include-fragment", src: @src, loading: :lazy, data: { target: "tree-view-sub-tree-node.subTree tree-view-sub-tree-node.includeFragment", path: @container.path.to_json }, hidden: @container.expanded?, accept: "text/fragment+html", role: "treeitem")) do %>
+<%= render(Primer::BaseComponent.new(tag: :"tree-view-include-fragment", src: @src, loading: :lazy, data: { target: "tree-view-sub-tree-node.subTree tree-view-sub-tree-node.includeFragment", path: @container.path.to_json }, hidden: @container.expanded?, accept: "text/fragment+html")) do %>
   <%= render(@container) do %>
     <%= render(Primer::Alpha::TreeView::Node.new(path: [*@container.path, :loader], data: { target: "tree-view-sub-tree-node.loadingIndicator" }, node_variant: :div)) do |node| %>
       <% node.with_text_content { "Loading..." } %>

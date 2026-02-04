@@ -410,6 +410,9 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   #update() {
     if (this.expanded) {
       if (this.subTree) this.subTree.hidden = false
+      if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
+        this.subTree.setAttribute('role', 'treeitem')
+      }
       this.node.setAttribute('aria-expanded', 'true')
       this.treeView?.expandAncestorsForNode(this)
 
@@ -423,6 +426,9 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       }
     } else {
       if (this.subTree) this.subTree.hidden = true
+      if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
+        this.subTree.removeAttribute('role')
+      }
       this.node.setAttribute('aria-expanded', 'false')
 
       if (this.iconPair) {
