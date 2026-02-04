@@ -279,6 +279,15 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
           if (!content) return
 
           content.focus()
+          
+          // Set aria-selected on the newly focused node to maintain selection state
+          // when the loader is replaced with actual content
+          const treeView = this.closest('tree-view')
+          if (treeView instanceof TreeViewElement) {
+            const previousNode = treeView.querySelector('[aria-selected=true]')
+            previousNode?.setAttribute('aria-selected', 'false')
+            content.setAttribute('aria-selected', 'true')
+          }
         }
 
         this.#activeElementIsLoader = false
