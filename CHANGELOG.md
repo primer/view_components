@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## 0.50.0
+
+### Minor Changes
+
+- [#3864](https://github.com/primer/view_components/pull/3864) [`5d6e909`](https://github.com/primer/view_components/commit/5d6e9091133d6937c77377e63fe0715a8f87575f) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Add `none` gap option to Stack component for parity with Primer React
+
+- [#3879](https://github.com/primer/view_components/pull/3879) [`c0db703`](https://github.com/primer/view_components/commit/c0db7037adcafb04e5642703f049874be3083531) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Allow localization of TextField clear button aria-label
+
+### Patch Changes
+
+- [#3878](https://github.com/primer/view_components/pull/3878) [`4e702c8`](https://github.com/primer/view_components/commit/4e702c871ed1af3d5eb6236028ad97704996800d) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix generated field ids to remove brackets
+
+- [#3898](https://github.com/primer/view_components/pull/3898) [`f9fd6c8`](https://github.com/primer/view_components/commit/f9fd6c83c98ea95d79ae2d4857865e26d2b32667) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix deprecation warning for Rails 9
+
+- [#3881](https://github.com/primer/view_components/pull/3881) [`536345e`](https://github.com/primer/view_components/commit/536345e4569ca0ff89b32600470257fccadd60b0) Thanks [@llastflowers](https://github.com/llastflowers)! - Add unique ids on each textarea to fix announcement issues
+
+- [#3874](https://github.com/primer/view_components/pull/3874) [`5c2982d`](https://github.com/primer/view_components/commit/5c2982d09e13c327d3c8face322f3185a827be45) Thanks [@llastflowers](https://github.com/llastflowers)! - Give inputs unique ids so that SR doesn't skip Label announcement
+
+- [#3892](https://github.com/primer/view_components/pull/3892) [`e187c55`](https://github.com/primer/view_components/commit/e187c55eaf6b37d840bcc34446254b23c439e7fd) Thanks [@llastflowers](https://github.com/llastflowers)! - Add group label for checkboxes in CheckBoxWithNestedForm Lookbook story
+
+- [#3880](https://github.com/primer/view_components/pull/3880) [`2001888`](https://github.com/primer/view_components/commit/2001888f9464a7d599252d8495ddcb812c0305e3) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Fix overlapping issue in TabNav at narrow viewports.
+
+- [#3877](https://github.com/primer/view_components/pull/3877) [`f51244e`](https://github.com/primer/view_components/commit/f51244eef26f70545cc4b4a6ec8d8ee3fba3c51a) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix Primer::FormHelper compatibility with Rails 7+ config
+
+- [#3875](https://github.com/primer/view_components/pull/3875) [`6971d77`](https://github.com/primer/view_components/commit/6971d773e3f0f574fd94d50a6bf7efa957a4bc7c) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Fixed SelectPanel multiselect accessibility: Use `aria-selected` instead of `aria-checked` for listbox option items.
+
+- [#3866](https://github.com/primer/view_components/pull/3866) [`391e438`](https://github.com/primer/view_components/commit/391e438715514c41c24648c7abeb27f18f72ed35) Thanks [@llastflowers](https://github.com/llastflowers)! - Make link distinguishable from surrounding text with underline styling
+
+- [#3899](https://github.com/primer/view_components/pull/3899) [`8d9ceef`](https://github.com/primer/view_components/commit/8d9ceefe28d1ced522056e1f03475fb28ec48b91) Thanks [@llastflowers](https://github.com/llastflowers)! - Generate unique labels for all form control inputs in previews
+
+- [#3893](https://github.com/primer/view_components/pull/3893) [`024dc7e`](https://github.com/primer/view_components/commit/024dc7e3647ec37253fde72d0d8c09caab512de6) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Always use `aria-selected` for ActionList items with role="option".
+
+- [#3867](https://github.com/primer/view_components/pull/3867) [`453041c`](https://github.com/primer/view_components/commit/453041c579bb90e54e5075951b345d8f2037f4ef) Thanks [@llastflowers](https://github.com/llastflowers)! - Add SR announcement in Summary As Button story
+
 ## 0.49.0
 
 ### Minor Changes
