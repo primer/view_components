@@ -469,7 +469,7 @@ module Alpha
 
       keyboard.type(:tab, :enter)
       assert_path("primer", "loader")
-      keyboard.type(:down)
+      keyboard.type(:tab)
 
       assert_path_selected("primer", "alpha")
     end
