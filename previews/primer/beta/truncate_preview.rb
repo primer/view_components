@@ -45,9 +45,9 @@ module Primer
       # @snapshot
       def max_widths
         render(Primer::Beta::Truncate.new) do |component|
-          component.with_item(max_width: 300) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
-          component.with_item(max_width: 200) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
-          component.with_item(max_width: 100) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
+          component.with_item(max_width: 300, tag: :button, expandable: true) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
+          component.with_item(max_width: 200, tag: :button, expandable: true) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
+          component.with_item(max_width: 100, tag: :button, expandable: true) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
         end
       end
     end
