@@ -809,6 +809,9 @@ module Alpha
       # Enter to expand the spinner node (which includes an include-fragment with role="treeitem")
       keyboard.type(:enter)
 
+      # Verify that the include-fragment has role="treeitem" when expanded
+      assert_selector 'tree-view-include-fragment[role=treeitem]'
+
       # Wait for the loader to be replaced
       assert_path("primer", "alpha")
 
