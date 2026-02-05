@@ -469,7 +469,7 @@ module Alpha
 
       keyboard.type(:tab, :enter)
       assert_path("primer", "loader")
-      keyboard.type(:tab)
+      keyboard.type(:down)
 
       assert_path_selected("primer", "alpha")
     end
@@ -798,6 +798,31 @@ module Alpha
       response = JSON.parse(find("pre").text)
 
       assert_equal "{\"path\":[\"action_menu.rb\"],\"value\":\"3\"}", response.dig("form_params", "folder_structure", 0)
+    end
+
+    def test_keyboard_focus_moves_to_parent_when_include_fragment_with_role_treeitem_is_collapsed
+      visit_preview(:loading_spinner)
+
+      # Tab to focus the tree view
+      keyboard.type(:tab)
+
+      # Enter to expand the spinner node (which includes an include-fragment with role="treeitem")
+      keyboard.type(:enter)
+
+      # Wait for the loader to be replaced
+      assert_path("primer", "alpha")
+
+      # Navigate to a child node
+      keyboard.type(:down)
+      assert_path_selected("primer", "alpha")
+
+      # Now collapse the parent node using arrow keys while focus is on child
+      keyboard.type(:up) # go back to parent
+      keyboard.type(:left) # collapse
+
+      # Focus should move to the parent node and it should be tabbable
+      assert_path_selected("primer")
+      assert_path_tabbable("primer")
     end
   end
 end

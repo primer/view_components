@@ -178,6 +178,13 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       // sub-tree and no node in the entire tree can be focused
       const previousNode = this.subTree.querySelector("[tabindex='0']")
       previousNode?.setAttribute('tabindex', '-1')
+      
+      // Also check if the subtree element itself is an include-fragment with role="treeitem" and has focus
+      if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment') &&
+          this.subTree.getAttribute('tabindex') === '0') {
+        this.subTree.setAttribute('tabindex', '-1')
+      }
+      
       this.node.setAttribute('tabindex', '0')
 
       this.treeView.dispatchEvent(
@@ -263,6 +270,12 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       // request succeeded but element has not yet been replaced
       case 'include-fragment-replace':
         this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('[role=treeitem]')
+        // Also check if the include-fragment itself has focus (when it has role="treeitem")
+        if (!this.#activeElementIsLoader && 
+            document.activeElement === this.subTree &&
+            this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
+          this.#activeElementIsLoader = true
+        }
         this.loadingState = 'success'
         break
 
@@ -412,6 +425,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       if (this.subTree) this.subTree.hidden = false
       if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
         this.subTree.setAttribute('role', 'treeitem')
+        // Ensure the include-fragment can participate in roving tab index
+        if (!this.subTree.hasAttribute('tabindex')) {
+          this.subTree.setAttribute('tabindex', '-1')
+        }
       }
       this.node.setAttribute('aria-expanded', 'true')
       this.treeView?.expandAncestorsForNode(this)
@@ -428,6 +445,8 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       if (this.subTree) this.subTree.hidden = true
       if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
         this.subTree.removeAttribute('role')
+        // Remove tabindex when role is removed
+        this.subTree.removeAttribute('tabindex')
       }
       this.node.setAttribute('aria-expanded', 'false')
 
