@@ -271,6 +271,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         // having to remember to pass `SubTree.new(expanded: true)` in the controller.
         this.expanded = true
 
+        // Check if the loader node was selected (had aria-selected=true) before being replaced
+        const loaderNode = this.loadingIndicator?.closest('[role=treeitem]') as HTMLElement | null
+        const loaderWasSelected = loaderNode?.getAttribute('aria-selected') === 'true'
+
         if (this.#activeElementIsLoader) {
           const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
           if (!firstItem) return
@@ -279,14 +283,21 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
           if (!content) return
 
           content.focus()
-          
-          // Set aria-selected on the newly focused node to maintain selection state
-          // when the loader is replaced with actual content
-          const treeView = this.closest('tree-view')
-          if (treeView instanceof TreeViewElement) {
-            const previousNode = treeView.querySelector('[aria-selected=true]')
-            previousNode?.setAttribute('aria-selected', 'false')
-            content.setAttribute('aria-selected', 'true')
+        }
+
+        // If the loader was selected when it was replaced, transfer the selection to the first loaded node
+        if (loaderWasSelected) {
+          const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
+          if (firstItem) {
+            const content = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
+            if (content) {
+              const treeView = this.closest('tree-view')
+              if (treeView instanceof TreeViewElement) {
+                const previousNode = treeView.querySelector('[aria-selected=true]')
+                previousNode?.setAttribute('aria-selected', 'false')
+                content.setAttribute('aria-selected', 'true')
+              }
+            }
           }
         }
 
