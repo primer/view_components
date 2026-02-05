@@ -180,10 +180,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       previousNode?.setAttribute('tabindex', '-1')
 
       // Also check if the subtree element itself is an include-fragment with role="treeitem" and has focus
-      if (
-        this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment') &&
-        this.subTree.getAttribute('tabindex') === '0'
-      ) {
+      if (this.#isIncludeFragment() && this.subTree.getAttribute('tabindex') === '0') {
         this.subTree.setAttribute('tabindex', '-1')
       }
 
@@ -273,11 +270,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       case 'include-fragment-replace':
         this.#activeElementIsLoader = document.activeElement === this.loadingIndicator.closest('[role=treeitem]')
         // Also check if the include-fragment itself has focus (when it has role="treeitem")
-        if (
-          !this.#activeElementIsLoader &&
-          document.activeElement === this.subTree &&
-          this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')
-        ) {
+        if (!this.#activeElementIsLoader && document.activeElement === this.subTree && this.#isIncludeFragment()) {
           this.#activeElementIsLoader = true
         }
         this.loadingState = 'success'
@@ -427,7 +420,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
   #update() {
     if (this.expanded) {
       if (this.subTree) this.subTree.hidden = false
-      if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
+      if (this.#isIncludeFragment()) {
         this.subTree.setAttribute('role', 'treeitem')
         // Ensure the include-fragment can participate in roving tab index
         if (!this.subTree.hasAttribute('tabindex')) {
@@ -447,7 +440,7 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
       }
     } else {
       if (this.subTree) this.subTree.hidden = true
-      if (this.subTree.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment')) {
+      if (this.#isIncludeFragment()) {
         this.subTree.removeAttribute('role')
         // Remove tabindex when role is removed
         this.subTree.removeAttribute('tabindex')
@@ -480,6 +473,10 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         if (this.loadingIndicator) this.loadingIndicator.hidden = true
         if (this.loadingFailureMessage) this.loadingFailureMessage.hidden = true
     }
+  }
+
+  #isIncludeFragment(): boolean {
+    return this.subTree?.getAttribute('data-target')?.includes('tree-view-sub-tree-node.includeFragment') ?? false
   }
 
   get #checkboxElement(): HTMLElement | null {
