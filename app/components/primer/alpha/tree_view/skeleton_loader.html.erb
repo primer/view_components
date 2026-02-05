@@ -4,7 +4,7 @@
 
 <%= render(Primer::BaseComponent.new(tag: :"tree-view-include-fragment", src: @src, loading: :lazy, data: { target: "tree-view-sub-tree-node.subTree tree-view-sub-tree-node.includeFragment", path: @container.path.to_json }, hidden: @container.expanded?, accept: "text/fragment+html")) do %>
   <%= render(@container) do %>
-    <%= render(Primer::Alpha::TreeView::Node.new(path: [*@container.path, :loader], node_variant: :div)) do |node| %>
+    <%= render(Primer::Alpha::TreeView::Node.new(path: [*@container.path, :loader], node_variant: :div, disabled: true)) do |node| %>
       <% node.with_text_content do %>
         <div data-target="tree-view-sub-tree-node.loadingIndicator">
           <% @count.times do %>
