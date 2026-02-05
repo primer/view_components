@@ -275,28 +275,30 @@ export class TreeViewSubTreeNodeElement extends HTMLElement {
         const loaderNode = this.loadingIndicator?.closest('[role=treeitem]') as HTMLElement | null
         const loaderWasSelected = loaderNode?.getAttribute('aria-selected') === 'true'
 
-        if (this.#activeElementIsLoader) {
+        // Helper to get the first loaded treeitem node
+        const getFirstLoadedNode = (): HTMLElement | null => {
           const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
-          if (!firstItem) return
+          if (!firstItem) return null
+          return firstItem.querySelector('[role=treeitem]') as HTMLElement | null
+        }
 
-          const content = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
-          if (!content) return
-
-          content.focus()
+        // If loader was focused when replaced, move focus to first loaded node
+        if (this.#activeElementIsLoader) {
+          const content = getFirstLoadedNode()
+          if (content) {
+            content.focus()
+          }
         }
 
         // If the loader was selected when it was replaced, transfer the selection to the first loaded node
         if (loaderWasSelected) {
-          const firstItem = this.querySelector('[role=group] > :first-child') as HTMLElement | null
-          if (firstItem) {
-            const content = firstItem.querySelector('[role=treeitem]') as HTMLElement | null
-            if (content) {
-              const treeView = this.closest('tree-view')
-              if (treeView instanceof TreeViewElement) {
-                const previousNode = treeView.querySelector('[aria-selected=true]')
-                previousNode?.setAttribute('aria-selected', 'false')
-                content.setAttribute('aria-selected', 'true')
-              }
+          const content = getFirstLoadedNode()
+          if (content) {
+            const treeView = this.closest('tree-view')
+            if (treeView instanceof TreeViewElement) {
+              const previousNode = treeView.querySelector('[aria-selected=true]')
+              previousNode?.setAttribute('aria-selected', 'false')
+              content.setAttribute('aria-selected', 'true')
             }
           }
         }
