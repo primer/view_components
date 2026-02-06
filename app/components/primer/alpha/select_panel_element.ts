@@ -813,6 +813,9 @@ export class SelectPanelElement extends HTMLElement {
   }
 
   #handleInvokerActivated(event: Event) {
+    // Let listeners observe the invoker was clicked
+    this.invokerElement?.dispatchEvent(new CustomEvent('invokerClicked', {bubbles: true}))
+
     event.preventDefault()
 
     // eslint-disable-next-line no-restricted-syntax
