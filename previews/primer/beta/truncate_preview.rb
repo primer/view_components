@@ -31,25 +31,11 @@ module Primer
       end
 
       # @label Advanced multiple items
-      def advanced_multiple_items
-        render(Primer::Beta::Truncate.new(tag: :ol)) do |component|
-          component.with_item(tag: :li) { "primer" }
-          component.with_item(tag: :li, priority: true) { "/ css" }
-          component.with_item(tag: :li) { "/ Issues" }
-          component.with_item(tag: :li) { "/ #123" }
-          component.with_item(tag: :li, priority: true) { "Visual bug on primer.style found in lists" }
-        end
-      end
+      def advanced_multiple_items; end
 
       # @label Max widths
       # @snapshot
-      def max_widths
-        render(Primer::Beta::Truncate.new) do |component|
-          component.with_item(max_width: 300) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
-          component.with_item(max_width: 200) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
-          component.with_item(max_width: 100) { "branch-name-that-is-really-long-branch-name-that-is-really-long-branch-name-that-is-really-long" }
-        end
-      end
+      def max_widths; end
     end
   end
 end
