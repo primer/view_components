@@ -1,5 +1,57 @@
 # CHANGELOG
 
+## 0.50.0
+
+### Minor Changes
+
+- [#3864](https://github.com/primer/view_components/pull/3864) [`5d6e909`](https://github.com/primer/view_components/commit/5d6e9091133d6937c77377e63fe0715a8f87575f) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Add `none` gap option to Stack component for parity with Primer React
+
+- [#3879](https://github.com/primer/view_components/pull/3879) [`c0db703`](https://github.com/primer/view_components/commit/c0db7037adcafb04e5642703f049874be3083531) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Allow localization of TextField clear button aria-label
+
+### Patch Changes
+
+- [#3878](https://github.com/primer/view_components/pull/3878) [`4e702c8`](https://github.com/primer/view_components/commit/4e702c871ed1af3d5eb6236028ad97704996800d) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix generated field ids to remove brackets
+
+- [#3898](https://github.com/primer/view_components/pull/3898) [`f9fd6c8`](https://github.com/primer/view_components/commit/f9fd6c83c98ea95d79ae2d4857865e26d2b32667) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix deprecation warning for Rails 9
+
+- [#3881](https://github.com/primer/view_components/pull/3881) [`536345e`](https://github.com/primer/view_components/commit/536345e4569ca0ff89b32600470257fccadd60b0) Thanks [@llastflowers](https://github.com/llastflowers)! - Add unique ids on each textarea to fix announcement issues
+
+- [#3874](https://github.com/primer/view_components/pull/3874) [`5c2982d`](https://github.com/primer/view_components/commit/5c2982d09e13c327d3c8face322f3185a827be45) Thanks [@llastflowers](https://github.com/llastflowers)! - Give inputs unique ids so that SR doesn't skip Label announcement
+
+- [#3892](https://github.com/primer/view_components/pull/3892) [`e187c55`](https://github.com/primer/view_components/commit/e187c55eaf6b37d840bcc34446254b23c439e7fd) Thanks [@llastflowers](https://github.com/llastflowers)! - Add group label for checkboxes in CheckBoxWithNestedForm Lookbook story
+
+- [#3880](https://github.com/primer/view_components/pull/3880) [`2001888`](https://github.com/primer/view_components/commit/2001888f9464a7d599252d8495ddcb812c0305e3) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Fix overlapping issue in TabNav at narrow viewports.
+
+- [#3877](https://github.com/primer/view_components/pull/3877) [`f51244e`](https://github.com/primer/view_components/commit/f51244eef26f70545cc4b4a6ec8d8ee3fba3c51a) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix Primer::FormHelper compatibility with Rails 7+ config
+
+- [#3875](https://github.com/primer/view_components/pull/3875) [`6971d77`](https://github.com/primer/view_components/commit/6971d773e3f0f574fd94d50a6bf7efa957a4bc7c) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Fixed SelectPanel multiselect accessibility: Use `aria-selected` instead of `aria-checked` for listbox option items.
+
+- [#3866](https://github.com/primer/view_components/pull/3866) [`391e438`](https://github.com/primer/view_components/commit/391e438715514c41c24648c7abeb27f18f72ed35) Thanks [@llastflowers](https://github.com/llastflowers)! - Make link distinguishable from surrounding text with underline styling
+
+- [#3899](https://github.com/primer/view_components/pull/3899) [`8d9ceef`](https://github.com/primer/view_components/commit/8d9ceefe28d1ced522056e1f03475fb28ec48b91) Thanks [@llastflowers](https://github.com/llastflowers)! - Generate unique labels for all form control inputs in previews
+
+- [#3893](https://github.com/primer/view_components/pull/3893) [`024dc7e`](https://github.com/primer/view_components/commit/024dc7e3647ec37253fde72d0d8c09caab512de6) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Always use `aria-selected` for ActionList items with role="option".
+
+- [#3867](https://github.com/primer/view_components/pull/3867) [`453041c`](https://github.com/primer/view_components/commit/453041c579bb90e54e5075951b345d8f2037f4ef) Thanks [@llastflowers](https://github.com/llastflowers)! - Add SR announcement in Summary As Button story
+
+## 0.49.0
+
+### Minor Changes
+
+- [#3785](https://github.com/primer/view_components/pull/3785) [`7526370`](https://github.com/primer/view_components/commit/75263700b8c00ffdd525c81feed0de61b81d1067) Thanks [@lindseywild](https://github.com/lindseywild)! - Adds character_limit option to TextArea and TextField components
+
+### Patch Changes
+
+- [#3832](https://github.com/primer/view_components/pull/3832) [`15ac0d4`](https://github.com/primer/view_components/commit/15ac0d498dca5947ca38992fb74b1e485d97a88a) Thanks [@llastflowers](https://github.com/llastflowers)! - Make Retry button focusable in loading_failure_story
+
+- [#3848](https://github.com/primer/view_components/pull/3848) [`20d2e9f`](https://github.com/primer/view_components/commit/20d2e9f195864fb900fab2473592d2249eed5ac0) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Add support for Ruby 4 in test suite.
+
+- [#3823](https://github.com/primer/view_components/pull/3823) [`954596a`](https://github.com/primer/view_components/commit/954596a07c4230f107c24dad2967f25577828d5b) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Tooltip: Prevents tooltip from appearing when popover (e.g. ActionMenu) is opened
+
+- [#3850](https://github.com/primer/view_components/pull/3850) [`d722644`](https://github.com/primer/view_components/commit/d722644d98e7b80ee684ccd53d3192f51322512c) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix compatibility issues with Herb, add linter to CI.
+
+- [#3849](https://github.com/primer/view_components/pull/3849) [`7efbd32`](https://github.com/primer/view_components/commit/7efbd32a4d90388a13a524f41261b91693b3b222) Thanks [@llastflowers](https://github.com/llastflowers)! - Make AvatarStack accessible via keyboard navigation
+
 ## 0.48.0
 
 ### Minor Changes
@@ -382,7 +434,6 @@
 - [#2983](https://github.com/primer/view_components/pull/2983) [`5d68193`](https://github.com/primer/view_components/commit/5d681938247c4a957d62b05c2560fef24195ff51) Thanks [@keithamus](https://github.com/keithamus)! - Ensure ActionMenu restores focus on close of a dialog, if a menu item opened that dialog
 
 - [#3010](https://github.com/primer/view_components/pull/3010) [`ebab85a`](https://github.com/primer/view_components/commit/ebab85a3a3d2644079aaf495fd1e6689b89f713b) Thanks [@camertron](https://github.com/camertron)! - Fixes several SelectPanel bugs:
-
   1. If multiple server-rendered items are checked, the panel will only show one item checked.
   2. If no `data-value` attributes are provided, panels in single-select mode will allow multiple items to be checked.
 
@@ -559,7 +610,6 @@
 ### Patch Changes
 
 - [#2751](https://github.com/primer/view_components/pull/2751) [`b1fef3c`](https://github.com/primer/view_components/commit/b1fef3cf8ae547241b4d63fde81bc6c127fbd862) Thanks [@langermank](https://github.com/langermank)! - - Add `label_wrap` param to `Beta::Button`
-
   - Bug fix: text overflows in SegmentedControl instead of ellipses
 
 - [#2765](https://github.com/primer/view_components/pull/2765) [`1857983`](https://github.com/primer/view_components/commit/1857983591752336d34133c83af3c8cfe232f1af) Thanks [@camertron](https://github.com/camertron)! - Fix issue preventing expansion and collapse of nav list items with tooltips
@@ -761,7 +811,6 @@
 - [#2414](https://github.com/primer/view_components/pull/2414) [`48a2405a`](https://github.com/primer/view_components/commit/48a2405a2cdb6865eb57c2ea411fcece026590d0) Thanks [@keithamus](https://github.com/keithamus)! - Prevent other Overlays closing when Escape is pressed while Tooltips are open
 
 - [#2379](https://github.com/primer/view_components/pull/2379) [`2c59c33b`](https://github.com/primer/view_components/commit/2c59c33bf54e392d743fbdd1076d06bff2151b42) Thanks [@mperrotti](https://github.com/mperrotti)! - Updates 'inactive' state for buttons based on feedback from the a11y team:
-
   - inactive buttons need to meet the color contrast ratio minimum
   - inactive buttons shouldn't have aria-disabled since they can still accept interactions such as:
     - hover/focus to show a tooltip
@@ -831,7 +880,6 @@
 ### Minor Changes
 
 - [#2284](https://github.com/primer/view_components/pull/2284) [`374d10fd`](https://github.com/primer/view_components/commit/374d10fd18e7371f49abf75dde135c3ed29fe33d) Thanks [@langermank](https://github.com/langermank)! - Update tooltip design
-
   - Removes caret
   - Decrease offset
   - Remove animation delay
@@ -885,7 +933,6 @@
   <!-- Changed components: Primer::Alpha::ActionBar -->
 
 - [#2259](https://github.com/primer/view_components/pull/2259) [`a2fe6134`](https://github.com/primer/view_components/commit/a2fe61342b2f3527533902d845f5a9d500d6910c) Thanks [@TylerJDev](https://github.com/TylerJDev)! - \* Includes ActionMenu in ActionBar focus trap when present.
-
   - Adjusts `focus_group.ts` to set `tabindex="0"` back to invoker if it is non-focusable.
   - Prevents popover invokers from being triggered with 'left' and 'right' arrow keys.
 
@@ -924,7 +971,6 @@
   <!-- Changed components: _none_ -->
 
 - [#2250](https://github.com/primer/view_components/pull/2250) [`66c4dd69`](https://github.com/primer/view_components/commit/66c4dd6936b386caa42868beef9ea1b33f84b11b) Thanks [@langermank](https://github.com/langermank)! - - Improve contrast for icons in `invisible` button on hover in dark mode (within v8 colors)
-
   - Fix disabled button styles (v8 colors)
   - Bump Primitives to latest
 
@@ -1639,7 +1685,6 @@
 - [#1632](https://github.com/primer/view_components/pull/1632) [`7f1181be`](https://github.com/primer/view_components/commit/7f1181be49960337254db834e9b2b9a5fdb7b0b8) Thanks [@camertron](https://github.com/camertron)! - Improve performance of the deny\_\* methods
 
 * [#1625](https://github.com/primer/view_components/pull/1625) [`3af9bf5e`](https://github.com/primer/view_components/commit/3af9bf5e778bb1fe475ed7efda9fc1a5ed36d695) Thanks [@jonrohan](https://github.com/jonrohan)! - Deprecate components and moving to new namespace:
-
   - Primer::Dropdown moving to Primer::Alpha::Dropdown
   - Primer::Dropdown::Menu moving to Primer::Alpha::Dropdown::Menu
   - Primer::Dropdown::Menu::Item moving to Primer::Alpha::Dropdown::Menu::Item
@@ -2457,7 +2502,6 @@
   _Manuel Puyol_
 
 - Change spacing in `Blankslate`:
-
   - Between `description` and `primary_action` to `32px`.
   - Between `primary_action` and `secondary_action` to `16px`.
 
@@ -2815,7 +2859,6 @@
   _Manuel Puyol_
 
 - Linters can:
-
   - convert values with ERB interpolations.
   - autocorrect cases with custom classes.
 
@@ -2930,7 +2973,6 @@
   _Kate Higa_
 
 - Renames:
-
   - `Primer::AvatarStackComponent` to `Primer::Beta::AvatarStack`.
 
     _Manuel Puyol_
@@ -2972,7 +3014,6 @@
   _Kate Higa_
 
 - Renames:
-
   - `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
   - `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
   - `Primer::AvatarComponent` to `Primer::Beta::Avatar`
@@ -3116,7 +3157,6 @@
   _Kate Higa_
 
 - Renames:
-
   - `DropdownComponent` to `Dropdown`.
   - `Dropdown::MenuComponent` to `Dropdown::Menu`.
   - `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
@@ -3574,7 +3614,6 @@
   _Simon Taranto_
 
 - Update `LinkComponent`:
-
   - use `Link--muted` instead of `muted-link`.
   - accept `variant` and `underline` options.
   - accept `:span` as a tag.
@@ -3884,7 +3923,6 @@
 
 - Add support for box_shadow
 - Add components:
-
   - Popover
 
     _Sarah Vessels_
@@ -3906,7 +3944,6 @@
   _Joel Hawksley_
 
 - Add components:
-
   - Avatar
   - Blankslate
 
@@ -3927,7 +3964,6 @@
   _Manuel Puyol_
 
 - Add components:
-
   - BorderBox
   - Box
   - Breadcrumb

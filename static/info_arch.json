@@ -4629,7 +4629,7 @@
   {
     "fully_qualified_name": "Primer::Alpha::Layout",
     "description": "`Layout` provides foundational patterns for responsive pages.\n`Layout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.\n On smaller screens, `Layout` uses vertically stacked rows to display content.\n\n`Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Sidebar`side-by-side (on a desktop of tablet device, per instance);\nor it flows as a row, when `Main` and `Sidebar` are stacked vertically (e.g. on a mobile device).\n`Layout` should always work in any screen size.",
-    "accessibility_docs": "Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether\n`main` or `sidebar` comes first in code. The code order won’t affect the visual position.",
+    "accessibility_docs": "Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether\n`main` or `sidebar` comes first in code. The code order won't affect the visual position.\n\nWhen using `row_placement: :none` on the sidebar, the sidebar content will be hidden at narrow viewports.\nThis may cause WCAG 1.4.10 Reflow failures if the sidebar contains essential content. Only use `:none`\nwhen the sidebar content is non-essential or available elsewhere on the page.",
     "is_form_component": false,
     "is_published": true,
     "requires_js": false,
@@ -4704,7 +4704,7 @@
             "name": "row_placement",
             "type": "Symbol",
             "default": "N/A",
-            "description": "Sidebar placement when `Layout` is in row mode. One of `:end`, `:none`, or `:start`."
+            "description": "Sidebar placement when `Layout` is in row mode. One of `:end`, `:none`, or `:start`. **Note:** Using `:none` hides the sidebar at narrow viewports, which may cause WCAG 1.4.10 Reflow issues if the sidebar contains essential content."
           },
           {
             "name": "system_arguments",
@@ -5312,7 +5312,8 @@
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [
-            "region"
+            "region",
+            "label-title-only"
           ],
           "will_fix": [
             "color-contrast"
@@ -6049,19 +6050,6 @@
       {
         "preview_path": "primer/alpha/overlay/default",
         "name": "default",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/alpha/overlay/menu_no_header",
-        "name": "menu_no_header",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
@@ -8079,7 +8067,7 @@
         "name": "gap",
         "type": "Symbol",
         "default": "`GapArg::DEFAULT`",
-        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:normal`, or `:spacious`."
+        "description": "Specify the gap between children elements in the stack. One of `nil`, `:condensed`, `:none`, `:normal`, or `:spacious`."
       },
       {
         "name": "direction",
@@ -9147,6 +9135,19 @@
       {
         "preview_path": "primer/alpha/text_field/show_clear_button",
         "name": "show_clear_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/show_clear_button_with_custom_label",
+        "name": "show_clear_button_with_custom_label",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

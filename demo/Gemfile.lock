@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.48.0)
+    primer_view_components (0.50.0)
       actionview (>= 7.2.0)
       activesupport (>= 7.2.0)
       octicons (>= 18.0.0)
@@ -54,7 +54,7 @@ GEM
     base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (4.0.1)
-    bootsnap (1.19.0)
+    bootsnap (1.22.0)
       msgpack (~> 1.2)
     builder (3.3.0)
     byebug (12.0.0)
@@ -243,7 +243,7 @@ GEM
     nio4r (2.7.5)
     nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
-    octicons (19.21.1)
+    octicons (19.21.2)
     oj (3.16.10)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
@@ -252,7 +252,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
+    prism (1.8.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -298,7 +298,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (7.0.3)
+    rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -339,15 +339,15 @@ GEM
     thor (1.5.0)
     timeliness (0.3.10)
     tsort (0.2.0)
-    turbo-rails (2.0.20)
+    turbo-rails (2.0.21)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     useragent (0.16.11)
-    view_component (4.1.1)
-      actionview (>= 7.1.0, < 8.2)
-      activesupport (>= 7.1.0, < 8.2)
+    view_component (4.2.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
     vite_rails (3.0.20)
       railties (>= 5.1, < 9)
@@ -395,7 +395,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (= 4.1.1)
+  view_component (= 4.2.0)
   vite_rails (~> 3.0)
 
 BUNDLED WITH

@@ -50,7 +50,7 @@ module Primer
       # @label Default
       # @snapshot
       def default
-        render(Primer::Alpha::TextArea.new(name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-default", name: "my-text-area-default", label: "Tell me about yourself"))
       end
 
       # @!group Options
@@ -58,61 +58,61 @@ module Primer
       # @label With caption
       # @snapshot
       def with_caption
-        render(Primer::Alpha::TextArea.new(caption: "With a caption", name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-with-caption", name: "my-text-area-with-caption", caption: "With a caption", label: "Tell me about yourself"))
       end
 
       # @label Visually hidden label
       # @snapshot
       def visually_hide_label
-        render(Primer::Alpha::TextArea.new(visually_hide_label: true, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-visually-hide-label", name: "my-text-area-visually-hide-label", visually_hide_label: true, label: "Tell me about yourself"))
       end
 
       # @label Full width
       # @snapshot
       def full_width
-        render(Primer::Alpha::TextArea.new(full_width: true, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-full-width", name: "my-text-area-full-width", full_width: true, label: "Tell me about yourself"))
       end
 
       # @label Not full width
       # @snapshot
       def not_full_width
-        render(Primer::Alpha::TextArea.new(full_width: false, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-not-full-width", name: "my-text-area-not-full-width", full_width: false, label: "Tell me about yourself"))
       end
 
       # @label Disabled
       # @snapshot
       def disabled
-        render(Primer::Alpha::TextArea.new(disabled: true, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-disabled", name: "my-text-area-disabled", disabled: true, label: "Tell me about yourself"))
       end
 
       # @label Invalid
       # @snapshot
       def invalid
-        render(Primer::Alpha::TextArea.new(invalid: true, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-invalid", name: "my-text-area-invalid", invalid: true, label: "Tell me about yourself"))
       end
 
       # @label With validation message
       # @snapshot
       def with_validation_message
-        render(Primer::Alpha::TextArea.new(validation_message: "An error occurred!", name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-with-validation-message", name: "my-text-area-with-validation-message", validation_message: "An error occurred!", label: "Tell me about yourself"))
       end
 
       # @label With character limit
       # @snapshot interactive
       def with_character_limit
-        render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-with-character-limit", name: "my-text-area-with-character-limit", character_limit: 10, label: "Tell me about yourself"))
       end
 
       # @label With character limit, over limit
       # @snapshot interactive
       def with_character_limit_over_limit
-        render(Primer::Alpha::TextArea.new(character_limit: 10, name: "my-text-area", label: "Tell me about yourself", value: "This text is definitely over the limit."))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-with-character-limit-over-limit", name: "my-text-area-with-character-limit-over-limit", character_limit: 10, label: "Tell me about yourself", value: "This text is definitely over the limit."))
       end
 
       # @label With character limit and caption
       # @snapshot
       def with_character_limit_and_caption
-        render(Primer::Alpha::TextArea.new(character_limit: 100, caption: "With a caption.", name: "my-text-area", label: "Tell me about yourself"))
+        render(Primer::Alpha::TextArea.new(id: "my-text-area-with-character-limit-and-caption", name: "my-text-area-with-character-limit-and-caption", character_limit: 100, caption: "With a caption.", label: "Tell me about yourself"))
       end
       #
       # @!endgroup

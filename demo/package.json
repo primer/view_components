@@ -4,13 +4,13 @@
   "version": "0.1.0",
   "dependencies": {
     "@primer/css": "^22.0.2",
-    "@primer/primitives": "^11.2.0",
-    "@rails/actioncable": "^8.0.201",
+    "@primer/primitives": "^11.4.0",
+    "@rails/actioncable": "^8.1.200",
     "@rails/ujs": "^7.1.600",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "vite": "^7.1.5",
+    "vite": "^7.3.1",
     "vite-plugin-ruby": "^5.1.2"
   },
   "scripts": {
