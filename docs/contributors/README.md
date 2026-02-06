@@ -5,7 +5,7 @@
 > 
 > Maintenance mode means this project is **not accepting new features, components, or significant enhancements.** For posterity, the documentation will continue to include guidance on adding new components.
 >
-> We will consider accepting contributions and community reviews for security updates, dependency bumps, and critical/P0 bug fixes. We deeply appreciate for your support of this project over the years.
+> We will consider accepting contributions and community reviews for security updates, dependency bumps, and critical/P0 bug fixes. We deeply appreciate your support of this project over the years.
 
 Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](https://github.com/primer/view_components/blob/main/LICENSE.txt).
 
