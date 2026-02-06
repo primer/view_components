@@ -78,7 +78,7 @@
     "eslint": "^9.10.0",
     "eslint-plugin-github": "^6.0.0",
     "glob": "^11.0.2",
-    "markdownlint-cli2": "^0.19.1",
+    "markdownlint-cli2": "^0.20.0",
     "mocha": "^11.0.1",
     "playwright": "^1.57.0",
     "postcss": "^8.4.16",
