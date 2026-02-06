@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.50.1
+
+### Patch Changes
+
+- [#3912](https://github.com/primer/view_components/pull/3912) [`1597a74`](https://github.com/primer/view_components/commit/1597a742f693963db74f62721688bdc254d81ad1) Thanks [@llastflowers](https://github.com/llastflowers)! - Remove newline in file to revert accidental visual regression of Button
+
+- [#3894](https://github.com/primer/view_components/pull/3894) [`4ddf815`](https://github.com/primer/view_components/commit/4ddf815475c5da1c588f12a024c48defc621a719) Thanks [@francinelucca](https://github.com/francinelucca)! - chore(treeview): add treeitem role to shadow dom node
+
 ## 0.50.0
 
 ### Minor Changes
