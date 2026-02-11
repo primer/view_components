@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Update catalyst to version 1.8.0 and hard code custom element names to allow for better minification
+Update Catalyst to version 1.8.0 and hard-code controller/custom-element names via their @controller('...') decorators to allow for better minification
