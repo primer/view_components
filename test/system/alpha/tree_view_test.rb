@@ -810,7 +810,7 @@ module Alpha
       keyboard.type(:enter)
 
       # Verify that the include-fragment has role="treeitem" when expanded
-      assert_selector 'tree-view-include-fragment[role=treeitem]'
+      assert_selector "tree-view-include-fragment[role=treeitem]"
 
       # Wait for the loader to be replaced
       assert_path("primer", "alpha")
