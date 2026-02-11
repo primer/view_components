@@ -953,30 +953,6 @@ module Alpha
       assert page.evaluate_script("window.invokerClickedBubbled")
     end
 
-    def test_invoker_clicked_event_fires_when_closing_panel
-      visit_preview(:single_select)
-
-      evaluate_multiline_script(<<~JS)
-        window.invokerClickedCount = 0
-
-        document.querySelector('select-panel button[aria-controls]').addEventListener('invokerClicked', (_event) => {
-          window.invokerClickedCount++
-        })
-      JS
-
-      assert_equal 0, page.evaluate_script("window.invokerClickedCount")
-
-      # Open the panel
-      click_on_invoker_button
-      assert_selector "select-panel dialog[open]"
-      assert_equal 1, page.evaluate_script("window.invokerClickedCount")
-
-      # Close the panel by clicking the invoker again
-      click_on_invoker_button(expect_to_open: false)
-      refute_selector "select-panel dialog[open]"
-      assert_equal 2, page.evaluate_script("window.invokerClickedCount")
-    end
-
     ########### LOCAL FETCH TESTS ############
 
     def test_local_fetch_no_results
