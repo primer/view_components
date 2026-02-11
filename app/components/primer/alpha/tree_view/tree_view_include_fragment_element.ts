@@ -1,7 +1,7 @@
 import {controller} from '@github/catalyst'
 import {IncludeFragmentElement} from '@github/include-fragment-element'
 
-@controller
+@controller('tree-view-include-fragment')
 export class TreeViewIncludeFragmentElement extends IncludeFragmentElement {
   request(): Request {
     const originalRequest = super.request()
