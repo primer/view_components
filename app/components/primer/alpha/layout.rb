@@ -12,7 +12,11 @@ module Primer
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-    #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
+    #   `main` or `sidebar` comes first in code. The code order won't affect the visual position.
+    #
+    #   When using `row_placement: :none` on the sidebar, the sidebar content will be hidden at narrow viewports.
+    #   This may cause WCAG 1.4.10 Reflow failures if the sidebar contains essential content. Only use `:none`
+    #   when the sidebar content is non-essential or available elsewhere on the page.
     class Layout < Primer::Component
       status :alpha
 
@@ -60,7 +64,7 @@ module Primer
       #
       # @param width [Symbol] <%= one_of(Primer::Alpha::Layout::SIDEBAR_WIDTH_OPTIONS) %>
       # @param col_placement [Symbol] Sidebar placement when `Layout` is in column modes. <%= one_of(Primer::Alpha::Layout::SIDEBAR_COL_PLACEMENT_OPTIONS) %>
-      # @param row_placement [Symbol] Sidebar placement when `Layout` is in row mode. <%= one_of(Primer::Alpha::Layout::SIDEBAR_ROW_PLACEMENT_OPTIONS) %>
+      # @param row_placement [Symbol] Sidebar placement when `Layout` is in row mode. <%= one_of(Primer::Alpha::Layout::SIDEBAR_ROW_PLACEMENT_OPTIONS) %> **Note:** Using `:none` hides the sidebar at narrow viewports, which may cause WCAG 1.4.10 Reflow issues if the sidebar contains essential content.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :sidebar, lambda { |
         width: SIDEBAR_WIDTH_DEFAULT,
