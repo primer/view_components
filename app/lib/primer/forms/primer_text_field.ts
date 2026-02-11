@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-@controller
+@controller('primer-text-field')
 export class PrimerTextFieldElement extends HTMLElement {
   @target inputElement: HTMLInputElement
   @target validationElement: HTMLElement

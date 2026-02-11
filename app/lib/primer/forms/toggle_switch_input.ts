@@ -2,7 +2,7 @@
 
 import {controller, target} from '@github/catalyst'
 
-@controller
+@controller('toggle-switch-input')
 export class ToggleSwitchInputElement extends HTMLElement {
   @target validationElement: HTMLElement
   @target validationMessageElement: HTMLElement

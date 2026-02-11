@@ -64,7 +64,7 @@ const updateWhenVisible = (() => {
   }
 })()
 
-@controller
+@controller('select-panel')
 export class SelectPanelElement extends HTMLElement {
   @target includeFragment: IncludeFragmentElement
   @target dialog: HTMLDialogElement

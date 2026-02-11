@@ -29,6 +29,6 @@ __decorate([
     target
 ], ToggleSwitchInputElement.prototype, "validationMessageElement", void 0);
 ToggleSwitchInputElement = __decorate([
-    controller
+    controller('toggle-switch-input')
 ], ToggleSwitchInputElement);
 export { ToggleSwitchInputElement };
