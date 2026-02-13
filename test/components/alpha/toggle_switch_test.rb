@@ -87,6 +87,12 @@ module Primer
         assert_selector(".ToggleSwitch-track[autofocus]")
       end
 
+      def test_track_button_type_is_button
+        render_preview(:default)
+      
+        assert_selector(".ToggleSwitch-track[type='button']")
+      end
+
       def test_track_button_is_not_submit
         render_preview(:default)
       
