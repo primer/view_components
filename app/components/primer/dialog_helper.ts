@@ -15,20 +15,29 @@ function dialogInvokerButtonHandler(event: Event) {
       // quickly hidden- as if it were never shown. This prevents that.
       event.preventDefault()
 
-      // In some older browsers, such as Chrome 122, when a top layer element (such as a dialog)
-      // opens from within a popover, the "hide all popovers" internal algorithm runs, hiding
-      // any popover that is currently open, regardless of whether or not another top layer element,
-      // such as a <dialog> is nested inside.
-      // See https://github.com/whatwg/html/issues/9998.
-      // This is fixed by https://github.com/whatwg/html/pull/10116, but while we still support browsers
-      // that present this bug, we must undo the work they did to hide ancestral popovers of the dialog:
+      // When a <dialog> is opened with showModal() from inside a popover with popover="auto",
+      // there are two related issues:
+      //
+      // 1. In older browsers (e.g. Chrome 122), the "hide all popovers" algorithm runs when a
+      //    top layer element opens, closing any ancestor popover. We must re-open those popovers.
+      //    See https://github.com/whatwg/html/issues/9998,
+      //    fixed by https://github.com/whatwg/html/pull/10116.
+      //
+      // 2. In newer browsers where the popover stays open, the popover="auto" behavior still
+      //    interferes with the native <dialog> focus trap, causing focus to escape the dialog
+      //    when tabbing past the last focusable element. Converting the popover to "manual"
+      //    prevents this interference.
+      //
+      // In both cases, the fix is the same: convert ancestor auto popovers to manual.
       let node: HTMLElement | null | undefined = button
       let fixed = false
       while (node) {
-        node = node.parentElement?.closest('[popover]:not(:popover-open)')
+        node = node.parentElement?.closest('[popover]')
         if (node && node.popover === 'auto') {
           node.classList.add('dialog-inside-popover-fix')
           node.popover = 'manual'
+          // Changing popover from "auto" to "manual" closes the popover,
+          // so we need to re-show it regardless of whether it was previously open.
           node.showPopover()
           fixed = true
         }
