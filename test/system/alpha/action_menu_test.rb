@@ -102,7 +102,7 @@ module Alpha
 
     ########## TESTS ############
 
-    def test_dynamic_labels
+    def test_dynamic_labels_for_single_select_variant
       visit_preview(:single_select_with_internal_label)
       assert_selector("action-menu button[aria-controls]", text: "Menu: Quote reply")
 
@@ -115,6 +115,22 @@ module Alpha
       click_on_first_item
 
       assert_selector("action-menu button[aria-controls]", text: "Menu")
+    end
+
+    def test_dynamic_labels_for_multiple_select_variant
+      visit_preview(:multiple_select_form, route_format: :json)
+      assert_selector("action-menu button[aria-controls]", text: "Strategy: Ours")
+
+      click_on_invoker_button
+      click_on_first_item
+      click_on_second_item
+
+      assert_selector("action-menu button[aria-controls]", text: "Strategy: Fast forward, Recursive, Ours")
+
+      click_on_invoker_button
+      click_on_first_item
+
+      assert_selector("action-menu button[aria-controls]", text: "Strategy: Recursive, Ours")
     end
 
     def test_anchor_align
