@@ -86,6 +86,12 @@ module Primer
 
         assert_selector(".ToggleSwitch-track[autofocus]")
       end
+
+      def test_track_button_is_not_submit
+        render_preview(:default)
+      
+        refute_selector(".ToggleSwitch-track[type='submit']")
+      end
     end
   end
 end
