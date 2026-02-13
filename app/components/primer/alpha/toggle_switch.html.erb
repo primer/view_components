@@ -8,7 +8,7 @@
     <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content(@off_label)) %>
   <% end %>
 
-  <%= render(Primer::BaseComponent.new(tag: :button, type: :button, classes: "ToggleSwitch-track", disabled: disabled?, data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, **@button_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(tag: :button, classes: "ToggleSwitch-track", disabled: disabled?, data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, **@button_arguments)) do %>
     <%= render(Primer::Box.new(classes: "ToggleSwitch-icons", aria: { hidden: true })) do %>
       <%= render(Primer::Box.new(classes: "ToggleSwitch-lineIcon")) do %>
         <%= render(Primer::BaseComponent.new(
