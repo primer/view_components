@@ -1,0 +1,32 @@
+<%= render(Primer::Beta::Truncate.new(tag: :ol)) do |component| %>
+  <% component.with_item(tag: :li) do %>
+    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-primer")) do |link| %>
+      <% link.with_tooltip(text: "primer") %>
+      primer
+    <% end %>
+  <% end %>
+  <% component.with_item(tag: :li, priority: true) do %>
+    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-css")) do |link| %>
+      <% link.with_tooltip(text: "/ css") %>
+      / css
+    <% end %>
+  <% end %>
+  <% component.with_item(tag: :li) do %>
+    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-issues")) do |link| %>
+      <% link.with_tooltip(text: "/ Issues") %>
+      / Issues
+    <% end %>
+  <% end %>
+  <% component.with_item(tag: :li) do %>
+    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-number")) do |link| %>
+      <% link.with_tooltip(text: "/ #123") %>
+      / #123
+    <% end %>
+  <% end %>
+  <% component.with_item(tag: :li, priority: true) do %>
+    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-title")) do |link| %>
+      <% link.with_tooltip(text: "Visual bug on primer.style found in lists") %>
+      Visual bug on primer.style found in lists
+    <% end %>
+  <% end %>
+<% end %>
