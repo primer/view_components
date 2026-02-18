@@ -75,6 +75,7 @@ module Primer
         )
 
         @button_arguments = {
+          type: :button,
           aria: merge_aria(
             @system_arguments,
             aria: { pressed: on? }
