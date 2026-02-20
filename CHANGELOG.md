@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.51.0
+
+### Minor Changes
+
+- [#3938](https://github.com/primer/view_components/pull/3938) [`b7f61e2`](https://github.com/primer/view_components/commit/b7f61e2a2403bf714e0f34975cb83174e5a8b517) Thanks [@acbreton](https://github.com/acbreton)! - Change `ToggleSwitch` ViewComponent `type` to `button`
+
+### Patch Changes
+
+- [#3945](https://github.com/primer/view_components/pull/3945) [`983cc29`](https://github.com/primer/view_components/commit/983cc290b199169181545a5518459640c2c212cf) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Blankslate: Add `text-wrap: balance` to heading and description
+
+- [#3912](https://github.com/primer/view_components/pull/3912) [`1597a74`](https://github.com/primer/view_components/commit/1597a742f693963db74f62721688bdc254d81ad1) Thanks [@llastflowers](https://github.com/llastflowers)! - Remove newline in file to revert accidental visual regression of Button
+
+- [#3940](https://github.com/primer/view_components/pull/3940) [`b585532`](https://github.com/primer/view_components/commit/b5855325cfac72e9ce34ad88a7c0e1b1c14bcb94) Thanks [@TylerJDev](https://github.com/TylerJDev)! - Dialog: Fixes issue in `dialog_helper.ts` where focus could be lost
+
+- [#3894](https://github.com/primer/view_components/pull/3894) [`4ddf815`](https://github.com/primer/view_components/commit/4ddf815475c5da1c588f12a024c48defc621a719) Thanks [@francinelucca](https://github.com/francinelucca)! - chore(treeview): add treeitem role to shadow dom node
+
+- [#3919](https://github.com/primer/view_components/pull/3919) [`e060f4d`](https://github.com/primer/view_components/commit/e060f4da7cf02d88477f9791fd1ed778b51dfa43) Thanks [@francinelucca](https://github.com/francinelucca)! - Chore: add custom "invokerClicked" selectpanel event
+
+- [#3930](https://github.com/primer/view_components/pull/3930) [`0ebf631`](https://github.com/primer/view_components/commit/0ebf631648bb4e0a6ccdce2437fa91290636301c) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Update Catalyst to version 1.8.0 and hard-code controller/custom-element names via their @controller('...') decorators to allow for better minification
+
 ## 0.50.0
 
 ### Minor Changes
