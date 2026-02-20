@@ -69,6 +69,7 @@
     "@github/prettier-config": "0.0.6",
     "@playwright/test": "^1.57.0",
     "@primer/css": "22.1.0",
+    "@primer/primitives": "^11.4.0",
     "@primer/stylelint-config": "^13.1.1",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^8.3.3",
