@@ -9,6 +9,7 @@ function dialogInvokerButtonHandler(event: Event) {
   if (dialogId) {
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
+      setScrollGutter(dialog.ownerDocument)
       dialog.showModal()
       // A buttons default behaviour in some browsers it to send a pointer event
       // If the behaviour is allowed through the dialog will be shown but then
@@ -75,7 +76,9 @@ function dialogInvokerButtonHandler(event: Event) {
   }
 }
 
-const scrollGutterScheduled = new WeakSet<Document>()
+function setScrollGutter(doc: Document) {
+  doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
+}
 
 export class DialogHelperElement extends HTMLElement {
   get dialog() {
@@ -87,17 +90,6 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
-    const {ownerDocument} = this
-    if (!scrollGutterScheduled.has(ownerDocument)) {
-      scrollGutterScheduled.add(ownerDocument)
-      requestAnimationFrame(() => {
-        scrollGutterScheduled.delete(ownerDocument)
-        ownerDocument.body.style.setProperty(
-          '--dialog-scrollgutter',
-          `${window.innerWidth - ownerDocument.body.clientWidth}px`,
-        )
-      })
-    }
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
@@ -119,6 +111,7 @@ export class DialogHelperElement extends HTMLElement {
       // eslint-disable-next-line no-restricted-syntax
       this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
       this.dialog.close()
+      setScrollGutter(this.ownerDocument)
       this.dialog.showModal()
     }
   }
