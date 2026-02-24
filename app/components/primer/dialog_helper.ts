@@ -77,6 +77,7 @@ function dialogInvokerButtonHandler(event: Event) {
 }
 
 function setScrollGutter(doc: Document) {
+  if (CSS.supports('scrollbar-gutter', 'stable')) return
   doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
 }
 
