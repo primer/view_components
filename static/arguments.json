@@ -3219,6 +3219,12 @@
         "type": "String",
         "default": "`nil`",
         "description": "Custom label to show when the switch is OFF. Defaults to (\"Off\"). Only customize this label if it makes the toggle’s state more meaningful in its specific context. For example, for a \"Show images\" setting, you might use \"Show\" when the switch is OFF."
+      },
+      {
+        "name": "button_type",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The type attribute for the underlying button element. If `nil`, the button will not have a type attribute, which means it will default to \"submit\" if it's inside a form and \"button\" otherwise."
       }
     ]
   },
