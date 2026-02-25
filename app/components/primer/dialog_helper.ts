@@ -1,8 +1,5 @@
-const scrollGutterReady = new WeakSet<Document>()
-
 function setScrollGutter(doc: Document) {
-  if (scrollGutterReady.has(doc)) return
-  scrollGutterReady.add(doc)
+  if (doc.body.style.getPropertyValue('--dialog-scrollgutter')) return
   doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
 }
 
