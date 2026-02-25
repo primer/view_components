@@ -9,7 +9,7 @@ type LoadingState = 'loading' | 'error' | 'success'
 
 export type SelectStrategy = 'self' | 'descendants' | 'mixed_descendants'
 
-@controller
+@controller('tree-view-sub-tree-node')
 export class TreeViewSubTreeNodeElement extends HTMLElement {
   @target node: HTMLElement
   @target subTree: HTMLElement

@@ -30,7 +30,7 @@ import {controller, target} from '@github/catalyst'
  * ```
  */
 
-@controller
+@controller('details-toggle')
 class DetailsToggleElement extends HTMLElement {
   @target detailsTarget!: HTMLDetailsElement
   @target summaryTarget!: HTMLElement

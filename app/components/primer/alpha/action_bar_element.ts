@@ -27,7 +27,7 @@ enum ItemType {
   Divider,
 }
 
-@controller
+@controller('action-bar')
 class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @target itemContainer: HTMLElement

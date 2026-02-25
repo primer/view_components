@@ -86,6 +86,26 @@ module Primer
 
         assert_selector(".ToggleSwitch-track[autofocus]")
       end
+
+      def test_track_button_type_default_is_nil
+        render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo"))
+
+        refute_selector(".ToggleSwitch-track[type]")
+      end
+
+      def test_track_button_type_is_button_when_specified
+        render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo", button_type: :button))
+
+        assert_selector(".ToggleSwitch-track[type='button']")
+        refute_selector(".ToggleSwitch-track[type='submit']")
+      end
+
+      def test_track_button_type_is_submit_when_specified
+        render_inline(Primer::Alpha::ToggleSwitch.new(src: "/foo", button_type: :submit))
+
+        assert_selector(".ToggleSwitch-track[type='submit']")
+        refute_selector(".ToggleSwitch-track[type='button']")
+      end
     end
   end
 end

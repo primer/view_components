@@ -39,7 +39,7 @@ export class ActionListTruncationObserver {
   }
 }
 
-@controller
+@controller('action-list')
 export class ActionListElement extends HTMLElement {
   #truncationObserver: ActionListTruncationObserver
 

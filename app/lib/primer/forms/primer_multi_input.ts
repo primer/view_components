@@ -1,7 +1,7 @@
 /* eslint-disable custom-elements/expose-class-on-global */
 import {controller, targets} from '@github/catalyst'
 
-@controller
+@controller('primer-multi-input')
 export class PrimerMultiInputElement extends HTMLElement {
   @targets fields: HTMLInputElement[]
 

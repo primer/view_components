@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.50.0)
+    primer_view_components (0.51.0)
       actionview (>= 7.2.0)
       activesupport (>= 7.2.0)
       octicons (>= 18.0.0)
@@ -116,7 +116,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.18.0)
+    json (2.18.1)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     language_server-protocol (3.17.0.5)
@@ -151,10 +151,10 @@ GEM
     msgpack (1.8.0)
     mutex_m (0.3.0)
     nio4r (2.7.4)
-    nokogiri (1.18.9)
+    nokogiri (1.19.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
     octicons (19.21.1)
     parallel (1.27.0)
@@ -164,7 +164,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.8.0)
+    prism (1.9.0)
     psych (5.3.1)
       date
       stringio
@@ -172,7 +172,7 @@ GEM
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.4)
+    rack (3.2.5)
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
@@ -215,7 +215,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.4)
     rouge (4.6.1)
-    rubocop (1.82.1)
+    rubocop (1.84.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -223,7 +223,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.48.0, < 2.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.49.0)
@@ -259,7 +259,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-console (0.9.4)
+    simplecov-console (0.9.5)
       ansi
       simplecov
       terminal-table
@@ -350,7 +350,7 @@ DEPENDENCIES
   rubocop-rails-accessibility (~> 1.0)
   selenium-webdriver (~> 4.40)
   simplecov (~> 0.22.0)
-  simplecov-console (~> 0.9.4)
+  simplecov-console (~> 0.9.5)
   sourcemap (~> 0.1)
   sprockets
   sprockets-rails

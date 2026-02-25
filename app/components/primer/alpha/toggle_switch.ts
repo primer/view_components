@@ -1,6 +1,6 @@
 import {controller, target, attr} from '@github/catalyst'
 
-@controller
+@controller('toggle-switch')
 class ToggleSwitchElement extends HTMLElement {
   @target switch: HTMLElement
   @target loadingSpinner: HTMLElement

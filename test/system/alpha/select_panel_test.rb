@@ -898,6 +898,61 @@ module Alpha
       assert page.evaluate_script("window.panelClosed")
     end
 
+    def test_invoker_clicked_event_fires_on_click
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.invokerClicked = false
+
+        document.querySelector('select-panel button[aria-controls]').addEventListener('invokerClicked', (_event) => {
+          window.invokerClicked = true
+        })
+      JS
+
+      refute page.evaluate_script("window.invokerClicked")
+
+      click_on_invoker_button
+
+      assert page.evaluate_script("window.invokerClicked")
+    end
+
+    def test_invoker_clicked_event_fires_on_keyboard_activation
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.invokerClicked = false
+
+        document.querySelector('select-panel button[aria-controls]').addEventListener('invokerClicked', (_event) => {
+          window.invokerClicked = true
+        })
+      JS
+
+      refute page.evaluate_script("window.invokerClicked")
+
+      focus_on_invoker_button
+      keyboard.type(:enter)
+
+      assert page.evaluate_script("window.invokerClicked")
+    end
+
+    def test_invoker_clicked_event_bubbles
+      visit_preview(:single_select)
+
+      evaluate_multiline_script(<<~JS)
+        window.invokerClickedBubbled = false
+
+        document.querySelector('select-panel').addEventListener('invokerClicked', (_event) => {
+          window.invokerClickedBubbled = true
+        })
+      JS
+
+      refute page.evaluate_script("window.invokerClickedBubbled")
+
+      click_on_invoker_button
+
+      assert page.evaluate_script("window.invokerClickedBubbled")
+    end
+
     ########### LOCAL FETCH TESTS ############
 
     def test_local_fetch_no_results
@@ -1356,7 +1411,7 @@ module Alpha
       visit_preview(:default)
 
       click_on_invoker_button
-      
+
       keyboard.type(:tab)
 
       evaluate_multiline_script(<<~JS)
@@ -1375,7 +1430,7 @@ module Alpha
 
       refute_selector "select-panel dialog[open]"
 
-      keyboard.type("a")  
+      keyboard.type("a")
 
       assert page.evaluate_script("window.bodyKeydownFired")
     end

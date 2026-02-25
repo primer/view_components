@@ -1,7 +1,7 @@
 import {controller, target} from '@github/catalyst'
 import {CharacterCounter} from './character_counter'
 
-@controller
+@controller('primer-text-area')
 export class PrimerTextAreaElement extends HTMLElement {
   @target inputElement: HTMLTextAreaElement
   @target characterLimitElement: HTMLElement

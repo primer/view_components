@@ -72,7 +72,7 @@ group :development do
   gem "rubocop-rails-accessibility", "~> 1.0"
   gem "selenium-webdriver", "~> 4.40"
   gem "simplecov", "~> 0.22.0"
-  gem "simplecov-console", "~> 0.9.4"
+  gem "simplecov-console", "~> 0.9.5"
   gem "sprockets"
   gem "sprockets-rails"
   gem "thor"
