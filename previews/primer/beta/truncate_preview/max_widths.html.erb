@@ -2,19 +2,19 @@
 
 <%= render(Primer::Beta::Truncate.new) do |component| %>
   <% component.with_item(max_width: 300) do %>
-    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-300")) do |link| %>
+    <%= render(Primer::Beta::Link.new(href: "https://github.com", id: "truncate-link-300")) do |link| %>
       <% link.with_tooltip(text: long_text) %>
       <%= long_text %>
     <% end %>
   <% end %>
   <% component.with_item(max_width: 200) do %>
-    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-200")) do |link| %>
+    <%= render(Primer::Beta::Link.new(href: "https://github.com", id: "truncate-link-200")) do |link| %>
       <% link.with_tooltip(text: long_text) %>
       <%= long_text %>
     <% end %>
   <% end %>
   <% component.with_item(max_width: 100) do %>
-    <%= render(Primer::Beta::Link.new(href: "#", id: "truncate-link-100")) do |link| %>
+    <%= render(Primer::Beta::Link.new(href: "https://github.com", id: "truncate-link-100")) do |link| %>
       <% link.with_tooltip(text: long_text) %>
       <%= long_text %>
     <% end %>
