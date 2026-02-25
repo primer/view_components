@@ -6,7 +6,7 @@ const instersectionObserver = new IntersectionObserver(entries => {
   for (const entry of entries) {
     const action = entry.target
     if (entry.isIntersecting && action instanceof ActionBarElement) {
-      action.scheduleUpdate()
+      action.update()
     }
   }
 })
@@ -15,7 +15,7 @@ const resizeObserver = new ResizeObserver(entries => {
   for (const entry of entries) {
     const action = entry.target
     if (action instanceof ActionBarElement) {
-      action.scheduleUpdate()
+      action.update()
     }
   }
 })
@@ -38,10 +38,8 @@ class ActionBarElement extends HTMLElement {
     // This overflow visible is needed for browsers that don't support PopoverElement
     // to ensure the menu and tooltips are visible when the action bar is in a collapsed state
     // once popover is fully supported we can remove this.style.overflow = 'visible'
-    if (!('popover' in HTMLElement.prototype)) {
-      this.style.overflow = 'visible'
-    }
-    this.scheduleUpdate()
+    this.style.overflow = 'visible'
+    this.update()
   }
 
   disconnectedCallback() {
@@ -59,16 +57,16 @@ class ActionBarElement extends HTMLElement {
     }
   }
 
-  scheduleUpdate() {
+  update() {
     if (this.#pendingUpdate) return
     this.#pendingUpdate = true
     requestAnimationFrame(() => {
       this.#pendingUpdate = false
-      this.update()
+      this.#performUpdate()
     })
   }
 
-  update() {
+  #performUpdate() {
     const firstItem = this.#firstItem
     if (!firstItem) return
 
