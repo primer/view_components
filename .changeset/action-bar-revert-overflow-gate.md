@@ -2,7 +2,11 @@
 "@primer/view-components": patch
 ---
 
-Revert two behavioral regressions in `ActionBarElement` introduced by a previous performance improvement:
+Performance improvements to `ActionBarElement`:
 
-1. Always set `overflow: visible` in `connectedCallback` (remove the popover feature-detection gate that was silently skipping this style in modern browsers).
-2. Make the rAF coalescing scheduler private — `update()` is now the public coalescing entry point and `#performUpdate()` contains the actual layout work, removing the previously-public `scheduleUpdate()` method.
+- Replaced the `#eachItem` / `ItemType` abstraction with a two-pass read-then-write loop that snapshots all element geometry before mutating the DOM, eliminating forced synchronous reflow.
+- Cached the `#menuItems` `NodeListOf` query across each update pass instead of re-querying per item.
+- Simplified `#firstItem` to a one-liner using `Array.find`.
+- Coalesces rapid resize/intersection events via `requestAnimationFrame` so at most one layout pass runs per frame.
+- `update()` remains the public entry point (coalescing scheduler); actual layout work is in the private `#performUpdate()`.
+- `overflow: visible` is always applied in `connectedCallback` (no popover feature-detection gate), preserving the original behavior for CSS/tooltip positioning.
