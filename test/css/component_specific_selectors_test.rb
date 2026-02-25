@@ -38,8 +38,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Banner .Banner-close"
     ],
     Primer::Alpha::Dialog => [
-      ".Overlay",
-      "body"
+      ".Overlay"
     ],
     Primer::Alpha::Layout => [
       ".Layout-divider",

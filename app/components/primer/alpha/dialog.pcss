@@ -8,19 +8,8 @@
 
 /* Overlay */
 
-/* When scrollbar-gutter is supported, apply it to body so the browser natively
- * reserves scrollbar gutter space. This avoids any JS layout measurement cost.
- */
-@supports (scrollbar-gutter: stable) {
-  body {
-    scrollbar-gutter: stable;
-  }
-}
-
-/* The --dialog-scrollgutter property is a fallback for browsers that do not
- * support scrollbar-gutter:stable. It is set via JS only in that case, and
- * simulates the reserved scrollbar gutter space to prevent layout shift when
- * a modal dialog disables body scroll. This property is not and should not
+/* The --dialog-scrollgutter property is used only on the body element to
+ * simulate scrollbar-gutter:stable. This property is not and should not
  * be used elsewhere in the DOM. There is a performance penalty to
  * setting inherited properties which can cause a large style recalc to
  * occur, so it benefits us to prevent inheritance for this property.
