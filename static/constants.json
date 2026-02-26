@@ -579,11 +579,26 @@
       "outside_left",
       "outside_right"
     ],
+    "ANCHOR_WHEN_NARROW_MAPPINGS": {
+      "inherit": "",
+      "bottom": "Overlay--placement-bottom-whenNarrow",
+      "fullscreen": "Overlay--fullscreen-whenNarrow",
+      "left": "Overlay--placement-left-whenNarrow",
+      "right": "Overlay--placement-right-whenNarrow"
+    },
+    "ANCHOR_WHEN_NARROW_OPTIONS": [
+      "inherit",
+      "bottom",
+      "fullscreen",
+      "left",
+      "right"
+    ],
     "Body": "Primer::Alpha::Overlay::Body",
     "DEFAULT_ALIGN_CONTENT": "end",
     "DEFAULT_ANCHOR_ALIGN": "start",
     "DEFAULT_ANCHOR_OFFSET": "normal",
     "DEFAULT_ANCHOR_SIDE": "outside_bottom",
+    "DEFAULT_ANCHOR_WHEN_NARROW": "inherit",
     "DEFAULT_PADDING": "normal",
     "DEFAULT_POPOVER": "auto",
     "DEFAULT_SIZE": "auto",
