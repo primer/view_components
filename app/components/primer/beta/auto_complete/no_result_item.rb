@@ -16,8 +16,8 @@ module Primer
           @system_arguments[:"aria-hidden"] = true
 
           @system_arguments[:classes] = class_names(
-            "ActionListItem-description",
             "p-2",
+            "color-fg-muted",
             system_arguments[:classes]
           )
         end
