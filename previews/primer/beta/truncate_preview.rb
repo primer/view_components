@@ -19,16 +19,7 @@ module Primer
       end
 
       # @label Multiple items
-      def multiple_items
-        render(Primer::Beta::Truncate.new) do |component|
-          component.with_item do
-            "really-long-repository-owner-name"
-          end
-          component.with_item(font_weight: :bold) do
-            "really-long-repository-name"
-          end
-        end
-      end
+      def multiple_items; end
 
       # @label Advanced multiple items
       def advanced_multiple_items; end
