@@ -132,4 +132,31 @@ class PrimerAlphaOverlayTest < Minitest::Test
 
     assert_selector(".Overlay-header .Overlay-description")
   end
+
+  def test_anchor_when_narrow_fullscreen
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, anchor_when_narrow: :fullscreen)) do |component|
+      component.with_body { "content" }
+    end
+
+    assert_selector(".Overlay.Overlay--fullscreen-whenNarrow")
+  end
+
+  def test_anchor_when_narrow_bottom
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, anchor_when_narrow: :bottom)) do |component|
+      component.with_body { "content" }
+    end
+
+    assert_selector(".Overlay.Overlay--placement-bottom-whenNarrow")
+  end
+
+  def test_anchor_when_narrow_inherit_adds_no_class
+    render_inline(Primer::Alpha::Overlay.new(title: "Title", role: :dialog, anchor_when_narrow: :inherit)) do |component|
+      component.with_body { "content" }
+    end
+
+    refute_selector(".Overlay--fullscreen-whenNarrow")
+    refute_selector(".Overlay--placement-bottom-whenNarrow")
+    refute_selector(".Overlay--placement-left-whenNarrow")
+    refute_selector(".Overlay--placement-right-whenNarrow")
+  end
 end

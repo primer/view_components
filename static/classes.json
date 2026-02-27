@@ -423,6 +423,9 @@
   "Overlay--full-whenNarrow": [
     "Primer::Alpha::Dialog"
   ],
+  "Overlay--fullscreen-whenNarrow": [
+    "Primer::Alpha::Dialog"
+  ],
   "Overlay--hidden": [
     "Primer::Alpha::Dialog"
   ],

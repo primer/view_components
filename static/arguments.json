@@ -344,6 +344,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "anchor_when_narrow",
+        "type": "Symbol",
+        "default": "`:inherit`",
+        "description": "One of `:bottom`, `:fullscreen`, `:inherit`, `:left`, or `:right`.."
+      },
+      {
         "name": "size",
         "type": "Symbol",
         "default": "`:auto`",
@@ -1909,6 +1915,12 @@
         "type": "Symbol",
         "default": "`:normal`",
         "description": "The anchor offset to give the Overlay. One of `:normal` or `:spacious`."
+      },
+      {
+        "name": "anchor_when_narrow",
+        "type": "Symbol",
+        "default": "`:inherit`",
+        "description": "The position of the Overlay when in a narrow viewport. One of `:bottom`, `:fullscreen`, `:inherit`, `:left`, or `:right`."
       },
       {
         "name": "allow_out_of_bounds",
