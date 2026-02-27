@@ -1,0 +1,14 @@
+<%= render(Primer::Beta::Truncate.new) do |component| %>
+  <% component.with_item do %>
+    <%= render(Primer::Beta::Link.new(href: "https://github.com", id: "truncate-link-owner")) do |link| %>
+      <% link.with_tooltip(text: "really-long-repository-owner-name") %>
+      really-long-repository-owner-name
+    <% end %>
+  <% end %>
+  <% component.with_item(font_weight: :bold) do %>
+    <%= render(Primer::Beta::Link.new(href: "https://github.com", id: "truncate-link-repo")) do |link| %>
+      <% link.with_tooltip(text: "really-long-repository-name") %>
+      really-long-repository-name
+    <% end %>
+  <% end %>
+<% end %>
