@@ -1,3 +1,8 @@
+function setScrollGutter(doc: Document) {
+  if (doc.body.style.getPropertyValue('--dialog-scrollgutter')) return
+  doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
+}
+
 function dialogInvokerButtonHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
@@ -9,6 +14,7 @@ function dialogInvokerButtonHandler(event: Event) {
   if (dialogId) {
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
+      setScrollGutter(dialog.ownerDocument)
       dialog.showModal()
       // A buttons default behaviour in some browsers it to send a pointer event
       // If the behaviour is allowed through the dialog will be shown but then
@@ -85,10 +91,6 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
-    this.ownerDocument.body.style.setProperty(
-      '--dialog-scrollgutter',
-      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
-    )
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
@@ -110,6 +112,7 @@ export class DialogHelperElement extends HTMLElement {
       // eslint-disable-next-line no-restricted-syntax
       this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
       this.dialog.close()
+      setScrollGutter(this.dialog.ownerDocument)
       this.dialog.showModal()
     }
   }
