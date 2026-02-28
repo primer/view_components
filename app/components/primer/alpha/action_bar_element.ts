@@ -22,11 +22,6 @@ const resizeObserver = new ResizeObserver(entries => {
 
 // These are definitely used, but eslint is dumb apparently
 
-enum ItemType {
-  Item,
-  Divider,
-}
-
 @controller('action-bar')
 class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
@@ -34,18 +29,17 @@ class ActionBarElement extends HTMLElement {
   @target moreMenu: ActionMenuElement
 
   #focusZoneAbortController: AbortController | null = null
+  #pendingUpdate = false
 
   connectedCallback() {
     resizeObserver.observe(this)
     instersectionObserver.observe(this)
 
-    requestAnimationFrame(() => {
-      // This overflow visible is needed for browsers that don't support PopoverElement
-      // to ensure the menu and tooltips are visible when the action bar is in a collapsed state
-      // once popover is fully supported we can remove this.style.overflow = 'visible'
-      this.style.overflow = 'visible'
-      this.update()
-    })
+    // This overflow visible is needed for browsers that don't support PopoverElement
+    // to ensure the menu and tooltips are visible when the action bar is in a collapsed state
+    // once popover is fully supported we can remove this.style.overflow = 'visible'
+    this.style.overflow = 'visible'
+    this.update()
   }
 
   disconnectedCallback() {
@@ -64,43 +58,48 @@ class ActionBarElement extends HTMLElement {
   }
 
   update() {
+    if (this.#pendingUpdate) return
+    this.#pendingUpdate = true
+    requestAnimationFrame(() => {
+      this.#pendingUpdate = false
+      this.#performUpdate()
+    })
+  }
+
+  #performUpdate() {
     const firstItem = this.#firstItem
     if (!firstItem) return
 
-    const firstItemTop = firstItem.getBoundingClientRect().top
-    let previousItemType: ItemType | null = null
+    const baseTop = firstItem.getBoundingClientRect().top
+    const cachedMenuItems = this.#menuItems
 
-    this.#eachItem((item: HTMLElement, index: number, type: ItemType): boolean => {
-      const itemTop = item.getBoundingClientRect().top
+    // Snapshot geometry in one pass before mutating the DOM
+    const snapshots = Array.from(this.items, el => ({
+      top: el.getBoundingClientRect().top,
+      isDivider: el.classList.contains('ActionBar-divider'),
+    }))
 
-      if (type === ItemType.Item) {
-        if (itemTop > firstItemTop) {
-          this.#hideItem(index)
-
-          if (this.moreMenu.hidden) {
-            this.moreMenu.hidden = false
-          }
-
-          if (previousItemType === ItemType.Divider) {
-            this.#hideItem(index - 1)
-          }
-        } else {
-          this.#showItem(index)
-
-          if (index === this.items.length - 1) {
-            this.moreMenu.hidden = true
-          }
-
-          if (previousItemType === ItemType.Divider) {
-            this.#showItem(index - 1)
-          }
-        }
+    // Apply visibility changes after all reads are complete
+    let prevWasDivider = false
+    for (let n = 0; n < snapshots.length; n++) {
+      const snap = snapshots[n]
+      if (snap.isDivider) {
+        prevWasDivider = true
+        continue
       }
 
-      previousItemType = type
+      if (snap.top > baseTop) {
+        this.#hideItem(n, cachedMenuItems)
+        if (this.moreMenu.hidden) this.moreMenu.hidden = false
+        if (prevWasDivider) this.#hideItem(n - 1, cachedMenuItems)
+      } else {
+        this.#showItem(n, cachedMenuItems)
+        if (n === this.items.length - 1) this.moreMenu.hidden = true
+        if (prevWasDivider) this.#showItem(n - 1, cachedMenuItems)
+      }
 
-      return true
-    })
+      prevWasDivider = false
+    }
 
     if (this.#focusZoneAbortController) {
       this.#focusZoneAbortController.abort()
@@ -119,31 +118,20 @@ class ActionBarElement extends HTMLElement {
   }
 
   get #firstItem(): HTMLElement | null {
-    let foundItem = null
-
-    this.#eachItem((item: HTMLElement, _index: number, type: ItemType): boolean => {
-      if (type === ItemType.Item) {
-        foundItem = item
-        return false
-      }
-
-      return true
-    })
-
-    return foundItem
+    return this.items.find(el => !el.classList.contains('ActionBar-divider')) ?? null
   }
 
-  #showItem(index: number) {
+  #showItem(index: number, menuItems: NodeListOf<HTMLElement>) {
     const item = this.items[index]
-    const menuItem = this.#menuItems[index]
+    const menuItem = menuItems[index]
     if (!item || !menuItem) return
     item.style.setProperty('visibility', 'visible')
     menuItem.hidden = true
   }
 
-  #hideItem(index: number) {
+  #hideItem(index: number, menuItems: NodeListOf<HTMLElement>) {
     const item = this.items[index]
-    const menuItem = this.#menuItems[index]
+    const menuItem = menuItems[index]
     if (!item || !menuItem) return
     item.style.setProperty('visibility', 'hidden')
     menuItem.hidden = false
@@ -151,16 +139,6 @@ class ActionBarElement extends HTMLElement {
 
   get #menuItems(): NodeListOf<HTMLElement> {
     return this.moreMenu.querySelectorAll('[role="menu"] > li')
-  }
-
-  #eachItem(callback: (item: HTMLElement, index: number, type: ItemType) => boolean): void {
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i]
-      const type = item.classList.contains('ActionBar-divider') ? ItemType.Divider : ItemType.Item
-      if (!callback(item, i, type)) {
-        break
-      }
-    }
   }
 }
 
