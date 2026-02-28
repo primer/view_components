@@ -187,6 +187,7 @@ module Primer
       # @param menu_id [String] Id of the menu.
       # @param anchor_align [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>.
       # @param anchor_side [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>.
+      # @param anchor_when_narrow [Symbol] <%= one_of(Primer::Alpha::Overlay::ANCHOR_WHEN_NARROW_OPTIONS) %>.
       # @param size [Symbol] <%= one_of(Primer::Alpha::Overlay::SIZE_OPTIONS) %>.
       # @param src [String] Used with an `include-fragment` element to load menu content from the given source URL.
       # @param preload [Boolean] When true, and src is present, loads the `include-fragment` on trigger hover.
@@ -200,6 +201,7 @@ module Primer
         menu_id: self.class.generate_id,
         anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN,
         anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        anchor_when_narrow: Primer::Alpha::Overlay::DEFAULT_ANCHOR_WHEN_NARROW,
         size: Primer::Alpha::Overlay::DEFAULT_SIZE,
         src: nil,
         preload: DEFAULT_PRELOAD,
@@ -236,6 +238,7 @@ module Primer
           visually_hide_title: true,
           anchor_align: anchor_align,
           anchor_side: anchor_side,
+          anchor_when_narrow: anchor_when_narrow,
           size: size,
           **overlay_arguments
         )

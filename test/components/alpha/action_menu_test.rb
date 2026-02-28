@@ -204,6 +204,22 @@ module Primer
 
         assert_selector "anchored-position[data-foo=bar]"
       end
+
+      def test_anchor_when_narrow_fullscreen
+        render_inline(Primer::Alpha::ActionMenu.new(menu_id: "foo", anchor_when_narrow: :fullscreen)) do |menu|
+          menu.with_item { "foo" }
+        end
+
+        assert_selector ".Overlay.Overlay--fullscreen-whenNarrow"
+      end
+
+      def test_anchor_when_narrow_bottom
+        render_inline(Primer::Alpha::ActionMenu.new(menu_id: "foo", anchor_when_narrow: :bottom)) do |menu|
+          menu.with_item { "foo" }
+        end
+
+        assert_selector ".Overlay.Overlay--placement-bottom-whenNarrow"
+      end
     end
   end
 end
