@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@8cba46e29c11878d930bca7870bb54394d3e8b21
+      uses: tj-actions/changed-files@7dee1b0c1557f278e5c7dc244927139d78c0e22a
       with:
         files: |
           docs/**/*.md
@@ -42,7 +42,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@8cba46e29c11878d930bca7870bb54394d3e8b21
+      uses: tj-actions/changed-files@7dee1b0c1557f278e5c7dc244927139d78c0e22a
       with:
         files: |
           app/**/*.rb
@@ -62,7 +62,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@8cba46e29c11878d930bca7870bb54394d3e8b21
+      uses: tj-actions/changed-files@7dee1b0c1557f278e5c7dc244927139d78c0e22a
       with:
         files: |
           app/components/**/*.erb
@@ -79,7 +79,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@8cba46e29c11878d930bca7870bb54394d3e8b21
+      uses: tj-actions/changed-files@7dee1b0c1557f278e5c7dc244927139d78c0e22a
       with:
         files: |
           app/components/**/*.ts
@@ -99,7 +99,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@8cba46e29c11878d930bca7870bb54394d3e8b21
+      uses: tj-actions/changed-files@7dee1b0c1557f278e5c7dc244927139d78c0e22a
       with:
         files: |
           app/components/**/*.pcss
