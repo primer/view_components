@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.51.1
+
+### Patch Changes
+
+- [#3952](https://github.com/primer/view_components/pull/3952) [`02c89a5`](https://github.com/primer/view_components/commit/02c89a5ddcf029c252ea6f1b51e5e12cfe71f891) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Performance improvements to `ActionBarElement`:
+  - Replaced the `#eachItem` / `ItemType` abstraction with a two-pass read-then-write loop that snapshots all element geometry before mutating the DOM, eliminating forced synchronous reflow.
+  - Cached the `#menuItems` `NodeListOf` query across each update pass instead of re-querying per item.
+  - Simplified `#firstItem` to a one-liner using `Array.find`.
+  - Coalesces rapid resize/intersection events via `requestAnimationFrame` so at most one layout pass runs per frame.
+  - `update()` remains the public entry point (coalescing scheduler); actual layout work is in the private `#performUpdate()`.
+  - `overflow: visible` is always applied in `connectedCallback` (no popover feature-detection gate), preserving the original behavior for CSS/tooltip positioning.
+
+- [#3950](https://github.com/primer/view_components/pull/3950) [`ca926de`](https://github.com/primer/view_components/commit/ca926de90555a130cbc8dc1b427261417759bfd7) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Defer `--dialog-scrollgutter` computation in `DialogHelperElement` to the moment a dialog is first opened, avoiding a forced synchronous layout reflow during page load.
+
+- [#3955](https://github.com/primer/view_components/pull/3955) [`ed8bf4a`](https://github.com/primer/view_components/commit/ed8bf4a6e8198473e3e3b004eb36256504b80035) Thanks [@TylerJDev](https://github.com/TylerJDev)! - ActionMenu: Add fullscreen option to ActionMenu
+
+- [#3961](https://github.com/primer/view_components/pull/3961) [`16a2d75`](https://github.com/primer/view_components/commit/16a2d7547f9a527248fa303a21303a0df3d71ddd) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Tooltip: Fix tooltip overflow on narrow viewports by capping max-width to viewport width.
+
+- [#3957](https://github.com/primer/view_components/pull/3957) [`3baaad2`](https://github.com/primer/view_components/commit/3baaad2b69e973988a611eb2fa14e57c7057afb2) Thanks [@francinelucca](https://github.com/francinelucca)! - chore(AutoComplete): fix NoResultItem contrast ratio
+
 ## 0.51.0
 
 ### Minor Changes
