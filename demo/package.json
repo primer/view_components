@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "vite": "^7.3.1",
-    "vite-plugin-ruby": "^5.1.2"
+    "vite-plugin-ruby": "^5.1.3"
   },
   "scripts": {
     "build:css": "postcss --config ../ ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
