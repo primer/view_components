@@ -5035,6 +5035,12 @@
         "description": "What format the time zone should take. One of `nil`, `:long`, `:long_generic`, `:long_offset`, `:short`, `:short_generic`, or `:short_offset`."
       },
       {
+        "name": "time_zone",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The IANA time zone identifier to use for formatting (e.g., \"America/New_York\")."
+      },
+      {
         "name": "threshold",
         "type": "String",
         "default": "`nil`",
