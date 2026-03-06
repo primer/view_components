@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.51.2
+
+### Patch Changes
+
+- [#3976](https://github.com/primer/view_components/pull/3976) [`d09bcc4`](https://github.com/primer/view_components/commit/d09bcc441c40e4eba9d7e591d708a861d582b8c5) Thanks [@llastflowers](https://github.com/llastflowers)! - Push margin-top of TimelineBody +1px
+
 ## 0.51.1
 
 ### Patch Changes
