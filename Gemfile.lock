@@ -145,9 +145,7 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.2)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     mocha (3.0.2)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
@@ -339,6 +337,7 @@ DEPENDENCIES
   listen (~> 3.10)
   lookbook (~> 2.3.14)
   matrix (~> 0.4.3)
+  minitest (~> 5.0)
   mocha
   primer_view_components!
   puma (~> 7.1.0)
@@ -364,4 +363,4 @@ DEPENDENCIES
   yard (~> 0.9.38)
 
 BUNDLED WITH
-   2.5.5
+   2.6.9
