@@ -151,7 +151,9 @@ GEM
       json-schema (>= 4.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.0.2)
+      drb (~> 2.0)
+      prism (~> 1.5)
     mocha (3.0.2)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
@@ -344,7 +346,7 @@ DEPENDENCIES
   listen (~> 3.10)
   lookbook (~> 2.3.14)
   matrix (~> 0.4.3)
-  minitest (~> 5.0)
+  minitest (~> 6.0)
   mocha
   primer_view_components!
   puma (~> 7.2.0)
