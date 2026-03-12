@@ -65,6 +65,7 @@ group :development do
   gem "erblint-github", "~> 1.0.1"
   gem "listen", "~> 3.10"
   gem "matrix", "~> 0.4.3"
+  gem "minitest-mock"
   gem "mocha"
   gem "rubocop"
   gem "rubocop-github", "~> 0.26.0"
