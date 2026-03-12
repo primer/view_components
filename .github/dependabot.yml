@@ -11,6 +11,8 @@ updates:
       - "actions"
     schedule:
       interval: "monthly"
+    ignore:
+      - dependency-name: "changesets/action"
     groups:
       all-actions:
         update-types:
