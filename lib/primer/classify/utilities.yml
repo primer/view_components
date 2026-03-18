@@ -227,1128 +227,1128 @@
   - height-full
 :m:
   0:
-  - m-0
-  - m-sm-0
-  - m-md-0
-  - m-lg-0
-  - m-xl-0
+  - m-0 tmp-m-0
+  - m-sm-0 tmp-m-sm-0
+  - m-md-0 tmp-m-md-0
+  - m-lg-0 tmp-m-lg-0
+  - m-xl-0 tmp-m-xl-0
   1:
-  - m-1
-  - m-sm-1
-  - m-md-1
-  - m-lg-1
-  - m-xl-1
+  - m-1 tmp-m-1
+  - m-sm-1 tmp-m-sm-1
+  - m-md-1 tmp-m-md-1
+  - m-lg-1 tmp-m-lg-1
+  - m-xl-1 tmp-m-xl-1
   2:
-  - m-2
-  - m-sm-2
-  - m-md-2
-  - m-lg-2
-  - m-xl-2
+  - m-2 tmp-m-2
+  - m-sm-2 tmp-m-sm-2
+  - m-md-2 tmp-m-md-2
+  - m-lg-2 tmp-m-lg-2
+  - m-xl-2 tmp-m-xl-2
   3:
-  - m-3
-  - m-sm-3
-  - m-md-3
-  - m-lg-3
-  - m-xl-3
+  - m-3 tmp-m-3
+  - m-sm-3 tmp-m-sm-3
+  - m-md-3 tmp-m-md-3
+  - m-lg-3 tmp-m-lg-3
+  - m-xl-3 tmp-m-xl-3
   4:
-  - m-4
-  - m-sm-4
-  - m-md-4
-  - m-lg-4
-  - m-xl-4
+  - m-4 tmp-m-4
+  - m-sm-4 tmp-m-sm-4
+  - m-md-4 tmp-m-md-4
+  - m-lg-4 tmp-m-lg-4
+  - m-xl-4 tmp-m-xl-4
   5:
-  - m-5
-  - m-sm-5
-  - m-md-5
-  - m-lg-5
-  - m-xl-5
+  - m-5 tmp-m-5
+  - m-sm-5 tmp-m-sm-5
+  - m-md-5 tmp-m-md-5
+  - m-lg-5 tmp-m-lg-5
+  - m-xl-5 tmp-m-xl-5
   6:
-  - m-6
-  - m-sm-6
-  - m-md-6
-  - m-lg-6
-  - m-xl-6
+  - m-6 tmp-m-6
+  - m-sm-6 tmp-m-sm-6
+  - m-md-6 tmp-m-md-6
+  - m-lg-6 tmp-m-lg-6
+  - m-xl-6 tmp-m-xl-6
   :auto:
-  - m-auto
+  - m-auto tmp-m-auto
 :mt:
   0:
-  - mt-0
-  - mt-sm-0
-  - mt-md-0
-  - mt-lg-0
-  - mt-xl-0
+  - mt-0 tmp-mt-0
+  - mt-sm-0 tmp-mt-sm-0
+  - mt-md-0 tmp-mt-md-0
+  - mt-lg-0 tmp-mt-lg-0
+  - mt-xl-0 tmp-mt-xl-0
   1:
-  - mt-1
-  - mt-sm-1
-  - mt-md-1
-  - mt-lg-1
-  - mt-xl-1
+  - mt-1 tmp-mt-1
+  - mt-sm-1 tmp-mt-sm-1
+  - mt-md-1 tmp-mt-md-1
+  - mt-lg-1 tmp-mt-lg-1
+  - mt-xl-1 tmp-mt-xl-1
   -1:
-  - mt-n1
-  - mt-sm-n1
-  - mt-md-n1
-  - mt-lg-n1
-  - mt-xl-n1
+  - mt-n1 tmp-mt-n1
+  - mt-sm-n1 tmp-mt-sm-n1
+  - mt-md-n1 tmp-mt-md-n1
+  - mt-lg-n1 tmp-mt-lg-n1
+  - mt-xl-n1 tmp-mt-xl-n1
   2:
-  - mt-2
-  - mt-sm-2
-  - mt-md-2
-  - mt-lg-2
-  - mt-xl-2
+  - mt-2 tmp-mt-2
+  - mt-sm-2 tmp-mt-sm-2
+  - mt-md-2 tmp-mt-md-2
+  - mt-lg-2 tmp-mt-lg-2
+  - mt-xl-2 tmp-mt-xl-2
   -2:
-  - mt-n2
-  - mt-sm-n2
-  - mt-md-n2
-  - mt-lg-n2
-  - mt-xl-n2
+  - mt-n2 tmp-mt-n2
+  - mt-sm-n2 tmp-mt-sm-n2
+  - mt-md-n2 tmp-mt-md-n2
+  - mt-lg-n2 tmp-mt-lg-n2
+  - mt-xl-n2 tmp-mt-xl-n2
   3:
-  - mt-3
-  - mt-sm-3
-  - mt-md-3
-  - mt-lg-3
-  - mt-xl-3
+  - mt-3 tmp-mt-3
+  - mt-sm-3 tmp-mt-sm-3
+  - mt-md-3 tmp-mt-md-3
+  - mt-lg-3 tmp-mt-lg-3
+  - mt-xl-3 tmp-mt-xl-3
   -3:
-  - mt-n3
-  - mt-sm-n3
-  - mt-md-n3
-  - mt-lg-n3
-  - mt-xl-n3
+  - mt-n3 tmp-mt-n3
+  - mt-sm-n3 tmp-mt-sm-n3
+  - mt-md-n3 tmp-mt-md-n3
+  - mt-lg-n3 tmp-mt-lg-n3
+  - mt-xl-n3 tmp-mt-xl-n3
   4:
-  - mt-4
-  - mt-sm-4
-  - mt-md-4
-  - mt-lg-4
-  - mt-xl-4
+  - mt-4 tmp-mt-4
+  - mt-sm-4 tmp-mt-sm-4
+  - mt-md-4 tmp-mt-md-4
+  - mt-lg-4 tmp-mt-lg-4
+  - mt-xl-4 tmp-mt-xl-4
   -4:
-  - mt-n4
-  - mt-sm-n4
-  - mt-md-n4
-  - mt-lg-n4
-  - mt-xl-n4
+  - mt-n4 tmp-mt-n4
+  - mt-sm-n4 tmp-mt-sm-n4
+  - mt-md-n4 tmp-mt-md-n4
+  - mt-lg-n4 tmp-mt-lg-n4
+  - mt-xl-n4 tmp-mt-xl-n4
   5:
-  - mt-5
-  - mt-sm-5
-  - mt-md-5
-  - mt-lg-5
-  - mt-xl-5
+  - mt-5 tmp-mt-5
+  - mt-sm-5 tmp-mt-sm-5
+  - mt-md-5 tmp-mt-md-5
+  - mt-lg-5 tmp-mt-lg-5
+  - mt-xl-5 tmp-mt-xl-5
   -5:
-  - mt-n5
-  - mt-sm-n5
-  - mt-md-n5
-  - mt-lg-n5
-  - mt-xl-n5
+  - mt-n5 tmp-mt-n5
+  - mt-sm-n5 tmp-mt-sm-n5
+  - mt-md-n5 tmp-mt-md-n5
+  - mt-lg-n5 tmp-mt-lg-n5
+  - mt-xl-n5 tmp-mt-xl-n5
   6:
-  - mt-6
-  - mt-sm-6
-  - mt-md-6
-  - mt-lg-6
-  - mt-xl-6
+  - mt-6 tmp-mt-6
+  - mt-sm-6 tmp-mt-sm-6
+  - mt-md-6 tmp-mt-md-6
+  - mt-lg-6 tmp-mt-lg-6
+  - mt-xl-6 tmp-mt-xl-6
   -6:
-  - mt-n6
-  - mt-sm-n6
-  - mt-md-n6
-  - mt-lg-n6
-  - mt-xl-n6
+  - mt-n6 tmp-mt-n6
+  - mt-sm-n6 tmp-mt-sm-n6
+  - mt-md-n6 tmp-mt-md-n6
+  - mt-lg-n6 tmp-mt-lg-n6
+  - mt-xl-n6 tmp-mt-xl-n6
   7:
-  - mt-7
-  - mt-sm-7
-  - mt-md-7
-  - mt-lg-7
-  - mt-xl-7
+  - mt-7 tmp-mt-7
+  - mt-sm-7 tmp-mt-sm-7
+  - mt-md-7 tmp-mt-md-7
+  - mt-lg-7 tmp-mt-lg-7
+  - mt-xl-7 tmp-mt-xl-7
   -7:
-  - mt-n7
-  - mt-sm-n7
-  - mt-md-n7
-  - mt-lg-n7
-  - mt-xl-n7
+  - mt-n7 tmp-mt-n7
+  - mt-sm-n7 tmp-mt-sm-n7
+  - mt-md-n7 tmp-mt-md-n7
+  - mt-lg-n7 tmp-mt-lg-n7
+  - mt-xl-n7 tmp-mt-xl-n7
   8:
-  - mt-8
-  - mt-sm-8
-  - mt-md-8
-  - mt-lg-8
-  - mt-xl-8
+  - mt-8 tmp-mt-8
+  - mt-sm-8 tmp-mt-sm-8
+  - mt-md-8 tmp-mt-md-8
+  - mt-lg-8 tmp-mt-lg-8
+  - mt-xl-8 tmp-mt-xl-8
   -8:
-  - mt-n8
-  - mt-sm-n8
-  - mt-md-n8
-  - mt-lg-n8
-  - mt-xl-n8
+  - mt-n8 tmp-mt-n8
+  - mt-sm-n8 tmp-mt-sm-n8
+  - mt-md-n8 tmp-mt-md-n8
+  - mt-lg-n8 tmp-mt-lg-n8
+  - mt-xl-n8 tmp-mt-xl-n8
   9:
-  - mt-9
-  - mt-sm-9
-  - mt-md-9
-  - mt-lg-9
-  - mt-xl-9
+  - mt-9 tmp-mt-9
+  - mt-sm-9 tmp-mt-sm-9
+  - mt-md-9 tmp-mt-md-9
+  - mt-lg-9 tmp-mt-lg-9
+  - mt-xl-9 tmp-mt-xl-9
   -9:
-  - mt-n9
-  - mt-sm-n9
-  - mt-md-n9
-  - mt-lg-n9
-  - mt-xl-n9
+  - mt-n9 tmp-mt-n9
+  - mt-sm-n9 tmp-mt-sm-n9
+  - mt-md-n9 tmp-mt-md-n9
+  - mt-lg-n9 tmp-mt-lg-n9
+  - mt-xl-n9 tmp-mt-xl-n9
   10:
-  - mt-10
-  - mt-sm-10
-  - mt-md-10
-  - mt-lg-10
-  - mt-xl-10
+  - mt-10 tmp-mt-10
+  - mt-sm-10 tmp-mt-sm-10
+  - mt-md-10 tmp-mt-md-10
+  - mt-lg-10 tmp-mt-lg-10
+  - mt-xl-10 tmp-mt-xl-10
   -10:
-  - mt-n10
-  - mt-sm-n10
-  - mt-md-n10
-  - mt-lg-n10
-  - mt-xl-n10
+  - mt-n10 tmp-mt-n10
+  - mt-sm-n10 tmp-mt-sm-n10
+  - mt-md-n10 tmp-mt-md-n10
+  - mt-lg-n10 tmp-mt-lg-n10
+  - mt-xl-n10 tmp-mt-xl-n10
   11:
-  - mt-11
-  - mt-sm-11
-  - mt-md-11
-  - mt-lg-11
-  - mt-xl-11
+  - mt-11 tmp-mt-11
+  - mt-sm-11 tmp-mt-sm-11
+  - mt-md-11 tmp-mt-md-11
+  - mt-lg-11 tmp-mt-lg-11
+  - mt-xl-11 tmp-mt-xl-11
   -11:
-  - mt-n11
-  - mt-sm-n11
-  - mt-md-n11
-  - mt-lg-n11
-  - mt-xl-n11
+  - mt-n11 tmp-mt-n11
+  - mt-sm-n11 tmp-mt-sm-n11
+  - mt-md-n11 tmp-mt-md-n11
+  - mt-lg-n11 tmp-mt-lg-n11
+  - mt-xl-n11 tmp-mt-xl-n11
   12:
-  - mt-12
-  - mt-sm-12
-  - mt-md-12
-  - mt-lg-12
-  - mt-xl-12
+  - mt-12 tmp-mt-12
+  - mt-sm-12 tmp-mt-sm-12
+  - mt-md-12 tmp-mt-md-12
+  - mt-lg-12 tmp-mt-lg-12
+  - mt-xl-12 tmp-mt-xl-12
   -12:
-  - mt-n12
-  - mt-sm-n12
-  - mt-md-n12
-  - mt-lg-n12
-  - mt-xl-n12
+  - mt-n12 tmp-mt-n12
+  - mt-sm-n12 tmp-mt-sm-n12
+  - mt-md-n12 tmp-mt-md-n12
+  - mt-lg-n12 tmp-mt-lg-n12
+  - mt-xl-n12 tmp-mt-xl-n12
   :auto:
-  - mt-auto
+  - mt-auto tmp-mt-auto
 :mb:
   0:
-  - mb-0
-  - mb-sm-0
-  - mb-md-0
-  - mb-lg-0
-  - mb-xl-0
+  - mb-0 tmp-mb-0
+  - mb-sm-0 tmp-mb-sm-0
+  - mb-md-0 tmp-mb-md-0
+  - mb-lg-0 tmp-mb-lg-0
+  - mb-xl-0 tmp-mb-xl-0
   1:
-  - mb-1
-  - mb-sm-1
-  - mb-md-1
-  - mb-lg-1
-  - mb-xl-1
+  - mb-1 tmp-mb-1
+  - mb-sm-1 tmp-mb-sm-1
+  - mb-md-1 tmp-mb-md-1
+  - mb-lg-1 tmp-mb-lg-1
+  - mb-xl-1 tmp-mb-xl-1
   -1:
-  - mb-n1
-  - mb-sm-n1
-  - mb-md-n1
-  - mb-lg-n1
-  - mb-xl-n1
+  - mb-n1 tmp-mb-n1
+  - mb-sm-n1 tmp-mb-sm-n1
+  - mb-md-n1 tmp-mb-md-n1
+  - mb-lg-n1 tmp-mb-lg-n1
+  - mb-xl-n1 tmp-mb-xl-n1
   2:
-  - mb-2
-  - mb-sm-2
-  - mb-md-2
-  - mb-lg-2
-  - mb-xl-2
+  - mb-2 tmp-mb-2
+  - mb-sm-2 tmp-mb-sm-2
+  - mb-md-2 tmp-mb-md-2
+  - mb-lg-2 tmp-mb-lg-2
+  - mb-xl-2 tmp-mb-xl-2
   -2:
-  - mb-n2
-  - mb-sm-n2
-  - mb-md-n2
-  - mb-lg-n2
-  - mb-xl-n2
+  - mb-n2 tmp-mb-n2
+  - mb-sm-n2 tmp-mb-sm-n2
+  - mb-md-n2 tmp-mb-md-n2
+  - mb-lg-n2 tmp-mb-lg-n2
+  - mb-xl-n2 tmp-mb-xl-n2
   3:
-  - mb-3
-  - mb-sm-3
-  - mb-md-3
-  - mb-lg-3
-  - mb-xl-3
+  - mb-3 tmp-mb-3
+  - mb-sm-3 tmp-mb-sm-3
+  - mb-md-3 tmp-mb-md-3
+  - mb-lg-3 tmp-mb-lg-3
+  - mb-xl-3 tmp-mb-xl-3
   -3:
-  - mb-n3
-  - mb-sm-n3
-  - mb-md-n3
-  - mb-lg-n3
-  - mb-xl-n3
+  - mb-n3 tmp-mb-n3
+  - mb-sm-n3 tmp-mb-sm-n3
+  - mb-md-n3 tmp-mb-md-n3
+  - mb-lg-n3 tmp-mb-lg-n3
+  - mb-xl-n3 tmp-mb-xl-n3
   4:
-  - mb-4
-  - mb-sm-4
-  - mb-md-4
-  - mb-lg-4
-  - mb-xl-4
+  - mb-4 tmp-mb-4
+  - mb-sm-4 tmp-mb-sm-4
+  - mb-md-4 tmp-mb-md-4
+  - mb-lg-4 tmp-mb-lg-4
+  - mb-xl-4 tmp-mb-xl-4
   -4:
-  - mb-n4
-  - mb-sm-n4
-  - mb-md-n4
-  - mb-lg-n4
-  - mb-xl-n4
+  - mb-n4 tmp-mb-n4
+  - mb-sm-n4 tmp-mb-sm-n4
+  - mb-md-n4 tmp-mb-md-n4
+  - mb-lg-n4 tmp-mb-lg-n4
+  - mb-xl-n4 tmp-mb-xl-n4
   5:
-  - mb-5
-  - mb-sm-5
-  - mb-md-5
-  - mb-lg-5
-  - mb-xl-5
+  - mb-5 tmp-mb-5
+  - mb-sm-5 tmp-mb-sm-5
+  - mb-md-5 tmp-mb-md-5
+  - mb-lg-5 tmp-mb-lg-5
+  - mb-xl-5 tmp-mb-xl-5
   -5:
-  - mb-n5
-  - mb-sm-n5
-  - mb-md-n5
-  - mb-lg-n5
-  - mb-xl-n5
+  - mb-n5 tmp-mb-n5
+  - mb-sm-n5 tmp-mb-sm-n5
+  - mb-md-n5 tmp-mb-md-n5
+  - mb-lg-n5 tmp-mb-lg-n5
+  - mb-xl-n5 tmp-mb-xl-n5
   6:
-  - mb-6
-  - mb-sm-6
-  - mb-md-6
-  - mb-lg-6
-  - mb-xl-6
+  - mb-6 tmp-mb-6
+  - mb-sm-6 tmp-mb-sm-6
+  - mb-md-6 tmp-mb-md-6
+  - mb-lg-6 tmp-mb-lg-6
+  - mb-xl-6 tmp-mb-xl-6
   -6:
-  - mb-n6
-  - mb-sm-n6
-  - mb-md-n6
-  - mb-lg-n6
-  - mb-xl-n6
+  - mb-n6 tmp-mb-n6
+  - mb-sm-n6 tmp-mb-sm-n6
+  - mb-md-n6 tmp-mb-md-n6
+  - mb-lg-n6 tmp-mb-lg-n6
+  - mb-xl-n6 tmp-mb-xl-n6
   7:
-  - mb-7
-  - mb-sm-7
-  - mb-md-7
-  - mb-lg-7
-  - mb-xl-7
+  - mb-7 tmp-mb-7
+  - mb-sm-7 tmp-mb-sm-7
+  - mb-md-7 tmp-mb-md-7
+  - mb-lg-7 tmp-mb-lg-7
+  - mb-xl-7 tmp-mb-xl-7
   -7:
-  - mb-n7
-  - mb-sm-n7
-  - mb-md-n7
-  - mb-lg-n7
-  - mb-xl-n7
+  - mb-n7 tmp-mb-n7
+  - mb-sm-n7 tmp-mb-sm-n7
+  - mb-md-n7 tmp-mb-md-n7
+  - mb-lg-n7 tmp-mb-lg-n7
+  - mb-xl-n7 tmp-mb-xl-n7
   8:
-  - mb-8
-  - mb-sm-8
-  - mb-md-8
-  - mb-lg-8
-  - mb-xl-8
+  - mb-8 tmp-mb-8
+  - mb-sm-8 tmp-mb-sm-8
+  - mb-md-8 tmp-mb-md-8
+  - mb-lg-8 tmp-mb-lg-8
+  - mb-xl-8 tmp-mb-xl-8
   -8:
-  - mb-n8
-  - mb-sm-n8
-  - mb-md-n8
-  - mb-lg-n8
-  - mb-xl-n8
+  - mb-n8 tmp-mb-n8
+  - mb-sm-n8 tmp-mb-sm-n8
+  - mb-md-n8 tmp-mb-md-n8
+  - mb-lg-n8 tmp-mb-lg-n8
+  - mb-xl-n8 tmp-mb-xl-n8
   9:
-  - mb-9
-  - mb-sm-9
-  - mb-md-9
-  - mb-lg-9
-  - mb-xl-9
+  - mb-9 tmp-mb-9
+  - mb-sm-9 tmp-mb-sm-9
+  - mb-md-9 tmp-mb-md-9
+  - mb-lg-9 tmp-mb-lg-9
+  - mb-xl-9 tmp-mb-xl-9
   -9:
-  - mb-n9
-  - mb-sm-n9
-  - mb-md-n9
-  - mb-lg-n9
-  - mb-xl-n9
+  - mb-n9 tmp-mb-n9
+  - mb-sm-n9 tmp-mb-sm-n9
+  - mb-md-n9 tmp-mb-md-n9
+  - mb-lg-n9 tmp-mb-lg-n9
+  - mb-xl-n9 tmp-mb-xl-n9
   10:
-  - mb-10
-  - mb-sm-10
-  - mb-md-10
-  - mb-lg-10
-  - mb-xl-10
+  - mb-10 tmp-mb-10
+  - mb-sm-10 tmp-mb-sm-10
+  - mb-md-10 tmp-mb-md-10
+  - mb-lg-10 tmp-mb-lg-10
+  - mb-xl-10 tmp-mb-xl-10
   -10:
-  - mb-n10
-  - mb-sm-n10
-  - mb-md-n10
-  - mb-lg-n10
-  - mb-xl-n10
+  - mb-n10 tmp-mb-n10
+  - mb-sm-n10 tmp-mb-sm-n10
+  - mb-md-n10 tmp-mb-md-n10
+  - mb-lg-n10 tmp-mb-lg-n10
+  - mb-xl-n10 tmp-mb-xl-n10
   11:
-  - mb-11
-  - mb-sm-11
-  - mb-md-11
-  - mb-lg-11
-  - mb-xl-11
+  - mb-11 tmp-mb-11
+  - mb-sm-11 tmp-mb-sm-11
+  - mb-md-11 tmp-mb-md-11
+  - mb-lg-11 tmp-mb-lg-11
+  - mb-xl-11 tmp-mb-xl-11
   -11:
-  - mb-n11
-  - mb-sm-n11
-  - mb-md-n11
-  - mb-lg-n11
-  - mb-xl-n11
+  - mb-n11 tmp-mb-n11
+  - mb-sm-n11 tmp-mb-sm-n11
+  - mb-md-n11 tmp-mb-md-n11
+  - mb-lg-n11 tmp-mb-lg-n11
+  - mb-xl-n11 tmp-mb-xl-n11
   12:
-  - mb-12
-  - mb-sm-12
-  - mb-md-12
-  - mb-lg-12
-  - mb-xl-12
+  - mb-12 tmp-mb-12
+  - mb-sm-12 tmp-mb-sm-12
+  - mb-md-12 tmp-mb-md-12
+  - mb-lg-12 tmp-mb-lg-12
+  - mb-xl-12 tmp-mb-xl-12
   -12:
-  - mb-n12
-  - mb-sm-n12
-  - mb-md-n12
-  - mb-lg-n12
-  - mb-xl-n12
+  - mb-n12 tmp-mb-n12
+  - mb-sm-n12 tmp-mb-sm-n12
+  - mb-md-n12 tmp-mb-md-n12
+  - mb-lg-n12 tmp-mb-lg-n12
+  - mb-xl-n12 tmp-mb-xl-n12
   :auto:
-  - mb-auto
+  - mb-auto tmp-mb-auto
 :mr:
   0:
-  - mr-0
-  - mr-sm-0
-  - mr-md-0
-  - mr-lg-0
-  - mr-xl-0
+  - mr-0 tmp-mr-0
+  - mr-sm-0 tmp-mr-sm-0
+  - mr-md-0 tmp-mr-md-0
+  - mr-lg-0 tmp-mr-lg-0
+  - mr-xl-0 tmp-mr-xl-0
   1:
-  - mr-1
-  - mr-sm-1
-  - mr-md-1
-  - mr-lg-1
-  - mr-xl-1
+  - mr-1 tmp-mr-1
+  - mr-sm-1 tmp-mr-sm-1
+  - mr-md-1 tmp-mr-md-1
+  - mr-lg-1 tmp-mr-lg-1
+  - mr-xl-1 tmp-mr-xl-1
   -1:
-  - mr-n1
-  - mr-sm-n1
-  - mr-md-n1
-  - mr-lg-n1
-  - mr-xl-n1
+  - mr-n1 tmp-mr-n1
+  - mr-sm-n1 tmp-mr-sm-n1
+  - mr-md-n1 tmp-mr-md-n1
+  - mr-lg-n1 tmp-mr-lg-n1
+  - mr-xl-n1 tmp-mr-xl-n1
   2:
-  - mr-2
-  - mr-sm-2
-  - mr-md-2
-  - mr-lg-2
-  - mr-xl-2
+  - mr-2 tmp-mr-2
+  - mr-sm-2 tmp-mr-sm-2
+  - mr-md-2 tmp-mr-md-2
+  - mr-lg-2 tmp-mr-lg-2
+  - mr-xl-2 tmp-mr-xl-2
   -2:
-  - mr-n2
-  - mr-sm-n2
-  - mr-md-n2
-  - mr-lg-n2
-  - mr-xl-n2
+  - mr-n2 tmp-mr-n2
+  - mr-sm-n2 tmp-mr-sm-n2
+  - mr-md-n2 tmp-mr-md-n2
+  - mr-lg-n2 tmp-mr-lg-n2
+  - mr-xl-n2 tmp-mr-xl-n2
   3:
-  - mr-3
-  - mr-sm-3
-  - mr-md-3
-  - mr-lg-3
-  - mr-xl-3
+  - mr-3 tmp-mr-3
+  - mr-sm-3 tmp-mr-sm-3
+  - mr-md-3 tmp-mr-md-3
+  - mr-lg-3 tmp-mr-lg-3
+  - mr-xl-3 tmp-mr-xl-3
   -3:
-  - mr-n3
-  - mr-sm-n3
-  - mr-md-n3
-  - mr-lg-n3
-  - mr-xl-n3
+  - mr-n3 tmp-mr-n3
+  - mr-sm-n3 tmp-mr-sm-n3
+  - mr-md-n3 tmp-mr-md-n3
+  - mr-lg-n3 tmp-mr-lg-n3
+  - mr-xl-n3 tmp-mr-xl-n3
   4:
-  - mr-4
-  - mr-sm-4
-  - mr-md-4
-  - mr-lg-4
-  - mr-xl-4
+  - mr-4 tmp-mr-4
+  - mr-sm-4 tmp-mr-sm-4
+  - mr-md-4 tmp-mr-md-4
+  - mr-lg-4 tmp-mr-lg-4
+  - mr-xl-4 tmp-mr-xl-4
   -4:
-  - mr-n4
-  - mr-sm-n4
-  - mr-md-n4
-  - mr-lg-n4
-  - mr-xl-n4
+  - mr-n4 tmp-mr-n4
+  - mr-sm-n4 tmp-mr-sm-n4
+  - mr-md-n4 tmp-mr-md-n4
+  - mr-lg-n4 tmp-mr-lg-n4
+  - mr-xl-n4 tmp-mr-xl-n4
   5:
-  - mr-5
-  - mr-sm-5
-  - mr-md-5
-  - mr-lg-5
-  - mr-xl-5
+  - mr-5 tmp-mr-5
+  - mr-sm-5 tmp-mr-sm-5
+  - mr-md-5 tmp-mr-md-5
+  - mr-lg-5 tmp-mr-lg-5
+  - mr-xl-5 tmp-mr-xl-5
   -5:
-  - mr-n5
-  - mr-sm-n5
-  - mr-md-n5
-  - mr-lg-n5
-  - mr-xl-n5
+  - mr-n5 tmp-mr-n5
+  - mr-sm-n5 tmp-mr-sm-n5
+  - mr-md-n5 tmp-mr-md-n5
+  - mr-lg-n5 tmp-mr-lg-n5
+  - mr-xl-n5 tmp-mr-xl-n5
   6:
-  - mr-6
-  - mr-sm-6
-  - mr-md-6
-  - mr-lg-6
-  - mr-xl-6
+  - mr-6 tmp-mr-6
+  - mr-sm-6 tmp-mr-sm-6
+  - mr-md-6 tmp-mr-md-6
+  - mr-lg-6 tmp-mr-lg-6
+  - mr-xl-6 tmp-mr-xl-6
   -6:
-  - mr-n6
-  - mr-sm-n6
-  - mr-md-n6
-  - mr-lg-n6
-  - mr-xl-n6
+  - mr-n6 tmp-mr-n6
+  - mr-sm-n6 tmp-mr-sm-n6
+  - mr-md-n6 tmp-mr-md-n6
+  - mr-lg-n6 tmp-mr-lg-n6
+  - mr-xl-n6 tmp-mr-xl-n6
   :auto:
-  - mr-auto
+  - mr-auto tmp-mr-auto
 :ml:
   0:
-  - ml-0
-  - ml-sm-0
-  - ml-md-0
-  - ml-lg-0
-  - ml-xl-0
+  - ml-0 tmp-ml-0
+  - ml-sm-0 tmp-ml-sm-0
+  - ml-md-0 tmp-ml-md-0
+  - ml-lg-0 tmp-ml-lg-0
+  - ml-xl-0 tmp-ml-xl-0
   1:
-  - ml-1
-  - ml-sm-1
-  - ml-md-1
-  - ml-lg-1
-  - ml-xl-1
+  - ml-1 tmp-ml-1
+  - ml-sm-1 tmp-ml-sm-1
+  - ml-md-1 tmp-ml-md-1
+  - ml-lg-1 tmp-ml-lg-1
+  - ml-xl-1 tmp-ml-xl-1
   -1:
-  - ml-n1
-  - ml-sm-n1
-  - ml-md-n1
-  - ml-lg-n1
-  - ml-xl-n1
+  - ml-n1 tmp-ml-n1
+  - ml-sm-n1 tmp-ml-sm-n1
+  - ml-md-n1 tmp-ml-md-n1
+  - ml-lg-n1 tmp-ml-lg-n1
+  - ml-xl-n1 tmp-ml-xl-n1
   2:
-  - ml-2
-  - ml-sm-2
-  - ml-md-2
-  - ml-lg-2
-  - ml-xl-2
+  - ml-2 tmp-ml-2
+  - ml-sm-2 tmp-ml-sm-2
+  - ml-md-2 tmp-ml-md-2
+  - ml-lg-2 tmp-ml-lg-2
+  - ml-xl-2 tmp-ml-xl-2
   -2:
-  - ml-n2
-  - ml-sm-n2
-  - ml-md-n2
-  - ml-lg-n2
-  - ml-xl-n2
+  - ml-n2 tmp-ml-n2
+  - ml-sm-n2 tmp-ml-sm-n2
+  - ml-md-n2 tmp-ml-md-n2
+  - ml-lg-n2 tmp-ml-lg-n2
+  - ml-xl-n2 tmp-ml-xl-n2
   3:
-  - ml-3
-  - ml-sm-3
-  - ml-md-3
-  - ml-lg-3
-  - ml-xl-3
+  - ml-3 tmp-ml-3
+  - ml-sm-3 tmp-ml-sm-3
+  - ml-md-3 tmp-ml-md-3
+  - ml-lg-3 tmp-ml-lg-3
+  - ml-xl-3 tmp-ml-xl-3
   -3:
-  - ml-n3
-  - ml-sm-n3
-  - ml-md-n3
-  - ml-lg-n3
-  - ml-xl-n3
+  - ml-n3 tmp-ml-n3
+  - ml-sm-n3 tmp-ml-sm-n3
+  - ml-md-n3 tmp-ml-md-n3
+  - ml-lg-n3 tmp-ml-lg-n3
+  - ml-xl-n3 tmp-ml-xl-n3
   4:
-  - ml-4
-  - ml-sm-4
-  - ml-md-4
-  - ml-lg-4
-  - ml-xl-4
+  - ml-4 tmp-ml-4
+  - ml-sm-4 tmp-ml-sm-4
+  - ml-md-4 tmp-ml-md-4
+  - ml-lg-4 tmp-ml-lg-4
+  - ml-xl-4 tmp-ml-xl-4
   -4:
-  - ml-n4
-  - ml-sm-n4
-  - ml-md-n4
-  - ml-lg-n4
-  - ml-xl-n4
+  - ml-n4 tmp-ml-n4
+  - ml-sm-n4 tmp-ml-sm-n4
+  - ml-md-n4 tmp-ml-md-n4
+  - ml-lg-n4 tmp-ml-lg-n4
+  - ml-xl-n4 tmp-ml-xl-n4
   5:
-  - ml-5
-  - ml-sm-5
-  - ml-md-5
-  - ml-lg-5
-  - ml-xl-5
+  - ml-5 tmp-ml-5
+  - ml-sm-5 tmp-ml-sm-5
+  - ml-md-5 tmp-ml-md-5
+  - ml-lg-5 tmp-ml-lg-5
+  - ml-xl-5 tmp-ml-xl-5
   -5:
-  - ml-n5
-  - ml-sm-n5
-  - ml-md-n5
-  - ml-lg-n5
-  - ml-xl-n5
+  - ml-n5 tmp-ml-n5
+  - ml-sm-n5 tmp-ml-sm-n5
+  - ml-md-n5 tmp-ml-md-n5
+  - ml-lg-n5 tmp-ml-lg-n5
+  - ml-xl-n5 tmp-ml-xl-n5
   6:
-  - ml-6
-  - ml-sm-6
-  - ml-md-6
-  - ml-lg-6
-  - ml-xl-6
+  - ml-6 tmp-ml-6
+  - ml-sm-6 tmp-ml-sm-6
+  - ml-md-6 tmp-ml-md-6
+  - ml-lg-6 tmp-ml-lg-6
+  - ml-xl-6 tmp-ml-xl-6
   -6:
-  - ml-n6
-  - ml-sm-n6
-  - ml-md-n6
-  - ml-lg-n6
-  - ml-xl-n6
+  - ml-n6 tmp-ml-n6
+  - ml-sm-n6 tmp-ml-sm-n6
+  - ml-md-n6 tmp-ml-md-n6
+  - ml-lg-n6 tmp-ml-lg-n6
+  - ml-xl-n6 tmp-ml-xl-n6
   :auto:
-  - ml-auto
+  - ml-auto tmp-ml-auto
 :mx:
   0:
-  - mx-0
-  - mx-sm-0
-  - mx-md-0
-  - mx-lg-0
-  - mx-xl-0
+  - mx-0 tmp-mx-0
+  - mx-sm-0 tmp-mx-sm-0
+  - mx-md-0 tmp-mx-md-0
+  - mx-lg-0 tmp-mx-lg-0
+  - mx-xl-0 tmp-mx-xl-0
   1:
-  - mx-1
-  - mx-sm-1
-  - mx-md-1
-  - mx-lg-1
-  - mx-xl-1
+  - mx-1 tmp-mx-1
+  - mx-sm-1 tmp-mx-sm-1
+  - mx-md-1 tmp-mx-md-1
+  - mx-lg-1 tmp-mx-lg-1
+  - mx-xl-1 tmp-mx-xl-1
   2:
-  - mx-2
-  - mx-sm-2
-  - mx-md-2
-  - mx-lg-2
-  - mx-xl-2
+  - mx-2 tmp-mx-2
+  - mx-sm-2 tmp-mx-sm-2
+  - mx-md-2 tmp-mx-md-2
+  - mx-lg-2 tmp-mx-lg-2
+  - mx-xl-2 tmp-mx-xl-2
   3:
-  - mx-3
-  - mx-sm-3
-  - mx-md-3
-  - mx-lg-3
-  - mx-xl-3
+  - mx-3 tmp-mx-3
+  - mx-sm-3 tmp-mx-sm-3
+  - mx-md-3 tmp-mx-md-3
+  - mx-lg-3 tmp-mx-lg-3
+  - mx-xl-3 tmp-mx-xl-3
   4:
-  - mx-4
-  - mx-sm-4
-  - mx-md-4
-  - mx-lg-4
-  - mx-xl-4
+  - mx-4 tmp-mx-4
+  - mx-sm-4 tmp-mx-sm-4
+  - mx-md-4 tmp-mx-md-4
+  - mx-lg-4 tmp-mx-lg-4
+  - mx-xl-4 tmp-mx-xl-4
   5:
-  - mx-5
-  - mx-sm-5
-  - mx-md-5
-  - mx-lg-5
-  - mx-xl-5
+  - mx-5 tmp-mx-5
+  - mx-sm-5 tmp-mx-sm-5
+  - mx-md-5 tmp-mx-md-5
+  - mx-lg-5 tmp-mx-lg-5
+  - mx-xl-5 tmp-mx-xl-5
   6:
-  - mx-6
-  - mx-sm-6
-  - mx-md-6
-  - mx-lg-6
-  - mx-xl-6
+  - mx-6 tmp-mx-6
+  - mx-sm-6 tmp-mx-sm-6
+  - mx-md-6 tmp-mx-md-6
+  - mx-lg-6 tmp-mx-lg-6
+  - mx-xl-6 tmp-mx-xl-6
   :auto:
-  - mx-auto
-  - mx-sm-auto
-  - mx-md-auto
-  - mx-lg-auto
-  - mx-xl-auto
+  - mx-auto tmp-mx-auto
+  - mx-sm-auto tmp-mx-sm-auto
+  - mx-md-auto tmp-mx-md-auto
+  - mx-lg-auto tmp-mx-lg-auto
+  - mx-xl-auto tmp-mx-xl-auto
 :my:
   0:
-  - my-0
-  - my-sm-0
-  - my-md-0
-  - my-lg-0
-  - my-xl-0
+  - my-0 tmp-my-0
+  - my-sm-0 tmp-my-sm-0
+  - my-md-0 tmp-my-md-0
+  - my-lg-0 tmp-my-lg-0
+  - my-xl-0 tmp-my-xl-0
   1:
-  - my-1
-  - my-sm-1
-  - my-md-1
-  - my-lg-1
-  - my-xl-1
+  - my-1 tmp-my-1
+  - my-sm-1 tmp-my-sm-1
+  - my-md-1 tmp-my-md-1
+  - my-lg-1 tmp-my-lg-1
+  - my-xl-1 tmp-my-xl-1
   2:
-  - my-2
-  - my-sm-2
-  - my-md-2
-  - my-lg-2
-  - my-xl-2
+  - my-2 tmp-my-2
+  - my-sm-2 tmp-my-sm-2
+  - my-md-2 tmp-my-md-2
+  - my-lg-2 tmp-my-lg-2
+  - my-xl-2 tmp-my-xl-2
   3:
-  - my-3
-  - my-sm-3
-  - my-md-3
-  - my-lg-3
-  - my-xl-3
+  - my-3 tmp-my-3
+  - my-sm-3 tmp-my-sm-3
+  - my-md-3 tmp-my-md-3
+  - my-lg-3 tmp-my-lg-3
+  - my-xl-3 tmp-my-xl-3
   4:
-  - my-4
-  - my-sm-4
-  - my-md-4
-  - my-lg-4
-  - my-xl-4
+  - my-4 tmp-my-4
+  - my-sm-4 tmp-my-sm-4
+  - my-md-4 tmp-my-md-4
+  - my-lg-4 tmp-my-lg-4
+  - my-xl-4 tmp-my-xl-4
   5:
-  - my-5
-  - my-sm-5
-  - my-md-5
-  - my-lg-5
-  - my-xl-5
+  - my-5 tmp-my-5
+  - my-sm-5 tmp-my-sm-5
+  - my-md-5 tmp-my-md-5
+  - my-lg-5 tmp-my-lg-5
+  - my-xl-5 tmp-my-xl-5
   6:
-  - my-6
-  - my-sm-6
-  - my-md-6
-  - my-lg-6
-  - my-xl-6
+  - my-6 tmp-my-6
+  - my-sm-6 tmp-my-sm-6
+  - my-md-6 tmp-my-md-6
+  - my-lg-6 tmp-my-lg-6
+  - my-xl-6 tmp-my-xl-6
   7:
-  - my-7
-  - my-sm-7
-  - my-md-7
-  - my-lg-7
-  - my-xl-7
+  - my-7 tmp-my-7
+  - my-sm-7 tmp-my-sm-7
+  - my-md-7 tmp-my-md-7
+  - my-lg-7 tmp-my-lg-7
+  - my-xl-7 tmp-my-xl-7
   8:
-  - my-8
-  - my-sm-8
-  - my-md-8
-  - my-lg-8
-  - my-xl-8
+  - my-8 tmp-my-8
+  - my-sm-8 tmp-my-sm-8
+  - my-md-8 tmp-my-md-8
+  - my-lg-8 tmp-my-lg-8
+  - my-xl-8 tmp-my-xl-8
   9:
-  - my-9
-  - my-sm-9
-  - my-md-9
-  - my-lg-9
-  - my-xl-9
+  - my-9 tmp-my-9
+  - my-sm-9 tmp-my-sm-9
+  - my-md-9 tmp-my-md-9
+  - my-lg-9 tmp-my-lg-9
+  - my-xl-9 tmp-my-xl-9
   10:
-  - my-10
-  - my-sm-10
-  - my-md-10
-  - my-lg-10
-  - my-xl-10
+  - my-10 tmp-my-10
+  - my-sm-10 tmp-my-sm-10
+  - my-md-10 tmp-my-md-10
+  - my-lg-10 tmp-my-lg-10
+  - my-xl-10 tmp-my-xl-10
   11:
-  - my-11
-  - my-sm-11
-  - my-md-11
-  - my-lg-11
-  - my-xl-11
+  - my-11 tmp-my-11
+  - my-sm-11 tmp-my-sm-11
+  - my-md-11 tmp-my-md-11
+  - my-lg-11 tmp-my-lg-11
+  - my-xl-11 tmp-my-xl-11
   12:
-  - my-12
-  - my-sm-12
-  - my-md-12
-  - my-lg-12
-  - my-xl-12
+  - my-12 tmp-my-12
+  - my-sm-12 tmp-my-sm-12
+  - my-md-12 tmp-my-md-12
+  - my-lg-12 tmp-my-lg-12
+  - my-xl-12 tmp-my-xl-12
 :p:
   0:
-  - p-0
-  - p-sm-0
-  - p-md-0
-  - p-lg-0
-  - p-xl-0
+  - p-0 tmp-p-0
+  - p-sm-0 tmp-p-sm-0
+  - p-md-0 tmp-p-md-0
+  - p-lg-0 tmp-p-lg-0
+  - p-xl-0 tmp-p-xl-0
   1:
-  - p-1
-  - p-sm-1
-  - p-md-1
-  - p-lg-1
-  - p-xl-1
+  - p-1 tmp-p-1
+  - p-sm-1 tmp-p-sm-1
+  - p-md-1 tmp-p-md-1
+  - p-lg-1 tmp-p-lg-1
+  - p-xl-1 tmp-p-xl-1
   2:
-  - p-2
-  - p-sm-2
-  - p-md-2
-  - p-lg-2
-  - p-xl-2
+  - p-2 tmp-p-2
+  - p-sm-2 tmp-p-sm-2
+  - p-md-2 tmp-p-md-2
+  - p-lg-2 tmp-p-lg-2
+  - p-xl-2 tmp-p-xl-2
   3:
-  - p-3
-  - p-sm-3
-  - p-md-3
-  - p-lg-3
-  - p-xl-3
+  - p-3 tmp-p-3
+  - p-sm-3 tmp-p-sm-3
+  - p-md-3 tmp-p-md-3
+  - p-lg-3 tmp-p-lg-3
+  - p-xl-3 tmp-p-xl-3
   4:
-  - p-4
-  - p-sm-4
-  - p-md-4
-  - p-lg-4
-  - p-xl-4
+  - p-4 tmp-p-4
+  - p-sm-4 tmp-p-sm-4
+  - p-md-4 tmp-p-md-4
+  - p-lg-4 tmp-p-lg-4
+  - p-xl-4 tmp-p-xl-4
   5:
-  - p-5
-  - p-sm-5
-  - p-md-5
-  - p-lg-5
-  - p-xl-5
+  - p-5 tmp-p-5
+  - p-sm-5 tmp-p-sm-5
+  - p-md-5 tmp-p-md-5
+  - p-lg-5 tmp-p-lg-5
+  - p-xl-5 tmp-p-xl-5
   6:
-  - p-6
-  - p-sm-6
-  - p-md-6
-  - p-lg-6
-  - p-xl-6
+  - p-6 tmp-p-6
+  - p-sm-6 tmp-p-sm-6
+  - p-md-6 tmp-p-md-6
+  - p-lg-6 tmp-p-lg-6
+  - p-xl-6 tmp-p-xl-6
   :responsive:
-  - p-responsive
+  - p-responsive tmp-p-responsive
 :pt:
   0:
-  - pt-0
-  - pt-sm-0
-  - pt-md-0
-  - pt-lg-0
-  - pt-xl-0
+  - pt-0 tmp-pt-0
+  - pt-sm-0 tmp-pt-sm-0
+  - pt-md-0 tmp-pt-md-0
+  - pt-lg-0 tmp-pt-lg-0
+  - pt-xl-0 tmp-pt-xl-0
   1:
-  - pt-1
-  - pt-sm-1
-  - pt-md-1
-  - pt-lg-1
-  - pt-xl-1
+  - pt-1 tmp-pt-1
+  - pt-sm-1 tmp-pt-sm-1
+  - pt-md-1 tmp-pt-md-1
+  - pt-lg-1 tmp-pt-lg-1
+  - pt-xl-1 tmp-pt-xl-1
   2:
-  - pt-2
-  - pt-sm-2
-  - pt-md-2
-  - pt-lg-2
-  - pt-xl-2
+  - pt-2 tmp-pt-2
+  - pt-sm-2 tmp-pt-sm-2
+  - pt-md-2 tmp-pt-md-2
+  - pt-lg-2 tmp-pt-lg-2
+  - pt-xl-2 tmp-pt-xl-2
   3:
-  - pt-3
-  - pt-sm-3
-  - pt-md-3
-  - pt-lg-3
-  - pt-xl-3
+  - pt-3 tmp-pt-3
+  - pt-sm-3 tmp-pt-sm-3
+  - pt-md-3 tmp-pt-md-3
+  - pt-lg-3 tmp-pt-lg-3
+  - pt-xl-3 tmp-pt-xl-3
   4:
-  - pt-4
-  - pt-sm-4
-  - pt-md-4
-  - pt-lg-4
-  - pt-xl-4
+  - pt-4 tmp-pt-4
+  - pt-sm-4 tmp-pt-sm-4
+  - pt-md-4 tmp-pt-md-4
+  - pt-lg-4 tmp-pt-lg-4
+  - pt-xl-4 tmp-pt-xl-4
   5:
-  - pt-5
-  - pt-sm-5
-  - pt-md-5
-  - pt-lg-5
-  - pt-xl-5
+  - pt-5 tmp-pt-5
+  - pt-sm-5 tmp-pt-sm-5
+  - pt-md-5 tmp-pt-md-5
+  - pt-lg-5 tmp-pt-lg-5
+  - pt-xl-5 tmp-pt-xl-5
   6:
-  - pt-6
-  - pt-sm-6
-  - pt-md-6
-  - pt-lg-6
-  - pt-xl-6
+  - pt-6 tmp-pt-6
+  - pt-sm-6 tmp-pt-sm-6
+  - pt-md-6 tmp-pt-md-6
+  - pt-lg-6 tmp-pt-lg-6
+  - pt-xl-6 tmp-pt-xl-6
   7:
-  - pt-7
-  - pt-sm-7
-  - pt-md-7
-  - pt-lg-7
-  - pt-xl-7
+  - pt-7 tmp-pt-7
+  - pt-sm-7 tmp-pt-sm-7
+  - pt-md-7 tmp-pt-md-7
+  - pt-lg-7 tmp-pt-lg-7
+  - pt-xl-7 tmp-pt-xl-7
   8:
-  - pt-8
-  - pt-sm-8
-  - pt-md-8
-  - pt-lg-8
-  - pt-xl-8
+  - pt-8 tmp-pt-8
+  - pt-sm-8 tmp-pt-sm-8
+  - pt-md-8 tmp-pt-md-8
+  - pt-lg-8 tmp-pt-lg-8
+  - pt-xl-8 tmp-pt-xl-8
   9:
-  - pt-9
-  - pt-sm-9
-  - pt-md-9
-  - pt-lg-9
-  - pt-xl-9
+  - pt-9 tmp-pt-9
+  - pt-sm-9 tmp-pt-sm-9
+  - pt-md-9 tmp-pt-md-9
+  - pt-lg-9 tmp-pt-lg-9
+  - pt-xl-9 tmp-pt-xl-9
   10:
-  - pt-10
-  - pt-sm-10
-  - pt-md-10
-  - pt-lg-10
-  - pt-xl-10
+  - pt-10 tmp-pt-10
+  - pt-sm-10 tmp-pt-sm-10
+  - pt-md-10 tmp-pt-md-10
+  - pt-lg-10 tmp-pt-lg-10
+  - pt-xl-10 tmp-pt-xl-10
   11:
-  - pt-11
-  - pt-sm-11
-  - pt-md-11
-  - pt-lg-11
-  - pt-xl-11
+  - pt-11 tmp-pt-11
+  - pt-sm-11 tmp-pt-sm-11
+  - pt-md-11 tmp-pt-md-11
+  - pt-lg-11 tmp-pt-lg-11
+  - pt-xl-11 tmp-pt-xl-11
   12:
-  - pt-12
-  - pt-sm-12
-  - pt-md-12
-  - pt-lg-12
-  - pt-xl-12
+  - pt-12 tmp-pt-12
+  - pt-sm-12 tmp-pt-sm-12
+  - pt-md-12 tmp-pt-md-12
+  - pt-lg-12 tmp-pt-lg-12
+  - pt-xl-12 tmp-pt-xl-12
 :pr:
   0:
-  - pr-0
-  - pr-sm-0
-  - pr-md-0
-  - pr-lg-0
-  - pr-xl-0
+  - pr-0 tmp-pr-0
+  - pr-sm-0 tmp-pr-sm-0
+  - pr-md-0 tmp-pr-md-0
+  - pr-lg-0 tmp-pr-lg-0
+  - pr-xl-0 tmp-pr-xl-0
   1:
-  - pr-1
-  - pr-sm-1
-  - pr-md-1
-  - pr-lg-1
-  - pr-xl-1
+  - pr-1 tmp-pr-1
+  - pr-sm-1 tmp-pr-sm-1
+  - pr-md-1 tmp-pr-md-1
+  - pr-lg-1 tmp-pr-lg-1
+  - pr-xl-1 tmp-pr-xl-1
   2:
-  - pr-2
-  - pr-sm-2
-  - pr-md-2
-  - pr-lg-2
-  - pr-xl-2
+  - pr-2 tmp-pr-2
+  - pr-sm-2 tmp-pr-sm-2
+  - pr-md-2 tmp-pr-md-2
+  - pr-lg-2 tmp-pr-lg-2
+  - pr-xl-2 tmp-pr-xl-2
   3:
-  - pr-3
-  - pr-sm-3
-  - pr-md-3
-  - pr-lg-3
-  - pr-xl-3
+  - pr-3 tmp-pr-3
+  - pr-sm-3 tmp-pr-sm-3
+  - pr-md-3 tmp-pr-md-3
+  - pr-lg-3 tmp-pr-lg-3
+  - pr-xl-3 tmp-pr-xl-3
   4:
-  - pr-4
-  - pr-sm-4
-  - pr-md-4
-  - pr-lg-4
-  - pr-xl-4
+  - pr-4 tmp-pr-4
+  - pr-sm-4 tmp-pr-sm-4
+  - pr-md-4 tmp-pr-md-4
+  - pr-lg-4 tmp-pr-lg-4
+  - pr-xl-4 tmp-pr-xl-4
   5:
-  - pr-5
-  - pr-sm-5
-  - pr-md-5
-  - pr-lg-5
-  - pr-xl-5
+  - pr-5 tmp-pr-5
+  - pr-sm-5 tmp-pr-sm-5
+  - pr-md-5 tmp-pr-md-5
+  - pr-lg-5 tmp-pr-lg-5
+  - pr-xl-5 tmp-pr-xl-5
   6:
-  - pr-6
-  - pr-sm-6
-  - pr-md-6
-  - pr-lg-6
-  - pr-xl-6
+  - pr-6 tmp-pr-6
+  - pr-sm-6 tmp-pr-sm-6
+  - pr-md-6 tmp-pr-md-6
+  - pr-lg-6 tmp-pr-lg-6
+  - pr-xl-6 tmp-pr-xl-6
   7:
-  - pr-7
-  - pr-sm-7
-  - pr-md-7
-  - pr-lg-7
-  - pr-xl-7
+  - pr-7 tmp-pr-7
+  - pr-sm-7 tmp-pr-sm-7
+  - pr-md-7 tmp-pr-md-7
+  - pr-lg-7 tmp-pr-lg-7
+  - pr-xl-7 tmp-pr-xl-7
   8:
-  - pr-8
-  - pr-sm-8
-  - pr-md-8
-  - pr-lg-8
-  - pr-xl-8
+  - pr-8 tmp-pr-8
+  - pr-sm-8 tmp-pr-sm-8
+  - pr-md-8 tmp-pr-md-8
+  - pr-lg-8 tmp-pr-lg-8
+  - pr-xl-8 tmp-pr-xl-8
   9:
-  - pr-9
-  - pr-sm-9
-  - pr-md-9
-  - pr-lg-9
-  - pr-xl-9
+  - pr-9 tmp-pr-9
+  - pr-sm-9 tmp-pr-sm-9
+  - pr-md-9 tmp-pr-md-9
+  - pr-lg-9 tmp-pr-lg-9
+  - pr-xl-9 tmp-pr-xl-9
   10:
-  - pr-10
-  - pr-sm-10
-  - pr-md-10
-  - pr-lg-10
-  - pr-xl-10
+  - pr-10 tmp-pr-10
+  - pr-sm-10 tmp-pr-sm-10
+  - pr-md-10 tmp-pr-md-10
+  - pr-lg-10 tmp-pr-lg-10
+  - pr-xl-10 tmp-pr-xl-10
   11:
-  - pr-11
-  - pr-sm-11
-  - pr-md-11
-  - pr-lg-11
-  - pr-xl-11
+  - pr-11 tmp-pr-11
+  - pr-sm-11 tmp-pr-sm-11
+  - pr-md-11 tmp-pr-md-11
+  - pr-lg-11 tmp-pr-lg-11
+  - pr-xl-11 tmp-pr-xl-11
   12:
-  - pr-12
-  - pr-sm-12
-  - pr-md-12
-  - pr-lg-12
-  - pr-xl-12
+  - pr-12 tmp-pr-12
+  - pr-sm-12 tmp-pr-sm-12
+  - pr-md-12 tmp-pr-md-12
+  - pr-lg-12 tmp-pr-lg-12
+  - pr-xl-12 tmp-pr-xl-12
 :pb:
   0:
-  - pb-0
-  - pb-sm-0
-  - pb-md-0
-  - pb-lg-0
-  - pb-xl-0
+  - pb-0 tmp-pb-0
+  - pb-sm-0 tmp-pb-sm-0
+  - pb-md-0 tmp-pb-md-0
+  - pb-lg-0 tmp-pb-lg-0
+  - pb-xl-0 tmp-pb-xl-0
   1:
-  - pb-1
-  - pb-sm-1
-  - pb-md-1
-  - pb-lg-1
-  - pb-xl-1
+  - pb-1 tmp-pb-1
+  - pb-sm-1 tmp-pb-sm-1
+  - pb-md-1 tmp-pb-md-1
+  - pb-lg-1 tmp-pb-lg-1
+  - pb-xl-1 tmp-pb-xl-1
   2:
-  - pb-2
-  - pb-sm-2
-  - pb-md-2
-  - pb-lg-2
-  - pb-xl-2
+  - pb-2 tmp-pb-2
+  - pb-sm-2 tmp-pb-sm-2
+  - pb-md-2 tmp-pb-md-2
+  - pb-lg-2 tmp-pb-lg-2
+  - pb-xl-2 tmp-pb-xl-2
   3:
-  - pb-3
-  - pb-sm-3
-  - pb-md-3
-  - pb-lg-3
-  - pb-xl-3
+  - pb-3 tmp-pb-3
+  - pb-sm-3 tmp-pb-sm-3
+  - pb-md-3 tmp-pb-md-3
+  - pb-lg-3 tmp-pb-lg-3
+  - pb-xl-3 tmp-pb-xl-3
   4:
-  - pb-4
-  - pb-sm-4
-  - pb-md-4
-  - pb-lg-4
-  - pb-xl-4
+  - pb-4 tmp-pb-4
+  - pb-sm-4 tmp-pb-sm-4
+  - pb-md-4 tmp-pb-md-4
+  - pb-lg-4 tmp-pb-lg-4
+  - pb-xl-4 tmp-pb-xl-4
   5:
-  - pb-5
-  - pb-sm-5
-  - pb-md-5
-  - pb-lg-5
-  - pb-xl-5
+  - pb-5 tmp-pb-5
+  - pb-sm-5 tmp-pb-sm-5
+  - pb-md-5 tmp-pb-md-5
+  - pb-lg-5 tmp-pb-lg-5
+  - pb-xl-5 tmp-pb-xl-5
   6:
-  - pb-6
-  - pb-sm-6
-  - pb-md-6
-  - pb-lg-6
-  - pb-xl-6
+  - pb-6 tmp-pb-6
+  - pb-sm-6 tmp-pb-sm-6
+  - pb-md-6 tmp-pb-md-6
+  - pb-lg-6 tmp-pb-lg-6
+  - pb-xl-6 tmp-pb-xl-6
   7:
-  - pb-7
-  - pb-sm-7
-  - pb-md-7
-  - pb-lg-7
-  - pb-xl-7
+  - pb-7 tmp-pb-7
+  - pb-sm-7 tmp-pb-sm-7
+  - pb-md-7 tmp-pb-md-7
+  - pb-lg-7 tmp-pb-lg-7
+  - pb-xl-7 tmp-pb-xl-7
   8:
-  - pb-8
-  - pb-sm-8
-  - pb-md-8
-  - pb-lg-8
-  - pb-xl-8
+  - pb-8 tmp-pb-8
+  - pb-sm-8 tmp-pb-sm-8
+  - pb-md-8 tmp-pb-md-8
+  - pb-lg-8 tmp-pb-lg-8
+  - pb-xl-8 tmp-pb-xl-8
   9:
-  - pb-9
-  - pb-sm-9
-  - pb-md-9
-  - pb-lg-9
-  - pb-xl-9
+  - pb-9 tmp-pb-9
+  - pb-sm-9 tmp-pb-sm-9
+  - pb-md-9 tmp-pb-md-9
+  - pb-lg-9 tmp-pb-lg-9
+  - pb-xl-9 tmp-pb-xl-9
   10:
-  - pb-10
-  - pb-sm-10
-  - pb-md-10
-  - pb-lg-10
-  - pb-xl-10
+  - pb-10 tmp-pb-10
+  - pb-sm-10 tmp-pb-sm-10
+  - pb-md-10 tmp-pb-md-10
+  - pb-lg-10 tmp-pb-lg-10
+  - pb-xl-10 tmp-pb-xl-10
   11:
-  - pb-11
-  - pb-sm-11
-  - pb-md-11
-  - pb-lg-11
-  - pb-xl-11
+  - pb-11 tmp-pb-11
+  - pb-sm-11 tmp-pb-sm-11
+  - pb-md-11 tmp-pb-md-11
+  - pb-lg-11 tmp-pb-lg-11
+  - pb-xl-11 tmp-pb-xl-11
   12:
-  - pb-12
-  - pb-sm-12
-  - pb-md-12
-  - pb-lg-12
-  - pb-xl-12
+  - pb-12 tmp-pb-12
+  - pb-sm-12 tmp-pb-sm-12
+  - pb-md-12 tmp-pb-md-12
+  - pb-lg-12 tmp-pb-lg-12
+  - pb-xl-12 tmp-pb-xl-12
 :pl:
   0:
-  - pl-0
-  - pl-sm-0
-  - pl-md-0
-  - pl-lg-0
-  - pl-xl-0
+  - pl-0 tmp-pl-0
+  - pl-sm-0 tmp-pl-sm-0
+  - pl-md-0 tmp-pl-md-0
+  - pl-lg-0 tmp-pl-lg-0
+  - pl-xl-0 tmp-pl-xl-0
   1:
-  - pl-1
-  - pl-sm-1
-  - pl-md-1
-  - pl-lg-1
-  - pl-xl-1
+  - pl-1 tmp-pl-1
+  - pl-sm-1 tmp-pl-sm-1
+  - pl-md-1 tmp-pl-md-1
+  - pl-lg-1 tmp-pl-lg-1
+  - pl-xl-1 tmp-pl-xl-1
   2:
-  - pl-2
-  - pl-sm-2
-  - pl-md-2
-  - pl-lg-2
-  - pl-xl-2
+  - pl-2 tmp-pl-2
+  - pl-sm-2 tmp-pl-sm-2
+  - pl-md-2 tmp-pl-md-2
+  - pl-lg-2 tmp-pl-lg-2
+  - pl-xl-2 tmp-pl-xl-2
   3:
-  - pl-3
-  - pl-sm-3
-  - pl-md-3
-  - pl-lg-3
-  - pl-xl-3
+  - pl-3 tmp-pl-3
+  - pl-sm-3 tmp-pl-sm-3
+  - pl-md-3 tmp-pl-md-3
+  - pl-lg-3 tmp-pl-lg-3
+  - pl-xl-3 tmp-pl-xl-3
   4:
-  - pl-4
-  - pl-sm-4
-  - pl-md-4
-  - pl-lg-4
-  - pl-xl-4
+  - pl-4 tmp-pl-4
+  - pl-sm-4 tmp-pl-sm-4
+  - pl-md-4 tmp-pl-md-4
+  - pl-lg-4 tmp-pl-lg-4
+  - pl-xl-4 tmp-pl-xl-4
   5:
-  - pl-5
-  - pl-sm-5
-  - pl-md-5
-  - pl-lg-5
-  - pl-xl-5
+  - pl-5 tmp-pl-5
+  - pl-sm-5 tmp-pl-sm-5
+  - pl-md-5 tmp-pl-md-5
+  - pl-lg-5 tmp-pl-lg-5
+  - pl-xl-5 tmp-pl-xl-5
   6:
-  - pl-6
-  - pl-sm-6
-  - pl-md-6
-  - pl-lg-6
-  - pl-xl-6
+  - pl-6 tmp-pl-6
+  - pl-sm-6 tmp-pl-sm-6
+  - pl-md-6 tmp-pl-md-6
+  - pl-lg-6 tmp-pl-lg-6
+  - pl-xl-6 tmp-pl-xl-6
   7:
-  - pl-7
-  - pl-sm-7
-  - pl-md-7
-  - pl-lg-7
-  - pl-xl-7
+  - pl-7 tmp-pl-7
+  - pl-sm-7 tmp-pl-sm-7
+  - pl-md-7 tmp-pl-md-7
+  - pl-lg-7 tmp-pl-lg-7
+  - pl-xl-7 tmp-pl-xl-7
   8:
-  - pl-8
-  - pl-sm-8
-  - pl-md-8
-  - pl-lg-8
-  - pl-xl-8
+  - pl-8 tmp-pl-8
+  - pl-sm-8 tmp-pl-sm-8
+  - pl-md-8 tmp-pl-md-8
+  - pl-lg-8 tmp-pl-lg-8
+  - pl-xl-8 tmp-pl-xl-8
   9:
-  - pl-9
-  - pl-sm-9
-  - pl-md-9
-  - pl-lg-9
-  - pl-xl-9
+  - pl-9 tmp-pl-9
+  - pl-sm-9 tmp-pl-sm-9
+  - pl-md-9 tmp-pl-md-9
+  - pl-lg-9 tmp-pl-lg-9
+  - pl-xl-9 tmp-pl-xl-9
   10:
-  - pl-10
-  - pl-sm-10
-  - pl-md-10
-  - pl-lg-10
-  - pl-xl-10
+  - pl-10 tmp-pl-10
+  - pl-sm-10 tmp-pl-sm-10
+  - pl-md-10 tmp-pl-md-10
+  - pl-lg-10 tmp-pl-lg-10
+  - pl-xl-10 tmp-pl-xl-10
   11:
-  - pl-11
-  - pl-sm-11
-  - pl-md-11
-  - pl-lg-11
-  - pl-xl-11
+  - pl-11 tmp-pl-11
+  - pl-sm-11 tmp-pl-sm-11
+  - pl-md-11 tmp-pl-md-11
+  - pl-lg-11 tmp-pl-lg-11
+  - pl-xl-11 tmp-pl-xl-11
   12:
-  - pl-12
-  - pl-sm-12
-  - pl-md-12
-  - pl-lg-12
-  - pl-xl-12
+  - pl-12 tmp-pl-12
+  - pl-sm-12 tmp-pl-sm-12
+  - pl-md-12 tmp-pl-md-12
+  - pl-lg-12 tmp-pl-lg-12
+  - pl-xl-12 tmp-pl-xl-12
 :px:
   0:
-  - px-0
-  - px-sm-0
-  - px-md-0
-  - px-lg-0
-  - px-xl-0
+  - px-0 tmp-px-0
+  - px-sm-0 tmp-px-sm-0
+  - px-md-0 tmp-px-md-0
+  - px-lg-0 tmp-px-lg-0
+  - px-xl-0 tmp-px-xl-0
   1:
-  - px-1
-  - px-sm-1
-  - px-md-1
-  - px-lg-1
-  - px-xl-1
+  - px-1 tmp-px-1
+  - px-sm-1 tmp-px-sm-1
+  - px-md-1 tmp-px-md-1
+  - px-lg-1 tmp-px-lg-1
+  - px-xl-1 tmp-px-xl-1
   2:
-  - px-2
-  - px-sm-2
-  - px-md-2
-  - px-lg-2
-  - px-xl-2
+  - px-2 tmp-px-2
+  - px-sm-2 tmp-px-sm-2
+  - px-md-2 tmp-px-md-2
+  - px-lg-2 tmp-px-lg-2
+  - px-xl-2 tmp-px-xl-2
   3:
-  - px-3
-  - px-sm-3
-  - px-md-3
-  - px-lg-3
-  - px-xl-3
+  - px-3 tmp-px-3
+  - px-sm-3 tmp-px-sm-3
+  - px-md-3 tmp-px-md-3
+  - px-lg-3 tmp-px-lg-3
+  - px-xl-3 tmp-px-xl-3
   4:
-  - px-4
-  - px-sm-4
-  - px-md-4
-  - px-lg-4
-  - px-xl-4
+  - px-4 tmp-px-4
+  - px-sm-4 tmp-px-sm-4
+  - px-md-4 tmp-px-md-4
+  - px-lg-4 tmp-px-lg-4
+  - px-xl-4 tmp-px-xl-4
   5:
-  - px-5
-  - px-sm-5
-  - px-md-5
-  - px-lg-5
-  - px-xl-5
+  - px-5 tmp-px-5
+  - px-sm-5 tmp-px-sm-5
+  - px-md-5 tmp-px-md-5
+  - px-lg-5 tmp-px-lg-5
+  - px-xl-5 tmp-px-xl-5
   6:
-  - px-6
-  - px-sm-6
-  - px-md-6
-  - px-lg-6
-  - px-xl-6
+  - px-6 tmp-px-6
+  - px-sm-6 tmp-px-sm-6
+  - px-md-6 tmp-px-md-6
+  - px-lg-6 tmp-px-lg-6
+  - px-xl-6 tmp-px-xl-6
 :py:
   0:
-  - py-0
-  - py-sm-0
-  - py-md-0
-  - py-lg-0
-  - py-xl-0
+  - py-0 tmp-py-0
+  - py-sm-0 tmp-py-sm-0
+  - py-md-0 tmp-py-md-0
+  - py-lg-0 tmp-py-lg-0
+  - py-xl-0 tmp-py-xl-0
   1:
-  - py-1
-  - py-sm-1
-  - py-md-1
-  - py-lg-1
-  - py-xl-1
+  - py-1 tmp-py-1
+  - py-sm-1 tmp-py-sm-1
+  - py-md-1 tmp-py-md-1
+  - py-lg-1 tmp-py-lg-1
+  - py-xl-1 tmp-py-xl-1
   2:
-  - py-2
-  - py-sm-2
-  - py-md-2
-  - py-lg-2
-  - py-xl-2
+  - py-2 tmp-py-2
+  - py-sm-2 tmp-py-sm-2
+  - py-md-2 tmp-py-md-2
+  - py-lg-2 tmp-py-lg-2
+  - py-xl-2 tmp-py-xl-2
   3:
-  - py-3
-  - py-sm-3
-  - py-md-3
-  - py-lg-3
-  - py-xl-3
+  - py-3 tmp-py-3
+  - py-sm-3 tmp-py-sm-3
+  - py-md-3 tmp-py-md-3
+  - py-lg-3 tmp-py-lg-3
+  - py-xl-3 tmp-py-xl-3
   4:
-  - py-4
-  - py-sm-4
-  - py-md-4
-  - py-lg-4
-  - py-xl-4
+  - py-4 tmp-py-4
+  - py-sm-4 tmp-py-sm-4
+  - py-md-4 tmp-py-md-4
+  - py-lg-4 tmp-py-lg-4
+  - py-xl-4 tmp-py-xl-4
   5:
-  - py-5
-  - py-sm-5
-  - py-md-5
-  - py-lg-5
-  - py-xl-5
+  - py-5 tmp-py-5
+  - py-sm-5 tmp-py-sm-5
+  - py-md-5 tmp-py-md-5
+  - py-lg-5 tmp-py-lg-5
+  - py-xl-5 tmp-py-xl-5
   6:
-  - py-6
-  - py-sm-6
-  - py-md-6
-  - py-lg-6
-  - py-xl-6
+  - py-6 tmp-py-6
+  - py-sm-6 tmp-py-sm-6
+  - py-md-6 tmp-py-md-6
+  - py-lg-6 tmp-py-lg-6
+  - py-xl-6 tmp-py-xl-6
   7:
-  - py-7
-  - py-sm-7
-  - py-md-7
-  - py-lg-7
-  - py-xl-7
+  - py-7 tmp-py-7
+  - py-sm-7 tmp-py-sm-7
+  - py-md-7 tmp-py-md-7
+  - py-lg-7 tmp-py-lg-7
+  - py-xl-7 tmp-py-xl-7
   8:
-  - py-8
-  - py-sm-8
-  - py-md-8
-  - py-lg-8
-  - py-xl-8
+  - py-8 tmp-py-8
+  - py-sm-8 tmp-py-sm-8
+  - py-md-8 tmp-py-md-8
+  - py-lg-8 tmp-py-lg-8
+  - py-xl-8 tmp-py-xl-8
   9:
-  - py-9
-  - py-sm-9
-  - py-md-9
-  - py-lg-9
-  - py-xl-9
+  - py-9 tmp-py-9
+  - py-sm-9 tmp-py-sm-9
+  - py-md-9 tmp-py-md-9
+  - py-lg-9 tmp-py-lg-9
+  - py-xl-9 tmp-py-xl-9
   10:
-  - py-10
-  - py-sm-10
-  - py-md-10
-  - py-lg-10
-  - py-xl-10
+  - py-10 tmp-py-10
+  - py-sm-10 tmp-py-sm-10
+  - py-md-10 tmp-py-md-10
+  - py-lg-10 tmp-py-lg-10
+  - py-xl-10 tmp-py-xl-10
   11:
-  - py-11
-  - py-sm-11
-  - py-md-11
-  - py-lg-11
-  - py-xl-11
+  - py-11 tmp-py-11
+  - py-sm-11 tmp-py-sm-11
+  - py-md-11 tmp-py-md-11
+  - py-lg-11 tmp-py-lg-11
+  - py-xl-11 tmp-py-xl-11
   12:
-  - py-12
-  - py-sm-12
-  - py-md-12
-  - py-lg-12
-  - py-xl-12
+  - py-12 tmp-py-12
+  - py-sm-12 tmp-py-sm-12
+  - py-md-12 tmp-py-md-12
+  - py-lg-12 tmp-py-lg-12
+  - py-xl-12 tmp-py-xl-12
 :word_break:
   :break_word:
   - wb-break-word
