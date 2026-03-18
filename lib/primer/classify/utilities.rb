@@ -179,7 +179,9 @@ module Primer
           # Note: classnames may contain space-separated values (e.g., "mr-0 tmp-mr-0")
           value_hash.each do |key_argument, classnames|
             classnames.each_with_index do |classes_str, idx|
-              next unless classes_str&.split&.include?(selector)
+              next if classes_str.nil?
+              # Check if selector matches (handles both single class and space-separated)
+              next unless classes_str == selector || classes_str.start_with?("#{selector} ") || classes_str.include?(" #{selector}")
 
               # Return [:mr, 0, 1]
               # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
