@@ -12,9 +12,7 @@ class BenchUtilities < Minitest::Benchmark
     # warm up
     Primer::Classify::Utilities.supported_selector?("m-1")
 
-    # Allocations increased due to find_selector iterating through space-separated class strings
-    # for tmp- namespaced margin/padding utilities
-    assert_allocations "3.0" => 15, "3.1" => 15, "3.2" => 15, "3.3" => 15, "3.4" => 15, "4.0" => 15 do
+    assert_allocations "3.0" => 4, "3.1" => 4, "3.2" => 4, "3.3" => 4, "3.4" => 4, "4.0" => 4 do
       Primer::Classify::Utilities.supported_selector?("m-1")
     end
   end
@@ -23,9 +21,7 @@ class BenchUtilities < Minitest::Benchmark
     # warm up
     Primer::Classify::Utilities.supported_selector?("foo")
 
-    # Allocations increased due to find_selector iterating through space-separated class strings
-    # for tmp- namespaced margin/padding utilities
-    assert_allocations "3.0" => 18, "3.1" => 18, "3.2" => 18, "3.3" => 18, "3.4" => 18, "4.0" => 18 do
+    assert_allocations "3.0" => 0, "3.1" => 0, "3.2" => 0, "3.3" => 0, "3.4" => 0, "4.0" => 0 do
       Primer::Classify::Utilities.supported_selector?("foo")
     end
   end

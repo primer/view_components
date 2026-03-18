@@ -24,6 +24,10 @@ module Primer
 
     LOOKUP = Primer::Classify::Utilities::UTILITIES
 
+    # Pattern matching margin and padding utility classes (e.g., m-4, px-2, mt-n3)
+    # Captures the full class name including responsive breakpoints
+    SPACING_CLASS_PATTERN = /\b((m|p)[trblxy]?-(?:sm-|md-|lg-|xl-)?(?:n?\d+|auto|responsive))\b/
+
     class << self
       # Utility for mapping component configuration into Primer CSS class names.
       #
@@ -88,6 +92,10 @@ module Primer
             end
           end
         end.join(" ")
+
+        # Add tmp- prefixed duplicates for spacing (margin/padding) utilities
+        # Uses gsub with backreference to avoid split/join allocations
+        classes = classes.gsub(SPACING_CLASS_PATTERN, '\1 tmp-\1') unless classes.empty?
 
         # This is much faster than Rails' presence method.
         {

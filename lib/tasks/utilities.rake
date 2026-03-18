@@ -91,12 +91,7 @@ namespace :utilities do
         output[key][classname] = Array.new(5, nil)
       end
 
-      # Add tmp- prefixed class for margin and padding utilities
-      if selector.match?(/^(m|p)[trblxy]?(-|$)/)
-        output[key][classname][BREAKPOINTS.index(breakpoint)] = "#{selector} tmp-#{selector}"
-      else
-        output[key][classname][BREAKPOINTS.index(breakpoint)] = selector
-      end
+      output[key][classname][BREAKPOINTS.index(breakpoint)] = selector
     end
 
     output.transform_values! do |x|
