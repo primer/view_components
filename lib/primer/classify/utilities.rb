@@ -176,13 +176,15 @@ module Primer
 
           # Each value hash will also contain an array of classnames for breakpoints
           # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
+          # Note: classnames may contain space-separated values (e.g., "mr-0 tmp-mr-0")
           value_hash.each do |key_argument, classnames|
-            # Skip each value hash until we get one with the selector
-            next unless classnames.include?(selector)
+            classnames.each_with_index do |classes_str, idx|
+              next unless classes_str&.split&.include?(selector)
 
-            # Return [:mr, 0, 1]
-            # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
-            return [key, key_argument, classnames.index(selector)]
+              # Return [:mr, 0, 1]
+              # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
+              return [key, key_argument, idx]
+            end
           end
 
           nil

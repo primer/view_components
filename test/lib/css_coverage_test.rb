@@ -7,6 +7,8 @@ class CssCoverageTest < Minitest::Test
     @classes_from_utilities =
       Primer::Classify::Utilities::UTILITIES
       .flat_map { |_, values| values.flat_map { |_, v| v } }
+      .flat_map { |k| k&.split || [] } # Handle space-separated class lists
+      .reject { |k| k.start_with?("tmp-") } # Exclude namespaced tmp- classes
       .map { |k| ".#{k}" }
       .uniq
 

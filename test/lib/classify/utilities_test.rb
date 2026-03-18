@@ -39,7 +39,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
 
   def test_classname_returns_key_value_when_incorrect_value_and_validation_disabled
     with_validate_class_names(false) do
-      assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
+      assert_equal "mr-1 tmp-mr-1", Primer::Classify::Utilities.classname(:mr, 1)
       assert_equal "mr-foo", Primer::Classify::Utilities.classname(:mr, :foo)
       assert_equal "color-yellow-0", Primer::Classify::Utilities.classname(:color, :yellow_0)
     end
