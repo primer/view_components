@@ -119,4 +119,4 @@ jobs:
     - uses: actions/checkout@v6
     - name: Lint with Herb
       run: |
-        npx @herb-tools/linter
+        npx @herb-tools/linter@0.8.10
