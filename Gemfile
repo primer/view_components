@@ -5,7 +5,17 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
-gem "minitest", "~> 6.0"
+# Rails main and 8.1.2 onward support Minitest 6.
+# Rails 8.0.x lacks support for Minitest 6 in released versions.
+# TODO: Remove conditional once a Rails 8.0.x release with Minitest 6 support is cut.
+# See: https://github.com/rails/rails/commit/ec62932ee7d31e0ef870e61c2d7de2c3efe3faa6
+if rails_version.start_with?("8.0.") || rails_version == "latest"
+  # Rails 8.0.x lacks Minitest 6 compatibility in released versions.
+  gem "minitest", "< 6"
+else
+  gem "minitest", "~> 6.0"
+  gem "minitest-mock", "~> 5.27"
+end
 gem "rack-cors"
 gem "rake", "~> 13.3"
 
