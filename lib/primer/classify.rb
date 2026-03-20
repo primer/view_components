@@ -24,9 +24,8 @@ module Primer
 
     LOOKUP = Primer::Classify::Utilities::UTILITIES
 
-    # Pattern matching margin and padding utility classes (e.g., m-4, px-2, mt-n3)
-    # Captures the full class name including responsive breakpoints
-    SPACING_CLASS_PATTERN = /\b((m|p)[trblxy]?-(?:sm-|md-|lg-|xl-)?(?:n?\d+|auto|responsive))\b/
+    # Keys that should have tmp- prefixed duplicates for CSS namespace migration
+    SPACING_KEYS = Set.new(%i[m mt mb ml mr mx my p pt pb pl pr px py]).freeze
 
     class << self
       # Utility for mapping component configuration into Primer CSS class names.
@@ -79,7 +78,10 @@ module Primer
                 # in the lookup table.
                 found = (LOOKUP[key][item][brk] rescue nil) || validate(key, item, brk)
                 # rubocop:enable Style/RescueModifier
-                result << found if found
+                if found
+                  result << found
+                  result << "tmp-#{found}" if SPACING_KEYS.include?(key)
+                end
                 brk += 1
               end
             else
@@ -88,14 +90,13 @@ module Primer
               # rubocop:disable Style/RescueModifier
               found = (LOOKUP[key][val][0] rescue nil) || validate(key, val, 0)
               # rubocop:enable Style/RescueModifier
-              result << found if found
+              if found
+                result << found
+                result << "tmp-#{found}" if SPACING_KEYS.include?(key)
+              end
             end
           end
         end.join(" ")
-
-        # Add tmp- prefixed duplicates for spacing (margin/padding) utilities
-        # Uses gsub with backreference to avoid split/join allocations
-        classes = classes.gsub(SPACING_CLASS_PATTERN, '\1 tmp-\1') unless classes.empty?
 
         # This is much faster than Rails' presence method.
         {

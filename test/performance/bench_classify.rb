@@ -40,8 +40,8 @@ class BenchClassify < Minitest::Benchmark
   end
 
   def bench_allocations
-    # Allocations increased due to gsub for tmp- prefixed spacing utilities
-    assert_allocations "4.0" => 17, "3.4" => 17, "3.3" => 17, "3.2" => 16, "3.1" => 16, "3.0" => 16, "2.7" => 14 do
+    # +3 allocations from tmp- prefixed spacing utilities (inline string interpolation)
+    assert_allocations "4.0" => 10, "3.4" => 10, "3.3" => 10, "3.2" => 9, "3.1" => 9, "3.0" => 9, "2.7" => 7 do
       Primer::Classify.call(**@values)
     end
   end
