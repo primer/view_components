@@ -40,8 +40,8 @@ class BenchClassify < Minitest::Benchmark
   end
 
   def bench_allocations
-    # +3 allocations from tmp- prefixed spacing utilities (inline string interpolation)
-    assert_allocations "4.0" => 10, "3.4" => 10, "3.3" => 10, "3.2" => 9, "3.1" => 9, "3.0" => 9, "2.7" => 7 do
+    # +1 allocation from tmp- prefixed spacing utilities (pre-computed cache lookup)
+    assert_allocations "4.0" => 8, "3.4" => 8, "3.3" => 8, "3.2" => 7, "3.1" => 7, "3.0" => 7, "2.7" => 5 do
       Primer::Classify.call(**@values)
     end
   end
