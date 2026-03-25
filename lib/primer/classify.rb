@@ -24,6 +24,20 @@ module Primer
 
     LOOKUP = Primer::Classify::Utilities::UTILITIES
 
+    # Keys that should have tmp- prefixed duplicates for CSS namespace migration
+    SPACING_KEYS = Set.new(%i[m mt mb ml mr mx my p pt pb pl pr px py]).freeze
+
+    # Pre-computed tmp- prefixed strings to avoid runtime allocation
+    TMP_PREFIX_CACHE = SPACING_KEYS.each_with_object({}) do |key, cache|
+      next unless LOOKUP[key]
+
+      LOOKUP[key].each_value do |classnames|
+        classnames.each do |cls|
+          cache[cls] = -"tmp-#{cls}" if cls
+        end
+      end
+    end.freeze
+
     class << self
       # Utility for mapping component configuration into Primer CSS class names.
       #
@@ -75,7 +89,10 @@ module Primer
                 # in the lookup table.
                 found = (LOOKUP[key][item][brk] rescue nil) || validate(key, item, brk)
                 # rubocop:enable Style/RescueModifier
-                result << found if found
+                if found
+                  result << found
+                  result << TMP_PREFIX_CACHE[found] if TMP_PREFIX_CACHE.key?(found)
+                end
                 brk += 1
               end
             else
@@ -84,7 +101,10 @@ module Primer
               # rubocop:disable Style/RescueModifier
               found = (LOOKUP[key][val][0] rescue nil) || validate(key, val, 0)
               # rubocop:enable Style/RescueModifier
-              result << found if found
+              if found
+                result << found
+                result << TMP_PREFIX_CACHE[found] if TMP_PREFIX_CACHE.key?(found)
+              end
             end
           end
         end.join(" ")
