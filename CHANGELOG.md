@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.51.3
+
+### Patch Changes
+
+- [#3997](https://github.com/primer/view_components/pull/3997) [`35c30b2`](https://github.com/primer/view_components/commit/35c30b22abc7dd3989b3034eab4cff788ee2f179) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Add `tmp-` prefixed duplicate classes for margin and padding utilities. System arguments like `mb: 3` now output both `mb-3` and `tmp-mb-3` classes to support CSS namespace migration.
+
 ## 0.51.2
 
 ### Patch Changes
