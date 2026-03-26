@@ -13,10 +13,7 @@ module Primer
       end
     end
 
-    # Allow a tolerance factor to account for CI noise and Rails.stub overhead.
-    # A tolerance of 0.9 means `faster` can be up to 10% slower in absolute
-    # terms and still pass, which prevents flaky failures on noisy CI runners.
-    def assert_more_ips(faster, slower, msg = nil, tolerance: 0.9)
+    def assert_more_ips(faster, slower, msg = nil, tolerance: 1.0)
       assert faster.data.first[:ips] > slower.data.first[:ips] * tolerance, msg
     end
 
