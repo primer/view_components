@@ -248,11 +248,9 @@ class PrimerComponentTest < Minitest::Test
     with_raise_on_invalid_aria(true) do
       assert_raises(ArgumentError) { Primer::DenyComponent.new(aria: { label: "foo" }) }
 
-      # rubocop:disable Rails/Inquiry
       Rails.stub(:env, "production".inquiry) do
         Primer::DenyComponent.new(aria: { label: "foo" })
       end
-      # rubocop:enable Rails/Inquiry
     end
   end
 end
