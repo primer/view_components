@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.51.4
+
+### Patch Changes
+
+- [`2771507`](https://github.com/primer/view_components/commit/277150769ac9390d09ee111df7bd5f30b4bce3b2) Thanks [@jonrohan](https://github.com/jonrohan)! - Replace deprecated --control-medium-lineBoxHeight with --base-size-20
+
 ## 0.51.3
 
 ### Patch Changes
