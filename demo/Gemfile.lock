@@ -74,7 +74,7 @@ GEM
     dry-cli (1.4.1)
     dry-inflector (0.3.0)
     ejson (1.5.3)
-    erb (6.0.2)
+    erb (6.0.4)
     erubi (1.13.1)
     faraday (1.10.5)
       faraday-em_http (~> 1.0)
