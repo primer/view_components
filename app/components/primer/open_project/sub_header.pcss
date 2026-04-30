@@ -8,10 +8,6 @@
     margin-bottom: var(--base-size-16);
 }
 
-.SubHeader--expandedSearch {
-    grid-template-areas: "left left left" "bottom bottom bottom";
-}
-
 .SubHeader-rightPane {
     grid-area: right;
     display: flex;
@@ -58,6 +54,14 @@
     .SubHeader {
         grid-template-areas: "left right" "middle middle" "bottom bottom";
         grid-template-columns: 1fr auto;
+    }
+
+    .SubHeader--expandedSearch {
+        grid-template-areas: "left left" "middle middle" "bottom bottom";
+    }
+
+    .SubHeader--expandedSearch .SubHeader-hiddenOnExpand {
+        display: none !important;
     }
 
     .SubHeader--emptyLeftPane {

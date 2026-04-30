@@ -2,12 +2,10 @@
   <div class="SubHeader-leftPane">
     <%= render @filter_container do %>
       <%= filter_input %>
-      <%= render @mobile_filter_cancel do
-        I18n.t("button_cancel")
-      end if @mobile_filter_cancel.present? %>
+      <%= render @collapsed_filter_cancel if @collapsed_filter_cancel.present? %>
     <% end if filter_input.present? %>
 
-    <%= render @mobile_filter_trigger if @mobile_filter_trigger.present? %>
+    <%= render @collapsed_filter_trigger if @collapsed_filter_trigger.present? %>
 
     <%= render(@mobile_filter_button) if @mobile_filter_button.present? %>
 
@@ -22,11 +20,11 @@
     <% end %>
   </div>
 
-  <div class="SubHeader-middlePane" data-targets="<%= HIDDEN_FILTER_TARGET_SELECTOR %>">
+  <div class="SubHeader-middlePane SubHeader-hiddenOnExpand">
     <%= text %>
   </div>
 
-  <div class="SubHeader-rightPane" data-targets="<%= HIDDEN_FILTER_TARGET_SELECTOR %>">
+  <div class="SubHeader-rightPane SubHeader-hiddenOnExpand">
     <% actions.each do |action| %>
       <%= action %>
     <% end %>
