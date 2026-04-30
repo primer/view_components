@@ -170,6 +170,18 @@ module Primer
         }
       }
 
+      # Quick filters shown in the left pane next to the search bar (0–5 items).
+      # Hidden on mobile. Requires all_filters_button to be set when used.
+      # Supports ActionMenus, Buttons, IconButtons, SelectPanels, and SegmentedControls inside the block.
+      renders_many :quick_filters, lambda { |**kwargs|
+        deny_tag_argument(**kwargs)
+        kwargs[:tag] = :div
+        kwargs[:mr] ||= 2
+        kwargs[:display] = DESKTOP_ACTIONS_DISPLAY
+
+        Primer::BaseComponent.new(**kwargs)
+      }
+
       renders_one :segmented_control, lambda { |**system_arguments, &block|
           deny_tag_argument(**system_arguments)
           system_arguments[:mr] ||= 2
@@ -187,6 +199,7 @@ module Primer
 
       renders_one :text, lambda { |**system_arguments|
         system_arguments[:font_weight] ||= :bold
+        system_arguments[:mx] ||= 2
 
         Primer::Beta::Text.new(**system_arguments)
       }
@@ -199,7 +212,6 @@ module Primer
 
         Primer::BaseComponent.new(**system_arguments)
       }
-
 
       # @param collapsed_search [Boolean] When true, the search bar starts collapsed as an icon button on all screen sizes. Clicking expands it.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -223,9 +235,17 @@ module Primer
       end
 
       def before_render
+        if quick_filters.any? && filter_button.nil?
+          raise ArgumentError, "You must provide a filter_button when using quick_filters."
+        end
+
+        if quick_filters.size > 5
+          raise ArgumentError, "SubHeader supports a maximum of 5 quick_filters, got #{quick_filters.size}."
+        end
+
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "SubHeader--emptyLeftPane" => !segmented_control? && !filter_button && !filter_input
+          "SubHeader--emptyLeftPane" => !segmented_control? && !filter_button && !filter_input && quick_filters.empty?
         )
       end
 

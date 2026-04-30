@@ -115,6 +115,11 @@ module Primer
         end
       end
 
+      # @label With QuickFilters
+      def quick_filters
+        render_with_template(locals: {})
+      end
+
       # @label With a custom area below
       def bottom_pane
         render_with_template(locals: {})
