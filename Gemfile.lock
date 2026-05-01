@@ -152,10 +152,10 @@ GEM
     msgpack (1.8.0)
     mutex_m (0.3.0)
     nio4r (2.7.5)
-    nokogiri (1.19.2)
+    nokogiri (1.19.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-gnu)
+    nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
     octicons (19.23.1)
     parallel (1.28.0)
@@ -289,7 +289,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (4.6.0)
+    view_component (4.8.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -358,7 +358,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.6.0)
+  view_component (= 4.8.0)
   vite_rails (~> 3.0)
   webmock
   yard (~> 0.9.42)
