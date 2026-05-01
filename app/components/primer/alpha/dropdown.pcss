@@ -164,7 +164,7 @@
 
   &::after {
     /* stylelint-disable-next-line primer/spacing */
-    top: 11px;
+    top: calc(var(--base-size-12) - var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/spacing */
     right: -14px;
     left: auto;
@@ -192,7 +192,7 @@
 
   &::after {
     /* stylelint-disable-next-line primer/spacing */
-    top: 11px;
+    top: calc(var(--base-size-12) - var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/spacing */
     left: -14px;
     border-color: transparent;
@@ -230,7 +230,7 @@
     /* stylelint-disable-next-line primer/spacing */
     bottom: -7px;
     /* stylelint-disable-next-line primer/spacing */
-    left: 9px;
+    left: calc(var(--base-size-8) + var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/borders, primer/colors */
     border-top: 7px solid var(--overlay-bgColor);
     /* stylelint-disable-next-line primer/borders */
@@ -276,7 +276,7 @@
     /* stylelint-disable-next-line primer/spacing */
     top: -14px;
     /* stylelint-disable-next-line primer/spacing */
-    right: 9px;
+    right: calc(var(--base-size-8) + var(--borderWidth-thin));
     left: auto;
   }
 }
@@ -292,6 +292,6 @@
     /* stylelint-disable-next-line primer/spacing */
     top: -14px;
     /* stylelint-disable-next-line primer/spacing */
-    left: 9px;
+    left: calc(var(--base-size-8) + var(--borderWidth-thin));
   }
 }
