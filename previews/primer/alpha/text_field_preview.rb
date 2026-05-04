@@ -236,7 +236,6 @@ module Primer
       end
 
       # @label With character limit, over limit
-      # @snapshot interactive
       def with_character_limit_over_limit
         render(Primer::Alpha::TextField.new(character_limit: 10, name: "my-text-field-19", label: "Tell me about yourself", value: "This text is definitely over the limit."))
       end

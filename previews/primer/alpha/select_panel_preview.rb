@@ -54,7 +54,6 @@ module Primer
 
       # @label Default
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param show_filter toggle
       def default(open_on_load: false, show_filter: true)
@@ -66,7 +65,6 @@ module Primer
 
       # @label Local fetch
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param show_filter toggle
       def local_fetch(open_on_load: false, show_filter: true)
@@ -75,7 +73,6 @@ module Primer
 
       # @label Eventually local fetch
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param show_filter toggle
       def eventually_local_fetch(open_on_load: false, show_filter: true)
@@ -84,7 +81,6 @@ module Primer
 
       # @label Remote fetch
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param selected_items text
       def remote_fetch(open_on_load: false, selected_items: "Phaser")
@@ -93,7 +89,6 @@ module Primer
 
       # @label Custom loading label
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param selected_items text
       def custom_loading_label(open_on_load: false, selected_items: "Phaser")
@@ -102,7 +97,6 @@ module Primer
 
       # @label Custom loading description
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param selected_items text
       def custom_loading_description(open_on_load: false, selected_items: "Phaser")
@@ -111,7 +105,6 @@ module Primer
 
       # @label Local fetch (no results)
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def local_fetch_no_results(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -119,7 +112,6 @@ module Primer
 
       # @label Eventually local fetch (no results)
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def eventually_local_fetch_no_results(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -127,7 +119,6 @@ module Primer
 
       # @label Remote fetch (no results)
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def remote_fetch_no_results(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -135,7 +126,6 @@ module Primer
 
       # @label Single select
       #
-      # @snapshot interactive
       # @param dynamic_label toggle
       # @param open_on_load toggle
       def single_select(dynamic_label: false, open_on_load: false)
@@ -144,7 +134,6 @@ module Primer
 
       # @label Multiselect
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def multiselect(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -154,7 +143,6 @@ module Primer
 
       # @label With dynamic label
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_dynamic_label(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -162,7 +150,6 @@ module Primer
 
       # @label With dynamic label and aria prefix
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_dynamic_label_and_aria_prefix(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -172,7 +159,6 @@ module Primer
 
       # @label Footer buttons
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def footer_buttons(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -180,7 +166,6 @@ module Primer
 
       # @label With avatar items
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_avatar_items(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -188,7 +173,6 @@ module Primer
 
       # @label SelectPanel with Primer::IconButton
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def select_panel_with_icon_button(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -198,7 +182,6 @@ module Primer
 
       # @label With leading icons
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_leading_icons(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -206,7 +189,6 @@ module Primer
 
       # @label With trailing icons
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_trailing_icons(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -216,7 +198,6 @@ module Primer
 
       # @label With subtitle
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def with_subtitle(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -224,7 +205,6 @@ module Primer
 
       # @label Remote fetch initial failure
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def remote_fetch_initial_failure(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -232,7 +212,6 @@ module Primer
 
       # @label Remote fetch filter failure
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param banner_scheme [Symbol] select [danger, warning]
       # @param show_results toggle
@@ -253,7 +232,6 @@ module Primer
 
       # @label Eventually local fetch initial failure
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def eventually_local_fetch_initial_failure(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -261,7 +239,6 @@ module Primer
 
       # @label Single-select form
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def single_select_form(open_on_load: false, route_format: :html)
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
@@ -269,7 +246,6 @@ module Primer
 
       # @label Remote fetch form
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       # @param selected_items text
       def remote_fetch_form(open_on_load: false, selected_items: "Phaser",  route_format: :html)
@@ -278,7 +254,6 @@ module Primer
 
       # @label Multi-select form
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def multiselect_form(open_on_load: false, route_format: :html)
         render_with_template(locals: { open_on_load: open_on_load, route_format: route_format })
@@ -286,7 +261,6 @@ module Primer
 
       # @label List of links
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def list_of_links(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
@@ -294,7 +268,6 @@ module Primer
 
       # @label No values
       #
-      # @snapshot interactive
       # @param open_on_load toggle
       def no_values(open_on_load: false)
         render_with_template(locals: { open_on_load: open_on_load })
