@@ -176,8 +176,8 @@ export class SelectPanelElement extends HTMLElement {
         side: this.side,
         anchorOffset: 4,
       })
-      this.dialog.style.top = `${top}px`
-      this.dialog.style.left = `${left}px`
+      this.dialog.style.top = `${Math.round(top)}px`
+      this.dialog.style.left = `${Math.round(left)}px`
       this.dialog.style.bottom = 'auto'
       this.dialog.style.right = 'auto'
     }

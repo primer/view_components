@@ -53,7 +53,7 @@ test.describe('generate snapshots', () => {
               // Wait a bit for animations etc to resolve
               await new Promise(resolve => setTimeout(resolve, 500))
 
-              const focusedScreenshot = await page.screenshot({animations: 'disabled'})
+              const focusedScreenshot = await page.screenshot({animations: 'disabled', caret: 'hide'})
               expect(focusedScreenshot).toMatchSnapshot([example.preview_path, `${theme}.png`])
             })
           }
