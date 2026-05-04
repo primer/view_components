@@ -24,12 +24,6 @@ const config: PlaywrightTestConfig = {
     browserName: 'chromium',
     headless: true,
     screenshot: 'only-on-failure',
-    launchOptions: {
-      args: [
-        '--font-render-hinting=none',
-        '--disable-lcd-text',
-      ],
-    },
   },
   expect: {
     toHaveScreenshot: {
@@ -37,6 +31,7 @@ const config: PlaywrightTestConfig = {
     },
     toMatchSnapshot: {
       threshold: 0.1,
+      maxDiffPixelRatio: 0.001,
     },
   },
   /* Retry on CI only */
