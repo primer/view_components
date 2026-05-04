@@ -228,4 +228,79 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     )
     assert_no_selector(".FormControl-input-trailingAction[data-action=\"click:primer-text-field#clearContents\"]")
   end
+
+  def test_renders_collapsed_search
+    render_inline(Primer::OpenProject::SubHeader.new(collapsed_search: true)) do |component|
+      component.with_filter_input(name: "filter", label: "Filter")
+    end
+
+    assert_selector(".SubHeader")
+    # Trigger is rendered and wired to expand
+    assert_selector("[data-action='click:sub-header#expandFilterInput']")
+    # Filter container starts hidden on all screen sizes (d-none, no d-sm-flex)
+    assert_selector(".SubHeader-filterContainer.d-none")
+    assert_no_selector(".SubHeader-filterContainer.d-sm-flex")
+  end
+
+  def test_collapsed_search_trigger_visible_on_all_screen_sizes
+    render_inline(Primer::OpenProject::SubHeader.new(collapsed_search: true)) do |component|
+      component.with_filter_input(name: "filter", label: "Filter")
+    end
+
+    # Without collapsed_search, the trigger has d-sm-none (hidden on desktop).
+    # With collapsed_search, it must not have d-sm-none.
+    assert_no_selector("[data-action='click:sub-header#expandFilterInput'].d-sm-none")
+  end
+
+  def test_default_search_trigger_hidden_on_desktop
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_input(name: "filter", label: "Filter")
+    end
+
+    # Without collapsed_search the trigger is mobile-only (d-sm-none)
+    assert_selector("[data-action='click:sub-header#expandFilterInput'].d-sm-none")
+  end
+
+  def test_renders_quick_filters
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_input(name: "filter", label: "Filter")
+      component.with_filter_button { "Filter" }
+      component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
+      component.with_quick_filter { "<span class='MyQuickFilter'>Assignee</span>".html_safe }
+    end
+
+    assert_selector(".SubHeader-leftPane .MyQuickFilter", count: 2)
+  end
+
+  def test_quick_filters_are_hidden_on_mobile
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_button { "Filter" }
+      component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
+    end
+
+    # Each quick_filter wrapper has d-none d-sm-flex (hidden on mobile, visible on desktop)
+    assert_selector(".d-none.d-sm-flex .MyQuickFilter")
+  end
+
+  def test_quick_filters_require_filter_button
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::SubHeader.new) do |component|
+        component.with_filter_input(name: "filter", label: "Filter")
+        component.with_quick_filter { "Status" }
+      end
+    end
+
+    assert_equal "You must provide a filter_button when using quick_filters.", err.message
+  end
+
+  def test_quick_filters_maximum_is_five
+    err = assert_raises ArgumentError do
+      render_inline(Primer::OpenProject::SubHeader.new) do |component|
+        component.with_filter_button { "Filter" }
+        6.times { |i| component.with_quick_filter { "Filter #{i}" } }
+      end
+    end
+
+    assert_equal "SubHeader supports a maximum of 5 quick_filters, got 6.", err.message
+  end
 end
