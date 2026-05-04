@@ -7414,7 +7414,7 @@
       {
         "preview_path": "primer/alpha/select_panel/default",
         "name": "default",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7427,7 +7427,7 @@
       {
         "preview_path": "primer/alpha/select_panel/local_fetch",
         "name": "local_fetch",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7440,7 +7440,7 @@
       {
         "preview_path": "primer/alpha/select_panel/eventually_local_fetch",
         "name": "eventually_local_fetch",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7453,7 +7453,7 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch",
         "name": "remote_fetch",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7466,7 +7466,7 @@
       {
         "preview_path": "primer/alpha/select_panel/custom_loading_label",
         "name": "custom_loading_label",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7479,7 +7479,7 @@
       {
         "preview_path": "primer/alpha/select_panel/custom_loading_description",
         "name": "custom_loading_description",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7492,7 +7492,7 @@
       {
         "preview_path": "primer/alpha/select_panel/local_fetch_no_results",
         "name": "local_fetch_no_results",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7505,7 +7505,7 @@
       {
         "preview_path": "primer/alpha/select_panel/eventually_local_fetch_no_results",
         "name": "eventually_local_fetch_no_results",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7518,7 +7518,7 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch_no_results",
         "name": "remote_fetch_no_results",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7531,7 +7531,7 @@
       {
         "preview_path": "primer/alpha/select_panel/single_select",
         "name": "single_select",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7544,7 +7544,7 @@
       {
         "preview_path": "primer/alpha/select_panel/multiselect",
         "name": "multiselect",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7557,7 +7557,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_dynamic_label",
         "name": "with_dynamic_label",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7570,7 +7570,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_dynamic_label_and_aria_prefix",
         "name": "with_dynamic_label_and_aria_prefix",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7583,7 +7583,7 @@
       {
         "preview_path": "primer/alpha/select_panel/footer_buttons",
         "name": "footer_buttons",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7596,7 +7596,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_avatar_items",
         "name": "with_avatar_items",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7609,7 +7609,7 @@
       {
         "preview_path": "primer/alpha/select_panel/select_panel_with_icon_button",
         "name": "select_panel_with_icon_button",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7622,7 +7622,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_leading_icons",
         "name": "with_leading_icons",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7635,7 +7635,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_trailing_icons",
         "name": "with_trailing_icons",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7648,7 +7648,7 @@
       {
         "preview_path": "primer/alpha/select_panel/with_subtitle",
         "name": "with_subtitle",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7661,7 +7661,7 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch_initial_failure",
         "name": "remote_fetch_initial_failure",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7674,7 +7674,7 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch_filter_failure",
         "name": "remote_fetch_filter_failure",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7687,7 +7687,7 @@
       {
         "preview_path": "primer/alpha/select_panel/eventually_local_fetch_initial_failure",
         "name": "eventually_local_fetch_initial_failure",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7700,7 +7700,7 @@
       {
         "preview_path": "primer/alpha/select_panel/single_select_form",
         "name": "single_select_form",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7713,7 +7713,7 @@
       {
         "preview_path": "primer/alpha/select_panel/remote_fetch_form",
         "name": "remote_fetch_form",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7726,7 +7726,7 @@
       {
         "preview_path": "primer/alpha/select_panel/multiselect_form",
         "name": "multiselect_form",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7739,7 +7739,7 @@
       {
         "preview_path": "primer/alpha/select_panel/list_of_links",
         "name": "list_of_links",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7752,7 +7752,7 @@
       {
         "preview_path": "primer/alpha/select_panel/no_values",
         "name": "no_values",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8615,7 +8615,7 @@
       {
         "preview_path": "primer/alpha/text_area/with_character_limit_over_limit",
         "name": "with_character_limit_over_limit",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -8961,7 +8961,7 @@
       {
         "preview_path": "primer/alpha/text_field/with_character_limit_over_limit",
         "name": "with_character_limit_over_limit",
-        "snapshot": "interactive",
+        "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
             "region"
