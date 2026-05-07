@@ -1978,8 +1978,8 @@
       "none",
       "flex"
     ],
+    "FILTER_EXPAND_BUTTON_TARGET_SELECTOR": "sub-header.filterExpandButton",
     "GeneratedSlotMethods": "Primer::OpenProject::SubHeader::GeneratedSlotMethods",
-    "HIDDEN_FILTER_TARGET_SELECTOR": "sub-header.hiddenItemsOnExpandedFilter",
     "MOBILE_ACTIONS_DISPLAY": [
       "flex",
       "none"

@@ -6474,6 +6474,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/default/",
     "parameters": [
       {
+        "name": "collapsed_search",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "When true, the search bar starts collapsed as an icon button on all screen sizes. Clicking expands it."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",

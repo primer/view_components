@@ -21650,6 +21650,12 @@
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/default/",
     "parameters": [
       {
+        "name": "collapsed_search",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "When true, the search bar starts collapsed as an icon button on all screen sizes. Clicking expands it."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
@@ -21670,6 +21676,11 @@
       {
         "name": "filter_button",
         "description": "A button or custom content that will render on the left-hand side of the component, next to the filter input.\n\nTo render a button, call the `with_filter_button` method, which accepts the arguments accepted by {{#link_to_component}}Primer::Beta::Button{{/link_to_component}}.\n\nTo render custom content, call the `with_filter_component` method and pass a block that returns HTML.",
+        "parameters": []
+      },
+      {
+        "name": "quick_filters",
+        "description": "Quick filters shown in the left pane next to the search bar (0–5 items).\nHidden on mobile. Requires all_filters_button to be set when used.\nSupports ActionMenus, Buttons, IconButtons, SelectPanels, and SegmentedControls inside the block.",
         "parameters": []
       },
       {
@@ -21771,6 +21782,32 @@
       {
         "preview_path": "primer/open_project/sub_header/segmented_control",
         "name": "segmented_control",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/collapsed_search",
+        "name": "collapsed_search",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/sub_header/quick_filters",
+        "name": "quick_filters",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [
