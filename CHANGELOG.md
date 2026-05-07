@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.85.0
+
+### Minor Changes
+
+- [#445](https://github.com/opf/primer_view_components/pull/445) [`fa1a5fd`](https://github.com/opf/primer_view_components/commit/fa1a5fd5aab3f9f1bd659e0a096bca391c8c9a39) Thanks [@HDinger](https://github.com/HDinger)! - Extend SubHeader to support QuickFilters
+
 ## 0.84.5
 
 ### Patch Changes
