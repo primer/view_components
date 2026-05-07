@@ -4,12 +4,8 @@
     display: grid;
     grid-template-areas: "left middle right" "bottom bottom bottom";
     grid-template-columns: auto 1fr auto;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: var(--base-size-16);
-}
-
-.SubHeader--expandedSearch {
-    grid-template-areas: "left left left" "bottom bottom bottom";
 }
 
 .SubHeader-rightPane {
@@ -22,6 +18,7 @@
 .SubHeader-middlePane {
     grid-area: middle;
     text-align: center;
+    white-space: nowrap;
 }
 
 .SubHeader-bottomPane {
@@ -32,6 +29,8 @@
     grid-area: left;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: var(--base-size-16);
     width: 100%;
 
     /* Since the container is not full width (due to the grid around it)
@@ -54,10 +53,18 @@
   display: none;
 }
 
-@media (max-width: 543.98px) {
+@media (max-width: 767.98px) {
     .SubHeader {
         grid-template-areas: "left right" "middle middle" "bottom bottom";
         grid-template-columns: 1fr auto;
+    }
+
+    .SubHeader--expandedSearch {
+        grid-template-areas: "left left" "middle middle" "bottom bottom";
+    }
+
+    .SubHeader--expandedSearch .SubHeader-hiddenOnExpand {
+        display: none !important;
     }
 
     .SubHeader--emptyLeftPane {
@@ -76,6 +83,6 @@
     }
 
     .SubHeader-middlePane:has(> *) {
-        margin-top: var(--stack-gap-normal);
+        margin-top: var(--base-size-16);
     }
 }

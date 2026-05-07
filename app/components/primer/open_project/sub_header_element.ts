@@ -3,8 +3,8 @@ import {controller, target, targets} from '@github/catalyst'
 @controller
 class SubHeaderElement extends HTMLElement {
   @target filterInput: HTMLInputElement
-  @targets hiddenItemsOnExpandedFilter: HTMLElement[]
   @targets shownItemsOnExpandedFilter: HTMLElement[]
+  @targets filterExpandButton: HTMLElement[]
 
   connectedCallback() {
     this.setupFilterInputClearButton()
@@ -28,28 +28,23 @@ class SubHeaderElement extends HTMLElement {
   }
 
   expandFilterInput() {
-    for (const item of this.hiddenItemsOnExpandedFilter) {
-      item.classList.add('d-none')
-    }
-
     for (const item of this.shownItemsOnExpandedFilter) {
       item.classList.remove('d-none')
     }
-
+    for (const item of this.filterExpandButton) {
+      item.classList.add('d-none')
+    }
     this.classList.add('SubHeader--expandedSearch')
-
     this.filterInput.focus()
   }
 
   collapseFilterInput() {
-    for (const item of this.hiddenItemsOnExpandedFilter) {
+    for (const item of this.filterExpandButton) {
       item.classList.remove('d-none')
     }
-
     for (const item of this.shownItemsOnExpandedFilter) {
       item.classList.add('d-none')
     }
-
     this.classList.remove('SubHeader--expandedSearch')
   }
 

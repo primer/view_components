@@ -12,6 +12,7 @@ module Primer
       # @param show_filter_button toggle
       # @param show_action_button toggle
       # @param show_clear_button toggle
+      # @param collapsed_search toggle
       # @param text text
       # @param value text
       def playground(
@@ -19,10 +20,11 @@ module Primer
         show_clear_button: true,
         show_filter_button: true,
         show_action_button: true,
+        collapsed_search: false,
         text: nil,
         value: nil
       )
-        render(Primer::OpenProject::SubHeader.new) do |component|
+        render(Primer::OpenProject::SubHeader.new(collapsed_search: collapsed_search)) do |component|
           component.with_filter_input(
             name: "filter",
             label: "Filter",
@@ -96,6 +98,26 @@ module Primer
             "Create"
           end
         end
+      end
+
+      # @label With collapsed search
+      def collapsed_search
+        render(Primer::OpenProject::SubHeader.new(collapsed_search: true)) do |component|
+          component.with_filter_input(name: "filter", label: "Filter")
+          component.with_filter_button do |button|
+            button.with_trailing_visual_counter(count: "15")
+            "Filter"
+          end
+
+          component.with_action_button(leading_icon: :plus, label: "Create", scheme: :primary) do
+            "Create"
+          end
+        end
+      end
+
+      # @label With QuickFilters
+      def quick_filters
+        render_with_template(locals: {})
       end
 
       # @label With a custom area below

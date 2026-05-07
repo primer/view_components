@@ -1,0 +1,47 @@
+<%= render(Primer::OpenProject::SubHeader.new(collapsed_search: true)) do |component|
+  component.with_filter_input(name: "filter", label: "Filter")
+
+  component.with_filter_button(mobile_label: "All filters") do
+    "All filters"
+  end
+
+  component.with_quick_filter do
+    render(Primer::Alpha::SelectPanel.new(title: "Version",
+                                          select_variant: :single,
+                                          fetch_strategy: :local,
+                                          dynamic_label: true,
+                                          dynamic_label_prefix: "Version")) do |panel|
+      panel.with_show_button { "Version" }
+      panel.with_item(label: "1.0")
+      panel.with_item(label: "2.0")
+      panel.with_item(label: "2.1")
+    end
+  end
+
+  component.with_quick_filter do
+    render(Primer::Alpha::SelectPanel.new(title: "Assignee",
+                                          select_variant: :multiple,
+                                          fetch_strategy: :local,
+                                          dynamic_label: true,
+                                          dynamic_label_prefix: "Assignee")) do |panel|
+      panel.with_show_button { "Assignee" }
+      panel.with_avatar_item(username: "Alice", src: "https://avatars.githubusercontent.com/u/1?v=4")
+      panel.with_avatar_item(username: "Bob", src: "https://avatars.githubusercontent.com/u/2?v=4")
+      panel.with_avatar_item(username: "Carol", src: "https://avatars.githubusercontent.com/u/3?v=4")
+      panel.with_avatar_item(username: "Dave", src: "https://avatars.githubusercontent.com/u/4?v=4")
+      panel.with_avatar_item(username: "Eve", src: "https://avatars.githubusercontent.com/u/5?v=4")
+      panel.with_avatar_item(username: "Frank", src: "https://avatars.githubusercontent.com/u/6?v=4")
+      panel.with_avatar_item(username: "Grace", src: "https://avatars.githubusercontent.com/u/7?v=4")
+      panel.with_avatar_item(username: "Heidi", src: "https://avatars.githubusercontent.com/u/8?v=4")
+      panel.with_avatar_item(username: "Ivan", src: "https://avatars.githubusercontent.com/u/9?v=4")
+      panel.with_avatar_item(username: "Judy", src: "https://avatars.githubusercontent.com/u/10?v=4")
+      panel.with_footer(show_divider: true) do
+        render(Primer::Beta::Button.new(scheme: :primary)) { "Apply" }
+      end
+    end
+  end
+
+  component.with_action_button(leading_icon: :plus, label: "Create", scheme: :primary) do
+    "Create"
+  end
+end %>

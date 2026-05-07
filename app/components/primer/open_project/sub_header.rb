@@ -7,8 +7,8 @@ module Primer
     class SubHeader < Primer::Component
       status :open_project
 
-      HIDDEN_FILTER_TARGET_SELECTOR = "sub-header.hiddenItemsOnExpandedFilter"
       SHOWN_FILTER_TARGET_SELECTOR = "sub-header.shownItemsOnExpandedFilter"
+      FILTER_EXPAND_BUTTON_TARGET_SELECTOR = "sub-header.filterExpandButton"
 
       MOBILE_ACTIONS_DISPLAY = [:flex, :none].freeze
       DESKTOP_ACTIONS_DISPLAY = [:none, :flex].freeze
@@ -101,18 +101,23 @@ module Primer
           system_arguments[:data][:action] += " input:sub-header#toggleFilterInputClearButton focus:sub-header#toggleFilterInputClearButton"
         end
 
-        @mobile_filter_trigger = Primer::Beta::IconButton.new(icon: system_arguments[:leading_visual][:icon],
-                                                              display: [:inline_flex, :none],
-                                                              aria: { label: label },
-                                                              mr: 2,
-                                                              "data-action": "click:sub-header#expandFilterInput",
-                                                              "data-targets": HIDDEN_FILTER_TARGET_SELECTOR)
+        trigger_display = @collapsed_search ? :inline_flex : [:inline_flex, :none]
 
-        @mobile_filter_cancel = Primer::Beta::Button.new(scheme: :invisible,
-                                                         display: :none,
-                                                         data: {
-                                                           targets: SHOWN_FILTER_TARGET_SELECTOR,
-                                                           action: "click:sub-header#collapseFilterInput"})
+        @collapsed_filter_trigger = Primer::Beta::IconButton.new(icon: system_arguments[:leading_visual][:icon],
+                                                                 display: trigger_display,
+                                                                 aria: { label: label },
+                                                                 mr: 2,
+                                                                 "data-action": "click:sub-header#expandFilterInput",
+                                                                 "data-targets": FILTER_EXPAND_BUTTON_TARGET_SELECTOR)
+
+        @collapsed_filter_cancel = Primer::Beta::IconButton.new(icon: :x,
+                                                                "aria-label": I18n.t(:button_cancel),
+                                                                scheme: :invisible,
+                                                                display: :none,
+                                                                data: {
+                                                                  targets: SHOWN_FILTER_TARGET_SELECTOR,
+                                                                  action: "click:sub-header#collapseFilterInput"
+                                                                })
 
 
         Primer::Alpha::TextField.new(name: name, label: label, **system_arguments)
@@ -165,6 +170,18 @@ module Primer
         }
       }
 
+      # Quick filters shown in the left pane next to the search bar (0–5 items).
+      # Hidden on mobile. Requires all_filters_button to be set when used.
+      # Supports ActionMenus, Buttons, IconButtons, SelectPanels, and SegmentedControls inside the block.
+      renders_many :quick_filters, lambda { |**kwargs|
+        deny_tag_argument(**kwargs)
+        kwargs[:tag] = :div
+        kwargs[:mr] ||= 2
+        kwargs[:display] = DESKTOP_ACTIONS_DISPLAY
+
+        Primer::BaseComponent.new(**kwargs)
+      }
+
       renders_one :segmented_control, lambda { |**system_arguments, &block|
           deny_tag_argument(**system_arguments)
           system_arguments[:mr] ||= 2
@@ -182,6 +199,7 @@ module Primer
 
       renders_one :text, lambda { |**system_arguments|
         system_arguments[:font_weight] ||= :bold
+        system_arguments[:mx] ||= 2
 
         Primer::Beta::Text.new(**system_arguments)
       }
@@ -195,16 +213,18 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-
+      # @param collapsed_search [Boolean] When true, the search bar starts collapsed as an icon button on all screen sizes. Clicking expands it.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
+      def initialize(collapsed_search: false, **system_arguments)
+        @collapsed_search = collapsed_search
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"sub-header"
 
+        filter_container_display = collapsed_search ? :none : DESKTOP_ACTIONS_DISPLAY
+
         @filter_container = Primer::BaseComponent.new(tag: :div,
                                                       classes: "SubHeader-filterContainer",
-                                                      display: DESKTOP_ACTIONS_DISPLAY,
-
+                                                      display: filter_container_display,
                                                       mr: 2,
                                                       data: { targets: SHOWN_FILTER_TARGET_SELECTOR })
 
@@ -215,21 +235,22 @@ module Primer
       end
 
       def before_render
+        if quick_filters.any? && filter_button.nil?
+          raise ArgumentError, "You must provide a filter_button when using quick_filters."
+        end
+
+        if quick_filters.size > 5
+          raise ArgumentError, "SubHeader supports a maximum of 5 quick_filters, got #{quick_filters.size}."
+        end
+
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "SubHeader--emptyLeftPane" => !segmented_control? && !filter_button && !filter_input
+          "SubHeader--emptyLeftPane" => !segmented_control? && !filter_button && !filter_input && quick_filters.empty?
         )
       end
 
       def set_as_hidden_filter_target(system_arguments)
-        system_arguments[:data] ||= {}
-        system_arguments[:data] = merge_data(
-            system_arguments, {
-            data: {
-              targets: HIDDEN_FILTER_TARGET_SELECTOR,
-            }
-          }
-        )
+        system_arguments[:classes] = class_names(system_arguments[:classes], "SubHeader-hiddenOnExpand")
         system_arguments
       end
     end
