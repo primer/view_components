@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.51.5
+
+### Patch Changes
+
+- [#4061](https://github.com/primer/view_components/pull/4061) [`b732a9f`](https://github.com/primer/view_components/commit/b732a9fa3009a203e7ff8a1a01839165230f0b22) Thanks [@lesliecdubs](https://github.com/lesliecdubs)! - Fix Dropdown component caret position in CSS styles for clean borders
+
 ## 0.51.4
 
 ### Patch Changes
