@@ -289,7 +289,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (4.8.0)
+    view_component (4.9.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -358,7 +358,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.8.0)
+  view_component (= 4.9.0)
   vite_rails (~> 3.0)
   webmock
   yard (~> 0.9.43)
