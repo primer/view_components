@@ -25,7 +25,9 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
       - id: set-matrix
         run: echo "matrix=$(cat .github/version-matrix.json | jq -c .)" >> $GITHUB_OUTPUT
   lib:
@@ -37,13 +39,15 @@ jobs:
       matrix:
         include: ${{ fromJson(needs.load-matrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
           cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 20
           cache: "npm"
