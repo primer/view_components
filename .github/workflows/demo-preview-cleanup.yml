@@ -34,7 +34,7 @@ jobs:
       # Do this before repo checkout to prevent running bundle install
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4'
 
       - name: Check out repo
         uses: actions/checkout@v6

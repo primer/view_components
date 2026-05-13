@@ -22,7 +22,7 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4'
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
