@@ -63,7 +63,7 @@ jobs:
           test/**/*.rb
     - uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '3.4'
         bundler-cache: true
     - name: Lint with Rubocop
       run: script/rubocop --format github
@@ -85,7 +85,7 @@ jobs:
           app/components/**/*.erb
     - uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '3.4'
         bundler-cache: true
     - name: Lint with ERB Lint
       run: script/erblint --format github

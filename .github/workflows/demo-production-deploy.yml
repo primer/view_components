@@ -24,7 +24,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '3.4'
         bundler-cache: true
         working-directory: 'demo/'
     - name: Docker login
@@ -78,12 +78,12 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '3.4'
         bundler-cache: true
     - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
       with:
         path: demo/gemfiles/vendor/bundle
-        key: gems-build-kuby-main-ruby-3.3.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+        key: gems-build-kuby-main-ruby-3.4.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
     - name: Bundle
       run: |
         gem install bundler -v '~> 2.3'
