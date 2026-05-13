@@ -21,18 +21,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: ${{ inputs.node_version }}
 
       - name: Install dependencies
-        run: ${{ inputs.install }}
+        run: ${INPUTS_INSTALL}
+        env:
+          INPUTS_INSTALL: ${{ inputs.install }}
 
       - name: Build
         run: npm run build --if-present
@@ -47,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
       - name: Output canary version
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           script: |
             const package = require(`${process.env.GITHUB_WORKSPACE}/package.json`)

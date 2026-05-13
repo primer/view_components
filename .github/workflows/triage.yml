@@ -16,18 +16,19 @@ on:
     types:
       - checks_requested
 
-permissions:
-  contents: read
-  pull-requests: write
-  issues: write
+permissions: {}
 
 jobs:
   label:
     name: Labeler
     if: github.event_name == 'pull_request' && github.event.action != 'labeled' && github.event.action != 'unlabeled'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     steps:
-    - uses: actions/labeler@v6
+    - uses: actions/labeler@f27b608878404679385c85cfa523b85ccb86e213 # v6
       with:
         sync-labels: true
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -35,15 +36,18 @@ jobs:
   check-for-changeset:
     name: Check for changeset
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       SKIP_LABEL: "skip changeset"
     steps:
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) != true }}
         run: echo "passed"; exit 0;
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) == true }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
       - if: ${{ (github.event_name != 'merge_group' && !contains(github.event.pull_request.labels.*.name, 'skip changeset')) == true }}
         name: "Check for changeset"
         run: script/check-for-changeset
@@ -52,8 +56,11 @@ jobs:
     if: ${{ github.repository == 'opf/primer_view_components' && github.event_name == 'pull_request' }}
     name: semver label
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: read
     steps:
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         id: version-result
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -65,7 +72,7 @@ jobs:
             if (match && match[0]) {
               return match[0][1]
             }
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           RELEASE: ${{ steps.version-result.outputs.result }}
         with:

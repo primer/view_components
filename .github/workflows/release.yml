@@ -4,25 +4,24 @@ on:
   release:
     types: [published]
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-  checks: write
-  statuses: write
-  pull-requests: write
+permissions: {}
 
 jobs:
   publish-main:
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: 20
           cache: "npm"
@@ -36,7 +35,7 @@ jobs:
           chmod 0600 $HOME/.gem/credentials
         env:
           RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN_SHARED }}
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 24
       - name: NPM install
@@ -52,22 +51,24 @@ jobs:
     if: ${{ github.repository == 'opf/primer_view_components' && github.ref_name == 'main' && github.event_name == 'push' }}
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 24
           cache: "npm"
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
         with:
           ruby-version: "3.3"
 
@@ -79,7 +80,7 @@ jobs:
       # Use the primer GitHub App for authentication.
       # See: https://github.com/organizations/opf/settings/apps/openproject-primer-view-components
       - name: Get App Token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: get-access-token
         with:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}
@@ -90,7 +91,7 @@ jobs:
 
       - name: Create release pull request or publish to npm
         id: changesets
-        uses: changesets/action@v1.4.10
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           title: Release Tracking
           version: npm run changeset:version
@@ -101,6 +102,9 @@ jobs:
   release-canary:
     name: Canary
     if: ${{ github.repository == 'opf/primer_view_components' && github.ref_name != 'main' && github.ref_name != 'changeset-release/main' && github.event_name == 'push' }}
+    permissions:
+      contents: read
+      statuses: write
     uses: ./.github/workflows/release_canary.yml
     with:
       install: npm i
@@ -110,6 +114,9 @@ jobs:
   release-candidate:
     name: Candidate
     if: ${{ github.repository == 'opf/primer_view_components' && github.ref_name == 'changeset-release/main' && github.event_name == 'push' }}
+    permissions:
+      contents: read
+      statuses: write
     uses: ./.github/workflows/release_candidate.yml
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}

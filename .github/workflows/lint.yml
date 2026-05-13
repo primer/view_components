@@ -9,11 +9,17 @@ on:
       - main
     types:
       - checks_requested
+permissions: {}
 jobs:
   markdown:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
@@ -23,9 +29,9 @@ jobs:
           README.md
           CONTRIBUTING.md
           CODE_OF_CONDUCT.md
-    - uses: xt0rted/markdownlint-problem-matcher@v3
+    - uses: xt0rted/markdownlint-problem-matcher@1a5fabfb577370cfdf5af944d418e4be3ea06f27 # v3
       if: steps.changed-files.outputs.any_changed == 'true'
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         cache: 'npm'
@@ -33,12 +39,19 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }}
+        npx markdownlint-cli2 ${STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES}
+      env:
+        STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
@@ -48,7 +61,7 @@ jobs:
           lib/**/*.rb
           demo/**/*.rb
           test/**/*.rb
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
         ruby-version: '3.3'
         bundler-cache: true
@@ -57,15 +70,20 @@ jobs:
 
   erblint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
       with:
         files: |
           app/components/**/*.erb
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@6aaa311d81eba98ae12eaffbcb63296ace0efcde # v1
       with:
         ruby-version: '3.3'
         bundler-cache: true
@@ -74,15 +92,20 @@ jobs:
 
   eslint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
       with:
         files: |
           app/components/**/*.ts
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         cache: 'npm'
@@ -90,12 +113,19 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
+        npx eslint --quiet ${STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES}
+      env:
+        STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
 
   stylelint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
@@ -103,7 +133,7 @@ jobs:
         files: |
           app/components/**/*.pcss
           lib/postcss_mixins/*.pcss
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
       if: steps.changed-files.outputs.any_changed == 'true'
       with:
         cache: 'npm'
@@ -111,12 +141,18 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx stylelint --rd -q ${{ steps.changed-files.outputs.all_changed_files }} --custom-formatter=stylelint-actions-formatters
+        npx stylelint --rd -q ${STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES} --custom-formatter=stylelint-actions-formatters
+      env:
+        STEPS_CHANGED_FILES_OUTPUTS_ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
 
   herb:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      with:
+        persist-credentials: false
     - name: Lint with Herb
       run: |
         npx @herb-tools/linter@0.8.10

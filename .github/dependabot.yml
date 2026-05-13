@@ -17,6 +17,8 @@ updates:
       all-actions:
         update-types:
         - "patch"
+    cooldown:
+      default-days: 7
 
   # NPM
   - package-ecosystem: "npm"
@@ -36,6 +38,8 @@ updates:
         dependency-type: "development"
         update-types:
         - "patch"
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "npm"
     directory: "/demo"
@@ -49,6 +53,8 @@ updates:
       all-demo:
         update-types:
         - "patch"
+    cooldown:
+      default-days: 7
 
 
   # Bundler
@@ -69,6 +75,8 @@ updates:
         dependency-type: "development"
         update-types:
         - "patch"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "bundler"
     directory: "/demo"
     schedule:
@@ -81,3 +89,5 @@ updates:
       all-demo:
         update-types:
         - "patch"
+    cooldown:
+      default-days: 7

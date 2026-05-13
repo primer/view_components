@@ -4,12 +4,18 @@ on:
     branches:
       - DO_NOT_EXECUTE_THIS_WORKFLOW
 
+permissions: {}
+
 jobs:
   stale:
     if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
-      - uses: actions/stale@v10
+      - uses: actions/stale@b5d41d4e1d5dceea10e7104786b73624c18a190f # v10
         with:
 
           # General settings

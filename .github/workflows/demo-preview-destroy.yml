@@ -26,7 +26,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number || github.event.inputs.PR_NUMBER }}
 
     steps:
-      - uses: Azure/login@v3
+      - uses: Azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3
         with:
           # excluding a client secret here will cause a login via OpenID Connect (OIDC),
           # which prevents us from having to rotate client credentials, etc
@@ -35,7 +35,9 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Check out repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Get preview app info
         run: ./.github/workflows/demo-preview-app-info.sh
@@ -43,14 +45,14 @@ jobs:
       # Succeed despite any non-zero exit code (e.g. if there is no deployment to cancel)
       - name: 'Cancel any in progress deployments'
         run: |
-          az deployment group cancel --name ${{ env.DEPLOYMENT_NAME }} -g primer || true
+          az deployment group cancel --name ${DEPLOYMENT_NAME} -g primer || true
       # Delete web app (which will also delete the App Service plan)
       # This will succeed even if the app doesn't exist / has already been deleted
       - name: 'Delete App Service App (which will also delete the App Service plan)'
         run: |
-          az container delete -n ${{ env.APP_NAME }} -g primer -y &> /dev/null
+          az container delete -n ${APP_NAME} -g primer -y &> /dev/null
       # Untag all images under this PR's container registry repo - the container registry will automatically remove untagged images.
       # This will fail if the IMAGE_REPO doesn't exist, but we don't care
       - name: 'Untag all docker images for this PR'
         run: |
-          az acr repository delete -n primer.azurecr.io --repository ${{ env.IMAGE_REPO }} -y || true
+          az acr repository delete -n primer.azurecr.io --repository ${IMAGE_REPO} -y || true

@@ -16,11 +16,13 @@ runs:
         node-version: 24
     - name: Write workspace versions as JSON file
       uses: actions/github-script@a3e7071a34d7e1f219a8a4de9a5e0a34d1ee1293
+      env:
+        PACKAGE_PATHS: ${{ inputs.package_paths }}
       with:
         script: |
           const fs = require('node:fs');
 
-          const globber = await glob.create(`${{ inputs.package_paths }}`)
+          const globber = await glob.create(process.env.PACKAGE_PATHS)
           const packageJsonPaths = await globber.glob()
           const output = {
             packages: [],
