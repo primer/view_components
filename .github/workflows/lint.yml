@@ -22,7 +22,7 @@ jobs:
         persist-credentials: false
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           docs/**/*.md
@@ -54,7 +54,7 @@ jobs:
         persist-credentials: false
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/**/*.rb
@@ -79,7 +79,7 @@ jobs:
         persist-credentials: false
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.erb
@@ -101,7 +101,7 @@ jobs:
         persist-credentials: false
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.ts
@@ -128,7 +128,7 @@ jobs:
         persist-credentials: false
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@22103cc46bda19c2b464ffe86db46df6922fd323
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.pcss

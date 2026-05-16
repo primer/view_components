@@ -26,9 +26,7 @@
   left: 0;
   z-index: 100;
   width: 160px;
-  /* stylelint-disable-next-line primer/spacing */
   padding-top: var(--control-small-paddingBlock);
-  /* stylelint-disable-next-line primer/spacing */
   padding-bottom: var(--control-small-paddingBlock);
   margin-top: var(--base-size-2);
   list-style: none;
@@ -36,7 +34,7 @@
   background-clip: padding-box;
   border: var(--borderWidth-thin) solid var(--borderColor-default);
   border-radius: var(--borderRadius-medium);
-  box-shadow: var(--shadow-floating-legacy, var(--color-shadow-large));
+  box-shadow: var(--shadow-floating-small);
 
   &::before,
   &::after {
@@ -70,7 +68,6 @@
   width: auto;
 
   & .dropdown-item {
-    /* stylelint-disable-next-line primer/spacing */
     padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
     overflow: visible;
     text-overflow: inherit;
@@ -80,7 +77,6 @@
 /* Dropdown items (can be links or buttons) */
 .dropdown-item {
   display: block;
-  /* stylelint-disable-next-line primer/spacing */
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-condensed) var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   overflow: hidden;
   color: var(--fgColor-default);
@@ -123,13 +119,11 @@
 .dropdown-divider {
   display: block;
   height: 0;
-  /* stylelint-disable-next-line primer/spacing */
   margin: var(--stack-gap-condensed) 0;
   border-top: var(--borderWidth-thin) solid var(--borderColor-default);
 }
 
 .dropdown-header {
-  /* stylelint-disable-next-line primer/spacing */
   padding: var(--control-small-paddingBlock) var(--control-medium-paddingInline-spacious);
   font-size: var(--text-body-size-small);
   color: var(--fgColor-muted);
@@ -163,7 +157,8 @@
   }
 
   &::after {
-    top: var(--base-size-12);
+    /* stylelint-disable-next-line primer/spacing */
+    top: calc(var(--base-size-12) - var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/spacing */
     right: -14px;
     left: auto;
@@ -190,7 +185,8 @@
   }
 
   &::after {
-    top: var(--base-size-12);
+    /* stylelint-disable-next-line primer/spacing */
+    top: calc(var(--base-size-12) - var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/spacing */
     left: -14px;
     border-color: transparent;
@@ -228,7 +224,7 @@
     /* stylelint-disable-next-line primer/spacing */
     bottom: -7px;
     /* stylelint-disable-next-line primer/spacing */
-    left: 10px;
+    left: calc(var(--base-size-8) + var(--borderWidth-thin));
     /* stylelint-disable-next-line primer/borders, primer/colors */
     border-top: 7px solid var(--overlay-bgColor);
     /* stylelint-disable-next-line primer/borders */
@@ -274,7 +270,7 @@
     /* stylelint-disable-next-line primer/spacing */
     top: -14px;
     /* stylelint-disable-next-line primer/spacing */
-    right: 10px;
+    right: calc(var(--base-size-8) + var(--borderWidth-thin));
     left: auto;
   }
 }
@@ -290,6 +286,6 @@
     /* stylelint-disable-next-line primer/spacing */
     top: -14px;
     /* stylelint-disable-next-line primer/spacing */
-    left: 10px;
+    left: calc(var(--base-size-8) + var(--borderWidth-thin));
   }
 }

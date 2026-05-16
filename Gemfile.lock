@@ -187,7 +187,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (7.2.0)
+    puma (8.0.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.6)
@@ -306,7 +306,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (4.6.0)
+    view_component (4.9.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -365,7 +365,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   mocha
   openproject-primer_view_components!
-  puma (~> 7.2.0)
+  puma (~> 8.0.1)
   rack-cors
   railties (= 8.0.2)
   rake (~> 13.3)
@@ -382,10 +382,10 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.6.0)
+  view_component (= 4.9.0)
   vite_rails (~> 3.0)
   webmock
-  yard (~> 0.9.38)
+  yard (~> 0.9.43)
 
 BUNDLED WITH
    2.5.5
