@@ -12,6 +12,10 @@ Primer::ViewComponents::Engine.routes.draw do
   resources :tree_view_items, only: [:index]
   get "/tree_view_items/async_alpha", to: "tree_view_items#async_alpha", as: :tree_view_items_async_alpha
 
+  resources :filterable_tree_view_items, only: [:index]
+  get "/filterable_tree_view_items/tree", to: "filterable_tree_view_items#index", as: :filterable_tree_view_items_tree
+  get "/filterable_tree_view_items/async_form_tree", to: "filterable_tree_view_items#async_form_tree", as: :filterable_tree_view_items_async_form_tree
+
   # generic form submission path
   post "/form_handler", to: "form_handler#form_action", as: :generic_form_submission
 

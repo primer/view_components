@@ -74,6 +74,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::TreeView => [
       # Used, but not directly rendered by a preview
       ".TreeViewItemLeadingAction",
+      ".TreeViewRootUlStyles .TreeViewItemTrailingAction"
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
@@ -195,6 +196,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".SubHeader-filterInput_hiddenClearButton",
       ".SubHeader--emptyLeftPane",
       ".SubHeader--emptyLeftPane .SubHeader-middlePane"
+    ],
+    Primer::OpenProject::FilterableTreeView => [
+      # Used, but not directly rendered by a preview
+      "filterable-tree-view mark"
     ]
   }.freeze
 

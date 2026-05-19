@@ -15,6 +15,9 @@ module Primer
         # Generic leading action slot
         renders_one :leading_action
 
+        # Generic trailing action slot
+        renders_one :trailing_action
+
         # Generic leading visual slot
         renders_one :leading_visual
 
@@ -179,6 +182,13 @@ module Primer
             @content_arguments[:data] = merge_data(
               @content_arguments,
               { data: { "has-leading-action": true } }
+            )
+          end
+
+          if trailing_action?
+            @content_arguments[:data] = merge_data(
+              @content_arguments,
+              { data: { "has-trailing-action": true } }
             )
           end
 

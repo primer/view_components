@@ -102,8 +102,43 @@ module Primer
     #
     # Currently `FilterableTreeView` does not emit any events aside from the events already emitted by the `TreeView`
     # component.
+    #
+    # ## Async loading strategy
+    #
+    # When `src` is set on the component, all filter interactions (text input, filter mode changes) trigger a debounced
+    # server request instead of client-side filtering. The server is responsible for returning a filtered `<tree-view>`
+    # HTML fragment that replaces the current tree.
+    #
+    # ### Behavior
+    #
+    # - The full tree is loaded initially from the server via `src`.
+    # - Each filter input event triggers a debounced (300 ms) request to the server.
+    # - The server returns a filtered `<tree-view>` element which replaces the existing one.
+    # - All matching results and their full ancestor hierarchy are expanded automatically.
+    # - Matching text is highlighted using the CSS Custom Highlight API (or `<mark>` fallback).
+    # - When the filter is cleared, the tree is replaced with the full (unfiltered) result from
+    #   the server and the expansion state from before the search is restored.
+    # - Checked nodes are preserved across tree replacements using `data-node-id` attributes.
+    # - When "include sub-items" is active and the tree is filtered, clicking a parent node
+    #   selects ALL its descendants (not just the visible filtered ones). Therefore, "include_sub_items" is passed
+    #   to the server, since it holds the only truth about the data.
+    #
+    # ### Server endpoint
+    #
+    # The server endpoint must return a `<tree-view>` HTML fragment. Each node must have a stable
+    # `data-node-id` on its `[role=treeitem]` element.
+    #
+    # ### Usage
+    #
+    # ```erb
+    # <%= render(Primer::OpenProject::FilterableTreeView.new(
+    #   src: my_path
+    # )) %>
+    # ```
     class FilterableTreeView < Primer::Component
       delegate :with_leaf, :with_sub_tree, to: :@tree_view
+
+      SUPPORTED_SELECT_VARIANTS = %i[multiple single none].freeze
 
       DEFAULT_FILTER_INPUT_ARGUMENTS = {
         name: :filter,
@@ -153,6 +188,7 @@ module Primer
 
       DEFAULT_NO_RESULTS_NODE_ARGUMENTS.freeze
 
+      # @param src [String] URL of the server endpoint that returns a filtered `<tree-view>` HTML fragment. When set, activates async (server-side) filtering mode. See "Async loading strategy" above.
       # @param tree_view_arguments [Hash] Arguments that will be passed to the underlying <%= link_to_component(Primer::Alpha::TreeView) %> component.
       # @param form_arguments [Hash] Form arguments that will be passed to the underlying <%= link_to_component(Primer::Alpha::TreeView) %> component. These arguments allow the selections made within a `FilterableTreeView` to be submitted to the server as part of a Rails form. Pass the `builder:` and `name:` options to this hash. `builder:` should be an instance of `ActionView::Helpers::FormBuilder`, which are created by the standard Rails `#form_with` and `#form_for` helpers. The `name:` option is the desired name of the field that will be included in the params sent to the server on form submission.
       # @param filter_input_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::TextField) %> component.
@@ -160,6 +196,7 @@ module Primer
       # @param include_sub_items_check_box_arguments [Hash] Arguments that will be passed to the <%= link_to_component(Primer::Alpha::CheckBox) %> component.
       # @param no_results_node_arguments [Hash] Arguments that will be passed to a <%= link_to_component(Primer::Alpha::TreeView::LeafNode) %> component that appears when no items match the filter criteria.
       def initialize(
+        src: nil,
         tree_view_arguments: {},
         form_arguments: {},
         filter_input_arguments: DEFAULT_FILTER_INPUT_ARGUMENTS.dup,
@@ -168,6 +205,8 @@ module Primer
         no_results_node_arguments: DEFAULT_NO_RESULTS_NODE_ARGUMENTS.dup,
         **system_arguments
       )
+        @tree_view_arguments = tree_view_arguments.dup
+
         tree_view_arguments[:data] = merge_data(
           tree_view_arguments, {
             data: { target: "filterable-tree-view.treeViewList" }
@@ -209,6 +248,7 @@ module Primer
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"filterable-tree-view"
+        @system_arguments[:src] = src if src
 
         @no_results_node_arguments = no_results_node_arguments
       end
@@ -232,15 +272,14 @@ module Primer
       def with_sub_tree(**system_arguments, &block)
         system_arguments[:select_variant] ||= :multiple
 
-        if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
-          raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+        unless SUPPORTED_SELECT_VARIANTS.include?(system_arguments[:select_variant])
+          raise ArgumentError, "FilterableTreeView only supports #{SUPPORTED_SELECT_VARIANTS.map(&:inspect).to_sentence} as select_variant"
         end
 
-        if system_arguments[:select_variant] == :single
-          # In single selection, the include sub-items checkbox and the SegmentedControl make no sense
+        if system_arguments[:select_variant] != :multiple
+          # In single/none selection, the include sub-items checkbox makes no sense
           @include_sub_items_check_box_arguments[:hidden] = true
           @include_sub_items_check_box_arguments[:checked] = false
-          @filter_mode_control_arguments[:hidden] = true
         end
 
         @tree_view.with_sub_tree(
@@ -254,15 +293,14 @@ module Primer
       def with_leaf(**system_arguments, &block)
         system_arguments[:select_variant] ||= :multiple
 
-        if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
-          raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+        unless SUPPORTED_SELECT_VARIANTS.include?(system_arguments[:select_variant])
+          raise ArgumentError, "FilterableTreeView only supports #{SUPPORTED_SELECT_VARIANTS.map(&:inspect).to_sentence} as select_variant"
         end
 
-        if system_arguments[:select_variant] == :single
-          # In single selection, the include sub-items checkbox and the SegmentedControl make no sense
+        if system_arguments[:select_variant] != :multiple
+          # In single/none selection, the include sub-items checkbox makes no sense
           @include_sub_items_check_box_arguments[:hidden] = true
           @include_sub_items_check_box_arguments[:checked] = false
-          @filter_mode_control_arguments[:hidden] = true
         end
 
         @tree_view.with_leaf(
@@ -271,9 +309,19 @@ module Primer
         )
       end
 
+      def async?
+        @system_arguments.key?(:src)
+      end
+
       private
 
       def before_render
+        if @system_arguments[:src] && @tree_view_arguments.any?
+          raise ArgumentError, "tree_view_arguments are not supported when src: is provided. " \
+                               "The initial tree shell is replaced on the first async fetch, so any " \
+                               "tree_view_arguments would be lost. Configure the tree in your server endpoint instead."
+        end
+
         content
 
         if @filter_mode_control.present? && @filter_mode_control.items.empty?

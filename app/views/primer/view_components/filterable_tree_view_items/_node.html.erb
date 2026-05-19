@@ -1,0 +1,38 @@
+<% if node.leaf? %>
+  <% component.with_leaf(
+    label: node.label,
+    select_variant: select_variant,
+    data: { node_id: node.id }
+  ) %>
+<% else %>
+  <%
+    # At the top-level TreeView we must explicitly provide sub_tree_component_klass and
+    # select_strategy. At nested levels, FilterableTreeView::SubTree#with_sub_tree already
+    # passes both via super and would raise "keyword argument duplicated" if we passed them again.
+    sub_tree_opts = {}
+    if component.is_a?(Primer::Alpha::TreeView)
+      sub_tree_opts[:sub_tree_component_klass] = Primer::OpenProject::FilterableTreeView::SubTree
+      sub_tree_opts[:select_strategy] = :self
+    end
+
+    # When a filter query is active, every sub-tree in the result is either a match or an ancestor
+    # of a match – either way it should be expanded so the user sees the results immediately.
+    sub_tree_opts[:expanded] = true if query.present?
+
+    hierarchy_only = query.present? && !node.label.downcase.include?(query.downcase)
+  %>
+  <% component.with_sub_tree(
+    label: node.label,
+    select_variant: select_variant,
+    **sub_tree_opts,
+    data: {
+      node_id: node.id,
+      hierarchy_only: (hierarchy_only ? true : nil)
+    }
+  ) do |sub| %>
+    <% node.children.each do |child| %>
+      <%= render partial: "primer/view_components/filterable_tree_view_items/node",
+                 locals: { component: sub, node: child, query: query, select_variant: select_variant } %>
+    <% end %>
+  <% end %>
+<% end %>

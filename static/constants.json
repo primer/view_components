@@ -852,6 +852,7 @@
     "SubTree": "Primer::Alpha::TreeView::SubTree",
     "SubTreeContainer": "Primer::Alpha::TreeView::SubTreeContainer",
     "SubTreeNode": "Primer::Alpha::TreeView::SubTreeNode",
+    "TrailingAction": "Primer::Alpha::TreeView::TrailingAction",
     "Visual": "Primer::Alpha::TreeView::Visual"
   },
   "Primer::Alpha::TreeView::Icon": {
@@ -917,6 +918,9 @@
       "mixed_descendants",
       "descendants"
     ]
+  },
+  "Primer::Alpha::TreeView::TrailingAction": {
+    "GeneratedSlotMethods": "Primer::Alpha::TreeView::TrailingAction::GeneratedSlotMethods"
   },
   "Primer::Alpha::TreeView::Visual": {
     "GeneratedSlotMethods": "Primer::Alpha::TreeView::Visual::GeneratedSlotMethods"
@@ -1820,6 +1824,11 @@
       "label": "No results"
     },
     "GeneratedSlotMethods": "Primer::OpenProject::FilterableTreeView::GeneratedSlotMethods",
+    "SUPPORTED_SELECT_VARIANTS": [
+      "multiple",
+      "single",
+      "none"
+    ],
     "SubTree": "Primer::OpenProject::FilterableTreeView::SubTree"
   },
   "Primer::OpenProject::FilterableTreeView::SubTree": {

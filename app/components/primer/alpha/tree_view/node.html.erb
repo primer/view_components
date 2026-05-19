@@ -31,6 +31,9 @@
         <%= trailing_visual %>
       <% end %>
     <% end %>
+    <% if trailing_action? %>
+      <%= trailing_action %>
+    <% end %>
   </div>
   <%= content %>
 <% end %>

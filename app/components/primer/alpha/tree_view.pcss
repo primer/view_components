@@ -30,10 +30,6 @@
         outline-offset: -2;
       }
     }
-
-    &[data-has-leading-action] {
-      --has-leading-action: 1;
-    }
   }
 
   & .TreeViewItemContainer {
@@ -47,11 +43,20 @@
     font-size: var(--text-body-size-medium);
     color: var(--fgColor-default);
     border-radius: var(--borderRadius-medium);
-    grid-template-columns: var(--spacer-width) var(--leading-action-width) var(--toggle-width) 1fr;
-    grid-template-areas: 'spacer leadingAction toggle content';
+    grid-template-columns: var(--spacer-width) var(--leading-action-width) var(--toggle-width) 1fr var(--trailing-action-width);
+    grid-template-areas: 'spacer leadingAction toggle content trailingAction';
 
     --leading-action-width: calc(var(--has-leading-action, 0) * 1.5rem);
+    --trailing-action-width: calc(var(--has-trailing-action, 0) * 1.5rem);
     --spacer-width: calc(calc(var(--level) - 1) * (var(--toggle-width) / 2));
+
+    &:has([data-has-leading-action]) {
+      --has-leading-action: 1;
+    }
+
+    &:has([data-has-trailing-action]) {
+      --has-trailing-action: 1;
+    }
 
     &:hover {
       background-color: var(--control-transparent-bgColor-hover);
@@ -149,6 +154,7 @@
 
   & .TreeViewItemContent {
     display: flex;
+    align-items: center;
     height: 100%;
     padding: 0 var(--base-size-8);
     outline: none;
@@ -287,6 +293,16 @@
     display: flex;
     color: var(--fgColor-muted);
     grid-area: leadingAction;
+
+    & > button {
+      flex-shrink: 1;
+    }
+  }
+
+  & .TreeViewItemTrailingAction {
+    display: flex;
+    color: var(--fgColor-muted);
+    grid-area: trailingAction;
 
     & > button {
       flex-shrink: 1;

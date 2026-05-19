@@ -126,6 +126,7 @@ module Primer
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_action_icon [Symbol] octicon
       # @param trailing_visual_icon [Symbol] octicon
+      # @param trailing_action_icon [Symbol] octicon
       # @param select_variant [Symbol] select [multiple, single, none]
       # @param disabled [Boolean] toggle
       def leaf_node_playground(
@@ -133,6 +134,7 @@ module Primer
         leading_visual_icon: nil,
         leading_action_icon: nil,
         trailing_visual_icon: nil,
+        trailing_action_icon: nil,
         select_variant: Primer::Alpha::TreeView::Node::DEFAULT_SELECT_VARIANT,
         disabled: false
       )
@@ -141,6 +143,7 @@ module Primer
           leading_visual_icon: leading_visual_icon,
           leading_action_icon: leading_action_icon,
           trailing_visual_icon: trailing_visual_icon,
+          trailing_action_icon: trailing_action_icon,
           select_variant: select_variant.to_sym,
           disabled: disabled
         })

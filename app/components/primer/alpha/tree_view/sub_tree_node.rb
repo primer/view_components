@@ -84,6 +84,24 @@ module Primer
         }
 
         # @!parse
+        #   # Adds a trailing action rendered to the right of the node's content.
+        #   #
+        #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
+        #   def with_trailing_action_button(**system_arguments, &block)
+        #   end
+
+        renders_one :trailing_action, types: {
+          button: lambda { |**system_arguments|
+            TrailingAction.new(
+              action: Primer::Beta::IconButton.new(
+                scheme: :invisible,
+                **system_arguments
+              )
+            )
+          }
+        }
+
+        # @!parse
         #   # Adds a trailing visual icon rendered to the right of the node's label.
         #   #
         #   # @param label [String] A label describing the visual, displayed only to screen readers.

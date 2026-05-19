@@ -1,0 +1,9 @@
+<%= form_with(url: primer_view_components.generic_form_submission_path(format: :json)) do |f| %>
+  <%= render(Primer::Alpha::Stack.new) do %>
+    <%= render(Primer::OpenProject::FilterableTreeView.new(
+      src: primer_view_components.filterable_tree_view_items_async_form_tree_path(name: "characters"),
+      form_arguments: { builder: f, name: "characters" }
+    )) %>
+    <%= render(Primer::Alpha::SubmitButton.new(name: :submit, scheme: :primary, label: "Submit")) %>
+  <% end %>
+<% end %>

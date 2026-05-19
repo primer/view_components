@@ -11,8 +11,8 @@ module Primer
         def with_sub_tree(**system_arguments, &block)
           system_arguments[:select_variant] ||= :multiple
 
-          if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
-            raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+          unless FilterableTreeView::SUPPORTED_SELECT_VARIANTS.include?(system_arguments[:select_variant])
+            raise ArgumentError, "FilterableTreeView only supports #{SUPPORTED_SELECT_VARIANTS.map(&:inspect).to_sentence} as select_variant"
           end
 
           super(
@@ -26,8 +26,8 @@ module Primer
         def with_leaf(**system_arguments, &block)
           system_arguments[:select_variant] ||= :multiple
 
-          if system_arguments[:select_variant] != :multiple && system_arguments[:select_variant] != :single
-            raise ArgumentError, "FilterableTreeView only supports `:multiple` or `:single` as select_variant"
+          unless FilterableTreeView::SUPPORTED_SELECT_VARIANTS.include?(system_arguments[:select_variant])
+            raise ArgumentError, "FilterableTreeView only supports #{SUPPORTED_SELECT_VARIANTS.map(&:inspect).to_sentence} as select_variant"
           end
 
           super(
@@ -37,11 +37,11 @@ module Primer
         end
 
         def with_loading_spinner(**system_arguments)
-          raise ArgumentError, "FilterableTreeView does not support asynchronous loading"
+          raise ArgumentError, "FilterableTreeView does not support select variants for sub-trees loaded asynchronously. Please make the whole component load asynchronously."
         end
 
         def with_loading_skeleton(**system_arguments)
-          raise ArgumentError, "FilterableTreeView does not support asynchronous loading"
+          raise ArgumentError, "FilterableTreeView does not support select variants for sub-trees loaded asynchronously. Please make the whole component load asynchronously."
         end
       end
     end

@@ -1,12 +1,13 @@
+- text: Filter
+- searchbox "Filter"
+- button "Clear"
 - list "Filter mode":
   - listitem:
     - button "All"
   - listitem:
     - button "Selected"
 - checkbox "Include sub-items"
-- text: Include sub-items Filter
-- searchbox "Filter"
-- button "Clear"
+- text: Include sub-items
 - tree:
   - treeitem "Students" [expanded] [level=1]
   - group:

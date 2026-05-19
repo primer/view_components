@@ -114,6 +114,17 @@ module Primer
         assert_selector("[role=treeitem] .TreeViewItemVisual svg.octicon-diff-modified")
       end
 
+      def test_leaf_trailing_action
+        render_inline(Primer::Alpha::TreeView.new) do |tree|
+          tree.with_leaf(label: "button.rb") do |node|
+            node.with_trailing_action_button(icon: :grabber, aria: { label: "Trailing action icon" })
+          end
+        end
+
+        assert_selector(".TreeViewItemTrailingAction button svg.octicon-grabber")
+        assert_selector("[role=treeitem][data-has-trailing-action]")
+      end
+
       def test_sub_tree_leading_action
         render_inline(Primer::Alpha::TreeView.new) do |tree|
           tree.with_sub_tree(label: "src") do |sub_tree|
@@ -123,6 +134,18 @@ module Primer
         end
 
         assert_selector(".TreeViewItemLeadingAction button svg.octicon-grabber")
+      end
+
+      def test_sub_tree_trailing_action
+        render_inline(Primer::Alpha::TreeView.new) do |tree|
+          tree.with_sub_tree(label: "src") do |sub_tree|
+            sub_tree.with_trailing_action_button(icon: :grabber, aria: { label: "Trailing action icon" })
+            sub_tree.with_leaf(label: "button.rb")
+          end
+        end
+
+        assert_selector(".TreeViewItemTrailingAction button svg.octicon-grabber")
+        assert_selector("[role=treeitem][data-has-trailing-action]")
       end
 
       def test_sub_tree_leading_visual

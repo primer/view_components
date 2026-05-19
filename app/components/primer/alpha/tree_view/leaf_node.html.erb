@@ -14,5 +14,10 @@
       <%= trailing_visual %>
     <% end %>
   <% end %>
+  <% if trailing_action? %>
+    <% node.with_trailing_action do %>
+      <%= trailing_action %>
+    <% end %>
+  <% end %>
   <% node.with_text_content { @label } %>
 <% end %>
