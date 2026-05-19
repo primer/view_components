@@ -63,12 +63,14 @@ jobs:
           BRANCH="${GITHUB_EVENT_PULL_REQUEST_HEAD_REF}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git stash push -u -m "pre-auto-commit" || true
           git fetch origin "$BRANCH" --depth=1
           git checkout "$BRANCH"
           git reset --hard "origin/$BRANCH"
           git stash pop || true
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PULL_REQUEST_HEAD_REF: ${{ github.event.pull_request.head.ref }}
       - id: auto-commit
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
@@ -77,6 +79,7 @@ jobs:
           commit_message: Generating component snapshots
           file_pattern: .playwright/screenshots/**/*.png .playwright/screenshots/**/*.yml
           push_options: --force-with-lease
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: "Changes detected"
         if: steps.auto-commit.outputs.changes_detected == 'true'
         uses: phulsechinmay/rewritable-pr-comment@a1b041997fa84ec3e524ee9dee5ba0b5f4e73604 # v0.3.0
