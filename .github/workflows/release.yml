@@ -105,6 +105,7 @@ jobs:
     permissions:
       contents: read
       statuses: write
+      id-token: write # Required for OIDC
     uses: ./.github/workflows/release_canary.yml
     with:
       install: npm i
@@ -117,6 +118,7 @@ jobs:
     permissions:
       contents: read
       statuses: write
+      id-token: write # Required for OIDC
     uses: ./.github/workflows/release_candidate.yml
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
