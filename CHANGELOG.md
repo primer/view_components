@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.86.1
+
+### Patch Changes
+
+- [#460](https://github.com/opf/primer_view_components/pull/460) [`0b3d636`](https://github.com/opf/primer_view_components/commit/0b3d636cd7a445ae331883359e16bda3d8ebf054) Thanks [@HDinger](https://github.com/HDinger)! - Fix release process
+
 ## 0.86.0
 
 ### Minor Changes
