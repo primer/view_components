@@ -4611,6 +4611,11 @@
             "parameters": []
           },
           {
+            "name": "trailing_action",
+            "description": null,
+            "parameters": []
+          },
+          {
             "name": "trailing_visual",
             "description": null,
             "parameters": []
@@ -4642,6 +4647,11 @@
           },
           {
             "name": "leading_action",
+            "description": null,
+            "parameters": []
+          },
+          {
+            "name": "trailing_action",
             "description": null,
             "parameters": []
           },
@@ -10901,6 +10911,32 @@
         "subcomponents": []
       },
       {
+        "fully_qualified_name": "Primer::Alpha::TreeView::TrailingAction",
+        "description": "The trailing action for `TreeView` nodes.\n\nThis component is part of the {{#link_to_component}}Primer::Alpha::TreeView{{/link_to_component}} component and should\nnot be used directly.",
+        "accessibility_docs": null,
+        "is_form_component": false,
+        "is_published": true,
+        "requires_js": false,
+        "component": "TreeView::TrailingAction",
+        "status": "alpha",
+        "a11y_reviewed": false,
+        "short_name": "TreeViewTrailingAction",
+        "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/trailing_action.rb",
+        "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/trailing_action/default/",
+        "parameters": [
+          {
+            "name": "action",
+            "type": "ViewComponent::Base",
+            "default": "N/A",
+            "description": "A component or other renderable to use as the action button etc."
+          }
+        ],
+        "slots": [],
+        "methods": [],
+        "previews": [],
+        "subcomponents": []
+      },
+      {
         "fully_qualified_name": "Primer::Alpha::TreeView::SubTreeContainer",
         "description": "This component is part of the {{#link_to_component}}Primer::Alpha::TreeView{{/link_to_component}} component and should\nnot be used directly.",
         "accessibility_docs": null,
@@ -11241,6 +11277,11 @@
             "parameters": []
           },
           {
+            "name": "trailing_action",
+            "description": "Generic trailing action slot",
+            "parameters": []
+          },
+          {
             "name": "leading_visual",
             "description": "Generic leading visual slot",
             "parameters": []
@@ -11546,6 +11587,11 @@
             "parameters": []
           },
           {
+            "name": "trailing_action",
+            "description": null,
+            "parameters": []
+          },
+          {
             "name": "trailing_visual",
             "description": null,
             "parameters": []
@@ -11574,6 +11620,19 @@
           {
             "name": "with_leading_action_button",
             "description": "Adds a leading action rendered to the left of the node's label and any leading visuals or checkboxes.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_trailing_action_button",
+            "description": "Adds a trailing action rendered to the right of the node's content.",
             "parameters": [
               {
                 "name": "system_arguments",
@@ -11676,6 +11735,11 @@
             "parameters": []
           },
           {
+            "name": "trailing_action",
+            "description": null,
+            "parameters": []
+          },
+          {
             "name": "trailing_visual",
             "description": null,
             "parameters": []
@@ -11723,6 +11787,19 @@
           {
             "name": "with_leading_action_button",
             "description": "Adds a leading action rendered to the left of the node's label and any leading visuals or checkboxes.",
+            "parameters": [
+              {
+                "name": "system_arguments",
+                "type": "Hash",
+                "default": "N/A",
+                "description": "The arguments accepted by {{#link_to_component}}Primer::Beta::IconButton{{/link_to_component}}."
+              }
+            ],
+            "return_types": []
+          },
+          {
+            "name": "with_trailing_action_button",
+            "description": "Adds a trailing action rendered to the right of the node's content.",
             "parameters": [
               {
                 "name": "system_arguments",
@@ -20273,7 +20350,7 @@
   },
   {
     "fully_qualified_name": "Primer::OpenProject::FilterableTreeView",
-    "description": "A TreeView and associated filter controls for searching nested hierarchies.\n\n## Filter controls\n\n`FilterableTreeView`s can be filtered using two controls, both present in the toolbar above the tree:\n\n1. A free-form query string from a text input field.\n2. A `SegmentedControl` with two options (by default):\n   1. The \"Selected\" option causes the component to only show checked nodes, provided they also satisfy the other\n      filter criteria described here.\n   2. The \"All\" option causes the component to show all nodes, provided they also satisfy the other filter\n      criteria described here.\n\n## Custom filter modes\n\nIn addition to the default filter modes of `'all'` and `'selected'` described above, `FilterableTreeView` supports\nadding custom filter modes. Adding a filter mode will cause its label to appear in the `SegmentedControl` in the\ntoolbar, and will be passed as the third argument to the filter function (see below).\n\nHere's how to add a custom filter mode in addition to the default ones:\n\n```erb\n<%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>\n  <%# remove this line to prevent adding the default modes %>\n  <% tree_view.with_default_filter_modes %>\n  <% tree_view.with_filter_mode(name: \"Custom\", system_arguments)\n<% end %>\n```\n\n## Filter behavior\n\nBy default, matching node text is identified by looking for an exact substring match, operating on a lowercased\nversion of both the query string and the node text. For more information, and to provide a customized filter\nfunction, please see the section titled \"Customizing the filter function\" below.\n\nNodes that match the filter appear as normal; nodes that do not match are presented as follows:\n\n1. Leaf nodes are hidden.\n2. Sub-tree nodes with no matching children are hidden.\n3. Sub-tree nodes with at least one matching child are disabled but still visible.\n\n## Checking behavior\n\nBy default, checking a node in a `FilterableTreeView` checks only that node (i.e. no child nodes are checked).\nTo aide in checking children in deeply nested or highly populated hierarchies, a third control exists in the\ntoolbar: the \"Include sub-items\" check box. If this feature is turned on, checking sub-tree nodes causes all\nchildren, both leaf and sub-tree nodes, to also be checked recursively. Moreover, turning this feature on will\ncause the children of any previously checked nodes to be checked recursively. Unchecking a node while in\n\"Include sub-items\" mode will restore that sub-tree and all its children to their previously checked state, so as\nnot to permanently override a user's selections. Unchecking the \"Include sub-items\" check box has a similar effect,\ni.e. restores all previous user selections under currently checked sub-trees.\n\n## JavaScript API\n\n`FilterableTreeView` does not yet have an extensive JavaScript API, but this may change in the future as the\ncomponent is further developed to fit additional use-cases.\n\n### Customizing the filter function\n\nThe filter function can be customized by setting the value of the `filterFn` property to a function with the\nfollowing signature:\n\n```typescript\nexport type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null\n```\n\nThis function will be called once for each node in the tree every time filter controls change (i.e. when the\nfilter mode or query string are altered). The function is called with the following arguments:\n\n|Argument    |Description                                                      |\n|:-----------|:----------------------------------------------------------------|\n|`node`      |The HTML node element, i.e. the element with `role=treeitem` set.|\n|`query`     |The query string.                                                |\n|`filterMode`|The filter mode, either `'all'` or `'selected'`.                 |\n\nThe component expects the filter function to return specific values depending on the type of match:\n\n1. No match - return `null`\n2. Match but no highlights (eg. when the query string is empty) - return an empty array\n3. Match with highlights - return a non-empty array of `Range` objects\n\nExample:\n\n```javascript\nconst filterableTreeView = document.querySelector('filterable-tree-view')\nfilterableTreeView.filterFn = (node, query, filterMode) => {\n  // custom filter implementation here\n}\n```\n\nYou can read about `Range` objects here: https://developer.mozilla.org/en-US/docs/Web/API/Range.\n\nFor a complete example demonstrating how to implement a working filter function complete with range highlighting,\nsee the default filter function available in the `FilterableTreeViewElement` JavaScript class, which is part of\nthe Primer source code.\n\n### Events\n\nCurrently `FilterableTreeView` does not emit any events aside from the events already emitted by the `TreeView`\ncomponent.",
+    "description": "A TreeView and associated filter controls for searching nested hierarchies.\n\n## Filter controls\n\n`FilterableTreeView`s can be filtered using two controls, both present in the toolbar above the tree:\n\n1. A free-form query string from a text input field.\n2. A `SegmentedControl` with two options (by default):\n   1. The \"Selected\" option causes the component to only show checked nodes, provided they also satisfy the other\n      filter criteria described here.\n   2. The \"All\" option causes the component to show all nodes, provided they also satisfy the other filter\n      criteria described here.\n\n## Custom filter modes\n\nIn addition to the default filter modes of `'all'` and `'selected'` described above, `FilterableTreeView` supports\nadding custom filter modes. Adding a filter mode will cause its label to appear in the `SegmentedControl` in the\ntoolbar, and will be passed as the third argument to the filter function (see below).\n\nHere's how to add a custom filter mode in addition to the default ones:\n\n```erb\n<%= render(Primer::OpenProject::FilterableTreeView.new) do |tree_view| %>\n  <%# remove this line to prevent adding the default modes %>\n  <% tree_view.with_default_filter_modes %>\n  <% tree_view.with_filter_mode(name: \"Custom\", system_arguments)\n<% end %>\n```\n\n## Filter behavior\n\nBy default, matching node text is identified by looking for an exact substring match, operating on a lowercased\nversion of both the query string and the node text. For more information, and to provide a customized filter\nfunction, please see the section titled \"Customizing the filter function\" below.\n\nNodes that match the filter appear as normal; nodes that do not match are presented as follows:\n\n1. Leaf nodes are hidden.\n2. Sub-tree nodes with no matching children are hidden.\n3. Sub-tree nodes with at least one matching child are disabled but still visible.\n\n## Checking behavior\n\nBy default, checking a node in a `FilterableTreeView` checks only that node (i.e. no child nodes are checked).\nTo aide in checking children in deeply nested or highly populated hierarchies, a third control exists in the\ntoolbar: the \"Include sub-items\" check box. If this feature is turned on, checking sub-tree nodes causes all\nchildren, both leaf and sub-tree nodes, to also be checked recursively. Moreover, turning this feature on will\ncause the children of any previously checked nodes to be checked recursively. Unchecking a node while in\n\"Include sub-items\" mode will restore that sub-tree and all its children to their previously checked state, so as\nnot to permanently override a user's selections. Unchecking the \"Include sub-items\" check box has a similar effect,\ni.e. restores all previous user selections under currently checked sub-trees.\n\n## JavaScript API\n\n`FilterableTreeView` does not yet have an extensive JavaScript API, but this may change in the future as the\ncomponent is further developed to fit additional use-cases.\n\n### Customizing the filter function\n\nThe filter function can be customized by setting the value of the `filterFn` property to a function with the\nfollowing signature:\n\n```typescript\nexport type FilterFn = (node: HTMLElement, query: string, filterMode?: string) => Range[] | null\n```\n\nThis function will be called once for each node in the tree every time filter controls change (i.e. when the\nfilter mode or query string are altered). The function is called with the following arguments:\n\n|Argument    |Description                                                      |\n|:-----------|:----------------------------------------------------------------|\n|`node`      |The HTML node element, i.e. the element with `role=treeitem` set.|\n|`query`     |The query string.                                                |\n|`filterMode`|The filter mode, either `'all'` or `'selected'`.                 |\n\nThe component expects the filter function to return specific values depending on the type of match:\n\n1. No match - return `null`\n2. Match but no highlights (eg. when the query string is empty) - return an empty array\n3. Match with highlights - return a non-empty array of `Range` objects\n\nExample:\n\n```javascript\nconst filterableTreeView = document.querySelector('filterable-tree-view')\nfilterableTreeView.filterFn = (node, query, filterMode) => {\n  // custom filter implementation here\n}\n```\n\nYou can read about `Range` objects here: https://developer.mozilla.org/en-US/docs/Web/API/Range.\n\nFor a complete example demonstrating how to implement a working filter function complete with range highlighting,\nsee the default filter function available in the `FilterableTreeViewElement` JavaScript class, which is part of\nthe Primer source code.\n\n### Events\n\nCurrently `FilterableTreeView` does not emit any events aside from the events already emitted by the `TreeView`\ncomponent.\n\n## Async loading strategy\n\nWhen `src` is set on the component, all filter interactions (text input, filter mode changes) trigger a debounced\nserver request instead of client-side filtering. The server is responsible for returning a filtered `<tree-view>`\nHTML fragment that replaces the current tree.\n\n### Behavior\n\n- The full tree is loaded initially from the server via `src`.\n- Each filter input event triggers a debounced (300 ms) request to the server.\n- The server returns a filtered `<tree-view>` element which replaces the existing one.\n- All matching results and their full ancestor hierarchy are expanded automatically.\n- Matching text is highlighted using the CSS Custom Highlight API (or `<mark>` fallback).\n- When the filter is cleared, the tree is replaced with the full (unfiltered) result from\n  the server and the expansion state from before the search is restored.\n- Checked nodes are preserved across tree replacements using `data-node-id` attributes.\n- When \"include sub-items\" is active and the tree is filtered, clicking a parent node\n  selects ALL its descendants (not just the visible filtered ones). Therefore, \"include_sub_items\" is passed\n  to the server, since it holds the only truth about the data.\n\n### Server endpoint\n\nThe server endpoint must return a `<tree-view>` HTML fragment. Each node must have a stable\n`data-node-id` on its `[role=treeitem]` element.\n\n### Usage\n\n```erb\n<%= render(Primer::OpenProject::FilterableTreeView.new(\n  src: my_path\n)) %>\n```",
     "accessibility_docs": null,
     "is_form_component": false,
     "is_published": true,
@@ -20285,6 +20362,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/default/",
     "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "URL of the server endpoint that returns a filtered `<tree-view>` HTML fragment. When set, activates async (server-side) filtering mode. See \"Async loading strategy\" above."
+      },
       {
         "name": "tree_view_arguments",
         "type": "Hash",
@@ -20393,6 +20476,45 @@
       {
         "preview_path": "primer/open_project/filterable_tree_view/custom_checkbox_text",
         "name": "custom_checkbox_text",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/async",
+        "name": "async",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/async_form_input",
+        "name": "async_form_input",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/open_project/filterable_tree_view/link_nodes",
+        "name": "link_nodes",
         "snapshot": "false",
         "skip_rules": {
           "wont_fix": [

@@ -3758,6 +3758,22 @@
     ]
   },
   {
+    "component": "TreeView::TrailingAction",
+    "status": "alpha",
+    "a11y_reviewed": false,
+    "short_name": "TreeViewTrailingAction",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tree_view/trailing_action.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tree_view/trailing_action/default/",
+    "parameters": [
+      {
+        "name": "action",
+        "type": "ViewComponent::Base",
+        "default": "N/A",
+        "description": "A component or other renderable to use as the action button etc."
+      }
+    ]
+  },
+  {
     "component": "TreeView::Visual",
     "status": "alpha",
     "a11y_reviewed": false,
@@ -6151,6 +6167,12 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/filterable_tree_view.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/filterable_tree_view/default/",
     "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "`nil`",
+        "description": "URL of the server endpoint that returns a filtered `<tree-view>` HTML fragment. When set, activates async (server-side) filtering mode. See \"Async loading strategy\" above."
+      },
       {
         "name": "tree_view_arguments",
         "type": "Hash",

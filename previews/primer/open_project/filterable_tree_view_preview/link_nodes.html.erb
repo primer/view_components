@@ -1,0 +1,18 @@
+<%= render(Primer::OpenProject::FilterableTreeView.new(
+  tree_view_arguments: { node_variant: :anchor },
+  filter_mode_control_arguments: { hidden: true }
+)) do |tree| %>
+  <% tree.with_sub_tree(label: "Cloud Services", select_variant: :none, expanded: expanded, href: "https://en.wikipedia.org/wiki/Cloud_computing", target: "_blank") do |cloud| %>
+    <% cloud.with_leaf(label: "OpenProject", select_variant: :none, href: "https://www.openproject.org", target: "_blank") do |node| %>
+      <% node.with_trailing_visual_icon(icon: :"link-external") %>
+    <% end %>
+
+    <% cloud.with_leaf(label: "Hetzner", select_variant: :none, href: "https://www.hetzner.com", target: "_blank") do |node| %>
+      <% node.with_trailing_visual_icon(icon: :"link-external") %>
+    <% end %>
+  <% end %>
+
+  <% tree.with_leaf(label: "GitHub", select_variant: :none, href: "https://github.com", target: "_blank") do |node| %>
+    <% node.with_trailing_visual_icon(icon: :"link-external") %>
+  <% end %>
+<% end %>

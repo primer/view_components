@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.86.1
+
+### Patch Changes
+
+- [#460](https://github.com/opf/primer_view_components/pull/460) [`0b3d636`](https://github.com/opf/primer_view_components/commit/0b3d636cd7a445ae331883359e16bda3d8ebf054) Thanks [@HDinger](https://github.com/HDinger)! - Fix release process
+
+## 0.86.0
+
+### Minor Changes
+
+- [#451](https://github.com/opf/primer_view_components/pull/451) [`fe16998`](https://github.com/opf/primer_view_components/commit/fe16998b2795b855cafa3aec78e7b59f63d81709) Thanks [@HDinger](https://github.com/HDinger)! - Async loading strategy for FilterableTreeView
+
+- [#454](https://github.com/opf/primer_view_components/pull/454) [`b664786`](https://github.com/opf/primer_view_components/commit/b6647868749a2b637f2d505d30694f46f8d2d4a9) Thanks [@myabc](https://github.com/myabc)! - Bump Ruby versions, supporting Ruby 4.0.x for development and testing against 3.4 and 4.0 on CI. Also aligns Rails version with core.
+
+- [#451](https://github.com/opf/primer_view_components/pull/451) [`fe16998`](https://github.com/opf/primer_view_components/commit/fe16998b2795b855cafa3aec78e7b59f63d81709) Thanks [@HDinger](https://github.com/HDinger)! - Add trailing action button support to TreeView and FilterableTreeView
+
 ## 0.85.0
 
 ### Minor Changes

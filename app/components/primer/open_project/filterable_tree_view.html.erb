@@ -1,6 +1,11 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= render(Primer::Alpha::Stack.new) do %>
-    <%= render(Primer::Alpha::Stack.new(wrap: :reverse, direction: :horizontal, align: :center)) do %>
+  <%= render(Primer::Alpha::Stack.new(classes: "FilterableTreeViewLayout")) do %>
+    <%= render(Primer::Alpha::Stack.new(wrap: :wrap, direction: :horizontal, align: :center)) do %>
+      <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
+        <%= render(@filter_input) do |input| %>
+          <% input.merge_input_arguments!(form: "") %>
+        <% end %>
+      <% end %>
       <%= render(Primer::ConditionalWrapper.new(condition: !hide_filter_mode_control? && !hide_include_sub_items_check_box?,
                                                 component: Primer::Alpha::Stack, wrap: :wrap, direction: :horizontal, align: :center)) do %>
         <%= render(Primer::Alpha::StackItem.new(hidden: hide_filter_mode_control?)) do %>
@@ -8,22 +13,29 @@
         <% end %>
         <%= render(Primer::Alpha::StackItem.new(hidden: hide_include_sub_items_check_box?)) do %>
           <%= render(@include_sub_items_check_box) do |input| %>
-            <% input.merge_input_arguments!(form: "") %>
+            <%# In async mode the checkbox value must reach the server on form submission so it can
+                include all descendants of checked nodes even when paginated. In non-async mode it is
+                a purely client-side control and must be excluded from form submissions. %>
+            <% input.merge_input_arguments!(form: "") unless async? %>
           <% end %>
         <% end %>
       <% end %>
-      <%= render(Primer::Alpha::StackItem.new(grow: true)) do %>
-        <%= render(@filter_input) do |input| %>
-          <%# exclude from form submissions %>
-          <% input.merge_input_arguments!(form: "") %>
+    <% end %>
+    <div class="FilterableTreeViewTreeContainer">
+      <%= render(Primer::BaseComponent.new(tag: :div, hidden: true, data: { target: "filterable-tree-view.noResultsMessage" })) do %>
+        <%= render(Primer::Alpha::TreeView.new) do |tree| %>
+          <% tree.with_leaf(**@no_results_node_arguments) %>
         <% end %>
       <% end %>
-    <% end %>
-    <%= render(Primer::BaseComponent.new(tag: :div, hidden: true, data: { target: "filterable-tree-view.noResultsMessage" })) do %>
-      <%= render(Primer::Alpha::TreeView.new) do |tree| %>
-        <% tree.with_leaf(**@no_results_node_arguments) %>
-      <% end %>
-    <% end %>
-    <%= render(@tree_view) %>
+      <div class="FilterableTreeViewLoadingSkeleton" aria-hidden="true">
+        <% [0, 8, 8, 16, 8, 0, 8, 8].each do |indent| %>
+          <span class="TreeViewSkeletonItemContainerStyle" style="padding-left: <%= indent %>px">
+            <%= render(Primer::Alpha::SkeletonBox.new(width: "16px")) %>
+            <%= render(Primer::Alpha::SkeletonBox.new(classes: "TreeItemSkeletonTextStyles")) %>
+          </span>
+        <% end %>
+      </div>
+      <%= render(@tree_view) %>
+    </div>
   <% end %>
 <% end %>

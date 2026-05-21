@@ -271,6 +271,15 @@
   "DragHandle": [
     "Primer::OpenProject::DragHandle"
   ],
+  "FilterableTreeViewLayout": [
+    "Primer::OpenProject::FilterableTreeView"
+  ],
+  "FilterableTreeViewLoadingSkeleton": [
+    "Primer::OpenProject::FilterableTreeView"
+  ],
+  "FilterableTreeViewTreeContainer": [
+    "Primer::OpenProject::FilterableTreeView"
+  ],
   "FormControl": [
     "Primer::Alpha::TextField"
   ],

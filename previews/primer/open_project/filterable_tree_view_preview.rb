@@ -7,7 +7,7 @@ module Primer
       # @label Playground
       #
       # @param expanded [Boolean] toggle
-      # @param select_variant [Symbol] select [multiple, single]
+      # @param select_variant [Symbol] select [multiple, single, none]
       # @param show_checkbox [Boolean] toggle
       # @param show_segmented_control [Boolean] toggle
       def playground(expanded: true, select_variant: :multiple, show_checkbox: true, show_segmented_control: true)
@@ -31,7 +31,7 @@ module Primer
 
       # @label Form input
       #
-      # @param select_variant [Symbol] select [multiple, single]
+      # @param select_variant [Symbol] select [multiple, single, none]
       # @param expanded [Boolean] toggle
       def form_input(select_variant: :multiple, expanded: true)
         render_with_template(locals: {
@@ -109,6 +109,27 @@ module Primer
 
       # @label Custom checkbox text
       def custom_checkbox_text(expanded: true)
+        render_with_template(locals: {
+          expanded: coerce_bool(expanded)
+        })
+      end
+
+      # @label Async (server-side filtering)
+      #
+      # @param select_variant [Symbol] select [multiple, single, none]
+      def async(select_variant: :single)
+        render_with_template(locals: {
+          select_variant: select_variant.to_sym
+        })
+      end
+
+      # @label Async form input
+      def async_form_input
+        render_with_template
+      end
+
+      # @label Link nodes
+      def link_nodes(expanded: true)
         render_with_template(locals: {
           expanded: coerce_bool(expanded)
         })

@@ -84,6 +84,7 @@
   "Primer::Alpha::TreeView::SubTree": "alpha",
   "Primer::Alpha::TreeView::SubTreeContainer": "alpha",
   "Primer::Alpha::TreeView::SubTreeNode": "alpha",
+  "Primer::Alpha::TreeView::TrailingAction": "alpha",
   "Primer::Alpha::TreeView::Visual": "alpha",
   "Primer::Alpha::UnderlineNav": "alpha",
   "Primer::Alpha::UnderlinePanels": "alpha",

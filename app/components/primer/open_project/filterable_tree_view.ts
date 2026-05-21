@@ -2,7 +2,8 @@ import {controller, target} from '@github/catalyst'
 import {SegmentedControlElement} from '../alpha/segmented_control'
 import {TreeViewElement} from '../alpha/tree_view/tree_view'
 import {TreeViewSubTreeNodeElement} from '../alpha/tree_view/tree_view_sub_tree_node_element'
-import {TreeViewNodeInfo} from '../shared_events'
+// eslint-disable-next-line import/named
+import {TreeViewCheckedValue, TreeViewNodeInfo} from '../shared_events'
 
 // This function is expected to return the following values:
 // 1. No match - return null
@@ -14,6 +15,8 @@ type NodeState = {
   checked: boolean
   disabled: boolean
 }
+
+const ASYNC_DEBOUNCE_MS = 300
 
 @controller
 export class FilterableTreeViewElement extends HTMLElement {
@@ -27,15 +30,43 @@ export class FilterableTreeViewElement extends HTMLElement {
   #abortController: AbortController
   #stateMap: Map<TreeViewSubTreeNodeElement, Map<HTMLElement, NodeState>> = new Map()
 
+  // Async mode state
+  #debounceTimer: ReturnType<typeof setTimeout> | null = null
+  #fetchAbortController: AbortController | null = null
+  // nodeId → wasExpanded: taken once before the first filter query is entered, cleared when filter is removed
+  #expansionSnapshot: Map<string, boolean> | null = null
+  // nodeId → wasExpanded: taken before entering "selected" mode, cleared when leaving it
+  #selectedModeSnapshot: Map<string, boolean> | null = null
+  // nodeId → checkedValue: persists across tree replacements, updated on every treeViewNodeChecked event
+  #checkedNodeIds: Map<string, TreeViewCheckedValue> = new Map()
+  // nodeId → form payload: mirrors #checkedNodeIds but stores the data needed to synthesise a hidden
+  // form input for nodes that are checked but not currently in the DOM (e.g. filtered out).
+  #checkedNodeFormPayloads: Map<string, {path: string[]; value?: string}> = new Map()
+  #isFiltered = false
+
   connectedCallback() {
     const {signal} = (this.#abortController = new AbortController())
     this.addEventListener('treeViewNodeChecked', this, {signal})
     this.addEventListener('itemActivated', this, {signal})
     this.addEventListener('input', this, {signal})
+
+    if (this.#isAsyncMode) {
+      void this.#fetchAndReplaceTree()
+    }
   }
 
   disconnectedCallback() {
     this.#abortController.abort()
+    this.#fetchAbortController?.abort()
+    if (this.#debounceTimer !== null) clearTimeout(this.#debounceTimer)
+  }
+
+  get #src(): string | null {
+    return this.getAttribute('src')
+  }
+
+  get #isAsyncMode(): boolean {
+    return !!this.#src
   }
 
   handleEvent(event: Event) {
@@ -57,9 +88,46 @@ export class FilterableTreeViewElement extends HTMLElement {
     // when calling this.treeView.setNodeCheckedValue.
     switch (origEvent.type) {
       case 'treeViewNodeChecked':
+        // Always track checked node IDs before delegating, so async replacements can restore selection.
+        this.#updateCheckedNodeIds(event)
         this.#handleTreeViewNodeChecked(event)
         break
     }
+  }
+
+  // Keeps #checkedNodeIds and #checkedNodeFormPayloads in sync with every user-triggered check event
+  // so we can restore selection and synthesise form inputs after async tree replacements, even for
+  // nodes that are no longer visible (e.g. filtered out by the server).
+  #updateCheckedNodeIds(event: CustomEvent<TreeViewNodeInfo[]>) {
+    if (!this.#isAsyncMode) return
+
+    for (const nodeInfo of event.detail) {
+      const node = nodeInfo.node as HTMLElement
+      const nodeId = node.getAttribute('data-node-id')
+      if (nodeId) {
+        if (nodeInfo.checkedValue === 'false') {
+          this.#checkedNodeIds.delete(nodeId)
+          this.#checkedNodeFormPayloads.delete(nodeId)
+        } else {
+          // In single-select mode, TreeView clears the previous selection internally
+          // (via checkOnlyAtPath) but the treeViewNodeChecked event only contains the
+          // newly selected node. Clear our tracked state so #restoreSelectionState does
+          // not re-check previously selected nodes after a tree replacement.
+          if (node.getAttribute('data-select-variant') === 'single') {
+            this.#checkedNodeIds.clear()
+            this.#checkedNodeFormPayloads.clear()
+          }
+
+          this.#checkedNodeIds.set(nodeId, nodeInfo.checkedValue)
+          const payload: {path: string[]; value?: string} = {path: nodeInfo.path}
+          const dataValue = node.getAttribute('data-value')
+          if (dataValue) payload.value = dataValue
+          this.#checkedNodeFormPayloads.set(nodeId, payload)
+        }
+      }
+    }
+
+    this.#updateRetainedSelections()
   }
 
   #handleTreeViewNodeChecked(event: CustomEvent<TreeViewNodeInfo[]>) {
@@ -118,20 +186,56 @@ export class FilterableTreeViewElement extends HTMLElement {
   #handleFilterModeEvent(event: Event) {
     if (event.type !== 'itemActivated') return
 
-    this.#applyFilterOptions()
+    if (this.#isAsyncMode) {
+      if (this.filterMode === 'selected') {
+        // "selected" mode is client-side: snapshot expansion state before the filter collapses nodes,
+        // then apply client-side filter without a server round-trip.
+        this.#selectedModeSnapshot = this.#captureExpansionState()
+        this.#applyFilterOptions()
+      } else if (this.#selectedModeSnapshot !== null && this.queryString.length === 0) {
+        // Leaving "selected" mode with no active query: undo client-side filter and restore expansion
+        // state without a server round-trip (the full tree is already in the DOM).
+        this.#undoClientSideFilter()
+        this.#applyExpansionSnapshot(this.#selectedModeSnapshot)
+        this.#selectedModeSnapshot = null
+      } else {
+        // "all" mode with an active query, or switching away from a custom mode: use async fetch.
+        this.#selectedModeSnapshot = null
+        this.#scheduleAsyncFetch()
+      }
+    } else {
+      this.#applyFilterOptions()
+    }
+  }
+
+  // Removes `hidden` attributes added by the client-side filter from leaf list items and sub-tree nodes.
+  #undoClientSideFilter() {
+    for (const el of this.querySelectorAll<HTMLElement>('tree-view li[hidden], tree-view-sub-tree-node[hidden]')) {
+      el.removeAttribute('hidden')
+    }
   }
 
   #handleFilterInputEvent(event: Event) {
     if (event.type !== 'input') return
 
-    this.#applyFilterOptions()
+    // "selected" mode is always client-side – the server doesn't know the selection state.
+    if (this.#isAsyncMode && this.filterMode !== 'selected') {
+      this.#scheduleAsyncFetch()
+    } else {
+      this.#applyFilterOptions()
+    }
   }
 
   #handleIncludeSubItemsCheckBoxEvent(event: Event) {
     if (!this.treeView) return
     if (event.type !== 'input') return
 
-    this.#applyFilterOptions()
+    // In async mode, toggling include-sub-items does not require a server round-trip: the client
+    // handles the visual state entirely (checking/disabling visible descendants). The flag will be
+    // included automatically in the next filter request triggered by a query or filter-mode change.
+    if (!this.#isAsyncMode) {
+      this.#applyFilterOptions()
+    }
 
     if (this.includeSubItemsCheckBox.checked) {
       this.#includeSubItems()
@@ -184,6 +288,214 @@ export class FilterableTreeViewElement extends HTMLElement {
       this.#restoreNodeState(subTree)
     }
   }
+
+  // ─── Async mode ────────────────────────────────────────────────────────────
+
+  #scheduleAsyncFetch() {
+    if (this.#debounceTimer !== null) clearTimeout(this.#debounceTimer)
+
+    this.#debounceTimer = setTimeout(() => {
+      this.#debounceTimer = null
+      void this.#fetchAndReplaceTree()
+    }, ASYNC_DEBOUNCE_MS)
+  }
+
+  async #fetchAndReplaceTree() {
+    const src = this.#src
+    if (!src) return
+
+    const query = this.queryString
+    const filterMode = this.filterMode || 'all'
+    const includeSubItems = this.includeSubItemsCheckBox?.checked ?? false
+
+    // Snapshot expansion state the first time the user enters a filter query
+    if (!this.#isFiltered && query.length > 0) {
+      this.#snapshotExpansionState()
+      this.#isFiltered = true
+    } else if (this.#isFiltered && query.length === 0) {
+      this.#isFiltered = false
+    }
+
+    // Remember which filter state this particular request was for so we apply
+    // the correct post-processing even if the user types quickly.
+    const requestWasFiltered = query.length > 0
+
+    // Abort any in-flight request
+    this.#fetchAbortController?.abort()
+    const {signal} = (this.#fetchAbortController = new AbortController())
+
+    const url = new URL(src, window.location.href)
+    url.searchParams.set('query', query)
+    url.searchParams.set('filter_mode', filterMode)
+    url.searchParams.set('include_sub_items', String(includeSubItems))
+
+    // Send currently-checked node IDs so the server can apply include-sub-items
+    // logic even for nodes that are no longer visible due to filtering / pagination.
+    for (const nodeId of this.#checkedNodeIds.keys()) {
+      url.searchParams.append('checked_ids[]', nodeId)
+    }
+
+    this.setAttribute('data-loading', '')
+    this.setAttribute('aria-busy', 'true')
+
+    try {
+      const response = await fetch(url.toString(), {
+        signal,
+        headers: {Accept: 'text/html'},
+        credentials: 'same-origin',
+        method: 'GET',
+      })
+      if (!response.ok) return
+
+      const html = await response.text()
+      const doc = new DOMParser().parseFromString(html, 'text/html')
+      const newTreeView = doc.querySelector('tree-view')
+      if (!newTreeView) return
+
+      const oldTreeView = this.treeViewList?.closest('tree-view')
+      if (!oldTreeView) return
+
+      // Invalidate old stateMap entries – the referenced DOM nodes no longer exist after replacement.
+      this.#stateMap.clear()
+
+      oldTreeView.replaceWith(newTreeView)
+      // Catalyst re-resolves @target treeViewList dynamically on next access.
+
+      // Restore checked state for all nodes that now appear in the new tree.
+      this.#restoreSelectionState()
+
+      // Re-apply include-sub-items visually if the checkbox is still checked.
+      if (includeSubItems) {
+        this.#includeSubItems()
+      }
+
+      if (requestWasFiltered) {
+        this.#expandAllSubTrees()
+        this.#applyAsyncHighlights(query)
+        const hasResults = !!this.treeViewList?.querySelector('[role=treeitem]')
+        this.noResultsMessage.toggleAttribute('hidden', hasResults)
+        this.treeViewList?.toggleAttribute('hidden', !hasResults)
+      } else {
+        this.#removeHighlights()
+        this.#restoreExpansionState()
+        this.noResultsMessage.setAttribute('hidden', 'hidden')
+        this.treeViewList?.removeAttribute('hidden')
+      }
+
+      // Synthesise form inputs for nodes that are checked but absent from the current DOM
+      // (e.g. filtered out). Must run after restoreSelectionState so we know what is in the DOM.
+      this.#updateRetainedSelections()
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return
+      throw e
+    } finally {
+      this.removeAttribute('data-loading')
+      this.setAttribute('aria-busy', 'false')
+    }
+  }
+
+  // Captures the current expanded/collapsed state of every sub-tree node as a nodeId → boolean map.
+  #captureExpansionState(): Map<string, boolean> {
+    const snapshot = new Map<string, boolean>()
+    for (const treeitem of this.querySelectorAll<HTMLElement>(
+      '[role=treeitem][data-node-id][data-node-type=sub-tree]',
+    )) {
+      snapshot.set(treeitem.getAttribute('data-node-id')!, treeitem.getAttribute('aria-expanded') === 'true')
+    }
+    return snapshot
+  }
+
+  // Applies a previously captured expansion snapshot to the current tree.
+  #applyExpansionSnapshot(snapshot: Map<string, boolean>) {
+    for (const [nodeId, wasExpanded] of snapshot) {
+      const treeitem = this.querySelector<HTMLElement>(`[role=treeitem][data-node-id="${CSS.escape(nodeId)}"]`)
+      const subTreeNode = treeitem?.closest('tree-view-sub-tree-node') as TreeViewSubTreeNodeElement | null
+      if (subTreeNode) {
+        if (wasExpanded) {
+          subTreeNode.expand()
+        } else {
+          subTreeNode.collapse()
+        }
+      }
+    }
+  }
+
+  // Saves the expanded/collapsed state of every sub-tree node before the first filter query is applied.
+  #snapshotExpansionState() {
+    this.#expansionSnapshot = this.#captureExpansionState()
+  }
+
+  // Restores the expansion state that was saved before filtering began, then discards the snapshot.
+  #restoreExpansionState() {
+    if (!this.#expansionSnapshot) return
+    this.#applyExpansionSnapshot(this.#expansionSnapshot)
+    this.#expansionSnapshot = null
+  }
+
+  // Re-applies checked values from #checkedNodeIds to every node that exists in the current tree.
+  #restoreSelectionState() {
+    if (!this.treeView) return
+
+    for (const treeitem of this.querySelectorAll<HTMLElement>('[role=treeitem][data-node-id]')) {
+      const nodeId = treeitem.getAttribute('data-node-id')!
+      const savedValue = this.#checkedNodeIds.get(nodeId)
+      if (savedValue !== undefined) {
+        this.treeView.setNodeCheckedValue(treeitem, savedValue)
+      }
+    }
+  }
+
+  // Expands every sub-tree node in the current tree – used after a filtered result is rendered so all
+  // matches and their ancestors are visible.
+  #expandAllSubTrees() {
+    for (const subTreeNode of this.querySelectorAll<TreeViewSubTreeNodeElement>('tree-view-sub-tree-node')) {
+      subTreeNode.expand()
+    }
+  }
+
+  // Applies highlights based on the current query string to whatever tree is in the DOM.  Unlike the
+  // client-side path, filtering is already done by the server, so we only need to produce highlights.
+  #applyAsyncHighlights(query: string) {
+    this.#removeHighlights()
+    const ranges: Range[] = []
+
+    for (const treeitem of this.querySelectorAll<HTMLElement>('[role=treeitem]')) {
+      const result = this.defaultFilterFn(treeitem, query, 'all')
+      if (result) ranges.push(...result)
+    }
+
+    if (ranges.length > 0) this.#applyHighlights(ranges)
+  }
+
+  // Maintains hidden form inputs (with the same name as the TreeView's own inputs) for nodes that are
+  // checked but currently absent from the DOM (e.g. filtered out by the server). These inputs live
+  // directly inside <filterable-tree-view> – outside <tree-view> – so they survive tree replacements.
+  // The server therefore receives a complete set of checked paths regardless of what is currently visible.
+  #updateRetainedSelections() {
+    // Only relevant when a form is wired up.
+    const prototype = this.treeView?.formInputPrototype
+    if (!prototype) return
+
+    // Remove previously injected retained inputs.
+    for (const el of this.querySelectorAll('[data-filterable-tree-view-retained]')) {
+      el.remove()
+    }
+
+    for (const [nodeId, payload] of this.#checkedNodeFormPayloads) {
+      // Nodes currently in the DOM are already covered by TreeView's updateHiddenFormInputs.
+      const inDom = !!this.querySelector(`[role=treeitem][data-node-id="${CSS.escape(nodeId)}"]`)
+      if (inDom) continue
+
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = prototype.name
+      input.value = JSON.stringify(payload)
+      input.setAttribute('data-filterable-tree-view-retained', '')
+      this.appendChild(input)
+    }
+  }
+
+  // ─── End async mode ─────────────────────────────────────────────────────────
 
   set filterFn(newFn: FilterFn) {
     this.#filterFn = newFn

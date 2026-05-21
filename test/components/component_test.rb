@@ -231,6 +231,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::TreeView::IconPair",
       "Primer::Alpha::TreeView::Icon",
       "Primer::Alpha::TreeView::LeadingAction",
+      "Primer::Alpha::TreeView::TrailingAction",
       "Primer::Alpha::TreeView::LeafNode",
       "Primer::Alpha::TreeView::LoadingFailureMessage",
       "Primer::Alpha::TreeView::Node",

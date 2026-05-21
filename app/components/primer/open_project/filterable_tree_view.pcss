@@ -1,0 +1,57 @@
+/* CSS for FilterableTreeView */
+
+/* Scroll layout
+ *
+ * The filterable-tree-view element itself acts as a flex column container.
+ * The toolbar (input, segmented control, checkbox) is fixed at the top.
+ * Only the tree area scrolls. The consumer is responsible for setting a
+ * height or max-height on the filterable-tree-view element (or its parent)
+ * to activate scrolling.
+ */
+
+/* stylelint-disable-next-line selector-max-type */
+filterable-tree-view {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: inherit;
+}
+
+.FilterableTreeViewLayout {
+  flex: 1;
+  min-height: 0;
+}
+
+.FilterableTreeViewTreeContainer {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Highlight style for CSS Custom Highlight API */
+::highlight(primer-filterable-tree-view-search-results) {
+  background-color: var(--bgColor-attention-muted);
+}
+
+/* Fallback: <mark> elements used when CSS Custom Highlight API is unavailable */
+/* stylelint-disable-next-line selector-max-type */
+filterable-tree-view mark {
+  background-color: var(--bgColor-attention-muted);
+  color: inherit;
+}
+
+/* Loading skeleton */
+.FilterableTreeViewLoadingSkeleton {
+  display: none;
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable selector-max-type */
+filterable-tree-view[data-loading] .FilterableTreeViewLoadingSkeleton {
+  display: block;
+}
+
+filterable-tree-view[data-loading] tree-view,
+filterable-tree-view[data-loading] [data-target~="filterable-tree-view.noResultsMessage"] {
+  display: none;
+}

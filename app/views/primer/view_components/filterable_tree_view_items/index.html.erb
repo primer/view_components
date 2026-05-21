@@ -1,0 +1,6 @@
+<%= render(Primer::Alpha::TreeView.new(data: { target: "filterable-tree-view.treeViewList" })) do |tree| %>
+  <% nodes.each do |node| %>
+    <%= render partial: "primer/view_components/filterable_tree_view_items/node",
+               locals: { component: tree, node: node, query: query, select_variant: select_variant } %>
+  <% end %>
+<% end %>
