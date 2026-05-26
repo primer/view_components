@@ -10,8 +10,8 @@ module Primer
       SHOWN_FILTER_TARGET_SELECTOR = "sub-header.shownItemsOnExpandedFilter"
       FILTER_EXPAND_BUTTON_TARGET_SELECTOR = "sub-header.filterExpandButton"
 
-      MOBILE_ACTIONS_DISPLAY = [:flex, :none].freeze
-      DESKTOP_ACTIONS_DISPLAY = [:none, :flex].freeze
+      MOBILE_ACTIONS_DISPLAY = [:flex, :flex, :none].freeze
+      DESKTOP_ACTIONS_DISPLAY = [:none, :none, :flex].freeze
 
       # A button or custom content that will render on the right-hand side of the component.
       #

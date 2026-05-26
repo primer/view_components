@@ -278,8 +278,8 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
       component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
     end
 
-    # Each quick_filter wrapper has d-none d-sm-flex (hidden on mobile, visible on desktop)
-    assert_selector(".d-none.d-sm-flex .MyQuickFilter")
+    # Each quick_filter wrapper has d-none d-md-flex (hidden on mobile, visible on desktop)
+    assert_selector(".d-none.d-md-flex .MyQuickFilter")
   end
 
   def test_quick_filters_require_filter_button
