@@ -28,16 +28,18 @@ class PrimerOpenProjectPaginationTest < Minitest::Test
     assert_selector("[aria-current='page']", text: "3")
   end
 
-  def test_disables_previous_on_first_page
+  def test_hides_previous_on_first_page
     render_inline(Primer::OpenProject::Pagination.new(page_count: 5, current_page: 1))
 
-    assert_selector("[rel='prev'][aria-disabled='true']")
+    refute_selector("[rel='prev']")
+    assert_selector("[rel='next']")
   end
 
-  def test_disables_next_on_last_page
+  def test_hides_next_on_last_page
     render_inline(Primer::OpenProject::Pagination.new(page_count: 5, current_page: 5))
 
-    assert_selector("[rel='next'][aria-disabled='true']")
+    assert_selector("[rel='prev']")
+    refute_selector("[rel='next']")
   end
 
   def test_renders_ellipsis_for_many_pages
@@ -298,6 +300,18 @@ class PrimerOpenProjectPaginationTest < Minitest::Test
     )
 
     refute_selector("span[role='presentation'][data-turbo='false']")
+  end
+
+  def test_single_page_hides_prev_and_next
+    render_inline(
+      Primer::OpenProject::Pagination.new(
+        page_count: 1,
+        current_page: 1
+      )
+    )
+
+    refute_selector("[rel='prev']")
+    refute_selector("[rel='next']")
   end
 
 end
