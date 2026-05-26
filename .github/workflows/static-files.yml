@@ -12,7 +12,8 @@ jobs:
   static:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      id-token: write # Required for OIDC
     steps:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: app-token
@@ -40,6 +41,8 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
+      - name: Set up git push credentials
+        run: git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.repository }}.git
       - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
           commit_message: Generating static files
