@@ -272,25 +272,45 @@ class PrimerOpenProjectSubHeaderTest < Minitest::Test
     assert_selector(".SubHeader-leftPane .MyQuickFilter", count: 2)
   end
 
-  def test_quick_filters_are_hidden_on_mobile
+  def test_quick_filters_are_hidden_on_mobile_when_multiple
     render_inline(Primer::OpenProject::SubHeader.new) do |component|
       component.with_filter_button { "Filter" }
       component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
+      component.with_quick_filter { "<span class='MyQuickFilter'>Assignee</span>".html_safe }
     end
 
     # Each quick_filter wrapper has d-none d-md-flex (hidden on mobile, visible on desktop)
-    assert_selector(".d-none.d-md-flex .MyQuickFilter")
+    assert_selector(".d-none.d-md-flex .MyQuickFilter", count: 2)
   end
 
-  def test_quick_filters_require_filter_button
+  def test_single_quick_filter_is_visible_on_all_screen_sizes
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
+    end
+
+    assert_selector(".MyQuickFilter")
+    assert_no_selector(".d-none .MyQuickFilter")
+  end
+
+  def test_quick_filters_require_filter_button_when_multiple_quick_filters
     err = assert_raises ArgumentError do
       render_inline(Primer::OpenProject::SubHeader.new) do |component|
         component.with_filter_input(name: "filter", label: "Filter")
+        component.with_quick_filter { "Status" }
         component.with_quick_filter { "Status" }
       end
     end
 
     assert_equal "You must provide a filter_button when using quick_filters.", err.message
+  end
+
+
+  def test_quick_filters_require_no_filter_button_for_single_quick_filter
+    render_inline(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_quick_filter { "<span class='MyQuickFilter'>Status</span>".html_safe }
+    end
+
+    assert_selector(".MyQuickFilter")
   end
 
   def test_quick_filters_maximum_is_five
