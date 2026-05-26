@@ -23,6 +23,10 @@ module Primer
         margin_page_count = (margin_page_count.presence || 1).to_i
         surrounding_page_count = (surrounding_page_count.presence || 2).to_i
 
+        # Ensure current_page doesn't exceed page_count
+        current_page = [current_page, page_count].min
+        current_page = [current_page, 1].max # Ensure at least 1
+
         render(
           Primer::OpenProject::Pagination.new(
             current_page: current_page,
@@ -42,6 +46,39 @@ module Primer
           Primer::OpenProject::Pagination.new(
             current_page: 6,
             page_count: 20,
+            href_builder: ->(page) { "#page-#{page}" }
+          )
+        )
+      end
+
+      # @label First Page
+      def first_page
+        render(
+          Primer::OpenProject::Pagination.new(
+            current_page: 1,
+            page_count: 20,
+            href_builder: ->(page) { "#page-#{page}" }
+          )
+        )
+      end
+
+      # @label Last Page
+      def last_page
+        render(
+          Primer::OpenProject::Pagination.new(
+            current_page: 20,
+            page_count: 20,
+            href_builder: ->(page) { "#page-#{page}" }
+          )
+        )
+      end
+
+      # @label Single Page
+      def single_page
+        render(
+          Primer::OpenProject::Pagination.new(
+            current_page: 1,
+            page_count: 1,
             href_builder: ->(page) { "#page-#{page}" }
           )
         )
