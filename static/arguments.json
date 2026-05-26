@@ -6600,6 +6600,15 @@
     ]
   },
   {
+    "component": "OpenProject::SubHeader::QuickFilter",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeaderQuickFilter",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/quick_filter.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/quick_filter/default/",
+    "parameters": []
+  },
+  {
     "component": "OpenProject::SubHeader::SegmentedControl",
     "status": "open_project",
     "a11y_reviewed": true,
