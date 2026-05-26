@@ -3,6 +3,14 @@ function setScrollGutter(doc: Document) {
   doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
 }
 
+function updateBodyModalClasses(doc: Document) {
+  doc.body.classList.toggle('has-modal', Boolean(doc.querySelector('dialog[open]')))
+  doc.body.classList.toggle(
+    'has-modal-disable-scroll',
+    Boolean(doc.querySelector('dialog[open].Overlay--disableScroll')),
+  )
+}
+
 function dialogInvokerButtonHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
@@ -69,6 +77,8 @@ function dialogInvokerButtonHandler(event: Event) {
           {once: true},
         )
       }
+
+      updateBodyModalClasses(dialog.ownerDocument)
     }
   }
 
@@ -77,6 +87,7 @@ function dialogInvokerButtonHandler(event: Event) {
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement && dialog.open) {
       dialog.close()
+      updateBodyModalClasses(dialog.ownerDocument)
     }
   }
 }
@@ -91,6 +102,7 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
+    this.dialog?.addEventListener('close', () => updateBodyModalClasses(this.dialog!.ownerDocument), {signal})
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
@@ -107,14 +119,17 @@ export class DialogHelperElement extends HTMLElement {
 
   #handleDialogOpenAttribute() {
     if (!this.dialog) return
+    const {ownerDocument} = this.dialog
     // We don't want to show the Dialog component as non-modal
     if (this.dialog.matches('[open]:not(:modal)')) {
       // eslint-disable-next-line no-restricted-syntax
       this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
       this.dialog.close()
-      setScrollGutter(this.dialog.ownerDocument)
+      setScrollGutter(ownerDocument)
       this.dialog.showModal()
     }
+
+    updateBodyModalClasses(ownerDocument)
   }
 
   handleEvent(event: MouseEvent) {
