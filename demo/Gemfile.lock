@@ -280,7 +280,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (7.2.0)
+    puma (8.0.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.21)
@@ -362,7 +362,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     useragent (0.16.11)
-    view_component (4.6.0)
+    view_component (4.9.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -411,17 +411,17 @@ DEPENDENCIES
   lookbook (~> 2.3.14)
   openproject-primer_view_components!
   pry-byebug
-  puma (~> 7.2.0)
+  puma (~> 8.0.1)
   rack-cors
   railties (= 7.2.2.1)
-  rake (~> 13.3)
+  rake (~> 13.4)
   spring (~> 4.4)
   spring-watcher-listen (~> 2.1)
   sprockets
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (= 4.6.0)
+  view_component (= 4.9.0)
   vite_rails (~> 3.0)
 
 BUNDLED WITH

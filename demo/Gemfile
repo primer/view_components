@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 rails_version = (ENV["RAILS_VERSION"] || "7.2.2.1").to_s
 
-gem "rake", "~> 13.3"
+gem "rake", "~> 13.4"
 gem "rack-cors"
 gem "sprockets"
 gem "sprockets-rails"
@@ -31,13 +31,13 @@ end
 eval_gemfile "gemfiles/kuby.gemfile"
 
 # Use Puma as the app server
-gem "puma", "~> 7.2.0"
+gem "puma", "~> 8.0.1"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "openproject-primer_view_components", path: "../"
-gem "view_component", "4.6.0"
+gem "view_component", "4.9.0"
 gem "lookbook", "~> 2.3.14" unless rails_version.to_f < 7
 
 gem "vite_rails", "~> 3.0"
