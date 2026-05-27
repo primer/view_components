@@ -57,6 +57,10 @@ module Primer
         end
       end
 
+      def render?
+        page_count > 1
+      end
+
       private
 
       def cast_integer!(value, name)

@@ -51,38 +51,6 @@ module Primer
         )
       end
 
-      # @label First Page
-      def first_page
-        render(
-          Primer::OpenProject::Pagination.new(
-            current_page: 1,
-            page_count: 20,
-            href_builder: ->(page) { "#page-#{page}" }
-          )
-        )
-      end
-
-      # @label Last Page
-      def last_page
-        render(
-          Primer::OpenProject::Pagination.new(
-            current_page: 20,
-            page_count: 20,
-            href_builder: ->(page) { "#page-#{page}" }
-          )
-        )
-      end
-
-      # @label Single Page
-      def single_page
-        render(
-          Primer::OpenProject::Pagination.new(
-            current_page: 1,
-            page_count: 1,
-            href_builder: ->(page) { "#page-#{page}" }
-          )
-        )
-      end
       #
       # @!endgroup
     end

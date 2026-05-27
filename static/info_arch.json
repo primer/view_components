@@ -21610,45 +21610,6 @@
             "color-contrast"
           ]
         }
-      },
-      {
-        "preview_path": "primer/open_project/pagination/first_page",
-        "name": "first_page",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/open_project/pagination/last_page",
-        "name": "last_page",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
-      },
-      {
-        "preview_path": "primer/open_project/pagination/single_page",
-        "name": "single_page",
-        "snapshot": "false",
-        "skip_rules": {
-          "wont_fix": [
-            "region"
-          ],
-          "will_fix": [
-            "color-contrast"
-          ]
-        }
       }
     ],
     "subcomponents": []

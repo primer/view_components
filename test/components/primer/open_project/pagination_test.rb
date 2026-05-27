@@ -302,7 +302,7 @@ class PrimerOpenProjectPaginationTest < Minitest::Test
     refute_selector("span[role='presentation'][data-turbo='false']")
   end
 
-  def test_single_page_hides_prev_and_next
+  def test_single_page_does_not_render_pagination
     render_inline(
       Primer::OpenProject::Pagination.new(
         page_count: 1,
@@ -310,8 +310,8 @@ class PrimerOpenProjectPaginationTest < Minitest::Test
       )
     )
 
-    refute_selector("[rel='prev']")
-    refute_selector("[rel='next']")
+    refute_selector("nav[aria-label='Pagination']")
+    refute_selector(".PaginationContainer")
   end
 
 end
