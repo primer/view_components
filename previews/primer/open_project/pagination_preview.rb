@@ -23,6 +23,10 @@ module Primer
         margin_page_count = (margin_page_count.presence || 1).to_i
         surrounding_page_count = (surrounding_page_count.presence || 2).to_i
 
+        # Ensure current_page doesn't exceed page_count
+        current_page = [current_page, page_count].min
+        current_page = [current_page, 1].max # Ensure at least 1
+
         render(
           Primer::OpenProject::Pagination.new(
             current_page: current_page,
@@ -46,6 +50,7 @@ module Primer
           )
         )
       end
+
       #
       # @!endgroup
     end

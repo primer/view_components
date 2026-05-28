@@ -57,6 +57,10 @@ module Primer
         end
       end
 
+      def render?
+        page_count > 1
+      end
+
       private
 
       def cast_integer!(value, name)
@@ -81,34 +85,43 @@ module Primer
       end
 
       def build_pagination_model
-        prev_page = previous_page_item
-        next_page = next_page_item
+        pages = []
 
-        return [prev_page, next_page] unless show_pages || page_count <= 0
+        pages << previous_page_item unless first_page?
+        pages.concat(number_page_items) if show_pages
+        pages << next_page_item unless last_page?
 
-        pages = if all_pages_fit?
-                  full_pagination_without_breaks
-                else
-                  paginated_number_items
-                end
-
-        [prev_page, *pages, next_page]
+        pages
       end
 
       def previous_page_item
         {
           type: PAGE_TYPE__PREV,
-          num: current_page - 1,
-          disabled: current_page == 1
+          num: current_page - 1
         }
       end
 
       def next_page_item
         {
           type: PAGE_TYPE__NEXT,
-          num: current_page + 1,
-          disabled: current_page == page_count
+          num: current_page + 1
         }
+      end
+
+      def first_page?
+        current_page == 1
+      end
+
+      def last_page?
+        current_page == page_count
+      end
+
+      def number_page_items
+        if all_pages_fit?
+          full_pagination_without_breaks
+        else
+          paginated_number_items
+        end
       end
 
       def full_pagination_without_breaks
@@ -233,20 +246,12 @@ module Primer
           key_string = key.to_s
           content = I18n.t("pagination.#{key_string}")
 
-          if page[:disabled]
-            props.merge!(
-              rel: key_string,
-              "aria-hidden": "true",
-              "aria-disabled": "true"
-            )
-          else
-            props.merge!(
-              rel: key_string,
-              href: href_builder.call(page[:num]),
-              "aria-label": I18n.t("pagination.#{key_string}_page"),
-              **@link_arguments
-            )
-          end
+          props.merge!(
+            rel: key_string,
+            href: href_builder.call(page[:num]),
+            "aria-label": I18n.t("pagination.#{key_string}_page"),
+            **@link_arguments
+          )
 
         when PAGE_TYPE__NUM
           key = :"page-#{page[:num]}"
