@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.86.2
+
+### Patch Changes
+
+- [#4061](https://github.com/primer/view_components/pull/4061) [`b732a9f`](https://github.com/opf/primer_view_components/commit/b732a9fa3009a203e7ff8a1a01839165230f0b22) Thanks [@lesliecdubs](https://github.com/lesliecdubs)! - Fix Dropdown component caret position in CSS styles for clean borders
+
+- [#463](https://github.com/opf/primer_view_components/pull/463) [`16466e9`](https://github.com/opf/primer_view_components/commit/16466e92a6b3e018a6ad00c0466f2cf730715e07) Thanks [@bsatarnejad](https://github.com/bsatarnejad)! - [75258] Hide unavailable pagination navigation and omit single-page pagination
+
+- [#462](https://github.com/opf/primer_view_components/pull/462) [`f3118af`](https://github.com/opf/primer_view_components/commit/f3118af452cca8bc205b421c698295ad9a15309b) Thanks [@HDinger](https://github.com/HDinger)! - Allow single quickFilters without additional "all filters" button
+
+- [#462](https://github.com/opf/primer_view_components/pull/462) [`54c6cf7`](https://github.com/opf/primer_view_components/commit/54c6cf7bd389c6895534d6c62661dec40e21cb6d) Thanks [@HDinger](https://github.com/HDinger)! - Better responsive support for SubHeader with quickfilters
+
 ## 0.86.1
 
 ### Patch Changes
