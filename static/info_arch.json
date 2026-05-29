@@ -22108,6 +22108,25 @@
     "subcomponents": []
   },
   {
+    "fully_qualified_name": "Primer::OpenProject::SubHeader::QuickFilter",
+    "description": "Thin wrapper for quick filter slots that defers BaseComponent construction to render time,\nallowing system arguments (e.g. display) to be mutated in before_render.\nDo not use standalone",
+    "accessibility_docs": null,
+    "is_form_component": false,
+    "is_published": true,
+    "requires_js": false,
+    "component": "OpenProject::SubHeader::QuickFilter",
+    "status": "open_project",
+    "a11y_reviewed": false,
+    "short_name": "OpenProjectSubHeaderQuickFilter",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/open_project/sub_header/quick_filter.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/open_project/sub_header/quick_filter/default/",
+    "parameters": [],
+    "slots": [],
+    "methods": [],
+    "previews": [],
+    "subcomponents": []
+  },
+  {
     "fully_qualified_name": "Primer::OpenProject::SubHeader::SegmentedControl",
     "description": "A Helper class to create SegmentedControls inside the SubHeader action slot\nDo not use standalone",
     "accessibility_docs": null,

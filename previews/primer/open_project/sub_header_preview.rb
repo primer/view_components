@@ -10,6 +10,7 @@ module Primer
       # @label Playground
       # @param show_filter_input toggle
       # @param show_filter_button toggle
+      # @param show_quick_filter toggle
       # @param show_action_button toggle
       # @param show_clear_button toggle
       # @param collapsed_search toggle
@@ -19,28 +20,20 @@ module Primer
         show_filter_input: true,
         show_clear_button: true,
         show_filter_button: true,
+        show_quick_filter: true,
         show_action_button: true,
         collapsed_search: false,
         text: nil,
         value: nil
       )
-        render(Primer::OpenProject::SubHeader.new(collapsed_search: collapsed_search)) do |component|
-          component.with_filter_input(
-            name: "filter",
-            label: "Filter",
-            show_clear_button: show_clear_button,
-            value: value) if show_filter_input
-          component.with_filter_button do |button|
-            button.with_trailing_visual_counter(count: "15")
-            "Filter"
-          end if show_filter_button
-
-          component.with_text { text } unless text.nil?
-
-          component.with_action_button(leading_icon: :plus, label: "Create", scheme: :primary) do
-            "Create"
-          end if show_action_button
-        end
+        render_with_template(locals: {show_filter_input: show_filter_input,
+                                      show_clear_button: show_clear_button,
+                                      show_filter_button: show_filter_button,
+                                      show_quick_filter: show_quick_filter,
+                                      show_action_button: show_action_button,
+                                      collapsed_search: collapsed_search,
+                                      text: text,
+                                      value: value})
       end
 
       # @label Default

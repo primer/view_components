@@ -7,14 +7,12 @@
 
     <%= render @collapsed_filter_trigger if @collapsed_filter_trigger.present? %>
 
-    <%= render(Primer::BaseComponent.new(tag: :div, display: :flex)) do %>
-      <% quick_filters.each do |quick_filter| %>
-        <%= quick_filter %>
-      <% end %>
-
-      <%= render(@mobile_filter_button) if @mobile_filter_button.present? %>
-      <%= filter_button %>
+    <% quick_filters.each do |quick_filter| %>
+      <%= quick_filter %>
     <% end %>
+
+    <%= render(@mobile_filter_button) if @mobile_filter_button.present? %>
+    <%= filter_button %>
 
     <%= segmented_control %>
 

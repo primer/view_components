@@ -6,6 +6,13 @@
   end
 
   component.with_quick_filter do
+    render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component|
+      component.with_item(label: "Monthly", selected: true)
+      component.with_item(label: "Yearly")
+    end
+  end
+
+  component.with_quick_filter do
     render(Primer::Alpha::SelectPanel.new(title: "Version",
                                           select_variant: :single,
                                           fetch_strategy: :local,

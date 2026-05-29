@@ -1,0 +1,31 @@
+<%= render(Primer::OpenProject::SubHeader.new(collapsed_search: collapsed_search)) do |component|
+  component.with_filter_input(name: "filter",
+                              label: "Filter",
+                              show_clear_button: show_clear_button,
+                              value: value) if show_filter_input
+
+  component.with_filter_button(mobile_label: "All filters") do
+    "All filters"
+  end if show_filter_button
+
+  component.with_text { text } unless text.nil?
+
+  component.with_action_button(leading_icon: :plus, label: "Create", scheme: :primary) do
+    "Create"
+  end if show_action_button
+
+  if show_quick_filter
+    component.with_quick_filter do
+      render(Primer::Alpha::SelectPanel.new(title: "Version",
+                                            select_variant: :single,
+                                            fetch_strategy: :local,
+                                            dynamic_label: true,
+                                            dynamic_label_prefix: "Version")) do |panel|
+        panel.with_show_button { "Version" }
+        panel.with_item(label: "1.0")
+        panel.with_item(label: "2.0")
+        panel.with_item(label: "2.1")
+      end
+    end
+  end
+end %>

@@ -10,8 +10,8 @@ module Primer
       SHOWN_FILTER_TARGET_SELECTOR = "sub-header.shownItemsOnExpandedFilter"
       FILTER_EXPAND_BUTTON_TARGET_SELECTOR = "sub-header.filterExpandButton"
 
-      MOBILE_ACTIONS_DISPLAY = [:flex, :none].freeze
-      DESKTOP_ACTIONS_DISPLAY = [:none, :flex].freeze
+      MOBILE_ACTIONS_DISPLAY = [:flex, :flex, :none].freeze
+      DESKTOP_ACTIONS_DISPLAY = [:none, :none, :flex].freeze
 
       # A button or custom content that will render on the right-hand side of the component.
       #
@@ -177,9 +177,8 @@ module Primer
         deny_tag_argument(**kwargs)
         kwargs[:tag] = :div
         kwargs[:mr] ||= 2
-        kwargs[:display] = DESKTOP_ACTIONS_DISPLAY
 
-        Primer::BaseComponent.new(**kwargs)
+        QuickFilter.new(**kwargs)
       }
 
       renders_one :segmented_control, lambda { |**system_arguments, &block|
@@ -235,12 +234,18 @@ module Primer
       end
 
       def before_render
-        if quick_filters.any? && filter_button.nil?
+        if quick_filters.size > 1 && filter_button.nil?
           raise ArgumentError, "You must provide a filter_button when using quick_filters."
         end
 
         if quick_filters.size > 5
           raise ArgumentError, "SubHeader supports a maximum of 5 quick_filters, got #{quick_filters.size}."
+        end
+
+        if quick_filters.size > 1
+          quick_filters.each do |qf|
+            qf.merge_system_arguments!(display: DESKTOP_ACTIONS_DISPLAY)
+          end
         end
 
         @system_arguments[:classes] = class_names(

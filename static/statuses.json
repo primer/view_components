@@ -173,6 +173,7 @@
   "Primer::OpenProject::SubHeader::Button": "open_project",
   "Primer::OpenProject::SubHeader::ButtonGroup": "open_project",
   "Primer::OpenProject::SubHeader::Menu": "open_project",
+  "Primer::OpenProject::SubHeader::QuickFilter": "open_project",
   "Primer::OpenProject::SubHeader::SegmentedControl": "open_project",
   "Primer::OpenProject::ZenModeButton": "open_project",
   "Primer::Tooltip": "deprecated",
