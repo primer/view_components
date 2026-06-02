@@ -329,7 +329,7 @@ GEM
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 4.0)
       multi_json (~> 1.10)
-    spring (4.4.2)
+    spring (4.6.0)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
@@ -399,7 +399,7 @@ DEPENDENCIES
   rack-cors
   railties (= 7.2.2.1)
   rake (~> 13.4)
-  spring (~> 4.4)
+  spring (~> 4.6)
   spring-watcher-listen (~> 2.1)
   sprockets
   sprockets-rails
