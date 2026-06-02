@@ -313,7 +313,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.43)
+    yard (0.9.44)
     zeitwerk (2.8.2)
 
 PLATFORMS
@@ -361,7 +361,7 @@ DEPENDENCIES
   view_component (= 4.9.0)
   vite_rails (~> 3.11)
   webmock
-  yard (~> 0.9.43)
+  yard (~> 0.9.44)
 
 BUNDLED WITH
    2.6.9
