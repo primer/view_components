@@ -420,6 +420,31 @@ module Primer
       def small_scheme_one_character
         render_with_template(locals: {})
       end
+
+      # @label Add comment label
+      # @param scheme select [default, primary, danger, invisible, link]
+      # @param size select [small, medium, large]
+      # @param block toggle
+      # @param disabled toggle
+      def add_comment_label(
+        scheme: :default,
+        size: :medium,
+        block: false,
+        id: "button-preview",
+        tag: :button,
+        disabled: false
+      )
+        render(Primer::Beta::Button.new(
+                 scheme: scheme,
+                 size: size,
+                 block: block,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled
+               )) do |_c|
+          '<span class="add-comment-label">Add review comment</span>'.html_safe
+        end
+      end
     end
   end
 end
