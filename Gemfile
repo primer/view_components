@@ -31,7 +31,7 @@ else
 end
 
 # Use Puma as the app server
-gem "puma", "~> 8.0.1"
+gem "puma", "~> 8.0.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
