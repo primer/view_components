@@ -959,7 +959,7 @@ export class SelectPanelElement extends HTMLElement {
       itemLabel = this.querySelector(`[${this.ariaSelectionType}=true] .ActionListItem-label`)?.textContent
     } else if (this.selectVariant === 'multiple') {
       itemLabel = Array.from(this.querySelectorAll(`[${this.ariaSelectionType}=true] .ActionListItem-label`))
-        .map(label => label.textContent.trim())
+        .map(label => label.textContent?.trim() ?? '')
         .join(', ')
     }
     itemLabel ||= this.#originalLabel
