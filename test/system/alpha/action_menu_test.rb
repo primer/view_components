@@ -794,9 +794,9 @@ module Alpha
       assert_equal %w[fast_forward ours Resolve], response["value"]
     end
 
-    def test_multiple_select_does_not_set_dynamic_label_for_preselected_item
+    def test_multiple_select_does_set_dynamic_label_for_preselected_item
       visit_preview(:multiple_select_form, route_format: :json)
-      assert_selector("action-menu[data-ready='true'] button[aria-controls]", exact_text: "Strategy")
+      assert_selector("action-menu[data-ready='true'] button[aria-controls]", exact_text: "Strategy: Ours")
     end
 
     def test_individual_items_can_submit_post_requests_via_forms
