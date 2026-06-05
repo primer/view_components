@@ -505,10 +505,11 @@ export class ActionMenuElement extends HTMLElement {
     this.#originalLabel ||= invokerLabel.textContent || ''
     let itemLabel: string | undefined
     if (this.selectVariant === 'single') {
-      itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')?.textContent
+      itemLabel = this.querySelector('[aria-checked=true] .ActionListItem-label')?.textContent?.trim()
     } else if (this.selectVariant === 'multiple') {
       itemLabel = Array.from(this.querySelectorAll(`[aria-checked=true] .ActionListItem-label`))
-        .map(label => label.textContent.trim())
+        .map(label => (label.textContent || '').trim())
+        .filter(Boolean)
         .join(', ')
     }
     itemLabel ||= this.#originalLabel
@@ -516,7 +517,7 @@ export class ActionMenuElement extends HTMLElement {
       const prefixSpan = document.createElement('span')
       prefixSpan.classList.add('color-fg-muted')
       const contentSpan = document.createElement('span')
-      prefixSpan.textContent = `${this.dynamicLabelPrefix} `
+      prefixSpan.textContent = this.dynamicLabelPrefix ? `${this.dynamicLabelPrefix} ` : ''
       contentSpan.textContent = itemLabel
       invokerLabel.replaceChildren(prefixSpan, contentSpan)
     } else {
