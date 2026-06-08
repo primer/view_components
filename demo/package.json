@@ -10,8 +10,8 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "vite": "^8.0.10",
-    "vite-plugin-ruby": "^5.2.1"
+    "vite": "^8.0.16",
+    "vite-plugin-ruby": "^5.2.2"
   },
   "scripts": {
     "build:css": "postcss --config ../ ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
