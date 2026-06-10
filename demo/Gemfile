@@ -40,7 +40,7 @@ gem "primer_view_components", path: "../"
 gem "view_component", "4.11.0"
 gem "lookbook", "~> 2.3.14" unless rails_version.to_f < 7
 
-gem "vite_rails", "~> 3.0"
+gem "vite_rails", "~> 3.11"
 gem "cssbundling-rails", "~> 1.4"
 
 group :development do
