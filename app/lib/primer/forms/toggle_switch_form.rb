@@ -69,7 +69,7 @@ module Primer
       # assumes the presence of a builder so we create our own here. A builder
       # cannot be constructed without a corresponding view context, which is why
       # we have to override render_in and can't create it in the initializer.
-      def render_in(view_context, &block)
+      def render_in(view_context, **_kwargs, &block)
         @builder = Primer::Forms::Builder.new(
           nil, nil, view_context, {}
         )

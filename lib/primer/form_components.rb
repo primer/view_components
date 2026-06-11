@@ -16,7 +16,7 @@ module Primer
           @system_arguments = system_arguments
         end
 
-        def render_in(view_context, &block)
+        def render_in(view_context, **_kwargs, &block)
           builder = Primer::Forms::Builder.new(
             nil, nil, view_context, {}
           )
