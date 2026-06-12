@@ -10,7 +10,7 @@ module Primer
       module InstanceMethods
         delegate :render, :content_tag, :output_buffer, :capture, to: :@view_context
 
-        def render_in(view_context, &block)
+        def render_in(view_context, **_kwargs, &block)
           @view_context = view_context
           before_render
           perform_render(&block)

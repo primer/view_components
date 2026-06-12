@@ -107,7 +107,7 @@ module Primer
           @button = @menu.with_show_button(icon: "triangle-down", **button_arguments)
         end
 
-        def render_in(view_context, &block)
+        def render_in(view_context, **_kwargs, &block)
           super(view_context) do
             block.call(@menu, @button)
           end
