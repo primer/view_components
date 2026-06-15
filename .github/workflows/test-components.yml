@@ -45,7 +45,7 @@ jobs:
           cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
       - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: "npm"
       - name: Build
         run: |
