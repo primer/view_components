@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.51.6
+
+### Patch Changes
+
+- [#4091](https://github.com/primer/view_components/pull/4091) [`ff6cc0d`](https://github.com/primer/view_components/commit/ff6cc0d8cd5cb6323d10ecd0790e19e5ebec36e9) Thanks [@issyl0](https://github.com/issyl0)! - Accept keyword arguments in `render_in` methods
+
+- [#4069](https://github.com/primer/view_components/pull/4069) [`24b8fbf`](https://github.com/primer/view_components/commit/24b8fbf36d53482c1646b4331be33fb34e3dba9a) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Revert Dialog body scroll-lock styling from broad `:has(...)` to explicit body classes
+
+- [#4093](https://github.com/primer/view_components/pull/4093) [`3ad026e`](https://github.com/primer/view_components/commit/3ad026ef5ce9b1cdb1e34492eec5af6e1b0c7475) Thanks [@jonrohan](https://github.com/jonrohan)! - Update `@github/clipboard-copy-element` to v1.3.1
+
 ## 0.51.5
 
 ### Patch Changes
