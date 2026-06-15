@@ -65,6 +65,16 @@ module Primer
 
       ROLE_OPTIONS = [:dialog, :menu, nil].freeze
 
+      DEFAULT_ANCHOR_WHEN_NARROW = :inherit
+      ANCHOR_WHEN_NARROW_MAPPINGS = {
+        DEFAULT_ANCHOR_WHEN_NARROW => "",
+        :bottom => "Overlay--placement-bottom-whenNarrow",
+        :fullscreen => "Overlay--fullscreen-whenNarrow",
+        :left => "Overlay--placement-left-whenNarrow",
+        :right => "Overlay--placement-right-whenNarrow"
+      }.freeze
+      ANCHOR_WHEN_NARROW_OPTIONS = ANCHOR_WHEN_NARROW_MAPPINGS.keys
+
       # Optional button to open the Overlay.
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use instead of text. If provided, a <%= link_to_component(Primer::Beta::IconButton) %> will be rendered. Otherwise a <%= link_to_component(Primer::Beta::Button) %> will be rendered.
@@ -132,6 +142,7 @@ module Primer
       # @param anchor_align [Symbol] The anchor alignment of the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_ALIGN_OPTIONS) %>
       # @param anchor_side [Symbol] The side to anchor the Overlay to. <%= one_of(Primer::Alpha::Overlay::ANCHOR_SIDE_OPTIONS) %>
       # @param anchor_offset [Symbol] The anchor offset to give the Overlay. <%= one_of(Primer::Alpha::Overlay::ANCHOR_OFFSET_OPTIONS) %>
+      # @param anchor_when_narrow [Symbol] The position of the Overlay when in a narrow viewport. <%= one_of(Primer::Alpha::Overlay::ANCHOR_WHEN_NARROW_OPTIONS) %>
       # @param allow_out_of_bounds [Boolean] Allow the Overlay to overflow its container.
       # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
       # @param role [String] The ARIA role. <%= one_of(Primer::Alpha::Overlay::ROLE_OPTIONS) %>
@@ -147,6 +158,7 @@ module Primer
         anchor_align: DEFAULT_ANCHOR_ALIGN,
         anchor_offset: DEFAULT_ANCHOR_OFFSET,
         anchor_side: DEFAULT_ANCHOR_SIDE,
+        anchor_when_narrow: DEFAULT_ANCHOR_WHEN_NARROW,
         allow_out_of_bounds: false,
         visually_hide_title: false,
         id: self.class.generate_id,
@@ -159,7 +171,8 @@ module Primer
         @system_arguments[:id] = id.to_s
         @wrapper_classes = class_names(
           "Overlay",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
+          ANCHOR_WHEN_NARROW_MAPPINGS[fetch_or_fallback(ANCHOR_WHEN_NARROW_OPTIONS, anchor_when_narrow, DEFAULT_ANCHOR_WHEN_NARROW)]
         )
         @system_arguments[:tag] = "anchored-position"
         @system_arguments[:anchor] = anchor || "overlay-show-#{@system_arguments[:id]}"

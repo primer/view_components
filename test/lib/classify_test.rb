@@ -6,7 +6,7 @@ class PrimerClassifyTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_multiple_params
-    assert_generated_class("m-4 py-2", { m: 4, py: 2 })
+    assert_generated_class("m-4 tmp-m-4 py-2 tmp-py-2", { m: 4, py: 2 })
   end
 
   def test_container
@@ -42,19 +42,19 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_m
-    assert_generated_class("m-4",   { m: 4 })
-    assert_generated_class("mx-4",  { mx: 4 })
-    assert_generated_class("my-4",  { my: 4 })
-    assert_generated_class("mt-4",  { mt: 4 })
-    assert_generated_class("ml-4",  { ml: 4 })
-    assert_generated_class("mb-4",  { mb: 4 })
-    assert_generated_class("mr-4",  { mr: 4 })
-    assert_generated_class("mt-n4",   { mt: -4 })
-    assert_generated_class("ml-n4",   { ml: -4 })
-    assert_generated_class("mb-n4",   { mb: -4 })
-    assert_generated_class("mr-n4",   { mr: -4 })
-    assert_generated_class("mx-auto", { mx: :auto })
-    assert_generated_class("mr-1 mr-sm-2 mr-md-3 mr-lg-4 mr-xl-5", { mr: [1, 2, 3, 4, 5] })
+    assert_generated_class("m-4 tmp-m-4",   { m: 4 })
+    assert_generated_class("mx-4 tmp-mx-4",  { mx: 4 })
+    assert_generated_class("my-4 tmp-my-4",  { my: 4 })
+    assert_generated_class("mt-4 tmp-mt-4",  { mt: 4 })
+    assert_generated_class("ml-4 tmp-ml-4",  { ml: 4 })
+    assert_generated_class("mb-4 tmp-mb-4",  { mb: 4 })
+    assert_generated_class("mr-4 tmp-mr-4",  { mr: 4 })
+    assert_generated_class("mt-n4 tmp-mt-n4",   { mt: -4 })
+    assert_generated_class("ml-n4 tmp-ml-n4",   { ml: -4 })
+    assert_generated_class("mb-n4 tmp-mb-n4",   { mb: -4 })
+    assert_generated_class("mr-n4 tmp-mr-n4",   { mr: -4 })
+    assert_generated_class("mx-auto tmp-mx-auto", { mx: :auto })
+    assert_generated_class("mr-1 tmp-mr-1 mr-sm-2 tmp-mr-sm-2 mr-md-3 tmp-mr-md-3 mr-lg-4 tmp-mr-lg-4 mr-xl-5 tmp-mr-xl-5", { mr: [1, 2, 3, 4, 5] })
 
     assert_raises ArgumentError do
       Primer::Classify.call(m: -1)
@@ -78,15 +78,15 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_p
-    assert_generated_class("p-4",  { p: 4 })
-    assert_generated_class("px-4", { px: 4 })
-    assert_generated_class("py-4", { py: 4 })
-    assert_generated_class("pt-4", { pt: 4 })
-    assert_generated_class("pl-4", { pl: 4 })
-    assert_generated_class("pb-4", { pb: 4 })
-    assert_generated_class("pr-4", { pr: 4 })
-    assert_generated_class("p-responsive", { p: :responsive })
-    assert_generated_class("pr-1 pr-sm-2 pr-md-3 pr-lg-4 pr-xl-5", { pr: [1, 2, 3, 4, 5] })
+    assert_generated_class("p-4 tmp-p-4",  { p: 4 })
+    assert_generated_class("px-4 tmp-px-4", { px: 4 })
+    assert_generated_class("py-4 tmp-py-4", { py: 4 })
+    assert_generated_class("pt-4 tmp-pt-4", { pt: 4 })
+    assert_generated_class("pl-4 tmp-pl-4", { pl: 4 })
+    assert_generated_class("pb-4 tmp-pb-4", { pb: 4 })
+    assert_generated_class("pr-4 tmp-pr-4", { pr: 4 })
+    assert_generated_class("p-responsive tmp-p-responsive", { p: :responsive })
+    assert_generated_class("pr-1 tmp-pr-1 pr-sm-2 tmp-pr-sm-2 pr-md-3 tmp-pr-md-3 pr-lg-4 tmp-pr-lg-4 pr-xl-5 tmp-pr-xl-5", { pr: [1, 2, 3, 4, 5] })
 
     assert_raises ArgumentError do
       Primer::Classify.call(p: -1)
@@ -337,8 +337,8 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_responsive
-    assert_generated_class("p-4", { p: [4] })
-    assert_generated_class("p-4 p-sm-3", { p: [4, 3] })
+    assert_generated_class("p-4 tmp-p-4", { p: [4] })
+    assert_generated_class("p-4 tmp-p-4 p-sm-3 tmp-p-sm-3", { p: [4, 3] })
     assert_generated_class("float-left float-md-right", { float: [:left, nil, :right] })
     assert_generated_class("d-flex d-sm-block",  { display: %i[flex block] })
     assert_generated_class("d-flex d-md-block",  { display: [:flex, nil, :block] })
@@ -346,7 +346,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-row flex-sm-column", { direction: %i[row column] })
     assert_generated_class("col-1 col-sm-2", { col: [1, 2] })
     assert_generated_class("col-12 col-lg-9", { col: [12, nil, nil, 9] })
-    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2", { p: [4, 3, 3, 3, 2] })
+    assert_generated_class("p-4 tmp-p-4 p-sm-3 tmp-p-sm-3 p-md-3 tmp-p-md-3 p-lg-3 tmp-p-lg-3 p-xl-2 tmp-p-xl-2", { p: [4, 3, 3, 3, 2] })
     assert_generated_class("border-bottom border-sm-right border-lg-left", { border: [:bottom, :right, nil, :left, nil] })
     assert_generated_class("rounded-0 rounded-sm-1 rounded-md-2 rounded-lg-2 rounded-xl-3", { border_radius: [0, 1, 2, 2, 3] })
   end

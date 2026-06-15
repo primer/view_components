@@ -38,7 +38,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Banner .Banner-close"
     ],
     Primer::Alpha::Dialog => [
-      ".Overlay"
+      ".Overlay",
+      ".has-modal",
+      ".has-modal-disable-scroll"
     ],
     Primer::Alpha::Layout => [
       ".Layout-divider",

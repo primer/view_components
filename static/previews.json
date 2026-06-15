@@ -826,6 +826,19 @@
             "color-contrast"
           ]
         }
+      },
+      {
+        "preview_path": "primer/alpha/action_menu/fullscreen_when_narrow",
+        "name": "fullscreen_when_narrow",
+        "snapshot": "false",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
       }
     ]
   },
@@ -3528,7 +3541,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_e",
         "name": "direction_e",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3541,7 +3554,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_ne",
         "name": "direction_ne",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3554,7 +3567,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_s",
         "name": "direction_s",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3567,7 +3580,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_se",
         "name": "direction_se",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3580,7 +3593,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_sw",
         "name": "direction_sw",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -3593,7 +3606,7 @@
       {
         "preview_path": "primer/alpha/dropdown/direction_w",
         "name": "direction_w",
-        "snapshot": "false",
+        "snapshot": "interactive",
         "skip_rules": {
           "wont_fix": [
             "region"
@@ -7119,6 +7132,19 @@
       {
         "preview_path": "primer/alpha/text_field/show_clear_button",
         "name": "show_clear_button",
+        "snapshot": "true",
+        "skip_rules": {
+          "wont_fix": [
+            "region"
+          ],
+          "will_fix": [
+            "color-contrast"
+          ]
+        }
+      },
+      {
+        "preview_path": "primer/alpha/text_field/show_clear_button_with_custom_label",
+        "name": "show_clear_button_with_custom_label",
         "snapshot": "true",
         "skip_rules": {
           "wont_fix": [

@@ -1,7 +1,7 @@
 import {controller, target, targets} from '@github/catalyst'
 import {ActionListTruncationObserver} from '../alpha/action_list'
 
-@controller
+@controller('nav-list-group')
 export class NavListGroupElement extends HTMLElement {
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]

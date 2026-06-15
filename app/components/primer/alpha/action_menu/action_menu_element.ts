@@ -14,7 +14,7 @@ type SelectedItem = {
 const validSelectors = ['[role="menuitem"]', '[role="menuitemcheckbox"]', '[role="menuitemradio"]']
 const menuItemSelectors = validSelectors.map(selector => `:not([hidden]) > ${selector}`)
 
-@controller
+@controller('action-menu')
 export class ActionMenuElement extends HTMLElement {
   @target
   includeFragment: IncludeFragmentElement

@@ -54,6 +54,8 @@ module Primer
       # @!group Direction
       #
       # @label Direction e
+      #
+      # @snapshot interactive
       def direction_e
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }
@@ -66,6 +68,8 @@ module Primer
       end
 
       # @label Direction ne
+      #
+      # @snapshot interactive
       def direction_ne
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }
@@ -78,6 +82,8 @@ module Primer
       end
 
       # @label Direction s
+      #
+      # @snapshot interactive
       def direction_s
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }
@@ -90,6 +96,8 @@ module Primer
       end
 
       # @label Direction se
+      #
+      # @snapshot interactive
       def direction_se
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }
@@ -102,6 +110,8 @@ module Primer
       end
 
       # @label Direction sw
+      #
+      # @snapshot interactive
       def direction_sw
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }
@@ -114,6 +124,8 @@ module Primer
       end
 
       # @label Direction w
+      #
+      # @snapshot interactive
       def direction_w
         render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component|
           component.with_button { "Dropdown" }

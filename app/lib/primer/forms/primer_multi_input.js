@@ -35,7 +35,7 @@ __decorate([
     targets
 ], PrimerMultiInputElement.prototype, "fields", void 0);
 PrimerMultiInputElement = __decorate([
-    controller
+    controller('primer-multi-input')
 ], PrimerMultiInputElement);
 export { PrimerMultiInputElement };
 if (!window.customElements.get('primer-multi-input')) {

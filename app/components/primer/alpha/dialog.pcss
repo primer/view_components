@@ -21,8 +21,11 @@
   syntax: "<length>";
 }
 
-body:has(dialog:modal.Overlay--disableScroll) {
+body.has-modal {
   padding-right: var(--dialog-scrollgutter) !important;
+}
+
+body.has-modal-disable-scroll {
   overflow: hidden !important;
 }
 
@@ -421,6 +424,18 @@ dialog.Overlay:not([open]) {
     max-height: 100vh;
     border-radius: unset !important;
     flex-grow: 1;
+  }
+
+  .Overlay--fullscreen-whenNarrow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    max-width: none !important;
+    height: 100vh;
+    max-height: none !important;
+    margin: 0;
+    border-radius: unset !important;
   }
 }
 

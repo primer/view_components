@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-@controller
+@controller('x-banner')
 class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 

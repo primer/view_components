@@ -91,10 +91,10 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
   end
 
   def test_renders_no_results
-    render_inline(Primer::Beta::AutoComplete::NoResultItem.new(value: "", )) do |component|
+    render_inline(Primer::Beta::AutoComplete::NoResultItem.new) do
       "No results"
     end
 
-    assert_selector("[role=\"presentation\"][data-autocomplete-value=\"\"][aria-disabled=\"true\"].ActionListItem", text: "No results")
+    assert_selector("div[data-no-result-found][aria-hidden=\"true\"]", text: "No results")
   end
 end

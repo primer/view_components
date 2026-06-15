@@ -65,6 +65,7 @@ module Primer
       renders_one :description, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :p
+        system_arguments[:classes] = class_names("blankslate-description", system_arguments[:classes])
 
         Primer::BaseComponent.new(**system_arguments)
       }

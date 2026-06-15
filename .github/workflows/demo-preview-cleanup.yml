@@ -23,7 +23,7 @@ jobs:
       name: preview
 
     steps:
-      - uses: Azure/login@v2
+      - uses: Azure/login@v3
         with:
           # excluding a client secret here will cause a login via OpenID Connect (OIDC),
           # which prevents us from having to rotate client credentials, etc

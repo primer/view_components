@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 rails_version = (ENV["RAILS_VERSION"] || "7.2.2.1").to_s
 
-gem "rake", "~> 13.3"
+gem "rake", "~> 13.4"
 gem "rack-cors"
 gem "sprockets"
 gem "sprockets-rails"
@@ -31,21 +31,21 @@ end
 eval_gemfile "gemfiles/kuby.gemfile"
 
 # Use Puma as the app server
-gem "puma", "~> 7.1.0"
+gem "puma", "~> 8.0.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
-gem "view_component", "4.2.0"
+gem "view_component", "4.11.0"
 gem "lookbook", "~> 2.3.14" unless rails_version.to_f < 7
 
-gem "vite_rails", "~> 3.0"
+gem "vite_rails", "~> 3.11"
 gem "cssbundling-rails", "~> 1.4"
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring", "~> 4.4"
+  gem "spring", "~> 4.6"
   gem "spring-watcher-listen", "~> 2.1"
   gem "hotwire-livereload", "~> 2.1"
 

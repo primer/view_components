@@ -70,7 +70,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
       component.with_description { "Description" }
     end
 
-    assert_selector("div", text: "Description")
+    assert_selector("p.blankslate-description", text: "Description")
   end
 
   def test_renders_a_blankslate_component_with_a_primary_action
