@@ -15,11 +15,12 @@
   }
 }
 
-.breadcrumb-item-selected,
-.breadcrumb-item[aria-current]:not([aria-current='false']) {
-  &::after {
-    content: none;
-  }
+/* Expanded per-class so each selector buckets by its own class during style
+** recalc, instead of compiling to a merged `:is(...)` that Blink cannot
+** fast-reject. */
+.breadcrumb-item-selected::after,
+.breadcrumb-item[aria-current]:not([aria-current='false'])::after {
+  content: none;
 }
 
 /* stylelint-disable-next-line selector-max-type */

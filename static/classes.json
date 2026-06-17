@@ -459,6 +459,9 @@
   "Popover-message": [
     "Primer::Beta::Popover"
   ],
+  "Popover-message--bottom": [
+    "Primer::Beta::Popover"
+  ],
   "Popover-message--bottom-left": [
     "Primer::Beta::Popover"
   ],
@@ -468,7 +471,25 @@
   "Popover-message--large": [
     "Primer::Beta::Popover"
   ],
+  "Popover-message--left": [
+    "Primer::Beta::Popover"
+  ],
+  "Popover-message--left-bottom": [
+    "Primer::Beta::Popover"
+  ],
+  "Popover-message--left-top": [
+    "Primer::Beta::Popover"
+  ],
   "Popover-message--no-caret": [
+    "Primer::Beta::Popover"
+  ],
+  "Popover-message--right": [
+    "Primer::Beta::Popover"
+  ],
+  "Popover-message--right-bottom": [
+    "Primer::Beta::Popover"
+  ],
+  "Popover-message--right-top": [
     "Primer::Beta::Popover"
   ],
   "Popover-message--top-left": [

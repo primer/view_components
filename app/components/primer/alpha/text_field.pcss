@@ -634,16 +634,19 @@
   grid-template-columns: min-content auto;
   gap: var(--base-size-8);
 
-  & .FormControl-checkbox-labelWrap,
-  & .FormControl-radio-labelWrap {
-    display: flex;
-    flex-direction: column;
-    gap: var(--base-size-4);
-  }
-
   & .FormControl-label {
     cursor: pointer;
   }
+}
+
+/* Expanded per-class so the subject buckets by a single class during style
+** recalc, instead of compiling to a merged `:is(...)` subject that Blink
+** cannot fast-reject. */
+.FormControl-checkbox-wrap .FormControl-checkbox-labelWrap,
+.FormControl-radio-wrap .FormControl-radio-labelWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-size-4);
 }
 
 .FormControl-radio-group-wrap {
