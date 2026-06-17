@@ -83,7 +83,7 @@ class ToolTipElement extends HTMLElement {
         border-radius: var(--borderRadius-medium);
         border: 0 !important;
         opacity: 0;
-        max-width: var(--overlay-width-small);
+        max-width: min(var(--overlay-width-small), 100vw);
         word-wrap: break-word;
         white-space: normal;
         width: max-content !important;

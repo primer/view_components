@@ -4,8 +4,8 @@
 .playwright/screenshots/ @primer/design-reviewers
 
 # Component CSS files
-app/components/**/*.pcss @primer/css-reviewers
+app/components/**/*.pcss @primer/engineer-reviewers
 
 # PostCSS Config
-lib/postcss-mixins/ @primer/css-reviewers
-postcss.config.js @primer/css-reviewers
+lib/postcss-mixins/ @primer/engineer-reviewers
+postcss.config.js @primer/engineer-reviewers

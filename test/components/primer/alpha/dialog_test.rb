@@ -27,6 +27,22 @@ module Primer
         assert_selector("[data-show-dialog-id]")
       end
 
+      def test_applies_disable_scroll_class_by_default
+        render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+          component.with_body { "Hello" }
+        end
+
+        assert_selector("dialog.Overlay--disableScroll")
+      end
+
+      def test_does_not_apply_disable_scroll_class_when_disabled
+        render_inline(Primer::Alpha::Dialog.new(title: "Title", disable_scroll: false)) do |component|
+          component.with_body { "Hello" }
+        end
+
+        refute_selector("dialog.Overlay--disableScroll")
+      end
+
       def test_renders_icon_show_button
         render_preview :playground, params: { icon: :ellipsis }
 

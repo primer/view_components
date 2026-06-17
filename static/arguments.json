@@ -344,6 +344,12 @@
         "description": "One of `:inside_bottom`, `:inside_center`, `:inside_left`, `:inside_right`, `:inside_top`, `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.."
       },
       {
+        "name": "anchor_when_narrow",
+        "type": "Symbol",
+        "default": "`:inherit`",
+        "description": "One of `:bottom`, `:fullscreen`, `:inherit`, `:left`, or `:right`.."
+      },
+      {
         "name": "size",
         "type": "Symbol",
         "default": "`:auto`",
@@ -1911,6 +1917,12 @@
         "description": "The anchor offset to give the Overlay. One of `:normal` or `:spacious`."
       },
       {
+        "name": "anchor_when_narrow",
+        "type": "Symbol",
+        "default": "`:inherit`",
+        "description": "The position of the Overlay when in a narrow viewport. One of `:bottom`, `:fullscreen`, `:inherit`, `:left`, or `:right`."
+      },
+      {
         "name": "allow_out_of_bounds",
         "type": "Boolean",
         "default": "`false`",
@@ -3219,6 +3231,12 @@
         "type": "String",
         "default": "`nil`",
         "description": "Custom label to show when the switch is OFF. Defaults to (\"Off\"). Only customize this label if it makes the toggle’s state more meaningful in its specific context. For example, for a \"Show images\" setting, you might use \"Show\" when the switch is OFF."
+      },
+      {
+        "name": "button_type",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The type attribute for the underlying button element. If `nil`, the button will not have a type attribute, which means it will default to \"submit\" if it's inside a form and \"button\" otherwise."
       }
     ]
   },
@@ -3886,7 +3904,14 @@
     "short_name": "AutoCompleteNoResultItem",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/no_result_item.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/no_result_item/default/",
-    "parameters": []
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
   },
   {
     "component": "Avatar",
@@ -5008,6 +5033,12 @@
         "type": "Symbol",
         "default": "`TIMEZONENAME_DEFAULT`",
         "description": "What format the time zone should take. One of `nil`, `:long`, `:long_generic`, `:long_offset`, `:short`, `:short_generic`, or `:short_offset`."
+      },
+      {
+        "name": "time_zone",
+        "type": "String",
+        "default": "`nil`",
+        "description": "The IANA time zone identifier to use for formatting (e.g., \"America/New_York\")."
       },
       {
         "name": "threshold",

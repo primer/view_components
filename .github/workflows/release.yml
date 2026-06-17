@@ -23,7 +23,7 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: "npm"
       - name: Create .gem credentials
         run: |
@@ -78,7 +78,7 @@ jobs:
       # Use the primer GitHub App for authentication.
       # See: https://github.com/organizations/primer/settings/apps/primer
       - name: Get App Token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: get-access-token
         with:
           app-id: ${{ vars.PRIMER_APP_ID_SHARED }}

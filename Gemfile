@@ -5,6 +5,7 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
+gem "minitest", "~> 5.0"
 gem "rack-cors"
 gem "rake", "~> 13.3"
 
@@ -30,7 +31,7 @@ else
 end
 
 # Use Puma as the app server
-gem "puma", "~> 7.1.0"
+gem "puma", "~> 8.0.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
@@ -39,14 +40,14 @@ gem "lookbook", "~> 2.3.14"
 if ENV["VIEW_COMPONENT_PATH"]
   gem "view_component", path: ENV["VIEW_COMPONENT_PATH"]
 else
-  gem "view_component", "4.1.1"
+  gem "view_component", "4.9.0"
 end
 
 gem "kramdown", "~> 2.5"
 gem "sourcemap", "~> 0.1"
 
 gem "cssbundling-rails", "~> 1.4"
-gem "vite_rails", "~> 3.0"
+gem "vite_rails", "~> 3.11"
 
 group :test do
   gem "webmock"
@@ -70,12 +71,12 @@ group :development do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 1.0"
-  gem "selenium-webdriver", "~> 4.40"
+  gem "selenium-webdriver", "~> 4.41"
   gem "simplecov", "~> 0.22.0"
-  gem "simplecov-console", "~> 0.9.4"
+  gem "simplecov-console", "~> 0.9.5"
   gem "sprockets"
   gem "sprockets-rails"
   gem "thor"
   gem "timecop"
-  gem "yard", "~> 0.9.38"
+  gem "yard", "~> 0.9.44"
 end

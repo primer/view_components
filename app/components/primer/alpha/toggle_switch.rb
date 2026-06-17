@@ -39,6 +39,7 @@ module Primer
       #   Only customize this label if it makes the toggle’s state more meaningful
       #   in its specific context. For example, for a "Show images" setting,
       #   you might use "Show" when the switch is OFF.
+      # @param button_type [Symbol] The type attribute for the underlying button element. If `nil`, the button will not have a type attribute, which means it will default to "submit" if it's inside a form and "button" otherwise.
 
       def initialize(
         src: nil,
@@ -51,6 +52,7 @@ module Primer
         autofocus: nil,
         on_label: nil,
         off_label: nil,
+        button_type: nil,
         **system_arguments
       )
         @src = src
@@ -75,6 +77,7 @@ module Primer
         )
 
         @button_arguments = {
+          type: button_type,
           aria: merge_aria(
             @system_arguments,
             aria: { pressed: on? }

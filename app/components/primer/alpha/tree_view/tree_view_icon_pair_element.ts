@@ -1,7 +1,7 @@
 import {controller, target} from '@github/catalyst'
 import {observeMutationsUntilConditionMet} from '../../utils'
 
-@controller
+@controller('tree-view-icon-pair')
 export class TreeViewIconPairElement extends HTMLElement {
   @target expandedIcon: HTMLElement
   @target collapsedIcon: HTMLElement

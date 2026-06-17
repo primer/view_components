@@ -76,7 +76,8 @@ class PrimerBaseComponentTest < Minitest::Test
   def test_renders_system_argument_class_with_no_whitespace
     render_inline(Primer::BaseComponent.new(tag: :div, ml: 3))
 
-    assert_selector("div[class='ml-3']")
+    # Asserts exact class attribute value with no leading/trailing/extra whitespace
+    assert_selector("div[class='ml-3 tmp-ml-3']")
   end
 
   def test_does_not_render_primer_layout_classes_as_attributes

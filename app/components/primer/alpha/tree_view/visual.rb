@@ -17,7 +17,7 @@ module Primer
           @label = label
         end
 
-        def render_in(_view_context, &block)
+        def render_in(_view_context, **_kwargs, &block)
           block&.call(@visual)
           super
         end

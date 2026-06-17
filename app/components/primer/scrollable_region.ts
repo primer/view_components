@@ -1,6 +1,6 @@
 import {controller, attr} from '@github/catalyst'
 
-@controller
+@controller('scrollable-region')
 export class ScrollableRegionElement extends HTMLElement {
   @attr hasOverflow = false
   @attr labelledBy = ''

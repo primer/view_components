@@ -1,7 +1,7 @@
 import {controller, target, targets} from '@github/catalyst'
 import {ActionListTruncationObserver} from '../alpha/action_list'
 
-@controller
+@controller('nav-list')
 export class NavListElement extends HTMLElement {
   @targets items: HTMLElement[]
   @target topLevelList: HTMLElement

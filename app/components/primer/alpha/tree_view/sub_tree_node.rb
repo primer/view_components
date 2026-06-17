@@ -164,7 +164,7 @@ module Primer
           )
         end
 
-        def render_in(*args, &block)
+        def render_in(*args, **_kwargs, &block)
           super.tap do
             # check this _after_ rendering so @sub_tree's slots are defined
             if @node.select_variant != :none && @sub_tree.defer?

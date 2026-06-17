@@ -3,15 +3,15 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
-    "@primer/css": "^22.0.2",
-    "@primer/primitives": "^11.3.2",
-    "@rails/actioncable": "^8.0.201",
+    "@primer/css": "^22.2.0",
+    "@primer/primitives": "^11.9.0",
+    "@rails/actioncable": "^8.1.300",
     "@rails/ujs": "^7.1.600",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "vite": "^7.3.1",
-    "vite-plugin-ruby": "^5.1.2"
+    "vite": "^8.0.16",
+    "vite-plugin-ruby": "^5.2.2"
   },
   "scripts": {
     "build:css": "postcss --config ../ ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"

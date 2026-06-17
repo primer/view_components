@@ -9,7 +9,7 @@ module Primer
         attr_accessor :last_request
       end
 
-      rescue_from ActionController::InvalidAuthenticityToken, with: :handle_invalid_authenticity_token
+      rescue_from ActionController::InvalidCrossOriginRequest, with: :handle_invalid_cross_origin_request
 
       before_action :reject_non_ajax_request
 
@@ -29,7 +29,7 @@ module Primer
 
       private
 
-      def handle_invalid_authenticity_token
+      def handle_invalid_cross_origin_request
         render status: :unauthorized, plain: "Bad CSRF token."
       end
 

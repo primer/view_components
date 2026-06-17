@@ -16,11 +16,10 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@e0021407031f5be11a464abee9a0776171c79891
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           docs/**/*.md
-          .github/**/*.md
           README.md
           CONTRIBUTING.md
           CODE_OF_CONDUCT.md
@@ -42,7 +41,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@e0021407031f5be11a464abee9a0776171c79891
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/**/*.rb
@@ -62,7 +61,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@e0021407031f5be11a464abee9a0776171c79891
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.erb
@@ -79,7 +78,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@e0021407031f5be11a464abee9a0776171c79891
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.ts
@@ -99,7 +98,7 @@ jobs:
     - uses: actions/checkout@v6
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@e0021407031f5be11a464abee9a0776171c79891
+      uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96
       with:
         files: |
           app/components/**/*.pcss
@@ -120,4 +119,4 @@ jobs:
     - uses: actions/checkout@v6
     - name: Lint with Herb
       run: |
-        npx @herb-tools/linter
+        npx @herb-tools/linter@0.8.10

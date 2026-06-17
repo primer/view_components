@@ -9,12 +9,14 @@ module Primer
       # @param select_variant [Symbol] select [single, multiple, none]
       # @param anchor_align [Symbol] select [start, center, end]
       # @param anchor_side [Symbol] select [outside_bottom, outside_top, outside_left, outside_right]
+      # @param anchor_when_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
       # @param size [Symbol] select [auto, small, medium, large, xlarge]
       def playground(
         select_variant: Primer::Alpha::ActionMenu::DEFAULT_SELECT_VARIANT, anchor_align: Primer::Alpha::Overlay::DEFAULT_ANCHOR_ALIGN, anchor_side: Primer::Alpha::Overlay::DEFAULT_ANCHOR_SIDE,
+        anchor_when_narrow: Primer::Alpha::Overlay::DEFAULT_ANCHOR_WHEN_NARROW,
         size: Primer::Alpha::Overlay::DEFAULT_SIZE
       )
-        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side, size: size)) do |menu|
+        render(Primer::Alpha::ActionMenu.new(select_variant: select_variant, anchor_align: anchor_align, anchor_side: anchor_side, anchor_when_narrow: anchor_when_narrow, size: size)) do |menu|
           menu.with_show_button { "Menu" }
           menu.with_item(label: "Copy link")
           menu.with_item(label: "Quote reply")
@@ -405,6 +407,35 @@ module Primer
       # @label Two menus
       #
       def two_menus; end
+
+      # @label Fullscreen when narrow
+      #
+      def fullscreen_when_narrow
+        render(Primer::Alpha::ActionMenu.new(anchor_when_narrow: :fullscreen)) do |menu|
+          menu.with_show_button do |button|
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Options"
+          end
+
+          menu.with_item(label: "Edit profile") do |item|
+            item.with_description.with_content("Update your profile information")
+          end
+
+          menu.with_item(label: "Settings") do |item|
+            item.with_description.with_content("Configure your preferences")
+          end
+
+          menu.with_item(label: "Notifications") do |item|
+            item.with_description.with_content("Manage notification settings")
+          end
+
+          menu.with_divider
+
+          menu.with_item(label: "Sign out", scheme: :danger) do |item|
+            item.with_description.with_content("Log out of your account")
+          end
+        end
+      end
     end
   end
 end

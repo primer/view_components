@@ -1,3 +1,16 @@
+function setScrollGutter(doc: Document) {
+  if (doc.body.style.getPropertyValue('--dialog-scrollgutter')) return
+  doc.body.style.setProperty('--dialog-scrollgutter', `${window.innerWidth - doc.body.clientWidth}px`)
+}
+
+function updateBodyModalClasses(doc: Document) {
+  doc.body.classList.toggle('has-modal', Boolean(doc.querySelector('dialog[open]')))
+  doc.body.classList.toggle(
+    'has-modal-disable-scroll',
+    Boolean(doc.querySelector('dialog[open].Overlay--disableScroll')),
+  )
+}
+
 function dialogInvokerButtonHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
@@ -9,26 +22,36 @@ function dialogInvokerButtonHandler(event: Event) {
   if (dialogId) {
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement) {
+      setScrollGutter(dialog.ownerDocument)
       dialog.showModal()
       // A buttons default behaviour in some browsers it to send a pointer event
       // If the behaviour is allowed through the dialog will be shown but then
       // quickly hidden- as if it were never shown. This prevents that.
       event.preventDefault()
 
-      // In some older browsers, such as Chrome 122, when a top layer element (such as a dialog)
-      // opens from within a popover, the "hide all popovers" internal algorithm runs, hiding
-      // any popover that is currently open, regardless of whether or not another top layer element,
-      // such as a <dialog> is nested inside.
-      // See https://github.com/whatwg/html/issues/9998.
-      // This is fixed by https://github.com/whatwg/html/pull/10116, but while we still support browsers
-      // that present this bug, we must undo the work they did to hide ancestral popovers of the dialog:
+      // When a <dialog> is opened with showModal() from inside a popover with popover="auto",
+      // there are two related issues:
+      //
+      // 1. In older browsers (e.g. Chrome 122), the "hide all popovers" algorithm runs when a
+      //    top layer element opens, closing any ancestor popover. We must re-open those popovers.
+      //    See https://github.com/whatwg/html/issues/9998,
+      //    fixed by https://github.com/whatwg/html/pull/10116.
+      //
+      // 2. In newer browsers where the popover stays open, the popover="auto" behavior still
+      //    interferes with the native <dialog> focus trap, causing focus to escape the dialog
+      //    when tabbing past the last focusable element. Converting the popover to "manual"
+      //    prevents this interference.
+      //
+      // In both cases, the fix is the same: convert ancestor auto popovers to manual.
       let node: HTMLElement | null | undefined = button
       let fixed = false
       while (node) {
-        node = node.parentElement?.closest('[popover]:not(:popover-open)')
+        node = node.parentElement?.closest('[popover]')
         if (node && node.popover === 'auto') {
           node.classList.add('dialog-inside-popover-fix')
           node.popover = 'manual'
+          // Changing popover from "auto" to "manual" closes the popover,
+          // so we need to re-show it regardless of whether it was previously open.
           node.showPopover()
           fixed = true
         }
@@ -54,6 +77,8 @@ function dialogInvokerButtonHandler(event: Event) {
           {once: true},
         )
       }
+
+      updateBodyModalClasses(dialog.ownerDocument)
     }
   }
 
@@ -62,6 +87,7 @@ function dialogInvokerButtonHandler(event: Event) {
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof HTMLDialogElement && dialog.open) {
       dialog.close()
+      updateBodyModalClasses(dialog.ownerDocument)
     }
   }
 }
@@ -76,10 +102,7 @@ export class DialogHelperElement extends HTMLElement {
     const {signal} = (this.#abortController = new AbortController())
     document.addEventListener('click', dialogInvokerButtonHandler, true)
     document.addEventListener('click', this, {signal})
-    this.ownerDocument.body.style.setProperty(
-      '--dialog-scrollgutter',
-      `${window.innerWidth - this.ownerDocument.body.clientWidth}px`,
-    )
+    this.dialog?.addEventListener('close', () => updateBodyModalClasses(this.dialog!.ownerDocument), {signal})
     new MutationObserver(records => {
       for (const record of records) {
         if (record.target === this.dialog) {
@@ -96,13 +119,17 @@ export class DialogHelperElement extends HTMLElement {
 
   #handleDialogOpenAttribute() {
     if (!this.dialog) return
+    const {ownerDocument} = this.dialog
     // We don't want to show the Dialog component as non-modal
     if (this.dialog.matches('[open]:not(:modal)')) {
       // eslint-disable-next-line no-restricted-syntax
       this.dialog.addEventListener('close', e => e.stopImmediatePropagation(), {once: true})
       this.dialog.close()
+      setScrollGutter(ownerDocument)
       this.dialog.showModal()
     }
+
+    updateBodyModalClasses(ownerDocument)
   }
 
   handleEvent(event: MouseEvent) {
