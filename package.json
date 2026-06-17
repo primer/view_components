@@ -5,6 +5,15 @@
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
   "types": "app/components/primer/primer.d.ts",
+  "exports": {
+    ".": {
+      "types": "./app/components/primer/primer.d.ts",
+      "import": "./app/components/primer/primer.js",
+      "require": "./app/assets/javascripts/primer_view_components.js"
+    },
+    "./classnames": "./static/classnames.js",
+    "./*": "./*"
+  },
   "repository": "primer/view_components",
   "keywords": [
     "rails",
