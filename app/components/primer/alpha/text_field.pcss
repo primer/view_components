@@ -74,6 +74,7 @@
 }
 
 /* shared among all form control components (input, select, textarea, checkbox, radio) */
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
 @define-mixin Field {
   color: var(--fgColor-default);
   background-color: var(--bgColor-default);
@@ -114,6 +115,7 @@
     @mixin focusBoxShadowInset;
   }
 }
+/* stylelint-enable nesting-selector-no-missing-scoping-root */
 
 /* TextInput structure
 ** ===================
