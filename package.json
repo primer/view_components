@@ -11,7 +11,11 @@
       "import": "./app/components/primer/primer.js",
       "require": "./app/assets/javascripts/primer_view_components.js"
     },
-    "./classnames": "./static/classnames.js",
+    "./classnames": {
+      "types": "./static/classnames.d.ts",
+      "import": "./static/classnames.js",
+      "require": "./static/classnames.cjs"
+    },
     "./*": "./*"
   },
   "repository": "primer/view_components",
@@ -31,6 +35,8 @@
   "files": [
     "static/*.json",
     "static/classnames.js",
+    "static/classnames.cjs",
+    "static/classnames.d.ts",
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",

@@ -133,16 +133,31 @@ const libBuild = exportSelectors('app/lib/primer/css', {
 })
 
 // Once both folders have been processed, write the complete, flat set of every
-// unique class name in the library to static/classnames.js.
+// unique class name in the library. We emit a dual ESM/CJS build plus type
+// declarations so both `import` and `require` consumers can use it.
 Promise.all([componentsBuild, libBuild])
   .then(() => {
     const sortedClassNames = [...allClassNames].sort()
     const body = sortedClassNames.map(className => `  '${className}',`).join('\n')
 
     console.log('Writing static/classnames.js')
-    return writeFile(
+    const esm = writeFile(
       'static/classnames.js',
       `const classNames = new Set([\n${body}\n])\n\nexport default classNames\n`
     )
+
+    console.log('Writing static/classnames.cjs')
+    const cjs = writeFile(
+      'static/classnames.cjs',
+      `module.exports = new Set([\n${body}\n])\n`
+    )
+
+    console.log('Writing static/classnames.d.ts')
+    const types = writeFile(
+      'static/classnames.d.ts',
+      `declare const classNames: Set<string>\nexport default classNames\n`
+    )
+
+    return Promise.all([esm, cjs, types])
   })
-  .catch(error => console.error("failed to write static/classnames.js", { error }))
+  .catch(error => console.error("failed to write static/classnames files", { error }))
