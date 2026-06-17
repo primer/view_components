@@ -377,8 +377,6 @@ const classNames = new Set([
   'btn-small-mktg',
   'btn-subtle-mktg',
   'close-button',
-  'color-fg',
-  'color-fg-',
   'container-lg',
   'container-md',
   'container-xl',
@@ -436,4 +434,4 @@ const classNames = new Set([
   'zeroclipboard-is-hover',
 ])
 
-export default classNames
+module.exports = classNames
