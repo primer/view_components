@@ -12,7 +12,11 @@ const snakeToCamelCase = (s) => s.split('_').map(capitalize).join('')
 const componentNameToRubyClass = (componentName) =>
   'Primer::' + componentName.split('/').map(snakeToCamelCase).join('::')
 
-const exportSelectors = (folder) => {
+// Collects every unique bare class name (without the leading ".") across all
+// processed folders so we can emit a flat set in static/classnames.js.
+const allClassNames = new Set()
+
+const exportSelectors = (folder, {classNameExcludedFiles = []} = {}) => {
   const folderGlob = `${folder}/**/*.css`
   const componentNameRegex = new RegExp(`${folder.replace('/','\\/')}\\/(.*).css`)
 
@@ -23,6 +27,7 @@ const exportSelectors = (folder) => {
         const css = await readFile(file, 'utf8')
         const root = postcss.parse(css)
         const componentName = componentNameRegex.exec(file)[1]
+        const collectClassNames = !classNameExcludedFiles.includes(file)
 
         const selectors = []
         const classFiles = []
@@ -38,10 +43,23 @@ const exportSelectors = (folder) => {
 
           rule.selectors.forEach(ruleSelector => {
             selectors.push(ruleSelector)
-            const ruleObj = CSSwhat.parse(ruleSelector)[0][0]
+            const parsed = CSSwhat.parse(ruleSelector)
+            const ruleObj = parsed[0][0]
             if (ruleObj.type === 'attribute' && ruleObj.name === 'class') {
               const baseHtmlClass = ruleObj.value
               classFiles.push([baseHtmlClass, componentNameToRubyClass(componentName)])
+            }
+
+            // Collect every class token from every compound of the selector
+            // (not just the first) for the complete classnames.js set.
+            if (collectClassNames) {
+              parsed.forEach(compound => {
+                compound.forEach(token => {
+                  if (token.type === 'attribute' && token.name === 'class' && token.action === 'element') {
+                    allClassNames.add(token.value)
+                  }
+                })
+              })
             }
           })
         })
@@ -66,7 +84,9 @@ const exportSelectors = (folder) => {
 const classShouldBeReserved = className =>
   (className[0].toUpperCase() === className[0])
 
-exportSelectors('app/components/primer')
+const componentsBuild = exportSelectors('app/components/primer')
+
+componentsBuild
   .then(classLists => {
     const htmlClassToRubyClasses = {}
 
@@ -103,5 +123,41 @@ exportSelectors('app/components/primer')
   .catch(error => console.error("failed to write static/classes.json", { error }))
 
 // stylesheets under app/lib/primer/css need their individual
-// json files generated
-exportSelectors('app/lib/primer/css')
+// json files generated. The utility and layout classes in these files are
+// intentionally excluded from the flat classnames.js set.
+const libBuild = exportSelectors('app/lib/primer/css', {
+  classNameExcludedFiles: [
+    'app/lib/primer/css/utilities.css',
+    'app/lib/primer/css/layout.css'
+  ]
+})
+
+// Once both folders have been processed, write the complete, flat set of every
+// unique class name in the library. We emit a dual ESM/CJS build plus type
+// declarations so both `import` and `require` consumers can use it.
+Promise.all([componentsBuild, libBuild])
+  .then(() => {
+    const sortedClassNames = [...allClassNames].sort()
+    const body = sortedClassNames.map(className => `  '${className}',`).join('\n')
+
+    console.log('Writing static/classnames.js')
+    const esm = writeFile(
+      'static/classnames.js',
+      `const classNames = new Set([\n${body}\n])\n\nexport default classNames\n`
+    )
+
+    console.log('Writing static/classnames.cjs')
+    const cjs = writeFile(
+      'static/classnames.cjs',
+      `module.exports = new Set([\n${body}\n])\n`
+    )
+
+    console.log('Writing static/classnames.d.ts')
+    const types = writeFile(
+      'static/classnames.d.ts',
+      `declare const classNames: Set<string>\nexport default classNames\n`
+    )
+
+    return Promise.all([esm, cjs, types])
+  })
+  .catch(error => console.error("failed to write static/classnames files", { error }))
