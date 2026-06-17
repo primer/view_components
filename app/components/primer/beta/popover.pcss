@@ -17,6 +17,7 @@
   border-radius: var(--borderRadius-medium);
 
   /* adding !important to override utility classes used in dotcom */
+  /* stylelint-disable-next-line primer/box-shadow */
   box-shadow: var(--shadow-floating-legacy, var(--color-shadow-large)) !important;
 
   /* Carets */
@@ -54,26 +55,36 @@
   }
 }
 
+/* The caret variants below are authored as expanded per-class selectors
+** (rather than nesting `&::before`/`&::after` under a selector list) so each
+** rule's subject buckets by its own class during style recalc. The merged
+** `:is(.Popover-message--…, …)::before` form cannot be fast-rejected by Blink
+** and shows up as pure slow-path selector matching. */
+
 /* Bottom-oriented carets */
-.Popover-message--bottom,
-.Popover-message--bottom-right,
-.Popover-message--bottom-left {
-  &::before,
-  &::after {
-    top: auto;
-    border-bottom-color: transparent;
-  }
+.Popover-message--bottom::before,
+.Popover-message--bottom::after,
+.Popover-message--bottom-right::before,
+.Popover-message--bottom-right::after,
+.Popover-message--bottom-left::before,
+.Popover-message--bottom-left::after {
+  top: auto;
+  border-bottom-color: transparent;
+}
 
-  &::before {
-    bottom: -16px;
-    border-top-color: var(--borderColor-default);
-  }
+.Popover-message--bottom::before,
+.Popover-message--bottom-right::before,
+.Popover-message--bottom-left::before {
+  bottom: -16px;
+  border-top-color: var(--borderColor-default);
+}
 
-  &::after {
-    bottom: -14px;
-    /* stylelint-disable-next-line primer/colors */
-    border-top-color: var(--overlay-bgColor);
-  }
+.Popover-message--bottom::after,
+.Popover-message--bottom-right::after,
+.Popover-message--bottom-left::after {
+  bottom: -14px;
+  /* stylelint-disable-next-line primer/colors */
+  border-top-color: var(--overlay-bgColor);
 }
 
 /* Top and Bottom: Right-oriented carets */
@@ -81,21 +92,25 @@
 .Popover-message--bottom-right {
   right: -9px;
   margin-right: 0;
+}
 
-  &::before,
-  &::after {
-    left: auto;
-    margin-left: 0;
-  }
+.Popover-message--top-right::before,
+.Popover-message--top-right::after,
+.Popover-message--bottom-right::before,
+.Popover-message--bottom-right::after {
+  left: auto;
+  margin-left: 0;
+}
 
-  &::before {
-    right: var(--base-size-20);
-  }
+.Popover-message--top-right::before,
+.Popover-message--bottom-right::before {
+  right: var(--base-size-20);
+}
 
-  &::after {
-    right: var(--base-size-20);
-    margin-right: 1px;
-  }
+.Popover-message--top-right::after,
+.Popover-message--bottom-right::after {
+  right: var(--base-size-20);
+  margin-right: 1px;
 }
 
 /* Top and Bottom: Left-oriented carets */
@@ -103,101 +118,117 @@
 .Popover-message--bottom-left {
   left: -9px;
   margin-left: 0;
+}
 
-  &::before,
-  &::after {
-    left: var(--base-size-24);
-    margin-left: 0;
-  }
+.Popover-message--top-left::before,
+.Popover-message--top-left::after,
+.Popover-message--bottom-left::before,
+.Popover-message--bottom-left::after {
+  left: var(--base-size-24);
+  margin-left: 0;
+}
 
-  &::after {
-    left: var(--base-size-24);
-    margin-left: 1px;
-  }
+.Popover-message--top-left::after,
+.Popover-message--bottom-left::after {
+  left: var(--base-size-24);
+  margin-left: 1px;
 }
 
 /* Right- and Left-oriented carets */
-.Popover-message--right,
-.Popover-message--right-top,
-.Popover-message--right-bottom,
-.Popover-message--left,
-.Popover-message--left-top,
-.Popover-message--left-bottom {
-  &::before,
-  &::after {
-    top: 50%;
-    left: auto;
-    margin-left: 0;
-    border-bottom-color: transparent;
-  }
+.Popover-message--right::before,
+.Popover-message--right::after,
+.Popover-message--right-top::before,
+.Popover-message--right-top::after,
+.Popover-message--right-bottom::before,
+.Popover-message--right-bottom::after,
+.Popover-message--left::before,
+.Popover-message--left::after,
+.Popover-message--left-top::before,
+.Popover-message--left-top::after,
+.Popover-message--left-bottom::before,
+.Popover-message--left-bottom::after {
+  top: 50%;
+  left: auto;
+  margin-left: 0;
+  border-bottom-color: transparent;
+}
 
-  &::before {
-    margin-top: -9px;
-  }
+.Popover-message--right::before,
+.Popover-message--right-top::before,
+.Popover-message--right-bottom::before,
+.Popover-message--left::before,
+.Popover-message--left-top::before,
+.Popover-message--left-bottom::before {
+  margin-top: -9px;
+}
 
-  &::after {
-    margin-top: -8px;
-  }
+.Popover-message--right::after,
+.Popover-message--right-top::after,
+.Popover-message--right-bottom::after,
+.Popover-message--left::after,
+.Popover-message--left-top::after,
+.Popover-message--left-bottom::after {
+  margin-top: -8px;
 }
 
 /* Right-oriented carets */
-.Popover-message--right,
-.Popover-message--right-top,
-.Popover-message--right-bottom {
-  &::before {
-    right: -16px;
-    border-left-color: var(--borderColor-default);
-  }
+.Popover-message--right::before,
+.Popover-message--right-top::before,
+.Popover-message--right-bottom::before {
+  right: -16px;
+  border-left-color: var(--borderColor-default);
+}
 
-  &::after {
-    right: -14px;
-    /* stylelint-disable-next-line primer/colors */
-    border-left-color: var(--overlay-bgColor);
-  }
+.Popover-message--right::after,
+.Popover-message--right-top::after,
+.Popover-message--right-bottom::after {
+  right: -14px;
+  /* stylelint-disable-next-line primer/colors */
+  border-left-color: var(--overlay-bgColor);
 }
 
 /* Left-oriented carets */
-.Popover-message--left,
-.Popover-message--left-top,
-.Popover-message--left-bottom {
-  &::before {
-    left: -16px;
-    border-right-color: var(--borderColor-default);
-  }
+.Popover-message--left::before,
+.Popover-message--left-top::before,
+.Popover-message--left-bottom::before {
+  left: -16px;
+  border-right-color: var(--borderColor-default);
+}
 
-  &::after {
-    left: -14px;
-    margin-bottom: 1px;
-    /* stylelint-disable-next-line primer/colors */
-    border-right-color: var(--overlay-bgColor);
-  }
+.Popover-message--left::after,
+.Popover-message--left-top::after,
+.Popover-message--left-bottom::after {
+  left: -14px;
+  margin-bottom: 1px;
+  /* stylelint-disable-next-line primer/colors */
+  border-right-color: var(--overlay-bgColor);
 }
 
 /* Right and Left: Top-oriented carets */
-.Popover-message--right-top,
-.Popover-message--left-top {
-  &::before,
-  &::after {
-    top: var(--base-size-24);
-  }
+.Popover-message--right-top::before,
+.Popover-message--right-top::after,
+.Popover-message--left-top::before,
+.Popover-message--left-top::after {
+  top: var(--base-size-24);
 }
 
 /* Right and Left: Bottom-oriented carets */
-.Popover-message--right-bottom,
-.Popover-message--left-bottom {
-  &::before,
-  &::after {
-    top: auto;
-  }
+.Popover-message--right-bottom::before,
+.Popover-message--right-bottom::after,
+.Popover-message--left-bottom::before,
+.Popover-message--left-bottom::after {
+  top: auto;
+}
 
-  &::before {
-    bottom: var(--base-size-16);
-  }
+.Popover-message--right-bottom::before,
+.Popover-message--left-bottom::before {
+  bottom: var(--base-size-16);
+}
 
-  &::after {
-    bottom: var(--base-size-16);
-    margin-bottom: 1px;
-  }
+.Popover-message--right-bottom::after,
+.Popover-message--left-bottom::after {
+  bottom: var(--base-size-16);
+  margin-bottom: 1px;
 }
 
 @media (min-width: 544px) {

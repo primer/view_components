@@ -92,15 +92,13 @@
   background-color: var(--overlay-bgColor);
   border: 0;
 
+  /* `color` is inherited, so setting it on the item recolors descendants
+  ** without a universal `… *` descendant rule (which forces a slow
+  ** style-recalc match attempt against every element on the page). */
   &:hover {
     color: var(--fgColor-onEmphasis);
     text-decoration: none;
     background-color: var(--bgColor-accent-emphasis);
-
-    /* Inherit color on all child elements to ensure enough contrast */
-    & * {
-      color: inherit !important;
-    }
   }
 
   &.selected,
@@ -109,10 +107,5 @@
     color: var(--fgColor-onEmphasis);
     text-decoration: none;
     background-color: var(--bgColor-accent-emphasis);
-
-    /* Inherit color on all child elements to ensure enough contrast */
-    & * {
-      color: inherit !important;
-    }
   }
 }
