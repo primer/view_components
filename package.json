@@ -21,6 +21,7 @@
   },
   "files": [
     "static/*.json",
+    "static/classnames.js",
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
