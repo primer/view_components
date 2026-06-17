@@ -6,6 +6,8 @@ ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
 
 # OS packages required to run the application
+# Remove Yarn apt source to avoid GPG key verification failures during apt-get update
+RUN rm -f /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
       fonts-liberation \
