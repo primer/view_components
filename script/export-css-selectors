@@ -142,7 +142,7 @@ Promise.all([componentsBuild, libBuild])
     console.log('Writing static/classnames.js')
     return writeFile(
       'static/classnames.js',
-      `const classNames = new Set([\n${body}\n])\n\nmodule.exports = classNames\n`
+      `const classNames = new Set([\n${body}\n])\n\nexport default classNames\n`
     )
   })
   .catch(error => console.error("failed to write static/classnames.js", { error }))

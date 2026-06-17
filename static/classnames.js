@@ -434,4 +434,4 @@ const classNames = new Set([
   'zeroclipboard-is-hover',
 ])
 
-module.exports = classNames
+export default classNames
