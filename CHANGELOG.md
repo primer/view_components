@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.52.0
+
+### Minor Changes
+
+- [#4096](https://github.com/primer/view_components/pull/4096) [`3ba48a2`](https://github.com/primer/view_components/commit/3ba48a24494e2bb2bb4ed1aff5c612b55c237980) Thanks [@jonrohan](https://github.com/jonrohan)! - Add `static/classnames.js`, which default-exports a `Set` of every unique CSS class name in the library for consumers and tooling. It is available via the `@primer/view-components/classnames` import subpath.
+
+### Patch Changes
+
+- [#4095](https://github.com/primer/view_components/pull/4095) [`6733f3c`](https://github.com/primer/view_components/commit/6733f3c0e902523dd23e5b94d3cd8fab7443aea2) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Improve CSS style-recalc performance by removing selectors with universal subjects and expanding merged `:is()` selector lists so the browser can fast-reject them. Affects `autocomplete-item`, `Popover-message--*`, `breadcrumb-item`, and `FormControl-checkbox-wrap`/`FormControl-radio-wrap` styles.
+
 ## 0.51.6
 
 ### Patch Changes
