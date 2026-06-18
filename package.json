@@ -16,6 +16,11 @@
       "import": "./static/classnames.js",
       "require": "./static/classnames.cjs"
     },
+    "./app/*": {
+      "types": "./app/*.d.ts",
+      "import": "./app/*.js",
+      "default": "./app/*.js"
+    },
     "./*": "./*"
   },
   "repository": "primer/view_components",
