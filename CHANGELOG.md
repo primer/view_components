@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.52.2
+
+### Patch Changes
+
+- [#4101](https://github.com/primer/view_components/pull/4101) [`ad81c6d`](https://github.com/primer/view_components/commit/ad81c6d39dc7e9f413fd41098e4d983e4792167f) Thanks [@jonrohan](https://github.com/jonrohan)! - Update package.json import paths for app files
+
 ## 0.52.1
 
 ### Patch Changes
