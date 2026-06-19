@@ -18,8 +18,7 @@
     },
     "./app/*": {
       "types": "./app/*.d.ts",
-      "import": "./app/*.js",
-      "default": "./app/*.js"
+      "default": "./app/*"
     },
     "./*": "./*"
   },
