@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.52.1
+
+### Patch Changes
+
+- [#4099](https://github.com/primer/view_components/pull/4099) [`91c1e26`](https://github.com/primer/view_components/commit/91c1e261ae3a279feb1b9a2dac8975cf1c595c65) Thanks [@jonrohan](https://github.com/jonrohan)! - Add path mapping for app directory in package.json
+
 ## 0.52.0
 
 ### Minor Changes
