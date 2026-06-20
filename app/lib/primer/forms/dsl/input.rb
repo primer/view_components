@@ -104,7 +104,10 @@ module Primer
           end
           # rubocop:enable Style/IfUnlessModifier
 
-          @label_arguments[:for] = @input_arguments[:id]
+          # Only set `for` when the id is known. Otherwise leave it unset so
+          # Rails generates the scoped id for both label and input; passing
+          # `for: nil` would suppress that and drop the association.
+          @label_arguments[:for] = @input_arguments[:id] if @input_arguments[:id].present?
 
           # Whether or not to wrap the component in a FormControl, which renders a
           # label above and validation message beneath the input.
