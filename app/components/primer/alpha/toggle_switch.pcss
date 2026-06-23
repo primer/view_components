@@ -7,7 +7,6 @@
 }
 
 .ToggleSwitch {
-  /* Knob clears the track's border on every side */
   --toggleSwitch-knob-inset: var(--borderWidth-thin);
   --toggleSwitch-knob-offset: calc(2 * var(--toggleSwitch-knob-inset));
 
@@ -158,14 +157,12 @@
 
 .ToggleSwitch-knob {
   position: absolute;
-  /* clear the track border on the block edges + inline-start; inline-end stays auto (width drives it) */
   inset-block: var(--toggleSwitch-knob-inset);
   inset-inline-start: var(--toggleSwitch-knob-inset);
   z-index: 1;
   width: 50%;
   background-color: var(--controlKnob-bgColor-rest);
   border: var(--borderWidth-thin) solid var(--controlKnob-borderColor-rest);
-  /* Concentric radius: subtract the track border on both sides */
   /* stylelint-disable-next-line primer/borders */
   border-radius: calc(var(--borderRadius-medium) - var(--toggleSwitch-knob-offset));
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
