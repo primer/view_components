@@ -93,7 +93,7 @@
   & .ToggleSwitch-knob {
     background-color: var(--controlKnob-bgColor-checked);
     border-color: var(--controlKnob-borderColor-checked);
-    transform: translateX(100%);
+    transform: translateX(calc(100% - 2px));
   }
 
   & .ToggleSwitch-lineIcon {
@@ -155,13 +155,19 @@
 
 .ToggleSwitch-knob {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  /* stylelint-disable-next-line primer/spacing */
+  top: 1px;
+  /* stylelint-disable-next-line primer/spacing */
+  bottom: 1px;
+  /* stylelint-disable-next-line primer/spacing */
+  left: 1px;
   z-index: 1;
   width: 50%;
   background-color: var(--controlKnob-bgColor-rest);
   border: var(--borderWidth-thin) solid var(--controlKnob-borderColor-rest);
-  border-radius: var(--borderRadius-medium);
+  /* Use calc to account for the 1px border around the track */
+  /* stylelint-disable-next-line primer/borders */
+  border-radius: calc(var(--borderRadius-medium) - var(--borderWidth-thick));
   box-shadow: var(--shadow-resting-medium), var(--button-default-shadow-inset);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
