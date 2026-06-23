@@ -158,12 +158,8 @@
 
 .ToggleSwitch-knob {
   position: absolute;
-  /* stylelint-disable-next-line primer/spacing */
-  top: var(--toggleSwitch-knob-inset);
-  /* stylelint-disable-next-line primer/spacing */
-  bottom: var(--toggleSwitch-knob-inset);
-  /* stylelint-disable-next-line primer/spacing */
-  left: var(--toggleSwitch-knob-inset);
+  /* top / bottom / left clear the track border; right stays auto (width drives it) */
+  inset: var(--toggleSwitch-knob-inset) auto var(--toggleSwitch-knob-inset) var(--toggleSwitch-knob-inset);
   z-index: 1;
   width: 50%;
   background-color: var(--controlKnob-bgColor-rest);
