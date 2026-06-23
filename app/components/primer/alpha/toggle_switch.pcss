@@ -7,6 +7,9 @@
 }
 
 .ToggleSwitch {
+  --toggleSwitch-knob-inset: var(--borderWidth-thin);
+  --toggleSwitch-knob-offset: calc(2 * var(--toggleSwitch-knob-inset));
+
   align-items: center;
   display: inline-flex;
   gap: var(--controlStack-medium-gap-condensed);
@@ -93,7 +96,7 @@
   & .ToggleSwitch-knob {
     background-color: var(--controlKnob-bgColor-checked);
     border-color: var(--controlKnob-borderColor-checked);
-    transform: translateX(100%);
+    transform: translateX(calc(100% - var(--toggleSwitch-knob-offset)));
   }
 
   & .ToggleSwitch-lineIcon {
@@ -113,7 +116,6 @@
 
   & .ToggleSwitch-knob {
     border-color: var(--borderColor-default);
-    box-shadow: none;
   }
 
   & .ToggleSwitch-lineIcon {
@@ -155,14 +157,14 @@
 
 .ToggleSwitch-knob {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset-block: var(--toggleSwitch-knob-inset);
+  inset-inline-start: var(--toggleSwitch-knob-inset);
   z-index: 1;
   width: 50%;
   background-color: var(--controlKnob-bgColor-rest);
   border: var(--borderWidth-thin) solid var(--controlKnob-borderColor-rest);
-  border-radius: var(--borderRadius-medium);
-  box-shadow: var(--shadow-resting-medium), var(--button-default-shadow-inset);
+  /* stylelint-disable-next-line primer/borders */
+  border-radius: calc(var(--borderRadius-medium) - var(--toggleSwitch-knob-offset));
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: transform;
