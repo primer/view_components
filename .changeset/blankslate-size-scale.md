@@ -2,4 +2,4 @@
 "@primer/view-components": minor
 ---
 
-`Blankslate`: The compact styling is now the default. Padding, heading, and body text are reduced, and the redundant responsive `@container` block has been removed since the compact presentation it produced is now the default
+`Blankslate`: The heading and body text now use the smaller compact sizes by default, and the redundant responsive `@container` block has been removed since the compact typography it produced is now the default
