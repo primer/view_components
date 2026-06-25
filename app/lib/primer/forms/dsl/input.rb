@@ -61,7 +61,6 @@ module Primer
           @input_arguments = system_arguments
           @input_arguments.delete(:id) unless @input_arguments[:id].present?
           @label_arguments = @input_arguments.delete(:label_arguments) || {}
-          @label_arguments[:for] = id if id.present?
 
           @label_arguments[:class] = class_names(
             @label_arguments[:class],
@@ -104,6 +103,11 @@ module Primer
             @input_arguments[:id] = @input_arguments.delete(:id) { name }
           end
           # rubocop:enable Style/IfUnlessModifier
+
+          # Only set `for` when the id is known. Otherwise leave it unset so
+          # Rails generates the scoped id for both label and input; passing
+          # `for: nil` would suppress that and drop the association.
+          @label_arguments[:for] = @input_arguments[:id] if @input_arguments[:id].present?
 
           # Whether or not to wrap the component in a FormControl, which renders a
           # label above and validation message beneath the input.

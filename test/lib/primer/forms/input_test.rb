@@ -104,6 +104,7 @@ class Primer::Forms::InputTest < Minitest::Test
     end
 
     assert_selector "input#ultimate_answer[name=ultimate_answer]"
+    assert_selector "label[for=ultimate_answer]"
   end
 
   def test_uses_given_id
@@ -116,5 +117,28 @@ class Primer::Forms::InputTest < Minitest::Test
     end
 
     assert_selector "input#foobar[name=ultimate_answer]"
+    assert_selector "label[for=foobar]"
+  end
+
+  class ModelScopeForm < ApplicationForm
+    form do |model_scope_form|
+      model_scope_form.text_field(
+        name: :ultimate_answer,
+        label: "Ultimate answer"
+      )
+    end
+  end
+
+  def test_label_for_matches_scoped_id_by_default
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo") do |f|
+        render(ModelScopeForm.new(f))
+      end
+    end
+
+    assert_selector "input#deep_thought_ultimate_answer[name='deep_thought[ultimate_answer]']"
+    assert_selector "label[for=deep_thought_ultimate_answer]"
   end
 end
