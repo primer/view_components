@@ -92,6 +92,46 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_selector("a[href='http://google.com']")
   end
 
+  def test_rejects_javascript_href_in_non_production
+    err = assert_raises(ArgumentError) do
+      render_inline(Primer::BaseComponent.new(tag: :a, href: "javascript:alert(1)"))
+    end
+    assert_match(/Rejected dangerous URI scheme/, err.message)
+  end
+
+  def test_neutralizes_javascript_href_in_production
+    with_raise_on_invalid_options(false) do
+      render_inline(Primer::BaseComponent.new(tag: :a, href: "javascript:alert(1)")) { "x" }
+
+      assert_selector("a")
+      refute_selector("a[href]")
+    end
+  end
+
+  def test_neutralizes_vbscript_href_in_production
+    with_raise_on_invalid_options(false) do
+      render_inline(Primer::BaseComponent.new(tag: :a, href: "vbscript:msgbox(1)")) { "x" }
+
+      refute_selector("a[href]")
+    end
+  end
+
+  def test_neutralizes_javascript_href_with_whitespace_bypass_attempt
+    with_raise_on_invalid_options(false) do
+      render_inline(Primer::BaseComponent.new(tag: :a, href: "\tJaVaScRiPt:alert(1)")) { "x" }
+
+      refute_selector("a[href]")
+    end
+  end
+
+  def test_allows_safe_hrefs
+    render_inline(Primer::BaseComponent.new(tag: :a, href: "/foo/bar"))
+    assert_selector("a[href='/foo/bar']")
+
+    render_inline(Primer::BaseComponent.new(tag: :a, href: "mailto:hello@example.com"))
+    assert_selector("a[href='mailto:hello@example.com']")
+  end
+
   # We were calling tag.send(as), passing in :p ended up calling `p`, aka `puts`
   # Due to how Rails uses method_missing in TagHelper. See Slack convo:
   # https://github.slack.com/archives/C0HV3F37A/p1556216733019500

@@ -156,6 +156,7 @@ module Primer
       @tag = tag
 
       @system_arguments = validate_arguments(tag: tag, **system_arguments)
+      sanitize_href!(@system_arguments)
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 

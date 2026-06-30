@@ -22,6 +22,7 @@ module Primer
     include AttributesHelper
     include ClassNameHelper
     include FetchOrFallbackHelper
+    include SafeHrefHelper
     include TestSelectorHelper
     include JoinStyleArgumentsHelper
     include ViewHelper
@@ -135,6 +136,21 @@ module Primer
 
     def deny_tag_argument(**arguments)
       deny_single_argument(:tag, "This component has a fixed tag.", **arguments)
+    end
+
+    # Removes `href` values that point at disallowed URI schemes (`javascript:`,
+    # `vbscript:`). Raises in non-production environments so the offending call
+    # site gets fixed; in production we silently drop the attribute so the link
+    # is rendered inert rather than crashing the page.
+    def sanitize_href!(arguments)
+      return unless arguments.key?(:href)
+      return unless Primer::SafeHrefHelper.unsafe_href?(arguments[:href])
+
+      if should_raise_error?
+        raise ArgumentError, "Rejected dangerous URI scheme in `href`: #{arguments[:href].inspect}"
+      end
+
+      arguments[:href] = nil
     end
 
     def should_raise_error?
