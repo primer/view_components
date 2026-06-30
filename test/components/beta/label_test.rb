@@ -95,4 +95,19 @@ class PrimerBetaLabelTest < Minitest::Test
   def test_status
     assert_component_state(Primer::Beta::Label, :beta)
   end
+
+  def test_rejects_javascript_href_when_tag_is_anchor
+    assert_raises(ArgumentError) do
+      render_inline(Primer::Beta::Label.new(tag: :a, href: "javascript:alert(document.domain)")) { "x" }
+    end
+  end
+
+  def test_neutralizes_javascript_href_when_tag_is_anchor_in_production
+    with_raise_on_invalid_options(false) do
+      render_inline(Primer::Beta::Label.new(tag: :a, href: "javascript:alert(document.domain)")) { "x" }
+
+      assert_selector("a.Label")
+      refute_selector("a.Label[href]")
+    end
+  end
 end

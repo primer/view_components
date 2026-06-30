@@ -87,4 +87,19 @@ class PrimerBetaButtonTest < Minitest::Test
 
     assert_equal "The `dropdown:` argument is no longer supported on Primer::Beta::Button. Use the `trailing_action` slot instead.", err.message
   end
+
+  def test_rejects_javascript_href_when_rendered_as_anchor
+    assert_raises(ArgumentError) do
+      render_inline(Primer::Beta::Button.new(tag: :a, href: "javascript:alert(document.domain)")) { "Button" }
+    end
+  end
+
+  def test_neutralizes_javascript_href_when_rendered_as_anchor_in_production
+    with_raise_on_invalid_options(false) do
+      render_inline(Primer::Beta::Button.new(tag: :a, href: "javascript:alert(document.domain)")) { "Button" }
+
+      assert_selector("a.Button", text: "Button")
+      refute_selector("a.Button[href]")
+    end
+  end
 end
