@@ -252,7 +252,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
-    octicons (19.28.0)
+    octicons (19.29.1)
     oj (3.17.3)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
