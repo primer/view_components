@@ -23,7 +23,7 @@ jobs:
     name: Accessibility
     runs-on: ubuntu-latest-8-cores
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.4"
