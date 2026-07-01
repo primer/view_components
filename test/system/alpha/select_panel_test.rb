@@ -125,6 +125,34 @@ module Alpha
       page.evaluate_script("document.activeElement")
     end
 
+    def assert_anchored_above_invoker
+      attempts = 0
+      max_attempts = 3
+
+      begin
+        attempts += 1
+
+        # Distance between the dialog's bottom edge and the invoker's top edge.
+        # When properly anchored above the trigger this is the anchor offset
+        # (a few pixels); when the dialog floats away it is much larger.
+        gap = page.evaluate_script(<<~JS)
+          (() => {
+            const invoker = document.querySelector('select-panel button[aria-controls]')
+            const dialog = document.querySelector('select-panel dialog')
+            const invokerRect = invoker.getBoundingClientRect()
+            const dialogRect = dialog.getBoundingClientRect()
+            return Math.abs(invokerRect.top - dialogRect.bottom)
+          })()
+        JS
+
+        assert_operator gap, :<=, 16, "Expected dialog to remain anchored above its trigger, but it was #{gap}px away"
+      rescue Minitest::Assertion => e
+        raise e if attempts >= max_attempts
+        sleep 1
+        retry
+      end
+    end
+
     ########## TESTS ############
 
     def test_invoker_opens_panel
@@ -223,6 +251,39 @@ module Alpha
       end
 
       assert_selector "[aria-selected=true]", count: 2
+    end
+
+    def test_dialog_stays_anchored_to_invoker_when_content_size_changes
+      visit_preview(:remote_fetch)
+
+      # Anchor the panel above its trigger and push the trigger down the page so
+      # there is room above it. When anchored to outside-top the computed
+      # position depends on the dialog's height, so a change in content size
+      # must trigger a re-anchor.
+      page.execute_script(<<~JS)
+        const panel = document.querySelector('select-panel')
+        panel.setAttribute('anchor-side', 'outside-top')
+        panel.style.display = 'inline-block'
+        panel.style.marginTop = '600px'
+      JS
+
+      wait_for_items_to_load do
+        click_on_invoker_button
+      end
+
+      # Panel opens anchored above its trigger.
+      assert_anchored_above_invoker
+
+      # Change the dialog's rendered size after it has been positioned. Without
+      # re-anchoring on size changes, the dialog keeps its original top and
+      # floats away from the trigger.
+      page.execute_script(<<~JS)
+        const dialog = document.querySelector('select-panel dialog')
+        dialog.style.minHeight = '0'
+        dialog.style.height = '150px'
+      JS
+
+      assert_anchored_above_invoker
     end
 
     def test_pressing_down_arrow_in_filter_input_focuses_first_item

@@ -57,9 +57,15 @@ const updateWhenVisible = (() => {
     el.addEventListener('dialog:close', () => {
       el.invokerElement?.setAttribute('aria-expanded', 'false')
       anchors.delete(el)
+      if (el.dialog) resizeObserver?.unobserve(el.dialog)
     })
     el.addEventListener('dialog:open', () => {
       anchors.add(el)
+      // Re-anchor the dialog whenever its own size changes (e.g. after remote
+      // content finishes loading or items are filtered). Otherwise the dialog
+      // can float away from its trigger, particularly when anchored to a side
+      // whose position depends on the dialog's height (e.g. outside-top).
+      if (el.dialog) resizeObserver?.observe(el.dialog)
     })
   }
 })()
