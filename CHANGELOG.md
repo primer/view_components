@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.53.0
+
+### Minor Changes
+
+- [#4110](https://github.com/primer/view_components/pull/4110) [`bf92d87`](https://github.com/primer/view_components/commit/bf92d870743b8d683867e376379e67ebc79220cc) Thanks [@dylanatsmith](https://github.com/dylanatsmith)! - `Blankslate`: The heading and body text now use the smaller compact sizes by default, and the redundant responsive `@container` block has been removed since the compact typography it produced is now the default
+
+### Patch Changes
+
+- [#3696](https://github.com/primer/view_components/pull/3696) [`8b8d542`](https://github.com/primer/view_components/commit/8b8d54286d10f90b52030e9100f27f401121fe1f) Thanks [@myabc](https://github.com/myabc)! - Fix incorrect label `for` attribute value when `scope_id_to_model: false`
+
+- [#4113](https://github.com/primer/view_components/pull/4113) [`7c52375`](https://github.com/primer/view_components/commit/7c523756a4edf46ce490da48c74f2c35ffb57f79) Thanks [@liuliu-dev](https://github.com/liuliu-dev)! - Reject `javascript:` and `vbscript:` URI schemes in `href` (defense in depth). When a component (e.g. `Primer::Beta::Label`, `Primer::Beta::Button`, `Primer::Beta::Link`) is rendered as an anchor with an unsafe `href`, the value is now rejected — raising in non-production environments and silently dropped (rendered as an anchor with no `href`) in production.
+
+- [#4107](https://github.com/primer/view_components/pull/4107) [`222a846`](https://github.com/primer/view_components/commit/222a846247905892afd0f26c4410924a6450647d) Thanks [@dylanatsmith](https://github.com/dylanatsmith)! - Fix `ToggleSwitch` knob spacing and border-radius to match `primer/react`
+
 ## 0.52.2
 
 ### Patch Changes
