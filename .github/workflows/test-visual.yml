@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest-8-cores
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}

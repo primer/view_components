@@ -25,7 +25,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - id: set-matrix
         run: echo "matrix=$(cat .github/version-matrix.json | jq -c .)" >> $GITHUB_OUTPUT
   lib:
@@ -37,7 +37,7 @@ jobs:
       matrix:
         include: ${{ fromJson(needs.load-matrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
