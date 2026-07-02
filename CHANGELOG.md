@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.53.1
+
+### Patch Changes
+
+- [#4133](https://github.com/primer/view_components/pull/4133) [`0098814`](https://github.com/primer/view_components/commit/009881433982689358d9b1de31ba74b74b2aa922) Thanks [@jonrohan](https://github.com/jonrohan)! - Downgrade `@oddbird/popover-polyfill` to `^0.5.2` and pin it via Dependabot ignore so it won't get bumped again.
+
 ## 0.53.0
 
 ### Minor Changes
