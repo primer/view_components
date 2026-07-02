@@ -74,7 +74,7 @@ GEM
     crack (1.0.1)
       bigdecimal
       rexml
-    crass (1.0.6)
+    crass (1.0.7)
     css_parser (1.22.0)
       addressable
     cssbundling-rails (1.4.3)
@@ -109,7 +109,7 @@ GEM
     hashdiff (1.2.1)
     htmlbeautifier (1.4.3)
     htmlentities (4.3.4)
-    i18n (1.14.8)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
     irb (1.18.0)
@@ -289,7 +289,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (4.9.0)
+    view_component (4.12.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -358,7 +358,7 @@ DEPENDENCIES
   sprockets-rails
   thor
   timecop
-  view_component (= 4.9.0)
+  view_component (= 4.12.0)
   vite_rails (~> 3.11)
   webmock
   yard (~> 0.9.44)
