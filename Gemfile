@@ -71,7 +71,7 @@ group :development do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rails-accessibility", "~> 1.0"
-  gem "selenium-webdriver", "~> 4.41"
+  gem "selenium-webdriver", "~> 4.44"
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-console", "~> 0.9.5"
   gem "sprockets"
