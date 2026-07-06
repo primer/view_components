@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest-8-cores
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
@@ -70,7 +70,7 @@ jobs:
           git stash pop || true
       - id: auto-commit
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-        uses: stefanzweifel/git-auto-commit-action@v7.1.0
+        uses: stefanzweifel/git-auto-commit-action@v7.2.0
         with:
           commit_message: Generating component snapshots
           file_pattern: .playwright/screenshots/**/*.png .playwright/screenshots/**/*.yml
