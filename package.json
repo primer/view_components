@@ -20,6 +20,10 @@
       "types": "./app/*.d.ts",
       "default": "./app/*"
     },
+    "./lazy": {
+      "types": "./app/components/primer/lazy.d.ts",
+      "import": "./app/components/primer/lazy.js"
+    },
     "./*": "./*"
   },
   "repository": "primer/view_components",
