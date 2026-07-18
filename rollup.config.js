@@ -26,12 +26,12 @@ export default [
     onwarn
   },
   {
+    // lazy.js is compiled from lazy.ts by `npx tsc` (which always runs before `npx rollup -c`)
     input: "app/components/primer/lazy.js",
     output: {
       dir: "app/assets/javascripts/primer_view_components_lazy",
       format: "es",
-      sourcemap: true,
-      preserveModules: false
+      sourcemap: true
     },
     preserveEntrySignatures: false,
     plugins: [

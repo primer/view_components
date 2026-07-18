@@ -35,6 +35,6 @@ if (typeof document !== 'undefined') {
     'tree-view-icon-pair': () => import('./alpha/tree_view/tree_view_icon_pair_element'),
     'tree-view-sub-tree-node': () => import('./alpha/tree_view/tree_view_sub_tree_node_element'),
     'tree-view-include-fragment': () => import('./alpha/tree_view/tree_view_include_fragment_element'),
-    // [GENERATOR: new entries are added above this line]
+    // [GENERATOR ANCHOR]
   })
 }

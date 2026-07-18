@@ -67,7 +67,7 @@ class ComponentGenerator < Thor::Group
     insert_into_file(
       "app/components/primer/lazy.ts",
       "    '#{custom_element_name}': () => import('./#{status_path}#{underscore_name}'),\n",
-      before: "  // [GENERATOR: new entries are added above this line]\n"
+      before: "    // [GENERATOR ANCHOR]\n"
     ) if js_package_name
   end
 
