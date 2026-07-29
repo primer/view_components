@@ -14,35 +14,28 @@ jobs:
   publish-main:
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: "npm"
-      - name: Create .gem credentials
-        run: |
-          mkdir -p $HOME/.gem
-          cat << EOF > $HOME/.gem/credentials
-          ---
-          :rubygems_api_key: ${RUBYGEMS_TOKEN}
-          EOF
-          chmod 0600 $HOME/.gem/credentials
-        env:
-          RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN_SHARED }}
       - uses: actions/setup-node@v6
         with:
           node-version: 24
+          cache: "npm"
       - name: NPM install
         run: |
           npm ci
       - name: Publish Gem
-        run: bundle exec rake release
+        uses: rubygems/release-gem@v1
       - name: Publish NPM
         run: npm publish --access public
 
