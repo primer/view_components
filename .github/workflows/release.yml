@@ -14,7 +14,6 @@ jobs:
   publish-main:
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
-    environment: release
     permissions:
       id-token: write
       contents: write
