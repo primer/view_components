@@ -119,7 +119,7 @@ module Alpha
 
       # Show the spinner the same way setLoadingState() does, without racing the request.
       page.execute_script(
-        "document.querySelector(\"[data-target='toggle-switch.loadingSpinner']\").hidden = false"
+        "document.querySelector(\"[data-target='toggle-switch.loadingSpinner']\").removeAttribute('hidden')"
       )
       assert_selector("[data-target='toggle-switch.loadingSpinner']")
 
@@ -131,8 +131,10 @@ module Alpha
 
       before_top = track_top
 
+      # Show the error icon the same way setErrorState() does. It's an <svg>, so it has no
+      # `hidden` IDL property and the attribute has to be removed directly.
       page.execute_script(
-        "document.querySelector(\"[data-target='toggle-switch.errorIcon']\").hidden = false"
+        "document.querySelector(\"[data-target='toggle-switch.errorIcon']\").removeAttribute('hidden')"
       )
       assert_selector("[data-target='toggle-switch.errorIcon']")
 
