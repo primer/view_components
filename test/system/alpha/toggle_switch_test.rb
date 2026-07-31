@@ -112,7 +112,60 @@ module Alpha
       assert_equal "*/*", Primer::ViewComponents::ToggleSwitchController.last_request.headers["HTTP_ACCEPT"]
     end
 
+    def test_switch_does_not_move_when_loading_spinner_is_shown
+      visit_preview(:small)
+
+      before_top = track_top
+
+      # Show the spinner the same way setLoadingState() does, without racing the request.
+      unhide(find("[data-target='toggle-switch.loadingSpinner']", visible: :hidden))
+      assert_selector("[data-target='toggle-switch.loadingSpinner']")
+
+      assert_in_delta before_top, track_top, 0.5
+    end
+
+    def test_switch_does_not_move_when_error_icon_is_shown
+      visit_preview(:small)
+
+      before_top = track_top
+
+      # Show the error icon the same way setErrorState() does.
+      unhide(find("[data-target='toggle-switch.errorIcon']", visible: :hidden))
+      assert_selector("[data-target='toggle-switch.errorIcon']")
+
+      assert_in_delta before_top, track_top, 0.5
+    end
+
+    def test_loading_spinner_is_centered_in_the_status_icon_slot
+      visit_preview(:small)
+
+      unhide(find("[data-target='toggle-switch.loadingSpinner']", visible: :hidden))
+      assert_selector("[data-target='toggle-switch.loadingSpinner']")
+
+      assert_in_delta vertical_center(find("[data-target='toggle-switch.loadingSpinner'] svg")),
+                      vertical_center(find(".ToggleSwitch-statusIcon")),
+                      0.5
+    end
+
     private
+
+    # The status icons are hidden with the `hidden` attribute. `hidden` is an HTMLElement IDL
+    # property, so `el.hidden = false` silently does nothing on the error icon's <svg>. The
+    # component removes the attribute, so do the same here.
+    def unhide(element)
+      execute_script("arguments[0].removeAttribute('hidden');", element)
+    end
+
+    def track_top
+      evaluate_script("arguments[0].getBoundingClientRect().top;", find(".ToggleSwitch-track"))
+    end
+
+    def vertical_center(element)
+      evaluate_script(
+        "(function (r) { return r.top + r.height / 2; })(arguments[0].getBoundingClientRect());",
+        element
+      )
+    end
 
     def wait_for_spinner
       refute_selector("[data-target='toggle-switch.loadingSpinner']")
