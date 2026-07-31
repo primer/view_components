@@ -136,6 +136,17 @@ module Alpha
       assert_in_delta before_top, track_top, 0.5
     end
 
+    def test_loading_spinner_is_centered_in_the_status_icon_slot
+      visit_preview(:small)
+
+      unhide(find("[data-target='toggle-switch.loadingSpinner']", visible: :hidden))
+      assert_selector("[data-target='toggle-switch.loadingSpinner']")
+
+      assert_in_delta vertical_center(find("[data-target='toggle-switch.loadingSpinner'] svg")),
+                      vertical_center(find(".ToggleSwitch-statusIcon")),
+                      0.5
+    end
+
     private
 
     # The status icons are hidden with the `hidden` attribute. `hidden` is an HTMLElement IDL
@@ -147,6 +158,13 @@ module Alpha
 
     def track_top
       evaluate_script("arguments[0].getBoundingClientRect().top;", find(".ToggleSwitch-track"))
+    end
+
+    def vertical_center(element)
+      evaluate_script(
+        "(function (r) { return r.top + r.height / 2; })(arguments[0].getBoundingClientRect());",
+        element
+      )
     end
 
     def wait_for_spinner
