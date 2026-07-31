@@ -118,9 +118,7 @@ module Alpha
       before_top = track_top
 
       # Show the spinner the same way setLoadingState() does, without racing the request.
-      page.execute_script(
-        "document.querySelector(\"[data-target='toggle-switch.loadingSpinner']\").removeAttribute('hidden')"
-      )
+      unhide(find("[data-target='toggle-switch.loadingSpinner']", visible: :hidden))
       assert_selector("[data-target='toggle-switch.loadingSpinner']")
 
       assert_in_delta before_top, track_top, 0.5
@@ -131,11 +129,8 @@ module Alpha
 
       before_top = track_top
 
-      # Show the error icon the same way setErrorState() does. It's an <svg>, so it has no
-      # `hidden` IDL property and the attribute has to be removed directly.
-      page.execute_script(
-        "document.querySelector(\"[data-target='toggle-switch.errorIcon']\").removeAttribute('hidden')"
-      )
+      # Show the error icon the same way setErrorState() does.
+      unhide(find("[data-target='toggle-switch.errorIcon']", visible: :hidden))
       assert_selector("[data-target='toggle-switch.errorIcon']")
 
       assert_in_delta before_top, track_top, 0.5
@@ -143,8 +138,15 @@ module Alpha
 
     private
 
+    # The status icons are hidden with the `hidden` attribute. `hidden` is an HTMLElement IDL
+    # property, so `el.hidden = false` silently does nothing on the error icon's <svg>. The
+    # component removes the attribute, so do the same here.
+    def unhide(element)
+      execute_script("arguments[0].removeAttribute('hidden');", element)
+    end
+
     def track_top
-      evaluate_script("document.querySelector('.ToggleSwitch-track').getBoundingClientRect().top")
+      evaluate_script("arguments[0].getBoundingClientRect().top;", find(".ToggleSwitch-track"))
     end
 
     def wait_for_spinner
