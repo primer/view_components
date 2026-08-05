@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.53.2
+
+### Patch Changes
+
+- [#4152](https://github.com/primer/view_components/pull/4152) [`0c0462d`](https://github.com/primer/view_components/commit/0c0462d3a2e50fdcc9e0ecab9429aeb001c682cf) Thanks [@gabrielhl](https://github.com/gabrielhl)! - Reserve height as well as width in `.ToggleSwitch-statusIcon` so the switch doesn't jump when the loading spinner is shown
+
 ## 0.53.1
 
 ### Patch Changes
