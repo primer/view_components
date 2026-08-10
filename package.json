@@ -96,7 +96,7 @@
     "axe-core": "^4.7.1",
     "chokidar-cli": "^3.0.0",
     "cssnano": "^8.0.1",
-    "eslint": "^9.10.0",
+    "eslint": "^10.8.0",
     "eslint-plugin-github": "^6.0.0",
     "glob": "^11.0.2",
     "markdownlint-cli2": "^0.23.0",
