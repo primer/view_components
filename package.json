@@ -97,7 +97,7 @@
     "chokidar-cli": "^3.0.0",
     "cssnano": "^8.0.1",
     "eslint": "^10.8.0",
-    "eslint-plugin-github": "^6.0.0",
+    "eslint-plugin-github": "^6.1.2",
     "glob": "^11.0.2",
     "markdownlint-cli2": "^0.23.0",
     "mocha": "^11.0.1",
