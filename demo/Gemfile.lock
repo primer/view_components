@@ -256,6 +256,7 @@ GEM
     oj (3.17.3)
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
+    openssl (4.0.2)
     os (1.1.4)
     ostruct (0.6.3)
     pp (0.6.4)
@@ -395,6 +396,7 @@ DEPENDENCIES
   kuby-kind (~> 0.2)
   listen
   lookbook (~> 2.3.14)
+  openssl (>= 3.3)
   primer_view_components!
   pry-byebug
   puma (~> 8.0.2)
