@@ -2,8 +2,6 @@
 
 source "https://rubygems.org"
 
-# Pin the openssl stdlib gem past 3.2.x so the SBOM EOL scanner
-# (eol-eoldate-openssl-008) stops matching the OpenSSL 3.2 library EOL entry.
 gem "openssl", ">= 3.3"
 
 rails_version = (ENV["RAILS_VERSION"] || "7.2.2.1").to_s
