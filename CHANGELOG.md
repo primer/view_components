@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.53.3
+
+### Patch Changes
+
+- [#4172](https://github.com/primer/view_components/pull/4172) [`672410d`](https://github.com/primer/view_components/commit/672410d69efd71c911254d9f94c59d0b001db095) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix ReusedInstanceError in Dropdown::Menu::Item divider rendering
+
 ## 0.53.2
 
 ### Patch Changes
