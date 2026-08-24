@@ -88,7 +88,7 @@ module Primer
                         end
 
             # divider has no content
-            render(component) if divider?
+            return render(component) if divider?
 
             render(component) { content }
           end
