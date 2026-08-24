@@ -396,7 +396,7 @@ DEPENDENCIES
   kuby-kind (~> 0.2)
   listen
   lookbook (~> 2.3.14)
-  openssl (>= 3.3)
+  openssl (>= 3.4)
   primer_view_components!
   pry-byebug
   puma (~> 8.0.2)
