@@ -39,6 +39,9 @@ module Primer
       }.freeze
       HOUR_OPTIONS = HOUR_MAPPINGS.keys
 
+      HOUR_CYCLE_DEFAULT = nil
+      HOUR_CYCLE_OPTIONS = [HOUR_CYCLE_DEFAULT, :h11, :h12, :h23, :h24].freeze
+
       WEEKDAY_DEFAULT = nil
       WEEKDAY_OPTIONS = [WEEKDAY_DEFAULT, :long, :short, :narrow].freeze
 
@@ -90,6 +93,7 @@ module Primer
       # @param second [Symbol] What format seconds should take. <%= one_of(Primer::Beta::RelativeTime::SECOND_OPTIONS) %>
       # @param minute [Symbol] What format minues should take. <%= one_of(Primer::Beta::RelativeTime::MINUTE_OPTIONS) %>
       # @param hour [Symbol] What format hours should take. <%= one_of(Primer::Beta::RelativeTime::HOUR_OPTIONS) %>
+      # @param hour_cycle [Symbol] What hour cycle should be used. <%= one_of(Primer::Beta::RelativeTime::HOUR_CYCLE_OPTIONS) %>
       # @param weekday [Symbol] What format weekdays should take. <%= one_of(Primer::Beta::RelativeTime::WEEKDAY_OPTIONS) %>
       # @param day [Symbol] What format days should take. <%= one_of(Primer::Beta::RelativeTime::DAY_OPTIONS) %>
       # @param month [Symbol] What format months should take. <%= one_of(Primer::Beta::RelativeTime::MONTH_OPTIONS) %>
@@ -112,6 +116,7 @@ module Primer
         second: SECOND_DEFAULT,
         minute: MINUTE_DEFAULT,
         hour: HOUR_DEFAULT,
+        hour_cycle: HOUR_CYCLE_DEFAULT,
         weekday: WEEKDAY_DEFAULT,
         day: DAY_DEFAULT,
         month: MONTH_DEFAULT,
@@ -135,6 +140,7 @@ module Primer
         @system_arguments[:second] = fetch_or_fallback(SECOND_OPTIONS, second, SECOND_DEFAULT) if second.present?
         @system_arguments[:minute] = fetch_or_fallback(MINUTE_OPTIONS, minute, MINUTE_DEFAULT) if minute.present?
         @system_arguments[:hour] = fetch_or_fallback(HOUR_OPTIONS, hour, HOUR_DEFAULT) if hour.present?
+        @system_arguments[:"hour-cycle"] = fetch_or_fallback(HOUR_CYCLE_OPTIONS, hour_cycle, HOUR_CYCLE_DEFAULT) if hour_cycle.present?
         @system_arguments[:weekday] = fetch_or_fallback(WEEKDAY_OPTIONS, weekday, WEEKDAY_DEFAULT) if weekday.present?
         @system_arguments[:day] = fetch_or_fallback(DAY_OPTIONS, day, DAY_DEFAULT) if day.present?
         @system_arguments[:month] = fetch_or_fallback(MONTH_OPTIONS, month, MONTH_DEFAULT) if month.present?
