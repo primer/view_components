@@ -21,6 +21,11 @@ class PrimerBetaRelativeTimeTest < Minitest::Test
     assert_selector("relative-time", text: "December 6, 2022 11:14")
   end
 
+  def test_component_accepts_hour_cycle
+    render_inline(Primer::Beta::RelativeTime.new(datetime: "2022-12-06T11:14:46Z", hour_cycle: :h23))
+    assert_selector("relative-time[hour-cycle='h23']")
+  end
+
   private
 
   def assert_custom_element_manifest(package_name, class_obj)
