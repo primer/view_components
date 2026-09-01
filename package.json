@@ -95,7 +95,7 @@
     "@rollup/plugin-typescript": "^8.3.3",
     "axe-core": "^4.7.1",
     "chokidar-cli": "^3.0.0",
-    "cssnano": "^8.0.1",
+    "cssnano": "^9.0.1",
     "eslint": "^10.8.0",
     "eslint-plugin-github": "^6.1.2",
     "glob": "^11.0.2",
