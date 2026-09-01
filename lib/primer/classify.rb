@@ -98,9 +98,8 @@ module Primer
             else
               next if val.nil?
 
-              # rubocop:disable Style/RescueModifier
+              # rubocop:disable-next Style/RescueModifier
               found = (LOOKUP[key][val][0] rescue nil) || validate(key, val, 0)
-              # rubocop:enable Style/RescueModifier
               if found
                 result << found
                 result << TMP_PREFIX_CACHE[found] if TMP_PREFIX_CACHE.key?(found)
