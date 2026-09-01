@@ -91,7 +91,7 @@ module Primer
       # @param tense [Symbol] Which tense to use. <%= one_of(Primer::Beta::RelativeTime::TENSE_OPTIONS) %>
       # @param prefix [String] What to prefix the relative time display with.
       # @param second [Symbol] What format seconds should take. <%= one_of(Primer::Beta::RelativeTime::SECOND_OPTIONS) %>
-      # @param minute [Symbol] What format minues should take. <%= one_of(Primer::Beta::RelativeTime::MINUTE_OPTIONS) %>
+      # @param minute [Symbol] What format minutes should take. <%= one_of(Primer::Beta::RelativeTime::MINUTE_OPTIONS) %>
       # @param hour [Symbol] What format hours should take. <%= one_of(Primer::Beta::RelativeTime::HOUR_OPTIONS) %>
       # @param hour_cycle [Symbol] What hour cycle should be used. <%= one_of(Primer::Beta::RelativeTime::HOUR_CYCLE_OPTIONS) %>
       # @param weekday [Symbol] What format weekdays should take. <%= one_of(Primer::Beta::RelativeTime::WEEKDAY_OPTIONS) %>
