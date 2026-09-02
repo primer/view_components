@@ -1402,6 +1402,14 @@
       "narrow"
     ],
     "GeneratedSlotMethods": "Primer::Beta::RelativeTime::GeneratedSlotMethods",
+    "HOUR_CYCLE_DEFAULT": null,
+    "HOUR_CYCLE_OPTIONS": [
+      null,
+      "h11",
+      "h12",
+      "h23",
+      "h24"
+    ],
     "HOUR_DEFAULT": null,
     "HOUR_MAPPINGS": {
       "": null,
