@@ -16679,13 +16679,19 @@
         "name": "minute",
         "type": "Symbol",
         "default": "`MINUTE_DEFAULT`",
-        "description": "What format minues should take. One of `nil`, `:numeric`, or `:two_digit`."
+        "description": "What format minutes should take. One of `nil`, `:numeric`, or `:two_digit`."
       },
       {
         "name": "hour",
         "type": "Symbol",
         "default": "`HOUR_DEFAULT`",
         "description": "What format hours should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "hour_cycle",
+        "type": "Symbol",
+        "default": "`HOUR_CYCLE_DEFAULT`",
+        "description": "What hour cycle should be used. One of `nil`, `:h11`, `:h12`, `:h23`, or `:h24`."
       },
       {
         "name": "weekday",
