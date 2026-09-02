@@ -120,13 +120,14 @@ export default class FocusGroupElement extends HTMLElement {
       } else if (event.key === 'End' || event.key === 'PageDown') {
         index = items.length - 1
         event.preventDefault()
-      } else if (this.mnemonics && printable.test(key)) {
+      } else if (this.mnemonics && !event.ctrlKey && !event.metaKey && !event.altKey && printable.test(key)) {
         const mnemonic = key.toLowerCase()
         const offset = index > 0 && getMnemonicFor(event.target as Element) === mnemonic ? index : 0
         index = items.findIndex((item, i) => i > offset && getMnemonicFor(item) === mnemonic)
         if (index < 0 && !nowrap) {
           index = items.findIndex(item => getMnemonicFor(item) === mnemonic)
         }
+        if (index < 0) return
       } else {
         return
       }

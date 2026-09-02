@@ -620,6 +620,36 @@ module Alpha
       assert_selector "[aria-checked=true]", text: "Recursive", visible: :hidden
     end
 
+    def test_modified_mnemonic_does_not_open_closed_menu
+      visit_preview(:single_select)
+      focus_on_invoker_button
+
+      keyboard.type([:meta, "r"])
+
+      refute_selector "anchored-position:popover-open"
+      assert_equal "Menu", page.evaluate_script("document.activeElement").text
+    end
+
+    def test_unmatched_mnemonic_does_not_open_closed_menu
+      visit_preview(:single_select)
+      focus_on_invoker_button
+
+      keyboard.type("x")
+
+      refute_selector "anchored-position:popover-open"
+      assert_equal "Menu", page.evaluate_script("document.activeElement").text
+    end
+
+    def test_matching_mnemonic_opens_closed_menu_and_focuses_item
+      visit_preview(:single_select)
+      focus_on_invoker_button
+
+      keyboard.type("r")
+
+      assert_selector "anchored-position:popover-open"
+      assert_equal "Recursive", page.evaluate_script("document.activeElement").text
+    end
+
     def test_single_select_item_unchecks_previously_checked_item
       visit_preview(:single_select)
 
