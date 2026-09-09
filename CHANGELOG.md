@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.53.4
+
+### Patch Changes
+
+- [#4194](https://github.com/primer/view_components/pull/4194) [`64fe352`](https://github.com/primer/view_components/commit/64fe35263e087f5903612245b4a495dd99fc565d) Thanks [@francinelucca](https://github.com/francinelucca)! - Update Lookbook to 2.3.15.
+
 ## 0.53.3
 
 ### Patch Changes
