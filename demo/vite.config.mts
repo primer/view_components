@@ -5,6 +5,11 @@ export default defineConfig({
   plugins: [
     RubyPlugin()
   ],
+  oxc: {
+    decorator: {
+      legacy: true
+    }
+  },
   resolve: {
     extensions: ['.ts', '.js'], // Ensure .ts files are resolved correctly
   },
