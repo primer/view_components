@@ -53,7 +53,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          cd demo && npm ci
+          npm ci --prefix demo
           bundle config unset deployment
           bundle install --jobs 4 --retry 3
         env:
