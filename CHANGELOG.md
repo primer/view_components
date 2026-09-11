@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.53.5
+
+### Patch Changes
+
+- [#4199](https://github.com/primer/view_components/pull/4199) [`7462cae`](https://github.com/primer/view_components/commit/7462cae11482b73b761c844e8213fbd2c5d23060) Thanks [@jonrohan](https://github.com/jonrohan)! - Track Lookbook page views with Hydro
+
 ## 0.53.4
 
 ### Patch Changes
