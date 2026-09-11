@@ -47,9 +47,13 @@ jobs:
         with:
           node-version: 24
           cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
       - name: Build
         run: |
           npm ci
+          npm ci --prefix demo
           bundle config unset deployment
           bundle install --jobs 4 --retry 3
         env:
