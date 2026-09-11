@@ -1,0 +1,12 @@
+<% if content_for? :user_styles %>
+  <style media="all" id="user-styles">
+    <%= content_for :user_styles -%>
+  </style>
+<% end %>
+
+<% if Rails.env.production? && !@embed %>
+  <% content_for :scripts do %>
+    <meta name="ha-url" content="https://collector.githubapp.com/primer-lookbook/collect">
+    <%= vite_typescript_tag "lookbook_analytics" %>
+  <% end %>
+<% end %>
