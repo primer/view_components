@@ -30,8 +30,13 @@ jobs:
         with:
           node-version: 24
           cache: "npm"
+          cache-dependency-path: |
+            package-lock.json
+            demo/package-lock.json
       - name: NPM Build
-        run: npm ci
+        run: |
+          npm ci
+          npm ci --prefix demo
         env:
           # Disable CSS minification for tests
           CI: "false"

@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "@github/hydro-analytics-client": "^2.4.1",
     "@primer/css": "^22.3.0",
     "@primer/primitives": "^11.10.0",
     "@rails/actioncable": "^8.1.301",
