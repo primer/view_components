@@ -7,7 +7,7 @@ rails_version = (ENV["RAILS_VERSION"] || "8.0.2").to_s
 
 gem "minitest", "~> 5.0"
 gem "rack-cors"
-gem "rake", "~> 13.3"
+gem "rake", "~> 13.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 if rails_version == "latest"
