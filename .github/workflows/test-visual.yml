@@ -77,7 +77,7 @@ jobs:
           push_options: --force-with-lease
       - name: "Changes detected"
         if: steps.auto-commit.outputs.changes_detected == 'true'
-        uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+        uses: phulsechinmay/rewritable-pr-comment@v0.4.0
         with:
           message: |
             ### ⚠️ Visual or ARIA snapshot differences found
