@@ -103,7 +103,7 @@
     "mocha": "^11.0.1",
     "playwright": "^1.57.0",
     "postcss": "^8.4.16",
-    "postcss-cli": "^11.0.0",
+    "postcss-cli": "^12.0.0",
     "postcss-import": "^16.0.0",
     "postcss-mixins": "^12.1.2",
     "postcss-preset-env": "^11.1.2",
