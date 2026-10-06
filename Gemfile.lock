@@ -85,7 +85,6 @@ GEM
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    docile (1.4.1)
     drb (2.2.3)
     dry-cli (1.4.1)
     erb (6.0.6)
@@ -257,16 +256,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    simplecov (0.22.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
+    simplecov (1.2.0)
     simplecov-console (0.9.5)
       ansi
       simplecov
       terminal-table
-    simplecov-html (0.13.2)
-    simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     sourcemap (0.1.1)
     sprockets (4.4.1)
@@ -351,7 +345,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rails-accessibility (~> 1.0)
   selenium-webdriver (~> 4.44)
-  simplecov (~> 0.22.0)
+  simplecov (~> 1.2.0)
   simplecov-console (~> 0.9.5)
   sourcemap (~> 0.1)
   sprockets
