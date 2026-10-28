@@ -30,7 +30,9 @@ else
   end
 end
 
-eval_gemfile "gemfiles/kuby.gemfile"
+group :deploy do
+  eval_gemfile "gemfiles/kuby.gemfile"
+end
 
 # Use Puma as the app server
 gem "puma", "~> 8.0.2"
