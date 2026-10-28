@@ -53,6 +53,7 @@ Kuby.define("ViewComponentsStorybook") do
       # separate gemfile for Kuby dependencies in order to be able to run Kuby
       # commands (i.e. via bin/kuby) without loading the entire bundle.
       bundler_phase.gemfiles "gemfiles/kuby.gemfile"
+      bundler_phase.without = %w[development test]
 
       # Necessary because our Kuby dependencies are all listed in the separate
       # gemfiles/kuby.gemfile, meaning Kuby can't automatically detect the presence
