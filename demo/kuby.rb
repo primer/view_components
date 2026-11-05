@@ -53,6 +53,7 @@ Kuby.define("ViewComponentsStorybook") do
       # separate gemfile for Kuby dependencies in order to be able to run Kuby
       # commands (i.e. via bin/kuby) without loading the entire bundle.
       bundler_phase.gemfiles "gemfiles/kuby.gemfile"
+      bundler_phase.without = %w[development test]
 
       # Necessary because our Kuby dependencies are all listed in the separate
       # gemfiles/kuby.gemfile, meaning Kuby can't automatically detect the presence
@@ -64,6 +65,7 @@ Kuby.define("ViewComponentsStorybook") do
       # Additional environment variables the app needs when it runs.
       app_phase.env "RAILS_SERVE_STATIC_FILES", "true"
       app_phase.env "RAILS_LOG_TO_STDOUT", "true"
+      app_phase.env "RAILS_GROUPS", "deploy"
 
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
