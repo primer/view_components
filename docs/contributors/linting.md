@@ -4,6 +4,12 @@ title: Linting
 
 Primer ViewComponents offers a suite of linters to make writing UI more consistent. We provide custom linters for [erb-lint](https://github.com/Shopify/erb-lint) and cops for [rubocop](https://github.com/rubocop/rubocop).
 
+## Linting this repository
+
+Run `npm run lint:herb` to check HTML and ERB syntax, formatting, and accessibility with [Herb](https://herb-tools.dev). CI runs the same command. `.herb.yml` explicitly enables the existing checks without opting into unrelated new rules.
+
+Run `script/erblint` for Primer-specific migration and deprecation checks and embedded Ruby cops. Default ERB Lint rules are disabled in this repository because Herb owns those checks.
+
 ## Setup
 
 ### rubocop

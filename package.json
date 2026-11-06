@@ -52,7 +52,8 @@
   "scripts": {
     "clean": "git clean -fdX -- app/",
     "prepare": "script/build-assets",
-    "lint": "npm run lint:stylelint && npm run lint:eslint",
+    "lint": "npm run lint:stylelint && npm run lint:eslint && npm run lint:herb",
+    "lint:herb": "herb-lint",
     "lint:stylelint": "stylelint --rd -q 'app/components/**/*.pcss'",
     "lint:stylelint:fix": "npm run lint:stylelint --  --fix",
     "lint:eslint": "eslint 'app/components/**/*.ts'",
@@ -87,6 +88,7 @@
     "@github/browserslist-config": "^1.0.0",
     "@github/markdownlint-github": "^0.8.0",
     "@github/prettier-config": "0.0.6",
+    "@herb-tools/linter": "0.11.1",
     "@playwright/test": "^1.57.0",
     "@primer/css": "22.3.2",
     "@primer/primitives": "^11.4.0",

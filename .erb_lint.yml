@@ -1,13 +1,8 @@
 ---
-EnableDefaultLinters: true
+EnableDefaultLinters: false
 inherit_from:
   - lib/primer/view_components/linters/accessibility.yml
-inherit_gem:
-  erblint-github:
-    - config/accessibility.yml
 linters:
-  NoUnusedDisable:
-    enabled: true
   DeprecatedComponentsCounter:
     enabled: true
   ButtonComponentMigrationCounter:
