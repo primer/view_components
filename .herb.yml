@@ -1,0 +1,136 @@
+version: 0.11.2
+framework: actionview
+
+linter:
+  failLevel: warning
+  # Preserve existing ERB Lint, erblint-github, and Herb checks.
+  rules:
+    all:
+      enabled: false
+    a11y-avoid-generic-link-text:
+      enabled: true
+    a11y-disabled-attribute:
+      enabled: true
+    a11y-nested-interactive-elements:
+      enabled: true
+    a11y-no-aria-label-misuse:
+      enabled: true
+    a11y-no-redundant-image-alt:
+      enabled: true
+    a11y-no-visually-hidden-interactive-elements:
+      enabled: true
+    a11y-svg-has-accessible-text:
+      enabled: true
+    erb-closing-tag-indent:
+      enabled: true
+    erb-comment-syntax:
+      enabled: true
+    erb-no-case-node-children:
+      enabled: true
+    erb-no-empty-tags:
+      enabled: true
+    erb-no-extra-newline:
+      enabled: true
+    erb-no-extra-whitespace-inside-tags:
+      enabled: true
+    erb-no-javascript-tag-helper:
+      enabled: true
+    erb-no-output-control-flow:
+      enabled: true
+    erb-no-silent-tag-in-attribute-name:
+      enabled: true
+    erb-no-trailing-whitespace:
+      enabled: true
+    erb-prefer-image-tag-helper:
+      enabled: true
+    erb-require-trailing-newline:
+      enabled: true
+    erb-require-whitespace-inside-tags:
+      enabled: true
+    erb-right-trim:
+      enabled: true
+    erb-strict-locals-comment-syntax:
+      enabled: true
+    herb-disable-comment-malformed:
+      enabled: true
+    herb-disable-comment-missing-rules:
+      enabled: true
+    herb-disable-comment-no-duplicate-rules:
+      enabled: true
+    herb-disable-comment-no-redundant-all:
+      enabled: true
+    herb-disable-comment-unnecessary:
+      enabled: true
+    herb-disable-comment-valid-rule-name:
+      enabled: true
+    html-allowed-script-type:
+      enabled: true
+    html-anchor-require-href:
+      enabled: true
+    html-aria-attribute-must-be-valid:
+      enabled: true
+    html-aria-label-is-well-formatted:
+      enabled: true
+    html-aria-level-must-be-valid:
+      enabled: true
+    html-aria-role-heading-requires-level:
+      enabled: true
+    html-aria-role-must-be-valid:
+      enabled: true
+    html-attribute-double-quotes:
+      enabled: true
+    html-attribute-equals-spacing:
+      enabled: true
+    html-attribute-values-require-quotes:
+      enabled: true
+    html-avoid-both-disabled-and-aria-disabled:
+      enabled: true
+    html-body-only-elements:
+      enabled: true
+    html-boolean-attributes-no-value:
+      enabled: true
+    html-head-only-elements:
+      enabled: true
+      # Lookbook renders this asset panel inside the preview body.
+      exclude:
+        - demo/app/views/lookbook/panels/_assets.html.erb
+    html-iframe-has-title:
+      enabled: true
+    html-img-require-alt:
+      enabled: true
+    html-input-require-autocomplete:
+      enabled: true
+    html-navigation-has-label:
+      enabled: true
+    html-no-aria-hidden-on-focusable:
+      enabled: true
+    html-no-duplicate-attributes:
+      enabled: true
+    html-no-duplicate-ids:
+      enabled: true
+    html-no-duplicate-meta-names:
+      enabled: true
+    html-no-empty-attributes:
+      enabled: true
+    html-no-empty-headings:
+      enabled: true
+    html-no-nested-links:
+      enabled: true
+    html-no-positive-tab-index:
+      enabled: true
+    html-no-self-closing:
+      enabled: true
+    html-no-space-in-tag:
+      enabled: true
+    html-no-title-attribute:
+      enabled: true
+    html-no-underscores-in-attribute-names:
+      enabled: true
+    html-tag-name-lowercase:
+      enabled: true
+    parser-no-errors:
+      enabled: true
+    source-indentation:
+      enabled: true
+    svg-tag-name-capitalization:
+      enabled: true
