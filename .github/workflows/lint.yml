@@ -117,6 +117,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v7
+    - uses: actions/setup-node@v7
+      with:
+        node-version: 24
+        cache: 'npm'
     - name: Lint with Herb
       run: |
-        npx @herb-tools/linter@0.8.10
+        npm ci
+        npm run lint:herb
