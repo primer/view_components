@@ -66,18 +66,29 @@
       --toggle-width: 1.5rem;
       --min-item-height: 2.75rem;
     }
+  }
 
-    &:has(.TreeViewFailureMessage):hover {
-      cursor: default;
-      background-color: transparent;
+  /*
+   * PERFORMANCE: keep every :has() here anchored to .TreeViewItemContainer and scoped to
+   * direct children (`:has(> ...)`). An unanchored `:has()` is tried against every element
+   * restyled anywhere on the page, and a descendant-scoped one makes the browser walk
+   * whole subtrees whenever focus or attributes change.
+   */
+  & .TreeViewItemContainer:has(> [role='treeitem']:focus-visible) {
+    box-shadow: var(--boxShadow-thick) var(--fgColor-accent);
+  }
 
-      @media (forced-colors: active) {
-        outline: none;
-      }
-    }
+  & .TreeViewItemContainer:has(> .TreeViewItemContent[aria-disabled='true']) {
+    cursor: not-allowed;
+  }
 
-    &:has([role='treeitem']:focus-visible) {
-      box-shadow: var(--boxShadow-thick) var(--fgColor-accent);
+  /* :hover comes first so only the hovered row evaluates this descendant-scoped :has(). */
+  & .TreeViewItemContainer:hover:has(.TreeViewFailureMessage) {
+    cursor: default;
+    background-color: transparent;
+
+    @media (forced-colors: active) {
+      outline: none;
     }
   }
 
@@ -86,7 +97,7 @@
   }
 
   /* stylelint-disable-next-line selector-max-specificity */
-  & .TreeViewItem > .TreeViewItemContainer:has(.TreeViewItemContent[aria-current='true']) {
+  & .TreeViewItem > .TreeViewItemContainer:has(> .TreeViewItemContent[aria-current='true']) {
     background-color: var(--control-transparent-bgColor-selected);
 
     /* Current item indicator */
@@ -141,10 +152,6 @@
   & a.TreeViewItemContent:hover, button.TreeViewItemContent:hover {
     text-decoration: underline;
     text-decoration-color: var(--control-fgColor-rest);
-  }
-
-  & :has(.TreeViewItemContent[aria-disabled="true"]) {
-    cursor: not-allowed;
   }
 
   & .TreeViewItemContent {
