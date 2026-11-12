@@ -40,7 +40,7 @@ gem "lookbook", "~> 2.3.15"
 if ENV["VIEW_COMPONENT_PATH"]
   gem "view_component", path: ENV["VIEW_COMPONENT_PATH"]
 else
-  gem "view_component", "4.12.0"
+  gem "view_component", "4.23.0"
 end
 
 gem "kramdown", "~> 2.5"
