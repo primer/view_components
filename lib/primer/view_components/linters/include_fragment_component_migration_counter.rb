@@ -12,7 +12,7 @@ module ERBLint
 
       TAGS = %w[include-fragment].freeze
       REQUIRED_ARGUMENTS = [].freeze
-      MESSAGE = "We are migrating include-fragment to use [Primer::Alpha::IncludeFragment](https://primer.style/view-components/lookbook/inspect/primer/alpha/include_fragment/default), please try to use that instead of raw HTML."
+      MESSAGE = "We are migrating include-fragment to use Primer::Alpha::IncludeFragment, please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::IncludeFragment
       COMPONENT = "Primer::Alpha::IncludeFragment"
     end
