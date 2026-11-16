@@ -120,13 +120,16 @@ export default class FocusGroupElement extends HTMLElement {
       } else if (event.key === 'End' || event.key === 'PageDown') {
         index = items.length - 1
         event.preventDefault()
-      } else if (this.mnemonics && printable.test(key)) {
+      } else if (this.mnemonics && printable.test(key) && !event.metaKey && !event.ctrlKey && !event.altKey) {
         const mnemonic = key.toLowerCase()
         const offset = index > 0 && getMnemonicFor(event.target as Element) === mnemonic ? index : 0
         index = items.findIndex((item, i) => i > offset && getMnemonicFor(item) === mnemonic)
         if (index < 0 && !nowrap) {
           index = items.findIndex(item => getMnemonicFor(item) === mnemonic)
         }
+        // No item matches this mnemonic: leave the menu alone instead of
+        // focusing the last item (items.at(-1)) and opening a closed popover
+        if (index < 0) return
       } else {
         return
       }
