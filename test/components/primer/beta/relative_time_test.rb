@@ -19,11 +19,40 @@ class PrimerBetaRelativeTimeTest < Minitest::Test
     datetime = Time.utc(2022, 12, 6, 11, 14, 46)
     render_inline(Primer::Beta::RelativeTime.new(datetime: datetime))
     assert_selector("relative-time", text: "December 6, 2022 11:14")
+    assert_no_selector("relative-time[absolute-format]")
   end
 
   def test_component_accepts_hour_cycle
     render_inline(Primer::Beta::RelativeTime.new(datetime: "2022-12-06T11:14:46Z", hour_cycle: :h23))
     assert_selector("relative-time[hour-cycle='h23']")
+  end
+
+  def test_compact_absolute_format_keeps_fallback_and_custom_title
+    datetime = Time.utc(2022, 12, 6, 11, 14, 46)
+    render_inline(Primer::Beta::RelativeTime.new(datetime: datetime, absolute_format: :compact, title: "Complete timestamp"))
+
+    assert_selector("relative-time[absolute-format='compact'][datetime='#{datetime.iso8601}'][title='Complete timestamp']", exact_text: "December 6, 2022 11:14")
+  end
+
+  def test_compact_absolute_format_keeps_no_title
+    render_inline(Primer::Beta::RelativeTime.new(datetime: "2022-12-06T11:14:46Z", absolute_format: :compact, no_title: true))
+
+    assert_selector("relative-time[absolute-format='compact'][no-title]")
+    assert_no_selector("relative-time[title]")
+  end
+
+  def test_invalid_absolute_format_raises
+    assert_raises(Primer::FetchOrFallbackHelper::InvalidValueError) do
+      render_inline(Primer::Beta::RelativeTime.new(datetime: "2022-12-06T11:14:46Z", absolute_format: :invalid))
+    end
+  end
+
+  def test_invalid_absolute_format_falls_back_to_no_attribute
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::Beta::RelativeTime.new(datetime: "2022-12-06T11:14:46Z", absolute_format: :invalid))
+
+      assert_selector("relative-time:not([absolute-format])", exact_text: "December 6, 2022 11:14")
+    end
   end
 
   private
@@ -48,6 +77,9 @@ class PrimerBetaRelativeTimeTest < Minitest::Test
     end
 
     assert_empty fields - class_params, "Missing params on component"
-    assert_empty class_params - fields - deprecated_fields, "Extra fields on component"
+    extra_fields = class_params - fields - deprecated_fields
+    # Remove this exception when the released element supports absolute-format.
+    extra_fields -= [:absolute_format] if package_json.fetch("version") == "5.3.1"
+    assert_empty extra_fields, "Extra fields on component"
   end
 end
