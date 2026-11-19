@@ -41,10 +41,17 @@ jobs:
           cache-dependency-path: |
             package-lock.json
             demo/package-lock.json
+      - uses: browser-actions/setup-chrome@v2
+        if: matrix.browser == 'chrome'
+        id: chrome
+        with:
+          chrome-version: "156.0.8078.79"
       - name: Build
         run: |
           npm ci
           cd demo && npm ci
       - name: Test
+        env:
+          BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
         run: |
           USE_BROWSER=${{ matrix.browser }} bundle exec rake test:system
