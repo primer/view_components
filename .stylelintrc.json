@@ -11,6 +11,12 @@
     "declaration-block-no-redundant-longhand-properties": null,
     "color-function-notation": "legacy",
     "selector-nested-pattern": "^&\\s?\\W",
+    "selector-disallowed-list": [
+      ["/(^|[\\s>+~(,]):has\\(/"],
+      {
+        "message": "Anchor :has() to a compound selector (e.g. .Foo:has(> .Bar)). An unanchored :has() is matched against every element restyled on the page."
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {

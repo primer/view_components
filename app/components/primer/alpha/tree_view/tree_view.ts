@@ -16,6 +16,20 @@ export class TreeViewElement extends HTMLElement {
     this.addEventListener('focusin', this, {signal})
     this.addEventListener('keydown', this, {signal})
 
+    // Mirrors :focus-within onto the root list for the level-line styles. WebKit clears and re-sets
+    // :focus-within up the ancestor chain on every focus move, which restyled every level line on
+    // each arrow key press; this attribute only changes when focus enters or leaves the tree.
+    const root = this.querySelector(':scope > [role=tree]')
+    const syncFocusWithin = (event?: FocusEvent) => {
+      const focused = event
+        ? event.type === 'focusin' || this.contains(event.relatedTarget as Node | null)
+        : this.matches(':focus-within')
+      root?.toggleAttribute('data-focus-within', focused)
+    }
+    syncFocusWithin()
+    this.addEventListener('focusin', syncFocusWithin, {signal})
+    this.addEventListener('focusout', syncFocusWithin, {signal})
+
     useRovingTabIndex(this)
 
     // catch-all for any straggler nodes that aren't available when connectedCallback runs
