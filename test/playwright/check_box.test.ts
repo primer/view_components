@@ -20,12 +20,24 @@ function contrastRatio(first: string, second: string): number {
   return (Math.max(firstLuminance, secondLuminance) + 0.05) / (Math.min(firstLuminance, secondLuminance) + 0.05)
 }
 
-for (const theme of ['light', 'dark']) {
+for (const theme of [
+  'light',
+  'dark',
+  'dark_dimmed',
+  'light_colorblind',
+  'dark_colorblind',
+  'light_high_contrast',
+  'dark_high_contrast',
+]) {
   // Lookbook encodes the display options twice in preview links.
   const display = encodeURIComponent(encodeURIComponent(JSON.stringify({theme})))
 
   test(`selected CheckBox keyboard focus has adjacent contrast in ${theme}`, async ({page}) => {
     await page.goto(`/lookbook/preview/primer/alpha/check_box/playground?_display=${display}`)
+    await expect(page.locator('html')).toHaveAttribute(
+      theme.startsWith('dark') ? 'data-dark-theme' : 'data-light-theme',
+      theme,
+    )
 
     const checkbox = page.getByRole('checkbox', {name: 'Jean-Luc Picard', exact: true})
     await page.keyboard.press('Tab')
@@ -58,6 +70,10 @@ for (const theme of ['light', 'dark']) {
     expect(focus.width).toBeGreaterThanOrEqual(2)
     expect(focus.offset).toBeGreaterThan(0)
     expect(contrastRatio(focus.color, focus.adjacentColor)).toBeGreaterThanOrEqual(3)
+
+    await page.keyboard.press('Space')
+    await expect(checkbox).not.toBeChecked()
+    await expect(checkbox).toBeFocused()
   })
 
   test(`CheckBox options have individual accessible labels in ${theme}`, async ({page}) => {

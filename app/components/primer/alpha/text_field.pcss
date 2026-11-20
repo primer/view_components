@@ -750,7 +750,8 @@
   }
 
   &[type='checkbox']:focus-visible {
-    @mixin focusOutline 2px;
+    /* Keep sufficient contrast against the dimmed canvas. */
+    @mixin focusOutline 2px, var(--fgColor-accent);
   }
 
   &:indeterminate {
