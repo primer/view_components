@@ -12,6 +12,9 @@ module Primer
       FORMAT_DEFAULT = :auto
       FORMAT_OPTIONS = [FORMAT_DEFAULT, :micro, :elapsed].freeze
 
+      ABSOLUTE_FORMAT_DEFAULT = nil
+      ABSOLUTE_FORMAT_OPTIONS = [ABSOLUTE_FORMAT_DEFAULT, :compact].freeze
+
       FORMAT_STYLE_DEFAULT = nil
       FORMAT_STYLE_OPTIONS = [FORMAT_STYLE_DEFAULT, :long, :short, :narrow].freeze
 
@@ -103,6 +106,10 @@ module Primer
       # @param threshold [String] The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.
       # @param precision [Symbol] The precision elapsed time should display. <%= one_of(Primer::Beta::RelativeTime::PRECISION_OPTIONS) %>
       # @param format [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_OPTIONS) %>
+      # @param absolute_format [Symbol] Controls presentation when absolute output is selected. `:compact` shows localized today with
+      #   12-hour time, or a date with its year and no time. It omits the visible time zone and overrides `prefix`, `format_style`,
+      #   and individual date/time display fields, including `hour_cycle`, for compact text only. Locale and display time zone
+      #   still apply, and titles are unchanged. It does not force absolute output. Omitting the argument preserves existing behavior.
       # @param format_style [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_STYLE_OPTIONS) %>
       # @param lang [String] The language to use.
       # @param title [String] Provide a custom title to the element.
@@ -126,6 +133,7 @@ module Primer
         threshold: nil,
         precision: PRECISION_DEFAULT,
         format: nil,
+        absolute_format: ABSOLUTE_FORMAT_DEFAULT,
         format_style: nil,
         lang: nil,
         title: nil,
@@ -153,6 +161,7 @@ module Primer
         @system_arguments[:"no-title"] = no_title if no_title
         @system_arguments[:lang] = lang if lang.present?
         @system_arguments[:format] = fetch_or_fallback(FORMAT_OPTIONS, format, FORMAT_DEFAULT) if format.present?
+        @system_arguments[:"absolute-format"] = fetch_or_fallback(ABSOLUTE_FORMAT_OPTIONS, absolute_format, ABSOLUTE_FORMAT_DEFAULT) if absolute_format.present?
         @system_arguments[:"format-style"] = format_style if format_style.present?
         @system_arguments[:"aria-hidden"] = aria_hidden if aria_hidden.present?
         if datetime.present? && datetime.respond_to?(:iso8601)
