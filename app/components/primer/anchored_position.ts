@@ -32,6 +32,7 @@ const updateWhenVisible = (() => {
       }
     })
     resizeObserver.observe(el.ownerDocument.documentElement)
+    resizeObserver.observe(el)
     intersectionObserver.observe(el)
   }
 })()
@@ -117,13 +118,28 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.toggleAttribute('allow-out-of-bounds', value)
   }
 
+  get displayInViewport() {
+    return this.hasAttribute('display-in-viewport')
+  }
+
+  set displayInViewport(value: boolean) {
+    this.toggleAttribute('display-in-viewport', value)
+  }
+
   connectedCallback() {
     this.update()
     this.addEventListener('beforetoggle', () => this.update())
     updateWhenVisible(this)
   }
 
-  static observedAttributes = ['align', 'side', 'anchor', 'alignment-offset', 'allow-out-of-bounds']
+  static observedAttributes = [
+    'align',
+    'side',
+    'anchor',
+    'alignment-offset',
+    'allow-out-of-bounds',
+    'display-in-viewport',
+  ]
   attributeChangedCallback() {
     this.update()
   }
@@ -136,12 +152,32 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.#animationFrame = requestAnimationFrame(() => {
       const anchor = this.anchorElement
       this.classList.toggle('not-anchored', !anchor)
+      if (anchor && this.displayInViewport) {
+        // Constrain the height before positioning so the overlay can fit on either side of its anchor.
+        const anchorRect = anchor.getBoundingClientRect()
+        const availableHeight = Math.max(
+          anchorRect.top - this.anchorOffset,
+          this.ownerDocument.documentElement.clientHeight - anchorRect.bottom - this.anchorOffset,
+          0,
+        )
+        this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
+      } else {
+        this.style.removeProperty('--anchored-position-available-height')
+      }
       if (anchor) {
         const {left, top} = getAnchoredPosition(this, anchor, this)
         this.style.top = `${top}px`
         this.style.left = `${left}px`
         this.style.bottom = 'auto'
         this.style.right = 'auto'
+        if (this.displayInViewport) {
+          // Keep the active option visible when a resize reduces the scrollable area.
+          const activeId = anchor.getAttribute('aria-activedescendant')
+          const activeOption = activeId ? this.ownerDocument.getElementById(activeId) : null
+          if (activeOption && this.contains(activeOption)) {
+            activeOption.scrollIntoView({block: 'nearest', inline: 'nearest'})
+          }
+        }
       } else {
         this.style.top = '0'
         this.style.left = '0'

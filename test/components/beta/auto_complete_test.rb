@@ -142,6 +142,6 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
   def test_results_container_scrollable
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("anchored-position.overflow-y-auto")
+    assert_selector("anchored-position.overflow-y-auto[display-in-viewport]:not([allow-out-of-bounds])")
   end
 end
