@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "system/test_case"
-require "json"
 
 class IntegrationBetaRelativeTimeTest < System::TestCase
   TODAY = "2026-11-03T15:04:00Z"
@@ -13,9 +12,6 @@ class IntegrationBetaRelativeTimeTest < System::TestCase
   end
 
   def test_renders_compact_absolute_time
-    package = JSON.parse(File.read("node_modules/@github/relative-time-element/package.json"))
-    skip "Compact output is not available in the locked 5.3.1 release" if package.fetch("version") == "5.3.1"
-
     assert_preview_text("today at 3:04 PM", datetime: TODAY)
     assert_selector("relative-time[title='Nov 3, 2026, 15:04 UTC']")
     assert_preview_text("Nov 2, 2026", datetime: "2026-11-02T15:04:00Z")

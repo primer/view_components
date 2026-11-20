@@ -77,9 +77,6 @@ class PrimerBetaRelativeTimeTest < Minitest::Test
     end
 
     assert_empty fields - class_params, "Missing params on component"
-    extra_fields = class_params - fields - deprecated_fields
-    # Remove this exception when the released element supports absolute-format.
-    extra_fields -= [:absolute_format] if package_json.fetch("version") == "5.3.1"
-    assert_empty extra_fields, "Extra fields on component"
+    assert_empty class_params - fields - deprecated_fields, "Extra fields on component"
   end
 end
