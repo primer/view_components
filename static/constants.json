@@ -1377,6 +1377,11 @@
     ]
   },
   "Primer::Beta::RelativeTime": {
+    "ABSOLUTE_FORMAT_DEFAULT": null,
+    "ABSOLUTE_FORMAT_OPTIONS": [
+      null,
+      "compact"
+    ],
     "DAY_DEFAULT": null,
     "DAY_MAPPINGS": {
       "": null,
