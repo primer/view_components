@@ -92,21 +92,25 @@ module Primer
         <li>Michael Bublé</li>
       </ol>
 
-      <p>And an unordered task list:</p>
+      <p id="unordered-task-list-label">And an unordered task list:</p>
 
-      <ul>
-        <li><input id="checkbox-1" type=\"checkbox\" checked><label for="checkbox-1">Create a sample markdown document</label></li>
-        <li><input id="checkbox-2" type=\"checkbox\"><label for="checkbox-2">Add task lists to it</label></li>
-        <li><input id="checkbox-3" type=\"checkbox\"><label for="checkbox-3">Take a vacation</label></li>
-      </ul>
+      <div role="group" aria-labelledby="unordered-task-list-label">
+        <ul>
+          <li><input id="checkbox-1" type=\"checkbox\" checked><label for="checkbox-1">Create a sample markdown document</label></li>
+          <li><input id="checkbox-2" type=\"checkbox\"><label for="checkbox-2">Add task lists to it</label></li>
+          <li><input id="checkbox-3" type=\"checkbox\"><label for="checkbox-3">Take a vacation</label></li>
+        </ul>
+      </div>
 
-      <p>And a \"mixed\" task list:</p>
+      <p id="mixed-task-list-label">And a \"mixed\" task list:</p>
 
-      <ul>
-        <li><input id="checkbox-4" type=\"checkbox\"><label for="checkbox-4">Steal underpants</label></li>
-        <li>?</li>
-        <li><input id="checkbox-5" type=\"checkbox\"> <label for="checkbox-5">Profit!</label></li></li>
-      </ul>
+      <div role="group" aria-labelledby="mixed-task-list-label">
+        <ul>
+          <li><input id="checkbox-4" type=\"checkbox\"><label for="checkbox-4">Steal underpants</label></li>
+          <li>?</li>
+          <li><input id="checkbox-5" type=\"checkbox\"> <label for="checkbox-5">Profit!</label></li>
+        </ul>
+      </div>
 
       And a nested list:
 
