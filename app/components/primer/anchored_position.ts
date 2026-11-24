@@ -15,32 +15,50 @@ const alternateAlignments: Record<AnchorAlignment, AnchorAlignment[]> = {
 
 const updateWhenVisible = (() => {
   const anchors = new Set<AnchoredPositionElement>()
+  const connectedAnchors = new Set<AnchoredPositionElement>()
   let intersectionObserver: IntersectionObserver | null = null
   let resizeObserver: ResizeObserver | null = null
-  function updateVisibleAnchors() {
-    for (const anchor of anchors) {
-      anchor.update()
+  function updateAnchors() {
+    for (const anchor of connectedAnchors) {
+      if (anchor.displayInViewport ? anchor.checkVisibility() : anchors.has(anchor)) anchor.update()
     }
   }
-  function updateVisibleViewportAnchors() {
-    for (const anchor of anchors) {
-      if (anchor.displayInViewport) anchor.update()
+  function updateViewportAnchors() {
+    for (const anchor of connectedAnchors) {
+      if (anchor.displayInViewport && anchor.checkVisibility()) anchor.update()
+    }
+  }
+  function updateScrollingViewportAnchors(event: Event) {
+    const target = event.target
+    if (!(target instanceof Node)) return
+    for (const anchor of connectedAnchors) {
+      if (
+        anchor.displayInViewport &&
+        !anchor.contains(target) &&
+        target.contains(anchor.anchorElement) &&
+        anchor.checkVisibility()
+      ) {
+        anchor.update()
+      }
     }
   }
   return (el: AnchoredPositionElement) => {
+    connectedAnchors.add(el)
     // eslint-disable-next-line github/prefer-observers
-    window.addEventListener('resize', updateVisibleAnchors)
+    window.addEventListener('resize', updateAnchors)
     // eslint-disable-next-line github/prefer-observers
-    window.addEventListener('scroll', updateVisibleAnchors)
+    window.addEventListener('scroll', updateAnchors)
+    // eslint-disable-next-line github/prefer-observers
+    window.addEventListener('scroll', updateScrollingViewportAnchors, true)
     const visualViewport = el.ownerDocument.defaultView?.visualViewport
     // eslint-disable-next-line github/prefer-observers
-    visualViewport?.addEventListener('resize', updateVisibleViewportAnchors)
+    visualViewport?.addEventListener('resize', updateViewportAnchors)
     // eslint-disable-next-line github/prefer-observers
-    visualViewport?.addEventListener('scroll', updateVisibleViewportAnchors)
+    visualViewport?.addEventListener('scroll', updateViewportAnchors)
     intersectionObserver ||= new IntersectionObserver(entries => {
       for (const entry of entries) {
         const target = entry.target as AnchoredPositionElement
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && connectedAnchors.has(target)) {
           target.update()
           anchors.add(target)
         } else {
@@ -48,14 +66,16 @@ const updateWhenVisible = (() => {
         }
       }
     })
-    resizeObserver ||= new ResizeObserver(() => {
-      for (const anchor of anchors) {
-        anchor.update()
-      }
-    })
+    resizeObserver ||= new ResizeObserver(updateAnchors)
     resizeObserver.observe(el.ownerDocument.documentElement)
     resizeObserver.observe(el)
     intersectionObserver.observe(el)
+    return () => {
+      connectedAnchors.delete(el)
+      anchors.delete(el)
+      resizeObserver?.unobserve(el)
+      intersectionObserver?.unobserve(el)
+    }
   }
 })()
 
@@ -148,10 +168,28 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.toggleAttribute('display-in-viewport', value)
   }
 
+  #stopObserving: (() => void) | undefined
+  #beforeToggle = () => this.update()
   connectedCallback() {
+    this.addEventListener('beforetoggle', this.#beforeToggle)
+    // eslint-disable-next-line github/prefer-observers
+    this.addEventListener('scroll', this.#rememberActiveOption)
+    this.#stopObserving = updateWhenVisible(this)
     this.update()
-    this.addEventListener('beforetoggle', () => this.update())
-    updateWhenVisible(this)
+  }
+
+  disconnectedCallback() {
+    this.#stopObserving?.()
+    this.#stopObserving = undefined
+    this.#activeOptionObserver?.disconnect()
+    this.#observedAnchor = null
+    this.removeEventListener('beforetoggle', this.#beforeToggle)
+    this.removeEventListener('scroll', this.#rememberActiveOption)
+    cancelAnimationFrame(this.#animationFrame)
+    this.#previousClientHeight = 0
+    this.#previousClientWidth = 0
+    this.#previousActiveOptionId = ''
+    this.#activeOptionWasVisible = false
   }
 
   static observedAttributes = [
@@ -215,12 +253,58 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
 
   #animationFrame: ReturnType<typeof requestAnimationFrame>
   #previousClientHeight = 0
+  #previousClientWidth = 0
+  #previousActiveOptionId = ''
+  #activeOptionWasVisible = false
+  #activeOptionObserver: MutationObserver | null = null
+  #observedAnchor: HTMLElement | null = null
+  #getActiveOption() {
+    const id = this.anchorElement?.getAttribute('aria-activedescendant')
+    const option = id ? this.ownerDocument.getElementById(id) : null
+    return option && this.contains(option) ? option : null
+  }
+
+  #rememberActiveOption = () => {
+    // Layout CSS can resize the popup before the frame. Preserve its pre-reflow visibility.
+    if (!this.isConnected || !this.displayInViewport || this.clientWidth !== this.#previousClientWidth) return
+    const option = this.#getActiveOption()
+    this.#previousActiveOptionId = option?.id || ''
+    this.#activeOptionWasVisible = false
+    if (!option) return
+    const rect = option.getBoundingClientRect()
+    const popup = this.getBoundingClientRect()
+    const top = popup.top + this.clientTop
+    const left = popup.left + this.clientLeft
+    this.#activeOptionWasVisible =
+      rect.height > 0 &&
+      rect.width > 0 &&
+      rect.top >= top &&
+      rect.bottom <= top + this.clientHeight &&
+      rect.left >= left &&
+      rect.right <= left + this.clientWidth
+  }
+
   update() {
     if (!this.isConnected) return
     cancelAnimationFrame(this.#animationFrame)
 
     this.#animationFrame = requestAnimationFrame(() => {
       const anchor = this.anchorElement
+      const observedAnchor = this.displayInViewport ? anchor : null
+      if (this.#observedAnchor !== observedAnchor) {
+        this.#activeOptionObserver?.disconnect()
+        this.#observedAnchor = observedAnchor
+        this.#previousActiveOptionId = ''
+        this.#activeOptionWasVisible = false
+        if (observedAnchor) {
+          this.#activeOptionObserver ||= new MutationObserver(this.#rememberActiveOption)
+          this.#activeOptionObserver.observe(observedAnchor, {
+            attributes: true,
+            attributeFilter: ['aria-activedescendant'],
+          })
+        }
+      }
+      this.#rememberActiveOption()
       const visualViewport = this.ownerDocument.defaultView?.visualViewport
       const viewport = new DOMRect(
         visualViewport?.offsetLeft ?? 0,
@@ -249,11 +333,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           anchorRect.left - viewport.left - this.anchorOffset,
           viewport.right - anchorRect.right - this.anchorOffset,
         )
-        if (
-          availableHeight < optionHeight &&
-          viewport.height >= optionHeight &&
-          this.getBoundingClientRect().width <= horizontalSpace
-        ) {
+        if (availableHeight < optionHeight && this.getBoundingClientRect().width <= horizontalSpace) {
           availableHeight = viewport.height
         }
         this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
@@ -263,7 +343,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       }
       if (anchor) {
         const {left, top} =
-          this.displayInViewport && visualViewport && !this.allowOutOfBounds
+          this.displayInViewport && !this.allowOutOfBounds
             ? this.#getPositionInViewport(anchor, viewport)
             : getAnchoredPosition(this, anchor, this)
         this.style.top = `${top}px`
@@ -271,27 +351,39 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         this.style.bottom = 'auto'
         this.style.right = 'auto'
         const clientHeight = this.clientHeight
-        if (this.displayInViewport && clientHeight > 0 && clientHeight < this.#previousClientHeight) {
-          const activeId = anchor.getAttribute('aria-activedescendant')
-          const activeOption = activeId ? this.ownerDocument.getElementById(activeId) : null
-          if (activeOption && this.contains(activeOption)) {
-            const topEdge = this.getBoundingClientRect().top + this.clientTop
-            const bottomEdge = topEdge + clientHeight
-            const activeRect = activeOption.getBoundingClientRect()
-            if (activeRect.top < topEdge) {
-              this.scrollTop += activeRect.top - topEdge
-            } else if (activeRect.bottom > bottomEdge) {
-              this.scrollTop += activeRect.bottom - bottomEdge
-            }
+        const clientWidth = this.clientWidth
+        const activeOption = this.#getActiveOption()
+        const restoreAfterWidthReflow =
+          clientWidth < this.#previousClientWidth &&
+          this.#activeOptionWasVisible &&
+          activeOption?.id === this.#previousActiveOptionId
+        if (
+          this.displayInViewport &&
+          clientHeight > 0 &&
+          activeOption &&
+          (clientHeight < this.#previousClientHeight || restoreAfterWidthReflow)
+        ) {
+          const topEdge = this.getBoundingClientRect().top + this.clientTop
+          const bottomEdge = topEdge + clientHeight
+          const activeRect = activeOption.getBoundingClientRect()
+          if (activeRect.top < topEdge) {
+            this.scrollTop += activeRect.top - topEdge
+          } else if (activeRect.bottom > bottomEdge) {
+            this.scrollTop += activeRect.bottom - bottomEdge
           }
         }
         this.#previousClientHeight = clientHeight
+        this.#previousClientWidth = clientWidth
+        this.#rememberActiveOption()
       } else {
         this.style.top = '0'
         this.style.left = '0'
         this.style.bottom = '0'
         this.style.right = '0'
         this.#previousClientHeight = 0
+        this.#previousClientWidth = 0
+        this.#previousActiveOptionId = ''
+        this.#activeOptionWasVisible = false
       }
     })
   }
