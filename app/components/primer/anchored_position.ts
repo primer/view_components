@@ -167,6 +167,23 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   #getPositionInViewport(anchor: HTMLElement, viewport: DOMRect) {
+    const settings: PositionSettings = {
+      side: this.side,
+      align: this.align,
+      anchorOffset: this.anchorOffset,
+      alignmentOffset: this.alignmentOffset,
+      allowOutOfBounds: true,
+    }
+    let position = getAnchoredPosition(this, anchor, settings)
+    const anchorRect = anchor.getBoundingClientRect()
+    if (
+      anchorRect.bottom <= viewport.top ||
+      anchorRect.top >= viewport.bottom ||
+      anchorRect.right <= viewport.left ||
+      anchorRect.left >= viewport.right
+    ) {
+      return position
+    }
     // The library returns parent-relative coordinates, even for DOMRect anchors.
     const origin = getAnchoredPosition(this, viewport, {
       side: 'inside-top',
@@ -178,14 +195,6 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     const {width, height} = this.getBoundingClientRect()
     const right = origin.left + viewport.width
     const bottom = origin.top + viewport.height
-    const settings: PositionSettings = {
-      side: this.side,
-      align: this.align,
-      anchorOffset: this.anchorOffset,
-      alignmentOffset: this.alignmentOffset,
-      allowOutOfBounds: true,
-    }
-    let position = getAnchoredPosition(this, anchor, settings)
     for (const side of alternateSides[this.side] || []) {
       const vertical = position.anchorSide === 'outside-top' || position.anchorSide === 'outside-bottom'
       const fits = vertical
@@ -221,9 +230,10 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       )
       this.classList.toggle('not-anchored', !anchor)
       if (anchor && this.displayInViewport) {
-        // Constrain the height before positioning so the overlay can fit on either side of its anchor.
+        // Constrain the width before measuring options and choosing a fitting side.
         const anchorRect = anchor.getBoundingClientRect()
-        const availableHeight = Math.min(
+        this.style.setProperty('--anchored-position-available-width', `${viewport.width}px`)
+        let availableHeight = Math.min(
           viewport.height,
           Math.max(
             anchorRect.top - viewport.top - this.anchorOffset,
@@ -231,8 +241,24 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
             0,
           ),
         )
+        let optionHeight = 0
+        for (const option of this.querySelectorAll<HTMLElement>('[role="option"]')) {
+          optionHeight = Math.max(optionHeight, option.getBoundingClientRect().height)
+        }
+        const horizontalSpace = Math.max(
+          anchorRect.left - viewport.left - this.anchorOffset,
+          viewport.right - anchorRect.right - this.anchorOffset,
+        )
+        if (
+          availableHeight < optionHeight &&
+          viewport.height >= optionHeight &&
+          this.getBoundingClientRect().width <= horizontalSpace
+        ) {
+          availableHeight = viewport.height
+        }
         this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
       } else {
+        this.style.removeProperty('--anchored-position-available-width')
         this.style.removeProperty('--anchored-position-available-height')
       }
       if (anchor) {

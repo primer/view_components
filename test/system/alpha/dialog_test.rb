@@ -165,14 +165,15 @@ module Alpha
 
     def test_auto_complete_tracks_visual_viewport_resize_and_scroll
       ApplicationController.helpers.color_themes.each do |theme|
-        options = open_auto_complete_results(theme: theme)
+        options = open_auto_complete_results(height: 640, theme: theme)
         keyboard.type(:up)
         assert_auto_complete_option_in_view(options.last)
 
-        # Simulate keyboard/pinch-zoom bounds without changing Chrome's layout viewport.
+        # Simulate keyboard/pinch-zoom bounds without changing the layout viewport.
+        document_height = page.evaluate_script("document.documentElement.clientHeight")
         set_visual_viewport(event: "resize", width: 224, height: 180, left_offset: 32, top_offset: -112)
 
-        assert_equal 800, page.evaluate_script("document.documentElement.clientHeight")
+        assert_equal document_height, page.evaluate_script("document.documentElement.clientHeight")
         assert_auto_complete_popup_in_view
         assert_auto_complete_option_in_view(options.last)
 
@@ -187,6 +188,85 @@ module Alpha
         assert_field "input", with: options.last["data-autocomplete-value"]
         refute_selector "#list", visible: true
         assert_selector "dialog[open]"
+      end
+    end
+
+    def test_auto_complete_stays_anchored_when_input_leaves_visual_viewport
+      options = open_auto_complete_results
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+      anchor_width = page.evaluate_script("document.querySelector('#input').getBoundingClientRect().width")
+      anchor_height = page.evaluate_script("document.querySelector('#input').getBoundingClientRect().height")
+      set_visual_viewport(event: "resize", width: 224, height: 180, left_offset: -16, top_offset: -112)
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options.last)
+
+      [[anchor_width + 16, -112], [-16, anchor_height + 16]].each do |left_offset, top_offset|
+        set_visual_viewport(event: "scroll", width: 224, height: 180, left_offset: left_offset, top_offset: top_offset)
+
+        geometry = nil
+        anchored = page.has_selector?("#list:popover-open") do |list|
+          geometry = page.evaluate_script(<<~JS, list)
+            (function(list) {
+              const popup = list.getBoundingClientRect();
+              const anchor = document.querySelector("#input").getBoundingClientRect();
+              const viewport = window.visualViewport;
+              return {
+                anchored: Math.abs(popup.top - anchor.bottom - list.anchorOffset) <= 1 &&
+                  Math.abs(popup.left - anchor.left - list.alignmentOffset) <= 1,
+                offscreen: anchor.right <= viewport.offsetLeft || anchor.bottom <= viewport.offsetTop,
+                popup: {top: popup.top, left: popup.left},
+                expected: {top: anchor.bottom + list.anchorOffset, left: anchor.left + list.alignmentOffset}
+              };
+            })(arguments[0])
+          JS
+          geometry["anchored"] && geometry["offscreen"]
+        end
+
+        assert anchored, "Offscreen AutoComplete input loses its anchored popup: #{geometry.inspect}"
+        assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+        assert_selector "#list [role='option']", count: 18
+      end
+    end
+
+    def test_auto_complete_configured_width_fits_visual_viewport
+      assert_auto_complete_width_reflow(visual_width: 224)
+    end
+
+    def test_auto_complete_width_fits_below_192_pixels
+      assert_auto_complete_width_reflow(visual_width: 160)
+    end
+
+    def test_auto_complete_keyboard_access_with_horizontal_placement
+      [-20, -240].each do |left_offset|
+        open_auto_complete_results
+        update_auto_complete_and_wait(<<~JS)
+          document.querySelector("#input").style.height = "40px";
+          document.querySelector("#list").update();
+        JS
+        anchor_width = page.evaluate_script("document.querySelector('#input').getBoundingClientRect().width")
+        set_visual_viewport(event: "resize", width: anchor_width + 260, height: 100, left_offset: left_offset, top_offset: -30)
+
+        [:down, :up].each_with_index do |direction, index|
+          if index.positive?
+            fill_in "input", with: "a"
+            assert_selector "#list [role='option']", count: 18
+            find("#input").evaluate_script("this.focus()")
+          end
+          options = all("#list [role='option']").to_a
+          options.reverse! if direction == :up
+
+          options.each do |option|
+            keyboard.type(direction)
+            assert_auto_complete_option_in_view(option)
+            assert_auto_complete_popup_in_view
+          end
+
+          keyboard.type(:enter)
+          assert_field "input", with: options.last["data-autocomplete-value"]
+          refute_selector "#list", visible: true
+          assert_selector "dialog[open]"
+        end
       end
     end
 
@@ -297,15 +377,35 @@ module Alpha
 
     private
 
-    def open_auto_complete_results(width: 1280, height: 800, theme: "light")
+    def open_auto_complete_results(width: 1280, height: 800, theme: "light", results_width: :auto)
       window.resize(width: width, height: height)
-      visit_preview(:with_auto_complete, theme: theme)
+      visit_preview(:with_auto_complete, theme: theme, width: results_width)
       click_button("Show Dialog")
       fill_in "input", with: "a"
       assert_selector "#list [role='option']", count: 18
       find("#input").evaluate_script("this.focus()")
       assert_selector "#list:popover-open"
       all("#list [role='option']").to_a
+    end
+
+    def assert_auto_complete_width_reflow(visual_width:)
+      open_auto_complete_results(results_width: :medium)
+      original_width = page.evaluate_script("document.querySelector('#list').getBoundingClientRect().width")
+      assert_operator original_width, :>, visual_width
+
+      set_visual_viewport(event: "resize", width: visual_width, height: 180, left_offset: 0, top_offset: 0)
+      assert_auto_complete_popup_in_view
+      assert_selector "#list [role='option']", count: 18
+
+      page.execute_script(<<~JS)
+        for (const property of ["width", "height", "offsetLeft", "offsetTop"]) {
+          delete window.visualViewport[property];
+        }
+        window.visualViewport.dispatchEvent(new Event("resize"));
+      JS
+      assert_selector "#list:popover-open" do |list|
+        (list.evaluate_script("this.getBoundingClientRect().width") - original_width).abs <= 1
+      end
     end
 
     def set_visual_viewport(event:, width:, height:, left_offset:, top_offset:)
@@ -359,7 +459,9 @@ module Alpha
                 rect.left >= left - 1 && rect.right <= right + 1 &&
                 rect.top >= top - 1 && rect.bottom <= bottom + 1 &&
                 (rect.bottom <= anchor.top - list.anchorOffset + 1 ||
-                 rect.top >= anchor.bottom + list.anchorOffset - 1),
+                 rect.top >= anchor.bottom + list.anchorOffset - 1 ||
+                 rect.right <= anchor.left - list.anchorOffset + 1 ||
+                 rect.left >= anchor.right + list.anchorOffset - 1),
               popup: {top: rect.top, left: rect.left, right: rect.right, bottom: rect.bottom},
               bounds: {top, left, right, bottom}
             };

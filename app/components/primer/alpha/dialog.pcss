@@ -202,6 +202,8 @@ dialog.Overlay:not([open]) {
 }
 
 .Overlay[display-in-viewport] {
+  min-width: min(192px, var(--anchored-position-available-width, 100vw));
+  max-width: min(calc(100vw - 2rem), var(--anchored-position-available-width, 100vw));
   max-height: min(
     calc(100vh - 2rem),
     var(--overlay-height, 100vh),
