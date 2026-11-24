@@ -5,12 +5,15 @@ require "system/test_case"
 class IntegrationAlphaFormControlTest < System::TestCase
   include Primer::WindowTestHelpers
 
-  def test_playground_note_reflows_in_light
-    assert_playground_note_reflows("light")
-  end
+  # Firefox's outer-window resizing does not guarantee this exact viewport.
+  if !Primer::DriverTestHelpers.firefox?
+    def test_playground_note_reflows_in_light
+      assert_playground_note_reflows("light")
+    end
 
-  def test_playground_note_reflows_in_dark
-    assert_playground_note_reflows("dark")
+    def test_playground_note_reflows_in_dark
+      assert_playground_note_reflows("dark")
+    end
   end
 
   private
