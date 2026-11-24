@@ -181,7 +181,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   disconnectedCallback() {
     this.#stopObserving?.()
     this.#stopObserving = undefined
-    this.#activeOptionObserver?.disconnect()
+    this.#mutationObserver?.disconnect()
     this.#observedAnchor = null
     this.removeEventListener('beforetoggle', this.#beforeToggle)
     this.removeEventListener('scroll', this.#rememberActiveOption)
@@ -256,7 +256,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   #previousClientWidth = 0
   #previousActiveOptionId = ''
   #activeOptionWasVisible = false
-  #activeOptionObserver: MutationObserver | null = null
+  #mutationObserver: MutationObserver | null = null
   #observedAnchor: HTMLElement | null = null
   #getActiveOption() {
     const id = this.anchorElement?.getAttribute('aria-activedescendant')
@@ -292,16 +292,26 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       const anchor = this.anchorElement
       const observedAnchor = this.displayInViewport ? anchor : null
       if (this.#observedAnchor !== observedAnchor) {
-        this.#activeOptionObserver?.disconnect()
+        this.#mutationObserver?.disconnect()
         this.#observedAnchor = observedAnchor
         this.#previousActiveOptionId = ''
         this.#activeOptionWasVisible = false
         if (observedAnchor) {
-          this.#activeOptionObserver ||= new MutationObserver(this.#rememberActiveOption)
-          this.#activeOptionObserver.observe(observedAnchor, {
+          this.#mutationObserver ||= new MutationObserver(records => {
+            this.#rememberActiveOption()
+            if (
+              records.some(record => record.type !== 'attributes') &&
+              this.displayInViewport &&
+              this.checkVisibility()
+            ) {
+              this.update()
+            }
+          })
+          this.#mutationObserver.observe(observedAnchor, {
             attributes: true,
             attributeFilter: ['aria-activedescendant'],
           })
+          this.#mutationObserver.observe(this, {childList: true, characterData: true, subtree: true})
         }
       }
       this.#rememberActiveOption()
@@ -316,6 +326,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       if (anchor && this.displayInViewport) {
         // Constrain the width before measuring options and choosing a fitting side.
         const anchorRect = anchor.getBoundingClientRect()
+        const scrollTop = this.scrollTop
         this.style.setProperty('--anchored-position-available-width', `${viewport.width}px`)
         let availableHeight = Math.min(
           viewport.height,
@@ -333,10 +344,21 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           anchorRect.left - viewport.left - this.anchorOffset,
           viewport.right - anchorRect.right - this.anchorOffset,
         )
-        if (availableHeight < optionHeight && this.getBoundingClientRect().width <= horizontalSpace) {
-          availableHeight = viewport.height
+        if (availableHeight < optionHeight) {
+          const minWidth = parseFloat(getComputedStyle(this).minWidth) || 0
+          if (!this.allowOutOfBounds && horizontalSpace >= minWidth) {
+            this.style.setProperty(
+              '--anchored-position-available-width',
+              `${Math.min(viewport.width, horizontalSpace)}px`,
+            )
+          }
+          if (this.getBoundingClientRect().width <= horizontalSpace) {
+            availableHeight = viewport.height
+          }
         }
         this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
+        // Measuring the configured width must not change the results' scroll position.
+        this.scrollTop = scrollTop
       } else {
         this.style.removeProperty('--anchored-position-available-width')
         this.style.removeProperty('--anchored-position-available-height')

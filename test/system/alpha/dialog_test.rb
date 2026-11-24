@@ -541,24 +541,245 @@ module Alpha
       end
     end
 
+    def test_auto_complete_classic_scrollbar_placement_settles
+      skip "The custom scrollbar geometry test requires Chrome" unless Primer::DriverTestHelpers.chrome?
+
+      with_visible_scrollbars do
+        open_auto_complete_results(results_width: :medium, query: "grape", result_count: 2)
+        center_auto_complete_input(width: 1280, height: 150)
+        update_auto_complete_and_wait(<<~JS)
+          const list = document.querySelector("#list");
+          const style = document.createElement("style");
+          style.textContent = "#list::-webkit-scrollbar { width: 16px; }";
+          document.head.append(style);
+          Object.assign(list.style, {padding: "0", scrollbarGutter: "auto"});
+          list.style.setProperty("overflow-y", "hidden", "important");
+          const anchor = document.querySelector("#input").getBoundingClientRect();
+          const available = Math.max(anchor.top - list.anchorOffset,
+            document.documentElement.clientHeight - anchor.bottom - list.anchorOffset);
+          const lineHeight = Math.min(20, Math.ceil(available * 0.75));
+          const padding = Math.max(0, (available - 2 * lineHeight + 1) / 2);
+          const options = list.querySelectorAll("[role='option']");
+          for (const option of options) {
+            option.textContent = option.dataset.autocompleteValue;
+            Object.assign(option.style, {
+              display: "block", flexShrink: "0", minHeight: "0", padding: `${padding}px 0`,
+              font: `${Math.min(16, lineHeight)}px/${lineHeight}px monospace`, overflowWrap: "anywhere"
+            });
+          }
+          const label = document.createElement("span");
+          label.textContent = "M";
+          Object.assign(label.style, {display: "block", whiteSpace: "normal", overflowWrap: "anywhere"});
+          const range = document.createRange();
+          options[0].replaceChildren(label);
+          range.selectNodeContents(label);
+          const glyphWidth = range.getBoundingClientRect().width;
+          label.textContent = "M".repeat(Math.floor(list.clientWidth / glyphWidth));
+          const withoutScrollbar = options[0].getBoundingClientRect().height;
+          const withoutScrollbarWidth = list.clientWidth;
+          list.style.setProperty("overflow-y", "scroll", "important");
+          window.scrollbarCalibration = {
+            available, withoutScrollbar, withoutScrollbarWidth, withScrollbarWidth: list.clientWidth,
+            withScrollbar: options[0].getBoundingClientRect().height,
+            gutter: list.offsetWidth - list.clientWidth
+          };
+          list.style.removeProperty("scrollbar-gutter");
+          list.style.removeProperty("overflow-y");
+          list.update();
+        JS
+        calibration = page.evaluate_script("window.scrollbarCalibration")
+        assert_operator calibration["gutter"], :>, 0, "The browser does not provide a measurable classic scrollbar"
+        assert_operator calibration["withoutScrollbar"], :<=, calibration["available"]
+        assert_operator calibration["withScrollbar"], :>, calibration["available"], calibration.inspect
+        count_auto_complete_updates
+
+        assert_auto_complete_geometry_settles
+        keyboard.type(:down)
+        assert_auto_complete_option_in_view(find("#list [role='option']", match: :first))
+        assert_auto_complete_popup_in_view
+        keyboard.type(:enter)
+        assert_field "input", with: "Grapes"
+      end
+    end
+
+    def test_auto_complete_reconsiders_capped_placement_after_content_replacement
+      open_auto_complete_results(results_width: :medium)
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        list.style.padding = "0";
+        for (const option of list.querySelectorAll("[role='option']")) {
+          option.textContent = option.dataset.autocompleteValue;
+          Object.assign(option.style, {display: "block", flexShrink: "0", padding: "0", lineHeight: "20px"});
+        }
+        list.update();
+      JS
+      center_auto_complete_input(width: 1280, height: 100)
+      keyboard.type(:down)
+      assert_auto_complete_option_in_view(find("#list [role='option']", match: :first))
+      before = page.evaluate_script("document.querySelector('#list').clientHeight")
+      assert_operator before, :<, 60
+      count_auto_complete_updates
+
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        const before = {width: list.clientWidth, height: list.clientHeight};
+        for (const [index, option] of [...list.querySelectorAll("[role='option']")].entries()) {
+          const replacement = option.cloneNode(true);
+          if (index === 0) {
+            replacement.style.whiteSpace = "pre-wrap";
+            replacement.textContent = `${replacement.dataset.autocompleteValue}\\nA ripe fruit\\nReady to select`;
+          }
+          option.replaceWith(replacement);
+        }
+        window.contentReplacementGeometry = {
+          before, after: {width: list.clientWidth, height: list.clientHeight}
+        };
+      JS
+      geometry = page.evaluate_script("window.contentReplacementGeometry")
+      assert_equal geometry["before"], geometry["after"], "Replacing content changes the observed popup box"
+      first_option = find("#list [role='option']", match: :first)
+      assert_auto_complete_option_in_view(first_option)
+      assert_auto_complete_popup_in_view
+      assert_operator page.evaluate_script("document.querySelector('#list').clientHeight"), :>, before
+      assert_auto_complete_geometry_settles
+
+      update_auto_complete_and_wait(<<~JS)
+        const option = document.querySelector("#list [role='option']");
+        option.firstChild.data = option.dataset.autocompleteValue;
+      JS
+      assert_selector "#list:popover-open" do |list|
+        list.evaluate_script("this.clientHeight") == before
+      end
+      keyboard.type(:up, :up)
+      options = all("#list [role='option']").to_a
+      assert_auto_complete_option_in_view(options.last)
+      update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      scroll_before = auto_complete_scroll_positions
+      updates = page.evaluate_script("window.autoCompleteUpdateCount")
+      update_auto_complete_and_wait(<<~JS)
+        const option = document.querySelector("#list [role='option']");
+        option.firstChild.data = `Fresh ${option.dataset.autocompleteValue}`;
+      JS
+      assert_selector "#list:popover-open" do
+        page.evaluate_script("window.autoCompleteUpdateCount") > updates
+      end
+      assert_equal scroll_before, auto_complete_scroll_positions
+      assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+      assert_selector "#list [role='option']", count: 18
+      keyboard.type(:down, :down)
+      assert_auto_complete_option_in_view(first_option)
+      keyboard.type(:enter)
+      assert_field "input", with: first_option["data-autocomplete-value"]
+    end
+
+    def test_auto_complete_medium_width_uses_narrower_horizontal_space
+      options = open_auto_complete_results(results_width: :medium)
+      update_auto_complete_and_wait(<<~JS)
+        const option = document.querySelector("#list [role='option']");
+        const label = document.createElement("span");
+        label.textContent = "A crisp apple picked this morning.";
+        Object.assign(label.style, {
+          display: "block", font: "12px/16px monospace", whiteSpace: "normal", overflowWrap: "anywhere"
+        });
+        option.replaceChildren(label);
+        Object.assign(option.style, {display: "block", flexShrink: "0", padding: "8px"});
+      JS
+      configured_width = page.evaluate_script("document.querySelector('#list').getBoundingClientRect().width")
+      original_option_height = options.first.evaluate_script("this.getBoundingClientRect().height")
+      center_auto_complete_input(width: 640, height: 100)
+      keyboard.type(:down)
+      assert_auto_complete_option_in_view(options.first)
+      assert_auto_complete_popup_in_view
+      assert_operator page.evaluate_script("document.querySelector('#list').getBoundingClientRect().width"),
+                      :<, configured_width
+      assert_operator options.first.evaluate_script("this.getBoundingClientRect().height"), :>, original_option_height
+
+      keyboard.type(:up, :up)
+      assert_auto_complete_option_in_view(options.last)
+      scroll_before = auto_complete_scroll_positions
+      count_auto_complete_updates
+      update_auto_complete_and_wait("document.querySelector('#list').update();")
+      assert_auto_complete_option_in_view(options.last)
+      assert_equal scroll_before, auto_complete_scroll_positions
+      assert_auto_complete_geometry_settles
+
+      update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      scroll_before = auto_complete_scroll_positions
+      update_auto_complete_and_wait("document.querySelector('#list').update();")
+      assert_equal scroll_before, auto_complete_scroll_positions
+      assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+
+      window.resize(width: 1280, height: 800)
+      assert_selector "#list:popover-open" do |list|
+        (list.evaluate_script("this.getBoundingClientRect().width") - configured_width).abs <= 1
+      end
+      assert_in_delta original_option_height, options.first.evaluate_script("this.getBoundingClientRect().height"), 1
+      center_auto_complete_input(width: 640, height: 100)
+      keyboard.type(:down, :down)
+      assert_auto_complete_option_in_view(options.first)
+      assert_auto_complete_popup_in_view
+      keyboard.type(:enter)
+      assert_field "input", with: options.first["data-autocomplete-value"]
+    end
+
+    def test_auto_complete_horizontal_sizing_preserves_minimum_and_opt_outs
+      open_auto_complete_results(results_width: :medium)
+      configured_width = page.evaluate_script("document.querySelector('#list').getBoundingClientRect().width")
+      center_auto_complete_input(width: 560, height: 100)
+      assert_selector "#list:popover-open" do |list|
+        (list.evaluate_script("this.getBoundingClientRect().width") - configured_width).abs <= 1
+      end
+      assert_operator page.evaluate_script("parseFloat(getComputedStyle(document.querySelector('#list')).minWidth)"),
+                      :>=, 192
+
+      update_auto_complete_and_wait("document.querySelector('#list').allowOutOfBounds = true;")
+      center_auto_complete_input(width: 640, height: 100)
+      assert_selector "#list:popover-open" do |list|
+        list.evaluate_script(<<~JS, configured_width)
+          Math.abs(this.getBoundingClientRect().width - arguments[0]) <= 1 &&
+            Math.abs(this.getBoundingClientRect().top -
+              document.querySelector("#input").getBoundingClientRect().bottom - this.anchorOffset) <= 1
+        JS
+      end
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        list.displayInViewport = false;
+        list.allowOutOfBounds = false;
+      JS
+      assert_selector "#list:popover-open" do |list|
+        (list.evaluate_script("this.getBoundingClientRect().width") - configured_width).abs <= 1
+      end
+      assert_selector "#list [role='option']", count: 18
+    end
+
     def test_auto_complete_updates_only_open_connected_popups
       open_auto_complete_results
       count_auto_complete_updates
       update_auto_complete_and_wait("document.querySelector('#list').hidePopover();")
       update_auto_complete_and_wait(<<~JS)
         window.autoCompleteUpdateCount = 0;
+        document.querySelector("#list [role='option']").append(" fresh");
         window.dispatchEvent(new Event("resize"));
         window.visualViewport.dispatchEvent(new Event("resize"));
       JS
-      assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Viewport events update a closed popup"
+      assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Events or content changes update a closed popup"
 
       update_auto_complete_and_wait("document.querySelector('#list').showPopover();")
       assert_auto_complete_popup_in_view
+      update_auto_complete_and_wait("document.querySelector('#list').displayInViewport = false;")
+      update_auto_complete_and_wait(<<~JS)
+        window.autoCompleteUpdateCount = 0;
+        const option = document.querySelector("#list [role='option']");
+        option.replaceWith(option.cloneNode(true));
+      JS
+      assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Content changes update a non-opted-in popup"
+      update_auto_complete_and_wait("document.querySelector('#list').displayInViewport = true;")
       update_auto_complete_and_wait(<<~JS)
         window.detachedPopup = document.querySelector("#list");
         window.detachedPopupParent = window.detachedPopup.parentElement;
         window.detachedPopup.remove();
         window.autoCompleteUpdateCount = 0;
+        window.detachedPopup.querySelector("[role='option']").append(" fresh");
         window.dispatchEvent(new Event("resize"));
         window.visualViewport.dispatchEvent(new Event("resize"));
       JS
@@ -606,12 +827,12 @@ module Alpha
 
     private
 
-    def open_auto_complete_results(width: 1280, height: 800, theme: "light", results_width: :auto)
+    def open_auto_complete_results(width: 1280, height: 800, theme: "light", results_width: :auto, query: "a", result_count: 18)
       window.resize(width: width, height: height)
       visit_preview(:with_auto_complete, theme: theme, width: results_width)
       click_button("Show Dialog")
-      fill_in "input", with: "a"
-      assert_selector "#list [role='option']", count: 18
+      fill_in "input", with: query
+      assert_selector "#list [role='option']", count: result_count
       find("#input").evaluate_script("this.focus()")
       assert_selector "#list:popover-open"
       all("#list [role='option']").to_a
@@ -719,6 +940,60 @@ module Alpha
           return update.call(this);
         };
       JS
+    end
+
+    def center_auto_complete_input(width:, height:)
+      window.resize(width: width, height: height)
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("dialog").style, {animation: "none", transform: "none"});
+        Object.assign(document.querySelector("#input").style, {
+          position: "fixed", left: "calc(50vw - 100px)", top: "calc(50vh - 20px)", width: "200px", height: "40px"
+        });
+        document.querySelector("#list").update();
+      JS
+    end
+
+    def with_visible_scrollbars
+      # Ferrum hides scrollbars by default, including their layout geometry.
+      options = driver.options.except(:extensions).merge(
+        ignore_default_browser_options: true,
+        browser_options: Ferrum::Browser::Options::Chrome::DEFAULT_OPTIONS.except("hide-scrollbars").merge(
+          driver.options.fetch(:browser_options)
+        )
+      )
+      Capybara.register_driver(:primer_cuprite_visible_scrollbars) do |app|
+        Capybara::Cuprite::Driver.new(app, options)
+      end
+      original_window = @window
+      original_keyboard = @keyboard
+      Capybara.using_driver(:primer_cuprite_visible_scrollbars) do
+        @window = @keyboard = nil
+        yield
+      ensure
+        @window = original_window
+        @keyboard = original_keyboard
+      end
+    end
+
+    def assert_auto_complete_geometry_settles
+      samples = driver.evaluate_async_script(<<~JS)
+        const callback = arguments[arguments.length - 1];
+        const samples = [];
+        function sample() {
+          const list = document.querySelector("#list");
+          const rect = list.getBoundingClientRect();
+          samples.push({
+            top: rect.top, left: rect.left, width: rect.width, height: rect.height,
+            clientWidth: list.clientWidth, clientHeight: list.clientHeight, scrollHeight: list.scrollHeight,
+            optionHeight: list.querySelector("[role='option']").getBoundingClientRect().height,
+            updates: window.autoCompleteUpdateCount
+          });
+          if (samples.length < 16) requestAnimationFrame(sample);
+          else callback(samples);
+        }
+        requestAnimationFrame(sample);
+      JS
+      assert_equal 1, samples.last(8).uniq.length, "Popup geometry does not settle: #{samples.inspect}"
     end
 
     def assert_auto_complete_popup_anchored_to_offscreen_input
