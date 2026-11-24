@@ -30,9 +30,16 @@ module ApplicationHelper
     return content unless content.include?('aria-labelledby="unordered-task-list-label"')
 
     # The layout repeats rendered HTML, so the fixture's IDs need a suffix per copy.
-    content.gsub(/(?<attribute>\s(?:id|for|aria-labelledby)=")(?<id>(?:unordered|mixed)-task-list-label|checkbox-[1-5])"/) do
-      %(#{Regexp.last_match(:attribute)}#{Regexp.last_match(:id)}-#{theme}")
-    end.html_safe
+    parts = []
+    offset = 0
+    content.scan(/\s(?:id|for|aria-labelledby)="(?<id>(?:unordered|mixed)-task-list-label|checkbox-[1-5])"/) do
+      match = Regexp.last_match
+      parts << content[offset...match.begin("id")]
+      parts << "#{match["id"]}-#{theme}"
+      offset = match.end("id")
+    end
+    parts << content[offset..-1]
+    safe_join(parts)
   end
 
   def tag_attributes(hash)
