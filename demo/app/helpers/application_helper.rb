@@ -26,6 +26,15 @@ module ApplicationHelper
     tag_attributes(attributes)
   end
 
+  def markdown_task_list_ids_for_theme(content, theme)
+    return content unless content.include?('aria-labelledby="unordered-task-list-label"')
+
+    # The layout repeats rendered HTML, so the fixture's IDs need a suffix per copy.
+    content.gsub(/(?<attribute>\s(?:id|for|aria-labelledby)=")(?<id>(?:unordered|mixed)-task-list-label|checkbox-[1-5])"/) do
+      %(#{Regexp.last_match(:attribute)}#{Regexp.last_match(:id)}-#{theme}")
+    end.html_safe
+  end
+
   def tag_attributes(hash)
     parts = hash.map do |key, value|
       safe_join([key, "=", value])

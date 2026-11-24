@@ -23,7 +23,7 @@
         <div class="theme-wrap">
           <% color_themes.each do |theme| %>
             <div class="preview-wrap" <%= color_theme_attributes(theme) %>>
-              <%= yield %>
+              <%= markdown_task_list_ids_for_theme(yield, theme) %>
               <div class="theme-name"><%= theme %></div>
             </div>
           <% end %>

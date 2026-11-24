@@ -63,4 +63,35 @@ class PrimerBetaMarkdownTest < Minitest::Test
       end
     end
   end
+
+  def test_task_list_labels_are_unique_in_all_theme_copies
+    ActionView::Base.any_instance.stubs(:stylesheet_link_tag).returns("")
+    ActionView::Base.any_instance.stubs(:vite_typescript_tag).returns("")
+
+    %i[playground default].each do |preview|
+      rendered = render_preview(preview, from: Primer::Beta::MarkdownPreview, params: { theme: "all" })
+      copies = rendered.css(".preview-wrap")
+      groups = rendered.css(".markdown-body [role='group']")
+      label_ids = groups.map { |group| group["aria-labelledby"] }
+      checkbox_ids = rendered.css(".markdown-body input[type='checkbox']").map { |input| input["id"] }
+
+      assert_equal 7, copies.length
+      assert_equal 14, groups.length
+      assert_equal label_ids.length, label_ids.uniq.length
+      assert_equal checkbox_ids.length, checkbox_ids.uniq.length
+
+      copies.each do |copy|
+        copy.css("[role='group']").each do |group|
+          label = rendered.at_css("##{group['aria-labelledby']}")
+
+          assert_equal "p", label.name
+          assert_equal group.previous_element, label
+        end
+
+        copy.css("label[for]").each do |label|
+          assert_equal label.previous_element, rendered.at_css("##{label['for']}")
+        end
+      end
+    end
+  end
 end
