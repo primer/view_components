@@ -109,5 +109,21 @@ class IntegrationAlphaFormControlTest < System::TestCase
     preview.find("label", text: "Best character").click
     assert_selector "#component-preview input[type=text]:focus"
     assert_accessible
+
+    narrow_typography = note_typography(note)
+    window.resize(width: 1400, height: 256)
+    normal_typography = note_typography(note)
+    window.resize(width: 320, height: 256)
+    assert_equal normal_typography, narrow_typography,
+                 "The note and inline code must preserve their font sizes and line heights at 320px"
+  end
+
+  def note_typography(note)
+    note.evaluate_script(<<~JS)
+      [this, ...this.querySelectorAll('code')].map(element => {
+        const style = window.getComputedStyle(element)
+        return {fontSize: style.fontSize, lineHeight: style.lineHeight}
+      })
+    JS
   end
 end
