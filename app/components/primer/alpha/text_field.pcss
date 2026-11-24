@@ -619,6 +619,25 @@
   }
 }
 
+/* Resolve the dimmed default on the theme element, where the legacy alias is
+** computed. Leave --focus-outlineColor inherited for consumer overrides.
+** Attribute presence tests outrank primitive defaults loaded after these styles. */
+[data-color-mode][data-color-mode='dark'][data-dark-theme='dark_dimmed'] {
+  --focus-outline-color: var(--fgColor-accent);
+}
+
+@media (prefers-color-scheme: light) {
+  [data-color-mode][data-color-mode='auto'][data-light-theme='dark_dimmed'] {
+    --focus-outline-color: var(--fgColor-accent);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-mode][data-color-mode='auto'][data-dark-theme][data-dark-theme='dark_dimmed'] {
+    --focus-outline-color: var(--fgColor-accent);
+  }
+}
+
 /* checkbox + radio specific styles */
 
 /* // Checkbox + Radio structure
@@ -750,8 +769,7 @@
   }
 
   &[type='checkbox']:focus-visible {
-    /* Keep sufficient contrast against the dimmed canvas. */
-    @mixin focusOutline 2px, var(--fgColor-accent);
+    @mixin focusOutline 2px;
   }
 
   &:indeterminate {
