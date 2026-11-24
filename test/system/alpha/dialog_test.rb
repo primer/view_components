@@ -163,6 +163,107 @@ module Alpha
       assert_auto_complete_option_in_view(options.last)
     end
 
+    def test_auto_complete_tracks_visual_viewport_resize_and_scroll
+      ApplicationController.helpers.color_themes.each do |theme|
+        options = open_auto_complete_results(theme: theme)
+        keyboard.type(:up)
+        assert_auto_complete_option_in_view(options.last)
+
+        # Simulate keyboard/pinch-zoom bounds without changing Chrome's layout viewport.
+        set_visual_viewport(event: "resize", width: 224, height: 180, left_offset: 32, top_offset: -112)
+
+        assert_equal 800, page.evaluate_script("document.documentElement.clientHeight")
+        assert_auto_complete_popup_in_view
+        assert_auto_complete_option_in_view(options.last)
+
+        # Pan the visible area so the popup must change sides and horizontal alignment.
+        set_visual_viewport(event: "scroll", width: 224, height: 180, left_offset: -48, top_offset: -48)
+
+        assert_auto_complete_popup_in_view
+        assert_auto_complete_option_in_view(options.last)
+        assert_field "input", with: "a"
+
+        keyboard.type(:enter)
+        assert_field "input", with: options.last["data-autocomplete-value"]
+        refute_selector "#list", visible: true
+        assert_selector "dialog[open]"
+      end
+    end
+
+    def test_auto_complete_preserves_manual_results_scroll_on_updates
+      options = open_auto_complete_results(width: 320, height: 256)
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+
+      update_auto_complete_and_wait(<<~JS)
+        document.body.classList.remove("has-modal-disable-scroll");
+        document.body.style.minHeight = "2400px";
+        document.querySelector("#list").scrollTop = 0;
+        document.querySelector("#list").update();
+      JS
+      assert_equal 0, page.evaluate_script("document.querySelector('#list').scrollTop")
+
+      update_auto_complete_and_wait("window.scrollTo(0, 80);")
+      assert_equal 80, page.evaluate_script("window.scrollY")
+      assert_equal 0, page.evaluate_script("document.querySelector('#list').scrollTop")
+
+      previous_height = page.evaluate_script("document.querySelector('#list').clientHeight")
+      window.resize(width: 1280, height: 800)
+      assert_selector "#list:popover-open" do |list|
+        list.evaluate_script("this.clientHeight") > previous_height
+      end
+      update_auto_complete_and_wait("document.querySelector('#list').update();")
+
+      assert_equal 0, page.evaluate_script("document.querySelector('#list').scrollTop")
+      assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+    end
+
+    def test_auto_complete_height_shrink_scrolls_only_the_results
+      options = open_auto_complete_results
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+
+      update_auto_complete_and_wait(<<~JS)
+        const body = document.querySelector("dialog .Overlay-body");
+        for (const position of ["afterbegin", "beforeend"]) {
+          const spacer = document.createElement("div");
+          spacer.style.height = "160px";
+          body.insertAdjacentElement(position, spacer);
+        }
+        body.style.maxHeight = "160px";
+        body.scrollTop = 112;
+        document.body.classList.remove("has-modal-disable-scroll");
+        document.body.style.minHeight = "2400px";
+        window.scrollTo(0, 80);
+        document.querySelector("#list").update();
+      JS
+      before = auto_complete_scroll_positions
+      assert_operator before["body"], :>, 0
+      assert_operator before["pageY"], :>, 0
+
+      update_auto_complete_and_wait(<<~JS)
+        document.querySelector("#list").style.maxHeight = "64px";
+        document.querySelector("#list").update();
+      JS
+      assert_auto_complete_option_in_view(options.last)
+      after = auto_complete_scroll_positions
+
+      assert_operator after["results"], :>, before["results"]
+      assert_equal before.except("results"), after.except("results")
+    end
+
+    def test_auto_complete_reflows_without_visual_viewport
+      options = open_auto_complete_results
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+
+      page.execute_script("Object.defineProperty(window, 'visualViewport', {configurable: true, value: undefined});")
+      window.resize(width: 320, height: 256)
+
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options.last)
+    end
+
     def test_click_events_can_be_added_to_invoker_buttons
       # use this preview because it assigns a static ID to the invoker button
       visit_preview(:with_header)
@@ -195,6 +296,80 @@ module Alpha
     end
 
     private
+
+    def open_auto_complete_results(width: 1280, height: 800, theme: "light")
+      window.resize(width: width, height: height)
+      visit_preview(:with_auto_complete, theme: theme)
+      click_button("Show Dialog")
+      fill_in "input", with: "a"
+      assert_selector "#list [role='option']", count: 18
+      find("#input").evaluate_script("this.focus()")
+      assert_selector "#list:popover-open"
+      all("#list [role='option']").to_a
+    end
+
+    def set_visual_viewport(event:, width:, height:, left_offset:, top_offset:)
+      update_auto_complete_and_wait("")
+      page.execute_script(<<~JS, event, width, height, left_offset, top_offset)
+        const [event, width, height, leftOffset, topOffset] = arguments;
+        const anchor = document.querySelector("#input").getBoundingClientRect();
+        Object.defineProperties(window.visualViewport, {
+          width: {configurable: true, value: width},
+          height: {configurable: true, value: height},
+          offsetLeft: {configurable: true, value: anchor.left + leftOffset},
+          offsetTop: {configurable: true, value: anchor.top + topOffset}
+        });
+        window.visualViewport.dispatchEvent(new Event(event));
+      JS
+    end
+
+    def update_auto_complete_and_wait(script)
+      driver.evaluate_async_script(<<~JS)
+        const callback = arguments[arguments.length - 1];
+        #{script}
+        requestAnimationFrame(() => requestAnimationFrame(() => callback(true)));
+      JS
+    end
+
+    def auto_complete_scroll_positions
+      page.evaluate_script(<<~JS)
+        ({
+          results: document.querySelector("#list").scrollTop,
+          body: document.querySelector("dialog .Overlay-body").scrollTop,
+          pageX: window.scrollX,
+          pageY: window.scrollY
+        })
+      JS
+    end
+
+    def assert_auto_complete_popup_in_view
+      geometry = nil
+      in_view = page.has_selector?("#list:popover-open") do |list|
+        geometry = page.evaluate_script(<<~JS, list)
+          (function(list) {
+            const rect = list.getBoundingClientRect();
+            const anchor = document.querySelector("#input").getBoundingClientRect();
+            const viewport = window.visualViewport;
+            const left = viewport?.offsetLeft ?? 0;
+            const top = viewport?.offsetTop ?? 0;
+            const right = left + (viewport?.width ?? document.documentElement.clientWidth);
+            const bottom = top + (viewport?.height ?? document.documentElement.clientHeight);
+            return {
+              visible: rect.width > 0 && rect.height > 0 &&
+                rect.left >= left - 1 && rect.right <= right + 1 &&
+                rect.top >= top - 1 && rect.bottom <= bottom + 1 &&
+                (rect.bottom <= anchor.top - list.anchorOffset + 1 ||
+                 rect.top >= anchor.bottom + list.anchorOffset - 1),
+              popup: {top: rect.top, left: rect.left, right: rect.right, bottom: rect.bottom},
+              bounds: {top, left, right, bottom}
+            };
+          })(arguments[0])
+        JS
+        geometry["visible"]
+      end
+
+      assert in_view, "AutoComplete popup is clipped or covers its input: #{geometry.inspect}"
+    end
 
     def assert_auto_complete_keyboard_reflow(width:, height:)
       window.resize(width: width, height: height)
@@ -241,11 +416,12 @@ module Alpha
         geometry = page.evaluate_script(<<~JS, active_option)
           (function(option) {
             const rect = option.getBoundingClientRect();
+            const viewport = window.visualViewport;
             const bounds = {
-              top: 0,
-              left: 0,
-              right: document.documentElement.clientWidth,
-              bottom: document.documentElement.clientHeight
+              top: viewport?.offsetTop ?? 0,
+              left: viewport?.offsetLeft ?? 0,
+              right: (viewport?.offsetLeft ?? 0) + (viewport?.width ?? document.documentElement.clientWidth),
+              bottom: (viewport?.offsetTop ?? 0) + (viewport?.height ?? document.documentElement.clientHeight)
             };
 
             for (let ancestor = option.parentElement; ancestor; ancestor = ancestor.parentElement) {
