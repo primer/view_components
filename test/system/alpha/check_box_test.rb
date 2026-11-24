@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 require "system/test_case"
+require "test_helpers/focus_test_helpers"
 
 module Alpha
   class IntegrationCheckBoxTest < System::TestCase
     include Primer::KeyboardTestHelpers
     include Primer::JsTestHelpers
+    include Primer::FocusTestHelpers
 
     %w[light dark dark_dimmed light_colorblind dark_colorblind light_high_contrast dark_high_contrast].each do |theme|
       define_method("test_selected_keyboard_focus_has_adjacent_contrast_in_#{theme}") do
@@ -20,11 +22,40 @@ module Alpha
         keyboard.type(:space)
         assert_selector ".FormControl-checkbox:checked:focus-visible"
 
-        assert_focus_contrast(focus_styles, theme)
+        assert_focus_contrast(focus_styles(".FormControl-checkbox"), theme)
 
         keyboard.type(:space)
         assert_selector ".FormControl-checkbox:focus-visible:not(:checked)"
       end
+    end
+
+    def test_selected_keyboard_focus_has_adjacent_contrast_in_fixed_light_dimmed_mode
+      visit_preview(:playground, theme: :dark_dimmed)
+
+      with_dimmed_theme(:light) do
+        keyboard.type(:tab)
+        keyboard.type(:space)
+        assert_selector ".FormControl-checkbox:checked:focus-visible"
+
+        assert_focus_contrast(focus_styles(".FormControl-checkbox"), :fixed_light_dimmed)
+      end
+    end
+
+    def test_selected_keyboard_focus_honors_a_later_theme_stylesheet_override
+      visit_preview(:playground, theme: :dark_dimmed)
+      execute_script(<<~JS)
+        const style = document.createElement('style')
+        style.textContent = "[data-color-mode='dark'][data-dark-theme='dark_dimmed'] { --focus-outlineColor: #ffcc00; }"
+        document.head.appendChild(style)
+      JS
+
+      keyboard.type(:tab)
+      keyboard.type(:space)
+      assert_selector ".FormControl-checkbox:checked:focus-visible"
+
+      focus = focus_styles(".FormControl-checkbox")
+      assert_equal "rgb(255, 204, 0)", focus["color"], "the later consumer stylesheet must set the outline"
+      assert_focus_contrast(focus, :stylesheet)
     end
 
     {
@@ -43,42 +74,13 @@ module Alpha
         keyboard.type(:space)
         assert_selector ".FormControl-checkbox:checked:focus-visible"
 
-        focus = focus_styles
+        focus = focus_styles(".FormControl-checkbox")
         assert_equal "rgb(255, 204, 0)", focus["color"], "#{scope}: the consumer focus token must set the outline"
         assert_focus_contrast(focus, scope)
       end
     end
 
     private
-
-    def focus_styles
-      evaluate_multiline_script(<<~JS)
-        const checkbox = document.querySelector('input.FormControl-checkbox')
-        const style = getComputedStyle(checkbox)
-        const offset = Number.parseFloat(style.outlineOffset)
-        let ancestor = checkbox.parentElement
-
-        while (ancestor) {
-          const background = getComputedStyle(ancestor)
-          if (background.backgroundImage !== 'none') {
-            throw new Error('Expected the adjacent CheckBox canvas to have no background image')
-          }
-          if (background.backgroundColor !== 'rgba(0, 0, 0, 0)') {
-            return {
-              offset,
-              width: Number.parseFloat(style.outlineWidth),
-              style: style.outlineStyle,
-              color: style.outlineColor,
-              outerColor: background.backgroundColor,
-              // Without the gap, the selected border touches the outline.
-              innerColor: offset > 0 ? background.backgroundColor : style.borderTopColor,
-            }
-          }
-          ancestor = ancestor.parentElement
-        }
-        throw new Error('The CheckBox preview has no opaque adjacent canvas')
-      JS
-    end
 
     def assert_focus_contrast(focus, scope)
       inner_contrast = contrast_ratio(focus["color"], focus["innerColor"])
@@ -89,23 +91,6 @@ module Alpha
       assert_equal 2, focus["offset"], "#{scope}: outline offset; inner adjacent contrast #{inner_contrast}:1"
       assert_operator inner_contrast, :>=, 3, "#{scope}: outline against the inner adjacent color"
       assert_operator outer_contrast, :>=, 3, "#{scope}: outline against the outer canvas"
-    end
-
-    def contrast_ratio(first, second)
-      lower, higher = [luminance(first), luminance(second)].minmax
-      (higher + 0.05) / (lower + 0.05)
-    end
-
-    def luminance(color)
-      match = /\Argb\((\d+),\s*(\d+),\s*(\d+)\)\z/.match(color)
-      raise ArgumentError, "Expected an opaque RGB color, received #{color}" unless match
-
-      channels = match.captures.map do |channel|
-        value = channel.to_f / 255
-        value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055)**2.4
-      end
-
-      0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
     end
   end
 end
