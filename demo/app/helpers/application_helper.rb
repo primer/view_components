@@ -32,7 +32,7 @@ module ApplicationHelper
     # The layout repeats rendered HTML, so the fixture's IDs need a suffix per copy.
     parts = []
     offset = 0
-    content.scan(/\s(?:id|for|aria-labelledby)="(?<id>(?:unordered|mixed)-task-list-label|checkbox-[1-5])"/) do
+    content.scan(/\s(?:id|for|aria-labelledby)="(?<id>(?:unordered|mixed)-task-list-label|checkbox-\d+)"/) do
       match = Regexp.last_match
       parts << content[offset...match.begin("id")]
       parts << "#{match["id"]}-#{theme}"

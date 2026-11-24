@@ -94,4 +94,30 @@ class PrimerBetaMarkdownTest < Minitest::Test
       end
     end
   end
+
+  def test_task_list_scoping_handles_higher_checkbox_numbers
+    helper = ActionView::Base.empty.extend(ApplicationHelper)
+    items = [6, 12].map do |number|
+      helper.tag.li(helper.safe_join([
+        helper.tag.input(id: "checkbox-#{number}", type: "checkbox", checked: number == 12),
+        helper.tag.label("Task #{number}", for: "checkbox-#{number}")
+      ]))
+    end
+    label = helper.tag.p("Tasks", id: "unordered-task-list-label")
+    group = helper.tag.div(
+      helper.tag.ul(helper.safe_join(items)),
+      role: "group", aria: { labelledby: "unordered-task-list-label" }
+    )
+    content = helper.safe_join([label, group])
+    copies = helper.color_themes.map { |theme| helper.markdown_task_list_ids_for_theme(content, theme) }
+    rendered = render_inline(Primer::Beta::Markdown.new) { helper.safe_join(copies) }
+    checkbox_ids = rendered.css("input[type='checkbox']").map { |input| input["id"] }
+
+    assert_equal copies.length * 2, checkbox_ids.length
+    assert_equal checkbox_ids.length, checkbox_ids.uniq.length
+
+    rendered.css("[role='group'] label[for]").each do |checkbox_label|
+      assert_equal checkbox_label.previous_element, rendered.at_css("##{checkbox_label['for']}")
+    end
+  end
 end
