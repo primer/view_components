@@ -147,6 +147,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     if (!this.#anchorElement) {
       this.removeAttribute('anchor')
     }
+    this.#observeLayout()
   }
 
   get alignmentOffset(): number {
@@ -187,8 +188,8 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.#stopObserving?.()
     this.#stopObserving = undefined
     this.#mutationObserver?.disconnect()
-    this.#optionResizeObserver?.disconnect()
-    this.#observedOptions.clear()
+    this.#resizeObserver?.disconnect()
+    this.#observedElements.clear()
     this.#observedAnchor = null
     this.removeEventListener('beforetoggle', this.#beforeToggle)
     this.removeEventListener('scroll', this.#rememberActiveOption)
@@ -205,6 +206,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     'display-in-viewport',
   ]
   attributeChangedCallback() {
+    this.#observeLayout()
     this.update()
   }
 
@@ -270,26 +272,34 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   } | null = null
   #mutationObserver: MutationObserver | null = null
   #observedAnchor: HTMLElement | null = null
-  #optionResizeObserver: ResizeObserver | null = null
-  #observedOptions = new Set<HTMLElement>()
+  #resizeObserver: ResizeObserver | null = null
+  #observedElements = new Set<HTMLElement>()
 
-  #observeOptions() {
-    if (!this.isConnected || !this.displayInViewport || !this.anchorElement || !isVisible(this)) {
-      this.#optionResizeObserver?.disconnect()
-      this.#observedOptions.clear()
+  #observeLayout() {
+    const anchor = this.anchorElement
+    if (!this.isConnected || !this.displayInViewport || !anchor || !isVisible(this)) {
+      this.#resizeObserver?.disconnect()
+      this.#observedElements.clear()
       return
     }
-    this.#optionResizeObserver ||= new ResizeObserver(() => {
-      if (this.isConnected && this.displayInViewport && isVisible(this)) this.update()
+    this.#resizeObserver ||= new ResizeObserver(entries => {
+      if (
+        this.isConnected &&
+        this.displayInViewport &&
+        isVisible(this) &&
+        entries.some(entry => this.#observedElements.has(entry.target as HTMLElement))
+      ) {
+        this.update()
+      }
     })
-    const options = new Set(this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]'))
-    for (const option of this.#observedOptions) {
-      if (!options.has(option)) this.#optionResizeObserver.unobserve(option)
+    const elements = new Set([anchor, ...this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]')])
+    for (const element of this.#observedElements) {
+      if (!elements.has(element)) this.#resizeObserver.unobserve(element)
     }
-    for (const option of options) {
-      if (!this.#observedOptions.has(option)) this.#optionResizeObserver.observe(option, {box: 'border-box'})
+    for (const element of elements) {
+      if (!this.#observedElements.has(element)) this.#resizeObserver.observe(element, {box: 'border-box'})
     }
-    this.#observedOptions = options
+    this.#observedElements = elements
   }
 
   #getActiveOption() {
@@ -387,7 +397,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
               this.#activeOptionState.pendingSelection = true
             }
             if (records.some(record => record.type !== 'attributes')) {
-              this.#observeOptions()
+              this.#observeLayout()
             }
             if (this.displayInViewport && isVisible(this)) this.update()
           })
@@ -398,7 +408,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           this.#mutationObserver.observe(this, {childList: true, characterData: true, subtree: true})
         }
       }
-      this.#observeOptions()
+      this.#observeLayout()
       this.#rememberActiveOption()
       const previousActiveOption = this.#activeOptionState
       const visualViewport = this.ownerDocument.defaultView?.visualViewport
@@ -477,6 +487,8 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
             } else if (activeRect.bottom > bottomEdge) {
               this.scrollTop += activeRect.bottom - bottomEdge
             }
+          } else if (previousActiveOption.restore && (activeRect.bottom <= topEdge || activeRect.top >= bottomEdge)) {
+            this.scrollTop += activeRect.top - topEdge
           }
         }
         const state = this.#getActiveOptionState()

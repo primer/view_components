@@ -163,6 +163,18 @@ module Alpha
       assert_auto_complete_option_in_view(options.last)
     end
 
+    def test_auto_complete_repositions_after_input_width_resize
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_anchor_resize(dimension: :width, theme: theme)
+      end
+    end
+
+    def test_auto_complete_repositions_after_input_height_resize
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_anchor_resize(dimension: :height, theme: theme)
+      end
+    end
+
     def test_auto_complete_tracks_visual_viewport_resize_and_scroll
       ApplicationController.helpers.color_themes.each do |theme|
         options = open_auto_complete_results(height: 640, theme: theme)
@@ -577,6 +589,26 @@ module Alpha
 
     def test_auto_complete_temporary_undersizing_resets_after_reopen
       assert_auto_complete_temporary_undersizing(action: :reopen)
+    end
+
+    def test_auto_complete_oversized_reflow_above_keeps_active_option_partly_visible
+      assert_auto_complete_oversized_reflow(direction: :above, action: :none)
+    end
+
+    def test_auto_complete_oversized_reflow_below_keeps_active_option_partly_visible
+      assert_auto_complete_oversized_reflow(direction: :below, action: :none)
+    end
+
+    def test_auto_complete_oversized_reflow_preserves_manual_scroll
+      [:above, :below].each do |direction|
+        assert_auto_complete_oversized_reflow(direction: direction, action: :scroll)
+      end
+    end
+
+    def test_auto_complete_oversized_reflow_preserves_partial_visibility
+      [:above, :below].each do |direction|
+        assert_auto_complete_oversized_reflow(direction: direction, action: :partial)
+      end
     end
 
     def test_auto_complete_layout_widening_keeps_active_option_visible
@@ -1027,35 +1059,54 @@ module Alpha
 
     def test_auto_complete_updates_only_open_connected_popups
       open_auto_complete_results do
-        page.execute_script(<<~JS)
-          window.autoCompleteObservedRows = new Set();
-          window.autoCompleteResizeObserver = window.ResizeObserver;
-          const observedRows = window.autoCompleteObservedRows;
-          window.ResizeObserver = class extends window.ResizeObserver {
-            rows = new Set();
-            observe(target, options) {
-              super.observe(target, options);
-              if (target.matches("#list [role='option']")) {
-                this.rows.add(target);
-                observedRows.add(target);
-              }
-            }
-            unobserve(target) {
-              super.unobserve(target);
-              this.rows.delete(target);
-              observedRows.delete(target);
-            }
-            disconnect() {
-              super.disconnect();
-              for (const row of this.rows) observedRows.delete(row);
-              this.rows.clear();
-            }
-          };
-        JS
+        track_auto_complete_resize_observations
       end
       assert_auto_complete_update_lifecycle
     ensure
       page.execute_script("if (window.autoCompleteResizeObserver) window.ResizeObserver = window.autoCompleteResizeObserver;")
+    end
+
+    def test_auto_complete_releases_replaced_anchor_observation
+      [:attribute, :property].each do |assignment|
+        open_auto_complete_results { track_auto_complete_resize_observations }
+        assert_selector "#list:popover-open" do
+          page.evaluate_script("window.autoCompleteObservedAnchors.has(document.querySelector('#input'))")
+        end
+        update_auto_complete_and_wait(<<~JS)
+          const original = document.querySelector("#input");
+          window.originalAutoCompleteInput = original;
+          const replacement = original.cloneNode();
+          replacement.id = "replacement-input";
+          replacement.setAttribute("aria-label", "Replacement anchor");
+          Object.assign(replacement.style, {position: "fixed", left: "100px", top: "80px", width: "200px"});
+          original.parentElement.append(replacement);
+          const list = document.querySelector("#list");
+          if ("#{assignment}" === "attribute") list.anchor = replacement.id;
+          else list.anchorElement = replacement;
+        JS
+        assert_selector "#list:popover-open" do
+          page.evaluate_script(<<~JS)
+            window.autoCompleteObservedAnchors.size === 1 &&
+              window.autoCompleteObservedAnchors.has(document.querySelector("#replacement-input")) &&
+              !window.autoCompleteObservedAnchors.has(window.originalAutoCompleteInput)
+          JS
+        end
+        count_auto_complete_updates
+        assert_auto_complete_geometry_settles
+        update_auto_complete_and_wait("window.originalAutoCompleteInput.style.height = '80px';")
+        assert_auto_complete_geometry_settles
+        assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Resizing the old anchor updates its popup"
+        update_auto_complete_and_wait("document.querySelector('#replacement-input').style.height = '80px';")
+        assert_selector "#list:popover-open" do
+          page.evaluate_script("window.autoCompleteUpdateCount") > 0
+        end
+        assert_auto_complete_geometry_settles
+      end
+    ensure
+      page.execute_script(<<~JS)
+        document.querySelector("#replacement-input")?.remove();
+        if (window.autoCompleteResizeObserver) window.ResizeObserver = window.autoCompleteResizeObserver;
+      JS
     end
 
     def test_click_events_can_be_added_to_invoker_buttons
@@ -1101,6 +1152,102 @@ module Alpha
       find("#input").evaluate_script("this.focus()")
       assert_selector "#list:popover-open"
       all("#list [role='option']").to_a
+    end
+
+    def assert_auto_complete_anchor_resize(dimension:, theme:)
+      height = dimension == :width ? 128 : 800
+      options = open_auto_complete_results(height: height, theme: theme, results_width: :medium)
+      center_auto_complete_input(width: 1280, height: height)
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#input").style, {left: "100px", top: "#{dimension == :width ? 44 : 80}px"});
+        document.querySelector("#list").update();
+      JS
+      keyboard.type(:down)
+      assert_auto_complete_option_in_view(options.first)
+      assert_auto_complete_popup_in_view
+      count_auto_complete_updates
+      assert_auto_complete_geometry_settles
+      before = auto_complete_anchor_geometry
+      scroll_before = auto_complete_scroll_positions.except("results")
+      update_auto_complete_and_wait(<<~JS)
+        document.querySelector("#input").style.#{dimension} = "#{dimension == :width ? 350 : 80}px";
+      JS
+      repositioned = page.has_selector?("#list:popover-open") do
+        geometry = auto_complete_anchor_geometry
+        if dimension == :width
+          geometry["popup"]["left"] >= geometry["anchor"]["right"] + 3
+        else
+          (geometry["popup"]["top"] - geometry["anchor"]["bottom"] - 4).abs <= 1
+        end
+      end
+      after = auto_complete_anchor_geometry
+      assert_equal before.values_at("document", "viewport"), after.values_at("document", "viewport")
+      assert_equal before["popup"].values_at("width", "height"), after["popup"].values_at("width", "height")
+      assert_operator after["anchor"][dimension.to_s], :>, before["anchor"][dimension.to_s]
+      assert repositioned, "Input-only #{dimension} resize does not reposition the popup in #{theme}: #{before.inspect} -> #{after.inspect}"
+      assert_operator page.evaluate_script("window.autoCompleteUpdateCount"), :>, 0
+      assert_auto_complete_option_in_view(options.first)
+      assert_auto_complete_popup_in_view
+      assert_equal scroll_before, auto_complete_scroll_positions.except("results")
+      assert_auto_complete_geometry_settles
+      keyboard.type(:enter)
+      assert_field "input", with: options.first["data-autocomplete-value"]
+    end
+
+    def auto_complete_anchor_geometry
+      page.evaluate_script(<<~JS)
+        (function() {
+          const list = document.querySelector("#list");
+          const rectangle = element => {
+            const rect = element.getBoundingClientRect();
+            return {top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right,
+              width: rect.width, height: rect.height};
+          };
+          return {
+            anchor: rectangle(list.anchorElement),
+            popup: rectangle(list),
+            document: {width: document.documentElement.clientWidth, height: document.documentElement.clientHeight},
+            viewport: {
+              width: window.visualViewport.width, height: window.visualViewport.height,
+              left: window.visualViewport.offsetLeft, top: window.visualViewport.offsetTop
+            }
+          };
+        })()
+      JS
+    end
+
+    def track_auto_complete_resize_observations
+      page.execute_script(<<~JS)
+        window.autoCompleteObservedRows = new Set();
+        window.autoCompleteObservedAnchors = new Set();
+        window.autoCompleteResizeObserver = window.ResizeObserver;
+        const rows = window.autoCompleteObservedRows;
+        const anchors = window.autoCompleteObservedAnchors;
+        window.ResizeObserver = class extends window.ResizeObserver {
+          targets = new Set();
+          observe(target, options) {
+            super.observe(target, options);
+            if (target.matches("#list [role='option']")) rows.add(target);
+            else if (target.matches("#input, #replacement-input")) anchors.add(target);
+            else return;
+            this.targets.add(target);
+          }
+          unobserve(target) {
+            super.unobserve(target);
+            this.targets.delete(target);
+            rows.delete(target);
+            anchors.delete(target);
+          }
+          disconnect() {
+            super.disconnect();
+            for (const target of this.targets) {
+              rows.delete(target);
+              anchors.delete(target);
+            }
+            this.targets.clear();
+          }
+        };
+      JS
     end
 
     def assert_auto_complete_no_results_fit(height:, theme: "light", border_width: 0)
@@ -1405,12 +1552,94 @@ module Alpha
       assert_field "input", with: option["data-autocomplete-value"]
     end
 
+    def assert_auto_complete_oversized_reflow(direction:, action:)
+      options = open_auto_complete_results(results_width: :medium)
+      scroll_auto_complete_ancestors
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        Object.assign(list.style, {height: "96px", minHeight: "96px", maxHeight: "96px", overflowAnchor: "none"});
+        for (const [index, option] of Array.from(list.querySelectorAll("[role='option']")).entries()) {
+          const label = document.createElement("span");
+          label.className = "ActionListItem-label";
+          label.textContent = Array("#{direction}" === "above" && index < 8 ? 7 : 3).fill(option.dataset.autocompleteValue).join("\\n");
+          Object.assign(label.style, {whiteSpace: "pre-wrap", font: "12px/16px monospace", display: "block"});
+          option.replaceChildren(label);
+          Object.assign(option.style, {padding: "8px", flexShrink: "0"});
+        }
+        list.update();
+      JS
+      9.times { keyboard.type(:down) }
+      option = options[8]
+      assert_auto_complete_option_in_view(option)
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        const option = list.querySelectorAll("[role='option']")[8];
+        list.scrollTop += option.getBoundingClientRect().top - list.getBoundingClientRect().top - list.clientTop - 16;
+      JS
+      assert_auto_complete_option_in_view(option)
+      if action == :scroll
+        update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      end
+      count_auto_complete_updates
+      assert_auto_complete_geometry_settles
+      before = wrapping_option_geometry(index: 8)
+      scroll_before = auto_complete_scroll_positions
+
+      update_auto_complete_and_wait(<<~JS)
+        const options = document.querySelectorAll("#list [role='option']");
+        if ("#{direction}" === "above") {
+          for (const option of Array.from(options).slice(0, "#{action}" === "partial" ? 1 : 8)) {
+            option.firstElementChild.textContent = option.dataset.autocompleteValue;
+          }
+        } else if ("#{action}" !== "partial") {
+          options[0].firstElementChild.textContent = Array(13).fill(options[0].dataset.autocompleteValue).join("\\n");
+        }
+        options[8].firstElementChild.textContent = Array(11).fill(options[8].dataset.autocompleteValue).join("\\n");
+      JS
+      assert_selector "#list:popover-open" do
+        page.evaluate_script("window.autoCompleteUpdateCount") > 0
+      end
+      assert_auto_complete_geometry_settles
+      after = wrapping_option_geometry(index: 8)
+      assert_equal before.values_at("clientWidth", "clientHeight"), after.values_at("clientWidth", "clientHeight")
+      assert_operator after["optionHeight"], :>, after["clientHeight"]
+      assert_selector "#input[aria-activedescendant='#{option['id']}']"
+      assert_equal scroll_before.except("results"), auto_complete_scroll_positions.except("results")
+      if action == :scroll
+        assert_equal scroll_before, auto_complete_scroll_positions
+        assert_operator after["optionTop"], :>=, after["popupBottom"]
+      else
+        assert_operator after["optionTop"], :<, after["popupBottom"], "#{direction}/#{action}: #{before.inspect} -> #{after.inspect}"
+        assert_operator after["optionBottom"], :>, after["popupTop"], "#{direction}/#{action}: #{before.inspect} -> #{after.inspect}"
+        if action == :partial
+          assert_equal scroll_before, auto_complete_scroll_positions
+        else
+          assert_in_delta after["popupTop"], after["optionTop"], 1
+          assert_operator (after["scrollTop"] - scroll_before["results"]).abs, :>, 1
+        end
+      end
+
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#list").style, {height: "256px", minHeight: "256px", maxHeight: "256px"});
+      JS
+      assert_equal scroll_before.except("results"), auto_complete_scroll_positions.except("results")
+      if action == :scroll
+        assert_equal scroll_before, auto_complete_scroll_positions
+      else
+        assert_auto_complete_option_in_view(option)
+      end
+      assert_auto_complete_geometry_settles
+      keyboard.type(:enter)
+      assert_field "input", with: option["data-autocomplete-value"]
+    end
+
     def assert_auto_complete_update_lifecycle
       observing_rows = page.evaluate_script("!!window.autoCompleteObservedRows")
       if observing_rows
         assert_selector "#list:popover-open" do
           page.evaluate_script("window.autoCompleteObservedRows.size") == 18
         end
+        assert_equal 1, page.evaluate_script("window.autoCompleteObservedAnchors.size")
       end
       update_auto_complete_and_wait(<<~JS)
         window.removedAutoCompleteRow = document.querySelector("#list [role='option']");
@@ -1427,11 +1656,13 @@ module Alpha
         const option = document.querySelector("#list [role='option']");
         option.append(" fresh");
         option.style.paddingBlock = "24px";
+        document.querySelector("#input").style.height = "48px";
         window.dispatchEvent(new Event("resize"));
         window.visualViewport.dispatchEvent(new Event("resize"));
       JS
       assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Events or content changes update a closed popup"
       assert_equal 0, page.evaluate_script("window.autoCompleteObservedRows.size") if observing_rows
+      assert_equal 0, page.evaluate_script("window.autoCompleteObservedAnchors.size") if observing_rows
 
       update_auto_complete_and_wait("document.querySelector('#list').showPopover();")
       assert_auto_complete_popup_in_view
@@ -1440,9 +1671,11 @@ module Alpha
         window.autoCompleteUpdateCount = 0;
         const option = document.querySelector("#list [role='option']");
         option.replaceWith(option.cloneNode(true));
+        document.querySelector("#input").style.height = "64px";
       JS
       assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount"), "Content changes update a non-opted-in popup"
       assert_equal 0, page.evaluate_script("window.autoCompleteObservedRows.size") if observing_rows
+      assert_equal 0, page.evaluate_script("window.autoCompleteObservedAnchors.size") if observing_rows
       update_auto_complete_and_wait("document.querySelector('#list').displayInViewport = true;")
       update_auto_complete_and_wait(<<~JS)
         window.detachedPopup = document.querySelector("#list");
@@ -1455,6 +1688,7 @@ module Alpha
       JS
       assert_equal 0, page.evaluate_script("window.autoCompleteUpdateCount")
       assert_equal 0, page.evaluate_script("window.autoCompleteObservedRows.size") if observing_rows
+      assert_equal 0, page.evaluate_script("window.autoCompleteObservedAnchors.size") if observing_rows
     ensure
       page.execute_script(<<~JS)
         if (window.detachedPopup && window.detachedPopupParent) {
@@ -1549,7 +1783,9 @@ module Alpha
           return {
             width: list.getBoundingClientRect().width, clientWidth: list.clientWidth, clientHeight: list.clientHeight,
             optionHeight: option.getBoundingClientRect().height, optionBottom: option.getBoundingClientRect().bottom,
+            optionTop: option.getBoundingClientRect().top, scrollTop: list.scrollTop,
             labelHeight: option.firstElementChild.getBoundingClientRect().height,
+            popupTop: list.getBoundingClientRect().top + list.clientTop,
             popupBottom: list.getBoundingClientRect().top + list.clientTop + list.clientHeight
           };
         })(arguments[0])
