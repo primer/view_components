@@ -259,6 +259,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   #activeOptionState: {
     id: string
     restore: boolean
+    pendingSelection: boolean
     clientWidth: number
     clientHeight: number
     scrollHeight: number
@@ -297,6 +298,24 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     return option && this.contains(option) ? option : null
   }
 
+  #getMinimumHeight() {
+    const activeOption = this.#getActiveOption()
+    let optionHeight = activeOption?.getBoundingClientRect().height ?? 0
+    if (!activeOption) {
+      for (const option of this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]')) {
+        optionHeight = Math.max(optionHeight, option.getBoundingClientRect().height)
+      }
+    }
+    const style = getComputedStyle(this)
+    return (
+      optionHeight +
+      parseFloat(style.paddingTop) +
+      parseFloat(style.paddingBottom) +
+      parseFloat(style.borderTopWidth) +
+      parseFloat(style.borderBottomWidth)
+    )
+  }
+
   #getActiveOptionState() {
     if (!this.isConnected || !this.displayInViewport || !isVisible(this)) return null
     const option = this.#getActiveOption()
@@ -307,6 +326,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     const left = popup.left + this.clientLeft
     return {
       id: option.id,
+      pendingSelection: false,
       clientWidth: this.clientWidth,
       clientHeight: this.clientHeight,
       scrollHeight: this.scrollHeight,
@@ -357,11 +377,19 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         this.#activeOptionState = null
         if (observedAnchor) {
           this.#mutationObserver ||= new MutationObserver(records => {
+            const previousId = this.#activeOptionState?.id
             this.#rememberActiveOption()
+            if (
+              this.#activeOptionState &&
+              this.#activeOptionState.id !== previousId &&
+              records.some(record => record.type === 'attributes')
+            ) {
+              this.#activeOptionState.pendingSelection = true
+            }
             if (records.some(record => record.type !== 'attributes')) {
               this.#observeOptions()
-              if (this.displayInViewport && isVisible(this)) this.update()
             }
+            if (this.displayInViewport && isVisible(this)) this.update()
           })
           this.#mutationObserver.observe(observedAnchor, {
             attributes: true,
@@ -386,7 +414,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         const anchorRect = anchor.getBoundingClientRect()
         const scrollTop = this.scrollTop
         this.style.setProperty('--anchored-position-available-width', `${viewport.width}px`)
-        let availableHeight = Math.min(
+        const availableHeight = Math.min(
           viewport.height,
           Math.max(
             anchorRect.top - viewport.top - this.anchorOffset,
@@ -394,15 +422,13 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
             0,
           ),
         )
-        let optionHeight = 0
-        for (const option of this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]')) {
-          optionHeight = Math.max(optionHeight, option.getBoundingClientRect().height)
-        }
+        this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
         const horizontalSpace = Math.max(
           anchorRect.left - viewport.left - this.anchorOffset,
           viewport.right - anchorRect.right - this.anchorOffset,
         )
-        if (availableHeight < optionHeight) {
+        const heightDeficit = this.#getMinimumHeight() - this.getBoundingClientRect().height
+        if (heightDeficit > pixelTolerance) {
           const minWidth = parseFloat(getComputedStyle(this).minWidth) || 0
           if (horizontalSpace >= minWidth) {
             this.style.setProperty(
@@ -410,11 +436,14 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
               `${Math.min(viewport.width, horizontalSpace)}px`,
             )
           }
-          if (this.getBoundingClientRect().width <= horizontalSpace) {
-            availableHeight = viewport.height
+          this.style.setProperty('--anchored-position-available-height', `${viewport.height}px`)
+          const candidate = this.getBoundingClientRect()
+          // If neither candidate fits, keep the one that clips less content.
+          if (candidate.width > horizontalSpace || this.#getMinimumHeight() - candidate.height >= heightDeficit) {
+            this.style.setProperty('--anchored-position-available-width', `${viewport.width}px`)
+            this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
           }
         }
-        this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
         // Measuring the configured width must not change the results' scroll position.
         this.scrollTop = scrollTop
       } else {
@@ -436,7 +465,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           this.displayInViewport &&
           clientHeight > 0 &&
           activeOption &&
-          previousActiveOption?.restore &&
+          (previousActiveOption?.restore || previousActiveOption?.pendingSelection) &&
           activeOption.id === previousActiveOption.id
         ) {
           const topEdge = this.getBoundingClientRect().top + this.clientTop

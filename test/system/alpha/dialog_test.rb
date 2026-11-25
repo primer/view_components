@@ -592,42 +592,27 @@ module Alpha
     end
 
     def test_auto_complete_no_results_message_fits_short_viewport
-      open_auto_complete_results(results_width: :medium)
-      page.execute_script("document.querySelector('auto-complete').src = '/auto_complete_no_results';")
-      fill_in "input", with: "no matching fruits"
-      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", text: "No results!"
-      find("#input").evaluate_script("this.focus()")
-      center_auto_complete_input(width: 1280, height: 100)
-      assert_auto_complete_popup_in_view
+      assert_auto_complete_no_results_fit(height: 100)
+    end
 
-      geometry = nil
-      in_view = page.has_selector?("#list [data-no-result-found='true']") do |message|
-        geometry = message.evaluate_script(<<~JS)
-          (function(message) {
-            const list = message.closest("anchored-position");
-            const rect = message.getBoundingClientRect();
-            const popup = list.getBoundingClientRect();
-            const top = popup.top + list.clientTop;
-            const left = popup.left + list.clientLeft;
-            return {
-              visible: rect.height > 0 && rect.width > 0 &&
-                rect.top >= top && rect.bottom <= top + list.clientHeight &&
-                rect.left >= left && rect.right <= left + list.clientWidth,
-              message: {top: rect.top, bottom: rect.bottom, height: rect.height},
-              popup: {top, height: list.clientHeight}
-            };
-          })(this)
-        JS
-        geometry["visible"]
+    def test_auto_complete_no_results_message_fits_padding_boundary
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_no_results_fit(height: 128, theme: theme)
       end
-      assert in_view, "The no-results message is clipped: #{geometry.inspect}"
+    end
 
-      keyboard.type(:down, :up, :enter)
-      assert_selector "#input:not([aria-activedescendant])"
-      assert_field "input", with: "no matching fruits"
-      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", count: 1
-      refute_selector "#list [role='option']", visible: :all
-      assert_accessible
+    def test_auto_complete_no_results_message_fits_bordered_padding_boundary
+      assert_auto_complete_no_results_fit(height: 128, border_width: 2)
+    end
+
+    def test_auto_complete_keyboard_selection_reconsiders_narrowed_side_placement
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_mixed_height_placement(theme: theme, manually_scrolled: false)
+      end
+    end
+
+    def test_auto_complete_mixed_height_placement_preserves_manual_scroll
+      assert_auto_complete_mixed_height_placement(theme: "light", manually_scrolled: true)
     end
 
     def test_auto_complete_css_height_shrink_preserves_manual_scroll
@@ -1116,6 +1101,140 @@ module Alpha
       find("#input").evaluate_script("this.focus()")
       assert_selector "#list:popover-open"
       all("#list [role='option']").to_a
+    end
+
+    def assert_auto_complete_no_results_fit(height:, theme: "light", border_width: 0)
+      open_auto_complete_results(results_width: :medium, theme: theme)
+      page.execute_script("document.querySelector('auto-complete').src = '/auto_complete_no_results';")
+      fill_in "input", with: "no matching fruits"
+      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", text: "No results!"
+      find("#input").evaluate_script("this.focus()")
+      page.execute_script(<<~JS)
+        Object.assign(document.querySelector("#list").style, {borderStyle: "solid", borderWidth: "#{border_width}px"});
+      JS
+      center_auto_complete_input(width: 1280, height: height)
+      assert_auto_complete_popup_in_view
+
+      geometry = nil
+      in_view = page.has_selector?("#list [data-no-result-found='true']") do |message|
+        geometry = message.evaluate_script(<<~JS)
+          (function(message) {
+            const list = message.closest("anchored-position");
+            const rect = message.getBoundingClientRect();
+            const popup = list.getBoundingClientRect();
+            const style = getComputedStyle(list);
+            const top = popup.top + list.clientTop;
+            const left = popup.left + list.clientLeft;
+            return {
+              visible: rect.height > 0 && rect.width > 0 &&
+                rect.top >= top && rect.bottom <= top + list.clientHeight &&
+                rect.left >= left && rect.right <= left + list.clientWidth &&
+                rect.top >= 0 && rect.bottom <= document.documentElement.clientHeight &&
+                rect.left >= 0 && rect.right <= document.documentElement.clientWidth,
+              message: {top: rect.top, bottom: rect.bottom, height: rect.height},
+              popup: {
+                top, height: list.clientHeight, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom,
+                borderTop: style.borderTopWidth, borderBottom: style.borderBottomWidth
+              }
+            };
+          })(this)
+        JS
+        geometry["visible"]
+      end
+      assert in_view, "The no-results message is clipped in #{theme}: #{geometry.inspect}"
+
+      keyboard.type(:down, :up, :enter)
+      assert_selector "#input:not([aria-activedescendant])"
+      assert_field "input", with: "no matching fruits"
+      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", count: 1
+      refute_selector "#list [role='option']", visible: :all
+      assert_accessible
+    end
+
+    def assert_auto_complete_mixed_height_placement(theme:, manually_scrolled:)
+      options = open_auto_complete_results(width: 1400, results_width: :xxlarge, theme: theme)
+      update_auto_complete_and_wait(<<~JS)
+        const labels = document.querySelectorAll("#list .ActionListItem-label");
+        labels[0].replaceChildren("Fresh ripe fruit picked this morning", document.createElement("br"),
+          "Red", document.createElement("br"), "Sweet");
+        labels[1].textContent = "M";
+        const range = document.createRange();
+        range.selectNodeContents(labels[1]);
+        labels[1].textContent = "M".repeat(Math.floor(labels[1].clientWidth / range.getBoundingClientRect().width * 0.98));
+      JS
+      configured = wrapping_option_geometry(index: 1)
+      first_configured = wrapping_option_geometry(index: 0)
+      center_auto_complete_input(width: 1400, height: 128)
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        Object.assign(document.querySelector("#input").style, {left: "200px", width: "1000px", top: "60px"});
+        const anchor = document.querySelector("#input").getBoundingClientRect();
+        const style = getComputedStyle(list);
+        window.mixedHeightGeometry = {
+          available: Math.max(anchor.top - list.anchorOffset,
+            document.documentElement.clientHeight - anchor.bottom - list.anchorOffset),
+          sideSpace: Math.max(anchor.left - list.anchorOffset,
+            document.documentElement.clientWidth - anchor.right - list.anchorOffset),
+          insets: ["paddingTop", "paddingBottom", "borderTopWidth", "borderBottomWidth"].reduce(
+            (sum, property) => sum + parseFloat(style[property]), 0)
+        };
+        list.update();
+      JS
+      setup_geometry = page.evaluate_script("window.mixedHeightGeometry")
+      assert_operator configured["optionHeight"] + setup_geometry["insets"], :<=, setup_geometry["available"]
+      assert_in_delta 196, setup_geometry["sideSpace"], 1
+
+      keyboard.type(:down)
+      assert_auto_complete_option_in_view(options.first)
+      assert_auto_complete_popup_in_view
+      narrowed = wrapping_option_geometry(index: 1)
+      assert_operator narrowed["width"], :<, configured["width"]
+      assert_operator narrowed["optionHeight"], :>, narrowed["clientHeight"], narrowed.inspect
+      assert_operator wrapping_option_geometry(index: 0)["optionHeight"], :>, first_configured["optionHeight"]
+      count_auto_complete_updates
+      assert_auto_complete_geometry_settles
+      updates = page.evaluate_script("window.autoCompleteUpdateCount")
+      scroll_before = auto_complete_scroll_positions.except("results")
+
+      keyboard.type(:down)
+
+      assert_auto_complete_option_in_view(options[1], context: { configured: configured, narrowed: narrowed, slots: setup_geometry })
+      assert_auto_complete_popup_in_view
+      widened = wrapping_option_geometry(index: 1)
+      assert_in_delta configured["width"], widened["width"], 1
+      assert_in_delta configured["optionHeight"], widened["optionHeight"], 1
+      assert_operator page.evaluate_script("window.autoCompleteUpdateCount"), :>, updates
+      assert_equal scroll_before, auto_complete_scroll_positions.except("results")
+      assert_auto_complete_geometry_settles
+      if manually_scrolled
+        update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+        before = auto_complete_scroll_positions
+        update_auto_complete_and_wait(<<~JS)
+          document.querySelectorAll("#list .ActionListItem-label")[2].append(" fresh");
+        JS
+        assert_auto_complete_geometry_settles
+        assert_equal before, auto_complete_scroll_positions
+        geometry = wrapping_option_geometry(index: 1)
+        assert_operator geometry["optionBottom"], :>, geometry["popupBottom"]
+        assert_selector "#input[aria-activedescendant='#{options[1]['id']}']"
+      else
+        keyboard.type(:up)
+        assert_auto_complete_option_in_view(options.first)
+        assert_operator wrapping_option_geometry["width"], :<, configured["width"]
+        assert_auto_complete_geometry_settles
+        window.resize(width: 1400, height: 800)
+        assert_selector "#list:popover-open" do |list|
+          (list.evaluate_script("this.getBoundingClientRect().width") - configured["width"]).abs <= 1
+        end
+        assert_auto_complete_option_in_view(options.first)
+        assert_in_delta configured["width"], wrapping_option_geometry["width"], 1
+        assert_equal scroll_before, auto_complete_scroll_positions.except("results")
+        assert_auto_complete_geometry_settles
+        keyboard.type(:down)
+        assert_auto_complete_option_in_view(options[1])
+      end
+      keyboard.type(:enter)
+      assert_field "input", with: options[1]["data-autocomplete-value"]
     end
 
     def assert_auto_complete_width_reflow(visual_width:)
@@ -1638,7 +1757,7 @@ module Alpha
       end
     end
 
-    def assert_auto_complete_option_in_view(option)
+    def assert_auto_complete_option_in_view(option, context: nil)
       assert_selector "#input[aria-activedescendant='#{option['id']}']"
 
       geometry = nil
@@ -1687,7 +1806,7 @@ module Alpha
         geometry["visible"]
       end
 
-      assert in_view, "Active AutoComplete option #{option['id']} is clipped: #{geometry.inspect}"
+      assert in_view, "Active AutoComplete option #{option['id']} is clipped: #{geometry.inspect} #{context.inspect if context}"
       assert_operator geometry["documentWidth"], :<=, geometry["viewport"]["width"],
                       "AutoComplete causes horizontal viewport overflow"
       assert_selector "dialog[open]"
