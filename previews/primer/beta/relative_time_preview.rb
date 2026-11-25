@@ -21,6 +21,7 @@ module Primer
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
       # @param format [Symbol] select [~, auto, micro, elapsed]
+      # @param absolute_format [Symbol] select [~, compact]
       # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
@@ -38,6 +39,7 @@ module Primer
         threshold: nil,
         precision: nil,
         format: nil,
+        absolute_format: nil,
         format_style: nil,
         datetime: Time.utc(2020, 1, 1, 0, 0, 0),
         lang: nil,
@@ -58,11 +60,31 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: format,
+                 absolute_format: absolute_format.presence&.to_sym,
                  format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title,
                  no_title: no_title
+               ))
+      end
+
+      # @label Compact Absolute Time
+      # @param datetime datetime-local
+      # @param threshold [String] text
+      # @param format [Symbol] select [auto, micro, elapsed]
+      def compact_absolute(datetime: Time.now.utc.change(hour: 15, min: 4), threshold: "PT0S", format: :auto)
+        datetime = Time.iso8601(datetime) if datetime.is_a?(String)
+
+        render(Primer::Beta::RelativeTime.new(
+                 datetime: datetime,
+                 absolute_format: :compact,
+                 threshold: threshold,
+                 format: format.to_sym,
+                 precision: :hour,
+                 lang: "en-US",
+                 time_zone: "UTC",
+                 hour_cycle: :h23
                ))
       end
 
