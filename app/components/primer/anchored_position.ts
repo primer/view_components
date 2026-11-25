@@ -1,6 +1,7 @@
 import type {AnchorAlignment, AnchorSide, PositionSettings} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
+const pixelTolerance = 1
 const alternateSides: Partial<Record<AnchorSide, AnchorSide[]>> = {
   'outside-top': ['outside-bottom', 'outside-right', 'outside-left', 'outside-bottom'],
   'outside-bottom': ['outside-top', 'outside-right', 'outside-left', 'outside-bottom'],
@@ -13,6 +14,10 @@ const alternateAlignments: Record<AnchorAlignment, AnchorAlignment[]> = {
   center: ['end', 'start'],
 }
 
+function isVisible(element: HTMLElement) {
+  return typeof element.checkVisibility === 'function' ? element.checkVisibility() : element.getClientRects().length > 0
+}
+
 const updateWhenVisible = (() => {
   const anchors = new Set<AnchoredPositionElement>()
   const connectedAnchors = new Set<AnchoredPositionElement>()
@@ -20,12 +25,12 @@ const updateWhenVisible = (() => {
   let resizeObserver: ResizeObserver | null = null
   function updateAnchors() {
     for (const anchor of connectedAnchors) {
-      if (anchor.displayInViewport ? anchor.checkVisibility() : anchors.has(anchor)) anchor.update()
+      if (anchor.displayInViewport ? isVisible(anchor) : anchors.has(anchor)) anchor.update()
     }
   }
   function updateViewportAnchors() {
     for (const anchor of connectedAnchors) {
-      if (anchor.displayInViewport && anchor.checkVisibility()) anchor.update()
+      if (anchor.displayInViewport && isVisible(anchor)) anchor.update()
     }
   }
   function updateScrollingViewportAnchors(event: Event) {
@@ -36,7 +41,7 @@ const updateWhenVisible = (() => {
         anchor.displayInViewport &&
         !anchor.contains(target) &&
         target.contains(anchor.anchorElement) &&
-        anchor.checkVisibility()
+        isVisible(anchor)
       ) {
         anchor.update()
       }
@@ -182,6 +187,8 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.#stopObserving?.()
     this.#stopObserving = undefined
     this.#mutationObserver?.disconnect()
+    this.#optionResizeObserver?.disconnect()
+    this.#observedOptions.clear()
     this.#observedAnchor = null
     this.removeEventListener('beforetoggle', this.#beforeToggle)
     this.removeEventListener('scroll', this.#rememberActiveOption)
@@ -251,15 +258,39 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   #animationFrame: ReturnType<typeof requestAnimationFrame>
   #activeOptionState: {
     id: string
-    visible: boolean
+    restore: boolean
     clientWidth: number
     clientHeight: number
     scrollHeight: number
+    scrollTop: number
+    scrollLeft: number
     top: number
     height: number
   } | null = null
   #mutationObserver: MutationObserver | null = null
   #observedAnchor: HTMLElement | null = null
+  #optionResizeObserver: ResizeObserver | null = null
+  #observedOptions = new Set<HTMLElement>()
+
+  #observeOptions() {
+    if (!this.isConnected || !this.displayInViewport || !this.anchorElement || !isVisible(this)) {
+      this.#optionResizeObserver?.disconnect()
+      this.#observedOptions.clear()
+      return
+    }
+    this.#optionResizeObserver ||= new ResizeObserver(() => {
+      if (this.isConnected && this.displayInViewport && isVisible(this)) this.update()
+    })
+    const options = new Set(this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]'))
+    for (const option of this.#observedOptions) {
+      if (!options.has(option)) this.#optionResizeObserver.unobserve(option)
+    }
+    for (const option of options) {
+      if (!this.#observedOptions.has(option)) this.#optionResizeObserver.observe(option, {box: 'border-box'})
+    }
+    this.#observedOptions = options
+  }
+
   #getActiveOption() {
     const id = this.anchorElement?.getAttribute('aria-activedescendant')
     const option = id ? this.ownerDocument.getElementById(id) : null
@@ -267,7 +298,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   #getActiveOptionState() {
-    if (!this.isConnected || !this.displayInViewport || !this.checkVisibility()) return null
+    if (!this.isConnected || !this.displayInViewport || !isVisible(this)) return null
     const option = this.#getActiveOption()
     if (!option) return null
     const rect = option.getBoundingClientRect()
@@ -279,22 +310,24 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       clientWidth: this.clientWidth,
       clientHeight: this.clientHeight,
       scrollHeight: this.scrollHeight,
+      scrollTop: this.scrollTop,
+      scrollLeft: this.scrollLeft,
       top: rect.top - top + this.scrollTop,
       height: rect.height,
-      visible:
+      restore:
         rect.height > 0 &&
         rect.width > 0 &&
-        rect.top >= top &&
-        rect.bottom <= top + this.clientHeight &&
-        rect.left >= left &&
-        rect.right <= left + this.clientWidth,
+        rect.top >= top - pixelTolerance &&
+        rect.bottom <= top + this.clientHeight + pixelTolerance &&
+        rect.left >= left - pixelTolerance &&
+        rect.right <= left + this.clientWidth + pixelTolerance,
     }
   }
 
   #rememberActiveOption = () => {
     const state = this.#getActiveOptionState()
     const previous = this.#activeOptionState
-    // Keep the last stable visibility until reflow finishes.
+    // Keep restoration eligibility through reflow and our own scroll writes.
     if (
       state &&
       previous &&
@@ -302,8 +335,9 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       (state.clientWidth !== previous.clientWidth ||
         state.clientHeight !== previous.clientHeight ||
         state.scrollHeight !== previous.scrollHeight ||
-        state.top !== previous.top ||
-        state.height !== previous.height)
+        Math.abs(state.top - previous.top) > pixelTolerance ||
+        Math.abs(state.height - previous.height) > pixelTolerance ||
+        (state.scrollTop === previous.scrollTop && state.scrollLeft === previous.scrollLeft))
     ) {
       return
     }
@@ -324,12 +358,9 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         if (observedAnchor) {
           this.#mutationObserver ||= new MutationObserver(records => {
             this.#rememberActiveOption()
-            if (
-              records.some(record => record.type !== 'attributes') &&
-              this.displayInViewport &&
-              this.checkVisibility()
-            ) {
-              this.update()
+            if (records.some(record => record.type !== 'attributes')) {
+              this.#observeOptions()
+              if (this.displayInViewport && isVisible(this)) this.update()
             }
           })
           this.#mutationObserver.observe(observedAnchor, {
@@ -339,6 +370,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           this.#mutationObserver.observe(this, {childList: true, characterData: true, subtree: true})
         }
       }
+      this.#observeOptions()
       this.#rememberActiveOption()
       const previousActiveOption = this.#activeOptionState
       const visualViewport = this.ownerDocument.defaultView?.visualViewport
@@ -349,7 +381,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         visualViewport?.height ?? this.ownerDocument.documentElement.clientHeight,
       )
       this.classList.toggle('not-anchored', !anchor)
-      if (anchor && this.displayInViewport) {
+      if (anchor && this.displayInViewport && !this.allowOutOfBounds) {
         // Constrain the width before measuring options and choosing a fitting side.
         const anchorRect = anchor.getBoundingClientRect()
         const scrollTop = this.scrollTop
@@ -372,7 +404,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         )
         if (availableHeight < optionHeight) {
           const minWidth = parseFloat(getComputedStyle(this).minWidth) || 0
-          if (!this.allowOutOfBounds && horizontalSpace >= minWidth) {
+          if (horizontalSpace >= minWidth) {
             this.style.setProperty(
               '--anchored-position-available-width',
               `${Math.min(viewport.width, horizontalSpace)}px`,
@@ -404,19 +436,30 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           this.displayInViewport &&
           clientHeight > 0 &&
           activeOption &&
-          previousActiveOption?.visible &&
+          previousActiveOption?.restore &&
           activeOption.id === previousActiveOption.id
         ) {
           const topEdge = this.getBoundingClientRect().top + this.clientTop
           const bottomEdge = topEdge + clientHeight
           const activeRect = activeOption.getBoundingClientRect()
-          if (activeRect.top < topEdge) {
-            this.scrollTop += activeRect.top - topEdge
-          } else if (activeRect.bottom > bottomEdge) {
-            this.scrollTop += activeRect.bottom - bottomEdge
+          if (activeRect.height <= clientHeight + pixelTolerance) {
+            if (activeRect.top < topEdge) {
+              this.scrollTop += activeRect.top - topEdge
+            } else if (activeRect.bottom > bottomEdge) {
+              this.scrollTop += activeRect.bottom - bottomEdge
+            }
           }
         }
-        this.#activeOptionState = this.#getActiveOptionState()
+        const state = this.#getActiveOptionState()
+        if (
+          state &&
+          previousActiveOption?.restore &&
+          state.id === previousActiveOption.id &&
+          state.height > state.clientHeight + pixelTolerance
+        ) {
+          state.restore = true
+        }
+        this.#activeOptionState = state
       } else {
         this.style.top = '0'
         this.style.left = '0'
