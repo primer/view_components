@@ -262,12 +262,10 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     id: string
     restore: boolean
     pendingSelection: boolean
-    clientWidth: number
     clientHeight: number
     scrollHeight: number
     scrollTop: number
     scrollLeft: number
-    top: number
     height: number
   } | null = null
   #mutationObserver: MutationObserver | null = null
@@ -326,29 +324,32 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     )
   }
 
-  #getActiveOptionState() {
+  #getActiveOptionState(allowPartial = false) {
     if (!this.isConnected || !this.displayInViewport || !isVisible(this)) return null
     const option = this.#getActiveOption()
     if (!option) return null
     const rect = option.getBoundingClientRect()
     const popup = this.getBoundingClientRect()
     const top = popup.top + this.clientTop
+    const bottom = top + this.clientHeight
     const left = popup.left + this.clientLeft
+    const restorePartial =
+      allowPartial || (this.#activeOptionState?.id === option.id && this.#activeOptionState.restore)
     return {
       id: option.id,
       pendingSelection: false,
-      clientWidth: this.clientWidth,
       clientHeight: this.clientHeight,
       scrollHeight: this.scrollHeight,
       scrollTop: this.scrollTop,
       scrollLeft: this.scrollLeft,
-      top: rect.top - top + this.scrollTop,
       height: rect.height,
       restore:
+        this.clientHeight > 0 &&
         rect.height > 0 &&
         rect.width > 0 &&
-        rect.top >= top - pixelTolerance &&
-        rect.bottom <= top + this.clientHeight + pixelTolerance &&
+        (rect.height > this.clientHeight + pixelTolerance
+          ? restorePartial && rect.top < bottom && rect.bottom > top
+          : rect.top >= top - pixelTolerance && rect.bottom <= bottom + pixelTolerance) &&
         rect.left >= left - pixelTolerance &&
         rect.right <= left + this.clientWidth + pixelTolerance,
     }
@@ -357,17 +358,15 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   #rememberActiveOption = () => {
     const state = this.#getActiveOptionState()
     const previous = this.#activeOptionState
-    // Keep restoration eligibility through reflow and our own scroll writes.
+    const maxScrollTop = state ? Math.max(0, state.scrollHeight - state.clientHeight) : 0
+    // Reflow alone does not distinguish manual scrolling from a browser clamp.
     if (
       state &&
       previous &&
       state.id === previous.id &&
-      (state.clientWidth !== previous.clientWidth ||
-        state.clientHeight !== previous.clientHeight ||
-        state.scrollHeight !== previous.scrollHeight ||
-        Math.abs(state.top - previous.top) > pixelTolerance ||
-        Math.abs(state.height - previous.height) > pixelTolerance ||
-        (state.scrollTop === previous.scrollTop && state.scrollLeft === previous.scrollLeft))
+      state.scrollLeft === previous.scrollLeft &&
+      (state.scrollTop === previous.scrollTop ||
+        (previous.scrollTop > maxScrollTop && Math.abs(state.scrollTop - maxScrollTop) <= pixelTolerance))
     ) {
       return
     }
@@ -394,6 +393,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
               this.#activeOptionState.id !== previousId &&
               records.some(record => record.type === 'attributes')
             ) {
+              this.#activeOptionState.restore = this.#getActiveOptionState(true)?.restore ?? false
               this.#activeOptionState.pendingSelection = true
             }
             if (records.some(record => record.type !== 'attributes')) {

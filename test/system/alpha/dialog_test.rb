@@ -587,6 +587,10 @@ module Alpha
       assert_auto_complete_temporary_undersizing(action: :selection)
     end
 
+    def test_auto_complete_temporary_undersizing_restores_new_partly_visible_selection
+      assert_auto_complete_temporary_undersizing(action: :partial_selection)
+    end
+
     def test_auto_complete_temporary_undersizing_resets_after_reopen
       assert_auto_complete_temporary_undersizing(action: :reopen)
     end
@@ -609,6 +613,38 @@ module Alpha
       [:above, :below].each do |direction|
         assert_auto_complete_oversized_reflow(direction: direction, action: :partial)
       end
+    end
+
+    def test_auto_complete_oversized_first_selection_recovers_after_reflow_above
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_oversized_first_selection(direction: :above, action: :none, theme: theme)
+      end
+    end
+
+    def test_auto_complete_oversized_first_selection_recovers_after_reflow_below
+      ApplicationController.helpers.color_themes.each do |theme|
+        assert_auto_complete_oversized_first_selection(direction: :below, action: :none, theme: theme)
+      end
+    end
+
+    def test_auto_complete_oversized_first_selection_preserves_manual_scroll
+      [:above, :below].each do |direction|
+        assert_auto_complete_oversized_first_selection(direction: direction, action: :scroll)
+      end
+    end
+
+    def test_auto_complete_oversized_first_selection_preserves_partial_visibility
+      [:above, :below].each do |direction|
+        assert_auto_complete_oversized_first_selection(direction: direction, action: :partial)
+      end
+    end
+
+    def test_auto_complete_preserves_manual_scroll_during_pending_resize
+      assert_auto_complete_pending_reflow_scroll(cause: :resize)
+    end
+
+    def test_auto_complete_preserves_manual_scroll_during_pending_content_reflow
+      assert_auto_complete_pending_reflow_scroll(cause: :content)
     end
 
     def test_auto_complete_layout_widening_keeps_active_option_visible
@@ -1517,9 +1553,26 @@ module Alpha
       case action
       when :scroll
         update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
-      when :selection
+      when :selection, :partial_selection
+        if action == :selection
+          # Keep the new selection offscreen before the active-ID observer runs.
+          page.execute_script(<<~JS)
+            document.querySelector("#input").addEventListener("keydown", () => {
+              document.querySelector("#list").scrollTop = 0;
+            }, {once: true});
+          JS
+        end
         keyboard.type(:down)
         option = options[9]
+        selection = wrapping_option_geometry(index: 9)
+        assert_operator selection["optionHeight"], :>, selection["clientHeight"]
+        if action == :selection
+          assert_equal 0, selection["scrollTop"]
+          assert_operator selection["optionTop"], :>=, selection["popupBottom"]
+        else
+          assert_operator selection["optionTop"], :<, selection["popupBottom"]
+          assert_operator selection["optionBottom"], :>, selection["popupTop"]
+        end
       when :reopen
         update_auto_complete_and_wait("document.querySelector('#list').hidePopover();")
         update_auto_complete_and_wait("document.querySelector('#list').showPopover();")
@@ -1540,7 +1593,7 @@ module Alpha
       assert_equal 96, page.evaluate_script("document.querySelector('#list').clientHeight")
       assert_selector "#input[aria-activedescendant='#{option['id']}']"
       assert_equal before.except("results"), auto_complete_scroll_positions.except("results")
-      if action == :none
+      if [:none, :partial_selection].include?(action)
         assert_auto_complete_option_in_view(option)
       else
         assert_equal undersized, auto_complete_scroll_positions
@@ -1552,8 +1605,8 @@ module Alpha
       assert_field "input", with: option["data-autocomplete-value"]
     end
 
-    def assert_auto_complete_oversized_reflow(direction:, action:)
-      options = open_auto_complete_results(results_width: :medium)
+    def open_auto_complete_restoration_results(direction: :below, oversized: false, theme: "light")
+      options = open_auto_complete_results(results_width: :medium, theme: theme)
       scroll_auto_complete_ancestors
       update_auto_complete_and_wait(<<~JS)
         const list = document.querySelector("#list");
@@ -1561,13 +1614,29 @@ module Alpha
         for (const [index, option] of Array.from(list.querySelectorAll("[role='option']")).entries()) {
           const label = document.createElement("span");
           label.className = "ActionListItem-label";
-          label.textContent = Array("#{direction}" === "above" && index < 8 ? 7 : 3).fill(option.dataset.autocompleteValue).join("\\n");
+          const lines = index === 8 && #{oversized} ? 11 : "#{direction}" === "above" && index < (#{oversized} ? 7 : 8) ? 7 : 3;
+          label.textContent = Array(lines).fill(option.dataset.autocompleteValue).join("\\n");
           Object.assign(label.style, {whiteSpace: "pre-wrap", font: "12px/16px monospace", display: "block"});
           option.replaceChildren(label);
           Object.assign(option.style, {padding: "8px", flexShrink: "0"});
         }
+        window.autoCompleteRestorationGeometry = () => {
+          const rect = list.querySelectorAll("[role='option']")[8].getBoundingClientRect();
+          const top = list.getBoundingClientRect().top + list.clientTop;
+          return {
+            clientHeight: list.clientHeight, scrollHeight: list.scrollHeight, scrollTop: list.scrollTop,
+            optionTop: rect.top, optionBottom: rect.bottom, optionHeight: rect.height,
+            popupTop: top, popupBottom: top + list.clientHeight,
+            updates: window.autoCompleteUpdateCount ?? 0
+          };
+        };
         list.update();
       JS
+      options
+    end
+
+    def assert_auto_complete_oversized_reflow(direction:, action:)
+      options = open_auto_complete_restoration_results(direction: direction)
       9.times { keyboard.type(:down) }
       option = options[8]
       assert_auto_complete_option_in_view(option)
@@ -1629,6 +1698,156 @@ module Alpha
         assert_auto_complete_option_in_view(option)
       end
       assert_auto_complete_geometry_settles
+      keyboard.type(:enter)
+      assert_field "input", with: option["data-autocomplete-value"]
+    end
+
+    def assert_auto_complete_oversized_first_selection(direction:, action:, theme: "light")
+      options = open_auto_complete_restoration_results(direction: direction, oversized: true, theme: theme)
+      option = options[8]
+      before_selection = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      assert_operator before_selection["optionHeight"], :>, before_selection["clientHeight"]
+      8.times { keyboard.type(:down) }
+      assert_auto_complete_option_in_view(options[7])
+      keyboard.type(:down)
+      assert_selector "#input[aria-activedescendant='#{option['id']}']"
+      assert_auto_complete_geometry_settles
+      first_selection = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      assert_equal before_selection["optionHeight"], first_selection["optionHeight"]
+      assert_operator first_selection["optionHeight"], :>, first_selection["clientHeight"]
+      assert_operator first_selection["optionTop"], :<, first_selection["popupBottom"]
+      assert_operator first_selection["optionBottom"], :>, first_selection["popupTop"]
+      if action == :scroll
+        update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      end
+      scroll_before = auto_complete_scroll_positions
+      count_auto_complete_updates
+      assert_auto_complete_geometry_settles
+      update_auto_complete_and_wait(<<~JS)
+        const options = document.querySelectorAll("#list [role='option']");
+        if ("#{direction}" === "above") {
+          for (const option of Array.from(options).slice(0, "#{action}" === "partial" ? 1 : 8)) {
+            option.firstElementChild.textContent = option.dataset.autocompleteValue;
+          }
+        } else {
+          const option = options["#{action}" === "partial" ? 8 : 0];
+          option.firstElementChild.textContent = Array("#{action}" === "partial" ? 15 : 13).fill(option.dataset.autocompleteValue).join("\\n");
+        }
+        window.autoCompleteBeforeRestoration = window.autoCompleteRestorationGeometry();
+      JS
+      assert_auto_complete_geometry_settles
+      interrupted = page.evaluate_script("window.autoCompleteBeforeRestoration")
+      after = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      scroll_after = auto_complete_scroll_positions
+      assert_operator after["updates"], :>, 0
+
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#list").style, {height: "256px", minHeight: "256px", maxHeight: "256px"});
+      JS
+      assert_auto_complete_geometry_settles
+      expanded = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      evidence = "#{theme}/#{direction}/#{action}: first=#{first_selection.inspect}, before update=#{interrupted.inspect}, after=#{after.inspect}, expanded=#{expanded.inspect}"
+      assert_equal scroll_before.except("results"), scroll_after.except("results")
+      assert_equal scroll_before.except("results"), auto_complete_scroll_positions.except("results")
+      assert_selector "#input[aria-activedescendant='#{option['id']}']"
+      if action == :scroll
+        assert_equal scroll_before, scroll_after, evidence
+        assert_equal scroll_before, auto_complete_scroll_positions, evidence
+        assert_operator expanded["optionTop"], :>=, expanded["popupBottom"], evidence
+      else
+        if action == :none
+          if direction == :above
+            assert_operator interrupted["optionBottom"], :<=, interrupted["popupTop"], evidence
+          else
+            assert_operator interrupted["optionTop"], :>=, interrupted["popupBottom"], evidence
+          end
+        end
+        assert_operator after["optionTop"], :<, after["popupBottom"], evidence
+        assert_operator after["optionBottom"], :>, after["popupTop"], evidence
+        if action == :partial
+          assert_equal scroll_before, scroll_after, evidence
+        else
+          assert_in_delta after["popupTop"], after["optionTop"], 1, evidence
+        end
+        assert_operator expanded["optionTop"], :>=, expanded["popupTop"] - 1, evidence
+        assert_operator expanded["optionBottom"], :<=, expanded["popupBottom"] + 1, evidence
+        assert_auto_complete_option_in_view(option)
+      end
+      keyboard.type(:enter)
+      assert_field "input", with: option["data-autocomplete-value"]
+    end
+
+    def assert_auto_complete_pending_reflow_scroll(cause:)
+      options = open_auto_complete_restoration_results
+      9.times { keyboard.type(:down) }
+      option = options[8]
+      assert_auto_complete_option_in_view(option)
+      scroll_before = auto_complete_scroll_positions
+      count_auto_complete_updates
+      assert_auto_complete_geometry_settles
+      race = driver.evaluate_async_script(<<~JS)
+        const callback = arguments[arguments.length - 1];
+        const list = document.querySelector("#list");
+        const read = window.autoCompleteRestorationGeometry;
+        const trace = [];
+        const record = event => trace.push({event, ...read()});
+        const scroll = event => trace.push({event: "scroll", trusted: event.isTrusted, ...read()});
+        list.addEventListener("scroll", scroll);
+        const update = list.update;
+        list.update = function() {
+          record("schedule");
+          const frame = window.requestAnimationFrame;
+          window.requestAnimationFrame = handler => frame.call(window, timestamp => {
+            record("placement before");
+            handler(timestamp);
+            record("placement after");
+          });
+          try {
+            return update.call(this);
+          } finally {
+            window.requestAnimationFrame = frame;
+          }
+        };
+        if ("#{cause}" === "resize") {
+          Object.assign(list.style, {height: "64px", minHeight: "64px", maxHeight: "64px"});
+          window.dispatchEvent(new Event("resize"));
+        } else {
+          const option = list.querySelector("[role='option']");
+          option.firstElementChild.firstChild.data = Array(13).fill(option.dataset.autocompleteValue).join("\\n");
+        }
+        queueMicrotask(() => {
+          list.scrollTop = 0;
+          const requested = read();
+          record("independent scroll");
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            list.removeEventListener("scroll", scroll);
+            list.update = update;
+            callback({requested, trace});
+          }));
+        });
+      JS
+      assert_auto_complete_geometry_settles
+      after = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      scroll_after = auto_complete_scroll_positions
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#list").style, {height: "256px", minHeight: "256px", maxHeight: "256px"});
+      JS
+      assert_auto_complete_geometry_settles
+      expanded = page.evaluate_script("window.autoCompleteRestorationGeometry()")
+      evidence = "#{cause}: #{race.inspect}, after=#{after.inspect}, expanded=#{expanded.inspect}"
+      requested = race["requested"]
+      assert_equal 0, requested["scrollTop"], evidence
+      assert_operator requested["updates"], :>, 0, evidence
+      assert_operator requested["optionTop"], :>=, requested["popupBottom"], evidence
+      events = race["trace"].map { |event| event["event"] }
+      assert_operator events.index("schedule"), :<, events.index("independent scroll"), evidence
+      assert_operator events.index("independent scroll"), :<, events.index("placement before"), evidence
+      assert race["trace"].any? { |event| event["event"] == "scroll" && event["trusted"] }, evidence
+      assert_equal requested["scrollTop"], after["scrollTop"], evidence
+      assert_equal requested["scrollTop"], expanded["scrollTop"], evidence
+      assert_equal scroll_before.except("results"), scroll_after.except("results")
+      assert_equal scroll_before.except("results"), auto_complete_scroll_positions.except("results")
+      assert_selector "#input[aria-activedescendant='#{option['id']}']"
       keyboard.type(:enter)
       assert_field "input", with: option["data-autocomplete-value"]
     end
