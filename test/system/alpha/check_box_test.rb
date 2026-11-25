@@ -29,6 +29,23 @@ module Alpha
       end
     end
 
+    # Primitives still needs to correct the dimmed default; the gap tests include that theme.
+    %w[light dark light_colorblind dark_colorblind light_high_contrast dark_high_contrast].each do |theme|
+      define_method("test_selected_keyboard_focus_has_default_contrast_in_#{theme}") do
+        visit_preview(:playground, theme: theme)
+
+        theme_attribute = theme.start_with?("dark") ? "data-dark-theme" : "data-light-theme"
+        assert_selector "html[#{theme_attribute}='#{theme}']"
+        keyboard.type(:tab)
+        keyboard.type(:space)
+        assert_selector ".FormControl-checkbox:checked:focus-visible"
+
+        focus = focus_styles(".FormControl-checkbox")
+        assert_focus_gap(focus, theme)
+        assert_focus_contrast(focus, theme)
+      end
+    end
+
     {
       fixed_dark: [:dark, nil, "[data-color-mode='dark'][data-dark-theme='dark_dimmed']"],
       fixed_light: [:light, nil, "[data-color-mode='light'][data-light-theme='dark_dimmed']"],
@@ -106,6 +123,10 @@ module Alpha
     def assert_consumer_focus_color(focus, scope)
       assert_equal "rgb(255, 204, 0)", focus["color"], "#{scope}: the consumer focus token must set the outline"
       assert_focus_gap(focus, scope)
+      assert_focus_contrast(focus, scope)
+    end
+
+    def assert_focus_contrast(focus, scope)
       assert_operator contrast_ratio(focus["color"], focus["innerColor"]), :>=, 3, "#{scope}: outline against the inner adjacent color"
       assert_operator contrast_ratio(focus["color"], focus["outerColor"]), :>=, 3, "#{scope}: outline against the outer canvas"
     end
