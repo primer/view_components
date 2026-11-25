@@ -5,11 +5,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
-- [Testing](#testing)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Prerequisites](#prerequisites)
-  - [Continous Integration](#continous-integration)
+* [Testing](#testing)
+  * [Table of Contents](#table-of-contents)
+  * [Overview](#overview)
+  * [Prerequisites](#prerequisites)
+  * [Continous Integration](#continous-integration)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
