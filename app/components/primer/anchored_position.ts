@@ -186,10 +186,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     this.removeEventListener('beforetoggle', this.#beforeToggle)
     this.removeEventListener('scroll', this.#rememberActiveOption)
     cancelAnimationFrame(this.#animationFrame)
-    this.#previousClientHeight = 0
-    this.#previousClientWidth = 0
-    this.#previousActiveOptionId = ''
-    this.#activeOptionWasVisible = false
+    this.#activeOptionState = null
   }
 
   static observedAttributes = [
@@ -252,10 +249,15 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
   }
 
   #animationFrame: ReturnType<typeof requestAnimationFrame>
-  #previousClientHeight = 0
-  #previousClientWidth = 0
-  #previousActiveOptionId = ''
-  #activeOptionWasVisible = false
+  #activeOptionState: {
+    id: string
+    visible: boolean
+    clientWidth: number
+    clientHeight: number
+    scrollHeight: number
+    top: number
+    height: number
+  } | null = null
   #mutationObserver: MutationObserver | null = null
   #observedAnchor: HTMLElement | null = null
   #getActiveOption() {
@@ -264,24 +266,48 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     return option && this.contains(option) ? option : null
   }
 
-  #rememberActiveOption = () => {
-    // Layout CSS can resize the popup before the frame. Preserve its pre-reflow visibility.
-    if (!this.isConnected || !this.displayInViewport || this.clientWidth !== this.#previousClientWidth) return
+  #getActiveOptionState() {
+    if (!this.isConnected || !this.displayInViewport || !this.checkVisibility()) return null
     const option = this.#getActiveOption()
-    this.#previousActiveOptionId = option?.id || ''
-    this.#activeOptionWasVisible = false
-    if (!option) return
+    if (!option) return null
     const rect = option.getBoundingClientRect()
     const popup = this.getBoundingClientRect()
     const top = popup.top + this.clientTop
     const left = popup.left + this.clientLeft
-    this.#activeOptionWasVisible =
-      rect.height > 0 &&
-      rect.width > 0 &&
-      rect.top >= top &&
-      rect.bottom <= top + this.clientHeight &&
-      rect.left >= left &&
-      rect.right <= left + this.clientWidth
+    return {
+      id: option.id,
+      clientWidth: this.clientWidth,
+      clientHeight: this.clientHeight,
+      scrollHeight: this.scrollHeight,
+      top: rect.top - top + this.scrollTop,
+      height: rect.height,
+      visible:
+        rect.height > 0 &&
+        rect.width > 0 &&
+        rect.top >= top &&
+        rect.bottom <= top + this.clientHeight &&
+        rect.left >= left &&
+        rect.right <= left + this.clientWidth,
+    }
+  }
+
+  #rememberActiveOption = () => {
+    const state = this.#getActiveOptionState()
+    const previous = this.#activeOptionState
+    // Keep the last stable visibility until reflow finishes.
+    if (
+      state &&
+      previous &&
+      state.id === previous.id &&
+      (state.clientWidth !== previous.clientWidth ||
+        state.clientHeight !== previous.clientHeight ||
+        state.scrollHeight !== previous.scrollHeight ||
+        state.top !== previous.top ||
+        state.height !== previous.height)
+    ) {
+      return
+    }
+    this.#activeOptionState = state
   }
 
   update() {
@@ -294,8 +320,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
       if (this.#observedAnchor !== observedAnchor) {
         this.#mutationObserver?.disconnect()
         this.#observedAnchor = observedAnchor
-        this.#previousActiveOptionId = ''
-        this.#activeOptionWasVisible = false
+        this.#activeOptionState = null
         if (observedAnchor) {
           this.#mutationObserver ||= new MutationObserver(records => {
             this.#rememberActiveOption()
@@ -315,6 +340,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         }
       }
       this.#rememberActiveOption()
+      const previousActiveOption = this.#activeOptionState
       const visualViewport = this.ownerDocument.defaultView?.visualViewport
       const viewport = new DOMRect(
         visualViewport?.offsetLeft ?? 0,
@@ -337,7 +363,7 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           ),
         )
         let optionHeight = 0
-        for (const option of this.querySelectorAll<HTMLElement>('[role="option"]')) {
+        for (const option of this.querySelectorAll<HTMLElement>('[role="option"], [data-no-result-found]')) {
           optionHeight = Math.max(optionHeight, option.getBoundingClientRect().height)
         }
         const horizontalSpace = Math.max(
@@ -373,17 +399,13 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
         this.style.bottom = 'auto'
         this.style.right = 'auto'
         const clientHeight = this.clientHeight
-        const clientWidth = this.clientWidth
         const activeOption = this.#getActiveOption()
-        const restoreAfterWidthReflow =
-          clientWidth < this.#previousClientWidth &&
-          this.#activeOptionWasVisible &&
-          activeOption?.id === this.#previousActiveOptionId
         if (
           this.displayInViewport &&
           clientHeight > 0 &&
           activeOption &&
-          (clientHeight < this.#previousClientHeight || restoreAfterWidthReflow)
+          previousActiveOption?.visible &&
+          activeOption.id === previousActiveOption.id
         ) {
           const topEdge = this.getBoundingClientRect().top + this.clientTop
           const bottomEdge = topEdge + clientHeight
@@ -394,18 +416,13 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
             this.scrollTop += activeRect.bottom - bottomEdge
           }
         }
-        this.#previousClientHeight = clientHeight
-        this.#previousClientWidth = clientWidth
-        this.#rememberActiveOption()
+        this.#activeOptionState = this.#getActiveOptionState()
       } else {
         this.style.top = '0'
         this.style.left = '0'
         this.style.bottom = '0'
         this.style.right = '0'
-        this.#previousClientHeight = 0
-        this.#previousClientWidth = 0
-        this.#previousActiveOptionId = ''
-        this.#activeOptionWasVisible = false
+        this.#activeOptionState = null
       }
     })
   }

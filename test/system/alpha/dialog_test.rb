@@ -303,20 +303,7 @@ module Alpha
       keyboard.type(:up)
       assert_auto_complete_option_in_view(options.last)
 
-      update_auto_complete_and_wait(<<~JS)
-        const body = document.querySelector("dialog .Overlay-body");
-        for (const position of ["afterbegin", "beforeend"]) {
-          const spacer = document.createElement("div");
-          spacer.style.height = "160px";
-          body.insertAdjacentElement(position, spacer);
-        }
-        body.style.maxHeight = "160px";
-        body.scrollTop = 112;
-        document.body.classList.remove("has-modal-disable-scroll");
-        document.body.style.minHeight = "2400px";
-        window.scrollTo(0, 80);
-        document.querySelector("#list").update();
-      JS
+      scroll_auto_complete_ancestors
       before = auto_complete_scroll_positions
       assert_operator before["body"], :>, 0
       assert_operator before["pageY"], :>, 0
@@ -419,6 +406,127 @@ module Alpha
 
     def test_auto_complete_layout_width_reflow_preserves_manual_scroll
       assert_auto_complete_wrapping_reflow(layout_resize: true, manually_scrolled: true)
+    end
+
+    def test_auto_complete_content_reflow_keeps_active_option_visible
+      assert_auto_complete_content_reflow(manually_scrolled: false)
+    end
+
+    def test_auto_complete_content_reflow_preserves_manual_scroll
+      assert_auto_complete_content_reflow(manually_scrolled: true)
+    end
+
+    def test_auto_complete_layout_widening_keeps_active_option_visible
+      assert_auto_complete_wrapping_reflow(layout_resize: true, manually_scrolled: false, widening: true)
+    end
+
+    def test_auto_complete_layout_widening_preserves_manual_scroll
+      assert_auto_complete_wrapping_reflow(layout_resize: true, manually_scrolled: true, widening: true)
+    end
+
+    def test_auto_complete_visual_widening_keeps_active_option_visible
+      assert_auto_complete_wrapping_reflow(layout_resize: false, manually_scrolled: false, widening: true)
+    end
+
+    def test_auto_complete_no_results_message_fits_short_viewport
+      open_auto_complete_results(results_width: :medium)
+      page.execute_script("document.querySelector('auto-complete').src = '/auto_complete_no_results';")
+      fill_in "input", with: "no matching fruits"
+      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", text: "No results!"
+      find("#input").evaluate_script("this.focus()")
+      center_auto_complete_input(width: 1280, height: 100)
+      assert_auto_complete_popup_in_view
+
+      geometry = nil
+      in_view = page.has_selector?("#list [data-no-result-found='true']") do |message|
+        geometry = message.evaluate_script(<<~JS)
+          (function(message) {
+            const list = message.closest("anchored-position");
+            const rect = message.getBoundingClientRect();
+            const popup = list.getBoundingClientRect();
+            const top = popup.top + list.clientTop;
+            const left = popup.left + list.clientLeft;
+            return {
+              visible: rect.height > 0 && rect.width > 0 &&
+                rect.top >= top && rect.bottom <= top + list.clientHeight &&
+                rect.left >= left && rect.right <= left + list.clientWidth,
+              message: {top: rect.top, bottom: rect.bottom, height: rect.height},
+              popup: {top, height: list.clientHeight}
+            };
+          })(this)
+        JS
+        geometry["visible"]
+      end
+      assert in_view, "The no-results message is clipped: #{geometry.inspect}"
+
+      keyboard.type(:down, :up, :enter)
+      assert_selector "#input:not([aria-activedescendant])"
+      assert_field "input", with: "no matching fruits"
+      assert_selector "#list [data-no-result-found='true'][aria-hidden='true']", count: 1
+      refute_selector "#list [role='option']", visible: :all
+      assert_accessible
+    end
+
+    def test_auto_complete_css_height_shrink_preserves_manual_scroll
+      options = open_auto_complete_results
+      scroll_auto_complete_ancestors
+      update_auto_complete_and_wait(<<~JS)
+        const style = document.createElement("style");
+        style.textContent = `
+          #list { height: 96px; max-height: 96px; }
+          @media (max-height: 650px) { #list { height: 64px; max-height: 64px; } }
+        `;
+        document.head.append(style);
+        document.querySelector("#list").update();
+      JS
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+      update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      before = auto_complete_scroll_positions
+      height = page.evaluate_script("document.querySelector('#list').clientHeight")
+      count_auto_complete_updates
+
+      window.resize(width: 1280, height: 600)
+
+      assert_selector "#list:popover-open" do |list|
+        list.evaluate_script("this.clientHeight") < height
+      end
+      update_auto_complete_and_wait("")
+      assert_equal before, auto_complete_scroll_positions
+      assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+      assert_auto_complete_geometry_settles
+    end
+
+    def test_auto_complete_ancestor_height_shrink_preserves_manual_scroll
+      options = open_auto_complete_results(height: 600)
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("dialog").style, {
+          animation: "none", transform: "none", top: `${document.documentElement.clientHeight / 2 - 80}px`,
+          bottom: "auto", margin: "0 auto"
+        });
+      JS
+      scroll_auto_complete_ancestors
+      keyboard.type(:up)
+      assert_auto_complete_option_in_view(options.last)
+      update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+      before = auto_complete_scroll_positions
+      geometry_before = ancestor_scroll_geometry
+      count_auto_complete_updates
+
+      update_auto_complete_and_wait("document.querySelector('dialog .Overlay-body').scrollTop += 40;")
+
+      geometry_after = nil
+      shrank = page.has_selector?("#list:popover-open") do
+        geometry_after = ancestor_scroll_geometry
+        geometry_after["height"] < geometry_before["height"]
+      end
+      assert shrank, "Ancestor scrolling does not shrink the popup: #{geometry_before.inspect} -> #{geometry_after.inspect}"
+      after = auto_complete_scroll_positions
+      assert_in_delta before["body"] + 40, after["body"], 1
+      assert_equal before.except("body"), after.except("body")
+      assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_geometry_settles
     end
 
     def test_auto_complete_follows_real_ancestor_scrolling
@@ -858,65 +966,168 @@ module Alpha
       end
     end
 
-    def assert_auto_complete_wrapping_reflow(layout_resize:, manually_scrolled:)
-      options = open_auto_complete_results(results_width: :medium)
+    def scroll_auto_complete_ancestors
+      update_auto_complete_and_wait(<<~JS)
+        const body = document.querySelector("dialog .Overlay-body");
+        for (const position of ["afterbegin", "beforeend"]) {
+          const spacer = document.createElement("div");
+          spacer.style.height = "160px";
+          body.insertAdjacentElement(position, spacer);
+        }
+        body.style.maxHeight = "160px";
+        body.scrollTop = 112;
+        document.body.classList.remove("has-modal-disable-scroll");
+        document.body.style.minHeight = "2400px";
+        window.scrollTo(0, 80);
+        document.querySelector("#list").update();
+      JS
+    end
+
+    def assert_auto_complete_content_reflow(manually_scrolled:)
+      [:text, :children].each do |mutation|
+        options = open_auto_complete_results(results_width: :medium)
+        scroll_auto_complete_ancestors
+        update_auto_complete_and_wait(<<~JS)
+          const list = document.querySelector("#list");
+          Object.assign(list.style, {height: "96px", minHeight: "96px", maxHeight: "96px"});
+          for (const option of list.querySelectorAll("[role='option']")) {
+            const label = document.createElement("span");
+            label.textContent = option.dataset.autocompleteValue;
+            Object.assign(label.style, {whiteSpace: "pre-wrap", font: "12px/16px monospace", display: "block"});
+            option.replaceChildren(label);
+            Object.assign(option.style, {padding: "8px", flexShrink: "0"});
+          }
+          list.update();
+        JS
+        8.times { keyboard.type(:down) }
+        option = options[7]
+        assert_auto_complete_option_in_view(option)
+        if manually_scrolled
+          update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
+        end
+        before = wrapping_option_geometry(index: 7)
+        scroll_before = auto_complete_scroll_positions
+        count_auto_complete_updates
+
+        update_auto_complete_and_wait(<<~JS)
+          const option = document.querySelectorAll("#list [role='option']")[7];
+          const label = option.firstElementChild;
+          const text = `${option.dataset.autocompleteValue}\\nA ripe fruit\\nReady to select`;
+          if ("#{mutation}" === "text") label.firstChild.data = text;
+          else label.replaceChildren(document.createTextNode(text));
+        JS
+        assert_selector "#list:popover-open" do
+          page.evaluate_script("window.autoCompleteUpdateCount") > 0
+        end
+        after = wrapping_option_geometry(index: 7)
+        assert_equal before.values_at("clientWidth", "clientHeight"), after.values_at("clientWidth", "clientHeight")
+        assert_operator after["optionHeight"], :>, before["optionHeight"]
+        assert_operator after["labelHeight"], :>, before["labelHeight"]
+        assert_selector "#input[aria-activedescendant='#{option['id']}']"
+        assert_selector "#list [role='option']", count: 18
+        scroll_after = auto_complete_scroll_positions
+        if manually_scrolled
+          assert_equal scroll_before, scroll_after
+          assert_operator after["optionBottom"], :>, after["popupBottom"]
+        else
+          assert_auto_complete_option_in_view(option)
+          assert_operator scroll_after["results"], :>, scroll_before["results"]
+          assert_equal scroll_before.except("results"), scroll_after.except("results")
+        end
+        assert_auto_complete_geometry_settles
+        keyboard.type(:enter)
+        assert_field "input", with: option["data-autocomplete-value"]
+      end
+    end
+
+    def assert_auto_complete_wrapping_reflow(layout_resize:, manually_scrolled:, widening: false)
+      options = open_auto_complete_results(results_width: :medium, width: widening && layout_resize ? 224 : 1280)
+      scroll_auto_complete_ancestors if widening
       update_auto_complete_and_wait(<<~JS)
         const list = document.querySelector("#list");
         Object.assign(list.style, {height: "96px", minHeight: "96px", maxHeight: "96px"});
-        const option = list.querySelectorAll("[role='option']")[17];
-        const label = document.createElement("span");
-        label.textContent = "A longer selected fruit name that wraps when the results popup becomes narrow.";
-        Object.assign(label.style, {whiteSpace: "normal", lineHeight: "16px", display: "block", width: "100%"});
-        option.replaceChildren(label);
-        Object.assign(option.style, {padding: "8px", flexShrink: "0"});
+        const options = [...list.querySelectorAll("[role='option']")];
+        for (const option of #{widening} ? options : [options[17]]) {
+          const label = document.createElement("span");
+          label.textContent = #{widening} ? "A crisp apple picked this morning." :
+            "A longer selected fruit name that wraps when the results popup becomes narrow.";
+          Object.assign(label.style, {whiteSpace: "normal", lineHeight: "16px", display: "block", width: "100%"});
+          if (#{widening}) label.style.font = "12px/16px monospace";
+          option.replaceChildren(label);
+          Object.assign(option.style, {padding: "8px", flexShrink: "0"});
+        }
         list.update();
       JS
-      keyboard.type(:up)
-      assert_auto_complete_option_in_view(options.last)
+      if widening && !layout_resize
+        top_offset = -page.evaluate_script("document.querySelector('#input').getBoundingClientRect().top")
+        set_visual_viewport(event: "resize", width: 224, height: 800, left_offset: 0, top_offset: top_offset)
+      end
+      index = widening ? 8 : 17
+      option = options[index]
+      if widening
+        9.times { keyboard.type(:down) }
+      else
+        keyboard.type(:up)
+      end
+      assert_auto_complete_option_in_view(option)
       if manually_scrolled
         update_auto_complete_and_wait("document.querySelector('#list').scrollTop = 0;")
-        assert_selector "#input[aria-activedescendant='#{options.last['id']}']"
+        assert_selector "#input[aria-activedescendant='#{option['id']}']"
       end
-      before = wrapping_option_geometry
+      before = wrapping_option_geometry(index: index)
       scroll_before = auto_complete_scroll_positions
+      count_auto_complete_updates if widening
       if layout_resize
-        window.resize(width: 224, height: 800)
+        window.resize(width: widening ? 1280 : 224, height: 800)
+      elsif widening
+        page.execute_script(<<~JS)
+          for (const property of ["width", "height", "offsetLeft", "offsetTop"]) delete window.visualViewport[property];
+          window.visualViewport.dispatchEvent(new Event("resize"));
+        JS
       else
         top_offset = -page.evaluate_script("document.querySelector('#input').getBoundingClientRect().top")
         set_visual_viewport(event: "resize", width: 224, height: 800, left_offset: 0, top_offset: top_offset)
       end
       after = nil
       assert_selector "#list:popover-open" do
-        after = wrapping_option_geometry
-        after["width"] < before["width"] && after["optionHeight"] > before["optionHeight"]
+        after = wrapping_option_geometry(index: index)
+        if widening
+          after["width"] > before["width"] && after["optionHeight"] < before["optionHeight"]
+        else
+          after["width"] < before["width"] && after["optionHeight"] > before["optionHeight"]
+        end
       end
       assert_equal before["clientHeight"], after["clientHeight"]
-      assert_operator after["labelHeight"], :>, before["labelHeight"]
+      assert_operator after["labelHeight"], widening ? :< : :>, before["labelHeight"]
+      assert_selector "#input[aria-activedescendant='#{option['id']}']"
       if manually_scrolled
         assert_equal scroll_before, auto_complete_scroll_positions
         assert_operator after["optionBottom"], :>, after["popupBottom"]
       else
-        assert_auto_complete_option_in_view(options.last)
+        assert_auto_complete_option_in_view(option)
         scroll_after = auto_complete_scroll_positions
-        assert_operator scroll_after["results"], :>, scroll_before["results"]
+        assert_operator scroll_after["results"], widening ? :< : :>, scroll_before["results"]
         assert_equal scroll_before.except("results"), scroll_after.except("results")
+      end
+      assert_auto_complete_geometry_settles if widening
+      unless manually_scrolled && !widening
         keyboard.type(:enter)
-        assert_field "input", with: options.last["data-autocomplete-value"]
+        assert_field "input", with: option["data-autocomplete-value"]
       end
     end
 
-    def wrapping_option_geometry
-      page.evaluate_script(<<~JS)
-        (function() {
+    def wrapping_option_geometry(index: 17)
+      page.evaluate_script(<<~JS, index)
+        (function(index) {
           const list = document.querySelector("#list");
-          const option = list.querySelectorAll("[role='option']")[17];
+          const option = list.querySelectorAll("[role='option']")[index];
           return {
-            width: list.getBoundingClientRect().width, clientHeight: list.clientHeight,
+            width: list.getBoundingClientRect().width, clientWidth: list.clientWidth, clientHeight: list.clientHeight,
             optionHeight: option.getBoundingClientRect().height, optionBottom: option.getBoundingClientRect().bottom,
             labelHeight: option.firstElementChild.getBoundingClientRect().height,
             popupBottom: list.getBoundingClientRect().top + list.clientTop + list.clientHeight
           };
-        })()
+        })(arguments[0])
       JS
     end
 
@@ -925,6 +1136,7 @@ module Alpha
         ({
           body: document.querySelector("dialog .Overlay-body").scrollTop,
           inputTop: document.querySelector("#input").getBoundingClientRect().top,
+          height: document.querySelector("#list").clientHeight,
           availableHeight: parseFloat(document.querySelector("#list").style.getPropertyValue("--anchored-position-available-height"))
         })
       JS
