@@ -47,7 +47,7 @@ module Primer
 
       # @label Checked
       def checked
-        render(Primer::Alpha::CheckBox.new(checked: true, name: "my-check-box1", label: "Jean-Luc Picard"))
+        render(Primer::Alpha::CheckBox.new(checked: true, name: "my-check-box3", label: "Jean-Luc Picard"))
       end
 
       # @label Visually hidden label
