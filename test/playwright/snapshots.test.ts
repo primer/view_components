@@ -107,3 +107,34 @@ test.describe('generate snapshots', () => {
     }
   }
 })
+
+// Markdown is excluded from generated previews and axe; snapshot its task lists explicitly.
+test.describe('markdown task list snapshots', () => {
+  for (const example of ['default', 'playground']) {
+    const previewPath = `primer/beta/markdown/${example}`
+
+    test(`${previewPath} task lists across all themes`, async ({page}) => {
+      await page.goto(`/rails/view_components/${previewPath}?theme=all`)
+
+      for (const theme of themes) {
+        const mode = theme.startsWith('dark') ? 'dark' : 'light'
+        const copy = page.locator(`.preview-wrap[data-${mode}-theme="${theme}"]`)
+        const label = copy.getByText('And an unordered task list:', {exact: true})
+        const mixedList = copy.getByRole('group', {name: 'And a "mixed" task list:', exact: true})
+        await label.scrollIntoViewIfNeeded()
+
+        const labelBox = await label.boundingBox()
+        const mixedListBox = await mixedList.boundingBox()
+        if (!labelBox || !mixedListBox) {
+          throw new Error(`Task lists are not visible in ${previewPath} (${theme})`)
+        }
+
+        const screenshot = await page.screenshot({
+          animations: 'disabled',
+          clip: {...labelBox, height: mixedListBox.y + mixedListBox.height - labelBox.y},
+        })
+        expect(screenshot).toMatchSnapshot([previewPath, `task-lists-${theme}.png`])
+      }
+    })
+  }
+})

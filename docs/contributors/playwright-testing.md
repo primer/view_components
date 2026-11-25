@@ -5,11 +5,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
-- [Testing](#testing)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Prerequisites](#prerequisites)
-  - [Continous Integration](#continous-integration)
+* [Testing](#testing)
+  * [Table of Contents](#table-of-contents)
+  * [Overview](#overview)
+  * [Prerequisites](#prerequisites)
+  * [Continous Integration](#continous-integration)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
@@ -21,6 +21,10 @@ We use Playwright to run visual regression tests against our components along wi
 
 You can run these tests using Playwright locally but **we recommend you check the results** of
 these tests on GitHub through the CI workflow.
+
+The Markdown task-list tests capture both labelled lists in the default and playground previews across all seven themes.
+Run `npx playwright test test/playwright/snapshots.test.ts --grep 'markdown task list snapshots' --update-snapshots=none` to check these snapshots.
+These tests keep the Markdown preview's axe exclusion.
 
 To get started locally, make sure to follow the [Prerequisites](#prerequisites)
 section to setup your machine. If you're looking for a quick overview of the commands
