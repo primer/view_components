@@ -535,6 +535,152 @@ module Alpha
       assert_field "input", with: options.last["data-autocomplete-value"]
     end
 
+    def test_auto_complete_fractional_side_bounds_preserve_input_separation
+      options = open_auto_complete_results(results_width: :medium)
+      center_auto_complete_input(width: 1280, height: 800)
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        Object.assign(document.querySelector("#input").style, {left: "0", top: "140px", width: "512px"});
+        // Translation preserves CSS size but exposes bounding-rectangle rounding.
+        Object.assign(list.style, {height: "128px", maxHeight: "128px", transform: "translateY(0.2px)"});
+        list.update();
+      JS
+      keyboard.type(:down)
+      assert_auto_complete_geometry_settles
+      before = auto_complete_anchor_geometry
+      assert_auto_complete_popup_in_view
+      count_auto_complete_updates
+      set_visual_viewport(event: "resize", width: 512, height: 176.3, left_offset: 0, top_offset: -132.000001)
+      assert_auto_complete_geometry_settles
+      rounded = auto_complete_anchor_geometry
+      assert_in_delta 128.000001, rounded["available"]["height"], 0.000001, rounded.inspect
+      assert_operator before["popup"]["height"], :>, rounded["available"]["height"], { before: before, after: rounded }.inspect
+      assert_in_delta rounded["available"]["height"], rounded["popup"]["height"], 0.02, rounded.inspect
+      assert_equal before["document"], rounded["document"]
+      assert_equal 1, page.evaluate_script("window.autoCompleteUpdateCount")
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options.first)
+      assert_operator rounded["popup"]["bottom"], :<=, rounded["anchor"]["top"], rounded.inspect
+
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#input").style, {left: "0", width: "180px"});
+        document.querySelector("#list").style.minHeight = "131px";
+        document.querySelector("#list").update();
+      JS
+      assert_auto_complete_geometry_settles
+      non_fitting = auto_complete_anchor_geometry
+      assert_operator non_fitting["popup"]["height"], :>, non_fitting["available"]["height"] + 1, non_fitting.inspect
+      assert_operator non_fitting["popup"]["left"], :>=, non_fitting["anchor"]["right"] + 3, non_fitting.inspect
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options.first)
+      keyboard.type(:enter)
+      assert_field "input", with: options.first["data-autocomplete-value"]
+    end
+
+    def test_auto_complete_fractional_alignment_bounds_preserve_start_alignment
+      options = open_auto_complete_results(results_width: :large)
+      center_auto_complete_input(width: 1280, height: 800)
+      update_auto_complete_and_wait(<<~JS)
+        Object.assign(document.querySelector("#input").style, {left: "300.5px", top: "100px"});
+        document.querySelector("#list").update();
+      JS
+      set_visual_viewport(event: "resize", width: 780.49, height: 800, left_offset: -300.5, top_offset: -100)
+      keyboard.type(:down)
+      assert_auto_complete_geometry_settles
+      rounded = auto_complete_anchor_geometry
+      assert_in_delta 480, rounded["popup"]["width"], 0.001, rounded.inspect
+      assert_in_delta rounded["anchor"]["left"], rounded["popup"]["left"], 1, rounded.inspect
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options.first)
+
+      set_visual_viewport(event: "resize", width: 778.49, height: 800, left_offset: -300.5, top_offset: -100)
+      keyboard.type(:down)
+      assert_auto_complete_geometry_settles
+      non_fitting = auto_complete_anchor_geometry
+      assert_operator non_fitting["anchor"]["left"] + non_fitting["popup"]["width"], :>,
+                      non_fitting["viewport"]["left"] + non_fitting["viewport"]["width"] + 1, non_fitting.inspect
+      assert_in_delta non_fitting["anchor"]["right"] - non_fitting["popup"]["width"],
+                      non_fitting["popup"]["left"], 1, non_fitting.inspect
+      assert_auto_complete_popup_in_view
+      assert_auto_complete_option_in_view(options[1])
+      keyboard.type(:enter)
+      assert_field "input", with: options[1]["data-autocomplete-value"]
+    end
+
+    def test_auto_complete_fractional_candidate_width_preserves_visible_option
+      options = open_auto_complete_results(results_width: :medium)
+      center_auto_complete_input(width: 1280, height: 800)
+      update_auto_complete_and_wait(<<~JS)
+        const list = document.querySelector("#list");
+        Object.assign(document.querySelector("#input").style, {left: "100px", top: "100px"});
+        // Translation preserves CSS size but exposes bounding-rectangle rounding.
+        list.style.transform = "translateX(0.2px)";
+        const option = list.querySelector("[role='option']");
+        const label = document.createElement("span");
+        label.className = "ActionListItem-label";
+        label.textContent = Array(11).fill(option.dataset.autocompleteValue).join("\\n");
+        Object.assign(label.style, {whiteSpace: "pre-wrap", font: "12px/16px monospace", display: "block"});
+        option.replaceChildren(label);
+        Object.assign(option.style, {padding: "8px", flexShrink: "0"});
+        window.fractionalCandidates = [];
+        const setProperty = list.style.setProperty;
+        // Capture the real layout after the candidate's height cap changes.
+        Object.defineProperty(list.style, "setProperty", {
+          configurable: true,
+          value: function(...args) {
+            const result = setProperty.apply(this, args);
+            if (args[0] === "--anchored-position-available-height" && parseFloat(args[1]) === 224) {
+              const rect = list.getBoundingClientRect();
+              const anchor = list.anchorElement.getBoundingClientRect();
+              const viewport = window.visualViewport;
+              window.fractionalCandidates.push({
+                width: rect.width, height: rect.height, clientHeight: list.clientHeight,
+                cssWidth: parseFloat(getComputedStyle(list).width),
+                optionHeight: option.getBoundingClientRect().height,
+                availableWidth: parseFloat(this.getPropertyValue("--anchored-position-available-width")),
+                horizontalSpace: Math.max(anchor.left - viewport.offsetLeft - list.anchorOffset,
+                  viewport.offsetLeft + viewport.width - anchor.right - list.anchorOffset)
+              });
+            }
+            return result;
+          }
+        });
+        list.update();
+      JS
+      set_visual_viewport(event: "resize", width: 496.000001, height: 224, left_offset: -100, top_offset: -100)
+      keyboard.type(:down)
+      assert_auto_complete_geometry_settles
+      candidate = page.evaluate_script(<<~JS)
+        window.fractionalCandidates.find(candidate =>
+          candidate.cssWidth <= candidate.horizontalSpace && candidate.width > candidate.horizontalSpace)
+      JS
+      refute_nil candidate
+      rounded = auto_complete_anchor_geometry
+      assert_in_delta 192.000001, candidate["horizontalSpace"], 0.000001, candidate.inspect
+      assert_operator candidate["cssWidth"], :<=, candidate["horizontalSpace"], candidate.inspect
+      assert_operator candidate["width"], :>, candidate["horizontalSpace"], candidate.inspect
+      assert_in_delta candidate["horizontalSpace"], candidate["width"], 0.02, candidate.inspect
+      assert_operator candidate["clientHeight"], :>=, candidate["optionHeight"], candidate.inspect
+      assert_auto_complete_option_in_view(options.first, context: { candidate: candidate, popup: rounded })
+      assert_auto_complete_popup_in_view
+
+      update_auto_complete_and_wait("document.querySelector('#list').style.minWidth = '194px';")
+      assert_auto_complete_geometry_settles
+      non_fitting = page.evaluate_script("window.fractionalCandidates.at(-1)")
+      clipped = wrapping_option_geometry(index: 0)
+      assert_operator non_fitting["width"], :>, non_fitting["horizontalSpace"] + 1, non_fitting.inspect
+      assert_in_delta 320, clipped["width"], 0.001, clipped.inspect
+      assert_operator clipped["optionHeight"], :>, clipped["clientHeight"], clipped.inspect
+      assert_operator clipped["optionTop"], :<, clipped["popupBottom"], clipped.inspect
+      assert_operator clipped["optionBottom"], :>, clipped["popupTop"], clipped.inspect
+      assert_auto_complete_popup_in_view
+      assert_selector "#input[aria-activedescendant='#{options.first['id']}']"
+      keyboard.type(:enter)
+      assert_field "input", with: options.first["data-autocomplete-value"]
+    ensure
+      page.execute_script("delete document.querySelector('#list')?.style.setProperty;")
+    end
+
     def test_auto_complete_unbroken_labels_wrap_inside_narrow_results
       ApplicationController.helpers.color_themes.each do |theme|
         options = open_auto_complete_results(width: 224, height: 640, theme: theme)
@@ -1242,6 +1388,10 @@ module Alpha
           return {
             anchor: rectangle(list.anchorElement),
             popup: rectangle(list),
+            available: {
+              width: parseFloat(list.style.getPropertyValue("--anchored-position-available-width")),
+              height: parseFloat(list.style.getPropertyValue("--anchored-position-available-height"))
+            },
             document: {width: document.documentElement.clientWidth, height: document.documentElement.clientHeight},
             viewport: {
               width: window.visualViewport.width, height: window.visualViewport.height,

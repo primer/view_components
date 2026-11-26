@@ -242,13 +242,13 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
     for (const side of alternateSides[this.side] || []) {
       const vertical = position.anchorSide === 'outside-top' || position.anchorSide === 'outside-bottom'
       const fits = vertical
-        ? position.top >= origin.top && position.top + height <= bottom
-        : position.left >= origin.left && position.left + width <= right
+        ? position.top >= origin.top - pixelTolerance && position.top + height <= bottom + pixelTolerance
+        : position.left >= origin.left - pixelTolerance && position.left + width <= right + pixelTolerance
       if (fits) break
       position = getAnchoredPosition(this, anchor, {...settings, side})
     }
     for (const align of alternateAlignments[this.align]) {
-      if (position.left >= origin.left && position.left + width <= right) break
+      if (position.left >= origin.left - pixelTolerance && position.left + width <= right + pixelTolerance) break
       position = getAnchoredPosition(this, anchor, {...settings, side: position.anchorSide, align})
     }
     return {
@@ -449,7 +449,10 @@ export default class AnchoredPositionElement extends HTMLElement implements Posi
           this.style.setProperty('--anchored-position-available-height', `${viewport.height}px`)
           const candidate = this.getBoundingClientRect()
           // If neither candidate fits, keep the one that clips less content.
-          if (candidate.width > horizontalSpace || this.#getMinimumHeight() - candidate.height >= heightDeficit) {
+          if (
+            candidate.width > horizontalSpace + pixelTolerance ||
+            this.#getMinimumHeight() - candidate.height >= heightDeficit
+          ) {
             this.style.setProperty('--anchored-position-available-width', `${viewport.width}px`)
             this.style.setProperty('--anchored-position-available-height', `${availableHeight}px`)
           }
