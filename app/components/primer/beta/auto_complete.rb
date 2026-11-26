@@ -41,7 +41,7 @@ module Primer
         system_arguments[:tag] = :"anchored-position"
         system_arguments[:anchor] = @input_id
         system_arguments[:side] = "outside-bottom"
-        system_arguments[:"allow-out-of-bounds"] = ""
+        system_arguments[:"display-in-viewport"] = ""
         system_arguments[:id] = @list_id
         system_arguments[:popover] = ""
         system_arguments[:overflow_y] = :auto

@@ -201,6 +201,18 @@ dialog.Overlay:not([open]) {
   position: fixed;
 }
 
+.Overlay[display-in-viewport] {
+  min-width: min(192px, var(--anchored-position-available-width, 100vw));
+  max-width: min(calc(100vw - 2rem), var(--anchored-position-available-width, 100vw));
+  max-height: min(
+    100vh,
+    var(--overlay-height, 100vh),
+    var(--anchored-position-available-height, 100vh)
+  );
+  scrollbar-gutter: stable;
+  overflow-wrap: anywhere;
+}
+
 @keyframes Overlay--motion-scaleFade {
   0% {
     opacity: 0;

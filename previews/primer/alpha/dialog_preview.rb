@@ -160,13 +160,15 @@ module Primer
       # @param subtitle [String] text
       # @param button_text [String] text
       # @param show_divider [Boolean] toggle
+      # @param width [Symbol] select [auto, small, medium, large, xlarge, xxlarge]
       # @snapshot interactive
-      def with_auto_complete(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+      def with_auto_complete(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true, width: :auto)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,
                                button_text: button_text,
                                show_divider: show_divider,
+                               width: width.to_sym,
                                url: UrlHelpers.primer_view_components.autocomplete_index_path
                              })
       end
